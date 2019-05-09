@@ -410,7 +410,7 @@ SUBSYSTEM_DEF(ticker)
 		queued_players.len = 0
 		queue_delay = 0
 		return
-		
+
 	queue_delay++
 	var/mob/dead/new_player/next_in_line = queued_players[1]
 
@@ -628,6 +628,7 @@ SUBSYSTEM_DEF(ticker)
 		'sound/roundend/leavingtg.ogg',
 		'sound/roundend/its_only_game.ogg',
 		'sound/roundend/yeehaw.ogg',
+		'sound/roundend/ohthatsit.ogg',
 		'sound/roundend/disappointed.ogg',
 		'sound/roundend/scrunglartiy.ogg'\
 		)
