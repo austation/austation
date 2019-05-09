@@ -183,15 +183,12 @@ Class Procs:
 			L.update_mobility()
 	occupant = null
 
-/obj/machinery/proc/can_be_occupant(atom/movable/am)
-	return occupant_typecache ? is_type_in_typecache(am, occupant_typecache) : isliving(am)
-
 /obj/machinery/proc/close_machine(atom/movable/target = null)
 	state_open = FALSE
 	density = TRUE
 	if(!target)
 		for(var/am in loc)
-			if (!(can_be_occupant(am)))
+			if (!(occupant_typecache ? is_type_in_typecache(am, occupant_typecache) : isliving(am)))
 				continue
 			var/atom/movable/AM = am
 			if(AM.has_buckled_mobs())
@@ -252,19 +249,19 @@ Class Procs:
 				var/datum/bank_account/insurance = I.registered_account
 				if(!insurance)
 					say("[market_verb] NAP Violation: No bank account found.")
-					nap_violation(occupant)
+					nap_violation()
 					return FALSE
 				else
 					if(!insurance.adjust_money(-fair_market_price))
 						say("[market_verb] NAP Violation: Unable to pay.")
-						nap_violation(occupant)
+						nap_violation()
 						return FALSE
 					var/datum/bank_account/D = SSeconomy.get_dep_account(payment_department)
 					if(D)
 						D.adjust_money(fair_market_price)
 			else
 				say("[market_verb] NAP Violation: No ID card found.")
-				nap_violation(occupant)
+				nap_violation()
 				return FALSE
 	return TRUE
 
