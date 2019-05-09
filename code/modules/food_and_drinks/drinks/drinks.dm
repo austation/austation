@@ -36,7 +36,7 @@
 
 	if(M == user)
 		user.visible_message("<span class='notice'>[user] swallows a gulp of [src].</span>", "<span class='notice'>You swallow a gulp of [src].</span>")
-		if(HAS_TRAIT(M, TRAIT_VORACIOUS))
+		if(M.has_trait(TRAIT_VORACIOUS))
 			M.changeNext_move(CLICK_CD_MELEE * 0.5) //chug! chug! chug!
 
 	else
@@ -534,3 +534,10 @@
 	desc = "There is no air shortage. Do not drink."
 	icon_state = "air"
 	list_reagents = list("nitrogen" = 24, "oxygen" = 6)
+
+/obj/item/reagent_containers/food/drinks/soda_cans/space_bitters
+	name = "SB"
+	desc = "Singlet and thongs not included!"
+	icon_state = "space_bitters"
+	list_reagents = list("beer" = 30)
+	foodtype = GRAIN | ALCOHOL
