@@ -1,5 +1,19 @@
 <!-- Most valid html will work in here, excluding images. -->
 
-<h1>Welcome to Space Station 13!</h1>
+<h1>Welcome to AuStation 13!</h1>
 
-<i>This server is running a /tg/station 13 Git build.</i>
+<h2 style="color:red;">Make sure you read and follow the rules posted in Discord (link below)</h2>
+<br>
+<br>
+I hope you enjoying playing as much as I enjoyed making this server.
+<br>
+<b style="color:fuchsia;">Remember to join the Discord</b>
+<br>
+<a href=https://discord.gg/3Rjjbac>Link</a>
+<br>
+<b style="color:blue;">GitHub Repo:</b>
+<br>
+<a href=https://github.com/mcterra10/austation>Link</a>
+<br>
+<br>
+<b style="color:gold;">Thanks! AuStation proudly hosted by Mcterra</b>
