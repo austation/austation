@@ -48,7 +48,7 @@ if [ $BUILD_TOOLS = false ] && [ $BUILD_TESTING = false ]; then
         ln -s $HOME/MariaDB/libmariadb.so.2 $HOME/MariaDB/libmariadb.so
         rm -rf /tmp/extract
 
-        wget http://mirrors.kernel.org/ubuntu/pool/universe/m/mariadb-connector-c/libmariadb-dev_2.3.3-1_i386.deb
+        wget http://mirror.clibre.uqam.ca/ubuntu/ubuntu/pool/universe/m/mariadb-connector-c/libmariadb-dev_2.3.3-1_i386.deb
         dpkg -x libmariadb-dev_2.3.3-1_i386.deb /tmp/extract
         rm libmariadb-dev_2.3.3-1_i386.deb
         mv /tmp/extract/usr/include $HOME/MariaDB/
