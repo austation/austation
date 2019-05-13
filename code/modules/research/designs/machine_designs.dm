@@ -130,7 +130,6 @@
 	category = list("Teleportation Machinery")
 	departmental_flags = DEPARTMENTAL_FLAG_ENGINEERING | DEPARTMENTAL_FLAG_SCIENCE
 
-<<<<<<< HEAD
 /datum/design/board/sleeper
 	name = "Machine Design (Sleeper Board)"
 	desc = "The circuit board for a sleeper."
@@ -139,16 +138,6 @@
 	departmental_flags = DEPARTMENTAL_FLAG_ENGINEERING | DEPARTMENTAL_FLAG_MEDICAL
 	category = list ("Medical Machinery")
 
-/datum/design/board/vr_sleeper
-	name = "Machine Design (VR Sleeper Board)"
-	desc = "The circuit board for a VR sleeper."
-	id = "vr_sleeper"
-	build_path = /obj/item/circuitboard/machine/vr_sleeper
-	departmental_flags = DEPARTMENTAL_FLAG_ENGINEERING | DEPARTMENTAL_FLAG_MEDICAL | DEPARTMENTAL_FLAG_SCIENCE
-	category = list ("Medical Machinery")
-
-=======
->>>>>>> 94c42e3a45... Removes VR (#43832)
 /datum/design/board/cryotube
 	name = "Machine Design (Cryotube Board)"
 	desc = "The circuit board for a cryotube."
