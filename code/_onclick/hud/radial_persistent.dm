@@ -53,7 +53,7 @@
 	Select_proc is the proc to be called each time an element on the menu is clicked, and should accept the chosen element as its final argument
 	Clicking the center button will return a choice of null
 */
-/proc/show_radial_menu_persistent(mob/user, atom/anchor, list/choices, datum/callback/select_proc, uniqueid, radius, datum/callback/custom_check, require_near = FALSE, tooltips = FALSE)
+/proc/show_radial_menu_persistent(mob/user, atom/anchor, list/choices, datum/callback/select_proc, uniqueid, radius, tooltips = FALSE)
 	if(!user || !anchor || !length(choices) || !select_proc)
 		return
 	if(!uniqueid)
@@ -67,8 +67,6 @@
 	GLOB.radial_menus[uniqueid] = menu
 	if(radius)
 		menu.radius = radius
-	if(istype(custom_check))
-		menu.custom_check_callback = custom_check
 	menu.select_proc_callback = select_proc
 	menu.anchor = anchor
 	menu.check_screen_border(user) //Do what's needed to make it look good near borders or on hud
