@@ -256,6 +256,7 @@
 	name = "Nyctophobia"
 	desc = "As far as you can remember, you've always been afraid of the dark. While in the dark without a light source, you instinctually act careful, and constantly feel a sense of dread."
 	value = -1
+	var/careful = FALSE
 
 /datum/quirk/nyctophobia/on_process()
 	var/mob/living/carbon/human/H = quirk_holder
@@ -267,8 +268,15 @@
 		if(quirk_holder.m_intent == MOVE_INTENT_RUN)
 			to_chat(quirk_holder, "<span class='warning'>Easy, easy, take it slow... you're in the dark...</span>")
 			quirk_holder.toggle_move_intent()
+			careful = TRUE 
 		SEND_SIGNAL(quirk_holder, COMSIG_ADD_MOOD_EVENT, "nyctophobia", /datum/mood_event/nyctophobia)
-	else
+	else if(careful)
+		to_chat(quirk_holder, "<span class='warning'>You can see again! Praise the sun!</span>")
+		if(quirk_holder.m_intent == MOVE_INTENT_WALK)
+			quirk_holder.toggle_move_intent()
+		careful = FALSE
+		SEND_SIGNAL(quirk_holder, COMSIG_CLEAR_MOOD_EVENT, "nyctophobia")
+	else 
 		SEND_SIGNAL(quirk_holder, COMSIG_CLEAR_MOOD_EVENT, "nyctophobia")
 
 /datum/quirk/nonviolent
