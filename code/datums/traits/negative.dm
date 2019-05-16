@@ -270,14 +270,14 @@
 			quirk_holder.toggle_move_intent()
 			careful = TRUE 
 		SEND_SIGNAL(quirk_holder, COMSIG_ADD_MOOD_EVENT, "nyctophobia", /datum/mood_event/nyctophobia)
-	else if(careful)
-		to_chat(quirk_holder, "<span class='warning'>You can see again! Praise the sun!</span>")
-		if(quirk_holder.m_intent == MOVE_INTENT_WALK)
-			quirk_holder.toggle_move_intent()
-		careful = FALSE
-		SEND_SIGNAL(quirk_holder, COMSIG_CLEAR_MOOD_EVENT, "nyctophobia")
 	else 
+		if(careful)
+			to_chat(quirk_holder, "<span class='warning'>You can see again! Praise the sun!</span>")
+			if(quirk_holder.m_intent == MOVE_INTENT_WALK)
+				quirk_holder.toggle_move_intent()
+			careful = FALSE
 		SEND_SIGNAL(quirk_holder, COMSIG_CLEAR_MOOD_EVENT, "nyctophobia")
+
 
 /datum/quirk/nonviolent
 	name = "Pacifist"
