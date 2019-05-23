@@ -41,6 +41,7 @@ if [ $BUILD_TOOLS = false ] && [ $BUILD_TESTING = false ]; then
         echo "Setting up MariaDB."
         rm -rf "$HOME/MariaDB"
         mkdir -p "$HOME/MariaDB"
+<<<<<<< HEAD
         wget http://mirrors.kernel.org/ubuntu/pool/universe/m/mariadb-client-lgpl/libmariadb2_2.0.0-1_i386.deb
         dpkg -x libmariadb2_2.0.0-1_i386.deb /tmp/extract
         rm libmariadb2_2.0.0-1_i386.deb
@@ -54,6 +55,12 @@ if [ $BUILD_TOOLS = false ] && [ $BUILD_TESTING = false ]; then
         mv /tmp/extract/usr/include $HOME/MariaDB/
         #fuck what is this even?
         mv $HOME/MariaDB/include/mariadb $HOME/MariaDB/include/mysql
+=======
+		mkdir -p "$HOME/MariaDB/include"
+        cp /usr/lib/i386-linux-gnu/libmariadb.so.2 $HOME/MariaDB/
+		ln -s $HOME/MariaDB/libmariadb.so.2 $HOME/MariaDB/libmariadb.so
+        cp -r /usr/include/mariadb $HOME/MariaDB/include/
+>>>>>>> 5c6e7a5845... PR to make travis use xenial and to make it work (#44079)
     fi
 
     cd artifacts
