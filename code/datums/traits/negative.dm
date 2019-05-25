@@ -260,11 +260,8 @@
 	name = "Nyctophobia"
 	desc = "As far as you can remember, you've always been afraid of the dark. While in the dark without a light source, you instinctually act careful, and constantly feel a sense of dread."
 	value = -1
-<<<<<<< HEAD
 	var/careful = FALSE
-=======
 	medical_record_text = "Patient demonstrates a fear of the dark. (Seriously?)"
->>>>>>> 7c9576c6e2... Puts medical record quirks in Medical Record "Important Notes", gives each quirk a medical record, cleans up subjects into patients. (#44009)
 
 /datum/quirk/nyctophobia/on_process()
 	var/mob/living/carbon/human/H = quirk_holder
