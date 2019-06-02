@@ -120,8 +120,19 @@ SUBSYSTEM_DEF(ticker)
 
 	if(!GLOB.syndicate_code_phrase)
 		GLOB.syndicate_code_phrase	= generate_code_phrase(return_list=TRUE)
+
+		var/codewords = jointext(GLOB.syndicate_code_phrase, "|")
+		var/regex/codeword_match = new("([codewords])", "ig")
+
+		GLOB.syndicate_code_phrase_regex = codeword_match
+
 	if(!GLOB.syndicate_code_response)
 		GLOB.syndicate_code_response = generate_code_phrase(return_list=TRUE)
+
+		var/codewords = jointext(GLOB.syndicate_code_response, "|")
+		var/regex/codeword_match = new("([codewords])", "ig")
+
+		GLOB.syndicate_code_response_regex = codeword_match
 
 	start_at = world.time + (CONFIG_GET(number/lobby_countdown) * 10)
 	if(CONFIG_GET(flag/randomize_shift_time))
@@ -183,7 +194,7 @@ SUBSYSTEM_DEF(ticker)
 					if(GLOB.master_mode == "secret" && totalPlayers <= CONFIG_GET(number/autosandbox_min))
 						SEND_SOUND(world, sound('sound/misc/notice2.ogg'))
 						if(!active_admins)
-							to_chat(world, "<span class='boldnotice'>Notice: Insufficient player population for secret, switching from secret to sandbox.</span>")
+							to_chat(world, "<span class='boldnotice'>Notice: Insufficient player population for secret, switching from secret to sandbox and enabling respawn.</span>")
 							SSticker.save_mode("sandbox")
 							GLOB.master_mode = "sandbox"
 						else
@@ -200,6 +211,11 @@ SUBSYSTEM_DEF(ticker)
 						else
 							to_chat(world, "<span class='boldnotice'>Notice: The current player count is meets the secret threshold, but the game mode will not be changed because an admin is online.</span>")
 							message_admins("The player count meets the auto secret population threshold, but there are active admins, so the game mode has not changed. If you wish, you may change the game mode to secret.")
+					
+					if(GLOB.master_mode == "sandbox")
+						CONFIG_SET(flag/norespawn, FALSE)
+						world.update_status()
+						message_admins("Respawn has been automatically enabled due to the mode being sandbox.")
 
 
 
