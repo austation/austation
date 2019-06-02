@@ -549,15 +549,11 @@
 	name = "canned air"
 	desc = "There is no air shortage. Do not drink."
 	icon_state = "air"
-<<<<<<< HEAD
-	list_reagents = list("nitrogen" = 24, "oxygen" = 6)
+	list_reagents = list(/datum/reagent/nitrogen = 24, /datum/reagent/oxygen = 6)
 
 /obj/item/reagent_containers/food/drinks/soda_cans/space_bitters
 	name = "SB"
 	desc = "Singlet and thongs not included!"
 	icon_state = "space_bitters"
-	list_reagents = list("beer" = 30)
+	list_reagents = list(/datum/reagent/consumable/ethanol/beer = 30)
 	foodtype = GRAIN | ALCOHOL
-=======
-	list_reagents = list(/datum/reagent/nitrogen = 24, /datum/reagent/oxygen = 6)
->>>>>>> 6a106bc877... Remove reagent ids and use typepaths where applicable (#44166)
