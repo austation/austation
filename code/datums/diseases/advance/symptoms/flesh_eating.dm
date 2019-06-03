@@ -126,10 +126,5 @@ Bonus
 	if(chems)
 		M.reagents.add_reagent_list(list("heparin" = 2, "lipolicide" = 2))
 	if(zombie)
-<<<<<<< HEAD
-		M.reagents.add_reagent("romerol", 1)
-	return 1
-=======
 		M.reagents.add_reagent(/datum/reagent/romerol, 1)
 	return 1
->>>>>>> 15825997b8... Stamina changes [TMC] (#43966)
