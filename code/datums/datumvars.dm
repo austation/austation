@@ -1406,4 +1406,3 @@
 						H.remove_quirk(T)
 					else
 						H.add_quirk(T,TRUE)
-
