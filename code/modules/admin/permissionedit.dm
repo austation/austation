@@ -17,7 +17,7 @@
 	if(action == 1)
 		var/list/searchlist = list(" WHERE ")
 		if(target)
-			searchlist += "ckey = '[sanitizeSQL(target)]'"
+			searchlist += "`ckey` = '[sanitizeSQL(target)]'"
 		if(operation)
 			if(target)
 				searchlist += " AND "
@@ -44,7 +44,7 @@
 				pagecount++
 			output += "|"
 		var/limit = " LIMIT [logssperpage * page], [logssperpage]"
-		var/datum/DBQuery/query_search_admin_logs = SSdbcore.NewQuery("SELECT datetime, round_id, IFNULL((SELECT byond_key FROM [format_table_name("player")] WHERE ckey = adminckey), adminckey), operation, IF(ckey IS NULL, target, byond_key), log FROM [format_table_name("admin_log")] LEFT JOIN [format_table_name("player")] ON target = ckey[search] ORDER BY datetime DESC[limit]")
+		var/datum/DBQuery/query_search_admin_logs = SSdbcore.NewQuery("SELECT datetime, round_id, IFNULL((SELECT byond_key FROM [format_table_name("player")] WHERE `ckey` = adminckey), adminckey), operation, IF(ckey IS NULL, target, byond_key), log FROM [format_table_name("admin_log")] LEFT JOIN [format_table_name("player")] ON target = ckey[search] ORDER BY datetime DESC[limit]")
 		if(!query_search_admin_logs.warn_execute())
 			qdel(query_search_admin_logs)
 			return
@@ -212,7 +212,7 @@
 	if(use_db)
 		. = sanitizeSQL(.)
 		//if an admin exists without a datum they won't be caught by the above
-		var/datum/DBQuery/query_admin_in_db = SSdbcore.NewQuery("SELECT 1 FROM [format_table_name("admin")] WHERE ckey = '[.]'")
+		var/datum/DBQuery/query_admin_in_db = SSdbcore.NewQuery("SELECT 1 FROM [format_table_name("admin")] WHERE `ckey` = '[.]'")
 		if(!query_admin_in_db.warn_execute())
 			qdel(query_admin_in_db)
 			return FALSE
@@ -241,7 +241,7 @@
 		var/m1 = "[key_name_admin(usr)] removed [admin_key] from the admins list [use_db ? "permanently" : "temporarily"]"
 		var/m2 = "[key_name(usr)] removed [admin_key] from the admins list [use_db ? "permanently" : "temporarily"]"
 		if(use_db)
-			var/datum/DBQuery/query_add_rank = SSdbcore.NewQuery("DELETE FROM [format_table_name("admin")] WHERE ckey = '[admin_ckey]'")
+			var/datum/DBQuery/query_add_rank = SSdbcore.NewQuery("DELETE FROM [format_table_name("admin")] WHERE `ckey` = '[admin_ckey]'")
 			if(!query_add_rank.warn_execute())
 				qdel(query_add_rank)
 				return
@@ -303,7 +303,7 @@
 		new_rank = sanitizeSQL(new_rank)
 		//if a player was tempminned before having a permanent change made to their rank they won't yet be in the db
 		var/old_rank
-		var/datum/DBQuery/query_admin_in_db = SSdbcore.NewQuery("SELECT rank FROM [format_table_name("admin")] WHERE ckey = '[admin_ckey]'")
+		var/datum/DBQuery/query_admin_in_db = SSdbcore.NewQuery("SELECT rank FROM [format_table_name("admin")] WHERE `ckey` = '[admin_ckey]'")
 		if(!query_admin_in_db.warn_execute())
 			qdel(query_admin_in_db)
 			return
@@ -331,7 +331,7 @@
 				return
 			qdel(query_add_rank_log)
 		qdel(query_rank_in_db)
-		var/datum/DBQuery/query_change_rank = SSdbcore.NewQuery("UPDATE [format_table_name("admin")] SET rank = '[new_rank]' WHERE ckey = '[admin_ckey]'")
+		var/datum/DBQuery/query_change_rank = SSdbcore.NewQuery("UPDATE [format_table_name("admin")] SET rank = '[new_rank]' WHERE `ckey` = '[admin_ckey]'")
 		if(!query_change_rank.warn_execute())
 			qdel(query_change_rank)
 			return
@@ -464,7 +464,7 @@
 	if (D)
 		sqlrank = sanitizeSQL(D.rank.name)
 	admin_ckey = sanitizeSQL(admin_ckey)
-	var/datum/DBQuery/query_sync_lastadminrank = SSdbcore.NewQuery("UPDATE [format_table_name("player")] SET lastadminrank = '[sqlrank]' WHERE ckey = '[admin_ckey]'")
+	var/datum/DBQuery/query_sync_lastadminrank = SSdbcore.NewQuery("UPDATE [format_table_name("player")] SET lastadminrank = '[sqlrank]' WHERE `ckey` = '[admin_ckey]'")
 	if(!query_sync_lastadminrank.warn_execute())
 		qdel(query_sync_lastadminrank)
 		return

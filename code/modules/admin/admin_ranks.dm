@@ -153,7 +153,7 @@ GLOBAL_PROTECT(protected_ranks)
 			if(!no_update)
 				sync_ranks_with_db()
 		else
-			var/datum/DBQuery/query_load_admin_ranks = SSdbcore.NewQuery("SELECT rank, flags, exclude_flags, can_edit_flags FROM [format_table_name("admin_ranks")]")
+			var/datum/DBQuery/query_load_admin_ranks = SSdbcore.NewQuery("SELECT rank, flags, exclude_flags, can_edit_flags FROM `[format_table_name("admin_ranks")]`")
 			if(!query_load_admin_ranks.Execute())
 				message_admins("Error loading admin ranks from database. Loading from backup.")
 				log_sql("Error loading admin ranks from database. Loading from backup.")
