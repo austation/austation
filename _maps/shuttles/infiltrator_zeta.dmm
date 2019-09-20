@@ -1,0 +1,1026 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/turf/template_noop,
+/area/space)
+"ab" = (
+/turf/closed/wall/mineral/abductor,
+/area/shuttle/syndicate/airlock)
+"ac" = (
+/turf/closed/wall/mineral/abductor,
+/area/shuttle/syndicate/bridge)
+"ad" = (
+/obj/effect/spawner/structure/window/plastitanium,
+/turf/open/floor/plating/abductor,
+/area/shuttle/syndicate/bridge)
+"ae" = (
+/obj/machinery/computer/secure_data/syndie,
+/turf/open/floor/plating/abductor,
+/area/shuttle/syndicate/bridge)
+"af" = (
+/obj/machinery/computer/crew/syndie,
+/turf/open/floor/plating/abductor,
+/area/shuttle/syndicate/bridge)
+"ag" = (
+/obj/machinery/computer/camera_advanced/shuttle_docker/syndicate,
+/turf/open/floor/plating/abductor,
+/area/shuttle/syndicate/bridge)
+"ah" = (
+/obj/machinery/computer/shuttle/syndicate,
+/turf/open/floor/plating/abductor,
+/area/shuttle/syndicate/bridge)
+"ai" = (
+/obj/structure/table/abductor,
+/turf/open/floor/plating/abductor,
+/area/shuttle/syndicate/bridge)
+"aj" = (
+/obj/machinery/computer/med_data/syndie,
+/turf/open/floor/plating/abductor,
+/area/shuttle/syndicate/bridge)
+"ak" = (
+/obj/machinery/computer/camera_advanced/syndie{
+	step_x = 0
+	},
+/turf/open/floor/plating/abductor,
+/area/shuttle/escape)
+"al" = (
+/obj/machinery/light{
+	dir = 1
+	},
+/obj/structure/chair/comfy/shuttle{
+	name = "tactical chair"
+	},
+/turf/open/floor/plating/abductor,
+/area/shuttle/syndicate/airlock)
+"am" = (
+/obj/structure/chair/office{
+	dir = 1
+	},
+/turf/open/floor/plating/abductor,
+/area/shuttle/syndicate/bridge)
+"an" = (
+/turf/open/floor/plating/abductor,
+/area/shuttle/syndicate/bridge)
+"ao" = (
+/obj/structure/chair/comfy/shuttle{
+	dir = 1;
+	name = "tactical chair"
+	},
+/turf/open/floor/plating/abductor,
+/area/shuttle/syndicate/bridge)
+"ap" = (
+/turf/open/floor/plating/abductor,
+/area/shuttle/syndicate/airlock)
+"aq" = (
+/obj/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/plating/abductor,
+/area/shuttle/syndicate/bridge)
+"ar" = (
+/obj/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/plating/abductor,
+/area/shuttle/syndicate/bridge)
+"as" = (
+/obj/item/clothing/suit/space/syndicate,
+/obj/item/clothing/head/helmet/space/syndicate,
+/obj/structure/table/abductor,
+/turf/open/floor/plating/abductor,
+/area/shuttle/syndicate/airlock)
+"at" = (
+/obj/structure/chair/comfy/shuttle{
+	dir = 8;
+	name = "tactical chair"
+	},
+/turf/open/floor/plating/abductor,
+/area/shuttle/syndicate/airlock)
+"au" = (
+/obj/item/twohanded/required/kirbyplants/photosynthetic,
+/turf/open/floor/plating/abductor,
+/area/shuttle/syndicate/bridge)
+"av" = (
+/obj/structure/chair/comfy/shuttle{
+	dir = 4;
+	name = "tactical chair"
+	},
+/turf/open/floor/plating/abductor,
+/area/shuttle/syndicate/airlock)
+"aw" = (
+/obj/structure/table/abductor,
+/obj/item/storage/toolbox/syndicate{
+	step_y = 6
+	},
+/obj/item/crowbar/red,
+/turf/open/floor/plating/abductor,
+/area/shuttle/syndicate/airlock)
+"ax" = (
+/obj/machinery/door/airlock/abductor{
+	name = "Command Center";
+	req_access_txt = "150"
+	},
+/turf/open/floor/plating/abductor,
+/area/shuttle/syndicate/bridge)
+"ay" = (
+/obj/machinery/abductor/pad{
+	team_number = 5
+	},
+/turf/open/floor/plating/abductor,
+/area/shuttle/syndicate/hallway)
+"az" = (
+/turf/open/floor/plating/abductor,
+/area/shuttle/syndicate/hallway)
+"aA" = (
+/obj/machinery/abductor/pad{
+	team_number = 6
+	},
+/turf/open/floor/plating/abductor,
+/area/shuttle/syndicate/hallway)
+"aB" = (
+/obj/machinery/door/poddoor{
+	id = "infiltrator_portblast";
+	name = "Infiltrator Port Hatch"
+	},
+/obj/machinery/button/door{
+	id = "infiltrator_portblast";
+	name = "Infiltrator Port Hatch Control";
+	pixel_y = 26;
+	req_access_txt = "150"
+	},
+/obj/structure/fans/tiny,
+/turf/open/floor/plating/abductor,
+/area/shuttle/syndicate/airlock)
+"aC" = (
+/obj/machinery/abductor/console{
+	team_number = 5
+	},
+/turf/open/floor/plating/abductor,
+/area/shuttle/syndicate/hallway)
+"aD" = (
+/obj/machinery/computer/camera_advanced/abductor{
+	team_number = 5
+	},
+/turf/open/floor/plating/abductor,
+/area/shuttle/syndicate/hallway)
+"aE" = (
+/obj/machinery/computer/camera_advanced/abductor{
+	team_number = 6
+	},
+/turf/open/floor/plating/abductor,
+/area/shuttle/syndicate/hallway)
+"aF" = (
+/obj/machinery/abductor/console{
+	team_number = 6
+	},
+/turf/open/floor/plating/abductor,
+/area/shuttle/syndicate/hallway)
+"aG" = (
+/obj/machinery/door/poddoor{
+	id = "infiltrator_starboardblast";
+	name = "Infiltrator Starboard Hatch"
+	},
+/obj/machinery/button/door{
+	id = "infiltrator_starboardblast";
+	name = "Infiltrator Starboard Hatch Control";
+	pixel_y = 26;
+	req_access_txt = "150"
+	},
+/obj/structure/fans/tiny,
+/obj/docking_port/mobile{
+	dheight = 1;
+	dir = 8;
+	dwidth = 13;
+	height = 21;
+	hidden = 1;
+	id = "syndicate";
+	movement_force = list("KNOCKDOWN" = 0, "THROW" = 0);
+	name = "syndicate infiltrator";
+	port_direction = 4;
+	width = 21
+	},
+/turf/open/floor/plating/abductor,
+/area/shuttle/syndicate/airlock)
+"aH" = (
+/obj/effect/spawner/structure/window/plastitanium,
+/turf/open/floor/plating/abductor,
+/area/shuttle/syndicate/airlock)
+"aI" = (
+/obj/machinery/door/airlock/abductor{
+	name = "External Airlock";
+	req_access_txt = "150"
+	},
+/turf/open/floor/plating/abductor,
+/area/shuttle/syndicate/airlock)
+"aJ" = (
+/obj/machinery/abductor/experiment{
+	team_number = 5
+	},
+/turf/open/floor/plating/abductor,
+/area/shuttle/syndicate/hallway)
+"aK" = (
+/obj/structure/chair/comfy/shuttle{
+	dir = 1;
+	name = "tactical chair"
+	},
+/turf/open/floor/plating/abductor,
+/area/shuttle/syndicate/hallway)
+"aL" = (
+/obj/machinery/abductor/experiment{
+	team_number = 6
+	},
+/turf/open/floor/plating/abductor,
+/area/shuttle/syndicate/hallway)
+"aN" = (
+/obj/effect/spawner/structure/window/plastitanium,
+/turf/open/floor/plating/abductor,
+/area/shuttle/syndicate/hallway)
+"aO" = (
+/obj/machinery/light{
+	dir = 8
+	},
+/obj/item/twohanded/required/kirbyplants/photosynthetic,
+/turf/open/floor/plating/abductor,
+/area/shuttle/syndicate/hallway)
+"aP" = (
+/turf/closed/wall/mineral/abductor,
+/area/shuttle/syndicate/hallway)
+"aQ" = (
+/obj/machinery/nuclearbomb/syndicate{
+	anchored = 1
+	},
+/obj/machinery/door/window{
+	dir = 1;
+	name = "Nuke Access";
+	req_one_access_txt = "150"
+	},
+/turf/open/floor/circuit/red,
+/area/shuttle/syndicate/hallway)
+"aR" = (
+/turf/closed/wall/mineral/abductor,
+/area/shuttle/syndicate/eva)
+"aS" = (
+/obj/effect/spawner/structure/window/plastitanium,
+/turf/open/floor/plating/abductor,
+/area/shuttle/syndicate/eva)
+"aT" = (
+/obj/machinery/door/airlock/abductor{
+	name = "E.V.A. Gear Storage";
+	req_access_txt = "150"
+	},
+/turf/open/floor/plating/abductor,
+/area/shuttle/syndicate/eva)
+"aU" = (
+/turf/closed/wall/mineral/abductor,
+/area/shuttle/syndicate/armory)
+"aV" = (
+/obj/effect/spawner/structure/window/plastitanium,
+/turf/open/floor/plating/abductor,
+/area/shuttle/syndicate/armory)
+"aW" = (
+/obj/machinery/door/airlock/abductor{
+	name = "Armory";
+	req_access_txt = "150"
+	},
+/turf/open/floor/plating/abductor,
+/area/shuttle/syndicate/armory)
+"aX" = (
+/obj/structure/table/abductor,
+/obj/item/storage/toolbox/syndicate{
+	step_y = 6
+	},
+/obj/item/storage/toolbox/mechanical{
+	step_x = -3;
+	step_y = 7
+	},
+/obj/item/crowbar/red,
+/turf/open/floor/plating/abductor,
+/area/shuttle/syndicate/eva)
+"aY" = (
+/turf/open/floor/plating/abductor,
+/area/shuttle/syndicate/eva)
+"aZ" = (
+/obj/machinery/portable_atmospherics/canister/oxygen,
+/turf/open/floor/plating/abductor,
+/area/shuttle/syndicate/eva)
+"ba" = (
+/obj/structure/tank_dispenser/oxygen,
+/turf/open/floor/plating/abductor,
+/area/shuttle/syndicate/eva)
+"bb" = (
+/obj/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/plating/abductor,
+/area/shuttle/syndicate/hallway)
+"bc" = (
+/obj/structure/table/abductor,
+/obj/item/sbeacondrop/bomb{
+	step_y = 7
+	},
+/obj/item/sbeacondrop/bomb,
+/turf/open/floor/plating/abductor,
+/area/shuttle/syndicate/armory)
+"bd" = (
+/turf/open/floor/plating/abductor,
+/area/shuttle/syndicate/armory)
+"be" = (
+/obj/machinery/light{
+	dir = 4
+	},
+/obj/structure/table/abductor,
+/obj/item/storage/toolbox/syndicate{
+	step_y = 6
+	},
+/obj/item/storage/toolbox/syndicate{
+	step_y = 0
+	},
+/turf/open/floor/plating/abductor,
+/area/shuttle/syndicate/armory)
+"bf" = (
+/obj/machinery/suit_storage_unit/syndicate,
+/turf/open/floor/plating/abductor,
+/area/shuttle/syndicate/eva)
+"bg" = (
+/obj/item/twohanded/required/kirbyplants/photosynthetic,
+/turf/open/floor/plating/abductor,
+/area/shuttle/syndicate/hallway)
+"bh" = (
+/obj/structure/table/abductor,
+/obj/item/grenade/syndieminibomb,
+/obj/item/grenade/syndieminibomb,
+/obj/item/grenade/c4,
+/obj/item/grenade/c4,
+/obj/item/grenade/c4,
+/turf/open/floor/plating/abductor,
+/area/shuttle/syndicate/armory)
+"bi" = (
+/obj/structure/table/abductor,
+/obj/item/screwdriver/abductor{
+	pixel_y = -5
+	},
+/obj/item/weldingtool/abductor{
+	pixel_y = 3
+	},
+/turf/open/floor/plating/abductor,
+/area/shuttle/syndicate/armory)
+"bj" = (
+/obj/structure/table/abductor,
+/obj/item/crowbar/abductor{
+	pixel_x = -13;
+	pixel_y = 0
+	},
+/obj/item/multitool/abductor,
+/turf/open/floor/plating/abductor,
+/area/shuttle/syndicate/armory)
+"bk" = (
+/turf/closed/wall/mineral/abductor,
+/area/shuttle/syndicate/medical)
+"bl" = (
+/obj/effect/spawner/structure/window/plastitanium,
+/turf/open/floor/plating/abductor,
+/area/shuttle/syndicate/medical)
+"bm" = (
+/obj/machinery/door/airlock/abductor{
+	name = "Medical Facility";
+	req_access_txt = "150"
+	},
+/turf/open/floor/plating/abductor,
+/area/shuttle/syndicate/medical)
+"bn" = (
+/obj/structure/table/abductor,
+/obj/item/stock_parts/subspace/crystal{
+	pixel_x = -8
+	},
+/obj/item/stock_parts/subspace/amplifier{
+	pixel_x = -10;
+	pixel_y = 6
+	},
+/obj/item/stock_parts/cell/infinite/abductor{
+	pixel_x = 5
+	},
+/turf/open/floor/plating/abductor,
+/area/shuttle/syndicate/armory)
+"bo" = (
+/obj/structure/chair/office{
+	dir = 4
+	},
+/turf/open/floor/plating/abductor,
+/area/shuttle/syndicate/armory)
+"bp" = (
+/obj/structure/table/abductor,
+/obj/item/abductor/gizmo,
+/obj/item/wirecutters/abductor{
+	pixel_y = 13
+	},
+/turf/open/floor/plating/abductor,
+/area/shuttle/syndicate/armory)
+"bq" = (
+/obj/machinery/sleeper/syndie{
+	dir = 4
+	},
+/turf/open/floor/plating/abductor,
+/area/shuttle/syndicate/medical)
+"br" = (
+/turf/open/floor/plating/abductor,
+/area/shuttle/syndicate/medical)
+"bs" = (
+/obj/machinery/abductor/experiment,
+/turf/open/floor/plating/abductor,
+/area/shuttle/syndicate/medical)
+"bt" = (
+/obj/structure/closet/crate/freezer/blood,
+/turf/open/floor/plating/abductor,
+/area/shuttle/syndicate/medical)
+"bu" = (
+/obj/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/plating/abductor,
+/area/shuttle/syndicate/armory)
+"bv" = (
+/obj/machinery/recharge_station,
+/turf/open/floor/plating/abductor,
+/area/shuttle/syndicate/armory)
+"bw" = (
+/obj/machinery/shower{
+	dir = 8;
+	name = "emergency shower"
+	},
+/turf/open/floor/plating/abductor,
+/area/shuttle/syndicate/medical)
+"bx" = (
+/obj/machinery/light{
+	dir = 8
+	},
+/obj/structure/closet/abductor,
+/obj/item/clothing/under/misc/pj/blue,
+/obj/item/clothing/under/misc/pj,
+/obj/item/clothing/shoes/sneakers/white,
+/obj/item/clothing/shoes/jackboots,
+/obj/item/clothing/glasses/eyepatch,
+/turf/open/floor/plating/abductor,
+/area/shuttle/syndicate/medical)
+"by" = (
+/obj/item/lazarus_injector,
+/obj/structure/table/abductor,
+/obj/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/plating/abductor,
+/area/shuttle/syndicate/medical)
+"bz" = (
+/obj/machinery/telecomms/allinone,
+/turf/open/floor/plating/abductor,
+/area/shuttle/syndicate/armory)
+"bA" = (
+/obj/machinery/abductor/gland_dispenser{
+	desc = "A tank filled with grotesque bits of flesh."
+	},
+/turf/open/floor/plating/abductor,
+/area/shuttle/syndicate/medical)
+"bB" = (
+/obj/structure/table/optable/abductor,
+/obj/item/surgical_drapes,
+/turf/open/floor/plating/abductor,
+/area/shuttle/syndicate/medical)
+"bC" = (
+/obj/structure/table/abductor,
+/obj/item/scalpel/alien,
+/obj/item/cautery/alien,
+/obj/item/retractor/alien,
+/obj/item/hemostat/alien,
+/obj/item/circular_saw/alien,
+/obj/item/surgicaldrill/alien,
+/turf/open/floor/plating/abductor,
+/area/shuttle/syndicate/medical)
+"bD" = (
+/obj/structure/table/abductor,
+/obj/item/organ/heart/gland/access{
+	pixel_x = 10
+	},
+/obj/item/organ/heart/gland/egg,
+/turf/open/floor/plating/abductor,
+/area/shuttle/syndicate/medical)
+"bE" = (
+/obj/machinery/fat_sucker,
+/turf/open/floor/plating/abductor,
+/area/shuttle/syndicate/medical)
+"bF" = (
+/obj/structure/bed/abductor,
+/obj/machinery/iv_drip,
+/turf/open/floor/plating/abductor,
+/area/shuttle/syndicate/medical)
+"bG" = (
+/obj/machinery/porta_turret/syndicate/shuttle{
+	dir = 10
+	},
+/turf/closed/wall/mineral/abductor,
+/area/shuttle/escape)
+"qV" = (
+/obj/machinery/porta_turret/syndicate/shuttle{
+	dir = 9
+	},
+/turf/closed/wall/mineral/abductor,
+/area/shuttle/syndicate/airlock)
+"vQ" = (
+/obj/machinery/porta_turret/syndicate/shuttle{
+	dir = 10
+	},
+/turf/closed/wall/mineral/abductor,
+/area/shuttle/syndicate/eva)
+"DN" = (
+/obj/machinery/porta_turret/syndicate/shuttle{
+	dir = 6
+	},
+/turf/closed/wall/mineral/abductor,
+/area/shuttle/syndicate/armory)
+"QA" = (
+/obj/machinery/porta_turret/syndicate/shuttle{
+	dir = 5
+	},
+/turf/closed/wall/mineral/abductor,
+/area/shuttle/syndicate/airlock)
+
+(1,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aN
+aN
+aR
+aR
+aR
+vQ
+aa
+aa
+aa
+aa
+aa
+"}
+(2,1,1) = {"
+aa
+aa
+aa
+aa
+qV
+ab
+ab
+aB
+aH
+aN
+aN
+aO
+aS
+aX
+bf
+aR
+aR
+aa
+aa
+aa
+aa
+"}
+(3,1,1) = {"
+aa
+aa
+aa
+ab
+ab
+aw
+ap
+ap
+aH
+az
+az
+az
+aS
+aY
+aY
+bf
+aR
+aR
+aa
+aa
+aa
+"}
+(4,1,1) = {"
+aa
+aa
+ab
+ab
+as
+ap
+ap
+ap
+aI
+az
+az
+az
+aT
+aY
+aY
+aY
+bf
+aR
+aR
+aa
+aa
+"}
+(5,1,1) = {"
+aa
+ab
+ab
+ap
+ap
+ap
+ap
+ap
+aH
+az
+az
+az
+aS
+aZ
+aY
+aY
+aY
+bf
+aR
+aR
+aa
+"}
+(6,1,1) = {"
+qV
+ab
+al
+ap
+at
+at
+at
+at
+aH
+az
+az
+az
+aS
+ba
+aY
+aZ
+aY
+aY
+bf
+aR
+bG
+"}
+(7,1,1) = {"
+ac
+ac
+ac
+ac
+ac
+ac
+ab
+ab
+ab
+az
+az
+az
+aR
+aR
+aR
+bk
+bk
+bk
+bk
+bk
+bk
+"}
+(8,1,1) = {"
+ac
+ae
+am
+aq
+au
+ac
+ay
+aC
+aJ
+az
+az
+az
+az
+az
+bg
+bk
+bq
+bq
+bx
+bA
+bk
+"}
+(9,1,1) = {"
+ad
+af
+an
+an
+an
+ac
+az
+az
+az
+az
+az
+az
+az
+az
+az
+bl
+br
+br
+br
+bB
+bl
+"}
+(10,1,1) = {"
+ad
+ag
+am
+an
+an
+ac
+az
+aD
+aK
+az
+az
+aP
+aP
+az
+az
+bl
+bs
+br
+br
+bC
+bl
+"}
+(11,1,1) = {"
+ad
+ah
+ao
+an
+an
+ax
+az
+az
+az
+az
+az
+aQ
+aP
+az
+az
+bm
+br
+br
+br
+bD
+bl
+"}
+(12,1,1) = {"
+ad
+ai
+am
+an
+an
+ac
+az
+aE
+aK
+az
+az
+aP
+aP
+az
+az
+bl
+br
+br
+br
+bE
+bl
+"}
+(13,1,1) = {"
+ad
+aj
+an
+an
+an
+ac
+az
+az
+az
+az
+az
+az
+az
+az
+az
+bl
+br
+br
+br
+br
+bl
+"}
+(14,1,1) = {"
+ac
+ak
+am
+ar
+au
+ac
+aA
+aF
+aL
+az
+az
+az
+az
+bb
+bg
+bk
+bt
+bw
+by
+bF
+bk
+"}
+(15,1,1) = {"
+ac
+ac
+ac
+ac
+ac
+ac
+ab
+ab
+ab
+az
+az
+az
+aU
+aU
+aU
+bk
+bk
+bk
+bk
+bk
+bk
+"}
+(16,1,1) = {"
+QA
+ab
+al
+ap
+av
+av
+av
+av
+aH
+az
+az
+az
+aV
+bc
+bh
+bn
+bu
+bd
+bz
+aU
+DN
+"}
+(17,1,1) = {"
+aa
+ab
+ab
+ap
+ap
+ap
+ap
+ap
+aH
+az
+az
+az
+aV
+bd
+bd
+bd
+bd
+bv
+aU
+aU
+aa
+"}
+(18,1,1) = {"
+aa
+aa
+ab
+ab
+as
+ap
+ap
+ap
+aI
+az
+az
+az
+aW
+bd
+bd
+bo
+bv
+aU
+aU
+aa
+aa
+"}
+(19,1,1) = {"
+aa
+aa
+aa
+ab
+ab
+aw
+ap
+ap
+aH
+az
+az
+az
+aV
+bd
+bi
+bp
+aU
+aU
+aa
+aa
+aa
+"}
+(20,1,1) = {"
+aa
+aa
+aa
+aa
+QA
+ab
+ab
+aG
+aH
+aN
+aN
+az
+aV
+be
+bj
+aU
+aU
+aa
+aa
+aa
+aa
+"}
+(21,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aN
+aN
+aU
+aU
+aU
+DN
+aa
+aa
+aa
+aa
+aa
+"}
