@@ -8,10 +8,6 @@
 "ac" = (
 /turf/closed/wall/mineral/abductor,
 /area/shuttle/syndicate/bridge)
-"ad" = (
-/obj/effect/spawner/structure/window/plastitanium,
-/turf/open/floor/plating/abductor,
-/area/shuttle/syndicate/bridge)
 "ae" = (
 /obj/machinery/computer/secure_data/syndie,
 /turf/open/floor/plating/abductor,
@@ -61,6 +57,13 @@
 /turf/open/floor/plating/abductor,
 /area/shuttle/syndicate/bridge)
 "ao" = (
+/obj/machinery/button/door{
+	id = "syndieshutters";
+	name = "Cockpit View Control";
+	pixel_x = 32;
+	pixel_y = 32;
+	req_access_txt = "150"
+	},
 /obj/structure/chair/comfy/shuttle{
 	dir = 1;
 	name = "tactical chair"
@@ -201,7 +204,8 @@
 /turf/open/floor/plating/abductor,
 /area/shuttle/syndicate/airlock)
 "aH" = (
-/obj/effect/spawner/structure/window/plastitanium,
+/obj/structure/window/plastitanium,
+/obj/structure/grille,
 /turf/open/floor/plating/abductor,
 /area/shuttle/syndicate/airlock)
 "aI" = (
@@ -231,7 +235,8 @@
 /turf/open/floor/plating/abductor,
 /area/shuttle/syndicate/hallway)
 "aN" = (
-/obj/effect/spawner/structure/window/plastitanium,
+/obj/structure/window/plastitanium,
+/obj/structure/grille,
 /turf/open/floor/plating/abductor,
 /area/shuttle/syndicate/hallway)
 "aO" = (
@@ -259,7 +264,8 @@
 /turf/closed/wall/mineral/abductor,
 /area/shuttle/syndicate/eva)
 "aS" = (
-/obj/effect/spawner/structure/window/plastitanium,
+/obj/structure/window/plastitanium,
+/obj/structure/grille,
 /turf/open/floor/plating/abductor,
 /area/shuttle/syndicate/eva)
 "aT" = (
@@ -273,7 +279,8 @@
 /turf/closed/wall/mineral/abductor,
 /area/shuttle/syndicate/armory)
 "aV" = (
-/obj/effect/spawner/structure/window/plastitanium,
+/obj/structure/window/plastitanium,
+/obj/structure/grille,
 /turf/open/floor/plating/abductor,
 /area/shuttle/syndicate/armory)
 "aW" = (
@@ -374,10 +381,6 @@
 /area/shuttle/syndicate/armory)
 "bk" = (
 /turf/closed/wall/mineral/abductor,
-/area/shuttle/syndicate/medical)
-"bl" = (
-/obj/effect/spawner/structure/window/plastitanium,
-/turf/open/floor/plating/abductor,
 /area/shuttle/syndicate/medical)
 "bm" = (
 /obj/machinery/door/airlock/abductor{
@@ -516,30 +519,76 @@
 	},
 /turf/closed/wall/mineral/abductor,
 /area/shuttle/escape)
+"oi" = (
+/obj/structure/window/plastitanium,
+/obj/machinery/door/poddoor/shutters{
+	id = "syndieshutters";
+	name = "blast shutters"
+	},
+/obj/structure/grille,
+/turf/open/floor/plating/abductor,
+/area/shuttle/syndicate/bridge)
+"px" = (
+/obj/structure/table/abductor,
+/obj/item/abductor/mind_device,
+/turf/open/floor/plating/abductor,
+/area/shuttle/syndicate/bridge)
 "qV" = (
 /obj/machinery/porta_turret/syndicate/shuttle{
 	dir = 9
 	},
 /turf/closed/wall/mineral/abductor,
 /area/shuttle/syndicate/airlock)
+"uc" = (
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/plating/abductor,
+/area/shuttle/syndicate/hallway)
 "vQ" = (
 /obj/machinery/porta_turret/syndicate/shuttle{
 	dir = 10
 	},
 /turf/closed/wall/mineral/abductor,
 /area/shuttle/syndicate/eva)
+"yC" = (
+/obj/structure/table/abductor,
+/obj/item/reagent_containers/food/snacks/soylentgreen,
+/turf/open/floor/plating/abductor,
+/area/shuttle/syndicate/bridge)
+"Dc" = (
+/obj/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/plating/abductor,
+/area/shuttle/syndicate/hallway)
 "DN" = (
 /obj/machinery/porta_turret/syndicate/shuttle{
 	dir = 6
 	},
 /turf/closed/wall/mineral/abductor,
 /area/shuttle/syndicate/armory)
+"Is" = (
+/obj/structure/window/plastitanium,
+/obj/structure/grille,
+/turf/open/floor/plating/abductor,
+/area/shuttle/syndicate/medical)
 "QA" = (
 /obj/machinery/porta_turret/syndicate/shuttle{
 	dir = 5
 	},
 /turf/closed/wall/mineral/abductor,
 /area/shuttle/syndicate/airlock)
+"UW" = (
+/obj/structure/table/abductor,
+/obj/machinery/recharger,
+/turf/open/floor/plating/abductor,
+/area/shuttle/syndicate/bridge)
+"ZK" = (
+/obj/structure/table/abductor,
+/obj/item/gun/energy/alien,
+/turf/open/floor/plating/abductor,
+/area/shuttle/syndicate/bridge)
 
 (1,1,1) = {"
 aa
@@ -716,7 +765,7 @@ az
 az
 az
 az
-az
+Dc
 bg
 bk
 bq
@@ -726,12 +775,13 @@ bA
 bk
 "}
 (9,1,1) = {"
-ad
+oi
 af
 an
 an
-an
+px
 ac
+uc
 az
 az
 az
@@ -740,20 +790,19 @@ az
 az
 az
 az
-az
-bl
+Is
 br
 br
 br
 bB
-bl
+Is
 "}
 (10,1,1) = {"
-ad
+oi
 ag
 am
 an
-an
+yC
 ac
 az
 aD
@@ -764,15 +813,15 @@ aP
 aP
 az
 az
-bl
+Is
 bs
 br
 br
 bC
-bl
+Is
 "}
 (11,1,1) = {"
-ad
+oi
 ah
 ao
 an
@@ -792,14 +841,14 @@ br
 br
 br
 bD
-bl
+Is
 "}
 (12,1,1) = {"
-ad
+oi
 ai
 am
 an
-an
+UW
 ac
 az
 aE
@@ -810,20 +859,21 @@ aP
 aP
 az
 az
-bl
+Is
 br
 br
 br
 bE
-bl
+Is
 "}
 (13,1,1) = {"
-ad
+oi
 aj
 an
 an
-an
+ZK
 ac
+uc
 az
 az
 az
@@ -832,13 +882,12 @@ az
 az
 az
 az
-az
-bl
+Is
 br
 br
 br
 br
-bl
+Is
 "}
 (14,1,1) = {"
 ac
