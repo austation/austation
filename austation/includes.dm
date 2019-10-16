@@ -19,6 +19,7 @@
 #include "code\game\objects\items\AI_modules.dm"
 #include "code\game\objects\items\crayons.dm"
 #include "code\game\objects\items\implants\implant_gang.dm"
+#include "code\game\objects\items\implants\implant_mindshield.dm"
 #include "code\game\objects\items\robot\robot_upgrades.dm"
 #include "code\modules\antagonists\gang\gang.dm"
 #include "code\modules\antagonists\gang\gang_datums.dm"
