@@ -14,7 +14,11 @@
 	rad_flags = RAD_PROTECT_CONTENTS | RAD_NO_CONTAMINATE
 	deathsound = 'sound/voice/borg_deathsound.ogg'
 	speech_span = SPAN_ROBOT
+<<<<<<< HEAD
 	flags_1 = PREVENT_CONTENTS_EXPLOSION_1 | HEAR_1
+=======
+	flags_1 = PREVENT_CONTENTS_EXPLOSION_1
+>>>>>>> 372189aad8... Prevent prevent contents explosion proc (#47337)
 	var/datum/ai_laws/laws = null//Now... THEY ALL CAN ALL HAVE LAWS
 	var/last_lawchange_announce = 0
 	var/list/alarms_to_show = list()
