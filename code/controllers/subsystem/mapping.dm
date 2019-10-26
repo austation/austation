@@ -453,7 +453,11 @@ GLOBAL_LIST_EMPTY(the_station_areas)
 		GLOB.the_gateway.wait = world.time
 
 /datum/controller/subsystem/mapping/proc/RequestBlockReservation(width, height, z, type = /datum/turf_reservation, turf_type_override)
+<<<<<<< HEAD
 	UNTIL((!z || reservation_ready["[z]"]) && !clearing_reserved_turfs)
+=======
+	UNTIL(reservation_ready["[z]"] && !clearing_reserved_turfs)
+>>>>>>> bec3e60880... Multiz and isolated ruins support. (#47336)
 	var/datum/turf_reservation/reserve = new type
 	if(turf_type_override)
 		reserve.turf_type = turf_type_override
