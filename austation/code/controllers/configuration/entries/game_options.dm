@@ -11,6 +11,6 @@
 	integer = TRUE
 
 /datum/config_entry/number/fusioncap //if above maximum temperature, will only adjust temperature for endothermic reactions.
-config_entry_value = 1
-min_val = 0
-integer = FALSE
+	config_entry_value = 1
+	min_val = 0
+	integer = FALSE
