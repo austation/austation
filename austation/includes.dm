@@ -2,6 +2,7 @@
 
 #include "code\_DEFINES\antagonists.dm"
 #include "code\_DEFINES\misc.dm"
+#include "code\_HELPERS\unsorted.dm"
 #include "code\controllers\configuration\entries\game_options.dm"
 #include "code\controllers\configuration\entries\general.dm"
 #include "code\controllers\subsystem\autosandbox.dm"
