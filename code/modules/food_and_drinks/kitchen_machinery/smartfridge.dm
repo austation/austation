@@ -402,7 +402,7 @@
 	var/repair_rate = 0
 
 /obj/machinery/smartfridge/organ/accept_check(obj/item/O)
-	if(istype(O, /obj/item/organ))
+	if(istype(O, /obj/item/organ) || istype (O, /obj/item/bodypart))
 		return TRUE
 	return FALSE
 
@@ -465,11 +465,13 @@
 	return FALSE
 
 /obj/machinery/smartfridge/chemistry/preloaded
-	/*initial_contents = list( austation start -- trekchems added back. Changes in equiv file in austation dir
+	/* austation start -- trekchems added back. Changes in equiv file in austation dir
+	initial_contents = list(
 		/obj/item/reagent_containers/pill/epinephrine = 12,
 		/obj/item/reagent_containers/pill/multiver = 5,
 		/obj/item/reagent_containers/glass/bottle/epinephrine = 1,
-		/obj/item/reagent_containers/glass/bottle/multiver = 1) austation end */
+		/obj/item/reagent_containers/glass/bottle/multiver = 1)
+	austation end */
 
 // ----------------------------
 // Virology Medical Smartfridge

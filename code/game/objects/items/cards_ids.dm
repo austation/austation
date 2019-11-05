@@ -15,7 +15,7 @@
 /obj/item/card
 	name = "card"
 	desc = "Does card things."
-	icon = 'icons/obj/card.dmi'
+	icon = 'austation/icons/obj/card.dmi' // austation -- use old (new?) ID card sprites
 	w_class = WEIGHT_CLASS_TINY
 
 	var/list/files = list()
@@ -48,11 +48,6 @@
 	var/mutable_appearance/detail_overlay = mutable_appearance('icons/obj/card.dmi', "[icon_state]-color")
 	detail_overlay.color = detail_color
 	add_overlay(detail_overlay)
-
-/obj/item/proc/GetCard()
-
-/obj/item/card/data/GetCard()
-	return src
 
 /obj/item/card/data/full_color
 	desc = "A plastic magstripe card for simple and speedy data storage and transfer. This one has the entire card colored."
@@ -297,6 +292,9 @@
 	return access
 
 /obj/item/card/id/GetID()
+	return src
+
+/obj/item/card/id/RemoveID()
 	return src
 
 /obj/item/card/id/update_icon(blank=FALSE)

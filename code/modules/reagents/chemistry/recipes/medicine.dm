@@ -18,11 +18,23 @@
 	results = list(/datum/reagent/medicine/spaceacillin = 2)
 	required_reagents = list(/datum/reagent/cryptobiolin = 1, /datum/reagent/medicine/epinephrine = 1)
 
+/datum/chemical_reaction/oculine
+	name = "Oculine"
+	id = /datum/reagent/medicine/oculine
+	results = list(/datum/reagent/medicine/oculine = 3)
+	/* austation begin -- trekchems added back. Changes in equiv file in austation dir
+	required_reagents = list(/datum/reagent/medicine/C2/multiver = 1, /datum/reagent/carbon = 1, /datum/reagent/hydrogen = 1)
+	austation end */
+	mix_message = "The mixture sputters loudly and becomes a pale pink color."
+
 /datum/chemical_reaction/inacusiate
 	name = /datum/reagent/medicine/inacusiate
 	id = /datum/reagent/medicine/inacusiate
 	results = list(/datum/reagent/medicine/inacusiate = 2)
-	//required_reagents = list(/datum/reagent/water = 1, /datum/reagent/carbon = 1, /datum/reagent/medicine/C2/multiver = 1) austation -- trekchems added back. Changes in equiv file in austation dir
+	/* austation start -- trekchems added back. Changes in equiv file in austation dir
+	required_reagents = list(/datum/reagent/water = 1, /datum/reagent/carbon = 1, /datum/reagent/medicine/C2/multiver = 1)
+	austation end */
+	mix_message = "The mixture sputters loudly and becomes a light grey color!"
 
 /datum/chemical_reaction/synaptizine
 	name = "Synaptizine"
@@ -48,11 +60,13 @@
 	results = list(/datum/reagent/medicine/mine_salve = 15)
 	required_reagents = list(/datum/reagent/toxin/plasma = 5, /datum/reagent/iron = 5, /datum/reagent/consumable/sugar = 1) // A sheet of plasma, a twinkie and a sheet of metal makes four of these
 
-/*/datum/chemical_reaction/instabitaluri austation begin -- revert cobbychem
+/* austation begin -- revert cobbychem
+/datum/chemical_reaction/instabitaluri
 	name = "Synthflesh (Instabitaluri)"
 	id = /datum/reagent/medicine/C2/instabitaluri
 	results = list(/datum/reagent/medicine/C2/instabitaluri = 3)
-	required_reagents = list(/datum/reagent/blood = 1, /datum/reagent/carbon = 1, /datum/reagent/medicine/C2/libital = 1) austation end*/
+	required_reagents = list(/datum/reagent/blood = 1, /datum/reagent/carbon = 1, /datum/reagent/medicine/C2/libital = 1)
+austation end*/
 
 /datum/chemical_reaction/calomel
 	name = "Calomel"
@@ -104,13 +118,6 @@
 	results = list(/datum/reagent/medicine/diphenhydramine = 4)
 	required_reagents = list(/datum/reagent/fuel/oil = 1, /datum/reagent/carbon = 1, /datum/reagent/bromine = 1, /datum/reagent/diethylamine = 1, /datum/reagent/consumable/ethanol = 1)
 	mix_message = "The mixture dries into a pale blue powder."
-
-/datum/chemical_reaction/oculine
-	name = "Oculine"
-	id = /datum/reagent/medicine/oculine
-	results = list(/datum/reagent/medicine/oculine = 3)
-	//required_reagents = list(/datum/reagent/medicine/C2/multiver = 1, /datum/reagent/carbon = 1, /datum/reagent/hydrogen = 1) austation -- trekchems added back. Changes in equiv file in austation dir
-	mix_message = "The mixture sputters loudly and becomes a pale pink color."
 
 /datum/chemical_reaction/atropine
 	name = "Atropine"
@@ -226,12 +233,14 @@
 	results = list(/datum/reagent/medicine/trophazole = 4)
 	required_reagents = list(/datum/reagent/copper = 1, /datum/reagent/acetone = 2,  /datum/reagent/phosphorus = 1)
 
-/*/datum/chemical_reaction/granibitaluri austation begin -- revert cobbychem
+/* austation begin -- revert cobbychem
+/datum/chemical_reaction/granibitaluri
 	name = "Granibitaluri"
 	id = /datum/reagent/medicine/granibitaluri
 	results = list(/datum/reagent/medicine/granibitaluri = 1)
 	required_reagents = list(/datum/reagent/water = 1, /datum/reagent/space_cleaner/sterilizine = 1) //haha guys totally not some sort of saline reference!
-	required_temp = 373 austation end*/
+	required_temp = 373
+austation end*/
 
 /datum/chemical_reaction/medsuture
 	name = "Medicated Suture"
