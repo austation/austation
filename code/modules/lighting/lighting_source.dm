@@ -1,11 +1,13 @@
 // This is where the fun begins.
 // These are the main datums that emit light.
 
+// Austation begin
 // Thanks to Lohikar for flinging this tiny bit of code at me, increasing my brain cell count from 1 to 2 in the process.
 // This macro will only offset up to 1 tile, but anything with a greater offset is an outlier and probably should handle its own lighting offsets.
 // Anything pixelshifted 16px or more will be considered on the next tile.
 #define GET_APPROXIMATE_PIXEL_DIR(PX, PY) ((!(PX) ? 0 : ((PX >= 16 ? EAST : (PX <= -16 ? WEST : 0)))) | (!PY ? 0 : (PY >= 16 ? NORTH : (PY <= -16 ? SOUTH : 0))))
 #define UPDATE_APPROXIMATE_PIXEL_TURF var/_mask = GET_APPROXIMATE_PIXEL_DIR(top_atom.pixel_x, top_atom.pixel_y); pixel_turf = _mask ? (get_step(source_turf, _mask) || source_turf) : source_turf
+// Austation end
 
 /datum/light_source
 	var/atom/top_atom        // The atom we're emitting light from (for example a mob if we're from a flashlight that's being held).
@@ -117,6 +119,7 @@
 // As such this all gets counted as a single line.
 // The braces and semicolons are there to be able to do this on a single line.
 
+// Austation begin
 // Original lighting falloff calculation. This looks the best out of the three. However, this is also the most expensive.
 //#define LUM_FALLOFF(C, T) (1 - CLAMP01(sqrt((C.x - T.x) ** 2 + (C.y - T.y) ** 2 + LIGHTING_HEIGHT) / max(1, light_range)))
 
@@ -136,6 +139,7 @@
 // Linear lighting falloff but with an octagonal shape in place of a diamond shape (from CIT)
 #define LUM_FALLOFF(C, T) (1 - CLAMP01(max(GET_LUM_DIST(abs(C.x - T.x), abs(C.y - T.y)),LIGHTING_HEIGHT) / max(1, light_range+1)))
 #define GET_LUM_DIST(DISTX, DISTY) (DISTX + DISTY + abs(DISTX - DISTY)*0.4)
+// Austation end
 
 #define APPLY_CORNER(C)                      \
 	. = LUM_FALLOFF(C, pixel_turf);          \
@@ -321,5 +325,7 @@
 #undef LUM_FALLOFF
 #undef REMOVE_CORNER
 #undef APPLY_CORNER
+// Austation begin -- macros are only used here
 #undef GET_APPROXIMATE_PIXEL_DIR
 #undef UPDATE_APPROXIMATE_PIXEL_TURF
+// Austation end
