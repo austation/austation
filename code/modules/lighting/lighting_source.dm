@@ -1,8 +1,7 @@
 // This is where the fun begins.
 // These are the main datums that emit light.
 
-// Austation begin
-// Thanks to Lohikar for flinging this tiny bit of code at me, increasing my brain cell count from 1 to 2 in the process.
+// Austation begin -- Thanks to Lohikar for flinging this tiny bit of code at me, increasing my brain cell count from 1 to 2 in the process.
 // This macro will only offset up to 1 tile, but anything with a greater offset is an outlier and probably should handle its own lighting offsets.
 // Anything pixelshifted 16px or more will be considered on the next tile.
 #define GET_APPROXIMATE_PIXEL_DIR(PX, PY) ((!(PX) ? 0 : ((PX >= 16 ? EAST : (PX <= -16 ? WEST : 0)))) | (!PY ? 0 : (PY >= 16 ? NORTH : (PY <= -16 ? SOUTH : 0))))
@@ -119,7 +118,7 @@
 // As such this all gets counted as a single line.
 // The braces and semicolons are there to be able to do this on a single line.
 
-// Austation begin
+// Austation begin -- There are a couple of different lighting falloff macros here.
 // Original lighting falloff calculation. This looks the best out of the three. However, this is also the most expensive.
 //#define LUM_FALLOFF(C, T) (1 - CLAMP01(sqrt((C.x - T.x) ** 2 + (C.y - T.y) ** 2 + LIGHTING_HEIGHT) / max(1, light_range)))
 
