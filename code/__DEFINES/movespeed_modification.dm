@@ -18,6 +18,11 @@
 
 #define MOVESPEED_ID_MOB_WALK_RUN_CONFIG_SPEED			"MOB_WALK_RUN"
 #define MOVESPEED_ID_MOB_GRAB_STATE						"MOB_GRAB_STATE"
+<<<<<<< HEAD
+=======
+#define MOVESPEED_ID_MOB_EQUIPMENT						"MOB_EQUIPMENT"
+#define MOVESPEED_ID_MOB_GRAVITY						"MOB_GRAVITY"
+>>>>>>> 6ffc35a83b... Converts gravity slowdown into a movespeed mod and removes movement_delay() (#47808)
 #define MOVESPEED_ID_CONFIG_SPEEDMOD					"MOB_CONFIG_MODIFIER"
 
 #define MOVESPEED_ID_SLIME_REAGENTMOD					"SLIME_REAGENT_MODIFIER"

@@ -1147,6 +1147,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 	H.hairstyle = "Bald"
 	H.update_hair()
 
+<<<<<<< HEAD
 ////////////////
 // MOVE SPEED //
 ////////////////
@@ -1174,6 +1175,8 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 
 	return .
 
+=======
+>>>>>>> 6ffc35a83b... Converts gravity slowdown into a movespeed mod and removes movement_delay() (#47808)
 //////////////////
 // ATTACK PROCS //
 //////////////////
