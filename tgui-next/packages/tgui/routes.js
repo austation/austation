@@ -31,7 +31,9 @@ import { CrewConsole } from './interfaces/CrewConsole';
 import { Cryo } from './interfaces/Cryo';
 import { DisposalUnit } from './interfaces/DisposalUnit';
 import { Gps } from './interfaces/Gps';
+import { KitchenSink } from './interfaces/KitchenSink';
 import { LanguageMenu } from './interfaces/LanguageMenu';
+import { MedicalKiosk } from './interfaces/MedicalKiosk';
 import { Mint } from './interfaces/Mint';
 import { NtosMain } from './interfaces/NtosMain';
 import { NtosSupermatterMonitor } from './interfaces/NtosSupermatterMonitor';
@@ -47,9 +49,11 @@ import { ShuttleManipulator } from './interfaces/ShuttleManipulator';
 import { SmartVend } from './interfaces/SmartVend';
 import { SMES } from './interfaces/SMES';
 import { SolarControl } from './interfaces/SolarControl';
+import { StationAlertConsole } from './interfaces/StationAlertConsole';
 import { SuitStorageUnit } from './interfaces/SuitStorageUnit';
 import { TankDispenser } from './interfaces/TankDispenser';
 import { ThermoMachine } from './interfaces/ThermoMachine';
+import { TurbineComputer } from './interfaces/TurbineComputer';
 import { VaultController } from './interfaces/VaultController';
 import { Wires } from './interfaces/Wires';
 
@@ -194,6 +198,10 @@ const ROUTES = {
     component: () => LanguageMenu,
     scrollable: true,
   },
+  medical_kiosk: {
+    component: () => MedicalKiosk,
+    scrollable: false,
+  },
   mint: {
     component: () => Mint,
     scrollable: false,
@@ -257,6 +265,10 @@ const ROUTES = {
     component: () => SolarControl,
     scrollable: false,
   },
+  station_alert: {
+    component: () => StationAlertConsole,
+    scrollable: true,
+  },
   suit_storage_unit: {
     component: () => SuitStorageUnit,
     scrollable: false,
@@ -267,6 +279,10 @@ const ROUTES = {
   },
   thermomachine: {
     component: () => ThermoMachine,
+    scrollable: false,
+  },
+  turbine_computer: {
+    component: () => TurbineComputer,
     scrollable: false,
   },
   vault_controller: {
