@@ -9,6 +9,7 @@
 #include "code\controllers\subsystem\autotransfer.dm"
 #include "code\datums\ai_laws.dm"
 #include "code\datums\diseases\tuberculosis.dm"
+#include "code\datums\mood_events\needs_events.dm"
 #include "code\game\gamemodes\gangs\dominator.dm"
 #include "code\game\gamemodes\gangs\gang_items.dm"
 #include "code\game\gamemodes\gangs\gang_pen.dm"

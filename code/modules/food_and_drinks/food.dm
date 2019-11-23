@@ -46,5 +46,9 @@
 			if((foodtype & BREAKFAST) && world.time - SSticker.round_start_time < STOP_SERVING_BREAKFAST)
 				SEND_SIGNAL(H, COMSIG_ADD_MOOD_EVENT, "breakfast", /datum/mood_event/breakfast)
 			last_check_time = world.time
+			
+			if(!locate(/obj/structure/table) in range(1, H))
+				to_chat(H,"<span class='warning'>I just ate without a table...</span>")
+				SEND_SIGNAL(H, COMSIG_ADD_MOOD_EVENT, "atewithouttable", /datum/mood_event/atewithouttable)
 
 #undef STOP_SERVING_BREAKFAST
