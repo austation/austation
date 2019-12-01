@@ -1033,7 +1033,7 @@
 /turf/open/floor/carpet,
 /area/crew_quarters/heads/hos)
 "act" = (
-/obj/machinery/holopad,
+/obj/machinery/holopad/secure,
 /turf/open/floor/carpet,
 /area/crew_quarters/heads/hos)
 "acu" = (
@@ -2993,9 +2993,9 @@
 /turf/open/floor/plasteel,
 /area/security/main)
 "agC" = (
-/obj/machinery/holopad,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
 /obj/structure/cable,
+/obj/machinery/holopad/secure,
 /turf/open/floor/plasteel,
 /area/security/main)
 "agD" = (
@@ -3167,9 +3167,9 @@
 /turf/open/floor/plasteel/showroomfloor,
 /area/security/warden)
 "agV" = (
-/obj/machinery/holopad,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
 /obj/structure/cable,
+/obj/machinery/holopad/secure,
 /turf/open/floor/plasteel/showroomfloor,
 /area/security/warden)
 "agW" = (
@@ -20946,8 +20946,8 @@
 /turf/open/floor/plasteel/dark,
 /area/ai_monitored/turret_protected/ai_upload)
 "bcf" = (
-/obj/machinery/holopad,
 /obj/structure/cable,
+/obj/machinery/holopad/secure,
 /turf/open/floor/plasteel/dark,
 /area/ai_monitored/turret_protected/ai_upload)
 "bcg" = (
@@ -22722,8 +22722,8 @@
 /turf/open/floor/wood,
 /area/crew_quarters/heads/captain)
 "bgW" = (
-/obj/machinery/holopad,
 /obj/structure/cable,
+/obj/machinery/holopad/secure,
 /turf/open/floor/wood,
 /area/crew_quarters/heads/captain)
 "bgX" = (
@@ -45000,10 +45000,10 @@
 /turf/open/floor/plasteel/grimy,
 /area/ai_monitored/turret_protected/aisat_interior)
 "ctJ" = (
-/obj/machinery/holopad,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /obj/effect/landmark/start/cyborg,
 /obj/structure/cable,
+/obj/machinery/holopad/secure,
 /turf/open/floor/plasteel/grimy,
 /area/ai_monitored/turret_protected/aisat_interior)
 "ctK" = (
@@ -45366,8 +45366,8 @@
 /turf/open/floor/plasteel/dark,
 /area/ai_monitored/turret_protected/aisat/atmos)
 "cuC" = (
-/obj/machinery/holopad,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
+/obj/machinery/holopad/secure,
 /turf/open/floor/plasteel/dark,
 /area/ai_monitored/turret_protected/aisat/atmos)
 "cuD" = (
@@ -45419,12 +45419,12 @@
 /turf/open/floor/plasteel/dark,
 /area/ai_monitored/turret_protected/aisat_interior)
 "cuG" = (
-/obj/machinery/holopad,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 4
 	},
 /obj/structure/cable,
+/obj/machinery/holopad/secure,
 /turf/open/floor/plasteel/dark,
 /area/ai_monitored/turret_protected/aisat_interior)
 "cuH" = (
@@ -45449,10 +45449,10 @@
 /turf/open/floor/plasteel/dark,
 /area/ai_monitored/turret_protected/aisat/service)
 "cuJ" = (
-/obj/machinery/holopad,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 4
 	},
+/obj/machinery/holopad/secure,
 /turf/open/floor/plasteel/dark,
 /area/ai_monitored/turret_protected/aisat/service)
 "cuK" = (
@@ -45961,9 +45961,9 @@
 /turf/open/floor/circuit,
 /area/ai_monitored/turret_protected/aisat/hallway)
 "cvT" = (
-/obj/machinery/holopad,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /obj/structure/cable,
+/obj/machinery/holopad/secure,
 /turf/open/floor/plasteel/dark,
 /area/ai_monitored/turret_protected/aisat/hallway)
 "cvV" = (
@@ -46170,11 +46170,11 @@
 /turf/open/floor/plasteel/dark,
 /area/ai_monitored/turret_protected/ai)
 "cwA" = (
-/obj/machinery/holopad,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 9
 	},
 /obj/structure/cable,
+/obj/machinery/holopad/secure,
 /turf/open/floor/plasteel/dark,
 /area/ai_monitored/turret_protected/ai)
 "cwB" = (
@@ -47048,7 +47048,7 @@
 	dir = 1;
 	pixel_y = -22
 	},
-/obj/machinery/holopad,
+/obj/machinery/holopad/secure,
 /turf/open/floor/plasteel/dark,
 /area/ai_monitored/turret_protected/ai)
 "cBf" = (
