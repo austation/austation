@@ -124,11 +124,7 @@
 			//Just build whatever it is
 			new buildpath(loc)
 	else
-<<<<<<< HEAD
-		src.visible_message("<span class=\"error\"> Something went very wrong and there isnt enough synthflesh anymore!</span>") // austation -- revert cobbychem
-=======
-		src.visible_message("<span class='warning'>Something went very wrong, there isn't enough instabitaluri anymore!</span>")
->>>>>>> 8768b6b3b5... Removes unused & undefined spans (#47436)
+		src.visible_message("<span class='warning'>Something went very wrong and there isnt enough synthflesh anymore!</span>") // austation -- revert cobbychem
 	busy = FALSE
 	flick("limbgrower_unfill",src)
 	icon_state = "limbgrower_idleoff"
