@@ -40,6 +40,7 @@
 #include "code\modules\hydroponics\grown\flowers.dm"
 #include "code\modules\hydroponics\grown\kudzu.dm"
 #include "code\modules\hydroponics\grown\mushrooms.dm"
+#include "code\modules\mob\living\carbon\human\felinid.dm"
 #include "code\modules\reagents\chemistry\reagents\cat2_medicine_reagents.dm"
 #include "code\modules\reagents\chemistry\reagents\medicine_reagents.dm"
 #include "code\modules\reagents\chemistry\reagents\other_reagents.dm"
