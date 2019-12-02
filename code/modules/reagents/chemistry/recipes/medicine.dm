@@ -237,10 +237,16 @@ austation end*/
 /datum/chemical_reaction/granibitaluri
 	name = "Granibitaluri"
 	id = /datum/reagent/medicine/granibitaluri
+<<<<<<< HEAD
 	results = list(/datum/reagent/medicine/granibitaluri = 1)
 	required_reagents = list(/datum/reagent/water = 1, /datum/reagent/space_cleaner/sterilizine = 1) //haha guys totally not some sort of saline reference!
 	required_temp = 373
 austation end*/
+=======
+	results = list(/datum/reagent/medicine/granibitaluri = 3)
+	required_reagents = list(/datum/reagent/acetone = 1, /datum/reagent/phenol = 1, /datum/reagent/nitrogen = 1)
+	required_catalysts = list(/datum/reagent/iron = 5)
+>>>>>>> ad870b5f37... Buffs granibitaluri (#47981)
 
 /datum/chemical_reaction/medsuture
 	name = "Medicated Suture"
