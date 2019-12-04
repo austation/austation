@@ -34,6 +34,11 @@ import { DisposalUnit } from './interfaces/DisposalUnit';
 import { DnaVault } from './interfaces/DnaVault';
 import { EngravedMessage } from './interfaces/EngravedMessage';
 import { Gps } from './interfaces/Gps';
+<<<<<<< HEAD
+=======
+import { GravityGenerator } from './interfaces/GravityGenerator';
+import { GulagItemReclaimer } from './interfaces/GulagItemReclaimer';
+>>>>>>> 1d6c2d7c19... tgui-next: Gravity Generator (#48082)
 import { Holodeck } from './interfaces/Holodeck';
 import { ImplantChair } from './interfaces/ImplantChair';
 import { KeycardAuth } from './interfaces/KeycardAuth';
@@ -226,6 +231,10 @@ const ROUTES = {
   gps: {
     component: () => Gps,
     scrollable: true,
+  },
+  gravity_generator: {
+    component: () => GravityGenerator,
+    scrollable: false,
   },
   gulag_item_reclaimer: {
     component: () => GulagItemReclaimer,
