@@ -60,7 +60,12 @@ import { PortableGenerator } from './interfaces/PortableGenerator';
 import { PowerMonitor } from './interfaces/PowerMonitor';
 import { Radio } from './interfaces/Radio';
 import { RapidPipeDispenser } from './interfaces/RapidPipeDispenser';
+<<<<<<< HEAD
 import { GulagItemReclaimer } from './interfaces/GulagItemReclaimer';
+=======
+import { SatelliteControl } from './interfaces/SatelliteControl';
+import { ScannerGate } from './interfaces/ScannerGate';
+>>>>>>> ad120b6bc3... tgui-next: Satellite Control (#48117)
 import { ShuttleManipulator } from './interfaces/ShuttleManipulator';
 import { ScannerGate } from './interfaces/ScannerGate';
 import { SmartVend } from './interfaces/SmartVend';
@@ -345,6 +350,10 @@ const ROUTES = {
   rpd: {
     component: () => RapidPipeDispenser,
     scrollable: true,
+  },
+  sat_control: {
+    component: () => SatelliteControl,
+    scrollable: false,
   },
   scanner_gate: {
     component: () => ScannerGate,
