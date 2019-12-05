@@ -1,0 +1,4 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - tweak: "changes ushanka sprite to be equally as tall in all directions"
