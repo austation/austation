@@ -1,0 +1,4 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - balance: "Updates the energy resistance armour values on several armours and helmets."
