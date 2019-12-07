@@ -34,11 +34,8 @@ import { DisposalUnit } from './interfaces/DisposalUnit';
 import { DnaVault } from './interfaces/DnaVault';
 import { EngravedMessage } from './interfaces/EngravedMessage';
 import { Gps } from './interfaces/Gps';
-<<<<<<< HEAD
-=======
 import { GravityGenerator } from './interfaces/GravityGenerator';
 import { GulagItemReclaimer } from './interfaces/GulagItemReclaimer';
->>>>>>> 1d6c2d7c19... tgui-next: Gravity Generator (#48082)
 import { Holodeck } from './interfaces/Holodeck';
 import { ImplantChair } from './interfaces/ImplantChair';
 import { KeycardAuth } from './interfaces/KeycardAuth';
@@ -58,16 +55,15 @@ import { NtosSupermatterMonitor } from './interfaces/NtosSupermatterMonitor';
 import { NtosWrapper } from './interfaces/NtosWrapper';
 import { NuclearBomb } from './interfaces/NuclearBomb';
 import { OperatingComputer } from './interfaces/OperatingComputer';
-import { OreRedemptionMachine } from './interfaces/OreRedemptionMachine';
 import { OreBox } from './interfaces/OreBox';
+import { OreRedemptionMachine } from './interfaces/OreRedemptionMachine';
 import { PersonalCrafting } from './interfaces/PersonalCrafting';
 import { PortableGenerator } from './interfaces/PortableGenerator';
 import { PowerMonitor } from './interfaces/PowerMonitor';
 import { Radio } from './interfaces/Radio';
 import { RapidPipeDispenser } from './interfaces/RapidPipeDispenser';
-import { GulagItemReclaimer } from './interfaces/GulagItemReclaimer';
-import { ShuttleManipulator } from './interfaces/ShuttleManipulator';
 import { ScannerGate } from './interfaces/ScannerGate';
+import { ShuttleManipulator } from './interfaces/ShuttleManipulator';
 import { SmartVend } from './interfaces/SmartVend';
 import { Smes } from './interfaces/Smes';
 import { SolarControl } from './interfaces/SolarControl';

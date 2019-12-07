@@ -1,0 +1,5 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - tweak: "The RCD, RPD, RLD, and Plumbing Constructor can now be worn in the belt slot."
+  - spellcheck: "Clarified the description on the RCD upgrades."
