@@ -203,8 +203,23 @@
 	result = /obj/item/reagent_containers/food/snacks/snowcones/soda
 	subcategory = CAT_ICE
 
+<<<<<<< HEAD
 /datum/crafting_recipe/food/pwgrmer_sc
 	name = "Pwergamer snowcone"
+=======
+/datum/crafting_recipe/food/spacemountainwind_sc
+	name = "Space Mountain Wind snowcone"
+	reqs = list(
+		/obj/item/reagent_containers/food/drinks/sillycup = 1,
+		/datum/reagent/consumable/ice = 15,
+		/datum/reagent/consumable/spacemountainwind = 5
+	)
+	result = /obj/item/reagent_containers/food/snacks/snowcones/spacemountainwind
+	subcategory = CAT_ICE
+
+/datum/crafting_recipe/food/pwrgame_sc
+	name = "Pwrgame snowcone"
+>>>>>>> f874b66b76... Fixes TGUI crafting exception (#48209)
 	reqs = list(
 		/obj/item/reagent_containers/food/drinks/sillycup = 1,
 		/datum/reagent/water  = 5,
