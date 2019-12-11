@@ -59,6 +59,7 @@ import { OreBox } from './interfaces/OreBox';
 import { OreRedemptionMachine } from './interfaces/OreRedemptionMachine';
 import { PersonalCrafting } from './interfaces/PersonalCrafting';
 import { PortableGenerator } from './interfaces/PortableGenerator';
+import { PortablePump, PortableScrubber } from './interfaces/PortableAtmos';
 import { PowerMonitor } from './interfaces/PowerMonitor';
 import { Radio } from './interfaces/Radio';
 import { RapidPipeDispenser } from './interfaces/RapidPipeDispenser';
@@ -339,6 +340,14 @@ const ROUTES = {
   },
   portable_generator: {
     component: () => PortableGenerator,
+    scrollable: false,
+  },
+  portable_pump: {
+    component: () => PortablePump,
+    scrollable: false,
+  },
+  portable_scrubber: {
+    component: () => PortableScrubber,
     scrollable: false,
   },
   power_monitor: {
