@@ -26930,11 +26930,7 @@
 /obj/machinery/computer/crew,
 /turf/open/floor/plasteel/white,
 /area/medical/medbay/central)
-<<<<<<< HEAD
 "brh" = (
-=======
-"bri" = (
->>>>>>> 0277d5039e... Cleans up the difference between Pharmacy and Chemistry access (#48196)
 /obj/effect/turf_decal/tile/blue{
 	dir = 1
 	},
@@ -30631,9 +30627,6 @@
 /turf/open/floor/plasteel/white,
 /area/medical/medbay/zone2)
 "bzP" = (
-/obj/machinery/sleeper{
-	dir = 4
-	},
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
@@ -30653,6 +30646,9 @@
 /obj/machinery/camera{
 	dir = 4;
 	network = list("ss13","medbay")
+	},
+/obj/machinery/sleeper{
+	dir = 4
 	},
 /turf/open/floor/plasteel,
 /area/medical/sleeper)
@@ -31741,9 +31737,6 @@
 /turf/open/floor/plasteel,
 /area/medical/sleeper)
 "bCj" = (
-/obj/machinery/sleeper{
-	dir = 4
-	},
 /obj/effect/turf_decal/tile/blue{
 	dir = 1
 	},
@@ -31753,6 +31746,9 @@
 	},
 /obj/effect/turf_decal/tile/blue{
 	dir = 8
+	},
+/obj/machinery/sleeper{
+	dir = 4
 	},
 /turf/open/floor/plasteel,
 /area/medical/sleeper)
