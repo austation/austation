@@ -57,6 +57,7 @@ import { NuclearBomb } from './interfaces/NuclearBomb';
 import { OperatingComputer } from './interfaces/OperatingComputer';
 import { OreBox } from './interfaces/OreBox';
 import { OreRedemptionMachine } from './interfaces/OreRedemptionMachine';
+import { Pandemic } from './interfaces/Pandemic';
 import { PersonalCrafting } from './interfaces/PersonalCrafting';
 import { PortableGenerator } from './interfaces/PortableGenerator';
 import { PortablePump, PortableScrubber } from './interfaces/PortableAtmos';
@@ -332,6 +333,10 @@ const ROUTES = {
   },
   operating_computer: {
     component: () => OperatingComputer,
+    scrollable: true,
+  },
+  pandemic: {
+    component: () => Pandemic,
     scrollable: true,
   },
   personal_crafting: {
