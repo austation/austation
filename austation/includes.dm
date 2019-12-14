@@ -25,6 +25,7 @@
 #include "code\game\objects\items\robot\robot_upgrades.dm"
 #include "code\game\objects\items\stacks\medical.dm"
 #include "code\game\objects\items\storage\firstaid.dm"
+#include "code\game\objects\structures\mirror.dm"
 #include "code\modules\admin\topic.dm"
 #include "code\modules\antagonists\gang\gang.dm"
 #include "code\modules\antagonists\gang\gang_datums.dm"
