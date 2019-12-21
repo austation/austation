@@ -200,15 +200,9 @@ GLOBAL_LIST_INIT(uncommon_loot, list(//uncommon: useful items
 			/obj/item/stack/medical/gauze = 1,
 			) = 1,
 		list(//medical chems
-<<<<<<< HEAD
 			/obj/item/reagent_containers/glass/bottle/charcoal = 1,
 			/obj/item/reagent_containers/syringe/thializid = 1,
-			) = 1, 
-=======
-			/obj/item/reagent_containers/glass/bottle/multiver = 1,
-			/obj/item/reagent_containers/syringe/convermol = 1,
 			) = 1,
->>>>>>> 44548a0686... E.X.P.E.R.I-Mentor Overhaul Part the First: Research Notes (#48238)
 		list(//drinks
 			/obj/item/reagent_containers/food/drinks/bottle/vodka = 1,
 			/obj/item/reagent_containers/food/drinks/soda_cans/grey_bull = 1,
