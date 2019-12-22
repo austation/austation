@@ -426,12 +426,7 @@ SUBSYSTEM_DEF(job)
 
 	living_mob.job = rank
 
-<<<<<<< HEAD
-	SEND_SIGNAL(H, COMSIG_JOB_RECEIVED, H.job)
-
-=======
 	SEND_SIGNAL(living_mob, COMSIG_JOB_RECEIVED, living_mob.job)
->>>>>>> b4b27118ea... Cleans job.dm (#48242)
 
 	//If we joined at roundstart we should be positioned at our workstation
 	if(!joined_late)
@@ -485,20 +480,12 @@ SUBSYSTEM_DEF(job)
 	var/related_policy = get_policy(rank)
 	if(related_policy)
 		to_chat(M,related_policy)
-<<<<<<< HEAD
-	if(ishuman(H))
-		var/mob/living/carbon/human/wageslave = H
-		H.add_memory("Your account ID is [wageslave.account_id].")
-	if(job && H)
-		job.after_spawn(H, M, joined_late) // note: this happens before the mob has a key! M will always have a client, H might not.
-		job.austation_after_spawn(H, M) // austation -- ports catbans
-=======
 	if(ishuman(living_mob))
 		var/mob/living/carbon/human/wageslave = living_mob
 		living_mob.add_memory("Your account ID is [wageslave.account_id].")
 	if(job && living_mob)
 		job.after_spawn(living_mob, M, joined_late) // note: this happens before the mob has a key! M will always have a client, H might not.
->>>>>>> b4b27118ea... Cleans job.dm (#48242)
+		job.austation_after_spawn(H, M) // austation -- ports catbans
 
 	return living_mob
 
