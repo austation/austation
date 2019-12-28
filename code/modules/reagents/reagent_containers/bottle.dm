@@ -52,24 +52,24 @@
 	desc = "A small bottle of Mannitol. Useful for healing brain damage."
 	list_reagents = list(/datum/reagent/medicine/mannitol = 30)
 
-/*/obj/item/reagent_containers/glass/bottle/multiver austation begin -- revert cobbychem
+/* austation begin -- revert cobbychem
+/obj/item/reagent_containers/glass/bottle/multiver
 	name = "multiver bottle"
 	desc = "A small bottle of multiver, which removes toxins and other chemicals from the bloodstream but causes shortness of breath. All effects scale with the amount of reagents in the patient."
-	list_reagents = list(/datum/reagent/medicine/C2/multiver = 30) austation end */
+	list_reagents = list(/datum/reagent/medicine/C2/multiver = 30)
+austation end */
 
-<<<<<<< HEAD
-/*/obj/item/reagent_containers/glass/bottle/syriniver austation begin -- revert cobbychem
-=======
 /obj/item/reagent_containers/glass/bottle/calomel
 	name = "calomel bottle"
 	desc = "A small bottle of calomel, which quickly purges all chemicals from the patient. Causes toxin damage if the patient is not heavily injured."
 	list_reagents = list(/datum/reagent/medicine/calomel = 30)
 
+/* austation begin -- revert cobbychem
 /obj/item/reagent_containers/glass/bottle/syriniver
->>>>>>> 3a0c5e75b3... Adds a new job: the Paramedic (#48236)
 	name = "syriniver bottle"
 	desc = "A small bottle of syriniver."
-	list_reagents = list(/datum/reagent/medicine/C2/syriniver = 30) austation end */
+	list_reagents = list(/datum/reagent/medicine/C2/syriniver = 30)
+austation end */
 
 /obj/item/reagent_containers/glass/bottle/mutagen
 	name = "unstable mutagen bottle"
