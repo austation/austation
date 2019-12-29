@@ -109,6 +109,7 @@
 /area/shuttle/escape/luxury)
 "av" = (
 /obj/structure/chair/comfy/teal{
+	icon_state = "comfychair";
 	dir = 4
 	},
 /turf/open/floor/mineral/diamond,
@@ -255,6 +256,7 @@
 /area/shuttle/escape/luxury)
 "bh" = (
 /turf/open/floor/holofloor/beach/coast_t{
+	dir = 2;
 	icon_state = "sandwater_inner"
 	},
 /area/shuttle/escape/luxury)
@@ -300,6 +302,7 @@
 /obj/structure/sink/greyscale{
 	custom_materials = list(/datum/material/gold = 2000);
 	dir = 4;
+	icon_state = "sink_greyscale";
 	pixel_x = -12
 	},
 /turf/open/floor/carpet/royalblack,
@@ -401,6 +404,7 @@
 /area/shuttle/escape/luxury)
 "xN" = (
 /turf/open/floor/holofloor/beach/coast_b{
+	icon_state = "sandwater_b";
 	dir = 9
 	},
 /area/shuttle/escape/luxury)
@@ -499,6 +503,7 @@
 /area/shuttle/escape/luxury)
 "Jt" = (
 /turf/open/floor/holofloor/beach/coast_t{
+	icon_state = "sandwater_t";
 	dir = 8
 	},
 /area/shuttle/escape/luxury)
@@ -530,7 +535,8 @@
 "MI" = (
 /obj/structure/toilet/greyscale{
 	custom_materials = list(/datum/material/gold = 2000);
-	dir = 8
+	dir = 8;
+	icon_state = "toilet00"
 	},
 /turf/open/floor/carpet/royalblack,
 /area/shuttle/escape/luxury)
@@ -551,6 +557,7 @@
 /area/shuttle/escape/luxury)
 "Pw" = (
 /turf/open/floor/holofloor/beach/coast_t{
+	icon_state = "sandwater_t";
 	dir = 4
 	},
 /area/shuttle/escape/luxury)
@@ -576,7 +583,8 @@
 	id = "ohnopoors";
 	name = "window shutters";
 	pixel_x = -26;
-	pixel_y = -5
+	pixel_y = -5;
+	req_access_txt = "0"
 	},
 /turf/open/floor/mineral/silver,
 /area/shuttle/escape/luxury)
@@ -613,6 +621,7 @@
 /area/shuttle/escape/luxury)
 "Wy" = (
 /turf/open/floor/holofloor/beach/coast_b{
+	icon_state = "sandwater_b";
 	dir = 5
 	},
 /area/shuttle/escape/luxury)
