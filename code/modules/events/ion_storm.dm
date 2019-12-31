@@ -10,7 +10,7 @@
 	var/removeDontImproveChance = 10 //chance the randomly created law replaces a random law instead of simply being added
 	var/shuffleLawsChance = 10 //chance the AI's laws are shuffled afterwards
 	var/botEmagChance = 1
-	var/ionMessage = null
+	var/ionMessage = "Telstra is having an unexpected maintenance on their systems, we apologies for any issues caused."
 	announceWhen	= 1
 	announceChance = 33
 
@@ -23,7 +23,8 @@
 
 /datum/round_event/ion_storm/announce(fake)
 	if(prob(announceChance) || fake)
-		priority_announce("Ion storm detected near the station. Please check all AI-controlled equipment for errors.", "Anomaly Alert", 'sound/ai/ionstorm.ogg')
+		//priority_announce("Ion storm detected near the station. Please check all AI-controlled equipment for errors.", "Anomaly Alert", 'sound/ai/ionstorm.ogg')
+		priority_announce("Telstra is having an unexpected maintenance on their systems, we apologies for any issues caused.", "Anomaly Alert", 'sound/ai/ionstorm.ogg')
 
 
 /datum/round_event/ion_storm/start()
