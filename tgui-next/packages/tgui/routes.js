@@ -53,7 +53,9 @@ import { NaniteCloudControl } from './interfaces/NaniteCloudControl';
 import { NaniteProgramHub } from './interfaces/NaniteProgramHub';
 import { NaniteProgrammer } from './interfaces/NaniteProgrammer';
 import { NaniteRemote } from './interfaces/NaniteRemote';
+import { NtnetRelay } from './interfaces/NtnetRelay';
 import { NtosArcade } from './interfaces/NtosArcade';
+import { NtosConfiguration } from './interfaces/NtosConfiguration';
 import { NtosMain } from './interfaces/NtosMain';
 import { NtosNetDownloader } from './interfaces/NtosNetDownloader';
 import { NtosSupermatterMonitor } from './interfaces/NtosSupermatterMonitor';
@@ -314,6 +316,22 @@ const ROUTES = {
     component: () => NaniteRemote,
     scrollable: true,
   },
+  ntnet_relay: {
+    component: () => NtnetRelay,
+    scrollable: false,
+  },
+  ntos_arcade: {
+    component: () => NtosArcade,
+    wrapper: () => NtosWrapper,
+    scrollable: false,
+    theme: 'ntos',
+  },
+  ntos_configuration: {
+    component: () => NtosConfiguration,
+    wrapper: () => NtosWrapper,
+    scrollable: true,
+    theme: 'ntos',
+  },
   ntos_main: {
     component: () => NtosMain,
     wrapper: () => NtosWrapper,
@@ -326,14 +344,14 @@ const ROUTES = {
     scrollable: true,
     theme: 'ntos',
   },
-  ntos_arcade: {
-    component: () => NtosArcade,
-    wrapper: () => NtosWrapper,
-    scrollable: false,
-    theme: 'ntos',
-  },
   ntos_power_monitor: {
     component: () => PowerMonitor,
+    wrapper: () => NtosWrapper,
+    scrollable: true,
+    theme: 'ntos',
+  },
+  ntos_station_alert: {
+    component: () => StationAlertConsole,
     wrapper: () => NtosWrapper,
     scrollable: true,
     theme: 'ntos',
