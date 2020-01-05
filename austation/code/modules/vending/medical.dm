@@ -28,4 +28,5 @@
 					/obj/item/storage/pill_bottle/psicodine = 2,
 					/obj/item/reagent_containers/hypospray/medipen = 3,
 					/obj/item/storage/belt/medical = 3,
-					/obj/item/storage/firstaid/advanced = 2)
+					/obj/item/storage/firstaid/advanced = 2,
+					/obj/item/shears = 1)
