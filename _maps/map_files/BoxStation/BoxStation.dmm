@@ -1181,7 +1181,7 @@
 /area/security/prison)
 "acK" = (
 /obj/structure/sink{
-	dir = 8;
+	dir = 4;
 	pixel_x = -12;
 	pixel_y = 2
 	},
@@ -5784,7 +5784,7 @@
 /area/maintenance/port/fore)
 "amD" = (
 /obj/structure/sink{
-	dir = 8;
+	dir = 4;
 	pixel_x = -12;
 	pixel_y = 2
 	},
@@ -11286,7 +11286,7 @@
 /area/maintenance/starboard/fore)
 "aCm" = (
 /obj/structure/sink{
-	dir = 8;
+	dir = 4;
 	pixel_x = -12;
 	pixel_y = 2
 	},
@@ -11860,12 +11860,12 @@
 /area/crew_quarters/dorms)
 "aDL" = (
 /obj/structure/sink{
-	dir = 8;
+	dir = 4;
 	pixel_x = -12;
 	pixel_y = 2
 	},
 /obj/structure/sink{
-	dir = 8;
+	dir = 4;
 	pixel_x = -12;
 	pixel_y = 2
 	},
@@ -12815,7 +12815,7 @@
 /area/ai_monitored/storage/eva)
 "aGk" = (
 /obj/structure/sink{
-	dir = 8;
+	dir = 4;
 	pixel_x = -12;
 	pixel_y = 2
 	},
@@ -13518,7 +13518,7 @@
 	dir = 1
 	},
 /obj/structure/sink{
-	dir = 8;
+	dir = 4;
 	pixel_x = -12;
 	pixel_y = 2
 	},
@@ -16100,7 +16100,7 @@
 /area/hallway/secondary/exit)
 "aOV" = (
 /obj/structure/sink{
-	dir = 8;
+	dir = 4;
 	pixel_x = -12;
 	pixel_y = 2
 	},
@@ -19950,7 +19950,7 @@
 /area/vacant_room/office)
 "aZo" = (
 /obj/structure/sink{
-	dir = 4;
+	dir = 8;
 	pixel_x = 11
 	},
 /obj/machinery/atmospherics/components/unary/vent_pump/on{
@@ -20276,7 +20276,7 @@
 /area/crew_quarters/kitchen)
 "bal" = (
 /obj/structure/sink{
-	dir = 8;
+	dir = 4;
 	pixel_x = -12;
 	pixel_y = 2
 	},
@@ -20362,7 +20362,7 @@
 /area/library)
 "baw" = (
 /obj/structure/sink{
-	dir = 4;
+	dir = 8;
 	pixel_x = 11
 	},
 /obj/structure/mirror{
@@ -21182,7 +21182,7 @@
 /area/bridge/meeting_room)
 "bcO" = (
 /obj/structure/sink{
-	dir = 4;
+	dir = 8;
 	pixel_x = 11
 	},
 /turf/open/floor/plasteel/freezer,
@@ -23545,7 +23545,7 @@
 	c_tag = "Research Division Access"
 	},
 /obj/structure/sink{
-	dir = 4;
+	dir = 8;
 	pixel_x = 11
 	},
 /obj/effect/turf_decal/stripes/line{
@@ -24688,7 +24688,7 @@
 /area/science/robotics/lab)
 "blH" = (
 /obj/structure/sink{
-	dir = 4;
+	dir = 8;
 	pixel_x = 11
 	},
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on,
@@ -25000,7 +25000,7 @@
 /area/crew_quarters/heads/captain)
 "bmC" = (
 /obj/structure/sink{
-	dir = 4;
+	dir = 8;
 	pixel_x = 11
 	},
 /obj/structure/mirror{
@@ -29097,7 +29097,7 @@
 /area/security/checkpoint/auxiliary)
 "bxN" = (
 /obj/structure/sink{
-	dir = 8;
+	dir = 4;
 	pixel_x = -12;
 	pixel_y = 2
 	},
@@ -32234,7 +32234,7 @@
 /area/medical/sleeper)
 "bFA" = (
 /obj/structure/sink{
-	dir = 4;
+	dir = 8;
 	pixel_x = 11
 	},
 /obj/machinery/requests_console{
@@ -33475,7 +33475,7 @@
 /area/medical/virology)
 "bIK" = (
 /obj/structure/sink{
-	dir = 8;
+	dir = 4;
 	pixel_x = -12;
 	pixel_y = 2
 	},
@@ -34334,7 +34334,7 @@
 /area/science/xenobiology)
 "bLd" = (
 /obj/structure/sink{
-	dir = 8;
+	dir = 4;
 	pixel_x = -12;
 	pixel_y = 2
 	},
@@ -37540,7 +37540,7 @@
 	pixel_x = -22
 	},
 /obj/structure/sink{
-	dir = 8;
+	dir = 4;
 	pixel_x = -12;
 	pixel_y = 2
 	},
@@ -37959,7 +37959,7 @@
 /area/science/xenobiology)
 "bVk" = (
 /obj/structure/sink{
-	dir = 4;
+	dir = 8;
 	pixel_x = 11
 	},
 /turf/open/floor/plasteel/white,
@@ -39259,7 +39259,7 @@
 /area/medical/virology)
 "bZa" = (
 /obj/structure/sink{
-	dir = 8;
+	dir = 4;
 	pixel_x = -12;
 	pixel_y = 2
 	},
@@ -50040,7 +50040,7 @@
 	},
 /obj/effect/turf_decal/tile/purple,
 /obj/structure/sink{
-	dir = 8;
+	dir = 4;
 	pixel_x = -12;
 	pixel_y = 2
 	},
