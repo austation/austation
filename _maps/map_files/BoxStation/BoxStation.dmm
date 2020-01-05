@@ -1746,6 +1746,7 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /obj/machinery/door/firedoor,
 /obj/structure/cable,
+/obj/machinery/navbeacon/wayfinding,
 /turf/open/floor/plasteel,
 /area/engine/engineering)
 "adX" = (
@@ -5946,6 +5947,7 @@
 	dir = 8
 	},
 /obj/structure/cable,
+/obj/machinery/navbeacon/wayfinding,
 /turf/open/floor/plasteel,
 /area/security/brig)
 "amY" = (
@@ -13367,6 +13369,7 @@
 "aHG" = (
 /obj/effect/mapping_helpers/airlock/locked,
 /obj/machinery/door/airlock/vault{
+	name = "Vault";
 	req_access_txt = "53"
 	},
 /obj/effect/turf_decal/tile/neutral{
@@ -13380,6 +13383,7 @@
 	dir = 8
 	},
 /obj/structure/cable,
+/obj/machinery/navbeacon/wayfinding,
 /turf/open/floor/plasteel/dark,
 /area/ai_monitored/nuke_storage)
 "aHH" = (
@@ -13511,6 +13515,7 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
 	},
+/obj/machinery/navbeacon/wayfinding,
 /turf/open/floor/plasteel,
 /area/crew_quarters/dorms)
 "aHU" = (
@@ -14379,6 +14384,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /obj/structure/cable,
+/obj/machinery/navbeacon/wayfinding,
 /turf/open/floor/plasteel,
 /area/storage/primary)
 "aKa" = (
@@ -15732,6 +15738,7 @@
 	name = "Chapel Office";
 	req_access_txt = "22"
 	},
+/obj/machinery/navbeacon/wayfinding,
 /turf/open/floor/plasteel/dark,
 /area/chapel/office)
 "aNX" = (
@@ -16061,6 +16068,7 @@
 	req_access_txt = "25"
 	},
 /obj/structure/disposalpipe/segment,
+/obj/machinery/navbeacon/wayfinding,
 /turf/open/floor/wood,
 /area/crew_quarters/bar)
 "aOP" = (
@@ -16310,6 +16318,7 @@
 "aPD" = (
 /obj/structure/disposalpipe/segment,
 /obj/machinery/door/firedoor,
+/obj/machinery/navbeacon/wayfinding,
 /turf/open/floor/plasteel,
 /area/crew_quarters/locker)
 "aPE" = (
@@ -16801,6 +16810,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
 /obj/structure/cable,
+/obj/machinery/navbeacon/wayfinding,
 /turf/open/floor/plasteel,
 /area/storage/tools)
 "aRg" = (
@@ -17113,6 +17123,7 @@
 	name = "Private Study";
 	req_access_txt = "37"
 	},
+/obj/machinery/navbeacon/wayfinding,
 /turf/open/floor/engine/cult,
 /area/library)
 "aRR" = (
@@ -18866,6 +18877,7 @@
 	req_access_txt = "19"
 	},
 /obj/structure/cable,
+/obj/machinery/navbeacon/wayfinding,
 /turf/open/floor/plasteel,
 /area/bridge)
 "aWK" = (
@@ -19754,6 +19766,7 @@
 /obj/effect/turf_decal/tile/bar{
 	dir = 1
 	},
+/obj/machinery/navbeacon/wayfinding,
 /turf/open/floor/plasteel,
 /area/crew_quarters/kitchen)
 "aYL" = (
@@ -20530,6 +20543,7 @@
 	name = "Detective's Office";
 	req_access_txt = "4"
 	},
+/obj/machinery/navbeacon/wayfinding,
 /turf/open/floor/plasteel/grimy,
 /area/security/detectives_office)
 "baX" = (
@@ -21515,6 +21529,7 @@
 	req_access_txt = "6"
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
+/obj/machinery/navbeacon/wayfinding,
 /turf/open/floor/plasteel/dark,
 /area/medical/morgue)
 "bdO" = (
@@ -23005,6 +23020,7 @@
 	name = "Research Division Access";
 	req_access_txt = "47"
 	},
+/obj/machinery/navbeacon/wayfinding,
 /turf/open/floor/plasteel/white,
 /area/science/research)
 "bhC" = (
@@ -25640,6 +25656,7 @@
 /obj/effect/turf_decal/tile/blue{
 	dir = 4
 	},
+/obj/machinery/navbeacon/wayfinding,
 /turf/open/floor/plasteel/white,
 /area/medical/medbay/central)
 "bof" = (
@@ -27658,6 +27675,7 @@
 	req_access_txt = "17"
 	},
 /obj/structure/cable,
+/obj/machinery/navbeacon/wayfinding,
 /turf/open/floor/plasteel,
 /area/teleporter)
 "btO" = (
@@ -29051,6 +29069,7 @@
 	},
 /obj/structure/disposalpipe/segment,
 /obj/structure/cable,
+/obj/machinery/navbeacon/wayfinding,
 /turf/open/floor/plasteel,
 /area/crew_quarters/heads/hop)
 "bxH" = (
@@ -32078,6 +32097,7 @@
 	dir = 4
 	},
 /obj/structure/cable,
+/obj/machinery/navbeacon/wayfinding,
 /turf/open/floor/plating,
 /area/storage/tech)
 "bFf" = (
@@ -35197,6 +35217,7 @@
 	name = "Cargo Office";
 	req_access_txt = "50"
 	},
+/obj/machinery/navbeacon/wayfinding,
 /turf/open/floor/plasteel,
 /area/quartermaster/office)
 "bNL" = (
@@ -38327,6 +38348,7 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 4
 	},
+/obj/machinery/navbeacon/wayfinding,
 /turf/open/floor/plasteel,
 /area/tcommsat/computer)
 "bWv" = (
@@ -38806,6 +38828,7 @@
 	name = "Atmospherics";
 	req_access_txt = "24"
 	},
+/obj/machinery/navbeacon/wayfinding,
 /turf/open/floor/plasteel,
 /area/engine/atmos)
 "bXO" = (
@@ -46370,6 +46393,9 @@
 	name = "Escape Airlock";
 	safety_mode = 1
 	},
+/obj/machinery/navbeacon/wayfinding{
+	location = "Escape"
+	},
 /turf/open/floor/plating,
 /area/hallway/secondary/exit)
 "cyr" = (
@@ -47094,6 +47120,7 @@
 	},
 /obj/structure/disposalpipe/segment,
 /obj/effect/landmark/event_spawn,
+/obj/machinery/navbeacon/wayfinding,
 /turf/open/floor/plasteel,
 /area/janitor)
 "cBz" = (
@@ -49528,6 +49555,11 @@
 	},
 /turf/open/floor/plasteel/white,
 /area/science/mixing)
+"fxH" = (
+/obj/effect/spawner/structure/window,
+/obj/machinery/pinpointer_dispenser,
+/turf/open/floor/plating,
+/area/hallway/secondary/entry)
 "fBs" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
 /obj/structure/table/wood,
@@ -49987,6 +50019,19 @@
 	},
 /turf/closed/wall/r_wall,
 /area/security/courtroom)
+"jly" = (
+/obj/effect/mapping_helpers/airlock/cyclelink_helper{
+	dir = 1
+	},
+/obj/machinery/door/airlock/external{
+	name = "Port Docking Bay 1";
+	safety_mode = 1
+	},
+/obj/machinery/navbeacon/wayfinding{
+	location = "Arrival Shuttle"
+	},
+/turf/open/floor/plating,
+/area/hallway/secondary/entry)
 "jox" = (
 /obj/machinery/chem_dispenser,
 /obj/machinery/camera{
@@ -50784,6 +50829,15 @@
 	},
 /turf/open/floor/plasteel,
 /area/vacant_room/commissary)
+"nCW" = (
+/obj/machinery/door/firedoor,
+/obj/machinery/door/airlock/public/glass{
+	name = "Hydroponics";
+	req_access_txt = "35"
+	},
+/obj/machinery/navbeacon/wayfinding,
+/turf/open/floor/plasteel,
+/area/hydroponics)
 "nEk" = (
 /obj/machinery/chem_master,
 /turf/open/floor/plasteel/white,
@@ -51765,6 +51819,7 @@
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
 	dir = 8
 	},
+/obj/machinery/navbeacon/wayfinding,
 /turf/open/floor/plating,
 /area/hallway/secondary/entry)
 "sLv" = (
@@ -52229,6 +52284,7 @@
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
 	dir = 1
 	},
+/obj/machinery/navbeacon/wayfinding,
 /turf/open/floor/plasteel,
 /area/ai_monitored/storage/eva)
 "vdl" = (
@@ -64255,7 +64311,7 @@ aaa
 aaa
 azy
 auP
-cIh
+jly
 ayl
 aRY
 awW
@@ -65797,7 +65853,7 @@ aKj
 aLw
 aLw
 aLw
-aLw
+fxH
 aQI
 aNh
 czK
@@ -93047,7 +93103,7 @@ aVI
 aVI
 aYO
 aRJ
-bbB
+nCW
 aYV
 aYV
 aYV
