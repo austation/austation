@@ -393,3 +393,10 @@ austation end */
 /obj/item/reagent_containers/glass/bottle/bromine
 	name = "bromine bottle"
 	list_reagents = list(/datum/reagent/bromine = 30)
+<<<<<<< HEAD
+=======
+
+/obj/item/reagent_containers/glass/bottle/thermite
+	name = "thermite bottle"
+	list_reagents = list(/datum/reagent/thermite = 30)
+>>>>>>> 0abe5a30fd... Merge pull request #48120 from TheChosenEvilOne/market
