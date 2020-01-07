@@ -1445,7 +1445,7 @@
 	dir = 9
 	},
 /obj/structure/sink{
-	dir = 8;
+	dir = 4;
 	pixel_x = -12;
 	pixel_y = 2
 	},
@@ -1487,7 +1487,7 @@
 	dir = 5
 	},
 /obj/structure/sink{
-	dir = 4;
+	dir = 8;
 	pixel_x = 11
 	},
 /turf/open/floor/mineral/titanium/white,
