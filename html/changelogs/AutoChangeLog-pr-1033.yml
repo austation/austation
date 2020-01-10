@@ -1,0 +1,4 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - imageadd: "added resting sprites for the corgi pAI."
