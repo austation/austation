@@ -74,15 +74,16 @@ SUBSYSTEM_DEF(vote)
 			else if(mode == "map")
 				for (var/non_voter_ckey in non_voters)
 					var/client/C = non_voters[non_voter_ckey]
-<<<<<<< HEAD
-					if(C.prefs.preferred_map && choices[C.prefs.preferred_map]) //No votes if the map isnt in the vote.
-						var/preferred_map = C.prefs.preferred_map
-						choices[preferred_map] += 1
-						greatest_votes = max(greatest_votes, choices[preferred_map])
-					else if(config.defaultmap && choices[config.defaultmap]) //No votes if the map isnt in the vote.
-						var/default_map = config.defaultmap.map_name
-						choices[default_map] += 1
-						greatest_votes = max(greatest_votes, choices[default_map])
+					if(C.prefs.preferred_map)
+						if(choices[C.prefs.preferred_map]) //No votes if the map isnt in the vote.
+							var/preferred_map = C.prefs.preferred_map
+							choices[preferred_map] += 1
+							greatest_votes = max(greatest_votes, choices[preferred_map])
+					else if(config.defaultmap)
+						if(choices[config.defaultmap]) //No votes if the map isnt in the vote.
+							var/default_map = config.defaultmap.map_name
+							choices[default_map] += 1
+							greatest_votes = max(greatest_votes, choices[default_map])
 			else if(mode == "transfer") // austation begin -- Crew autotransfer vote
 				var/factor = 1
 				switch(world.time / (1 MINUTES ))
@@ -97,18 +98,6 @@ SUBSYSTEM_DEF(vote)
 					else
 						factor = 1.4
 				choices["Initiate Crew Transfer"] += round(non_voters.len * factor) // austation end
-=======
-					if(C.prefs.preferred_map)
-						if(choices[C.prefs.preferred_map]) //No votes if the map isnt in the vote.
-							var/preferred_map = C.prefs.preferred_map
-							choices[preferred_map] += 1
-							greatest_votes = max(greatest_votes, choices[preferred_map])
-					else if(config.defaultmap)
-						if(choices[config.defaultmap]) //No votes if the map isnt in the vote.
-							var/default_map = config.defaultmap.map_name
-							choices[default_map] += 1
-							greatest_votes = max(greatest_votes, choices[default_map])
->>>>>>> 8206b1e1cb... Map rotation touchup, automatic map votes (#48602)
 	//get all options with that many votes and return them in a list
 	. = list()
 	if(greatest_votes)
