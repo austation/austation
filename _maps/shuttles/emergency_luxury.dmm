@@ -231,30 +231,9 @@
 	},
 /turf/open/floor/mineral/diamond,
 /area/shuttle/escape/luxury)
-<<<<<<< HEAD
-"bf" = (
-/obj/machinery/sleeper{
-	dir = 4
-	},
-/turf/open/floor/mineral/silver,
-/area/shuttle/escape/luxury)
-"bh" = (
-/turf/open/floor/holofloor/beach/coast_t{
-	dir = 2;
-	icon_state = "sandwater_inner"
-	},
-/area/shuttle/escape/luxury)
-"bi" = (
-/turf/open/floor/mineral/plastitanium/red/brig,
-/area/shuttle/escape/luxury)
-"bk" = (
-/obj/machinery/light{
-	dir = 4
-=======
 "aN" = (
 /obj/item/reagent_containers/food/snacks/burger/baconburger{
 	pixel_y = 2
->>>>>>> d74d431bb5... Luxury Shuttle Alternative Version (#48416)
 	},
 /obj/structure/table/wood/fancy/black,
 /turf/open/floor/carpet/red,
