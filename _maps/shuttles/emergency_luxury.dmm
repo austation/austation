@@ -658,7 +658,7 @@
 /turf/open/floor/carpet/cyan,
 /area/shuttle/escape/luxury)
 "cb" = (
-/obj/machinery/stasis,
+/obj/machinery/sleeper,
 /turf/open/floor/carpet/cyan,
 /area/shuttle/escape/luxury)
 "cc" = (
@@ -875,10 +875,10 @@
 /turf/open/floor/carpet/green,
 /area/shuttle/escape/luxury)
 "cG" = (
-/obj/machinery/stasis,
 /obj/machinery/light{
 	dir = 1
 	},
+/obj/machinery/sleeper,
 /turf/open/floor/carpet/cyan,
 /area/shuttle/escape/luxury)
 "cH" = (
@@ -889,14 +889,14 @@
 /obj/item/reagent_containers/glass/bottle/epinephrine{
 	pixel_x = 6
 	},
-/obj/item/reagent_containers/glass/bottle/multiver{
+/obj/item/reagent_containers/glass/bottle/charcoal{
 	pixel_x = -3
 	},
 /obj/item/reagent_containers/glass/bottle/epinephrine{
 	pixel_x = -3;
 	pixel_y = 8
 	},
-/obj/item/reagent_containers/glass/bottle/multiver{
+/obj/item/reagent_containers/glass/bottle/charcoal{
 	pixel_x = 6;
 	pixel_y = 8
 	},
