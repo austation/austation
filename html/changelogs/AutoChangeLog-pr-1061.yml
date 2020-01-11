@@ -1,0 +1,5 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - rscadd: "Ethereal max charge has been increased from 100 to 150. If your charge is between 100-125 you will take minor toxin damage. If above 125, you have a chance to violently discharge excess energy, which stabilize your energy level while causing some cool effects."
+  - imageadd: "Ethereal overcharged and supercharged HUD Alert sprites"
