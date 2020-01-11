@@ -1,0 +1,4 @@
+author: "ShizCalev"
+delete-after: True
+changes: 
+  - bugfix: "Special airlocks (ie mineral airlocks, high security doors, ect) that do not support glass windows will no longer revert to a normal airlock if you added glass to their frame prior to adding their special plating."
