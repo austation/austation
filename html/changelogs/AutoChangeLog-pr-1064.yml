@@ -1,0 +1,11 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - rscadd: "The supermatter has been pulled back down into reality, it will now interact with tesla coils and grounding rods
+bug: WEEP cargo mains, the bicycle is no longer a perfect resistor. It will now properly get fryed when zapped by lightning."
+  - rscadd: "Vehicles can now be zapped by both the sm and the tesla, they will shock all the people buckled to them"
+  - balance: "The supermatter is a lot more touchy when it comes to bolts, it will jump out at you a good amount more now. Be careful"
+  - spellcheck: "Fixed my old typos"
+  - code_imp: "Fixed a bunch of small sm related goofs"
+  - refactor: "Refactored tesla_act into zap_act, it now allows for other zapping methods. Not entirely optimal, but it'll do."
+  - refactor: "Refactored supermatter_zap(), it should be a lot cleaner now"
