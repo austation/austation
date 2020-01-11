@@ -1,4 +1,0 @@
-author: "AustationBot"
-delete-after: True
-changes: 
-  - bugfix: "Mobs without MOBILITY_MOVE  can no longer move by users trying to ride them around."
