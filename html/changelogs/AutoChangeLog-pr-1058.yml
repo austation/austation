@@ -1,0 +1,5 @@
+author: "bobbahbrown"
+delete-after: True
+changes: 
+  - rscadd: "Advanced health analyzers can now detect the level of damage on damaged organs."
+  - refactor: "The output of health analyzers is now formatted better."
