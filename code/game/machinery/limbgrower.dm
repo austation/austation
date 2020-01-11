@@ -221,13 +221,8 @@
 
 /obj/machinery/limbgrower/proc/get_design_cost(datum/design/D)
 	var/dat
-<<<<<<< HEAD
 	if(D.reagents_list[/datum/reagent/medicine/synthflesh]) // austation begin -- revert cobbychem
-		dat += "[D.reagents_list[/datum/reagent/medicine/synthflesh] * prod_coeff] Synthetic flesh " // austation end
-=======
-	if(D.reagents_list[/datum/reagent/medicine/C2/instabitaluri])
-		dat += "[D.reagents_list[/datum/reagent/medicine/C2/instabitaluri] * prod_coeff] SynthFlesh (instabitaluri)"
->>>>>>> 051c421c45... Updates the Limb Grower (#48678)
+		dat += "[D.reagents_list[/datum/reagent/medicine/synthflesh] * prod_coeff] SynthFlesh" // austation end
 	return dat
 
 /obj/machinery/limbgrower/emag_act(mob/user)
