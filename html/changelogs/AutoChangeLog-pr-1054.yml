@@ -1,6 +1,0 @@
-author: "AustationBot"
-delete-after: True
-changes: 
-  - bugfix: "Dullahans won't gib when their head is thrown in a recycler, ahealed or have their limbs regenerated somehow."
-  - bugfix: "Dullahans' heads can now be picked up."
-  - bugfix: "Fixes dullahans being unable to receive visible/hearable messages (excluding chat messages)"

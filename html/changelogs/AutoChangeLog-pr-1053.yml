@@ -1,4 +1,0 @@
-author: "Arkatos"
-delete-after: True
-changes: 
-  - bugfix: "Valentine special love status effect will now work correctly."

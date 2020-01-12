@@ -1,5 +1,0 @@
-author: "AustationBot"
-delete-after: True
-changes: 
-  - bugfix: "Fixed traitor codewords highlight and some other hear message \"modifiers\""
-  - bugfix: "Fixed traitor codewords message highlight hooks not passing down to new mobs alongside the mind datum and sticking around the first one."

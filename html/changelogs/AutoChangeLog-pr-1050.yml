@@ -1,7 +1,0 @@
-author: "AustationBot"
-delete-after: True
-changes: 
-  - rscadd: "Metatstation engineering lobby alarm console"
-  - tweak: "Metatstation engineering lobby desk glass door permission tweak"
-  - tweak: "Changed door from glass in the shared storage"
-  - tweak: "Decal changes in Metatstation engineering lobby"

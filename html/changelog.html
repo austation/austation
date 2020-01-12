@@ -51,6 +51,66 @@
 		
 		-->
 		<div class="commit sansserif">
+			<h2 class="date">12 January 2020</h2>
+			<h3 class="author">Arkatos updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="tweak">Silencer, Blank paper and Nothing reagents will now only heal you if are keeping your Vow of Silence. Better not break it, mimes!</li>
+				<li class="bugfix">Valentine special love status effect will now work correctly.</li>
+			</ul>
+			<h3 class="author">AustationBot updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="balance">See the below, optimal power setups may have changed, try out those 100% plasma hell setups of yours, it should actually give you a power benefit now. Oh and Pluoxium should be a bit more of a safety gas now.</li>
+				<li class="bugfix">Fixed the SM not increasing/decreasing rad output with most gasses.</li>
+				<li class="rscadd">Ethereal max charge has been increased from 100 to 150. If your charge is between 100-125 you will take minor toxin damage. If above 125, you have a chance to violently discharge excess energy, which stabilize your energy level while causing some cool effects.</li>
+				<li class="imageadd">Ethereal overcharged and supercharged HUD Alert sprites</li>
+				<li class="bugfix">Players who are old (and wrinkly) will no longer receive the waypoint unless they have the quirk now.</li>
+				<li class="bugfix">flying and floating mobs are no longer affected by the turf under them.</li>
+				<li class="rscadd">A new technology has been implemented into the B.E.P.I.S, Australicus Security Protocols, after our lab boys cracked open a cold one with those mates from a couple sectors south.</li>
+				<li class="rscadd">Remote signalers now use tgui-next</li>
+				<li class="rscadd">Metatstation engineering lobby alarm console</li>
+				<li class="tweak">Metatstation engineering lobby desk glass door permission tweak</li>
+				<li class="tweak">Changed door from glass in the shared storage</li>
+				<li class="tweak">Decal changes in Metatstation engineering lobby</li>
+				<li class="bugfix">Fixed traitor codewords highlight and some other hear message "modifiers"</li>
+				<li class="bugfix">Fixed traitor codewords message highlight hooks not passing down to new mobs alongside the mind datum and sticking around the first one.</li>
+				<li class="tweak">You do not lose the storage window on storage pickup.</li>
+				<li class="rscadd">The supermatter has been pulled back down into reality, it will now interact with tesla coils and grounding rods bug: WEEP cargo mains, the bicycle is no longer a perfect resistor. It will now properly get fryed when zapped by lightning.</li>
+				<li class="rscadd">Vehicles can now be zapped by both the sm and the tesla, they will shock all the people buckled to them</li>
+				<li class="balance">The supermatter is a lot more touchy when it comes to bolts, it will jump out at you a good amount more now. Be careful</li>
+				<li class="spellcheck">Fixed my old typos</li>
+				<li class="code_imp">Fixed a bunch of small sm related goofs</li>
+				<li class="refactor">Refactored tesla_act into zap_act, it now allows for other zapping methods. Not entirely optimal, but it'll do.</li>
+				<li class="refactor">Refactored supermatter_zap(), it should be a lot cleaner now</li>
+				<li class="bugfix">Fixes Light Eater not reliably overloading borg lamps most times.</li>
+				<li class="imageadd">adds a HAL 9000 themed AI display</li>
+				<li class="bugfix">Dullahans won't gib when their head is thrown in a recycler, ahealed or have their limbs regenerated somehow.</li>
+				<li class="bugfix">Dullahans' heads can now be picked up.</li>
+				<li class="bugfix">Fixes dullahans being unable to receive visible/hearable messages (excluding chat messages)</li>
+			</ul>
+			<h3 class="author">Dorsidwarf updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="tweak">Added ethereals & tails to the limbgrower and removed flypeople</li>
+				<li class="rscadd">Limbgrower limbs are now appropriately randomly coloured instead of plain white.</li>
+			</ul>
+			<h3 class="author">Improvedname updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="tweak">Contrabrand lootpool can now include fireworks</li>
+			</ul>
+			<h3 class="author">ShizCalev updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="bugfix">Special airlocks (ie mineral airlocks, high security doors, ect) that do not support glass windows will no longer revert to a normal airlock if you added glass to their frame prior to adding their special plating.</li>
+			</ul>
+			<h3 class="author">Skoglol updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="tweak">RPD subcategories and preview icons reorganized.</li>
+				<li class="rscadd">RPD now starts with painting turned off, hitting pipes with build and no paint will target the turf underneath instead. Bye bye turf pixelhunting.</li>
+			</ul>
+			<h3 class="author">bobbahbrown updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="rscadd">Advanced health analyzers can now detect the level of damage on damaged organs.</li>
+				<li class="refactor">The output of health analyzers is now formatted better.</li>
+			</ul>
+
 			<h2 class="date">11 January 2020</h2>
 			<h3 class="author">Arkatos updated:</h3>
 			<ul class="changes bgimages16">
@@ -1317,56 +1377,6 @@
 				<li class="rscadd">RCS Thrusters for mechs can now be printed from an exosuit fabricator after the relevant research has been done. They'll eat up the gas in your mech's air tank, though, so don't go overboard with their use!</li>
 				<li class="tweak">Mechs that use built-in thrusters (Dark Gygax, Marauder, etc) will now start with the thrusters enabled. The thruster action button is gone, but you can still toggle them in the View Status popout if you feel the need to. Note that these built-in thrusters are still ion-based, and will not deplete your air supply.</li>
 				<li class="tweak">Mechs using thrusters to move will no longer make stomp sounds.</li>
-			</ul>
-
-			<h2 class="date">10 November 2019</h2>
-			<h3 class="author">ATHATH updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="bugfix">Strange reagent properly resurrects non-carbons (it still can resurrect carbons, of course).</li>
-				<li class="balance">Strange reagent now brings the blood level of a revived carbon (without the NOBLOOD species trait) up to a safe level.</li>
-			</ul>
-			<h3 class="author">Arkatos updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="imageadd">Added new action buttons icons for all mime spells.</li>
-				<li class="bugfix">Revenant health HUD background icon will now show properly.</li>
-				<li class="imageadd">Added themed skills button to all chooseable UI styles.</li>
-				<li class="bugfix">Medibots will now keep tending your wounds continuously.</li>
-			</ul>
-			<h3 class="author">Cenrus updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="bugfix">The abandoned bar and port quarter solars are now connected to the air supply</li>
-			</ul>
-			<h3 class="author">PepperPrepper updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="bugfix">You can't hold hands with simple mobs</li>
-				<li class="rscadd">scan gates can now detect Felinids</li>
-			</ul>
-			<h3 class="author">Potato Masher updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="rscadd">Oldstation (ghost role spacestation) now has a proper basic atmos system with a scrubber loop, as well as additional N2 and O2 in enlarged tanks.</li>
-				<li class="tweak">Oldstation QoL improvements, including reduced xeno resin spread and an added autolathe to RnD.</li>
-				<li class="bugfix">Oldstation: A few missing pipes have been fixed, having multiple resin floors on one tile/resin floors inside walls have been fixed.</li>
-			</ul>
-			<h3 class="author">Skoglol updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="bugfix">Ejecting materials from circuit printer/protolathe through an RND console works again.</li>
-				<li class="bugfix">Materials view of circuit imprinter through rnd console now formatted correctly.</li>
-				<li class="bugfix">Unfucked butchering.</li>
-				<li class="bugfix">Carpet stacks now look like carpets again.</li>
-				<li class="bugfix">Fixed shock propagation.</li>
-				<li class="rscadd">Adds shock propagation to fireman carry.</li>
-			</ul>
-			<h3 class="author">SteelSlayer updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="bugfix">Fixes players not getting removed from antag huds properly</li>
-			</ul>
-			<h3 class="author">TheVekter updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="rscadd">Modifications have been made to the Mech Fabricator to allow it to withdraw and deposit to the ore silo (Thanks to alexkar598 from Yogstation for the code!)</li>
-			</ul>
-			<h3 class="author">actioninja updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="rscadd">Laptop vendors are now available around your nearest space station. Check the science lobby or the dorms.</li>
 			</ul>
 		</div>
 
