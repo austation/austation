@@ -87,7 +87,10 @@
 "am" = (
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/structure/closet/crate/freezer/surplus_limbs,
+<<<<<<< HEAD
 /obj/item/reagent_containers/glass/beaker/synthflesh,
+=======
+>>>>>>> 03f4a81f16... Makes husking harder, adds husk healing to instabitaluri (#48717)
 /obj/effect/turf_decal/bot,
 /turf/open/floor/plasteel,
 /area/shuttle/abandoned/medbay)
