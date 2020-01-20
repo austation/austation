@@ -1,0 +1,9 @@
+author: "cacogen"
+delete-after: True
+changes: 
+  - tweak: "Adds five new pens to BoxStation xenobiology"
+  - tweak: "BoxStation pens are now made of glass, for better view range, lighting and use of space"
+  - tweak: "Takes a few design choices from Pubby's xenobiology, namely the positioning of the consoles, SmartFridge, slime processor and Kill Chamber"
+  - balance: "Adds an extra round start slime to Box, like Meta"
+  - rscadd: "Adds the 2% chance round start xenomorph egg spawner to the Box Test Chamber like on other maps"
+  - rscadd: "Adds an air injector and canister port to the Box Test Chamber like on other maps"
