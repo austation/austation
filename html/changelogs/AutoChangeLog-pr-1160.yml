@@ -1,5 +1,0 @@
-author: "AustationBot"
-delete-after: True
-changes: 
-  - rscadd: "new Nanotrasen™ Space Pods"
-  - bugfix: "earmuffs actually make you deaf now"

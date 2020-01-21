@@ -1,4 +1,0 @@
-author: "Neotw"
-delete-after: True
-changes: 
-  - rscadd: "Added an input to the SMES interface, so now you can input a custom number"
