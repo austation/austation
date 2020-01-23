@@ -1,0 +1,4 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - bugfix: "Now closets, crates, bodybags block interaction with storages in contents."
