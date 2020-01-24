@@ -51,8 +51,7 @@
 		else
 			visible_message("<span class='nicegreen'>[src] gently tends to [target]'s wounds.</span>", "<span class='nicegreen'>You gently tend to [target]'s wounds.", null, COMBAT_MESSAGE_RANGE, F)
 			to_chat(F, "<span class='nicegreen'>[src] gently tends to your wounds.</span>")
-			F.health += 5
-			F.update_health_hud
+			F.adjustBruteLoss(-5, 1)
 	else if(isanimal(target) && target != src)
 		..() // nothing sucks more than being chased by a space carp you can't actually take down
 	else if(isliving(target) && target != src)
