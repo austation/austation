@@ -5,7 +5,7 @@
 // If you modify this file you ALSO need to modify code/modules/goonchat/browserAssets/browserOutput.css and browserOutput_white.css
 // BUT you have to use PX font sizes with are on a x8 scale of these font sizes
 // Sample font-size: DM: 8 CSS: 64px
-
+// austation -- lines 107-108 edited to fix spider span class inconsistencies. line numbers may change, always check code context before accepting edits.
 /client/script = {"<style>
 body					{font-family: Verdana, sans-serif;}
 
@@ -105,6 +105,7 @@ h1.alert, h2.alert		{color: #000000;}
 .changeling				{color: #800080;	font-style: italic;}
 
 .spider					{color: #4d004d;}
+.spiderlarge			{color: #4d004d;	font-weight: bold;	font-size: 185%;}
 
 .interface				{color: #330033;}
 

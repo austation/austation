@@ -44,6 +44,7 @@
 #include "code\modules\jobs\job_types\job.dm"
 #include "code\modules\mapping\writer.dm"
 #include "code\modules\mob\dead\new_player\new_player.dm"
+#include "code\modules\mob\living\simple_animal\hostile\giant_spider.dm"
 #include "code\modules\reagents\chemistry\reagents\cat2_medicine_reagents.dm"
 #include "code\modules\reagents\chemistry\reagents\medicine_reagents.dm"
 #include "code\modules\reagents\chemistry\reagents\other_reagents.dm"

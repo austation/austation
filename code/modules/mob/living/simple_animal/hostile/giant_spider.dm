@@ -72,10 +72,10 @@
 /mob/living/simple_animal/hostile/poison/giant_spider/Login()
 	..()
 	if(directive)
-		to_chat(src, "<span class='spider'>Your mother left you a directive! Follow it at all costs.</span>")
-		to_chat(src, "<span class='spider'><b>[directive]</b></span>")
+		to_chat(src, "<span class='spiderbold'>Your mother left you a directive! Follow it at all costs.</span>") // austation begin -- fixes spider span classes
+		to_chat(src, "<span class='spiderbold'><b>[directive]</b></span>")
 		if(mind)
-			mind.store_memory("<span class='spider'><b>[directive]</b></span>")
+			mind.store_memory("<span class='spiderbold'><b>[directive]</b></span>") // austation end
 
 /mob/living/simple_animal/hostile/poison/giant_spider/attack_ghost(mob/user)
 	. = ..()
@@ -535,7 +535,7 @@
 	if(!message)
 		return
 	var/my_message
-	my_message = "<span class='spider'><b>Command from [user]:</b> [message]</span>"
+	my_message = "<span class='spiderbold'><b>Command from [user]:</b> [message]</span>" // austation -- fixes spider span classes
 	for(var/mob/living/simple_animal/hostile/poison/giant_spider/M in GLOB.spidermobs)
 		to_chat(M, my_message)
 	for(var/M in GLOB.dead_mob_list)

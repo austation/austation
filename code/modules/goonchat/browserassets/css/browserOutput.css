@@ -350,7 +350,8 @@ em						{font-style: normal;	font-weight: bold;}
 .changeling				{color: #059223;	font-style: italic;}
 .alertsyndie			{color: #FF0000;	font-size: 185%;	font-weight: bold;}
 
-.spider					{color: #8800ff;	font-weight: bold;	font-size: 185%;}
+.spider					{color: #8800ff;} /* austation begin -- fix spider class inconsistencies */
+.spiderlarge			{color: #8800ff;	font-weight: bold;	font-size: 185%;} /* austation end */
 
 .interface				{color: #750e75;}
 
