@@ -49,7 +49,7 @@
 		if(F.health >= F.maxHealth)
 			to_chat(src, "<span class='notice'>[target] is already fully healed!")
 		else
-			visible_message("<span class='nicegreen'>[src] gently tends to [target]'s wounds.</span>", "<span class='nicegreen'>You gently tend to [target]'s wounds.", null COMBAT_MESSAGE_RANGE, F)
+			visible_message("<span class='nicegreen'>[src] gently tends to [target]'s wounds.</span>", "<span class='nicegreen'>You gently tend to [target]'s wounds.", null, COMBAT_MESSAGE_RANGE, F)
 			to_chat(F, "<span class='nicegreen'>[src] gently tends to your wounds.</span>")
 			F.health += 5
 	else if(isanimal(target) && target != src)
