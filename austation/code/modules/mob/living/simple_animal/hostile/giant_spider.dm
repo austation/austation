@@ -44,7 +44,7 @@
 			mind.store_memory("<span class='bold'>[flavortext]</span>")
 
 /mob/living/simple_animal/hostile/poison/giant_spider/friendly/AttackingTarget()
-	if(istype(target, /mob/living/simple_animal/hostile/poison/giant_spider/friendly)) // if this is well recieved I might let friendly spooders tend injuries of other mobs too.
+	if(istype(target, /mob/living/simple_animal/hostile/poison/giant_spider/friendly) && target != src) // if this is well recieved I might let friendly spooders tend injuries of other mobs too.
 		var/mob/living/simple_animal/hostile/poison/giant_spider/friendly/F = target
 		if(F.health >= F.maxHealth)
 			to_chat(src, "<span class='notice'>[target] is already fully healed!")
