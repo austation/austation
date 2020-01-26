@@ -1,0 +1,4 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - rscadd: "you can now craft canvases with cloth!"
