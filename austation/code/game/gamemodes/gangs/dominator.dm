@@ -27,7 +27,7 @@
 	update_icon()
 
 /obj/machinery/dominator/Destroy()
-	if(!(stat & BROKEN))
+	if(!(machine_stat & BROKEN))
 		set_broken()
 	GLOB.poi_list.Remove(src)
 	gang = null
@@ -48,7 +48,7 @@
 
 /obj/machinery/dominator/update_icon()
 	cut_overlays()
-	if(!(stat & BROKEN))
+	if(!(machine_stat & BROKEN))
 		icon_state = "dominator-active"
 		if(operating)
 			var/mutable_appearance/dominator_overlay = mutable_appearance('icons/obj/machines/dominator.dmi', "dominator-overlay")
@@ -64,7 +64,7 @@
 
 /obj/machinery/dominator/examine(mob/user)
 	. += ..()
-	if(!(stat & BROKEN))
+	if(!(machine_stat & BROKEN))
 		if(gang && gang.domination_time != NOT_DOMINATING)
 			if(gang.domination_time > world.time)
 				to_chat(user, "<span class='notice'>Hostile Takeover in progress. Estimated [gang.domination_time_remaining()] seconds remain.</span>")
@@ -123,7 +123,7 @@
 		if(obj_integrity/max_integrity > 0.66)
 			if(prob(damage_amount*2))
 				spark_system.start()
-		else if(!(stat & BROKEN))
+		else if(!(machine_stat & BROKEN))
 			spark_system.start()
 			update_icon()
 
@@ -134,7 +134,7 @@
 
 /obj/machinery/dominator/deconstruct(disassembled = TRUE)
 	if(!(flags_1 & NODECONSTRUCT_1))
-		if(!(stat & BROKEN))
+		if(!(machine_stat & BROKEN))
 			set_broken()
 		new /obj/item/stack/sheet/plasteel(src.loc)
 	qdel(src)
@@ -144,7 +144,7 @@
 	..()
 
 /obj/machinery/dominator/attack_hand(mob/user)
-	if(operating || (stat & BROKEN))
+	if(operating || (machine_stat & BROKEN))
 		examine(user)
 		return
 
