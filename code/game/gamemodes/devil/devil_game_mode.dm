@@ -4,7 +4,11 @@
 	report_type = "devil"
 	antag_flag = ROLE_DEVIL
 	false_report_weight = 1
+<<<<<<< HEAD
 	protected_jobs = list("Lawyer", "Curator", "Chaplain", "Head of Security", "Head of Personnel",  "Captain", "AI") // austation -- HOP can no longer be antag
+=======
+	protected_jobs = list("Prisoner", "Lawyer", "Curator", "Chaplain", "Head of Security", "Captain", "AI")
+>>>>>>> 8b19d797ca... [Ready] Prisoner role (#48819)
 	required_players = 0
 	required_enemies = 1
 	recommended_enemies = 4

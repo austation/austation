@@ -12,7 +12,11 @@ GLOBAL_VAR(changeling_team_objective_type) //If this is not null, we hand our th
 	antag_flag = ROLE_CHANGELING
 	false_report_weight = 10
 	restricted_jobs = list("AI", "Cyborg")
+<<<<<<< HEAD
 	protected_jobs = list("Security Officer", "Warden", "Detective", "Head of Security", "Head of Personnel", "Captain") // austation -- HOP can no longer be antag
+=======
+	protected_jobs = list("Prisoner", "Security Officer", "Warden", "Detective", "Head of Security", "Captain")
+>>>>>>> 8b19d797ca... [Ready] Prisoner role (#48819)
 	required_players = 15
 	required_enemies = 1
 	recommended_enemies = 4

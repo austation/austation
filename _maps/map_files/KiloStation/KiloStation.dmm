@@ -8066,7 +8066,7 @@
 /obj/effect/decal/cleanable/blood/gibs/limb,
 /obj/machinery/atmospherics/components/unary/vent_pump/on,
 /turf/open/floor/plasteel/showroomfloor,
-/area/security/prison)
+/area/security/prison/toilet)
 "anb" = (
 /obj/effect/turf_decal/tile/purple{
 	dir = 4
@@ -8318,7 +8318,7 @@
 	dir = 1
 	},
 /turf/open/floor/plasteel/showroomfloor,
-/area/security/prison)
+/area/security/prison/toilet)
 "anv" = (
 /obj/machinery/computer/secure_data{
 	dir = 8
@@ -47502,7 +47502,7 @@
 	dir = 4
 	},
 /turf/open/floor/plasteel/dark,
-/area/security/prison)
+/area/security/prison/toilet)
 "btj" = (
 /obj/effect/turf_decal/tile/brown,
 /obj/effect/turf_decal/tile/brown{
@@ -51953,7 +51953,7 @@
 	dir = 1
 	},
 /turf/open/floor/plasteel/showroomfloor,
-/area/security/prison)
+/area/security/prison/toilet)
 "bAl" = (
 /obj/effect/turf_decal/tile/green{
 	dir = 4
@@ -57702,8 +57702,9 @@
 	dir = 1;
 	pixel_y = -22
 	},
+/obj/effect/landmark/start/prisoner,
 /turf/open/floor/plasteel/showroomfloor,
-/area/security/prison)
+/area/security/prison/toilet)
 "bIU" = (
 /obj/machinery/camera{
 	c_tag = "Atmospherics Tank - O2";
@@ -58188,7 +58189,7 @@
 	dir = 8
 	},
 /turf/open/floor/plasteel/dark,
-/area/security/prison)
+/area/security/prison/toilet)
 "bJC" = (
 /obj/machinery/status_display/ai,
 /turf/closed/wall,
@@ -75452,7 +75453,7 @@
 	},
 /obj/structure/cable,
 /turf/open/floor/plasteel/dark,
-/area/security/prison)
+/area/security/prison/toilet)
 "cjL" = (
 /obj/effect/turf_decal/tile/red,
 /obj/effect/turf_decal/tile/red{
@@ -75476,8 +75477,9 @@
 	pixel_y = -22
 	},
 /obj/structure/cable,
+/obj/effect/landmark/start/prisoner,
 /turf/open/floor/plasteel/showroomfloor,
-/area/security/prison)
+/area/security/prison/toilet)
 "cjM" = (
 /obj/effect/turf_decal/tile/red,
 /obj/effect/turf_decal/tile/red{
@@ -75506,7 +75508,7 @@
 	},
 /obj/structure/cable,
 /turf/open/floor/plasteel/showroomfloor,
-/area/security/prison)
+/area/security/prison/toilet)
 "cjN" = (
 /obj/machinery/door/airlock/security/glass{
 	name = "Long-Term Cell 3";
@@ -75524,7 +75526,7 @@
 	},
 /obj/structure/cable,
 /turf/open/floor/plasteel/dark,
-/area/security/prison)
+/area/security/prison/toilet)
 "cjO" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
@@ -86894,7 +86896,7 @@
 /obj/effect/decal/cleanable/blood/gibs/old,
 /obj/machinery/atmospherics/components/unary/vent_pump/on,
 /turf/open/floor/plasteel/showroomfloor,
-/area/security/prison)
+/area/security/prison/toilet)
 "cCv" = (
 /obj/structure/bed,
 /obj/item/bedsheet/black,
@@ -86921,7 +86923,7 @@
 	dir = 1
 	},
 /turf/open/floor/plasteel/showroomfloor,
-/area/security/prison)
+/area/security/prison/toilet)
 "cCw" = (
 /obj/effect/turf_decal/tile/red,
 /obj/effect/turf_decal/tile/red{
@@ -86947,7 +86949,7 @@
 	network = list("ss13","prison")
 	},
 /turf/open/floor/plasteel/showroomfloor,
-/area/security/prison)
+/area/security/prison/toilet)
 "cCx" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
@@ -88920,7 +88922,7 @@
 	network = list("ss13","prison")
 	},
 /turf/open/floor/plasteel/showroomfloor,
-/area/security/prison)
+/area/security/prison/toilet)
 "cFS" = (
 /obj/structure/lattice/catwalk,
 /obj/effect/landmark/carpspawn,
@@ -93462,7 +93464,7 @@
 	dir = 8
 	},
 /turf/open/floor/plasteel/dark,
-/area/security/prison)
+/area/security/prison/toilet)
 "cPb" = (
 /obj/effect/turf_decal/tile/neutral{
 	dir = 4
@@ -93534,8 +93536,9 @@
 	dir = 1;
 	pixel_y = -22
 	},
+/obj/effect/landmark/start/prisoner,
 /turf/open/floor/plasteel/showroomfloor,
-/area/security/prison)
+/area/security/prison/toilet)
 "cQP" = (
 /obj/machinery/door/airlock/security/glass{
 	name = "Long-Term Cell 2";
@@ -93552,7 +93555,7 @@
 	dir = 8
 	},
 /turf/open/floor/plasteel/dark,
-/area/security/prison)
+/area/security/prison/toilet)
 "cRB" = (
 /obj/structure/table,
 /obj/item/paper_bin,
@@ -93663,7 +93666,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/atmospherics/components/unary/vent_pump/on,
 /turf/open/floor/plasteel/showroomfloor,
-/area/security/prison)
+/area/security/prison/toilet)
 "cTl" = (
 /obj/machinery/button/flasher{
 	id = "PCell 3";
