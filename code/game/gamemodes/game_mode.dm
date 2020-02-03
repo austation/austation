@@ -65,6 +65,9 @@
 		if((player.client)&&(player.ready == PLAYER_READY_TO_PLAY))
 			playerC++
 	if(!GLOB.Debug2)
+		var/list/min_pop = config.Get(/datum/config_entry/keyed_list/min_pop) //Austation begin -- Allows for overriding of population requirements for gamemodes, will cause errors if set too low
+		if((config_tag in min_pop))
+			required_players = min_pop[config_tag] //Austation end
 		if(playerC < required_players || (maximum_players >= 0 && playerC > maximum_players))
 			return 0
 	antag_candidates = get_players_for_role(antag_flag)
@@ -164,7 +167,8 @@
 
 	for(var/mob/living/carbon/human/H in living_crew)
 		if(H.client && H.client.prefs.allow_midround_antag && !is_centcom_level(H.z))
-			antag_candidates += H
+			if(!is_banned_from(H.ckey, CATBAN)) // austation -- ports catbans
+				antag_candidates += H
 
 	if(!antag_candidates)
 		message_admins("Convert_roundtype failed due to no antag candidates.")
@@ -363,7 +367,8 @@
 	// Ultimate randomizing code right here
 	for(var/mob/dead/new_player/player in GLOB.player_list)
 		if(player.client && player.ready == PLAYER_READY_TO_PLAY)
-			players += player
+			if(!is_banned_from(player.ckey, CATBAN)) // austation -- ports catbans
+				players += player
 
 	// Shuffling, the players list is now ping-independent!!!
 	// Goodbye antag dante

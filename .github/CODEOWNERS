@@ -78,3 +78,7 @@
 /code/__DEFINES/components.dm @Cyberboss @ninjanomnom
 /code/controllers/subsystem/air.dm @duncathan @MrStonedOne
 /code/datums/components/ @Cyberboss @ninjanomnom
+
+# Austation
+# Mostly to make sure I notice changes to reagents or vendors after cobbychem revert
+/austation/ @MCterra10
