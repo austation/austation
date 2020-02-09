@@ -58,10 +58,10 @@
 	path = /obj/item/clothing/neck/tie/horrible
 	cost = 1000
 
-/datum/gear/accessory/petcollar
+/* austation begin -- no /datum/gear/accessory/petcollar
 	display_name = "pet collar"
 	path = /obj/item/clothing/neck/petcollar
-	cost = 20000
+	cost = 20000 austation end */
 
 /datum/gear/accessory/necklace
 	display_name = "necklace, gold"
