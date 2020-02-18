@@ -153,10 +153,10 @@ GLOBAL_VAR(restart_counter)
 /world/Topic(T, addr, master, key)
 
 	var/list/response[] = list()
-	if (SSfail2topic?.IsRateLimited(addr))
+	/*if (SSfail2topic?.IsRateLimited(addr)) austation begin -- disabling fail2topic because it's unironically breaking shit. Will try it again once 513 is working.
 		response["statuscode"] = 429
 		response["response"] = "Rate limited."
-		return json_encode(response)
+		return json_encode(response)*/
 
 	if (length(T) > CONFIG_GET(number/topic_max_size))
 		response["statuscode"] = 413
