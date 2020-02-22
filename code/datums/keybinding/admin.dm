@@ -22,7 +22,7 @@
 	description = "Speak with other mentors."
 
 /datum/keybinding/admin/mentor_say/down(client/user)
-	if (!user.holder) return
+	if (!user.holder && !user.is_mentor()) return
 	user.get_mentor_say()
 	return TRUE
 
