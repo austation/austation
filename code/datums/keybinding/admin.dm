@@ -22,7 +22,7 @@
 	description = "Speak with other mentors."
 
 /datum/keybinding/admin/mentor_say/down(client/user)
-	if (!user.holder && !user.is_mentor()) return
+	if (!user.holder && !user.is_mentor()) return // austation -- mentorsay keybind now actually works for mentors
 	user.get_mentor_say()
 	return TRUE
 

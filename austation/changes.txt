@@ -23,3 +23,5 @@ Effectism:Optimized lighting algorithms from citadel
 Terra:Keep borg stuns
 Terra:Repo rebase December 2019
 Terra:Repo rebase to Beestation Feb 2020
+Terra:Fixes mentorsay for mentors
+Terra:Metacoins no longer issued for sandbox rounds

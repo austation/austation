@@ -1,4 +1,5 @@
 /client/proc/process_endround_metacoin()
+	if(GLOB.master_mode == "sandbox")	return // austation -- metacoins are no longer issued for sandbox rounds
 	if(!mob)	return
 	var/mob/M = mob
 	if(M.mind && !isnewplayer(M))
