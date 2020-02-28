@@ -1,10 +1,7 @@
-<<<<<<< HEAD
-FROM tgstation/byond:513.1505 as base
-=======
+
 FROM beestation/byond:513.1511 as base
 ONBUILD ENV BYOND_MAJOR=513
 ONBUILD ENV BYOND_MINOR=1511
->>>>>>> 19cf3d1ac7... Docker updates phase 1 (#1243)
 
 FROM base as build_base
 
