@@ -50,6 +50,7 @@
 		playsound(src, 'sound/effects/bang.ogg', 50, 1)
 		to_chat(M, "<span class='warning'>This wall is far too strong for you to destroy.</span>")
 
+/* austation -- sonic jackhammer can no longer crush walls
 /turf/closed/wall/r_wall/try_destroy(obj/item/I, mob/user, turf/T)
 	if(istype(I, /obj/item/pickaxe/drill/jackhammer))
 		to_chat(user, "<span class='notice'>You begin to smash though [src]...</span>")
@@ -61,6 +62,7 @@
 			dismantle_wall()
 			return TRUE
 	return FALSE
+*/
 
 /turf/closed/wall/r_wall/try_decon(obj/item/W, mob/user, turf/T)
 	//DECONSTRUCTION
