@@ -110,9 +110,11 @@
 	else if(W.tool_behaviour == TOOL_WELDER)
 		if(W.use_tool(src, user, 0, volume=50))
 			dismantle(user, TRUE)
+	/* austation begin -- sonic jackhammer can no longer crush walls
 	else if(istype(W, /obj/item/pickaxe/drill/jackhammer))
 		W.play_tool_sound(src)
 		dismantle(user, TRUE)
+	austation end */
 	else
 		return ..()
 

@@ -179,7 +179,8 @@
 	var/turf/T = user.loc	//get user's location for delay checks
 
 	//the istype cascade has been spread among various procs for easy overriding
-	if(try_clean(W, user, T) || try_wallmount(W, user, T) || try_decon(W, user, T) || try_destroy(W, user, T))
+	// austation -- sonic jackhammer can no longer crush walls
+	if(try_clean(W, user, T) || try_wallmount(W, user, T) || try_decon(W, user, T))
 		return
 
 	return ..()
@@ -235,6 +236,7 @@
 	return FALSE
 
 
+/* austation begin -- sonic jackhammer can no longer crush walls
 /turf/closed/wall/proc/try_destroy(obj/item/I, mob/user, turf/T)
 	if(istype(I, /obj/item/pickaxe/drill/jackhammer))
 		if(!iswallturf(src))
@@ -247,6 +249,7 @@
 								"<span class='italics'>You hear the grinding of metal.</span>")
 			return TRUE
 	return FALSE
+*/
 
 /turf/closed/wall/singularity_pull(S, current_size)
 	..()
