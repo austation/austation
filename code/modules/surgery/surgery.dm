@@ -87,6 +87,7 @@
 	if(locate(/obj/structure/table/optable/abductor, T))
 		propability = 1.2
 	if(locate(/obj/structure/table/optable, T))
+		// austation -- operating table now has 100% success chance again
 		propability = 1.0
 	else if(locate(/obj/structure/table, T))
 		propability = 0.6
