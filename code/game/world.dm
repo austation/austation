@@ -302,7 +302,7 @@ GLOBAL_VAR(restart_counter)
 		features += "hosted by <b>[hostedby]</b>"
 
 	if (features)
-		s += ": [jointext(features, ", ")]"
+		s += "<b>[jointext(features, ", ")]</b>"
 
 	status = s
 
