@@ -1,6 +1,0 @@
-author: "AustationBot"
-delete-after: True
-changes: 
-  - rscadd: "Added wires to rad collectors"
-  - rscdel: "Removed light in emitter room"
-  - tweak: "Moved camera in emitter room"
