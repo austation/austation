@@ -12,6 +12,7 @@
 #include "code\game\objects\items\robot\robot_upgrades.dm"
 #include "code\game\objects\structures\mirror.dm"
 #include "code\modules\admin\topic.dm"
+#include "code\modules\admin\verbs\fix_air.dm"
 #include "code\modules\admin\verbs\mapping.dm"
 #include "code\modules\clothing\spacesuit\miscellaneous.dm"
 #include "code\modules\food_and_drinks\drinks\drinks.dm"

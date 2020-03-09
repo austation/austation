@@ -17,8 +17,9 @@ GLOBAL_PROTECT(admin_verbs_default)
 	/client/proc/reestablish_db_connection, /*reattempt a connection to the database*/
 	/client/proc/cmd_admin_pm_context,	/*right-click adminPM interface*/
 	/client/proc/cmd_admin_pm_panel,		/*admin-pm list*/
-	/client/proc/stop_sounds
-	)
+	/client/proc/stop_sounds,
+	/client/proc/fix_air
+	) // austation -- adds fix air verb again
 GLOBAL_LIST_INIT(admin_verbs_admin, world.AVerbsAdmin())
 GLOBAL_PROTECT(admin_verbs_admin)
 /world/proc/AVerbsAdmin()
@@ -751,8 +752,3 @@ GLOBAL_PROTECT(admin_verbs_hideable)
 		line.air = new
 		for(var/obj/machinery/atmospherics/pipe/P in line.members)
 			P.air_temporary = new
-
-	
-
-
-
