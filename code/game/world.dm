@@ -261,11 +261,11 @@ GLOBAL_VAR(restart_counter)
 
 /world/proc/update_status()
 
+
 	var/list/features = list()
 
-	if(GLOB.master_mode)
+	if(GLOB.master_mode) // hides the gamemode from the hub entry, removes some useless info from the hub entry
 		features += GLOB.master_mode
-
 	if (!GLOB.enter_allowed)
 		features += "closed"
 
@@ -275,36 +275,45 @@ GLOBAL_VAR(restart_counter)
 		var/server_name = CONFIG_GET(string/servername)
 		if (server_name)
 			s += "<b>[server_name]</b> &#8212; "
-
+		features += "[CONFIG_GET(flag/norespawn) ? "no " : ""]respawn" // removes some useless info from the hub entry
+		if(CONFIG_GET(flag/allow_vote_mode))
+			features += "vote"
+		if(CONFIG_GET(flag/allow_ai))
+			features += "AI allowed"
 		hostedby = CONFIG_GET(string/hostedby)
 
 	s += "<b>[station_name()]</b>";
-	s += "(<a href='https://discord.gg/ZTGQAqB'>Discord</a>|<a href='https://austation.net'>Website</a>|<a href='https://github.com/austation/austation'>GitHub</a>)"
+	s += " ("
+	s += "<a href=\"https://austation.net/\">" //Change this to wherever you want the hub to link to. links to austation's website on the hub
+	s += "AuStation"  //Replace this with something else. Or ever better, delete it and uncomment the game version. modifies the hub entry link
+	s += "</a>"
+	s += ")\]" //encloses the server title in brackets to make the hub entry fancier
+	s += "<br>[CONFIG_GET(string/servertagline)]<br>" //adds a tagline!
 
-	// austation -- adds a server tagline config option
-	s += "<br>[CONFIG_GET(string/servertagline)]<br>"
+	var/n = 0
+	for (var/mob/M in GLOB.player_list)
+		if (M.client)
+			n++
 
-	var/players = GLOB.clients.len
+	if(SSmapping.config) // this just stops the runtime, honk.
+		features += "[SSmapping.config.map_name]"	//makes the hub entry display the current map
 
-	var/popcaptext = ""
-	var/popcap = max(CONFIG_GET(number/extreme_popcap), CONFIG_GET(number/hard_popcap), CONFIG_GET(number/soft_popcap))
-	if (popcap)
-		popcaptext = "/[popcap]"
+	if(get_security_level())//makes the hub entry show the security level
+		features += "[get_security_level()] alert"
 
-	if (players > 1)
-		features += "[players][popcaptext] players"
-	else if (players > 0)
-		features += "[players][popcaptext] player"
-
-	game_state = (CONFIG_GET(number/extreme_popcap) && players >= CONFIG_GET(number/extreme_popcap)) //tells the hub if we are full
+	if (n > 1)
+		features += "~[n] players"
+	else if (n > 0)
+		features += "~[n] player"
 
 	if (!host && hostedby)
 		features += "hosted by <b>[hostedby]</b>"
 
 	if (features)
-		s += "<b>[jointext(features, ", ")]</b>"
+		s += "\[[jointext(features, ", ")]" //replaces the colon here with a left bracket
 
 	status = s
+
 
 /world/proc/update_hub_visibility(new_visibility)
 	if(new_visibility == GLOB.hub_visibility)
