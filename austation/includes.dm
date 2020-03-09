@@ -15,6 +15,7 @@
 #include "code\modules\admin\verbs\mapping.dm"
 #include "code\modules\clothing\spacesuit\miscellaneous.dm"
 #include "code\modules\food_and_drinks\drinks\drinks.dm"
+#include "code\modules\jobs\job_types\emt.dm"
 #include "code\modules\jobs\job_types\job.dm"
 #include "code\modules\mapping\writer.dm"
 #include "code\modules\mob\dead\new_player\new_player.dm"
