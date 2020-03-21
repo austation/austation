@@ -480,6 +480,7 @@
 // austation begin -- bye bye catgirl xenobiologists
 /datum/reagent/mutationtoxin/felinid/on_mob_life(mob/living/carbon/human/H)
 	to_chat(H, "<span class='userdanger'>Your body rejects the mutation!</span>")
+	H.reagents.del_reagent(type)
 // austation ends
 
 /datum/reagent/mutationtoxin/lizard
