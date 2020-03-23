@@ -107640,6 +107640,7 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
 	},
+/obj/machinery/smartfridge/organ,
 /turf/open/floor/plasteel/dark,
 /area/medical/surgery)
 "dyK" = (
