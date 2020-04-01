@@ -1,6 +1,15 @@
 
 /////////////////////////////////////////////////PIZZA////////////////////////////////////////
 
+<<<<<<< HEAD
+=======
+/obj/item/reagent_containers/food/snacks/pizza/Initialize()
+	. = ..()
+	GLOB.pizza_tracker++
+	if(GLOB.pizza_goal > 0)
+		desc = "[initial(desc)] This is the [GLOB.pizza_tracker]th pizza that the station has baked out of our goal of [GLOB.pizza_goal]!"
+
+>>>>>>> dc195554b7... Fixes pizza (#1452)
 /obj/item/reagent_containers/food/snacks/pizza
 	icon = 'icons/obj/food/pizzaspaghetti.dmi'
 	w_class = WEIGHT_CLASS_NORMAL
