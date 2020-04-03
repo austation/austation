@@ -102,7 +102,6 @@
 		return FALSE
 	switch(borg_icon)
 		if("Default")
-			R.icon = 'austation/icons/mob/robot.dmi'
 			cyborg_base_icon = "janitor"
 		if("Can")
 			R.icon = 'austation/icons/mob/robot.dmi'
