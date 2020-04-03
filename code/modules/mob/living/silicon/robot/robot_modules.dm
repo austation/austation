@@ -547,11 +547,11 @@
 			cyborg_base_icon = "tophat"
 			special_light_key = null
 			hat_offset = INFINITY //He is already wearing a hat
-		// austation -- adding choice and defining the light sprite
+		// austation begin -- adding choice and defining the light sprite
 		if("Heavy")
 			cyborg_base_icon = "heavyserv"
 			special_light_key = "heavyserv"
-		// ausation end
+		// austation end
 
 	return ..()
 
@@ -607,7 +607,7 @@
 			special_light_key = "miner"
 		if("Spider Miner")
 			cyborg_base_icon = "spidermin"
-		// autation -- adding choices
+		// austation begin -- adding choices
 		if("Marina")
 			cyborg_base_icon = "marinamin"
 		if("Heavy")
