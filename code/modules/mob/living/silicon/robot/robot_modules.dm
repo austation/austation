@@ -294,26 +294,6 @@
 	can_be_pushed = FALSE
 	hat_offset = 3
 
-/obj/item/robot_module/medical/be_transformed_to(obj/item/robot_module/old_module) //Pick a icon starts here
-	var/mob/living/silicon/robot/R = loc
-	var/borg_icon = input(R, "Select an icon!", "Robot Icon", null) as null|anything in list("Default", "Heavy", "Sleek", "Marina", "Droid", "Eyebot")
-	if(!borg_icon)
-		return FALSE
-	switch(borg_icon)
-		if("Default")
-			cyborg_base_icon = "medical"
-		if("Droid")
-			cyborg_base_icon = "cmedical"
-			hat_offset = 4
-		if("Sleek")
-			cyborg_base_icon = "sleekmed"
-		if("Marina")
-			cyborg_base_icon = "marinamed"
-		if("Eyebot")
-			cyborg_base_icon = "eyebotmed"
-		if("Heavy")
-			cyborg_base_icon = "heavymed"
-	return ..()
 
 /obj/item/robot_module/engineering
 	name = "Engineering"
@@ -350,28 +330,6 @@
 	moduleselect_icon = "engineer"
 	magpulsing = TRUE
 	hat_offset = -4
-
-/obj/item/robot_module/engineering/be_transformed_to(obj/item/robot_module/old_module) //Pick a icon starts here
-	var/mob/living/silicon/robot/R = loc
-	var/borg_icon = input(R, "Select an icon!", "Robot Icon", null) as null|anything in list("Default", "Heavy", "Sleek", "Marina", "Can", "Spider", "Handy")
-	if(!borg_icon)
-		return FALSE
-	switch(borg_icon)
-		if("Default")
-			cyborg_base_icon = "engineer"
-		if("Heavy")
-			cyborg_base_icon = "heavyeng"
-		if("Sleek")
-			cyborg_base_icon = "sleekeng"
-		if("Marina")
-			cyborg_base_icon = "marinaeng"
-		if("Can")
-			cyborg_base_icon = "caneng"
-		if("Spider")
-			cyborg_base_icon = "spidereng"
-		if("Handy")
-			cyborg_base_icon = "handyeng"
-	return ..()
 
 
 /obj/item/robot_module/deathsquad
@@ -418,25 +376,6 @@
 	to_chat(loc, "<span class='userdanger'>While you have picked the security module, you still have to follow your laws, NOT Space Law. \
 	For Asimov, this means you must follow criminals' orders unless there is a law 1 reason not to.</span>")
 
-/obj/item/robot_module/security/be_transformed_to(obj/item/robot_module/old_module) //Pick a icon starts here
-	var/mob/living/silicon/robot/R = loc
-	var/borg_icon = input(R, "Select an icon!", "Robot Icon", null) as null|anything in list("Default", "Heavy", "Sleek", "Can", "Marina", "Spider")
-	if(!borg_icon)
-		return FALSE
-	switch(borg_icon)
-		if("Default")
-			cyborg_base_icon = "sec"
-		if("Heavy")
-			cyborg_base_icon = "heavysec"
-		if("Sleek")
-			cyborg_base_icon = "sleeksec"
-		if("Can")
-			cyborg_base_icon = "cansec"
-		if("Marina")
-			cyborg_base_icon = "marinasec"
-		if("Spider")
-			cyborg_base_icon = "spidersec"
-	return ..()
 
 /obj/item/robot_module/security/respawn_consumable(mob/living/silicon/robot/R, coeff = 1)
 	..()
@@ -475,17 +414,6 @@
 	to_chat(loc, "<span class='userdanger'>Under ASIMOV, you are an enforcer of the PEACE and preventer of HUMAN HARM. \
 	You are not a security module and you are expected to follow orders and prevent harm above all else. Space law means nothing to you.</span>")
 
-/obj/item/robot_module/peacekeeper/be_transformed_to(obj/item/robot_module/old_module) //Pick a icon starts here
-	var/mob/living/silicon/robot/R = loc
-	var/borg_icon = input(R, "Select an icon!", "Robot Icon", null) as null|anything in list("Default", "Spider")
-	if(!borg_icon)
-		return FALSE
-	switch(borg_icon)
-		if("Default")
-			cyborg_base_icon = "peace"
-		if("Spider")
-			cyborg_base_icon = "whitespider"
-	return ..()
 
 /obj/item/robot_module/janitor
 	name = "Janitor"
@@ -513,22 +441,6 @@
 	moduleselect_icon = "janitor"
 	hat_offset = -5
 	clean_on_move = TRUE
-
-/obj/item/robot_module/janitor/be_transformed_to(obj/item/robot_module/old_module) //Pick a icon starts here
-	var/mob/living/silicon/robot/R = loc
-	var/borg_icon = input(R, "Select an icon!", "Robot Icon", null) as null|anything in list("Default", "Can", "Marina", "Sleek")
-	if(!borg_icon)
-		return FALSE
-	switch(borg_icon)
-		if("Default")
-			cyborg_base_icon = "janitor"
-		if("Can")
-			cyborg_base_icon = "canjan"
-		if("Marina")
-			cyborg_base_icon = "marinajan"
-		if("Sleek")
-			cyborg_base_icon = "sleekjan"
-	return ..()
 
 
 /obj/item/reagent_containers/spray/cyborg_drying
@@ -622,7 +534,7 @@
 
 /obj/item/robot_module/butler/be_transformed_to(obj/item/robot_module/old_module)
 	var/mob/living/silicon/robot/R = loc
-	var/borg_icon = input(R, "Select an icon!", "Robot Icon", null) as null|anything in list("Waitress", "Butler", "Tophat", "Kent", "Bro", "Heavy")//Added Heavy
+	var/borg_icon = input(R, "Select an icon!", "Robot Icon", null) as null|anything in list("Waitress", "Butler", "Tophat", "Kent", "Bro", "Heavy")//Austion added 'heavy'
 	if(!borg_icon)
 		return FALSE
 	switch(borg_icon)
@@ -640,9 +552,11 @@
 			cyborg_base_icon = "tophat"
 			special_light_key = null
 			hat_offset = INFINITY //He is already wearing a hat
+		//Austaion defining what to pick
 		if("Heavy")
 			cyborg_base_icon = "heavyserv"
 			special_light_key = "heavyserv"
+		//Autation need to define the light as it would pick the wrong light sprite without it.
 
 	return ..()
 
@@ -687,7 +601,7 @@
 
 /obj/item/robot_module/miner/be_transformed_to(obj/item/robot_module/old_module)
 	var/mob/living/silicon/robot/R = loc
-	var/borg_icon = input(R, "Select an icon!", "Robot Icon", null) as null|anything in sortList(list("Lavaland Miner", "Asteroid Miner", "Spider Miner", "Marina", "Heavy", "Can", "Droid", "Sleek"))
+	var/borg_icon = input(R, "Select an icon!", "Robot Icon", null) as null|anything in sortList(list("Lavaland Miner", "Asteroid Miner", "Spider Miner", "Marina", "Heavy", "Can", "Droid", "Sleek"))//Austation : added additonal choices to list
 	if(!borg_icon)
 		return FALSE
 	switch(borg_icon)
@@ -698,6 +612,7 @@
 			special_light_key = "miner"
 		if("Spider Miner")
 			cyborg_base_icon = "spidermin"
+		//Autation start
 		if("Marina")
 			cyborg_base_icon = "marinamin"
 		if("Heavy")
@@ -708,6 +623,7 @@
 			cyborg_base_icon = "cminer"
 		if("Sleek")
 			cyborg_base_icon = "sleekmin"
+		//Austation end
 	return ..()
 
 /obj/item/robot_module/miner/rebuild_modules()
