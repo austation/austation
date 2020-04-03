@@ -20,6 +20,7 @@
 #include "code\modules\jobs\job_types\job.dm"
 #include "code\modules\mapping\writer.dm"
 #include "code\modules\mob\dead\new_player\new_player.dm"
+#include "code\modules\mob\living\silicon\robot\robot_modules.dm"
 #include "code\modules\reagents\chemistry\reagents\other_reagents.dm"
 #include "code\modules\reagents\chemistry\recipes\others.dm"
 #include "code\modules\research\designs\AI_module_designs.dm"
