@@ -24,6 +24,34 @@
 	if(B && !B.stat)
 		return TRUE
 	return FALSE
+<<<<<<< HEAD
+=======
+*/
+
+GLOBAL_VAR_INIT(pizza_tracker, 0)
+GLOBAL_VAR_INIT(pizza_goal, 0)
+
+/datum/station_goal/pizza_delivery
+	name = "Pizza Delivery"
+
+/datum/station_goal/pizza_delivery/New()
+	..()
+	GLOB.pizza_goal = round((GLOB.player_list.len * 1.5) + rand(0, GLOB.player_list.len))
+
+/datum/station_goal/pizza_delivery/get_report()
+	return {"Incoming delivery order from Sector \Roman[rand(1,99)].
+	 We need you to bake [GLOB.pizza_goal] pizzas aboard your station.
+
+	 Remember: Better Ingredients. Better Pizza.
+	 -Papa Johns Delivery Command"}
+
+/datum/station_goal/pizza_delivery/check_completion()
+	if(..())
+		return TRUE
+	if(GLOB.pizza_tracker >= GLOB.pizza_goal)
+		return TRUE
+	return FALSE
+>>>>>>> a95d9a4e8b... Pizza Gulag (#1466)
 
 /obj/machinery/bsa
 	icon = 'icons/obj/machines/particle_accelerator.dmi'
