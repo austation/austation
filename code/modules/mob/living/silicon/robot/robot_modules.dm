@@ -549,6 +549,7 @@
 			hat_offset = INFINITY //He is already wearing a hat
 		// austation begin -- adding choice and defining the light sprite
 		if("Heavy")
+			R.icon = 'austation/icons/mob/robot.dmi'
 			cyborg_base_icon = "heavyserv"
 			special_light_key = "heavyserv"
 		// austation end
@@ -609,14 +610,19 @@
 			cyborg_base_icon = "spidermin"
 		// austation begin -- adding choices
 		if("Marina")
+			R.icon = 'austation/icons/mob/robot.dmi'
 			cyborg_base_icon = "marinamin"
 		if("Heavy")
+			R.icon = 'austation/icons/mob/robot.dmi'
 			cyborg_base_icon = "heavymin"
 		if("Can")
+			R.icon = 'austation/icons/mob/robot.dmi'
 			cyborg_base_icon = "canmin"
 		if("Droid")
+			R.icon = 'austation/icons/mob/robot.dmi'
 			cyborg_base_icon = "cminer"
 		if("Sleek")
+			R.icon = 'austation/icons/mob/robot.dmi'
 			cyborg_base_icon = "sleekmin"
 		// austation end
 	return ..()
