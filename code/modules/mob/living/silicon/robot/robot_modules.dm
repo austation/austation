@@ -596,7 +596,7 @@
 
 /obj/item/robot_module/miner/be_transformed_to(obj/item/robot_module/old_module)
 	var/mob/living/silicon/robot/R = loc
-	var/borg_icon = input(R, "Select an icon!", "Robot Icon", null) as null|anything in sortList(list("Lavaland Miner", "Asteroid Miner", "Spider Miner", "Marina", "Heavy", "Can", "Droid", "Sleek"))//Austation : added additonal choices to list
+	var/borg_icon = input(R, "Select an icon!", "Robot Icon", null) as null|anything in sortList(list("Lavaland Miner", "Asteroid Miner", "Spider Miner", "Marina", "Heavy", "Can", "Droid", "Sleek"))// austation : added additonal choices to list
 	if(!borg_icon)
 		return FALSE
 	switch(borg_icon)
