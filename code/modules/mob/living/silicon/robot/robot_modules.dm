@@ -329,7 +329,7 @@
 	moduleselect_icon = "engineer"
 	magpulsing = TRUE
 	hat_offset = -4
-	
+
 /obj/item/robot_module/deathsquad
 	name = "Centcom"
 	basic_modules = list(
@@ -529,7 +529,7 @@
 
 /obj/item/robot_module/butler/be_transformed_to(obj/item/robot_module/old_module)
 	var/mob/living/silicon/robot/R = loc
-	var/borg_icon = input(R, "Select an icon!", "Robot Icon", null) as null|anything in list("Waitress", "Butler", "Tophat", "Kent", "Bro")
+	var/borg_icon = input(R, "Select an icon!", "Robot Icon", null) as null|anything in list("Waitress", "Butler", "Tophat", "Kent", "Bro", "Heavy")// austation -- added 'heavy'
 	if(!borg_icon)
 		return FALSE
 	switch(borg_icon)
@@ -547,6 +547,13 @@
 			cyborg_base_icon = "tophat"
 			special_light_key = null
 			hat_offset = INFINITY //He is already wearing a hat
+		// austation begin -- adding choice and defining the light sprite
+		if("Heavy")
+			R.icon = 'austation/icons/mob/robot.dmi'
+			cyborg_base_icon = "heavyserv"
+			special_light_key = "heavyserv"
+		// austation end
+
 	return ..()
 
 /obj/item/robot_module/borgi
@@ -590,7 +597,7 @@
 
 /obj/item/robot_module/miner/be_transformed_to(obj/item/robot_module/old_module)
 	var/mob/living/silicon/robot/R = loc
-	var/borg_icon = input(R, "Select an icon!", "Robot Icon", null) as null|anything in sortList(list("Lavaland Miner", "Asteroid Miner", "Spider Miner"))
+	var/borg_icon = input(R, "Select an icon!", "Robot Icon", null) as null|anything in sortList(list("Lavaland Miner", "Asteroid Miner", "Spider Miner", "Marina", "Heavy", "Can", "Droid", "Sleek"))// austation -- added additonal choices to list
 	if(!borg_icon)
 		return FALSE
 	switch(borg_icon)
@@ -601,6 +608,23 @@
 			special_light_key = "miner"
 		if("Spider Miner")
 			cyborg_base_icon = "spidermin"
+		// austation begin -- adding choices
+		if("Marina")
+			R.icon = 'austation/icons/mob/robot.dmi'
+			cyborg_base_icon = "marinamin"
+		if("Heavy")
+			R.icon = 'austation/icons/mob/robot.dmi'
+			cyborg_base_icon = "heavymin"
+		if("Can")
+			R.icon = 'austation/icons/mob/robot.dmi'
+			cyborg_base_icon = "canmin"
+		if("Droid")
+			R.icon = 'austation/icons/mob/robot.dmi'
+			cyborg_base_icon = "cminer"
+		if("Sleek")
+			R.icon = 'austation/icons/mob/robot.dmi'
+			cyborg_base_icon = "sleekmin"
+		// austation end
 	return ..()
 
 /obj/item/robot_module/miner/rebuild_modules()
