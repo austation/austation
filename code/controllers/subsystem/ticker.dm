@@ -657,10 +657,16 @@ SUBSYSTEM_DEF(ticker)
 		'sound/roundend/its_only_game.ogg',
 		'sound/roundend/yeehaw.ogg',
 		'sound/roundend/disappointed.ogg',
+<<<<<<< HEAD
 		'austation/sound/roundend/ohthatsit.ogg',
 		'sound/roundend/scrunglartiy.ogg',
 		'sound/roundend/whyban.ogg'\
 		) // austation -- New roundend sound ohthatsit.ogg
+=======
+		'sound/roundend/scrunglartiy.ogg',
+		'sound/roundend/whyban.ogg'\
+		)
+>>>>>>> 53b7562999... Cuts ties with our corporate sponsor (#1485)
 
 	SEND_SOUND(world, sound(round_end_sound))
 	text2file(login_music, "data/last_round_lobby_music.txt")

@@ -4,6 +4,10 @@
 #define CREDIT_EASE_DURATION 12
 
 GLOBAL_LIST(end_titles)
+<<<<<<< HEAD
+=======
+GLOBAL_LIST_INIT(patrons, world.file2list("[global.config.directory]/patrons.txt"))
+>>>>>>> 53b7562999... Cuts ties with our corporate sponsor (#1485)
 
 /proc/RollCredits()
 	set waitfor = FALSE
@@ -12,10 +16,16 @@ GLOBAL_LIST(end_titles)
 		GLOB.end_titles += "<br>"
 		GLOB.end_titles += "<br>"
 
+<<<<<<< HEAD
 		var/list/patrons = get_patrons()
 		if(patrons.len)
 			GLOB.end_titles += "<center><h1>Thank you to our patrons!</h1>"
 			for(var/patron in patrons)
+=======
+		if(GLOB.patrons.len)
+			GLOB.end_titles += "<center><h1>Thank you to our patrons!</h1>"
+			for(var/patron in GLOB.patrons)
+>>>>>>> 53b7562999... Cuts ties with our corporate sponsor (#1485)
 				GLOB.end_titles += "<center><h2>[sanitize(patron)]</h2>"
 			GLOB.end_titles += "<br>"
 			GLOB.end_titles += "<br>"
@@ -84,6 +94,7 @@ GLOBAL_LIST(end_titles)
 	. = ..()
 	maptext = null
 
+<<<<<<< HEAD
 
 /proc/get_patrons()
 	var/list/patrons = list()
@@ -93,6 +104,8 @@ GLOBAL_LIST(end_titles)
 
 	return patrons
 
+=======
+>>>>>>> 53b7562999... Cuts ties with our corporate sponsor (#1485)
 /proc/get_contribs()
 	var/list/contribs = list()
 

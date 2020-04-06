@@ -329,7 +329,7 @@
 	moduleselect_icon = "engineer"
 	magpulsing = TRUE
 	hat_offset = -4
-
+	
 /obj/item/robot_module/deathsquad
 	name = "Centcom"
 	basic_modules = list(
