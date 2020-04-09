@@ -1,0 +1,5 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - bugfix: "fixed nooses putting you off center after escaping them"
+  - bugfix: "fixed people staying in a noose if they get beheaded"
