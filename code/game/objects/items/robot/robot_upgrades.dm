@@ -639,7 +639,7 @@
 /obj/item/borg/upgrade/transform/action(mob/living/silicon/robot/R, user = usr)
 	. = ..()
 	if(.)
-		R.module.transform_to(new_module)
+		 . = R.module.transform_to(new_module) // austation -- this needs to return false if transformation fails
 
 /obj/item/borg/upgrade/transform/clown
 	name = "borg module picker (Clown)"
@@ -697,4 +697,4 @@
 	if (.)
 		var/obj/item/borg/apparatus/beaker/extra/E = locate() in R.module.modules
 		if (E)
-			R.module.remove_module(E, TRUE) 
+			R.module.remove_module(E, TRUE)
