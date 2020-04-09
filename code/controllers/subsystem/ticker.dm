@@ -659,7 +659,8 @@ SUBSYSTEM_DEF(ticker)
 		'sound/roundend/disappointed.ogg',
 		'austation/sound/roundend/ohthatsit.ogg',
 		'sound/roundend/scrunglartiy.ogg',
-		'sound/roundend/whyban.ogg'\
+		'sound/roundend/whyban.ogg',
+		'sound/roundend/hullbreach.ogg'\
 		) // austation -- New roundend sound ohthatsit.ogg
 
 	SEND_SOUND(world, sound(round_end_sound))
