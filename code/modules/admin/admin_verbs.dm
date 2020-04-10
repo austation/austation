@@ -753,11 +753,7 @@ GLOBAL_PROTECT(admin_verbs_hideable)
 		line.air = new
 		for(var/obj/machinery/atmospherics/pipe/P in line.members)
 			P.air_temporary = new
-<<<<<<< HEAD
-=======
 
 
 
 
-
->>>>>>> 36010711d3... Adds spawn human verb (for admins) (#1505)
