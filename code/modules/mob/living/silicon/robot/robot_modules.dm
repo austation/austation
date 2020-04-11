@@ -608,22 +608,28 @@
 			special_light_key = "miner"
 		if("Spider Miner")
 			cyborg_base_icon = "spidermin"
+			hat_offset = -3 // austation -- setting offset
 		// austation begin -- adding choices
 		if("Marina")
 			R.icon = 'austation/icons/mob/robot.dmi'
 			cyborg_base_icon = "marinamin"
+			hat_offset = 2
 		if("Heavy")
 			R.icon = 'austation/icons/mob/robot.dmi'
 			cyborg_base_icon = "heavymin"
+			hat_offset = -3
 		if("Can")
 			R.icon = 'austation/icons/mob/robot.dmi'
 			cyborg_base_icon = "canmin"
+			hat_offset = 3
 		if("Droid")
 			R.icon = 'austation/icons/mob/robot.dmi'
 			cyborg_base_icon = "cminer"
+			hat_offset = 4
 		if("Sleek")
 			R.icon = 'austation/icons/mob/robot.dmi'
 			cyborg_base_icon = "sleekmin"
+			hat_offset = -1
 		// austation end
 	return ..()
 
