@@ -1,4 +1,0 @@
-author: "thelaughingbomb"
-delete-after: True
-changes: 
-  - bugfix: "Defines hat_offset on the new sprites"
