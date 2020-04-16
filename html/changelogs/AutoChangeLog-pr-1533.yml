@@ -1,0 +1,4 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - bugfix: "Fixes the tank dispenser, ghosts can no longer dispense oxygen and plasma tanks"
