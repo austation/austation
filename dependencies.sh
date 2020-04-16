@@ -25,8 +25,4 @@ export NODE_VERSION=12
 export PHP_VERSION=5.6
 
 # SpacemanDMM git tag
-<<<<<<< HEAD
-export SPACEMAN_DMM_VERSION=suite-1.2
-=======
 export SPACEMAN_DMM_VERSION=suite-1.4
->>>>>>> d0d37485cf... Updates DreamChecker, fixes a ton of problems, and enables it in the VSCode extension (#1474)
