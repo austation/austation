@@ -36,6 +36,7 @@
 	status_flags = CANPUSH
 	del_on_death = 1
 
+/* austation begin -- hold it right there, criminal scum
 /mob/living/simple_animal/hostile/cat_butcherer/CanAttack(atom/the_target)
 	if(iscarbon(target))
 		var/mob/living/carbon/human/C = target
@@ -43,9 +44,11 @@
 			if(C.stat >= UNCONSCIOUS && (!HAS_TRAIT(C, TRAIT_NOMETABOLISM) || !istype(C.dna.species, /datum/species/ipc)))//unless they need healing
 				return ..()
 			else
-				return FALSE 
+				return FALSE
 	return ..()
+austation end */
 
+/* austation begin -- hold it RIGHT THERE, CRIMINAL SCUM REE
 /mob/living/simple_animal/hostile/cat_butcherer/AttackingTarget()
 	if(iscarbon(target))
 		var/mob/living/carbon/human/L = target
@@ -87,3 +90,4 @@
 				L.reagents.add_reagent(/datum/reagent/medicine/kelotane, 15)
 			return
 	return ..()
+ austation end */
