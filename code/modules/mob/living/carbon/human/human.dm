@@ -284,7 +284,7 @@
 			return
 		var/mob/living/carbon/human/H = usr
 		if(!H.canUseHUD())
-			return 
+			return
 		if(!istype(H.glasses, /obj/item/clothing/glasses/hud)  &istype(H.getorganslot(ORGAN_SLOT_HUD), /obj/item/organ/cyberimp/eyes/hud))
 			return
 
@@ -297,19 +297,17 @@
 		if(href_list["hud"] == "m")
 			if(!istype(H.glasses, /obj/item/clothing/glasses/hud/health) && !istype(H.getorganslot(ORGAN_SLOT_HUD), /obj/item/organ/cyberimp/eyes/hud/medical))
 				return
-			
+
 			// Set physical stats
 			if(href_list["p_stat"])
-				var/health_status = input(usr, "Specify a new physical status for this person.", "Medical HUD", R.fields["p_stat"])
-					in list("Active", "Physically Unfit", "*Unconscious*", "*Deceased*", "Cancel")
+				var/health_status = input(usr, "Specify a new physical status for this person.", "Medical HUD", R.fields["p_stat"]) in list("Active", "Physically Unfit", "*Unconscious*", "*Deceased*", "Cancel")
 				if(health_status && health_status != "Cancel")
 					R.fields["p_stat"] = health_status
 				return
-			
+
 			// Set mental stats
 			if(href_list["m_stat"])
-				var/health_status = input(usr, "Specify a new mental status for this person.", "Medical HUD", R.fields["m_stat"])
-					in list("Stable", "*Watch*", "*Unstable*", "*Insane*", "Cancel")
+				var/health_status = input(usr, "Specify a new mental status for this person.", "Medical HUD", R.fields["m_stat"]) in list("Stable", "*Watch*", "*Unstable*", "*Insane*", "Cancel")
 				if(health_status && health_status != "Cancel")
 					R.fields["m_stat"] = health_status
 				return
@@ -319,7 +317,8 @@
 				if(!(getBruteLoss() || getFireLoss() || getOxyLoss()) && getToxLoss() < 20)
 					to_chat(usr, "<span class='notice'>No external injuries detected.</span><br>")
 					return
-
+				/var/status = ""
+				/var/span = ""
 				if(getBruteLoss())
 					to_chat(usr, "<b>Physical trauma analysis:</b>")
 					for(var/X in bodyparts)
@@ -360,7 +359,7 @@
 				if(getToxLoss() > 20)
 					to_chat(usr, "<span class='danger'>Gathered data is inconsistent with the analysis, possible cause: poisoning.</span>")
 
-					
+
 		if(href_list["photo_front"] || href_list["photo_side"])
 			if(R)
 				if(!H.canUseHUD())
@@ -401,8 +400,7 @@
 				R = find_record("name", perpname, GLOB.data_core.security)
 				if(R)
 					if(href_list["status"])
-						var/setcriminal = input(usr, "Specify a new criminal status for this person.", "Security HUD", R.fields["criminal"])
-							in list("None", "*Arrest*", "Incarcerated", "Paroled", "Discharged", "Cancel")
+						var/setcriminal = input(usr, "Specify a new criminal status for this person.", "Security HUD", R.fields["criminal"]) in list("None", "*Arrest*", "Incarcerated", "Paroled", "Discharged", "Cancel")
 
 						if(setcriminal != "Cancel")
 							if(R)
@@ -458,7 +456,7 @@
 										investigate_log("New Minor Crime: <strong>[t1]</strong>: [t2] | Added to [R.fields["name"]] by [key_name(usr)]", INVESTIGATE_RECORDS)
 
 										to_chat(usr, "<span class='notice'>Successfully added a minor crime.</span>")
-								return
+										return
 
 							if("Major Crime")
 								if(R)
@@ -475,9 +473,9 @@
 										var/crime = GLOB.data_core.createCrimeEntry(t1, t2, allowed_access, station_time_timestamp())
 										GLOB.data_core.addMajorCrime(R.fields["id"], crime)
 										investigate_log("New Major Crime: <strong>[t1]</strong>: [t2] | Added to [R.fields["name"]] by [key_name(usr)]", INVESTIGATE_RECORDS)
-										
+
 										to_chat(usr, "<span class='notice'>Successfully added a major crime.</span>")
-							return
+						return
 
 					if(href_list["view_comment"])
 						if(R)
@@ -896,7 +894,7 @@
 				var/obj/item/bodypart/BP = T.get_bodypart(BODY_ZONE_HEAD)
 				if(BP)
 					BP.receive_damage(36) //so 3 toolbox hits
-				
+
 				T.visible_message("<span class='warning'>[src] curbstomps [T]!</span>", "<span class='warning'>[src] curbstomps you!</span>")
 
 				log_combat(src, T, "curbstomped")
@@ -935,7 +933,7 @@
 
 			src.pixel_x = 0
 			src.pixel_y = 0 //position reset
-		
+
 			src.is_busy = FALSE
 
 //src is the user that will be carrying, target is the mob to be carried
@@ -1155,7 +1153,7 @@
 
 /mob/living/carbon/human/species/golem/snow
 	race = /datum/species/golem/snow
-	
+
 /mob/living/carbon/human/species/golem/clockwork
 	race = /datum/species/golem/clockwork
 
