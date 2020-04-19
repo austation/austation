@@ -1,5 +1,3 @@
-#define EMOTE_AUDIBLE 2
-
 /datum/emote/living/carbon/human
 	mob_type_allowed_typecache = list(/mob/living/carbon/human)
 
