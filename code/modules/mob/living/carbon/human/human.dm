@@ -282,7 +282,7 @@
 ///////////////////////////////////////////
 // I cannot tell you why this code was   //
 // so fucked up before I tidied it up.   //
-//                                       //
+//                  o                     //
 // The same checks were being performed  //
 // dozens of times, in almost every if   //
 // statement.                            //
@@ -335,8 +335,8 @@
 					to_chat(usr, "<span class='notice'>No external injuries detected.</span><br>")
 					return
 
-				/var/status = ""
-				/var/span = ""
+				var/status = ""
+				var/span = ""
 				if(getBruteLoss())
 					to_chat(usr, "<b>Physical trauma analysis:</b>")
 					for(var/X in bodyparts)
