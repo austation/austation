@@ -277,7 +277,23 @@
 			// Display a warning if the user mocks up
 			to_chat(src, "<span class='warning'>You feel your [pocket_side] pocket being fumbled with!</span>")
 
-/// Better HUDs ///
+///////////////////////////////////////////
+//             HUD Handler               //
+///////////////////////////////////////////
+// I cannot tell you why this code was   //
+// so fucked up before I tidied it up.   //
+//                                       //
+// The same checks were being performed  //
+// dozens of times, in almost every if   //
+// statement.                            //
+//                                       //
+// I moved most of these checks to the   //
+// start of the block. Hopefully I have  //
+// fixed it and not actually fucked it.  //
+//                                       //
+//		- chrome, 19/4/2020      //
+///////////////////////////////////////////
+
 	if(href_list["hud"])
 		// HUD Usage Guards
 		if(!ishuman(usr))
@@ -291,6 +307,7 @@
 		var/perpname = get_face_name(get_id_name(""))
 		var/datum/data/record/R = find_record("name", perpname, GLOB.data_core.general)
 		if(!R)
+			to_chat(usr, "<span class='warning'>Unable to locate a data core entry for this person.</span>")
 			return
 
 		// Medical HUD handler
@@ -317,6 +334,7 @@
 				if(!(getBruteLoss() || getFireLoss() || getOxyLoss()) && getToxLoss() < 20)
 					to_chat(usr, "<span class='notice'>No external injuries detected.</span><br>")
 					return
+
 				/var/status = ""
 				/var/span = ""
 				if(getBruteLoss())
@@ -360,22 +378,20 @@
 					to_chat(usr, "<span class='danger'>Gathered data is inconsistent with the analysis, possible cause: poisoning.</span>")
 
 
+		// Photo view 
 		if(href_list["photo_front"] || href_list["photo_side"])
-			if(R)
-				if(!H.canUseHUD())
-					return
-				else if(!istype(H.glasses, /obj/item/clothing/glasses/hud) && !istype(H.getorganslot(ORGAN_SLOT_HUD), /obj/item/organ/cyberimp/eyes/hud/medical))
-					return
-
-				var/obj/item/photo/P = null
-				if(href_list["photo_front"])
-					P = R.fields["photo_front"]
-				else if(href_list["photo_side"])
-					P = R.fields["photo_side"]
-				if(P)
-					P.show(H)
+			if(!istype(H.getorganslot(ORGAN_SLOT_HUD), /obj/item/organ/cyberimp/eyes/hud/medical))
+				return
+			var/obj/item/photo/P = null
+			if(href_list["photo_front"])
+				P = R.fields["photo_front"]
+			else if(href_list["photo_side"])
+				P = R.fields["photo_side"]
+			if(P)
+				P.show(H)
 
 
+		// Sechud handler
 		if(href_list["hud"] == "s")
 			if(istype(H.glasses, /obj/item/clothing/glasses/hud/security) || istype(H.getorganslot(ORGAN_SLOT_HUD), /obj/item/organ/cyberimp/eyes/hud/security))
 				if(usr.stat || usr == src) //|| !usr.canmove || usr.restrained()) Fluff: Sechuds have eye-tracking technology and sets 'arrest' to people that the wearer looks and blinks at.
@@ -384,6 +400,7 @@
 			// Checks the user has security clearence before allowing them to change arrest status via hud, comment out to enable all access
 			var/allowed_access = null
 			var/obj/item/clothing/glasses/hud/security/G = H.glasses
+
 			if(istype(G) && (G.obj_flags & EMAGGED))
 				allowed_access = "@%&ERROR_%$*"
 			else //Implant and standard glasses check access
@@ -396,125 +413,97 @@
 				to_chat(H, "<span class='warning'>ERROR: Invalid Access</span>")
 				return
 
-			if(perpname)
-				R = find_record("name", perpname, GLOB.data_core.security)
-				if(R)
-					if(href_list["status"])
-						var/setcriminal = input(usr, "Specify a new criminal status for this person.", "Security HUD", R.fields["criminal"]) in list("None", "*Arrest*", "Incarcerated", "Paroled", "Discharged", "Cancel")
-
-						if(setcriminal != "Cancel")
-							if(R)
-								if(H.canUseHUD())
-									if(istype(H.glasses, /obj/item/clothing/glasses/hud/security) || istype(H.getorganslot(ORGAN_SLOT_HUD), /obj/item/organ/cyberimp/eyes/hud/security))
-										investigate_log("[key_name(src)] has been set from [R.fields["criminal"]] to [setcriminal] by [key_name(usr)].", INVESTIGATE_RECORDS)
-										R.fields["criminal"] = setcriminal
-										sec_hud_set_security_status()
-						return
-
-					if(href_list["view"])
-						if(R)
-							if(!H.canUseHUD())
-								return
-							else if(!istype(H.glasses, /obj/item/clothing/glasses/hud/security) && !istype(H.getorganslot(ORGAN_SLOT_HUD), /obj/item/organ/cyberimp/eyes/hud/security))
-								return
-
-							to_chat(usr, "<b>Name:</b> [R.fields["name"]]	<b>Criminal Status:</b> [R.fields["criminal"]]")
-							to_chat(usr, "<b>Minor Crimes:</b>")
-							for(var/datum/data/crime/c in R.fields["mi_crim"])
-								to_chat(usr, "<b>Crime:</b> [c.crimeName]")
-								to_chat(usr, "<b>Details:</b> [c.crimeDetails]")
-								to_chat(usr, "Added by [c.author] at [c.time]")
-								to_chat(usr, "----------")
-
-							to_chat(usr, "<b>Major Crimes:</b>")
-							for(var/datum/data/crime/c in R.fields["ma_crim"])
-								to_chat(usr, "<b>Crime:</b> [c.crimeName]")
-								to_chat(usr, "<b>Details:</b> [c.crimeDetails]")
-								to_chat(usr, "Added by [c.author] at [c.time]")
-								to_chat(usr, "----------")
-
-							to_chat(usr, "<b>Notes:</b> [R.fields["notes"]]")
-
-							return
-
-					if(href_list["add_crime"])
-						switch(alert("What crime would you like to add?","Security HUD","Minor Crime","Major Crime","Cancel"))
-							if("Minor Crime")
-								if(R)
-									var/t1 = stripped_input("Please input minor crime names:", "Security HUD", "", null)
-									var/t2 = stripped_multiline_input("Please input minor crime details:", "Security HUD", "", null)
-									if(R)
-										if (!t1 || !t2 || !allowed_access)
-											return
-										else if(!H.canUseHUD())
-											return
-										else if(!istype(H.glasses, /obj/item/clothing/glasses/hud/security) && !istype(H.getorganslot(ORGAN_SLOT_HUD), /obj/item/organ/cyberimp/eyes/hud/security))
-											return
-
-										var/crime = GLOB.data_core.createCrimeEntry(t1, t2, allowed_access, station_time_timestamp())
-										GLOB.data_core.addMinorCrime(R.fields["id"], crime)
-										investigate_log("New Minor Crime: <strong>[t1]</strong>: [t2] | Added to [R.fields["name"]] by [key_name(usr)]", INVESTIGATE_RECORDS)
-
-										to_chat(usr, "<span class='notice'>Successfully added a minor crime.</span>")
-										return
-
-							if("Major Crime")
-								if(R)
-									var/t1 = stripped_input("Please input major crime names:", "Security HUD", "", null)
-									var/t2 = stripped_multiline_input("Please input major crime details:", "Security HUD", "", null)
-									if(R)
-										if (!t1 || !t2 || !allowed_access)
-											return
-										else if (!H.canUseHUD())
-											return
-										else if (!istype(H.glasses, /obj/item/clothing/glasses/hud/security) && !istype(H.getorganslot(ORGAN_SLOT_HUD), /obj/item/organ/cyberimp/eyes/hud/security))
-											return
-
-										var/crime = GLOB.data_core.createCrimeEntry(t1, t2, allowed_access, station_time_timestamp())
-										GLOB.data_core.addMajorCrime(R.fields["id"], crime)
-										investigate_log("New Major Crime: <strong>[t1]</strong>: [t2] | Added to [R.fields["name"]] by [key_name(usr)]", INVESTIGATE_RECORDS)
-
-										to_chat(usr, "<span class='notice'>Successfully added a major crime.</span>")
-						return
-
-					if(href_list["view_comment"])
-						if(R)
-							if(!H.canUseHUD())
-								return
-							else if(!istype(H.glasses, /obj/item/clothing/glasses/hud/security) && !istype(H.getorganslot(ORGAN_SLOT_HUD), /obj/item/organ/cyberimp/eyes/hud/security))
-								return
-
-							to_chat(usr, "<b>Comments/Log:</b>")
-							var/counter = 1
-							while(R.fields[text("com_[]", counter)])
-								to_chat(usr, R.fields[text("com_[]", counter)])
-								to_chat(usr, "----------")
-								counter++
-							return
-
-					if(href_list["add_comment"])
-						if(R)
-							var/t1 = stripped_multiline_input("Add Comment:", "Secure. records", null, null)
-							if(R)
-								if (!t1 || !allowed_access)
-									return
-								else if(!H.canUseHUD())
-									return
-								else if(!istype(H.glasses, /obj/item/clothing/glasses/hud/security) && !istype(H.getorganslot(ORGAN_SLOT_HUD), /obj/item/organ/cyberimp/eyes/hud/security))
-									return
-
-								var/counter = 1
-								while(R.fields[text("com_[]", counter)])
-									counter++
-
-								R.fields[text("com_[]", counter)] = text("Made by [] on [] [], []<BR>[]", allowed_access, station_time_timestamp(), time2text(world.realtime, "MMM DD"), GLOB.year_integer+540, t1)
-								to_chat(usr, "<span class='notice'>Successfully added comment.</span>")
-
-								return
-
+			R = find_record("name", perpname, GLOB.data_core.security)
+			if(!R)
 				to_chat(usr, "<span class='warning'>Unable to locate a data core entry for this person.</span>")
+				return
 
-	..() //end of this massive fucking chain. TODO: make the hud chain not spooky. CTODO ^-- Holy shit what is this
+			if(href_list["status"])
+				var/setcriminal = input(usr, "Specify a new criminal status for this person.", "Security HUD", R.fields["criminal"]) in list("None", "*Arrest*", "Incarcerated", "Paroled", "Discharged", "Cancel")
+				if(setcriminal != "Cancel")
+					investigate_log("[key_name(src)] has been set from [R.fields["criminal"]] to [setcriminal] by [key_name(usr)].", INVESTIGATE_RECORDS)
+					R.fields["criminal"] = setcriminal
+					sec_hud_set_security_status()
+				return
+
+			if(href_list["view"])
+				to_chat(usr, "<b>Name:</b> [R.fields["name"]]	<b>Criminal Status:</b> [R.fields["criminal"]]")
+
+				to_chat(usr, "<b>Minor Crimes:</b>")
+				for(var/datum/data/crime/c in R.fields["mi_crim"])
+					to_chat(usr, "<b>Crime:</b> [c.crimeName]")
+					to_chat(usr, "<b>Details:</b> [c.crimeDetails]")
+					to_chat(usr, "Added by [c.author] at [c.time]")
+					to_chat(usr, "----------")
+
+				to_chat(usr, "<b>Major Crimes:</b>")
+				for(var/datum/data/crime/c in R.fields["ma_crim"])
+					to_chat(usr, "<b>Crime:</b> [c.crimeName]")
+					to_chat(usr, "<b>Details:</b> [c.crimeDetails]")
+					to_chat(usr, "Added by [c.author] at [c.time]")
+					to_chat(usr, "----------")
+
+				to_chat(usr, "<b>Notes:</b> [R.fields["notes"]]")
+
+				return
+
+			if(href_list["add_crime"])
+				switch(alert("What crime would you like to add?","Security HUD","Minor Crime","Major Crime","Cancel"))
+					if("Minor Crime")
+						var/t1 = stripped_input("Please input minor crime names:", "Security HUD", "", null)
+						var/t2 = stripped_multiline_input("Please input minor crime details:", "Security HUD", "", null)
+
+						if (!t1 || !t2)
+							return
+
+						var/crime = GLOB.data_core.createCrimeEntry(t1, t2, allowed_access, station_time_timestamp())
+						GLOB.data_core.addMinorCrime(R.fields["id"], crime)
+						investigate_log("New Minor Crime: <strong>[t1]</strong>: [t2] | Added to [R.fields["name"]] by [key_name(usr)]", INVESTIGATE_RECORDS)
+
+						to_chat(usr, "<span class='notice'>Successfully added a minor crime.</span>")
+
+					if("Major Crime")
+						var/t1 = stripped_input("Please input major crime names:", "Security HUD", "", null)
+						var/t2 = stripped_multiline_input("Please input major crime details:", "Security HUD", "", null)
+
+						if (!t1 || !t2)
+							return
+
+						var/crime = GLOB.data_core.createCrimeEntry(t1, t2, allowed_access, station_time_timestamp())
+						GLOB.data_core.addMajorCrime(R.fields["id"], crime)
+						investigate_log("New Major Crime: <strong>[t1]</strong>: [t2] | Added to [R.fields["name"]] by [key_name(usr)]", INVESTIGATE_RECORDS)
+
+						to_chat(usr, "<span class='notice'>Successfully added a major crime.</span>")
+				return
+
+			if(href_list["view_comment"])
+				to_chat(usr, "<b>Comments/Log:</b>")
+
+				var/counter = 1
+				while(R.fields[text("com_[]", counter)])
+					to_chat(usr, R.fields[text("com_[]", counter)])
+					to_chat(usr, "----------")
+					counter++
+
+				return
+
+			if(href_list["add_comment"])
+				var/t1 = stripped_multiline_input("Add Comment:", "Secure. records", null, null)
+
+				if (!t1)
+					return
+
+				var/counter = 1
+				while(R.fields[text("com_[]", counter)])
+					counter++
+
+				R.fields[text("com_[]", counter)] = text("Made by [] on [] [], []<BR>[]", allowed_access, station_time_timestamp(), time2text(world.realtime, "MMM DD"), GLOB.year_integer+540, t1)
+				to_chat(usr, "<span class='notice'>Successfully added comment.</span>")
+
+				return
+
+
+	..() //end of this massive fucking chain. TODO: make the hud chain not spooky. 
 
 
 /mob/living/carbon/human/proc/canUseHUD()
