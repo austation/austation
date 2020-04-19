@@ -291,7 +291,7 @@
 // start of the block. Hopefully I have  //
 // fixed it and not actually fucked it.  //
 //                                       //
-//		- chrome, 19/4/2020      //
+//		- chrome, 19/4/2020              //
 ///////////////////////////////////////////
 
 	if(href_list["hud"])
@@ -378,9 +378,9 @@
 					to_chat(usr, "<span class='danger'>Gathered data is inconsistent with the analysis, possible cause: poisoning.</span>")
 
 
-		// Photo view 
+		// Photo view
 		if(href_list["photo_front"] || href_list["photo_side"])
-			if(!istype(H.getorganslot(ORGAN_SLOT_HUD), /obj/item/organ/cyberimp/eyes/hud/medical))
+			if(!istype(H.glasses, /obj/item/clothing/glasses/hud) && !istype(H.getorganslot(ORGAN_SLOT_HUD), /obj/item/organ/cyberimp/eyes/hud/medical))
 				return
 			var/obj/item/photo/P = null
 			if(href_list["photo_front"])
@@ -503,7 +503,7 @@
 				return
 
 
-	..() //end of this massive fucking chain. TODO: make the hud chain not spooky. 
+	..() //end of this massive fucking chain. TODO: make the hud chain not spooky.
 
 
 /mob/living/carbon/human/proc/canUseHUD()
