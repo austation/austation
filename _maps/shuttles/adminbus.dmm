@@ -4,19 +4,26 @@
 	dir = 1
 	},
 /turf/open/floor/plating/airless,
-/area/space)
+/area/shuttle/adminbus)
 "ab" = (
-/obj/structure/sign/nanotrasen,
-/turf/closed/wall/mineral/plastitanium,
-/area/space)
-"ac" = (
 /obj/machinery/door/airlock/centcom{
 	name = "Admin Bus Airlock";
 	req_access_txt = "101"
 	},
 /obj/effect/mapping_helpers/airlock/cyclelink_helper,
 /turf/open/floor/mineral/plastitanium/red,
-/area/space)
+/area/shuttle/adminbus)
+"ac" = (
+/obj/structure/chair/comfy/shuttle{
+	dir = 8
+	},
+/obj/machinery/button/door{
+	id = "adminbus_windows";
+	name = "Admin Bus Window Blast Doors";
+	pixel_y = 24
+	},
+/turf/open/floor/mineral/plastitanium,
+/area/shuttle/adminbus)
 "ad" = (
 /obj/machinery/jukebox/disco/indestructible,
 /turf/open/floor/light/colour_cycle/dancefloor_a,
@@ -50,12 +57,16 @@
 /turf/open/floor/mineral/titanium/white,
 /area/shuttle/adminbus)
 "ak" = (
-/obj/structure/closet/crate/freezer/blood,
-/turf/open/floor/mineral/titanium/white,
+/obj/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/mineral/plastitanium/red,
 /area/shuttle/adminbus)
 "al" = (
-/obj/structure/closet/syndicate/resources/everything,
-/turf/open/floor/mineral/titanium/yellow,
+/obj/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/mineral/plastitanium/red,
 /area/shuttle/adminbus)
 "am" = (
 /turf/open/floor/light/colour_cycle/dancefloor_a,
@@ -94,16 +105,10 @@
 /turf/open/floor/mineral/titanium/yellow,
 /area/shuttle/adminbus)
 "at" = (
-/obj/structure/window/reinforced{
-	dir = 2
+/obj/structure/closet/crate/freezer/blood,
+/obj/machinery/light{
+	dir = 4
 	},
-/obj/structure/closet/crate/medical,
-/obj/item/storage/firstaid/advanced,
-/obj/item/storage/firstaid/brute,
-/obj/item/storage/firstaid/fire,
-/obj/item/storage/firstaid/o2,
-/obj/item/storage/firstaid/toxin,
-/obj/item/storage/firstaid/tactical,
 /turf/open/floor/mineral/titanium/white,
 /area/shuttle/adminbus)
 "au" = (
@@ -141,11 +146,11 @@
 /turf/open/space/basic,
 /area/shuttle/adminbus)
 "aC" = (
-/obj/structure/table,
-/obj/item/surgicaldrill/advanced,
-/obj/item/razor,
-/obj/item/surgical_drapes,
-/turf/open/floor/mineral/titanium/white,
+/obj/structure/closet/syndicate/resources/everything,
+/obj/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/mineral/titanium/yellow,
 /area/shuttle/adminbus)
 "aD" = (
 /obj/machinery/ore_silo,
@@ -283,11 +288,10 @@
 /turf/open/floor/wood,
 /area/shuttle/adminbus)
 "bc" = (
-/obj/structure/table/reinforced,
-/obj/machinery/chem_dispenser/drinks/fullupgrade{
-	dir = 1
+/obj/machinery/light{
+	dir = 8
 	},
-/turf/open/floor/wood,
+/turf/open/floor/pod,
 /area/shuttle/adminbus)
 "bd" = (
 /obj/structure/table/reinforced,
@@ -308,10 +312,10 @@
 /turf/open/floor/pod,
 /area/shuttle/adminbus)
 "bg" = (
-/obj/machinery/computer/communications{
+/obj/machinery/light{
 	dir = 4
 	},
-/turf/open/floor/mineral/plastitanium,
+/turf/open/floor/pod,
 /area/shuttle/adminbus)
 "bh" = (
 /obj/structure/chair/comfy/shuttle{
@@ -326,10 +330,20 @@
 /turf/open/floor/mineral/plastitanium,
 /area/shuttle/adminbus)
 "bj" = (
-/obj/machinery/computer/station_alert{
+/obj/structure/window/reinforced{
+	dir = 2
+	},
+/obj/structure/closet/crate/medical,
+/obj/item/storage/firstaid/advanced,
+/obj/item/storage/firstaid/brute,
+/obj/item/storage/firstaid/fire,
+/obj/item/storage/firstaid/o2,
+/obj/item/storage/firstaid/toxin,
+/obj/item/storage/firstaid/tactical,
+/obj/machinery/light{
 	dir = 8
 	},
-/turf/open/floor/mineral/plastitanium,
+/turf/open/floor/mineral/titanium/white,
 /area/shuttle/adminbus)
 "bk" = (
 /obj/machinery/computer/crew{
@@ -354,6 +368,7 @@
 /area/shuttle/adminbus)
 "bo" = (
 /obj/structure/table/reinforced,
+/obj/item/gun/energy/pulse/pistol,
 /turf/open/floor/mineral/plastitanium,
 /area/shuttle/adminbus)
 "bp" = (
@@ -378,23 +393,83 @@
 /area/shuttle/adminbus)
 "bs" = (
 /obj/structure/chair/comfy/shuttle{
-	dir = 8
+	dir = 4
 	},
-/obj/machinery/button{
-	id = "adminbus_windows";
-	name = "Admin Bus Window Blast Doors";
+/obj/machinery/button/door{
+	id = "adminbus_bridge";
+	name = "Admin Bus Bridge Blast Doors";
 	pixel_y = 24
 	},
 /turf/open/floor/mineral/plastitanium,
 /area/shuttle/adminbus)
 "bt" = (
-/obj/structure/chair/comfy/shuttle{
+/obj/machinery/light{
 	dir = 4
 	},
-/obj/machinery/button{
-	id = "adminbus_bridge";
-	name = "Admin Bus Bridge Blast Doors";
-	pixel_y = 24
+/turf/open/floor/mineral/titanium/yellow,
+/area/shuttle/adminbus)
+"bu" = (
+/obj/structure/table,
+/obj/item/surgicaldrill/advanced,
+/obj/item/razor,
+/obj/item/surgical_drapes,
+/obj/machinery/light,
+/turf/open/floor/mineral/titanium/white,
+/area/shuttle/adminbus)
+"bv" = (
+/obj/machinery/light,
+/turf/open/floor/mineral/titanium/yellow,
+/area/shuttle/adminbus)
+"bw" = (
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/light/colour_cycle/dancefloor_b,
+/area/shuttle/adminbus)
+"bx" = (
+/obj/machinery/light,
+/turf/open/floor/mineral/plastitanium/red,
+/area/shuttle/adminbus)
+"by" = (
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/mineral/titanium/purple,
+/area/shuttle/adminbus)
+"bz" = (
+/obj/structure/chair/stool/bar,
+/obj/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/wood,
+/area/shuttle/adminbus)
+"bA" = (
+/obj/machinery/light,
+/turf/open/floor/mineral/titanium/purple,
+/area/shuttle/adminbus)
+"bB" = (
+/obj/structure/table/reinforced,
+/obj/machinery/chem_dispenser/drinks/fullupgrade{
+	dir = 1
+	},
+/obj/machinery/light,
+/turf/open/floor/wood,
+/area/shuttle/adminbus)
+"bC" = (
+/obj/machinery/computer/communications{
+	dir = 4
+	},
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/mineral/plastitanium,
+/area/shuttle/adminbus)
+"bD" = (
+/obj/machinery/computer/station_alert{
+	dir = 8
+	},
+/obj/machinery/light{
+	dir = 1
 	},
 /turf/open/floor/mineral/plastitanium,
 /area/shuttle/adminbus)
@@ -427,7 +502,7 @@ aa
 ah
 aj
 ap
-at
+bj
 av
 ax
 az
@@ -453,15 +528,15 @@ ay
 ay
 aw
 ay
-aC
+bu
 aW
 aH
-aP
+bx
 aW
+by
 aS
 aS
-aS
-aS
+bA
 aW
 br
 br
@@ -471,7 +546,7 @@ aW
 (4,1,1) = {"
 aa
 ah
-ak
+at
 ar
 ar
 ay
@@ -486,13 +561,13 @@ aS
 aS
 aS
 be
-bg
+bC
 bk
 bn
 br
 "}
 (5,1,1) = {"
-ab
+be
 aW
 aW
 aW
@@ -509,21 +584,21 @@ aS
 aS
 ae
 aW
-bs
+ac
 bh
 bo
 br
 "}
 (6,1,1) = {"
-ac
-aP
+ab
+ak
 aJ
+bc
 aQ
 aQ
 aQ
 aQ
-aQ
-aQ
+bc
 ag
 ag
 ag
@@ -538,15 +613,15 @@ bp
 br
 "}
 (7,1,1) = {"
-ac
-aP
+ab
+al
 aJ
+bg
 aQ
 aQ
 aQ
 aQ
-aQ
-aQ
+bg
 ag
 ag
 ag
@@ -561,7 +636,7 @@ bq
 br
 "}
 (8,1,1) = {"
-ab
+be
 aW
 aW
 aW
@@ -578,7 +653,7 @@ aY
 aZ
 ba
 aW
-bt
+bs
 bi
 bo
 br
@@ -586,7 +661,7 @@ br
 (9,1,1) = {"
 aa
 ah
-al
+aC
 as
 au
 aA
@@ -601,7 +676,7 @@ aY
 ag
 bb
 be
-bj
+bD
 bm
 bn
 br
@@ -614,15 +689,15 @@ aA
 aA
 aA
 aA
-aA
+bv
 aW
-aF
+bw
 ad
 aF
 aX
 aY
 ag
-bc
+bB
 aW
 br
 br
@@ -634,7 +709,7 @@ aa
 ah
 an
 aA
-aA
+bt
 aA
 aA
 aE
@@ -642,7 +717,7 @@ aW
 am
 aF
 am
-aX
+bz
 aY
 ag
 bd
