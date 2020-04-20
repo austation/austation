@@ -4,6 +4,6 @@
 /datum/emote/living/carbon/human/bruh
 	key = "bruh"
 	key_third_person = "bruhs"
-	message = "bruhs at this moment."
+	message = "thinks this is a bruh moment."
 	emote_type = EMOTE_AUDIBLE
 	sound = 'austation/sound/misc/bruh.ogg'
