@@ -1,0 +1,677 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/obj/structure/shuttle/engine/propulsion{
+	dir = 1
+	},
+/turf/open/floor/plating/airless,
+/area/space)
+"ab" = (
+/obj/structure/sign/nanotrasen,
+/turf/closed/wall/mineral/plastitanium,
+/area/space)
+"ac" = (
+/obj/machinery/door/airlock/centcom{
+	name = "Admin Bus Airlock";
+	req_access_txt = "101"
+	},
+/obj/effect/mapping_helpers/airlock/cyclelink_helper,
+/turf/open/floor/mineral/plastitanium/red,
+/area/space)
+"ad" = (
+/obj/machinery/jukebox/disco/indestructible,
+/turf/open/floor/light/colour_cycle/dancefloor_a,
+/area/shuttle/adminbus)
+"ae" = (
+/obj/machinery/autolathe/hacked,
+/turf/open/floor/mineral/titanium/purple,
+/area/shuttle/adminbus)
+"af" = (
+/obj/machinery/rnd/production/circuit_imprinter,
+/turf/open/floor/mineral/titanium/purple,
+/area/shuttle/adminbus)
+"ag" = (
+/turf/open/floor/wood,
+/area/shuttle/adminbus)
+"ah" = (
+/obj/structure/shuttle/engine/heater{
+	dir = 1
+	},
+/obj/structure/window/plasma/reinforced,
+/turf/open/floor/plating/airless,
+/area/shuttle/adminbus)
+"ai" = (
+/obj/machinery/rnd/production/protolathe,
+/turf/open/floor/mineral/titanium/purple,
+/area/shuttle/adminbus)
+"aj" = (
+/obj/machinery/stasis{
+	dir = 1
+	},
+/turf/open/floor/mineral/titanium/white,
+/area/shuttle/adminbus)
+"ak" = (
+/obj/structure/closet/crate/freezer/blood,
+/turf/open/floor/mineral/titanium/white,
+/area/shuttle/adminbus)
+"al" = (
+/obj/structure/closet/syndicate/resources/everything,
+/turf/open/floor/mineral/titanium/yellow,
+/area/shuttle/adminbus)
+"am" = (
+/turf/open/floor/light/colour_cycle/dancefloor_a,
+/area/shuttle/adminbus)
+"an" = (
+/obj/machinery/telecomms/relay/preset/auto,
+/turf/open/floor/mineral/titanium/yellow,
+/area/shuttle/adminbus)
+"ao" = (
+/obj/effect/spawner/structure/window/plastitanium,
+/obj/machinery/door/poddoor{
+	id = "adminbus_windows";
+	name = "Window Blast Door"
+	},
+/turf/open/floor/mineral/plastitanium,
+/area/shuttle/adminbus)
+"ap" = (
+/obj/machinery/sleeper{
+	dir = 4
+	},
+/turf/open/floor/mineral/titanium/white,
+/area/shuttle/adminbus)
+"aq" = (
+/obj/machinery/computer/rdconsole/core{
+	dir = 4
+	},
+/turf/open/floor/mineral/titanium/purple,
+/area/shuttle/adminbus)
+"ar" = (
+/obj/structure/bed/roller,
+/obj/machinery/iv_drip,
+/turf/open/floor/mineral/titanium/white,
+/area/shuttle/adminbus)
+"as" = (
+/obj/structure/closet/syndicate/parts,
+/turf/open/floor/mineral/titanium/yellow,
+/area/shuttle/adminbus)
+"at" = (
+/obj/structure/window/reinforced{
+	dir = 2
+	},
+/obj/structure/closet/crate/medical,
+/obj/item/storage/firstaid/advanced,
+/obj/item/storage/firstaid/brute,
+/obj/item/storage/firstaid/fire,
+/obj/item/storage/firstaid/o2,
+/obj/item/storage/firstaid/toxin,
+/obj/item/storage/firstaid/tactical,
+/turf/open/floor/mineral/titanium/white,
+/area/shuttle/adminbus)
+"au" = (
+/obj/structure/closet/syndicate/tools,
+/turf/open/floor/mineral/titanium/yellow,
+/area/shuttle/adminbus)
+"av" = (
+/obj/machinery/computer/operating{
+	dir = 4
+	},
+/turf/open/floor/mineral/titanium/white,
+/area/shuttle/adminbus)
+"aw" = (
+/mob/living/simple_animal/bot/medbot,
+/turf/open/floor/mineral/titanium/white,
+/area/shuttle/adminbus)
+"ax" = (
+/obj/structure/table/optable,
+/turf/open/floor/mineral/titanium/white,
+/area/shuttle/adminbus)
+"ay" = (
+/turf/open/floor/mineral/titanium/white,
+/area/shuttle/adminbus)
+"az" = (
+/obj/structure/table,
+/obj/item/scalpel/advanced,
+/obj/item/retractor/advanced,
+/turf/open/floor/mineral/titanium/white,
+/area/shuttle/adminbus)
+"aA" = (
+/turf/open/floor/mineral/titanium/yellow,
+/area/shuttle/adminbus)
+"aB" = (
+/obj/effect/spawner/structure/window/plastitanium,
+/turf/open/space/basic,
+/area/shuttle/adminbus)
+"aC" = (
+/obj/structure/table,
+/obj/item/surgicaldrill/advanced,
+/obj/item/razor,
+/obj/item/surgical_drapes,
+/turf/open/floor/mineral/titanium/white,
+/area/shuttle/adminbus)
+"aD" = (
+/obj/machinery/ore_silo,
+/turf/open/floor/mineral/titanium/yellow,
+/area/shuttle/adminbus)
+"aE" = (
+/obj/machinery/recharge_station,
+/turf/open/floor/mineral/titanium/yellow,
+/area/shuttle/adminbus)
+"aF" = (
+/turf/open/floor/light/colour_cycle/dancefloor_b,
+/area/shuttle/adminbus)
+"aG" = (
+/turf/open/floor/mineral/plastitanium,
+/area/shuttle/adminbus)
+"aH" = (
+/obj/machinery/suit_storage_unit/ert/command,
+/turf/open/floor/mineral/plastitanium/red,
+/area/shuttle/adminbus)
+"aI" = (
+/obj/machinery/rnd/destructive_analyzer,
+/turf/open/floor/mineral/titanium/purple,
+/area/shuttle/adminbus)
+"aJ" = (
+/obj/machinery/door/airlock/centcom{
+	name = "Admin Bus Airlock";
+	req_access_txt = "101"
+	},
+/obj/effect/mapping_helpers/airlock/cyclelink_helper{
+	dir = 1
+	},
+/turf/open/floor/mineral/plastitanium/red,
+/area/shuttle/adminbus)
+"aK" = (
+/turf/template_noop,
+/area/template_noop)
+"aL" = (
+/obj/machinery/door/airlock/centcom{
+	name = "Admin Bus Medical";
+	req_access_txt = "101"
+	},
+/turf/open/floor/mineral/titanium/white,
+/area/shuttle/adminbus)
+"aM" = (
+/obj/machinery/door/airlock/centcom{
+	name = "Admin Bus Engineering";
+	req_access_txt = "101"
+	},
+/turf/open/floor/mineral/titanium/yellow,
+/area/shuttle/adminbus)
+"aN" = (
+/obj/structure/table/reinforced,
+/obj/machinery/cell_charger,
+/turf/open/floor/mineral/titanium/purple,
+/area/shuttle/adminbus)
+"aO" = (
+/obj/structure/sign/departments/minsky/medical/medical2,
+/turf/closed/wall/mineral/plastitanium,
+/area/shuttle/adminbus)
+"aP" = (
+/turf/open/floor/mineral/plastitanium/red,
+/area/shuttle/adminbus)
+"aQ" = (
+/turf/open/floor/pod,
+/area/shuttle/adminbus)
+"aR" = (
+/obj/structure/sign/departments/minsky/engineering/engineering,
+/turf/closed/wall/mineral/plastitanium,
+/area/shuttle/adminbus)
+"aS" = (
+/turf/open/floor/mineral/titanium/purple,
+/area/shuttle/adminbus)
+"aT" = (
+/obj/machinery/door/airlock/centcom{
+	name = "Admin Bus Airlock";
+	req_access_txt = "101"
+	},
+/obj/effect/mapping_helpers/airlock/cyclelink_helper{
+	dir = 4
+	},
+/obj/docking_port/mobile{
+	dir = 4;
+	dwidth = 10;
+	height = 12;
+	id = "adminbus";
+	name = "Admin Bus";
+	width = 22
+	},
+/turf/open/floor/mineral/plastitanium/red,
+/area/shuttle/adminbus)
+"aU" = (
+/obj/machinery/door/airlock/centcom{
+	name = "Admin Bus Airlock";
+	req_access_txt = "101"
+	},
+/obj/effect/mapping_helpers/airlock/cyclelink_helper{
+	dir = 8
+	},
+/turf/open/floor/mineral/plastitanium/red,
+/area/shuttle/adminbus)
+"aV" = (
+/obj/structure/sign/departments/minsky/research/research,
+/turf/closed/wall/mineral/plastitanium,
+/area/shuttle/adminbus)
+"aW" = (
+/turf/closed/wall/mineral/plastitanium,
+/area/shuttle/adminbus)
+"aX" = (
+/obj/structure/chair/stool/bar,
+/turf/open/floor/wood,
+/area/shuttle/adminbus)
+"aY" = (
+/obj/structure/table/wood/bar,
+/turf/open/floor/wood,
+/area/shuttle/adminbus)
+"aZ" = (
+/obj/machinery/door/window{
+	dir = 8;
+	name = "Admin Bus Bar";
+	req_access_txt = "101"
+	},
+/turf/open/floor/wood,
+/area/shuttle/adminbus)
+"ba" = (
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/machinery/vending/wardrobe/bar_wardrobe,
+/turf/open/floor/wood,
+/area/shuttle/adminbus)
+"bb" = (
+/obj/machinery/vending/boozeomat{
+	req_access = list(101)
+	},
+/turf/open/floor/wood,
+/area/shuttle/adminbus)
+"bc" = (
+/obj/structure/table/reinforced,
+/obj/machinery/chem_dispenser/drinks/fullupgrade{
+	dir = 1
+	},
+/turf/open/floor/wood,
+/area/shuttle/adminbus)
+"bd" = (
+/obj/structure/table/reinforced,
+/obj/machinery/chem_dispenser/drinks/beer/fullupgrade{
+	dir = 1
+	},
+/turf/open/floor/wood,
+/area/shuttle/adminbus)
+"be" = (
+/obj/structure/sign/nanotrasen,
+/turf/closed/wall/mineral/plastitanium,
+/area/shuttle/adminbus)
+"bf" = (
+/obj/machinery/door/airlock/centcom{
+	name = "Admin Bus Bridge";
+	req_access_txt = "101"
+	},
+/turf/open/floor/pod,
+/area/shuttle/adminbus)
+"bg" = (
+/obj/machinery/computer/communications{
+	dir = 4
+	},
+/turf/open/floor/mineral/plastitanium,
+/area/shuttle/adminbus)
+"bh" = (
+/obj/structure/chair/comfy/shuttle{
+	dir = 8
+	},
+/turf/open/floor/mineral/plastitanium,
+/area/shuttle/adminbus)
+"bi" = (
+/obj/structure/chair/comfy/shuttle{
+	dir = 4
+	},
+/turf/open/floor/mineral/plastitanium,
+/area/shuttle/adminbus)
+"bj" = (
+/obj/machinery/computer/station_alert{
+	dir = 8
+	},
+/turf/open/floor/mineral/plastitanium,
+/area/shuttle/adminbus)
+"bk" = (
+/obj/machinery/computer/crew{
+	dir = 4
+	},
+/turf/open/floor/mineral/plastitanium,
+/area/shuttle/adminbus)
+"bl" = (
+/obj/structure/chair/comfy/shuttle,
+/turf/open/floor/mineral/plastitanium,
+/area/shuttle/adminbus)
+"bm" = (
+/obj/machinery/computer/communications{
+	dir = 8
+	},
+/turf/open/floor/mineral/plastitanium,
+/area/shuttle/adminbus)
+"bn" = (
+/obj/structure/table/reinforced,
+/obj/machinery/recharger,
+/turf/open/floor/mineral/plastitanium,
+/area/shuttle/adminbus)
+"bo" = (
+/obj/structure/table/reinforced,
+/turf/open/floor/mineral/plastitanium,
+/area/shuttle/adminbus)
+"bp" = (
+/obj/machinery/computer/camera_advanced/shuttle_docker/admin_bus{
+	dir = 1
+	},
+/turf/open/floor/mineral/plastitanium,
+/area/shuttle/adminbus)
+"bq" = (
+/obj/machinery/computer/shuttle/admin_bus{
+	dir = 1
+	},
+/turf/open/floor/mineral/plastitanium,
+/area/shuttle/adminbus)
+"br" = (
+/obj/effect/spawner/structure/window/plastitanium,
+/obj/machinery/door/poddoor{
+	id = "adminbus_bridge";
+	name = "Bridge Blast Door"
+	},
+/turf/open/floor/mineral/plastitanium,
+/area/shuttle/adminbus)
+"bs" = (
+/obj/structure/chair/comfy/shuttle{
+	dir = 8
+	},
+/obj/machinery/button{
+	id = "adminbus_windows";
+	name = "Admin Bus Window Blast Doors";
+	pixel_y = 24
+	},
+/turf/open/floor/mineral/plastitanium,
+/area/shuttle/adminbus)
+"bt" = (
+/obj/structure/chair/comfy/shuttle{
+	dir = 4
+	},
+/obj/machinery/button{
+	id = "adminbus_bridge";
+	name = "Admin Bus Bridge Blast Doors";
+	pixel_y = 24
+	},
+/turf/open/floor/mineral/plastitanium,
+/area/shuttle/adminbus)
+
+(1,1,1) = {"
+aK
+aW
+ao
+ao
+aW
+aW
+ao
+ao
+aW
+aW
+aT
+aW
+aW
+ao
+ao
+aW
+aW
+aK
+aK
+aK
+aK
+"}
+(2,1,1) = {"
+aa
+ah
+aj
+ap
+at
+av
+ax
+az
+aW
+aH
+aP
+aW
+ai
+aq
+af
+aI
+aW
+aK
+aK
+aK
+aK
+"}
+(3,1,1) = {"
+aa
+ah
+ay
+ay
+ay
+aw
+ay
+aC
+aW
+aH
+aP
+aW
+aS
+aS
+aS
+aS
+aW
+br
+br
+br
+aW
+"}
+(4,1,1) = {"
+aa
+ah
+ak
+ar
+ar
+ay
+ay
+ay
+aW
+aH
+aP
+aW
+aN
+aS
+aS
+aS
+be
+bg
+bk
+bn
+br
+"}
+(5,1,1) = {"
+ab
+aW
+aW
+aW
+aW
+aL
+aO
+aB
+aW
+aW
+aU
+aV
+aN
+aS
+aS
+ae
+aW
+bs
+bh
+bo
+br
+"}
+(6,1,1) = {"
+ac
+aP
+aJ
+aQ
+aQ
+aQ
+aQ
+aQ
+aQ
+ag
+ag
+ag
+ag
+ag
+ag
+ag
+bf
+aG
+bl
+bp
+br
+"}
+(7,1,1) = {"
+ac
+aP
+aJ
+aQ
+aQ
+aQ
+aQ
+aQ
+aQ
+ag
+ag
+ag
+ag
+ag
+ag
+ag
+bf
+aG
+bl
+bq
+br
+"}
+(8,1,1) = {"
+ab
+aW
+aW
+aW
+aW
+aM
+aR
+aB
+aW
+ag
+ag
+ag
+aX
+aY
+aZ
+ba
+aW
+bt
+bi
+bo
+br
+"}
+(9,1,1) = {"
+aa
+ah
+al
+as
+au
+aA
+aA
+aD
+aW
+am
+aF
+am
+aX
+aY
+ag
+bb
+be
+bj
+bm
+bn
+br
+"}
+(10,1,1) = {"
+aa
+ah
+aA
+aA
+aA
+aA
+aA
+aA
+aW
+aF
+ad
+aF
+aX
+aY
+ag
+bc
+aW
+br
+br
+br
+aW
+"}
+(11,1,1) = {"
+aa
+ah
+an
+aA
+aA
+aA
+aA
+aE
+aW
+am
+aF
+am
+aX
+aY
+ag
+bd
+aW
+aK
+aK
+aK
+aK
+"}
+(12,1,1) = {"
+aK
+aW
+ao
+ao
+aW
+aW
+ao
+ao
+aW
+aW
+ao
+ao
+aW
+ao
+ao
+aW
+aW
+aK
+aK
+aK
+aK
+"}
