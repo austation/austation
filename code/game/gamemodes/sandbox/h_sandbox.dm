@@ -60,8 +60,7 @@ GLOBAL_VAR_INIT(hsboxspawn, TRUE)
 
 			"Miscellaneous",
 			"Spawn Air Scrubber"				= "hsbscrubber",
-			"Spawn Debug Tech Disk"				= "hsbspawn&path=[/obj/item/disk/tech_disk/debug]", // austation -- added debug tech disk
-			"Spawn All Materials"				= "hsbspawn&path=[/obj/structure/closet/syndicate/resources/everything]", // austation -- swapped fuel tank with something useful
+			"Spawn Welding Fuel Tank"			= "hsbspawn&path=[/obj/structure/reagent_dispensers/fueltank]",
 			"Spawn Water Tank"					= "hsbspawn&path=[/obj/structure/reagent_dispensers/watertank]",
 
 			"Bots",
