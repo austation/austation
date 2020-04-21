@@ -23,6 +23,7 @@
 #include "code\modules\jobs\job_types\medical_doctor.dm"
 #include "code\modules\mapping\writer.dm"
 #include "code\modules\mob\dead\new_player\new_player.dm"
+#include "code\modules\mob\living\emote.dm"
 #include "code\modules\mob\living\silicon\robot\robot_modules.dm"
 #include "code\modules\mob\living\simple_animal\hostile\cat_butcher.dm"
 #include "code\modules\reagents\chemistry\reagents\other_reagents.dm"
