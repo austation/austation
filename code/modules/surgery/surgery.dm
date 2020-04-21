@@ -129,6 +129,8 @@
 		sleepbonus = 0.5
 	if(locate(/obj/structure/table/optable/abductor, T))
 		propability = 1.2
+	if(locate(/obj/machinery/stasis, T))
+		propability = 0.8
 	if(locate(/obj/structure/table/optable, T))
 		// austation -- operating table now has 100% success chance again
 		propability = 1.0

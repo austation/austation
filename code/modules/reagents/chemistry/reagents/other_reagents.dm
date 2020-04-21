@@ -203,15 +203,15 @@
 
 /datum/reagent/water/holywater/on_mob_life(mob/living/carbon/M)
 	if(!data)
-		data = 1
-	data++
+		data = list("misc" = 1)
+	data["misc"]++
 	M.jitteriness = min(M.jitteriness+4,10)
 	if(iscultist(M))
 		for(var/datum/action/innate/cult/blood_magic/BM in M.actions)
 			to_chat(M, "<span class='cultlarge'>Your blood rites falter as holy water scours your body!</span>")
 			for(var/datum/action/innate/cult/blood_spell/BS in BM.spells)
 				qdel(BS)
-	if(data >= 25)		// 10 units, 45 seconds @ metabolism 0.4 units & tick rate 1.8 sec
+	if(data["misc"] >= 25)		// 10 units, 45 seconds @ metabolism 0.4 units & tick rate 1.8 sec
 		if(!M.stuttering)
 			M.stuttering = 1
 		M.stuttering = min(M.stuttering+4, 10)
@@ -232,7 +232,7 @@
 					"You can't save him. Nothing can save him now", "It seems that Nar'Sie will triumph after all")].</span>")
 				if("emote")
 					M.visible_message("<span class='warning'>[M] [pick("whimpers quietly", "shivers as though cold", "glances around in paranoia")].</span>")
-	if(data >= 60)	// 30 units, 135 seconds
+	if(data["misc"] >= 60)	// 30 units, 135 seconds
 		if(iscultist(M) || is_servant_of_ratvar(M))
 			if(iscultist(M))
 				SSticker.mode.remove_cultist(M.mind, FALSE, TRUE)
@@ -276,7 +276,7 @@
 		if(ishuman(M) && M.blood_volume < BLOOD_VOLUME_NORMAL)
 			M.blood_volume += 3
 	else  // Will deal about 90 damage when 50 units are thrown
-		M.adjustBrainLoss(3, 150)
+		M.adjustOrganLoss(ORGAN_SLOT_BRAIN, 3, 150)
 		M.adjustToxLoss(2, 0)
 		M.adjustFireLoss(2, 0)
 		M.adjustOxyLoss(2, 0)
@@ -295,7 +295,7 @@
 	M.IgniteMob()			//Only problem with igniting people is currently the commonly availible fire suits make you immune to being on fire
 	M.adjustToxLoss(1, 0)
 	M.adjustFireLoss(1, 0)		//Hence the other damages... ain't I a bastard?
-	M.adjustBrainLoss(5, 150)
+	M.adjustOrganLoss(ORGAN_SLOT_BRAIN, 5, 150)
 	holder.remove_reagent(type, 1)
 
 /datum/reagent/medicine/omnizine/godblood
@@ -477,6 +477,12 @@
 	mutationtext = "<span class='danger'>The pain subsides. You feel... like a degenerate.</span>"
 	process_flags = ORGANIC | SYNTHETIC
 
+// austation begin -- bye bye catgirl xenobiologists
+/datum/reagent/mutationtoxin/felinid/on_mob_life(mob/living/carbon/human/H)
+	to_chat(H, "<span class='userdanger'>Your body rejects the mutation!</span>")
+	H.reagents.del_reagent(type)
+// austation ends
+
 /datum/reagent/mutationtoxin/lizard
 	name = "Lizard Mutation Toxin"
 	description = "A lizarding toxin."
@@ -558,7 +564,6 @@
 	mutationtext = "<span class='danger'>The pain subsides. You feel... salty.</span>"
 	process_flags = ORGANIC | SYNTHETIC
 
-
 //BLACKLISTED RACES
 /datum/reagent/mutationtoxin/skeleton
 	name = "Skeleton Mutation Toxin"
@@ -590,6 +595,14 @@
 	color = "#5EFF3B" //RGB: 94, 255, 59
 	race = /datum/species/lizard/ashwalker
 	mutationtext = "<span class='danger'>The pain subsides. You feel... savage.</span>"
+	process_flags = ORGANIC | SYNTHETIC
+
+/datum/reagent/mutationtoxin/supersoldier
+	name = "Super Soldier Toxin"
+	description = "A flesh-sculpting toxin."
+	color = "#5EFF3B" //RGB: 94, 255, 59
+	race = /datum/species/human/supersoldier
+	mutationtext = "<span class='danger'>The pain subsides. You feel... like you can take on anything.</span>"
 	process_flags = ORGANIC | SYNTHETIC
 
 
@@ -778,7 +791,7 @@
 		step(M, pick(GLOB.cardinals))
 	if(prob(5))
 		M.emote(pick("twitch","drool","moan"))
-	M.adjustBrainLoss(1)
+	M.adjustOrganLoss(ORGAN_SLOT_BRAIN, 1)
 	..()
 
 /datum/reagent/sulfur
@@ -1114,7 +1127,7 @@
 /datum/reagent/impedrezene/on_mob_life(mob/living/carbon/M)
 	M.jitteriness = max(M.jitteriness-5,0)
 	if(prob(80))
-		M.adjustBrainLoss(2*REM)
+		M.adjustOrganLoss(ORGAN_SLOT_BRAIN, 2*REM)
 	if(prob(50))
 		M.drowsyness = max(M.drowsyness, 3)
 	if(prob(10))
@@ -1503,7 +1516,7 @@
 /datum/reagent/carpet/reaction_turf(turf/T, reac_volume)
 	if(isplatingturf(T) || istype(T, /turf/open/floor/plasteel))
 		var/turf/open/floor/F = T
-		F.PlaceOnTop(/turf/open/floor/carpet)
+		F.PlaceOnTop(/turf/open/floor/carpet, flags = CHANGETURF_INHERIT_AIR)
 	..()
 
 /datum/reagent/bromine
@@ -1865,6 +1878,46 @@
 		if(changeling)
 			changeling.chem_charges = max(changeling.chem_charges-2, 0)
 	return ..()
+
+/datum/reagent/concentrated_bz
+	name = "Concentrated BZ"
+	description = "A hyperconcentrated liquid form of BZ gas, known to cause an extremely adverse reaction to changelings. Also causes minor brain damage."
+	color = "#FAFF00"
+	taste_description = "acrid cinnamon"
+	random_unrestricted = FALSE	
+
+/datum/reagent/concentrated_bz/on_mob_metabolize(mob/living/L)
+	..()
+	ADD_TRAIT(L, CHANGELING_HIVEMIND_MUTE, type)
+
+/datum/reagent/concentrated_bz/on_mob_end_metabolize(mob/living/L)
+	..()
+	REMOVE_TRAIT(L, CHANGELING_HIVEMIND_MUTE, type)
+
+/datum/reagent/concentrated_bz/on_mob_life(mob/living/L)
+	if(L.mind)
+		var/datum/antagonist/changeling/changeling = L.mind.has_antag_datum(/datum/antagonist/changeling)
+		if(changeling)
+			changeling.chem_charges = max(changeling.chem_charges-2, 0)
+			if(prob(30))	
+				L.losebreath += 1
+				L.adjustOxyLoss(3,5)
+				to_chat(L, "<font size=3 color=red><b>You can't breathe!</b></font>")
+
+		L.adjustOrganLoss(ORGAN_SLOT_BRAIN, 2, 50)					
+	return ..()	
+
+/datum/reagent/fake_cbz
+	name = "Concentrated BZ"
+	description = "A hyperconcentrated liquid form of BZ gas, known to cause an extremely adverse reaction to changelings. Also causes minor brain damage."
+	color = "#FAFF00"
+	taste_description = "acrid cinnamon"
+	random_unrestricted = FALSE	
+
+/datum/reagent/fake_cbz/on_mob_life(mob/living/L)
+	L.adjustOrganLoss(ORGAN_SLOT_BRAIN, 2, 50)
+	if(prob(15))
+		to_chat(L, "You don't feel much of anything")
 
 /datum/reagent/pax/peaceborg
 	name = "synthpax"
