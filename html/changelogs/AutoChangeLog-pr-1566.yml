@@ -1,0 +1,5 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - bugfix: "Flypeople can now vomit even if they're starving."
+  - rscadd: "Flypeople will only vomit when consuming food."
