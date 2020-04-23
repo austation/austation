@@ -1,0 +1,4 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - bugfix: "Energy chainsaws no longer revert to normal chainsaws when implanted"
