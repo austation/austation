@@ -148,7 +148,7 @@
 	for(var/obj/item/I in get_usable_modules())
 		if(istype(I, /obj/item/assembly/flash))
 			var/obj/item/assembly/flash/F = I
-			F.times_used = 0
+			F.bulb.charges_left = INFINITY
 			F.burnt_out = FALSE
 			F.update_icon()
 		else if(istype(I, /obj/item/melee/baton))
