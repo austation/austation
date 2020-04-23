@@ -444,11 +444,7 @@
 
 /datum/reagent/toxin/cyanide
 	name = "Cyanide"
-<<<<<<< HEAD
-	description = "An infamous poison known for its use in assassination. Causes headaches and sickness at first, followed by failure of cellular respiration leading to cardiac arrest"
-=======
 	description = "An infamous poison known for its use in assassination. Causes small amounts of toxin damage with a small chance of oxygen damage or a stun."
->>>>>>> 1481f740b2... Revert "Remakes Cyanide" (#1578)
 	reagent_state = LIQUID
 	color = "#00B4FF"
 	metabolization_rate = 0.125 * REAGENTS_METABOLISM
