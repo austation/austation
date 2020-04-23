@@ -1,0 +1,4 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - spellcheck: "Gaseous decomposition now has capital letters"

@@ -1,0 +1,4 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - bugfix: "Flypeople now get a viable amount of nutrients from vomit. No more starving."
