@@ -1065,6 +1065,12 @@
 		if(!density)//already open
 			return
 
+		// austation begin -- prevents jaws of life from opening protected doors
+		if(protected_door)
+			to_chat(user, "<span class='warning'>The gap is too small for [I] to fit!</span>")
+			return
+		// austation end
+
 		if(locked)
 			to_chat(user, "<span class='warning'>The bolts are down, it won't budge!</span>")
 			return
