@@ -6033,11 +6033,11 @@
 /area/security/processing)
 "amN" = (
 /obj/structure/table,
-/obj/item/clothing/glasses/sunglasses{
+/obj/item/clothing/glasses/sunglasses/advanced{
 	pixel_x = 3;
 	pixel_y = 3
 	},
-/obj/item/clothing/glasses/sunglasses{
+/obj/item/clothing/glasses/sunglasses/advanced{
 	pixel_x = 3;
 	pixel_y = 3
 	},
@@ -8208,15 +8208,6 @@
 	},
 /turf/open/floor/plasteel,
 /area/construction/mining/aux_base)
-"atc" = (
-/obj/structure/table/wood,
-/obj/item/clothing/glasses/sunglasses,
-/obj/item/reagent_containers/food/drinks/bottle/whiskey{
-	pixel_x = 3
-	},
-/obj/item/lighter,
-/turf/open/floor/carpet/red,
-/area/security/detectives_office)
 "atd" = (
 /obj/machinery/light{
 	dir = 4
@@ -10722,8 +10713,8 @@
 /area/maintenance/department/electrical)
 "azy" = (
 /obj/effect/mapping_helpers/airlock/cyclelink_helper,
-/obj/machinery/door/airlock/external{
-	name = "Port Docking Bay 1"
+/obj/machinery/door/airlock/arrivals_external{
+	name = "Arrivals Airlock"
 	},
 /turf/open/floor/plating,
 /area/hallway/secondary/entry)
@@ -15033,9 +15024,7 @@
 /turf/open/floor/plasteel/grimy,
 /area/chapel/office)
 "aJN" = (
-/obj/structure/table,
-/obj/item/book/manual/hydroponics_pod_people,
-/obj/item/paper/guides/jobs/hydroponics,
+/obj/machinery/chem_dispenser/mutagensaltpetersmall,
 /turf/open/floor/plasteel,
 /area/hydroponics)
 "aJO" = (
@@ -15563,6 +15552,8 @@
 	pixel_y = 5
 	},
 /obj/item/watertank,
+/obj/item/paper/guides/jobs/hydroponics,
+/obj/item/book/manual/hydroponics_pod_people,
 /turf/open/floor/plasteel,
 /area/hydroponics)
 "aLe" = (
@@ -16035,16 +16026,6 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3,
 /turf/open/floor/plasteel,
 /area/crew_quarters/bar)
-"aMy" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/layer3,
-/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
-	dir = 8
-	},
-/turf/open/floor/plasteel,
-/area/hydroponics)
 "aMz" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -26093,12 +26074,12 @@
 	amount = 10
 	},
 /obj/item/stack/cable_coil,
-/obj/item/assembly/flash/handheld,
-/obj/item/assembly/flash/handheld,
-/obj/item/assembly/flash/handheld,
-/obj/item/assembly/flash/handheld,
-/obj/item/assembly/flash/handheld,
-/obj/item/assembly/flash/handheld,
+/obj/item/assembly/flash/handheld/weak,
+/obj/item/assembly/flash/handheld/weak,
+/obj/item/assembly/flash/handheld/weak,
+/obj/item/assembly/flash/handheld/weak,
+/obj/item/assembly/flash/handheld/weak,
+/obj/item/assembly/flash/handheld/weak,
 /obj/machinery/firealarm{
 	dir = 8;
 	pixel_x = 24
@@ -51818,8 +51799,8 @@
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
 	dir = 1
 	},
-/obj/machinery/door/airlock/external{
-	name = "Port Docking Bay 1"
+/obj/machinery/door/airlock/arrivals_external{
+	name = "Arrivals Airlock"
 	},
 /turf/open/floor/plating,
 /area/hallway/secondary/entry)
@@ -52730,6 +52711,17 @@
 	},
 /turf/open/floor/plasteel,
 /area/quartermaster/miningdock)
+"dWK" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/layer3,
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
+	dir = 8
+	},
+/obj/effect/landmark/start/botanist,
+/turf/open/floor/plasteel,
+/area/hydroponics)
 "dYq" = (
 /turf/closed/wall,
 /area/science/nanite)
@@ -53545,6 +53537,16 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
 /turf/closed/wall/r_wall,
 /area/ai_monitored/turret_protected/aisat_interior)
+"gDG" = (
+/obj/effect/turf_decal/tile/green{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/green{
+	dir = 4
+	},
+/obj/effect/landmark/start/botanist,
+/turf/open/floor/plasteel,
+/area/hydroponics)
 "gES" = (
 /obj/item/radio/intercom{
 	pixel_x = 28;
@@ -54791,6 +54793,15 @@
 /obj/effect/landmark/event_spawn,
 /turf/open/floor/plasteel,
 /area/quartermaster/miningdock)
+"kSg" = (
+/obj/structure/table/wood,
+/obj/item/reagent_containers/food/drinks/bottle/whiskey{
+	pixel_x = 3
+	},
+/obj/item/lighter,
+/obj/item/clothing/glasses/hud/security/sunglasses,
+/turf/open/floor/carpet/red,
+/area/security/detectives_office)
 "kTx" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
 	dir = 1
@@ -86735,7 +86746,7 @@ baV
 bLE
 bLE
 pvj
-atc
+kSg
 aug
 apd
 awg
@@ -99343,7 +99354,7 @@ aGC
 aIl
 aIp
 aKK
-aMy
+dWK
 aIp
 aOX
 aQm
@@ -99860,7 +99871,7 @@ fGf
 aMA
 aIp
 oau
-aQm
+gDG
 sJm
 aST
 aUk
