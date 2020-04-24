@@ -6,12 +6,8 @@
 /turf/open/floor/plating/airless,
 /area/shuttle/adminbus)
 "ab" = (
-/obj/machinery/door/airlock/centcom{
-	name = "Admin Bus Airlock";
-	req_access_txt = "101"
-	},
-/obj/effect/mapping_helpers/airlock/cyclelink_helper,
-/turf/open/floor/mineral/plastitanium/red,
+/obj/structure/sign/nanotrasen,
+/turf/closed/wall/r_wall/syndicate,
 /area/shuttle/adminbus)
 "ac" = (
 /obj/structure/chair/comfy/shuttle{
@@ -175,12 +171,12 @@
 /turf/open/floor/mineral/titanium/purple,
 /area/shuttle/adminbus)
 "aJ" = (
+/obj/effect/mapping_helpers/airlock/cyclelink_helper,
+/obj/structure/fans/tiny,
 /obj/machinery/door/airlock/centcom{
 	name = "Admin Bus Airlock";
+	protected_door = 1;
 	req_access_txt = "101"
-	},
-/obj/effect/mapping_helpers/airlock/cyclelink_helper{
-	dir = 1
 	},
 /turf/open/floor/mineral/plastitanium/red,
 /area/shuttle/adminbus)
@@ -188,18 +184,18 @@
 /turf/template_noop,
 /area/template_noop)
 "aL" = (
-/obj/machinery/door/airlock/centcom{
-	name = "Admin Bus Medical";
-	req_access_txt = "101"
-	},
-/turf/open/floor/mineral/titanium/white,
+/turf/closed/wall/r_wall/syndicate,
 /area/shuttle/adminbus)
 "aM" = (
+/obj/effect/mapping_helpers/airlock/cyclelink_helper{
+	dir = 1
+	},
 /obj/machinery/door/airlock/centcom{
-	name = "Admin Bus Engineering";
+	name = "Admin Bus Airlock";
+	protected_door = 1;
 	req_access_txt = "101"
 	},
-/turf/open/floor/mineral/titanium/yellow,
+/turf/open/floor/mineral/plastitanium/red,
 /area/shuttle/adminbus)
 "aN" = (
 /obj/structure/table/reinforced,
@@ -225,9 +221,25 @@
 /area/shuttle/adminbus)
 "aT" = (
 /obj/machinery/door/airlock/centcom{
-	name = "Admin Bus Airlock";
+	name = "Admin Bus Medical";
+	protected_door = 1;
 	req_access_txt = "101"
 	},
+/turf/open/floor/mineral/titanium/white,
+/area/shuttle/adminbus)
+"aU" = (
+/obj/machinery/door/airlock/centcom{
+	name = "Admin Bus Engineering";
+	protected_door = 1;
+	req_access_txt = "101"
+	},
+/turf/open/floor/mineral/titanium/yellow,
+/area/shuttle/adminbus)
+"aV" = (
+/obj/structure/sign/departments/minsky/research/research,
+/turf/closed/wall/mineral/plastitanium,
+/area/shuttle/adminbus)
+"aW" = (
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
 	dir = 4
 	},
@@ -239,24 +251,13 @@
 	name = "Admin Bus";
 	width = 22
 	},
-/turf/open/floor/mineral/plastitanium/red,
-/area/shuttle/adminbus)
-"aU" = (
+/obj/structure/fans/tiny,
 /obj/machinery/door/airlock/centcom{
 	name = "Admin Bus Airlock";
+	protected_door = 1;
 	req_access_txt = "101"
 	},
-/obj/effect/mapping_helpers/airlock/cyclelink_helper{
-	dir = 8
-	},
 /turf/open/floor/mineral/plastitanium/red,
-/area/shuttle/adminbus)
-"aV" = (
-/obj/structure/sign/departments/minsky/research/research,
-/turf/closed/wall/mineral/plastitanium,
-/area/shuttle/adminbus)
-"aW" = (
-/turf/closed/wall/mineral/plastitanium,
 /area/shuttle/adminbus)
 "aX" = (
 /obj/structure/chair/stool/bar,
@@ -305,11 +306,15 @@
 /turf/closed/wall/mineral/plastitanium,
 /area/shuttle/adminbus)
 "bf" = (
+/obj/effect/mapping_helpers/airlock/cyclelink_helper{
+	dir = 8
+	},
 /obj/machinery/door/airlock/centcom{
-	name = "Admin Bus Bridge";
+	name = "Admin Bus Airlock";
+	protected_door = 1;
 	req_access_txt = "101"
 	},
-/turf/open/floor/pod,
+/turf/open/floor/mineral/plastitanium/red,
 /area/shuttle/adminbus)
 "bg" = (
 /obj/machinery/light{
@@ -473,25 +478,33 @@
 	},
 /turf/open/floor/mineral/plastitanium,
 /area/shuttle/adminbus)
+"bE" = (
+/obj/machinery/door/airlock/centcom{
+	name = "Admin Bus Bridge";
+	protected_door = 1;
+	req_access_txt = "101"
+	},
+/turf/open/floor/pod,
+/area/shuttle/adminbus)
 
 (1,1,1) = {"
 aK
-aW
+aL
 ao
 ao
-aW
-aW
+aL
+aL
 ao
 ao
+aL
+aL
 aW
-aW
-aT
-aW
-aW
+aL
+aL
 ao
 ao
-aW
-aW
+aL
+aL
 aK
 aK
 aK
@@ -506,15 +519,15 @@ bj
 av
 ax
 az
-aW
+aL
 aH
 aP
-aW
+aL
 ai
 aq
 af
 aI
-aW
+aL
 aK
 aK
 aK
@@ -529,19 +542,19 @@ ay
 aw
 ay
 bu
-aW
+aL
 aH
 bx
-aW
+aL
 by
 aS
 aS
 bA
-aW
+aL
 br
 br
 br
-aW
+aL
 "}
 (4,1,1) = {"
 aa
@@ -552,10 +565,10 @@ ar
 ay
 ay
 ay
-aW
+aL
 aH
 aP
-aW
+aL
 aN
 aS
 aS
@@ -567,32 +580,32 @@ bn
 br
 "}
 (5,1,1) = {"
-be
-aW
-aW
-aW
-aW
+ab
 aL
+aL
+aL
+aL
+aT
 aO
 aB
-aW
-aW
-aU
+aL
+aL
+bf
 aV
 aN
 aS
 aS
 ae
-aW
+aL
 ac
 bh
 bo
 br
 "}
 (6,1,1) = {"
-ab
-ak
 aJ
+ak
+aM
 bc
 aQ
 aQ
@@ -606,16 +619,16 @@ ag
 ag
 ag
 ag
-bf
+bE
 aG
 bl
 bp
 br
 "}
 (7,1,1) = {"
-ab
-al
 aJ
+al
+aM
 bg
 aQ
 aQ
@@ -629,22 +642,22 @@ ag
 ag
 ag
 ag
-bf
+bE
 aG
 bl
 bq
 br
 "}
 (8,1,1) = {"
-be
-aW
-aW
-aW
-aW
-aM
+ab
+aL
+aL
+aL
+aL
+aU
 aR
 aB
-aW
+aL
 ag
 ag
 ag
@@ -652,7 +665,7 @@ aX
 aY
 aZ
 ba
-aW
+aL
 bs
 bi
 bo
@@ -667,7 +680,7 @@ au
 aA
 aA
 aD
-aW
+aL
 am
 aF
 am
@@ -690,7 +703,7 @@ aA
 aA
 aA
 bv
-aW
+aL
 bw
 ad
 aF
@@ -698,11 +711,11 @@ aX
 aY
 ag
 bB
-aW
+aL
 br
 br
 br
-aW
+aL
 "}
 (11,1,1) = {"
 aa
@@ -713,7 +726,7 @@ bt
 aA
 aA
 aE
-aW
+aL
 am
 aF
 am
@@ -721,7 +734,7 @@ bz
 aY
 ag
 bd
-aW
+aL
 aK
 aK
 aK
@@ -729,22 +742,22 @@ aK
 "}
 (12,1,1) = {"
 aK
-aW
+aL
 ao
 ao
-aW
-aW
+aL
+aL
 ao
 ao
-aW
-aW
+aL
+aL
 ao
 ao
-aW
+aL
 ao
 ao
-aW
-aW
+aL
+aL
 aK
 aK
 aK
