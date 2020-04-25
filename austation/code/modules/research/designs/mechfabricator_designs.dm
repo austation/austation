@@ -58,7 +58,7 @@
 	id = "gygax_left_leg"
 	build_type = MECHFAB
 	build_path = /obj/item/mecha_parts/part/gygax_left_leg
-	materials = list(/datum/material/iron=15000, /datum/material/gold=1000,/datum/material/silver=1000)
+	materials = list(/datum/material/iron=15000, /datum/material/gold=2000,/datum/material/silver=2000)
 	construction_time = 200
 	category = list("Gygax")
 
@@ -67,7 +67,7 @@
 	id = "gygax_right_leg"
 	build_type = MECHFAB
 	build_path = /obj/item/mecha_parts/part/gygax_right_leg
-	materials = list(/datum/material/iron=15000, /datum/material/gold=1000,/datum/material/silver=1000)
+	materials = list(/datum/material/iron=15000, /datum/material/gold=2000,/datum/material/silver=2000)
 	construction_time = 200
 	category = list("Gygax")
 
