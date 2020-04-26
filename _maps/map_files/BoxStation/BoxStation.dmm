@@ -24919,16 +24919,6 @@
 	},
 /turf/open/floor/plasteel/white,
 /area/science/research)
-"bks" = (
-/obj/machinery/requests_console{
-	department = "Science";
-	departmentType = 2;
-	name = "Science Requests Console";
-	pixel_x = -30;
-	receive_ore_updates = 1
-	},
-/turf/open/floor/plasteel/white,
-/area/science/lab)
 "bkv" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -31875,13 +31865,6 @@
 /obj/structure/closet/wardrobe/miner,
 /turf/open/floor/plasteel,
 /area/quartermaster/miningdock)
-"bBJ" = (
-/obj/machinery/firealarm{
-	dir = 2;
-	pixel_y = 24
-	},
-/turf/open/floor/plasteel/white,
-/area/medical/medbay/central)
 "bBK" = (
 /obj/machinery/disposal/bin,
 /obj/structure/disposalpipe/trunk,
@@ -45463,13 +45446,6 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/engine/engine_smes)
-"clI" = (
-/obj/effect/turf_decal/tile/red,
-/obj/effect/turf_decal/tile/red{
-	dir = 8
-	},
-/turf/open/floor/plasteel,
-/area/security/main)
 "clJ" = (
 /obj/effect/spawner/structure/window,
 /turf/open/floor/plating,
@@ -45520,14 +45496,6 @@
 	},
 /turf/open/floor/plasteel,
 /area/engine/engineering)
-"clS" = (
-/obj/machinery/rnd/production/techfab/department/security,
-/obj/effect/turf_decal/tile/red,
-/obj/effect/turf_decal/tile/red{
-	dir = 8
-	},
-/turf/open/floor/plasteel,
-/area/security/main)
 "clT" = (
 /obj/machinery/portable_atmospherics/canister/nitrogen,
 /turf/open/floor/engine/n2,
@@ -52905,6 +52873,14 @@
 	},
 /turf/open/floor/plasteel,
 /area/vacant_room/commissary)
+"eAL" = (
+/obj/machinery/firealarm{
+	dir = 2;
+	pixel_y = 24
+	},
+/obj/machinery/computer/cargo/request,
+/turf/open/floor/plasteel/white,
+/area/medical/medbay/central)
 "eEq" = (
 /obj/machinery/cryopod,
 /obj/effect/turf_decal/stripes/line{
@@ -56251,6 +56227,19 @@
 /obj/effect/turf_decal/bot,
 /turf/open/floor/plasteel/dark,
 /area/science/nanite)
+"pDJ" = (
+/obj/machinery/requests_console{
+	department = "Science";
+	departmentType = 2;
+	name = "Science Requests Console";
+	pixel_x = -30;
+	receive_ore_updates = 1
+	},
+/obj/machinery/computer/cargo/request{
+	dir = 4
+	},
+/turf/open/floor/plasteel/white,
+/area/science/lab)
 "pDL" = (
 /obj/effect/spawner/lootdrop/two_percent_xeno_egg_spawner,
 /turf/open/floor/engine,
@@ -56560,6 +56549,14 @@
 	},
 /turf/open/floor/plasteel/white,
 /area/science/robotics/lab)
+"qDU" = (
+/obj/effect/turf_decal/tile/red,
+/obj/effect/turf_decal/tile/red{
+	dir = 8
+	},
+/obj/machinery/rnd/production/techfab/department/security,
+/turf/open/floor/plasteel,
+/area/security/main)
 "qGG" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
@@ -57077,10 +57074,6 @@
 	},
 /turf/open/floor/plasteel,
 /area/hallway/primary/fore)
-"suO" = (
-/obj/machinery/vending/cigarette,
-/turf/open/floor/plasteel,
-/area/engine/break_room)
 "suU" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 9
@@ -57162,6 +57155,12 @@
 	},
 /turf/open/floor/plasteel,
 /area/hydroponics)
+"sJB" = (
+/obj/machinery/computer/cargo/request{
+	dir = 8
+	},
+/turf/open/floor/plasteel,
+/area/engine/break_room)
 "sKZ" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
@@ -58489,6 +58488,16 @@
 /obj/structure/closet/emcloset,
 /turf/open/floor/plating,
 /area/maintenance/starboard/aft)
+"xcW" = (
+/obj/effect/turf_decal/tile/red,
+/obj/effect/turf_decal/tile/red{
+	dir = 8
+	},
+/obj/machinery/computer/cargo/request{
+	dir = 1
+	},
+/turf/open/floor/plasteel,
+/area/security/main)
 "xeP" = (
 /obj/structure/chair/office/light,
 /obj/effect/landmark/start/scientist,
@@ -90415,7 +90424,7 @@ bRo
 bTG
 caA
 bVK
-suO
+sJB
 bZw
 cap
 ctR
@@ -90842,7 +90851,7 @@ afT
 agz
 ahb
 ahI
-clI
+qDU
 abp
 wHs
 xYY
@@ -91099,7 +91108,7 @@ afV
 agB
 ahd
 ahI
-clS
+xcW
 abp
 ajh
 ajn
@@ -97843,7 +97852,7 @@ bwL
 bxX
 qSR
 bua
-bBJ
+eAL
 bhh
 xkB
 bof
@@ -105797,7 +105806,7 @@ aYV
 bfX
 vBt
 biU
-bks
+pDJ
 blI
 bnn
 dgS
