@@ -13,6 +13,9 @@
 	girder_type = /obj/structure/girder/reinforced
 	explosion_block = 2
 	rad_insulation = RAD_HEAVY_INSULATION
+	FASTDMM_PROP(\
+		pipe_astar_cost = 50 \
+	)
 
 /turf/closed/wall/r_wall/deconstruction_hints(mob/user)
 	switch(d_state)
@@ -47,6 +50,7 @@
 		playsound(src, 'sound/effects/bang.ogg', 50, 1)
 		to_chat(M, "<span class='warning'>This wall is far too strong for you to destroy.</span>")
 
+/* austation -- sonic jackhammer can no longer crush walls
 /turf/closed/wall/r_wall/try_destroy(obj/item/I, mob/user, turf/T)
 	if(istype(I, /obj/item/pickaxe/drill/jackhammer))
 		to_chat(user, "<span class='notice'>You begin to smash though [src]...</span>")
@@ -58,6 +62,7 @@
 			dismantle_wall()
 			return TRUE
 	return FALSE
+*/
 
 /turf/closed/wall/r_wall/try_decon(obj/item/W, mob/user, turf/T)
 	//DECONSTRUCTION

@@ -48,7 +48,7 @@
 	name = "Energized Luminol"
 	color = "#97FFFF"
 	description = "The more powerful version of Luminol, it has been energized to increase its brightness and range."
-	taste_description = "bitterness"
+	taste_description = "electrical bitterness"
 	power_coefficient = 5 // 30 units to reach max brightness
 	max_brightness = 6
 	power = 1.8

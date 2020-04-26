@@ -370,8 +370,12 @@
 			var/dmg = rand(M.force/2, M.force)
 			switch(M.damtype)
 				if("brute")
-					if(M.force > 20)
+					// austation begin -- gygax nerfs
+					if(M.force > 35) // durand and other heavy mechas
 						Unconscious(20)
+					else if(M.force > 20 && !IsKnockdown()) // lightweight mechas like gygax
+						Knockdown(40)
+					// austation end
 					update |= temp.receive_damage(dmg, 0)
 					playsound(src, 'sound/weapons/punch4.ogg', 50, 1)
 				if("fire")
@@ -716,7 +720,7 @@
 /mob/living/carbon/human/proc/check_self_for_injuries()
 	if(stat == DEAD || stat == UNCONSCIOUS)
 		return
-		
+
 	visible_message("[src] examines [p_them()]self.", \
 		"<span class='notice'>You check yourself for injuries.</span>")
 
@@ -808,6 +812,49 @@
 				to_chat(src, "<span class='info'>You feel quite hungry.</span>")
 			if(0 to NUTRITION_LEVEL_STARVING)
 				to_chat(src, "<span class='danger'>You're starving!</span>")
+
+	//Compiles then shows the list of damaged organs and broken organs
+	var/list/broken = list()
+	var/list/damaged = list()
+	var/broken_message
+	var/damaged_message
+	var/broken_plural
+	var/damaged_plural
+	//Sets organs into their proper list
+	for(var/O in internal_organs)
+		var/obj/item/organ/organ = O
+		if(organ.organ_flags & ORGAN_FAILING)
+			if(broken.len)
+				broken += ", "
+			broken += organ.name
+		else if(organ.damage > organ.low_threshold)
+			if(damaged.len)
+				damaged += ", "
+			damaged += organ.name
+	//Checks to enforce proper grammar, inserts words as necessary into the list
+	if(broken.len)
+		if(broken.len > 1)
+			broken.Insert(broken.len, "and ")
+			broken_plural = TRUE
+		else
+			var/holder = broken[1]	//our one and only element
+			if(holder[length(holder)] == "s")
+				broken_plural = TRUE
+		//Put the items in that list into a string of text
+		for(var/B in broken)
+			broken_message += B
+		to_chat(src, "<span class='warning'> Your [broken_message] [broken_plural ? "are" : "is"] non-functional!</span>")
+	if(damaged.len)
+		if(damaged.len > 1)
+			damaged.Insert(damaged.len, "and ")
+			damaged_plural = TRUE
+		else
+			var/holder = damaged[1]
+			if(holder[length(holder)] == "s")
+				damaged_plural = TRUE
+		for(var/D in damaged)
+			damaged_message += D
+		to_chat(src, "<span class='info'>Your [damaged_message] [damaged_plural ? "are" : "is"] hurt.</span>")
 
 	if(roundstart_quirks.len)
 		to_chat(src, "<span class='notice'>You have these quirks: [get_trait_string()].</span>")

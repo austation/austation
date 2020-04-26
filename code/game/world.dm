@@ -8,6 +8,11 @@ GLOBAL_VAR(restart_counter)
 	if(fexists("byond-extools.dll"))
 		call("byond-extools.dll", "maptick_initialize")()
 
+	//Early profile for auto-profiler - will be stopped on profiler init if necessary.
+#if DM_VERSION >= 513 && DM_BUILD >= 1506
+	world.Profile(PROFILE_START)
+#endif
+
 	log_world("World loaded at [time_stamp()]!")
 
 	SetupExternalRSC()
@@ -153,10 +158,10 @@ GLOBAL_VAR(restart_counter)
 /world/Topic(T, addr, master, key)
 
 	var/list/response[] = list()
-	if (SSfail2topic?.IsRateLimited(addr))
+	/*if (SSfail2topic?.IsRateLimited(addr)) austation begin -- disabling fail2topic because it's unironically breaking shit. Will try it again once 513 is working.
 		response["statuscode"] = 429
 		response["response"] = "Rate limited."
-		return json_encode(response)
+		return json_encode(response)*/
 
 	if (length(T) > CONFIG_GET(number/topic_max_size))
 		response["statuscode"] = 413
@@ -261,11 +266,11 @@ GLOBAL_VAR(restart_counter)
 
 /world/proc/update_status()
 
+
 	var/list/features = list()
 
-	if(GLOB.master_mode)
+	if(GLOB.master_mode) // hides the gamemode from the hub entry, removes some useless info from the hub entry
 		features += GLOB.master_mode
-
 	if (!GLOB.enter_allowed)
 		features += "closed"
 
@@ -275,33 +280,45 @@ GLOBAL_VAR(restart_counter)
 		var/server_name = CONFIG_GET(string/servername)
 		if (server_name)
 			s += "<b>[server_name]</b> &#8212; "
-
+		features += "[CONFIG_GET(flag/norespawn) ? "no " : ""]respawn" // removes some useless info from the hub entry
+		if(CONFIG_GET(flag/allow_vote_mode))
+			features += "vote"
+		if(CONFIG_GET(flag/allow_ai))
+			features += "AI allowed"
 		hostedby = CONFIG_GET(string/hostedby)
 
 	s += "<b>[station_name()]</b>";
-	s += "(<a href='https://discord.gg/z9ttAvA'>Discord</a>|<a href='http://beestation13.com'>Website</a>)"
+	s += " ("
+	s += "<a href=\"https://austation.net/\">" //Change this to wherever you want the hub to link to. links to austation's website on the hub
+	s += "AuStation"  //Replace this with something else. Or ever better, delete it and uncomment the game version. modifies the hub entry link
+	s += "</a>"
+	s += ")\]" //encloses the server title in brackets to make the hub entry fancier
+	s += "<br>[CONFIG_GET(string/servertagline)]<br>" //adds a tagline!
 
-	var/players = GLOB.clients.len
+	var/n = 0
+	for (var/mob/M in GLOB.player_list)
+		if (M.client)
+			n++
 
-	var/popcaptext = ""
-	var/popcap = max(CONFIG_GET(number/extreme_popcap), CONFIG_GET(number/hard_popcap), CONFIG_GET(number/soft_popcap))
-	if (popcap)
-		popcaptext = "/[popcap]"
+	if(SSmapping.config) // this just stops the runtime, honk.
+		features += "[SSmapping.config.map_name]"	//makes the hub entry display the current map
 
-	if (players > 1)
-		features += "[players][popcaptext] players"
-	else if (players > 0)
-		features += "[players][popcaptext] player"
+	if(get_security_level())//makes the hub entry show the security level
+		features += "[get_security_level()] alert"
 
-	game_state = (CONFIG_GET(number/extreme_popcap) && players >= CONFIG_GET(number/extreme_popcap)) //tells the hub if we are full
+	if (n > 1)
+		features += "~[n] players"
+	else if (n > 0)
+		features += "~[n] player"
 
 	if (!host && hostedby)
 		features += "hosted by <b>[hostedby]</b>"
 
 	if (features)
-		s += ": [jointext(features, ", ")]"
+		s += "\[[jointext(features, ", ")]" //replaces the colon here with a left bracket
 
 	status = s
+
 
 /world/proc/update_hub_visibility(new_visibility)
 	if(new_visibility == GLOB.hub_visibility)

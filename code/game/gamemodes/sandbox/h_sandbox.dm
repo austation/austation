@@ -41,6 +41,8 @@ GLOBAL_VAR_INIT(hsboxspawn, TRUE)
 			"Standard Tools",
 			"Spawn Flashlight"					= "hsbspawn&path=[/obj/item/flashlight]",
 			"Spawn Toolbox"						= "hsbspawn&path=[/obj/item/storage/toolbox/mechanical]",
+			"Spawn Tier 4 BSRPED"				= "hsbspawn&path=[/obj/item/storage/part_replacer/bluespace/tier4]", // austation -- gives the players tier 4 parts
+			"Spawn Toolbelt"					= "hsbspawn&path=[/obj/item/storage/belt/utility/chief/full]", // austation -- gives the players good tools
 			"Spawn Light Replacer"				= "hsbspawn&path=[/obj/item/lightreplacer]",
 			"Spawn Medical Kit"					= "hsbspawn&path=[/obj/item/storage/firstaid/regular]",
 			"Spawn All-Access ID"				= "hsbaaid",
@@ -60,7 +62,8 @@ GLOBAL_VAR_INIT(hsboxspawn, TRUE)
 
 			"Miscellaneous",
 			"Spawn Air Scrubber"				= "hsbscrubber",
-			"Spawn Welding Fuel Tank"			= "hsbspawn&path=[/obj/structure/reagent_dispensers/fueltank]",
+			"Spawn Debug Tech Disk"				= "hsbspawn&path=[/obj/item/disk/tech_disk/debug]", // austation -- added debug tech disk
+			"Spawn All Materials"				= "hsbspawn&path=[/obj/structure/closet/syndicate/resources/everything]", // austation -- swapped fuel tank with something useful
 			"Spawn Water Tank"					= "hsbspawn&path=[/obj/structure/reagent_dispensers/watertank]",
 
 			"Bots",

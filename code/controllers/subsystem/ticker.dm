@@ -159,10 +159,10 @@ SUBSYSTEM_DEF(ticker)
 			for(var/client/C in GLOB.clients)
 				window_flash(C, ignorepref = TRUE) //let them know lobby has opened up.
 			to_chat(world, "<span class='boldnotice'>Welcome to [station_name()]!</span>")
-			if(GLOB.master_mode == "sandbox") // austation start -- TGS bot now pings notification squad role
-				send2chat("New sandbox round starting on [SSmapping.config.map_name]!", CONFIG_GET(string/chat_announce_new_game))
+			if(GLOB.master_mode == "sandbox") // austation start -- TGS bot now pings notification squad role, also hopefully fixes TGS issues
+				world.TgsTargetedChatBroadcast("New sandbox round starting on [SSmapping.config.map_name]!", FALSE)
 			else
-				send2chat("<@&586792483892232209> New round starting on [SSmapping.config.map_name]!", CONFIG_GET(string/chat_announce_new_game)) // austation end
+				world.TgsTargetedChatBroadcast("<@&586792483892232209> New round starting on [SSmapping.config.map_name]!", FALSE) // austation end
 			current_state = GAME_STATE_PREGAME
 			//Everyone who wants to be an observer is now spawned
 			create_observers()
@@ -649,18 +649,9 @@ SUBSYSTEM_DEF(ticker)
 	save_admin_data()
 	update_everything_flag_in_db()
 	if(!round_end_sound)
-		round_end_sound = pick(\
-		'sound/roundend/newroundsexy.ogg',
-		'sound/roundend/apcdestroyed.ogg',
-		'sound/roundend/bangindonk.ogg',
-		'sound/roundend/leavingtg.ogg',
-		'sound/roundend/its_only_game.ogg',
-		'sound/roundend/yeehaw.ogg',
-		'sound/roundend/disappointed.ogg',
-		'austation/sound/roundend/ohthatsit.ogg',
-		'sound/roundend/scrunglartiy.ogg',
-		'sound/roundend/whyban.ogg'\
-		) // austation -- New roundend sound ohthatsit.ogg
+		var/list/tracks = flist("sound/roundend/") + flist("austation/sound/roundend/") // austation -- include custom round files
+		if(tracks.len)
+			round_end_sound = "sound/roundend/[pick(tracks)]"
 
 	SEND_SOUND(world, sound(round_end_sound))
 	text2file(login_music, "data/last_round_lobby_music.txt")

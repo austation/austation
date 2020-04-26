@@ -7,3 +7,6 @@
 	config_entry_value = 18000
 	integer = FALSE
 	min_val = 0
+
+/datum/config_entry/string/servertagline
+	config_entry_value = "Set this text in the austation.txt config file."

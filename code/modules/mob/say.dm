@@ -45,7 +45,7 @@
 		to_chat(usr, "<span class='danger'>Speech is currently admin-disabled.</span>")
 		return
 
-	var/jb = is_banned_from(ckey, "OOC")
+	var/jb = is_banned_from(ckey, "DSAY")
 	if(QDELETED(src))
 		return
 
@@ -103,6 +103,7 @@
   *
   * Result can be
   * * MODE_WHISPER (Quiet speech)
+  * * MODE_SING (Singing)
   * * MODE_HEADSET (Common radio channel)
   * * A department radio (lots of values here)
   */
@@ -110,6 +111,8 @@
 	var/key = copytext(message, 1, 2)
 	if(key == "#")
 		return MODE_WHISPER
+	else if(key == "%")
+		return MODE_SING
 	else if(key == ";")
 		return MODE_HEADSET
 	else if(length(message) > 2 && (key in GLOB.department_radio_prefixes))

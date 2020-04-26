@@ -38,11 +38,13 @@
 			M.add_fingerprint(user)
 			qdel(src)
 
+	/* austation begin -- sonic jackhammer can no longer crush walls
 	else if(istype(W, /obj/item/pickaxe/drill/jackhammer))
 		to_chat(user, "<span class='notice'>You smash through the girder!</span>")
 		new /obj/item/stack/sheet/iron(get_turf(src))
 		W.play_tool_sound(src)
 		qdel(src)
+	austation end */
 
 
 	else if(istype(W, /obj/item/stack))
@@ -355,12 +357,14 @@
 			transfer_fingerprints_to(R)
 			qdel(src)
 
+	/* austation begin -- sonic jackhammer can no longer crush walls
 	else if(istype(W, /obj/item/pickaxe/drill/jackhammer))
 		to_chat(user, "<span class='notice'>Your jackhammer smashes through the girder!</span>")
 		var/obj/item/stack/sheet/runed_metal/R = new(drop_location(), 2)
 		transfer_fingerprints_to(R)
 		W.play_tool_sound(src)
 		qdel(src)
+	austation end */
 
 	else if(istype(W, /obj/item/stack/sheet/runed_metal))
 		var/obj/item/stack/sheet/runed_metal/R = W
@@ -429,12 +433,14 @@
 			transfer_fingerprints_to(B)
 			qdel(src)
 
+	/* austation begin -- sonic jackhammer can no longer crush walls
 	else if(istype(W, /obj/item/pickaxe/drill/jackhammer))
 		to_chat(user, "<span class='notice'>Your jackhammer smashes through the girder!</span>")
 		var/obj/item/stack/tile/bronze/B = new(drop_location(), 2)
 		transfer_fingerprints_to(B)
 		W.play_tool_sound(src)
 		qdel(src)
+	austation end */
 
 	else if(istype(W, /obj/item/stack/tile/bronze))
 		var/obj/item/stack/tile/bronze/B = W

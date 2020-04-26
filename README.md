@@ -1,11 +1,11 @@
-<h1 align="center">BeeStation 13 Codebase</h1>
+<h1 align="center">AuStation Codebase</h1>
 
 
 [![forthebadge](https://forthebadge.com/images/badges/built-with-resentment.svg)](https://forthebadge.com) [![forthebadge](https://forthebadge.com/images/badges/contains-technical-debt.svg)](https://user-images.githubusercontent.com/8171642/50290880-ffef5500-043a-11e9-8270-a2e5b697c86c.png) [![forinfinityandbyond](https://user-images.githubusercontent.com/5211576/29499758-4efff304-85e6-11e7-8267-62919c3688a9.gif)](https://www.reddit.com/r/SS13/comments/5oplxp/what_is_the_main_problem_with_byond_as_an_engine/dclbu1a)
-[![Build Status](https://travis-ci.com/BeeStation/BeeStation-Hornet.svg?branch=master)](https://travis-ci.com/BeeStation/BeeStation-Hornet) ![Open Issues](https://isitmaintained.com/badge/open/BeeStation/BeeStation-Hornet.svg)
+[![Build Status](https://travis-ci.com/austation/austation.svg?branch=master)](https://travis-ci.com/austation/austation) ![Open Issues](https://isitmaintained.com/badge/open/austation/austation.svg)
 
-**Website:** http://beestation13.com
-**Code:** https://github.com/beestation/beestation-hornet
+**Website:** https://austation.net
+**Code:** https://github.com/austation/austation
 **Wiki:** https://wiki.beestation13.com/view/Main_Page
 
 
@@ -17,7 +17,7 @@ Option 1:
 Follow this: https://wiki.beestation13.com/view/Setting_up_git
 
 Option 2: Download the source code as a zip by clicking the ZIP button in the
-code tab of https://github.com/beestation/beestation-hornet
+code tab of https://github.com/austation/austation
 (note: this will use a lot of bandwidth if you wish to update and is a lot of
 hassle if you want to make any changes at all, so it's not recommended.)
 
@@ -98,13 +98,14 @@ https://github.com/tgstation/tgstation-server
 
 ## MAPS
 
-BeeStation currently comes equipped with these maps.
+AuStation currently comes equipped with these maps.
 
-* [DeltaStation (default)](https://wiki.beestation13.com/view/DeltaStation)
-* [BoxStation](https://wiki.beestation13.com/view/Boxstation)
+* [BoxStation (Default)](https://wiki.beestation13.com/view/Boxstation)
 * [MetaStation](https://wiki.beestation13.com/view/MetaStation)
+* [DeltaStation](https://wiki.beestation13.com/view/DeltaStation)
 * [PubbyStation](https://wiki.beestation13.com/view/PubbyStation)
 * [DonutStation](https://wiki.beestation13.com/view/Donutstation)
+* [KiloStation](https://wiki.beestation13.com/view/KiloStation)
 
 
 All maps have their own code file that is in the base of the _maps directory. Maps are loaded dynamically when the game starts. Follow this guideline when adding your own map, to your fork, for easy compatibility.

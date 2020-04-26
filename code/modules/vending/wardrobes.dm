@@ -258,7 +258,7 @@
 					/obj/item/storage/box/beanbag = 1,
 					/obj/item/clothing/suit/armor/vest/alt = 1,
 					/obj/item/circuitboard/machine/dish_drive = 1,
-					/obj/item/clothing/glasses/sunglasses/reagent = 1,
+					/obj/item/clothing/glasses/sunglasses/advanced/reagent = 1,
 					/obj/item/clothing/neck/petcollar = 1,
 					/obj/item/storage/belt/bandolier = 1,
 					/obj/item/clothing/neck/tie/black = 2,
@@ -440,6 +440,9 @@
 					/obj/item/clothing/mask/surgical = 2,
 					/obj/item/storage/backpack/virology = 2,
 					/obj/item/storage/backpack/satchel/vir = 2)
+	contraband = list(/obj/item/clothing/suit/bio_suit/plaguedoctorsuit = 1,
+					/obj/item/clothing/head/plaguedoctorhat = 1,
+					/obj/item/clothing/mask/gas/plaguedoctor = 1)
 	refill_canister = /obj/item/vending_refill/wardrobe/viro_wardrobe
 	payment_department = ACCOUNT_MED
 /obj/item/vending_refill/wardrobe/viro_wardrobe
