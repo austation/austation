@@ -11,7 +11,6 @@
 
 /datum/round_event/bruh_moment/start()
 	for(var/mob/B in shuffle(GLOB.alive_mob_list))
-		B.say("bruh")
 		B.emote("bruh")
 		sleep(0.2)
 
