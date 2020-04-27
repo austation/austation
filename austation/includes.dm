@@ -31,3 +31,4 @@
 #include "code\modules\research\designs\AI_module_designs.dm"
 #include "code\modules\research\designs\mechfabricator_designs.dm"
 #include "code\modules\vehicles\cars\thanoscar.dm"
+#include "code\modules\events\bruh_moment.dm"
