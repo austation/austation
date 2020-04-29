@@ -1189,17 +1189,17 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 /datum/species/proc/movement_delay(mob/living/carbon/human/H)
 	. = 0	//We start at 0.
 	var/gravity = 0
-	gravity = H.has_gravity()	
+	gravity = H.has_gravity()
 
-	if(!HAS_TRAIT(H, TRAIT_IGNORESLOWDOWN) && gravity)	
-		if(H.wear_suit)	
-			. += H.wear_suit.slowdown	
-		if(H.shoes)	
-			. += H.shoes.slowdown	
-		if(H.back)	
-			. += H.back.slowdown	
-		for(var/obj/item/I in H.held_items)	
-			if(I.item_flags & SLOWS_WHILE_IN_HAND)	
+	if(!HAS_TRAIT(H, TRAIT_IGNORESLOWDOWN) && gravity)
+		if(H.wear_suit)
+			. += H.wear_suit.slowdown
+		if(H.shoes)
+			. += H.shoes.slowdown
+		if(H.back)
+			. += H.back.slowdown
+		for(var/obj/item/I in H.held_items)
+			if(I.item_flags & SLOWS_WHILE_IN_HAND)
 				. += I.slowdown
 
 		if(gravity > STANDARD_GRAVITY)
@@ -1357,6 +1357,18 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 							"<span class='userdanger'>You block [user]'s shoving attempt!</span>")
 		return FALSE
 	if(attacker_style && attacker_style.disarm_act(user,target))
+		return TRUE
+
+			if(!(target.mobility_flags & MOBILITY_STAND) && (user.zone_selected == BODY_ZONE_L_LEG || user.zone_selected == BODY_ZONE_R_LEG) && user.a_intent == INTENT_DISARM && !target.shoes)
+		user.visible_message("<span class='warning'>[user] starts licking [target]'s feet!</span>",
+							"<span class='danger'>You start licking [target]'s feet...</span>", null, null, target)
+		to_chat(target, "<span class='userdanger'>[user] starts licking your feet!</span>")
+		if(do_after(user, 30, TRUE, target, TRUE))
+			user.visible_message("<span class='warning'>[user] licked [target]'s feet!</span>",
+								"<span class='notice'>You licked [target]'s feet!</span>", null, null, target)
+			to_chat(target, "<span class='userdanger'>[user] licked your feet!</span>")
+			target.adjust_fire_stacks(-2) // Thank you terra for coding this
+
 		return TRUE
 	if(user.resting || user.IsKnockdown())
 		return FALSE
