@@ -12,14 +12,11 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	This proc checks if the current directory of the savefile S needs updating
 	It is to be used by the load_character and load_preferences procs.
 	(S.cd=="/" is preferences, S.cd=="/character[integer]" is a character slot, etc)
-
 	if the current directory's version is below SAVEFILE_VERSION_MIN it will simply wipe everything in that directory
 	(if we're at root "/" then it'll just wipe the entire savefile, for instance.)
-
 	if its version is below SAVEFILE_VERSION_MAX but above the minimum, it will load data but later call the
 	respective update_preferences() or update_character() proc.
 	Those procs allow coders to specify format changes so users do not lose their setups and have to redo them again.
-
 	Failing all that, the standard sanity checks are performed. They simply check the data is suitable, reverting to
 	initial() values if necessary.
 */
@@ -328,6 +325,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	S["undershirt"]			>> undershirt
 	S["socks"]				>> socks
 	S["backbag"]			>> backbag
+	S["jumpsuit_style"]		>> jumpsuit_style
 	S["uplink_loc"]			>> uplink_spawn_loc
 	S["feature_mcolor"]					>> features["mcolor"]
 	S["feature_ethcolor"]					>> features["ethcolor"]
@@ -410,6 +408,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	eye_color		= sanitize_hexcolor(eye_color, 3, 0)
 	skin_tone		= sanitize_inlist(skin_tone, GLOB.skin_tones)
 	backbag			= sanitize_inlist(backbag, GLOB.backbaglist, initial(backbag))
+	jumpsuit_style	= sanitize_inlist(jumpsuit_style, GLOB.jumpsuitlist, initial(jumpsuit_style))
 	uplink_spawn_loc = sanitize_inlist(uplink_spawn_loc, GLOB.uplink_spawn_loc_list, initial(uplink_spawn_loc))
 	features["mcolor"]	= sanitize_hexcolor(features["mcolor"], 3, 0)
 	features["ethcolor"]	= copytext(features["ethcolor"],1,7)
@@ -466,7 +465,8 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	WRITE_FILE(S["underwear_color"]		, underwear_color)
 	WRITE_FILE(S["undershirt"]			, undershirt)
 	WRITE_FILE(S["socks"]				, socks)
-	WRITE_FILE(S["backbag"]			, backbag)
+	WRITE_FILE(S["backbag"]				, backbag)
+	WRITE_FILE(S["jumpsuit_style"]		, jumpsuit_style)
 	WRITE_FILE(S["uplink_loc"]			, uplink_spawn_loc)
 	WRITE_FILE(S["species"]			, pref_species.id)
 	WRITE_FILE(S["feature_mcolor"]					, features["mcolor"])
