@@ -13631,8 +13631,15 @@
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
 	},
+<<<<<<< HEAD
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 4
+=======
+/obj/machinery/button/door{
+	id = "datboidetective";
+	name = "Privacy Shutters";
+	pixel_x = 25;
+>>>>>>> 527366233d... Revert "QoL Map Upgrades v2: Boxstation (#1692)" (#1710)
 	},
 /turf/open/floor/carpet,
 /area/security/detectives_office)
@@ -53727,6 +53734,20 @@
 /obj/machinery/atmospherics/components/unary/vent_pump/on,
 /turf/open/floor/plasteel,
 /area/construction/mining/aux_base)
+<<<<<<< HEAD
+=======
+"eIz" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
+/obj/effect/turf_decal/tile/yellow,
+/obj/item/radio/intercom{
+	dir = 8;
+	freerange = 1;
+	name = "Station Intercom (Telecomms)";
+	pixel_x = 26;
+	},
+/turf/open/floor/plasteel,
+/area/hallway/primary/aft)
+>>>>>>> 527366233d... Revert "QoL Map Upgrades v2: Boxstation (#1692)" (#1710)
 "eIL" = (
 /obj/effect/turf_decal/tile/green{
 	dir = 1
