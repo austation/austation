@@ -1,0 +1,4 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - rscadd: "Medical staff spawn with a unique first-aid kit with surgical tools needed for Tend Wounds."
