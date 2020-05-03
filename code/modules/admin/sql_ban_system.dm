@@ -293,11 +293,7 @@
 									ROLE_MONKEY, ROLE_NINJA, ROLE_OPERATIVE,
 									ROLE_OVERTHROW, ROLE_REV, ROLE_REVENANT,
 									ROLE_REV_HEAD, ROLE_SERVANT_OF_RATVAR, ROLE_SYNDICATE,
-<<<<<<< HEAD
-									ROLE_TRAITOR, ROLE_WIZARD, ROLE_HIVE, ROLE_GANG, CATBAN)) //ROLE_REV_HEAD is excluded from this because rev jobbans are handled by ROLE_REV
-=======
-									ROLE_TRAITOR, ROLE_WIZARD, ROLE_HIVE, ROLE_GANG, ROLE_SPECIAL)) //ROLE_REV_HEAD is excluded from this because rev jobbans are handled by ROLE_REV
->>>>>>> 31f133d350... Adds in support for additional roundstart special roles (#1512)
+									ROLE_TRAITOR, ROLE_WIZARD, ROLE_HIVE, ROLE_GANG, ROLE_SPECIAL, CATBAN)) //ROLE_REV_HEAD is excluded from this because rev jobbans are handled by ROLE_REV // austation -- adds catbans
 		for(var/department in long_job_lists)
 			output += "<div class='column'><label class='rolegroup long [ckey(department)]'><input type='checkbox' name='[department]' class='hidden' [usr.client.prefs.tgui_fancy ? " onClick='toggle_checkboxes(this, \"_com\")'" : ""]>[department]</label><div class='content'>"
 			break_counter = 0
