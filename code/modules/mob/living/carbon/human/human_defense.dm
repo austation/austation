@@ -370,18 +370,10 @@
 			var/dmg = rand(M.force/2, M.force)
 			switch(M.damtype)
 				if("brute")
-<<<<<<< HEAD
-					// austation begin -- gygax nerfs
-=======
->>>>>>> 92ebd116cb... differentiates mech punches between durand and gygax + removes auto punch from leg acurator (#45879) (#1684)
 					if(M.force > 35) // durand and other heavy mechas
 						Unconscious(20)
 					else if(M.force > 20 && !IsKnockdown()) // lightweight mechas like gygax
 						Knockdown(40)
-<<<<<<< HEAD
-					// austation end
-=======
->>>>>>> 92ebd116cb... differentiates mech punches between durand and gygax + removes auto punch from leg acurator (#45879) (#1684)
 					update |= temp.receive_damage(dmg, 0)
 					playsound(src, 'sound/weapons/punch4.ogg', 50, 1)
 				if("fire")
