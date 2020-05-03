@@ -3067,10 +3067,7 @@
 #include "interface\stylesheet.dm"
 #include "interface\skin.dmf"
 // END_INCLUDE
-<<<<<<< HEAD
 
 // BEGIN_AUSTATION_INCLUDES
 #include "austation\includes.dm"
 // END_AUSTATION_INCLUDES
-=======
->>>>>>> 69c4fb9c50... [Bounty] tgui: Version 3 (#1623)
