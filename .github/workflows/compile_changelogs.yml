@@ -25,7 +25,7 @@ jobs:
       - name: Commit
         run: |
           git config --local user.email "austation@mcterra.id.au"
-          git config --local user.name "Changelogs"
+          git config --local user.name "AustationBot"
           git pull origin master
           git commit -m "Automatic changelog compile [ci skip]" -a || true
       - name: Push
