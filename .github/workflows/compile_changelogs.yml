@@ -2,11 +2,7 @@ name: Compile changelogs
 
 on:
   schedule:
-<<<<<<< HEAD
-  - cron: "0 0 * * *"
-=======
     - cron: "*/15 * * * *"
->>>>>>> 6629bac2f8... Actions: Generate and Compile CLs without needing a webhook!™ (#1756)
 
 jobs:
   CompileCL:
