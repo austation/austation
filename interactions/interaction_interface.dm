@@ -9,6 +9,7 @@
 	return ..()
 */
 
+/*
 /mob/living/carbon/human/MouseDrop_T(mob/M as mob, mob/living/carbon/human/user as mob)
 	if(M == src || src == usr || M != usr)
 		return
@@ -18,6 +19,7 @@
 		return
 
 	user.try_interaction(src)
+*/
 
 /mob/living/carbon/human/verb/interact_with()
 	set name = "Interact With"
