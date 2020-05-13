@@ -2,6 +2,11 @@
 	set waitfor = FALSE
 	set invisibility = 0
 
+	//lewd
+	if(refactory_period)
+		refactory_period--
+	//end of lewd
+
 	if(digitalinvis)
 		handle_diginvis() //AI becomes unable to see mob
 

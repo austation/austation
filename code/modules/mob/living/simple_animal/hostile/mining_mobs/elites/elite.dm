@@ -22,7 +22,7 @@
 	hud_type = /datum/hud/lavaland_elite
 	var/chosen_attack = 1
 	var/list/attack_action_types = list()
-	var/can_talk = FALSE
+//	var/can_talk = FALSE austation -- boo this is terrible
 	var/obj/loot_drop = null
 
 //Gives player-controlled variants the ability to swap attacks
@@ -54,12 +54,14 @@
 		var/turf/closed/mineral/M = target
 		M.gets_drilled()
 
+/* austation station -- boo, this is terrible
 //Elites can't talk (normally)!
 /mob/living/simple_animal/hostile/asteroid/elite/say(message, bubble_type, var/list/spans = list(), sanitize = TRUE, datum/language/language = null, ignore_spam = FALSE, forced = null)
 	if(can_talk)
 		. = ..()
 		return TRUE
 	return FALSE
+austation end */
 
 /*Basic setup for elite attacks, based on Whoneedspace's megafauna attack setup.
 While using this makes the system rely on OnFire, it still gives options for timers not tied to OnFire, and it makes using attacks consistent accross the board for player-controlled elites.*/

@@ -35,6 +35,8 @@
 	//Sellection screen color
 	var/selection_color = "#ffffff"
 
+	//Overhead chat message colour
+	var/chat_color = "#ffffff"
 
 	//If this is set to 1, a text is printed to the player when jobs are assigned, telling him that he should let admins know that he has to disconnect.
 	var/req_admin_notify
@@ -61,6 +63,7 @@
 	var/display_order = JOB_DISPLAY_ORDER_DEFAULT
 
 	var/tmp/list/gear_leftovers = list()
+	var/gimmick = FALSE //least hacky way i could think of for this
 
 //Only override this proc, unless altering loadout code. Loadouts act on H but get info from M
 //H is usually a human unless an /equip override transformed it
@@ -270,6 +273,17 @@
 /datum/outfit/job/post_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
 	if(visualsOnly)
 		return
+
+	if(H.gender == MALE)
+		H.has_penis = TRUE
+		H.has_vagina = FALSE
+		H.has_breasts = FALSE
+
+	if(H.gender == FEMALE)
+		H.has_vagina = TRUE
+		H.has_breasts = TRUE
+		H.has_penis = FALSE
+
 
 	var/datum/job/J = SSjob.GetJobType(jobtype)
 	if(!J)

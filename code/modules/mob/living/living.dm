@@ -1,3 +1,18 @@
+//lewd
+/mob/living
+	var/has_penis = FALSE
+	var/has_vagina = FALSE
+	var/has_breasts = FALSE
+	var/last_partner
+	var/last_orifice
+	var/lastmoan
+	var/sexual_potency =  15
+	var/lust_tolerance = 100
+	var/lust = 0
+	var/multiorgasms = 0
+	var/refactory_period = 0
+//end of lewd
+
 /mob/living/Initialize()
 	. = ..()
 	if(unique_name)
@@ -10,6 +25,20 @@
 	faction += "[REF(src)]"
 	GLOB.mob_living_list += src
 	initialize_footstep()
+
+	//lewd
+	sexual_potency = (prob(80) ? rand(9, 14) : pick(rand(5, 13), rand(15, 20)))
+	lust_tolerance = (prob(80) ? rand(150, 300) : pick(rand(10, 100), rand(350,600)))
+	if(gender == MALE)
+		has_penis = TRUE
+		has_vagina = FALSE
+		has_breasts = FALSE
+
+	if(gender == FEMALE)
+		has_vagina = TRUE
+		has_breasts = TRUE
+		has_penis = FALSE
+	//end of lewd
 
 /mob/living/proc/initialize_footstep()
 	AddComponent(/datum/component/footstep)
@@ -182,7 +211,7 @@
 	//anti-riot equipment is also anti-push
 	for(var/obj/item/I in M.held_items)
 		if(!istype(M, /obj/item/clothing))
-			if(prob(I.block_chance*2))
+			if(I.block_power >= 50)
 				return
 
 /mob/living/get_photo_description(obj/item/camera/camera)
@@ -613,7 +642,7 @@
 	return
 
 /mob/living/Move(atom/newloc, direct)
-	if(lying) 
+	if(lying)
 		if(direct & EAST)
 			lying = 90
 		if(direct & WEST)
@@ -845,7 +874,7 @@
 		who.show_inv(src)
 	else
 		src << browse(null,"window=mob[REF(who)]")
-	
+
 	who.update_equipment_speed_mods() // Updates speed in case stripped speed affecting item
 
 // The src mob is trying to place an item on someone
@@ -1119,11 +1148,6 @@
 						"[C] topples over [src]!", \
 						"[C] leaps out of [src]'s way!")]</span>")
 	C.Paralyze(40)
-
-/mob/living/ConveyorMove()
-	if((movement_type & FLYING) && !stat)
-		return
-	..()
 
 /mob/living/can_be_pulled()
 	return ..() && !(buckled && buckled.buckle_prevents_pull)

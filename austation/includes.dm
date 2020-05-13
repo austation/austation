@@ -23,6 +23,8 @@
 #include "code\modules\jobs\job_types\medical_doctor.dm"
 #include "code\modules\mapping\writer.dm"
 #include "code\modules\mob\dead\new_player\new_player.dm"
+#include "code\modules\mob\living\human\emote.dm"
+#include "code\modules\mob\living\human\species_type\felinid.dm"
 #include "code\modules\mob\living\silicon\robot\robot_modules.dm"
 #include "code\modules\mob\living\simple_animal\hostile\cat_butcher.dm"
 #include "code\modules\reagents\chemistry\reagents\other_reagents.dm"
@@ -30,3 +32,4 @@
 #include "code\modules\research\designs\AI_module_designs.dm"
 #include "code\modules\research\designs\mechfabricator_designs.dm"
 #include "code\modules\vehicles\cars\thanoscar.dm"
+#include "code\modules\events\bruh_moment.dm"
