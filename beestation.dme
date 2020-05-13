@@ -18,6 +18,7 @@
 
 // BEGIN_INCLUDE
 #include "_maps\_basemap.dm"
+#include "austation\define_includes.dm"
 #include "code\_compile_options.dm"
 #include "code\world.dm"
 #include "code\__DEFINES\_globals.dm"
@@ -3078,6 +3079,15 @@
 #include "code\modules\vending\youtool.dm"
 #include "code\modules\zombie\items.dm"
 #include "code\modules\zombie\organs.dm"
+#include "interactions\_interaction.dm"
+#include "interactions\interaction_definitions.dm"
+#include "interactions\interaction_interface.dm"
+#include "interactions\interaction_mob.dm"
+#include "interactions\lewd\_lewd.dm"
+#include "interactions\lewd\lewd_datums.dm"
+#include "interactions\lewd\lewd_interactions.dm"
+#include "interactions\lewd\lewd_species.dm"
+#include "interactions\lewd\objects.dm"
 #include "interface\interface.dm"
 #include "interface\menu.dm"
 #include "interface\stylesheet.dm"
@@ -3086,4 +3096,11 @@
 
 // BEGIN_AUSTATION_INCLUDES
 #include "austation\includes.dm"
+#include "interactions\lewd\_lewd.dm"
+#include "interactions\lewd\lewd_datums.dm"
+#include "interactions\lewd\lewd_interactions.dm"
+#include "interactions\lewd\lewd_species.dm"
+#include "interactions\lewd\objects.dm"
 // END_AUSTATION_INCLUDES
+
+

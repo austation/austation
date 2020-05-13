@@ -126,6 +126,14 @@
 
 	var/list/msg = list("")
 
+	//newd
+	if(client && client.prefs)
+		if(client.prefs.wasteland_toggles & VERB_CONSENT)
+			msg += "[t_His] player has allowed lewd verbs.\n"
+		else
+			msg += "[t_His] player has not allowed lewd verbs.\n"
+
+
 	var/list/missing = list(BODY_ZONE_HEAD, BODY_ZONE_CHEST, BODY_ZONE_L_ARM, BODY_ZONE_R_ARM, BODY_ZONE_L_LEG, BODY_ZONE_R_LEG)
 	var/list/disabled = list()
 	for(var/X in bodyparts)
