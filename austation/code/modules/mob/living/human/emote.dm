@@ -25,6 +25,14 @@
 	sound = 'austation/sound/misc/nono.ogg'
 	cooldown = (5 SECONDS)
 
+/datum/emote/living/carbon/human/goddamn
+	key = "goddamn"
+	key = "goddamns"
+	message = "is impressed with your flex!"
+	emote_type = EMOTE_AUDIBLE
+	sound = 'austation/sound/misc/goughdemn'
+	cooldown = (5 SECONDS)
+
 /datum/emote/living/carbon/human
 	mob_type_allowed_typecache = list(/mob/living/carbon/human)
 
