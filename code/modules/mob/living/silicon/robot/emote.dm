@@ -13,17 +13,20 @@
 	message = "buzzes."
 	message_param = "buzzes at %t."
 	sound = 'sound/machines/buzz-sigh.ogg'
+	cooldown = (5 SECONDS) //austation -- have to manually set the cooldown for each emote smh
 
 /datum/emote/silicon/buzz2
 	key = "buzz2"
 	message = "buzzes twice."
 	sound = 'sound/machines/buzz-two.ogg'
+	cooldown = (5 SECONDS) //austation -- have to manually set the cooldown for each emote smh
 
 /datum/emote/silicon/chime
 	key = "chime"
 	key_third_person = "chimes"
 	message = "chimes."
 	sound = 'sound/machines/chime.ogg'
+	cooldown = (5 SECONDS) //austation -- have to manually set the cooldown for each emote smh
 
 /datum/emote/silicon/honk
 	key = "honk"
@@ -32,23 +35,27 @@
 	vary = TRUE
 	sound = 'sound/items/bikehorn.ogg'
 
+
 /datum/emote/silicon/ping
 	key = "ping"
 	key_third_person = "pings"
 	message = "pings."
 	message_param = "pings at %t."
 	sound = 'sound/machines/ping.ogg'
+	cooldown = (5 SECONDS) //austation -- have to manually set the cooldown for each emote smh
 
 /datum/emote/silicon/chime
 	key = "chime"
 	key_third_person = "chimes"
 	message = "chimes."
 	sound = 'sound/machines/chime.ogg'
+	cooldown = (5 SECONDS) //austation -- have to manually set the cooldown for each emote smh
 
 /datum/emote/silicon/sad
 	key = "sad"
 	message = "plays a sad trombone..."
 	sound = 'sound/misc/sadtrombone.ogg'
+	cooldown = (5 SECONDS) //austation -- have to manually set the cooldown for each emote smh
 
 /datum/emote/silicon/warn
 	key = "warn"
