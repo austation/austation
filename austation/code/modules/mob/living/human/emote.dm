@@ -30,7 +30,7 @@
 	key = "goddamns"
 	message = "is impressed with your flex!"
 	emote_type = EMOTE_AUDIBLE
-	sound = 'austation/sound/misc/goughdemn'
+	sound = 'austation/sound/misc/goughdemn.ogg'
 	cooldown = (5 SECONDS)
 
 /datum/emote/living/carbon/human
