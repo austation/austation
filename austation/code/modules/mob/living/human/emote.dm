@@ -8,6 +8,13 @@
 	emote_type = EMOTE_AUDIBLE
 	sound = 'austation/sound/misc/bruh.ogg'
 
+/datum/emote/living/carbon/human/enthusiastic
+	key = "yes"
+	key_third_person = "yess"
+	message = "enthusiastically agrees!"
+	emote_type = EMOTE_AUDIBLE
+	sound = 'austation/sound/misc/yesYES.ogg'
+
 /datum/emote/living/carbon/human
 	mob_type_allowed_typecache = list(/mob/living/carbon/human)
 
