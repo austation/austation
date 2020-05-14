@@ -15,6 +15,13 @@
 	emote_type = EMOTE_AUDIBLE
 	sound = 'austation/sound/misc/yesYES.ogg'
 
+/datum/emote/living/carbon/human/unenthusiastic
+	key = "no"
+	key_third_person = "nos"
+	message = "enthusiastically disagrees!"
+	emote_type = EMOTE_AUDIBLE
+	sound = 'austation/sound/misc/nono.ogg'
+
 /datum/emote/living/carbon/human
 	mob_type_allowed_typecache = list(/mob/living/carbon/human)
 

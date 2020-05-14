@@ -16,6 +16,7 @@
 #include "code\modules\admin\verbs\fix_air.dm"
 #include "code\modules\admin\verbs\mapping.dm"
 #include "code\modules\clothing\spacesuit\miscellaneous.dm"
+#include "code\modules\events\bruh_moment.dm"
 #include "code\modules\food_and_drinks\drinks\drinks.dm"
 #include "code\modules\jobs\job_types\chief_medical_officer.dm"
 #include "code\modules\jobs\job_types\emt.dm"
@@ -32,4 +33,3 @@
 #include "code\modules\research\designs\AI_module_designs.dm"
 #include "code\modules\research\designs\mechfabricator_designs.dm"
 #include "code\modules\vehicles\cars\thanoscar.dm"
-#include "code\modules\events\bruh_moment.dm"
