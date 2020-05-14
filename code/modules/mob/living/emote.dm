@@ -81,6 +81,7 @@
 	message_ipc = "gives one shrill beep before falling limp, their monitor flashing blue before completely shutting off..."
 	message_simple =  "stops moving..."
 	stat_allowed = UNCONSCIOUS
+	cooldown = (5 SECONDS) //austation -- have to manually set the cooldown for each emote smh
 
 /datum/emote/living/deathgasp/run_emote(mob/user, params, type_override, intentional)
 	var/mob/living/simple_animal/S = user
@@ -206,6 +207,7 @@
 	message_mime = "laughs silently!"
 	emote_type = EMOTE_AUDIBLE
 	vary = TRUE
+	cooldown = (5 SECONDS) //austation -- have to manually set the cooldown for each emote smh
 
 /datum/emote/living/laugh/can_run_emote(mob/living/user, status_check = TRUE , intentional)
 	. = ..()
@@ -492,6 +494,7 @@
 	message_param = "beeps at %t."
 	sound = 'sound/machines/twobeep.ogg'
 	mob_type_allowed_typecache = list(/mob/living/brain, /mob/living/silicon)
+	cooldown = (5 SECONDS) //austation -- have to manually set the cooldown for each emote smh
 
 /datum/emote/living/circle
 	key = "circle"
@@ -521,7 +524,7 @@
 		to_chat(user, "<span class='notice'>You ready your slapping hand.</span>")
 	else
 		to_chat(user, "<span class='warning'>You're incapable of slapping in your current state.</span>")
-		
+
 /datum/emote/living/raisehand
 	key = "highfive"
 	key_third_person = "highfives"
@@ -543,6 +546,7 @@
 	message = "snaps their fingers."
 	message_param = "snaps their fingers at %t."
 	emote_type = EMOTE_AUDIBLE
+	cooldown = (5 SECONDS) //austation -- have to manually set the cooldown for each emote smh
 
 /datum/emote/living/snap/get_sound(mob/living/user)
 	return pick('sound/misc/fingersnap1.ogg', 'sound/misc/fingersnap2.ogg')

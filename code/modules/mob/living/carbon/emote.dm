@@ -23,6 +23,7 @@
 	restraint_check = TRUE
 	emote_type = EMOTE_AUDIBLE
 	vary = TRUE
+	cooldown = (5 SECONDS) //austation -- have to manually set the cooldown for each emote smh
 
 /datum/emote/living/carbon/clap/get_sound(mob/living/user)
 	if(ishuman(user))
