@@ -205,10 +205,3 @@
 	var/registered_z = null
 
 	var/memory_throttle_time = 0
-
-//austation begin -- fuck byond i cant modularize this for some reason
-
-	/// Used for tracking last uses of emotes for cooldown purposes
-	var/list/emotes_used
-
-//austation end
