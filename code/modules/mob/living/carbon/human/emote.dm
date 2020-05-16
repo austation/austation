@@ -51,7 +51,6 @@
 	message = "screams!"
 	emote_type = EMOTE_AUDIBLE
 	vary = TRUE
-	cooldown = (5 SECONDS) //austation -- have to manually set the cooldown for each emote smh
 
 /datum/emote/living/carbon/human/scream/get_sound(mob/living/user)
 	if(!ishuman(user))
@@ -176,7 +175,6 @@
 	message = "farts!"
 	emote_type = EMOTE_AUDIBLE
 	vary = TRUE
-	cooldown = (5 SECONDS) //austation -- have to manually set the cooldown for each emote smh
 
 /datum/emote/living/carbon/human/fart/get_sound(mob/living/user)
 	if(!ishuman(user))

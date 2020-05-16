@@ -24,7 +24,6 @@
 	var/sound //Sound to play when emote is called
 	var/vary = FALSE	//used for the honk borg emote
 	var/only_forced_audio = FALSE //can only code call this event instead of the player.
-	var/cooldown = 0.8 SECONDS //austation -- cooldown var for all emotes
 
 /datum/emote/New()
 	if (ispath(mob_type_allowed_typecache))
@@ -82,20 +81,6 @@
 	else
 		user.visible_message(msg)
 
-//austation begin -- cooldown proc bb
-
-/// For handling emote cooldown, return true to allow the emote to happen
-/datum/emote/proc/check_cooldown(mob/user, intentional)
-	if(!intentional)
-		return TRUE
-	if(user.emotes_used && user.emotes_used[src] + cooldown > world.time)
-		return FALSE
-	if(!user.emotes_used)
-		user.emotes_used = list()
-	user.emotes_used[src] = world.time
-	return TRUE
-
-//austation end
 
 /datum/emote/proc/get_sound(mob/living/user)
 	return sound //by default just return this var.
