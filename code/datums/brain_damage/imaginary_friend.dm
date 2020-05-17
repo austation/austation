@@ -43,6 +43,11 @@
 
 /datum/brain_trauma/special/imaginary_friend/proc/get_ghost()
 	set waitfor = FALSE
+	// austation begin -- oh yes I too enjoy becoming the imaginary friend of some dead clown on lavaland
+	if(owner.stat == DEAD)
+		qdel(src)
+		return
+	// austation end
 	var/list/mob/dead/observer/candidates = pollCandidatesForMob("Do you want to play as [owner]'s imaginary friend?", ROLE_PAI, null, null, 75, friend, POLL_IGNORE_IMAGINARYFRIEND)
 	if(LAZYLEN(candidates))
 		var/mob/dead/observer/C = pick(candidates)
