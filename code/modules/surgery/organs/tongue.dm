@@ -9,8 +9,7 @@
 	var/say_mod = null
 	var/taste_sensitivity = 15 // lower is more sensitive.
 	var/modifies_speech = FALSE
-	//austation begin -- i'm not sure how to add to this list so this variable is redefined in austation\code\modules\surgery\organs\tongue.dm
-	/*var/static/list/languages_possible_base = typecacheof(list(
+	var/static/list/languages_possible_base = typecacheof(list(
 		/datum/language/common,
 		/datum/language/draconic,
 		/datum/language/codespeak,
@@ -22,10 +21,10 @@
 		/datum/language/piratespeak,
 		/datum/language/rlyehian,
 		/datum/language/apidite,
-	))*/
-//austation end
+	))
 /obj/item/organ/tongue/Initialize(mapload)
 	. = ..()
+	languages_possible_base += austation_languages_possible_base
 	languages_possible = languages_possible_base
 
 /obj/item/organ/tongue/proc/handle_speech(datum/source, list/speech_args)
