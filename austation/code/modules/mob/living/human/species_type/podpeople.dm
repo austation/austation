@@ -1,2 +1,2 @@
-/datum/species/pod
-	species_language_holder = /datum/language_holder/plant
+/datum/species/pod/after_equip_job(datum/job/J, mob/living/carbon/human/H)
+	H.grant_language(/datum/language/sylvan)

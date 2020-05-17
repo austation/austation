@@ -1,8 +1,8 @@
-/datum/species/golem
-	species_language_holder = /datum/language_holder/golem
+/datum/species/golem/after_equip_job(datum/job/J, mob/living/carbon/human/H)
+	H.grant_language(/datum/language/terrum)
 
-/datum/species/golem/runic
-	species_language_holder = /datum/language_holder/golem/runic
+/datum/species/golem/runic/after_equip_job(datum/job/J, mob/living/carbon/human/H)
+	H.grant_language(/datum/language/terrum)
 
-/datum/species/golem/bone
-	species_language_holder = /datum/language_holder/golem/bone
+/datum/species/golem/bone/after_equip_job(datum/job/J, mob/living/carbon/human/H)
+	H.grant_language(/datum/language/calcic)

@@ -1,2 +1,2 @@
-/datum/species/plasmaman
-	species_language_holder = /datum/language_holder/skeleton
+/datum/species/plasmaman/after_equip_job(datum/job/J, mob/living/carbon/human/H)
+	H.grant_language(/datum/language/calcic)

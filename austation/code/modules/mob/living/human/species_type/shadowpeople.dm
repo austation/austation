@@ -1,2 +1,2 @@
-/datum/species/shadow
-	species_language_holder = /datum/language_holder/shadowpeople
+/datum/species/shadow/after_equip_job(datum/job/J, mob/living/carbon/human/H)
+	H.grant_language(/datum/language/shadowtongue)
