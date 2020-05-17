@@ -45,6 +45,7 @@
 	))
 
 /obj/item/organ/tongue/bone/Initialize()
+	. = ..()
 	languages_possible = languages_possible_skeleton
 
 /obj/item/organ/tongue/ethereal

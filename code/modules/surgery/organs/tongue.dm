@@ -22,6 +22,7 @@
 		/datum/language/rlyehian,
 		/datum/language/apidite,
 	))
+
 /obj/item/organ/tongue/Initialize(mapload)
 	. = ..()
 	languages_possible_base += austation_languages_possible_base
