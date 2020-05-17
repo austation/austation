@@ -1,5 +1,6 @@
 /obj/item/organ/tongue
 	var/static/list/austation_languages_possible_base = typecacheof(list(
+		/datum/language/buzzwords,
 		/datum/language/moffic,
 		/datum/language/sylvan,
 		/datum/language/shadowtongue,
