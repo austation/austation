@@ -160,7 +160,6 @@
 	  */
 	var/list/mob_spell_list = list()
 
-
 	/// bitflags defining which status effects can be inflicted (replaces canknockdown, canstun, etc)
 	var/status_flags = CANSTUN|CANKNOCKDOWN|CANUNCONSCIOUS|CANPUSH
 

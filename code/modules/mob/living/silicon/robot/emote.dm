@@ -45,7 +45,6 @@
 	message = "chimes."
 	sound = 'sound/machines/chime.ogg'
 
-
 /datum/emote/silicon/sad
 	key = "sad"
 	message = "plays a sad trombone..."
