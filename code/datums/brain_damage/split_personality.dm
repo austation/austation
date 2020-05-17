@@ -23,6 +23,11 @@
 
 /datum/brain_trauma/severe/split_personality/proc/get_ghost()
 	set waitfor = FALSE
+	// austation begin -- oh yes I too enjoy becoming the split personality of some dead clown on lavaland
+	if(owner.stat == DEAD)
+		qdel(src)
+		return
+	// ausation end
 	var/list/mob/dead/observer/candidates = pollCandidatesForMob("Do you want to play as [owner]'s split personality?", ROLE_PAI, null, null, 75, stranger_backseat, POLL_IGNORE_SPLITPERSONALITY)
 	if(LAZYLEN(candidates))
 		var/mob/dead/observer/C = pick(candidates)
