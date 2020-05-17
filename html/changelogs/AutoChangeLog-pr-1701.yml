@@ -1,5 +1,0 @@
-author: "AustationBot"
-delete-after: True
-changes: 
-  - rscadd: "gloves of the north star make you click 2d spessmens better"
-  - bugfix: "gloves of the north star no longer yells a battlecry when you fail to hit a mob"

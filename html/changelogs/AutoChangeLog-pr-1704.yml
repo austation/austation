@@ -1,5 +1,0 @@
-author: "AustationBot"
-delete-after: True
-changes: 
-  - bugfix: "Guardians will no longer accidentally kill their master by slamming into walls after being flashbanged"
-  - bugfix: "Hopefully fixed guardians being sent to the lobby"
