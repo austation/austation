@@ -27,7 +27,7 @@
 
 /datum/emote/living/carbon/human/goddamn
 	key = "goddamn"
-	key = "goddamns"
+	key_third_person = "goddamns"
 	message = "is impressed with your flex!"
 	emote_type = EMOTE_AUDIBLE
 	sound = 'austation/sound/misc/goughdemn.ogg'
