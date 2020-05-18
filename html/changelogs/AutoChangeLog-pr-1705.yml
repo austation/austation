@@ -1,8 +1,0 @@
-author: "YakiAttaki"
-delete-after: True
-changes: 
-  - rscadd: "Added a new emote, *yes."
-  - rscadd: "Added a new emote, *no."
-  - rscadd: "Added a new emote, *goddamn."
-  - rscadd: "Added some new sounds."
-  - tweak: "Added a cooldown for all emotes. Non-sound emotes can be performed every 0.8 seconds, while emotes with sound can only be performed every 5 seconds (subject to change)."
