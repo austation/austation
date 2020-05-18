@@ -26,8 +26,8 @@ jobs:
         working-directory: ./tgui
       - name: Commit Artifacts
         run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "TGUI"
+          git config --local user.email "austation@mcterra.id.au"
+          git config --local user.name "AustationBot"
           git pull origin master
           git commit -m "Automatic TGUI Rebuild [ci skip]" -a || true
       - name: Push Artifacts
