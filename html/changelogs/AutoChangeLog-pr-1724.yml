@@ -1,4 +1,0 @@
-author: "AustationBot"
-delete-after: True
-changes: 
-  - balance: "Healing stands will now only heal half of their full potential if unmanifested."
