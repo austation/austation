@@ -14,6 +14,7 @@
     	"ds", "ya", "sck", "crk", "hs", "ws", "mk", "aaa", "skraa", "skee", "hss",
 		"raa", "klk", "tk", "stk", "clk"
 	)
+	icon = 'austation/icons/misc/austation_language.dmi'
 	icon_state = "calcic"
 	default_priority = 90
 

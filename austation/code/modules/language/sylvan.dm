@@ -14,5 +14,6 @@
     	"incas", "int", "elc", "ent", "aws", "qip", "nas", "vil", "jens", "dila", "fa",
     	"la", "re", "do", "ji", "ae", "so", "qe", "ce", "na", "mo", "ha", "yu"
 	)
+	icon = 'austation/icons/misc/austation_language.dmi'
 	icon_state = "plant"
 	default_priority = 90

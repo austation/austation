@@ -9,5 +9,6 @@
 	syllables = list(
 		"bzz","zzz","z","bz","bzzz","zzzz", "bzzzz", "b", "zz", "zzzzz"
 	)
+	icon = 'austation/icons/misc/austation_language.dmi'
 	icon_state = "buzz"
 	default_priority = 90

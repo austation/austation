@@ -13,5 +13,6 @@
 		"cho", "ar", "kas", "kal", "ra", "lom", "im", "'", "'", "'", "'", "bok",
 		"erev", "shlo", "lo", "ta", "im", "yom"
 	)
+	icon = 'austation/icons/misc/austation_language.dmi'
 	icon_state = "golem"
 	default_priority = 90

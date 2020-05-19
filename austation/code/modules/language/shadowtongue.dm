@@ -17,5 +17,6 @@
     	"telshahr", "tifur", "enhi", "am", "bahr", "nei", "neibahri", "n'chow", "n'wah",
     	"s'wit", "b'vehk", "f'lah", "muth", "sera", "sedura", "bal", "dun"
 	)
+	icon = 'austation/icons/misc/austation_language.dmi'
 	icon_state = "shadow"
 	default_priority = 90

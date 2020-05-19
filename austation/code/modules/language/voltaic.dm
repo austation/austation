@@ -13,5 +13,6 @@
     	"vzt", "zt", "vz", "zip", "tzp", "lzzt", "dzzt", "zdt", "kzt",
     	"zzzz", "mzz"
 	)
+	icon = 'austation/icons/misc/austation_language.dmi'
 	icon_state = "volt"
 	default_priority = 90
