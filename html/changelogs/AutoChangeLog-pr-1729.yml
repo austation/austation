@@ -1,0 +1,4 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - bugfix: "Everybody's favorite debug verb can no longer crash the server when spammed, because it can no longer be spammed."
