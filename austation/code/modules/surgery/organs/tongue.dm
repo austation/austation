@@ -52,6 +52,7 @@
 /obj/item/organ/tongue/ethereal
 	name = "electric discharger"
 	desc = "A sophisticated ethereal organ, capable of synthesising speech via electrical discharge."
+	icon = 'austation/icons/obj/austation_surgery.dmi'
 	icon_state = "electrotongue"
 	say_mod = "crackles"
 	attack_verb = list("shocked", "jolted", "zapped")
