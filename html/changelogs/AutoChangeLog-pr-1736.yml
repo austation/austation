@@ -1,0 +1,4 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - bugfix: "can no longer bomb with just a single BoH in the vicinity"
