@@ -23,9 +23,38 @@
 
 	immunity_type = "rad"
 
+
+	var/datum/looping_sound/rad_storm/radstorm1 = new(list(), FALSE, TRUE)
+
 /datum/weather/rad_storm/telegraph()
-	..()
+	. = ..()
+	var/list/inside_areas = list()
+	var/list/outside_areas = list()
+	var/list/eligible_areas = list()
+	for (var/z in impacted_z_levels)
+		eligible_areas += SSmapping.areas_in_z["[z]"]
+	for(var/i in 1 to eligible_areas.len)
+		var/area/place = eligible_areas[i]
+		if(place.outdoors)
+			outside_areas += place
+		else
+			inside_areas += place
+		CHECK_TICK
+
 	status_alarm(TRUE)
+
+
+	radstorm1.output_atoms = inside_areas
+
+/datum/weather/rad_storm/start()
+	. = ..()
+
+	radstorm1.start()
+
+/datum/weather/rad_storm/end()
+	. = ..()
+
+	radstorm1.stop()
 
 
 /datum/weather/rad_storm/weather_act(mob/living/L)

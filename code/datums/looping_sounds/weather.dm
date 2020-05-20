@@ -45,3 +45,13 @@
 	start_length = 130
 	end_sound = 'sound/weather/ashstorm/inside/weak_end.ogg'
 	volume = 30
+
+/datum/looping_sound/rad_storm
+	mid_sounds = list(
+		'sound/weather/radstorm/radstorm1.ogg'=1,
+		)
+	mid_length = 80
+	start_sound = 'sound/weather/radstorm/radstorm_start.ogg'
+	start_length = 130
+	end_sound = 'sound/weather/radstorm/radstorm_end.ogg'
+	volume = 60
