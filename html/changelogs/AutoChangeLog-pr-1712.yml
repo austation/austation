@@ -1,4 +1,0 @@
-author: "YakiAttaki"
-delete-after: True
-changes: 
-  - rscadd: "Added race-specific languages for: flies (,z), skeletons/plasmamen(,b), moths(,m), shadows(,c), podpeople(,h), golems(,g), and ethereals(,v)."
