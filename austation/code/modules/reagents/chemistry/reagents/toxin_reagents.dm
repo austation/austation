@@ -22,7 +22,7 @@
 		if(prob(20))
 			C.emote("gasp")
 		if(prob(10))
-			M.Paralyze(20, 0
+			M.Paralyze(20, 0)
 		if(M.toxloss <= 60)
 			M.adjustToxLoss(1*REM, 0)
 		if(current_cycle >=11 && prob(min(50,current_cycle)))
