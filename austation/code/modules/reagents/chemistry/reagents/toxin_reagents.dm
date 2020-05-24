@@ -15,7 +15,7 @@
 		. = FALSE
 
 	if(.)
-		to_chat(M, "<span class='danger'>You can barely see!</span>")
+		to_chat(C, "<span class='danger'>You can barely see!</span>")
 		C.blur_eyes(3)
 		C.adjustOxyLoss(5, 0)
 		C.losebreath += 11
@@ -23,7 +23,7 @@
 			C.emote("gasp")
 		if(prob(10))
 			C.Paralyze(20, 0)
-		if(M.toxloss <= 60)
+		if(C.toxloss <= 60)
 			C.adjustToxLoss(1*REM, 0)
 		if(current_cycle >=11 && prob(min(50,current_cycle)))
 			C.vomit(10, prob(10), prob(50), rand(0,4), TRUE, prob(30))
