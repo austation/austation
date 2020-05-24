@@ -4,7 +4,6 @@
 #include "code\controllers\configuration\entries\general.dm"
 #include "code\controllers\subsystem\autosandbox.dm"
 #include "code\controllers\subsystem\job.dm"
-#include "code\controllers\subsystem\autotransfer.dm"
 #include "code\datums\ai_laws.dm"
 #include "code\datums\emotes.dm"
 #include "code\game\objects\effects\decals\turfdecal\markings.dm"
