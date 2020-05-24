@@ -464,7 +464,11 @@
 	name = "Devil"
 	antag_flag = ROLE_DEVIL
 	antag_datum = /datum/antagonist/devil
+<<<<<<< HEAD
 	restricted_roles = list("Lawyer", "Curator", "Chaplain", "Head of Security", "Head of Personnel", "Captain", "AI") // austation -- HOP can no longer be antag
+=======
+	restricted_roles = list("Lawyer", "Curator", "Chaplain", "Head of Security", "Captain", "AI", "Cyborg", "Security Officer", "Warden", "Detective", "Brig Physician")
+>>>>>>> a1b55c5c36... Fixes devil gamemode (#1858)
 	required_candidates = 1
 	weight = 3
 	cost = 0

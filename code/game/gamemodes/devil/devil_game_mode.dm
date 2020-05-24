@@ -4,7 +4,11 @@
 	report_type = "devil"
 	antag_flag = ROLE_DEVIL
 	false_report_weight = 1
+<<<<<<< HEAD
 	protected_jobs = list("Lawyer", "Curator", "Chaplain", "Head of Security", "Head of Personnel",  "Captain", "AI") // austation -- HOP can no longer be antag
+=======
+	protected_jobs = list("Lawyer", "Curator", "Chaplain", "Head of Security", "Captain", "AI", "Cyborg", "Security Officer", "Warden", "Detective", "Brig Physician")
+>>>>>>> a1b55c5c36... Fixes devil gamemode (#1858)
 	required_players = 0
 	required_enemies = 1
 	recommended_enemies = 4
