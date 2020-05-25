@@ -1,4 +1,0 @@
-author: "AustationBot"
-delete-after: True
-changes: 
-  - bugfix: "dead mobs no longer call ghosts for split-personality and imaginary friend"
