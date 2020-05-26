@@ -758,15 +758,3 @@ GLOBAL_PROTECT(admin_verbs_hideable)
 	for(var/obj/machinery/portable_atmospherics/canister/can in view())
 		can.valve_open = FALSE
 		can.update_icon()
-
-<<<<<<< HEAD
-	for(var/datum/pipeline/line in pipelines)
-		line.air = new
-		for(var/obj/machinery/atmospherics/pipe/P in line.members)
-			P.air_temporary = new
-=======
-
-
-
-
->>>>>>> 964e3cbb50... Ports C++ monstermos (#1833)
