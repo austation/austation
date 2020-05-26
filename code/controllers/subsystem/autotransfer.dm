@@ -9,9 +9,13 @@ SUBSYSTEM_DEF(autotransfer)
 /datum/controller/subsystem/autotransfer/Initialize(timeofday)
 	starttime = world.time
 	targettime = starttime + CONFIG_GET(number/vote_autotransfer_initial)
-	return ..()
+
+	if(!CONFIG_GET(flag/vote_autotransfer_enabled))
+		can_fire = FALSE
+
+	. = ..()
 
 /datum/controller/subsystem/autotransfer/fire()
-	if (world.time > targettime)
-		SSvote.initiate_vote("transfer",null) //TODO figure out how to not use null as the user
+	if(world.time > targettime)
+		SSvote.initiate_vote("transfer", null)
 		targettime = targettime + CONFIG_GET(number/vote_autotransfer_interval)

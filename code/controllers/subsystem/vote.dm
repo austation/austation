@@ -82,9 +82,9 @@ SUBSYSTEM_DEF(vote)
 						var/default_map = global.config.defaultmap.map_name
 						choices[default_map] += 1
 						greatest_votes = max(greatest_votes, choices[default_map])
-			else if(mode == "transfer") // austation begin -- Crew autotransfer vote
-				var/factor = 1
-				switch(world.time / (1 MINUTES ))
+			else if(mode == "transfer")
+				var/factor = 1 // factor defines how non-voters are weighted towards calling the shuttle
+				switch(world.time / (1 MINUTES))
 					if(0 to 60)
 						factor = 0.5
 					if(61 to 120)
@@ -95,7 +95,7 @@ SUBSYSTEM_DEF(vote)
 						factor = 1.2
 					else
 						factor = 1.4
-				choices["Initiate Crew Transfer"] += round(non_voters.len * factor) // austation end
+				choices["Initiate Crew Transfer"] += round(non_voters.len * factor)
 	//get all options with that many votes and return them in a list
 	. = list()
 	if(greatest_votes)
@@ -151,13 +151,12 @@ SUBSYSTEM_DEF(vote)
 			if("map")
 				SSmapping.changemap(global.config.maplist[.])
 				SSmapping.map_voted = TRUE
-			if("transfer") // austation begin -- Crew autotransfer vote
+			if("transfer")
 				if(. == "Initiate Crew Transfer")
-					//TODO find a cleaner way to do this
-					SSshuttle.requestEvac(null,"Crew transfer requested.")
+					SSshuttle.requestEvac(null, "Crew Transfer Requested.")
 					var/obj/machinery/computer/communications/C = locate() in GLOB.machines
 					if(C)
-						C.post_status("shuttle") // austation end
+						C.post_status("shuttle")
 	if(restart)
 		var/active_admins = 0
 		for(var/client/C in GLOB.admins)
@@ -217,8 +216,8 @@ SUBSYSTEM_DEF(vote)
 					shuffle_inplace(maps)
 				for(var/valid_map in maps)
 					choices.Add(valid_map)
-			if("transfer") // austation begin -- Crew autotranfer vote
-				choices.Add("Initiate Crew Transfer","Continue Playing") // austation end
+			if("transfer")
+				choices.Add("Initiate Crew Transfer", "Continue Playing")
 			if("custom")
 				question = stripped_input(usr,"What is the vote for?")
 				if(!question)
@@ -231,9 +230,9 @@ SUBSYSTEM_DEF(vote)
 			else
 				return 0
 		mode = vote_type
-		initiator = initiator_key ? initiator_key : "the Server" // austation -- Crew autotransfer vote
+		initiator = initiator_key
 		started_time = world.time
-		var/text = "[capitalize(mode)] vote started by [initiator]."
+		var/text = "[capitalize(mode)] vote started by [initiator ? initiator : "CentCom"]."
 		if(mode == "custom")
 			text += "\n[question]"
 		log_vote(text)
