@@ -83266,6 +83266,10 @@
 	name = "Cabin 1"
 	},
 /obj/effect/decal/cleanable/dirt/dust,
+/obj/machinery/door/firedoor/border_only{
+	dir = 1
+	},
+/obj/machinery/door/firedoor/border_only,
 /turf/open/floor/wood{
 	icon_state = "wood-broken7"
 	},
