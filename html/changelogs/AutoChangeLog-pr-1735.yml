@@ -1,6 +1,0 @@
-author: "TheFakeElon"
-delete-after: True
-changes: 
-  - rscadd: "Added sarin"
-  - rscadd: "Added sarin to the poison kit"
-  - rscdel: "Removed spewium from poison kit"
