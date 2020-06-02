@@ -41,6 +41,7 @@
 /code/controllers/subsystem/dbcore.dm @Jordie0608
 /tools/SQLAlertEmail/ @Jordie0608
 
+<<<<<<< HEAD
 # MrStonedOne
 
 /SQL/database_changelog.txt @MrStonedOne
@@ -56,6 +57,9 @@
 
 /code/controllers/subsystem/shuttle.dm @ninjanomnom
 /code/modules/shuttle/ @ninjanomnom
+=======
+# zeskorion
+>>>>>>> 6dc7536ab8... RIP Qwert (#1899)
 
 # ShizCalev
 
