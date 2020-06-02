@@ -1,0 +1,4 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - code_imp: "Life() has been optimized. Hopefully mobs will cause less lag now."
