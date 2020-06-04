@@ -1,0 +1,6 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - tweak: "small change to preserve_virus recipe"
+  - bugfix: "#1882"
+  - refactor: "changed some spacing, added comments"
