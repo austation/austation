@@ -493,7 +493,11 @@
 
 /obj/item/robot_module/butler/be_transformed_to(obj/item/robot_module/old_module)
 	var/mob/living/silicon/robot/R = loc
+<<<<<<< HEAD
 	var/borg_icon = input(R, "Select an icon!", "Robot Icon", null) as null|anything in list("Waitress", "Butler", "Tophat", "Kent", "Bro", "Heavy")// austation -- added 'heavy'
+=======
+	var/borg_icon = input(R, "Select an icon!", "Robot Icon", null) as null|anything in sortList(list("Waitress", "Butler", "Tophat", "Kent", "Bro"))
+>>>>>>> cc46fb31aa... Bulk fixes/code improvements/etc (#1898)
 	if(!borg_icon)
 		return FALSE
 	switch(borg_icon)
