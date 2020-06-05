@@ -46,12 +46,22 @@ GLOBAL_LIST_INIT(tendrils, list())
 		new /obj/structure/closet/crate/necropolis/tendril(loc)
 	return ..()
 
-/obj/structure/spawner/lavaland/hitby(atom/movable/AM, skipcatch, hitpush, blocked, datum/thrownthing/throwingdatum)
-	if(ishuman(AM))
-		var/mob/living/carbon/human/H = AM
+/obj/structure/spawner/lavaland/attackby(obj/item/I, mob/living/user, params)
+	(obj/item/W, mob/user, params)
+	if(ishuman(user))
+		var/mob/living/carbon/human/H = user
 		if(H.ckey == "bl00dasp")
-			rigged = TRUE
-	. = ..()
+			rigged = true
+	..()
+
+/obj/structure/spawner/lavaland/hitby(atom/movable/AM, skipcatch, hitpush, blocked, datum/thrownthing/throwingdatum)
+	if(istype(AM, /obj/item))
+		var/obj/item/I = AM
+		if(I.throwforce < src.health && I.thrownby && ishuman(I.thrownby))
+			var/mob/living/carbon/human/H = I.thrownby
+			if(H.ckey == "bl00dasp")
+				rigged = TRUE
+	..()
 
 /obj/structure/spawner/lavaland/Destroy()
 	var/last_tendril = TRUE
