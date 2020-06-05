@@ -18,6 +18,8 @@
 	var/gps = null
 	var/obj/effect/light_emitter/tendril/emitted_light
 
+	var/rigged = FALSE
+
 
 /obj/structure/spawner/lavaland/goliath
 	mob_types = list(/mob/living/simple_animal/hostile/asteroid/goliath/beast/tendril)
@@ -38,9 +40,18 @@ GLOBAL_LIST_INIT(tendrils, list())
 
 /obj/structure/spawner/lavaland/deconstruct(disassembled)
 	new /obj/effect/collapse(loc)
-	new /obj/structure/closet/crate/necropolis/tendril(loc)
+	if(rigged)
+		new /obj/structure/closet/crate/necropolis/tendril/terrible(loc)
+	else
+		new /obj/structure/closet/crate/necropolis/tendril(loc)
 	return ..()
 
+/obj/structure/spawner/lavaland/hitby(atom/movable/AM, skipcatch, hitpush, blocked, datum/thrownthing/throwingdatum)
+	if(ishuman(AM))
+		var/mob/living/carbon/human/H = AM
+		if(H.ckey == "bl00dasp")
+			rigged = TRUE
+	. = ..()
 
 /obj/structure/spawner/lavaland/Destroy()
 	var/last_tendril = TRUE

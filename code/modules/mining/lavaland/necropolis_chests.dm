@@ -84,6 +84,39 @@
 		if(30)
 			new /obj/item/reagent_containers/glass/bottle/necropolis_seed(src)
 
+/obj/structure/closet/crate/necropolis/tendril/terrible/PopulateContents()
+	var/loot = rand(1,11)
+	switch(loot)
+		if(1)
+			new /obj/item/shared_storage/red(src)
+		if(2)
+			new /obj/item/soulstone/anybody(src)
+		if(3)
+			new /obj/item/pickaxe/diamond(src)
+		if(4)
+			if(prob(50))
+				new /obj/item/disk/design_disk/modkit_disc/resonator_blast(src)
+			else
+				new /obj/item/disk/design_disk/modkit_disc/rapid_repeater(src)
+		if(5)
+			new /obj/item/rod_of_asclepius(src)
+		if(6)
+			new /obj/item/nullrod/scythe/talking(src)
+		if(7)
+			new /obj/item/nullrod/armblade(src)
+		if(8)
+			if(prob(50))
+				new /obj/item/disk/design_disk/modkit_disc/mob_and_turf_aoe(src)
+			else
+				new /obj/item/disk/design_disk/modkit_disc/bounty(src)
+		if(9)
+			new /obj/item/immortality_talisman(src)
+		if(10)
+			new /obj/item/voodoo(src)
+		if(11)
+			new /obj/item/borg/upgrade/modkit/lifesteal(src)
+			new /obj/item/bedsheet/cult(src)
+
 //KA modkit design discs
 /obj/item/disk/design_disk/modkit_disc
 	name = "KA Mod Disk"
@@ -153,7 +186,7 @@
 	desc = "A wooden rod about the size of your forearm with a snake carved around it, winding its way up the sides of the rod. Something about it seems to inspire in you the responsibilty and duty to help others."
 	icon = 'icons/obj/lavaland/artefacts.dmi'
 	icon_state = "asclepius_dormant"
-	block_upgrade_walk = 1 
+	block_upgrade_walk = 1
 	block_level = 2
 	block_power = 40 //blocks very well to encourage using it. Just because you're a pacifist doesn't mean you can't defend yourself
 	block_flags = null //not active, so it's null
@@ -807,7 +840,7 @@
 	w_class = WEIGHT_CLASS_BULKY
 	force = 1
 	throwforce = 1
-	block_upgrade_walk = 1 
+	block_upgrade_walk = 1
 	block_level = 1
 	block_power = 20
 	block_flags = BLOCKING_ACTIVE | BLOCKING_NASTY
