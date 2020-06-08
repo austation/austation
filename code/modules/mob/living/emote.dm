@@ -497,7 +497,7 @@
 //	key = "circle"
 //	key_third_person = "circles"
 //	restraint_check = TRUE
-
+//
 // /datum/emote/living/circle/run_emote(mob/user, params, type_override, intentional)
 //	. = ..()
 //	var/obj/item/circlegame/N = new(user)
@@ -506,7 +506,7 @@
 //	else
 //		qdel(N)
 //		to_chat(user, "<span class='warning'>You don't have any free hands to make a circle with.</span>")
-
+//
 // austation -- ghosts were able to use the circle hand, this stops it completely
 /datum/emote/living/slap
 	key = "slap"
