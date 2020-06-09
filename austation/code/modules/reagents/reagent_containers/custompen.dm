@@ -15,6 +15,8 @@
 /obj/item/reagent_containers/hypospray/medipen/custompen/attack_self(mob/user)
 	return
 /obj/item/reagent_containers/hypospray/medipen/custompen/attack(mob/M, mob/user, def_zone)
+	if(iscyborg(M)) // no more trying to inject cyborgs
+		return
 	if(M == user)
 		if(self_delay)
 			if(!do_mob(user, M, self_delay))
