@@ -6,7 +6,7 @@
 	var/apply_type = INJECT
 	var/self_delay = 0
 	reagent_flags = OPENCONTAINER
-	ignore_flags = 1
+	ignore_flags = 1 // It bypasses hardsuits
 	volume = 30
 	amount_per_transfer_from_this = 30
 
@@ -22,7 +22,7 @@
 		to_chat(M, "<span class='notice'>You inject yourself with the [src].</span>")
 		reagents.reaction(M, apply_type)
 		reagents.trans_to(M, reagents.total_volume, transfered_by = user)
-		reagents.maximum_volume = 0 //Makes them useless afterwards
+		reagents.maximum_volume = 0 
 
 	else
 		M.visible_message("<span class='danger'>[user] attempts to inject [M] with the [src].</span>", \
@@ -33,7 +33,7 @@
 							"<span class='userdanger'>[user] injects you with the [src].</span>")
 		reagents.reaction(M, apply_type)
 		reagents.trans_to(M, reagents.total_volume, transfered_by = user)
-		reagents.maximum_volume = 0 //Makes them useless afterwards
+		reagents.maximum_volume = 0 
 
 /obj/item/reagent_containers/hypospray/medipen/custompen/bluespace
 	name = "Bluespace Disposable Autopen"
