@@ -7,8 +7,8 @@
 	var/self_delay = 0
 	reagent_flags = OPENCONTAINER
 	ignore_flags = 1 // it bypasses hardsuits
-	volume = 30
-	amount_per_transfer_from_this = 30
+	volume = 25
+	amount_per_transfer_from_this = 25
 
 	list_reagents = list()
 
@@ -42,7 +42,7 @@
 	item_state = "morphen"
 	reagent_flags = OPENCONTAINER
 	ignore_flags = 1
-	volume = 60
-	amount_per_transfer_from_this = 60
+	volume = 40
+	amount_per_transfer_from_this = 40
 
 	list_reagents = list()
