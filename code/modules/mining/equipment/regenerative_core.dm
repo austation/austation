@@ -85,11 +85,21 @@
 				to_chat(user, "<span class='notice'>[src] are useless on the dead.</span>")
 				return
 			if(H != user)
+<<<<<<< HEAD
 				// austation begin -- removes cooldown when not applying cores to yourself
 				to_chat(user, "<span class='notice'>You rub the regenerative core on [H].</span>")
 				to_chat(H, "<span class='userdanger'>[user] smears the regenerative core all over you. It feels and smells disgusting, but you feel amazingly refreshed in mere moments.</span>")
 				SSblackbox.record_feedback("nested tally", "hivelord_core", 1, list("[type]", "used", "other"))
 				// austation end
+=======
+				to_chat(user, "<span class='notice'>You begin to rub the regenerative core on [H]...</span>")
+				to_chat(H, "<span class='userdanger'>[user] begins to smear the regenerative core all over you...</span>")
+				if(do_mob(user, H, 30))
+					H.visible_message("[user] forces [H] to apply [src]... [H.p_they()] quickly regenerates all injuries!")
+					SSblackbox.record_feedback("nested tally", "hivelord_core", 1, list("[type]", "used", "other"))
+				else
+					return
+>>>>>>> cdd168b0e3... fixes a bug i didnt know about for like 2 bloody months (#1937)
 			else
 				to_chat(user, "<span class='notice'>You start to smear [src] on yourself. It feels and smells disgusting, but you feel amazingly refreshed in mere moments.</span>")
 				SSblackbox.record_feedback("nested tally", "hivelord_core", 1, list("[type]", "used", "self"))
