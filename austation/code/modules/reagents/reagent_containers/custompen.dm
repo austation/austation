@@ -17,6 +17,9 @@
 /obj/item/reagent_containers/hypospray/medipen/custompen/attack(mob/M, mob/user, def_zone)
 	if(iscyborg(M)) // no more trying to inject cyborgs
 		return
+	if(reagents.total_volume == 0) // no more wasting empty pens
+		to_chat(M, "<span class='notice'>Would be a waste to use an empty pen.</span>")
+		return
 	if(M == user)
 		if(self_delay)
 			if(!do_mob(user, M, self_delay))
