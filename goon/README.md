@@ -6,3 +6,7 @@ It is very likely that there are modifications to be compatible or on par with o
 ## License
 
 See LICENSE.md
+
+## Credits
+
+Gannet: Allowing us to use your shuttle announcement sounds.
