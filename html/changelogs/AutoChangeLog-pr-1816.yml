@@ -1,0 +1,4 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - bugfix: "IPCs can no longer be selected as a bloodcult sacrifice target."
