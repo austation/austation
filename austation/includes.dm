@@ -51,6 +51,7 @@
 #include "code\modules\mob\living\carbon\human\species_type\skeletons.dm"
 #include "code\modules\mob\living\silicon\robot\emote.dm"
 #include "code\modules\mob\living\silicon\robot\robot_modules.dm"
+#include "code\modules\mob\living\simple_animal\bot\deathsky.dm"
 #include "code\modules\mob\living\simple_animal\hostile\cat_butcher.dm"
 #include "code\modules\reagents\chemistry\reagents\other_reagents.dm"
 #include "code\modules\reagents\chemistry\reagents\toxin_reagents.dm"
