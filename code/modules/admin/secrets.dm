@@ -457,8 +457,8 @@
 					H.fully_replace_character_name(H.real_name,newname)
 					H.update_mutant_bodyparts()
 					if(animetype == "Yes")
-						var/seifuku = pick(typesof(/obj/item/clothing/under/schoolgirl))
-						var/obj/item/clothing/under/schoolgirl/I = new seifuku
+						var/seifuku = pick(typesof(/obj/item/clothing/under/costume/schoolgirl))
+						var/obj/item/clothing/under/costume/schoolgirl/I = new seifuku
 						var/olduniform = H.w_uniform
 						H.temporarilyRemoveItemFromInventory(H.w_uniform, TRUE, FALSE)
 						H.equip_to_slot_or_del(I, SLOT_W_UNIFORM)
@@ -489,7 +489,7 @@
 				if("Random")
 					E = new /datum/round_event/disease_outbreak()
 				if("Choose")
-					var/virus = input("Choose the virus to spread", "BIOHAZARD") as null|anything in typesof(/datum/disease)
+					var/virus = input("Choose the virus to spread", "BIOHAZARD") as null|anything in sortList(typesof(/datum/disease, /proc/cmp_typepaths_asc))
 					E = new /datum/round_event/disease_outbreak{}()
 					var/datum/round_event/disease_outbreak/DO = E
 					DO.virus_type = virus

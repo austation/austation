@@ -649,7 +649,7 @@ SUBSYSTEM_DEF(ticker)
 	save_admin_data()
 	update_everything_flag_in_db()
 	if(!round_end_sound)
-		var/list/tracks = flist("sound/roundend/") + flist("austation/sound/roundend/") // austation -- include custom round files
+		var/list/tracks = flist("sound/roundend/")
 		if(tracks.len)
 			round_end_sound = "sound/roundend/[pick(tracks)]"
 

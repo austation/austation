@@ -26,7 +26,6 @@
 	GLOB.mob_list -= src
 	GLOB.dead_mob_list -= src
 	GLOB.alive_mob_list -= src
-	GLOB.all_clockwork_mobs -= src
 	GLOB.mob_directory -= tag
 	focus = null
 	for (var/alert in alerts)
@@ -120,11 +119,10 @@
 	var/datum/gas_mixture/environment = loc.return_air()
 
 	var/t =	"<span class='notice'>Coordinates: [x],[y] \n</span>"
-	t +=	"<span class='danger'>Temperature: [environment.temperature] \n</span>"
-	for(var/id in environment.gases)
-		var/gas = environment.gases[id]
-		if(gas[MOLES])
-			t+="<span class='notice'>[gas[GAS_META][META_GAS_NAME]]: [gas[MOLES]] \n</span>"
+	t +=	"<span class='danger'>Temperature: [environment.return_temperature()] \n</span>"
+	for(var/id in environment.get_gases())
+		if(environment.get_moles(id))
+			t+="<span class='notice'>[GLOB.meta_gas_info[id][META_GAS_NAME]]: [environment.get_moles(id)] \n</span>"
 
 	to_chat(usr, t)
 
@@ -142,7 +140,7 @@
 	if(!client)
 		return
 
-	msg = copytext(msg, 1, MAX_MESSAGE_LEN)
+	msg = copytext_char(msg, 1, MAX_MESSAGE_LEN)
 
 	if(type)
 		if(type & 1 && eye_blind )//Vision related
@@ -546,7 +544,7 @@
 		if (world.time < memory_throttle_time)
 			return
 		memory_throttle_time = world.time + 5 SECONDS
-		msg = copytext(msg, 1, MAX_MESSAGE_LEN)
+		msg = copytext_char(msg, 1, MAX_MESSAGE_LEN)
 		msg = sanitize(msg)
 
 		mind.store_memory(msg)
@@ -707,6 +705,7 @@
 	..()
 
 	if(statpanel("Status"))
+		stoplag(world.fps)
 		if (client)
 			stat(null, "Ping: [round(client.lastping, 1)]ms (Average: [round(client.avgping, 1)]ms)")
 		stat(null, "Map: [SSmapping.config?.map_name || "Loading..."]")
@@ -724,7 +723,7 @@
 			if(ETA)
 				stat(null, "[ETA] [SSshuttle.emergency.getTimerStr()]")
 
-	if(client && client.holder)
+	if(client?.holder)
 		if(statpanel("MC"))
 			var/turf/T = get_turf(client.eye)
 			stat("Location:", COORD(T))

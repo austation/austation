@@ -6,7 +6,7 @@
 			if(prob(10))//10% chane to drop the message entirely
 				return
 			else
-				message = Gibberish(message, (emp_damage*6))//scrambles the message, gets worse when emp_damage is higher
+				message = Gibberish(message, emp_damage >= 12)//scrambles the message, gets worse when emp_damage is higher
 
 		..()
 
@@ -25,10 +25,3 @@
 /mob/living/brain/treat_message(message)
 	message = capitalize(message)
 	return message
-
-/mob/living/brain/could_speak_in_language(datum/language/dt)
-	if(istype(container, /obj/item/mmi/posibrain/soul_vessel))
-		// soul vessels can only speak ratvarian.
-		. = ispath(dt, /datum/language/ratvar)
-	else
-		. = ..()
