@@ -1,4 +1,4 @@
-/mob/living/simple_animal/bot/secbot/deathsky //uh oh.
+/mob/living/simple_animal/bot/secbot/deathsky //I hope you brought EMP grenades..
 	name = "Admiral Deathsky"
 	desc = "Is that a secbot with four eswords AND pulse rifles in its arms...?"
 	icon = 'icons/mob/aibots.dmi'
@@ -6,8 +6,8 @@
 	health = 300
 	maxHealth = 300
 	baton_type = /obj/item/melee/transforming/energy/sword/saber
-	base_speed = 10 //he's a fast fucker
-	environment_smash = ENVIRONMENT_SMASH_WALLS //goodbye walls
+	base_speed = 10 //he's a REALLY fast fucker
+	environment_smash = ENVIRONMENT_SMASH_WALLS //goodbye walls (maybe)
 	emagged = 2
 	var/obj/item/weapon
 	var/block_chance = 70
@@ -15,7 +15,7 @@
 
 	//gun shit
 	var/lastfired = 0
-	var/shot_delay = 0
+	var/shot_delay = 0 //it fires  f a s t
 	var/lasercolor = ""
 	var/projectile = /obj/item/projectile/energy/electrode //holder
 	var/shoot_sound = 'sound/weapons/taser2.ogg'
@@ -167,7 +167,7 @@
 
 
 /mob/living/simple_animal/bot/secbot/deathsky/proc/shootAt(mob/target)
-	if(world.time <= lastfired + shot_delay)
+	if(world.time <= lastfired + shot_delay) //shot delay is zero atm so it fires every second
 		return
 	lastfired = world.time
 	var/turf/T = loc
