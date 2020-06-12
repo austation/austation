@@ -202,6 +202,9 @@
 
 	. = ..()
 
+
+///////// There are some announcement sound changes for austation below, unlikely to cause conflicts but they've been labeled in the event that something breaks ///////////
+
 /obj/docking_port/mobile/emergency/request(obj/docking_port/stationary/S, area/signalOrigin, reason, redAlert, set_coefficient=null)
 	if(!isnum(set_coefficient))
 		var/security_num = seclevel2num(get_security_level())
@@ -228,9 +231,7 @@
 		SSshuttle.emergencyLastCallLoc = signalOrigin
 	else
 		SSshuttle.emergencyLastCallLoc = null
-
-	priority_announce("The emergency shuttle has been called. [redAlert ? "Red Alert state confirmed: Dispatching priority shuttle. " : "" ]It will arrive in [timeLeft(600)] minutes.[reason][SSshuttle.emergencyLastCallLoc ? "\n\nCall signal traced. Results can be viewed on any communications console." : "" ]", null, 'sound/ai/shuttlecalled.ogg', "Priority")
-
+	priority_announce("The emergency shuttle has been called. [redAlert ? "Red Alert state confirmed: Dispatching priority shuttle. " : "" ]It will arrive in [timeLeft(600)] minutes.[reason][SSshuttle.emergencyLastCallLoc ? "\n\nCall signal traced. Results can be viewed on any communications console." : "" ]", null, 'goon/sound/misc/shuttle_enroute.ogg', "Priority")  //was 'sound/ai/shuttlecalled.ogg'
 /obj/docking_port/mobile/emergency/cancel(area/signalOrigin)
 	if(mode != SHUTTLE_CALL)
 		return
@@ -244,7 +245,7 @@
 		SSshuttle.emergencyLastCallLoc = signalOrigin
 	else
 		SSshuttle.emergencyLastCallLoc = null
-	priority_announce("The emergency shuttle has been recalled.[SSshuttle.emergencyLastCallLoc ? " Recall signal traced. Results can be viewed on any communications console." : "" ]", null, 'sound/ai/shuttlerecalled.ogg', "Priority")
+	priority_announce("The emergency shuttle has been recalled.[SSshuttle.emergencyLastCallLoc ? " Recall signal traced. Results can be viewed on any communications console." : "" ]", null, 'goon/sound/misc/shuttle_recalled.ogg', "Priority") //austation, was 'sound/ai/shuttlerecalled.ogg'
 
 /obj/docking_port/mobile/emergency/proc/is_hijacked()
 	var/has_people = FALSE
@@ -295,7 +296,7 @@
 			has_xenos = TRUE
 
 	return has_xenos
-	
+
 /obj/docking_port/mobile/emergency/proc/ShuttleDBStuff()
 	set waitfor = FALSE
 	if(!SSdbcore.Connect())
@@ -333,7 +334,7 @@
 				mode = SHUTTLE_DOCKED
 				setTimer(SSshuttle.emergencyDockTime)
 				send2irc("Server", "The Emergency Shuttle has docked with the station.")
-				priority_announce("The Emergency Shuttle has docked with the station. You have [timeLeft(600)] minutes to board the Emergency Shuttle.", null, 'sound/ai/shuttledock.ogg', "Priority")
+				priority_announce("The Emergency Shuttle has docked with the station. You have [timeLeft(600)] minutes to board the Emergency Shuttle.", null, 'goon/sound/misc/shuttle_arrive1.ogg', "Priority") //austation, was 'sound/ai/shuttledock.ogg'
 				ShuttleDBStuff()
 
 
@@ -384,7 +385,7 @@
 				mode = SHUTTLE_ESCAPE
 				launch_status = ENDGAME_LAUNCHED
 				setTimer(SSshuttle.emergencyEscapeTime * engine_coeff)
-				priority_announce("The Emergency Shuttle has left the station. Estimate [timeLeft(600)] minutes until the shuttle docks at Central Command.", null, null, "Priority")
+				priority_announce("The Emergency Shuttle has left the station. Estimate [timeLeft(600)] minutes until the shuttle docks at Central Command.", null, 'goon/sound/misc/shuttle_enroute.ogg', "Priority") //austation, was null
 
 		if(SHUTTLE_STRANDED)
 			SSshuttle.checkHostileEnvironment()
@@ -395,6 +396,7 @@
 				for(var/area/shuttle/escape/E in GLOB.sortedAreas)
 					areas += E
 				hyperspace_sound(HYPERSPACE_END, areas)
+				priority_announce("The Emergency Shuttle has docked at Central Command", null, 'goon/sound/misc/shuttle_centcom.ogg', "Priority") //austation shuttle docking announcement
 			if(time_left <= PARALLAX_LOOP_TIME)
 				var/area_parallax = FALSE
 				for(var/place in shuttle_areas)
