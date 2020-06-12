@@ -14,6 +14,7 @@
 #include "code\game\objects\items\storage\firstaid.dm"
 #include "code\game\objects\items\storage\uplink_kits.dm"
 #include "code\game\objects\items\twohanded.dm"
+#include "code\game\objects\items\weaponry.dm"
 #include "code\game\objects\structures\mirror.dm"
 #include "code\modules\admin\chat_commands.dm"
 #include "code\modules\admin\topic.dm"
