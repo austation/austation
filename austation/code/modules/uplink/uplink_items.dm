@@ -6,5 +6,4 @@
 		WILL ATTACK ANYONE, STAY AWAY ONCE DEPLOYED!"
 	item = /obj/item/sbeacondrop/deathsky
 	cost = 11
-	surplus = 0
 	include_modes = list(/datum/game_mode/nuclear, /datum/game_mode/nuclear/clown_ops)
