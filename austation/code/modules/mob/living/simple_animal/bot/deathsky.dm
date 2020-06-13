@@ -17,8 +17,16 @@
 	var/lastfired = 0
 	var/shot_delay = 0 //it fires  f a s t
 	var/lasercolor = ""
-	var/projectile = /obj/item/projectile/energy/electrode //holder
+	var/projectile = /obj/item/projectile/beam/pulse //default projectile is now main so toy beepsky doesn't fire real pulse rounds
 	var/shoot_sound = 'sound/weapons/taser2.ogg'
+
+/mob/living/simple_animal/bot/secbot/deathsky/toy //A toy version of Admiral Deathsky!
+	name = "Admiral Deathsky"
+	desc = "An adorable looking secbot with four toy swords taped to its arms"
+	health = 50
+	maxHealth = 50
+	baton_type = /obj/item/toy/sword
+	projectile = /obj/item/projectile/beam/lasertag/bluetag
 
 /mob/living/simple_animal/bot/secbot/deathsky/bullet_act(obj/item/projectile/P)
 	visible_message("[src] deflects [P] with its energy swords!")
@@ -36,7 +44,6 @@
 	. = ..()
 	weapon = new baton_type(src)
 	weapon.attack_self(src)
-	projectile = "/obj/item/projectile/beam/pulse"
 	shoot_sound = "sound/weapons/pulse.ogg"
 
 /mob/living/simple_animal/bot/secbot/deathsky/Destroy()
