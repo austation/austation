@@ -216,7 +216,7 @@
 	display_name = "Miniaturized Bluespace Research"
 	description = "Extreme reduction in space required for bluespace engines, leading to portable bluespace technology."
 	prereq_ids = list("bluespace_travel", "practical_bluespace", "high_efficiency")
-	design_ids = list("bluespace_matter_bin", "femto_mani", "triphasic_scanning", "bag_holding", "quantum_keycard", "wormholeprojector", "swapper")
+	design_ids = list("bluespace_matter_bin", "femto_mani", "triphasic_scanning", "bag_holding", "bluespace_belt", "quantum_keycard", "wormholeprojector", "swapper")
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 10000)
 	export_price = 5000
 
@@ -1008,7 +1008,7 @@
 	display_name = "Mesh Nanite Programming"
 	description = "Nanite programs that require static structures and membranes."
 	prereq_ids = list("nanite_base","engineering")
-	design_ids = list("hardening_nanites", "refractive_nanites", "cryo_nanites", "conductive_nanites", "shock_nanites", "emp_nanites", "temperature_nanites")
+	design_ids = list("hardening_nanites", "dermal_button_nanites", "refractive_nanites", "cryo_nanites", "conductive_nanites", "shock_nanites", "emp_nanites", "temperature_nanites")
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2500)
 	export_price = 5000
 
