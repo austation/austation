@@ -7,6 +7,7 @@
 	maxHealth = 300
 	baton_type = /obj/item/melee/transforming/energy/sword/saber
 	base_speed = 10 //he's a REALLY fast fucker
+	obj_damage = 60
 	environment_smash = ENVIRONMENT_SMASH_WALLS //goodbye walls (maybe)
 	emagged = 2
 	var/obj/item/weapon
@@ -174,7 +175,7 @@
 
 
 /mob/living/simple_animal/bot/secbot/deathsky/proc/shootAt(mob/target)
-	if(world.time <= lastfired + shot_delay) //shot delay is zero atm so it fires every second
+	if(world.time <= lastfired + shot_delay) //shot delay is zero atm so it fires once every second
 		return
 	lastfired = world.time
 	var/turf/T = loc
