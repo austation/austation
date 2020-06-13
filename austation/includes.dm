@@ -7,6 +7,7 @@
 #include "code\datums\ai_laws.dm"
 #include "code\datums\emotes.dm"
 #include "code\datums\status_effects\buffs.dm"
+#include "code\game\machinery\syndicatebeacon.dm"
 #include "code\game\objects\effects\decals\turfdecal\markings.dm"
 #include "code\game\objects\items\AI_modules.dm"
 #include "code\game\objects\items\robot\robot_upgrades.dm"
@@ -61,4 +62,5 @@
 #include "code\modules\research\designs\AI_module_designs.dm"
 #include "code\modules\research\designs\mechfabricator_designs.dm"
 #include "code\modules\surgery\organs\tongue.dm"
+#include "code\modules\uplink\uplink_items.dm"
 #include "code\modules\vehicles\cars\thanoscar.dm"
