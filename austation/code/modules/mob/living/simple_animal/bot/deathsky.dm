@@ -1,8 +1,8 @@
 /mob/living/simple_animal/bot/secbot/deathsky //I hope you brought EMP grenades..
 	name = "Admiral Deathsky"
 	desc = "Is that a secbot with four eswords AND pulse rifles in its arms...?"
-	icon = 'icons/mob/aibots.dmi'
-	icon_state = "grievous"
+	icon = 'austation/icons/mob/aibots.dmi'
+	icon_state = "deathsky"
 	health = 300
 	maxHealth = 300
 	baton_type = /obj/item/melee/transforming/energy/sword/saber
@@ -140,7 +140,7 @@
 			playsound(src, pick('sound/voice/beepsky/criminal.ogg', 'sound/voice/beepsky/justice.ogg', 'sound/voice/beepsky/freeze.ogg'), 50, FALSE)
 			playsound(src,'sound/weapons/saberon.ogg',50,TRUE,-1)
 			visible_message("[src] ignites his energy swords!")
-			icon_state = "grievous-c"
+			icon_state = "deathsky-c"
 			visible_message("<b>[src]</b> points at [C.name]!")
 			mode = BOT_HUNT
 			INVOKE_ASYNC(src, .proc/handle_automated_action)
