@@ -14,6 +14,6 @@
 /obj/item/storage/belt/holding/ComponentInitialize()
 	. = ..()
 	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
-	STR.max_items = 14
+	STR.max_combined_w_class = 70
 	STR.max_w_class = WEIGHT_CLASS_SMALL
 	STR.can_hold = typecacheof(list())
