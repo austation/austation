@@ -7,7 +7,7 @@
 /obj/item/sbeacondrop/deathsky/attack_self(mob/user)
 	if(user && !used)
 		used = TRUE
-		to_chat(user, "<span class='warning'>Locked In. Run away while you can!</span>")
+		to_chat(user, "<span class='warning'>Locked In, Run away while you can!</span>")
 		sleep(50)
 		new droptype(loc)
 		playsound(src, 'sound/effects/pop.ogg', 100, 1, 1)
