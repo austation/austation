@@ -3,7 +3,7 @@
 /turf/template_noop,
 /area/template_noop)
 "ab" = (
-/turf/open/lava/smooth/lava_land_surface,
+/turf/open/lava/super_hot/smooth/lava_land_surface,
 /area/lavaland/surface/outdoors)
 "ac" = (
 /turf/open/floor/plating/asteroid/basalt/lava_land_surface,
@@ -131,6 +131,10 @@
 	dir = 5
 	},
 /area/ruin/unpowered/syndicate_lava_base/virology)
+"ao" = (
+/obj/structure/lattice/catwalk,
+/turf/open/lava/super_hot/smooth/lava_land_surface,
+/area/lavaland/surface/outdoors)
 "ap" = (
 /obj/machinery/light/small{
 	dir = 1
@@ -324,10 +328,6 @@
 	dir = 4
 	},
 /area/ruin/unpowered/syndicate_lava_base/chemistry)
-"dG" = (
-/obj/structure/lattice/catwalk,
-/turf/open/lava/smooth/lava_land_surface,
-/area/lavaland/surface/outdoors)
 "dI" = (
 /obj/structure/table/glass,
 /obj/machinery/reagentgrinder{
@@ -6897,12 +6897,12 @@ ab
 ab
 ab
 ab
-dG
-dG
-dG
-dG
-dG
-dG
+ao
+ao
+ao
+ao
+ao
+ao
 lS
 mn
 mn
@@ -6946,8 +6946,8 @@ ab
 ab
 ab
 ab
-dG
-dG
+ao
+ao
 ig
 iu
 iu
@@ -6995,8 +6995,8 @@ ab
 ab
 ab
 ab
-dG
-dG
+ao
+ao
 ig
 je
 iv
@@ -7044,8 +7044,8 @@ ab
 ab
 ab
 ab
-dG
-dG
+ao
+ao
 ig
 je
 jk
@@ -7093,8 +7093,8 @@ hH
 ab
 ab
 ab
-dG
-dG
+ao
+ao
 ig
 je
 jk
@@ -7141,9 +7141,9 @@ eh
 eh
 eh
 hW
-dG
-dG
-dG
+ao
+ao
+ao
 ig
 je
 iv

@@ -16,6 +16,7 @@
 #include "code\game\objects\items\twohanded.dm"
 #include "code\game\objects\items\weaponry.dm"
 #include "code\game\objects\structures\mirror.dm"
+#include "code\game\turfs\open\lava.dm"
 #include "code\modules\admin\chat_commands.dm"
 #include "code\modules\admin\topic.dm"
 #include "code\modules\admin\verbs\fix_air.dm"
