@@ -9,3 +9,7 @@
 /obj/item/aiModule/core/full/dagothur
 	name = "'GodAI' Core AI Module"
 	law_id = "dagothur"
+
+/obj/item/aiModule/core/full/crewsimov
+	name = "'Crewsimov' Core AI Module"
+	law_id = "crewsimov"
