@@ -6,6 +6,7 @@
 #include "code\controllers\subsystem\job.dm"
 #include "code\datums\ai_laws.dm"
 #include "code\datums\emotes.dm"
+#include "code\datums\brain_damage\imaginary_friend.dm"
 #include "code\datums\status_effects\buffs.dm"
 #include "code\game\objects\effects\decals\turfdecal\markings.dm"
 #include "code\game\objects\items\AI_modules.dm"
