@@ -1,6 +1,0 @@
-author: "thelaughingbomb"
-delete-after: True
-changes: 
-  - rscadd: "Disposable autopen, a 25u one-time use epipen that can be filled with chems. Locked behind advanced biotechnology. Bypasses hardsuits"
-  - rscadd: "Bluespace disposable autopen. Like the other pen, holds 40u, requires applied bluespace. Bypasses hardsuits"
-  - imageadd: "Two crudely made sprites for the new epipens"
