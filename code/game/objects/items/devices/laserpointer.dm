@@ -13,7 +13,7 @@
 	var/turf/pointer_loc
 	var/energy = 5
 	var/max_energy = 5
-	var/effectchance = 33
+	var/effectchance = 5
 	var/recharging = 0
 	var/recharge_locked = FALSE
 	var/obj/item/stock_parts/micro_laser/diode //used for upgrading!
