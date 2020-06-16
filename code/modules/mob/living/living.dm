@@ -1364,3 +1364,4 @@
 			update_transform()
 		if("lighting_alpha")
 			sync_lighting_plane_alpha()
+
