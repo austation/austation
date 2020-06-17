@@ -63,8 +63,9 @@
 		if((confused || is_blind()) && stat == CONSCIOUS && m_intent=="run")
 			playsound(get_turf(src), "punch", 25, 1, -1)
 			visible_message("<span class='warning'>[src] [pick("ran", "slammed")] into \the [A]!</span>")
-			apply_damage(5, BRUTE)
-			Paralyze(40)
+			Knockdown(20) //austation -- knockdown instead of hardstun with damage
+//			apply_damage(5, BRUTE)
+//			Paralyze(40)
 
 	if(ismob(A))
 		var/mob/M = A
@@ -1363,3 +1364,4 @@
 			update_transform()
 		if("lighting_alpha")
 			sync_lighting_plane_alpha()
+
