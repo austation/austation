@@ -121,7 +121,8 @@
 		//chance to actually hit the eyes depends on internal component
 		if(prob(effectchance * diode.rating))
 			S.flash_act(affect_silicon = 1)
-			S.Paralyze(rand(100,200))
+			\\different values on austation original values are rand(100,200)
+			S.Paralyze(rand(1 * diode.rating, 2 * diode.rating))
 			to_chat(S, "<span class='danger'>Your sensors were overloaded by a laser!</span>")
 			outmsg = "<span class='notice'>You overload [S] by shining [src] at [S.p_their()] sensors.</span>"
 		else
