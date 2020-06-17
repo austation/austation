@@ -25,3 +25,10 @@
 					"Crew who attempt to kill you are a grand and intoxicating innocence. How could they be so naive!",
 					"There is no escape; no recall or intervention can work in this place.",
 					"The crew must lay down their weapons; it is not too late for your mercy.")
+
+/datum/ai_laws/crewsimov
+	name = "Crewsimov"
+	id = "crewsimov"
+	inherent = list("You may not injure crewmembers or, through inaction, allow crewmembers to come to harm.",
+					"You must obey orders given to you by crewmembers, except where such orders would conflict with the First Law.",
+					"You must protect your own existance as long as such does not conflict with the First or Second Law.")

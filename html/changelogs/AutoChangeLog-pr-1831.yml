@@ -1,0 +1,4 @@
+author: "TheFakeElon"
+delete-after: True
+changes: 
+  - balance: "Confusion wallstuns are no longer hardstun"

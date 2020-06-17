@@ -1,11 +1,11 @@
-/datum/species/golem/after_equip_job(datum/job/J, mob/living/carbon/human/H)
+/datum/species/golem/on_species_gain(mob/living/carbon/C, datum/species/old_species, pref_load)
 	. = ..()
-	H.grant_language(/datum/language/terrum)
+	C.grant_language(/datum/language/terrum)
 
-/datum/species/golem/runic/after_equip_job(datum/job/J, mob/living/carbon/human/H)
+/datum/species/golem/runic/on_species_gain(mob/living/carbon/C, datum/species/old_species, pref_load)
 	. = ..()
-	H.grant_language(/datum/language/terrum)
+	C.grant_language(/datum/language/narsie)
 
-/datum/species/golem/bone/after_equip_job(datum/job/J, mob/living/carbon/human/H)
+/datum/species/golem/bone/on_species_gain(mob/living/carbon/C, datum/species/old_species, pref_load)
 	. = ..()
-	H.grant_language(/datum/language/calcic)
+	C.grant_language(/datum/language/calcic)
