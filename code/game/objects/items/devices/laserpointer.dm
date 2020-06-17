@@ -11,9 +11,9 @@
 	materials = list(/datum/material/iron=500, /datum/material/glass=500)
 	w_class = WEIGHT_CLASS_SMALL
 	var/turf/pointer_loc
-	var/energy = 5
-	var/max_energy = 5
-	var/effectchance = 33
+	var/energy = 6	\\Austation changed from 5 to 6
+	var/max_energy = 6 \\Austation changed from 5 to 6
+	var/effectchance = 35 \\Austation changed from 33 to 35
 	var/recharging = 0
 	var/recharge_locked = FALSE
 	var/obj/item/stock_parts/micro_laser/diode //used for upgrading!
