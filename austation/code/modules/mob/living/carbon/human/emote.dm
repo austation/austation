@@ -27,7 +27,7 @@
 
 /datum/emote/living/carbon/human/goddamn
 	key = "goddamn"
-	key = "goddamns"
+	key_third_person = "goddamns"
 	message = "is impressed with your flex!"
 	emote_type = EMOTE_AUDIBLE
 	sound = 'austation/sound/misc/goughdemn.ogg'
@@ -43,3 +43,18 @@
 	key = "dab"
 	key_third_person = "dabs"
 	message = "hits a nasty dab!"
+
+/datum/emote/living/carbon/circle
+	key = "circle"
+	key_third_person = "circles"
+	restraint_check = TRUE
+
+/datum/emote/living/carbon/circle/run_emote(mob/user, params, type_override, intentional)
+	. = ..()
+	if(!length(user.get_empty_held_indexes()))
+		to_chat(user, "<span class='warning'>You don't have any free hands to make a circle with.</span>")
+		return
+	var/obj/item/circlegame/N = new(user)
+	if(user.put_in_hands(N))
+		to_chat(user, "<span class='notice'>You make a circle with your hand.</span>")
+

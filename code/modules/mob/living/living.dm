@@ -63,8 +63,9 @@
 		if((confused || is_blind()) && stat == CONSCIOUS && m_intent=="run")
 			playsound(get_turf(src), "punch", 25, 1, -1)
 			visible_message("<span class='warning'>[src] [pick("ran", "slammed")] into \the [A]!</span>")
-			apply_damage(5, BRUTE)
-			Paralyze(40)
+			Knockdown(20) //austation -- knockdown instead of hardstun with damage
+//			apply_damage(5, BRUTE)
+//			Paralyze(40)
 
 	if(ismob(A))
 		var/mob/M = A
@@ -533,6 +534,7 @@
 
 //proc used to ressuscitate a mob
 /mob/living/proc/revive(full_heal = 0, admin_revive = 0)
+	SEND_SIGNAL(src, COMSIG_LIVING_REVIVE, src, full_heal, admin_revive)
 	if(full_heal)
 		fully_heal(admin_revive)
 	if(stat == DEAD && can_be_revived()) //in some cases you can't revive (e.g. no brain)
@@ -903,7 +905,7 @@
 	setMovetype(movement_type & ~FLOATING) // If we were without gravity, the bouncing animation got stopped, so we make sure to restart it in next life().
 
 /mob/living/proc/get_temperature(datum/gas_mixture/environment)
-	var/loc_temp = environment ? environment.temperature : T0C
+	var/loc_temp = environment ? environment.return_temperature() : T0C
 	if(isobj(loc))
 		var/obj/oloc = loc
 		var/obj_temp = oloc.return_temperature()
@@ -1362,3 +1364,4 @@
 			update_transform()
 		if("lighting_alpha")
 			sync_lighting_plane_alpha()
+
