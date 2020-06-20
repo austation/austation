@@ -30,7 +30,7 @@
 		if("Skirt")
 			R.icon = 'austation/icons/mob/robot.dmi'
 			cyborg_base_icon = "banangarang-Medical"
-			special_light_key = "banangarang-lights"
+			special_light_key = null
 			hat_offset = 0
 	return ..()
 
@@ -69,7 +69,7 @@
 		if("Skirt")
 			R.icon = 'austation/icons/mob/robot.dmi'
 			cyborg_base_icon = "banangarang-Engineering"
-			special_light_key = "banangarang-lights"
+			special_light_key = null
 			hat_offset = 0
 	return ..()
 
@@ -105,7 +105,7 @@
 		if("Skirt")
 			R.icon = 'austation/icons/mob/robot.dmi'
 			cyborg_base_icon = "banangarang-Security"
-			special_light_key = "banangarang-lights"
+			special_light_key = null
 			hat_offset = 0
 	return ..()
 
@@ -147,22 +147,9 @@
 		if("Skirt")
 			R.icon = 'austation/icons/mob/robot.dmi'
 			cyborg_base_icon = "banangarang-Janitor"
-			special_light_key = "banangarang-lights"
+			special_light_key = null
 			hat_offset = 0
 	return ..()
 
-/obj/item/robot_module/standard/be_transformed_to(obj/item/robot_module/old_module) //Pick a icon starts here
 
-	var/mob/living/silicon/robot/R = loc
-	var/borg_icon = input(R, "Select an icon!", "Robot Icon", null) as null|anything in list("Default", "Skirt")
-	if(!borg_icon)
-		return FALSE
-	switch(borg_icon)
-		if("Default")
-			cyborg_base_icon = "robot"
-		if("Heavy")
-			R.icon = 'austation/icons/mob/robot.dmi'
-			cyborg_base_icon = "banangarang-Standard"
-			special_light_key = "banangarang-lights"
-			hat_offset = 0
 
