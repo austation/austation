@@ -1,0 +1,6 @@
+author: "ZombiesVsPlants"
+delete-after: True
+changes: 
+  - balance: "Changed Laser pointer to paralyse for a much shorter time than before."
+  - balance: "Increased the amount of charges a Laser pointer had by 1"
+  - balance: "Increased the effectchance variable from 33 to 35"
