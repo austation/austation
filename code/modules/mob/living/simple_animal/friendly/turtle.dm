@@ -28,6 +28,8 @@
 
 	do_footstep = TRUE
 
+	faction = list("boss", "mining", "neutral")
+
 	var/turtle_hide_max = 25 //The time spent hiding in its shell
 	var/turtle_hide_dur = 25 //Same as above, this is the var that physically counts down
 
