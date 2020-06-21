@@ -1365,8 +1365,6 @@
 		if("lighting_alpha")
 			sync_lighting_plane_alpha()
 
-<<<<<<< HEAD
-=======
 /mob/living/vv_get_header()
 	. = ..()
 	var/refid = REF(src)
@@ -1382,4 +1380,3 @@
 			STAMINA:<font size='1'><a href='?_src_=vars;[HrefToken()];mobToDamage=[refid];adjustDamage=stamina' id='stamina'>[getStaminaLoss()]</a>
 		</font>
 	"}
->>>>>>> d3b75a6358... Ports VV stuff from TG (#1930)
