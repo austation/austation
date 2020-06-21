@@ -1,0 +1,4 @@
+author: "FleshGordo"
+delete-after: True
+changes: 
+  - config: "Made Flypeople a roundstart race once more"
