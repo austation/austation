@@ -30,7 +30,7 @@
 		if("Skirt")
 			R.icon = 'austation/icons/mob/robot.dmi'
 			cyborg_base_icon = "banangarang-Medical"
-			special_light_key = null
+			special_light_key = "banangarang-lights-med"
 			hat_offset = 0
 	return ..()
 
@@ -69,7 +69,7 @@
 		if("Skirt")
 			R.icon = 'austation/icons/mob/robot.dmi'
 			cyborg_base_icon = "banangarang-Engineering"
-			special_light_key = null
+			special_light_key = "banangarang-lights"
 			hat_offset = 0
 	return ..()
 
@@ -105,7 +105,7 @@
 		if("Skirt")
 			R.icon = 'austation/icons/mob/robot.dmi'
 			cyborg_base_icon = "banangarang-Security"
-			special_light_key = null
+			special_light_key = "banangarang-lights"
 			hat_offset = 0
 	return ..()
 
@@ -147,7 +147,7 @@
 		if("Skirt")
 			R.icon = 'austation/icons/mob/robot.dmi'
 			cyborg_base_icon = "banangarang-Janitor"
-			special_light_key = null
+			special_light_key = "banangarang-lights"
 			hat_offset = 0
 	return ..()
 
