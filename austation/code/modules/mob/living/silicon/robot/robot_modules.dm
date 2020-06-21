@@ -148,5 +148,3 @@
 			hat_offset = 0
 	return ..()
 
-
-
