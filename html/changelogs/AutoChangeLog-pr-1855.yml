@@ -1,4 +1,0 @@
-author: "AustationBot"
-delete-after: True
-changes: 
-  - bugfix: "You will no longer stub your toe repeatedly by continually walking into a table. It can only occur a maximum of once every 10 seconds."

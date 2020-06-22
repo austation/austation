@@ -1,4 +1,0 @@
-author: "AustationBot"
-delete-after: True
-changes: 
-  - config: "Versions older than 513.1526 are no longer supported."

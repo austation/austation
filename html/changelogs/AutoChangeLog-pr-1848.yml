@@ -1,5 +1,0 @@
-author: "TG coders, ported by Trigg"
-delete-after: True
-changes: 
-  - bugfix: "Ghost orbits."
-  - code_imp: "Various improvements to the View Variables panel."
