@@ -2,10 +2,10 @@
 	name = "super hot lava"
 	baseturfs = /turf/open/lava/super_hot // it's super hott
 
-/turf/open/lava/rcd_vals(mob/user, obj/item/construction/rcd/the_rcd)
+/turf/open/lava/super_hot/rcd_vals(mob/user, obj/item/construction/rcd/the_rcd)
 	return FALSE
 
-/turf/open/lava/rcd_act(mob/user, obj/item/construction/rcd/the_rcd, passed_mode)
+/turf/open/lava/super_hot/rcd_act(mob/user, obj/item/construction/rcd/the_rcd, passed_mode)
 	return FALSE
 
 /turf/open/lava/super_hot/smooth
