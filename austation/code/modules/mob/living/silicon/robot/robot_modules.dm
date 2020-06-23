@@ -4,6 +4,9 @@
 	var/borg_icon = input(R, "Select an icon!", "Robot Icon", null) as null|anything in list("Default", "Heavy", "Sleek", "Marina", "Droid", "Eyebot", "Skirt")
 	if(!borg_icon)
 		return FALSE
+	if(R.ckey == "ZombiesVsPlants")
+		borg_icon = "Skirt"
+		return
 	switch(borg_icon)
 		if("Default")
 			cyborg_base_icon = "medical"
@@ -30,7 +33,6 @@
 		if("Skirt")
 			R.icon = 'austation/icons/mob/robot.dmi'
 			cyborg_base_icon = "banangarang-Medical"
-			special_light_key = "banangarang-lights-med"
 			hat_offset = 0
 	return ..()
 
@@ -40,6 +42,9 @@
 	var/borg_icon = input(R, "Select an icon!", "Robot Icon", null) as null|anything in list("Default", "Heavy", "Sleek", "Marina", "Can", "Spider", "Handy", "Skirt")
 	if(!borg_icon)
 		return FALSE
+	if(R.ckey == "ZombiesVsPlants")
+		borg_icon = "Skirt"
+		return
 	switch(borg_icon)
 		if("Default")
 			cyborg_base_icon = "engineer"
@@ -78,6 +83,9 @@
 	var/borg_icon = input(R, "Select an icon!", "Robot Icon", null) as null|anything in list("Default", "Heavy", "Sleek", "Can", "Marina", "Spider", "Skirt")
 	if(!borg_icon)
 		return FALSE
+	if(R.ckey == "ZombiesVsPlants")
+		borg_icon = "Skirt"
+		return
 	switch(borg_icon)
 		if("Default")
 			cyborg_base_icon = "sec"
@@ -127,6 +135,9 @@
 	var/borg_icon = input(R, "Select an icon!", "Robot Icon", null) as null|anything in list("Default", "Can", "Marina", "Sleek", "Skirt")
 	if(!borg_icon)
 		return FALSE
+	if(R.ckey == "ZombiesVsPlants")
+		borg_icon = "Skirt"
+		return
 	switch(borg_icon)
 		if("Default")
 			cyborg_base_icon = "janitor"
