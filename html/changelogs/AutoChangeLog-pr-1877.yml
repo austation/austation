@@ -1,0 +1,5 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - balance: "sulfonal now takes perfluorodecalin instead of acetone"
+  - balance: "lexorin now takes sulfonal, gives 4u."
