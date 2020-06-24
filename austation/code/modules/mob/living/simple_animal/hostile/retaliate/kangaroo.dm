@@ -41,8 +41,8 @@
 	// ... but, every attack_cycles_max attacks on a living mob, do a powerful disemboweling kick instead
 	attack_cycles = 0
 	attacktext = "VICIOUSLY KICKS"
-	melee_damage_lower = 60
-	melee_damage_upper = 60
+	melee_damage = 60
+	melee_damage = 60
 	. = ..()
 
 	var/rookick_dir = get_dir(src, L)
@@ -51,5 +51,4 @@
 	L.throw_at(general_direction, 10, 2)
 
 	attacktext = initial(attacktext)
-	melee_damage_lower = initial(melee_damage_lower)
-	melee_damage_upper = initial(melee_damage_upper)
+	melee_damage = initial(melee_damage)
