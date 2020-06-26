@@ -16,8 +16,7 @@
 	health = 150
 	gold_core_spawnable = HOSTILE_SPAWN
 	harm_intent_damage = 3
-	melee_damage_lower = 5 // avg damage 12.5 without kick, (12.5+12.5+60)/3=25 with kick
-	melee_damage_upper = 20
+	melee_damage = 12
 	attacktext = "slashes"
 	attack_sound = 'sound/weapons/bladeslice.ogg' // they have nails that work like claws, so, slashing sound
 	atmos_requirements = list("min_oxy" = 5, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 2, "min_co2" = 0, "max_co2" = 5, "min_n2" = 0, "max_n2" = 0)
@@ -42,8 +41,8 @@
 	// ... but, every attack_cycles_max attacks on a living mob, do a powerful disemboweling kick instead
 	attack_cycles = 0
 	attacktext = "VICIOUSLY KICKS"
-	melee_damage_lower = 60
-	melee_damage_upper = 60
+	melee_damage = 60
+	melee_damage = 60
 	. = ..()
 
 	var/rookick_dir = get_dir(src, L)
@@ -52,6 +51,4 @@
 	L.throw_at(general_direction, 10, 2)
 
 	attacktext = initial(attacktext)
-	melee_damage_lower = initial(melee_damage_lower)
-	melee_damage_upper = initial(melee_damage_upper)
-
+	melee_damage = initial(melee_damage)
