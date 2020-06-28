@@ -23,6 +23,7 @@
 #include "code\modules\admin\topic.dm"
 #include "code\modules\admin\verbs\fix_air.dm"
 #include "code\modules\admin\verbs\mapping.dm"
+#include "code\modules\clothing\glasses\hud.dm"
 #include "code\modules\clothing\spacesuit\miscellaneous.dm"
 #include "code\modules\events\bruh_moment.dm"
 #include "code\modules\food_and_drinks\drinks\drinks.dm"
