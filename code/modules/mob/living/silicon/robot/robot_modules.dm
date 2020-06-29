@@ -496,11 +496,6 @@
 	var/borg_icon = input(R, "Select an icon!", "Robot Icon", null) as null|anything in sortList(list("Waitress", "Butler", "Tophat", "Kent", "Bro", "Heavy", "Skirt")) // austation -- added 'heavy' and 'Skirt'
 	if(!borg_icon)
 		return FALSE
-	// austation begin -- wheeze
-	if(R.ckey == "ZombiesVsPlants")
-		borg_icon = "Skirt"
-		return
-	// austation end
 	switch(borg_icon)
 		if("Waitress")
 			cyborg_base_icon = "service_f"
@@ -525,8 +520,10 @@
 			R.icon = 'austation/icons/mob/robot.dmi'
 			cyborg_base_icon = "banangarang-Service"
 			hat_offset = 0
+	if(R.ckey == "ZombiesVsPlants")
+		borg_icon = "Skirt"
+		return
 		// austation end
-
 	return ..()
 
 /obj/item/robot_module/borgi
@@ -565,11 +562,6 @@
 	var/borg_icon = input(R, "Select an icon!", "Robot Icon", null) as null|anything in sortList(list("Lavaland Miner", "Asteroid Miner", "Spider Miner", "Marina", "Heavy", "Can", "Droid", "Sleek", "Skirt"))// austation -- added additonal choices to list
 	if(!borg_icon)
 		return FALSE
-	// austation begin -- wheeze
-	if(R.ckey == "ZombiesVsPlants")
-		borg_icon = "Skirt"
-		return
-	// austation end
 	switch(borg_icon)
 		if("Lavaland Miner")
 			cyborg_base_icon = "miner"
@@ -604,6 +596,9 @@
 			R.icon = 'austation/icons/mob/robot.dmi'
 			cyborg_base_icon = "banangarang-Miner"
 			hat_offset = 0
+	if(R.ckey == "ZombiesVsPlants")
+		borg_icon = "Skirt"
+		return
 		// austation end
 	return ..()
 
