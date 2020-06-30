@@ -3585,10 +3585,9 @@
 	dir = 4;
 	pixel_x = -24
 	},
-/obj/effect/turf_decal/stripes/asteroid/line{
+/turf/open/floor/plasteel/yellowsiding{
 	dir = 4
 	},
-/turf/open/floor/plasteel,
 /area/crew_quarters/fitness/recreation)
 "agF" = (
 /obj/effect/turf_decal/tile/neutral{
@@ -3968,19 +3967,17 @@
 /obj/machinery/pool/filter{
 	pixel_y = -17
 	},
-/obj/effect/turf_decal/stripes/asteroid/line,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 4
 	},
-/turf/open/floor/plasteel,
+/turf/open/floor/plasteel/yellowsiding,
 /area/crew_quarters/fitness/recreation)
 "ahk" = (
 /obj/machinery/pool/controller,
-/obj/effect/turf_decal/stripes/asteroid/line,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 4
 	},
-/turf/open/floor/plasteel,
+/turf/open/floor/plasteel/yellowsiding,
 /area/crew_quarters/fitness/recreation)
 "ahl" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
@@ -4007,7 +4004,9 @@
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
-/turf/open/floor/plasteel,
+/turf/open/floor/plasteel/yellowsiding/corner{
+	dir = 8
+	},
 /area/crew_quarters/fitness/recreation)
 "ahn" = (
 /obj/effect/turf_decal/tile/neutral{
@@ -4414,10 +4413,9 @@
 /obj/structure/extinguisher_cabinet{
 	pixel_x = -27
 	},
-/obj/effect/turf_decal/stripes/asteroid/line{
+/turf/open/floor/plasteel/yellowsiding{
 	dir = 4
 	},
-/turf/open/floor/plasteel,
 /area/crew_quarters/fitness/recreation)
 "ahR" = (
 /obj/structure/displaycase/captain{
@@ -4891,10 +4889,9 @@
 /obj/machinery/light{
 	dir = 8
 	},
-/obj/effect/turf_decal/stripes/asteroid/line{
+/turf/open/floor/plasteel/yellowsiding{
 	dir = 4
 	},
-/turf/open/floor/plasteel,
 /area/crew_quarters/fitness/recreation)
 "aiP" = (
 /obj/effect/spawner/room/fivexfour,
@@ -4919,11 +4916,10 @@
 /turf/open/floor/plasteel,
 /area/maintenance/disposal/incinerator)
 "aiX" = (
-/obj/effect/turf_decal/stripes/asteroid/line{
+/obj/machinery/atmospherics/pipe/simple/supply/hidden,
+/turf/open/floor/plasteel/yellowsiding{
 	dir = 8
 	},
-/obj/machinery/atmospherics/pipe/simple/supply/hidden,
-/turf/open/floor/plasteel,
 /area/crew_quarters/fitness/recreation)
 "aiY" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
@@ -5423,12 +5419,11 @@
 /turf/open/pool,
 /area/crew_quarters/fitness/recreation)
 "ajW" = (
-/obj/effect/turf_decal/stripes/asteroid/line{
-	dir = 8
-	},
 /obj/structure/pool/Rboard,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
-/turf/open/floor/plasteel,
+/turf/open/floor/plasteel/yellowsiding{
+	dir = 8
+	},
 /area/crew_quarters/fitness/recreation)
 "ajX" = (
 /obj/structure/table,
@@ -7528,40 +7523,41 @@
 /area/crew_quarters/fitness/recreation)
 "anG" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on,
-/turf/open/floor/plasteel,
+/turf/open/floor/plasteel/yellowsiding/corner{
+	dir = 4
+	},
 /area/crew_quarters/fitness/recreation)
 "anI" = (
-/obj/effect/turf_decal/stripes/asteroid/line{
-	dir = 1
-	},
 /obj/machinery/atmospherics/components/unary/vent_pump/on{
 	dir = 4
 	},
-/turf/open/floor/plasteel,
-/area/crew_quarters/fitness/recreation)
-"anJ" = (
-/obj/effect/turf_decal/stripes/asteroid/line{
+/turf/open/floor/plasteel/yellowsiding{
 	dir = 1
 	},
+/area/crew_quarters/fitness/recreation)
+"anJ" = (
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden{
 	dir = 1
 	},
-/turf/open/floor/plasteel,
-/area/crew_quarters/fitness/recreation)
-"anK" = (
-/obj/effect/turf_decal/stripes/asteroid/line{
+/turf/open/floor/plasteel/yellowsiding{
 	dir = 1
 	},
+/area/crew_quarters/fitness/recreation)
+"anK" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 4
 	},
-/turf/open/floor/plasteel,
+/turf/open/floor/plasteel/yellowsiding{
+	dir = 1
+	},
 /area/crew_quarters/fitness/recreation)
 "anL" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 9
 	},
-/turf/open/floor/plasteel,
+/turf/open/floor/plasteel/yellowsiding/corner{
+	dir = 1
+	},
 /area/crew_quarters/fitness/recreation)
 "anM" = (
 /obj/machinery/space_heater,
@@ -81480,10 +81476,9 @@
 /turf/open/floor/plasteel,
 /area/security/main)
 "dCc" = (
-/obj/effect/turf_decal/stripes/asteroid/line{
+/turf/open/floor/plasteel/yellowsiding{
 	dir = 1
 	},
-/turf/open/floor/plasteel,
 /area/crew_quarters/fitness/recreation)
 "dCf" = (
 /obj/effect/landmark/event_spawn,
@@ -83901,7 +83896,7 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 4
 	},
-/turf/open/floor/plasteel,
+/turf/open/floor/plasteel/yellowsiding/corner,
 /area/crew_quarters/fitness/recreation)
 "lrF" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
@@ -84258,11 +84253,10 @@
 /turf/closed/wall/r_wall,
 /area/maintenance/disposal/incinerator)
 "mTZ" = (
-/obj/effect/turf_decal/stripes/asteroid/line{
+/obj/effect/landmark/event_spawn,
+/turf/open/floor/plasteel/yellowsiding{
 	dir = 1
 	},
-/obj/effect/landmark/event_spawn,
-/turf/open/floor/plasteel,
 /area/crew_quarters/fitness/recreation)
 "mYd" = (
 /obj/effect/turf_decal/tile/blue,
@@ -84730,10 +84724,9 @@
 /turf/closed/wall/r_wall,
 /area/engine/atmos)
 "peG" = (
-/obj/effect/turf_decal/stripes/asteroid/line{
+/turf/open/floor/plasteel/yellowsiding{
 	dir = 4
 	},
-/turf/open/floor/plasteel,
 /area/crew_quarters/fitness/recreation)
 "pfL" = (
 /obj/effect/spawner/structure/window/reinforced,
@@ -85939,11 +85932,10 @@
 /turf/closed/wall,
 /area/hallway/secondary/exit/departure_lounge)
 "vlx" = (
-/obj/effect/turf_decal/stripes/asteroid/line,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 4
 	},
-/turf/open/floor/plasteel,
+/turf/open/floor/plasteel/yellowsiding,
 /area/crew_quarters/fitness/recreation)
 "vnp" = (
 /obj/effect/turf_decal/stripes/line{
