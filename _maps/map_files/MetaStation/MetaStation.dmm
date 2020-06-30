@@ -84669,9 +84669,11 @@
 /turf/open/floor/plasteel/dark/corner,
 /area/engine/storage_shared)
 "oKI" = (
-/obj/effect/landmark/start/assistant,
-/turf/template_noop,
-/area/maintenance/fore)
+/obj/machinery/holopad,
+/turf/open/floor/plasteel/yellowsiding{
+	dir = 1
+	},
+/area/crew_quarters/fitness/recreation)
 "oOv" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /turf/closed/wall,
@@ -120673,7 +120675,7 @@ sGK
 koT
 iMM
 agq
-oKI
+ahd
 ahd
 ahd
 ahd
@@ -122733,7 +122735,7 @@ fMv
 fMv
 fMv
 fMv
-dCc
+oKI
 aoW
 aqg
 arC
