@@ -1,0 +1,6 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - bugfix: "Bans & Notes can be edited again"
+  - bugfix: "Resolves SQL error for Lavaland role ban checks"
+  - rscdel: "Removes qdel warning for admins"
