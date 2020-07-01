@@ -71665,6 +71665,7 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
 	},
+/obj/item/extrapolator,
 /turf/open/floor/plasteel/dark,
 /area/medical/virology)
 "cIy" = (
@@ -73293,6 +73294,7 @@
 /obj/effect/turf_decal/tile/green{
 	dir = 8
 	},
+/obj/effect/landmark/start/virologist,
 /turf/open/floor/plasteel/white,
 /area/medical/virology)
 "cLR" = (
@@ -73587,7 +73589,6 @@
 	dir = 1;
 	name = "virology air connector port"
 	},
-/obj/machinery/portable_atmospherics/canister/air,
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
 	},
@@ -73602,10 +73603,13 @@
 	dir = 8
 	},
 /obj/machinery/light,
+/obj/machinery/computer/pandemic{
+	layer = 2.5;
+	pixel_x = -4
+	},
 /turf/open/floor/plasteel/dark,
 /area/medical/virology)
 "cMz" = (
-/obj/item/trash/popcorn,
 /obj/structure/table/glass,
 /obj/structure/cable/yellow{
 	icon_state = "1-8"
@@ -73620,10 +73624,11 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
 	},
+/obj/item/reagent_containers/spray/cleaner,
+/obj/item/reagent_containers/dropper,
 /turf/open/floor/plasteel/dark,
 /area/medical/virology)
 "cMA" = (
-/obj/item/reagent_containers/food/snacks/sosjerky,
 /obj/structure/table/glass,
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
@@ -73649,6 +73654,7 @@
 	dir = 8
 	},
 /obj/item/twohanded/required/kirbyplants/random,
+/obj/machinery/smartfridge/chemistry/virology/preloaded,
 /turf/open/floor/plasteel/dark,
 /area/medical/virology)
 "cMC" = (
