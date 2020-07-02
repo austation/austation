@@ -1,4 +1,0 @@
-author: "AustationBot"
-delete-after: True
-changes: 
-  - server: "SQL Query arguments are now logged more reliably."
