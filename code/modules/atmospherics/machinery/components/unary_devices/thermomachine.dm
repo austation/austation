@@ -56,7 +56,7 @@
 /obj/machinery/atmospherics/components/unary/thermomachine/update_icon_nopipes()
 	cut_overlays()
 	if(showpipe)
-		add_overlay(getpipeimage(icon, "scrub_cap", initialize_directions))
+		add_overlay(getpipeimage(icon, "scrub_cap", initialize_directions, piping_layer = piping_layer)) // austation -- Makes it so freezers and heaters can change layers
 
 /obj/machinery/atmospherics/components/unary/thermomachine/examine(mob/user)
 	. = ..()
@@ -99,6 +99,10 @@
 		return
 	if(default_deconstruction_crowbar(I))
 		return
+	//austation begin -- Makes it so freezers and heaters can change layers
+	if(change_piping_layer_multitool(user, I))
+		return
+	//austation end
 	return ..()
 
 /obj/machinery/atmospherics/components/unary/thermomachine/default_change_direction_wrench(mob/user, obj/item/I)

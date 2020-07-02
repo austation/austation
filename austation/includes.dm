@@ -73,3 +73,5 @@
 #include "code\modules\surgery\organs\tongue.dm"
 #include "code\modules\uplink\uplink_items.dm"
 #include "code\modules\vehicles\cars\thanoscar.dm"
+#include "code\modules\atmospherics\machinery\atmosmachinery.dm"
+#include "code\modules\atmospherics\machinery\components\unary_devices\thermomachine.dm"
