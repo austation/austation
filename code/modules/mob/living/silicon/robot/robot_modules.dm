@@ -493,7 +493,7 @@
 
 /obj/item/robot_module/butler/be_transformed_to(obj/item/robot_module/old_module)
 	var/mob/living/silicon/robot/R = loc
-	var/borg_icon = input(R, "Select an icon!", "Robot Icon", null) as null|anything in sortList(list("Waitress", "Butler", "Tophat", "Kent", "Bro", "Heavy")) // austation -- added 'heavy'
+	var/borg_icon = input(R, "Select an icon!", "Robot Icon", null) as null|anything in sortList(list("Waitress", "Butler", "Tophat", "Kent", "Bro", "Heavy", "Skirt")) // austation -- added 'heavy' and 'Skirt'
 	if(!borg_icon)
 		return FALSE
 	switch(borg_icon)
@@ -516,8 +516,14 @@
 			R.icon = 'austation/icons/mob/robot.dmi'
 			cyborg_base_icon = "heavyserv"
 			special_light_key = "heavyserv"
+		if("Skirt")
+			R.icon = 'austation/icons/mob/robot.dmi'
+			cyborg_base_icon = "banangarang-Service"
+			hat_offset = 0
+	if(R.ckey == "ZombiesVsPlants")
+		borg_icon = "Skirt"
+		return
 		// austation end
-
 	return ..()
 
 /obj/item/robot_module/borgi
@@ -553,7 +559,7 @@
 
 /obj/item/robot_module/miner/be_transformed_to(obj/item/robot_module/old_module)
 	var/mob/living/silicon/robot/R = loc
-	var/borg_icon = input(R, "Select an icon!", "Robot Icon", null) as null|anything in sortList(list("Lavaland Miner", "Asteroid Miner", "Spider Miner", "Marina", "Heavy", "Can", "Droid", "Sleek"))// austation -- added additonal choices to list
+	var/borg_icon = input(R, "Select an icon!", "Robot Icon", null) as null|anything in sortList(list("Lavaland Miner", "Asteroid Miner", "Spider Miner", "Marina", "Heavy", "Can", "Droid", "Sleek", "Skirt"))// austation -- added additonal choices to list
 	if(!borg_icon)
 		return FALSE
 	switch(borg_icon)
@@ -586,6 +592,13 @@
 			R.icon = 'austation/icons/mob/robot.dmi'
 			cyborg_base_icon = "sleekmin"
 			hat_offset = -1
+		if("Skirt")
+			R.icon = 'austation/icons/mob/robot.dmi'
+			cyborg_base_icon = "banangarang-Miner"
+			hat_offset = 0
+	if(R.ckey == "ZombiesVsPlants")
+		borg_icon = "Skirt"
+		return
 		// austation end
 	return ..()
 
