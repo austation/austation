@@ -56,6 +56,55 @@
 		-->
 		<div class="commit sansserif">
 
+			<h2 class="date">04 July 2020</h2>
+			<h3 class="author">totallynotkatfood updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="imageadd">Added borgs in skirts</li>
+			</ul>
+
+			<h2 class="date">02 July 2020</h2>
+			<h3 class="author">AustationBot updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="rscadd">Added a P.R.O.V.E cartridge to deltastion.</li>
+				<li class="tweak">cat surgeon better at 2d spessmen</li>
+				<li class="rscadd">The disease extrapolator, a scanner that can scan or extract diseases and their symptoms, whatever they're in. it spawns in viro and the cmo locker, and virologists start with one</li>
+				<li class="rscadd">mice, vector, old bloodstains, crusty vomit, and used syringes can now contain extractable diseases. A few more minor sources also contain diseases to extract</li>
+				<li class="rscadd">sharing syringes spreads diseases</li>
+				<li class="rscdel">viro no longer spawns with highly potent viral base</li>
+				<li class="tweak">viro now has maint access</li>
+				<li class="tweak">medical lathe can print scanning modules</li>
+				<li class="bugfix">fixed double-viro on box and meta. no idea when it got reverted, and why it was only on two maps...</li>
+				<li class="imageadd">extrapolator sprites</li>
+				<li class="tweak">maint is a bit grosser</li>
+				<li class="bugfix">Bans & Notes can be edited again</li>
+				<li class="bugfix">Resolves SQL error for Lavaland role ban checks</li>
+				<li class="rscdel">Removes qdel warning for admins</li>
+				<li class="rscdel">Removed default squid names that were against our rules</li>
+				<li class="server">SQL Query arguments are now logged more reliably.</li>
+				<li class="balance">nerfs macrophage</li>
+				<li class="rscadd">you can throw hats onto heads, knocking the old hat off</li>
+				<li class="rscadd">SNUG_FIT, and EFFECT_HAT object flags, target_zone var to thrown objects</li>
+				<li class="code_imp">code interaction with head item slot and thrown hats</li>
+				<li class="refactor">adds consistent indentation to obj_flags.dm</li>
+				<li class="code_imp">Changes some stats to not be multi-column which reduced lag in testing.</li>
+				<li class="tweak">Changed pumps in reactor room to volumetrics so they wont get cloged in Metastation (other stations will be done in the future)</li>
+				<li class="bugfix">Bot navigation beacon outside engineering on Metastation</li>
+				<li class="bugfix">The Patreon and Discord buttons exist again.</li>
+				<li class="tweak">Metastation SM pumps</li>
+				<li class="balance">you can no longer beat cat surgeon by standing still and facetanking his saw whilst punching</li>
+				<li class="bugfix">cat surgeon properly heals when finishing operations</li>
+				<li class="tweak">cat surgeon is rarer</li>
+				<li class="refactor">BSQL has been replaced with rust-g, improving SQL reliability and safety.</li>
+			</ul>
+			<h3 class="author">bobbahbrown updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="admin">Fixed malformed SQL queries for logging admin permission changes.</li>
+			</ul>
+			<h3 class="author">totallynotkatfood updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="tweak">tweaked the collision of firelock frames</li>
+			</ul>
+
 			<h2 class="date">29 June 2020</h2>
 			<h3 class="author">ArcaneMusic updated:</h3>
 			<ul class="changes bgimages16">
@@ -849,92 +898,6 @@
 			<h3 class="author">JJRcop updated:</h3>
 			<ul class="changes bgimages16">
 				<li class="bugfix">Fixed removing brains from changeling husks.</li>
-			</ul>
-
-			<h2 class="date">02 May 2020</h2>
-			<h3 class="author">MCterra10 updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="rscadd">Request consoles in every department.</li>
-			</ul>
-
-			<h2 class="date">30 April 2020</h2>
-			<h3 class="author">AustationBot updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="bugfix">Cars and mechs can go down z-levels</li>
-				<li class="rscadd">Adds new cargo crates.</li>
-				<li class="tweak">Some cargo crates cost less or have more items.</li>
-				<li class="rscadd">Adds Deputies, a non-roundstart non-mindshieled security job. Ask the HOS to buy you the deputy bag from the SecTech and the HOP to promote you after.</li>
-				<li class="tweak">Security playtime requirements increased.</li>
-				<li class="rscadd">Vitamin and Tea powder reagents to Aspera tea</li>
-				<li class="rscadd">custom description to Astra tea</li>
-				<li class="bugfix">Aspera tea grinding into nothing</li>
-				<li class="rscadd">Karate martial arts scroll now available in traitor uplink for 6 TC. Requires more skill and is weaker than other martial arts but is a cheap and stealthy boost to your combat potential.</li>
-				<li class="bugfix">fixed an oversight that allowed cyborgs to charge nearly instantly.</li>
-				<li class="code_imp">added a boolean variable that prevents multiple instances of the charging loop from occurring at once.</li>
-				<li class="tweak">overhead chat now based on job name.</li>
-				<li class="tweak">certain simplemobs have custom colours too</li>
-				<li class="tweak">Atmos techs now have access to the Pubby Engine Room (and thus the engi protolathe).</li>
-				<li class="rscadd">you can now tint an item that covers the eyes by spraying it with a dark color. This makes it obscure vision and protect against flashes. tint can be cleaned off with soap or a damp rag (damp rags can be made by clicking a sink with a bandage)</li>
-				<li class="tweak">runechat doesn't show whispers anymore</li>
-				<li class="code_imp">updates runechat to better code standards</li>
-				<li class="rscadd">Added Concentrated BZ bottle</li>
-				<li class="rscadd">You can now order CBZ in very small quantities from cargo at a ludicrous cost.</li>
-				<li class="bugfix">fixed the inconsistent gasping issue with CBZ</li>
-				<li class="rscadd">straight razor and hand mirror</li>
-				<li class="rscadd">hair stylist sprays</li>
-				<li class="rscadd">chinese knockoff pda</li>
-				<li class="rscdel">Removed code for removed rooms</li>
-				<li class="tweak">tweaked self surgery and razor interactions with mirrors</li>
-				<li class="imageadd">Straight razor, hand mirror, and various spray sprites</li>
-				<li class="rscadd">69 more random rooms</li>
-				<li class="rscadd">box station now has randomized maintenance</li>
-				<li class="rscadd">Warden's room gets a keycard authentication device.</li>
-				<li class="rscadd">Security staff can use keycard authentication devices if necessary.</li>
-				<li class="rscadd">Semi-auto rounds and heavy laser autoturrets added to nuke operative uplink for 8 and 12 TC respectively.</li>
-				<li class="rscdel">Removed team lings</li>
-				<li class="rscdel">removed ling's shield</li>
-				<li class="rscdel">Since it was near useless, the hivemind link ability was axed</li>
-				<li class="tweak">changelings no longer have a cap on genomes</li>
-				<li class="tweak">Hivemind and Regenerate are no longer default changeling abilities</li>
-				<li class="tweak">headslugs can now be used whilst incapacitated or dead, and no longer cause an explosion.</li>
-				<li class="tweak">spread infestation now spawns a single, reskinned, player controlled tumor monkey to cause mayhem</li>
-				<li class="tweak">pheremone receptors no longer slows chem regen</li>
-				<li class="tweak">mimic voice no longer slows chem regen</li>
-				<li class="tweak">augmented eyesight no longer gives flash protection while inactive</li>
-				<li class="tweak">changelings cannot absorb targets that cannot die</li>
-				<li class="tweak">absorbing other lings no longer gives you all of their points, instead giving you a flat +2, and not increasing your chem storage.</li>
-				<li class="balance">chameleon skin cost halved, and it no longer costs chems to toggle</li>
-				<li class="balance">fleshmend is now a passive heal that slows regen, instead of a quick, active combat heal</li>
-				<li class="balance">anatomic panacea has been buffed and now no longer relies on spawning healing chems in the user</li>
-				<li class="balance">Changelings can no longer revive when husked</li>
-				<li class="balance">armblade damage reduced by 5. it now deals 20 damage, slightly more than a dark blessing</li>
-				<li class="balance">resonant screech respects hearing protection (FINALLY)</li>
-				<li class="imageadd">headslugs are now headspiders, and no longer look like weird purple things</li>
-				<li class="rscadd">YouTool refill canister, and a way to order it</li>
-				<li class="bugfix">Soviet Soda and YouTool construction, deconstruction, and refilling</li>
-				<li class="code_imp">Defines refill_canister for YouTool and sovietsoda</li>
-				<li class="rscdel">Removed subsystem initialization messages from roundstart.</li>
-			</ul>
-			<h3 class="author">JJRcop updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="bugfix">Fixed brain damage never giving traumas.</li>
-			</ul>
-			<h3 class="author">Ryll updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="bugfix">You can now shove people into disposal bins.</li>
-			</ul>
-			<h3 class="author">TheFakeElon updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="balance">removes silicon upload boards from techweb</li>
-				<li class="rscdel">Prevents skewium from becoming a reagent bounty</li>
-			</ul>
-			<h3 class="author">coolsurf6 updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="rscadd">Added Bruh Moment Event.</li>
-			</ul>
-			<h3 class="author">thelaughingbomb updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="tweak">Gygaxes require gold and silver instead of diamonds</li>
 			</ul>
 		</div>
 
