@@ -1,0 +1,4 @@
+author: "totallynotkatfood"
+delete-after: True
+changes: 
+  - tweak: "thermomachines can now change layers through maint panel"
