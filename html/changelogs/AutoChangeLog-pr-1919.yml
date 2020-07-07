@@ -1,5 +1,0 @@
-author: "AustationBot"
-delete-after: True
-changes: 
-  - rscadd: "Item cremation is now logged."
-  - rscadd: "Deep frying is now logged."
