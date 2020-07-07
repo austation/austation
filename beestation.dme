@@ -82,7 +82,6 @@
 #include "code\__DEFINES\pinpointers.dm"
 #include "code\__DEFINES\pipe_construction.dm"
 #include "code\__DEFINES\plumbing.dm"
-#include "code\__DEFINES\pool.dm"
 #include "code\__DEFINES\preferences.dm"
 #include "code\__DEFINES\procpath.dm"
 #include "code\__DEFINES\profile.dm"

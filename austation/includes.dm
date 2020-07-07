@@ -1,5 +1,9 @@
 // AuStation includes file. Add all modularized code files here.
 
+// Global Variables Section
+#include "code\_GLOBALS\pool_globals.dm"
+
+// Main Includes Section
 #include "code\controllers\configuration\entries\game_options.dm"
 #include "code\controllers\configuration\entries\general.dm"
 #include "code\controllers\subsystem\autosandbox.dm"
