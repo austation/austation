@@ -2877,7 +2877,7 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
 	},
-/obj/structure/closet/secure_closet/personal,
+/obj/structure/closet/lasertag/blue,
 /turf/open/floor/plasteel/dark,
 /area/crew_quarters/fitness/recreation)
 "afu" = (
@@ -2891,11 +2891,23 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
 	},
-/obj/structure/closet/secure_closet/personal,
+/obj/structure/closet/lasertag/red,
 /turf/open/floor/plasteel/dark,
 /area/crew_quarters/fitness/recreation)
 "afv" = (
-/obj/structure/closet/secure_closet/personal,
+/obj/structure/rack,
+/obj/item/gun/energy/laser/redtag,
+/obj/item/gun/energy/laser/redtag,
+/obj/item/gun/energy/laser/bluetag,
+/obj/item/gun/energy/laser/bluetag,
+/obj/item/clothing/suit/bluetag,
+/obj/item/clothing/suit/bluetag,
+/obj/item/clothing/suit/redtag,
+/obj/item/clothing/suit/redtag,
+/obj/item/clothing/head/helmet/bluetaghelm,
+/obj/item/clothing/head/helmet/bluetaghelm,
+/obj/item/clothing/head/helmet/redtaghelm,
+/obj/item/clothing/head/helmet/redtaghelm,
 /turf/open/floor/plasteel/dark,
 /area/crew_quarters/fitness/recreation)
 "afw" = (
@@ -4016,6 +4028,9 @@
 	dir = 10
 	},
 /obj/structure/bed,
+/obj/machinery/light{
+	dir = 4
+	},
 /turf/open/floor/plasteel,
 /area/crew_quarters/fitness/recreation)
 "aho" = (
@@ -6978,6 +6993,9 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
 /obj/effect/turf_decal/tile/neutral,
 /obj/structure/bed,
+/obj/machinery/light{
+	dir = 4
+	},
 /turf/open/floor/plasteel,
 /area/crew_quarters/fitness/recreation)
 "amD" = (
@@ -7522,22 +7540,13 @@
 /turf/open/floor/plasteel,
 /area/crew_quarters/fitness/recreation)
 "anG" = (
-/obj/machinery/atmospherics/components/unary/vent_scrubber/on,
 /turf/open/floor/plasteel/yellowsiding/corner{
 	dir = 4
 	},
 /area/crew_quarters/fitness/recreation)
-"anI" = (
-/obj/machinery/atmospherics/components/unary/vent_pump/on{
-	dir = 4
-	},
-/turf/open/floor/plasteel/yellowsiding{
-	dir = 1
-	},
-/area/crew_quarters/fitness/recreation)
 "anJ" = (
-/obj/machinery/atmospherics/pipe/manifold/supply/hidden{
-	dir = 1
+/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+	dir = 6
 	},
 /turf/open/floor/plasteel/yellowsiding{
 	dir = 1
@@ -8217,17 +8226,20 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
 	},
+/obj/machinery/atmospherics/pipe/manifold/supply/hidden{
+	dir = 4
+	},
 /turf/open/floor/plasteel,
 /area/crew_quarters/fitness/recreation)
 "aoU" = (
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
 	},
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
-	dir = 5
-	},
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
+	},
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on{
+	dir = 4
 	},
 /turf/open/floor/plasteel,
 /area/crew_quarters/fitness/recreation)
@@ -8266,6 +8278,7 @@
 	codes_txt = "patrol;next_patrol=14.8-Dorms-Lockers";
 	location = "14.5-Recreation"
 	},
+/obj/machinery/holopad,
 /turf/open/floor/plasteel,
 /area/crew_quarters/fitness/recreation)
 "aoY" = (
@@ -8791,14 +8804,19 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+/obj/machinery/atmospherics/components/unary/vent_pump/on{
+	dir = 4
+	},
 /turf/open/floor/plasteel,
 /area/crew_quarters/fitness/recreation)
 "aqi" = (
-/obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
 /obj/effect/turf_decal/tile/neutral,
+/obj/machinery/atmospherics/pipe/manifold/supply/hidden{
+	dir = 4
+	},
 /turf/open/floor/plasteel,
 /area/crew_quarters/fitness/recreation)
 "aqj" = (
@@ -84668,12 +84686,6 @@
 	},
 /turf/open/floor/plasteel/dark/corner,
 /area/engine/storage_shared)
-"oKI" = (
-/obj/machinery/holopad,
-/turf/open/floor/plasteel/yellowsiding{
-	dir = 1
-	},
-/area/crew_quarters/fitness/recreation)
 "oOv" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /turf/closed/wall,
@@ -122735,7 +122747,7 @@ fMv
 fMv
 fMv
 fMv
-oKI
+dCc
 aoW
 aqg
 arC
@@ -122989,10 +123001,10 @@ agw
 vlx
 jRR
 fMv
-fMv
+ajV
 fMv
 amy
-anI
+dCc
 aoX
 aqh
 arD
@@ -123246,7 +123258,7 @@ agx
 ahk
 fMv
 fMv
-ajV
+fMv
 fMv
 fMv
 anJ
