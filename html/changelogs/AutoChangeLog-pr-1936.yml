@@ -1,0 +1,4 @@
+author: "YakiAttaki"
+delete-after: True
+changes: 
+  - bugfix: "fixed crewsimov board not being available to print in lathes n shit"
