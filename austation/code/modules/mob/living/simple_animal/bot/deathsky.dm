@@ -10,9 +10,9 @@
 	obj_damage = 60
 	environment_smash = ENVIRONMENT_SMASH_WALLS //goodbye walls (maybe)
 	emagged = 2
+	noloot = TRUE
 	var/obj/item/weapon
 	var/block_chance = 70
-	var/noloot = TRUE
 
 	//gun shit
 	var/lastfired = 0

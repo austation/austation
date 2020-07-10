@@ -37,7 +37,7 @@
 	icon_state = "altchef"
 	item_color = "altchef"
 	alt_covers_chest = TRUE
-	
+
 /obj/item/clothing/under/rank/civilian/head_of_personnel
 	desc = "It's a jumpsuit worn by someone who works in the position of \"Head of Personnel\"."
 	name = "head of personnel's jumpsuit"
@@ -112,7 +112,7 @@
 	name = "blue slacks"
 	desc = "A pair of comfortable freshly pressed slacks and an equally sharp dress shirt. Tie and suit coat not included."
 	icon_state = "blueslacks"
-	item_state = "blueslacks"
+	item_state = "b_suit" //austation -- was "bluesuit"
 	item_color = "blueslacks"
 	can_adjust = TRUE
 	alt_covers_chest = TRUE

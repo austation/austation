@@ -17,8 +17,7 @@
 	response_harm = "kicks"
 	mob_biotypes = list(MOB_ORGANIC, MOB_BEAST)
 	gold_core_spawnable = FRIENDLY_SPAWN
-	melee_damage_lower = 18
-	melee_damage_upper = 18
+	melee_damage = 18
 	health = 2500
 	maxHealth = 2500
 	speed = 8
@@ -27,6 +26,8 @@
 	mobsay_color = "#E7D26F"
 
 	do_footstep = TRUE
+
+	faction = list("boss", "mining", "neutral")
 
 	var/turtle_hide_max = 25 //The time spent hiding in its shell
 	var/turtle_hide_dur = 25 //Same as above, this is the var that physically counts down

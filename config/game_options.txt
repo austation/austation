@@ -365,6 +365,7 @@ RANDOM_LAWS asimovpp
 RANDOM_LAWS paladin
 RANDOM_LAWS robocop
 RANDOM_LAWS corporate
+RANDOM_LAWS crewsimov
 
 ## Quirky laws. Shouldn't cause too much harm
 #RANDOM_LAWS hippocratic
@@ -398,6 +399,7 @@ LAW_WEIGHT asimovpp,12
 LAW_WEIGHT paladin,12
 LAW_WEIGHT robocop,12
 LAW_WEIGHT corporate,12
+LAW_WEIGHT crewsimov,12
 
 ## Quirky laws. Shouldn't cause too much harm
 LAW_WEIGHT hippocratic,3
@@ -432,7 +434,7 @@ ROUNDSTART_RACES human
 
 ## Races that are strictly worse than humans that could probably be turned on without balance concerns
 ROUNDSTART_RACES lizard
-#ROUNDSTART_RACES fly
+ROUNDSTART_RACES fly
 ROUNDSTART_RACES moth
 ROUNDSTART_RACES plasmaman
 ROUNDSTART_RACES felinid
