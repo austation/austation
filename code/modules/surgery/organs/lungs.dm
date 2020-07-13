@@ -262,7 +262,7 @@
 		else
 			H.radiation += trit_pp/10
 
-		/*beestation begin
+		/*removed beestation code begin -- removed in pull #1953
 	// Nitryl
 		var/nitryl_pp = breath.get_breath_partial_pressure(breath.get_moles(/datum/gas/nitryl))
 		if (prob(nitryl_pp))
@@ -280,7 +280,7 @@
 			H.reagents.add_reagent(/datum/reagent/nitryl,1)
 
 		breath.adjust_moles(/datum/gas/nitryl, -gas_breathed)
-		beestation end*/
+		removed beestation code end*/
 
 			//austation begin
   // Nitryl
