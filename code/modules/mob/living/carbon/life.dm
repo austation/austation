@@ -257,12 +257,12 @@
 		var/tritium_partialpressure = (breath.get_moles(/datum/gas/tritium)/breath.total_moles())*breath_pressure
 		radiation += tritium_partialpressure/10
 
-		/*Bee nitryl
+	/*bee station begin
 	//NITRYL
 	if(breath.get_moles(/datum/gas/nitryl))
 		var/nitryl_partialpressure = (breath.get_moles(/datum/gas/nitryl)/breath.total_moles())*breath_pressure
 		adjustFireLoss(nitryl_partialpressure/4)
-		Bee nitryl end*/
+	bee station end*/
 
 	//MIASMA
 	if(breath.get_moles(/datum/gas/miasma))

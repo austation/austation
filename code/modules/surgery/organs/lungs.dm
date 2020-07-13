@@ -262,7 +262,7 @@
 		else
 			H.radiation += trit_pp/10
 
-			/*Bee nitryl
+		/*beestation begin
 	// Nitryl
 		var/nitryl_pp = breath.get_breath_partial_pressure(breath.get_moles(/datum/gas/nitryl))
 		if (prob(nitryl_pp))
@@ -280,9 +280,9 @@
 			H.reagents.add_reagent(/datum/reagent/nitryl,1)
 
 		breath.adjust_moles(/datum/gas/nitryl, -gas_breathed)
-		Bee nitryl end*/
+		beestation end*/
 
-		//AUStation Code Start
+			//austation begin
   // Nitryl
 			var/nitryl_pp = breath.get_breath_partial_pressure(breath.get_moles(/datum/gas/nitryl))
 			if (nitryl_pp > 40)
@@ -304,7 +304,7 @@
 					H.adjustFireLoss(nitryl_pp/4)
 
 			breath.adjust_moles(/datum/gas/nitryl, -gas_breathed)
-			//AUStation Code End
+			//austation end
 
 	// Stimulum
 		gas_breathed = breath.get_moles(/datum/gas/stimulum)
