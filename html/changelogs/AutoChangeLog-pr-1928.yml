@@ -1,0 +1,4 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - rscadd: "Gentle slime crossbreeds can be made with pink extracts. They can be used to emulate luminescent activations of extracts."
