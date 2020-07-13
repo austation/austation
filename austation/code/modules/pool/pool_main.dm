@@ -150,7 +150,6 @@
 					H.Knockdown(40)
 					playsound(src, 'sound/effects/woodhit.ogg', 60, TRUE, 1)
 		else if(filled)
-			victim.adjustStaminaLoss(1)
 			playsound(src, "water_wade", 20, TRUE)
 	return ..()
 
