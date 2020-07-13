@@ -71,7 +71,6 @@
 	REMOVE_TRAIT(L, TRAIT_IGNORESLOWDOWN, type)
 	..()
 
-
 /datum/reagent/nitryloxide/on_mob_metabolize(mob/living/L)
 	..()
 	ADD_TRAIT(L, TRAIT_IGNOREDAMAGESLOWDOWN, type)
