@@ -262,6 +262,7 @@
 		else
 			H.radiation += trit_pp/10
 
+			/*Bee nitryl
 	// Nitryl
 		var/nitryl_pp = breath.get_breath_partial_pressure(breath.get_moles(/datum/gas/nitryl))
 		if (prob(nitryl_pp))
@@ -279,6 +280,31 @@
 			H.reagents.add_reagent(/datum/reagent/nitryl,1)
 
 		breath.adjust_moles(/datum/gas/nitryl, -gas_breathed)
+		Bee nitryl end*/
+
+		//AUStation Code Start
+  // Nitryl
+			var/nitryl_pp = breath.get_breath_partial_pressure(breath.get_moles(/datum/gas/nitryl))
+			if (nitryl_pp > 40)
+				H.emote("gasp")
+				H.adjustFireLoss(10)
+				if (prob(nitryl_pp/2))
+					to_chat(H, "<span class='alert'>Your throat closes up!</span>")
+					H.silent = max(H.silent, 3)
+
+			gas_breathed = breath.get_moles(/datum/gas/nitryl)
+
+			if (gas_breathed > gas_stimulation_min)
+				var/existingnitryloxide = H.reagents.get_reagent_amount(/datum/reagent/nitryloxide)
+				H.reagents.add_reagent(/datum/reagent/nitryloxide,max(0, 1 - existingnitryloxide))
+
+				if(nitryl_pp > 20)
+					var/existingnitryl = H.reagents.get_reagent_amount(/datum/reagent/nitryl)
+					H.reagents.add_reagent(/datum/reagent/nitryl,max(0, 1 - existingnitryl))
+					H.adjustFireLoss(nitryl_pp/4)
+
+			breath.adjust_moles(/datum/gas/nitryl, -gas_breathed)
+			//AUStation Code End
 
 	// Stimulum
 		gas_breathed = breath.get_moles(/datum/gas/stimulum)
@@ -450,4 +476,3 @@ obj/item/organ/lungs/apid
 	desc = "Lungs from an apid, or beeperson. Thanks to the many spiracles an apid has, these lungs are capable of gathering more oxygen from low-pressure enviroments."
 	icon_state = "lungs"
 	safe_oxygen_min = 8
-
