@@ -68,6 +68,8 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	var/socks = "Nude"					//socks type
 	var/backbag = DBACKPACK				//backpack type
 	var/jumpsuit_style = PREF_SUIT		//AUSTATION -- suit/skirt                                     <<<AUSTATION>>>
+	var/ring_type = RING_DISABLED		//AUSTATION -- rings
+	var/ring_engraved = null			//AUSTATION -- rings
 	var/hair_style = "Bald"				//Hair type
 	var/hair_color = "000"				//Hair color
 	var/facial_hair_style = "Shaved"	//Face hair type
@@ -245,6 +247,22 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 			dat += "<b>Backpack:</b><BR><a href ='?_src_=prefs;preference=bag;task=input'>[backbag]</a><BR>"
 			dat += "<b>Uplink Spawn Location:</b><BR><a href ='?_src_=prefs;preference=uplink_loc;task=input'>[uplink_spawn_loc]</a><BR></td>"
 			dat += "<b>Jumpsuit:</b><BR><a href ='?_src_=prefs;preference=suit;task=input'>[jumpsuit_style]</a><BR>" //austation -- jumpskirts
+
+			var/button_name = "If you see this something went wrong." // austation begin -- rings
+			if(ring_engraved)
+				button_name = ring_engraved
+			else
+				switch(ring_type)
+					if(RING_DISABLED)
+						button_name = RING_DISABLED_NAME
+					if(RING_CASUAL)
+						button_name = RING_CASUAL_NAME
+					if(RING_ENGAGEMENT)
+						button_name = RING_ENGAGEMENT_NAME
+					if(RING_WEDDING)
+						button_name = RING_WEDDING_NAME
+
+			dat += "<b>Ring Type:</b><BR><a href = '?_src_=prefs;preference=ring_type;task=input'>[button_name]</a><BR>" // austation end
 
 			var/use_skintones = pref_species.use_skintones
 			if(use_skintones)
@@ -1280,8 +1298,11 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					skin_tone = random_skin_tone()
 				if("bag")
 					backbag = pick(GLOB.backbaglist)
-				if("suit") //austation -- jumpskirts
-					jumpsuit_style = pick(GLOB.jumpsuitlist)
+				if("ring_type") // austation begin -- rings and jumpskirts
+					ring_type = RING_DISABLED // no rings for random loadouts
+					ring_engraved = null
+				if("suit")
+					jumpsuit_style = pick(GLOB.jumpsuitlist) // austation end
 				if("all")
 					random_character()
 
@@ -1570,11 +1591,28 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					if(new_backbag)
 						backbag = new_backbag
 
-				if("suit") //austation -- skirts
+				if("ring_type") //austation begin -- rings
+					var/result = input(user, "Select a ring type:", "Character Preference") as null|anything in GLOB.ringlist
+					switch(result)
+						if(RING_DISABLED_NAME)
+							ring_type = RING_DISABLED
+						if(RING_CASUAL_NAME)
+							ring_type = RING_CASUAL
+						if(RING_ENGAGEMENT_NAME)
+							ring_type = RING_ENGAGEMENT
+						if(RING_WEDDING_NAME)
+							ring_type = RING_WEDDING
+					var/chosen_ring_engraved = reject_bad_name( input(user, "Would you like to engrave a name on the ring? Blank for none.", "Character Preference")  as text|null , TRUE)
+					if(chosen_ring_engraved)
+						ring_engraved = chosen_ring_engraved
+					else
+						ring_engraved = null // austation end
+
+				if("suit") //austation begin -- skirts
 					if(jumpsuit_style == PREF_SUIT)
 						jumpsuit_style = PREF_SKIRT
 					else
-						jumpsuit_style = PREF_SUIT
+						jumpsuit_style = PREF_SUIT // austation end
 
 				if("uplink_loc")
 					var/new_loc = input(user, "Choose your character's traitor uplink spawn location:", "Character Preference") as null|anything in GLOB.uplink_spawn_loc_list
