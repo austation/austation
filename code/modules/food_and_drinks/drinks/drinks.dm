@@ -398,12 +398,12 @@
 	icon_state = "detflask"
 	list_reagents = list(/datum/reagent/consumable/ethanol/whiskey = 30)
 
-/obj/item/reagent_containers/food/drinks/cup
-    name = "doctors mug"
-    desc = "A cup with the british flag emblazoned on it. It has the words. Galaxy's best doctor 2530 engrained along the bottom"
-    icon_state = "britcup"
-    volume = 30
-    spillable = TRUE
+/obj/item/reagent_containers/food/drinks/britcup
+	name = "cup"
+	desc = "A cup with the british flag emblazoned on it."
+	icon_state = "britcup"
+	volume = 30
+	spillable = TRUE
 
 //////////////////////////soda_cans//
 //These are in their own group to be used as IED's in /obj/item/grenade/ghettobomb.dm
