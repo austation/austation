@@ -71,12 +71,20 @@
 	REMOVE_TRAIT(L, TRAIT_IGNORESLOWDOWN, type)
 	..()
 
-/datum/reagent/nitryloxide/on_mob_metabolize(mob/living/L)
-	..()
+/datum/reagent/nitryl/on_mob_metabolize(mob/living/L)
 	ADD_TRAIT(L, TRAIT_IGNOREDAMAGESLOWDOWN, type)
 	ADD_TRAIT(L, TRAIT_IGNORESLOWDOWN, type)
 
-/datum/reagent/nitryloxide/on_mob_end_metabolize(mob/living/L)
+/datum/reagent/nitryl/on_mob_life(mob/living/L)
+	if(L.reagents.get_reagent_amount(/datum/reagent/nitryl) > 1)
+		L.add_movespeed_modifier(type, update=TRUE, priority=100, multiplicative_slowdown=-1, blacklisted_movetypes=(FLYING|FLOATING))
+	else if(L.remove_movespeed_modifier(type))
+		L.remove_movespeed_modifier(type)
+	..()
+
+/datum/reagent/nitryl/on_mob_end_metabolize(mob/living/L)
 	REMOVE_TRAIT(L, TRAIT_IGNOREDAMAGESLOWDOWN, type)
 	REMOVE_TRAIT(L, TRAIT_IGNORESLOWDOWN, type)
-	..()
+
+	if(L.remove_movespeed_modifier(type))
+		L.remove_movespeed_modifier(type)

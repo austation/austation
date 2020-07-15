@@ -282,9 +282,10 @@
 		breath.adjust_moles(/datum/gas/nitryl, -gas_breathed)
 		removed beestation code end*/
 
-			//austation begin
+			//austation begin -- added in pull #1953
   // Nitryl
 			var/nitryl_pp = breath.get_breath_partial_pressure(breath.get_moles(/datum/gas/nitryl))
+
 			if (nitryl_pp > 40)
 				H.emote("gasp")
 				H.adjustFireLoss(10)
@@ -293,15 +294,19 @@
 					H.silent = max(H.silent, 3)
 
 			gas_breathed = breath.get_moles(/datum/gas/nitryl)
+			var/existingnitryl = H.reagents.get_reagent_amount(/datum/reagent/nitryl)
+			var/nitryllevel = 0
 
 			if (gas_breathed > gas_stimulation_min)
-				var/existingnitryloxide = H.reagents.get_reagent_amount(/datum/reagent/nitryloxide)
-				H.reagents.add_reagent(/datum/reagent/nitryloxide,max(0, 1 - existingnitryloxide))
-
+				nitryllevel = 1
 				if(nitryl_pp > 20)
-					var/existingnitryl = H.reagents.get_reagent_amount(/datum/reagent/nitryl)
-					H.reagents.add_reagent(/datum/reagent/nitryl,max(0, 1 - existingnitryl))
+					nitryllevel = 2
 					H.adjustFireLoss(nitryl_pp/4)
+
+				H.reagents.add_reagent(/datum/reagent/nitryl,max(0, nitryllevel - existingnitryl))
+
+			else if(existingnitryl > 0)
+				H.reagents.remove_reagent(/datum/reagent/nitryl, existingnitryl)
 
 			breath.adjust_moles(/datum/gas/nitryl, -gas_breathed)
 			//austation end
