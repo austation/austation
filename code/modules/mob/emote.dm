@@ -4,7 +4,7 @@
 	var/param = message
 	var/custom_param = findchar(act, " ")
 	if(custom_param)
-		param = copytext(act, custom_param + 1, length(act) + 1)
+		param = copytext(act, custom_param + length(act[custom_param]))
 		act = copytext(act, 1, custom_param)
 
 
@@ -13,12 +13,19 @@
 	if(!length(key_emotes))
 		if(intentional)
 			to_chat(src, "<span class='notice'>'[act]' emote does not exist. Say *help for a list.</span>")
-		return
+		return FALSE
+	//austation begin -- auughh fuck byond mang
+	var/silenced = FALSE
 	for(var/datum/emote/P in key_emotes)
+		if(!P.check_cooldown(src, intentional))
+			silenced = TRUE
+			continue
 		if(P.run_emote(src, param, m_type, intentional))
-			return
-	if(intentional)
+			return TRUE
+	if(intentional && !silenced)
 		to_chat(src, "<span class='notice'>Unusable emote '[act]'. Say *help for a list.</span>")
+	return FALSE
+	//austation end
 
 /datum/emote/flip
 	key = "flip"

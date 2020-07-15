@@ -94,6 +94,11 @@
 	if(wear_id)
 		. += "[t_He] [t_is] wearing [wear_id.get_examine_string(user)]."
 
+	// AuStation Wear Examines (Human)
+	if(istype(src, /mob/living/carbon/human))
+		var/mob/living/carbon/human/H = src
+		. += H.austation_wear_examine(user)
+
 	//Status effects
 	. += status_effect_examines()
 
@@ -334,6 +339,7 @@
 
 						. += "<span class='deptradio'>Criminal status:</span> <a href='?src=[REF(src)];hud=s;status=1'>\[[criminal]\]</a>"
 						. += jointext(list("<span class='deptradio'>Security record:</span> <a href='?src=[REF(src)];hud=s;view=1'>\[View\]</a>",
+							"<a href='?src=[REF(src)];hud=s;add_citation=1'>\[Add citation\]</a>",
 							"<a href='?src=[REF(src)];hud=s;add_crime=1'>\[Add crime\]</a>",
 							"<a href='?src=[REF(src)];hud=s;view_comment=1'>\[View comment log\]</a>",
 							"<a href='?src=[REF(src)];hud=s;add_comment=1'>\[Add comment\]</a>"), "")

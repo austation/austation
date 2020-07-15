@@ -15,6 +15,12 @@
 					  <b>Resistance 8:</b> Spawns a strong blob instead of a normal blob \
 					  <b>Resistance 14:</b> Has a chance to spawn a blob node instead of a normal blob<br>"
 
+/datum/symptom/blobspores/severityset(datum/disease/advance/A)
+	. = ..()
+	if(A.properties["resistance"] >= 14)
+		severity += 1
+
+
 /datum/symptom/blobspores/Start(datum/disease/advance/A)
 	if(!..())
 		return
@@ -70,7 +76,10 @@
 	var/pick_blob = pick(blob_options)
 	if(ready_to_pop)
 		for(var/i in 1 to rand(1, 6))
-			new /mob/living/simple_animal/hostile/blob/blobspore/(M.loc)//Spores update their health on update_icon, we cant change their colour
+			var/mob/living/simple_animal/hostile/blob/blobspore/B = new(M.loc)//Spores update their health on update_icon, we cant change their colour
+			for(var/datum/disease/D in B.disease)//don't let them farm diseases with this and monkeys
+				B.disease -= D
+			B.disease += A//instead, they contain the disease that was in this
 		if(prob(2))
 			var/atom/blobbernaut = new /mob/living/simple_animal/hostile/blob/blobbernaut/(M.loc)
 			blobbernaut.add_atom_colour(pick(BLOB_STRAIN_COLOR_LIST), FIXED_COLOUR_PRIORITY)

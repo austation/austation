@@ -27,6 +27,8 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 	var/UI_style = null
 	var/overhead_chat = TRUE
+	var/outline_enabled = TRUE
+	var/outline_color = COLOR_BLUE_GRAY
 	var/buttons_locked = FALSE
 	var/hotkeys = FALSE
 	var/tgui_fancy = TRUE
@@ -65,6 +67,9 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	var/undershirt = "Nude"				//undershirt type
 	var/socks = "Nude"					//socks type
 	var/backbag = DBACKPACK				//backpack type
+	var/jumpsuit_style = PREF_SUIT		//AUSTATION -- suit/skirt                                     <<<AUSTATION>>>
+	var/ring_type = RING_DISABLED		//AUSTATION -- rings
+	var/ring_engraved = null			//AUSTATION -- rings
 	var/hair_style = "Bald"				//Hair type
 	var/hair_color = "000"				//Hair color
 	var/facial_hair_style = "Shaved"	//Face hair type
@@ -100,8 +105,12 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	var/parallax
 
 	var/ambientocclusion = TRUE
+	///Should we automatically fit the viewport?
 	var/auto_fit_viewport = FALSE
-
+	///What size should pixels be displayed as? 0 is strech to fit
+	var/pixel_size = 0
+	///What scaling method should we use?
+	var/scaling_method = "normal"
 	var/uplink_spawn_loc = UPLINK_PDA
 
 	var/list/exp = list()
@@ -237,6 +246,23 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 			dat += "<b>Socks:</b><BR><a href ='?_src_=prefs;preference=socks;task=input'>[socks]</a><BR>"
 			dat += "<b>Backpack:</b><BR><a href ='?_src_=prefs;preference=bag;task=input'>[backbag]</a><BR>"
 			dat += "<b>Uplink Spawn Location:</b><BR><a href ='?_src_=prefs;preference=uplink_loc;task=input'>[uplink_spawn_loc]</a><BR></td>"
+			dat += "<b>Jumpsuit:</b><BR><a href ='?_src_=prefs;preference=suit;task=input'>[jumpsuit_style]</a><BR>" //austation -- jumpskirts
+
+			var/button_name = "If you see this something went wrong." // austation begin -- rings
+			if(ring_engraved)
+				button_name = ring_engraved
+			else
+				switch(ring_type)
+					if(RING_DISABLED)
+						button_name = RING_DISABLED_NAME
+					if(RING_CASUAL)
+						button_name = RING_CASUAL_NAME
+					if(RING_ENGAGEMENT)
+						button_name = RING_ENGAGEMENT_NAME
+					if(RING_WEDDING)
+						button_name = RING_WEDDING_NAME
+
+			dat += "<b>Ring Type:</b><BR><a href = '?_src_=prefs;preference=ring_type;task=input'>[button_name]</a><BR>" // austation end
 
 			var/use_skintones = pref_species.use_skintones
 			if(use_skintones)
@@ -515,6 +541,8 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 			dat += "<h2>General Settings</h2>"
 			dat += "<b>UI Style:</b> <a href='?_src_=prefs;task=input;preference=ui'>[UI_style]</a><br>"
 			dat += "<b>Overhead Chat:</b> <a href='?_src_=prefs;preference=overheadchat'>[overhead_chat ? "Enabled" : "Disabled"]</a><br>"
+			dat += "<b>Outline:</b> <a href='?_src_=prefs;preference=outline_enabled'>[outline_enabled ? "Enabled" : "Disabled"]</a><br>"
+			dat += "<b>Outline Color:</b> <span style='border:1px solid #161616; background-color: [outline_color];'>&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;preference=outline_color'>Change</a><BR>"
 			dat += "<b>tgui Monitors:</b> <a href='?_src_=prefs;preference=tgui_lock'>[(tgui_lock) ? "Primary" : "All"]</a><br>"
 			dat += "<b>tgui Style:</b> <a href='?_src_=prefs;preference=tgui_fancy'>[(tgui_fancy) ? "Fancy" : "No Frills"]</a><br>"
 			dat += "<br>"
@@ -531,6 +559,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 			dat += "<b>Ghost Sight:</b> <a href='?_src_=prefs;preference=ghost_sight'>[(chat_toggles & CHAT_GHOSTSIGHT) ? "All Emotes" : "Nearest Creatures"]</a><br>"
 			dat += "<b>Ghost Whispers:</b> <a href='?_src_=prefs;preference=ghost_whispers'>[(chat_toggles & CHAT_GHOSTWHISPER) ? "All Speech" : "Nearest Creatures"]</a><br>"
 			dat += "<b>Ghost PDA:</b> <a href='?_src_=prefs;preference=ghost_pda'>[(chat_toggles & CHAT_GHOSTPDA) ? "All Messages" : "Nearest Creatures"]</a><br>"
+			dat += "<b>Ghost Law Changes:</b> <a href='?_src_=prefs;preference=ghost_laws'>[(chat_toggles & CHAT_GHOSTLAWS) ? "All Law Changes" : "No Law Changes"]</a><br>"
 
 			if(unlock_content)
 				dat += "<b>Ghost Form:</b> <a href='?_src_=prefs;task=input;preference=ghostform'>[ghost_form]</a><br>"
@@ -579,6 +608,18 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 			dat += "<b>Ambient Occlusion:</b> <a href='?_src_=prefs;preference=ambientocclusion'>[ambientocclusion ? "Enabled" : "Disabled"]</a><br>"
 			dat += "<b>Fit Viewport:</b> <a href='?_src_=prefs;preference=auto_fit_viewport'>[auto_fit_viewport ? "Auto" : "Manual"]</a><br>"
+
+			button_name = pixel_size
+			dat += "<b>Pixel Scaling:</b> <a href='?_src_=prefs;preference=pixel_size'>[(button_name) ? "Pixel Perfect [button_name]x" : "Stretch to fit"]</a><br>"
+
+			switch(scaling_method)
+				if(SCALING_METHOD_NORMAL)
+					button_name = "Nearest Neighbor"
+				if(SCALING_METHOD_DISTORT)
+					button_name = "Point Sampling"
+				if(SCALING_METHOD_BLUR)
+					button_name = "Bilinear"
+			dat += "<b>Scaling Method:</b> <a href='?_src_=prefs;preference=scaling_method'>[button_name]</a><br>"
 
 			if (CONFIG_GET(flag/maprotation))
 				var/p_map = preferred_map
@@ -685,7 +726,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				if(G.allowed_roles)
 					dat += "<font size=2>"
 					for(var/role in G.allowed_roles)
-						dat += role + " "
+						dat += role + ",	 "
 					dat += "</font>"
 				dat += "</td><td><font size=2><i>[G.description]</i></font></td></tr>"
 			dat += "</table>"
@@ -777,7 +818,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 #undef APPEARANCE_CATEGORY_COLUMN
 #undef MAX_MUTANT_ROWS
 
-/datum/preferences/proc/SetChoices(mob/user, limit = 18, list/splitJobs = list("Chief Medical Officer"), widthPerColumn = 295, height = 620)
+/datum/preferences/proc/SetChoices(mob/user, limit = 16, list/splitJobs = list("Clown", "Research Director"), widthPerColumn = 295, height = 620)
 	if(!SSjob)
 		return
 
@@ -808,7 +849,8 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 		var/datum/job/overflow = SSjob.GetJob(SSjob.overflow_role)
 
 		for(var/datum/job/job in sortList(SSjob.occupations, /proc/cmp_job_display_asc))
-
+			if(job.gimmick) //Gimmick jobs run off of a single pref
+				continue
 			index += 1
 			if((index >= limit) || (job.title in splitJobs))
 				width += widthPerColumn
@@ -1256,6 +1298,11 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					skin_tone = random_skin_tone()
 				if("bag")
 					backbag = pick(GLOB.backbaglist)
+				if("ring_type") // austation begin -- rings and jumpskirts
+					ring_type = RING_DISABLED // no rings for random loadouts
+					ring_engraved = null
+				if("suit")
+					jumpsuit_style = pick(GLOB.jumpsuitlist) // austation end
 				if("all")
 					random_character()
 
@@ -1390,7 +1437,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					if(new_socks)
 						socks = new_socks
 
-				if(BODY_ZONE_PRECISE_EYES)
+				if("eyes")
 					var/new_eyes = input(user, "Choose your character's eye colour:", "Character Preference","#"+eye_color) as color|null
 					if(new_eyes)
 						eye_color = sanitize_hexcolor(new_eyes)
@@ -1544,6 +1591,29 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					if(new_backbag)
 						backbag = new_backbag
 
+				if("ring_type") //austation begin -- rings
+					var/result = input(user, "Select a ring type:", "Character Preference") as null|anything in GLOB.ringlist
+					switch(result)
+						if(RING_DISABLED_NAME)
+							ring_type = RING_DISABLED
+						if(RING_CASUAL_NAME)
+							ring_type = RING_CASUAL
+						if(RING_ENGAGEMENT_NAME)
+							ring_type = RING_ENGAGEMENT
+						if(RING_WEDDING_NAME)
+							ring_type = RING_WEDDING
+					var/chosen_ring_engraved = reject_bad_name( input(user, "Would you like to engrave a name on the ring? Blank for none.", "Character Preference")  as text|null , TRUE)
+					if(chosen_ring_engraved)
+						ring_engraved = chosen_ring_engraved
+					else
+						ring_engraved = null // austation end
+
+				if("suit") //austation begin -- skirts
+					if(jumpsuit_style == PREF_SUIT)
+						jumpsuit_style = PREF_SKIRT
+					else
+						jumpsuit_style = PREF_SUIT // austation end
+
 				if("uplink_loc")
 					var/new_loc = input(user, "Choose your character's traitor uplink spawn location:", "Character Preference") as null|anything in GLOB.uplink_spawn_loc_list
 					if(new_loc)
@@ -1573,7 +1643,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 							friendlyname += " (disabled)"
 						maplist[friendlyname] = VM.map_name
 					maplist[default] = null
-					var/pickedmap = input(user, "Choose your preferred map. This will be used to help weight random map selection.", "Character Preference")  as null|anything in maplist
+					var/pickedmap = input(user, "Choose your preferred map. This will be used to help weight random map selection.", "Character Preference")  as null|anything in sortList(maplist)
 					if (pickedmap)
 						preferred_map = maplist[pickedmap]
 
@@ -1625,6 +1695,12 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					tgui_fancy = !tgui_fancy
 				if("overheadchat")
 					overhead_chat = !overhead_chat
+				if("outline_enabled")
+					outline_enabled = !outline_enabled
+				if("outline_color")
+					var/pickedOutlineColor = input(user, "Choose your outline color.", "General Preference", outline_color) as color|null
+					if(pickedOutlineColor)
+						outline_color = pickedOutlineColor
 				if("tgui_lock")
 					tgui_lock = !tgui_lock
 				if("winflash")
@@ -1697,6 +1773,9 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				if("ghost_pda")
 					chat_toggles ^= CHAT_GHOSTPDA
 
+				if("ghost_laws")
+					chat_toggles ^= CHAT_GHOSTLAWS
+
 				if("income_pings")
 					chat_toggles ^= CHAT_BANKCARD
 
@@ -1726,6 +1805,30 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					auto_fit_viewport = !auto_fit_viewport
 					if(auto_fit_viewport && parent)
 						parent.fit_viewport()
+
+				if("pixel_size")
+					switch(pixel_size)
+						if(PIXEL_SCALING_AUTO)
+							pixel_size = PIXEL_SCALING_1X
+						if(PIXEL_SCALING_1X)
+							pixel_size = PIXEL_SCALING_1_2X
+						if(PIXEL_SCALING_1_2X)
+							pixel_size = PIXEL_SCALING_2X
+						if(PIXEL_SCALING_2X)
+							pixel_size = PIXEL_SCALING_3X
+						if(PIXEL_SCALING_3X)
+							pixel_size = PIXEL_SCALING_AUTO
+					user.client.view_size.apply() //Let's winset() it so it actually works
+
+				if("scaling_method")
+					switch(scaling_method)
+						if(SCALING_METHOD_NORMAL)
+							scaling_method = SCALING_METHOD_DISTORT
+						if(SCALING_METHOD_DISTORT)
+							scaling_method = SCALING_METHOD_BLUR
+						if(SCALING_METHOD_BLUR)
+							scaling_method = SCALING_METHOD_NORMAL
+					user.client.view_size.setZoomMode()
 
 				if("save")
 					save_preferences()
@@ -1858,6 +1961,8 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	character.socks = socks
 
 	character.backbag = backbag
+
+	character.jumpsuit_style = jumpsuit_style //austation -- skirts
 
 	var/datum/species/chosen_species
 	chosen_species = pref_species.type

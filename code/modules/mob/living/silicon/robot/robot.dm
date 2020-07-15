@@ -211,7 +211,7 @@
 	if(!CONFIG_GET(flag/disable_secborg))
 		modulelist["Security"] = /obj/item/robot_module/security
 
-	var/input_module = input("Please, select a module!", "Robot", null, null) as null|anything in modulelist
+	var/input_module = input("Please, select a module!", "Robot", null, null) as null|anything in sortList(modulelist)
 	if(!input_module || module.type != /obj/item/robot_module)
 		return
 
@@ -301,15 +301,15 @@
 	..()
 	if(statpanel("Status"))
 		if(cell)
-			stat("Charge Left:", "[cell.charge]/[cell.maxcharge]")
+			stat(null, "Charge Left: [cell.charge]/[cell.maxcharge]")
 		else
 			stat(null, text("No Cell Inserted!"))
 
 		if(module)
 			for(var/datum/robot_energy_storage/st in module.storages)
-				stat("[st.name]:", "[st.energy]/[st.max_energy]")
+				stat(null, "[st.name]: [st.energy]/[st.max_energy]")
 		if(connected_ai)
-			stat("Master AI:", connected_ai.name)
+			stat(null, "Master AI: [connected_ai.name]")
 
 /mob/living/silicon/robot/restrained(ignore_grab)
 	. = 0
@@ -460,6 +460,7 @@
 			to_chat(user, "<span class='notice'>You start to unfasten [src]'s securing bolts...</span>")
 			if(W.use_tool(src, user, 50, volume=50) && !cell)
 				user.visible_message("[user] deconstructs [src]!", "<span class='notice'>You unfasten the securing bolts, and [src] falls to pieces!</span>")
+				log_attack("[key_name(user)] deconstructed [name] at [AREACOORD(src)].")
 				deconstruct()
 
 	else if(istype(W, /obj/item/aiModule))
@@ -613,7 +614,7 @@
 		if(lamp_intensity > 2)
 			eye_lights.icon_state = "[module.special_light_key ? "[module.special_light_key]":"[module.cyborg_base_icon]"]_l"
 		else
-			eye_lights.icon_state = "[module.special_light_key ? "[module.special_light_key]":"[module.cyborg_base_icon]"]_e[is_servant_of_ratvar(src) ? "_r" : ""]"
+			eye_lights.icon_state = "[module.special_light_key ? "[module.special_light_key]":"[module.cyborg_base_icon]"]_e"
 		eye_lights.icon = icon
 		add_overlay(eye_lights)
 
@@ -1150,7 +1151,7 @@
 		M.visible_message("<span class='warning'>[M] really can't seem to mount [src]...</span>")
 		return
 	var/datum/component/riding/riding_datum = LoadComponent(/datum/component/riding/cyborg)
-	if(buckled_mobs)
+	if(has_buckled_mobs())
 		if(buckled_mobs.len >= max_buckled_mobs)
 			return
 		if(M in buckled_mobs)
