@@ -5,7 +5,7 @@
 //you can turn a profit by selling the crate and stamping the manifest but the amount of effort to turn the monkey cubes to monkeys, kill the monkeys, butcher the monkeys is not worth your time compared to crate hunting in maint.
 //haven't included brain or stomach as they are not bounty items and I worry something might be destroyed or break if I add them
 
-/datum/export/appendixe
+/datum/export/appendix
 	cost = 10
 	unit_name = "appendix"
 	export_types = list(/obj/item/organ/appendix)
