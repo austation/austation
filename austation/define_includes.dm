@@ -2,5 +2,6 @@
 
 #include "code\_DEFINES\admin.dm"
 #include "code\_DEFINES\language.dm"
+#include "code\_DEFINES\misc.dm"
 #include "code\_DEFINES\traits.dm"
 #include "code\_DEFINES\pool.dm"
