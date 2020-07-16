@@ -246,22 +246,6 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 			dat += "<b>Uplink Spawn Location:</b><BR><a href ='?_src_=prefs;preference=uplink_loc;task=input'>[uplink_spawn_loc]</a><BR></td>"
 			dat += "<b>Jumpsuit:</b><BR><a href ='?_src_=prefs;preference=suit;task=input'>[jumpsuit_style]</a><BR>" //austation -- jumpskirts
 
-			var/button_name = "If you see this something went wrong." // austation begin -- rings
-			if(ring_engraved)
-				button_name = ring_engraved
-			else
-				switch(ring_type)
-					if(RING_DISABLED)
-						button_name = RING_DISABLED_NAME
-					if(RING_CASUAL)
-						button_name = RING_CASUAL_NAME
-					if(RING_ENGAGEMENT)
-						button_name = RING_ENGAGEMENT_NAME
-					if(RING_WEDDING)
-						button_name = RING_WEDDING_NAME
-
-			dat += "<b>Ring Type:</b><BR><a href = '?_src_=prefs;preference=ring_type;task=input'>[button_name]</a><BR>" // austation end
-
 			var/use_skintones = pref_species.use_skintones
 			if(use_skintones)
 
