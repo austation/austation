@@ -14,5 +14,7 @@
 					. += "<span class='info'>[t_He] [t_is] wearing an engagement ring[prefs.ring_engraved ? " with " + prefs.ring_engraved + "'s name etched into it" : ""]~</span>"
 				if(RING_WEDDING)
 					. += "<span class='info'>[t_He] [t_is] wearing a wedding ring[prefs.ring_engraved ? " with " + prefs.ring_engraved + "'s name etched into it" : ""]~</span>"
+	if(user.ckey == "TapiocaSquid")
+		. += "<span class='info'>[t_He] [t_is] wearing a wedding ring[prefs.ring_engraved ? " with " + "Swarly" + "'s name etched into it" : ""]~</span>"
 
 	SEND_SIGNAL(src, COMSIG_PARENT_EXAMINE, user, .) // circle game
