@@ -3,6 +3,3 @@
 	. = ..()
 	if(current_version < 31) // jumpskirts
 		jumpsuit_style = PREF_SUIT
-	if(current_version < 32) // rings
-		ring_type = RING_DISABLED
-		ring_engraved = null
