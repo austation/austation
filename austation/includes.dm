@@ -1,5 +1,9 @@
 // AuStation includes file. Add all modularized code files here.
 
+// Global Includes
+#include "code\_globals\misc.dm"
+
+// Standard Includes
 #include "code\controllers\configuration\entries\game_options.dm"
 #include "code\controllers\configuration\entries\general.dm"
 #include "code\controllers\subsystem\autosandbox.dm"
@@ -23,6 +27,7 @@
 #include "code\modules\admin\topic.dm"
 #include "code\modules\admin\verbs\fix_air.dm"
 #include "code\modules\admin\verbs\mapping.dm"
+#include "code\modules\client\preferences_savefile.dm"
 #include "code\modules\clothing\glasses\hud.dm"
 #include "code\modules\clothing\spacesuit\miscellaneous.dm"
 #include "code\modules\clothing\under\color.dm"
@@ -51,7 +56,9 @@
 #include "code\modules\mob\dead\new_player\new_player.dm"
 #include "code\modules\mob\living\emote.dm"
 #include "code\modules\mob\living\carbon\emote.dm"
+#include "code\modules\mob\living\carbon\examine.dm"
 #include "code\modules\mob\living\carbon\human\emote.dm"
+#include "code\modules\mob\living\carbon\human\examine.dm"
 #include "code\modules\mob\living\carbon\human\human_defines.dm"
 #include "code\modules\mob\living\carbon\human\species.dm"
 #include "code\modules\mob\living\carbon\human\species_type\ethereal.dm"

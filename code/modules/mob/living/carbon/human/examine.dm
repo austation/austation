@@ -94,6 +94,11 @@
 	if(wear_id)
 		. += "[t_He] [t_is] wearing [wear_id.get_examine_string(user)]."
 
+	// AuStation Wear Examines (Human)
+	if(istype(src, /mob/living/carbon/human))
+		var/mob/living/carbon/human/H = src
+		. += H.austation_wear_examine(user)
+
 	//Status effects
 	. += status_effect_examines()
 
@@ -341,8 +346,6 @@
 	else if(isobserver(user) && traitstring)
 		. += "<span class='info'><b>Traits:</b> [traitstring]</span><br>"
 	. += "*---------*</span>"
-
-	SEND_SIGNAL(src, COMSIG_PARENT_EXAMINE, user, .) // austation -- circle game
 
 /mob/living/proc/status_effect_examines(pronoun_replacement) //You can include this in any mob's examine() to show the examine texts of status effects!
 	var/list/dat = list()
