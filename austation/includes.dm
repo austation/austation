@@ -101,5 +101,7 @@
 #include "code\modules\vending\autodrobe.dm"
 #include "code\modules\vending\clothesmate.dm"
 #include "code\modules\vending\wardrobes.dm"
+#include "code\modules\surgery\advanced\bioware\cortex_folding.dm"
+#include "code\modules\surgery\advanced\bioware\cortex_imprint.dm"
 #include "code\modules\atmospherics\machinery\atmosmachinery.dm"
 #include "code\modules\atmospherics\machinery\components\unary_devices\thermomachine.dm"
