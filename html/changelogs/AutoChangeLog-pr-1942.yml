@@ -1,0 +1,5 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - rscadd: "added modules for peacekeeper borg: pepperspray."
+  - rscadd: "added modules for service borg: cookie synth, beaker apparatus."
