@@ -9,5 +9,5 @@
 	syllables = list("mew","meow","purr","nya","hiss","~")
 	default_priority = 70
 
-	icon_state = "slime"
+	icon_state = "catpaw"
 //Need an new icon, this will do for now
