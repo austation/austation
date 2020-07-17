@@ -133,6 +133,7 @@ if [[ ${1} == "--action" ]]; then
   task-eslint
   task-webpack --mode=production
   exit 0
+fi
 
 if [[ ${1} == "--clean" ]]; then
   task-clean
