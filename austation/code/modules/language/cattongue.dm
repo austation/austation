@@ -6,7 +6,7 @@
 	exclaim_verb = "hisses"
 	sing_verb = "meows"
 	key = "+"
-	syllables = list("mew","meow","purr","nya","hiss","!")
+	syllables = list("mew","meow","purr","nya","hiss","~")
 	default_priority = 70
 
 	icon_state = "slime"
