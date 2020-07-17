@@ -54,6 +54,7 @@
 #include "code\modules\language\terrum.dm"
 #include "code\modules\language\voltaic.dm"
 #include "code\modules\mapping\writer.dm"
+#include "code\modules\mapping\random_rooms.dm"
 #include "code\modules\mob\mob_defines.dm"
 #include "code\modules\mob\dead\new_player\new_player.dm"
 #include "code\modules\mob\living\emote.dm"
