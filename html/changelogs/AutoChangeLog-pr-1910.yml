@@ -1,8 +1,0 @@
-author: "totallynotkatfood"
-delete-after: True
-changes: 
-  - rscadd: "Added a pool to Meta"
-  - rscadd: "Added pool noodles"
-  - soundadd: "Added splashing sounds and that crap"
-  - imageadd: "Added icons for the pool"
-  - code_imp: "Pool coode"
