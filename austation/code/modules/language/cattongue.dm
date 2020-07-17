@@ -1,6 +1,6 @@
 /datum/language/cattongue
 	name = "Cat-tongue"
-	desc = "A highpitched and complex language emitted from felinds. Some of the words and phrases are inaudible to humans."
+	desc = "A complex "language" of meows and purrs and emitted from felinds."
 	speech_verb = "mews"
 	ask_verb = "mews"
 	exclaim_verb = "hisses"
