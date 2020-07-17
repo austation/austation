@@ -1,0 +1,4 @@
+author: "Trigg"
+delete-after: True
+changes: 
+  - rscadd: "TGUI admin Secrets Panel"

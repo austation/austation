@@ -126,7 +126,7 @@
 
 	if(brainmob) //if we aren't trying to heal the brain, pass the attack onto the brainmob.
 		O.attack(brainmob, user) //Oh noooeeeee
-    
+
   if(O.force != 0 && !(O.item_flags & NOBLUDGEON))
 	  setOrganDamage(maxHealth) //fails the brain as the brain was attacked, they're pretty fragile.
 
@@ -214,10 +214,11 @@
 	if(damage > BRAIN_DAMAGE_MILD)
 		if(prob(damage_delta * (1 + max(0, (damage - BRAIN_DAMAGE_MILD)/100)))) //Base chance is the hit damage; for every point of damage past the threshold the chance is increased by 1% //learn how to do your bloody math properly goddamnit
 			gain_trauma_type(BRAIN_TRAUMA_MILD)
+	var/is_boosted = (owner && HAS_TRAIT(owner, TRAIT_SPECIAL_TRAUMA_BOOST)) //austation -- cortex surgeries
 	if(damage > BRAIN_DAMAGE_SEVERE)
 		if(prob(damage_delta * (1 + max(0, (damage - BRAIN_DAMAGE_SEVERE)/100)))) //Base chance is the hit damage; for every point of damage past the threshold the chance is increased by 1%
-			if(prob(20))
-				gain_trauma_type(BRAIN_TRAUMA_SPECIAL)
+			if(prob(20 + (is_boosted * 30))) //austation -- cortex surgeries
+				gain_trauma_type(BRAIN_TRAUMA_SPECIAL,  is_boosted ? TRAUMA_RESILIENCE_SURGERY : null) //austation -- cortex surgeries
 			else
 				gain_trauma_type(BRAIN_TRAUMA_SEVERE)
 
@@ -270,7 +271,7 @@
 			to_chat(owner, "<span class='warning'>Alert: Posibrain heavily damaged.</span>")
 		if(2)
 			owner.adjustOrganLoss(ORGAN_SLOT_BRAIN, 25)
-			to_chat(owner, "<span class='warning'>Alert: Posibrain damaged.</span>") 
+			to_chat(owner, "<span class='warning'>Alert: Posibrain damaged.</span>")
 
 ////////////////////////////////////TRAUMAS////////////////////////////////////////
 

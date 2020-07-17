@@ -127,6 +127,14 @@ if [[ ${1} == "--ci" ]]; then
   exit 0
 fi
 
+if [[ ${1} == "--action" ]]; then
+  task-clean
+  task-install
+  task-eslint
+  task-webpack --mode=production
+  exit 0
+fi
+
 if [[ ${1} == "--clean" ]]; then
   task-clean
   exit 0
