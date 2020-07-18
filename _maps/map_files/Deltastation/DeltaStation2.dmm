@@ -21157,6 +21157,11 @@
 	},
 /obj/machinery/light/small,
 /obj/machinery/atmospherics/pipe/simple/general/hidden,
+/obj/machinery/camera{
+	c_tag = "Atmospherics - Pumps";
+	dir = 1;
+	name = "atmospherics camera"
+	},
 /turf/open/floor/engine,
 /area/maintenance/disposal/incinerator)
 "aPA" = (
