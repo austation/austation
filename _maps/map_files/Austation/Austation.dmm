@@ -6384,13 +6384,6 @@
 	},
 /turf/open/floor/plasteel,
 /area/crew_quarters/dorms)
-"aCF" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/obj/machinery/holopad,
-/turf/open/floor/plasteel,
-/area/crew_quarters/dorms)
 "aCG" = (
 /obj/structure/chair/stool{
 	pixel_y = 8
@@ -8064,6 +8057,12 @@
 	},
 /turf/open/floor/wood,
 /area/lawoffice)
+"aKk" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/plasteel,
+/area/crew_quarters/dorms)
 "aKl" = (
 /obj/machinery/door/airlock{
 	name = "Unisex Restrooms"
@@ -44282,16 +44281,6 @@
 	},
 /turf/open/floor/engine,
 /area/science/explab)
-"fwT" = (
-/obj/structure/chair/stool{
-	pixel_y = 8
-	},
-/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
-	dir = 1
-	},
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3,
-/turf/open/floor/plasteel,
-/area/crew_quarters/dorms)
 "fxO" = (
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
@@ -52147,6 +52136,17 @@
 	},
 /turf/open/floor/plating,
 /area/maintenance/starboard/fore)
+"iNX" = (
+/obj/structure/chair/stool{
+	pixel_y = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3,
+/obj/machinery/holopad,
+/turf/open/floor/plasteel,
+/area/crew_quarters/dorms)
 "iOf" = (
 /obj/machinery/door/airlock/maintenance{
 	name = "Atmospherics Maintenance";
@@ -66057,23 +66057,6 @@
 	},
 /turf/open/floor/plasteel,
 /area/engine/break_room)
-"oxO" = (
-/obj/structure/cable/yellow{
-	icon_state = "2-8"
-	},
-/obj/machinery/navbeacon{
-	codes_txt = "patrol;next_patrol=14.8-Dorms-Lockers";
-	location = "14.5-Recreation"
-	},
-/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
-	dir = 4
-	},
-/obj/machinery/holopad,
-/turf/open/floor/plasteel,
-/area/crew_quarters/fitness/recreation)
 "oya" = (
 /obj/structure/sign/warning/vacuum/external,
 /turf/closed/wall/r_wall,
@@ -82021,6 +82004,24 @@
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer3,
 /turf/open/floor/plasteel,
 /area/crew_quarters/locker)
+"vhw" = (
+/obj/structure/cable/yellow{
+	icon_state = "2-8"
+	},
+/obj/machinery/navbeacon{
+	codes_txt = "patrol;next_patrol=14.8-Dorms-Lockers";
+	location = "14.5-Recreation"
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
+	dir = 4
+	},
+/turf/open/floor/goonplaque{
+	desc = "\"Harold Holt Memorial Pool.\" Scratched in beneath that is a crude image of a Japanese submarine."
+	},
+/area/crew_quarters/fitness/recreation)
 "vhG" = (
 /obj/structure/table/glass,
 /obj/machinery/camera/autoname{
@@ -86588,6 +86589,13 @@
 	},
 /turf/open/floor/plating,
 /area/maintenance/starboard/fore)
+"xja" = (
+/obj/structure/cable/yellow{
+	icon_state = "1-2"
+	},
+/obj/machinery/holopad,
+/turf/open/floor/plasteel,
+/area/crew_quarters/dorms)
 "xjE" = (
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
@@ -124972,9 +124980,9 @@ slM
 arB
 arB
 swf
-aCF
+aKk
 xwF
-fwT
+iNX
 okG
 arB
 aJh
@@ -125475,13 +125483,13 @@ ajV
 fMv
 amy
 dCc
-oxO
+vhw
 jpl
 feS
 caY
 iOu
 caY
-caY
+xja
 iOu
 jQe
 vaB
