@@ -4871,7 +4871,7 @@
 /obj/structure/closet/radiation,
 /obj/effect/turf_decal/bot,
 /obj/machinery/camera{
-	c_tag = "Cargo Security Post"
+	c_tag = "Incinerator"
 	},
 /turf/open/floor/plasteel,
 /area/maintenance/disposal/incinerator)
@@ -41466,6 +41466,10 @@
 /obj/machinery/airlock_sensor/incinerator_atmos{
 	pixel_x = 8;
 	pixel_y = 24
+	},
+/obj/machinery/camera{
+	c_tag = "Incinerator Cycling Chamber";
+	dir = 4
 	},
 /turf/open/floor/engine,
 /area/maintenance/disposal/incinerator)
