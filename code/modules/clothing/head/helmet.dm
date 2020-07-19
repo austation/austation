@@ -13,7 +13,7 @@
 	clothing_flags = SNUG_FIT
 	flags_cover = HEADCOVERSEYES
 	flags_inv = HIDEHAIR
-	bang_protect = 1
+	bang_protect = 2
 
 	dog_fashion = /datum/dog_fashion/head/helmet
 
