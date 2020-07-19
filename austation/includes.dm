@@ -94,3 +94,6 @@
 #include "code\modules\vending\wardrobes.dm"
 #include "code\modules\atmospherics\machinery\atmosmachinery.dm"
 #include "code\modules\atmospherics\machinery\components\unary_devices\thermomachine.dm"
+#include "code\modules\mob\living\simple_animal\friendly\drone\drone.dm"
+#include "code\modules\mob\living\simple_animal\friendly\drone\drone_movement.dm"
+#include "code\modules\mob\living\simple_animal\friendly\drone\emote.dm"
