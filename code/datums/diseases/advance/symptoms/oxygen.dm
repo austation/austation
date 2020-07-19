@@ -29,9 +29,11 @@ Bonus
 	symptom_delay_min = 1
 	symptom_delay_max = 1
 	var/regenerate_blood = FALSE
-	//var/gas_type = /datum/gas/miasma austation begin -- fetish content
-	//var/base_moles = 3
-	//var/emote = "fart" austation end
+/* austation begin -- fetish content
+	var/gas_type = /datum/gas/miasma
+	var/base_moles = 3
+	var/emote = "fart"
+austation end */
 	threshold_desc = "<b>Resistance 8:</b> Additionally regenerates lost blood.<br>"
 
 /datum/symptom/oxygen/Start(datum/disease/advance/A)
