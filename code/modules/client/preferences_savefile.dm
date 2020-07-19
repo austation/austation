@@ -5,7 +5,7 @@
 //	You do not need to raise this if you are adding new values that have sane defaults.
 //	Only raise this value when changing the meaning/format/name/layout of an existing value
 //	where you would want the updater procs below to run
-#define SAVEFILE_VERSION_MAX	30
+#define SAVEFILE_VERSION_MAX	32
 
 /*
 SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Carn
@@ -341,7 +341,9 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	S["undershirt"]			>> undershirt
 	S["socks"]				>> socks
 	S["backbag"]			>> backbag
-	S["jumpsuit_style"]		>> jumpsuit_style //austation -- jumpskirts
+	S["ring_engraved"]		>> ring_engraved //austation begin -- rings and skirts
+	S["ring_type"]			>> ring_type
+	S["jumpsuit_style"]		>> jumpsuit_style //austation end
 	S["uplink_loc"]			>> uplink_spawn_loc
 	S["feature_mcolor"]					>> features["mcolor"]
 	S["feature_ethcolor"]					>> features["ethcolor"]
@@ -481,7 +483,9 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	WRITE_FILE(S["undershirt"]			, undershirt)
 	WRITE_FILE(S["socks"]				, socks)
 	WRITE_FILE(S["backbag"]			, backbag)
-	WRITE_FILE(S["jumpsuit_style"]		, jumpsuit_style) //austation -- jumpskirts
+	WRITE_FILE(S["ring_engraved"]		, ring_engraved) // austation begin -- rings and skirts
+	WRITE_FILE(S["ring_type"]			, ring_type)
+	WRITE_FILE(S["jumpsuit_style"]		, jumpsuit_style) // austation end
 	WRITE_FILE(S["uplink_loc"]			, uplink_spawn_loc)
 	WRITE_FILE(S["species"]			, pref_species.id)
 	WRITE_FILE(S["feature_mcolor"]					, features["mcolor"])
