@@ -1,9 +1,10 @@
 // AuStation includes file. Add all modularized code files here.
 
-// Global Includes
-#include "code\_globals\misc.dm"
+// Global Variables Section
+#include "code\_GLOBALS\misc.dm"
+#include "code\_GLOBALS\pool_globals.dm"
 
-// Standard Includes
+// Main Includes Section
 #include "code\controllers\configuration\entries\game_options.dm"
 #include "code\controllers\configuration\entries\general.dm"
 #include "code\controllers\subsystem\autosandbox.dm"
@@ -12,6 +13,7 @@
 #include "code\datums\emotes.dm"
 #include "code\datums\brain_damage\imaginary_friend.dm"
 #include "code\datums\status_effects\buffs.dm"
+#include "code\datums\elements\swimming.dm"
 #include "code\game\machinery\syndicatebeacon.dm"
 #include "code\game\objects\effects\decals\turfdecal\markings.dm"
 #include "code\game\objects\items\AI_modules.dm"
@@ -52,6 +54,7 @@
 #include "code\modules\language\terrum.dm"
 #include "code\modules\language\voltaic.dm"
 #include "code\modules\mapping\writer.dm"
+#include "code\modules\mapping\random_rooms.dm"
 #include "code\modules\mob\mob_defines.dm"
 #include "code\modules\mob\dead\new_player\new_player.dm"
 #include "code\modules\mob\living\emote.dm"
@@ -88,10 +91,19 @@
 #include "code\modules\surgery\organs\tongue.dm"
 #include "code\modules\uplink\uplink_items.dm"
 #include "code\modules\vehicles\cars\thanoscar.dm"
+#include "code\modules\pool\pool_controller.dm"
+#include "code\modules\pool\pool_drain.dm"
+#include "code\modules\pool\pool_effects.dm"
+#include "code\modules\pool\pool_main.dm"
+#include "code\modules\pool\pool_noodles.dm"
+#include "code\modules\pool\pool_structures.dm"
+#include "code\modules\pool\pool_wires.dm"
 #include "code\modules\vending\_vending.dm"
 #include "code\modules\vending\autodrobe.dm"
 #include "code\modules\vending\clothesmate.dm"
 #include "code\modules\vending\wardrobes.dm"
+#include "code\modules\surgery\advanced\bioware\cortex_folding.dm"
+#include "code\modules\surgery\advanced\bioware\cortex_imprint.dm"
 #include "code\modules\atmospherics\machinery\atmosmachinery.dm"
 #include "code\modules\atmospherics\machinery\components\unary_devices\thermomachine.dm"
 #include "code\modules\ruins\spaceruin_code\TheDerelict.dm"
