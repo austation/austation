@@ -106,3 +106,4 @@
 #include "code\modules\surgery\advanced\bioware\cortex_imprint.dm"
 #include "code\modules\atmospherics\machinery\atmosmachinery.dm"
 #include "code\modules\atmospherics\machinery\components\unary_devices\thermomachine.dm"
+#include "code\modules\cargo\exports\organs.dm"
