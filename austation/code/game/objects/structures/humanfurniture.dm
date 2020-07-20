@@ -1,6 +1,6 @@
 /obj/structure/chair/comfy/human
 	name = "Human leather chair"
-	desc = "Feels like war crimes."
+	desc = "looks like a war crime."
 	icon = 'austation/icons/obj/chairs.dmi'
 	icon_state = "humanskinchair"
 	color = rgb(255,255,153)
