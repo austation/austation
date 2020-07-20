@@ -97,4 +97,3 @@
 #include "code\modules\vending\wardrobes.dm"
 #include "code\modules\atmospherics\machinery\atmosmachinery.dm"
 #include "code\modules\atmospherics\machinery\components\unary_devices\thermomachine.dm"
-
