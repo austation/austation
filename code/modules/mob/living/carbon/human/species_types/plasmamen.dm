@@ -85,7 +85,10 @@
 
 		if("Cook")
 			O = new /datum/outfit/plasmaman/chef
-
+		//austation begin -- prisoner role
+		if("Prisoner")
+			O = new /datum/outfit/plasmaman/prisoner
+		//austation end
 		if("Security Officer")
 			O = new /datum/outfit/plasmaman/security
 

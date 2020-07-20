@@ -1,0 +1,2 @@
+#define PRISONER		(1<<14)
+#define JOB_DISPLAY_ORDER_PRISONER 34

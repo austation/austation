@@ -458,7 +458,7 @@
 	icon_state = "1-4"
 	},
 /turf/open/floor/plasteel/freezer,
-/area/security/prison)
+/area/security/prison/toilet)
 "abi" = (
 /obj/structure/window/reinforced{
 	dir = 4
@@ -472,7 +472,7 @@
 	pixel_y = 28
 	},
 /turf/open/floor/plasteel/freezer,
-/area/security/prison)
+/area/security/prison/toilet)
 "abj" = (
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
@@ -652,7 +652,7 @@
 	dir = 4
 	},
 /turf/open/floor/plasteel/freezer,
-/area/security/prison)
+/area/security/prison/toilet)
 "abB" = (
 /obj/machinery/door/window/westleft{
 	base_state = "right";
@@ -662,7 +662,7 @@
 	},
 /obj/machinery/light/small,
 /turf/open/floor/plasteel/freezer,
-/area/security/prison)
+/area/security/prison/toilet)
 "abC" = (
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
@@ -704,6 +704,7 @@
 /obj/structure/chair/stool,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/start/prisoner,
 /turf/open/floor/plasteel,
 /area/security/prison)
 "abI" = (
@@ -858,7 +859,7 @@
 	name = "Unisex Restroom"
 	},
 /turf/open/floor/plasteel/freezer,
-/area/security/prison)
+/area/security/prison/toilet)
 "abZ" = (
 /obj/structure/table,
 /obj/item/book/manual/chef_recipes{
@@ -983,7 +984,7 @@
 	dir = 4
 	},
 /turf/open/floor/plasteel/freezer,
-/area/security/prison)
+/area/security/prison/toilet)
 "acq" = (
 /obj/structure/table,
 /obj/item/storage/box/donkpockets{
@@ -85354,6 +85355,12 @@
 	},
 /turf/open/floor/plasteel,
 /area/engine/break_room)
+"rFR" = (
+/obj/structure/chair/stool,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/start/prisoner,
+/turf/open/floor/plasteel,
+/area/security/prison)
 "rFZ" = (
 /obj/machinery/atmospherics/pipe/heat_exchanging/junction{
 	dir = 1
@@ -109817,7 +109824,7 @@ aaP
 aax
 abn
 abE
-abD
+rFR
 acs
 acH
 abe

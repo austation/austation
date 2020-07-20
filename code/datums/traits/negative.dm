@@ -171,6 +171,10 @@
 				heirloom_type = /obj/item/clipboard
 			if("Shaft Miner")
 				heirloom_type = pick(/obj/item/pickaxe/mini, /obj/item/shovel)
+			//austation begin -- prisoner role
+			if("Prisoner")
+				heirloom_type = /obj/item/pen/blue
+			//austation end
 
 	if(!heirloom_type)
 		heirloom_type = pick(
