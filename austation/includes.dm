@@ -73,6 +73,9 @@
 #include "code\modules\mob\living\silicon\robot\emote.dm"
 #include "code\modules\mob\living\silicon\robot\robot_modules.dm"
 #include "code\modules\mob\living\simple_animal\bot\deathsky.dm"
+#include "code\modules\mob\living\simple_animal\friendly\drone\drone.dm"
+#include "code\modules\mob\living\simple_animal\friendly\drone\drone_movement.dm"
+#include "code\modules\mob\living\simple_animal\friendly\drone\emote.dm"
 #include "code\modules\mob\living\simple_animal\hostile\cat_butcher.dm"
 #include "code\modules\mob\living\simple_animal\hostile\retaliate\kangaroo.dm"
 #include "code\modules\reagents\chemistry\reagents\other_reagents.dm"
@@ -94,6 +97,4 @@
 #include "code\modules\vending\wardrobes.dm"
 #include "code\modules\atmospherics\machinery\atmosmachinery.dm"
 #include "code\modules\atmospherics\machinery\components\unary_devices\thermomachine.dm"
-#include "code\modules\mob\living\simple_animal\friendly\drone\drone.dm"
-#include "code\modules\mob\living\simple_animal\friendly\drone\drone_movement.dm"
-#include "code\modules\mob\living\simple_animal\friendly\drone\emote.dm"
+
