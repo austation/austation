@@ -1,0 +1,5 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - tweak: "the resistance threshold of bee infestation will no longer override the reagents of the transmission threshold."
+  - bugfix: "meeting the resistance threshold of bee infestation will now properly spawn honey bees, if the transmission threshold is not met"
