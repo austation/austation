@@ -363,7 +363,7 @@ GENE SCANNER
 			mutant = TRUE
 
 		to_chat(user, "<span class='info'>Species: [S.name][mutant ? "-derived mutant" : ""]</span>")
-	to_chat(user, "<span class='info'>Body temperature: [round(M.bodytemperature-T0C,0.1)] &deg;C ([round(M.bodytemperature*1.8-459.67,0.1)] &deg;F)</span>")
+	to_chat(user, "<span class='info'>Body temperature: [round(M.bodytemperature-T0C,0.1)] &deg;C ([round(M.bodytemperature*1.8-459.67,0.1)] &deg;F) ([round(M.bodytemperature,0.01)] &deg;K)</span>")
 
 	// Time of death
 	if(M.tod && (M.stat == DEAD || ((HAS_TRAIT(M, TRAIT_FAKEDEATH)) && !advanced)))
@@ -865,7 +865,7 @@ GENE SCANNER
 		icon_state = "extrapolator_sample"
 		scan = FALSE
 		to_chat(user, "<span class='notice'>You remove the probe from the device and set it to EXTRACT</span>")
-	else 
+	else
 		icon_state = "extrapolator_scan"
 		scan = TRUE
 		to_chat(user, "<span class='notice'>You put the probe back in the device and set it to SCAN</span>")
@@ -881,10 +881,10 @@ GENE SCANNER
 			. += "<span class='warning'>The extrapolator is still recharging!</span>"
 		else
 			. += "<span class='info'>The extrapolator is ready to use!</span>"
-	
+
 
 /obj/item/extrapolator/attack(atom/AM, mob/living/user)
-	return 
+	return
 
 /obj/item/extrapolator/afterattack(atom/target, mob/user, proximity_flag, click_parameters)
 	. = ..()
@@ -896,7 +896,7 @@ GENE SCANNER
 				to_chat(user, "<span class='notice'>the extrapolator fails to return any data</span>")
 			else
 				to_chat(user, "<span class='notice'>the extrapolator's probe detects no diseases</span>")
-	else 
+	else
 		to_chat(user, "<span class='warning'>the extrapolator has no scanner installed</span>")
 
 /obj/item/extrapolator/proc/scan(atom/AM, var/list/diseases = list(), mob/user)
@@ -928,12 +928,12 @@ GENE SCANNER
 	if(isolate)
 		for(var/datum/symptom/S in A.symptoms)
 			if(S.level <= 6 + scanner.rating)
-				symptoms += S 
+				symptoms += S
 			continue
 		var/datum/symptom/chosen = input(user,"What symptom do you wish to isolate") in null|symptoms
 		var/datum/disease/advance/symptomholder = new
-		if(!symptoms.len || !chosen) 
-			to_chat(user, "<span class='warning'>There are no valid diseases to isolate a symptom from.</span>")	
+		if(!symptoms.len || !chosen)
+			to_chat(user, "<span class='warning'>There are no valid diseases to isolate a symptom from.</span>")
 			return
 		symptomholder.name = chosen.name
 		symptomholder.symptoms += chosen
@@ -956,4 +956,4 @@ GENE SCANNER
 	user.put_in_hands(B)
 	playsound(src, 'sound/machines/ping.ogg', 30, TRUE)
 	return TRUE
-	
+
