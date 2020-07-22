@@ -363,7 +363,7 @@ GENE SCANNER
 			mutant = TRUE
 
 		to_chat(user, "<span class='info'>Species: [S.name][mutant ? "-derived mutant" : ""]</span>")
-	to_chat(user, "<span class='info'>Body temperature: [round(M.bodytemperature-T0C,0.1)] &deg;C ([round(M.bodytemperature*1.8-459.67,0.1)] &deg;F) ([round(M.bodytemperature,0.01)] &deg;K)</span>") // austation -- adds kelvin
+	to_chat(user, "<span class='info'>Body temperature: [round(M.bodytemperature-T0C,0.1)] &deg;C ([round(M.bodytemperature,0.01)] &deg;K) </span>") // austation -- removes Fahrenheit for kelvin
 
 	// Time of death
 	if(M.tod && (M.stat == DEAD || ((HAS_TRAIT(M, TRAIT_FAKEDEATH)) && !advanced)))
