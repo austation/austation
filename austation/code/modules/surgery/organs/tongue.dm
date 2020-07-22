@@ -5,8 +5,9 @@
 		/datum/language/sylvan,
 		/datum/language/shadowtongue,
 		/datum/language/terrum,
+		/datum/language/cattongue,
 	))
-	
+
 /obj/item/organ/tongue/fly
 	var/static/list/languages_possible_fly = typecacheof(list(
 		/datum/language/common,
