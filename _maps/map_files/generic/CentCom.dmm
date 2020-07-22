@@ -8155,11 +8155,6 @@
 	},
 /turf/open/floor/plasteel,
 /area/centcom/evac)
-"sV" = (
-/obj/machinery/door/poddoor/shuttledock,
-/obj/effect/turf_decal/delivery,
-/turf/open/floor/plasteel,
-/area/centcom/evac)
 "sW" = (
 /obj/structure/showcase{
 	desc = "A strange machine supposedly from another world. The Wizard Federation has been meddling with it for years.";
@@ -18304,6 +18299,12 @@
 	},
 /turf/open/floor/plasteel,
 /area/centcom/supplypod/loading/four)
+"Wv" = (
+/obj/machinery/door/poddoor/shuttledock,
+/obj/effect/turf_decal/delivery,
+/obj/structure/fans/tiny,
+/turf/open/floor/plasteel,
+/area/centcom/evac)
 "WJ" = (
 /obj/machinery/door/airlock/centcom{
 	name = "Thunderdome Administration";
@@ -71408,19 +71409,19 @@ io
 qx
 qx
 qx
-sV
-sV
-sV
-sV
-sV
-sV
-sV
-sV
-sV
-sV
-sV
-sV
-sV
+Wv
+Wv
+Wv
+Wv
+Wv
+Wv
+Wv
+Wv
+Wv
+Wv
+Wv
+Wv
+Wv
 qx
 qx
 qx
