@@ -7,6 +7,12 @@
 		/datum/language/terrum,
 	))
 
+/obj/item/organ/tongue/Initialize(mapload)
+	. = ..()
+	languages_possible = languages_possible_cattongue 
+	// as shit as this looks, it makes sense that humans can talk like felinids, they just cant understand.
+	//humans also dont know the language (like moffic) so it shouldn't enable them to talk cat-tongue, theoretically atleast
+	
 /obj/item/organ/tongue/fly
 	var/static/list/languages_possible_fly = typecacheof(list(
 		/datum/language/common,
