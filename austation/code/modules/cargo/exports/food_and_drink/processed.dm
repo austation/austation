@@ -2,14 +2,13 @@
 //These values are subject to change if it becomes an exploit.
 //Average food price should be around 5cr per step I imagine.
 
-
 /datum/export/meatball
 	cost = 10
 	unit_name = "meatball"
 	export_types = list(/obj/item/reagent_containers/food/snacks/meatball)
   
   /datum/export/raw_bacon
-	cost = 5        //15 devided by 3 for the 3 cutlets
+	cost = 5 		//15 devided by 3 for the 3 cutlets
 	unit_name = "raw bacon slice"
 	export_types = list(/obj/item/reagent_containers/food/snacks/meat/rawbacon)
   
@@ -34,7 +33,7 @@
 	export_types = list(/obj/item/reagent_containers/food/snacks/soydope)
   
    /datum/export/spaghetti
-	cost = 8   //25 divided by 3 dough slices rounded to 8
+	cost = 8 		//25 divided by 3 dough slices rounded to 8
 	unit_name = "spaghetti"
 	export_types = list(/obj/item/reagent_containers/food/snacks/spaghetti)
   
@@ -52,7 +51,3 @@
 	cost = 10
 	unit_name = "roast parsnip"
 	export_types = list(/obj/item/reagent_containers/food/snacks/roastparsnip)
-  
-  
-  
-  
