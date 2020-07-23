@@ -454,6 +454,7 @@
 	desc = "A cybernetic version of the lungs found in traditional humanoid entities. Allows for greater intakes of oxygen than organic lungs, requiring slightly less pressure."
 	icon_state = "lungs-c"
 	organ_flags = ORGAN_SYNTHETIC
+	status = ORGAN_ROBOTIC //austation cybernetics are not edible
 	maxHealth = 1.1 * STANDARD_ORGAN_THRESHOLD
 	safe_oxygen_min = 13
 
