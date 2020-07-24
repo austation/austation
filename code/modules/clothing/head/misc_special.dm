@@ -48,7 +48,7 @@
 	hitsound = 'sound/weapons/tap.ogg'
 	var/hitsound_on = 'sound/weapons/sear.ogg' //so we can differentiate between cakehat and energyhat
 	var/hitsound_off = 'sound/weapons/tap.ogg'
-	var/force_on = 15
+	var/force_on = 15 //austation start -- keeps force/throwforce at 15. Changed from 12 on bee
 	var/throwforce_on = 15
 	var/damtype_on = BURN
 	flags_inv = HIDEEARS|HIDEHAIR

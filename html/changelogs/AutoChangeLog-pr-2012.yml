@@ -1,4 +1,4 @@
 author: "AustationBot"
 delete-after: True
 changes: 
-  - bugfix: "fixes issues with new CTF map"
+  - balance: "riot shield has a lower block power"
