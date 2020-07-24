@@ -191,8 +191,6 @@
 		// Shuttle status, see /__DEFINES/stat.dm
 		.["shuttle_timer"] = SSshuttle.emergency.timeLeft()
 		// Shuttle timer, in seconds
-<<<<<<< HEAD
-=======
 
 /datum/world_topic/identify_uuid
 	keyword = "identify_uuid"
@@ -221,4 +219,3 @@
 	return .
 
 
->>>>>>> 951fb4a698... UUID generation / Discord verification (#2163)
