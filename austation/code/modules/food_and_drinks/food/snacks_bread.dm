@@ -40,6 +40,8 @@
 			visible_message("\The [src] bashes through \the [W]!")
 			playsound(src, 'sound/effects/meteorimpact.ogg', 100, 1)
 			W.dismantle_wall(1)
+	else
+		. = ..()
 
 /obj/item/reagent_containers/food/snacks/store/bread/recycled/proc/check_evolve()
 	var/evolve = max(0, min(round(log(9, bread_density)),10))
@@ -130,7 +132,7 @@
 /obj/item/reagent_containers/food/snacks/store/bread/recycled/degen
 	name = "degenerate recycled bread"
 	desc = "Bread so tightly compacted that the matter has burnt up all its fusion energy and turned into super-dense nuclear ash."
-	icon_state = "bread7"
+	icon_state = "bread8"
 	w_class = WEIGHT_CLASS_BULKY
 	force = 66
 	throwforce = 66
@@ -145,7 +147,7 @@
 /obj/item/reagent_containers/food/snacks/store/bread/recycled/neutron
 	name = "neutron recycled bread"
 	desc = "Beyond degenerate matter, the atoms in this bread are now so tightly packed that they've collapsed into neutrons. Unfathomably heavy."
-	icon_state = "bread8"
+	icon_state = "bread9"
 	w_class = WEIGHT_CLASS_BULKY
 	force = 88
 	throwforce = 88
@@ -160,7 +162,7 @@
 /obj/item/reagent_containers/food/snacks/store/bread/recycled/subatomic
 	name = "subatomic recycled bread"
 	desc = "Thanks to pure density and decay heat, the protons and neutrons in this bread have dissociated into quarks."
-	icon_state = "bread9"
+	icon_state = "bread10"
 	w_class = WEIGHT_CLASS_HUGE
 	force = 110
 	throwforce = 110
@@ -175,7 +177,7 @@
 /obj/item/reagent_containers/food/snacks/store/bread/recycled/strange
 	name = "strange recycled bread"
 	desc = "This bread has somehow achieved an internal pressure and temperature high enough to form strange quarks. The epitome of bread recycling technology."
-	icon_state = "bread10"
+	icon_state = "bread11"
 	w_class = WEIGHT_CLASS_HUGE
 	force = 220
 	throwforce = 220
@@ -225,7 +227,6 @@
 			if(AM.fingerprintslast)
 				suspicion = "last touched by [AM.fingerprintslast]"
 				message_admins("[src] has consumed [AM], [suspicion] [ADMIN_JMP(src)].")
-			investigate_log("has consumed [AM] - [suspicion].", INVESTIGATE_SUPERMATTER)
 		qdel(AM)
 
 	for(var/mob/living/L in range(10))
