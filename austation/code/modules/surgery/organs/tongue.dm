@@ -77,3 +77,34 @@
 /obj/item/organ/tongue/ethereal/Initialize(mapload)
 	. = ..()
 	languages_possible = languages_possible_ethereal
+
+/obj/item/organ/tongue/felinid
+	name = "cat-tongue"
+	desc = "A fleshy muscle mostly used for lying. This tongue has a sandpaper-like texture"
+	icon_state = "tonguenormal"
+	zone = BODY_ZONE_PRECISE_MOUTH
+	slot = ORGAN_SLOT_TONGUE
+	attack_verb = list("licked", "slobbered", "slapped", "frenched", "tongued")
+	var/list/languages_possible
+	var/say_mod = meows
+	var/taste_sensitivity = 15 // lower is more sensitive.
+	var/modifies_speech = FALSE
+	var/static/list/languages_possible_base = typecacheof(list(
+		/datum/language/common,
+		/datum/language/draconic,
+		/datum/language/codespeak,
+		/datum/language/monkey,
+		/datum/language/narsie,
+		/datum/language/beachbum,
+		/datum/language/ratvar,
+		/datum/language/aphasia,
+		/datum/language/piratespeak,
+		/datum/language/rlyehian,
+		/datum/language/apidite,
+		/datum/language/cattongue,
+	))
+
+/obj/item/organ/tongue/Initialize(mapload)
+	. = ..()
+	languages_possible_base += austation_languages_possible_base // austation -- species languages from /tg/
+	languages_possible = languages_possible_cattongue
