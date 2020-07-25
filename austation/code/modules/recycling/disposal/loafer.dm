@@ -27,9 +27,12 @@
 		icon_state = "aloafer"
 		update_icon()
 
-		var/obj/item/reagent_containers/food/snacks/store/bread/recycled/looef = new(src)
+		var/obj/item/reagent_containers/food/snacks/store/bread/recycled/looef = new(H)
 
 		for(var/atom/movable/AM in H.contents)
+			if(AM == looef)
+				continue
+
 			if(AM.type in blacklist) // no matter bin singulo for you
 				qdel(AM)
 				continue
@@ -72,10 +75,9 @@
 			qdel(AM)
 
 		looef.check_evolve()
-		looef.forceMove(H)
 
 		sleep(3)
-		playsound(src.loc, pick("sounds/machines/blender.ogg", "sounds/machines/juicer.ogg", "sounds/machines/buzz-sigh.ogg", "sounds/machines/warning-buzzer.ogg", "sounds/machines/ping.ogg"), 50, 1)
+		playsound(src.loc, pick('sound/machines/blender.ogg', 'sound/machines/juicer.ogg', 'sound/machines/buzz-sigh.ogg', 'sound/machines/warning-buzzer.ogg', 'sound/machines/ping.ogg'), 50, 1)
 		sleep(33)
 		icon_state = "loafer"
 
