@@ -33,7 +33,7 @@
 	max_integrity = 100
 	integrity_failure = 30
 	smooth = SMOOTH_TRUE
-	canSmoothWith = list(/obj/structure/table, /obj/structure/table/reinforced)
+	canSmoothWith = list(/obj/structure/table, /obj/structure/table/reinforced, /obj/structure/table/human) //austation -- H U M A N table
 
 /obj/structure/table/Bumped(mob/living/carbon/human/H)
 	. = ..()
