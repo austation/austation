@@ -51,7 +51,7 @@
 		qdel(src)
 		bread.check_evolve() // recursion
 		return bread
-	else if(evolve >= 11 && !evolveto) // uh oh stinky
+	else if(evolve >= 12 && !evolveto) // uh oh stinky
 		var/area/A = get_area(src)
 		priority_announce("We have detected an extremely high concentration of gluten in [A.name], we suggest evacuating the immediate area")
 		visible_message("<span class='userdanger'>[src] collapses into a singularity under its own weight!</span>")
@@ -202,7 +202,7 @@
 	w_class = WEIGHT_CLASS_HUGE
 	force = 440 //wheeeze
 	throwforce = 440
-	throw_range = 0
+	throw_range = 1
 	bonus_reagents = list()
 	list_reagents = list(/datum/reagent/antimatter = 10)
 	tastes = list("your mouth vaporizing" = 10)
@@ -234,7 +234,7 @@
 			H.update_hair()
 			H.update_mobility()
 	else
-		if(prob(10)) // goodbye lockers/crates
+		if(prob(10) && !istype(loc, /obj/structure/disposalholder)) // goodbye lockers/crates, but not diposal pipes
 			visible_message("<span class='warning'>\The [src] melts through \the [loc] in a flash of light!</span>")
 			playsound(src, 'sound/effects/supermatter.ogg', 50, 1)
 			var/atom/A = loc
