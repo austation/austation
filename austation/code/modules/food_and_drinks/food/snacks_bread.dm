@@ -42,7 +42,7 @@
 			W.dismantle_wall(1)
 
 /obj/item/reagent_containers/food/snacks/store/bread/recycled/proc/check_evolve()
-	var/evolve = max(0, min(round(log(10, bread_density)),10))
+	var/evolve = max(0, min(round(log(9, bread_density)),10))
 	if(evolve >= evolve_level && evolveto)
 		var/obj/item/reagent_containers/food/snacks/store/bread/recycled/bread = new evolveto(src)
 		bread.bread_density = bread_density

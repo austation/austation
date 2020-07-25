@@ -39,7 +39,7 @@
 
 			if(istype(AM, /obj/item/reagent_containers/food/snacks/store/bread/recycled))
 				var/obj/item/reagent_containers/food/snacks/store/bread/recycled/recursive_looef = AM
-				looef.bread_density += recursive_looef.bread_density * 1.1
+				looef.bread_density += recursive_looef.bread_density * 1.2
 				qdel(AM)
 				continue
 
