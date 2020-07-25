@@ -10,7 +10,7 @@
 /obj/structure/disposalpipe/loafer/Initialize(mapload, obj/structure/disposalconstruct/make_from)
 	. = ..()
 
-	blacklist = typesof(/obj/item/stock_parts) + typesof(/obj/item/pipe)
+	blacklist = typesof(/obj/item/stock_parts) + typesof(/obj/item/pipe) + typesof(/obj/structure/c_transit_tube) + typesof(/obj/structure/c_transit_tube_pod)
 
 	if(!QDELETED(make_from))
 		setDir(make_from.dir)
@@ -45,7 +45,7 @@
 
 			if(isliving(AM)) // uh oh
 				var/mob/living/L = AM
-				L.Paralyze(amount = 50, ignore_cantstun = TRUE) // prevents victims from smashing out
+				L.Paralyze(amount = 50, ignore_canstun = TRUE) // prevents victims from smashing out
 				if(iscarbon(L) || issilicon(L))
 					looef.bread_density += 50
 				else

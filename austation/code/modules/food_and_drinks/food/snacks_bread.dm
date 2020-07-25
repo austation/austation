@@ -211,50 +211,12 @@
 	evolve_level = 11
 	evolveto = null
 
+/obj/item/reagent_containers/food/snacks/store/bread/recycled/antimatter/New(loc, ...)
+	. = ..()
+
+	playsound(src, 'sound/magic/charge.ogg', 50, 1)
+
 // Stolen from SM code lmao
-/obj/item/reagent_containers/food/snacks/store/bread/recycled/antimatter/proc/Consume(atom/movable/AM)
-	if(isliving(AM))
-		var/mob/living/user = AM
-		if(user.status_flags & GODMODE)
-			return
-		message_admins("[src] has consumed [key_name_admin(user)] [ADMIN_JMP(src)].")
-		user.dust(force = TRUE)
-	else if(istype(AM, /obj/singularity))
-		return
-	else if(isobj(AM))
-		if(!iseffect(AM))
-			var/suspicion = ""
-			if(AM.fingerprintslast)
-				suspicion = "last touched by [AM.fingerprintslast]"
-				message_admins("[src] has consumed [AM], [suspicion] [ADMIN_JMP(src)].")
-		qdel(AM)
-
-	for(var/mob/living/L in range(10))
-		if(L in view())
-			L.show_message("<span class='danger'>There is a bright glow as part of \the [src] vaporizes along with \the [AM]!</span>", 1,\
-				"<span class='danger'>You feel a wave of flour wash over you!</span>", 2)
-		else
-			L.show_message("<span class='italics'>You feel a wave of flour wash over you!</span>", 2)
-
-/obj/item/reagent_containers/food/snacks/store/bread/recycled/antimatter/proc/consume_everything(target)
-	if(isnull(target))
-		src.Consume()
-	else if(!isturf(target))
-		src.Bumped(target)
-	else
-		consume_turf(target)
-
-/obj/item/reagent_containers/food/snacks/store/bread/recycled/antimatter/proc/consume_turf(turf/T)
-	var/oldtype = T.type
-	var/turf/newT = T.ScrapeAway(flags = CHANGETURF_INHERIT_AIR)
-	if(newT.type == oldtype)
-		return
-	playsound(T, 'sound/effects/supermatter.ogg', 50, 1)
-	T.visible_message("<span class='danger'>\the [src] partially vaporizes, destroying \the [T] in a flash of light and flour!</span>",\
-	"<span class='italics'>You feel a wave of heat as you are washed with a wave of light and flour.</span>")
-	src.Consume()
-	CALCULATE_ADJACENT_TURFS(T)
-
 /obj/item/reagent_containers/food/snacks/store/bread/recycled/antimatter/process() // holding anti bread has a chance to delete your arm
 	if(isturf(loc))
 		return
@@ -267,11 +229,17 @@
 			H.flash_act(2) // sunnies won't save you from this
 			playsound(src, 'sound/effects/supermatter.ogg', 50, 1)
 			qdel(B)
+			H.update_health_hud() //update the healthdoll
+			H.update_body()
+			H.update_hair()
+			H.update_mobility()
 	else
 		if(prob(10)) // goodbye lockers/crates
 			visible_message("<span class='warning'>\The [src] melts through \the [loc] in a flash of light!</span>")
 			playsound(src, 'sound/effects/supermatter.ogg', 50, 1)
-			qdel(loc)
+			var/atom/A = loc
+			forceMove(get_turf(src))
+			qdel(A)
 
 /obj/item/reagent_containers/food/snacks/store/bread/recycled/antimatter/attack(mob/living/M, mob/living/user, def_zone)
 	if(user.a_intent == INTENT_HARM)
