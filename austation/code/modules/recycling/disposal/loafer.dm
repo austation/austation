@@ -3,6 +3,7 @@
 	name = "loaf compactor"
 	desc = "A special machine that converts inserted matter into gluten"
 	icon = 'austation/icons/obj/atmospherics/machines/loafer.dmi'
+	icon_state = "loafer"
 	var/list/blacklist
 
 // Shittery to get deconstruction icons working
