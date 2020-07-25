@@ -1,13 +1,15 @@
 // Fuck
 /obj/structure/disposalpipe/loafer
-    name = "loaf compactor"
-    desc = "A special machine that converts inserted matter into gluten"
+	name = "loaf compactor"
+	desc = "A special machine that converts inserted matter into gluten"
 	icon = 'austation/icons/obj/atmospherics/machines/loafer.dmi'
-	var/list/blacklist = typesof(/obj/item/stock_parts) + typesof(/obj/item/pipe)
+	var/list/blacklist
 
 // Shittery to get deconstruction icons working
 /obj/structure/disposalpipe/loafer/Initialize(mapload, obj/structure/disposalconstruct/make_from)
 	. = ..()
+
+	blacklist = typesof(/obj/item/stock_parts) + typesof(/obj/item/pipe)
 
 	if(!QDELETED(make_from))
 		setDir(make_from.dir)
@@ -25,9 +27,9 @@
 		update_icon()
 
 		var/obj/item/reagent_containers/food/snacks/store/bread/recycled/looef = new(src)
-		looef.set_loc(H)
+		looef.loc = H
 
-		for(/atom/movable/AM in H.contents)
+		for(var/atom/movable/AM in H.contents)
 			if(AM.type in blacklist) // no matter bin singulo for you
 				qdel(AM)
 				continue
@@ -48,12 +50,12 @@
 				if(ishuman(L) && !isdead(L))
 					L.emote("scream")
 
-                playsound(src.loc, 'sound/machines/juicer.ogg', 40, 1)
+				playsound(src.loc, 'sound/machines/juicer.ogg', 40, 1)
 				sleep(50)
 
 				L.death()
 				qdel(L)
-                playsound(src.loc, 'sound/effects/splat.ogg', 50, 1)
+				playsound(src.loc, 'sound/effects/splat.ogg', 50, 1)
 				continue
 
 			if(isitem(AM))
