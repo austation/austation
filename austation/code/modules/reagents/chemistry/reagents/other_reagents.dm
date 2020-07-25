@@ -80,3 +80,56 @@
 
 	if(L.remove_movespeed_modifier(type))
 		L.remove_movespeed_modifier(type)
+
+/datum/reagent/neutron_fluid
+	name = "Neutron Fluid"
+	description = "A dense fluid like substance composed of pure neutrons, extremely dense"
+	taste_description = "nothing" // neutrons, get it?
+	color = "#97FFFF"
+	metabolization_rate = 4 // same as clf3
+
+/datum/reagent/neutron_fluid/on_mob_life(mob/living/carbon/M)
+	M.adjustBruteLoss(10)
+	M.adjustOrganLoss(ORGAN_SLOT_STOMACH, 3)
+
+/datum/reagent/strange_matter
+	name = "Strange matter"
+	description = "An unusual form of matter consisting of an incredibly dense arrangement of strange quarks. EXTREMELY DEADLY, keep away from children"
+	taste_description = "quarks"
+	color = "#99ff87"
+	metabolization_rate = 4
+
+/datum/reagent/strange_matter/on_mob_life(mob/living/carbon/M)
+	M.adjustBruteLoss(10)
+	M.adjustFireLoss(10)
+	M.adjustToxLoss(10)
+	M.adjustOxyLoss(10)
+	M.adjustOrganLoss(ORGAN_SLOT_STOMACH, 5)
+	M.adjustOrganLoss(ORGAN_SLOT_BRAIN, 5)
+	if(prob(20))
+		M.emote("scream")
+		M.Jitter(3)
+	else if(prob(1))
+		M.gib()
+
+/datum/reagent/antimatter
+	name = "Antimatter"
+	description = "Incredibly dangerous substance whose particles have an exactly opposite charge to those of normal matter, annihilating on contact. How it stays in the beaker is anyone's guess."
+	taste_description = "your mouth vaporizing"
+	color = "#858585"
+	metabolization_rate = 2
+
+/datum/reagent/antimatter/on_mob_add(mob/living/L)
+	to_chat(L, "<span class='userdanger'>You feel the antimatter vaporizing your body!</span>")
+	L.adjustFireLoss(50)
+	addtimer(CALLBACK(src, .proc/vaporize, L), 50)
+
+/datum/reagent/antimatter/on_mob_life(mob/living/carbon/M)
+	M.adjustFireLoss(20)
+
+/datum/reagent/antimatter/proc/vaporize(mob/living/L)
+	if(QDELETED(src))
+		to_chat(L, "<span class='danger'>The antimatter dissipates, leaving you with only severe burns.</span>")
+		return
+	L.visible_message("<span class='danger'>The antimatter vaporizes \the [L]'s body in a brilliant flash of pure energy!</span>", "<span class='userdanger'>The antimatter vaporizes your body in a brilliant flash of pure energy!</span>")
+	L.dust(drop_items = FALSE, force = TRUE)
