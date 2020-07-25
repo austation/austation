@@ -39,12 +39,13 @@
 
 			if(istype(AM, /obj/item/reagent_containers/food/snacks/store/bread/recycled))
 				var/obj/item/reagent_containers/food/snacks/store/bread/recycled/recursive_looef = AM
-				looef.bread_density += recursive_looef.bread_density * 1.2
+				looef.bread_density += recursive_looef.bread_density * 1.1
 				qdel(AM)
 				continue
 
 			if(isliving(AM)) // uh oh
 				var/mob/living/L = AM
+				L.Paralyze(amount = 50, ignore_cantstun = TRUE) // prevents victims from smashing out
 				if(iscarbon(L) || issilicon(L))
 					looef.bread_density += 50
 				else
@@ -61,11 +62,11 @@
 				playsound(src.loc, 'sound/effects/splat.ogg', 50, 1)
 				continue
 
-			if(isitem(AM))
+			if(isitem(AM)) // because sheet spamming isn't fun for anyone
 				var/obj/item/I = AM
 				if(istype(I, /obj/item/stack))
 					var/obj/item/stack/stecc = I
-					looef.bread_density += 0.1 * stecc.amount
+					looef.bread_density += 0.5 * stecc.amount
 				else
 					looef.bread_density += I.w_class * 5
 				qdel(AM)
@@ -77,7 +78,7 @@
 		looef.check_evolve()
 
 		sleep(3)
-		playsound(src.loc, pick('sound/machines/blender.ogg', 'sound/machines/juicer.ogg', 'sound/machines/buzz-sigh.ogg', 'sound/machines/warning-buzzer.ogg', 'sound/machines/ping.ogg'), 50, 1)
+		playsound(src.loc, pick('sound/machines/blender.ogg', 'sound/machines/juicer.ogg', 'sound/machines/buzz-sigh.ogg', 'sound/machines/warning-buzzer.ogg', 'sound/machines/ping.ogg'), 25, 1)
 		sleep(33)
 		icon_state = "loafer"
 

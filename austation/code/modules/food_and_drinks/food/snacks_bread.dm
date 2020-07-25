@@ -42,7 +42,7 @@
 			W.dismantle_wall(1)
 
 /obj/item/reagent_containers/food/snacks/store/bread/recycled/proc/check_evolve()
-	var/evolve = max(0, min(round(log(8, bread_density)),10))
+	var/evolve = max(0, min(round(log(10, bread_density)),10))
 	if(evolve >= evolve_level && evolveto)
 		var/obj/item/reagent_containers/food/snacks/store/bread/recycled/bread = new evolveto(src)
 		bread.bread_density = bread_density
@@ -254,26 +254,31 @@
 	src.Consume()
 	CALCULATE_ADJACENT_TURFS(T)
 
-/obj/item/reagent_containers/food/snacks/store/bread/recycled/antimatter/process()
-	if(throwing || ismob(src.loc) || isnull(src.loc))
+/obj/item/reagent_containers/food/snacks/store/bread/recycled/antimatter/process() // holding anti bread has a chance to delete your arm
+	if(isturf(loc))
 		return
-	if(!isturf(src.loc))
-		var/atom/target = src.loc
-		forceMove(target.loc)
-		consume_everything(target)
+	if(ishuman(loc))
+		var/mob/living/carbon/human/H = loc
+		var/obj/item/bodypart/B = H.get_holding_bodypart_of_item(src)
+		if(prob(3))
+			H.visible_message("<span class='warning'>\The [src] suddenly vaporizes \the [H]'s [B] in a flash of light!</span>", "<span class='userdanger'>\The [src] suddenly completely vaporizes your [B] in a blinding flash of light!</span>")
+			H.emote("scream")
+			H.flash_act(2) // sunnies won't save you from this
+			playsound(src, 'sound/effects/supermatter.ogg', 50, 1)
+			qdel(B)
 	else
-		var/turf/T = get_turf(src)
-		if(!isspaceturf(T))
-			consume_turf(T)
+		if(prob(10)) // goodbye lockers/crates
+			visible_message("<span class='warning'>\The [src] melts through \the [loc] in a flash of light!</span>")
+			playsound(src, 'sound/effects/supermatter.ogg', 50, 1)
+			qdel(loc)
 
 /obj/item/reagent_containers/food/snacks/store/bread/recycled/antimatter/attack(mob/living/M, mob/living/user, def_zone)
 	if(user.a_intent == INTENT_HARM)
 		M.visible_message("<span class='danger'>\the [user] slams \the [src] into \the [M], vaporizing themselves, \the [M] and \the [src] in a brilliant flash of light and flour!</span>",\
 		"<span class='userdanger'>\the [user] slams \the [src] into you, vaporizing themselves, you and \the [src] in a brilliant flash of light and flour!</span>")
 		playsound(src, 'sound/effects/supermatter.ogg', 50, 1)
-		explosion(src, 2, 4, 8, 0, TRUE)
-		qdel(M)
-		qdel(user)
+		user.dust(force = TRUE)
+		user.dust(force = TRUE)
 		qdel(src)
 		return TRUE
 	else
@@ -283,9 +288,8 @@
 	if(user.a_intent == INTENT_HARM)
 		O.visible_message("<span class='danger'>\the [user] slams \the [src] into \the [O], vaporizing themselves, \the [O] and \the [src] in a brilliant flash of light and flour!</span>")
 		playsound(src, 'sound/effects/supermatter.ogg', 50, 1)
-		explosion(src, 2, 4, 8, 0, TRUE)
-		qdel(O)
-		qdel(user)
+		user.dust(force = TRUE)
+		user.dust(force = TRUE)
 		qdel(src)
 		return TRUE
 	else
@@ -294,6 +298,9 @@
 /obj/item/reagent_containers/food/snacks/store/bread/recycled/antimatter/throw_impact(atom/hit_atom, datum/thrownthing/throwingdatum)
 	visible_message("<span class='danger'>\The [src] collides with \the [hit_atom], annihilating it and itself in a blinding flash of pure energy and flour!</span>")
 	playsound(src, 'sound/effects/supermatter.ogg', 50, 1)
-	explosion(src, 2, 4, 8, 0, TRUE)
+	if(isliving(hit_atom))
+		var/mob/living/L = hit_atom
+		L.dust(force = TRUE)
+		return
 	qdel(hit_atom)
 	qdel(src)
