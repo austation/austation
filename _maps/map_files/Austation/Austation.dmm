@@ -47957,6 +47957,19 @@
 	},
 /turf/open/floor/plasteel/grimy,
 /area/hallway/primary/port)
+"hcm" = (
+/obj/effect/landmark/event_spawn,
+/obj/structure/cable/yellow{
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/maintenance/aft)
 "hcv" = (
 /obj/effect/mapping_helpers/airlock/locked,
 /obj/machinery/door/airlock/research{
@@ -61025,22 +61038,6 @@
 /obj/machinery/vending/coffee,
 /turf/open/floor/plasteel,
 /area/hallway/primary/starboard)
-"mDi" = (
-/obj/effect/landmark/event_spawn,
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
-	dir = 4
-	},
-/turf/open/floor/plating,
-/area/maintenance/aft)
 "mDj" = (
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
@@ -110590,7 +110587,7 @@ joy
 cHy
 clK
 xKG
-mDi
+hcm
 cLa
 cLV
 cME
