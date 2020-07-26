@@ -111,6 +111,7 @@
 #include "code\modules\atmospherics\machinery\atmosmachinery.dm"
 #include "code\modules\atmospherics\machinery\components\unary_devices\thermomachine.dm"
 #include "code\modules\cargo\exports\food_and_drink\bread.dm"
+#include "code\modules\cargo\exports\food_and_drink\burger.dm"
 #include "code\modules\cargo\exports\food_and_drink\food_mixtures.dm"
 #include "code\modules\cargo\exports\food_and_drink\processed.dm"
 #include "code\modules\cargo\exports\organs.dm"
