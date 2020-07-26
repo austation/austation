@@ -273,4 +273,3 @@
 		L.dust(force = TRUE)
 		return
 	qdel(hit_atom)
-	qdel(src)
