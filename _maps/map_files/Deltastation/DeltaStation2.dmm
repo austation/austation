@@ -19149,7 +19149,7 @@
 /obj/machinery/atmospherics/components/unary/vent_pump/on,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plasteel,
-/area/security/prison/toilet)
+/area/security/prison)
 "aMd" = (
 /obj/structure/table,
 /obj/item/storage/crayons,
@@ -19907,7 +19907,7 @@
 /turf/open/floor/plating{
 	icon_state = "platingdmg3"
 	},
-/area/security/prison/toilet)
+/area/security/prison)
 "aNy" = (
 /obj/machinery/door/airlock{
 	name = "Bathroom"
@@ -19920,7 +19920,7 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plasteel,
-/area/security/prison/toilet)
+/area/security/prison)
 "aNz" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 4
@@ -19967,7 +19967,6 @@
 	dir = 4
 	},
 /obj/structure/chair/stool,
-/obj/effect/landmark/start/prisoner,
 /turf/open/floor/plating{
 	icon_state = "platingdmg1"
 	},
@@ -21039,7 +21038,6 @@
 /area/security/prison)
 "aPn" = (
 /obj/structure/chair/stool,
-/obj/effect/landmark/start/prisoner,
 /turf/open/floor/plating,
 /area/security/prison)
 "aPo" = (
