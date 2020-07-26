@@ -21,5 +21,3 @@
 	id = /obj/item/card/id/prisoner
 	ears = /obj/item/radio/headset
 	belt = /obj/item/pda
-	ears = null
-	belt = null
