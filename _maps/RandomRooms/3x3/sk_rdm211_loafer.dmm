@@ -1,11 +1,38 @@
-"a" = (/turf/open/floor/plating,/area/space)
-"r" = (/obj/item/pipe_dispenser,/turf/open/floor/plating,/area/space)
-"v" = (/obj/effect/decal/cleanable/blood,/turf/open/floor/plating,/area/space)
-"B" = (/obj/effect/turf_decal/arrows/red{dir = 1},/turf/open/floor/plating,/area/space)
-"T" = (/obj/structure/disposalpipe/loafer,/turf/open/floor/plating,/area/space)
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/turf/open/floor/plating,
+/area/space)
+"r" = (
+/obj/item/pipe_dispenser,
+/turf/open/floor/plating,
+/area/space)
+"v" = (
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/plating,
+/area/space)
+"B" = (
+/obj/effect/turf_decal/arrows/red{
+	dir = 1
+	},
+/turf/open/floor/plating,
+/area/space)
+"T" = (
+/obj/structure/disposalpipe/loafer,
+/turf/open/floor/plating,
+/area/space)
 
 (1,1,1) = {"
-ava
-aTr
-aBa
+a
+a
+a
+"}
+(2,1,1) = {"
+v
+T
+B
+"}
+(3,1,1) = {"
+a
+r
+a
 "}

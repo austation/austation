@@ -166,7 +166,7 @@
 	w_class = WEIGHT_CLASS_HUGE
 	force = 110
 	throwforce = 110
-	throw_range = 1
+	throw_range = 2
 	bonus_reagents = list(/datum/reagent/consumable/nutriment = 22)
 	list_reagents = list(/datum/reagent/consumable/nutriment = 26, /datum/reagent/neutron_fluid = 22)
 	tastes = list("quarks" = 10)
@@ -181,7 +181,7 @@
 	w_class = WEIGHT_CLASS_HUGE
 	force = 220
 	throwforce = 220
-	throw_range = 0
+	throw_range = 2
 	bonus_reagents = list(/datum/reagent/consumable/nutriment = 22)
 	list_reagents = list(/datum/reagent/consumable/nutriment = 26, /datum/reagent/strange_matter = 10)
 	tastes = list("gluons" = 10)
@@ -202,10 +202,10 @@
 	w_class = WEIGHT_CLASS_HUGE
 	force = 440 //wheeeze
 	throwforce = 440
-	throw_range = 1
+	throw_range = 2
 	bonus_reagents = list()
 	list_reagents = list(/datum/reagent/antimatter = 10)
-	tastes = list("your mouth vaporizing" = 10)
+	tastes = list("your mouth is vaporizing" = 10)
 	bread_slowdown = 4
 	process = TRUE
 	evolve_level = 11
@@ -247,7 +247,7 @@
 		"<span class='userdanger'>\the [user] slams \the [src] into you, vaporizing themselves, you and \the [src] in a brilliant flash of light and flour!</span>")
 		playsound(src, 'sound/effects/supermatter.ogg', 50, 1)
 		user.dust(force = TRUE)
-		user.dust(force = TRUE)
+		M.dust(force = TRUE)
 		qdel(src)
 		return TRUE
 	else
@@ -258,18 +258,17 @@
 		O.visible_message("<span class='danger'>\the [user] slams \the [src] into \the [O], vaporizing themselves, \the [O] and \the [src] in a brilliant flash of light and flour!</span>")
 		playsound(src, 'sound/effects/supermatter.ogg', 50, 1)
 		user.dust(force = TRUE)
-		user.dust(force = TRUE)
+		qdel(O)
 		qdel(src)
 		return TRUE
 	else
 		return ..()
 
-/obj/item/reagent_containers/food/snacks/store/bread/recycled/antimatter/throw_impact(atom/hit_atom, datum/thrownthing/throwingdatum)
-	visible_message("<span class='danger'>\The [src] collides with \the [hit_atom], annihilating it and itself in a blinding flash of pure energy and flour!</span>")
+/obj/item/reagent_containers/food/snacks/store/bread/recycled/antimatter/throw_impact(atom/hit_atom, datum/thrownthing/throwingdatum) // throwing doesn't game the bread
+	visible_message("<span class='danger'>\The [src] collides with \the [hit_atom], annihilating it in a blinding flash of pure energy and flour!</span>")
 	playsound(src, 'sound/effects/supermatter.ogg', 50, 1)
 	if(isliving(hit_atom))
 		var/mob/living/L = hit_atom
 		L.dust(force = TRUE)
 		return
 	qdel(hit_atom)
-	qdel(src)
