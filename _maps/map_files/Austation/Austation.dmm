@@ -22453,7 +22453,7 @@
 	icon_state = "4-8"
 	},
 /obj/structure/disposalpipe/loafer{
-	dir = 4
+	dir = 8
 	},
 /turf/open/floor/plating,
 /area/crew_quarters/kitchen/coldroom)
