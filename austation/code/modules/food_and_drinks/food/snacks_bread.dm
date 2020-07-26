@@ -105,8 +105,8 @@
 	desc = "The atoms in this bread have been compressed into such heavy isotopes that they've begun to split. Feels warm to the touch."
 	icon_state = "bread5"
 	w_class = WEIGHT_CLASS_NORMAL
-	force = 22
-	throwforce = 22
+	force = 15
+	throwforce = 15
 	throw_range = 5
 	bonus_reagents = list(/datum/reagent/consumable/nutriment = 12)
 	list_reagents = list(/datum/reagent/consumable/nutriment = 16, /datum/reagent/uranium = 10)
@@ -119,8 +119,8 @@
 	desc = "This bread has been compressed to such a degree that the atoms are beginning to undergo nuclear fusion. Tasty."
 	icon_state = "bread6"
 	w_class = WEIGHT_CLASS_BULKY
-	force = 44
-	throwforce = 44
+	force = 22
+	throwforce = 22
 	throw_range = 4
 	bonus_reagents = list(/datum/reagent/consumable/nutriment = 15)
 	list_reagents = list(/datum/reagent/consumable/nutriment = 18, /datum/reagent/hydrogen = 10)
@@ -134,8 +134,8 @@
 	desc = "Bread so tightly compacted that the matter has burnt up all its fusion energy and turned into super-dense nuclear ash."
 	icon_state = "bread8"
 	w_class = WEIGHT_CLASS_BULKY
-	force = 66
-	throwforce = 66
+	force = 34
+	throwforce = 34
 	throw_range = 3
 	bonus_reagents = list(/datum/reagent/consumable/nutriment = 18)
 	list_reagents = list(/datum/reagent/consumable/nutriment = 20)
@@ -149,8 +149,8 @@
 	desc = "Beyond degenerate matter, the atoms in this bread are now so tightly packed that they've collapsed into neutrons. Unfathomably heavy."
 	icon_state = "bread9"
 	w_class = WEIGHT_CLASS_BULKY
-	force = 88
-	throwforce = 88
+	force = 50
+	throwforce = 50
 	throw_range = 2
 	bonus_reagents = list(/datum/reagent/consumable/nutriment = 20)
 	list_reagents = list(/datum/reagent/consumable/nutriment = 24, /datum/reagent/neutron_fluid = 20)
@@ -164,8 +164,8 @@
 	desc = "Thanks to pure density and decay heat, the protons and neutrons in this bread have dissociated into quarks."
 	icon_state = "bread10"
 	w_class = WEIGHT_CLASS_HUGE
-	force = 110
-	throwforce = 110
+	force = 90
+	throwforce = 90
 	throw_range = 2
 	bonus_reagents = list(/datum/reagent/consumable/nutriment = 22)
 	list_reagents = list(/datum/reagent/consumable/nutriment = 26, /datum/reagent/neutron_fluid = 22)
