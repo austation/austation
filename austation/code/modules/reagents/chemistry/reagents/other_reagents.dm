@@ -89,8 +89,8 @@
 	metabolization_rate = 4 // same as clf3
 
 /datum/reagent/neutron_fluid/on_mob_life(mob/living/carbon/M)
-	M.adjustBruteLoss(10)
-	M.adjustOrganLoss(ORGAN_SLOT_STOMACH, 3)
+	M.adjustBruteLoss(3)
+	M.adjustOrganLoss(ORGAN_SLOT_STOMACH, 1)
 
 /datum/reagent/strange_matter
 	name = "Strange matter"
@@ -100,17 +100,23 @@
 	metabolization_rate = 4
 
 /datum/reagent/strange_matter/on_mob_life(mob/living/carbon/M)
-	M.adjustBruteLoss(10)
-	M.adjustFireLoss(10)
-	M.adjustToxLoss(10)
-	M.adjustOxyLoss(10)
-	M.adjustOrganLoss(ORGAN_SLOT_STOMACH, 5)
-	M.adjustOrganLoss(ORGAN_SLOT_BRAIN, 5)
+	M.adjustBruteLoss(2)
+	M.adjustFireLoss(2)
+	M.adjustToxLoss(2)
+	M.adjustOrganLoss(ORGAN_SLOT_STOMACH, 2)
+	M.adjustOrganLoss(ORGAN_SLOT_BRAIN, 1)
 	if(prob(20))
+		if(prob(50))
+			to_chat(M, "<span class='userdanger'>The strange matter consumes part of your flesh!</span>")
+			M.adjustBruteLoss(10)
 		M.emote("scream")
 		M.Jitter(3)
-	else if(prob(1))
-		M.gib()
+	else if(prob(2))
+		M.visible_message("<span class='danger'>The strange matters consumes \the [M]'s body, turning them into a pile of goo!</span>", "<span class='userdanger'>The strange matters consumes your body, turning you into a pile of goo!</span>")
+		var/obj/effect/decal/cleanable/greenglow/gloo = new(get_turf(M))
+		gloo.reagents.add_reagent(/datum/reagent/strange_matter, volume)
+		M.death()
+		qdel(M)
 
 /datum/reagent/antimatter
 	name = "Antimatter"
@@ -126,6 +132,15 @@
 
 /datum/reagent/antimatter/on_mob_life(mob/living/carbon/M)
 	M.adjustFireLoss(20)
+
+/datum/reagent/antimatter/reaction_turf(turf/T, volume)
+	if(volume < 5)
+		return
+	var/oldtype = T.type
+	var/turf/newT = T.ScrapeAway(flags = CHANGETURF_INHERIT_AIR)
+	if(newT.type == oldtype)
+		return
+	T.visible_message("<span class='danger'>The antimatter melts through the floor in a brilliant flash of light!")
 
 /datum/reagent/antimatter/proc/vaporize(mob/living/L)
 	if(QDELETED(src))

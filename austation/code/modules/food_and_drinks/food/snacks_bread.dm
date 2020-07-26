@@ -205,7 +205,7 @@
 	throw_range = 2
 	bonus_reagents = list()
 	list_reagents = list(/datum/reagent/antimatter = 10)
-	tastes = list("your mouth is vaporizing" = 10)
+	tastes = list("your mouth vaporizing" = 10)
 	bread_slowdown = 4
 	process = TRUE
 	evolve_level = 11
@@ -231,10 +231,6 @@
 			playsound(src, 'sound/effects/supermatter.ogg', 50, 1)
 			B.drop_limb()
 			qdel(B)
-			H.update_health_hud() //update the healthdoll
-			H.update_body()
-			H.update_hair()
-			H.update_mobility()
 	else
 		if(prob(10) && !istype(loc, /obj/structure/disposalholder)) // goodbye lockers/crates, but not diposal pipes
 			visible_message("<span class='warning'>\The [src] melts through \the [loc] in a flash of light!</span>")
@@ -268,6 +264,8 @@
 
 /obj/item/reagent_containers/food/snacks/store/bread/recycled/antimatter/throw_impact(atom/hit_atom, datum/thrownthing/throwingdatum) // throwing doesn't game the bread
 	. = ..()
+	if(isturf(hit_atom))
+		return
 	visible_message("<span class='danger'>\The [src] collides with \the [hit_atom], annihilating it in a blinding flash of pure energy and flour!</span>")
 	playsound(src, 'sound/effects/supermatter.ogg', 50, 1)
 	if(isliving(hit_atom))
@@ -275,3 +273,4 @@
 		L.dust(force = TRUE)
 		return
 	qdel(hit_atom)
+	qdel(src)

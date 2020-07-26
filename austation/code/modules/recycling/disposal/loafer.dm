@@ -57,6 +57,8 @@
 				playsound(src.loc, 'sound/machines/juicer.ogg', 40, 1)
 				sleep(50)
 
+				if(L.loc != H)
+					return // don't murder if not in the bread machine. this is a final fallback to stop potential immersion breaking stuff.
 				L.death()
 				qdel(L)
 				playsound(src.loc, 'sound/effects/splat.ogg', 50, 1)
