@@ -44,7 +44,7 @@
 		. = ..()
 
 /obj/item/reagent_containers/food/snacks/store/bread/recycled/proc/check_evolve()
-	var/evolve = max(0, min(round(log(9, bread_density)),10))
+	var/evolve = max(0, min(round(log(9, bread_density)),12))
 	if(evolve >= evolve_level && evolveto)
 		var/obj/item/reagent_containers/food/snacks/store/bread/recycled/bread = new evolveto(src)
 		bread.bread_density = bread_density
@@ -55,7 +55,7 @@
 		var/area/A = get_area(src)
 		priority_announce("We have detected an extremely high concentration of gluten in [A.name], we suggest evacuating the immediate area")
 		visible_message("<span class='userdanger'>[src] collapses into a singularity under its own weight!</span>")
-		var/obj/singularity/oof = new
+		var/obj/singularity/oof = new(get_turf(src))
 		oof.name = "gravitational breadularity"
 		oof.desc = "I have done nothing but compress bread for 3 days."
 		qdel(src)
