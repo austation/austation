@@ -1,0 +1,11 @@
+"a" = (/turf/open/floor/plating,/area/space)
+"r" = (/obj/item/pipe_dispenser,/turf/open/floor/plating,/area/space)
+"v" = (/obj/effect/decal/cleanable/blood,/turf/open/floor/plating,/area/space)
+"B" = (/obj/effect/turf_decal/arrows/red{dir = 1},/turf/open/floor/plating,/area/space)
+"T" = (/obj/structure/disposalpipe/loafer,/turf/open/floor/plating,/area/space)
+
+(1,1,1) = {"
+ava
+aTr
+aBa
+"}
