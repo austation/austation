@@ -96,7 +96,7 @@
 /datum/export/whiteburger
 	cost = 20
 	unit_name = "White burger"
-	export_types = list(obj/item/reagent_containers/food/snacks/burger/white)
+	export_types = list(/obj/item/reagent_containers/food/snacks/burger/white)
 
 /datum/export/spellburger
 	cost = 25
