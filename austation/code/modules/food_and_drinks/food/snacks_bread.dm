@@ -216,10 +216,11 @@
 
 	playsound(src, 'sound/magic/charge.ogg', 50, 1)
 
-// Stolen from SM code lmao
 /obj/item/reagent_containers/food/snacks/store/bread/recycled/antimatter/process() // holding anti bread has a chance to delete your arm
-	if(isturf(loc))
-		return
+	if(isturf(loc) && prob(45))
+		throw_at(get_edge_target_turf(src, pick(GLOB.alldirs)), 2, 5)
+		visible_message("<span class='danger'>[src] flickers violently!</span>")
+		playsound(src, 'sound/magic/charge.ogg', 10, 1)
 	if(ishuman(loc))
 		var/mob/living/carbon/human/H = loc
 		var/obj/item/bodypart/B = H.get_holding_bodypart_of_item(src)
@@ -228,6 +229,7 @@
 			H.emote("scream")
 			H.flash_act(2) // sunnies won't save you from this
 			playsound(src, 'sound/effects/supermatter.ogg', 50, 1)
+			B.drop_limb()
 			qdel(B)
 			H.update_health_hud() //update the healthdoll
 			H.update_body()
@@ -265,6 +267,7 @@
 		return ..()
 
 /obj/item/reagent_containers/food/snacks/store/bread/recycled/antimatter/throw_impact(atom/hit_atom, datum/thrownthing/throwingdatum) // throwing doesn't game the bread
+	. = ..()
 	visible_message("<span class='danger'>\The [src] collides with \the [hit_atom], annihilating it in a blinding flash of pure energy and flour!</span>")
 	playsound(src, 'sound/effects/supermatter.ogg', 50, 1)
 	if(isliving(hit_atom))
