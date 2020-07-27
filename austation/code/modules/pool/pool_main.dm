@@ -100,6 +100,8 @@
 /turf/open/pool/Entered(atom/movable/AM, atom/oldloc)
 	if(istype(AM, /obj/effect/decal/cleanable))
 		var/obj/effect/decal/cleanable/C = AM
+		if(C.bloodiness == null)
+			return ..()
 		if(prob(C.bloodiness))
 			controller.set_bloody(TRUE)
 		QDEL_IN(AM, 25)
