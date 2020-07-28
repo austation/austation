@@ -8,13 +8,17 @@
 	list_reagents = list(/datum/reagent/consumable/nutriment = 5)
 	slices_num = null // fuck spriting this
 	tastes = list("processed garbage" = 10)
-	var/evolve_level = 1 // value exponential needs to reach for bread to evolve
-	var/bread_density = 1 // progress to next type
+	var/evolve_level = 10 // value "bread density" needs to reach for bread to evolve
+	var/bread_density = 0 // progress to next type
 	var/process = FALSE // does this move or something
 	var/bread_slowdown = 0 // lets us slow people down when holding the more powerful breads
+	var/bread_recursed = FALSE // has the bread gone through the loafer and is eligible to evolve
 	var/obj/item/evolveto = /obj/item/reagent_containers/food/snacks/store/bread/recycled/compressed
 
 /obj/item/reagent_containers/food/snacks/store/bread/recycled/New(loc, ...)
+	force = clamp((bread_density*0.09) - 5, 0, 150)
+	throwforce = force
+
 	if(process)
 		START_PROCESSING(SSobj, src)
 	. = ..()
@@ -44,14 +48,15 @@
 		. = ..()
 
 /obj/item/reagent_containers/food/snacks/store/bread/recycled/proc/check_evolve()
-	var/evolve = max(0, min(round(log(10, bread_density)),12))
-	if(evolve >= evolve_level && evolveto)
+	if(!bread_recursed)
+		return FALSE
+	if(evolveto && bread_density >= evolve_level)
 		var/obj/item/reagent_containers/food/snacks/store/bread/recycled/bread = new evolveto(src)
 		bread.bread_density = bread_density
 		qdel(src)
 		bread.check_evolve() // recursion
 		return bread
-	else if(evolve >= 12 && !evolveto) // uh oh stinky
+	else if(evolve >= 5000 && !evolveto) // uh oh stinky
 		var/area/A = get_area(src)
 		priority_announce("We have detected an extremely high concentration of gluten in [A.name], we suggest evacuating the immediate area")
 		visible_message("<span class='userdanger'>[src] collapses into a singularity under its own weight!</span>")
@@ -65,12 +70,10 @@
 	name = "compressed recycled bread"
 	desc = "Some bread comprised of highly compressed trash. It feels quite heavy."
 	icon_state = "bread2"
-	force = 3
-	throwforce = 3
 	bonus_reagents = list(/datum/reagent/consumable/nutriment = 6)
 	list_reagents = list(/datum/reagent/consumable/nutriment = 8)
 	tastes = list("dense garbage" = 10)
-	evolve_level = 2
+	evolve_level = 50
 	evolveto = /obj/item/reagent_containers/food/snacks/store/bread/recycled/supercompressed
 
 /obj/item/reagent_containers/food/snacks/store/bread/recycled/supercompressed
@@ -78,12 +81,10 @@
 	desc = "Some bread compressed down to the point of being nearly rock hard. Difficult to chew."
 	icon_state = "bread3"
 	w_class = WEIGHT_CLASS_NORMAL
-	force = 6
-	throwforce = 6
 	bonus_reagents = list(/datum/reagent/consumable/nutriment = 8)
 	list_reagents = list(/datum/reagent/consumable/nutriment = 12)
 	tastes = list("very dense garbage" = 10)
-	evolve_level = 3
+	evolve_level = 100
 	evolveto = /obj/item/reagent_containers/food/snacks/store/bread/recycled/diamond
 
 /obj/item/reagent_containers/food/snacks/store/bread/recycled/diamond
@@ -91,13 +92,12 @@
 	desc = "This bread has been compressed so much that the carbon atoms within have begun to form tiny diamond crystals. Actually quite nutritious."
 	icon_state = "bread4"
 	w_class = WEIGHT_CLASS_NORMAL
-	force = 11
-	throwforce = 11
+
 	throw_range = 6
 	bonus_reagents = list(/datum/reagent/consumable/nutriment = 10)
 	list_reagents = list(/datum/reagent/consumable/nutriment = 15)
 	tastes = list("diamond" = 10)
-	evolve_level = 4
+	evolve_level = 200
 	evolveto = /obj/item/reagent_containers/food/snacks/store/bread/recycled/fissile
 
 /obj/item/reagent_containers/food/snacks/store/bread/recycled/fissile
@@ -105,13 +105,11 @@
 	desc = "The atoms in this bread have been compressed into such heavy isotopes that they've begun to split. Feels warm to the touch."
 	icon_state = "bread5"
 	w_class = WEIGHT_CLASS_NORMAL
-	force = 15
-	throwforce = 15
 	throw_range = 5
 	bonus_reagents = list(/datum/reagent/consumable/nutriment = 12)
 	list_reagents = list(/datum/reagent/consumable/nutriment = 16, /datum/reagent/uranium = 10)
 	tastes = list("cancer" = 10)
-	evolve_level = 5
+	evolve_level = 300
 	evolveto = /obj/item/reagent_containers/food/snacks/store/bread/recycled/fusing
 
 /obj/item/reagent_containers/food/snacks/store/bread/recycled/fusing
@@ -119,14 +117,12 @@
 	desc = "This bread has been compressed to such a degree that the atoms are beginning to undergo nuclear fusion. Tasty."
 	icon_state = "bread6"
 	w_class = WEIGHT_CLASS_BULKY
-	force = 22
-	throwforce = 22
 	throw_range = 4
 	bonus_reagents = list(/datum/reagent/consumable/nutriment = 15)
 	list_reagents = list(/datum/reagent/consumable/nutriment = 18, /datum/reagent/hydrogen = 10)
 	tastes = list("compressed chili" = 10)
 	bread_slowdown = 1
-	evolve_level = 6
+	evolve_level = 500
 	evolveto = /obj/item/reagent_containers/food/snacks/store/bread/recycled/degen
 
 /obj/item/reagent_containers/food/snacks/store/bread/recycled/degen
@@ -134,14 +130,12 @@
 	desc = "Bread so tightly compacted that the matter has burnt up all its fusion energy and turned into super-dense nuclear ash."
 	icon_state = "bread8"
 	w_class = WEIGHT_CLASS_BULKY
-	force = 34
-	throwforce = 34
 	throw_range = 3
 	bonus_reagents = list(/datum/reagent/consumable/nutriment = 18)
 	list_reagents = list(/datum/reagent/consumable/nutriment = 20)
 	tastes = list("nuclear ash" = 10)
 	bread_slowdown = 1.5
-	evolve_level = 7
+	evolve_level = 700
 	evolveto = /obj/item/reagent_containers/food/snacks/store/bread/recycled/neutron
 
 /obj/item/reagent_containers/food/snacks/store/bread/recycled/neutron
@@ -149,14 +143,12 @@
 	desc = "Beyond degenerate matter, the atoms in this bread are now so tightly packed that they've collapsed into neutrons. Unfathomably heavy."
 	icon_state = "bread9"
 	w_class = WEIGHT_CLASS_BULKY
-	force = 50
-	throwforce = 50
 	throw_range = 2
 	bonus_reagents = list(/datum/reagent/consumable/nutriment = 20)
 	list_reagents = list(/datum/reagent/consumable/nutriment = 24, /datum/reagent/neutron_fluid = 20)
 	tastes = list("density" = 10)
 	bread_slowdown = 2
-	evolve_level = 8
+	evolve_level = 1000
 	evolveto = /obj/item/reagent_containers/food/snacks/store/bread/recycled/subatomic
 
 /obj/item/reagent_containers/food/snacks/store/bread/recycled/subatomic
@@ -164,14 +156,12 @@
 	desc = "Thanks to pure density and decay heat, the protons and neutrons in this bread have dissociated into quarks."
 	icon_state = "bread10"
 	w_class = WEIGHT_CLASS_HUGE
-	force = 90
-	throwforce = 90
 	throw_range = 2
 	bonus_reagents = list(/datum/reagent/consumable/nutriment = 22)
 	list_reagents = list(/datum/reagent/consumable/nutriment = 26, /datum/reagent/neutron_fluid = 22)
 	tastes = list("quarks" = 10)
 	bread_slowdown = 3
-	evolve_level = 9
+	evolve_level = 1500
 	evolveto = /obj/item/reagent_containers/food/snacks/store/bread/recycled/strange
 
 /obj/item/reagent_containers/food/snacks/store/bread/recycled/strange
@@ -179,15 +169,13 @@
 	desc = "This bread has somehow achieved an internal pressure and temperature high enough to form strange quarks. The epitome of bread recycling technology."
 	icon_state = "bread11"
 	w_class = WEIGHT_CLASS_HUGE
-	force = 220
-	throwforce = 220
 	throw_range = 2
 	bonus_reagents = list(/datum/reagent/consumable/nutriment = 22)
 	list_reagents = list(/datum/reagent/consumable/nutriment = 26, /datum/reagent/strange_matter = 10)
 	tastes = list("gluons" = 10)
 	bread_slowdown = 3.5
 	process = TRUE
-	evolve_level = 10
+	evolve_level = 3000
 	evolveto = /obj/item/reagent_containers/food/snacks/store/bread/recycled/antimatter
 
 /obj/item/reagent_containers/food/snacks/store/bread/recycled/strange/process()
@@ -200,20 +188,17 @@
 	desc = "Bread comprised of pure antimatter. How you can hold this without vaporizing is a mystery."
 	icon_state = "bread12"
 	w_class = WEIGHT_CLASS_HUGE
-	force = 440 //wheeeze
-	throwforce = 440
 	throw_range = 2
 	bonus_reagents = list()
 	list_reagents = list(/datum/reagent/antimatter = 10)
 	tastes = list("your mouth vaporizing" = 10)
 	bread_slowdown = 4
 	process = TRUE
-	evolve_level = 11
+	evolve_level = 0
 	evolveto = null
 
 /obj/item/reagent_containers/food/snacks/store/bread/recycled/antimatter/New(loc, ...)
 	. = ..()
-
 	playsound(src, 'sound/magic/charge.ogg', 50, 1)
 
 /obj/item/reagent_containers/food/snacks/store/bread/recycled/antimatter/process() // holding anti bread has a chance to delete your arm
@@ -268,6 +253,10 @@
 		return
 	visible_message("<span class='danger'>\The [src] collides with \the [hit_atom], annihilating it in a blinding flash of pure energy and flour!</span>")
 	playsound(src, 'sound/effects/supermatter.ogg', 50, 1)
+	if(thrownby) // wheeze no cheesing this
+		to_chat(thrownby, "<span class='userdanger'>You realize too late that \the [src] was quantumly entangled with your body, as your atoms dissociate into pure energy, taking the bread with them!</span>")
+		thrownby.dust(force = TRUE)
+		qdel(src)
 	if(isliving(hit_atom))
 		var/mob/living/L = hit_atom
 		L.dust(force = TRUE)
