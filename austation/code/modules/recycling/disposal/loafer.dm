@@ -78,20 +78,14 @@ obj/structure/disposalpipe/loafer/emag_act(mob/user)
 				var/obj/item/I = AM
 				if(istype(I, /obj/item/stack))
 					var/obj/item/stack/stecc = I
-					looef.bread_density += stecc.amount * 0.25 * emag_bonus
+					looef.bread_density += stecc.amount * 0.1 * emag_bonus
 				else
-					looef.bread_density += I.w_class * 2.5 * emag_bonus
+					looef.bread_density += I.w_class * emag_bonus
 				qdel(AM)
 				continue
 
 			looef.bread_density++
 			qdel(AM)
-
-
-		looef.bread_recursed = TRUE
-		var/bred = looef.check_evolve()
-		if(bred)
-			looef = bred
 
 		// handle merging loaves
 		if(stored_looef)
@@ -111,5 +105,7 @@ obj/structure/disposalpipe/loafer/emag_act(mob/user)
 				qdel(H)
 			visible_message("<span class='warning'>\The [src] buzzes grumpily!</span>")
 			playsound(src.loc, 'sound/machines/buzz-two.ogg', 40, 1)
+		else
+			looef.check_evolve()
 
 	return ..()

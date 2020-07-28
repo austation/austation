@@ -12,7 +12,6 @@
 	var/bread_density = 0 // progress to next type
 	var/process = FALSE // does this move or something
 	var/bread_slowdown = 0 // lets us slow people down when holding the more powerful breads
-	var/bread_recursed = FALSE // has the bread gone through the loafer and is eligible to evolve
 	var/obj/item/evolveto = /obj/item/reagent_containers/food/snacks/store/bread/recycled/compressed
 
 /obj/item/reagent_containers/food/snacks/store/bread/recycled/New(loc, ...)
@@ -48,8 +47,6 @@
 		. = ..()
 
 /obj/item/reagent_containers/food/snacks/store/bread/recycled/proc/check_evolve()
-	if(!bread_recursed)
-		return FALSE
 	if(evolveto && bread_density >= evolve_level)
 		var/obj/item/reagent_containers/food/snacks/store/bread/recycled/bread = new evolveto(src)
 		bread.bread_density = bread_density
