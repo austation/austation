@@ -18,3 +18,5 @@
 	access += ACCESS_CREMATORIUM
 	minimal_access += ACCESS_CREMATORIUM
 
+MAP_REMOVE_JOB(prisoner)
+

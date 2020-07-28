@@ -54,6 +54,7 @@
 #include "code\modules\jobs\job_types\job.dm"
 #include "code\modules\jobs\job_types\medical_doctor.dm"
 #include "code\modules\jobs\job_types\prisoner.dm"
+#include "code\modules\jobs\map_changes\map_changes.dm"
 #include "code\modules\language\buzzwords.dm"
 #include "code\modules\language\calcic.dm"
 #include "code\modules\language\language_holder.dm"

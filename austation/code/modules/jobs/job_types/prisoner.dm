@@ -19,5 +19,3 @@
 	uniform = /obj/item/clothing/under/rank/prisoner
 	shoes = /obj/item/clothing/shoes/sneakers/orange
 	id = /obj/item/card/id/prisoner
-	ears = /obj/item/radio/headset
-	belt = /obj/item/pda
