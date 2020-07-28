@@ -1,6 +1,0 @@
-author: "Mick1299"
-delete-after: True
-changes: 
-  - rscadd: "Completely remaps Austation air and waste piping"
-  - rscdel: "Removes shitty old layer 2 piping"
-  - bugfix: "A handful of minor map errors"
