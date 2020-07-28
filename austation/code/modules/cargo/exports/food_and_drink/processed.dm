@@ -57,31 +57,31 @@
 // tube loafs
 
 /datum/export/fusionloaf
-	cost = 200
+	cost = 1000
 	unit_name = "fusion loaf"
 	export_types = list(/obj/item/reagent_containers/food/snacks/store/bread/recycled/fusing)
 
 /datum/export/degenloaf
-	cost = 500
+	cost = 2500
 	unit_name = "degenerate loaf"
 	export_types = list(/obj/item/reagent_containers/food/snacks/store/bread/recycled/degen)
 
 /datum/export/neutronloaf
-	cost = 800
+	cost = 4000
 	unit_name = "neutron loaf"
 	export_types = list(/obj/item/reagent_containers/food/snacks/store/bread/recycled/neutron)
 
 /datum/export/subloaf
-	cost = 1200
+	cost = 7000
 	unit_name = "subatomic loaf"
 	export_types = list(/obj/item/reagent_containers/food/snacks/store/bread/recycled/subatomic)
 
 /datum/export/strangeloaf
-	cost = 3000
+	cost = 12000
 	unit_name = "strange loaf"
 	export_types = list(/obj/item/reagent_containers/food/snacks/store/bread/recycled/strange)
 
 /datum/export/antiloaf // some people just want to watch the world burn :)
-	cost = 7000
+	cost = 25000
 	unit_name = "anti loaf"
 	export_types = list(/obj/item/reagent_containers/food/snacks/store/bread/recycled/antimatter)
