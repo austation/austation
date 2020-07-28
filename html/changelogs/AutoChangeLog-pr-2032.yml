@@ -1,0 +1,4 @@
+author: "totallynotkatfood"
+delete-after: True
+changes: 
+  - bugfix: "May or may not fix decals causing travis fails"
