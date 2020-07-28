@@ -12,7 +12,7 @@
 /obj/structure/disposalpipe/loafer/Initialize(mapload, obj/structure/disposalconstruct/make_from)
 	. = ..()
 
-	blacklist = typesof(/obj/item/stock_parts) + typesof(/obj/item/pipe) + typesof(/obj/structure/c_transit_tube) + typesof(/obj/structure/c_transit_tube_pod) + typesof(/obj/item/holochip) + typesof(/obj/item/reagent_containers/glass/bottle) + typesof(/obj/structure/disposalconstruct) + typesof(/obj/item/reagent_containers/pill) + typesof(obj/item/reagent_containers/pill/patch)
+	blacklist = typesof(/obj/item/stock_parts) + typesof(/obj/item/pipe) + typesof(/obj/structure/c_transit_tube) + typesof(/obj/structure/c_transit_tube_pod) + typesof(/obj/item/holochip) + typesof(/obj/item/reagent_containers/glass/bottle) + typesof(/obj/structure/disposalconstruct) + typesof(/obj/item/reagent_containers/pill) + typesof(/obj/item/reagent_containers/pill/patch)
 
 	if(!QDELETED(make_from))
 		setDir(make_from.dir)
