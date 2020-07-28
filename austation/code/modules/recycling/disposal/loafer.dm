@@ -78,20 +78,20 @@ obj/structure/disposalpipe/loafer/emag_act(mob/user)
 				var/obj/item/I = AM
 				if(istype(I, /obj/item/stack))
 					var/obj/item/stack/stecc = I
-					looef.bread_density += stecc.amount * emag_bonus
+					looef.bread_density += stecc.amount * 0.25 * emag_bonus
 				else
-					looef.bread_density += I.w_class * 10 * emag_bonus
+					looef.bread_density += I.w_class * 2.5 * emag_bonus
 				qdel(AM)
 				continue
 
 			looef.bread_density++
 			qdel(AM)
 
+
+		looef.bread_recursed = TRUE
 		var/bred = looef.check_evolve()
 		if(bred)
 			looef = bred
-		else
-			looef.bread_recursed = TRUE
 
 		// handle merging loaves
 		if(stored_looef)
@@ -107,6 +107,8 @@ obj/structure/disposalpipe/loafer/emag_act(mob/user)
 			stored_looef = null // reset the variable if our loaf is still there after 3.6 seconds. Ignore this if another loaf was stored.
 		if(!looef.bread_density)
 			qdel(looef)
+			if(!H.contents) // no point having an empty disposal object
+				qdel(H)
 			visible_message("<span class='warning'>\The [src] buzzes grumpily!</span>")
 			playsound(src.loc, 'sound/machines/buzz-two.ogg', 40, 1)
 
