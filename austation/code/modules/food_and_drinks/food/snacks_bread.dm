@@ -53,15 +53,8 @@
 		qdel(src)
 		bread.check_evolve() // recursion
 		return bread
-	else if(bread_density >= 5000 && !evolveto) // uh oh stinky
-		var/area/A = get_area(src)
-		priority_announce("We have detected an extremely high concentration of gluten in [A.name], we suggest evacuating the immediate area")
-		visible_message("<span class='userdanger'>[src] collapses into a singularity under its own weight!</span>")
-		var/obj/singularity/oof = new(get_turf(src))
-		oof.name = "gravitational breadularity"
-		oof.desc = "I have done nothing but compress bread for 3 days."
-		qdel(src)
-	return FALSE
+	else
+		return FALSE
 
 /obj/item/reagent_containers/food/snacks/store/bread/recycled/compressed
 	name = "compressed recycled bread"
