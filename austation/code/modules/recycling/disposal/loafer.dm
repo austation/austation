@@ -114,6 +114,7 @@ obj/structure/disposalpipe/loafer/emag_act(mob/user)
 			oof.name = "gravitational breadularity"
 			oof.desc = "I have done nothing but compress bread for 3 days."
 			qdel(src)
+			message_admins("Bread singularity released in [A.name], last touched by [fingerprint]")
 		else
 			looef.check_evolve()
 
