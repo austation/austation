@@ -136,10 +136,7 @@
 /datum/reagent/antimatter/reaction_turf(turf/T, volume)
 	if(volume < 5)
 		return
-	var/oldtype = T.type
-	var/turf/newT = T.ScrapeAway(flags = CHANGETURF_INHERIT_AIR)
-	if(newT.type == oldtype)
-		return
+	T.ChangeTurf(path = /turf/open/space)
 	T.visible_message("<span class='danger'>The antimatter melts through the floor in a brilliant flash of light!")
 
 /datum/reagent/antimatter/proc/vaporize(mob/living/L)

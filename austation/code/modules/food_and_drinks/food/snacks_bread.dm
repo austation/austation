@@ -48,19 +48,12 @@
 
 /obj/item/reagent_containers/food/snacks/store/bread/recycled/proc/check_evolve()
 	if(evolveto && bread_density >= evolve_level)
-		var/obj/item/reagent_containers/food/snacks/store/bread/recycled/bread = new evolveto(src)
+		var/obj/item/reagent_containers/food/snacks/store/bread/recycled/bread = new evolveto(loc)
 		bread.bread_density = bread_density
+		bread.force = clamp((bread.bread_density*0.09) - 5, 0, 150)
+		bread.throwforce = bread.force
 		qdel(src)
-		bread.check_evolve() // recursion
 		return bread
-	else if(bread_density >= 5000 && !evolveto) // uh oh stinky
-		var/area/A = get_area(src)
-		priority_announce("We have detected an extremely high concentration of gluten in [A.name], we suggest evacuating the immediate area")
-		visible_message("<span class='userdanger'>[src] collapses into a singularity under its own weight!</span>")
-		var/obj/singularity/oof = new(get_turf(src))
-		oof.name = "gravitational breadularity"
-		oof.desc = "I have done nothing but compress bread for 3 days."
-		qdel(src)
 	return FALSE
 
 /obj/item/reagent_containers/food/snacks/store/bread/recycled/compressed
@@ -94,7 +87,7 @@
 	bonus_reagents = list(/datum/reagent/consumable/nutriment = 10)
 	list_reagents = list(/datum/reagent/consumable/nutriment = 15)
 	tastes = list("diamond" = 10)
-	evolve_level = 200
+	evolve_level = 250
 	evolveto = /obj/item/reagent_containers/food/snacks/store/bread/recycled/fissile
 
 /obj/item/reagent_containers/food/snacks/store/bread/recycled/fissile
@@ -106,7 +99,7 @@
 	bonus_reagents = list(/datum/reagent/consumable/nutriment = 12)
 	list_reagents = list(/datum/reagent/consumable/nutriment = 16, /datum/reagent/uranium = 10)
 	tastes = list("cancer" = 10)
-	evolve_level = 300
+	evolve_level = 350
 	evolveto = /obj/item/reagent_containers/food/snacks/store/bread/recycled/fusing
 
 /obj/item/reagent_containers/food/snacks/store/bread/recycled/fusing
@@ -119,7 +112,7 @@
 	list_reagents = list(/datum/reagent/consumable/nutriment = 18, /datum/reagent/hydrogen = 10)
 	tastes = list("compressed chili" = 10)
 	bread_slowdown = 1
-	evolve_level = 500
+	evolve_level = 550
 	evolveto = /obj/item/reagent_containers/food/snacks/store/bread/recycled/degen
 
 /obj/item/reagent_containers/food/snacks/store/bread/recycled/degen
@@ -132,7 +125,7 @@
 	list_reagents = list(/datum/reagent/consumable/nutriment = 20)
 	tastes = list("nuclear ash" = 10)
 	bread_slowdown = 1.5
-	evolve_level = 700
+	evolve_level = 800
 	evolveto = /obj/item/reagent_containers/food/snacks/store/bread/recycled/neutron
 
 /obj/item/reagent_containers/food/snacks/store/bread/recycled/neutron
@@ -145,7 +138,7 @@
 	list_reagents = list(/datum/reagent/consumable/nutriment = 24, /datum/reagent/neutron_fluid = 20)
 	tastes = list("density" = 10)
 	bread_slowdown = 2
-	evolve_level = 1000
+	evolve_level = 1500
 	evolveto = /obj/item/reagent_containers/food/snacks/store/bread/recycled/subatomic
 
 /obj/item/reagent_containers/food/snacks/store/bread/recycled/subatomic
@@ -158,7 +151,7 @@
 	list_reagents = list(/datum/reagent/consumable/nutriment = 26, /datum/reagent/neutron_fluid = 22)
 	tastes = list("quarks" = 10)
 	bread_slowdown = 3
-	evolve_level = 1500
+	evolve_level = 2000
 	evolveto = /obj/item/reagent_containers/food/snacks/store/bread/recycled/strange
 
 /obj/item/reagent_containers/food/snacks/store/bread/recycled/strange

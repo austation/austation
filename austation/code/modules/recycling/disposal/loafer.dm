@@ -57,9 +57,9 @@ obj/structure/disposalpipe/loafer/emag_act(mob/user)
 				var/mob/living/L = AM
 				L.Paralyze(amount = 50, ignore_canstun = TRUE) // prevents victims from smashing out
 				if(iscarbon(L) || issilicon(L))
-					looef.bread_density += 50
+					looef.bread_density += 50 * emag_bonus
 				else
-					looef.bread_density += 25
+					looef.bread_density += 25 * emag_bonus
 
 				if(ishuman(L) && !isdead(L))
 					L.emote("scream")
@@ -80,7 +80,7 @@ obj/structure/disposalpipe/loafer/emag_act(mob/user)
 					var/obj/item/stack/stecc = I
 					looef.bread_density += stecc.amount * 0.1 * emag_bonus
 				else
-					looef.bread_density += I.w_class * emag_bonus
+					looef.bread_density += I.w_class * 1.5 * emag_bonus
 				qdel(AM)
 				continue
 
@@ -107,5 +107,6 @@ obj/structure/disposalpipe/loafer/emag_act(mob/user)
 			playsound(src.loc, 'sound/machines/buzz-two.ogg', 40, 1)
 		else
 			looef.check_evolve()
+
 
 	return ..()
