@@ -27,7 +27,8 @@ obj/structure/disposalpipe/loafer/emag_act(mob/user)
 	obj_flags |= EMAGGED
 	emag_bonus = 1.5
 	playsound(src, "sparks", 75, 1, -1)
-	to_chat(user, "<span class='notice'>You use the cryptographic sequencer on [src], increasing the speed of the processing blades</span>")
+	to_chat(user, "<span class='notice'>You use the cryptographic sequencer on [src], compressing faster and enabling much more dangerous densities</span>")
+	visible_message("<span class='danger'>\the [src] humms ominously!</span>")
 
 // This proc runs when something moves through the pipe
 /obj/structure/disposalpipe/loafer/transfer(obj/structure/disposalholder/H)
@@ -105,6 +106,15 @@ obj/structure/disposalpipe/loafer/emag_act(mob/user)
 				qdel(H)
 			visible_message("<span class='warning'>\The [src] buzzes grumpily!</span>")
 			playsound(src.loc, 'sound/machines/buzz-two.ogg', 40, 1)
+		else if(looef.bread_density >= 3400 && EMAGGED)
+			var/area/A = get_area(src)
+			priority_announce("We have detected an extremely high concentration of gluten in [A.name], we suggest evacuating the immediate area")
+			visible_message("<span class='userdanger'>[src] collapses into a singularity under its own weight!</span>")
+			var/obj/singularity/oof = new(get_turf(src))
+			oof.name = "gravitational breadularity"
+			oof.desc = "I have done nothing but compress bread for 3 days."
+			qdel(src)
+			message_admins("Bread singularity released in [A.name], last touched by [fingerprint]")
 		else
 			looef.check_evolve()
 
