@@ -52,7 +52,10 @@
 		bread.bread_density = bread_density
 		bread.force = clamp((bread.bread_density*0.09) - 5, 0, 150)
 		bread.throwforce = bread.force
+		var/obj/item/reagent_containers/food/snacks/store/bread/recycled/recursive_bread = bread.check_evolve() // lol this shitcode
 		qdel(src)
+		if(recursive_bread)
+			return recursive_bread
 		return bread
 	return FALSE
 
