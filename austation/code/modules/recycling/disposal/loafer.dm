@@ -120,7 +120,6 @@ obj/structure/disposalpipe/loafer/emag_act(mob/user)
 			if(culprit)
 				culprit_message = " - Loafer last touched by: [ADMIN_LOOKUPFLW(culprit)]"
 			message_admins("Bread singularity released in [ADMIN_VERBOSEJMP(T)][culprit_message]")
-			src.fingerprintslast
 		else
 			looef.check_evolve()
 
