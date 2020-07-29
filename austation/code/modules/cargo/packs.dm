@@ -33,5 +33,5 @@
               else
                 /obj/item/slime_extract/grey,)
 
-	crate_name = "robotics assembly crate"
+	crate_name = "xenobiology common crate"
 	crate_type = /obj/structure/closet/crate/secure/science
