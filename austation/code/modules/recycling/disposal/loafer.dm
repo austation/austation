@@ -107,14 +107,20 @@ obj/structure/disposalpipe/loafer/emag_act(mob/user)
 			visible_message("<span class='warning'>\The [src] buzzes grumpily!</span>")
 			playsound(src.loc, 'sound/machines/buzz-two.ogg', 40, 1)
 		else if(looef.bread_density >= 3400 && EMAGGED)
+			var/turf/T = get_turf(src)
 			var/area/A = get_area(src)
+			var/mob/culprit = get_mob_by_key(fingerprintslast)
+			var/culprit_message
 			priority_announce("We have detected an extremely high concentration of gluten in [A.name], we suggest evacuating the immediate area")
 			visible_message("<span class='userdanger'>[src] collapses into a singularity under its own weight!</span>")
 			var/obj/singularity/oof = new(get_turf(src))
 			oof.name = "gravitational breadularity"
 			oof.desc = "I have done nothing but compress bread for 3 days."
 			qdel(src)
-			message_admins("Bread singularity released in [A.name], last touched by [fingerprint]")
+			if(culprit)
+				culprit_message = " - Loafer last touched by: [ADMIN_LOOKUPFLW(culprit)]"
+			message_admins("Bread singularity released in [ADMIN_VERBOSEJMP(T)][culprit_message]")
+			src.fingerprintslast
 		else
 			looef.check_evolve()
 
