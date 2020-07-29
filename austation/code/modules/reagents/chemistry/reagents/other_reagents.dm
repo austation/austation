@@ -80,3 +80,12 @@
 
 	if(L.remove_movespeed_modifier(type))
 		L.remove_movespeed_modifier(type)
+
+/datum/reagent/consumable/synthetic_cake_batter
+	name = "Synthetic cake batter"
+	description = "An organic compound used for printing cakes and pretty much nothing else."
+	reagent_state = SOLID
+	color = "#ddaf4c"
+	nutriment_factor = 10 * REAGENTS_METABOLISM
+	metabolization_rate = 2 * REAGENTS_METABOLISM
+	taste_description = "sweetness"
