@@ -151,6 +151,19 @@
 										"<span class='userdanger'>You fall in the drained pool, but you had an helmet!</span>")
 					H.Knockdown(40)
 					playsound(src, 'sound/effects/woodhit.ogg', 60, TRUE, 1)
+			if(issilicon(AM))
+				if(!filled)
+					var/mob/living/silicon/robot/R = victim
+					if(prob(75))
+						R.Paralyze(5)
+						R.apply_damage(7, BRUTE)
+						R.visible_message("<span class='danger'>[R] falls in the drained pool!</span>",
+													"<span class='userdanger'>You fall in the drained pool!</span>")
+					else
+						R.Paralyze(15) //bad silicon, no powercreep
+						R.apply_damage(15, BRUTE)
+						R.visible_message("<span class='danger'>[R] falls in the drained pool, and hits their gyroscopic module!</span>",
+													"<span class='userdanger'>You fall in the drained pool, and hit your gyroscopic module!</span>")
 		else if(filled)
 			playsound(src, "water_wade", 20, TRUE)
 	return ..()
