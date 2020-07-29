@@ -16,6 +16,7 @@
 #include "code\datums\elements\swimming.dm"
 #include "code\datums\mood_event\generic_positive_events.dm"
 #include "code\game\sound.dm"
+#include "code\game\area\Space_Station_13_areas.dm"
 #include "code\game\machinery\syndicatebeacon.dm"
 #include "code\game\objects\effects\decals\turfdecal\markings.dm"
 #include "code\game\objects\items\AI_modules.dm"
