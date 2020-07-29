@@ -104,9 +104,10 @@ obj/structure/disposalpipe/loafer/emag_act(mob/user)
 			qdel(looef)
 			if(!H.contents) // no point having an empty disposal object
 				qdel(H)
+				return
 			visible_message("<span class='warning'>\The [src] buzzes grumpily!</span>")
 			playsound(src.loc, 'sound/machines/buzz-two.ogg', 40, 1)
-		else if(looef.bread_density >= 3400 && EMAGGED)
+		else if(looef.bread_density >= 3400 && obj_flags & EMAGGED)
 			var/turf/T = get_turf(src)
 			var/area/A = get_area(src)
 			var/mob/culprit = get_mob_by_key(fingerprintslast)
