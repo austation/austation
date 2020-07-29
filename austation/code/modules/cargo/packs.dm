@@ -13,22 +13,22 @@
               /obj/item/slime_extract/orange,
               /obj/item/slime_extract/grey,
 
-              if (prob)(60))
+			if (prob)(60))
                 /obj/item/slime_extract/metal,
               else
                 /obj/item/slime_extract/grey,
 
-               if (prob)(60))
+			if (prob)(60))
                 /obj/item/slime_extract/purple,
               else
                 /obj/item/slime_extract/grey,
 
-               if (prob)(60))
+			if (prob)(60))
                 /obj/item/slime_extract/blue,
               else
                 /obj/item/slime_extract/grey,
 
-               if (prob)(60))
+			if (prob)(60))
                 /obj/item/slime_extract/orange,
               else
                 /obj/item/slime_extract/grey,)
