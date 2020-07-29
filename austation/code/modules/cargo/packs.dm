@@ -29,9 +29,27 @@
                 /obj/item/slime_extract/grey,
 
 			if(prob(60))
-                /obj/item/slime_extract/orange,
+                /obj/item/slime_extract/orange
               else
-                /obj/item/slime_extract/grey,)
+                /obj/item/slime_extract/grey)
 
 	crate_name = "xenobiology common crate"
+	crate_type = /obj/structure/closet/crate/secure/science
+
+/datum/supply_pack/science/xenobiology_intermediate
+	name = "Xenobiology Crate (Intermidiate)"
+	desc = "A crate filled with 8 intermediate core extracts, for use by the science team"
+	cost = 10700
+	access = ACCESS_SCIENCE
+	contains = list(
+              /obj/item/slime_extract/yellow,
+              /obj/item/slime_extract/darkpurple,
+              /obj/item/slime_extract/darkblue,
+              /obj/item/slime_extract/green,
+              /obj/item/slime_extract/pink,
+			  /obj/item/slime_extract/silver,
+			  /obj/item/slime_extract/gold,
+			  /obj/item/slime_extract/red)
+
+	crate_name = "xenobiology intermediate crate"
 	crate_type = /obj/structure/closet/crate/secure/science
