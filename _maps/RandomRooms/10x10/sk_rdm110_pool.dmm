@@ -101,6 +101,7 @@
 /area/template_noop)
 "zY" = (
 /obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/remains/human,
 /turf/open/floor/plasteel/yellowsiding{
 	dir = 1
 	},
@@ -154,7 +155,7 @@
 /area/template_noop)
 "NP" = (
 /obj/effect/decal/remains/human,
-/turf/open/pool,
+/turf/open/floor/plasteel/yellowsiding,
 /area/template_noop)
 "NS" = (
 /turf/open/floor/plasteel/yellowsiding{
@@ -227,7 +228,7 @@ Dj
 rW
 jD
 rW
-NP
+rW
 PV
 un
 "}
@@ -246,7 +247,7 @@ Ch
 (6,1,1) = {"
 Ch
 qI
-NP
+rW
 rW
 rW
 rW
@@ -269,7 +270,7 @@ un
 "}
 (8,1,1) = {"
 Ic
-Dq
+NP
 fv
 rW
 Wc

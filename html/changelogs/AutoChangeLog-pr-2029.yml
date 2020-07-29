@@ -1,4 +1,0 @@
-author: "AustationBot"
-delete-after: True
-changes: 
-  - rscadd: "Added new warnings to prevent books from having titles/authors longer than 45 characters"
