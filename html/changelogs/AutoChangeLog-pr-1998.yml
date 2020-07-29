@@ -1,4 +1,0 @@
-author: "thelaughingbomb"
-delete-after: True
-changes: 
-  - rscadd: "Medical scanner now outputs kelvin aswell"

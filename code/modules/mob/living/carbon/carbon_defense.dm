@@ -128,7 +128,7 @@
 		if(I.sharpness)
 			dismemberthreshold = min(((affecting.max_damage * 2) - affecting.get_damage()), dismemberthreshold) //makes it so limbs wont become immune to being dismembered if the item is sharp
 			if(stat == DEAD)
-				dismemberthreshold = dismemberthreshold / 3 
+				dismemberthreshold = dismemberthreshold / 3
 		if(I.force >= dismemberthreshold && I.force >= 10)
 			if(affecting.dismember(I.damtype))
 				I.add_mob_blood(src)
@@ -302,6 +302,10 @@
 	else if(M.zone_selected == BODY_ZONE_HEAD)
 		M.visible_message("<span class='notice'>[M] pats [src] on the head.</span>", \
 					"<span class='notice'>You pat [src] on the head.</span>")
+		if(is_species(src, /datum/species/human/felinid)) //austation begin -- do not question this
+			SEND_SIGNAL(src, COMSIG_ADD_MOOD_EVENT, "friendly_pat", /datum/mood_event/betterheadpat)
+		else
+			SEND_SIGNAL(src, COMSIG_ADD_MOOD_EVENT, "pat", /datum/mood_event/headpat) //austation end
 	else if((M.zone_selected == BODY_ZONE_L_ARM) || (M.zone_selected == BODY_ZONE_R_ARM))
 		if(!get_bodypart(check_zone(M.zone_selected)))
 			to_chat(M, "<span class='warning'>[src] does not have a [M.zone_selected == BODY_ZONE_L_ARM ? "left" : "right"] arm!</span>")

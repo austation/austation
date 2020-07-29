@@ -1,6 +1,0 @@
-author: "jbox144"
-delete-after: True
-changes: 
-  - rscadd: "Drones can now push pulled items onto turfs by clicking said turfs (similar to humans)"
-  - rscadd: "Drones can now use jetpacks!"
-  - rscadd: "Drones (and simple bots) can use silicon emotes (such as buzz, ping and chime)"

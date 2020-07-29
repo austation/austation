@@ -1,4 +1,4 @@
 author: "AustationBot"
 delete-after: True
 changes: 
-  - rscadd: "Sugar sack option to the Biogenerator"
+  - imageadd: "added new plumbing sprites"

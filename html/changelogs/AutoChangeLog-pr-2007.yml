@@ -1,4 +1,4 @@
 author: "totallynotkatfood"
 delete-after: True
 changes: 
-  - rscadd: "Added pools to random maints"
+  - tweak: "Drained pools now also paralyse borgs"
