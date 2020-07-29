@@ -3,7 +3,7 @@
 
 /datum/supply_pack/science/xenobiology_common
 	name = "Xenobiology Crate (Common)"
-	desc = "A crate filled with 10 common core extracts, for use by the science team"
+	desc = "A crate filled with 9 common core extracts, for use by the science team"
 	cost = 5500
 	access = ACCESS_SCIENCE
 	contains = list(
