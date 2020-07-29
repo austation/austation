@@ -1,6 +1,6 @@
 /datum/design/mech_kinetic_accelerator
 	name = "MKA-27 Mech Kinetic Accelerator"
-	desc = "The result of many complaints from disgruntled miners and equally as many complaints from disgruntled roboticists of the lack of reliable ways to combat lavaland megaphauna. The MKA-37 was produced by a team of NT scientists and hacked into the protolathe databases. Although never approved by central command, few can argue against the costs the MKA-37 saves compared to constantly rebuilding mechs and hiring new miners."
+	desc = "The result of many complaints from disgruntled miners and equally as many complaints from disgruntled roboticists of the lack of reliable ways to combat lavaland megaphauna. The MKA-27 was produced by a team of NT scientists and hacked into the protolathe databases. Although never approved by central command, few can argue against the costs the MKA-27 saves compared to constantly rebuilding mechs and hiring new miners."
 	id = "mech_kinetic_accelerator"
 	build_type = MECHFAB
 	build_path = /obj/item/mecha_parts/mecha_equipment/weapon/energy/kinetic_accelerator

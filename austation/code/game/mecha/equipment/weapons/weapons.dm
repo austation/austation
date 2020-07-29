@@ -3,8 +3,8 @@
 // (Mecha part) The part that goes on the mech
 /obj/item/mecha_parts/mecha_equipment/weapon/energy/kinetic_accelerator
 	equip_cooldown = 1 // The internal KA handles all this, so click click click away
-	name = "\improper MKA-37 Mech Kinetic Accelerator"
-	desc = "The result of many complaints from disgruntled miners and equally as many complaints from disgruntled roboticists of the lack of reliable ways to combat lavaland megaphauna. The MKA-37 was produced by a team of NT scientists and hacked into the protolathe databases. Although never approved by central command, few can argue against the costs the MKA-37 saves compared to constantly rebuilding mechs and hiring new miners."
+	name = "\improper MKA-27 Mech Kinetic Accelerator"
+	desc = "The result of many complaints from disgruntled miners and equally as many complaints from disgruntled roboticists of the lack of reliable ways to combat lavaland megaphauna. The MKA-27 was produced by a team of NT scientists and hacked into the protolathe databases. Although never approved by central command, few can argue against the costs the MKA-27 saves compared to constantly rebuilding mechs and hiring new miners."
 	icon = 'icons/obj/guns/energy.dmi' // Temporary
 	icon_state = "kineticgun" // Temporary
 	item_state = "kineticgun" // Temporary
