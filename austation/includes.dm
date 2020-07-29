@@ -112,3 +112,4 @@
 #include "code\modules\atmospherics\machinery\components\unary_devices\thermomachine.dm"
 #include "code\modules\cargo\exports\food_and_drink\processed.dm"
 #include "code\modules\cargo\exports\organs.dm"
+#include "code\modules\cargo\packs.dm"
