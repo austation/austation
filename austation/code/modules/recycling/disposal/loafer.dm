@@ -56,24 +56,41 @@ obj/structure/disposalpipe/loafer/emag_act(mob/user)
 
 			if(isliving(AM)) // uh oh
 				var/mob/living/L = AM
-				L.Paralyze(amount = 50, ignore_canstun = TRUE) // prevents victims from smashing out
-				if(iscarbon(L) || issilicon(L))
-					looef.bread_density += 50 * emag_bonus
-				else
-					looef.bread_density += 25 * emag_bonus
+				if(obj_flags & EMAGGED || !L.mind)
+					L.Paralyze(amount = 50, ignore_canstun = TRUE) // prevents victims from smashing out
+					if(iscarbon(L) || issilicon(L))
+						looef.bread_density += 50 * emag_bonus
+					else
+						looef.bread_density += 25 * emag_bonus
 
-				if(ishuman(L) && !isdead(L))
-					L.emote("scream")
+					if(ishuman(L) && !isdead(L))
+						L.emote("scream")
 
-				playsound(src.loc, 'sound/machines/juicer.ogg', 40, 1)
-				sleep(50)
+					playsound(src.loc, 'sound/machines/juicer.ogg', 40, 1)
+					sleep(50)
 
-				if(L.loc != H)
-					return // don't murder if not in the bread machine. this is a final fallback to stop potential immersion breaking stuff.
-				L.death()
-				qdel(L)
-				playsound(src.loc, 'sound/effects/splat.ogg', 50, 1)
-				continue
+					if(L.loc != H)
+						return // don't murder if not in the bread machine. this is a final fallback to stop potential immersion breaking stuff.
+					L.death()
+					qdel(L)
+					playsound(src.loc, 'sound/effects/splat.ogg', 50, 1)
+					continue
+				else // ided
+					playsound(src.loc, 'sound/machines/buzz-two.ogg', 40, 1)
+					visible_message("<span class='warning'>\The [src]'s safety mechanism engages, stopping the processing blades, but not before seriously injuring [L]!</span>")
+
+					if(ishuman(L) && !isdead(L))
+						L.emote("scream")
+
+					L.adjustBruteLoss(70)
+
+					sleep(30)
+
+					visible_message("<span class='notice'>The hatch on the side of \the [src] opens, ejecting [L].")
+					playsound(src.loc, 'sound/machines/hiss.ogg', 40, 1)
+					L.forceMove(get_turf(src))
+
+					continue
 
 			if(isitem(AM)) // because sheet spamming isn't fun for anyone
 				var/obj/item/I = AM
