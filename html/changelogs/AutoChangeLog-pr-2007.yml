@@ -1,0 +1,4 @@
+author: "totallynotkatfood"
+delete-after: True
+changes: 
+  - tweak: "Drained pools now also paralyse borgs"
