@@ -52,3 +52,15 @@
 			  /obj/item/slime_extract/adamantine)
 	crate_name = "xenobiology advanced crate"
 	crate_type = /obj/structure/closet/crate/secure/science
+
+/datum/supply_pack/science/xenobiology_illegal
+	name = "Smuggled slime core crate"
+	desc = "We found a few monkies holding these, would you have a use for them?"
+	cost = 3000
+	contraband = TRUE
+	contains = list(
+	              /obj/item/slime_extract/grey,
+	              /obj/item/slime_extract/grey,
+	              /obj/item/slime_extract/grey,
+	              /obj/item/slime_extract/grey,)
+	crate_name = "Smuggled slime core crate"
