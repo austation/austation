@@ -5,7 +5,7 @@
 	name = "Xenobiology Crate (Common)"
 	desc = "A crate filled with 9 common core extracts, for use by the science team"
 	cost = 5500
-	access = ACCESS_SCIENCE
+	access = ACCESS_TOX_STORAGE
 	contains = list(
               /obj/item/slime_extract/metal,
               /obj/item/slime_extract/purple,
@@ -40,7 +40,7 @@
 	name = "Xenobiology Crate (Intermidiate)"
 	desc = "A crate filled with 8 intermediate core extracts, for use by the science team"
 	cost = 10700
-	access = ACCESS_SCIENCE
+	access = ACCESS_TOX_STORAGE
 	contains = list(
               /obj/item/slime_extract/yellow,
               /obj/item/slime_extract/darkpurple,
@@ -59,7 +59,7 @@
 	name = "Xenobiology Crate (Advanced)"
 	desc = "A crate filled with 8 advanced core extracts, for use by the science team"
 	cost = 25000
-	access = ACCESS_SCIENCE
+	access = ACCESS_TOX_STORAGE
 	contains = list(
               /obj/item/slime_extract/bluespace,
               /obj/item/slime_extract/oil,
