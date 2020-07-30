@@ -22,6 +22,7 @@
 #include "code\game\objects\items\AI_modules.dm"
 #include "code\game\objects\items\robot\robot_upgrades.dm"
 #include "code\game\objects\items\storage\belt.dm"
+#include "code\game\objects\items\storage\fancy.dm"
 #include "code\game\objects\items\storage\firstaid.dm"
 #include "code\game\objects\items\storage\uplink_kits.dm"
 #include "code\game\objects\items\twohanded.dm"
