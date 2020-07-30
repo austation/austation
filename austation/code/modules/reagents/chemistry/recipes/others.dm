@@ -21,5 +21,5 @@
 /datum/chemical_reaction/synthetic_cake_batter
 	name = "Synthetic cake batter"
 	id = /datum/reagent/consumable/synthetic_cake_batter
-	results = list(/datum/reagent/consumable/synthetic_cake_batter = 35)
-	required_reagents = list(/datum/reagent/consumable/flour = 30, /datum/reagent/consumable/sugar = 30)
+	results = list(/datum/reagent/consumable/synthetic_cake_batter = 30)
+	required_reagents = list(/datum/reagent/consumable/flour = 30, /datum/reagent/consumable/sugar = 30, /datum/reagent/consumable/milk = 40)

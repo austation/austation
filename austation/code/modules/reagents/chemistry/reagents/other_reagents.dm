@@ -83,9 +83,9 @@
 
 /datum/reagent/consumable/synthetic_cake_batter
 	name = "Synthetic cake batter"
-	description = "An organic compound used for printing cakes and pretty much nothing else."
+	description = "An organic compound used for printing cakes and pretty much nothing else, highly concentrated in nutriments."
 	reagent_state = SOLID
 	color = "#ddaf4c"
-	nutriment_factor = 10 * REAGENTS_METABOLISM
+	nutriment_factor = 30 * REAGENTS_METABOLISM
 	metabolization_rate = 2 * REAGENTS_METABOLISM
 	taste_description = "sweetness"
