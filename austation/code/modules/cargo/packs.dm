@@ -1,6 +1,5 @@
 //Science
 
-
 /datum/supply_pack/science/xenobiology_common
 	name = "Xenobiology Crate (Common)"
 	desc = "A crate filled with 10 common core extracts, for use by the science team"
@@ -38,7 +37,6 @@
 
 	crate_name = "xenobiology intermediate crate"
 	crate_type = /obj/structure/closet/crate/secure/science
-
 
 /datum/supply_pack/science/xenobiology_advanced
 	name = "Xenobiology Crate (Advanced)"
