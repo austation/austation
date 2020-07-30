@@ -95,6 +95,7 @@
 #include "code\modules\reagents\reagent_containers\custompen.dm"
 #include "code\modules\research\designs\AI_module_designs.dm"
 #include "code\modules\research\designs\bluespace_designs.dm"
+#include "code\modules\research\designs\machine_designs.dm"
 #include "code\modules\research\designs\mechfabricator_designs.dm"
 #include "code\modules\research\designs\medical_designs.dm"
 #include "code\modules\surgery\organs\tongue.dm"
