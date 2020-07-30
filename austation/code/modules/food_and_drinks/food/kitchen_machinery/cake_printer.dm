@@ -75,7 +75,7 @@
 				to_chat(user, "<span class='warning'>The machine's tank is full!</span>")
 				return ..()
 			else
-				fuel += (2 * (I.reagents.get_reagent_amount(/datum/reagent/consumable/synthetic_cake_batter)))
+				fuel += (10 * (I.reagents.get_reagent_amount(/datum/reagent/consumable/synthetic_cake_batter)))
 				to_chat(user, "<span class='notice'>You pour the cake batter in [src].</span>")
 				I.reagents.remove_reagent(/datum/reagent/consumable/synthetic_cake_batter, I.reagents.get_reagent_amount(/datum/reagent/consumable/synthetic_cake_batter))
 				return ..()
@@ -84,9 +84,9 @@
 	caked_item = new/obj/item/reagent_containers/food/snacks/synthetic_cake(src, I)
 	switch(caked_item.w_class)
 		if(WEIGHT_CLASS_TINY)
-			fuelcost = 10 / efficiency
+			fuelcost = 15 / efficiency
 		if(WEIGHT_CLASS_SMALL)
-			fuelcost = 25 / efficiency
+			fuelcost = 30 / efficiency
 		if(WEIGHT_CLASS_NORMAL)
 			fuelcost = 50 / efficiency
 		if(WEIGHT_CLASS_HUGE)
