@@ -62,5 +62,5 @@
 	              /obj/item/slime_extract/grey,
 	              /obj/item/slime_extract/grey,
 	              /obj/item/slime_extract/grey,
-	              /obj/item/slime_extract/grey,)
+	              /obj/item/slime_extract/grey)
 	crate_name = "Smuggled slime core crate"
