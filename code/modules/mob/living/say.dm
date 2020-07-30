@@ -282,8 +282,13 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 		eavesrendered = compose_message(src, message_language, eavesdropping, , spans, message_mode)
 
 	var/rendered = compose_message(src, message_language, message, , spans, message_mode)
+	var/admin_stealth = FALSE
+	if(client?.holder?.fakekey)
+		admin_stealth = TRUE
 	for(var/_AM in listening)
 		var/atom/movable/AM = _AM
+		if(istype(AM, /mob/dead/observer) && admin_stealth)
+			continue
 		if(eavesdrop_range && get_dist(source, AM) > message_range && !(the_dead[AM]))
 			AM.Hear(eavesrendered, src, message_language, eavesdropping, , spans, message_mode)
 		else
