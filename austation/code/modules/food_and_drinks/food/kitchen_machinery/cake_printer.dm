@@ -1,7 +1,7 @@
 /obj/machinery/cake_printer
 	name = "cake printer"
 	desc = "Wait, it's all cake?"
-	icon = 'icons/obj/machines/biogenerator.dmi'
+	icon = 'austation/icons/obj/machines/cake_printer.dmi'
 	icon_state = "biogen-empty"
 	density = TRUE
 	use_power = IDLE_POWER_USE
@@ -29,11 +29,11 @@
 
 /obj/machinery/cake_printer/update_icon()
 	if(panel_open)
-		icon_state = "biogen-empty-o"
+		icon_state = "kek-printer-o"
 	else if(!src.processing)
-		icon_state = "biogen-stand"
+		icon_state = "kek-printer-stand"
 	else
-		icon_state = "biogen-work"
+		icon_state = "kek-printer-work"
 	return
 
 /obj/machinery/cake_printer/Initialize()
@@ -56,7 +56,7 @@
 	if(processing)
 		to_chat(user, "<span class='warning'>[src] is printing!</span>")
 		return
-	if(default_deconstruction_screwdriver(user, "biogen-empty-o", "biogen-empty-o" ,I))
+	if(default_deconstruction_screwdriver(user, "kek-printer-o", "kek-printer-o" ,I))
 		update_icon()
 		return
 	if(default_deconstruction_crowbar(I))
