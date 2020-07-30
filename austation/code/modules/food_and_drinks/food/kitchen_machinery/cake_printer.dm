@@ -1,16 +1,18 @@
+//WARNING, SPAGHETTI OVERHEAD
 /obj/machinery/cake_printer
 	name = "cake printer"
 	desc = "Wait, it's all cake?"
 	icon = 'austation/icons/obj/machines/cake_printer.dmi'
-	icon_state = "biogen-empty"
+	icon_state = "kek-printer-stand"
 	density = TRUE
 	use_power = IDLE_POWER_USE
 	idle_power_usage = 40
 	circuit = /obj/item/circuitboard/machine/cake_printer
 	var/obj/item/reagent_containers/food/snacks/synthetic_cake/caked_item
 	var/processing = FALSE
-	var/efficiency = 0
-	var/speed = 0
+	var/efficiency = 1
+	var/speed = 1
+	var/max_fuel = 100
 	var/static/list/cake_blacklist = typecacheof(list(
 		/obj/item/screwdriver,
 		/obj/item/crowbar,
@@ -41,14 +43,19 @@
 	component_parts = list()
 	component_parts += new /obj/item/circuitboard/machine/cake_printer(null)
 	component_parts += new /obj/item/stock_parts/manipulator(null)
+	component_parts += new /obj/item/stock_parts/matter_bin(null)
 	component_parts += new /obj/item/reagent_containers/glass/beaker/large(null)
 	RefreshParts()
 
 /obj/machinery/cake_printer/RefreshParts()
+	var/max_storage = 100
 	for(var/obj/item/stock_parts/manipulator/M in component_parts)
-		efficiency += M.rating
+		efficiency = M.rating
 	for(var/obj/item/stock_parts/manipulator/P in component_parts)
-		speed += P.rating
+		speed = P.rating
+	for(var/obj/item/stock_parts/matter_bin/B in component_parts)
+		max_storage = 100 * B.rating
+	max_fuel = max_storage
 
 /obj/machinery/cake_printer/attackby(obj/item/I, mob/user)
 	if(user.a_intent == INTENT_HARM)
@@ -66,10 +73,15 @@
 		return ..()
 	if(istype(I, /obj/item/reagent_containers))
 		if(I.reagents.has_reagent(/datum/reagent/consumable/synthetic_cake_batter))
-			fuel += (10 * (I.reagents.get_reagent_amount(/datum/reagent/consumable/synthetic_cake_batter)))
-			to_chat(user, "<span class='notice'>You pour the cake batter in [src].</span>")
-			I.reagents.remove_reagent(/datum/reagent/consumable/synthetic_cake_batter, I.reagents.get_reagent_amount(/datum/reagent/consumable/synthetic_cake_batter))
-			return
+			if(fuel >= max_fuel)
+				fuel = max_fuel
+				to_chat(user, "<span class='warning'>The machine's tank is full!</span>")
+				return
+			else
+				fuel += (10 * (I.reagents.get_reagent_amount(/datum/reagent/consumable/synthetic_cake_batter)))
+				to_chat(user, "<span class='notice'>You pour the cake batter in [src].</span>")
+				I.reagents.remove_reagent(/datum/reagent/consumable/synthetic_cake_batter, I.reagents.get_reagent_amount(/datum/reagent/consumable/synthetic_cake_batter))
+				return
 	if(is_type_in_typecache(I, cake_blacklist) || HAS_TRAIT(I, TRAIT_NODROP) || (I.item_flags & (ABSTRACT | DROPDEL)))
 		return ..()
 	else if(!caked_item)
@@ -92,6 +104,7 @@
 	. = ..()
 	if(in_range(user, src) || isobserver(user))
 		. += "<span class='notice'>It has <b>[fuel]</b> fuel left.<span>"
+		. += "<span class='notice'>The status display reads: Fuel consumption reduced by <b>[(efficiency*25)-25]</b>%.<br>Machine can hold up to <b>[max_fuel]</b> units of fuel.<br> Speed is increased by <b>[speed*100]%</b><span>"
 
 /obj/machinery/cake_printer/Exited(atom/movable/AM)
 	if(AM == caked_item)
