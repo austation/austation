@@ -16,7 +16,6 @@
               /obj/item/slime_extract/orange,
               /obj/item/slime_extract/grey,
               /obj/item/slime_extract/grey)
-
 	crate_name = "xenobiology common crate"
 	crate_type = /obj/structure/closet/crate/secure/science
 
@@ -34,7 +33,6 @@
 			  /obj/item/slime_extract/silver,
 			  /obj/item/slime_extract/gold,
 			  /obj/item/slime_extract/red)
-
 	crate_name = "xenobiology intermediate crate"
 	crate_type = /obj/structure/closet/crate/secure/science
 
@@ -52,6 +50,5 @@
 			  /obj/item/slime_extract/lightpink,
 			  /obj/item/slime_extract/pyrite,
 			  /obj/item/slime_extract/adamantine)
-
 	crate_name = "xenobiology advanced crate"
 	crate_type = /obj/structure/closet/crate/secure/science
