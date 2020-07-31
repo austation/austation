@@ -55,6 +55,18 @@
 		max_storage = 100 * B.rating
 	max_fuel = max_storage
 
+/obj/machinery/cake_printer/emag_act(mob/user)
+	. = ..()
+	if(!(obj_flags & EMAGGED)) //If it is not already emagged, emag it.
+		to_chat(user, "<span class='warning'>You disable the [src]'s safety features, allowing it's cakes to be toxic.</span>")
+		do_sparks(5, TRUE, src)
+		obj_flags |= EMAGGED
+		log_game("[key_name(user)] emagged [src]")
+		message_admins("[key_name_admin(user)] emagged [src]")
+	else
+		to_chat(user, "<span class='warning'>The status display on [src] is already too damaged to short it again.</span>")
+		return
+
 /obj/machinery/cake_printer/attackby(obj/item/I, mob/user)
 	if(user.a_intent == INTENT_HARM)
 		return ..()
@@ -106,6 +118,8 @@
 		else
 			. += "<span class='notice'>Alt-click to reset the scanner, current scanned item is [item_scanned].<span>"
 		. += "<span class='notice'>The status display reads: Fuel consumption reduced by <b>[(efficiency*25)-25]</b>%.<br>Machine can hold up to <b>[max_fuel]</b> units of fuel.<br> Speed is increased by <b>[(speed*100)-100]%</b><span>"
+		if(src.obj_flags == EMAGGED)
+			. += "<span class='warning'>It's status display looks a bit burnt!"
 
 /obj/machinery/cake_printer/Exited(atom/movable/AM)
 	if(AM == caked_item)
@@ -138,7 +152,10 @@
 		return
 	if(!processing)
 		to_chat(user, "<span class='notice'>You start [src]'s printing process.</span>")
-		caked_item = new/obj/item/reagent_containers/food/snacks/synthetic_cake(src, item_scanned)
+		if(src.obj_flags == EMAGGED)
+			caked_item = new/obj/item/reagent_containers/food/snacks/synthetic_cake/toxic(src, item_scanned)
+		else
+			caked_item = new/obj/item/reagent_containers/food/snacks/synthetic_cake(src, item_scanned)
 		visible_message("<span class='notice'>[user] starts [src]'s printing process.</span>")
 		processing = TRUE
 		update_icon()
