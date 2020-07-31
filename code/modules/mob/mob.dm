@@ -228,8 +228,6 @@
 		if(L?.client?.holder?.fakekey)
 			admin_stealth = TRUE
 	for(var/mob/M in get_hearers_in_view(range, src))
-		if(istype(M, /mob/dead/observer) && admin_stealth) //austation -- terra you nerd
-			continue
 		var/msg = message
 		if(self_message && M==src)
 			msg = self_message
