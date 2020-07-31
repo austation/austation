@@ -39,10 +39,12 @@
 	obj_flags = caked.obj_flags
 
 /obj/item/reagent_containers/food/snacks/synthetic_cake/suicide_act(mob/user)
-	var/obj/item/bodypart/l_arm = user.get_bodypart(BODY_ZONE_L_ARM)
-	var/obj/item/bodypart/r_arm = user.get_bodypart(BODY_ZONE_R_ARM)
 	user.visible_message("<span class='suicide'>[user] rips off their own arm in a spray of crumbs and icing. They're made of cake!</span>")
 	if(iscarbon(user))
+		var/mob/living/carbon/C = user
+		var/obj/item/bodypart/l_arm = C.get_bodypart(BODY_ZONE_L_ARM)
+		var/obj/item/bodypart/r_arm = C.get_bodypart(BODY_ZONE_R_ARM)
+		C.blood_volume = 0
 		if(prob(50))
 			l_arm.dismember()
 		else
