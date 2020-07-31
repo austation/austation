@@ -1,5 +1,0 @@
-author: "thelaughingbomb"
-delete-after: True
-changes: 
-  - rscdel: "no more chemlab in plumbing"
-  - bugfix: "var edit in mapping is bad"
