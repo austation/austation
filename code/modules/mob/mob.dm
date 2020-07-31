@@ -222,11 +222,13 @@
 	var/range = 7
 	if(hearing_distance)
 		range = hearing_distance
+	/* austation begin -- cringe bee runtime fix
 	var/admin_stealth = FALSE
 	if(istype(src, /mob/living))
 		var/mob/living/L = src
 		if(L?.client?.holder?.fakekey)
 			admin_stealth = TRUE
+	*/
 	for(var/mob/M in get_hearers_in_view(range, src))
 		var/msg = message
 		if(self_message && M==src)
