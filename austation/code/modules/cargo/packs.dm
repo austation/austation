@@ -55,12 +55,10 @@
 
 /datum/supply_pack/science/xenobiology_illegal
 	name = "Smuggled slime core crate"
-	desc = "We found a few monkies holding these, would you have a use for them?"
-	cost = 3000
+	desc = "Heya mate, these banging slime cores are explosive 'n shit, make sure not to fill them with plasma and hold them else your arm will fly off like a boomerang!"
+	cost = 6500
 	contraband = TRUE
 	contains = list(
-	              /obj/item/slime_extract/grey,
-	              /obj/item/slime_extract/grey,
-	              /obj/item/slime_extract/grey,
-	              /obj/item/slime_extract/grey)
+	              /obj/item/slime_extract/oil,
+	              /obj/item/slime_extract/oil)
 	crate_name = "Smuggled slime core crate"
