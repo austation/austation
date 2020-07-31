@@ -262,6 +262,7 @@
 		else
 			H.radiation += trit_pp/10
 
+		/*removed beestation code begin -- removed in pull #1953
 	// Nitryl
 		var/nitryl_pp = breath.get_breath_partial_pressure(breath.get_moles(/datum/gas/nitryl))
 		if (prob(nitryl_pp))
@@ -279,6 +280,36 @@
 			H.reagents.add_reagent(/datum/reagent/nitryl,1)
 
 		breath.adjust_moles(/datum/gas/nitryl, -gas_breathed)
+		removed beestation code end*/
+
+			//austation begin -- added in pull #1953
+  // Nitryl
+			var/nitryl_pp = breath.get_breath_partial_pressure(breath.get_moles(/datum/gas/nitryl))
+
+			if (nitryl_pp > 40)
+				H.emote("gasp")
+				H.adjustFireLoss(10)
+				if (prob(nitryl_pp/2))
+					to_chat(H, "<span class='alert'>Your throat closes up!</span>")
+					H.silent = max(H.silent, 3)
+
+			gas_breathed = breath.get_moles(/datum/gas/nitryl)
+			var/existingnitryl = H.reagents.get_reagent_amount(/datum/reagent/nitryl)
+			var/nitryllevel = 0
+
+			if (gas_breathed > gas_stimulation_min)
+				nitryllevel = 1
+				if(nitryl_pp > 20)
+					nitryllevel = 2
+					H.adjustFireLoss(nitryl_pp/4)
+
+				H.reagents.add_reagent(/datum/reagent/nitryl,max(0, nitryllevel - existingnitryl))
+
+			else if(existingnitryl > 0)
+				H.reagents.remove_reagent(/datum/reagent/nitryl, existingnitryl)
+
+			breath.adjust_moles(/datum/gas/nitryl, -gas_breathed)
+			//austation end
 
 	// Stimulum
 		gas_breathed = breath.get_moles(/datum/gas/stimulum)
@@ -423,6 +454,7 @@
 	desc = "A cybernetic version of the lungs found in traditional humanoid entities. Allows for greater intakes of oxygen than organic lungs, requiring slightly less pressure."
 	icon_state = "lungs-c"
 	organ_flags = ORGAN_SYNTHETIC
+	status = ORGAN_ROBOTIC
 	maxHealth = 1.1 * STANDARD_ORGAN_THRESHOLD
 	safe_oxygen_min = 13
 
@@ -450,4 +482,3 @@ obj/item/organ/lungs/apid
 	desc = "Lungs from an apid, or beeperson. Thanks to the many spiracles an apid has, these lungs are capable of gathering more oxygen from low-pressure enviroments."
 	icon_state = "lungs"
 	safe_oxygen_min = 8
-
