@@ -2,7 +2,7 @@
 	name = "bluespace whetstone"
 	desc = "A bluespace block that will let your weapon phase through space."
 	increment = 10
-	max = 40
+	max = 50
 	prefix = "bluespace"
 	requires_sharpness = 0
 	var/range_increment = 1 // amount to increase range by
