@@ -9,6 +9,7 @@
 	idle_power_usage = 40
 	circuit = /obj/item/circuitboard/machine/cake_printer
 	var/obj/item/reagent_containers/food/snacks/synthetic_cake/caked_item
+	var/obj/item/item_scanned
 	var/processing = FALSE
 	var/efficiency = 1
 	var/speed = 1
@@ -81,8 +82,8 @@
 				return ..()
 	if(is_type_in_typecache(I, cake_blacklist) || HAS_TRAIT(I, TRAIT_NODROP) || (I.item_flags & (ABSTRACT | DROPDEL)))
 		return ..()
-	caked_item = new/obj/item/reagent_containers/food/snacks/synthetic_cake(src, I)
-	switch(caked_item.w_class)
+	item_scanned = I
+	switch(item_scanned.w_class)
 		if(WEIGHT_CLASS_TINY)
 			fuelcost = 15 / efficiency
 		if(WEIGHT_CLASS_SMALL)
@@ -93,14 +94,14 @@
 			fuelcost = 100 / efficiency
 		if(WEIGHT_CLASS_GIGANTIC)
 			fuelcost = 200 / efficiency
-	to_chat(user, "<span class='notice'>You scan [caked_item] on [src].</span>")
+	to_chat(user, "<span class='notice'>You scan [item_scanned] on [src].</span>")
 	return
 
 /obj/machinery/cake_printer/examine(mob/user)
 	. = ..()
 	if(in_range(user, src) || isobserver(user))
 		. += "<span class='notice'>It has <b>[fuel]</b> fuel left.<span>"
-		. += "<span class='notice'>Alt-click to reset the scanner.<span>"
+		. += "<span class='notice'>Alt-click to reset the scanner, current scanned item is [item_scanned].<span>"
 		. += "<span class='notice'>The status display reads: Fuel consumption reduced by <b>[(efficiency*25)-25]</b>%.<br>Machine can hold up to <b>[max_fuel]</b> units of fuel.<br> Speed is increased by <b>[(speed*100)-100]%</b><span>"
 
 /obj/machinery/cake_printer/Exited(atom/movable/AM)
@@ -110,6 +111,7 @@
 
 /obj/machinery/cake_printer/Destroy()
 	caked_item = null
+	item_scanned = null
 	. = ..()
 
 /obj/machinery/cake_printer/attack_ai(mob/user)
@@ -131,9 +133,10 @@
 	if(fuelcost > fuel)
 		to_chat(user, "<span class='warning'>Not enough fuel, add more cake batter!</span>")
 		return
-	if(caked_item && !processing)
+	if(!processing)
 		to_chat(user, "<span class='notice'>You start [src]'s printing process.</span>")
-		visible_message("<span class='boldnotice'>[user] starts [src]'s printing process.</span>")
+		caked_item = new/obj/item/reagent_containers/food/snacks/synthetic_cake(src, item_scanned)
+		visible_message("<span class='notice'>[user] starts [src]'s printing process.</span>")
 		processing = TRUE
 		update_icon()
 		use_power(300)
@@ -151,7 +154,9 @@
 	if(processing)
 		to_chat(user, "<span class='warning'>[src] is printing!</span>")
 		return
-	visible_message("<span class='boldnotice'>[user] clears [src]'s scanner.</span>")
+	visible_message("<span class='notice'>[user] clears [src]'s scanner.</span>")
 	to_chat(user, "<span class='notice'>You clear [src]'s scanner.</span>")
 	caked_item = null
+	item_scanned = null
+
 
