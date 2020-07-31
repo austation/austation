@@ -1,6 +1,8 @@
 /obj/item/sharpener/bluespace
 	name = "bluespace whetstone"
 	desc = "A bluespace block that will let your weapon phase through space."
+	icon = 'austation/icons/obj/kitchen.dmi'
+	icon_state = "bsharpener"
 	increment = 10
 	max = 50
 	prefix = "bluespace"
