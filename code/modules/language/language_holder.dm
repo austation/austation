@@ -11,10 +11,6 @@
 /datum/language_holder/New(owner)
 	src.owner = owner
 
-	// austation begin -- species languages from /tg/
-	languages += austation_languages
-	shadow_languages += austation_shadow_languages
-	// austation end
 	languages = typecacheof(languages)
 	shadow_languages = typecacheof(shadow_languages)
 

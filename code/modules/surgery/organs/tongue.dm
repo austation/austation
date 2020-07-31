@@ -25,7 +25,6 @@
 
 /obj/item/organ/tongue/Initialize(mapload)
 	. = ..()
-	languages_possible_base += austation_languages_possible_base // austation -- species languages from /tg/
 	languages_possible = languages_possible_base
 
 /obj/item/organ/tongue/proc/handle_speech(datum/source, list/speech_args)
