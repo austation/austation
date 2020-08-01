@@ -1,7 +1,17 @@
 /obj/item/robot_module/medical/be_transformed_to(obj/item/robot_module/old_module) //Pick a icon starts here
 
 	var/mob/living/silicon/robot/R = loc
-	var/borg_icon = input(R, "Select an icon!", "Robot Icon", null) as null|anything in list("Default", "Heavy", "Sleek", "Marina", "Droid", "Eyebot", "Skirt")
+	var/list/robotstyles_med = list(
+		"Default" = image(icon = 'icons/mob/robots.dmi', icon_state = "medical"),
+		"Droid" = image(icon = 'austation/icons/mob/robots.dmi', icon_state = "cmedical"),
+		"Sleek" = image(icon = 'austation/icons/mob/robots.dmi', icon_state = "sleekmed"),
+		"Marina" = image(icon = 'austation/icons/mob/robots.dmi', icon_state = "marinamed"),
+		"Eyebot" = image(icon = 'austation/icons/mob/robots.dmi', icon_state = "eyebotmed"),
+		"Heavy" = image(icon = 'austation/icons/mob/robots.dmi', icon_state = "heavymed"),
+		"Skirt" = image(icon = 'austation/icons/mob/robots.dmi', icon_state = "banangarang-Medical"))
+	
+	var/borg_icon = show_radial_menu(src, src, robotstyles_med, custom_check = CALLBACK(src, .proc/check_menu), radius = 38, require_near = TRUE)
+
 	if(!borg_icon)
 		return FALSE
 	switch(borg_icon)
