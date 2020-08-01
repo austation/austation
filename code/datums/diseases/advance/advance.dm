@@ -51,7 +51,6 @@
 	Refresh()
 
 /datum/disease/advance/Destroy()
-	SEND_SIGNAL(affected_mob, COMSIG_DISEASE_END, GetDiseaseID())
 	if(processing)
 		for(var/datum/symptom/S in symptoms)
 			S.End(src)

@@ -293,15 +293,11 @@
 		var/datum/species/old_species = dna.species
 		dna.species = new_race
 		dna.species.on_species_gain(src, old_species, pref_load)
-		SEND_SIGNAL(src, COMSIG_CARBON_SPECIESCHANGE, new_race)
-		if(ishuman(src))
-			qdel(language_holder)
-			var/species_holder = initial(mrace.species_language_holder)
-			language_holder = new species_holder(src)
-		update_atom_languages()
 
 /mob/living/carbon/human/set_species(datum/species/mrace, icon_update = TRUE, pref_load = FALSE)
 	..()
+	if(is_banned_from(ckey, CATBAN) && !istype(dna.species, /datum/species/human/felinid)) // austation start -- ports catbans
+		set_species(/datum/species/human/felinid, icon_update=TRUE) // austation end
 	if(icon_update)
 		update_body()
 		update_hair()

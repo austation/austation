@@ -223,10 +223,12 @@
 				probab = 95
 		if(prob(probab))
 			if(istype(O, /obj/structure/window) || istype(O, /obj/structure/grille))
-				if(attack_cooldown < world.time && nutrition <= get_hunger_nutrition())
+				if(nutrition <= get_hunger_nutrition() && !Atkcool)
 					if (is_adult || prob(5))
 						O.attack_slime(src)
-						attack_cooldown = world.time + attack_cooldown_time
+						Atkcool = 1
+						spawn(45)
+							Atkcool = 0
 
 /mob/living/simple_animal/slime/Process_Spacemove(movement_dir = 0)
 	return 2

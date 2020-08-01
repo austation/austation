@@ -478,9 +478,7 @@
 		S.ckey = C.ckey
 		S.fully_replace_character_name(null, "The spirit of [name]")
 		S.status_flags |= GODMODE
-		S.copy_languages(user, LANGUAGE_MASTER)	//Make sure the sword can understand and communicate with the user.
-		S.update_atom_languages()
-		grant_all_languages(FALSE, FALSE, TRUE)	//Grants omnitongue
+		S.language_holder = user.language_holder.copy(S)
 		var/input = sanitize_name(stripped_input(S,"What are you named?", ,"", MAX_NAME_LEN))
 
 		if(src && input)
@@ -684,11 +682,8 @@
 	. = ..()
 
 /obj/item/nullrod/tribal_knife/process()
-	slowdown = rand(-10, 10)/10
-	if(iscarbon(loc))
-		var/mob/living/carbon/wielder = loc
-		if(wielder.is_holding(src))
-			wielder.update_equipment_speed_mods()
+	slowdown = rand(-2, 2)
+
 
 /obj/item/nullrod/pitchfork
 	icon_state = "pitchfork0"

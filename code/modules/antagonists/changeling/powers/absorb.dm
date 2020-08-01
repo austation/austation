@@ -62,7 +62,7 @@
 
 	if(target.mind && user.mind)//if the victim and user have minds
 		// Absorb a lizard, speak Draconic.
-		owner.copy_languages(target, LANGUAGE_ABSORB)
+		user.copy_known_languages_from(target)
 
 		var/datum/mind/suckedbrain = target.mind
 		user.mind.memory += "<BR><b>We've absorbed [target]'s memories into our own...</b><BR>[suckedbrain.memory]<BR>"

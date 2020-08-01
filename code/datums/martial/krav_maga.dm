@@ -132,13 +132,13 @@
 	log_combat(A, D, "punched")
 	var/obj/item/bodypart/affecting = D.get_bodypart(ran_zone(A.zone_selected))
 	var/armor_block = D.run_armor_check(affecting, "melee")
-	var/picked_hit_type = pick("punched", "kicked")
+	var/picked_hit_type = pick("punch", "kick")
 	var/bonus_damage = 0
 	if(!(D.mobility_flags & MOBILITY_STAND))
 		bonus_damage += 5
-		picked_hit_type = "stomped"
+		picked_hit_type = "stomp"
 	D.apply_damage(rand(5,10) + bonus_damage, A.dna.species.attack_type, affecting, armor_block)
-	if(picked_hit_type == "kicked" || picked_hit_type == "stomped")
+	if(picked_hit_type == "kick" || picked_hit_type == "stomp")
 		A.do_attack_animation(D, ATTACK_EFFECT_KICK)
 		playsound(get_turf(D), 'sound/effects/hit_kick.ogg', 50, 1, -1)
 	else

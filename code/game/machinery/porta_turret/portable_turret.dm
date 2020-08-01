@@ -496,7 +496,7 @@
 			threatcount += 4
 
 	if(shoot_unloyal)
-		if (!HAS_TRAIT(perp, TRAIT_MINDSHIELD) ||  istype(perp.get_item_by_slot(SLOT_HEAD), /obj/item/clothing/head/foilhat))
+		if (!HAS_TRAIT(perp, TRAIT_MINDSHIELD))
 			threatcount += 4
 
 	return threatcount

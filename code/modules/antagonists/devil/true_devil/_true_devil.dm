@@ -29,7 +29,7 @@
 /mob/living/carbon/true_devil/Initialize()
 	create_bodyparts() //initialize bodyparts
 	create_internal_organs()
-	grant_all_languages()
+	grant_all_languages(omnitongue=TRUE)
 	..()
 
 /mob/living/carbon/true_devil/create_internal_organs()

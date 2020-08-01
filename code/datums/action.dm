@@ -20,8 +20,6 @@
 	var/button_icon_state = "default" //And this is the state for the action icon
 	var/mob/owner
 
-	var/has_cooldown_timer = FALSE
-
 /datum/action/New(Target)
 	link_to(Target)
 	button = new
@@ -136,7 +134,7 @@
 			ApplyIcon(button, force)
 
 		if(!IsAvailable())
-			button.color = has_cooldown_timer ? rgb(219, 219, 219, 255) : transparent_when_unavailable ? rgb(128,0,0,128) : rgb(128,0,0)
+			button.color = transparent_when_unavailable ? rgb(128,0,0,128) : rgb(128,0,0)
 		else
 			button.color = rgb(255,255,255,255)
 			return 1

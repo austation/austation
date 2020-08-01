@@ -90,7 +90,7 @@
 
 	trauma = _trauma
 	owner = trauma.owner
-	copy_languages(owner, LANGUAGE_FRIEND)
+	copy_known_languages_from(owner, TRUE)
 
 	setup_friend()
 
