@@ -22,7 +22,7 @@ jobs:
         with:
           node-version: '>=12.13'
       - name: Build TGUI
-        run: bin/tgui --ci
+        run: bin/tgui --action
         working-directory: ./tgui
       - name: Commit Artifacts
         run: |

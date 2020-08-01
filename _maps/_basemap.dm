@@ -12,6 +12,7 @@
 		#include "map_files\BoxStation\BoxStation.dmm"
 		#include "map_files\Donutstation\Donutstation.dmm"
 		#include "map_files\KiloStation\KiloStation.dmm"
+		#include "map_files\Austation\Austation.dmm" //austation -- pool map
 
 		#ifdef TRAVISBUILDING
 			#include "templates.dm"

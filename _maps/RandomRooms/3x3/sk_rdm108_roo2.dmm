@@ -1,0 +1,37 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"d" = (
+/mob/living/simple_animal/hostile/retaliate/kangaroo,
+/turf/open/floor/plating/asteroid,
+/area/template_noop)
+"e" = (
+/turf/open/floor/plating/asteroid,
+/area/template_noop)
+"k" = (
+/obj/structure/flora/ausbushes,
+/turf/open/floor/plating/asteroid,
+/area/template_noop)
+"z" = (
+/mob/living/simple_animal/hostile/retaliate/kangaroo,
+/obj/structure/flora/ausbushes,
+/turf/open/floor/plating/asteroid,
+/area/template_noop)
+"T" = (
+/obj/structure/sink/puddle,
+/turf/open/floor/plating/asteroid,
+/area/template_noop)
+
+(1,1,1) = {"
+d
+e
+k
+"}
+(2,1,1) = {"
+e
+T
+d
+"}
+(3,1,1) = {"
+z
+e
+e
+"}
