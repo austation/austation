@@ -51,7 +51,7 @@
 		"Heavy" = image(icon = 'austation/icons/mob/robots.dmi', icon_state = "heavyeng"),
 		"Sleek" = image(icon = 'austation/icons/mob/robots.dmi', icon_state = "sleekeng"),
 		"Marina" = image(icon = 'austation/icons/mob/robots.dmi', icon_state = "marinaeng"),
-		"Can" = image(icon = 'austation/icons/mob/robots.dmi', icon_state = "eyebotmed"),
+		"Can" = image(icon = 'austation/icons/mob/robots.dmi', icon_state = "caneng"),
 		"Spider" = image(icon = 'austation/icons/mob/robots.dmi', icon_state = "spidereng"),
 		"Skirt" = image(icon = 'austation/icons/mob/robots.dmi', icon_state = "banangarang-Engineering"))
 	
@@ -94,6 +94,15 @@
 /obj/item/robot_module/security/be_transformed_to(obj/item/robot_module/old_module) //Pick a icon starts here
 
 	var/mob/living/silicon/robot/R = loc
+	var/list/robotstyles_sec = list(
+		"Default" = image(icon = 'icons/mob/robots.dmi', icon_state = "sec"),
+		"Heavy" = image(icon = 'austation/icons/mob/robots.dmi', icon_state = "heavysec"),
+		"Sleek" = image(icon = 'austation/icons/mob/robots.dmi', icon_state = "sleeksec"),
+		"Marina" = image(icon = 'austation/icons/mob/robots.dmi', icon_state = "marinasec"),
+		"Can" = image(icon = 'austation/icons/mob/robots.dmi', icon_state = "cansec"),
+		"Spider" = image(icon = 'austation/icons/mob/robots.dmi', icon_state = "spidersec"),
+		"Skirt" = image(icon = 'austation/icons/mob/robots.dmi', icon_state = "banangarang-Security"))
+	
 	var/borg_icon = input(R, "Select an icon!", "Robot Icon", null) as null|anything in list("Default", "Heavy", "Sleek", "Can", "Marina", "Spider", "Skirt")
 	if(!borg_icon)
 		return FALSE
@@ -108,14 +117,14 @@
 			R.icon = 'austation/icons/mob/robot.dmi'
 			cyborg_base_icon = "sleeksec"
 			hat_offset = -1
-		if("Can")
-			R.icon = 'austation/icons/mob/robot.dmi'
-			cyborg_base_icon = "cansec"
-			hat_offset = 3
 		if("Marina")
 			R.icon = 'austation/icons/mob/robot.dmi'
 			cyborg_base_icon = "marinasec"
 			hat_offset = 2
+		if("Can")
+			R.icon = 'austation/icons/mob/robot.dmi'
+			cyborg_base_icon = "cansec"
+			hat_offset = 3
 		if("Spider")
 			R.icon = 'austation/icons/mob/robot.dmi'
 			cyborg_base_icon = "spidersec"
@@ -124,9 +133,6 @@
 			R.icon = 'austation/icons/mob/robot.dmi'
 			cyborg_base_icon = "banangarang-Security"
 			hat_offset = 0
-	if(R.ckey == "ZombiesVsPlants")
-		borg_icon = "Skirt"
-		return
 	return ..()
 
 /obj/item/robot_module/peacekeeper/be_transformed_to(obj/item/robot_module/old_module) //Pick a icon starts here
