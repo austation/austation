@@ -103,7 +103,8 @@
 		"Spider" = image(icon = 'austation/icons/mob/robots.dmi', icon_state = "spidersec"),
 		"Skirt" = image(icon = 'austation/icons/mob/robots.dmi', icon_state = "banangarang-Security"))
 	
-	var/borg_icon = input(R, "Select an icon!", "Robot Icon", null) as null|anything in list("Default", "Heavy", "Sleek", "Can", "Marina", "Spider", "Skirt")
+	var/borg_icon = show_radial_menu(src, src, robotstyles_sec, custom_check = CALLBACK(src, .proc/check_menu), radius = 38, require_near = TRUE)
+
 	if(!borg_icon)
 		return FALSE
 	switch(borg_icon)
@@ -138,7 +139,12 @@
 /obj/item/robot_module/peacekeeper/be_transformed_to(obj/item/robot_module/old_module) //Pick a icon starts here
 
 	var/mob/living/silicon/robot/R = loc
-	var/borg_icon = input(R, "Select an icon!", "Robot Icon", null) as null|anything in list("Default", "Spider")
+	var/list/robotstyles_sec = list(
+		"Default" = image(icon = 'icons/mob/robots.dmi', icon_state = "peace"),
+		"Spider" = image(icon = 'austation/icons/mob/robots.dmi', icon_state = "whitespider"))
+	
+	var/borg_icon = show_radial_menu(src, src, robotstyles_peace, custom_check = CALLBACK(src, .proc/check_menu), radius = 38, require_near = TRUE)
+
 	if(!borg_icon)
 		return FALSE
 	switch(borg_icon)
@@ -152,12 +158,24 @@
 /obj/item/robot_module/janitor/be_transformed_to(obj/item/robot_module/old_module) //Pick a icon starts here
 
 	var/mob/living/silicon/robot/R = loc
-	var/borg_icon = input(R, "Select an icon!", "Robot Icon", null) as null|anything in list("Default", "Can", "Marina", "Sleek", "Skirt")
+	var/list/robotstyles_jan = list(
+		"Default" = image(icon = 'icons/mob/robots.dmi', icon_state = "janitor"),
+		"Sleek" = image(icon = 'austation/icons/mob/robots.dmi', icon_state = "sleekjan"),
+		"Can" = image(icon = 'austation/icons/mob/robots.dmi', icon_state = "canjan"),
+		"Marina" = image(icon = 'austation/icons/mob/robots.dmi', icon_state = "marinajan"),
+		"Skirt" = image(icon = 'austation/icons/mob/robots.dmi', icon_state = "banangarang-Janitor"))
+	
+	var/borg_icon = show_radial_menu(src, src, robotstyles_jan, custom_check = CALLBACK(src, .proc/check_menu), radius = 38, require_near = TRUE)
+
 	if(!borg_icon)
 		return FALSE
 	switch(borg_icon)
 		if("Default")
 			cyborg_base_icon = "janitor"
+		if("Sleek")
+			R.icon = 'austation/icons/mob/robot.dmi'
+			cyborg_base_icon = "sleekjan"
+			hat_offset = -1
 		if("Can")
 			R.icon = 'austation/icons/mob/robot.dmi'
 			cyborg_base_icon = "canjan"
@@ -166,16 +184,9 @@
 			R.icon = 'austation/icons/mob/robot.dmi'
 			cyborg_base_icon = "marinajan"
 			hat_offset = 2
-		if("Sleek")
-			R.icon = 'austation/icons/mob/robot.dmi'
-			cyborg_base_icon = "sleekjan"
-			hat_offset = -1
 		if("Skirt")
 			R.icon = 'austation/icons/mob/robot.dmi'
 			cyborg_base_icon = "banangarang-Janitor"
 			hat_offset = 0
-	if(R.ckey == "ZombiesVsPlants")
-		borg_icon = "Skirt"
-		return
 	return ..()
 
