@@ -1,5 +1,5 @@
-/obj/item/robot_module/medical/be_transformed_to(obj/item/robot_module/old_module) //Pick a icon starts here
-
+//Picking a cutom borg sprite, called after a player picks their module
+/obj/item/robot_module/medical/be_transformed_to(obj/item/robot_module/old_module) //medical
 	var/mob/living/silicon/robot/R = loc
 	var/list/robotstyles_med = list(
 		"Default" = image(icon = 'icons/mob/robots.dmi', icon_state = "medical"),
@@ -43,8 +43,7 @@
 			hat_offset = 0
 	return ..()
 
-/obj/item/robot_module/engineering/be_transformed_to(obj/item/robot_module/old_module) //Pick a icon starts here
-
+/obj/item/robot_module/engineering/be_transformed_to(obj/item/robot_module/old_module) //engineering
 	var/mob/living/silicon/robot/R = loc
 	var/list/robotstyles_eng = list(
 		"Default" = image(icon = 'icons/mob/robots.dmi', icon_state = "engineer"),
@@ -91,8 +90,7 @@
 			hat_offset = 0
 	return ..()
 
-/obj/item/robot_module/security/be_transformed_to(obj/item/robot_module/old_module) //Pick a icon starts here
-
+/obj/item/robot_module/security/be_transformed_to(obj/item/robot_module/old_module) //security
 	var/mob/living/silicon/robot/R = loc
 	var/list/robotstyles_sec = list(
 		"Default" = image(icon = 'icons/mob/robots.dmi', icon_state = "sec"),
@@ -136,8 +134,7 @@
 			hat_offset = 0
 	return ..()
 
-/obj/item/robot_module/peacekeeper/be_transformed_to(obj/item/robot_module/old_module) //Pick a icon starts here
-
+/obj/item/robot_module/peacekeeper/be_transformed_to(obj/item/robot_module/old_module) //peacekeeper
 	var/mob/living/silicon/robot/R = loc
 	var/list/robotstyles_sec = list(
 		"Default" = image(icon = 'icons/mob/robots.dmi', icon_state = "peace"),
@@ -155,8 +152,7 @@
 			cyborg_base_icon = "whitespider"
 	return ..()
 
-/obj/item/robot_module/janitor/be_transformed_to(obj/item/robot_module/old_module) //Pick a icon starts here
-
+/obj/item/robot_module/janitor/be_transformed_to(obj/item/robot_module/old_module) //janitor
 	var/mob/living/silicon/robot/R = loc
 	var/list/robotstyles_jan = list(
 		"Default" = image(icon = 'icons/mob/robots.dmi', icon_state = "janitor"),
@@ -190,3 +186,42 @@
 			hat_offset = 0
 	return ..()
 
+/obj/item/robot_module/butler/be_transformed_to(obj/item/robot_module/old_module) //service
+	var/mob/living/silicon/robot/R = loc
+	var/list/robotstyles_serv = list(
+		"Waiter" = image(icon = 'icons/mob/robots.dmi', icon_state = "service_m"),
+		"Waitress" = image(icon = 'icons/mob/robots.dmi', icon_state = "service_f"),
+		"Heavy" = image(icon = 'austation/icons/mob/robots.dmi', icon_state = "heavyserv"),
+		"Bro" = image(icon = 'icons/mob/robots.dmi', icon_state = "brobot"),
+		"Kent" = image(icon = 'icons/mob/robots.dmi', icon_state = "kent"),
+		"Top" = image(icon = 'icons/mob/robots.dmi', icon_state = "tophat"),
+		"Skirt" = image(icon = 'austation/icons/mob/robots.dmi', icon_state = "banangarang-Service"))
+
+	var/borg_icon = show_radial_menu(src, src, robotstyles_serv, custom_check = CALLBACK(src, .proc/check_menu), radius = 38, require_near = TRUE)
+
+	if(!borg_icon)
+		return FALSE
+	switch(borg_icon)
+		if("Waiter")
+			cyborg_base_icon = "service_m"
+		if("Waitress")
+			cyborg_base_icon = "service_f"
+		if("Heavy")
+			R.icon = 'austation/icons/mob/robot.dmi'
+			cyborg_base_icon = "heavyserv"
+			special_light_key = "heavyserv"
+		if("Bro")
+			cyborg_base_icon = "brobot"
+		if("Kent")
+			cyborg_base_icon = "kent"
+			special_light_key = "medical"
+			hat_offset = 3
+		if("Tophat")
+			cyborg_base_icon = "tophat"
+			special_light_key = null
+			hat_offset = INFINITY //He is already wearing a hat
+		if("Skirt")
+			R.icon = 'austation/icons/mob/robot.dmi'
+			cyborg_base_icon = "banangarang-Service"
+			hat_offset = 0
+	return ..()
