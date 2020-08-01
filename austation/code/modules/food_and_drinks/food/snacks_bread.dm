@@ -15,7 +15,7 @@
 	icon = 'icons/obj/food/food.dmi'
 	icon_state = ""
 	bitesize = 3
-	list_reagents = list(/datum/reagent/toxin/chloralhydrate = 5)
+	list_reagents = list(/datum/reagent/toxin/chloralhydrate = 10)
 	tastes = list("sweetness" = 2,"cake" = 5)
 	foodtype = GRAIN | DAIRY | SUGAR
 

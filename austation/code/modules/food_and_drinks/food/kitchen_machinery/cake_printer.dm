@@ -10,7 +10,6 @@
 	circuit = /obj/item/circuitboard/machine/cake_printer
 	var/obj/item/reagent_containers/food/snacks/synthetic_cake/caked_item
 	var/obj/item/item_scanned
-	var/cake_emagged = FALSE
 	var/processing = FALSE
 	var/efficiency = 1
 	var/speed = 1
@@ -62,7 +61,6 @@
 		to_chat(user, "<span class='warning'>You disable the [src]'s safety features, allowing it's cakes to be toxic.</span>")
 		do_sparks(5, TRUE, src)
 		obj_flags |= EMAGGED
-		cake_emagged = TRUE
 		log_game("[key_name(user)] emagged [src]")
 		message_admins("[key_name_admin(user)] emagged [src]")
 	else
@@ -124,7 +122,7 @@
 		else
 			. += "<span class='notice'>Alt-click to reset the scanner, current scanned item is [item_scanned].<span>"
 		. += "<span class='notice'>The status display reads: Fuel consumption reduced by <b>[(efficiency*25)-25]</b>%.<br>Machine can hold up to <b>[max_fuel]</b> units of fuel.<br> Speed is increased by <b>[(speed*100)-100]%</b><span>"
-		if(cake_emagged == TRUE)
+		if(obj_flags & EMAGGED)
 			. += "<span class='warning'>It's status display looks a bit burnt!"
 
 /obj/machinery/cake_printer/Exited(atom/movable/AM)
@@ -135,7 +133,6 @@
 /obj/machinery/cake_printer/Destroy()
 	caked_item = null
 	item_scanned = null
-	cake_emagged = FALSE
 	. = ..()
 
 /obj/machinery/cake_printer/attack_ai(mob/user)
@@ -162,7 +159,7 @@
 		return
 	if(!processing)
 		to_chat(user, "<span class='notice'>You start [src]'s printing process.</span>")
-		if(cake_emagged == TRUE)
+		if(obj_flags & EMAGGED)
 			caked_item = new/obj/item/reagent_containers/food/snacks/synthetic_cake/toxic(src, item_scanned)
 		else
 			caked_item = new/obj/item/reagent_containers/food/snacks/synthetic_cake(src, item_scanned)
