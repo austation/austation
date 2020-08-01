@@ -206,7 +206,7 @@
 ///////// There are some announcement sound changes for austation below, unlikely to cause conflicts but they've been labeled in the event that something breaks ///////////
 
 /obj/docking_port/mobile/emergency/request(obj/docking_port/stationary/S, area/signalOrigin, reason, redAlert, set_coefficient=null)
-	if(!isnum(set_coefficient))
+	if(!isnum_safe(set_coefficient))
 		var/security_num = seclevel2num(get_security_level())
 		switch(security_num)
 			if(SEC_LEVEL_GREEN)
