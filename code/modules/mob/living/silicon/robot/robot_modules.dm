@@ -514,19 +514,6 @@
 			cyborg_base_icon = "tophat"
 			special_light_key = null
 			hat_offset = INFINITY //He is already wearing a hat
-		// austation begin -- adding choice and defining the light sprite
-		if("Heavy")
-			R.icon = 'austation/icons/mob/robot.dmi'
-			cyborg_base_icon = "heavyserv"
-			special_light_key = "heavyserv"
-		if("Skirt")
-			R.icon = 'austation/icons/mob/robot.dmi'
-			cyborg_base_icon = "banangarang-Service"
-			hat_offset = 0
-	if(R.ckey == "ZombiesVsPlants")
-		borg_icon = "Skirt"
-		return
-		// austation end
 	return ..()
 
 /obj/item/robot_module/borgi
@@ -573,36 +560,6 @@
 			special_light_key = "miner"
 		if("Spider Miner")
 			cyborg_base_icon = "spidermin"
-			hat_offset = -3 // austation -- setting offset
-		// austation begin -- adding choices
-		if("Marina")
-			R.icon = 'austation/icons/mob/robot.dmi'
-			cyborg_base_icon = "marinamin"
-			hat_offset = 2
-		if("Heavy")
-			R.icon = 'austation/icons/mob/robot.dmi'
-			cyborg_base_icon = "heavymin"
-			hat_offset = -3
-		if("Can")
-			R.icon = 'austation/icons/mob/robot.dmi'
-			cyborg_base_icon = "canmin"
-			hat_offset = 3
-		if("Droid")
-			R.icon = 'austation/icons/mob/robot.dmi'
-			cyborg_base_icon = "cminer"
-			hat_offset = 4
-		if("Sleek")
-			R.icon = 'austation/icons/mob/robot.dmi'
-			cyborg_base_icon = "sleekmin"
-			hat_offset = -1
-		if("Skirt")
-			R.icon = 'austation/icons/mob/robot.dmi'
-			cyborg_base_icon = "banangarang-Miner"
-			hat_offset = 0
-	if(R.ckey == "ZombiesVsPlants")
-		borg_icon = "Skirt"
-		return
-		// austation end
 	return ..()
 
 /obj/item/robot_module/miner/rebuild_modules()

@@ -225,3 +225,55 @@
 			cyborg_base_icon = "banangarang-Service"
 			hat_offset = 0
 	return ..()
+
+/obj/item/robot_module/miner/be_transformed_to(obj/item/robot_module/old_module) //miner
+	var/mob/living/silicon/robot/R = loc
+	var/list/robotstyles_mine = list(
+		"Default" = image(icon = 'icons/mob/robots.dmi', icon_state = "miner"),
+		"Heavy" = image(icon = 'austation/icons/mob/robots.dmi', icon_state = "heavymin"),
+		"Sleek" = image(icon = 'austation/icons/mob/robots.dmi', icon_state = "sleekmin"),
+		"Marina" = image(icon = 'austation/icons/mob/robots.dmi', icon_state = "marinamin"),
+		"Asteroid" = image(icon = 'icons/mob/robots.dmi', icon_state = "minerOLD")
+		"Can" = image(icon = 'austation/icons/mob/robots.dmi', icon_state = "canmin"),
+		"Spider" = image(icon = 'austation/icons/mob/robots.dmi', icon_state = "spidermin"),
+		"Droid" = image(icon = 'austation/icons/mob/robots.dmi', icon_state = "cminer"),
+		"Skirt" = image(icon = 'austation/icons/mob/robots.dmi', icon_state = "banangarang-Miner"))
+
+	var/borg_icon = show_radial_menu(src, src, robotstyles_mine, custom_check = CALLBACK(src, .proc/check_menu), radius = 38, require_near = TRUE)
+
+	if(!borg_icon)
+		return FALSE
+	switch(borg_icon)
+		if("Default")
+			cyborg_base_icon = "miner"
+		if("Heavy")
+			R.icon = 'austation/icons/mob/robot.dmi'
+			cyborg_base_icon = "heavymin"
+			hat_offset = -3
+		if("Sleek")
+			R.icon = 'austation/icons/mob/robot.dmi'
+			cyborg_base_icon = "sleekmin"
+			hat_offset = -1
+		if("Marina")
+			R.icon = 'austation/icons/mob/robot.dmi'
+			cyborg_base_icon = "marinamin"
+			hat_offset = 2
+		if("Asteroid")
+			cyborg_base_icon = "minerOLD"
+			special_light_key = "miner"
+		if("Can")
+			R.icon = 'austation/icons/mob/robot.dmi'
+			cyborg_base_icon = "canmin"
+			hat_offset = 3
+		if("Spider Miner")
+			cyborg_base_icon = "spidermin"
+			hat_offset = -3 
+		if("Droid")
+			R.icon = 'austation/icons/mob/robot.dmi'
+			cyborg_base_icon = "cminer"
+			hat_offset = 4
+		if("Skirt")
+			R.icon = 'austation/icons/mob/robot.dmi'
+			cyborg_base_icon = "banangarang-Miner"
+			hat_offset = 0	
+	return ..()
