@@ -18,6 +18,6 @@
 	if(!CONFIG_GET(flag/disable_secborg))
 		modulelist["Security"] = image(icon = 'icons/mob/robots.dmi', icon_state = "sec")
 
-	var/input_module = show_radial_menu(src, src, modulelist, custom_check = CALLBACK(src, .proc/check_menu, user), radius = 38, require_near = TRUE)
+	var/input_module = show_radial_menu(src, src, modulelist, radius = 38, require_near = TRUE)
 
 	module.transform_to(modulelist[input_module])
