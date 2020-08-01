@@ -76,32 +76,3 @@
 /obj/item/organ/tongue/ethereal/Initialize(mapload)
 	. = ..()
 	languages_possible = languages_possible_ethereal
-
-/obj/item/organ/tongue/felinidtongue
-	name = "sandpaper tongue"
-	desc = "A normal human tongue, genetically altered to annoy crew."
-	icon = 'austation/icons/obj/austation_surgery.dmi'
-	icon_state = "sandpapertongue"
-	say_mod = "meows"
-	attack_verb = list("slobbered", "frenched", "licked")
-	taste_sensitivity = 15
-	var/static/list/languages_possible_ethereal = typecacheof(list(
-		/datum/language/common,
-		/datum/language/draconic,
-		/datum/language/codespeak,
-		/datum/language/monkey,
-		/datum/language/narsie,
-		/datum/language/beachbum,
-		/datum/language/aphasia,
-		/datum/language/piratespeak,
-		/datum/language/moffic,
-		/datum/language/sylvan,
-		/datum/language/shadowtongue,
-		/datum/language/terrum,
-		/datum/language/voltaic,
-		/datum/language/cattongue
-	))
-
-/obj/item/organ/tongue/felinidtongue/Initialize(mapload)
-	. = ..()
-	languages_possible = languages_possible_felinid
