@@ -12,35 +12,41 @@
 	switch(picked_icon)
 		if("Maintenance Drone")
             // Picking Maintdrone colour
-			appearance = MAINTDRONE
+			visualAppearence = MAINTDRONE
 			var/list/drone_colors = list(
-				"blue" = image(icon = 'icons/mob/drone.dmi', icon_state = "[appearance]_blue"),
-				"green" = image(icon = 'icons/mob/drone.dmi', icon_state = "[appearance]_green"),
-				"grey" = image(icon = 'icons/mob/drone.dmi', icon_state = "[appearance]_grey"),
-				"orange" = image(icon = 'icons/mob/drone.dmi', icon_state = "[appearance]_orange"),
-				"pink" = image(icon = 'icons/mob/drone.dmi', icon_state = "[appearance]_pink"),
-				"red" = image(icon = 'icons/mob/drone.dmi', icon_state = "[appearance]_red")
+				"blue" = image(icon = 'icons/mob/drone.dmi', icon_state = "[visualAppearence]_blue"),
+				"green" = image(icon = 'icons/mob/drone.dmi', icon_state = "[visualAppearence]_green"),
+				"grey" = image(icon = 'icons/mob/drone.dmi', icon_state = "[visualAppearence]_grey"),
+				"orange" = image(icon = 'icons/mob/drone.dmi', icon_state = "[visualAppearence]_orange"),
+				"pink" = image(icon = 'icons/mob/drone.dmi', icon_state = "[visualAppearence]_pink"),
+				"red" = image(icon = 'icons/mob/drone.dmi', icon_state = "[visualAppearence]_red")
 				)
 			var/picked_color = show_radial_menu(src, src, drone_colors, custom_check = CALLBACK(src, .proc/check_menu), radius = 38, require_near = TRUE)
 			if(picked_color)
-				icon_state = "[appearance]_[picked_color]"
-				icon_living = "[appearance]_[picked_color]"
+				icon_state = "[visualAppearence]_[picked_color]"
+				icon_living = "[visualAppearence]_[picked_color]"
 			else
-				icon_state = "[appearance]_grey"
-				icon_living = "[appearance]_grey"
+				icon_state = "[visualAppearence]_grey"
+				icon_living = "[visualAppearence]_grey"
+
 		if("Repair Drone")
-			appearance = REPAIRDRONE
-			icon_state = appearance
-			icon_living = appearance
+			visualAppearence = REPAIRDRONE
+			icon_state = visualAppearence
+			icon_living = visualAppearence
+			icon_dead = "[visualAppearence]_dead"
+
 		if("Scout Drone")
-			appearance = SCOUTDRONE
-			icon_state = appearance
-			icon_living = appearance
+			visualAppearence = SCOUTDRONE
+			icon_state = visualAppearence
+			icon_living = visualAppearence
+			icon_dead = "[visualAppearence]_dead"
+
 		else
-			appearance = MAINTDRONE
-			icon_state = "[appearance]_grey"
-			icon_living = "[appearance]_grey"
-	icon_dead = "[appearance]_dead"
+			visualAppearence = MAINTDRONE
+			icon_state = "[visualAppearence]_grey"
+			icon_living = "[visualAppearence]_grey"
+			icon_dead = "[visualAppearence]_dead"
+
 	picked = TRUE
 
 /**
