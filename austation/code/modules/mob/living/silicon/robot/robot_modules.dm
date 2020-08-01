@@ -3,11 +3,11 @@
 	var/mob/living/silicon/robot/R = loc
 	var/list/robotstyles_med = list(
 		"Default" = image(icon = 'icons/mob/robots.dmi', icon_state = "medical"),
-		"Droid" = image(icon = 'austation/icons/mob/robots.dmi', icon_state = "cmedical"),
+		"Heavy" = image(icon = 'austation/icons/mob/robots.dmi', icon_state = "heavymed"),
 		"Sleek" = image(icon = 'austation/icons/mob/robots.dmi', icon_state = "sleekmed"),
 		"Marina" = image(icon = 'austation/icons/mob/robots.dmi', icon_state = "marinamed"),
 		"Eyebot" = image(icon = 'austation/icons/mob/robots.dmi', icon_state = "eyebotmed"),
-		"Heavy" = image(icon = 'austation/icons/mob/robots.dmi', icon_state = "heavymed"),
+		"Droid" = image(icon = 'austation/icons/mob/robots.dmi', icon_state = "cmedical"),
 		"Skirt" = image(icon = 'austation/icons/mob/robots.dmi', icon_state = "banangarang-Medical"))
 	
 	var/borg_icon = show_radial_menu(src, src, robotstyles_med, custom_check = CALLBACK(src, .proc/check_menu), radius = 38, require_near = TRUE)
@@ -17,10 +17,10 @@
 	switch(borg_icon)
 		if("Default")
 			cyborg_base_icon = "medical"
-		if("Droid")
+		if("Heavy")
 			R.icon = 'austation/icons/mob/robot.dmi'
-			cyborg_base_icon = "cmedical"
-			hat_offset = 4
+			cyborg_base_icon = "heavymed"
+			hat_offset = -4
 		if("Sleek")
 			R.icon = 'austation/icons/mob/robot.dmi'
 			cyborg_base_icon = "sleekmed"
@@ -33,23 +33,30 @@
 			R.icon = 'austation/icons/mob/robot.dmi'
 			cyborg_base_icon = "eyebotmed"
 			hat_offset = -3
-		if("Heavy")
+		if("Droid")
 			R.icon = 'austation/icons/mob/robot.dmi'
-			cyborg_base_icon = "heavymed"
-			hat_offset = -4
+			cyborg_base_icon = "cmedical"
+			hat_offset = 4
 		if("Skirt")
 			R.icon = 'austation/icons/mob/robot.dmi'
 			cyborg_base_icon = "banangarang-Medical"
 			hat_offset = 0
-	if(R.ckey == "ZombiesVsPlants")
-		borg_icon = "Skirt"
-		return
 	return ..()
 
 /obj/item/robot_module/engineering/be_transformed_to(obj/item/robot_module/old_module) //Pick a icon starts here
 
 	var/mob/living/silicon/robot/R = loc
-	var/borg_icon = input(R, "Select an icon!", "Robot Icon", null) as null|anything in list("Default", "Heavy", "Sleek", "Marina", "Can", "Spider", "Handy", "Skirt")
+	var/list/robotstyles_eng = list(
+		"Default" = image(icon = 'icons/mob/robots.dmi', icon_state = "engineer"),
+		"Heavy" = image(icon = 'austation/icons/mob/robots.dmi', icon_state = "heavyeng"),
+		"Sleek" = image(icon = 'austation/icons/mob/robots.dmi', icon_state = "sleekeng"),
+		"Marina" = image(icon = 'austation/icons/mob/robots.dmi', icon_state = "marinaeng"),
+		"Can" = image(icon = 'austation/icons/mob/robots.dmi', icon_state = "eyebotmed"),
+		"Spider" = image(icon = 'austation/icons/mob/robots.dmi', icon_state = "spidereng"),
+		"Skirt" = image(icon = 'austation/icons/mob/robots.dmi', icon_state = "banangarang-Engineering"))
+	
+	var/borg_icon = show_radial_menu(src, src, robotstyles_eng, custom_check = CALLBACK(src, .proc/check_menu), radius = 38, require_near = TRUE)
+
 	if(!borg_icon)
 		return FALSE
 	switch(borg_icon)
@@ -82,9 +89,6 @@
 			R.icon = 'austation/icons/mob/robot.dmi'
 			cyborg_base_icon = "banangarang-Engineering"
 			hat_offset = 0
-	if(R.ckey == "ZombiesVsPlants")
-		borg_icon = "Skirt"
-		return
 	return ..()
 
 /obj/item/robot_module/security/be_transformed_to(obj/item/robot_module/old_module) //Pick a icon starts here
