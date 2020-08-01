@@ -45,6 +45,7 @@
 #include "code\modules\jobs\job_types\medical_doctor.dm"
 #include "code\modules\language\buzzwords.dm"
 #include "code\modules\language\calcic.dm"
+#include "code\modules\language\cattongue.dm"
 #include "code\modules\language\language_holder.dm"
 #include "code\modules\language\moffic.dm"
 #include "code\modules\language\shadowtongue.dm"
