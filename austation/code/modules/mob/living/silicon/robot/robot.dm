@@ -7,17 +7,37 @@
 		return
 
 	var/list/modulelist = list(
+		"Standard" = image(icon = 'icons/mob/robots.dmi', icon_state = "robot"),
 		"Engineering" = image(icon = 'icons/mob/robots.dmi', icon_state = "engineer"),
 		"Medical" = image(icon = 'icons/mob/robots.dmi', icon_state = "medical"),
 		"Miner" = image(icon = 'icons/mob/robots.dmi', icon_state = "miner"),
 		"Janitor" = image(icon = 'icons/mob/robots.dmi', icon_state = "janitor"),
-		"Service" = image(icon = 'icons/mob/robots.dmi', icon_state = "service_m"))
+		"Service" = image(icon = 'icons/mob/robots.dmi', icon_state = "service_m"),
+		"Peacekeeper" = image(icon = 'icons/mob/robots.dmi', icon_state = "peace"))
+	
+	var/input_module = show_radial_menu(src, src, modulelist, custom_check = CALLBACK(src, .proc/check_menu), radius = 38, require_near = TRUE, tooltips = TRUE)
 
-	if(!CONFIG_GET(flag/disable_peaceborg))
-		modulelist["Peacekeeper"] = image(icon = 'icons/mob/robots.dmi', icon_state = "peace")
-	if(!CONFIG_GET(flag/disable_secborg))
-		modulelist["Security"] = image(icon = 'icons/mob/robots.dmi', icon_state = "sec")
+	switch(input_module)
+		if("Standard")
+			input_module = /obj/item/robot_module/standard
+		if("Engineering")
+			input_module = /obj/item/robot_module/engineering
+		if("Medical")
+			input_module = /obj/item/robot_module/medical
+		if("Miner")
+			input_module = /obj/item/robot_module/miner
+		if("Janitor")
+			input_module = /obj/item/robot_module/janitor
+		if("Service")
+			input_module = /obj/item/robot_module/butler
+		if("Peacekeeper")
+			input_module = /obj/item/robot_module/peacekeeper
 
-	var/input_module = show_radial_menu(src, src, modulelist, radius = 38, require_near = TRUE)
+	transform_to(input_module)
 
-	module.transform_to(modulelist[input_module])
+/mob/living/silicon/robot/proc/check_menu()
+	if(!istype(src))
+		return FALSE
+	if(incapacitated())
+		return FALSE
+	return TRUE
