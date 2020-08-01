@@ -33,7 +33,7 @@
 		if("Peacekeeper")
 			input_module = /obj/item/robot_module/peacekeeper
 
-	transform_to(input_module)
+	module.transform_to(input_module)
 
 /mob/living/silicon/robot/proc/check_menu()
 	if(!istype(src))
