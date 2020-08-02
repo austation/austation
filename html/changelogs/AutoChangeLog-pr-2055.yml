@@ -1,0 +1,6 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - rscadd: "Syndicate Incursion Gamemode"
+  - rscadd: "Hacked syndicate radio implant"
+  - refactor: "Radio implants can no longer be heard by anyone on the same turf as the person with the implant"
