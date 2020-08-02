@@ -10,10 +10,6 @@
 /obj/structure/disposalpipe/loafer,
 /turf/open/floor/plating,
 /area/template_noop)
-"d" = (
-/obj/item/pipe_dispenser,
-/turf/open/floor/plating,
-/area/template_noop)
 "e" = (
 /obj/effect/turf_decal/arrows/red{
 	dir = 1
@@ -33,6 +29,6 @@ e
 "}
 (3,1,1) = {"
 a
-d
+a
 a
 "}
