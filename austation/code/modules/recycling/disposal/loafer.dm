@@ -97,6 +97,8 @@ obj/structure/disposalpipe/loafer/emag_act(mob/user)
 				if(istype(I, /obj/item/stack))
 					var/obj/item/stack/stecc = I
 					looef.bread_density += stecc.amount * 0.1 * emag_bonus
+				else if(I.w_class == WEIGHT_CLASS_TINY)
+					looef.bread_density += 0.2 * emag_bonus
 				else
 					looef.bread_density += I.w_class * 1.5 * emag_bonus
 				qdel(AM)
