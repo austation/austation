@@ -1,0 +1,4 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - bugfix: "Mulebots will no longer get stuck when trying to move through the access port near cargo."
