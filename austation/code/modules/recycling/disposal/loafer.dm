@@ -27,7 +27,7 @@ obj/structure/disposalpipe/loafer/emag_act(mob/user)
 	obj_flags |= EMAGGED
 	emag_bonus = 1.5
 	playsound(src, "sparks", 75, 1, -1)
-	to_chat(user, "<span class='notice'>You use the cryptographic sequencer on [src], compressing faster and enabling much more dangerous densities</span>")
+	to_chat(user, "<span class='notice'>You use the cryptographic sequencer on [src], allowing it to compress faster and enabling much more dangerous densities!</span>")
 	visible_message("<span class='danger'>\the [src] humms ominously!</span>")
 
 // This proc runs when something moves through the pipe
