@@ -4,6 +4,7 @@
 	desc = "You're safer here than in the deep."
 	icon_state = "pool_tile"
 	heat_capacity = INFINITY
+	flags_1 = CAN_BE_DIRTY_1
 	var/filled = TRUE
 	var/next_splash = 0
 	var/obj/machinery/pool/controller/controller
