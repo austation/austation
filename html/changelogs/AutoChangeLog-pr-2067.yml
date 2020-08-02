@@ -1,4 +1,4 @@
 author: "AustationBot"
 delete-after: True
 changes: 
-  - rscadd: "Add gas miners to atmos"
+  - bugfix: "lizardpeople can speak draconic again"
