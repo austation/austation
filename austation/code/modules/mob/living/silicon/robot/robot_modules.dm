@@ -1,5 +1,5 @@
 //Picking a cutom borg sprite, called after a player picks their module
-/obj/item/robot_module/medical/be_transformed_to(obj/item/robot_module/old_module) //medical
+/*obj/item/robot_module/medical/be_transformed_to() //medical
 	var/mob/living/silicon/robot/R = loc
 	var/list/robotstyles_med = list(
 		"Default" = image(icon = 'icons/mob/robots.dmi', icon_state = "medical"),
@@ -10,7 +10,7 @@
 		"Droid" = image(icon = 'austation/icons/mob/robot.dmi', icon_state = "cmedical"),
 		"Skirt" = image(icon = 'austation/icons/mob/robot.dmi', icon_state = "banangarang-Medical"))
 	
-	var/borg_icon = show_radial_menu(src, src, robotstyles_med, custom_check = CALLBACK(src, .proc/fuck_you), radius = 38, require_near = TRUE)
+	var/borg_icon = show_radial_menu(src, src, robotstyles_med, custom_check = CALLBACK(src, .proc/check_menu), radius = 38, require_near = TRUE)
 
 	if(!borg_icon)
 		return FALSE
@@ -43,7 +43,7 @@
 			hat_offset = 0
 	return ..()
 
-/obj/item/robot_module/engineering/be_transformed_to(obj/item/robot_module/old_module) //engineering
+/obj/item/robot_module/engineering/be_transformed_to() //engineering
 	var/mob/living/silicon/robot/R = loc
 	var/list/robotstyles_eng = list(
 		"Default" = image(icon = 'icons/mob/robots.dmi', icon_state = "engineer"),
@@ -54,7 +54,7 @@
 		"Spider" = image(icon = 'austation/icons/mob/robot.dmi', icon_state = "spidereng"),
 		"Skirt" = image(icon = 'austation/icons/mob/robot.dmi', icon_state = "banangarang-Engineering"))
 	
-	var/borg_icon = show_radial_menu(src, src, robotstyles_eng, custom_check = CALLBACK(src, .proc/fuck_you), radius = 38, require_near = TRUE)
+	var/borg_icon = show_radial_menu(src, src, robotstyles_eng, custom_check = CALLBACK(src, .proc/check_menu), radius = 38, require_near = TRUE)
 
 	if(!borg_icon)
 		return FALSE
@@ -90,7 +90,7 @@
 			hat_offset = 0
 	return ..()
 
-/obj/item/robot_module/security/be_transformed_to(obj/item/robot_module/old_module) //security
+/obj/item/robot_module/security/be_transformed_to() //security
 	var/mob/living/silicon/robot/R = loc
 	var/list/robotstyles_sec = list(
 		"Default" = image(icon = 'icons/mob/robots.dmi', icon_state = "sec"),
@@ -101,7 +101,7 @@
 		"Spider" = image(icon = 'austation/icons/mob/robot.dmi', icon_state = "spidersec"),
 		"Skirt" = image(icon = 'austation/icons/mob/robot.dmi', icon_state = "banangarang-Security"))
 	
-	var/borg_icon = show_radial_menu(src, src, robotstyles_sec, custom_check = CALLBACK(src, .proc/fuck_you), radius = 38, require_near = TRUE)
+	var/borg_icon = show_radial_menu(src, src, robotstyles_sec, custom_check = CALLBACK(src, .proc/check_menu), radius = 38, require_near = TRUE)
 
 	if(!borg_icon)
 		return FALSE
@@ -134,13 +134,13 @@
 			hat_offset = 0
 	return ..()
 
-/obj/item/robot_module/peacekeeper/be_transformed_to(obj/item/robot_module/old_module) //peacekeeper
+/obj/item/robot_module/peacekeeper/be_transformed_to() //peacekeeper
 	var/mob/living/silicon/robot/R = loc
 	var/list/robotstyles_peace = list(
 		"Default" = image(icon = 'icons/mob/robots.dmi', icon_state = "peace"),
 		"Spider" = image(icon = 'austation/icons/mob/robot.dmi', icon_state = "whitespider"))
 	
-	var/borg_icon = show_radial_menu(src, src, robotstyles_peace, custom_check = CALLBACK(src, .proc/fuck_you), radius = 38, require_near = TRUE)
+	var/borg_icon = show_radial_menu(src, src, robotstyles_peace, custom_check = CALLBACK(src, .proc/check_menu), radius = 38, require_near = TRUE)
 
 	if(!borg_icon)
 		return FALSE
@@ -152,7 +152,7 @@
 			cyborg_base_icon = "whitespider"
 	return ..()
 
-/obj/item/robot_module/janitor/be_transformed_to(obj/item/robot_module/old_module) //janitor
+/obj/item/robot_module/janitor/be_transformed_to() //janitor
 	var/mob/living/silicon/robot/R = loc
 	var/list/robotstyles_jan = list(
 		"Default" = image(icon = 'icons/mob/robots.dmi', icon_state = "janitor"),
@@ -161,7 +161,7 @@
 		"Marina" = image(icon = 'austation/icons/mob/robot.dmi', icon_state = "marinajan"),
 		"Skirt" = image(icon = 'austation/icons/mob/robot.dmi', icon_state = "banangarang-Janitor"))
 	
-	var/borg_icon = show_radial_menu(src, src, robotstyles_jan, custom_check = CALLBACK(src, .proc/fuck_you), radius = 38, require_near = TRUE)
+	var/borg_icon = show_radial_menu(src, src, robotstyles_jan, custom_check = CALLBACK(src, .proc/check_menu), radius = 38, require_near = TRUE)
 
 	if(!borg_icon)
 		return FALSE
@@ -186,7 +186,7 @@
 			hat_offset = 0
 	return ..()
 
-/obj/item/robot_module/butler/be_transformed_to(obj/item/robot_module/old_module) //service
+/obj/item/robot_module/butler/be_transformed_to() //service
 	var/mob/living/silicon/robot/R = loc
 	var/list/robotstyles_serv = list(
 		"Waiter" = image(icon = 'icons/mob/robots.dmi', icon_state = "service_m"),
@@ -197,7 +197,7 @@
 		"Top" = image(icon = 'icons/mob/robots.dmi', icon_state = "tophat"),
 		"Skirt" = image(icon = 'austation/icons/mob/robot.dmi', icon_state = "banangarang-Service"))
 
-	var/borg_icon = show_radial_menu(src, src, robotstyles_serv, custom_check = CALLBACK(src, .proc/fuck_you), radius = 38, require_near = TRUE)
+	var/borg_icon = show_radial_menu(src, src, robotstyles_serv, custom_check = CALLBACK(src, .proc/check_menu), radius = 38, require_near = TRUE)
 
 	if(!borg_icon)
 		return FALSE
@@ -226,7 +226,7 @@
 			hat_offset = 0
 	return ..()
 
-/obj/item/robot_module/miner/be_transformed_to(obj/item/robot_module/old_module) //miner
+/obj/item/robot_module/miner/be_transformed_to() //miner
 	var/mob/living/silicon/robot/R = loc
 	var/list/robotstyles_mine = list(
 		"Default" = image(icon = 'icons/mob/robots.dmi', icon_state = "miner"),
@@ -239,7 +239,7 @@
 		"Droid" = image(icon = 'austation/icons/mob/robot.dmi', icon_state = "cminer"),
 		"Skirt" = image(icon = 'austation/icons/mob/robot.dmi', icon_state = "banangarang-Miner"))
 
-	var/borg_icon = show_radial_menu(src, src, robotstyles_mine, custom_check = CALLBACK(src, .proc/fuck_you), radius = 38, require_near = TRUE)
+	var/borg_icon = show_radial_menu(src, src, robotstyles_mine, custom_check = CALLBACK(src, .proc/check_menu), radius = 38, require_near = TRUE)
 
 	if(!borg_icon)
 		return FALSE
@@ -278,9 +278,9 @@
 			hat_offset = 0	
 	return ..()
 
-/obj/item/robot_module/proc/fuck_you(mob/living/user)
+/obj/item/robot_module/proc/check_menu(mob/living/user)
 	if(!istype(user))
 		return FALSE
 	if(user.incapacitated() || !user.Adjacent(src))
 		return FALSE
-	return TRUE
+	return TRUE*/
