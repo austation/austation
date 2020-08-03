@@ -89,6 +89,7 @@
 #include "code\modules\research\designs\bluespace_designs.dm"
 #include "code\modules\research\designs\mechfabricator_designs.dm"
 #include "code\modules\research\designs\medical_designs.dm"
+#include "code\modules\research\techweb\all_nodes.dm"
 #include "code\modules\surgery\organs\tongue.dm"
 #include "code\modules\uplink\uplink_items.dm"
 #include "code\modules\vehicles\cars\thanoscar.dm"
