@@ -15,6 +15,7 @@
 #include "code\datums\status_effects\buffs.dm"
 #include "code\datums\elements\swimming.dm"
 #include "code\datums\mood_event\generic_positive_events.dm"
+#include "code\datums\mutations\jumpy.dm"
 #include "code\game\sound.dm"
 #include "code\game\area\Space_Station_13_areas.dm"
 #include "code\game\machinery\syndicatebeacon.dm"
