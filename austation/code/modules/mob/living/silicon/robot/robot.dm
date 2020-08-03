@@ -34,10 +34,10 @@
 			selected_module = /obj/item/robot_module/butler
 		if("Peacekeeper")
 			selected_module = /obj/item/robot_module/peacekeeper
-
+	
 	usr.visible_message("","<span class='userdanger'>Selected_module: [selected_module] </span>")
 
-	usr.module.transform_to(selected_module)
+	module.transform_to(selected_module)
 
 	return ..()
 
