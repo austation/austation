@@ -4,7 +4,7 @@
 	name = "Jägerbomb"
 	id = /datum/reagent/consumable/ethanol/jagerbomb
 	results = list(/datum/reagent/consumable/ethanol/jagerbomb = 1)
-	required_reagents = list(/datum/reagent/consumable/grey_bull = 1, /datum/reagent/consumable/ethanol/jagermeister = 3, /datum/reagent/medicine/charcoal = 1)
+	required_reagents = list(/datum/reagent/consumable/grey_bull = 1, /datum/reagent/medicine/charcoal = 2, /datum/reagent/consumable/ethanol/jagermeister = 3)
 
 /datum/chemical_reaction/jagermeister
 	name = "Jägmeister"

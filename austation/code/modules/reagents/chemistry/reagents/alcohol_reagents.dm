@@ -5,7 +5,7 @@
 /datum/reagent/consumable/ethanol/jagermeister
 	name = "jägermeister"
 	description = "56 different herbs and spices!"
-	color = "#666300" // rgb: 102, 99, 0
+	color = "#666300" // rgb: 135, 99, 0
 	aus = TRUE
 	boozepwr = 60
 	quality = DRINK_FANTASTIC
@@ -17,7 +17,7 @@
 /datum/reagent/consumable/ethanol/jagerbomb
 	name = "jägerbomb"
 	description = "herbal energy drink?"
-	color = "#666300" // rgb: 102, 99, 0
+	color = "#6ec46f" // rgb: 110, 196, 111
 	aus = TRUE
 	boozepwr = 50
 	metabolization_rate = 2.5 * REAGENTS_METABOLISM
@@ -51,7 +51,7 @@
 /datum/reagent/consumable/ethanol/bushranger
 	name = "Bushranger"
 	description = "Crikey!" // I'm sorry
-	color = "#666300" // rgb: 102, 99, 0
+	color = "#d19900" // rgb: 209, 153, 0
 	aus = TRUE
 	boozepwr = 50
 	quality = DRINK_FANTASTIC
