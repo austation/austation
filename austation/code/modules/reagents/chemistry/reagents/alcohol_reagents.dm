@@ -21,7 +21,7 @@
 	aus = TRUE
 	boozepwr = 20
 	quality = DRINK_FANTASTIC
-	taste_description = "explosive"
+	taste_description = "explosives"
 	glass_icon_state = "jagerbomb"
 	glass_name = "jägerbomb"
 	glass_desc = "energy drinks and alcohol, uh oh"
