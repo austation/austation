@@ -60,23 +60,23 @@
 	glass_icon_state = "bushranger"
 	glass_name = "Bushranger"
 	glass_desc = "A slightly sweet, complex, australian cocktail."
-	var/datum/brain_trauma/special/psychotic_brawling/bath_salts/barfight
+	var/datum/brain_trauma/special/psychotic_brawling/bath_salts/rage
 
-/datum/reagent/consumable/ethonal/bushranger/on_mob_metabolize(mob/living/L)
+/datum/reagent/consumable/ethanol/bushranger/on_mob_metabolize(mob/living/L)
 	..()
 	ADD_TRAIT(L, TRAIT_SLEEPIMMUNE, type)
 	ADD_TRAIT(L, TRAIT_IGNOREDAMAGESLOWDOWN, type)
 	ADD_TRAIT(L, TRAIT_NOSTAMCRIT, type)
 	if(iscarbon(L))
 		var/mob/living/carbon/C = L
-		barfight = new()
-		C.gain_trauma(barfight, TRAUMA_RESILIENCE_ABSOLUTE)
+		rage = new()
+		C.gain_trauma(rage, TRAUMA_RESILIENCE_ABSOLUTE)
 
-/datum/reagent/consumable/ethonal/bushranger/on_mob_end_metabolize(mob/living/L)
+/datum/reagent/consumable/ethanol/bushranger/on_mob_end_metabolize(mob/living/L)
 	REMOVE_TRAIT(L, TRAIT_SLEEPIMMUNE, type)
 	REMOVE_TRAIT(L, TRAIT_IGNOREDAMAGESLOWDOWN, type)
 	REMOVE_TRAIT(L, TRAIT_NOSTAMCRIT, type)
-	if(barfight)
-		QDEL_NULL(barfight)
+	if(rage)
+		QDEL_NULL(rage)
 	..()
 
