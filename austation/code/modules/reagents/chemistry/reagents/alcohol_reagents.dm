@@ -47,3 +47,15 @@
 	else
 		explosion(T,0,0,1,2)
 	..()
+
+/datum/reagent/consumable/ethanol/bushranger
+	name = "Bushranger"
+	description = "Crikey!" // I'm sorry
+	color = "#666300" // rgb: 102, 99, 0
+	aus = TRUE
+	boozepwr = 50
+	quality = DRINK_FANTASTIC
+	taste_description = "the bush"
+	glass_icon_state = "bushranger"
+	glass_name = "Bushranger"
+	glass_desc = "A slightly sweet, complex, australian cocktail."
