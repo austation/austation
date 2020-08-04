@@ -359,8 +359,6 @@ GENE SCANNER
 			mutant = TRUE
 		else if (S.mutantstomach != initial(S.mutantstomach))
 			mutant = TRUE
-		else if (S.flying_species != initial(S.flying_species))
-			mutant = TRUE
 
 		to_chat(user, "<span class='info'>Species: [S.name][mutant ? "-derived mutant" : ""]</span>")
 	to_chat(user, "<span class='info'>Body temperature: [round(M.bodytemperature-T0C,0.1)] &deg;C ([round(M.bodytemperature,0.01)] &deg;K) </span>") // austation -- removes Fahrenheit for kelvin
