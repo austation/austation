@@ -49474,28 +49474,6 @@
 	},
 /turf/open/floor/plating,
 /area/maintenance/starboard/aft)
-"hJE" = (
-/obj/item/trash/popcorn,
-/obj/structure/table/glass,
-/obj/structure/cable/yellow{
-	icon_state = "1-8"
-	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/neutral,
-/obj/effect/turf_decal/tile/neutral{
-	dir = 4
-	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 8
-	},
-/obj/item/radio/intercom{
-	pixel_x = 0;
-	pixel_y = -30
-	},
-/turf/open/floor/plasteel/dark,
-/area/medical/virology)
 "hJJ" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
 	dir = 8
@@ -84669,6 +84647,27 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3,
 /turf/open/floor/plasteel/white,
 /area/science/xenobiology)
+"wgT" = (
+/obj/item/trash/popcorn,
+/obj/structure/table/glass,
+/obj/structure/cable/yellow{
+	icon_state = "1-8"
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/item/radio/intercom{
+	pixel_y = -30
+	},
+/turf/open/floor/plasteel/dark,
+/area/medical/virology)
 "wgW" = (
 /obj/effect/spawner/structure/window/reinforced,
 /obj/structure/cable/yellow,
@@ -108000,7 +107999,7 @@ ycU
 tmM
 vLM
 wqE
-hJE
+wgT
 cBR
 tQl
 quX
