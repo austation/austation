@@ -28,8 +28,9 @@
 	glass_desc = "energy drinks and alcohol, uh oh"
 
 /datum/reagent/consumable/ethanol/jagerbomb/on_mob_life(mob/living/carbon/M)
-	if(prob(1))
-		to_chat(M,"<span class='danger'>Your stomach rumbles.</span>")
+	if(current_cycle >= 12 && prob(1))
+		var/warning_message = pick("You feel your chest clench.", "Your stomach rumbles.","You feel you need to catch your breath.","You feel a prickle of pain in your chest.")
+		to_chat(M, "<span class='notice'>[warning_message]</span>")
 	return ..()
 
 /datum/reagent/consumable/ethanol/jagerbomb/on_mob_end_metabolize(mob/living/M)
