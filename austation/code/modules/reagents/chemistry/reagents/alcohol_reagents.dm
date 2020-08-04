@@ -31,6 +31,7 @@
 	if(prob(1))
 		to_chat(M,"<span class='danger'>Your stomach rumbles.</span>")
 	return ..()
+
 /datum/reagent/consumable/ethanol/jagerbomb/on_mob_end_metabolize(mob/living/M)
 	var/explosion_power = round(clamp(current_cycle / 50 * REM, 0, 5),1.25) // to stop monkey nuclear bombs
 	var/turf/T = get_turf(M)
