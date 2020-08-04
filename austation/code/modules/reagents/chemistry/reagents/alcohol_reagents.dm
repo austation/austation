@@ -60,7 +60,7 @@
 	glass_icon_state = "bushranger"
 	glass_name = "Bushranger"
 	glass_desc = "A slightly sweet, complex, australian cocktail."
-	var/datum/brain_trauma/special/psychotic_brawling/bushranger/barfight
+	var/datum/brain_trauma/special/psychotic_brawling/bath_salts/barfight
 
 /datum/reagent/consumable/ethonal/bushranger/on_mob_metabolize(mob/living/L)
 	..()
