@@ -4,6 +4,7 @@
 	name = "Ginger Beer"
 	description = "A sweet and spicy fermented drink"
 	color = "#876300"
+	aus = TRUE
 	taste_description = "ginger"
 	glass_name = "glass of ginger beer"
-	glass_desc = "mmm. ginger"
+	glass_desc = "mmmm. ginger"
