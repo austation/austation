@@ -45,8 +45,10 @@
 	else if(explosion_power >= 0.5)
 		explosion(T,0,0,2,3)
 
-	else
+	else if(explosion_power >= 0.25)
 		explosion(T,0,0,1,2)
+	else
+		explosion(T,0,0,0,1)
 	..()
 
 /datum/reagent/consumable/ethanol/bushranger
