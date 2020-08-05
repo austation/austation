@@ -5,7 +5,11 @@
 
 	text_gain_indication = "<span class='warning'>Nya?</span>"
 	text_lose_indication = "<span class='notice'>Thank the stars, your speech feels normal again!</span>"\
-	locked = TRUE // Alright you can't get it anymore
+	locked = TRUE
+
+/datum/generecipe/nya
+	required = "/datum/mutation/human/smile; /datum/mutation/human/clumsy"
+	result = /datum/mutation/human/nya
 
 /datum/mutation/human/nya/on_acquiring(mob/living/carbon/human/owner)
 	if(..())
