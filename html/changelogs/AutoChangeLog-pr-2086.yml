@@ -1,4 +1,4 @@
 author: "AustationBot"
 delete-after: True
 changes: 
-  - bugfix: "lizardpeople can speak draconic again"
+  - config: "Removes devils from rotation on MRP"
