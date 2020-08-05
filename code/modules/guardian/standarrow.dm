@@ -9,7 +9,7 @@
 	w_class = WEIGHT_CLASS_BULKY
 	sharpness = IS_SHARP
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF
-	var/kill_chance = 50 // people will still chuck these at the nearest security officer anyways, so who cares
+	var/kill_chance = 30 // This is ready to be changed, only a WIP varible
 	var/in_use = FALSE
 	var/uses = 3
 	var/users = list()
