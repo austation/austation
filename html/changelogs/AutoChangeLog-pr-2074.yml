@@ -1,0 +1,5 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - bugfix: "The female executive suit uses the correct object now"
+  - rscdel: "Removed the unused \"really black\" female skirt suit."
