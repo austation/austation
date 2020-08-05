@@ -9,3 +9,14 @@
     				/obj/item/slimepotion/slime/steroid)
 	crate_name = "Xenobiology Slime Steroid crate"
 	crate_type = /obj/structure/closet/crate/secure/science
+
+/datum/supply_pack/science/slimeMutagens
+	name = "Xenobiology Mutagens crate"
+	desc = "Hate that one slime who won't stop mutating? Desperately want a rainbow slime but you have no reds? Come on down to Mutagen incorporated for a mutation and stabilization potion all in one package!"
+	cost = 3200
+	access = ACCESS_TOXINS
+	contains = list(/obj/item/slimepotion/slime/stabilizer,
+    				/obj/item/slimepotion/slime/mutator)
+	crate_name = "Xenobiology Mutagen crate"
+	crate_type = /obj/structure/closet/crate/secure/science
+
