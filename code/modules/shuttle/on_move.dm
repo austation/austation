@@ -319,7 +319,7 @@ All ShuttleMove procs go here
 
 	var/knockdown = movement_force["KNOCKDOWN"]
 	//austation begin -- cat tails prevent shuttle knockdown
-	var/obj/item/organ/tail/cat/O = getorganslot(ORGAN_SLOT_TAIL)
+	var/obj/item/organ/tail/O = getorganslot(ORGAN_SLOT_TAIL)
 	if(knockdown && !istype(O))
 		Paralyze(knockdown)
 	//austation end

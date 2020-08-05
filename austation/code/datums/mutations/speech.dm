@@ -4,7 +4,7 @@
 	quality = MINOR_NEGATIVE
 
 	text_gain_indication = "<span class='warning'>Nya?</span>"
-	text_lose_indication = "<span class='notice'>Thank the stars, your speech feels normal again!</span>"\
+	text_lose_indication = "<span class='notice'>Thank the stars, your speech feels normal again!</span>"
 	locked = TRUE
 
 /datum/generecipe/nya

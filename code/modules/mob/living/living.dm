@@ -467,7 +467,12 @@
 	if(!resting)
 		set_resting(TRUE, FALSE)
 	else
-		if(do_after(src, 10, target = src))
+		//austation begin -- Felnid's get up instantly
+		var/obj/item/organ/tail/cat/O = getorganslot(ORGAN_SLOT_TAIL)
+		if(istype(O))
+			set_resting(FALSE, FALSE)
+		else if(do_after(src, 10, target = src))
+		//austation end
 			set_resting(FALSE, FALSE)
 		else
 			to_chat(src, "<span class='notice'>You fail to get up.</span>")
