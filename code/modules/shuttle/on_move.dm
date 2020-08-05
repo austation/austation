@@ -318,8 +318,11 @@ All ShuttleMove procs go here
 	. = ..()
 
 	var/knockdown = movement_force["KNOCKDOWN"]
-	if(knockdown)
+	//austation begin -- cat tails prevent shuttle knockdown
+	var/obj/item/organ/tail/cat/O = getorganslot(ORGAN_SLOT_TAIL)
+	if(knockdown && !istype(O))
 		Paralyze(knockdown)
+	//austation end
 
 
 /mob/living/simple_animal/hostile/megafauna/onShuttleMove(turf/newT, turf/oldT, list/movement_force, move_dir, obj/docking_port/stationary/old_dock, obj/docking_port/mobile/moving_dock)
