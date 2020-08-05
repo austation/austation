@@ -494,7 +494,7 @@
 	if(O)
 		O.reagents.add_reagent(/datum/reagent/consumable/enzyme, 2 * coeff)
 
-/obj/item/robot_module/butler/be_transformed_to(obj/item/robot_module/old_module)
+/*/obj/item/robot_module/butler/be_transformed_to(obj/item/robot_module/old_module) //austation begin -- Using our own sprite selection method
 	var/mob/living/silicon/robot/R = loc
 	var/borg_icon = input(R, "Select an icon!", "Robot Icon", null) as null|anything in sortList(list("Waitress", "Butler", "Tophat", "Kent", "Bro"))
 	if(!borg_icon)
@@ -514,7 +514,7 @@
 			cyborg_base_icon = "tophat"
 			special_light_key = null
 			hat_offset = INFINITY //He is already wearing a hat
-	return ..()
+	return ..() */ //austation end
 
 /obj/item/robot_module/borgi
 	name = "Borgi"
@@ -547,7 +547,7 @@
 	hat_offset = 0
 	var/obj/item/t_scanner/adv_mining_scanner/cyborg/mining_scanner //built in memes.
 
-/obj/item/robot_module/miner/be_transformed_to(obj/item/robot_module/old_module)
+/*/obj/item/robot_module/miner/be_transformed_to(obj/item/robot_module/old_module) //austation begin -- Using our own sprite selection method
 	var/mob/living/silicon/robot/R = loc
 	var/borg_icon = input(R, "Select an icon!", "Robot Icon", null) as null|anything in sortList(list("Lavaland Miner", "Asteroid Miner", "Spider Miner"))
 	if(!borg_icon)
@@ -560,7 +560,7 @@
 			special_light_key = "miner"
 		if("Spider Miner")
 			cyborg_base_icon = "spidermin"
-	return ..()
+	return ..() */ //austation end
 
 /obj/item/robot_module/miner/rebuild_modules()
 	. = ..()
