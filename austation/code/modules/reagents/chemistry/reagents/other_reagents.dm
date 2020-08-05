@@ -19,6 +19,16 @@
 	. = ..()
 	L.transform = matrix()
 
+/datum/reagent/australium/reaction_obj(obj/O, reac_volume)
+	var/obj/item/gun/M = O
+	if(istype(O, /obj/item/gun || M.is_australium == FALSE))
+		M.add_atom_colour(rgb(242,190,17), FIXED_COLOUR_PRIORITY)
+		M.name = "australium [M.name]"
+		M.desc = "[M.desc] It's plated in Australium!"
+		M.is_australium = TRUE
+	else
+		return ..()
+
 /datum/reagent/luminol
 	name = "Luminol"
 	color = "#93EF61"
