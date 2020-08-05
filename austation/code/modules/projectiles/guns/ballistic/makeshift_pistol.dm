@@ -16,8 +16,7 @@
 /obj/item/gun/ballistic/automatic/pistol/aumakeshift/process_fire(atom/target, mob/living/user, message = TRUE, params = null, zone_override = "")
 	if(prob(5)) //I can hear zesko reeeeeing all ready
 		playsound(user, fire_sound, fire_sound_volume, vary_fire_sound)
-		to_chat(user, "<span class='userdanger'>The [src] blows up in your face!</span>")
-		user.take_bodypart_damage(0,20)
-		user.dropItemToGround(src)
-		return 0
-	..() //stolen from dets revolver
+		user.visible_message("<span class='userdanger'>The [src] misfires and needs to be rechambered!</span>")
+		chambered = null //Basically it misfires and you gotta rechamber it
+		return
+	..()
