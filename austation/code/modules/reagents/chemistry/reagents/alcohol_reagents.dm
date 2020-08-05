@@ -53,8 +53,8 @@
 	..()
 /datum/reagent/consumable/ethanol/jagerbomb/stabilized
 	name = "stabilized jägerbomb"
-	description = "ethanol free!"
-	boozepwr = 0
+	description = "almost completely ethanol free!"
+	boozepwr = 1
 
 /datum/reagent/consumable/ethanol/bushranger
 	name = "Bushranger"
