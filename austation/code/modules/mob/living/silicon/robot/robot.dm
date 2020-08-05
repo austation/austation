@@ -17,8 +17,9 @@
 	
 	var/input_module = show_radial_menu(src, src, modulelist, custom_check = CALLBACK(src, .proc/check_menu), radius = 38, require_near = TRUE, tooltips = TRUE)
 
-	usr.visible_message("","<span class='userdanger'>Input_module: [input_module]</span>")
 	var/selected_module = ""
+	if(!input_module)
+		return FALSE
 	switch(input_module)
 		if("Standard")
 			selected_module = /obj/item/robot_module/standard
@@ -33,13 +34,9 @@
 		if("Service")
 			selected_module = /obj/item/robot_module/butler
 		if("Peacekeeper")
-			selected_module = /obj/item/robot_module/peacekeeper
-	
-	usr.visible_message("","<span class='userdanger'>Selected_module: [selected_module] </span>")
+			selected_module = /obj/item/robot_module/peacekeeper	
 
 	module.transform_to(selected_module)
-
-	return ..()
 
 /mob/living/silicon/robot/proc/check_menu()
 	if(!istype(src))
