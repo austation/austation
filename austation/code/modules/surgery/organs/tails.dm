@@ -6,7 +6,6 @@
 			H.dna.features["tail_human"] = tail_type
 			H.update_body()
 		ADD_TRAIT(H, TRAIT_GRABWEAKNESS, "cat tail grab weakness")
-		H.physiology.stun_mod *= 0.8
 
 /obj/item/organ/tail/cat/Remove(mob/living/carbon/human/H,  special = 0)
 	..()
@@ -16,4 +15,3 @@
 		color = H.hair_color
 		H.update_body()
 		REMOVE_TRAIT(H, TRAIT_GRABWEAKNESS, "cat tail grab weakness")
-		H.physiology.stun_mod /= 0.8
