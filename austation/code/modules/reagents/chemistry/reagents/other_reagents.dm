@@ -23,7 +23,7 @@
 	var/obj/item/M = O
 	if(HAS_TRAIT(M, TRAIT_AUSTRALIUM))
 		return ..()
-	else if(istype(O, /obj/item))
+	else if(istype(O, /obj/item/gun) || istype(O, /obj/item/melee))
 		M.add_atom_colour(rgb(242,190,17), FIXED_COLOUR_PRIORITY)
 		M.name = "australium [M.name]"
 		M.desc = "[M.desc] It's plated in Australium!"
