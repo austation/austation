@@ -51,6 +51,10 @@
 	else
 		explosion(T,0,0,0,1)
 	..()
+/datum/reagent/consumable/ethanol/jagerbomb/stabilized
+	name = "stabilized jägerbomb"
+	description = "ethanol free!"
+	boozepwr = 0
 
 /datum/reagent/consumable/ethanol/bushranger
 	name = "Bushranger"

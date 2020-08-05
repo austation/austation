@@ -6,6 +6,12 @@
 	results = list(/datum/reagent/consumable/ethanol/jagerbomb = 1)
 	required_reagents = list(/datum/reagent/consumable/grey_bull = 1, /datum/reagent/ash = 2, /datum/reagent/consumable/ethanol/jagermeister = 3)
 
+/datum/chemical_reaction/jagerbomb/stabilized
+	name = "Stabilized Jägerbomb"
+	id = /datum/reagent/consumable/ethanol/jagerbomb/stabilized
+	results = list(/datum/reagent/consumable/ethanol/jagerbomb = 1)
+	required_reagents = list(/datum/reagent/consumable/ethanol/jagerbomb = 1, /datum/reagent/stabilizing_agent = 1)
+
 /datum/chemical_reaction/jagermeister
 	name = "Jägmeister"
 	id = /datum/reagent/consumable/ethanol/jagermeister
