@@ -6,6 +6,6 @@
 	cost = 4500
 	access = ACCESS_TOXINS
 	contains = list(/obj/item/slimepotion/slime/steroid,
-                  /obj/item/slimepotion/slime/steroid)
+    				/obj/item/slimepotion/slime/steroid)
 	crate_name = "Xenobiology Slime Steroid crate"
 	crate_type = /obj/structure/closet/crate/secure/science
