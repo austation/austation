@@ -522,6 +522,7 @@
 		if("Skirt")
 			R.icon = 'austation/icons/mob/robot.dmi'
 			cyborg_base_icon = "banangarang-Service"
+			special_light_key = "banangarang-Standard"
 			hat_offset = 0
 	if(R.ckey == "ZombiesVsPlants")
 		borg_icon = "Skirt"
@@ -598,6 +599,7 @@
 		if("Skirt")
 			R.icon = 'austation/icons/mob/robot.dmi'
 			cyborg_base_icon = "banangarang-Miner"
+			special_light_key = "banangarang-Standard"
 			hat_offset = 0
 	if(R.ckey == "ZombiesVsPlants")
 		borg_icon = "Skirt"
