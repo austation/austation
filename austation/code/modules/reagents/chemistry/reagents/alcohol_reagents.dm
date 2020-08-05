@@ -28,13 +28,13 @@
 	glass_desc = "energy drinks and alcohol, uh oh"
 
 /datum/reagent/consumable/ethanol/jagerbomb/on_mob_life(mob/living/carbon/M)
-	if(current_cycle >= 12 && prob(1))
+	if(current_cycle >= 12 && prob(5))
 		var/warning_message = pick("You feel your chest clench.", "Your stomach rumbles.","You feel you need to catch your breath.","You feel a prickle of pain in your chest.")
 		to_chat(M, "<span class='notice'>[warning_message]</span>")
 	return ..()
 
 /datum/reagent/consumable/ethanol/jagerbomb/on_mob_end_metabolize(mob/living/M)
-	var/explosion_power = round(current_cycle / 50 * REM,1.25) // to stop monkey nuclear bombs
+	var/explosion_power = round(current_cycle / 55 * REM,1.25) // to stop monkey nuclear bombs
 	var/turf/T = get_turf(M)
 	M.log_message("has detonated with [explosion_power] explosion power from jagerbomb", LOG_ATTACK)
 	if(explosion_power >= 1)
