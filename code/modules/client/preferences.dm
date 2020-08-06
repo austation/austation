@@ -261,6 +261,8 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 						button_name = RING_ENGAGEMENT_NAME
 					if(RING_WEDDING)
 						button_name = RING_WEDDING_NAME
+					if(RING_AUSTRALIUM_NAME)
+						button_name = RING_AUSTRALIUM_NAME
 
 			dat += "<b>Ring Type:</b><BR><a href = '?_src_=prefs;preference=ring_type;task=input'>[button_name]</a><BR>" // austation end
 
