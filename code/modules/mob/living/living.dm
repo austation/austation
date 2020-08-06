@@ -63,7 +63,7 @@
 		if((confused || is_blind()) && stat == CONSCIOUS && m_intent=="run")
 			playsound(get_turf(src), "punch", 25, 1, -1)
 			visible_message("<span class='warning'>[src] [pick("ran", "slammed")] into \the [A]!</span>")
-			Knockdown(20) //austation -- knockdown instead of hardstun with damage with dropping items
+			Knockdown(20) //austation -- knockdown instead of hardstun with damage and dropping items
 			drop_all_held_items()
 //			apply_damage(5, BRUTE)
 //			Paralyze(40)
