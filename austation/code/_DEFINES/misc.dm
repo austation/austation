@@ -3,7 +3,7 @@
 #define RING_CASUAL_NAME		"Casual Ring"
 #define RING_ENGAGEMENT_NAME	"Engagement Ring"
 #define RING_WEDDING_NAME		"Wedding Ring"
-#define RING_AUSTRALIUM_NAME		"Australium Ring"
+#define RING_AUSTRALIUM_NAME	"Australium Ring"
 
 #define RING_DISABLED			1
 #define RING_CASUAL				25
