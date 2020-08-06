@@ -1,9 +1,9 @@
 /datum/crafting_recipe/poleaxe
 	name = "Makeshift Poleaxe"
-	result = /obj/item/twohanded/spear/poleaxe
+	result = /obj/item/twohanded/required/poleaxe
 	reqs = list(/obj/item/twohanded/spear = 1,
 				/obj/item/twohanded/fireaxe = 1)
-	blacklist = list(/obj/item/twohanded/spear/poleaxe)
+	blacklist = list(/obj/item/twohanded/required/poleaxe)
 	parts = list(/obj/item/twohanded/spear = 1,
 				/obj/item/twohanded/fireaxe = 1)
 	time = 15
