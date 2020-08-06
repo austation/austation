@@ -1,7 +1,7 @@
 /datum/reagent/australium
 	name = "Australium"
 	color = "#F2BE11"
-	description = "Pure distilled essence of Australia. Can cause subjects to suddenly appear down-under."
+	description = "A mysterious metal element that can adapt and transform itself into different states and forms, can make subjects appear down-under."
 	metabolization_rate = 0.5 * REAGENTS_METABOLISM
 	taste_description = "australia"
 
