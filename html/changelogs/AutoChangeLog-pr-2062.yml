@@ -1,6 +1,0 @@
-author: "jbox144"
-delete-after: True
-changes: 
-  - rscadd: "Added \"Brain\" mode to nanite damage sensor programs, which detects brain damage"
-  - rscadd: "Added \"Dermal\" mode to nanite damage sensor programs, which detects the sum of brute and burn damage"
-  - balance: "Doubled the nanite production and damage from the aggressive replication program"
