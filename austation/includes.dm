@@ -31,6 +31,7 @@
 #include "code\game\objects\items\sharpener.dm"
 #include "code\game\objects\items\twohanded.dm"
 #include "code\game\objects\items\weaponry.dm"
+#include "code\game\objects\items\devices\desynchronizer.dm"
 #include "code\game\objects\structures\humanfurniture.dm"
 #include "code\game\objects\structures\mirror.dm"
 #include "code\game\turfs\open\lava.dm"
