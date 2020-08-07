@@ -243,7 +243,8 @@
 		/obj/item/t_scanner/adv_mining_scanner,
 		/obj/item/restraints/handcuffs/cable/zipties,
 		/obj/item/soap/nanotrasen,
-		/obj/item/borg/cyborghug)
+		/obj/item/borg/cyborghug,
+		/obj/item/instrument/piano_synth)
 	emag_modules = list(/obj/item/melee/transforming/energy/sword/cyborg)
 	moduleselect_icon = "standard"
 	hat_offset = -3
@@ -521,6 +522,7 @@
 		if("Skirt")
 			R.icon = 'austation/icons/mob/robot.dmi'
 			cyborg_base_icon = "banangarang-Service"
+			special_light_key = "banangarang-Standard"
 			hat_offset = 0
 	if(R.ckey == "ZombiesVsPlants")
 		borg_icon = "Skirt"
@@ -597,6 +599,7 @@
 		if("Skirt")
 			R.icon = 'austation/icons/mob/robot.dmi'
 			cyborg_base_icon = "banangarang-Miner"
+			special_light_key = "banangarang-Standard"
 			hat_offset = 0
 	if(R.ckey == "ZombiesVsPlants")
 		borg_icon = "Skirt"
