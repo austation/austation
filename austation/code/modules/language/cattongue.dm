@@ -9,5 +9,6 @@
 	syllables = list("meow","hiss","purr","~")
 	default_priority = 70
 
-icon = '/austation/icons/language/language.dmi'
-	icon_state = "catpaw"
+icon = '/austation/icons/langicons/language.dmi'
+
+icon_state = "catpaw"
