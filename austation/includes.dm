@@ -99,8 +99,6 @@
 #include "code\modules\pool\pool_noodles.dm"
 #include "code\modules\pool\pool_structures.dm"
 #include "code\modules\pool\pool_wires.dm"
-#include "code\modules\projectiles\boxes_magazine\internal\makeshift_mags.dm"
-#include "code\modules\projectiles\guns\ballistic\makeshift_pistol.dm"
 #include "code\modules\vending\_vending.dm"
 #include "code\modules\vending\autodrobe.dm"
 #include "code\modules\vending\clothesmate.dm"
