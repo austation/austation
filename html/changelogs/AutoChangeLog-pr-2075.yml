@@ -1,0 +1,5 @@
+author: "totallynotkatfood"
+delete-after: True
+changes: 
+  - rscadd: "Player controlled roos can now jump"
+  - rscadd: "Added more kangaroo types"
