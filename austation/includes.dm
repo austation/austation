@@ -69,6 +69,7 @@
 #include "code\modules\mob\living\carbon\human\human_defines.dm"
 #include "code\modules\mob\living\carbon\human\species_type\felinid.dm"
 #include "code\modules\mob\living\silicon\robot\emote.dm"
+#include "code\modules\mob\living\silicon\robot\robot.dm"
 #include "code\modules\mob\living\silicon\robot\robot_modules.dm"
 #include "code\modules\mob\living\simple_animal\bot\deathsky.dm"
 #include "code\modules\mob\living\simple_animal\friendly\drone\_drone.dm"
