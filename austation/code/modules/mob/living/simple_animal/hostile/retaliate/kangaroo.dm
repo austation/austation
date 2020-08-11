@@ -1,5 +1,5 @@
 /mob/living/simple_animal/hostile/retaliate/kangaroo
-	name = "The Kangaroo"
+	name = "kangaroo"
 	desc = "A large marsupial herbivore. It has powerful hind legs, with nails that resemble long claws."
 	icon = 'austation/icons/mob/kangaroos.dmi'
 	icon_state = "kangaroo" // Credit: FoS
@@ -29,8 +29,14 @@
 	speed = -1 // '-1' converts to 1.5 total move delay, or 6.6 tiles/sec movespeed
 	var/attack_cycles = 0
 	var/attack_cycles_max = 3
+	var/kick_damage = 30
 
 	do_footstep = TRUE
+
+/mob/living/simple_animal/hostile/retaliate/kangaroo/Initialize()
+	. = ..()
+	// Leap spell, player-only usage
+	AddSpell(new /obj/effect/proc_holder/spell/targeted/leap)
 
 /mob/living/simple_animal/hostile/retaliate/kangaroo/AttackingTarget()
 	var/mob/living/L = target
@@ -48,7 +54,7 @@
 	// ... but, every attack_cycles_max attacks on a living mob, do a powerful disemboweling kick instead
 	attack_cycles = 0
 	attacktext = "VICIOUSLY KICKS"
-	melee_damage = 30
+	melee_damage = kick_damage
 	. = ..()
 
 	var/rookick_dir = get_dir(src, L)
@@ -58,3 +64,34 @@
 
 	attacktext = initial(attacktext)
 	melee_damage = initial(melee_damage)
+
+/mob/living/simple_animal/hostile/retaliate/kangaroo/space
+	name = "space kangaroo"
+	desc = "A large marsupial herbivore. It has powerful hind legs, with nails that resemble long claws, oh god it's spaceproof."
+	spacewalk = TRUE
+	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
+	minbodytemp = 0
+	maxbodytemp = 1500
+	icon_state = "space-kangaroo"
+	icon_living = "space-kangaroo"
+	icon_dead = "space-kangaroo_dead"
+	icon_gib = "space-kangaroo_dead"
+
+/mob/living/simple_animal/hostile/retaliate/kangaroo/boxing //admemes bullshit
+	name = "boxing kangaroo"
+	desc = "A large, beefy kangaroo with boxing gloves, you should probably run."
+	spacewalk = TRUE
+	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
+	minbodytemp = 0
+	maxbodytemp = 1500
+	melee_damage = 30
+	armour_penetration = 20
+	health = 240
+	maxHealth = 240
+	kick_damage = 70
+	gold_core_spawnable = NO_SPAWN
+	icon_state = "boxing-kangaroo"
+	icon_living = "boxing-kangaroo"
+	icon_dead = "boxing-kangaroo_dead"
+	icon_gib = "boxing-kangaroo_dead"
+	guaranteed_butcher_results = list(/obj/item/clothing/gloves/boxing = 1)
