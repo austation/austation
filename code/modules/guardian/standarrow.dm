@@ -9,7 +9,7 @@
 	w_class = WEIGHT_CLASS_BULKY
 	sharpness = IS_SHARP
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF
-	var/kill_chance = 50 // the lucky sod that wins this coinflip is going to be happy
+	var/kill_chance = 25 // the unlucky sod that loses this coinflip is going to be really pissed
 	var/in_use = FALSE
 	var/uses = 3
 	var/users = list()
