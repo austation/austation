@@ -261,6 +261,6 @@
 	mutated++
 	reagents.add_reagent(/datum/reagent/toxin/mutagen = 1)
 	if(mutated == 5)
-		new var/mob/living/simple_animal/hostile/breadloaf/brad(src.loc)
+		var/mob/living/simple_animal/hostile/breadloaf/brad = new(src.loc)
 		brad.melee_damage = force
 		qdel(src)
