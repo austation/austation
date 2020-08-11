@@ -49,16 +49,6 @@
 		message = replacetext(message," very "," furry ")
 		message = replacetext(message," bruh"," nya")
 
-		// explicit word replacements
-		// Does not respect whole words, to avoid people just putting their curses inside other words (i.e. "Motherfucker" becomes "Mothernyaer")
-		message = replacetext(message,"fuck","nya")
-		message = replacetext(message,"shit","nya")
-		message = replacetext(message,"crap","nya")
-		message = replacetext(message,"nigger","nya")
-		message = replacetext(message,"bitch","nya")
-		message = replacetext(message,"cunt","nya")
-		message = replacetext(message,"dick","nya")
-
 		// Sylabel replacement
 		message = replacetext(message,"no","nya")
 		message = replacetext(message," pur"," purr")
