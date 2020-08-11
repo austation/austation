@@ -59,7 +59,7 @@
 	fitted = FEMALE_UNIFORM_TOP
 
 /obj/item/clothing/under/misc/durathread
-	..()
+  . = ..()
 	alternate_worn_icon = 'austation/icons/mob/uniform.dmi'
 	can_adjust = TRUE
 	armor = list("melee" = 10, "bullet" = 5, "laser" = 10,"energy" = 10, "bomb" = 5, "bio" = 0, "rad" = 0, "fire" = 40, "acid" = 10)
