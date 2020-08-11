@@ -17,6 +17,7 @@
 	if(prob(5)) //I can hear zesko reeeeeing all ready
 		playsound(user, fire_sound, fire_sound_volume, vary_fire_sound)
 		user.visible_message("<span class='userdanger'>The [src] misfires and needs to be rechambered!</span>")
+		qdel(chambered)
 		chambered = null //Basically it misfires and you gotta rechamber it
 		return
 	..()
