@@ -58,6 +58,7 @@
 		"Marina" = image(icon = 'austation/icons/mob/robot.dmi', icon_state = "marinaeng"),
 		"Can" = image(icon = 'austation/icons/mob/robot.dmi', icon_state = "caneng"),
 		"Spider" = image(icon = 'austation/icons/mob/robot.dmi', icon_state = "spidereng"),
+		"Handy" = image(icon = 'austation/icons/mob/robot.dmi', icon_state = "handyeng"),
 		"Skirt" = image(icon = 'austation/icons/mob/robot.dmi', icon_state = "banangarang-Engineering"))
 	
 	var/engi_borg_icon = show_radial_menu(R, R , robotstyles_eng, custom_check = CALLBACK(src, .proc/check_menu, R), radius = 42, require_near = TRUE)
