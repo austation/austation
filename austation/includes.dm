@@ -17,6 +17,7 @@
 #include "code\datums\mood_event\generic_positive_events.dm"
 #include "code\game\sound.dm"
 #include "code\game\area\Space_Station_13_areas.dm"
+#include "code\game\gamemodes\meteor\meteors.dm"
 #include "code\game\machinery\syndicatebeacon.dm"
 #include "code\game\mecha\equipment\tools\other_tools.dm"
 #include "code\game\mecha\equipment\tools\work_tools.dm"
