@@ -1,0 +1,5 @@
+author: "Mick1299"
+delete-after: True
+changes: 
+  - rscadd: "Radial menus for borg type and style selection"
+  - refactor: "Brings service and miner style selection into the same file as the rest"
