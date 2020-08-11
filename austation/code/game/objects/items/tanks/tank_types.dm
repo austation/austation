@@ -15,4 +15,4 @@
 /obj/item/tank/internals/emergency_oxygen/infinite/Initialize()
 	. = ..()
 	ADD_TRAIT(src, TRAIT_NODROP, CURSED_TANK_TRAIT)
-#undef CURSED_TANK_TRAIT "cursed-tank"
+#undef CURSED_TANK_TRAIT
