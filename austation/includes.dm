@@ -15,7 +15,6 @@
 #include "code\datums\status_effects\buffs.dm"
 #include "code\datums\elements\swimming.dm"
 #include "code\datums\mood_event\generic_positive_events.dm"
-#include "code\game\gamemodes\meteor\meteors.dm"
 #include "code\game\sound.dm"
 #include "code\game\area\Space_Station_13_areas.dm"
 #include "code\game\machinery\syndicatebeacon.dm"
@@ -111,3 +110,4 @@
 #include "code\modules\cargo\exports\food_and_drink\food_mixtures.dm"
 #include "code\modules\cargo\exports\food_and_drink\processed.dm"
 #include "code\modules\cargo\exports\organs.dm"
+#include "code\game\gamemodes\meteor\meteors.dm"
