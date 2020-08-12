@@ -124,3 +124,4 @@
 #include "code\modules\cargo\exports\food_and_drink\food_mixtures.dm"
 #include "code\modules\cargo\exports\food_and_drink\processed.dm"
 #include "code\modules\cargo\exports\organs.dm"
+#include "code\modules\cargo\packs.dm"
