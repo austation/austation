@@ -1,0 +1,4 @@
+author: "ZombiesVsPlants"
+delete-after: True
+changes: 
+  - rscadd: "adds Xenobiology steroids crate to cargo"

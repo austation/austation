@@ -1,0 +1,4 @@
+author: "jbox144"
+delete-after: True
+changes: 
+  - rscadd: "Added the cursed oxygen tank, an emergency oxygen tank providing infinite oxygen for free."
