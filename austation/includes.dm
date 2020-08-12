@@ -31,6 +31,7 @@
 #include "code\game\objects\items\storage\firstaid.dm"
 #include "code\game\objects\items\storage\uplink_kits.dm"
 #include "code\game\objects\items\sharpener.dm"
+#include "code\game\objects\items\tanks\tank_types.dm"
 #include "code\game\objects\items\twohanded.dm"
 #include "code\game\objects\items\weaponry.dm"
 #include "code\game\objects\structures\humanfurniture.dm"
