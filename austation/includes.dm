@@ -24,6 +24,7 @@
 #include "code\game\mecha\equipment\weapons\weapons.dm"
 #include "code\game\objects\effects\decals\turfdecal\markings.dm"
 #include "code\game\objects\items\AI_modules.dm"
+#include "code\game\objects\items\bluespace_jar.dm"
 #include "code\game\objects\items\robot\robot_upgrades.dm"
 #include "code\game\objects\items\storage\belt.dm"
 #include "code\game\objects\items\storage\fancy.dm"
