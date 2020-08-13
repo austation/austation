@@ -55,6 +55,7 @@
 #include "code\modules\hydroponics\grown.dm"
 #include "code\modules\food_and_drinks\drinks\drinks.dm"
 #include "code\modules\food_and_drinks\food\snacks_bread.dm"
+#include "code\modules\food_and_drinks\recipes\drinks_recipes.dm"
 #include "code\modules\jobs\job_types\assistant.dm"
 #include "code\modules\jobs\job_types\chief_medical_officer.dm"
 #include "code\modules\jobs\job_types\emt.dm"
@@ -81,6 +82,7 @@
 #include "code\modules\mob\living\simple_animal\friendly\drone\visuals_icons.dm"
 #include "code\modules\mob\living\simple_animal\hostile\cat_butcher.dm"
 #include "code\modules\mob\living\simple_animal\hostile\retaliate\kangaroo.dm"
+#include "code\modules\reagents\chemistry\machinery\chem_dispenser.dm
 #include "code\modules\reagents\chemistry\reagents\alcohol_reagents.dm"
 #include "code\modules\reagents\chemistry\reagents\drink_reagents.dm"
 #include "code\modules\reagents\chemistry\reagents\medicine_reagents.dm"
