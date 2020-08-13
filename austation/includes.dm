@@ -43,6 +43,7 @@
 #include "code\modules\admin\verbs\fix_air.dm"
 #include "code\modules\admin\verbs\mapping.dm"
 #include "code\modules\client\preferences_savefile.dm"
+#include "code\modules\client\loadout\loadout_uniform.dm"
 #include "code\modules\clothing\glasses\hud.dm"
 #include "code\modules\clothing\spacesuit\miscellaneous.dm"
 #include "code\modules\clothing\under\color.dm"
