@@ -82,7 +82,7 @@
 #include "code\modules\mob\living\simple_animal\friendly\drone\visuals_icons.dm"
 #include "code\modules\mob\living\simple_animal\hostile\cat_butcher.dm"
 #include "code\modules\mob\living\simple_animal\hostile\retaliate\kangaroo.dm"
-#include "code\modules\reagents\chemistry\machinery\chem_dispenser.dm
+#include "code\modules\reagents\chemistry\machinery\chem_dispenser.dm"
 #include "code\modules\reagents\chemistry\reagents\alcohol_reagents.dm"
 #include "code\modules\reagents\chemistry\reagents\drink_reagents.dm"
 #include "code\modules\reagents\chemistry\reagents\medicine_reagents.dm"
