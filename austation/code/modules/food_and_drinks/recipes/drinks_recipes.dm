@@ -22,4 +22,4 @@
 	name = "Bushranger"
 	id = /datum/reagent/consumable/ethanol/bushranger
 	results = list(/datum/reagent/consumable/ethanol/bushranger = 2)
-	required_reagents = list(/datum/reagent/consumable/ethanol/bahama_mama = 1, /datum/reagent/consumable/ethanol/rum = 1, /datum/reagent/consumable/ethanol/ginger_beer = 1, /datum/reagent/consumable/ethanol/quadruple_sec = 1)
+	required_reagents = list(/datum/reagent/consumable/ethanol/bahama_mama = 1, /datum/reagent/consumable/ethanol/rum = 1, /datum/reagent/consumable/ginger_beer = 1, /datum/reagent/consumable/ethanol/quadruple_sec = 1)
