@@ -1,23 +1,28 @@
 /mob/living/silicon/pai/proc/choose_chassis_austation()
-    var/mob/living/silicon/pai/R = loc
-    var/static/list/possible_chassis
+    var/static/list/chassis_icon
 
-    if(!possible_chassis)
-        possible_chassis = list(
-        "Repair" = image(icon = 'icons/mob/pai.dmi', icon_state = "repairbot"),
-        "Cat" = image(icon = 'icons/mob/pai.dmi', icon_state = "cat"),
-        "Mouse" = image(icon = 'icons/mob/pai.dmi', icon_state = "mouse"),
-        "Monkey" = image(icon = 'icons/mob/pai.dmi', icon_state = "monkey"),
-        "Corgi" = image(icon = 'icons/mob/pai.dmi', icon_state = "corgi"),
-        "Fox" = image(icon = 'icons/mob/pai.dmi', icon_state = "fox"),
-        "Rabbit" = image(icon = 'icons/mob/pai.dmi', icon_state = "rabbit"),
-        "Bat" = image(icon = 'icons/mob/pai.dmi', icon_state = "bat"),
-        "Butterfly" = image(icon = 'icons/mob/pai.dmi', icon_state = "butterfly"),
-        "Hawk" = image(icon = 'icons/mob/pai.dmi', icon_state = "hawk"),
-        "Lizard" = image(icon = 'icons/mob/pai.dmi', icon_state = "lizard"),
-        "Bag" = image(icon = 'icons/mob/pai.dmi', icon_state = "duffel"))
+    if(!chassis_icon)
+        chassis_icon = list(
+        "repairbot" = image(icon = 'icons/mob/pai.dmi', icon_state = "repairbot"),
+        "cat" = image(icon = 'icons/mob/pai.dmi', icon_state = "cat"),
+        "mouse" = image(icon = 'icons/mob/pai.dmi', icon_state = "mouse"),
+        "monkey" = image(icon = 'icons/mob/pai.dmi', icon_state = "monkey"),
+        "corgi" = image(icon = 'icons/mob/pai.dmi', icon_state = "corgi"),
+        "fox" = image(icon = 'icons/mob/pai.dmi', icon_state = "fox"),
+        "rabbit" = image(icon = 'icons/mob/pai.dmi', icon_state = "rabbit"),
+        "bat" = image(icon = 'icons/mob/pai.dmi', icon_state = "bat"),
+        "butterfly" = image(icon = 'icons/mob/pai.dmi', icon_state = "butterfly"),
+        "hawk" = image(icon = 'icons/mob/pai.dmi', icon_state = "hawk"),
+        "lizard" = image(icon = 'icons/mob/pai.dmi', icon_state = "lizard"),
+        "duffel" = image(icon = 'icons/mob/pai.dmi', icon_state = "duffel"))
 
-    var/selected = show_radial_menu(R, R , possible_chassis, custom_check = CALLBACK(src, .proc/check_menu, R), radius = 42, require_near = TRUE)
+    var/choice = show_radial_menu(usr, usr , chassis_icon, custom_check = CALLBACK(src, .proc/check_menu, usr), radius = 42, require_near = TRUE)
+
+    if(!choice)
+        return FALSE
+    chassis = choice
+    update_resting()
+    to_chat(src, "<span class='boldnotice'>You switch your holochassis projection composite to [chassis]</span>")
 
 /mob/living/silicon/pai/proc/check_menu(mob/living/user)
     if(!istype(user))
