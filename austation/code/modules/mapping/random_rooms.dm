@@ -29,3 +29,11 @@
 	centerspawner = FALSE
 	template_height = 3
 	template_width = 3
+
+/datum/map_template/random_room/sk_rdm210
+	name = "pool"
+	room_id = "sk_rdm210_pool"
+	mappath = "_maps/RandomRooms/10x10/sk_rdm210_pool.dmm"
+	centerspawner = FALSE
+	template_height = 10
+	template_width = 10
