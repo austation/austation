@@ -44,6 +44,7 @@ GLOBAL_LIST_INIT(civilian_positions, list(
 	"Lawyer",
 	"Chaplain",
 	"Clown",
+	"Prisoner", // Austation, bee coders get out REEEEEEEE
 	"Mime",
 	"Assistant"))
 
