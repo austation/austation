@@ -13,6 +13,7 @@
 #include "code\datums\components\crafting\recipes.dm"
 #include "code\datums\emotes.dm"
 #include "code\datums\brain_damage\imaginary_friend.dm"
+#include "code\datums\components\crafting\crafting.dm"
 #include "code\datums\status_effects\buffs.dm"
 #include "code\datums\elements\swimming.dm"
 #include "code\datums\mood_event\generic_positive_events.dm"
