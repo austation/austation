@@ -53,6 +53,7 @@
 #include "code\modules\clothing\under\jobs\civilian\civilian.dm"
 #include "code\modules\events\bruh_moment.dm"
 #include "code\modules\hydroponics\grown.dm"
+#include "code\modules\hydroponics\plant_genes.dm"
 #include "code\modules\food_and_drinks\drinks\drinks.dm"
 #include "code\modules\food_and_drinks\food\snacks_bread.dm"
 #include "code\modules\food_and_drinks\recipes\drinks_recipes.dm"
