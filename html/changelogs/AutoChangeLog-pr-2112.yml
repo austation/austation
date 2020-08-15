@@ -1,0 +1,5 @@
+author: "TheFakeElon"
+delete-after: True
+changes: 
+  - tweak: "mutant bread now inherits recycled bread stats"
+  - tweak: "bread reagents can now only be obtained through bread"
