@@ -108,6 +108,7 @@
 	taste_description = "quarks"
 	color = "#99ff87"
 	metabolization_rate = 4
+	can_synth = FALSE
 
 /datum/reagent/strange_matter/on_mob_life(mob/living/carbon/M)
 	M.adjustBruteLoss(2)
@@ -134,6 +135,7 @@
 	taste_description = "your mouth vaporizing"
 	color = "#858585"
 	metabolization_rate = 2
+	can_synth = FALSE
 
 /datum/reagent/antimatter/on_mob_add(mob/living/L)
 	to_chat(L, "<span class='userdanger'>You feel the antimatter vaporizing your body!</span>")
