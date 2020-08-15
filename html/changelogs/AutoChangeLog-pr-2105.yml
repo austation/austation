@@ -1,0 +1,4 @@
+author: "MrLostman"
+delete-after: True
+changes: 
+  - tweak: "steroid potion and charged stabilizer pass on the effect to children"
