@@ -2,8 +2,9 @@
 	name = "Femur Breaker"
 	result = /obj/structure/femur_breaker
 	time = 150
-	reqs = list(/obj/item/stack/sheet/iron = 20,
-		        /obj/item/stack/cable_coil = 30)
+	reqs = list(/obj/item/stack/sheet/iron = 25,
+				/obj/item/stack/sheet/plasteel = 10,
+		        /obj/item/stack/cable_coil = 60)
 	tools = list(TOOL_SCREWDRIVER, TOOL_WRENCH, TOOL_WELDER)
 	category = CAT_MISC
 
