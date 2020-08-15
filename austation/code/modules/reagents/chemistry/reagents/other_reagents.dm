@@ -1,7 +1,7 @@
 /datum/reagent/australium
 	name = "Australium"
 	color = "#F2BE11"
-	description = "Pure distilled essence of Australia. Can cause subjects to suddenly appear down-under."
+	description = "A mysterious metal element that can adapt and transform itself into different states and forms, can make subjects appear down-under."
 	metabolization_rate = 0.5 * REAGENTS_METABOLISM
 	taste_description = "australia"
 
@@ -18,6 +18,16 @@
 /datum/reagent/australium/on_mob_delete(mob/living/L)
 	. = ..()
 	L.transform = matrix()
+
+/datum/reagent/australium/reaction_obj(obj/O, reac_volume)
+	var/obj/item/M = O
+	if(HAS_TRAIT(M, TRAIT_AUSTRALIUM))
+		return ..()
+	else if(istype(O, /obj/item/gun) || istype(O, /obj/item/melee))
+		M.add_atom_colour(rgb(242,190,17), FIXED_COLOUR_PRIORITY)
+		M.name = "australium [M.name]"
+		M.desc = "[M.desc] It's plated in Australium!"
+		ADD_TRAIT(M, TRAIT_AUSTRALIUM, "australium")
 
 /datum/reagent/luminol
 	name = "Luminol"
