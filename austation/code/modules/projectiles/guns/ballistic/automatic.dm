@@ -4,7 +4,7 @@
 	icon = 'austation/icons/obj/guns.dmi'
 	icon_state = "huot"
 	slot_flags = 0
-	mag_type = /obj/item/ammo_box/magazine/303huot
+	mag_type = /obj/item/ammo_box/magazine/huot
 	fire_sound = 'sound/weapons/rifleshot.ogg'
 	rack_sound = 'sound/weapons/chunkyrack.ogg'
 	can_suppress = FALSE
