@@ -114,6 +114,7 @@
 #include "code\modules\pool\pool_noodles.dm"
 #include "code\modules\pool\pool_structures.dm"
 #include "code\modules\pool\pool_wires.dm"
+#include "code\modules\projectiles\ammunition\ballistic\rifle.dm"
 #include "code\modules\projectiles\bullets\rifle.dm"
 #include "code\modules\projectiles\boxes_magazine\external\rifle-automatic.dm"
 #include "code\modules\projectiles\boxes_magazine\internal\makeshift_mags.dm"
