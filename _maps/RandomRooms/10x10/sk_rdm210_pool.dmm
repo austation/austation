@@ -31,6 +31,12 @@
 /obj/item/trash/pistachios,
 /turf/open/pool,
 /area/template_noop)
+"lQ" = (
+/obj/machinery/pool/filter{
+	pixel_y = -16
+	},
+/turf/open/floor/plating,
+/area/template_noop)
 "nO" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
@@ -302,7 +308,7 @@ un
 (4,1,1) = {"
 un
 Ch
-Ch
+lQ
 zN
 xK
 rW
