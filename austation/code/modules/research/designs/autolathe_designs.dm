@@ -1,4 +1,4 @@
-/datum/design/a357
+/datum/design/a762/ross
 	name = ".303 Casing"
 	id = "a762"
 	build_type = AUTOLATHE
