@@ -1,4 +1,0 @@
-author: "AustationBot"
-delete-after: True
-changes: 
-  - bugfix: "Ahelps will show up correctly in discord again"
