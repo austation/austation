@@ -4,14 +4,14 @@
 	icon = 'austation/icons/obj/guns.dmi'
 	icon_state = "huot"
 	slot_flags = 0
-	mag_type = /obj/item/ammo_box/magazine/m556
+	mag_type = /obj/item/ammo_box/magazine/303huot
 	fire_sound = 'sound/weapons/rifleshot.ogg'
 	rack_sound = 'sound/weapons/chunkyrack.ogg'
 	can_suppress = FALSE
 	fire_rate = 3
 	spread = 7
 	w_class = WEIGHT_CLASS_HUGE
-    bolt_type = BOLT_TYPE_STANDARD
+	bolt_type = BOLT_TYPE_STANDARD
 
 /obj/item/gun/ballistic/automatic/huot/process_fire(atom/target, mob/living/user, message = TRUE, params = null, zone_override = "") //creds to thelaughingbomb, very nice way to make jams
 	if(prob(5)) 
