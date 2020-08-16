@@ -11,7 +11,7 @@
 	category = CAT_WEAPONRY
 	subcategory = CAT_WEAPON
 
-/datum/crafting_recipe/ross
+/datum/crafting_recipe/rossrifle
 	name = "Makeshift Ross Rifle"
 	result = /obj/item/gun/ballistic/rifle/ross
 	reqs = list(/obj/item/weaponcrafting/receiver = 1,
@@ -25,7 +25,7 @@
 	category = CAT_WEAPONRY
 	subcategory = CAT_WEAPON
 
-	/datum/crafting_recipe/huot
+	/datum/crafting_recipe/huotconvert
 	name = "Huot Conversion"
 	result = /obj/item/gun/ballistic/automatic/huot
 	reqs = list(/obj/item/gun/ballistic/rifle/ross,
