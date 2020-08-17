@@ -55,7 +55,7 @@
 	build_path = /obj/item/nanite_scanner
 	category = list("Electronics")
 	departmental_flags = DEPARTMENTAL_FLAG_SCIENCE
-
+/* austation begin -- Comments out circuit code until someone works out how to actually balance them
 ///////////////////////////////////
 //////////Circuit Stuff////////////
 ///////////////////////////////////
@@ -88,7 +88,7 @@
 	build_path = /obj/item/disk/integrated_circuit/upgrade/clone
 	category = list("Electronics")
 	departmental_flags = DEPARTMENTAL_FLAG_SCIENCE
-
+austation end */
 
 ////////////////////////////////////////
 //////////Disk Construction Disks///////

@@ -42,7 +42,7 @@
 
 /datum/netdata/proc/generate_netlog()
 	return "[json_encode(json_list_generation_netlog())]"
-
+/* austation begin -- Comments out circuit code until someone works out how to actually balance them
 // Circuit stuff
 // Process data before sending it
 /datum/netdata/proc/pre_send(datum/component/ntnet_interface/interface)
@@ -65,3 +65,4 @@
 	// Process data before sending it
 	data.pre_send(src)
 	return(..(data,netid))
+austation end */

@@ -66,7 +66,7 @@
 /obj/machinery/telecomms/receiver/preset_left/birdstation
 	name = "Receiver"
 	freq_listening = list()
-
+/* austation begin - Comments out circuit code until someone works out how to actually balance them
 //Code for the interceptor circuit
 /obj/machinery/telecomms/receiver/Options_Menu()
 	var/dat = "<br>Remote control: <a href='?src=[REF(src)];toggle_remote_control=1'>[GLOB.remote_control ? "<font color='green'><b>ENABLED</b></font>" : "<font color='red'><b>DISABLED</b></font>"]</a>"
@@ -112,4 +112,5 @@
 		return
 	holder.receive_signal(signal)
 
-// End
+// End 
+austation end*/

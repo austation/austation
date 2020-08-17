@@ -455,9 +455,9 @@
 	else
 		holder.icon_state = ""
 
-/*~~~~~~~~~~~~
+/*~~~~~~~~~~~~ austation begin -- Comments out circuit code until someone works out how to actually balance them
 	Circutry!
-~~~~~~~~~~~~~*/
+~~~~~~~~~~~~~
 /obj/item/electronic_assembly/proc/diag_hud_set_circuithealth(hide = FALSE)
 	var/image/holder = hud_list[DIAG_CIRCUIT_HUD]
 	var/icon/I = icon(icon, icon_state, dir)
@@ -503,4 +503,5 @@
 	else if(long_range_circuits)
 		holder.icon_state = "hudtracking"
 	else
-		holder.icon_state = null
+		holder.icon_state = null austation end
+*/

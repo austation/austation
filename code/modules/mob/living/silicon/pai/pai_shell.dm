@@ -4,9 +4,9 @@
 		to_chat(src, "<span class='warning'>Your holochassis emitters are still too unstable! Please wait for automatic repair.</span>")
 		return FALSE
 
-	if(istype(remote_control,/obj/item/integrated_circuit/input/pAI_connector))
+	/*if(istype(remote_control,/obj/item/integrated_circuit/input/pAI_connector)) austation begin -- Comments out circuit code until someone works out how to actually balance them
 		to_chat(src,"<span class='notice'>The connector is too small to allow you to change form in it.</span>")
-		return FALSE
+		return FALSE austation end */
 
 	if(!canholo && !force)
 		to_chat(src, "<span class='warning'>Your master or another force has disabled your holochassis emitters!</span>")

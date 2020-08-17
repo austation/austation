@@ -34,7 +34,7 @@
 	user.visible_message("<span class='suicide'>[user] puts the [src] to [user.p_their()] chest. It looks like [user.p_theyre()] trying to pulse [user.p_their()] heart off!</span>")
 	return OXYLOSS//theres a reason it wasnt recommended by doctors
 
-
+/* austation begin -- Comments out circuit code until someone works out how to actually balance them
 // circuit shit begin
 /obj/item/multitool/var/datum/integrated_io/selected_io = null  //functional for integrated circuits.
 
@@ -101,7 +101,7 @@
 		[io1.name] and the [io2.holder.displayed_name]'s [io2.name].</span>")
 		io1.holder.interact(user) // This is to update the UI.
 		update_icon()
-
+austation end */
 // circuit shit end
 // Syndicate device disguised as a multitool; it will turn red when an AI camera is nearby.
 /obj/item/multitool/ai_detect
