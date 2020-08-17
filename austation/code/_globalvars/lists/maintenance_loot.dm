@@ -14,4 +14,5 @@ GLOBAL_LIST_INIT(ratking_coins, list(//Coins: Used by the regal rat mob when spa
 			/obj/item/coin/iron,
 			/obj/item/coin/silver,
 			/obj/item/coin/gold,
-			/obj/item/coin/plasma)).
+			/obj/item/coin/plasma))
+			
