@@ -17,6 +17,8 @@
 	cut_overlays()
 	if(reagents.reagent_list.len)
 		var/datum/reagent/R = reagents.get_master_reagent()
+		if(R.aus) // austation begin -- switches to austation icon if modular drink
+			icon = 'austation/icons/obj/drinks.dmi' // austation end
 		if(!renamedByPlayer)
 			name = R.glass_name
 			desc = R.glass_desc

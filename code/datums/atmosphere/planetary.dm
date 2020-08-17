@@ -13,6 +13,7 @@
 	)
 	restricted_gases = list(
 		/datum/gas/bz=10,
+		/datum/gas/miasma=5, //austation - i dunno how to add to lists that shits fucky so directly adding to this, yell at me
 		/datum/gas/plasma=0.1,
 		/datum/gas/water_vapor=0.1,
 	)
