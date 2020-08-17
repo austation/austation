@@ -215,7 +215,7 @@
 		"Heavy" = image(icon = 'austation/icons/mob/robot.dmi', icon_state = "heavyserv"),
 		"Bro" = image(icon = 'icons/mob/robots.dmi', icon_state = "brobot"),
 		"Kent" = image(icon = 'icons/mob/robots.dmi', icon_state = "kent"),
-		"Top" = image(icon = 'icons/mob/robots.dmi', icon_state = "tophat"),
+		"Tophat" = image(icon = 'icons/mob/robots.dmi', icon_state = "tophat"),
 		"Skirt" = image(icon = 'austation/icons/mob/robot.dmi', icon_state = "banangarang-Service"))
 
 	var/serv_borg_icon = show_radial_menu(R, R , robotstyles_serv, custom_check = CALLBACK(src, .proc/check_menu, R), radius = 42, require_near = TRUE)
