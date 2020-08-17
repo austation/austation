@@ -287,7 +287,7 @@
 			R.icon = 'austation/icons/mob/robot.dmi'
 			cyborg_base_icon = "canmin"
 			hat_offset = 3
-		if("Spider Miner")
+		if("Spider")
 			cyborg_base_icon = "spidermin"
 			hat_offset = -3 
 		if("Droid")
