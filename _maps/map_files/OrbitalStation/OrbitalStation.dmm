@@ -124,10 +124,6 @@
 /obj/machinery/atmospherics/pipe/simple/cyan/visible,
 /turf/open/floor/engine,
 /area/engine/engineering)
-"aer" = (
-/obj/structure/lattice,
-/turf/open/space,
-/area/space/nearstation)
 "afd" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/turf_decal/stripes/line{
@@ -251,7 +247,7 @@
 /obj/structure/table,
 /obj/item/storage/box/handcuffs,
 /obj/item/crowbar,
-/obj/machinery/light/small{
+/obj/machinery/light/small/broken{
 	dir = 1
 	},
 /turf/open/floor/plasteel/dark/airless,
@@ -375,7 +371,6 @@
 	},
 /obj/effect/turf_decal/tile/neutral,
 /obj/effect/decal/cleanable/dirt,
-/obj/machinery/light/small,
 /turf/open/floor/plasteel/dark/airless,
 /area/ruin/space/derelict/storage/equipment)
 "ats" = (
@@ -907,9 +902,7 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/wood,
-/area/bridge/meeting_room/council{
-	name = "HoP Room"
-	})
+/area/bridge/meeting_room/council)
 "aJI" = (
 /obj/machinery/air_sensor/atmos/toxin_tank,
 /turf/open/floor/engine/plasma,
@@ -921,6 +914,11 @@
 	},
 /turf/open/floor/plasteel/dark/airless,
 /area/ruin/space/derelict/bridge)
+"aKe" = (
+/obj/structure/lattice,
+/obj/structure/lattice,
+/turf/open/space/basic,
+/area/space)
 "aLe" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/plumbing/synthesizer,
@@ -1560,11 +1558,6 @@
 /obj/effect/spawner/structure/window/reinforced,
 /turf/open/floor/plating,
 /area/ai_monitored/storage/eva)
-"bdv" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/machinery/light/small,
-/turf/open/floor/plasteel/dark/airless,
-/area/engine/gravity_generator)
 "bex" = (
 /obj/effect/turf_decal/tile/yellow{
 	dir = 4
@@ -1653,7 +1646,7 @@
 	dir = 8
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/machinery/light/small,
+/obj/machinery/light/small/broken,
 /turf/open/floor/plasteel/dark/airless,
 /area/library/abandoned)
 "bgr" = (
@@ -2160,17 +2153,12 @@
 /turf/open/floor/plasteel/dark,
 /area/hallway/primary/central)
 "bvx" = (
-/obj/effect/turf_decal/tile/neutral{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 4
-	},
+/obj/machinery/light,
 /obj/effect/turf_decal/tile/neutral,
-/obj/effect/decal/cleanable/dirt,
-/obj/machinery/light/small{
-	dir = 1
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plasteel/dark/airless,
 /area/ruin/space/derelict/storage/equipment)
 "bwn" = (
@@ -2553,9 +2541,6 @@
 /obj/effect/turf_decal/tile/yellow,
 /obj/structure/closet/crate,
 /obj/effect/turf_decal/bot,
-/obj/machinery/light/small{
-	dir = 1
-	},
 /turf/open/floor/plasteel/dark/airless,
 /area/ruin/space/derelict/gravity_generator)
 "bNp" = (
@@ -3166,7 +3151,6 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/spawner/lootdrop/maintenance,
-/obj/machinery/light/small,
 /turf/open/floor/plasteel/dark/airless,
 /area/ruin/space/derelict/storage/equipment)
 "ciU" = (
@@ -3503,9 +3487,7 @@
 	icon_state = "4-8"
 	},
 /turf/open/floor/wood,
-/area/bridge/meeting_room/council{
-	name = "HoP Room"
-	})
+/area/bridge/meeting_room/council)
 "csB" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
@@ -3630,7 +3612,6 @@
 	dir = 4
 	},
 /obj/structure/cable/yellow,
-/obj/machinery/light/small,
 /turf/open/floor/plasteel/dark/airless,
 /area/engine/gravity_generator)
 "cxT" = (
@@ -3743,13 +3724,8 @@
 /obj/structure/cable/yellow{
 	icon_state = "0-2"
 	},
-/obj/machinery/light/small{
-	dir = 1
-	},
 /turf/open/floor/wood,
-/area/bridge/meeting_room/council{
-	name = "HoP Room"
-	})
+/area/bridge/meeting_room/council)
 "czY" = (
 /turf/open/floor/plating/airless{
 	icon_state = "platingdmg1"
@@ -4483,9 +4459,7 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/wood,
-/area/bridge/meeting_room/council{
-	name = "HoP Room"
-	})
+/area/bridge/meeting_room/council)
 "dgE" = (
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
@@ -4997,11 +4971,11 @@
 /area/maintenance/department/eva)
 "dAV" = (
 /obj/structure/girder,
+/obj/machinery/light/small/broken{
+	dir = 1
+	},
 /obj/structure/sign/poster/random{
 	pixel_y = 32
-	},
-/obj/machinery/light/small{
-	dir = 1
 	},
 /turf/open/floor/plating,
 /area/ruin/space/derelict/singularity_engine)
@@ -5108,9 +5082,6 @@
 /obj/item/twohanded/required/kirbyplants/dead{
 	desc = "A dead plant.";
 	name = "dead plant"
-	},
-/obj/machinery/light/small{
-	dir = 1
 	},
 /turf/open/floor/plasteel/dark/airless,
 /area/ruin/space/derelict/storage/equipment)
@@ -5573,9 +5544,7 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/wood,
-/area/bridge/meeting_room/council{
-	name = "HoP Room"
-	})
+/area/bridge/meeting_room/council)
 "dVU" = (
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
@@ -5889,16 +5858,6 @@
 /obj/item/stock_parts/cell/high,
 /turf/open/floor/plasteel/dark,
 /area/science/lab)
-"efy" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/turf_decal/tile/neutral,
-/obj/effect/turf_decal/tile/neutral{
-	dir = 8
-	},
-/obj/effect/decal/cleanable/dirt,
-/obj/machinery/light/small,
-/turf/open/floor/plasteel/dark/airless,
-/area/ruin/space/derelict/storage/equipment)
 "efW" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/turf_decal/tile/neutral{
@@ -5971,9 +5930,7 @@
 	icon_state = "1-2"
 	},
 /turf/open/floor/wood,
-/area/bridge/meeting_room/council{
-	name = "HoP Room"
-	})
+/area/bridge/meeting_room/council)
 "eku" = (
 /obj/effect/turf_decal/tile/green{
 	dir = 1
@@ -6109,7 +6066,6 @@
 /area/engine/supermatter)
 "epI" = (
 /obj/structure/AIcore,
-/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/engine/airless,
 /area/ruin/space/derelict/bridge)
 "epQ" = (
@@ -6301,9 +6257,6 @@
 	pixel_x = 24
 	},
 /obj/item/banner/command,
-/obj/machinery/light/small{
-	dir = 1
-	},
 /turf/open/floor/plasteel/dark/airless,
 /area/crew_quarters/heads/captain/private{
 	name = "Admiral's Quarters"
@@ -6323,9 +6276,6 @@
 /obj/structure/table/wood,
 /obj/item/paper_bin,
 /obj/item/pen,
-/obj/machinery/light/small{
-	dir = 1
-	},
 /turf/open/floor/plasteel/dark/airless,
 /area/bridge/showroom/corporate)
 "euh" = (
@@ -6653,7 +6603,7 @@
 	},
 /obj/effect/turf_decal/tile/red,
 /obj/structure/tank_dispenser/oxygen,
-/obj/machinery/light/small{
+/obj/machinery/light/small/broken{
 	dir = 1
 	},
 /turf/open/floor/plasteel/dark/airless,
@@ -6737,8 +6687,8 @@
 	color = "#4169E1";
 	name = "Command blue corner"
 	},
-/mob/living/simple_animal/hostile/syndicate/ranged{
-	name = "Crazed Syndicate Rifleman"
+/mob/living/simple_animal/hostile/syndicate/ranged/shotgun{
+	name = "Crazed Syndie Sapper"
 	},
 /turf/open/floor/plasteel/dark/airless,
 /area/ruin/space/derelict/bridge)
@@ -6889,20 +6839,6 @@
 	},
 /turf/open/floor/engine,
 /area/engine/engineering)
-"eMF" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/turf_decal/tile/neutral{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 4
-	},
-/obj/effect/decal/cleanable/dirt,
-/obj/machinery/light/small{
-	dir = 1
-	},
-/turf/open/floor/plasteel/dark/airless,
-/area/ruin/space/derelict/storage/equipment)
 "eOo" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -7268,7 +7204,7 @@
 /area/hallway/primary/central)
 "fcv" = (
 /obj/structure/table_frame,
-/obj/machinery/light/small{
+/obj/machinery/light/small/broken{
 	dir = 1
 	},
 /turf/open/floor/plating/airless,
@@ -7495,12 +7431,11 @@
 	},
 /obj/effect/turf_decal/tile/neutral,
 /obj/effect/decal/cleanable/dirt,
+/obj/machinery/light/small/broken{
+	dir = 4
+	},
 /obj/structure/frame/computer{
 	dir = 8
-	},
-/obj/machinery/light/small{
-	dir = 4;
-	pixel_y = -5
 	},
 /turf/open/floor/plasteel/dark/airless,
 /area/ruin/space/derelict/singularity_engine)
@@ -7670,9 +7605,6 @@
 	},
 /obj/structure/cable/yellow{
 	icon_state = "2-4"
-	},
-/obj/machinery/light/small{
-	dir = 1
 	},
 /turf/open/floor/plasteel/dark/airless,
 /area/ruin/space/derelict/bridge)
@@ -8190,7 +8122,7 @@
 	pixel_x = 32
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/machinery/light/small,
+/obj/machinery/light/small/broken,
 /turf/open/floor/plasteel/dark/airless,
 /area/ruin/space/derelict/singularity_engine)
 "fGD" = (
@@ -8446,9 +8378,7 @@
 /obj/item/clothing/head/hopcap,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/wood,
-/area/bridge/meeting_room/council{
-	name = "HoP Room"
-	})
+/area/bridge/meeting_room/council)
 "fPr" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
@@ -9075,9 +9005,6 @@
 	name = "Command blue corner"
 	},
 /obj/machinery/porta_turret_cover,
-/obj/machinery/light/small{
-	dir = 1
-	},
 /turf/open/floor/plasteel/dark/airless,
 /area/ruin/space/derelict/bridge)
 "gjX" = (
@@ -9132,7 +9059,6 @@
 /obj/effect/turf_decal/stripes/box,
 /obj/item/storage/toolbox/emergency,
 /obj/item/wrench,
-/obj/machinery/light/small,
 /turf/open/floor/plasteel/dark/airless,
 /area/ruin/space/derelict/bridge)
 "glS" = (
@@ -9487,11 +9413,6 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/engine/engineering)
-"gxu" = (
-/obj/machinery/light/small,
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/circuit/airless,
-/area/ruin/space/derelict/bridge)
 "gxH" = (
 /obj/structure/table,
 /obj/effect/spawner/lootdrop/maintenance,
@@ -9660,7 +9581,6 @@
 	name = "dead plant";
 	pixel_y = 8
 	},
-/obj/machinery/light/small,
 /turf/open/floor/plasteel,
 /area/ai_monitored/turret_protected/ai_upload_foyer)
 "gCw" = (
@@ -10116,6 +10036,9 @@
 	color = "#4169E1";
 	name = "Command blue corner"
 	},
+/mob/living/simple_animal/hostile/syndicate/ranged/shotgun{
+	name = "Crazed Syndie Sapper"
+	},
 /turf/open/floor/plasteel/dark/airless,
 /area/ruin/space/derelict/bridge)
 "gQi" = (
@@ -10270,7 +10193,6 @@
 	color = "#4169E1";
 	name = "Command blue corner"
 	},
-/obj/machinery/light/small,
 /turf/open/floor/plasteel/dark/airless,
 /area/ruin/space/derelict/bridge)
 "gVP" = (
@@ -10600,9 +10522,7 @@
 "hfM" = (
 /obj/structure/grille/broken,
 /turf/open/floor/plating/airless,
-/area/bridge/meeting_room/council{
-	name = "HoP Room"
-	})
+/area/space)
 "hgY" = (
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
@@ -11022,6 +10942,10 @@
 	icon_state = "platingdmg3"
 	},
 /area/ruin/space/derelict/arrival)
+"hxl" = (
+/obj/structure/grille,
+/turf/open/floor/plating/airless,
+/area/space)
 "hxw" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/bed/dogbed/ian,
@@ -11031,9 +10955,7 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/wood,
-/area/bridge/meeting_room/council{
-	name = "HoP Room"
-	})
+/area/bridge/meeting_room/council)
 "hxz" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/firealarm{
@@ -11104,9 +11026,6 @@
 	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/machinery/light/small{
-	dir = 1
-	},
 /turf/open/floor/plasteel/dark/airless,
 /area/ruin/space/derelict/storage/equipment)
 "hCS" = (
@@ -11120,7 +11039,6 @@
 	},
 /obj/structure/closet/secure_closet/engineering_personal,
 /obj/effect/turf_decal/bot,
-/obj/machinery/light/small,
 /turf/open/floor/plasteel/dark/airless,
 /area/ruin/space/derelict/gravity_generator)
 "hCV" = (
@@ -12919,7 +12837,6 @@
 	use_power = 0
 	},
 /obj/item/banner/command,
-/obj/machinery/light/small,
 /turf/open/floor/plasteel/dark/airless,
 /area/crew_quarters/heads/captain/private{
 	name = "Admiral's Quarters"
@@ -13085,7 +13002,7 @@
 	dir = 1
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/machinery/light/small{
+/obj/machinery/light/small/broken{
 	dir = 8
 	},
 /turf/open/floor/plasteel/dark/airless,
@@ -13111,7 +13028,6 @@
 /obj/structure/sign/poster/contraband/donut_corp{
 	pixel_y = -32
 	},
-/obj/machinery/light/small,
 /turf/open/floor/plasteel/dark/airless,
 /area/ai_monitored/security/armory)
 "iWn" = (
@@ -13413,7 +13329,6 @@
 	name = "Command blue corner"
 	},
 /obj/machinery/vending/cigarette,
-/obj/machinery/light/small,
 /turf/open/floor/plasteel/dark/airless,
 /area/crew_quarters/heads/captain/private{
 	name = "Admiral's Quarters"
@@ -13598,7 +13513,7 @@
 /obj/effect/turf_decal/delivery,
 /obj/structure/tank_dispenser/oxygen,
 /obj/effect/decal/cleanable/dirt,
-/obj/machinery/light/small{
+/obj/machinery/light/small/broken{
 	dir = 1
 	},
 /turf/open/floor/plasteel/dark/airless,
@@ -14446,7 +14361,6 @@
 /turf/open/floor/plasteel,
 /area/ruin/space/derelict/storage/equipment)
 "jXY" = (
-/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/circuit/airless,
 /area/ruin/space/derelict/bridge)
 "jYv" = (
@@ -15011,9 +14925,6 @@
 /obj/effect/turf_decal/tile/yellow{
 	dir = 1
 	},
-/obj/machinery/light/small{
-	dir = 1
-	},
 /turf/open/floor/plasteel/dark/airless,
 /area/ruin/space/derelict/gravity_generator)
 "kos" = (
@@ -15130,9 +15041,6 @@
 /obj/structure/table/wood,
 /obj/item/storage/photo_album,
 /obj/item/camera,
-/obj/machinery/light/small{
-	dir = 1
-	},
 /turf/open/floor/plasteel/dark/airless,
 /area/crew_quarters/heads/captain/private{
 	name = "Admiral's Quarters"
@@ -15475,9 +15383,7 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/wood,
-/area/bridge/meeting_room/council{
-	name = "HoP Room"
-	})
+/area/bridge/meeting_room/council)
 "kFL" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/atmospherics/pipe/simple/supply/visible{
@@ -15678,9 +15584,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/carpet/royalblue,
-/area/bridge/meeting_room/council{
-	name = "HoP Room"
-	})
+/area/bridge/meeting_room/council)
 "kOl" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/turf_decal/tile/blue,
@@ -16203,9 +16107,6 @@
 	name = "dead plant";
 	pixel_y = 8
 	},
-/obj/machinery/light/small{
-	dir = 1
-	},
 /turf/open/floor/plasteel,
 /area/hallway/secondary/command)
 "lhh" = (
@@ -16222,7 +16123,7 @@
 /area/library/abandoned)
 "liA" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/machinery/light/small,
+/obj/machinery/light/small/broken,
 /turf/open/floor/plasteel/dark/airless,
 /area/library/abandoned)
 "ljG" = (
@@ -16483,11 +16384,8 @@
 	pixel_y = -22
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/machinery/light/small,
 /turf/open/floor/wood,
-/area/bridge/meeting_room/council{
-	name = "HoP Room"
-	})
+/area/bridge/meeting_room/council)
 "luN" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/turf_decal/tile/neutral{
@@ -16620,9 +16518,7 @@
 /obj/effect/spawner/structure/window/reinforced,
 /obj/machinery/door/firedoor/window,
 /turf/open/floor/plating,
-/area/bridge/meeting_room/council{
-	name = "HoP Room"
-	})
+/area/bridge/meeting_room/council)
 "lyw" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/rack,
@@ -16681,7 +16577,6 @@
 /obj/machinery/computer/cargo{
 	dir = 8
 	},
-/obj/machinery/light/small,
 /turf/open/floor/plasteel/dark/airless,
 /area/ruin/space/derelict/storage/equipment)
 "lAu" = (
@@ -16902,9 +16797,7 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/wood,
-/area/bridge/meeting_room/council{
-	name = "HoP Room"
-	})
+/area/bridge/meeting_room/council)
 "lHQ" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
@@ -17200,7 +17093,6 @@
 	dir = 4;
 	name = "Command blue corner"
 	},
-/obj/machinery/light/small,
 /turf/open/floor/plasteel/dark/airless,
 /area/bridge/showroom/corporate)
 "lRt" = (
@@ -17265,9 +17157,7 @@
 "lTd" = (
 /obj/structure/grille,
 /turf/open/floor/plating/airless,
-/area/bridge/meeting_room/council{
-	name = "HoP Room"
-	})
+/area/bridge/meeting_room/council)
 "lTy" = (
 /obj/effect/turf_decal/tile/blue{
 	dir = 8
@@ -17934,9 +17824,6 @@
 	},
 /obj/item/storage/firstaid/regular,
 /obj/item/crowbar,
-/obj/machinery/light/small{
-	dir = 1
-	},
 /turf/open/floor/plasteel/dark/airless,
 /area/ruin/space/derelict/storage/equipment)
 "mti" = (
@@ -18019,9 +17906,7 @@
 	icon_state = "1-2"
 	},
 /turf/open/floor/wood,
-/area/bridge/meeting_room/council{
-	name = "HoP Room"
-	})
+/area/bridge/meeting_room/council)
 "mwe" = (
 /obj/effect/turf_decal/tile/yellow{
 	dir = 4
@@ -18134,7 +18019,7 @@
 	},
 /obj/effect/turf_decal/tile/yellow,
 /obj/effect/decal/cleanable/dirt,
-/obj/machinery/light/small,
+/obj/machinery/light/small/broken,
 /turf/open/floor/plasteel/dark/airless,
 /area/ruin/space/derelict/singularity_engine)
 "mBw" = (
@@ -18450,11 +18335,8 @@
 	pixel_y = -32
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/machinery/light/small,
 /turf/open/floor/wood,
-/area/bridge/meeting_room/council{
-	name = "HoP Room"
-	})
+/area/bridge/meeting_room/council)
 "mPc" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/turf_decal/tile/neutral,
@@ -18599,9 +18481,8 @@
 	},
 /obj/effect/turf_decal/tile/neutral,
 /obj/effect/decal/cleanable/dirt,
-/obj/machinery/light/small{
-	dir = 4;
-	pixel_y = -5
+/obj/machinery/light/small/broken{
+	dir = 4
 	},
 /turf/open/floor/plasteel/dark/airless,
 /area/ruin/space/derelict/singularity_engine)
@@ -18945,7 +18826,6 @@
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
 	},
-/obj/machinery/light/small,
 /turf/open/floor/plasteel/dark/airless,
 /area/ruin/space/derelict/storage/equipment)
 "neg" = (
@@ -19050,11 +18930,8 @@
 	},
 /obj/structure/bed,
 /obj/item/bedsheet/centcom,
-/obj/effect/mob_spawn/human/corpse{
-	mob_name = "Admiral Terra"
-	},
+/obj/effect/mob_spawn/human/corpse,
 /obj/item/clothing/under/rank/centcom/officer{
-	desc = "Worn by the late Admiral Terra.";
 	name = "Admiral Terra's Suit"
 	},
 /obj/item/paper/fluff/ruins/crashedship/old_diary{
@@ -19630,9 +19507,6 @@
 /obj/machinery/mecha_part_fabricator/maint{
 	name = "forgotten exosuit fabricator"
 	},
-/obj/machinery/light/small{
-	dir = 1
-	},
 /turf/open/floor/plating{
 	icon_state = "panelscorched"
 	},
@@ -20010,7 +19884,6 @@
 /obj/machinery/door/firedoor/border_only{
 	dir = 4
 	},
-/obj/machinery/light/small,
 /turf/open/floor/plasteel/dark/airless,
 /area/ai_monitored/security/armory)
 "nVx" = (
@@ -20046,15 +19919,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/circuit/telecomms/server,
 /area/tcommsat/server)
-"nXY" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/turf_decal/tile/yellow{
-	dir = 8
-	},
-/obj/effect/turf_decal/tile/yellow,
-/obj/machinery/light/small,
-/turf/open/floor/plasteel/dark/airless,
-/area/ruin/space/derelict/gravity_generator)
 "nYn" = (
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
@@ -20459,9 +20323,6 @@
 	desc = "A dead plant.";
 	name = "dead plant";
 	pixel_y = 8
-	},
-/obj/machinery/light/small{
-	dir = 1
 	},
 /turf/open/floor/plasteel,
 /area/ai_monitored/turret_protected/ai_upload_foyer)
@@ -21509,9 +21370,7 @@
 	icon_state = "1-4"
 	},
 /turf/open/floor/carpet/royalblue,
-/area/bridge/meeting_room/council{
-	name = "HoP Room"
-	})
+/area/bridge/meeting_room/council)
 "oWd" = (
 /obj/effect/turf_decal/tile/brown{
 	dir = 8
@@ -21619,7 +21478,6 @@
 /obj/structure/closet/crate,
 /obj/effect/turf_decal/bot,
 /obj/effect/spawner/lootdrop/maintenance/four,
-/obj/machinery/light/small,
 /turf/open/floor/plasteel/dark/airless,
 /area/ruin/space/derelict/gravity_generator)
 "paw" = (
@@ -21648,7 +21506,7 @@
 	dir = 8
 	},
 /obj/effect/turf_decal/tile/red,
-/obj/machinery/light/small,
+/obj/machinery/light/small/broken,
 /turf/open/floor/plasteel/dark/airless,
 /area/library/abandoned)
 "pbd" = (
@@ -21951,7 +21809,7 @@
 	pixel_y = 5
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/machinery/light/small,
+/obj/machinery/light/small/broken,
 /turf/open/floor/plasteel/dark/airless,
 /area/ruin/space/derelict/singularity_engine)
 "pkv" = (
@@ -22197,19 +22055,6 @@
 /obj/structure/girder,
 /turf/open/floor/plating,
 /area/ruin/space/derelict/singularity_engine)
-"pxy" = (
-/obj/effect/turf_decal/tile/neutral{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 4
-	},
-/obj/effect/decal/cleanable/dirt,
-/obj/machinery/light/small{
-	dir = 1
-	},
-/turf/open/floor/plasteel/dark/airless,
-/area/ruin/space/derelict/storage/equipment)
 "pxE" = (
 /turf/closed/wall,
 /area/security/brig)
@@ -22815,9 +22660,7 @@
 /obj/item/circuitboard/computer/card,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/wood,
-/area/bridge/meeting_room/council{
-	name = "HoP Room"
-	})
+/area/bridge/meeting_room/council)
 "pQL" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/door/airlock/mining{
@@ -23580,11 +23423,11 @@
 "qrf" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/blood/old,
+/mob/living/simple_animal/hostile/syndicate/ranged/shotgun{
+	name = "Crazed Syndie Sapper"
+	},
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
-	},
-/mob/living/simple_animal/hostile/syndicate/ranged{
-	name = "Crazed Syndicate Rifleman"
 	},
 /turf/open/floor/plasteel/dark/airless,
 /area/ruin/space/derelict/bridge)
@@ -23770,7 +23613,7 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 4
 	},
-/obj/machinery/light/small,
+/obj/machinery/light/small/broken,
 /turf/open/floor/plasteel/dark/airless,
 /area/library/abandoned)
 "qzm" = (
@@ -24013,9 +23856,6 @@
 /obj/structure/sign/poster/contraband/fun_police{
 	pixel_y = 32
 	},
-/obj/machinery/light/small{
-	dir = 1
-	},
 /turf/open/floor/plasteel/dark/airless,
 /area/ai_monitored/security/armory)
 "qIN" = (
@@ -24083,9 +23923,6 @@
 	pixel_y = 32
 	},
 /obj/effect/decal/cleanable/cobweb/cobweb2,
-/obj/machinery/light/small{
-	dir = 1
-	},
 /turf/open/floor/plasteel/dark/airless,
 /area/ai_monitored/security/armory)
 "qKw" = (
@@ -24240,9 +24077,7 @@
 /obj/item/toy/figure/hop,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/wood,
-/area/bridge/meeting_room/council{
-	name = "HoP Room"
-	})
+/area/bridge/meeting_room/council)
 "qQU" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating{
@@ -24321,9 +24156,7 @@
 /obj/structure/chair/office,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/carpet/royalblue,
-/area/bridge/meeting_room/council{
-	name = "HoP Room"
-	})
+/area/bridge/meeting_room/council)
 "qUC" = (
 /turf/closed/wall,
 /area/science/lab)
@@ -24664,9 +24497,7 @@
 	icon_state = "1-2"
 	},
 /turf/open/floor/carpet/royalblue,
-/area/bridge/meeting_room/council{
-	name = "HoP Room"
-	})
+/area/bridge/meeting_room/council)
 "rfG" = (
 /obj/effect/turf_decal/tile/neutral{
 	dir = 4
@@ -26345,7 +26176,6 @@
 	dir = 4;
 	name = "Command blue corner"
 	},
-/obj/machinery/light/small,
 /turf/open/floor/plasteel/dark/airless,
 /area/ruin/space/derelict/bridge)
 "skv" = (
@@ -26746,7 +26576,7 @@
 	dir = 1
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/machinery/light/small,
+/obj/machinery/light/small/broken,
 /turf/open/floor/plasteel/dark/airless,
 /area/ruin/space/derelict/singularity_engine)
 "syQ" = (
@@ -27101,9 +26931,6 @@
 	color = "#4169E1";
 	dir = 4;
 	name = "Command blue corner"
-	},
-/obj/machinery/light/small{
-	dir = 1
 	},
 /turf/open/floor/plasteel/dark/airless,
 /area/ruin/space/derelict/bridge)
@@ -28196,7 +28023,6 @@
 /obj/item/cigbutt/cigarbutt{
 	pixel_x = 6
 	},
-/obj/machinery/light/small,
 /turf/open/floor/plasteel/dark/airless,
 /area/ruin/space/derelict/bridge)
 "tHC" = (
@@ -28262,7 +28088,6 @@
 	dir = 5
 	},
 /obj/machinery/vending/snack/random,
-/obj/machinery/light/small,
 /turf/open/floor/plasteel,
 /area/hallway/secondary/command)
 "tLg" = (
@@ -28401,9 +28226,6 @@
 	icon_state = "0-2"
 	},
 /obj/effect/decal/cleanable/cobweb/cobweb2,
-/obj/machinery/light/small{
-	dir = 1
-	},
 /turf/open/floor/plasteel,
 /area/hallway/secondary/command)
 "tQg" = (
@@ -28518,9 +28340,7 @@
 	icon_state = "4-8"
 	},
 /turf/open/floor/carpet/royalblue,
-/area/bridge/meeting_room/council{
-	name = "HoP Room"
-	})
+/area/bridge/meeting_room/council)
 "tSN" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/turf_decal/loading_area{
@@ -28591,9 +28411,6 @@
 	},
 /obj/structure/table/wood,
 /obj/item/storage/fancy/donut_box,
-/obj/machinery/light/small{
-	dir = 1
-	},
 /turf/open/floor/plasteel/dark/airless,
 /area/bridge/showroom/corporate)
 "tTZ" = (
@@ -28750,9 +28567,7 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/carpet/royalblue,
-/area/bridge/meeting_room/council{
-	name = "HoP Room"
-	})
+/area/bridge/meeting_room/council)
 "tZW" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
@@ -28761,6 +28576,9 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3,
 /turf/open/floor/plasteel/dark,
 /area/quartermaster/miningdock)
+"uav" = (
+/turf/closed/wall/r_wall,
+/area/space)
 "uaB" = (
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
@@ -28769,7 +28587,7 @@
 	dir = 1
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/machinery/light/small{
+/obj/machinery/light/small/broken{
 	dir = 8
 	},
 /turf/open/floor/plasteel/dark/airless,
@@ -29081,7 +28899,7 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 4
 	},
-/obj/machinery/light/small{
+/obj/machinery/light/small/broken{
 	dir = 1
 	},
 /turf/open/floor/plasteel/dark/airless,
@@ -29131,9 +28949,6 @@
 	},
 /obj/effect/turf_decal/loading_area{
 	dir = 4
-	},
-/obj/machinery/light/small{
-	dir = 1
 	},
 /turf/open/floor/plasteel/dark/airless,
 /area/ruin/space/derelict/storage/equipment)
@@ -29711,7 +29526,6 @@
 /turf/open/floor/plasteel/dark/airless,
 /area/medical/chemistry)
 "uIx" = (
-/obj/machinery/light/small,
 /turf/open/floor/plating/airless{
 	icon_state = "panelscorched"
 	},
@@ -29839,13 +29653,6 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/bridge)
-"uOY" = (
-/obj/effect/decal/cleanable/dirt,
-/mob/living/simple_animal/hostile/syndicate/ranged{
-	name = "Crazed Syndicate Rifleman"
-	},
-/turf/open/floor/plasteel/dark/airless,
-/area/ruin/space/derelict/bridge)
 "uPp" = (
 /obj/effect/turf_decal/tile/neutral,
 /obj/effect/turf_decal/tile/neutral{
@@ -30282,9 +30089,7 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/wood,
-/area/bridge/meeting_room/council{
-	name = "HoP Room"
-	})
+/area/bridge/meeting_room/council)
 "vgt" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/turf_decal/tile/blue{
@@ -30404,9 +30209,7 @@
 	icon_state = "4-8"
 	},
 /turf/open/floor/plasteel/dark/airless,
-/area/bridge/meeting_room/council{
-	name = "HoP Room"
-	})
+/area/bridge/meeting_room/council)
 "vks" = (
 /obj/effect/turf_decal/tile/brown{
 	dir = 8
@@ -30572,6 +30375,9 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plasteel/dark/airless,
 /area/medical/abandoned)
+"vrV" = (
+/turf/closed/wall/r_wall,
+/area/bridge/meeting_room/council)
 "vsk" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/remains/human,
@@ -30892,7 +30698,6 @@
 	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/machinery/light/small,
 /turf/open/floor/plasteel/dark/airless,
 /area/ruin/space/derelict/storage/equipment)
 "vDH" = (
@@ -31857,15 +31662,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/circuit,
 /area/ai_monitored/nuke_storage)
-"wkX" = (
-/obj/effect/turf_decal/tile/neutral,
-/obj/effect/turf_decal/tile/neutral{
-	dir = 8
-	},
-/obj/effect/decal/cleanable/dirt,
-/obj/machinery/light/small,
-/turf/open/floor/plasteel/dark/airless,
-/area/ruin/space/derelict/singularity_engine)
 "wls" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
@@ -32058,9 +31854,6 @@
 	},
 /obj/structure/sign/poster/contraband/power{
 	pixel_y = 32
-	},
-/obj/machinery/light/small{
-	dir = 1
 	},
 /turf/open/floor/plasteel/dark/airless,
 /area/ruin/space/derelict/gravity_generator)
@@ -32317,9 +32110,7 @@
 "wyx" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/closed/wall/r_wall,
-/area/bridge/meeting_room/council{
-	name = "HoP Room"
-	})
+/area/bridge/meeting_room/council)
 "wzq" = (
 /obj/effect/turf_decal/tile/yellow{
 	dir = 8
@@ -32424,11 +32215,6 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/tcommsat/server)
-"wEe" = (
-/turf/closed/wall/r_wall,
-/area/bridge/meeting_room/council{
-	name = "HoP Room"
-	})
 "wEw" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/turf_decal/stripes/end{
@@ -32623,9 +32409,6 @@
 	},
 /obj/effect/decal/cleanable/cobweb/cobweb2,
 /obj/machinery/porta_turret_cover,
-/obj/machinery/light/small{
-	dir = 1
-	},
 /turf/open/floor/plasteel/dark/airless,
 /area/ruin/space/derelict/bridge)
 "wNR" = (
@@ -32743,7 +32526,7 @@
 /area/medical/medbay/central)
 "wSl" = (
 /obj/structure/closet/emcloset,
-/obj/machinery/light/small{
+/obj/machinery/light/small/broken{
 	dir = 1
 	},
 /turf/open/floor/plating,
@@ -33468,10 +33251,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/grass,
 /area/ruin/space/has_grav/derelictoutpost/dockedship)
-"xpM" = (
-/obj/machinery/light/small,
-/turf/open/floor/plating,
-/area/ruin/space/derelict/gravity_generator)
 "xqy" = (
 /obj/effect/turf_decal/tile/bar{
 	dir = 8
@@ -33578,9 +33357,8 @@
 	dir = 4
 	},
 /obj/effect/turf_decal/tile/neutral,
-/obj/machinery/light/small{
-	dir = 4;
-	pixel_y = -5
+/obj/machinery/light/small/broken{
+	dir = 4
 	},
 /turf/open/floor/plasteel/dark/airless,
 /area/library/abandoned)
@@ -33950,13 +33728,6 @@
 	},
 /turf/open/space/basic,
 /area/space/nearstation)
-"xIo" = (
-/mob/living/simple_animal/hostile/syndicate/ranged{
-	name = "Crazed Syndicate Rifleman"
-	},
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/circuit/airless,
-/area/ruin/space/derelict/bridge)
 "xIz" = (
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
@@ -34252,7 +34023,6 @@
 	dir = 1;
 	name = "Command blue corner"
 	},
-/obj/machinery/light/small,
 /turf/open/floor/plasteel/dark/airless,
 /area/ruin/space/derelict/bridge)
 "xPg" = (
@@ -34756,7 +34526,6 @@
 	dir = 1
 	},
 /obj/structure/closet/emcloset,
-/obj/machinery/light/small,
 /turf/open/floor/plasteel,
 /area/hallway/secondary/command)
 "ygV" = (
@@ -54535,7 +54304,7 @@ xiI
 qgt
 tEo
 xiI
-xpM
+xiI
 wtv
 qgt
 qgt
@@ -56072,7 +55841,7 @@ pOv
 wjm
 ucX
 lvK
-bdv
+pOv
 fKL
 fEK
 vdS
@@ -56080,7 +55849,7 @@ hvN
 wIw
 xiI
 xiI
-nXY
+iEi
 wtv
 aBg
 aBg
@@ -61456,7 +61225,7 @@ bNp
 osD
 qgt
 gRE
-bvx
+fuq
 eBP
 vuU
 inX
@@ -62495,7 +62264,7 @@ dGf
 gRE
 lIs
 fIb
-tUs
+bvx
 gRE
 qgt
 vSV
@@ -63259,7 +63028,7 @@ mti
 mti
 mti
 mti
-pxy
+caK
 fIb
 fIb
 fIb
@@ -64287,11 +64056,11 @@ qgt
 qgt
 mti
 mti
-eMF
+lcH
 fIb
 fIb
 fIb
-efy
+rqU
 mti
 mti
 mti
@@ -72590,17 +72359,17 @@ jeD
 aBg
 aBg
 aBg
-qgt
+jeD
 aBg
 qgt
 qgt
 aBg
 qgt
 aBg
-qgt
+jeD
 aBg
 aBg
-qgt
+jeD
 aBg
 aBg
 aBg
@@ -72847,17 +72616,17 @@ fcy
 jeD
 aBg
 aBg
-qgt
+jeD
 aBg
 qgt
 qgt
 aBg
 qgt
 aBg
-qgt
+jeD
 aBg
 aBg
-qgt
+jeD
 aBg
 aBg
 aBg
@@ -73104,17 +72873,17 @@ kSc
 lqm
 jeD
 lqm
-qgt
+jeD
 aBg
 qgt
 aBg
 aBg
-qgt
+jeD
 aBg
-qgt
+jeD
 aBg
 aBg
-qgt
+jeD
 aBg
 aBg
 aBg
@@ -73361,17 +73130,17 @@ fcy
 baV
 gVJ
 rRR
-qgt
+jeD
 aBg
-qgt
-aBg
-aBg
-qgt
-aBg
-qgt
+jeD
 aBg
 aBg
-qgt
+jeD
+aBg
+jeD
+aBg
+aBg
+jeD
 aBg
 aBg
 aBg
@@ -73618,19 +73387,19 @@ fcy
 dDL
 gVJ
 rRR
-qgt
+jeD
 aBg
-qgt
-aBg
-aBg
-qgt
-aBg
-qgt
+jeD
 aBg
 aBg
-qgt
+jeD
 aBg
-qgt
+jeD
+aBg
+aBg
+jeD
+aBg
+jeD
 aBg
 aBg
 aBg
@@ -73806,7 +73575,7 @@ qgt
 tiN
 rFV
 hPE
-wkX
+aRf
 dcm
 qgt
 aBg
@@ -73875,19 +73644,19 @@ fcy
 tfA
 gVJ
 rRR
-qgt
-qgt
-qgt
+jeD
+jeD
+jeD
 aBg
 aBg
-qgt
+jeD
 aBg
-qgt
-aer
-aer
-aer
+jeD
+jNB
+jNB
+jNB
 tzr
-aer
+jNB
 tzr
 tzr
 tzr
@@ -74132,19 +73901,19 @@ fcy
 qEP
 gVJ
 rRR
-qgt
+jeD
 aBg
-qgt
+jeD
 aBg
 aBg
-qgt
-qgt
-qgt
+jeD
+jeD
+jeD
 tzr
 tzr
-aer
+jNB
 tzr
-aer
+jNB
 tzr
 tzr
 tzr
@@ -74389,19 +74158,19 @@ fcy
 qEP
 fcy
 dmu
-qgt
+jeD
 aBg
-qgt
+jeD
 aBg
 dOl
-qgt
+jeD
 aBg
-qgt
+jeD
 tzr
 tzr
-aer
-aer
-aer
+jNB
+jNB
+jNB
 tzr
 tzr
 tzr
@@ -74646,19 +74415,19 @@ fcy
 qEP
 gVJ
 rRR
-qgt
+jeD
 aBg
-qgt
+jeD
 aBg
 dOl
-qgt
+jeD
 aBg
-qgt
+jeD
 aBg
 aBg
-qgt
+jeD
 aBg
-qgt
+jeD
 aBg
 aBg
 aBg
@@ -74903,19 +74672,19 @@ fcy
 eJN
 gVJ
 rRR
-qgt
+jeD
 aBg
 dOl
 dOl
 dOl
 dOl
 aBg
-qgt
+jeD
 aBg
 aBg
-qgt
+jeD
 aBg
-qgt
+jeD
 aBg
 aBg
 aBg
@@ -75160,19 +74929,19 @@ fcy
 wqk
 gVJ
 rRR
-qgt
+jeD
 dOl
 dOl
 dOl
 dOl
 dOl
 aBg
-qgt
+jeD
 aBg
 aBg
-qgt
+jeD
 aBg
-qgt
+jeD
 aBg
 aBg
 aBg
@@ -75424,12 +75193,12 @@ dMy
 iVT
 dOl
 aBg
-qgt
+jeD
 aBg
 aBg
-qgt
+jeD
 aBg
-qgt
+jeD
 aBg
 aBg
 aBg
@@ -75681,12 +75450,12 @@ dyc
 kmn
 dOl
 aBg
-qgt
+jeD
 aBg
 aBg
 aBg
 aBg
-qgt
+jeD
 aBg
 aBg
 aBg
@@ -75938,12 +75707,12 @@ xnE
 jUA
 dOl
 aBg
-qgt
+jeD
 aBg
-qgt
+jeD
 aBg
 aBg
-qgt
+jeD
 aBg
 aBg
 aBg
@@ -76195,12 +75964,12 @@ cKZ
 kGu
 dOl
 aBg
-wEe
+vrV
 aBg
 aBg
 aBg
 aBg
-qgt
+jeD
 aBg
 aBg
 aBg
@@ -76410,11 +76179,11 @@ qgt
 kqG
 qgt
 aBg
-qgt
+jeD
 aBg
-qgt
+jeD
 aBg
-qgt
+jeD
 aBg
 fMu
 hnP
@@ -76445,19 +76214,19 @@ fcy
 wqk
 gVJ
 dmu
-qgt
+jeD
 dOl
 ndZ
 geS
 lyw
 dOl
-qgt
-wEe
+jeD
+vrV
 aBg
 aBg
-qgt
+jeD
 aBg
-qgt
+jeD
 aBg
 aBg
 aBg
@@ -76665,13 +76434,13 @@ olP
 sMI
 kqG
 aBg
-qgt
+jeD
 aBg
-qgt
+jeD
 aBg
-qgt
-qgt
-qgt
+jeD
+jeD
+jeD
 aBg
 fMu
 haG
@@ -76708,13 +76477,13 @@ kmn
 cAz
 kdM
 dOl
-qgt
-wEe
-qgt
-wEe
+jeD
+vrV
+jeD
+vrV
 aBg
 aBg
-qgt
+jeD
 aBg
 aBg
 aBg
@@ -76922,13 +76691,13 @@ aBg
 aBg
 aBg
 aBg
-qgt
+jeD
 aBg
-qgt
-qgt
-qgt
+jeD
+jeD
+jeD
 aBg
-qgt
+jeD
 aBg
 aBg
 aBg
@@ -76966,12 +76735,12 @@ dPI
 kdM
 dOl
 lTd
-wEe
-lTd
-wEe
-lTd
-wEe
-qgt
+vrV
+hxl
+vrV
+hxl
+uav
+jeD
 aBg
 aBg
 aBg
@@ -77179,15 +76948,13 @@ aBg
 aBg
 aBg
 aBg
-qgt
+jeD
 aBg
-qgt
+jeD
 aBg
-qgt
+jeD
 aBg
-qgt
-aBg
-aBg
+jeD
 aBg
 aBg
 aBg
@@ -77196,9 +76963,11 @@ aBg
 aBg
 aBg
 aBg
-qgt
 aBg
-qgt
+aBg
+jeD
+aBg
+jeD
 qgt
 gJY
 gJY
@@ -77222,14 +76991,14 @@ qKr
 usW
 nVe
 dOl
-wEe
+vrV
 lxM
 lxM
-wEe
-wEe
-wEe
-wEe
-qgt
+vrV
+vrV
+vrV
+uav
+jeD
 aBg
 aBg
 aBg
@@ -77429,33 +77198,33 @@ rQF
 qgv
 qgt
 kqG
-qgt
-qgt
-qgt
-qgt
-qgt
-qgt
-qgt
-qgt
-qgt
-qgt
+jeD
+jeD
+jeD
+jeD
+jeD
+jeD
+jeD
+jeD
+jeD
+jeD
 aBg
-qgt
+jeD
 aBg
-qgt
+jeD
 aBg
 aBg
 aBg
 aBg
 hJc
 sRC
-qgt
+jeD
 aBg
 aBg
 aBg
-qgt
-qgt
-qgt
+jeD
+jeD
+jeD
 aBg
 qgt
 qgt
@@ -77484,9 +77253,9 @@ qQS
 pQn
 kFz
 luF
-wEe
-lTd
-qgt
+vrV
+hxl
+jeD
 aBg
 aBg
 aBg
@@ -77690,16 +77459,16 @@ qgt
 aBg
 aBg
 aBg
-qgt
+jeD
 aBg
 aBg
-qgt
+jeD
 aBg
-qgt
+jeD
 aBg
-qgt
+jeD
 aBg
-qgt
+jeD
 aBg
 aBg
 aBg
@@ -77708,18 +77477,18 @@ hJc
 iJH
 jTC
 hJc
-qgt
+jeD
+aBg
+jeD
+aBg
+jeD
+aBg
 aBg
 qgt
 aBg
-qgt
+jeD
 aBg
-aBg
-qgt
-aBg
-qgt
-aBg
-qgt
+jeD
 aBg
 qgt
 aBg
@@ -77741,9 +77510,9 @@ kNT
 tZC
 kNT
 fPe
-wEe
-lTd
-qgt
+vrV
+hxl
+jeD
 aBg
 aBg
 aBg
@@ -77944,15 +77713,15 @@ xFp
 wRp
 qgt
 qgt
-qgt
-qgt
-qgt
-qgt
-qgt
-qgt
-qgt
+jeD
+jeD
+jeD
+jeD
+jeD
+jeD
+jeD
 aBg
-qgt
+jeD
 krG
 krG
 krG
@@ -77974,9 +77743,9 @@ aBg
 aBg
 aBg
 aBg
-qgt
+jeD
 aBg
-qgt
+jeD
 aBg
 aBg
 aBg
@@ -77987,7 +77756,7 @@ fcy
 qEP
 gVJ
 tdl
-qgt
+jeD
 dFY
 pGw
 eEn
@@ -77999,9 +77768,9 @@ oVx
 qUl
 aJz
 lxM
-lTd
-qgt
-qgt
+hxl
+jeD
+jeD
 aBg
 aBg
 aBg
@@ -78203,13 +77972,13 @@ qgt
 qgt
 aBg
 aBg
-qgt
+jeD
 aBg
 aBg
 aBg
-qgt
+jeD
 aBg
-qgt
+jeD
 krG
 krG
 ufz
@@ -78231,9 +78000,9 @@ krG
 aBg
 aBg
 aBg
-qgt
+jeD
 aBg
-qgt
+jeD
 aBg
 aBg
 aBg
@@ -78257,7 +78026,7 @@ kNT
 dgD
 lxM
 hfM
-qgt
+jeD
 aBg
 aBg
 aBg
@@ -78459,12 +78228,12 @@ qgv
 qgv
 qgt
 qgt
-qgt
-qgt
-qgt
-qgt
-qgt
-qgt
+jeD
+jeD
+jeD
+jeD
+jeD
+jeD
 krG
 krG
 krG
@@ -78488,12 +78257,12 @@ krG
 aBg
 aBg
 aBg
-qgt
+jeD
 aBg
-qgt
-qgt
-qgt
-qgt
+jeD
+jeD
+jeD
+jeD
 gNn
 kWA
 kWA
@@ -78512,8 +78281,8 @@ eko
 csu
 vga
 mOw
-wEe
-lTd
+vrV
+hxl
 aBg
 aBg
 aBg
@@ -78721,7 +78490,7 @@ aBg
 aBg
 jeD
 aBg
-qgt
+jeD
 krG
 krG
 krG
@@ -78745,20 +78514,20 @@ krG
 krG
 aBg
 aBg
-qgt
-qgt
-qgt
+jeD
+jeD
+jeD
 aBg
-qgt
+jeD
 aBg
-qgt
+jeD
 dov
 fJh
 cZB
 vMx
 gVJ
 rRR
-qgt
+jeD
 dFY
 uJV
 aEj
@@ -78769,7 +78538,7 @@ wyx
 vke
 wyx
 wyx
-wEe
+vrV
 jxK
 aBg
 aBg
@@ -78974,11 +78743,11 @@ fRR
 qgv
 qgt
 qgt
-qgt
-qgt
-qgt
-qgt
-kqG
+jeD
+jeD
+jeD
+jeD
+aKe
 krG
 krG
 pFL
@@ -79002,14 +78771,14 @@ krG
 krG
 aBg
 aBg
-qgt
+jeD
 aBg
-qgt
-qgt
-qgt
-qgt
-qgt
-qgt
+jeD
+jeD
+jeD
+jeD
+jeD
+jeD
 kWA
 aVc
 iiE
@@ -79261,7 +79030,7 @@ krG
 krG
 krG
 aBg
-qgt
+jeD
 aBg
 aBg
 aBg
@@ -79286,7 +79055,7 @@ sUe
 cLn
 jMz
 aBg
-qgt
+jeD
 aBg
 aBg
 aBg
@@ -79518,7 +79287,7 @@ krG
 krG
 krG
 krG
-qgt
+jeD
 aBg
 aBg
 aBg
@@ -79542,8 +79311,8 @@ pGH
 lxa
 cLn
 lAx
-qgt
-qgt
+jeD
+jeD
 aBg
 aBg
 aBg
@@ -79776,12 +79545,12 @@ jNZ
 jNZ
 krG
 krG
-qgt
-qgt
-qgt
-qgt
-qgt
-qgt
+jeD
+jeD
+jeD
+jeD
+jeD
+jeD
 gVJ
 lZk
 xMg
@@ -79799,8 +79568,8 @@ fYC
 cwS
 cLn
 jMz
-qgt
-qgt
+jeD
+jeD
 aBg
 aBg
 aBg
@@ -80036,7 +79805,7 @@ krG
 aBg
 aBg
 aBg
-qgt
+jeD
 aBg
 aBg
 gNn
@@ -80291,11 +80060,11 @@ jNZ
 krG
 krG
 krG
-qgt
-qgt
-qgt
-qgt
-qgt
+jeD
+jeD
+jeD
+jeD
+jeD
 gNn
 hRy
 fJh
@@ -80316,8 +80085,8 @@ cLn
 cLn
 jxK
 aBg
-qgt
-qgt
+jeD
+jeD
 aBg
 aBg
 aBg
@@ -80575,7 +80344,7 @@ jxK
 cLn
 jxK
 jxK
-qgt
+jeD
 aBg
 aBg
 aBg
@@ -80833,7 +80602,7 @@ fVd
 shq
 cLn
 gCW
-qgt
+jeD
 aBg
 aBg
 aBg
@@ -81088,10 +80857,10 @@ eyf
 oXc
 jXY
 jXY
-gxu
+jXY
 cLn
-qgt
-qgt
+jeD
+jeD
 aBg
 aBg
 aBg
@@ -81321,13 +81090,13 @@ pFL
 krG
 pFL
 krG
-qgt
-qgt
-qgt
-qgt
-qgt
-qgt
-qgt
+jeD
+jeD
+jeD
+jeD
+jeD
+jeD
+jeD
 tmd
 ekS
 jCx
@@ -81347,7 +81116,7 @@ jXY
 epI
 jXY
 cLn
-qgt
+jeD
 aBg
 aBg
 aBg
@@ -81601,10 +81370,10 @@ woe
 eyf
 oXc
 jXY
-xIo
-gxu
+jXY
+jXY
 cLn
-qgt
+jeD
 aBg
 aBg
 aBg
@@ -82117,8 +81886,8 @@ jxK
 cLn
 jxK
 jxK
-qgt
-qgt
+jeD
+jeD
 aBg
 aBg
 aBg
@@ -82371,12 +82140,12 @@ gCW
 cLn
 cLn
 jxK
-qgt
-qgt
-qgt
-qgt
-qgt
-qgt
+jeD
+jeD
+jeD
+jeD
+jeD
+jeD
 aBg
 aBg
 aBg
@@ -82627,7 +82396,7 @@ lRt
 jxK
 jMz
 aBg
-qgt
+jeD
 aBg
 aBg
 aBg
@@ -82883,7 +82652,7 @@ fFJ
 ijp
 jxK
 jMz
-qgt
+jeD
 aBg
 aBg
 aBg
@@ -83120,13 +82889,13 @@ pFL
 krG
 krG
 krG
-qgt
-qgt
-qgt
-qgt
-qgt
-qgt
-qgt
+jeD
+jeD
+jeD
+jeD
+jeD
+jeD
+jeD
 seo
 omI
 btB
@@ -83135,15 +82904,15 @@ gCr
 mRZ
 tXv
 otL
-uOY
+pGH
 erD
 pFV
 jxK
 jMz
-qgt
+jeD
 aBg
 aBg
-qgt
+jeD
 aBg
 aBg
 aBg
@@ -83397,8 +83166,8 @@ fFJ
 nsO
 jxK
 jMz
-qgt
-qgt
+jeD
+jeD
 aBg
 aBg
 aBg
@@ -83632,12 +83401,12 @@ aYM
 krG
 krG
 krG
-qgt
-qgt
-qgt
-qgt
-qgt
-qgt
+jeD
+jeD
+jeD
+jeD
+jeD
+jeD
 sVS
 sVS
 vBe
@@ -83654,7 +83423,7 @@ rYm
 tHk
 jxK
 lAx
-qgt
+jeD
 aBg
 aBg
 aBg
@@ -83891,7 +83660,7 @@ krG
 aBg
 aBg
 aBg
-qgt
+jeD
 aBg
 aBg
 aBg
@@ -83911,9 +83680,9 @@ gTz
 mRZ
 jxK
 jxK
-qgt
-qgt
-qgt
+jeD
+jeD
+jeD
 aBg
 aBg
 aBg
@@ -84144,14 +83913,14 @@ oWE
 hbC
 mYq
 oWE
-qgt
-qgt
-qgt
-qgt
-qgt
-qgt
-qgt
-qgt
+jeD
+jeD
+jeD
+jeD
+jeD
+jeD
+jeD
+jeD
 sVS
 vBe
 vBe
@@ -84168,8 +83937,8 @@ pcg
 jfD
 nxa
 gCk
-qgt
-qgt
+jeD
+jeD
 aBg
 aBg
 aBg
@@ -84425,7 +84194,7 @@ vTY
 npc
 wHq
 gkh
-qgt
+jeD
 aBg
 aBg
 aBg
@@ -84939,7 +84708,7 @@ nnz
 ttT
 wHq
 gCk
-qgt
+jeD
 aBg
 aBg
 aBg
@@ -85453,7 +85222,7 @@ wHq
 nxa
 nxa
 nxa
-qgt
+jeD
 aBg
 aBg
 aBg
@@ -85709,8 +85478,8 @@ gkh
 gCk
 gCk
 nxa
-qgt
-qgt
+jeD
+jeD
 aBg
 aBg
 aBg
@@ -85959,13 +85728,13 @@ vBe
 vBe
 vBe
 sVS
-qgt
+jeD
 aBg
-qgt
-qgt
-qgt
-qgt
-qgt
+jeD
+jeD
+jeD
+jeD
+jeD
 aBg
 aBg
 aBg
@@ -86219,7 +85988,7 @@ sVS
 aBg
 aBg
 aBg
-qgt
+jeD
 aBg
 aBg
 aBg
