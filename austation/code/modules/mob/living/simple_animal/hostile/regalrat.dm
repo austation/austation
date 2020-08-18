@@ -97,7 +97,7 @@
 	var/loot = rand(1,100)
 	if(prob(0.0001)) //1 in a million as stated in the arcade machine code
 		new /obj/item/gun/energy/pulse/prize(T)
-			to_chat(owner, "<span class='notice'>Holy shit, is that a mother fukken pulse rifle? A shame I dont have hands.</span>")
+		to_chat(owner, "<span class='notice'>Holy shit, is that a mother fukken pulse rifle? A shame I dont have hands.</span>")
 	switch(loot)
 		if(1 to 5)
 			to_chat(owner, "<span class='notice'>Score! You find some cheese!</span>")
