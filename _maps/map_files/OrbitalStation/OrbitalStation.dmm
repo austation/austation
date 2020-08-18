@@ -18930,7 +18930,9 @@
 	},
 /obj/structure/bed,
 /obj/item/bedsheet/centcom,
-/obj/effect/mob_spawn/human/corpse,
+/obj/effect/mob_spawn/human/corpse{
+	mob_name = "Admiral Terra"
+	},
 /obj/item/clothing/under/rank/centcom/officer{
 	name = "Admiral Terra's Suit"
 	},
