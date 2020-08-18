@@ -53,6 +53,7 @@
 #include "code\modules\clothing\under\jobs\security.dm"
 #include "code\modules\clothing\under\jobs\civilian\civilian.dm"
 #include "code\modules\events\bruh_moment.dm"
+#include "code\modules\events\sentient_spider_infestation.dm"
 #include "code\modules\hydroponics\grown.dm"
 #include "code\modules\hydroponics\plant_genes.dm"
 #include "code\modules\food_and_drinks\drinks\drinks.dm"
