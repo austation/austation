@@ -53,12 +53,9 @@ austation end */
 			M.losebreath = max(0, M.losebreath - 4)
 			if(regenerate_blood && M.blood_volume < BLOOD_VOLUME_NORMAL)
 				M.blood_volume += 1
-<<<<<<< HEAD
 /* austation begin -- fetish content
 			if(prob(1) && prob(70))
-=======
 			if(prob(1) && prob(50))
->>>>>>> 8a1e914a9c... another viro rebalance [resistance spec nerf, spiked skin nerf, memes, changes] (#2198)
 				var/turf/open/T = get_turf(M)
 				if(!istype(T))
 					return
