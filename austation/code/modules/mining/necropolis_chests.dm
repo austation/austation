@@ -63,9 +63,6 @@
       new /obj/item/tank/internals/occult(src)
 
 /obj/item/tank/internals/occult
-  var/datum/gas/gas_type
-  var/gas_temp
-
   name = "occult tank"
   desc = "An un-natural experiment. Hyms with a musical tune, god knows what happens if it ruptures..."
   icon = 'austation/icons/obj/tank.dmi'
@@ -73,6 +70,9 @@
   max_integrity = 10
   volume = 200000
   no_rupture = TRUE
+
+  var/datum/gas/gas_type
+  var/gas_temp
 
 /obj/item/tank/internals/occult/Initialize()
 	..()
