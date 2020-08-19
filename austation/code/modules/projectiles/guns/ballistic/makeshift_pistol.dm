@@ -1,6 +1,6 @@
 /obj/item/gun/ballistic/automatic/pistol/aumakeshift
 
-	name = "Makeshift Pistol"
+	name = "makeshift pistol"
 	desc = "A makeshift pistol, its crude structure makes it unable to fit magazines in, only accepts individual 9mm casings."
 	icon = 'austation/icons/obj/guns.dmi'
 	icon_state = "makeshift"
