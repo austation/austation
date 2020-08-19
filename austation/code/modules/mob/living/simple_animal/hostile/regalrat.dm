@@ -96,7 +96,7 @@
 	var/turf/T = get_turf(owner)
 	var/loot = rand(1,100)
 	var/memeloot = rand(1,7)
-	if(prob(0.001)) //1 in a hundreth thousand, with 7 possible outcomes so you have a 1 in a 10^35 chance to get a pulse rifle (If my math is right)
+	if(prob(0.001)) //1 in a hundreth thousand to roll the 7 sided die.
 		switch(memeloot)
 			if(1)
 				new /obj/item/gun/energy/pulse/prize(T)
