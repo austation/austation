@@ -4062,9 +4062,6 @@
 /obj/structure/disposalpipe/segment{
 	dir = 6
 	},
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
 /obj/effect/turf_decal/stripes/corner{
 	dir = 1
 	},
@@ -6675,9 +6672,6 @@
 /turf/open/floor/plasteel,
 /area/engine/engineering)
 "aEr" = (
-/obj/structure/cable/white{
-	icon_state = "4-8"
-	},
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
@@ -6967,13 +6961,13 @@
 /turf/open/floor/engine,
 /area/engine/engineering)
 "aFD" = (
-/obj/structure/cable/white{
-	icon_state = "1-4"
-	},
 /obj/effect/turf_decal/stripes/line,
 /obj/machinery/meter,
 /obj/machinery/light,
 /obj/machinery/atmospherics/pipe/manifold/cyan/visible,
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
 /turf/open/floor/engine,
 /area/engine/engineering)
 "aFF" = (
@@ -9584,33 +9578,21 @@
 /obj/structure/sign/warning/electricshock{
 	pixel_x = -31
 	},
-/obj/structure/cable{
-	icon_state = "2-4"
-	},
 /obj/effect/turf_decal/stripes/line{
 	dir = 9
 	},
 /turf/open/floor/plasteel,
 /area/engine/engineering)
 "aRk" = (
-/obj/structure/cable{
-	icon_state = "4-8"
+/obj/structure/cable/white{
+	icon_state = "0-2"
 	},
-/obj/structure/cable{
-	icon_state = "2-4"
+/obj/machinery/power/smes/engineering{
+	name = "emitter battery"
 	},
-/obj/effect/turf_decal/stripes/line{
-	dir = 1
-	},
-/turf/open/floor/plasteel,
+/turf/open/floor/plating,
 /area/engine/engineering)
 "aRl" = (
-/obj/structure/cable{
-	icon_state = "2-4"
-	},
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
 /obj/effect/turf_decal/stripes/line{
 	dir = 5
 	},
@@ -9618,15 +9600,9 @@
 /area/engine/engineering)
 "aRm" = (
 /obj/effect/spawner/structure/window/reinforced,
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
 /turf/open/floor/plating,
 /area/engine/engineering)
 "aRn" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
 	},
@@ -9636,9 +9612,6 @@
 /turf/open/floor/plasteel,
 /area/engine/engineering)
 "aRo" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
 /obj/effect/turf_decal/stripes/corner{
 	dir = 1
 	},
@@ -9922,8 +9895,6 @@
 /turf/open/floor/plating,
 /area/maintenance/starboard/fore)
 "aSp" = (
-/obj/machinery/power/terminal,
-/obj/structure/cable,
 /obj/structure/extinguisher_cabinet{
 	pixel_x = -27
 	},
@@ -9933,18 +9904,16 @@
 /turf/open/floor/plasteel,
 /area/engine/engineering)
 "aSq" = (
-/obj/machinery/power/terminal,
-/obj/structure/cable,
-/obj/effect/turf_decal/stripes/line,
-/turf/open/floor/plasteel,
+/obj/structure/cable/white{
+	icon_state = "2-4"
+	},
+/turf/open/floor/plating,
 /area/engine/engineering)
 "aSr" = (
-/obj/machinery/power/terminal,
-/obj/structure/cable,
-/obj/effect/turf_decal/stripes/line{
-	dir = 6
+/obj/structure/cable/white{
+	icon_state = "1-2"
 	},
-/turf/open/floor/plasteel,
+/turf/open/floor/plating,
 /area/engine/engineering)
 "aSs" = (
 /obj/structure/cable{
@@ -10001,11 +9970,14 @@
 /turf/open/floor/engine,
 /area/engine/engineering)
 "aSB" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
+	},
+/obj/structure/cable{
+	icon_state = "0-4"
+	},
+/obj/structure/cable/yellow{
+	icon_state = "0-8"
 	},
 /turf/open/floor/plasteel,
 /area/engine/engineering)
@@ -10243,13 +10215,9 @@
 /turf/open/floor/plasteel,
 /area/hallway/primary/starboard)
 "aTD" = (
-/obj/structure/cable/yellow{
-	icon_state = "0-4"
-	},
 /obj/machinery/light_switch{
 	pixel_x = -24
 	},
-/obj/machinery/power/smes/engineering,
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
 	},
@@ -10269,7 +10237,10 @@
 /obj/structure/cable/yellow{
 	icon_state = "0-4"
 	},
-/obj/machinery/power/smes/engineering,
+/obj/machinery/power/smes/engineering{
+	charge = 4.5e+006;
+	output_level = 150000
+	},
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
 	},
@@ -10292,28 +10263,28 @@
 /turf/open/floor/plasteel,
 /area/engine/engineering)
 "aTK" = (
-/obj/structure/cable/white{
-	icon_state = "4-8"
+/obj/machinery/door/airlock/engineering/glass{
+	name = "Laser Room";
+	req_access_txt = "10"
 	},
 /obj/effect/turf_decal/stripes/line{
-	dir = 6
+	dir = 8
 	},
-/turf/open/floor/plasteel,
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/machinery/door/firedoor/border_only{
+	dir = 4
+	},
+/obj/machinery/door/firedoor/border_only{
+	dir = 8
+	},
+/turf/open/floor/plating,
 /area/engine/engineering)
 "aTM" = (
-/obj/structure/cable/white{
-	icon_state = "4-8"
-	},
 /obj/effect/turf_decal/stripes/line{
 	dir = 10
 	},
-/turf/open/floor/engine,
-/area/engine/engineering)
-"aTN" = (
-/obj/structure/cable/white{
-	icon_state = "4-8"
-	},
-/obj/effect/turf_decal/stripes/line,
 /turf/open/floor/engine,
 /area/engine/engineering)
 "aTO" = (
@@ -17128,9 +17099,6 @@
 	dir = 4
 	},
 /obj/effect/landmark/start/station_engineer,
-/obj/structure/cable{
-	icon_state = "1-8"
-	},
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer3{
 	dir = 4
 	},
@@ -19384,9 +19352,6 @@
 /turf/open/floor/plasteel/dark,
 /area/teleporter)
 "bIg" = (
-/obj/structure/cable/white{
-	icon_state = "4-8"
-	},
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
@@ -30561,9 +30526,6 @@
 /turf/open/floor/plasteel/white,
 /area/medical/genetics/cloning)
 "cyW" = (
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
 	dir = 8
 	},
@@ -34178,6 +34140,12 @@
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer3{
 	dir = 1
 	},
+/obj/structure/cable{
+	icon_state = "0-8"
+	},
+/obj/machinery/power/terminal{
+	dir = 4
+	},
 /turf/open/floor/plasteel/dark,
 /area/engine/engineering)
 "cNm" = (
@@ -36000,9 +35968,6 @@
 /turf/open/floor/plasteel,
 /area/quartermaster/miningoffice)
 "cXz" = (
-/obj/structure/cable/white{
-	icon_state = "4-8"
-	},
 /obj/effect/turf_decal/stripes/line,
 /obj/machinery/camera{
 	c_tag = "Engineering Supermatter Aft";
@@ -37384,24 +37349,17 @@
 /area/engine/engineering)
 "deh" = (
 /obj/structure/cable/white{
-	icon_state = "4-8"
+	icon_state = "1-4"
 	},
-/obj/effect/spawner/structure/window/plasma/reinforced,
 /turf/open/floor/plating,
 /area/engine/engineering)
 "dei" = (
-/obj/structure/cable/white{
-	icon_state = "4-8"
-	},
 /obj/effect/turf_decal/stripes/line{
 	dir = 9
 	},
 /turf/open/floor/engine,
 /area/engine/engineering)
 "dej" = (
-/obj/structure/cable/white{
-	icon_state = "4-8"
-	},
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
@@ -37441,31 +37399,28 @@
 /turf/open/floor/engine,
 /area/engine/engineering)
 "deu" = (
-/obj/structure/cable/white{
-	icon_state = "4-8"
-	},
 /obj/effect/turf_decal/stripes/corner{
 	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/simple/cyan/visible{
 	dir = 10
 	},
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
 /turf/open/floor/engine,
 /area/engine/engineering)
 "dev" = (
-/obj/structure/cable/white{
-	icon_state = "4-8"
-	},
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/visible,
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
 /turf/open/floor/engine,
 /area/engine/engineering)
 "dew" = (
-/obj/structure/cable/white{
-	icon_state = "4-8"
-	},
 /obj/machinery/door/airlock/engineering/glass{
 	name = "Laser Room";
 	req_access_txt = "10"
@@ -37482,11 +37437,14 @@
 /obj/machinery/door/firedoor/border_only{
 	dir = 8
 	},
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
 /turf/open/floor/plating,
 /area/engine/engineering)
 "dex" = (
-/obj/structure/cable/white{
-	icon_state = "4-8"
+/obj/structure/cable{
+	icon_state = "1-8"
 	},
 /turf/open/floor/plating,
 /area/engine/engineering)
@@ -37502,6 +37460,9 @@
 "deA" = (
 /obj/structure/cable/white{
 	icon_state = "2-8"
+	},
+/obj/structure/cable/white{
+	icon_state = "1-2"
 	},
 /turf/open/floor/plating,
 /area/engine/engineering)
@@ -37552,10 +37513,13 @@
 /turf/open/floor/plating,
 /area/engine/engineering)
 "deL" = (
-/obj/structure/cable/white,
 /obj/machinery/light{
 	dir = 4
 	},
+/obj/structure/cable/white{
+	icon_state = "1-2"
+	},
+/obj/structure/cable/white,
 /turf/open/floor/plating,
 /area/engine/engineering)
 "deM" = (
@@ -37622,6 +37586,9 @@
 /obj/structure/reflector/single/anchored{
 	dir = 9
 	},
+/obj/structure/cable/white{
+	icon_state = "1-2"
+	},
 /turf/open/floor/plating,
 /area/engine/engineering)
 "dfa" = (
@@ -37664,6 +37631,9 @@
 "dfg" = (
 /obj/structure/reflector/single/anchored{
 	dir = 10
+	},
+/obj/structure/cable/white{
+	icon_state = "1-2"
 	},
 /turf/open/floor/plating,
 /area/engine/engineering)
@@ -37801,6 +37771,7 @@
 /obj/machinery/light{
 	dir = 4
 	},
+/obj/structure/cable/white,
 /turf/open/floor/plating,
 /area/engine/engineering)
 "dfD" = (
@@ -37859,9 +37830,6 @@
 /turf/open/floor/engine,
 /area/engine/engineering)
 "dfJ" = (
-/obj/structure/cable/white{
-	icon_state = "4-8"
-	},
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
 	},
@@ -37886,9 +37854,6 @@
 /turf/open/floor/plating,
 /area/engine/engineering)
 "dfS" = (
-/obj/structure/cable/white{
-	icon_state = "1-8"
-	},
 /obj/effect/turf_decal/stripes/line,
 /turf/open/floor/engine,
 /area/engine/engineering)
@@ -40527,6 +40492,9 @@
 	dir = 8;
 	name = "Freezer bypass"
 	},
+/obj/structure/cable{
+	icon_state = "2-4"
+	},
 /turf/open/floor/engine,
 /area/engine/engineering)
 "dKI" = (
@@ -41706,9 +41674,6 @@
 /obj/structure/disposalpipe/segment,
 /obj/structure/cable/yellow{
 	icon_state = "2-8"
-	},
-/obj/structure/cable/white{
-	icon_state = "1-4"
 	},
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/layer1{
 	dir = 4
@@ -53198,6 +53163,9 @@
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer1{
 	dir = 1
 	},
+/obj/structure/cable{
+	icon_state = "2-4"
+	},
 /turf/open/floor/plasteel/dark,
 /area/engine/engineering)
 "jlK" = (
@@ -56286,9 +56254,6 @@
 /turf/open/floor/plasteel,
 /area/crew_quarters/dorms)
 "kxR" = (
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
 /obj/effect/landmark/event_spawn,
 /turf/open/floor/plasteel,
 /area/engine/engineering)
@@ -60534,9 +60499,6 @@
 /turf/open/floor/plasteel/white,
 /area/security/brig)
 "mtZ" = (
-/obj/structure/cable{
-	icon_state = "2-4"
-	},
 /obj/effect/landmark/event_spawn,
 /obj/machinery/holopad,
 /turf/open/floor/plasteel,
@@ -61074,6 +61036,9 @@
 /obj/machinery/camera{
 	c_tag = "Engineering Supermatter Starboard";
 	network = list("ss13","engine")
+	},
+/obj/structure/cable{
+	icon_state = "4-8"
 	},
 /turf/open/floor/plasteel/dark,
 /area/engine/engineering)
@@ -67179,9 +67144,6 @@
 /turf/open/floor/plasteel/white,
 /area/security/prison)
 "oTV" = (
-/obj/structure/cable/white{
-	icon_state = "2-4"
-	},
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
@@ -67528,9 +67490,6 @@
 /turf/open/floor/plasteel/dark,
 /area/ai_monitored/turret_protected/aisat/foyer)
 "oZr" = (
-/obj/structure/cable/white{
-	icon_state = "4-8"
-	},
 /obj/effect/turf_decal/stripes/line,
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer3,
 /turf/open/floor/engine,
@@ -68005,13 +67964,20 @@
 /turf/open/floor/plating,
 /area/maintenance/port)
 "phW" = (
-/obj/structure/cable/white{
-	icon_state = "4-8"
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
 	},
-/obj/effect/turf_decal/stripes/line{
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/tile/neutral{
 	dir = 4
 	},
-/turf/open/floor/plasteel,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/structure/cable/yellow{
+	icon_state = "4-8"
+	},
+/turf/open/floor/plasteel/dark,
 /area/engine/engineering)
 "piv" = (
 /obj/structure/disposalpipe/segment,
@@ -72995,9 +72961,6 @@
 /turf/open/floor/plating,
 /area/hallway/secondary/entry)
 "roT" = (
-/obj/structure/cable/white{
-	icon_state = "4-8"
-	},
 /obj/effect/turf_decal/stripes/line,
 /obj/machinery/firealarm{
 	dir = 1;
@@ -75445,15 +75408,6 @@
 	},
 /turf/open/floor/plasteel,
 /area/science/mixing)
-"stY" = (
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
-/turf/open/floor/plasteel,
-/area/engine/engineering)
 "sud" = (
 /obj/machinery/firealarm{
 	pixel_y = 32
@@ -77973,9 +77927,6 @@
 /turf/open/floor/plating,
 /area/security/range)
 "ttX" = (
-/obj/structure/cable/white{
-	icon_state = "4-8"
-	},
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
@@ -78011,9 +77962,6 @@
 	},
 /area/security/nuke_storage)
 "tuK" = (
-/obj/structure/cable/white{
-	icon_state = "4-8"
-	},
 /obj/effect/turf_decal/stripes/line,
 /obj/machinery/atmospherics/components/binary/volume_pump{
 	name = "Waste to Cooling"
@@ -81802,9 +81750,6 @@
 /turf/open/floor/wood,
 /area/crew_quarters/heads/captain/private)
 "vaK" = (
-/obj/structure/cable/white{
-	icon_state = "2-8"
-	},
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
@@ -84274,9 +84219,6 @@
 	icon_state = "1-2"
 	},
 /obj/effect/turf_decal/stripes/line,
-/obj/structure/cable/white{
-	icon_state = "1-4"
-	},
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/layer3{
 	dir = 4
 	},
@@ -86308,9 +86250,6 @@
 /turf/open/floor/plasteel,
 /area/crew_quarters/locker)
 "wTx" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
 	},
@@ -86320,6 +86259,9 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
 	dir = 1
+	},
+/obj/structure/cable/yellow{
+	icon_state = "2-4"
 	},
 /turf/open/floor/plasteel,
 /area/engine/engineering)
@@ -89099,9 +89041,6 @@
 /turf/open/floor/wood,
 /area/library)
 "ybK" = (
-/obj/structure/cable/white{
-	icon_state = "4-8"
-	},
 /obj/effect/turf_decal/stripes/line,
 /obj/machinery/atmospherics/components/binary/volume_pump{
 	dir = 1;
@@ -128730,8 +128669,8 @@ aMa
 aNn
 axY
 aPV
-aRk
-aSq
+aCP
+aFr
 aTE
 axY
 aWy
@@ -128988,8 +128927,8 @@ aNo
 axY
 aPW
 aRl
-aSr
-aTE
+oUf
+phW
 axY
 aWz
 aYp
@@ -130270,7 +130209,7 @@ iOn
 jcX
 mtZ
 cyW
-stY
+xLe
 kxR
 bxH
 xLe
@@ -130776,7 +130715,7 @@ axY
 aAr
 qqe
 mSq
-phW
+aTO
 aTO
 aTO
 aHZ
@@ -130788,7 +130727,7 @@ aOR
 aQa
 aTO
 aTO
-aTK
+oUf
 pEb
 aBI
 aYt
@@ -131033,7 +130972,7 @@ ayS
 dCk
 gUF
 gIZ
-deh
+aCZ
 aFz
 aCZ
 deM
@@ -131045,7 +130984,7 @@ dfh
 deM
 aCZ
 aFz
-deh
+aCZ
 vsR
 axY
 aYu
@@ -131559,7 +131498,7 @@ dfi
 aQd
 dBA
 aSA
-aTN
+dfS
 gxD
 apc
 aYu
@@ -132330,7 +132269,7 @@ dfj
 dlI
 deD
 dfF
-aTN
+dfS
 xMs
 jdK
 mHd
@@ -134128,7 +134067,7 @@ aCZ
 axY
 axY
 aCZ
-dew
+aTK
 aCZ
 vsR
 dgf
@@ -134385,7 +134324,7 @@ dff
 ddZ
 ddZ
 aJu
-dex
+aJu
 ngf
 anL
 aWK
@@ -134632,7 +134571,7 @@ aaa
 aaa
 rZG
 mFx
-dey
+aSq
 aHa
 ddZ
 ddZ
@@ -134642,7 +134581,7 @@ ddZ
 ddZ
 ddZ
 dfA
-dfM
+deh
 hTA
 vcv
 dgg
@@ -135145,16 +135084,16 @@ aaa
 aaa
 aaa
 axY
-aJu
+aRk
 deA
 deL
-aJu
-aJu
+aSr
+aSr
 deY
-aJu
+aSr
 dfg
-aJu
-aJu
+aSr
+aSr
 dfC
 dfO
 aJu
