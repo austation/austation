@@ -36,6 +36,7 @@
 #include "code\game\objects\items\tanks\tank_types.dm"
 #include "code\game\objects\items\twohanded.dm"
 #include "code\game\objects\items\weaponry.dm"
+#include "code\game\objects\structures\femur_breaker.dm"
 #include "code\game\objects\structures\humanfurniture.dm"
 #include "code\game\objects\structures\mirror.dm"
 #include "code\game\turfs\open\lava.dm"
