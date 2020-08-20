@@ -25,7 +25,7 @@
 	category = CAT_WEAPONRY
 	subcategory = CAT_WEAPON
 
-	/datum/crafting_recipe/huotconvert
+/datum/crafting_recipe/huotconvert
 	name = "Huot Conversion"
 	result = /obj/item/gun/ballistic/automatic/huot
 	reqs = list(/obj/item/gun/ballistic/rifle/ross,
