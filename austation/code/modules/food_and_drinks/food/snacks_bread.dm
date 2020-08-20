@@ -255,3 +255,12 @@
 		L.dust(force = TRUE)
 		return
 	qdel(hit_atom)
+
+// damage inheritance for mutant bread
+/obj/item/reagent_containers/food/snacks/store/bread/recycled/teleport_act()
+	mutated++
+	reagents.add_reagent(/datum/reagent/toxin/mutagen = 1)
+	if(mutated == 5)
+		var/mob/living/simple_animal/hostile/breadloaf/brad = new(src.loc)
+		brad.melee_damage = force
+		qdel(src)
