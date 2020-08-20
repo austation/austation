@@ -1,6 +1,0 @@
-author: "AustationBot"
-delete-after: True
-changes: 
-  - tweak: "aheal no longer replaces all organs"
-  - bugfix: "fixed apid wing sprites"
-  - bugfix: "fixed flight potion"
