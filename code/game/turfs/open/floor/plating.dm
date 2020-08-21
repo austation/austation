@@ -48,7 +48,7 @@
 		return
 	if(!broken && !burnt)
 		icon_state = icon_plating //Because asteroids are 'platings' too.
-
+/* austation begins
 /turf/open/floor/plating/attackby(obj/item/C, mob/user, params)
 	if(..())
 		return
@@ -92,18 +92,15 @@
 			var/obj/item/stack/tile/W = C
 			if(!W.use(1))
 				return
-			if(!istype(src, /turf/open/floor/plating/asteroid/basalt/lava_land_surface))
-				var/turf/open/floor/T = PlaceOnTop(W.turf_type, flags = CHANGETURF_INHERIT_AIR)
-				if(istype(W, /obj/item/stack/tile/light)) //TODO: get rid of this ugly check somehow
-					var/obj/item/stack/tile/light/L = W
-					var/turf/open/floor/light/F = T
-					F.state = L.state
-			else
-				PlaceOnTop(/turf/open/floor/plating, flags = CHANGETURF_INHERIT_AIR)
+			var/turf/open/floor/T = PlaceOnTop(W.turf_type, flags = CHANGETURF_INHERIT_AIR)
+			if(istype(W, /obj/item/stack/tile/light)) //TODO: get rid of this ugly check somehow
+				var/obj/item/stack/tile/light/L = W
+				var/turf/open/floor/light/F = T
+				F.state = L.state
 			playsound(src, 'sound/weapons/genhit.ogg', 50, 1)
 		else
 			to_chat(user, "<span class='warning'>This section is too damaged to support a tile! Use a welder to fix the damage.</span>")
-
+austation ends */
 /turf/open/floor/plating/welder_act(mob/living/user, obj/item/I)
 	if((broken || burnt) && I.use_tool(src, user, 0, volume=80))
 		to_chat(user, "<span class='danger'>You fix some dents on the broken plating.</span>")

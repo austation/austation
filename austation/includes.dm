@@ -134,3 +134,4 @@
 #include "code\modules\cargo\exports\food_and_drink\processed.dm"
 #include "code\modules\cargo\exports\organs.dm"
 #include "code\modules\cargo\packs.dm"
+#include "code\game\turfs\open\floor\plating.dm"
