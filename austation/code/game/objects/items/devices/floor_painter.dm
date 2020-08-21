@@ -26,7 +26,7 @@
 	if(!proximity)
 		return
 
-	var/turf/simulated/floor/plasteel/F = A
+	var/turf/open/floor/plasteel/F = A
 	if(!istype(F))
 		to_chat(user, "<span class='warning'>\The [src] can only be used on station flooring.</span>")
 		return
