@@ -16,11 +16,22 @@
 	flags_1 = CONDUCT_1
 	slot_flags = SLOT_BELT
 
-	var/static/list/allowed_states = list("stairs-old", "stairs-l", "stairs-m", "stairs-r", "grimy", "yellowsiding", "yellowcornersiding",
-		"plaque", "showroomfloor", "freezerfloor", "tile_full", "cargo_one_full", "kafel_full", "steel_monofloor", "steel_monotile",
-		"monotile_dark", "steel_grid", "steel_ridged", "techmaint", "tiled", "tiled_light", "ridged", "grid", "monotile", "monotile_light",
-		"stone", "techfloor_gray", "techfloor_grid", "floor", "white", "cafeteria", "whitehall", "whitecorner", "pinkblack", "darkfull",
-		"checker", "dark", "darkcorner", "bluefull", "darkbluefull", "blackwhite", "chapel")
+	var/static/list/allowed_states = list("arrival", "arrivalcorner", "bar", "barber", "black", "blackcorner", "blue", "bluecorner",
+		"bluefull", "bluered", "blueyellow", "blueyellowfull", "bot", "brown", "browncorner", "brownfull", "browncornerold", "brownold",
+		"cafeteria", "caution", "cautioncorner", "cautionfull", "chapel", "cmo", "dark", "delivery", "escape", "escapecorner", "floor",
+		"freezerfloor", "green", "greenblue", "greenbluefull", "greencorner", "greenfull", "greenyellow", "greenyellowfull", "grimy",
+		"loadingarea", "neutral", "neutralcorner", "neutralfull", "orange", "orangecorner", "orangefull", "plaque", "purple", "purplecorner",
+		"purplefull", "red", "redblue", "redbluefull", "darkredblue", "darkredbluefull", "redcorner", "redfull", "redgreen", "redgreenfull",
+		"darkredgreen", "darkredgreenfull", "redyellow", "redyellowfull", "darkredyellow", "darkredyellowfull", "showroomfloor", "stage_bleft",
+		"stage_bottom", "stage_left", "vault", "warning", "warningcorner", "warnplate", "warnplatecorner", "warnwhite", "warnwhitecorner", "white",
+		"whiteblue", "whitebluecorner", "whitebluefull", "whitebot", "whitecorner", "whitedelivery", "whitegreen", "whitegreencorner", "whitegreenfull",
+		"whitehall", "whitepurple", "whitepurplecorner", "whitepurplefull", "whitered", "whiteredcorner", "whiteredfull", "whiteyellow", "whiteyellowcorner",
+		"whiteyellowfull", "yellow", "yellowcorner", "yellowcornersiding", "yellowfull", "yellowsiding", "darkpurple", "darkpurplecorners", "darkpurplefull",
+		"darkred", "darkredcorners", "darkredfull", "darkblue", "darkbluecorners", "darkbluefull", "darkgreen", "darkgreencorners", "darkgreenfull", "darkyellow",
+		"darkyellowcorners", "darkyellowfull", "darkbrown", "darkbrowncorners", "darkbrownfull", "stairs-old", "stairs", "stairs-l", "stairs-m", "stairs-r",
+		"ameridiner_kitchen", "tile_full", "cargo_one_full", "kafel_full", "steel_monofloor", "steel_monotile", "monotile_dark", "steel_grid", "steel_ridged",
+		"techmaint", "tiled", "tiled_light", "ridged", "grid", "monotile", "monotile_light", "techfloor_gray", "techfloor_grid", "pinkblack", "darkfull",
+		"checker", "darkcorner", "blackwhite")
 
 /obj/item/floor_painter/afterattack(var/atom/A, var/mob/user, proximity, params)
 	if(!proximity)
@@ -44,7 +55,7 @@
 
 /obj/item/floor_painter/interact(mob/user as mob)
 	if(!floor_icon)
-		floor_icon = icon('icons/turf/floors.dmi', floor_state, floor_dir)
+		floor_icon = icon('austation/icons/turf/floors.dmi', floor_state, floor_dir)
 	user << browse_rsc(floor_icon, "floor.png")
 	var/dat = {"
 		<center>
