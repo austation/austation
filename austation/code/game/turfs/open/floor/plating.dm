@@ -52,7 +52,7 @@
 				if(T.dug)
 					PlaceOnTop(/turf/open/floor/plating, flags = CHANGETURF_INHERIT_AIR)
 				else
-				to_chat(user, "<span class='warning'>You need to dig below the foundations first!</span>")
+					to_chat(user, "<span class='warning'>You need to dig below the foundations first!</span>")
 			playsound(src, 'sound/weapons/genhit.ogg', 50, 1)
 		else
 			to_chat(user, "<span class='warning'>This section is too damaged to support a tile! Use a welder to fix the damage.</span>")
