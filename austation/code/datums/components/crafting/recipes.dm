@@ -29,11 +29,12 @@
 	name = "Huot Conversion"
 	result = /obj/item/gun/ballistic/automatic/huot
 	reqs = list(/obj/item/gun/ballistic/rifle/ross,
-				/obj/item/pipe = 1,
-				/obj/item/stack/packageWrap = 10,
-				/obj/item/stack/rods = 10,
-				/obj/item/stack/sheet/iron = 20,
-				/obj/item/firing_pin/ = 1)
+				/obj/item/pipe = 2,
+				/obj/item/stack/packageWrap = 20,
+				/obj/item/stack/rods = 15,
+				/obj/item/stack/sheet/iron = 30,
+				/obj/item/firing_pin/ = 1,
+				/obj/item/stock_parts/manipulator = 2)
 	tools = list(TOOL_SCREWDRIVER)
 	time = 400
 	category = CAT_WEAPONRY
