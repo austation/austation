@@ -6,7 +6,7 @@
 
 **Website:** https://austation.net
 **Code:** https://github.com/austation/austation
-**Wiki:** https://wiki.austation.net/
+**Wiki:** https://wiki.austation.net
 
 
 ## DOWNLOADING
