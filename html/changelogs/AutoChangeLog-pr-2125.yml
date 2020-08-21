@@ -1,0 +1,6 @@
+author: "ZombiesVsPlants"
+delete-after: True
+changes: 
+  - tweak: "You have to hack the supply console to sell organs and human burger"
+  - balance: "Buffs Organ export prices"
+  - balance: "Buff Burger export prices"
