@@ -1,6 +1,6 @@
 /obj/item/gun/ballistic/automatic/huot //pretty good, tho good luck spraying this without jamming
 	name = "Huot-Ross Conversion Rifle"
-	desc = "Converted from the poor-quality Ross rifle, this robust automatic rifle from the bygone eras of WW1 should prove a formidable foe!"
+	desc = "Converted from the poor-quality Ross rifle, this automatic rifle fires .303 bullets in a very innacurate manner. Prone to jamming,"
 	icon = 'austation/icons/obj/guns.dmi'
 	icon_state = "huot"
 	slot_flags = 0
@@ -8,7 +8,7 @@
 	fire_sound = 'sound/weapons/rifleshot.ogg'
 	rack_sound = 'sound/weapons/chunkyrack.ogg'
 	can_suppress = FALSE
-	fire_rate = 3
+	fire_rate = 2
 	spread = 7
 	w_class = WEIGHT_CLASS_HUGE
 	bolt_type = BOLT_TYPE_STANDARD
