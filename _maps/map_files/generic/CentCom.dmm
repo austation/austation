@@ -2359,14 +2359,14 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/ctf)
-"gl" = (
-/turf/closed/indestructible/fakeglass,
-/area/space)
-"go" = (
+"gj" = (
 /obj/effect/turf_decal/stripes/line{
-	dir = 2
+	dir = 8
 	},
 /turf/open/floor/holofloor,
+/area/holodeck/rec_center/gym)
+"gl" = (
+/turf/closed/indestructible/fakeglass,
 /area/space)
 "gp" = (
 /obj/effect/turf_decal/tile/red{
@@ -6995,12 +6995,6 @@
 	},
 /turf/open/floor/plasteel/freezer,
 /area/syndicate_mothership/control)
-"qO" = (
-/obj/effect/turf_decal/stripes/line{
-	dir = 1
-	},
-/turf/open/floor/holofloor,
-/area/space)
 "qP" = (
 /obj/structure/mirror{
 	pixel_x = 28
@@ -11606,6 +11600,13 @@
 	},
 /turf/open/floor/plasteel/white,
 /area/centcom/holding)
+"Bq" = (
+/obj/structure/weightmachine/stacklifter,
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/turf/open/floor/holofloor,
+/area/holodeck/rec_center/gym)
 "Bs" = (
 /obj/structure/table/wood,
 /obj/machinery/computer/libraryconsole/bookmanagement,
@@ -12505,13 +12506,6 @@
 /obj/item/paper/fluff/stations/centcom/disk_memo,
 /turf/open/floor/wood,
 /area/syndicate_mothership/control)
-"CU" = (
-/obj/structure/weightmachine/stacklifter,
-/obj/effect/turf_decal/stripes/line{
-	dir = 5
-	},
-/turf/open/floor/holofloor,
-/area/space)
 "CV" = (
 /obj/structure/chair/stool,
 /turf/open/floor/wood,
@@ -12717,20 +12711,6 @@
 "Di" = (
 /turf/closed/indestructible/riveted,
 /area/ai_multicam_room)
-"Dk" = (
-/obj/item/reagent_containers/food/drinks/trophy/gold_cup,
-/obj/structure/window/reinforced{
-	dir = 8
-	},
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/obj/structure/table,
-/turf/open/floor/holofloor,
-/area/space)
 "Dp" = (
 /obj/structure/trap/ctf/red,
 /obj/effect/turf_decal/tile/red,
@@ -13907,13 +13887,6 @@
 "FX" = (
 /turf/open/floor/plasteel/stairs,
 /area/centcom/holding)
-"FZ" = (
-/obj/structure/weightmachine/weightlifter,
-/obj/effect/turf_decal/stripes/line{
-	dir = 2
-	},
-/turf/open/floor/holofloor,
-/area/space)
 "Gb" = (
 /obj/machinery/shower{
 	dir = 4
@@ -16786,6 +16759,12 @@
 "Mm" = (
 /turf/open/floor/grass,
 /area/centcom/holding)
+"Mp" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/turf/open/floor/holofloor,
+/area/holodeck/rec_center/gym)
 "Ms" = (
 /obj/item/twohanded/required/kirbyplants{
 	icon_state = "plant-10"
@@ -17148,6 +17127,13 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/ctf)
+"Om" = (
+/obj/structure/weightmachine/stacklifter,
+/obj/effect/turf_decal/stripes/line{
+	dir = 5
+	},
+/turf/open/floor/holofloor,
+/area/holodeck/rec_center/gym)
 "Op" = (
 /obj/structure/sink{
 	dir = 8;
@@ -17191,12 +17177,6 @@
 /obj/effect/turf_decal/delivery,
 /turf/open/floor/plasteel,
 /area/centcom/supplypod/loading/one)
-"OQ" = (
-/obj/effect/turf_decal/stripes/line{
-	dir = 8
-	},
-/turf/open/floor/holofloor,
-/area/space)
 "OU" = (
 /obj/item/clothing/under/costume/jabroni,
 /obj/item/clothing/under/costume/geisha,
@@ -17240,6 +17220,12 @@
 	},
 /turf/open/floor/plasteel/grimy,
 /area/centcom/ferry)
+"Pk" = (
+/obj/structure/table,
+/obj/item/clothing/gloves/boxing,
+/obj/item/clothing/gloves/boxing/green,
+/turf/open/floor/holofloor,
+/area/holodeck/rec_center/gym)
 "Pl" = (
 /obj/structure/window/reinforced,
 /obj/structure/window/reinforced{
@@ -17257,6 +17243,12 @@
 	},
 /turf/open/floor/carpet/black,
 /area/centcom/holding)
+"Pp" = (
+/obj/structure/table,
+/obj/item/clothing/gloves/boxing/blue,
+/obj/item/clothing/gloves/boxing/yellow,
+/turf/open/floor/holofloor,
+/area/holodeck/rec_center/gym)
 "Pr" = (
 /obj/structure/table,
 /obj/item/book/manual/chef_recipes,
@@ -17300,6 +17292,13 @@
 /obj/structure/barricade/security/ctf,
 /turf/open/floor/plasteel/dark,
 /area/ctf)
+"PE" = (
+/obj/structure/weightmachine/stacklifter,
+/obj/effect/turf_decal/stripes/line{
+	dir = 9
+	},
+/turf/open/floor/holofloor,
+/area/holodeck/rec_center/gym)
 "PI" = (
 /obj/machinery/biogenerator,
 /obj/effect/turf_decal/tile/green{
@@ -17509,6 +17508,12 @@
 	},
 /turf/open/floor/plasteel/white,
 /area/centcom/holding)
+"QJ" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/turf/open/floor/holofloor,
+/area/holodeck/rec_center/gym)
 "QL" = (
 /obj/structure/flora/ausbushes/fernybush,
 /obj/structure/flora/ausbushes/ppflowers,
@@ -17709,9 +17714,6 @@
 	},
 /turf/open/floor/wood,
 /area/centcom/holding)
-"RZ" = (
-/turf/open/floor/holofloor,
-/area/space)
 "Sd" = (
 /turf/open/floor/carpet/black,
 /area/centcom/holding)
@@ -17775,12 +17777,6 @@
 	},
 /turf/open/floor/holofloor,
 /area/holodeck/rec_center/basketball)
-"Sz" = (
-/obj/structure/table,
-/obj/item/clothing/gloves/boxing,
-/obj/item/clothing/gloves/boxing/green,
-/turf/open/floor/holofloor,
-/area/space)
 "SA" = (
 /obj/machinery/power/emitter/ctf{
 	dir = 4
@@ -17888,6 +17884,13 @@
 	},
 /turf/open/floor/plasteel/white,
 /area/centcom/holding)
+"SZ" = (
+/obj/structure/weightmachine/weightlifter,
+/obj/effect/turf_decal/stripes/line{
+	dir = 10
+	},
+/turf/open/floor/holofloor,
+/area/holodeck/rec_center/gym)
 "Ta" = (
 /obj/effect/turf_decal/tile/red{
 	dir = 4
@@ -17908,6 +17911,11 @@
 /obj/effect/turf_decal/tile/brown,
 /turf/open/floor/plasteel,
 /area/centcom/supplypod/loading/two)
+"Th" = (
+/obj/structure/punching_bag,
+/obj/effect/turf_decal/box,
+/turf/open/floor/holofloor,
+/area/holodeck/rec_center/gym)
 "Tj" = (
 /obj/structure/table/reinforced,
 /obj/item/reagent_containers/food/drinks/bottle/whiskey{
@@ -17982,12 +17990,6 @@
 /obj/structure/window/reinforced/fulltile,
 /turf/open/floor/grass,
 /area/centcom/holding)
-"Tv" = (
-/obj/effect/turf_decal/stripes/line{
-	dir = 4
-	},
-/turf/open/floor/holofloor,
-/area/space)
 "Tw" = (
 /obj/effect/turf_decal/tile/red{
 	dir = 8
@@ -18062,13 +18064,6 @@
 /obj/item/storage/fancy/donut_box,
 /turf/open/floor/plasteel,
 /area/centcom/supplypod)
-"TU" = (
-/obj/structure/weightmachine/weightlifter,
-/obj/effect/turf_decal/stripes/line{
-	dir = 10
-	},
-/turf/open/floor/holofloor,
-/area/space)
 "Ub" = (
 /obj/effect/turf_decal/tile/red,
 /obj/effect/turf_decal/tile/red{
@@ -18086,18 +18081,6 @@
 /obj/effect/landmark/holding_facility,
 /turf/open/floor/wood,
 /area/centcom/holding)
-"Ug" = (
-/obj/item/storage/belt/champion,
-/obj/structure/window/reinforced{
-	dir = 8
-	},
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/obj/structure/window/reinforced,
-/obj/structure/table,
-/turf/open/floor/holofloor,
-/area/space)
 "Uh" = (
 /obj/machinery/light{
 	dir = 4
@@ -18142,11 +18125,6 @@
 /obj/effect/mapping_helpers/airlock/cyclelink_helper,
 /turf/open/floor/plasteel,
 /area/tdome/tdomeobserve)
-"Uo" = (
-/obj/structure/punching_bag,
-/obj/effect/turf_decal/box,
-/turf/open/floor/holofloor,
-/area/space)
 "Up" = (
 /obj/structure/chair/office,
 /obj/effect/turf_decal/stripes/line{
@@ -18160,13 +18138,6 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/centcom/supplypod)
-"UA" = (
-/obj/structure/weightmachine/stacklifter,
-/obj/effect/turf_decal/stripes/line{
-	dir = 9
-	},
-/turf/open/floor/holofloor,
-/area/space)
 "UD" = (
 /obj/structure/barricade/security/ctf,
 /obj/effect/turf_decal/tile/blue,
@@ -18302,6 +18273,9 @@
 	},
 /turf/open/floor/wood,
 /area/centcom/holding)
+"VG" = (
+/turf/open/floor/holofloor,
+/area/holodeck/rec_center/gym)
 "VH" = (
 /obj/effect/turf_decal/tile/green{
 	dir = 1
@@ -18331,6 +18305,13 @@
 	},
 /turf/open/floor/plasteel,
 /area/centcom/supplypod/loading/four)
+"VV" = (
+/obj/structure/weightmachine/weightlifter,
+/obj/effect/turf_decal/stripes/line{
+	dir = 2
+	},
+/turf/open/floor/holofloor,
+/area/holodeck/rec_center/gym)
 "VW" = (
 /turf/open/floor/plasteel/stairs/left{
 	dir = 4
@@ -18340,6 +18321,13 @@
 /obj/effect/landmark/shuttle_import,
 /turf/open/space/basic,
 /area/space)
+"VY" = (
+/obj/structure/weightmachine/weightlifter,
+/obj/effect/turf_decal/stripes/line{
+	dir = 6
+	},
+/turf/open/floor/holofloor,
+/area/holodeck/rec_center/gym)
 "Wc" = (
 /obj/machinery/door/airlock/centcom{
 	name = "CentCom Security";
@@ -18416,6 +18404,20 @@
 /obj/machinery/light,
 /turf/open/floor/plasteel,
 /area/centcom/supplypod)
+"WO" = (
+/obj/item/reagent_containers/food/drinks/trophy/gold_cup,
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/obj/structure/table,
+/turf/open/floor/holofloor,
+/area/holodeck/rec_center/gym)
 "WQ" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/centcom{
@@ -18465,6 +18467,18 @@
 "Xh" = (
 /turf/open/floor/plasteel,
 /area/centcom/supplypod/loading/four)
+"Xi" = (
+/obj/item/storage/belt/champion,
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/structure/window/reinforced,
+/obj/structure/table,
+/turf/open/floor/holofloor,
+/area/holodeck/rec_center/gym)
 "Xk" = (
 /turf/open/floor/wood,
 /area/centcom/holding)
@@ -18599,13 +18613,6 @@
 	},
 /turf/open/floor/wood,
 /area/centcom/holding)
-"Yi" = (
-/obj/structure/weightmachine/weightlifter,
-/obj/effect/turf_decal/stripes/line{
-	dir = 6
-	},
-/turf/open/floor/holofloor,
-/area/space)
 "Ym" = (
 /obj/machinery/computer/arcade/orion_trail,
 /turf/open/floor/wood,
@@ -18655,13 +18662,12 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/centcom/supplypod)
-"Yx" = (
-/obj/structure/weightmachine/stacklifter,
+"Yy" = (
 /obj/effect/turf_decal/stripes/line{
-	dir = 1
+	dir = 2
 	},
 /turf/open/floor/holofloor,
-/area/space)
+/area/holodeck/rec_center/gym)
 "YE" = (
 /obj/effect/turf_decal/tile/red,
 /obj/effect/turf_decal/tile/red{
@@ -18785,12 +18791,6 @@
 /obj/machinery/light,
 /turf/open/floor/wood,
 /area/centcom/holding)
-"Zv" = (
-/obj/structure/table,
-/obj/item/clothing/gloves/boxing/blue,
-/obj/item/clothing/gloves/boxing/yellow,
-/turf/open/floor/holofloor,
-/area/space)
 "Zx" = (
 /mob/living/simple_animal/bot/medbot{
 	desc = "A little medical robot. You can make out the word \"sincerity\" on its chassis.";
@@ -72137,16 +72137,16 @@ tb
 tb
 tb
 bj
-UA
-OQ
-TU
-RZ
-RZ
-RZ
-RZ
-Uo
-Sz
-Uo
+PE
+gj
+SZ
+VG
+VG
+VG
+VG
+Th
+Pk
+Th
 fx
 aa
 aa
@@ -72394,16 +72394,16 @@ tb
 tb
 tb
 bj
-qO
-RZ
-go
-RZ
-RZ
-RZ
-RZ
-RZ
-RZ
-RZ
+Mp
+VG
+Yy
+VG
+VG
+VG
+VG
+VG
+VG
+VG
 fx
 aa
 aa
@@ -72651,16 +72651,16 @@ tb
 tb
 tb
 bj
-Yx
-RZ
-FZ
-RZ
-Dk
-Ug
-RZ
-RZ
-RZ
-RZ
+Bq
+VG
+VV
+VG
+WO
+Xi
+VG
+VG
+VG
+VG
 fx
 aa
 aa
@@ -72908,16 +72908,16 @@ tb
 tb
 tb
 bj
-qO
-RZ
-go
-RZ
-RZ
-RZ
-RZ
-RZ
-RZ
-RZ
+Mp
+VG
+Yy
+VG
+VG
+VG
+VG
+VG
+VG
+VG
 fx
 aa
 aa
@@ -73165,16 +73165,16 @@ tb
 tb
 tb
 bj
-CU
-Tv
-Yi
-RZ
-RZ
-RZ
-RZ
-Uo
-Zv
-Uo
+Om
+QJ
+VY
+VG
+VG
+VG
+VG
+Th
+Pp
+Th
 fx
 aa
 aa
