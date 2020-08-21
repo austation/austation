@@ -1,6 +1,0 @@
-author: "thelaughingbomb"
-delete-after: True
-changes: 
-  - rscadd: "Femur breaker"
-  - soundadd: "Femur breaker has a sound that comes with it"
-  - imageadd: "Femur breaker has a custom sprite"

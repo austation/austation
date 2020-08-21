@@ -1,8 +1,0 @@
-author: "MrLostman"
-delete-after: True
-changes: 
-  - rscadd: "durathread helmet sprite"
-  - rscadd: "durathread jumpsuit alt sprite"
-  - tweak: "durathread jumpsuit +5 bullet, +10 energy"
-  - tweak: "durathread helmet +35 energy"
-  - tweak: "durathread bandana +10 melee, +5 bullet, +10 laser, +10 energy, +5 bomb, +40 fire +10 acid"
