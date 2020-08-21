@@ -1,0 +1,5 @@
+author: "totallynotkatfood"
+delete-after: True
+changes: 
+  - rscadd: "forgot the pool's filter"
+  - bugfix: "fixes maint pool border"

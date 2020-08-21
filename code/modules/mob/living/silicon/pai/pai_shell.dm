@@ -70,7 +70,7 @@
 	holoform = FALSE
 	set_resting(resting)
 
-/mob/living/silicon/pai/proc/choose_chassis()
+/*/mob/living/silicon/pai/proc/choose_chassis() -- austation begin - replaced with radial menu proc
 	if(!isturf(loc) && loc != card)
 		to_chat(src, "<span class='boldwarning'>You can not change your holochassis composite while not on the ground or in your card!</span>")
 		return FALSE
@@ -79,7 +79,7 @@
 		return FALSE
 	chassis = choice
 	update_resting()
-	to_chat(src, "<span class='boldnotice'>You switch your holochassis projection composite to [chassis]</span>")
+	to_chat(src, "<span class='boldnotice'>You switch your holochassis projection composite to [chassis]</span>") -- austation end */
 
 /mob/living/silicon/pai/update_resting()
 	. = ..()
