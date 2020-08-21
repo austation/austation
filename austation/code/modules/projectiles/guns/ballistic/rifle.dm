@@ -4,7 +4,7 @@
 
 /obj/item/gun/ballistic/rifle/ross //dont craft this unless you want sec to laugh at you
 	name = "Improvised Ross Rifle"
-	desc = "Already a terrible rifle, this improvised Ross rifle should be able to take care of security officers, maybe."
+	desc = "A bolt-action rifle based on the antiquated and outdated Ross design. It's barely being held together by wrapping tape. Fires .303 rounds."
 	icon = 'austation/icons/obj/guns.dmi'
 	icon_state = "ross"
 	mag_type = /obj/item/ammo_box/magazine/internal/ross
