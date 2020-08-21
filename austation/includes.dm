@@ -78,6 +78,7 @@
 #include "code\modules\mob\living\carbon\human\examine.dm"
 #include "code\modules\mob\living\carbon\human\human_defines.dm"
 #include "code\modules\mob\living\carbon\human\species_type\felinid.dm"
+#include "code\modules\mob\living\silicon\pai\pai_shell.dm"
 #include "code\modules\mob\living\silicon\robot\emote.dm"
 #include "code\modules\mob\living\silicon\robot\robot.dm"
 #include "code\modules\mob\living\silicon\robot\robot_modules.dm"
