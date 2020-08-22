@@ -57,7 +57,7 @@
 //retract skin
 /datum/surgery_step/retract_skin
 	name = "retract skin"
-	implements = list(TOOL_RETRACTOR = 100, TOOL_SCREWDRIVER = 45, TOOL_WIRECUTTER = 35, /obj/item/stack/rods = 20) //austation note: Added rods to retract skin step//
+	implements = list(TOOL_RETRACTOR = 100, TOOL_SCREWDRIVER = 45, TOOL_WIRECUTTER = 35, /obj/item/stack/rods = 20) //austation note: Added rods to retract skin step
 	time = 24
 
 /datum/surgery_step/retract_skin/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
