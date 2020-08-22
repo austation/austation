@@ -5,11 +5,11 @@
 	if(M.stat)
 		to_chat(user, "<span class='warning'>The slime is dead!</span>")
 		return
-	if(M.mutation_chance == 0)
+	if(M.neutered == TRUE)
 		to_chat(user, "<span class='warning'>The slime already has no chance of mutating!</span>")
 		return
 
-	to_chat(user, "<span class='notice'>You feed the slime the omnistabilizer. It will not mutate this cycle!</span>")
+	to_chat(user, "<span class='notice'>You feed the slime the omnistabilizer.</span>")
 	M.mutation_chance = 0
   M.neutered = TRUE
 	qdel(src)
