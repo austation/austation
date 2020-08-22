@@ -232,7 +232,7 @@
 
 /datum/action/innate/pai/chassis/Trigger()
 	..()
-	P.choose_chassis()
+	P.choose_chassis_austation() //austation -- replaces choose_chassis() with choose_chassis_austation()
 
 /datum/action/innate/pai/rest
 	name = "Rest"
