@@ -56,7 +56,11 @@
 /obj/machinery/atmospherics/components/unary/thermomachine/update_icon_nopipes()
 	cut_overlays()
 	if(showpipe)
+<<<<<<< HEAD
 		add_overlay(getpipeimage(icon, "scrub_cap", initialize_directions, piping_layer = piping_layer)) // austation -- Makes it so freezers and heaters can change layers
+=======
+		add_overlay(getpipeimage(icon, "scrub_cap", initialize_directions))
+>>>>>>> c8c21ee67a... The great line endings PR (#2319)
 
 /obj/machinery/atmospherics/components/unary/thermomachine/examine(mob/user)
 	. = ..()
@@ -99,10 +103,13 @@
 		return
 	if(default_deconstruction_crowbar(I))
 		return
+<<<<<<< HEAD
 	//austation begin -- Makes it so freezers and heaters can change layers
 	if(change_piping_layer_multitool(user, I))
 		return
 	//austation end
+=======
+>>>>>>> c8c21ee67a... The great line endings PR (#2319)
 	return ..()
 
 /obj/machinery/atmospherics/components/unary/thermomachine/default_change_direction_wrench(mob/user, obj/item/I)
@@ -209,7 +216,11 @@
 
 /obj/machinery/atmospherics/components/unary/thermomachine/freezer/on/coldroom/Initialize()
 	. = ..()
+<<<<<<< HEAD
 	target_temperature = T0C-80
+=======
+	target_temperature = T0C-20 //Cold enough to prevent Miasma
+>>>>>>> c8c21ee67a... The great line endings PR (#2319)
 
 /obj/machinery/atmospherics/components/unary/thermomachine/freezer/RefreshParts()
 	..()
