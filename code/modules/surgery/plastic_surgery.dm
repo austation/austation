@@ -6,7 +6,7 @@
 //reshape_face
 /datum/surgery_step/reshape_face
 	name = "reshape face"
-	implements = list(TOOL_SCALPEL = 100, /obj/item/kitchen/knife = 50, TOOL_WIRECUTTER = 35)
+	implements = list(TOOL_SCALPEL = 100, /obj/item/kitchen/knife = 50, TOOL_WIRECUTTER = 35, /obj/item/pen = 10) //Austation note: adds pen because doing plastic surgery by drawing on your face is funny af
 	time = 64
 
 /datum/surgery_step/reshape_face/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
