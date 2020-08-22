@@ -96,7 +96,7 @@
 	var/turf/T = get_turf(owner)
 	var/loot = rand(1,100)
 	var/memeloot = rand(1,7)
-	if(prob(0.001)) //1 in a hundreth thousand to roll the 7 sided die.
+	if(prob(0.0001)) //1 in a million to roll the 7 sided die.
 		switch(memeloot)
 			if(1)
 				new /obj/item/gun/energy/pulse/prize(T)
@@ -119,7 +119,7 @@
 				new /obj/item/stack/spacecash/c1000(T)
 				to_chat(owner, "<span class='notice'>More funds for the treasury!</span>")
 			if(7)
-				new /obj/item/melee/transforming/energy/sword/saber(T)
+				new /obj/item/toy/sword(T)
 				to_chat(owner, "<span class='notice'>Oh a sword! I can't use it but im sure someone will want it.</span>")
 	switch(loot)
 		if(1 to 5)
