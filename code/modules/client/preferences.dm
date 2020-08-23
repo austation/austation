@@ -261,8 +261,6 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 						button_name = RING_ENGAGEMENT_NAME
 					if(RING_WEDDING)
 						button_name = RING_WEDDING_NAME
-					if(RING_AUSTRALIUM)
-						button_name = RING_AUSTRALIUM_NAME
 
 			dat += "<b>Ring Type:</b><BR><a href = '?_src_=prefs;preference=ring_type;task=input'>[button_name]</a><BR>" // austation end
 
@@ -1604,8 +1602,6 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 							ring_type = RING_ENGAGEMENT
 						if(RING_WEDDING_NAME)
 							ring_type = RING_WEDDING
-						if(RING_AUSTRALIUM_NAME)
-							ring_type = RING_AUSTRALIUM
 					var/chosen_ring_engraved = reject_bad_name( input(user, "Would you like to engrave a name on the ring? Blank for none.", "Character Preference")  as text|null , TRUE)
 					if(chosen_ring_engraved)
 						ring_engraved = chosen_ring_engraved

@@ -165,7 +165,6 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
 	},
-/obj/structure/fans/tiny,
 /turf/open/floor/plasteel/white,
 /area/shuttle/arrival)
 "o" = (

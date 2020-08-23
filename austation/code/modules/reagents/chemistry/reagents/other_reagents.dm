@@ -1,7 +1,7 @@
 /datum/reagent/australium
 	name = "Australium"
 	color = "#F2BE11"
-	description = "A mysterious metal element that can adapt and transform itself into different states and forms, can make subjects appear down-under."
+	description = "Pure distilled essence of Australia. Can cause subjects to suddenly appear down-under."
 	metabolization_rate = 0.5 * REAGENTS_METABOLISM
 	taste_description = "australia"
 
@@ -18,16 +18,6 @@
 /datum/reagent/australium/on_mob_delete(mob/living/L)
 	. = ..()
 	L.transform = matrix()
-
-/datum/reagent/australium/reaction_obj(obj/O, reac_volume)
-	var/obj/item/M = O
-	if(HAS_TRAIT(M, TRAIT_AUSTRALIUM))
-		return ..()
-	else if(istype(O, /obj/item/gun) || istype(O, /obj/item/melee))
-		M.add_atom_colour(rgb(242,190,17), FIXED_COLOUR_PRIORITY)
-		M.name = "australium [M.name]"
-		M.desc = "[M.desc] It's plated in Australium!"
-		ADD_TRAIT(M, TRAIT_AUSTRALIUM, "australium")
 
 /datum/reagent/luminol
 	name = "Luminol"
@@ -108,7 +98,6 @@
 	taste_description = "quarks"
 	color = "#99ff87"
 	metabolization_rate = 4
-	can_synth = FALSE
 
 /datum/reagent/strange_matter/on_mob_life(mob/living/carbon/M)
 	M.adjustBruteLoss(2)
@@ -135,7 +124,6 @@
 	taste_description = "your mouth vaporizing"
 	color = "#858585"
 	metabolization_rate = 2
-	can_synth = FALSE
 
 /datum/reagent/antimatter/on_mob_add(mob/living/L)
 	to_chat(L, "<span class='userdanger'>You feel the antimatter vaporizing your body!</span>")

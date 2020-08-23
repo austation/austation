@@ -1,83 +1,72 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "cQ" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/item/toy/poolnoodle/blue,
-/turf/open/floor/plasteel,
-/area/template_noop)
-"fv" = (
-/obj/effect/turf_decal/yellowsiding/corner{
+/obj/structure/pool/Rboard,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/plasteel/yellowsiding{
 	dir = 8
 	},
-/turf/open/floor/plasteel,
 /area/template_noop)
-"hT" = (
-/turf/open/floor/plating{
-	icon_state = "platingdmg2"
-	},
+"fv" = (
+/obj/item/reagent_containers/glass/waterbottle/empty,
+/turf/open/pool,
 /area/template_noop)
 "iU" = (
 /obj/machinery/pool/drain,
+/obj/item/trash/candy,
 /turf/open/pool,
 /area/template_noop)
 "jq" = (
-/obj/structure/table/reinforced,
-/obj/item/reagent_containers/food/drinks/drinkingglass,
-/turf/open/floor/plating,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/glass,
+/turf/open/floor/plasteel/yellowsiding{
+	dir = 1
+	},
 /area/template_noop)
 "jD" = (
-/obj/structure/pool/ladder{
-	dir = 1;
-	pixel_y = -24
-	},
-/obj/item/trash/pistachios,
+/obj/item/trash/candy,
 /turf/open/pool,
 /area/template_noop)
-"lQ" = (
-/obj/machinery/pool/filter{
-	pixel_y = -16
-	},
-/obj/effect/turf_decal/yellowsiding/line,
-/turf/open/floor/plating,
-/area/template_noop)
 "nO" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/plasteel,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/plasteel/yellowsiding/corner{
+	dir = 1
+	},
 /area/template_noop)
 "pF" = (
-/obj/effect/decal/cleanable/blood/gibs/torso,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/plasteel/yellowsiding{
+	dir = 4
+	},
+/area/template_noop)
+"qI" = (
+/obj/machinery/pool/controller,
 /turf/open/floor/plating,
 /area/template_noop)
 "ra" = (
-/obj/structure/chair/comfy/brown{
-	dir = 4
+/obj/machinery/pool/filter{
+	pixel_y = -17
 	},
-/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
 /area/template_noop)
 "rn" = (
-/obj/structure/table/glass,
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/plating,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/item/toy/poolnoodle/yellow,
+/turf/open/floor/plasteel/yellowsiding/corner{
+	dir = 8
+	},
 /area/template_noop)
 "rq" = (
-/obj/structure/table/reinforced,
-/obj/item/reagent_containers/food/drinks/drinkingglass/shotglass,
-/turf/open/floor/plasteel,
+/obj/effect/decal/cleanable/blood/gibs,
+/turf/open/floor/plasteel/yellowsiding{
+	dir = 1
+	},
 /area/template_noop)
 "rC" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/plating{
-	icon_state = "platingdmg1"
+/obj/effect/decal/cleanable/glass,
+/turf/open/floor/plasteel/yellowsiding{
+	dir = 4
 	},
-/area/template_noop)
-"rJ" = (
-/obj/structure/pool/ladder{
-	dir = 2;
-	pixel_y = 18
-	},
-/turf/open/pool,
 /area/template_noop)
 "rW" = (
 /turf/open/pool,
@@ -89,328 +78,229 @@
 "un" = (
 /turf/open/floor/plasteel,
 /area/template_noop)
-"vm" = (
-/obj/effect/turf_decal/yellowsiding/line,
-/turf/open/floor/plating{
-	icon_state = "platingdmg1"
+"uB" = (
+/obj/item/trash/can,
+/turf/open/pool,
+/area/template_noop)
+"uZ" = (
+/turf/open/floor/plasteel/yellowsiding{
+	dir = 8
 	},
 /area/template_noop)
 "xq" = (
-/obj/structure/chair/comfy/brown{
-	dir = 8
+/turf/open/floor/plasteel/yellowsiding/corner{
+	dir = 4
 	},
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/plating,
-/area/template_noop)
-"xK" = (
-/obj/structure/pool/ladder{
-	pixel_x = -4
-	},
-/obj/item/trash/raisins,
-/obj/item/trash/popcorn,
-/turf/open/pool,
 /area/template_noop)
 "xX" = (
-/obj/machinery/pool/controller,
-/obj/effect/turf_decal/yellowsiding/line,
-/turf/open/floor/plasteel,
-/area/template_noop)
-"zN" = (
-/obj/item/trash/raisins,
-/obj/item/trash/popcorn,
+/obj/structure/pool/ladder{
+	dir = 2;
+	pixel_y = 19
+	},
 /turf/open/pool,
 /area/template_noop)
 "zY" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/plasteel,
-/area/template_noop)
-"As" = (
-/obj/effect/turf_decal/yellowsiding/line{
-	dir = 4
-	},
-/turf/open/floor/plasteel,
-/area/template_noop)
-"AE" = (
-/obj/effect/decal/cleanable/blood/gibs/up,
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/plating{
-	icon_state = "platingdmg2"
-	},
-/area/template_noop)
-"Bz" = (
-/obj/effect/turf_decal/yellowsiding/line{
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/remains/human,
+/turf/open/floor/plasteel/yellowsiding{
 	dir = 1
 	},
-/turf/open/floor/plasteel,
+/area/template_noop)
+"As" = (
+/obj/structure/pool/ladder,
+/turf/open/pool,
+/area/template_noop)
+"AE" = (
+/obj/effect/decal/cleanable/blood/gibs/core,
+/turf/open/floor/plating,
 /area/template_noop)
 "BC" = (
-/obj/item/toy/poolnoodle/red,
-/turf/open/floor/plasteel,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/glass,
+/turf/open/floor/plasteel/yellowsiding{
+	dir = 4
+	},
 /area/template_noop)
 "Ch" = (
 /turf/open/floor/plating,
 /area/template_noop)
-"Dh" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/turf_decal/yellowsiding/line{
-	dir = 4
-	},
-/turf/open/floor/plasteel,
-/area/template_noop)
 "Dj" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/turf_decal/yellowsiding/corner,
-/turf/open/floor/plasteel,
+/obj/item/trash/cheesie,
+/turf/open/pool,
 /area/template_noop)
 "Dq" = (
-/turf/open/floor/plating{
-	icon_state = "platingdmg1"
-	},
-/area/template_noop)
-"Fg" = (
-/obj/structure/table/reinforced,
-/obj/machinery/chem_dispenser/drinks/beer{
-	dir = 8
-	},
-/turf/open/floor/plasteel,
-/area/template_noop)
-"Fm" = (
-/obj/effect/turf_decal/yellowsiding/line{
-	dir = 1
-	},
-/turf/open/floor/plating,
+/turf/open/floor/plasteel/yellowsiding,
 /area/template_noop)
 "FJ" = (
-/obj/effect/decal/cleanable/blood/gibs,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/plating,
-/area/template_noop)
-"GJ" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/turf_decal/yellowsiding/line{
-	dir = 1
-	},
-/turf/open/floor/plasteel,
-/area/template_noop)
-"HM" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/turf_decal/yellowsiding/corner{
+/obj/item/toy/poolnoodle/red,
+/turf/open/floor/plasteel/yellowsiding{
 	dir = 4
 	},
-/turf/open/floor/plasteel,
+/area/template_noop)
+"FQ" = (
+/obj/effect/decal/cleanable/blood/gibs,
+/turf/open/floor/plasteel/yellowsiding,
 /area/template_noop)
 "Ic" = (
-/obj/structure/chair/comfy/brown{
-	dir = 4
-	},
+/obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/plasteel,
 /area/template_noop)
 "Li" = (
-/obj/structure/table/glass,
-/turf/open/floor/plating,
-/area/template_noop)
-"Ly" = (
-/obj/effect/decal/cleanable/blood/gibs/up,
-/turf/open/floor/plating,
-/area/template_noop)
-"Mz" = (
 /obj/structure/pool/ladder{
-	dir = 8;
-	pixel_x = 3
+	dir = 1;
+	pixel_y = -25
 	},
 /turf/open/pool,
 /area/template_noop)
-"MM" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/item/toy/poolnoodle/blue,
-/obj/effect/turf_decal/yellowsiding/line{
-	dir = 4
-	},
-/turf/open/floor/plasteel,
-/area/template_noop)
-"Ni" = (
-/obj/effect/decal/cleanable/blood/gibs/core,
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/plating,
-/area/template_noop)
 "NP" = (
-/obj/structure/chair/comfy/brown{
-	dir = 8
-	},
-/turf/open/floor/plating,
+/obj/effect/decal/remains/human,
+/turf/open/floor/plasteel/yellowsiding,
 /area/template_noop)
 "NS" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/plating{
-	icon_state = "platingdmg1"
-	},
-/area/template_noop)
-"Pm" = (
-/obj/structure/table/reinforced,
-/obj/item/reagent_containers/food/drinks/drinkingglass/shotglass,
-/turf/open/floor/plating,
-/area/template_noop)
-"PV" = (
-/obj/effect/decal/cleanable/blood/gibs/up,
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/plasteel,
-/area/template_noop)
-"Rn" = (
-/obj/effect/turf_decal/yellowsiding/line,
-/turf/open/floor/plasteel,
-/area/template_noop)
-"SY" = (
-/obj/structure/table/reinforced,
-/turf/open/floor/plating{
-	icon_state = "platingdmg1"
-	},
-/area/template_noop)
-"Ue" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/plating{
-	icon_state = "platingdmg2"
-	},
-/area/template_noop)
-"Vd" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/plating,
-/area/template_noop)
-"Wc" = (
-/obj/effect/turf_decal/yellowsiding/line{
-	dir = 8
-	},
-/turf/open/floor/plasteel,
-/area/template_noop)
-"Xp" = (
-/obj/effect/decal/cleanable/blood/gibs/core,
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/plasteel,
-/area/template_noop)
-"ZL" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/turf_decal/yellowsiding/corner{
+/turf/open/floor/plasteel/yellowsiding{
 	dir = 1
 	},
-/turf/open/floor/plasteel,
+/area/template_noop)
+"PV" = (
+/obj/effect/decal/cleanable/glass,
+/turf/open/floor/plating,
+/area/template_noop)
+"Rn" = (
+/obj/item/trash/cheesie,
+/obj/item/trash/pistachios,
+/turf/open/pool,
+/area/template_noop)
+"TZ" = (
+/obj/item/trash/chips,
+/turf/open/pool,
+/area/template_noop)
+"Vd" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/plasteel/yellowsiding/corner,
+/area/template_noop)
+"Wc" = (
+/obj/structure/pool/Lboard,
+/turf/open/pool,
 /area/template_noop)
 
 (1,1,1) = {"
-ra
-Vd
-zY
 un
-Xp
-zY
-Vd
+Ic
+un
+un
+Ch
+Ch
+Ch
 Ch
 Ch
 Ch
 "}
 (2,1,1) = {"
-rn
+un
 Vd
 AE
 BC
-nO
+Ch
 rC
 FJ
 pF
-Ch
+xq
 Ch
 "}
 (3,1,1) = {"
-xq
-Vd
-Dj
-As
-As
-Dh
-MM
-HM
-zY
 un
+FQ
+Dj
+uB
+As
+rW
+rW
+fv
+zY
+Ch
 "}
 (4,1,1) = {"
 un
-Ch
-lQ
-zN
-xK
+ra
+rW
+Dj
+rW
+jD
 rW
 rW
-GJ
-SY
-Ch
+PV
+un
 "}
 (5,1,1) = {"
+Ch
 Dq
-un
 xX
-te
+Rn
 te
 iU
 jD
-Bz
+rW
 jq
 Ch
 "}
 (6,1,1) = {"
-zY
-zY
-Rn
-rJ
+Ch
+qI
 rW
-te
 rW
-Fm
-Pm
-hT
+rW
+rW
+jD
+Li
+PV
+Ch
 "}
 (7,1,1) = {"
-zY
+Ch
 PV
-vm
 rW
 rW
-Mz
 rW
-Bz
+rW
+rW
+TZ
 rq
-Fg
+un
 "}
 (8,1,1) = {"
 Ic
-un
+NP
 fv
+rW
 Wc
-Wc
-Wc
-Wc
-ZL
+rW
+TZ
+uB
 NS
-zY
+Ic
 "}
 (9,1,1) = {"
-Li
 Ch
-Ly
-hT
+rn
+Ch
+Ch
 cQ
-Vd
-Vd
-Ni
+uZ
+uZ
+PV
 nO
-Ue
+Ch
 "}
 (10,1,1) = {"
-NP
 Ch
 Ch
+un
+Ic
 Ch
-rC
-NS
-Vd
-Vd
-zY
-zY
+Ch
+Ic
+un
+Ch
+Ch
 "}

@@ -46,7 +46,6 @@
 	if(specialsymptom)
 		var/datum/symptom/special = new specialsymptom
 		symptoms += special
-	Finalize()
 	Refresh()
 	if(randomname)
 		name = "Sample #[rand(1,10000)]"

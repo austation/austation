@@ -1710,7 +1710,7 @@
 	center = TRUE
 	dimension_y = 34
 
-/datum/sprite_accessory/wings/robot
+/datum/sprite_accessory/wings/apid
 	name = "Robot"
 	icon_state = "robo"
 	color_src = 0
@@ -1718,7 +1718,7 @@
 	center = TRUE
 	dimension_y = 34
 	
-/datum/sprite_accessory/wings_open/robot
+/datum/sprite_accessory/wings_open/apid
 	name = "Robot"
 	icon_state = "robo"
 	color_src = 0

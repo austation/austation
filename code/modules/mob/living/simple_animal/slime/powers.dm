@@ -195,18 +195,10 @@
 				if(i != 1)
 					step_away(M,src)
 				M.Friends = Friends.Copy()
-			//austation begins - steroid potions & neuter potions effect children
-				M.cores = cores
-				M.neutered = neutered
-
-				if(!neutered)
-					M.mutation_chance = CLAMP(mutation_chance+(rand(5,-5)),0,100)
-				else
-					M.mutation_chance = 0
-			//austation ends
 				babies += M
+				M.mutation_chance = CLAMP(mutation_chance+(rand(5,-5)),0,100)
 				SSblackbox.record_feedback("tally", "slime_babies_born", 1, M.colour)
-
+				
 				if(original_nanites)
 					M.AddComponent(/datum/component/nanites, original_nanites.nanite_volume*0.25)
 					SEND_SIGNAL(M, COMSIG_NANITE_SYNC, original_nanites, TRUE, TRUE) //The trues are to copy activation as well

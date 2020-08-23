@@ -5,8 +5,8 @@
 	resistance = 2
 	stage_speed = 1
 	transmittable = 1
-	level = 8
-	severity = 2
+	level = 9
+	severity = 3
 	symptom_delay_min = 5
 	symptom_delay_max = 20
 	var/honey = FALSE

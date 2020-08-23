@@ -13,7 +13,7 @@
 	desc = "It's watching you suspiciously."
 
 /obj/structure/closet/crate/necropolis/tendril/PopulateContents()
-	var/loot = rand(1,31) // austation -- Adds "Infinite oxygen tank" as tendril loot (why the fuck is this a switch case?!)
+	var/loot = rand(1,30)
 	switch(loot)
 		if(1)
 			new /obj/item/shared_storage/red(src)
@@ -83,10 +83,6 @@
 			new /obj/item/reagent_containers/glass/waterbottle/relic(src)
 		if(30)
 			new /obj/item/reagent_containers/glass/bottle/necropolis_seed(src)
-//austation begin -- Adds "Infinite oxygen tank" as tendril loot
-		if(31)
-			new /obj/item/tank/internals/emergency_oxygen/infinite(src)
-//austation end
 
 //KA modkit design discs
 /obj/item/disk/design_disk/modkit_disc
@@ -157,7 +153,7 @@
 	desc = "A wooden rod about the size of your forearm with a snake carved around it, winding its way up the sides of the rod. Something about it seems to inspire in you the responsibilty and duty to help others."
 	icon = 'icons/obj/lavaland/artefacts.dmi'
 	icon_state = "asclepius_dormant"
-	block_upgrade_walk = 1
+	block_upgrade_walk = 1 
 	block_level = 2
 	block_power = 40 //blocks very well to encourage using it. Just because you're a pacifist doesn't mean you can't defend yourself
 	block_flags = null //not active, so it's null
@@ -649,9 +645,9 @@
 			if(H.getorgan(/obj/item/organ/wings))
 				if(wings.flight_level <= WINGS_FLIGHTLESS)
 					wings.flight_level += 1 //upgrade the flight level
-					wings.Refresh(H) //they need to insert to get the flight emote
+					wings.Insert(H) //they need to insert to get the flight emote
 			else
-				if(MOB_ROBOTIC in H.mob_biotypes)
+				if(H.mob_biotypes & MOB_ROBOTIC)
 					var/obj/item/organ/wings/cybernetic/newwings = new()
 					newwings.Insert(H)
 				else if(holycheck)
@@ -827,7 +823,7 @@
 	w_class = WEIGHT_CLASS_BULKY
 	force = 1
 	throwforce = 1
-	block_upgrade_walk = 1
+	block_upgrade_walk = 1 
 	block_level = 1
 	block_power = 20
 	block_flags = BLOCKING_ACTIVE | BLOCKING_NASTY

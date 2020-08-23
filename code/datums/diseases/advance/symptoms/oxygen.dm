@@ -55,7 +55,6 @@ austation end */
 				M.blood_volume += 1
 /* austation begin -- fetish content
 			if(prob(1) && prob(70))
-			if(prob(1) && prob(50))
 				var/turf/open/T = get_turf(M)
 				if(!istype(T))
 					return
