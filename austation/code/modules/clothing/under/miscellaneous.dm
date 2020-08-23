@@ -57,3 +57,13 @@
 	item_color = "tactifool_skirt"
 	armor = list("melee" = 0, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 50, "acid" = 40)
 	fitted = FEMALE_UNIFORM_TOP
+
+/obj/item/clothing/under/misc/durathread
+	name = "durathread jumpsuit"
+	desc = "A jumpsuit made from durathread, its resilient fibres provide some protection to the wearer."
+	icon_state = "durathread"
+	item_state = "durathread"
+	item_color = "durathread"
+	alternate_worn_icon = 'austation/icons/mob/uniform.dmi'
+	can_adjust = TRUE
+	armor = list("melee" = 10, "bullet" = 5, "laser" = 10,"energy" = 10, "bomb" = 5, "bio" = 0, "rad" = 0, "fire" = 40, "acid" = 10)
