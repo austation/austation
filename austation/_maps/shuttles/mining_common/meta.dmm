@@ -1,6 +1,6 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "a" = (
-/turf/closed/wall/mineral/titanium,
+/turf/closed/wall/mineral/titanium/nodiagonal,
 /area/shuttle/mining)
 "b" = (
 /obj/effect/spawner/structure/window/shuttle,
@@ -8,31 +8,28 @@
 /area/shuttle/mining)
 "c" = (
 /obj/structure/table,
-/turf/open/floor/mineral/titanium/blue,
+/turf/open/floor/mineral/titanium,
 /area/shuttle/mining)
 "d" = (
 /obj/machinery/computer/shuttle/mining/common,
-/turf/open/floor/mineral/titanium/blue,
+/turf/open/floor/mineral/titanium,
 /area/shuttle/mining)
 "e" = (
-/turf/open/floor/mineral/titanium,
+/turf/open/floor/mineral/plastitanium,
 /area/shuttle/mining)
 "f" = (
 /obj/structure/chair/comfy/shuttle{
 	dir = 1
 	},
-/turf/open/floor/mineral/titanium/blue,
+/turf/open/floor/mineral/titanium,
 /area/shuttle/mining)
 "g" = (
 /obj/machinery/light{
 	dir = 8
 	},
-/turf/open/floor/mineral/titanium,
+/turf/open/floor/mineral/plastitanium,
 /area/shuttle/mining)
 "h" = (
-/obj/machinery/door/airlock/titanium{
-	name = "Lavaland Shuttle Airlock"
-	},
 /obj/docking_port/mobile{
 	dir = 8;
 	dwidth = 3;
@@ -42,11 +39,12 @@
 	port_direction = 4;
 	width = 7
 	},
+/obj/machinery/door/airlock/shuttle,
 /turf/open/floor/plating,
 /area/shuttle/mining)
 "i" = (
 /obj/structure/closet/crate,
-/turf/open/floor/mineral/titanium/blue,
+/turf/open/floor/mineral/titanium,
 /area/shuttle/mining)
 "j" = (
 /obj/structure/shuttle/engine/heater,
@@ -64,7 +62,7 @@
 /area/shuttle/mining)
 "k" = (
 /obj/structure/ore_box,
-/turf/open/floor/mineral/titanium/blue,
+/turf/open/floor/mineral/titanium,
 /area/shuttle/mining)
 "l" = (
 /obj/structure/shuttle/engine/propulsion/burst,
@@ -74,7 +72,7 @@
 /obj/structure/chair/comfy/shuttle{
 	dir = 1
 	},
-/turf/open/floor/mineral/titanium,
+/turf/open/floor/mineral/plastitanium,
 /area/shuttle/mining)
 
 (1,1,1) = {"

@@ -204,7 +204,7 @@
 		return
 	var/area/newarea = get_area(src)
 	area_type = newarea?.type
-
+/*  austation begin
 /obj/docking_port/stationary/proc/load_roundstart()
 	if(json_key)
 		var/sid = SSmapping.config.shuttles[json_key]
@@ -220,7 +220,7 @@
 
 	if(roundstart_template)
 		SSshuttle.action_load(roundstart_template, src)
-
+austation end  */
 //returns first-found touching shuttleport
 /obj/docking_port/stationary/get_docked()
 	. = locate(/obj/docking_port/mobile) in loc

@@ -2309,7 +2309,7 @@
 	},
 /obj/item/clothing/suit/chameleon/broken{
 	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0);
-	desc = "A slim armored vest thatthat is so full of holes that you'd be lucky if it protected you at all."
+	desc = "A slim armored vest.  It is so full of holes that you'd be lucky if it protected you at all."
 	},
 /turf/open/floor/carpet,
 /area/mine/living_quarters)
@@ -2999,6 +2999,9 @@
 	opacity = 0
 	},
 /obj/effect/decal/cleanable/oil/slippery,
+/obj/effect/mapping_helpers/airlock/cyclelink_helper{
+	dir = 1
+	},
 /turf/open/floor/plasteel,
 /area/mine/production)
 "hs" = (
@@ -3504,7 +3507,7 @@
 /area/lavaland/surface/outdoors)
 "lo" = (
 /turf/open/floor/pod/dark,
-/area/lavaland/surface/outdoors)
+/area/mine/production)
 "lp" = (
 /obj/structure/stone_tile/block/cracked{
 	dir = 4
@@ -4147,6 +4150,7 @@
 	name = "Mining External Airlock";
 	opacity = 0
 	},
+/obj/effect/mapping_helpers/airlock/cyclelink_helper,
 /turf/open/floor/plasteel,
 /area/mine/production)
 "pH" = (
@@ -4205,7 +4209,7 @@
 /obj/item/pickaxe,
 /obj/item/gps/mining,
 /turf/open/floor/pod/dark,
-/area/lavaland/surface/outdoors)
+/area/mine/production)
 "rE" = (
 /obj/structure/table,
 /obj/item/paper_bin,
@@ -4253,7 +4257,7 @@
 "sx" = (
 /obj/effect/decal/cleanable/oil/slippery,
 /turf/open/floor/pod/dark,
-/area/lavaland/surface/outdoors)
+/area/mine/production)
 "tf" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3,
 /turf/open/floor/plasteel,
@@ -4277,7 +4281,7 @@
 /obj/structure/closet/secure_closet/miner,
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/pod/dark,
-/area/lavaland/surface/outdoors)
+/area/mine/production)
 "tz" = (
 /obj/effect/spawner/structure/window/reinforced,
 /obj/effect/spawner/structure/window/reinforced,
@@ -4338,7 +4342,7 @@
 /obj/structure/ore_box,
 /obj/effect/decal/cleanable/cobweb/cobweb2,
 /turf/open/floor/pod/dark,
-/area/lavaland/surface/outdoors)
+/area/mine/production)
 "wr" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/oil/streak,
@@ -4393,7 +4397,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/closet/secure_closet/miner,
 /turf/open/floor/pod/dark,
-/area/lavaland/surface/outdoors)
+/area/mine/production)
 "xX" = (
 /obj/machinery/light/small,
 /turf/open/floor/plating/asteroid/basalt/lava_land_surface,
@@ -4411,7 +4415,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/ore_box,
 /turf/open/floor/pod/dark,
-/area/lavaland/surface/outdoors)
+/area/mine/production)
 "yL" = (
 /obj/item/twohanded/required/kirbyplants/random,
 /obj/effect/turf_decal/tile/purple{
@@ -4542,13 +4546,10 @@
 /turf/closed/wall,
 /area/mine/laborcamp)
 "Dg" = (
-/obj/docking_port/stationary{
+/obj/docking_port/stationary/public_mining_dock{
 	dir = 8;
-	dwidth = 3;
 	height = 7;
-	id = "lavaland_common_away";
-	name = "Mining base public dock";
-	width = 7
+	id = "lavaland_common_away"
 	},
 /turf/open/floor/plating/asteroid/basalt/lava_land_surface,
 /area/lavaland/surface/outdoors)
@@ -4808,13 +4809,10 @@
 	},
 /turf/closed/wall,
 /area/mine/living_quarters)
-"Ma" = (
-/turf/closed/wall,
-/area/lavaland/surface/outdoors)
 "Ml" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/pod/dark,
-/area/lavaland/surface/outdoors)
+/area/mine/production)
 "Ms" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
 /turf/closed/wall,
@@ -4933,7 +4931,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/mineral/equipment_vendor,
 /turf/open/floor/pod/dark,
-/area/lavaland/surface/outdoors)
+/area/mine/production)
 "QS" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
 	dir = 4
@@ -5014,7 +5012,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/glass,
 /turf/open/floor/pod/dark,
-/area/lavaland/surface/outdoors)
+/area/mine/production)
 "Uc" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3,
 /turf/closed/wall,
@@ -5171,7 +5169,7 @@
 "YD" = (
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/pod/dark,
-/area/lavaland/surface/outdoors)
+/area/mine/production)
 "YF" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer1{
 	dir = 1
@@ -21400,9 +21398,9 @@ eF
 dV
 bq
 bq
-Ma
-Ma
-Ma
+bq
+bq
+bq
 ab
 ab
 ab
@@ -21659,7 +21657,7 @@ wP
 BN
 Ml
 rw
-Ma
+bq
 ab
 ab
 ab
@@ -21916,8 +21914,8 @@ eW
 bq
 lo
 YD
-Ma
-Ma
+bq
+bq
 ab
 ab
 aj
@@ -22174,7 +22172,7 @@ bq
 sx
 YD
 QP
-Ma
+bq
 ab
 ab
 ab
@@ -22431,7 +22429,7 @@ bq
 TK
 YD
 xI
-Ma
+bq
 ab
 ab
 ab
@@ -22688,7 +22686,7 @@ bq
 Ml
 Ml
 tv
-Ma
+bq
 ab
 ab
 ab
@@ -22944,8 +22942,8 @@ eZ
 bq
 vY
 yG
-Ma
-Ma
+bq
+bq
 ab
 ab
 ab
@@ -23199,8 +23197,8 @@ bq
 bq
 bq
 bq
-Ma
-Ma
+bq
+bq
 ab
 ab
 ab
