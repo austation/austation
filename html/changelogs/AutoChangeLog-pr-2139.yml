@@ -1,0 +1,4 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - config: "Switches probabilities of extended and secret extended on MRP"
