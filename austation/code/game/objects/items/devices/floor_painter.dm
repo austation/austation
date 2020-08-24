@@ -23,7 +23,7 @@
 		"loadingarea", "neutral", "neutralcorner", "neutralfull", "orange", "orangecorner", "orangefull", "plaque", "purple", "purplecorner",
 		"purplefull", "red", "redblue", "redbluefull", "darkredblue", "darkredbluefull", "redcorner", "redfull", "redgreen", "redgreenfull",
 		"darkredgreen", "darkredgreenfull", "redyellow", "redyellowfull", "darkredyellow", "darkredyellowfull", "showroomfloor", "stage_bleft",
-		"stage_bottom", "stage_left", "vault", "warning", "warningcorner", "warnplate", "warnplatecorner", "warnwhite", "warnwhitecorner", "white",
+		"stage_bottom", "stage_left", "vault", "warning", "warningcorner", "warnwhite", "warnwhitecorner", "white",
 		"whiteblue", "whitebluecorner", "whitebluefull", "whitebot", "whitecorner", "whitedelivery", "whitegreen", "whitegreencorner", "whitegreenfull",
 		"whitehall", "whitepurple", "whitepurplecorner", "whitepurplefull", "whitered", "whiteredcorner", "whiteredfull", "whiteyellow", "whiteyellowcorner",
 		"whiteyellowfull", "yellow", "yellowcorner", "yellowcornersiding", "yellowfull", "yellowsiding", "darkpurple", "darkpurplecorners", "darkpurplefull",

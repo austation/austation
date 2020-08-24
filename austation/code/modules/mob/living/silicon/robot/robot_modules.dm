@@ -309,32 +309,3 @@
 	if(user.incapacitated() || !user.Adjacent(src))
 		return FALSE
 	return TRUE
-
-/obj/item/robot_module/engineering
-	basic_modules = list(
-		/obj/item/assembly/flash/cyborg,
-		/obj/item/borg/sight/meson,
-		/obj/item/borg/charger,
-		/obj/item/construction/rcd/borg,
-		/obj/item/pipe_dispenser,
-		/obj/item/extinguisher,
-		/obj/item/holosign_creator/atmos,
-		/obj/item/floor_painter,
-		/obj/item/weldingtool/largetank/cyborg,
-		/obj/item/screwdriver/cyborg,
-		/obj/item/wrench/cyborg,
-		/obj/item/crowbar/cyborg,
-		/obj/item/wirecutters/cyborg,
-		/obj/item/multitool/cyborg,
-		/obj/item/t_scanner,
-		/obj/item/analyzer,
-		/obj/item/geiger_counter/cyborg,
-		/obj/item/assembly/signaler/cyborg,
-		/obj/item/areaeditor/blueprints/cyborg,
-		/obj/item/electroadaptive_pseudocircuit,
-		/obj/item/stack/sheet/iron/cyborg,
-		/obj/item/stack/sheet/glass/cyborg,
-		/obj/item/stack/sheet/rglass/cyborg,
-		/obj/item/stack/rods/cyborg,
-		/obj/item/stack/tile/plasteel/cyborg,
-		/obj/item/stack/cable_coil/cyborg)
