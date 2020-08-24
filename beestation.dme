@@ -3088,4 +3088,5 @@
 
 // BEGIN_AUSTATION_INCLUDES
 #include "austation\includes.dm"
+#include "_maps\shuttles\mining_common_meta.dmm"
 // END_AUSTATION_INCLUDES

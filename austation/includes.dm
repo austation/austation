@@ -116,7 +116,6 @@
 #include "code\modules\cargo\exports\organs.dm"
 #include "code\modules\mining\mine_items.dm"
 #include "code\game\objects\items\circuitboards\computer_circuitboards.dm"
-#include "_maps\shuttles\mining_common\meta.dmm"
 #include "code\datums\shuttles.dm"
 #include "code\modules\shuttle\shuttle.dm"
 #include "_maps\mining\lavaland.dmm"

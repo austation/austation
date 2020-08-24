@@ -4804,7 +4804,7 @@
 	dir = 4
 	},
 /turf/closed/wall,
-/area/space/nearstation)
+/area/maintenance/port/aft)
 "aux" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer1{
 	dir = 4
@@ -16387,7 +16387,7 @@
 "btX" = (
 /obj/machinery/computer/shuttle/mining/common{
 	dir = 4;
-	shuttleId = "mining_common/meta"
+	shuttleId = "mining_common_meta"
 	},
 /obj/structure/window/reinforced{
 	dir = 8
@@ -29944,7 +29944,7 @@
 	dir = 4
 	},
 /turf/open/floor/plating,
-/area/space/nearstation)
+/area/maintenance/port/aft)
 "cwg" = (
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
@@ -29956,7 +29956,7 @@
 	dir = 4
 	},
 /turf/open/floor/plating,
-/area/space/nearstation)
+/area/maintenance/port/aft)
 "cwh" = (
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
@@ -45631,7 +45631,6 @@
 /turf/open/floor/plasteel,
 /area/hallway/secondary/command)
 "gbW" = (
-/obj/machinery/door/firedoor/window,
 /turf/closed/wall,
 /area/maintenance/solars/port/aft)
 "gca" = (
@@ -48474,10 +48473,6 @@
 	},
 /turf/closed/wall,
 /area/hallway/primary/fore)
-"hpR" = (
-/obj/machinery/door/firedoor/window,
-/turf/closed/wall,
-/area/medical/virology)
 "hpY" = (
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
@@ -56614,7 +56609,6 @@
 /turf/open/floor/plasteel,
 /area/hallway/primary/central)
 "kHq" = (
-/obj/machinery/door/firedoor/window,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 9
 	},
@@ -60826,7 +60820,7 @@
 /obj/docking_port/stationary/public_mining_dock{
 	dir = 2;
 	id = "commonmining_home";
-	roundstart_template = /datum/map_template/shuttle/mining_common/meta
+	roundstart_template = /datum/map_template/shuttle/mining_common_meta
 	},
 /turf/open/floor/plating,
 /area/space)
@@ -62435,7 +62429,7 @@
 	},
 /obj/structure/lattice/catwalk,
 /turf/open/space/basic,
-/area/space)
+/area/solar/port/aft)
 "nnM" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 9
@@ -63279,10 +63273,6 @@
 	},
 /turf/open/floor/plasteel,
 /area/hallway/primary/aft)
-"nDU" = (
-/obj/structure/lattice/catwalk,
-/turf/open/space/basic,
-/area/space)
 "nDY" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
 	dir = 1
@@ -68752,7 +68742,6 @@
 /turf/open/floor/plasteel,
 /area/engine/engineering)
 "pEh" = (
-/obj/machinery/door/firedoor/window,
 /obj/machinery/atmospherics/pipe/layer_manifold,
 /turf/closed/wall,
 /area/maintenance/solars/port/aft)
@@ -68935,7 +68924,7 @@
 	pixel_x = -24
 	},
 /turf/open/floor/plating,
-/area/space/nearstation)
+/area/maintenance/port/aft)
 "pKo" = (
 /obj/machinery/door/poddoor/preopen{
 	id = "telelab";
@@ -71908,7 +71897,7 @@
 	},
 /obj/structure/lattice/catwalk,
 /turf/open/space,
-/area/space)
+/area/space/nearstation)
 "qZI" = (
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
@@ -73681,10 +73670,6 @@
 "rMI" = (
 /turf/closed/wall,
 /area/medical/apothecary)
-"rMP" = (
-/obj/structure/lattice/catwalk,
-/turf/open/space,
-/area/space)
 "rMR" = (
 /obj/machinery/portable_atmospherics/canister/air,
 /turf/open/floor/plating,
@@ -75331,7 +75316,7 @@
 /turf/open/floor/plating{
 	icon_state = "platingdmg2"
 	},
-/area/space/nearstation)
+/area/maintenance/port/aft)
 "szA" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 5
@@ -78012,15 +77997,6 @@
 	},
 /turf/open/floor/plasteel,
 /area/hallway/primary/central)
-"tCC" = (
-/obj/machinery/door/airlock{
-	id_tag = "AuxShower";
-	name = "Shower"
-	},
-/obj/effect/decal/cleanable/dirt,
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3,
-/turf/open/floor/plasteel,
-/area/crew_quarters/toilet/auxiliary)
 "tDa" = (
 /obj/machinery/status_display/ai{
 	pixel_y = 32
@@ -79146,21 +79122,6 @@
 	},
 /turf/open/floor/plasteel,
 /area/crew_quarters/fitness/recreation)
-"uce" = (
-/obj/structure/disposalpipe/segment{
-	dir = 5
-	},
-/obj/structure/cable/yellow{
-	icon_state = "1-4"
-	},
-/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
-	dir = 5
-	},
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
-	dir = 5
-	},
-/turf/open/floor/plating,
-/area/maintenance/port)
 "ucw" = (
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
@@ -105130,7 +105091,7 @@ aob
 alK
 ack
 qZF
-rMP
+ack
 ack
 aaa
 aaa
@@ -105388,8 +105349,8 @@ alK
 auv
 cwf
 auv
-blx
-arl
+dux
+aaf
 aaa
 aaa
 cBR
@@ -105404,7 +105365,7 @@ nCA
 cKS
 kHG
 cBR
-arl
+aaf
 tku
 aaf
 aai
@@ -105645,7 +105606,7 @@ alK
 pJW
 cwg
 szv
-blx
+dux
 aaa
 aaa
 aaa
@@ -105661,7 +105622,7 @@ cKf
 cKT
 dBV
 hzR
-arl
+aaf
 aaa
 aaa
 anT
@@ -105866,7 +105827,7 @@ sez
 bvW
 bvW
 aLw
-tCC
+aLw
 ulV
 vJN
 bvW
@@ -105902,7 +105863,7 @@ alK
 erd
 cfA
 sGC
-alK
+dux
 lMJ
 aaf
 lMJ
@@ -106159,7 +106120,7 @@ alK
 bXE
 sMO
 pBH
-alK
+dux
 aaa
 aaa
 aaa
@@ -106417,8 +106378,8 @@ jmS
 gJi
 bXE
 dux
-arl
-vLD
+aaf
+lMJ
 aaa
 cBR
 cDA
@@ -106931,7 +106892,7 @@ dux
 dux
 dux
 dux
-blx
+dux
 aaa
 aaa
 aaa
@@ -107188,7 +107149,7 @@ dux
 bXE
 bXE
 arL
-blx
+dux
 aaf
 lMJ
 aaf
@@ -107702,7 +107663,7 @@ pLg
 rhA
 tmh
 bXE
-alK
+dux
 aaa
 aaa
 aaa
@@ -107959,7 +107920,7 @@ dux
 bXE
 bXE
 bXE
-alK
+dux
 aaa
 aaa
 aaa
@@ -107976,7 +107937,7 @@ cLS
 cMB
 qcK
 cBR
-nDU
+wkO
 lMJ
 aaa
 gtG
@@ -108216,7 +108177,7 @@ dux
 bXE
 bXE
 bXE
-alK
+dux
 aaf
 lMJ
 aaf
@@ -108473,7 +108434,7 @@ dux
 dux
 dux
 dux
-alK
+dux
 dux
 vcu
 vcu
@@ -108481,7 +108442,7 @@ vcu
 xjR
 cBS
 duT
-hpR
+cEE
 kUp
 kbm
 ixm
@@ -108489,8 +108450,8 @@ fBy
 qui
 rXj
 lMJ
+aaa
 wkO
-lMJ
 lMJ
 aaf
 anT
@@ -108730,7 +108691,7 @@ ceu
 rJn
 qdS
 qdS
-uce
+wkF
 ceu
 vuj
 cfF
@@ -108738,7 +108699,7 @@ bXE
 xng
 xDx
 xdF
-hpR
+cEE
 yfV
 quX
 oNh
@@ -108747,7 +108708,7 @@ evO
 fPe
 wkO
 fum
-lMJ
+wkO
 cMI
 cPA
 cPA
@@ -108995,7 +108956,7 @@ wkF
 xng
 cBS
 soB
-hpR
+cEE
 fvn
 hDm
 hrn
