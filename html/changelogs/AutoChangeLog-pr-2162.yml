@@ -1,0 +1,4 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - code_imp: "Git will automatically try to normalize line endings. LF is now the default line ending for dm, sh, and dme files."
