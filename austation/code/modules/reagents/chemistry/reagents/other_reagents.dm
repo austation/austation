@@ -4,7 +4,7 @@
 	description = "A mysterious metal element that can adapt and transform itself into different states and forms, can make subjects appear down-under."
 	metabolization_rate = 0.5 * REAGENTS_METABOLISM
 	taste_description = "australia"
-	var/static/list/whitelist = typesof(/obj/item/gun) + typesof(/obj/item/melee) + typesof(/obj/item/kitchen) + typesof(/obj/item/crowbar) + typesof(/obj/item/screwdriver) + typesof(/obj/item/wrench) + typesof(/obj/item/wirecutters) + typesof(/obj/item/weldingtool) + typesof(/obj/item/retractor) + typesof(/obj/item/retractor) + typesof(/obj/item/hemostat) + typesof(/obj/item/cautery) + typesof(/obj/item/surgicaldrill) + typesof(/obj/item/scalpel) + typesof(/obj/item/circular_saw) + typesof(/obj/item/nullrod)
+	var/static/list/whitelist = typesof(/obj/item/gun) + typesof(/obj/item/melee) + typesof(/obj/item/kitchen) + typesof(/obj/item/crowbar) + typesof(/obj/item/screwdriver) + typesof(/obj/item/wrench) + typesof(/obj/item/wirecutters) + typesof(/obj/item/weldingtool) + typesof(/obj/item/retractor) + typesof(/obj/item/retractor) + typesof(/obj/item/hemostat) + typesof(/obj/item/cautery) + typesof(/obj/item/surgicaldrill) + typesof(/obj/item/scalpel) + typesof(/obj/item/circular_saw) + typesof(/obj/item/nullrod) + typesof(/obj/item/storage/toolbox)
 
 /datum/reagent/australium/on_mob_life(mob/living/carbon/M)
 	if(prob(10))
