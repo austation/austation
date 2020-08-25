@@ -149,6 +149,7 @@ All foods are distributed among various categories. Use common sense.
 				bitecount++
 				On_Consume(M)
 				checkLiked(fraction, M)
+				M.CheckBloodsuckerEatFood(10) // austation -- Adding Bloodsuckers by Coolsurf6: Vampires can't eat real food. It gives them booboo tummies.
 				return TRUE
 
 	return 0

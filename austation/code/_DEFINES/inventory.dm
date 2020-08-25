@@ -1,0 +1,2 @@
+#define ITEM_SLOT_HANDCUFFED	(1<<17)
+#define ITEM_SLOT_LEGCUFFED		(1<<18)

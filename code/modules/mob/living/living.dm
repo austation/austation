@@ -1140,7 +1140,7 @@
 	var/knockdown = IsKnockdown()
 	var/ignore_legs = get_leg_ignore()
 	var/in_stasis = IsInStasis()
-	var/canmove = !IsImmobilized() && !stun && conscious && !paralyzed && !buckled && (!stat_softcrit || !pulledby) && !chokehold && !IsFrozen() && !in_stasis && (has_arms || ignore_legs || has_legs)
+	var/canmove = !IsImmobilized() && !stun && conscious && !paralyzed && !buckled && (!stat_softcrit || !pulledby) && !chokehold && !IsFrozen() && !in_stasis && (has_arms || ignore_legs || has_legs) && !IsFrenzied() //austation -- Adding Bloodsuckers by Coolsurf6: Bloodsuckers etc. cannot be controlled in Frenzy.
 	if(canmove)
 		mobility_flags |= MOBILITY_MOVE
 	else
