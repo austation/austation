@@ -14,14 +14,14 @@
 	
 /obj/item/gun/ballistic/automatic/pistol/aumakeshift/attackby(obj/item/I, mob/user, params)
 	if (istype(I, /obj/item/ammo_box/c9mm))
-		user.visible_message("<span class='notice'>The [src] cannot be loaded by the ammo box, eject a bullet out first!</span>")
+		to_chat(user, "<span class='notice'>The [src] cannot be loaded by the ammo box, eject a bullet out first!</span>")
 	if (istype(I, /obj/item/ammo_casing/c9mm))
 		return ..()
 
 /obj/item/gun/ballistic/automatic/pistol/aumakeshift/process_fire(atom/target, mob/living/user, message = TRUE, params = null, zone_override = "")
 	if(prob(5)) //I can hear zesko reeeeeing all ready
 		playsound(user, fire_sound, fire_sound_volume, vary_fire_sound)
-		user.visible_message("<span class='userdanger'>The [src] misfires and needs to be rechambered!</span>")
+		to_chat(user, "<span class='userdanger'>The [src] misfires and needs to be rechambered!</span>")
 		qdel(chambered)
 		chambered = null //Basically it misfires and you gotta rechamber it
 		return
