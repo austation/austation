@@ -1,4 +1,0 @@
-author: "Mick1299"
-delete-after: True
-changes: 
-  - bugfix: "Miner spider and service tophat borgs can once again be selected"
