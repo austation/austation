@@ -112,7 +112,6 @@
 #include "code\modules\surgery\advanced\bioware\cortex_folding.dm"
 #include "code\modules\surgery\advanced\bioware\cortex_imprint.dm"
 #include "code\modules\surgery\organs\eyes.dm"
-#include "code\modules\surgery\organs\tails.dm"
 #include "code\modules\atmospherics\machinery\atmosmachinery.dm"
 #include "code\modules\atmospherics\machinery\components\unary_devices\thermomachine.dm"
 #include "code\modules\cargo\exports\food_and_drink\bread.dm"
