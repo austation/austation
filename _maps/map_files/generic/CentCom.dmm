@@ -16312,6 +16312,7 @@
 /obj/machinery/recharger,
 /turf/open/floor/plating/abductor,
 /area/abductor_ship)
+<<<<<<< HEAD
 "WI" = (
 /obj/structure/window{
 	dir = 1
@@ -16326,6 +16327,8 @@
 	},
 /turf/open/floor/mineral/titanium/blue,
 /area/centcom/evac)
+=======
+>>>>>>> 47c5cabb06... Reworks this PR (#2253)
 "WJ" = (
 /obj/machinery/door/airlock/centcom{
 	name = "Thunderdome Administration";
@@ -18428,6 +18431,16 @@ aa
 aa
 aa
 aa
+<<<<<<< HEAD
+=======
+ks
+kP
+lj
+WB
+Mp
+mw
+nf
+>>>>>>> 47c5cabb06... Reworks this PR (#2253)
 aa
 aa
 aa
@@ -18465,6 +18478,16 @@ aa
 aa
 aa
 aa
+<<<<<<< HEAD
+=======
+ks
+kP
+lj
+WB
+Mp
+mw
+nf
+>>>>>>> 47c5cabb06... Reworks this PR (#2253)
 aa
 aa
 aa
@@ -18488,6 +18511,16 @@ aa
 aa
 aa
 aa
+<<<<<<< HEAD
+=======
+ks
+kP
+lj
+WB
+Mp
+mw
+nf
+>>>>>>> 47c5cabb06... Reworks this PR (#2253)
 aa
 aa
 aa
@@ -18508,6 +18541,16 @@ aa
 aa
 aa
 aa
+<<<<<<< HEAD
+=======
+ks
+kP
+lj
+WB
+Mp
+mw
+nf
+>>>>>>> 47c5cabb06... Reworks this PR (#2253)
 aa
 aa
 aa
