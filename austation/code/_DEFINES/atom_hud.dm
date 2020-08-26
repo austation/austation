@@ -1,1 +1,0 @@
-#define ANTAG_HUD_BLOODSUCKER   100

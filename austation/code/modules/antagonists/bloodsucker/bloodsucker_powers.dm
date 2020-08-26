@@ -148,7 +148,7 @@
 
 /datum/action/bloodsucker/UpdateButtonIcon()
 	background_icon_state = active? background_icon_state_on : background_icon_state_off
-	..()//UpdateButtonIcon()
+	..(force = TRUE)//UpdateButtonIcon()
 
 
 /datum/action/bloodsucker/proc/PayCost()
