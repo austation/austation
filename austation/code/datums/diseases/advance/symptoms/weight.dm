@@ -21,8 +21,8 @@
 	. = ..()
 	if(A.properties["resistance"] >= 8)
 		severity -= 3
-        symptom_delay_min = 1
-        symptom_delay_max = 1
+		symptom_delay_min = 1
+		symptom_delay_max = 1
 
 /datum/symptom/weight_loss/Start(datum/disease/advance/A)
     AU_Start(A)

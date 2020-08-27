@@ -58,3 +58,8 @@ map austation
     default
     votable
 endmap
+
+map orbitalstation
+	maxplayers 20
+	votable
+endmap

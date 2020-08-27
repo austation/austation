@@ -15,7 +15,8 @@
 
 /datum/symptom/growth
 	threshold_desc = "<b>Stage Speed 6:</b> The disease heals brute damage at a fast rate.<br>\
-					<b>Stage Speed 12:</b> The disease heals brute damage incredibly fast, but deteriorates cell health and causes tumors to become more advanced. The disease will also regenerate lost limbs"
+					<b>Stage Speed 12:</b> The disease heals brute damage incredibly fast, but deteriorates cell health. The disease will also regenerate lost limbs"
+
 
 /datum/symptom/growth/Start(datum/disease/advance/A)
 	AU_Start(A)
