@@ -1,4 +1,3 @@
-/*
 //////////////////////////////////////
 
 Self-Respiration
@@ -13,7 +12,6 @@ Bonus
 	The body generates salbutamol.
 
 //////////////////////////////////////
-*/
 
 /datum/symptom/oxygen
 
