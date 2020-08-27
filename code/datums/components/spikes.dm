@@ -21,7 +21,6 @@
 		RegisterSignal(parent, COMSIG_MOB_ATTACK_HAND, .proc/prick_touch)
 		RegisterSignal(parent, COMSIG_MOB_HAND_ATTACKED, .proc/prick_touched)
 
-
 /datum/component/spikes/proc/prick(mob/living/carbon/C, damage_mod = 1)
 	var/netdamage = spikedamage * damage_mod
 	if(istype(C) && cooldown <= world.time)
