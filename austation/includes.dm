@@ -29,7 +29,7 @@
 #include "code\datums\diseases\advance\symptoms\viral.dm"
 #include "code\datums\diseases\advance\symptoms\vision.dm"
 #include "code\datums\diseases\advance\symptoms\vomit.dm"
-#include "code\datums\diseases\advanced\symptoms\weight.dm"
+#include "code\datums\diseases\advance\symptoms\weight.dm"
 #include "code\datums\status_effects\buffs.dm"
 #include "code\datums\elements\swimming.dm"
 #include "code\datums\mood_event\generic_positive_events.dm"
