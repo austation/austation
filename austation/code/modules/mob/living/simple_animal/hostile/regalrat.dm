@@ -289,4 +289,5 @@
 				C.deconstruct()
 
 /mob/living/simple_animal/hostile/rat/death()
+	visible_message("<span class='warning'>[src] dies...</span>")
 	qdel(src)
