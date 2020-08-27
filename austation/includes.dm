@@ -24,7 +24,6 @@
 #include "code\datums\diseases\advance\symptoms\nanites.dm"
 #include "code\datums\diseases\advance\symptoms\narcolepsy.dm"
 #include "code\datums\diseases\advance\symptoms\oxygen.dm"
-#include "code\datums\diseases\advance\symptoms\narcolepsy.dm"
 #include "code\datums\diseases\advance\symptoms\symptoms.dm"
 #include "code\datums\diseases\advance\symptoms\viral.dm"
 #include "code\datums\diseases\advance\symptoms\vision.dm"
