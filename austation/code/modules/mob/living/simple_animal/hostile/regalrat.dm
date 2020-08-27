@@ -6,6 +6,7 @@
 	icon_living = "regalrat"
 	icon_dead = "regalrat_dead"
 	gender = NEUTER
+	speak_emote = list("skrees", "skreeches")
 	speak_chance = 0
 	turns_per_move = 5
 	maxHealth = 70
@@ -13,7 +14,8 @@
 	see_in_dark = 5
 	obj_damage = 21 //You just do enough damage to bust down doors, watchout for shocks though
 	del_on_death = 1 //shitcode so people cant use abilities when dead.
-	loot = list(/obj/item/clothing/head/crown = 1, /obj/effect/gibspawner/generic, /obj/item/reagent_containers/food/snacks/meat/slab/mouse)
+	deathmessage = "explodes in a shower of gore, leaving a crown in its place.."
+	loot = list(/obj/item/clothing/head/crown = 1, /obj/effect/gibspawner/generic/animal, /obj/item/reagent_containers/food/snacks/meat/slab/mouse)
 	response_help = "pets"
 	response_harm = "punches"
 	melee_damage = 15
@@ -22,14 +24,17 @@
 	ventcrawler = VENTCRAWLER_ALWAYS
 	unique_name = TRUE
 	faction = list("rat")
+	var/datum/action/cooldown/enlist
 	var/datum/action/cooldown/coffer
 	var/datum/action/cooldown/riot
 	///Number assigned to rats and mice, checked when determining infighting.
 
 /mob/living/simple_animal/hostile/regalrat/Initialize()
 	. = ..()
+	enlist = new /datum/action/cooldown/enlist
 	coffer = new /datum/action/cooldown/coffer
 	riot = new /datum/action/cooldown/riot
+	enlist.Grant(src)
 	coffer.Grant(src)
 	riot.Grant(src)
 	var/list/mob/dead/observer/candidates = pollGhostCandidates("Do you want to play as the Royal Rat, cheesey be his crown?", ROLE_SENTIENCE, null, FALSE, 100, POLL_IGNORE_SENTIENCE_POTION)
@@ -79,6 +84,22 @@
 		heal_bodypart_damage(10)
 		qdel(target)
 
+/datum/action/cooldown/enlist
+	name = "Enlist Ally"
+	desc = "You enlist someone to join your ranks making them an ally to you and your rats. This doesnt prevent them from attacking you, so be careful on who you trust."
+	icon_icon = 'icons/mecha/durand_shield.dmi'
+	button_icon_state = "shield"
+	cooldown_time = 600 // A minute
+
+/datum/action/cooldown/enlist/Trigger() //This ability will only be used by sentient regal rats.
+	.=..()
+	if(!.)
+		return
+		
+	for(var/mob/living/M in oview(owner,1))
+		M.faction += list("rat")
+		to_chat(owner, "<span class='notice'>[M] was made an ally to the rats!</span>")
+	StartCooldown()
 /**
   *This action creates trash, money, dirt, and cheese.
   */
