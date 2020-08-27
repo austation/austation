@@ -1,4 +1,0 @@
-author: "MrLostman"
-delete-after: True
-changes: 
-  - bugfix: "fixed charges blue potions not applying across generations"
