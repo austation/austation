@@ -12,8 +12,17 @@
 /obj/structure/closet/crate/necropolis/tendril
 	desc = "It's watching you suspiciously."
 
-/obj/structure/closet/crate/necropolis/tendril/PopulateContents()
+/obj/structure/closet/crate/necropolis/tendril/PopulateContents(var/reroll = FALSE) //AUStation modification to reroll disabled loot
 	var/loot = rand(1,30)
+
+	// AUStation Code Start -- Beeloot is the number of non disabled bee tendril loot items
+	// not updating bee loot amount will cause au tendril loot to have a higher spawn chance
+	var/Beeloot_Amount = 28
+	if(!reroll)
+		if(AU_PopulateContents(Beeloot_Amount))
+			return
+	// AUStation Code End
+
 	switch(loot)
 		if(1)
 			new /obj/item/shared_storage/red(src)
@@ -30,10 +39,14 @@
 		if(7)
 			new /obj/item/pickaxe/diamond(src)
 		if(8)
+			// AUStation Code Start -- flab loot removal
+			PopulateContents(TRUE)
+			/*
 			if(prob(50))
 				new /obj/item/disk/design_disk/modkit_disc/resonator_blast(src)
 			else
 				new /obj/item/disk/design_disk/modkit_disc/rapid_repeater(src)
+			*/// AUStation Code End
 		if(9)
 			new /obj/item/rod_of_asclepius(src)
 		if(10)
@@ -51,10 +64,14 @@
 		if(16)
 			new /obj/item/guardiancreator/hive(src)
 		if(17)
+			// AUStation Code Start -- flab loot removal
+			PopulateContents(TRUE)
+			/*
 			if(prob(50))
 				new /obj/item/disk/design_disk/modkit_disc/mob_and_turf_aoe(src)
 			else
 				new /obj/item/disk/design_disk/modkit_disc/bounty(src)
+			*/// AUStation Code End
 		if(18)
 			new /obj/item/warp_cube/red(src)
 		if(19)

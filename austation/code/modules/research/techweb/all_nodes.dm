@@ -5,11 +5,11 @@
 
 /////////////////////////Mining tech/////////////////////////
 
-/datum/techweb_node/adv_mining
-	id = "adv_mining"
-	display_name = "Advanced Mining Technology"
-	description = "Efficiency Level 127"	//dumb mc references
-	prereq_ids = list("basic_mining", "adv_engi", "adv_power", "adv_plasma")
-	design_ids = list("drill_diamond", "jackhammer", "plasmacutter_adv", "mech_kinetic_accelerator", "hypermod", "hyperaoemod", "repeatermod", "resonatormod", "bountymod")
-	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2500)
+/datum/techweb_node/xpr_mining
+	id = "xpr_mining"
+	display_name = "Experimental Mining Technology"
+	description = "Pushing the boundaries of what our mining equipment can do"
+	prereq_ids = list("adv_mining")
+	design_ids = list("mech_kinetic_accelerator", "hyperaoemod", "repeatermod", "resonatormod", "bountymod")
+	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 1000)
 	export_price = 5000
