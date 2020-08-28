@@ -117,7 +117,7 @@
 	var/turf/T = get_turf(owner)
 	var/loot = rand(1,100)
 	var/memeloot = rand(1,7)
-	if(prob(0.0001)) //1 in a million to roll the 7 sided die.
+	if(prob(0.001)) //1 in a hundred thousand to roll the 7 sided die.
 		switch(memeloot)
 			if(1)
 				new /obj/item/gun/energy/pulse/prize(T)
