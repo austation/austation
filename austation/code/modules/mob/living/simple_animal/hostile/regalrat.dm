@@ -98,7 +98,7 @@
 		
 	for(var/mob/living/M in oview(owner,1))
 		M.faction += list("rat")
-		to_chat(owner, "<span class='notice'>[M] was made an ally to the rats!</span>")
+		owner.visible_message("<span class='notice'>[M] was made an ally to the rats!</span>")
 	StartCooldown()
 /**
   *This action creates trash, money, dirt, and cheese.
