@@ -332,15 +332,6 @@
 	zone_select.hud = src
 	static_inventory += zone_select
 
-	// austation begin -- Adding Bloodsuckers by Coolsurf6
-	blood_display = new /obj/screen/bloodsucker/blood_counter	// Blood Volume
-	infodisplay += blood_display
-	vamprank_display = new /obj/screen/bloodsucker/rank_counter	// Vampire Rank
-	infodisplay += vamprank_display
-	sunlight_display = new /obj/screen/bloodsucker/sunlight_counter	// Sunlight
-	infodisplay += sunlight_display
-	// austation end
-
 	for(var/obj/screen/inventory/inv in (static_inventory + toggleable_inventory))
 		if(inv.slot_id)
 			inv.hud = src
