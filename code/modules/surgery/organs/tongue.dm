@@ -27,7 +27,8 @@
 		/datum/language/shadowtongue,
 		/datum/language/sylvan,
 		/datum/language/terrum,
-		/datum/language/uncommon))
+		/datum/language/uncommon,
+		/datum/language/vampiric)) // austation -- Adding Bloodsuckers by Coolsurf6: Adding the bloodsucker tongues so they can speak their language
 
 /obj/item/organ/tongue/Initialize(mapload)
 	. = ..()

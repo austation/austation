@@ -389,6 +389,14 @@ Key procs
 	spoken_languages = list(/datum/language/common = list(LANGUAGE_ATOM),
 							/datum/language/rlyehian = list(LANGUAGE_ATOM))
 
+// austation begin -- Adding bloodsuckers by Coolsurf6: Adds bloodsucker language
+/datum/language_holder/vampiric
+	understood_languages = list(/datum/language/common = list(LANGUAGE_ATOM),
+								/datum/language/vampiric = list(LANGUAGE_ATOM))
+	spoken_languages = list(/datum/language/common = list(LANGUAGE_ATOM),
+							/datum/language/vampiric = list(LANGUAGE_ATOM))
+//austation end
+
 /datum/language_holder/empty
 	understood_languages = list()
 	spoken_languages = list()
