@@ -165,7 +165,6 @@
 #include "code\modules\antagonists\bloodsucker\powers\bs_mesmerize.dm"
 #include "code\modules\antagonists\bloodsucker\powers\bs_trespass.dm"
 #include "code\modules\antagonists\bloodsucker\powers\bs_veil.dm"
-#include "code\modules\antagonists\bloodsucker\powers\v_distress.dm"
 #include "code\modules\antagonists\bloodsucker\powers\v_recuperate.dm"
 #include "code\game\gamemodes\bloodsucker\bloodsucker.dm"
 #include "code\game\gamemodes\bloodsucker\hunter.dm"

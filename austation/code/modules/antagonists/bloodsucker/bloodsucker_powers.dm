@@ -34,7 +34,7 @@
 	var/can_be_immobilized = FALSE		// Brawn can be used when incapacitated/laying if it's because you're being immobilized. NOTE: If must_be_capacitated is FALSE, this is irrelevant.
 	var/can_be_staked = FALSE			// Only Feed can happen with a stake in you.
 	var/cooldown_static = FALSE			// Feed, Masquerade, and One-Shot powers don't improve their cooldown.
-	//var/not_bloodsucker = FALSE		// This goes to Vassals or Hunters, but NOT bloodsuckers.
+	//var/not_bloodsucker = FALSE		// This goes to Vassals or Hunters, but NOT bloodsuckers. REMOVED v_distress.dm AS IT WAS UNUSED
 
 /datum/action/bloodsucker/New()
 	if (bloodcost > 0)
