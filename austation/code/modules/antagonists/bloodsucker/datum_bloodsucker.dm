@@ -106,9 +106,10 @@
 	risk of being discovered!</span><br>")
 	//to_chat(owner, "<span class='boldannounce'>As an immortal, your power is linked to your age. The older you grow, the more abilities you will have access to.<span>")
 	to_chat(owner, "<span class='boldannounce'>* Other Bloodsuckers are not necessarily your friends, but your survival may depend on cooperation. Betray them at your own discretion and peril.</span><br>")
-	to_chat(owner, "<span class='boldannounce'><i>* Use \",b\" to speak your ancient Bloodsucker language.</span><br>")
+	to_chat(owner, "<span class='boldannounce'><i>* Use \",?\" to speak your ancient Bloodsucker language.</span><br>")
 	to_chat(owner, "<span class='announce'>Bloodsucker Tip: Rest in a <i>Coffin</i> to claim it, and that area, as your lair.</span><br>")
 	to_chat(owner, "<span class='announce'>Bloodsucker Tip: Fear the daylight! Solar flares will bombard the station periodically, and only your coffin can guarantee your safety.</span><br>")
+	to_chat(owner, "<span class='announce'>If you wish to know more about Bloodsuckers and their hunter counterpart: <a href='https://wiki.fulp.gg/en/Bloodsucker'>https://wiki.fulp.gg/en/Bloodsucker</a> </span>")
 
 	owner.current.playsound_local(null, 'austation/sound/misc/BloodsuckerAlert.ogg', 100, FALSE, pressure_affected = FALSE)
 	antag_memory += "Although you were born a mortal, in un-death you earned the name <b>[fullname]</b>.<br>"

@@ -26,6 +26,11 @@
 // Takes care blood loss and regeneration
 /mob/living/carbon/human/handle_blood()
 
+	// austation begin -- Adding Bloodsuckers by Coolsurf6
+	if (HAS_TRAIT(src, TRAIT_NOPULSE)) // Bloodsuckers don't need to be here.
+		return
+	// austation end
+
 	if(NOBLOOD in dna.species.species_traits)
 		bleed_rate = 0
 		return
@@ -51,10 +56,6 @@
 			adjust_nutrition(-nutrition_ratio * HUNGER_FACTOR)
 			blood_volume = min(BLOOD_VOLUME_NORMAL, blood_volume + 0.5 * nutrition_ratio)
 
-		// austation begin -- Adding Bloodsuckers by Coolsurf6
-		if (HAS_TRAIT(src, TRAIT_NOPULSE)) // Bloodsuckers don't need to be here.
-			return
-		// austation end
 
 		//Effects of bloodloss
 		var/word = pick("dizzy","woozy","faint")
