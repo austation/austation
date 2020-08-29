@@ -316,7 +316,7 @@
 
 		// 	FINAL DEATH
 
-	// Fire Damage? (above double health)
+	// Fire Damage? (USED TO BE above double health - Now your max health + 100)
 	if (owner.current.getFireLoss_nonProsthetic() >= owner.current.getMaxHealth() + 100)
 		FinalDeath()
 		return
