@@ -269,7 +269,7 @@
 // Check if valid target meets conditions
 /datum/action/bloodsucker/targeted/proc/CheckCanTarget(atom/A, display_error)
 	// Out of Range
-	if (!(A in view(target_range, get_turf(owner))))
+	if (!(A in view(target_range, get_turf(owner.client))))  // owner))))
 		if (display_error && target_range > 1) // Only warn for range if it's greater than 1. Brawn doesn't need to announce itself.
 			to_chat(owner, "<span class='warning'>Your target is out of range.</span>")
 		return FALSE

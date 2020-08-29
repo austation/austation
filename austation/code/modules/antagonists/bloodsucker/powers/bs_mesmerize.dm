@@ -90,10 +90,9 @@
 	var/mob/living/carbon/target = A
 	var/mob/living/user = owner
 
-	if (istype(target))
-		ADD_TRAIT(target, TRAIT_MUTE, "bloodsucker_mesmerize")
-
 	if (do_mob(user, target, 40, 0, TRUE, extra_checks=CALLBACK(src, .proc/ContinueActive, user, target)))
+		if (istype(target))
+			ADD_TRAIT(target, TRAIT_MUTE, "bloodsucker_mesmerize")
 		PowerActivatedSuccessfully() // PAY COST! BEGIN COOLDOWN!
 		var/power_time = 90 + level_current * 15
 		to_chat(user, "<span class='notice'>[target] is fixed in place by your hypnotic gaze.</span>")

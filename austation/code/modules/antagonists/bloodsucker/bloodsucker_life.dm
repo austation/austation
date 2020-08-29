@@ -316,8 +316,8 @@
 
 		// 	FINAL DEATH
 
-	// Fire Damage? (USED TO BE above double health - Now your max health + 100)
-	if (owner.current.getFireLoss_nonProsthetic() >= owner.current.getMaxHealth() + 100)
+	// Fire Damage? (USED TO BE above double health - Now your max health + 99.9)
+	if (owner.current.getFireLoss_nonProsthetic() >= owner.current.getMaxHealth() + 99.9)
 		FinalDeath()
 		return
 	// Staked while "Temp Death" or Asleep
