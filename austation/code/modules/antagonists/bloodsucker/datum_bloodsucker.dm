@@ -251,7 +251,7 @@
 	CheckVampOrgans() // Heart, Eyes
 
 	// Language
-	owner.current.grant_language(/datum/language/vampiric)
+	owner.current.grant_language(/datum/language/vampiric, TRUE, TRUE, LANGUAGE_MIND)
 
 	// Soul
 	owner.current.hellbound = TRUE

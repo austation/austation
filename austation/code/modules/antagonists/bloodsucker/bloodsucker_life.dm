@@ -317,7 +317,7 @@
 		// 	FINAL DEATH
 
 	// Fire Damage? (above double health)
-	if (owner.current.getFireLoss_nonProsthetic() >= owner.current.getMaxHealth() * 2)
+	if (owner.current.getFireLoss_nonProsthetic() >= owner.current.getMaxHealth() + 100)
 		FinalDeath()
 		return
 	// Staked while "Temp Death" or Asleep
@@ -509,23 +509,12 @@
 
 		sickphase ++
 
-
-
-
-
-
-
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
-
 //	VAMPIRE LANGUAGE //
 
 /datum/language/vampiric
 	name = "Blah-Sucker"
 	desc = "The native language of the Bloodsucker elders, learned intuitively by Fledglings as they pass from death into immortality."
-	key = "b"
+	key = "?"
 	space_chance = 40
 	default_priority = 90
 
@@ -543,31 +532,5 @@
 
 	icon_state = "bloodsucker"
 	icon = 'austation/icons/Fulpicons/fulpicons_small.dmi'
-
-//datum/language
-	//var/name = "an unknown language"  // Fluff name of language if any.
-	//var/desc = "A language."          // Short description for 'Check Languages'.
-	//var/speech_verb = "says"          // 'says', 'hisses', 'farts'.
-	//var/ask_verb = "asks"             // Used when sentence ends in a ?
-	//var/exclaim_verb = "exclaims"     // Used when sentence ends in a !
-	//var/whisper_verb = "whispers"     // Optional. When not specified speech_verb + quietly/softly is used instead.
-	//var/list/signlang_verb = list("signs", "gestures") // list of emotes that might be displayed if this language has NONVERBAL or SIGNLANG flags
-	//var/key  							// If key is null, then the language isn't real or learnable.
-	//var/flags                         // Various language flags.
-	//var/list/syllables                // Used when scrambling text for a non-speaker.
-	//var/sentence_chance = 5      // Likelihood of making a new sentence after each syllable.
-	//var/space_chance = 55        // Likelihood of getting a space in the random scramble string
-	//var/list/spans = list()
-	//var/list/scramble_cache = list()
-	//var/default_priority = 0          // the language that an atom knows with the highest "default_priority" is selected by default.
-
-	// if you are seeing someone speak popcorn language, then something is wrong.
-	//var/icon = 'icons/misc/language.dmi'
-	//var/icon_state = "popcorn"
-
-
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
 
 
