@@ -144,7 +144,6 @@
 #include "code\modules\antagonists\bloodsucker\bloodsucker_objectives.dm"
 #include "code\modules\antagonists\bloodsucker\bloodsucker_powers.dm"
 #include "code\modules\antagonists\bloodsucker\bloodsucker_sunlight.dm"
-#include "code\modules\antagonists\bloodsucker\bloodsucker_ui.dm"
 #include "code\modules\antagonists\bloodsucker\datum_bloodsucker.dm"
 #include "code\modules\antagonists\bloodsucker\datum_hunter.dm"
 #include "code\modules\antagonists\bloodsucker\datum_vassal.dm"
