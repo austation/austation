@@ -45,6 +45,7 @@
 	F.icon_state = floor_state
 	F.icon_regular_floor = floor_state
 	F.dir = floor_dir
+	F.icon = 'austation/icons/turf/floors.dmi'
 
 /obj/item/floor_painter/attack_self(var/mob/user)
 	if(!user)
