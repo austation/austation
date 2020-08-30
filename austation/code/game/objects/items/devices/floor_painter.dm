@@ -101,6 +101,6 @@
 		floor_state = allowed_states[index]
 		floor_dir = SOUTH
 
-	floor_icon = icon('icons/turf/floors.dmi', floor_state, floor_dir)
+	floor_icon = icon('austation/icons/turf/floors.dmi', floor_state, floor_dir)
 	if(usr)
 		attack_self(usr)
