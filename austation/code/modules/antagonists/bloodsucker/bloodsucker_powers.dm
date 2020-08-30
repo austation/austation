@@ -146,9 +146,9 @@
 /datum/action/bloodsucker/proc/CheckCanDeactivate(display_error)
 	return TRUE
 
-/datum/action/bloodsucker/UpdateButtonIcon()
+/datum/action/bloodsucker/UpdateButtonIcon(force = FALSE)
 	background_icon_state = active? background_icon_state_on : background_icon_state_off
-	..(FALSE,TRUE)//UpdateButtonIcon()
+	..()//UpdateButtonIcon()
 
 
 /datum/action/bloodsucker/proc/PayCost()
