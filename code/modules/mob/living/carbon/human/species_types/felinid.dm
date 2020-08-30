@@ -89,7 +89,7 @@
 			NT.Insert(H, drop_if_replaced = FALSE)
 		else
 			tail.Remove(H)
-
+			
 /datum/species/human/felinid/handle_chemicals(datum/reagent/chem, mob/living/carbon/human/M)
 	.=..()
 	if(chem.type == /datum/reagent/consumable/coco)
