@@ -51,7 +51,7 @@ Beeloot is the number of items in Bees loot table excluding disabled loot
 		if(50 to 90) //we are getting somewhere
 			gas_list = list(/datum/gas/plasma, /datum/gas/nitryl, /datum/gas/bz, /datum/gas/miasma, /datum/gas/pluoxium)
 		if(91 to 100) //are you winning son?
-			gas_list = list(/datum/gas/tritium, /datum/gas/stimulum, /datum/gas/)
+			gas_list = list(/datum/gas/tritium, /datum/gas/stimulum, /datum/gas/hypernoblium)
 
 	gas_type = pick(gas_list)
 
