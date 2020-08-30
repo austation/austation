@@ -45,6 +45,7 @@
 	F.icon_state = floor_state
 	F.icon_regular_floor = floor_state
 	F.dir = floor_dir
+	F.icon = 'austation/icons/turf/floors.dmi'
 
 /obj/item/floor_painter/attack_self(var/mob/user)
 	if(!user)
@@ -101,6 +102,6 @@
 		floor_state = allowed_states[index]
 		floor_dir = SOUTH
 
-	floor_icon = icon('icons/turf/floors.dmi', floor_state, floor_dir)
+	floor_icon = icon('austation/icons/turf/floors.dmi', floor_state, floor_dir)
 	if(usr)
 		attack_self(usr)
