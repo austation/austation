@@ -287,7 +287,8 @@
 		/obj/item/construction/rcd/borg,
 		/obj/item/pipe_dispenser,
 		/obj/item/extinguisher,
-		/obj/item/holosign_creator/atmos, // austation -- adds holofan
+		/obj/item/holosign_creator/atmos, //austation -- Borg holofan
+		/obj/item/floor_painter, //austation -- Floor painter
 		/obj/item/weldingtool/largetank/cyborg,
 		/obj/item/screwdriver/cyborg,
 		/obj/item/wrench/cyborg,
@@ -494,9 +495,9 @@
 	if(O)
 		O.reagents.add_reagent(/datum/reagent/consumable/enzyme, 2 * coeff)
 
-/obj/item/robot_module/butler/be_transformed_to(obj/item/robot_module/old_module)
+/*/obj/item/robot_module/butler/be_transformed_to(obj/item/robot_module/old_module) //austation begin -- Using our own sprite selection method
 	var/mob/living/silicon/robot/R = loc
-	var/borg_icon = input(R, "Select an icon!", "Robot Icon", null) as null|anything in sortList(list("Waitress", "Butler", "Tophat", "Kent", "Bro", "Heavy", "Skirt")) // austation -- added 'heavy' and 'Skirt'
+	var/borg_icon = input(R, "Select an icon!", "Robot Icon", null) as null|anything in sortList(list("Waitress", "Butler", "Tophat", "Kent", "Bro"))
 	if(!borg_icon)
 		return FALSE
 	switch(borg_icon)
@@ -514,20 +515,7 @@
 			cyborg_base_icon = "tophat"
 			special_light_key = null
 			hat_offset = INFINITY //He is already wearing a hat
-		// austation begin -- adding choice and defining the light sprite
-		if("Heavy")
-			R.icon = 'austation/icons/mob/robot.dmi'
-			cyborg_base_icon = "heavyserv"
-			special_light_key = "heavyserv"
-		if("Skirt")
-			R.icon = 'austation/icons/mob/robot.dmi'
-			cyborg_base_icon = "banangarang-Service"
-			hat_offset = 0
-	if(R.ckey == "ZombiesVsPlants")
-		borg_icon = "Skirt"
-		return
-		// austation end
-	return ..()
+	return ..() */ //austation end
 
 /obj/item/robot_module/borgi
 	name = "Borgi"
@@ -560,9 +548,9 @@
 	hat_offset = 0
 	var/obj/item/t_scanner/adv_mining_scanner/cyborg/mining_scanner //built in memes.
 
-/obj/item/robot_module/miner/be_transformed_to(obj/item/robot_module/old_module)
+/*/obj/item/robot_module/miner/be_transformed_to(obj/item/robot_module/old_module) //austation begin -- Using our own sprite selection method
 	var/mob/living/silicon/robot/R = loc
-	var/borg_icon = input(R, "Select an icon!", "Robot Icon", null) as null|anything in sortList(list("Lavaland Miner", "Asteroid Miner", "Spider Miner", "Marina", "Heavy", "Can", "Droid", "Sleek", "Skirt"))// austation -- added additonal choices to list
+	var/borg_icon = input(R, "Select an icon!", "Robot Icon", null) as null|anything in sortList(list("Lavaland Miner", "Asteroid Miner", "Spider Miner"))
 	if(!borg_icon)
 		return FALSE
 	switch(borg_icon)
@@ -573,37 +561,7 @@
 			special_light_key = "miner"
 		if("Spider Miner")
 			cyborg_base_icon = "spidermin"
-			hat_offset = -3 // austation -- setting offset
-		// austation begin -- adding choices
-		if("Marina")
-			R.icon = 'austation/icons/mob/robot.dmi'
-			cyborg_base_icon = "marinamin"
-			hat_offset = 2
-		if("Heavy")
-			R.icon = 'austation/icons/mob/robot.dmi'
-			cyborg_base_icon = "heavymin"
-			hat_offset = -3
-		if("Can")
-			R.icon = 'austation/icons/mob/robot.dmi'
-			cyborg_base_icon = "canmin"
-			hat_offset = 3
-		if("Droid")
-			R.icon = 'austation/icons/mob/robot.dmi'
-			cyborg_base_icon = "cminer"
-			hat_offset = 4
-		if("Sleek")
-			R.icon = 'austation/icons/mob/robot.dmi'
-			cyborg_base_icon = "sleekmin"
-			hat_offset = -1
-		if("Skirt")
-			R.icon = 'austation/icons/mob/robot.dmi'
-			cyborg_base_icon = "banangarang-Miner"
-			hat_offset = 0
-	if(R.ckey == "ZombiesVsPlants")
-		borg_icon = "Skirt"
-		return
-		// austation end
-	return ..()
+	return ..() */ //austation end
 
 /obj/item/robot_module/miner/rebuild_modules()
 	. = ..()
