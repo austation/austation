@@ -240,7 +240,7 @@
 /area/ruin/powered/autist)
 "nB" = (
 /obj/machinery/button/door{
-	id = "Aut_slime_2;
+	id = "Aut_slime_2";
 	name = "Containment Blast Doors";
 	pixel_x = -7
 	},
