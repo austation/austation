@@ -323,6 +323,15 @@
 /obj/machinery/porta_turret_construct,
 /turf/open/floor/plating,
 /area/ruin/powered/autist)
+"rj" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/item/clothing/suit/hooded/wintercoat,
+/obj/structure/closet,
+/obj/item/clothing/suit/hooded/wintercoat,
+/turf/open/floor/plasteel/grid/steel,
+/area/ruin/powered/autist)
 "rx" = (
 /obj/structure/sign/directions/medical{
 	dir = 8;
@@ -1762,7 +1771,7 @@ Sd
 pj
 nP
 JJ
-IY
+rj
 GN
 Ok
 Ok
