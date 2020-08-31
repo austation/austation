@@ -85,10 +85,9 @@
 /area/ruin/powered/autist)
 "dY" = (
 /obj/structure/rack,
-/obj/item/pickaxe/diamond,
+/obj/item/storage/bag/ore,
 /obj/item/tank/internals/oxygen,
-/obj/item/shovel,
-/obj/item/assembly/signaler,
+/obj/item/pickaxe/diamond,
 /turf/open/floor/plating,
 /area/ruin/powered/autist)
 "ei" = (
@@ -979,8 +978,8 @@
 /area/ruin/powered/autist)
 "SD" = (
 /obj/structure/bed/pod,
-/obj/item/bedsheet/rd/royal_cape,
 /obj/effect/mob_spawn/human/autist,
+/obj/item/bedsheet/random,
 /turf/open/floor/pod,
 /area/ruin/powered/autist)
 "SJ" = (
