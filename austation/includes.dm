@@ -137,3 +137,6 @@
 #include "code\modules\cargo\exports\food_and_drink\processed.dm"
 #include "code\modules\cargo\exports\organs.dm"
 #include "code\modules\cargo\packs.dm"
+#include "code\game\objects\structures\ghost_role_spawners.dm"
+#include "code\datums\ruins\lavaland.dm"
+#include "code\game\area\ruins\lavaland.dm"

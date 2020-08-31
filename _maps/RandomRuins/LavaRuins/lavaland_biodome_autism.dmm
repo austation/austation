@@ -1,0 +1,1827 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"as" = (
+/obj/structure/window/reinforced/spawner,
+/obj/effect/turf_decal/stripes/red/line,
+/turf/open/floor/holofloor,
+/area/ruin/powered/autist)
+"aw" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/oil/streak,
+/turf/open/floor/plating,
+/area/ruin/powered/autist)
+"aI" = (
+/obj/structure/sign/directions/evac,
+/turf/closed/wall/r_wall,
+/area/ruin/powered/autist)
+"bX" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/ruin/powered/autist)
+"cg" = (
+/obj/structure/disposalpipe/segment,
+/obj/machinery/door/poddoor/preopen{
+	id = "Aut_slime_1";
+	name = "containment blast door"
+	},
+/obj/effect/spawner/structure/window/reinforced,
+/turf/open/floor/plasteel/shuttle/red,
+/area/ruin/powered/autist)
+"cL" = (
+/obj/structure/bed/pod,
+/obj/item/bedsheet/random,
+/obj/effect/mob_spawn/human/autist,
+/turf/open/floor/pod,
+/area/ruin/powered/autist)
+"cM" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/layer3{
+	dir = 8
+	},
+/obj/effect/turf_decal/arrows{
+	dir = 4;
+	pixel_y = -1
+	},
+/turf/open/floor/vault,
+/area/ruin/powered/autist)
+"dj" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
+	dir = 4
+	},
+/turf/open/floor/vault,
+/area/ruin/powered/autist)
+"dk" = (
+/obj/machinery/door/window{
+	dir = 8
+	},
+/obj/effect/turf_decal/stripes/red/line{
+	dir = 1
+	},
+/obj/effect/turf_decal/stripes/white/line{
+	dir = 8
+	},
+/turf/open/floor/holofloor,
+/area/ruin/powered/autist)
+"dH" = (
+/obj/item/storage/box/handcuffs,
+/obj/structure/sink{
+	dir = 8;
+	pixel_x = -12;
+	pixel_y = 2
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/turf/open/floor/plasteel/grid/steel,
+/area/ruin/powered/autist)
+"dM" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1,
+/turf/open/floor/plating,
+/area/ruin/powered/autist)
+"dY" = (
+/obj/structure/rack,
+/obj/item/pickaxe/diamond,
+/obj/item/tank/internals/oxygen,
+/obj/item/shovel,
+/obj/item/assembly/signaler,
+/turf/open/floor/plating,
+/area/ruin/powered/autist)
+"ei" = (
+/obj/structure/window/reinforced/spawner,
+/obj/structure/window/reinforced/spawner{
+	dir = 8
+	},
+/obj/effect/turf_decal/stripes/red/line,
+/turf/open/floor/holofloor,
+/area/ruin/powered/autist)
+"fn" = (
+/obj/structure/chair/comfy/black{
+	dir = 8
+	},
+/turf/open/floor/pod,
+/area/ruin/powered/autist)
+"ft" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer1,
+/turf/open/floor/vault,
+/area/ruin/powered/autist)
+"fT" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
+	dir = 4
+	},
+/turf/open/floor/vault,
+/area/ruin/powered/autist)
+"fZ" = (
+/obj/structure/disposalpipe/trunk{
+	dir = 1
+	},
+/obj/machinery/disposal/bin,
+/obj/effect/turf_decal/stripes/box,
+/turf/open/floor/plasteel/grid/steel,
+/area/ruin/powered/autist)
+"gd" = (
+/obj/structure/chair/comfy/black,
+/turf/open/floor/holofloor,
+/area/ruin/powered/autist)
+"gu" = (
+/obj/machinery/door/window,
+/obj/effect/turf_decal/stripes/red/line,
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3,
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer1,
+/turf/open/floor/holofloor,
+/area/ruin/powered/autist)
+"gU" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3,
+/turf/open/floor/vault,
+/area/ruin/powered/autist)
+"hk" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer1{
+	dir = 8
+	},
+/turf/open/floor/pod,
+/area/ruin/powered/autist)
+"ir" = (
+/obj/structure/table/optable,
+/turf/open/floor/holofloor,
+/area/ruin/powered/autist)
+"iG" = (
+/obj/machinery/monkey_recycler,
+/turf/open/floor/plasteel/grid/steel,
+/area/ruin/powered/autist)
+"iK" = (
+/obj/machinery/atmospherics/components/unary/tank/air,
+/turf/open/floor/plating/asteroid/basalt/lava_land_surface,
+/area/ruin/powered/autist)
+"jo" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1,
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
+	dir = 1
+	},
+/obj/machinery/door/airlock/public/glass,
+/turf/open/floor/plating,
+/area/ruin/powered/autist)
+"ka" = (
+/obj/machinery/light,
+/turf/open/floor/plasteel/grid/steel,
+/area/ruin/powered/autist)
+"kh" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
+	dir = 4
+	},
+/turf/open/floor/plasteel/grid/steel,
+/area/ruin/powered/autist)
+"kt" = (
+/obj/structure/table/glass,
+/obj/machinery/reagentgrinder{
+	pixel_x = 5;
+	pixel_y = 5
+	},
+/obj/structure/reagent_dispensers/virusfood{
+	pixel_y = -30
+	},
+/turf/open/floor/holofloor,
+/area/ruin/powered/autist)
+"kE" = (
+/obj/machinery/atmospherics/components/unary/thermomachine/freezer/on/coldroom{
+	dir = 1
+	},
+/obj/effect/turf_decal/stripes/box,
+/turf/open/floor/plasteel/grid/steel,
+/area/ruin/powered/autist)
+"lq" = (
+/turf/open/lava/smooth/lava_land_surface,
+/area/space)
+"ls" = (
+/obj/structure/window/reinforced/spawner,
+/turf/open/floor/holofloor,
+/area/ruin/powered/autist)
+"lN" = (
+/obj/machinery/computer/pandemic,
+/turf/open/floor/holofloor,
+/area/ruin/powered/autist)
+"mg" = (
+/obj/structure/closet/l3closet/virology,
+/obj/item/extrapolator,
+/obj/item/clothing/glasses/science,
+/obj/item/healthanalyzer,
+/obj/item/clothing/gloves/color/latex,
+/turf/open/floor/holofloor,
+/area/ruin/powered/autist)
+"mo" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
+	dir = 4
+	},
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer3{
+	dir = 8
+	},
+/turf/open/floor/pod,
+/area/ruin/powered/autist)
+"mH" = (
+/obj/machinery/atmospherics/pipe/manifold/supply/hidden/layer1{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/layer3{
+	dir = 1
+	},
+/turf/open/floor/plasteel/grid/steel,
+/area/ruin/powered/autist)
+"nj" = (
+/obj/machinery/processor/slime,
+/turf/open/floor/plasteel/grid/steel,
+/area/ruin/powered/autist)
+"nl" = (
+/turf/closed/wall/r_wall,
+/area/ruin/powered/autist)
+"nB" = (
+/obj/machinery/button/door{
+	id = "Aut_slime_2;
+	name = "Containment Blast Doors";
+	pixel_x = -7
+	},
+/turf/closed/wall,
+/area/ruin/powered/autist)
+"nP" = (
+/obj/machinery/atmospherics/pipe/manifold/general/visible,
+/turf/open/floor/plasteel/kitchen_coldroom/freezerfloor,
+/area/ruin/powered/autist)
+"nU" = (
+/obj/machinery/door/poddoor/shutters{
+	id = "autist_garage";
+	name = "garage"
+	},
+/turf/open/floor/plating,
+/area/ruin/powered/autist)
+"ot" = (
+/obj/structure/disposalpipe/segment,
+/turf/open/floor/plasteel/shuttle/red,
+/area/ruin/powered/autist)
+"pj" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on,
+/turf/open/floor/plasteel/kitchen_coldroom/freezerfloor,
+/area/ruin/powered/autist)
+"pl" = (
+/turf/open/floor/vault,
+/area/ruin/powered/autist)
+"pE" = (
+/obj/machinery/light/small{
+	dir = 1
+	},
+/turf/open/floor/plating/asteroid/basalt/lava_land_surface,
+/area/ruin/powered/autist)
+"pI" = (
+/obj/effect/decal/cleanable/oil,
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer3{
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/ruin/powered/autist)
+"qr" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
+	dir = 4
+	},
+/turf/open/floor/plasteel/grid/steel,
+/area/ruin/powered/autist)
+"qE" = (
+/obj/structure/fans/tiny/invisible,
+/obj/machinery/door/airlock/external,
+/turf/open/floor/vault,
+/area/ruin/powered/autist)
+"qY" = (
+/obj/item/key{
+	pixel_y = 10
+	},
+/obj/item/key{
+	pixel_x = -3;
+	pixel_y = 10
+	},
+/obj/item/gun/energy/laser,
+/obj/item/gun/energy/laser,
+/obj/item/gun/energy/laser,
+/obj/item/gun/energy/laser,
+/obj/item/gun/energy/laser,
+/obj/item/gun/energy/laser,
+/obj/structure/closet,
+/obj/machinery/porta_turret_construct,
+/obj/machinery/porta_turret_construct,
+/obj/machinery/porta_turret_construct,
+/obj/machinery/porta_turret_construct,
+/obj/machinery/porta_turret_construct,
+/obj/machinery/porta_turret_construct,
+/turf/open/floor/plating,
+/area/ruin/powered/autist)
+"rx" = (
+/obj/structure/sign/directions/medical{
+	dir = 8;
+	pixel_y = 8
+	},
+/obj/structure/sign/directions/science{
+	dir = 4;
+	pixel_y = -8
+	},
+/obj/structure/sign/directions/evac,
+/turf/closed/wall,
+/area/ruin/powered/autist)
+"rR" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+	dir = 5
+	},
+/obj/machinery/atmospherics/components/unary/outlet_injector/on/layer3{
+	dir = 4
+	},
+/turf/open/floor/plating/asteroid/basalt/lava_land_surface,
+/area/ruin/powered/autist)
+"rW" = (
+/obj/structure/disposalpipe/segment,
+/obj/machinery/door/poddoor/preopen{
+	id = "Aut_freezer";
+	name = "containment blast door"
+	},
+/obj/effect/spawner/structure/window/reinforced,
+/turf/open/floor/plasteel/grid/steel,
+/area/ruin/powered/autist)
+"sd" = (
+/obj/structure/disposalpipe/trunk,
+/obj/structure/disposaloutlet,
+/turf/open/floor/plasteel/kitchen_coldroom/freezerfloor,
+/area/ruin/powered/autist)
+"sF" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/turf/open/floor/vault,
+/area/ruin/powered/autist)
+"sQ" = (
+/obj/structure/sign/mining,
+/turf/closed/wall/mineral/titanium/survival/pod{
+	opacity = 0
+	},
+/area/ruin/powered/autist)
+"sS" = (
+/obj/vehicle/ridden/atv,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/machinery/light/small{
+	brightness = 3;
+	dir = 8
+	},
+/obj/machinery/button/door{
+	id = "autist_garage";
+	name = "garage door";
+	pixel_x = -26
+	},
+/turf/open/floor/plating,
+/area/ruin/powered/autist)
+"sT" = (
+/obj/machinery/door/airlock/freezer,
+/obj/machinery/door/firedoor/border_only,
+/obj/machinery/door/firedoor/border_only{
+	dir = 1
+	},
+/obj/effect/turf_decal/stripes/line,
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/turf/open/floor/plasteel/grid/steel,
+/area/ruin/powered/autist)
+"ts" = (
+/obj/machinery/atmospherics/pipe/layer_manifold,
+/turf/open/floor/vault,
+/area/ruin/powered/autist)
+"tz" = (
+/turf/open/floor/plating/asteroid/basalt/lava_land_surface,
+/area/lavaland/surface/outdoors)
+"tO" = (
+/obj/machinery/light,
+/turf/open/floor/holofloor,
+/area/ruin/powered/autist)
+"uv" = (
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/vault,
+/area/ruin/powered/autist)
+"vn" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1,
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3,
+/turf/open/floor/holofloor,
+/area/ruin/powered/autist)
+"vA" = (
+/obj/effect/turf_decal/stripes/red/line{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3,
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1,
+/turf/open/floor/holofloor,
+/area/ruin/powered/autist)
+"vE" = (
+/obj/structure/bed/pod,
+/obj/machinery/smartfridge/extract/preloaded{
+	pixel_x = -32
+	},
+/turf/open/floor/plasteel/grid/steel,
+/area/ruin/powered/autist)
+"vS" = (
+/obj/machinery/atmospherics/pipe/manifold/supply/hidden/layer1{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
+	dir = 10
+	},
+/turf/open/floor/plasteel/grid/steel,
+/area/ruin/powered/autist)
+"wE" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
+	dir = 4
+	},
+/turf/open/floor/vault,
+/area/ruin/powered/autist)
+"wG" = (
+/obj/machinery/light/small{
+	dir = 4
+	},
+/obj/structure/rack,
+/obj/item/storage/box/lights,
+/obj/item/storage/toolbox/mechanical,
+/turf/open/floor/plating,
+/area/ruin/powered/autist)
+"xd" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer1{
+	dir = 4
+	},
+/turf/open/floor/holofloor,
+/area/ruin/powered/autist)
+"xh" = (
+/obj/machinery/atmospherics/pipe/simple/general/visible{
+	dir = 5
+	},
+/obj/effect/turf_decal/stripes/line,
+/turf/open/floor/plasteel/kitchen_coldroom/freezerfloor,
+/area/ruin/powered/autist)
+"xP" = (
+/obj/structure/window/reinforced/spawner{
+	dir = 8
+	},
+/obj/machinery/mecha_part_fabricator/maint,
+/turf/open/floor/holofloor,
+/area/ruin/powered/autist)
+"yS" = (
+/obj/machinery/door/window,
+/obj/machinery/door/window{
+	dir = 1
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/effect/turf_decal/stripes/line,
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/machinery/door/poddoor/shutters/preopen,
+/obj/machinery/door/poddoor/preopen{
+	id = "Aut_slime_2";
+	name = "containment blast door"
+	},
+/turf/open/floor/plasteel/shuttle/red,
+/area/ruin/powered/autist)
+"zh" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1,
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3,
+/turf/open/floor/vault,
+/area/ruin/powered/autist)
+"Ah" = (
+/obj/structure/table,
+/obj/machinery/computer/operating,
+/turf/open/floor/holofloor,
+/area/ruin/powered/autist)
+"An" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer1{
+	dir = 1
+	},
+/turf/open/floor/plasteel/grid/steel,
+/area/ruin/powered/autist)
+"Ao" = (
+/obj/effect/turf_decal/stripes/red/line{
+	dir = 1
+	},
+/turf/open/floor/holofloor,
+/area/ruin/powered/autist)
+"AF" = (
+/obj/structure/chair/comfy/black,
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer1{
+	dir = 4
+	},
+/turf/open/floor/plasteel/grid/steel,
+/area/ruin/powered/autist)
+"AG" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer3{
+	dir = 1
+	},
+/turf/open/floor/plasteel/grid/steel,
+/area/ruin/powered/autist)
+"AX" = (
+/obj/machinery/door/window,
+/obj/machinery/door/window{
+	dir = 1
+	},
+/obj/effect/turf_decal/stripes/line,
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/machinery/door/poddoor/shutters/preopen,
+/obj/machinery/door/poddoor/preopen{
+	id = "Aut_slime_1";
+	name = "containment blast door"
+	},
+/turf/open/floor/plasteel/shuttle/red,
+/area/ruin/powered/autist)
+"AZ" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/layer3{
+	dir = 8
+	},
+/turf/open/floor/vault,
+/area/ruin/powered/autist)
+"Bb" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
+	dir = 4
+	},
+/turf/open/floor/pod,
+/area/ruin/powered/autist)
+"Bk" = (
+/obj/structure/disposalpipe/segment,
+/obj/machinery/door/poddoor/preopen{
+	id = "Aut_slime_2";
+	name = "containment blast door"
+	},
+/obj/effect/spawner/structure/window/reinforced,
+/turf/open/floor/plasteel/shuttle/red,
+/area/ruin/powered/autist)
+"BF" = (
+/obj/structure/disposalpipe/segment,
+/turf/open/floor/plasteel/kitchen_coldroom/freezerfloor,
+/area/ruin/powered/autist)
+"BG" = (
+/obj/structure/fans,
+/turf/open/floor/pod,
+/area/ruin/powered/autist)
+"BH" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer3,
+/turf/open/floor/holofloor,
+/area/ruin/powered/autist)
+"BM" = (
+/obj/structure/window/reinforced/spawner,
+/obj/effect/turf_decal/stripes/white/line{
+	dir = 4
+	},
+/turf/open/floor/holofloor,
+/area/ruin/powered/autist)
+"BY" = (
+/obj/machinery/light{
+	dir = 8
+	},
+/obj/structure/window/reinforced/spawner,
+/turf/open/floor/holofloor,
+/area/ruin/powered/autist)
+"Ca" = (
+/mob/living/carbon/monkey,
+/obj/structure/bed/pod,
+/turf/open/floor/holofloor,
+/area/ruin/powered/autist)
+"Cf" = (
+/obj/machinery/atmospherics/pipe/manifold/supply/hidden/layer1{
+	dir = 8
+	},
+/turf/open/floor/vault,
+/area/ruin/powered/autist)
+"CN" = (
+/obj/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/holofloor,
+/area/ruin/powered/autist)
+"CX" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/layer3{
+	dir = 1
+	},
+/turf/open/floor/plasteel/grid/steel,
+/area/ruin/powered/autist)
+"Dg" = (
+/obj/effect/turf_decal/stripes/line,
+/turf/open/floor/plasteel/shuttle/red,
+/area/ruin/powered/autist)
+"Di" = (
+/obj/structure/table,
+/turf/open/floor/pod,
+/area/ruin/powered/autist)
+"DE" = (
+/obj/machinery/light{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/manifold/supply/hidden{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
+	dir = 4
+	},
+/turf/open/floor/vault,
+/area/ruin/powered/autist)
+"DS" = (
+/obj/machinery/button/door{
+	id = "autist_garage";
+	name = "garage door";
+	pixel_x = -26
+	},
+/turf/open/floor/plating/asteroid/basalt/lava_land_surface,
+/area/lavaland/surface/outdoors)
+"Ec" = (
+/obj/machinery/atmospherics/pipe/simple/general/visible{
+	dir = 10
+	},
+/turf/open/floor/plasteel/kitchen_coldroom/freezerfloor,
+/area/ruin/powered/autist)
+"Fh" = (
+/obj/machinery/advanced_airlock_controller/lavaland{
+	pixel_x = -32
+	},
+/obj/machinery/atmospherics/components/binary/dp_vent_pump{
+	dir = 4
+	},
+/turf/open/floor/vault,
+/area/ruin/powered/autist)
+"Fq" = (
+/obj/machinery/light{
+	dir = 4
+	},
+/obj/structure/window/reinforced/spawner,
+/obj/structure/table,
+/obj/effect/turf_decal/stripes/red/line,
+/turf/open/floor/holofloor,
+/area/ruin/powered/autist)
+"Fy" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3,
+/turf/closed/wall/r_wall,
+/area/ruin/powered/autist)
+"FM" = (
+/obj/machinery/light/small{
+	dir = 1
+	},
+/turf/open/floor/plasteel/shuttle/red,
+/area/ruin/powered/autist)
+"Ga" = (
+/obj/machinery/door/window,
+/obj/machinery/door/window{
+	dir = 1
+	},
+/obj/effect/turf_decal/stripes/line,
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/machinery/door/poddoor/shutters/preopen,
+/obj/machinery/door/poddoor/preopen{
+	id = "Aut_slime_3";
+	name = "containment blast door"
+	},
+/turf/open/floor/plasteel/shuttle/red,
+/area/ruin/powered/autist)
+"Gh" = (
+/obj/machinery/door/poddoor/preopen{
+	id = "Aut_slime_3";
+	name = "containment blast door"
+	},
+/obj/effect/spawner/structure/window/reinforced,
+/turf/open/floor/plasteel/shuttle/red,
+/area/ruin/powered/autist)
+"GN" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
+	dir = 4
+	},
+/turf/open/floor/plasteel/grid/steel,
+/area/ruin/powered/autist)
+"Hl" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/machinery/door/poddoor/shutters{
+	id = "autist_garage";
+	name = "garage"
+	},
+/turf/open/floor/plating,
+/area/ruin/powered/autist)
+"HT" = (
+/turf/open/floor/plasteel/shuttle/red,
+/area/ruin/powered/autist)
+"Ic" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
+	dir = 9
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
+	dir = 9
+	},
+/turf/open/floor/vault,
+/area/ruin/powered/autist)
+"Iz" = (
+/turf/template_noop,
+/area/template_noop)
+"IC" = (
+/mob/living/simple_animal/slime,
+/turf/open/floor/plasteel/shuttle/red,
+/area/ruin/powered/autist)
+"IY" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/turf/open/floor/plasteel/grid/steel,
+/area/ruin/powered/autist)
+"IZ" = (
+/obj/structure/bedsheetbin,
+/obj/structure/table,
+/obj/machinery/airalarm{
+	pixel_y = 23
+	},
+/turf/open/floor/pod,
+/area/ruin/powered/autist)
+"Jn" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1,
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
+	dir = 1
+	},
+/turf/open/floor/plasteel/grid/steel,
+/area/ruin/powered/autist)
+"Jo" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
+	dir = 4
+	},
+/obj/machinery/door/airlock/public/glass,
+/turf/open/floor/pod,
+/area/ruin/powered/autist)
+"JJ" = (
+/obj/machinery/door/poddoor/preopen{
+	id = "Aut_freezer";
+	name = "containment blast door"
+	},
+/obj/effect/spawner/structure/window/reinforced,
+/turf/open/floor/plasteel/grid/steel,
+/area/ruin/powered/autist)
+"JU" = (
+/obj/machinery/light/small{
+	dir = 1
+	},
+/turf/open/floor/plasteel/kitchen_coldroom/freezerfloor,
+/area/ruin/powered/autist)
+"JV" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+	dir = 5
+	},
+/turf/closed/wall/r_wall,
+/area/ruin/powered/autist)
+"JY" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
+	dir = 5
+	},
+/obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/layer3,
+/obj/effect/turf_decal/arrows/white{
+	dir = 8
+	},
+/turf/open/floor/holofloor,
+/area/ruin/powered/autist)
+"JZ" = (
+/obj/structure/table,
+/turf/open/floor/holofloor,
+/area/ruin/powered/autist)
+"Kq" = (
+/obj/machinery/light,
+/obj/machinery/chem_master,
+/turf/open/floor/plasteel/grid/steel,
+/area/ruin/powered/autist)
+"Ks" = (
+/obj/machinery/rnd/production/protolathe/department/medical,
+/turf/open/floor/holofloor,
+/area/ruin/powered/autist)
+"KZ" = (
+/obj/structure/table,
+/obj/item/storage/backpack/duffelbag/med/surgery,
+/turf/open/floor/holofloor,
+/area/ruin/powered/autist)
+"Lg" = (
+/obj/machinery/atmospherics/pipe/layer_manifold,
+/turf/closed/wall/r_wall,
+/area/ruin/powered/autist)
+"Lu" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/suit_storage_unit/mining,
+/turf/open/floor/plating,
+/area/ruin/powered/autist)
+"LE" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer3{
+	dir = 4
+	},
+/turf/open/floor/holofloor,
+/area/ruin/powered/autist)
+"MH" = (
+/obj/machinery/door/airlock/external,
+/turf/open/floor/vault,
+/area/ruin/powered/autist)
+"Ng" = (
+/turf/open/floor/holofloor,
+/area/ruin/powered/autist)
+"Nk" = (
+/obj/machinery/button/door{
+	id = "Aut_slime_1";
+	name = "Containment Blast Doors";
+	pixel_x = -7
+	},
+/turf/closed/wall,
+/area/ruin/powered/autist)
+"Nn" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden,
+/turf/closed/wall/r_wall,
+/area/ruin/powered/autist)
+"No" = (
+/obj/structure/disposalpipe/trunk,
+/obj/structure/disposaloutlet,
+/turf/open/floor/plasteel/shuttle/red,
+/area/ruin/powered/autist)
+"NN" = (
+/obj/structure/chair/comfy/black{
+	dir = 4
+	},
+/turf/open/floor/pod,
+/area/ruin/powered/autist)
+"Ok" = (
+/turf/open/floor/plasteel/grid/steel,
+/area/ruin/powered/autist)
+"Ou" = (
+/obj/vehicle/ridden/atv,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/plating,
+/area/ruin/powered/autist)
+"OY" = (
+/obj/machinery/atmospherics/pipe/manifold/supply/hidden/layer1{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3,
+/obj/effect/turf_decal/arrows/red{
+	dir = 1
+	},
+/turf/open/floor/holofloor,
+/area/ruin/powered/autist)
+"Pf" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1,
+/turf/open/floor/vault,
+/area/ruin/powered/autist)
+"Pk" = (
+/obj/machinery/atmospherics/pipe/manifold/supply/hidden/layer1{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
+	dir = 4
+	},
+/obj/effect/turf_decal/arrows/white{
+	dir = 8;
+	pixel_y = 8
+	},
+/obj/effect/turf_decal/arrows/red{
+	dir = 8;
+	pixel_y = -10
+	},
+/turf/open/floor/vault,
+/area/ruin/powered/autist)
+"PO" = (
+/obj/machinery/door/poddoor/preopen{
+	id = "Aut_slime_1";
+	name = "containment blast door"
+	},
+/obj/effect/spawner/structure/window/reinforced,
+/turf/open/floor/plasteel/shuttle/red,
+/area/ruin/powered/autist)
+"PQ" = (
+/obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/layer3{
+	dir = 4
+	},
+/turf/open/floor/vault,
+/area/ruin/powered/autist)
+"Qm" = (
+/turf/closed/wall,
+/area/ruin/powered/autist)
+"Qy" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
+	dir = 4
+	},
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer3{
+	dir = 4
+	},
+/turf/open/floor/plasteel/grid/steel,
+/area/ruin/powered/autist)
+"Rq" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer3,
+/turf/open/floor/vault,
+/area/ruin/powered/autist)
+"RW" = (
+/obj/structure/sign/mining/survival,
+/turf/closed/wall/mineral/titanium/survival/pod{
+	opacity = 0
+	},
+/area/ruin/powered/autist)
+"Sc" = (
+/obj/structure/table/glass,
+/obj/machinery/smartfridge/chemistry/virology/preloaded{
+	pixel_y = -32
+	},
+/obj/item/reagent_containers/dropper,
+/obj/item/reagent_containers/spray/cleaner,
+/obj/item/reagent_containers/syringe,
+/turf/open/floor/holofloor,
+/area/ruin/powered/autist)
+"Sd" = (
+/turf/open/floor/plasteel/kitchen_coldroom/freezerfloor,
+/area/ruin/powered/autist)
+"Sx" = (
+/obj/machinery/door/window{
+	dir = 8
+	},
+/obj/effect/turf_decal/stripes/white/line{
+	dir = 8
+	},
+/turf/open/floor/holofloor,
+/area/ruin/powered/autist)
+"SD" = (
+/obj/structure/bed/pod,
+/obj/item/bedsheet/rd/royal_cape,
+/obj/effect/mob_spawn/human/autist,
+/turf/open/floor/pod,
+/area/ruin/powered/autist)
+"SJ" = (
+/obj/structure/table/glass,
+/obj/machinery/reagentgrinder{
+	pixel_x = 5;
+	pixel_y = 5
+	},
+/obj/item/slime_scanner,
+/obj/item/reagent_containers/syringe,
+/turf/open/floor/plasteel/grid/steel,
+/area/ruin/powered/autist)
+"SR" = (
+/obj/structure/disposalpipe/segment,
+/obj/machinery/door/poddoor/preopen{
+	id = "Aut_slime_3";
+	name = "containment blast door"
+	},
+/obj/effect/spawner/structure/window/reinforced,
+/turf/open/floor/plasteel/shuttle/red,
+/area/ruin/powered/autist)
+"Td" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/high_volume/on,
+/turf/open/floor/plasteel/kitchen_coldroom/freezerfloor,
+/area/ruin/powered/autist)
+"TJ" = (
+/turf/open/floor/pod,
+/area/ruin/powered/autist)
+"Ug" = (
+/obj/machinery/atmospherics/pipe/simple/general/visible,
+/obj/machinery/door/poddoor/preopen{
+	id = "Aut_freezer";
+	name = "containment blast door"
+	},
+/obj/effect/spawner/structure/window/reinforced,
+/turf/open/floor/plasteel/grid/steel,
+/area/ruin/powered/autist)
+"Ul" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
+	dir = 4
+	},
+/obj/machinery/door/airlock/public/glass,
+/turf/open/floor/holofloor,
+/area/ruin/powered/autist)
+"Uo" = (
+/turf/open/floor/plating,
+/area/ruin/powered/autist)
+"Uq" = (
+/turf/closed/wall/mineral/titanium/survival/pod{
+	opacity = 0
+	},
+/area/ruin/powered/autist)
+"Uv" = (
+/mob/living/simple_animal/slime,
+/obj/structure/disposalpipe/segment,
+/turf/open/floor/plasteel/shuttle/red,
+/area/ruin/powered/autist)
+"UG" = (
+/obj/structure/sign/mining/survival{
+	dir = 4
+	},
+/turf/closed/wall/mineral/titanium/survival/pod{
+	opacity = 0
+	},
+/area/ruin/powered/autist)
+"Vv" = (
+/obj/machinery/rnd/production/protolathe/department/science,
+/turf/open/floor/holofloor,
+/area/ruin/powered/autist)
+"Wa" = (
+/obj/machinery/disposal/bin,
+/obj/structure/disposalpipe/trunk{
+	dir = 1
+	},
+/obj/effect/turf_decal/stripes/box,
+/turf/open/floor/plasteel/grid/steel,
+/area/ruin/powered/autist)
+"Wb" = (
+/obj/structure/table/glass,
+/obj/item/storage/box/monkeycubes,
+/obj/item/storage/box/monkeycubes,
+/turf/open/floor/plasteel/grid/steel,
+/area/ruin/powered/autist)
+"We" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1,
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3,
+/turf/open/floor/plasteel/grid/steel,
+/area/ruin/powered/autist)
+"Wm" = (
+/obj/structure/window/reinforced/spawner{
+	dir = 8
+	},
+/turf/open/floor/holofloor,
+/area/ruin/powered/autist)
+"WU" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3,
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
+	dir = 10
+	},
+/turf/closed/wall/r_wall,
+/area/ruin/powered/autist)
+"Xy" = (
+/obj/machinery/light/small{
+	dir = 1
+	},
+/obj/machinery/smartfridge/survival_pod,
+/turf/open/floor/pod,
+/area/ruin/powered/autist)
+"XJ" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
+	dir = 4
+	},
+/turf/closed/wall/r_wall,
+/area/ruin/powered/autist)
+"XU" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
+	dir = 4
+	},
+/turf/open/floor/vault,
+/area/ruin/powered/autist)
+"Yn" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
+	dir = 5
+	},
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer1{
+	dir = 1
+	},
+/turf/open/floor/plating,
+/area/ruin/powered/autist)
+"YU" = (
+/obj/machinery/light{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
+	dir = 10
+	},
+/turf/open/floor/plasteel/grid/steel,
+/area/ruin/powered/autist)
+"Zv" = (
+/obj/machinery/door/poddoor/preopen{
+	id = "Aut_slime_2";
+	name = "containment blast door"
+	},
+/obj/effect/spawner/structure/window/reinforced,
+/turf/open/floor/plasteel/shuttle/red,
+/area/ruin/powered/autist)
+"Zx" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
+	dir = 4
+	},
+/turf/open/floor/holofloor,
+/area/ruin/powered/autist)
+"ZX" = (
+/obj/machinery/button/door{
+	id = "Aut_slime_3";
+	name = "Containment Blast Doors";
+	pixel_x = -7
+	},
+/obj/machinery/button/door{
+	id = "Aut_freezer";
+	name = "Containment Blast Doors";
+	pixel_x = 7
+	},
+/turf/closed/wall,
+/area/ruin/powered/autist)
+
+(1,1,1) = {"
+Iz
+Iz
+Iz
+Iz
+Iz
+Iz
+tz
+tz
+tz
+nl
+nl
+nl
+nl
+nl
+nl
+nl
+Iz
+Iz
+Iz
+Iz
+Iz
+Iz
+Iz
+Iz
+Iz
+"}
+(2,1,1) = {"
+Iz
+Iz
+lq
+Iz
+tz
+tz
+tz
+tz
+nl
+nl
+CN
+ls
+Ng
+BY
+lN
+nl
+nl
+Iz
+Iz
+Iz
+Iz
+lq
+Iz
+Iz
+Iz
+"}
+(3,1,1) = {"
+Iz
+lq
+lq
+Iz
+tz
+tz
+tz
+nl
+nl
+ls
+Ca
+BM
+Ca
+BM
+gd
+Sc
+nl
+Iz
+Iz
+Iz
+lq
+lq
+lq
+Iz
+Iz
+"}
+(4,1,1) = {"
+Iz
+lq
+lq
+lq
+tz
+tz
+tz
+nl
+xP
+Wm
+ei
+dk
+Wm
+Sx
+Ng
+kt
+nl
+Iz
+Iz
+Iz
+Iz
+lq
+lq
+lq
+Iz
+"}
+(5,1,1) = {"
+Iz
+lq
+lq
+lq
+tz
+tz
+tz
+nl
+Ah
+Ng
+as
+Ao
+xd
+Ng
+LE
+Ng
+nl
+Iz
+Iz
+Iz
+Iz
+lq
+lq
+Iz
+Iz
+"}
+(6,1,1) = {"
+Iz
+Iz
+lq
+tz
+tz
+tz
+tz
+nl
+ir
+BH
+gu
+vA
+OY
+vn
+JY
+tO
+nl
+Iz
+Iz
+Iz
+Iz
+lq
+lq
+Iz
+Iz
+"}
+(7,1,1) = {"
+Iz
+Iz
+Iz
+tz
+tz
+tz
+tz
+nl
+KZ
+JZ
+Fq
+Ao
+Ng
+Ng
+Zx
+Ng
+nl
+Iz
+Iz
+Iz
+Iz
+Iz
+lq
+Iz
+Iz
+"}
+(8,1,1) = {"
+Iz
+Iz
+Iz
+tz
+nl
+nl
+nl
+nl
+Qm
+Qm
+Qm
+Qm
+Vv
+Ks
+Zx
+mg
+nl
+tz
+tz
+Iz
+Iz
+Iz
+Iz
+Iz
+Iz
+"}
+(9,1,1) = {"
+Iz
+Iz
+Iz
+nl
+nl
+HT
+HT
+PO
+dH
+vE
+Wb
+Qm
+Qm
+Qm
+Ul
+Qm
+nl
+tz
+tz
+tz
+Iz
+Iz
+Iz
+Iz
+Iz
+"}
+(10,1,1) = {"
+Iz
+Iz
+Iz
+nl
+FM
+HT
+Dg
+AX
+IY
+AF
+SJ
+Qm
+pl
+sF
+wE
+sF
+nl
+iK
+rR
+tz
+tz
+tz
+tz
+tz
+Iz
+"}
+(11,1,1) = {"
+Iz
+Iz
+Iz
+nl
+No
+Uv
+ot
+cg
+Wa
+GN
+Kq
+Qm
+uv
+pl
+XU
+pl
+nl
+aI
+XJ
+nl
+tz
+tz
+tz
+tz
+tz
+"}
+(12,1,1) = {"
+Iz
+Iz
+Iz
+nl
+Qm
+Qm
+Qm
+Nk
+Ok
+GN
+nj
+Qm
+ft
+Cf
+Pk
+Pf
+Cf
+ts
+DE
+Nn
+JV
+nl
+pE
+tz
+tz
+"}
+(13,1,1) = {"
+Iz
+Iz
+Iz
+nl
+HT
+HT
+HT
+Zv
+IY
+Qy
+iG
+rx
+pl
+dj
+fT
+pl
+dj
+pl
+fT
+MH
+Fh
+qE
+tz
+tz
+tz
+"}
+(14,1,1) = {"
+Iz
+Iz
+tz
+nl
+FM
+IC
+Dg
+yS
+IY
+qr
+Ok
+Qm
+Rq
+cM
+PQ
+gU
+AZ
+gU
+PQ
+Fy
+WU
+Lg
+tz
+tz
+tz
+"}
+(15,1,1) = {"
+Iz
+Iz
+tz
+nl
+No
+ot
+ot
+Bk
+Wa
+qr
+Ok
+Qm
+pl
+XU
+Qm
+Qm
+Jo
+Qm
+nl
+nl
+Iz
+tz
+tz
+tz
+tz
+"}
+(16,1,1) = {"
+Iz
+Iz
+tz
+nl
+Qm
+Qm
+Qm
+nB
+Ok
+qr
+ka
+Qm
+uv
+XU
+Qm
+IZ
+Bb
+NN
+Uq
+Iz
+Iz
+tz
+tz
+tz
+Iz
+"}
+(17,1,1) = {"
+lq
+lq
+lq
+nl
+HT
+HT
+IC
+Gh
+IY
+qr
+Ok
+Ok
+pl
+XU
+Qm
+BG
+mo
+cL
+RW
+Iz
+Iz
+tz
+tz
+tz
+Iz
+"}
+(18,1,1) = {"
+lq
+lq
+tz
+nl
+FM
+HT
+Dg
+Ga
+IY
+mH
+We
+We
+zh
+Ic
+Qm
+Xy
+hk
+TJ
+nl
+Iz
+Iz
+tz
+tz
+tz
+Iz
+"}
+(19,1,1) = {"
+Iz
+lq
+tz
+nl
+No
+ot
+ot
+SR
+Wa
+qr
+Ok
+Ok
+pl
+pl
+Qm
+Di
+SD
+fn
+sQ
+Iz
+Iz
+tz
+tz
+tz
+Iz
+"}
+(20,1,1) = {"
+Iz
+lq
+tz
+nl
+nl
+nl
+nl
+ZX
+Ok
+kh
+Ok
+Qm
+Qm
+Qm
+Qm
+Uq
+UG
+Uq
+Uq
+Iz
+Iz
+tz
+tz
+Iz
+Iz
+"}
+(21,1,1) = {"
+Iz
+lq
+tz
+nl
+sd
+BF
+BF
+rW
+fZ
+CX
+AG
+Ok
+Qm
+qY
+sS
+Ou
+Hl
+DS
+tz
+tz
+tz
+tz
+tz
+Iz
+Iz
+"}
+(22,1,1) = {"
+Iz
+Iz
+tz
+nl
+JU
+Td
+xh
+sT
+IY
+vS
+Jn
+Jn
+jo
+dM
+Yn
+aw
+Hl
+tz
+tz
+tz
+tz
+tz
+tz
+tz
+tz
+"}
+(23,1,1) = {"
+Iz
+Iz
+tz
+nl
+Sd
+pj
+nP
+JJ
+IY
+GN
+Ok
+Ok
+Qm
+Uo
+pI
+bX
+nU
+tz
+tz
+tz
+tz
+tz
+tz
+tz
+tz
+"}
+(24,1,1) = {"
+Iz
+Iz
+Iz
+nl
+nl
+Sd
+Ec
+Ug
+kE
+YU
+An
+Ok
+Qm
+dY
+wG
+Lu
+nU
+tz
+tz
+Iz
+Iz
+Iz
+Iz
+Iz
+Iz
+"}
+(25,1,1) = {"
+Iz
+Iz
+Iz
+Iz
+nl
+nl
+nl
+nl
+nl
+nl
+aI
+nl
+nl
+nl
+nl
+nl
+nl
+Iz
+Iz
+Iz
+Iz
+Iz
+Iz
+Iz
+Iz
+"}
