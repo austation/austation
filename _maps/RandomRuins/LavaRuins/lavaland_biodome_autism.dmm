@@ -53,7 +53,8 @@
 /area/ruin/powered/autist)
 "dk" = (
 /obj/machinery/door/window{
-	dir = 8
+	dir = 8;
+	req_one_access_txt = "5"
 	},
 /obj/effect/turf_decal/stripes/red/line{
 	dir = 1
@@ -178,12 +179,17 @@
 /area/ruin/powered/autist)
 "kt" = (
 /obj/structure/table/glass,
+/obj/structure/reagent_dispensers/virusfood{
+	pixel_y = -30
+	},
+/obj/item/card/id{
+	access_txt = "5";
+	icon_state = "med";
+	name = "monkey pens access"
+	},
 /obj/machinery/reagentgrinder{
 	pixel_x = 5;
 	pixel_y = 5
-	},
-/obj/structure/reagent_dispensers/virusfood{
-	pixel_y = -30
 	},
 /turf/open/floor/holofloor,
 /area/ruin/powered/autist)
@@ -962,11 +968,12 @@
 /turf/open/floor/plasteel/kitchen_coldroom/freezerfloor,
 /area/ruin/powered/autist)
 "Sx" = (
-/obj/machinery/door/window{
-	dir = 8
-	},
 /obj/effect/turf_decal/stripes/white/line{
 	dir = 8
+	},
+/obj/machinery/door/window{
+	dir = 8;
+	req_one_access_txt = "5"
 	},
 /turf/open/floor/holofloor,
 /area/ruin/powered/autist)
