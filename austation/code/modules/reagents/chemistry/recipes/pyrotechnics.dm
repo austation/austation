@@ -71,24 +71,3 @@
 
 /datum/chemical_reaction/reagent_explosion/tatp_explosion/update_info()
 	required_temp = 550 + rand(-49,49)
-
-/datum/chemical_reaction/sorium
-	results = list(/datum/reagent/sorium = 4)
-	required_reagents = list(/datum/reagent/mercury = 1, /datum/reagent/oxygen = 1, /datum/reagent/nitrogen = 1, /datum/reagent/carbon = 1)
-
-/datum/chemical_reaction/sorium/on_reaction(datum/reagents/holder, created_volume)
-	if(holder.has_reagent(/datum/reagent/stabilizing_agent))
-		return
-	holder.remove_reagent(/datum/reagent/sorium, created_volume*4)
-	var/turf/T = get_turf(holder.my_atom)
-	var/range = clamp(sqrt(created_volume*4), 1, 6)
-	goonchem_vortex(T, 1, range)
-
-/datum/chemical_reaction/sorium_vortex
-	required_reagents = list(/datum/reagent/sorium = 1)
-	required_temp = 474
-
-/datum/chemical_reaction/sorium_vortex/on_reaction(datum/reagents/holder, created_volume)
-	var/turf/T = get_turf(holder.my_atom)
-	var/range = clamp(sqrt(created_volume), 1, 6)
-	goonchem_vortex(T, 1, range)
