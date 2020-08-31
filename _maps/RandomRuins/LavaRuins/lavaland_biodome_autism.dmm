@@ -155,12 +155,22 @@
 /obj/machinery/atmospherics/components/unary/tank/air,
 /turf/open/floor/plating/asteroid/basalt/lava_land_surface,
 /area/ruin/powered/autist)
+"jm" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/item/clothing/suit/hooded/wintercoat,
+/obj/structure/closet,
+/obj/item/clothing/suit/hooded/wintercoat,
+/turf/open/floor/plasteel/grid/steel,
+/area/ruin/powered/autist)
 "jo" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
 	dir = 1
 	},
 /obj/machinery/door/airlock/public/glass,
+/obj/structure/fans/tiny/invisible,
 /turf/open/floor/plating,
 /area/ruin/powered/autist)
 "ka" = (
@@ -322,15 +332,6 @@
 /obj/machinery/porta_turret_construct,
 /obj/machinery/porta_turret_construct,
 /turf/open/floor/plating,
-/area/ruin/powered/autist)
-"rj" = (
-/obj/effect/turf_decal/stripes/line{
-	dir = 1
-	},
-/obj/item/clothing/suit/hooded/wintercoat,
-/obj/structure/closet,
-/obj/item/clothing/suit/hooded/wintercoat,
-/turf/open/floor/plasteel/grid/steel,
 /area/ruin/powered/autist)
 "rx" = (
 /obj/structure/sign/directions/medical{
@@ -807,10 +808,10 @@
 /turf/open/floor/plasteel/kitchen_coldroom/freezerfloor,
 /area/ruin/powered/autist)
 "JV" = (
-/obj/machinery/atmospherics/pipe/simple/supply/hidden{
-	dir = 5
-	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1,
+/obj/machinery/atmospherics/pipe/manifold/supply/hidden{
+	dir = 8
+	},
 /turf/closed/wall/r_wall,
 /area/ruin/powered/autist)
 "JY" = (
@@ -1771,7 +1772,7 @@ Sd
 pj
 nP
 JJ
-rj
+jm
 GN
 Ok
 Ok
