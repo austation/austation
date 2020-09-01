@@ -88,9 +88,9 @@
 	antag_memory += "You remember your training:<br>"
 	antag_memory += " -Bloodsuckers are weak to fire, or a stake to the heart. Removing their head or heart will also destroy them permanently.<br>"
 	antag_memory += " -Wooden stakes can be made from planks, and hardened by a welding tool. Your recipes list has ways of making them even stronger.<br>"
-	antag_memory += " -Changelings return to life unless their body is destroyed. Not even decapitation can stop them for long.<br>"
-	antag_memory += " -Cultists are weak to the Chaplain's holy water.<br>"
-	antag_memory += " -Wizards are notoriously hard to outmatch. Rob or steal whatever weapons you need to destroy them, and shoot before asking questions.<br><br>"
+	//antag_memory += " -Changelings return to life unless their body is destroyed. Not even decapitation can stop them for long.<br>"
+	//antag_memory += " -Cultists are weak to the Chaplain's holy water.<br>"
+	//antag_memory += " -Wizards are notoriously hard to outmatch. Rob or steal whatever weapons you need to destroy them, and shoot before asking questions.<br><br>"
 	if (my_kungfu != null)
 		to_chat(owner, "<span class='announce'>Hunter Tip: Use your [my_kungfu.name] techniques to give you an advantage over the enemy.</span><br>")
 		antag_memory += "You remember your training: You are skilled in the [my_kungfu.name] style of combat.<br>"
@@ -212,12 +212,12 @@
 	// Track ALL MONSTERS in Game Mode
 	var/list/datum/mind/monsters = list()
 	monsters += SSticker.mode.bloodsuckers
-	monsters += SSticker.mode.devils
-	monsters += SSticker.mode.cult
-	monsters += SSticker.mode.wizards
-	monsters += SSticker.mode.apprentices
+	//monsters += SSticker.mode.devils
+	//monsters += SSticker.mode.cult
+	//monsters += SSticker.mode.wizards
+	//monsters += SSticker.mode.apprentices
 	//monsters += SSticker.mode.servants_of_ratvar
-	monsters += SSticker.mode.changelingsgm
+	//monsters += SSticker.mode.changelingsgm
 	//
 	for(var/datum/mind/M in monsters)
 		if (!M.current || M.current == owner)//   || !get_turf(M.current) || !get_turf(owner))
