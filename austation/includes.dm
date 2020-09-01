@@ -20,6 +20,7 @@
 #include "code\datums\diseases\advance\symptoms\fever.dm"
 #include "code\datums\diseases\advance\symptoms\fire.dm"
 #include "code\datums\diseases\advance\symptoms\flesh_eating.dm"
+#include "code\datums\diseases\advance\symptoms\genetics.dm"
 #include "code\datums\diseases\advance\symptoms\heal.dm"
 #include "code\datums\diseases\advance\symptoms\nanites.dm"
 #include "code\datums\diseases\advance\symptoms\narcolepsy.dm"
