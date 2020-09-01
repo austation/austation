@@ -44,7 +44,7 @@
 
 /obj/structure/geyser/random
 	erupting_state = null
-	var/list/options = list(/datum/reagent/oil = 2, /datum/reagent/clf3 = 1, /datum/reagent/plasma_oxide = 8) //fucking add more //austation -- RDX, TATP
+	var/list/options = list(/datum/reagent/oil = 2, /datum/reagent/clf3 = 1, /datum/reagent/plasma_oxide = 8) //fucking add more //austation -- plasma_oxide for exotic stabilizer
 
 /obj/structure/geyser/random/Initialize()
 	. = ..()
