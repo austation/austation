@@ -199,6 +199,7 @@
 		if("Skirt")
 			R.icon = 'austation/icons/mob/robot.dmi'
 			cyborg_base_icon = "banangarang-Janitor"
+			special_light_key = "banangarang-Standard"
 			hat_offset = 0
 		else
 			return FALSE
@@ -242,6 +243,7 @@
 		if("Skirt")
 			R.icon = 'austation/icons/mob/robot.dmi'
 			cyborg_base_icon = "banangarang-Service"
+			special_light_key = "banangarang-Standard"
 			hat_offset = 0
 		else
 			return FALSE
