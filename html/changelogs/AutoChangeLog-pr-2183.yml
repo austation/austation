@@ -1,0 +1,5 @@
+author: "totallynotkatfood"
+delete-after: True
+changes: 
+  - rscadd: "Added RDX and TaTP"
+  - rscadd: "Added component chems for RDX and TaTP"
