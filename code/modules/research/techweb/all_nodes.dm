@@ -216,11 +216,7 @@
 	display_name = "Miniaturized Bluespace Research"
 	description = "Extreme reduction in space required for bluespace engines, leading to portable bluespace technology."
 	prereq_ids = list("bluespace_travel", "practical_bluespace", "high_efficiency")
-<<<<<<< HEAD
-	design_ids = list("bluespace_matter_bin", "femto_mani", "triphasic_scanning", "bag_holding", "bluespace_belt", "quantum_keycard", "wormholeprojector", "swapper")
-=======
-	design_ids = list("bluespace_matter_bin", "femto_mani", "triphasic_scanning", "bag_holding", "quantum_keycard", "wormholeprojector", "swapper", "antivirus4")
->>>>>>> ba63be6332... two new virus symptoms to cure my burnout (#2358)
+	design_ids = list("bluespace_matter_bin", "femto_mani", "triphasic_scanning", "bag_holding", "bluespace_belt", "quantum_keycard", "wormholeprojector", "swapper", "antivirus4") // austation -- belt of holding
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 10000)
 	export_price = 5000
 
@@ -229,11 +225,7 @@
 	display_name = "Applied Bluespace Research"
 	description = "Using bluespace to make things faster and better."
 	prereq_ids = list("bluespace_basic", "engineering")
-<<<<<<< HEAD
-	design_ids = list("bs_rped","minerbag_holding", "bluespacebeaker", "bluespacesyringe", "bluespacebodybag", "phasic_scanning", "roastingstick", "ore_silo", "BScustom_epi") // austation -- adds bs epipen
-=======
-	design_ids = list("bs_rped","minerbag_holding", "bluespacebeaker", "bluespacesyringe", "bluespacebodybag", "phasic_scanning", "roastingstick", "ore_silo", "antivirus3")
->>>>>>> ba63be6332... two new virus symptoms to cure my burnout (#2358)
+	design_ids = list("bs_rped","minerbag_holding", "bluespacebeaker", "bluespacesyringe", "bluespacebodybag", "phasic_scanning", "roastingstick", "ore_silo", "BScustom_epi", "antivirus3") // austation -- adds bs epipen
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 5000)
 	export_price = 5000
 
