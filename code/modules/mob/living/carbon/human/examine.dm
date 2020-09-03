@@ -96,7 +96,7 @@
 
 	// AuStation Wear Examines (Human)
 	if(istype(src, /mob/living/carbon/human))
-		if(src.ringsoff == FALSE)
+		if(ringsoff == FALSE)
 			var/mob/living/carbon/human/H = src
 			. += H.austation_wear_examine(user)
 
