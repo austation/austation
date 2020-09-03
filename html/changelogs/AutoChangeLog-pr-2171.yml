@@ -1,0 +1,4 @@
+author: "thelaughingbomb"
+delete-after: True
+changes: 
+  - bugfix: "Observers are no longer being told about loading ammo boxes into makeshift pistol, or that it jams."
