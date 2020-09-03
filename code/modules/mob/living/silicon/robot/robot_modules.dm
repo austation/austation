@@ -287,7 +287,6 @@
 		/obj/item/construction/rcd/borg,
 		/obj/item/pipe_dispenser,
 		/obj/item/extinguisher,
-		/obj/item/holosign_creator/atmos, //austation -- Borg holofan
 		/obj/item/floor_painter, //austation -- Floor painter
 		/obj/item/weldingtool/largetank/cyborg,
 		/obj/item/screwdriver/cyborg,
