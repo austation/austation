@@ -99,9 +99,9 @@
 /turf/open/floor/holofloor,
 /area/ruin/powered/autist)
 "fn" = (
-/obj/structure/chair/comfy/black{
-	dir = 8
-	},
+/obj/structure/bed/pod,
+/obj/effect/mob_spawn/human/autist,
+/obj/item/bedsheet/random,
 /turf/open/floor/pod,
 /area/ruin/powered/autist)
 "ft" = (
@@ -129,8 +129,9 @@
 "gu" = (
 /obj/machinery/door/window,
 /obj/effect/turf_decal/stripes/red/line,
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3,
-/obj/machinery/atmospherics/components/unary/vent_pump/on/layer1,
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer1{
+	dir = 4
+	},
 /turf/open/floor/holofloor,
 /area/ruin/powered/autist)
 "gU" = (
@@ -258,6 +259,9 @@
 	id = "Aut_slime_2";
 	name = "Containment Blast Doors";
 	pixel_x = -7
+	},
+/obj/structure/extinguisher_cabinet{
+	pixel_x = 7
 	},
 /turf/closed/wall,
 /area/ruin/powered/autist)
@@ -426,17 +430,24 @@
 	},
 /turf/open/floor/vault,
 /area/ruin/powered/autist)
-"vn" = (
-/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1,
+"uX" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3,
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1,
 /turf/open/floor/holofloor,
 /area/ruin/powered/autist)
-"vA" = (
+"vn" = (
 /obj/effect/turf_decal/stripes/red/line{
 	dir = 1
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1,
+/turf/open/floor/holofloor,
+/area/ruin/powered/autist)
+"vA" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3,
+/obj/machinery/atmospherics/pipe/manifold/supply/hidden/layer1{
+	dir = 4
+	},
 /turf/open/floor/holofloor,
 /area/ruin/powered/autist)
 "vE" = (
@@ -445,6 +456,13 @@
 	pixel_x = -32
 	},
 /turf/open/floor/plasteel/grid/steel,
+/area/ruin/powered/autist)
+"vN" = (
+/obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/layer3,
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
+	dir = 5
+	},
+/turf/open/floor/holofloor,
 /area/ruin/powered/autist)
 "vS" = (
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/layer1{
@@ -477,8 +495,8 @@
 /turf/open/floor/plating,
 /area/ruin/powered/autist)
 "xd" = (
-/obj/machinery/atmospherics/components/unary/vent_pump/on/layer1{
-	dir = 4
+/obj/effect/turf_decal/arrows/red{
+	dir = 1
 	},
 /turf/open/floor/holofloor,
 /area/ruin/powered/autist)
@@ -601,10 +619,6 @@
 /obj/structure/fans,
 /turf/open/floor/pod,
 /area/ruin/powered/autist)
-"BH" = (
-/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer3,
-/turf/open/floor/holofloor,
-/area/ruin/powered/autist)
 "BM" = (
 /obj/structure/window/reinforced/spawner,
 /obj/effect/turf_decal/stripes/white/line{
@@ -654,12 +668,12 @@
 /turf/open/floor/pod,
 /area/ruin/powered/autist)
 "DE" = (
-/obj/machinery/atmospherics/pipe/simple/supply/hidden{
-	dir = 10
-	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
 	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+	dir = 10
 	},
 /turf/open/floor/vault,
 /area/ruin/powered/autist)
@@ -693,6 +707,10 @@
 /obj/structure/window/reinforced/spawner,
 /obj/structure/table,
 /obj/effect/turf_decal/stripes/red/line,
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3,
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
+	dir = 10
+	},
 /turf/open/floor/holofloor,
 /area/ruin/powered/autist)
 "Fy" = (
@@ -815,17 +833,16 @@
 /turf/closed/wall/r_wall,
 /area/ruin/powered/autist)
 "JY" = (
-/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
-	dir = 5
-	},
-/obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/layer3,
-/obj/effect/turf_decal/arrows/white{
-	dir = 8
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer3{
+	dir = 4
 	},
 /turf/open/floor/holofloor,
 /area/ruin/powered/autist)
 "JZ" = (
 /obj/structure/table,
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
+	dir = 10
+	},
 /turf/open/floor/holofloor,
 /area/ruin/powered/autist)
 "Kq" = (
@@ -852,8 +869,8 @@
 /turf/open/floor/plating,
 /area/ruin/powered/autist)
 "LE" = (
-/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer3{
-	dir = 4
+/obj/effect/turf_decal/arrows/white{
+	dir = 8
 	},
 /turf/open/floor/holofloor,
 /area/ruin/powered/autist)
@@ -870,6 +887,9 @@
 	name = "Containment Blast Doors";
 	pixel_x = -7
 	},
+/obj/structure/extinguisher_cabinet{
+	pixel_x = 7
+	},
 /turf/closed/wall,
 /area/ruin/powered/autist)
 "Nn" = (
@@ -884,7 +904,7 @@
 /area/ruin/powered/autist)
 "NN" = (
 /obj/structure/chair/comfy/black{
-	dir = 4
+	dir = 1
 	},
 /turf/open/floor/pod,
 /area/ruin/powered/autist)
@@ -897,12 +917,8 @@
 /turf/open/floor/plating,
 /area/ruin/powered/autist)
 "OY" = (
-/obj/machinery/atmospherics/pipe/manifold/supply/hidden/layer1{
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer1{
 	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3,
-/obj/effect/turf_decal/arrows/red{
-	dir = 1
 	},
 /turf/open/floor/holofloor,
 /area/ruin/powered/autist)
@@ -987,9 +1003,9 @@
 /turf/open/floor/holofloor,
 /area/ruin/powered/autist)
 "SD" = (
-/obj/structure/bed/pod,
-/obj/effect/mob_spawn/human/autist,
-/obj/item/bedsheet/random,
+/obj/structure/chair/comfy/black{
+	dir = 8
+	},
 /turf/open/floor/pod,
 /area/ruin/powered/autist)
 "SJ" = (
@@ -1314,11 +1330,11 @@ tz
 tz
 nl
 ir
-BH
+JY
 gu
-vA
+Ao
 OY
-vn
+Ng
 JY
 tO
 nl
@@ -1343,10 +1359,10 @@ nl
 KZ
 JZ
 Fq
-Ao
-Ng
-Ng
-Zx
+vn
+vA
+uX
+vN
 Ng
 nl
 Iz
