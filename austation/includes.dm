@@ -73,6 +73,7 @@
 #include "code\modules\mapping\random_rooms.dm"
 #include "code\modules\mob\mob_defines.dm"
 #include "code\modules\mob\dead\new_player\new_player.dm"
+#include "code\modules\mob\mob.dm"
 #include "code\modules\mob\living\emote.dm"
 #include "code\modules\mob\living\carbon\emote.dm"
 #include "code\modules\mob\living\carbon\examine.dm"
