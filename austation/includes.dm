@@ -30,7 +30,6 @@
 #include "code\datums\diseases\advance\symptoms\vision.dm"
 #include "code\datums\diseases\advance\symptoms\vomit.dm"
 #include "code\datums\diseases\advance\symptoms\weight.dm"
-#include "code\datums\status_effects\buffs.dm"
 #include "code\datums\elements\swimming.dm"
 #include "code\datums\mood_event\generic_positive_events.dm"
 #include "code\datums\mutations\jumpy.dm"
