@@ -1,0 +1,5 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - bugfix: "organic flux induction stealth threshold works proper now"
+  - bugfix: "pituitary disruption wont rip you out of your new body if your old body regrows a head"
