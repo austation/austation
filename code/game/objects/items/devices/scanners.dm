@@ -384,7 +384,7 @@ GENE SCANNER
 				var/mob/living/carbon/human/H = C
 				if(H.bleed_rate)
 					to_chat(user, "<span class='alert'><b>Subject is bleeding!</b></span>")
-			var/blood_volume_scanned = C.scan_blood_volume() // austation begin -- proper blood volume masquerading by Xenomedes
+			var/blood_volume_scanned = C.scan_blood_volume()	// austation begin -- proper blood volume masquerading by Xenomedes
 			var/blood_percent =  round((blood_volume_scanned / BLOOD_VOLUME_NORMAL)*100)
 			var/blood_type = C.dna.blood_type
 			if(blood_id != /datum/reagent/blood)//special blood substance
@@ -398,7 +398,7 @@ GENE SCANNER
 			else if(blood_volume_scanned <= BLOOD_VOLUME_OKAY)
 				to_chat(user, "<span class='alert'>Blood level: <b>CRITICAL [blood_percent] %</b>, [blood_volume_scanned] cl,</span> <span class='info'>type: [blood_type]</span>")
 			else
-				to_chat(user, "<span class='info'>Blood level: [blood_percent] %, [blood_volume_scanned] cl, type: [blood_type]</span>") // austation end
+				to_chat(user, "<span class='info'>Blood level: [blood_percent] %, [blood_volume_scanned] cl, type: [blood_type]</span>")	// austation end
 
 		var/cyberimp_detect
 		for(var/obj/item/organ/cyberimp/CI in C.internal_organs)
