@@ -48,17 +48,17 @@
   * Move a client in a direction
   *
   * Huge proc, has a lot of functionality
-  * 
+  *
   * Mostly it will despatch to the mob that you are the owner of to actually move
   * in the physical realm
-  * 
+  *
   * Things that stop you moving as a mob:
   * * world time being less than your next move_delay
   * * not being in a mob, or that mob not having a loc
   * * missing the n and direction parameters
   * * being in remote control of an object (calls Moveobject instead)
   * * being dead (it ghosts you instead)
-  * 
+  *
   * Things that stop you moving as a mob living (why even have OO if you're just shoving it all
   * in the parent proc with istype checks right?):
   * * having incorporeal_move set (calls Process_Incorpmove() instead)
@@ -78,7 +78,7 @@
   *
   * Finally if you're pulling an object and it's dense, you are turned 180 after the move
   * (if you ask me, this should be at the top of the move so you don't dance around)
-  * 
+  *
   */
 /client/Move(n, direct)
 	if(world.time < move_delay) //do not move anything ahead of this check please
@@ -188,7 +188,7 @@
   * Allows mobs to ignore density and phase through objects
   *
   * Called by client/Move()
-  * 
+  *
   * The behaviour depends on the incorporeal_move value of the mob
   *
   * * INCORPOREAL_MOVE_BASIC - forceMoved to the next tile with no stop
@@ -276,9 +276,9 @@
   * Handles mob/living movement in space (or no gravity)
   *
   * Called by /client/Move()
-  * 
+  *
   * return TRUE for movement or FALSE for none
-  * 
+  *
   * You can move in space if you have a spacewalk ability
   */
 /mob/Process_Spacemove(movement_dir = 0)
@@ -452,13 +452,16 @@
 
 /**
   * Toggle the move intent of the mob
-  * 
+  *
   * triggers an update the move intent hud as well
   */
 /mob/proc/toggle_move_intent(mob/user)
 	if(m_intent == MOVE_INTENT_RUN)
 		m_intent = MOVE_INTENT_WALK
 	else
+		if (HAS_TRAIT(src,TRAIT_NORUNNING))	// austation begin -- Bloodsucker integration
+			to_chat(src, "You find yourself unable to run.")
+			return FALSE // austation end
 		m_intent = MOVE_INTENT_RUN
 	if(hud_used && hud_used.static_inventory)
 		for(var/obj/screen/mov_intent/selector in hud_used.static_inventory)
