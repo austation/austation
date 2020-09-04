@@ -12,7 +12,7 @@
 		"Eyebot" = image(icon = 'austation/icons/mob/robot.dmi', icon_state = "eyebotmed"),
 		"Droid" = image(icon = 'austation/icons/mob/robot.dmi', icon_state = "cmedical"),
 		"Skirt" = image(icon = 'austation/icons/mob/robot.dmi', icon_state = "banangarang-Medical"))
-	
+
 	var/med_borg_icon = show_radial_menu(R, R , robotstyles_med, custom_check = CALLBACK(src, .proc/check_menu, R), radius = 42, require_near = TRUE)
 
 	switch(med_borg_icon)
@@ -60,7 +60,7 @@
 		"Spider" = image(icon = 'austation/icons/mob/robot.dmi', icon_state = "spidereng"),
 		"Handy" = image(icon = 'austation/icons/mob/robot.dmi', icon_state = "handyeng"),
 		"Skirt" = image(icon = 'austation/icons/mob/robot.dmi', icon_state = "banangarang-Engineering"))
-	
+
 	var/engi_borg_icon = show_radial_menu(R, R , robotstyles_eng, custom_check = CALLBACK(src, .proc/check_menu, R), radius = 42, require_near = TRUE)
 
 	switch(engi_borg_icon)
@@ -111,7 +111,7 @@
 		"Can" = image(icon = 'austation/icons/mob/robot.dmi', icon_state = "cansec"),
 		"Spider" = image(icon = 'austation/icons/mob/robot.dmi', icon_state = "spidersec"),
 		"Skirt" = image(icon = 'austation/icons/mob/robot.dmi', icon_state = "banangarang-Security"))
-	
+
 	var/sec_borg_icon = show_radial_menu(R, R , robotstyles_sec, custom_check = CALLBACK(src, .proc/check_menu, R), radius = 42, require_near = TRUE)
 
 	switch(sec_borg_icon)
@@ -154,7 +154,7 @@
 		robotstyles_peace = list(
 		"Default" = image(icon = 'icons/mob/robots.dmi', icon_state = "peace"),
 		"Spider" = image(icon = 'austation/icons/mob/robot.dmi', icon_state = "whitespider"))
-	
+
 	var/peace_borg_icon = show_radial_menu(R, R , robotstyles_peace, custom_check = CALLBACK(src, .proc/check_menu, R), radius = 42, require_near = TRUE)
 
 	switch(peace_borg_icon)
@@ -178,7 +178,7 @@
 		"Can" = image(icon = 'austation/icons/mob/robot.dmi', icon_state = "canjan"),
 		"Marina" = image(icon = 'austation/icons/mob/robot.dmi', icon_state = "marinajan"),
 		"Skirt" = image(icon = 'austation/icons/mob/robot.dmi', icon_state = "banangarang-Janitor"))
-	
+
 	var/jan_borg_icon = show_radial_menu(R, R , robotstyles_jan, custom_check = CALLBACK(src, .proc/check_menu, R), radius = 42, require_near = TRUE)
 
 	switch(jan_borg_icon)
@@ -289,7 +289,7 @@
 			hat_offset = 3
 		if("Spider")
 			cyborg_base_icon = "spidermin"
-			hat_offset = -3 
+			hat_offset = -3
 		if("Droid")
 			R.icon = 'austation/icons/mob/robot.dmi'
 			cyborg_base_icon = "cminer"
@@ -300,7 +300,7 @@
 			special_light_key = "banangarang-Standard"
 			hat_offset = 0
 		else
-			return FALSE	
+			return FALSE
 	return ..()
 
 /obj/item/robot_module/proc/check_menu(mob/living/user)
