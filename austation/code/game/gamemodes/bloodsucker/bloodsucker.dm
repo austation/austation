@@ -53,6 +53,7 @@
 		// Can we even BE a bloodsucker?
 		//if (can_make_bloodsucker(bloodsucker, display_warning=FALSE))
 		bloodsuckers += bloodsucker
+		bloodsucker.special_role = ROLE_BLOODSUCKER
 		bloodsucker.restricted_roles = restricted_jobs
 		log_game("[bloodsucker.key] (ckey) has been selected as a Bloodsucker.")
 		antag_candidates.Remove(bloodsucker) // Apparently you can also write antag_candidates -= bloodsucker
