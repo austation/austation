@@ -1,7 +1,0 @@
-author: "MrLostman"
-delete-after: True
-changes: 
-  - rscadd: "added occult tank"
-  - rscdel: "removed cursed oxygen tank"
-  - tweak: "removed hyperaoemod, repeatermod, resonatormod and bountymod tech disks from necro chest loot list"
-  - tweak: "adds hyperaoemod, repeatermod, resonatormod and bountymod to advanced mining"
