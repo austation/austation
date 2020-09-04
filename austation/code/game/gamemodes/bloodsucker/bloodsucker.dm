@@ -49,7 +49,7 @@
 	for(var/i = 0, i < recommended_enemies, i++)
 		if (!antag_candidates.len)
 			break
-		var/datum/mind/bloodsucker = pick(antag_candidates)
+		var/datum/mind/bloodsucker = antag_pick(antag_candidates, ROLE_BLOODSUCKER)
 		// Can we even BE a bloodsucker?
 		//if (can_make_bloodsucker(bloodsucker, display_warning=FALSE))
 		bloodsuckers += bloodsucker
