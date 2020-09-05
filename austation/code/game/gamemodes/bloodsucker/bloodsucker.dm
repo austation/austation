@@ -132,18 +132,30 @@
 		//if(creator) // REMOVED. You wouldn't see their name if there is no mind, so why say anything?
 		//	to_chat(creator, "<span class='danger'>[bloodsucker] isn't self-aware enough to be raised as a Bloodsucker!</span>")
 		return FALSE
-	// Current body is invalid
-	if(!iscarbon(bloodsucker.current) || isIPC(bloodsucker.current) || isplasmaman(bloodsucker.current))// && !ismonkey(bloodsucker.current))
+	// Check Preferences
+	if(isnewplayer(bloodsucker.current))
+		if (bloodsucker.current.client)
+			var/datum/preferences/P = bloodsucker.current.client.prefs
+			if (NOBLOOD in P.pref_species.species_traits)
+				return FALSE // sorry plasma and ipc mains
+		else
+			return FALSE // no client (shouldn't happen lmao)
+	// Excludes plsamaman and ipcs
+	else if(ishuman(bloodsucker.current))
+		var/mob/living/carbon/human/H = bloodsucker.current
+		if(isIPC(H) || isplasmaman(H))// && !ismonkey(bloodsucker.current))
+			if(display_warning && creator)
+				to_chat(creator, "<span class='danger'>[bloodsucker] isn't the right race to be raised as a Bloodsucker!</span>")
+			return FALSE
+	// Sieves other NOBLOOD species if they ever happen
+		if(NOBLOOD in H.dna.species.species_traits)
+			if(display_warning && creator)
+				to_chat(creator, "<span class='danger'>[bloodsucker]'s DNA isn't compatible!</span>")
+			return FALSE
+	else
 		if(display_warning && creator)
-			to_chat(creator, "<span class='danger'>[bloodsucker] isn't evolved enough or the right race to be raised as a Bloodsucker!</span>")
+			to_chat(creator, "<span class='danger'>[bloodsucker] isn't evolved enough to be raised as a Bloodsucker!</span>")
 		return FALSE
-	// Species Must have a HEART (Sorry Plasmabois)
-
-	//if(NOBLOOD in H.dna.species.species_traits)
-	//	if(display_warning && creator)
-	//		to_chat(creator, "<span class='danger'>[bloodsucker]'s DNA isn't compatible!</span>")
-	//	return FALSE
-
 	// Already a Non-Human Antag
 	if(bloodsucker.has_antag_datum(/datum/antagonist/abductor) || bloodsucker.has_antag_datum(/datum/antagonist/devil) || bloodsucker.has_antag_datum(/datum/antagonist/changeling))
 		return FALSE
