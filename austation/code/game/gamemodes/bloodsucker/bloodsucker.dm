@@ -89,6 +89,7 @@
 		// Add Bloodsucker Antag Datum (or remove from list on Fail)
 		if (!make_bloodsucker(bloodsucker))
 			bloodsuckers -= bloodsucker
+			bloodsucker.special_role = null
 
 	// NOTE: Hunters are done in ..() parent proc
 
