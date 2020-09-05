@@ -168,3 +168,5 @@
 #include "code\modules\antagonists\bloodsucker\powers\v_recuperate.dm"
 #include "code\game\gamemodes\bloodsucker\bloodsucker.dm"
 #include "code\game\gamemodes\bloodsucker\hunter.dm"
+#include "code\modules\mob\mob_movement.dm"
+#include "code\modules\mob\living\carbon\damage_procs.dm"
