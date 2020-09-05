@@ -1,0 +1,5 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - rscadd: "Adds sterilizer spray to robodrobe"
+  - rscadd: "Adds morgue to robotics on DeltaStation and PubbyStation"
