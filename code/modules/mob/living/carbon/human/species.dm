@@ -1688,7 +1688,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 	//Thermal protection (insulation) has mixed benefits in two situations (hot in hot places, cold in hot places)
 	if(!H.on_fire) //If you're on fire, you do not heat up or cool down based on surrounding gases
 		var/natural = 0
-		if(H.stat != DEAD)
+		if(H.stat != DEAD && !HAS_TRAIT(H, TRAIT_COLDBLOODED))	// austation -- Bloodsucker integration
 			natural = H.natural_bodytemperature_stabilization()
 		var/thermal_protection = 1
 		if(loc_temp < H.bodytemperature) //Place is colder than we are
@@ -1699,7 +1699,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 				H.adjust_bodytemperature(natural*(1/(thermal_protection+1)) + max((thermal_protection * (loc_temp - H.bodytemperature) + BODYTEMP_NORMAL - H.bodytemperature) / BODYTEMP_COLD_DIVISOR , BODYTEMP_COOLING_MAX)) //Extra calculation for hardsuits to bleed off heat
 	if (loc_temp > H.bodytemperature) //Place is hotter than we are
 		var/natural = 0
-		if(H.stat != DEAD)
+		if(H.stat != DEAD && !HAS_TRAIT(H, TRAIT_COLDBLOODED))	// austation -- Bloodsucker integration
 			natural = H.natural_bodytemperature_stabilization()
 		var/thermal_protection = 1
 		thermal_protection -= H.get_heat_protection(loc_temp) //This returns a 0 - 1 value, which corresponds to the percentage of protection based on what you're wearing and what you're exposed to.

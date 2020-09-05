@@ -15,6 +15,13 @@
 
 	. = list("<span class='info'>*---------*\nThis is <EM>[!obscure_name ? name : "Unknown"]</EM>!")
 
+	var/vampDesc = ReturnVampExamine(user)	// austation begin -- Bloodsucker integration
+	var/vassDesc = ReturnVassalExamine(user)
+	if (vampDesc != "") // note from fulp: UPDATE 9/6/19 - If we don't do it this way, we add a blank space to the string...something to do with this -->  . += ""
+		. += vampDesc
+	if (vassDesc != "")
+		. += vassDesc	// austation end
+
 	var/list/obscured = check_obscured_slots()
 	var/skipface = (wear_mask && (wear_mask.flags_inv & HIDEFACE)) || (head && (head.flags_inv & HIDEFACE))
 
@@ -223,7 +230,7 @@
 		if(DISGUST_LEVEL_DISGUSTED to INFINITY)
 			msg += "[t_He] look[p_s()] extremely disgusted.\n"
 
-	if(blood_volume < BLOOD_VOLUME_SAFE)
+	if(ShowAsPaleExamine())	// austation -- Bloodsucker integration
 		msg += "[t_He] [t_has] pale skin.\n"
 
 	if(bleedsuppress)
