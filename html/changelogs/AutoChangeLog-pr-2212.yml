@@ -1,0 +1,4 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - bugfix: "fixed the paper wizard den so everything doesnt instantly die from low pressure anymore."
