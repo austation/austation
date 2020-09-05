@@ -46,23 +46,29 @@
 	recommended_enemies = clamp(round(num_players()/10), 1, 6);
 
 	// Select Antags
-	for(var/i = 0, i < recommended_enemies, i++)
-		if (!antag_candidates.len)
-			break
-		var/datum/mind/bloodsucker = antag_pick(antag_candidates, ROLE_BLOODSUCKER)
-		// Can we even BE a bloodsucker?
-		//if (can_make_bloodsucker(bloodsucker, display_warning=FALSE))
-		bloodsuckers += bloodsucker
-		bloodsucker.special_role = ROLE_BLOODSUCKER
-		bloodsucker.restricted_roles = restricted_jobs
-		log_game("[bloodsucker.key] (ckey) has been selected as a Bloodsucker.")
-		antag_candidates.Remove(bloodsucker) // Apparently you can also write antag_candidates -= bloodsucker
+	if(antag_candidates.len>0)
+		for(var/i = 0, i < recommended_enemies, i++)
+			if (!antag_candidates.len)
+				break
+			var/datum/mind/bloodsucker = antag_pick(antag_candidates, ROLE_BLOODSUCKER)
+			message_admins("[bloodsucker], [bloodsucker.key] is being checked")
+			//Can we even BE a bloodsucker?
+			if (can_make_bloodsucker(bloodsucker, display_warning=False))
+				bloodsuckers += bloodsucker
+				bloodsucker.special_role = ROLE_BLOODSUCKER
+				bloodsucker.restricted_roles = restricted_jobs
+				log_game("[bloodsucker.key] (ckey) has been selected as a Bloodsucker.")
+				antag_candidates.Remove(bloodsucker) // Apparently you can also write antag_cndidates -= bloodsucker
+		return 1
+	else
+		setup_error = "Not enough bloodsucker candidates"
+		return 0
 
 	// FULPSTATION: Assign Hunters (as many as monsters, plus one)
 	//assign_monster_hunters(bloodsuckers.len, TRUE, bloodsuckers)	// austation -- DISABLING HUNTERS FROM ROUND START, We have enough validhunters anyway
 
 	// Do we have enough vamps to continue?
-	return bloodsuckers.len >= required_enemies
+	// return bloodsuckers.len >= required_enemies
 
 
 // Gamemode is all done being set up. We have all our Vamps. We now pick objectives and let them know what's happening.
@@ -127,16 +133,18 @@
 		//	to_chat(creator, "<span class='danger'>[bloodsucker] isn't self-aware enough to be raised as a Bloodsucker!</span>")
 		return FALSE
 	// Current body is invalid
-	if(!ishuman(bloodsucker.current))// && !ismonkey(bloodsucker.current))
+	if(!iscarbon(bloodsucker.current) || isIPC(bloodsucker.current) || isplasmaman(bloodsucker.current))// && !ismonkey(bloodsucker.current))
 		if(display_warning && creator)
-			to_chat(creator, "<span class='danger'>[bloodsucker] isn't evolved enough to be raised as a Bloodsucker!</span>")
+			to_chat(creator, "<span class='danger'>[bloodsucker] isn't evolved enough or the right race to be raised as a Bloodsucker!</span>")
 		return FALSE
 	// Species Must have a HEART (Sorry Plasmabois)
-	var/mob/living/carbon/human/H = bloodsucker.current
-	if(NOBLOOD in H.dna.species.species_traits)
-		if(display_warning && creator)
-			to_chat(creator, "<span class='danger'>[bloodsucker]'s DNA isn't compatible!</span>")
-		return FALSE
+
+	//if(NOBLOOD in H.dna.species.species_traits)
+	//	if(display_warning && creator)
+	//		to_chat(creator, "<span class='danger'>[bloodsucker]'s DNA isn't compatible!</span>")
+	//	message_admins("3")
+	//	return FALSE
+
 	// Already a Non-Human Antag
 	if(bloodsucker.has_antag_datum(/datum/antagonist/abductor) || bloodsucker.has_antag_datum(/datum/antagonist/devil) || bloodsucker.has_antag_datum(/datum/antagonist/changeling))
 		return FALSE
@@ -146,11 +154,11 @@
 			to_chat(creator, "<span class='danger'>[bloodsucker] is already a Bloodsucker!</span>")
 		return FALSE
 	// Not High Enough
-	if(creator)
-		var/datum/antagonist/bloodsucker/creator_bloodsucker = creator.has_antag_datum(ANTAG_DATUM_BLOODSUCKER)
-		if(!istype(creator_bloodsucker) || creator_bloodsucker.vamplevel < BLOODSUCKER_LEVEL_TO_EMBRACE)
-			to_chat(creator, "<span class='danger'>Your blood is too thin to turn this corpse!</span>")
-			return FALSE
+	//if(creator)
+	//	var/datum/antagonist/bloodsucker/creator_bloodsucker = creator.has_antag_datum(ANTAG_DATUM_BLOODSUCKER)
+	//	if(!istype(creator_bloodsucker) || creator_bloodsucker.vamplevel < BLOODSUCKER_LEVEL_TO_EMBRACE)
+	//		to_chat(creator, "<span class='danger'>Your blood is too thin to turn this corpse!</span>")
+	//		return FALSE
 	return TRUE
 
 
