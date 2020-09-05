@@ -105993,13 +105993,6 @@
 	},
 /turf/open/floor/plasteel,
 /area/science/robotics/lab)
-"dCv" = (
-/obj/structure/filingcabinet/chestdrawer,
-/obj/effect/turf_decal/stripes/line{
-	dir = 4
-	},
-/turf/open/floor/plasteel,
-/area/science/robotics/lab)
 "dCw" = (
 /obj/structure/cable/yellow{
 	icon_state = "2-4"
@@ -106611,23 +106604,6 @@
 	},
 /turf/open/floor/plasteel,
 /area/science/robotics/lab)
-"dDF" = (
-/obj/structure/noticeboard{
-	dir = 8;
-	pixel_x = 32
-	},
-/obj/machinery/camera{
-	c_tag = "Science - Robotics Lab";
-	dir = 8;
-	name = "science camera";
-	network = list("ss13","rd")
-	},
-/obj/effect/turf_decal/stripes/line{
-	dir = 4
-	},
-/obj/machinery/aug_manipulator,
-/turf/open/floor/plasteel,
-/area/science/robotics/lab)
 "dDG" = (
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
@@ -107209,13 +107185,6 @@
 	dir = 4
 	},
 /obj/item/twohanded/required/kirbyplants/random,
-/turf/open/floor/plasteel,
-/area/science/robotics/lab)
-"dEO" = (
-/obj/machinery/computer/rdconsole/robotics{
-	dir = 8
-	},
-/obj/effect/turf_decal/bot,
 /turf/open/floor/plasteel,
 /area/science/robotics/lab)
 "dEP" = (
@@ -107897,15 +107866,6 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 6
 	},
-/turf/open/floor/plasteel,
-/area/science/robotics/lab)
-"dGe" = (
-/obj/machinery/airalarm{
-	dir = 8;
-	pixel_x = 24
-	},
-/obj/effect/turf_decal/bot,
-/obj/machinery/rnd/production/circuit_imprinter/department/science,
 /turf/open/floor/plasteel,
 /area/science/robotics/lab)
 "dGf" = (
@@ -121177,6 +121137,17 @@
 	},
 /turf/closed/wall,
 /area/security/prison)
+"hjR" = (
+/obj/machinery/airalarm{
+	dir = 8;
+	pixel_x = 24
+	},
+/obj/effect/turf_decal/bot,
+/obj/structure/bodycontainer/morgue{
+	dir = 8
+	},
+/turf/open/floor/plasteel,
+/area/science/robotics/lab)
 "hrP" = (
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
@@ -123536,6 +123507,11 @@
 	},
 /turf/open/floor/plating,
 /area/maintenance/port)
+"qaR" = (
+/obj/effect/turf_decal/bot,
+/obj/machinery/aug_manipulator,
+/turf/open/floor/plasteel,
+/area/science/robotics/lab)
 "qcx" = (
 /obj/machinery/firealarm{
 	dir = 4;
@@ -124178,6 +124154,13 @@
 	},
 /turf/open/floor/plasteel,
 /area/maintenance/disposal/incinerator)
+"sQL" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/machinery/rnd/production/circuit_imprinter/department/science,
+/turf/open/floor/plasteel,
+/area/science/robotics/lab)
 "sTs" = (
 /obj/structure/cable/yellow{
 	icon_state = "0-4"
@@ -124362,6 +124345,25 @@
 "tCh" = (
 /turf/closed/wall,
 /area/science/misc_lab)
+"tCn" = (
+/obj/structure/noticeboard{
+	dir = 8;
+	pixel_x = 32
+	},
+/obj/machinery/camera{
+	c_tag = "Science - Robotics Lab";
+	dir = 8;
+	name = "science camera";
+	network = list("ss13","rd")
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/machinery/computer/rdconsole/robotics{
+	dir = 8
+	},
+/turf/open/floor/plasteel,
+/area/science/robotics/lab)
 "tGq" = (
 /obj/effect/spawner/structure/window/reinforced,
 /obj/machinery/door/firedoor/window,
@@ -163370,8 +163372,8 @@ dwB
 dyd
 dzK
 dAO
-dCv
-dDF
+sQL
+tCn
 dEN
 dGd
 dHA
@@ -163629,8 +163631,8 @@ dyd
 dAP
 dyd
 dyg
-dEO
-dGe
+qaR
+hjR
 dHB
 dIS
 dyg
