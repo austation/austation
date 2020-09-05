@@ -53,7 +53,7 @@
 			var/datum/mind/bloodsucker = antag_pick(antag_candidates, ROLE_BLOODSUCKER)
 			message_admins("[bloodsucker], [bloodsucker.key] is being checked")
 			//Can we even BE a bloodsucker?
-			if (can_make_bloodsucker(bloodsucker, display_warning=False))
+			if (can_make_bloodsucker(bloodsucker, display_warning=FALSE))
 				bloodsuckers += bloodsucker
 				bloodsucker.special_role = ROLE_BLOODSUCKER
 				bloodsucker.restricted_roles = restricted_jobs
@@ -142,7 +142,6 @@
 	//if(NOBLOOD in H.dna.species.species_traits)
 	//	if(display_warning && creator)
 	//		to_chat(creator, "<span class='danger'>[bloodsucker]'s DNA isn't compatible!</span>")
-	//	message_admins("3")
 	//	return FALSE
 
 	// Already a Non-Human Antag
