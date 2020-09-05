@@ -1,0 +1,4 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - tweak: "replaces the glass in the labor camp with reinforced plasma glass."
