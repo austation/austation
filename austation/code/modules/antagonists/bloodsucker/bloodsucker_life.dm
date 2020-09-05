@@ -150,7 +150,12 @@
 	description = "<span class='boldwarning'>I have been scorched by the unforgiving rays of the sun.</span>\n"
 	mood_change = -6
 	timeout = 1200
-
+/datum/mood_event/wellfed_blood
+	description = "<span class='nicegreen'>I'm saturated with blood, and it feels so good.</span>\n"
+	mood_change = 8
+/datum/mood_event/fed_blood
+	description = "<span class='nicegreen'>I have enough blood to survive.</span>\n"
+	mood_change = 5
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 //			HEALING
@@ -290,8 +295,13 @@
 	// V.Low:   Blur Vision
 	// EMPTY:	Frenzy!
 
-	// BLOOD_VOLUME_GOOD: [336]  Pale (handled in bloodsucker_integration.dm
-
+	switch(owner.current.blood_volume)
+		if(BLOOD_VOLUME_NORMAL to BLOOD_VOLUME_MAXIMUM)
+			SEND_SIGNAL(owner.current, COMSIG_ADD_MOOD_EVENT, "bloodlevel", /datum/mood_event/wellfed_blood)
+		if(BLOOD_VOLUME_SAFE to BLOOD_VOLUME_NORMAL)
+			SEND_SIGNAL(owner.current, COMSIG_ADD_MOOD_EVENT, "bloodlevel", /datum/mood_event/fed_blood)
+		if(0 to BLOOD_VOLUME_SAFE)
+			SEND_SIGNAL(owner.current, COMSIG_CLEAR_MOOD_EVENT, "bloodlevel")
 
 	// BLOOD_VOLUME_BAD: [224]  Jitter
 	if (owner.current.blood_volume < BLOOD_VOLUME_BAD && !prob(0.5))
@@ -302,7 +312,7 @@
 		owner.current.blur_eyes(8 - 8 * (owner.current.blood_volume / BLOOD_VOLUME_BAD))
 
 	// Nutrition
-	owner.current.nutrition = min(owner.current.blood_volume, NUTRITION_LEVEL_FED) // <-- 350  //NUTRITION_LEVEL_FULL
+	owner.current.nutrition = min(owner.current.blood_volume, NUTRITION_LEVEL_FED - 1) // <-- 350  //NUTRITION_LEVEL_FULL
 
 
 
