@@ -1,0 +1,7 @@
+author: "thelaughingbomb"
+delete-after: True
+changes: 
+  - rscadd: "Royal rats and royal cheese."
+  - imageadd: "The royal rats and royal cheese have their own sprites."
+  - code_imp: "The code from the port was adjusted slightly to make them stronger by buffing their obj_damage to 21. They now gib on death to stop people from using abilities when dead.
+map: Random maint spawn for royal cheese"
