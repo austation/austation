@@ -1,4 +1,0 @@
-author: "AustationBot"
-delete-after: True
-changes: 
-  - bugfix: "Items with the 'SLOWS_IN_HAND' flag will now update your movement speed when equipped and dropped."
