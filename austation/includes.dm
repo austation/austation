@@ -5,6 +5,7 @@
 #include "code\_GLOBALS\pool_globals.dm"
 
 // Main Includes Section
+#include "code\_globalvars\lists\maintenance_loot.dm"
 #include "code\controllers\configuration\entries\game_options.dm"
 #include "code\controllers\configuration\entries\general.dm"
 #include "code\controllers\subsystem\autosandbox.dm"
@@ -65,7 +66,9 @@
 #include "code\modules\hydroponics\plant_genes.dm"
 #include "code\modules\food_and_drinks\drinks\drinks.dm"
 #include "code\modules\food_and_drinks\food\snacks_bread.dm"
+#include "code\modules\food_and_drinks\food\snacks_other.dm"
 #include "code\modules\food_and_drinks\recipes\drinks_recipes.dm"
+#include "code\modules\food_and_drinks\recipes\recipes_misc.dm"
 #include "code\modules\jobs\job_types\assistant.dm"
 #include "code\modules\jobs\job_types\chief_medical_officer.dm"
 #include "code\modules\jobs\job_types\emt.dm"
@@ -93,7 +96,9 @@
 #include "code\modules\mob\living\simple_animal\friendly\drone\drone_movement.dm"
 #include "code\modules\mob\living\simple_animal\friendly\drone\emote.dm"
 #include "code\modules\mob\living\simple_animal\friendly\drone\visuals_icons.dm"
+#include "code\modules\mob\living\simple_animal\friendly\mouse.dm"
 #include "code\modules\mob\living\simple_animal\hostile\cat_butcher.dm"
+#include "code\modules\mob\living\simple_animal\hostile\regalrat.dm"
 #include "code\modules\mob\living\simple_animal\hostile\retaliate\kangaroo.dm"
 #include "code\modules\mob\living\simple_animal\slime\slime.dm"
 #include "code\modules\reagents\chemistry\machinery\chem_dispenser.dm"
