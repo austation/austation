@@ -41,7 +41,7 @@
 	*/
 
 	/// The zone this mob is currently targeting
-	var/zone_selected = null
+	var/zone_selected = BODY_ZONE_CHEST
 
 	var/computer_id = null
 	var/list/logging = list()
@@ -160,6 +160,10 @@
 	  */
 	var/list/mob_spell_list = list()
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> a5573c7ec0... 3rd time's the charm (#2406)
 	/// bitflags defining which status effects can be inflicted (replaces canknockdown, canstun, etc)
 	var/status_flags = CANSTUN|CANKNOCKDOWN|CANUNCONSCIOUS|CANPUSH
 
