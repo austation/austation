@@ -170,3 +170,4 @@
 #include "code\game\gamemodes\bloodsucker\hunter.dm"
 #include "code\modules\mob\mob_movement.dm"
 #include "code\modules\mob\living\carbon\damage_procs.dm"
+#include "code\modules\mob\living\carbon\life.dm"
