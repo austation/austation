@@ -33,7 +33,7 @@
 
 	do_footstep = TRUE
 
-/mob/living/simple_animal/hostile/retaliate/kangaroo/New()
+/mob/living/simple_animal/hostile/retaliate/kangaroo/Initialize()
 	. = ..()
 	// Leap spell, player-only usage
 	AddSpell(new /obj/effect/proc_holder/spell/targeted/leap)

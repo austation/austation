@@ -1,0 +1,37 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"c" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/structure/table,
+/obj/item/reagent_containers/food/snacks/royalcheese,
+/turf/open/floor/plating,
+/area/template_noop)
+"r" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/item/trash/cheesie,
+/turf/open/floor/plating,
+/area/template_noop)
+"B" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/mob/living/simple_animal/mouse,
+/turf/open/floor/plating,
+/area/template_noop)
+"X" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/plating,
+/area/template_noop)
+
+(1,1,1) = {"
+c
+X
+r
+"}
+(2,1,1) = {"
+X
+X
+X
+"}
+(3,1,1) = {"
+X
+r
+B
+"}
