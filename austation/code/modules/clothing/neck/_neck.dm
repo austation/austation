@@ -6,7 +6,7 @@
 				var/obj/item/organ/heart/vampheart/vampheart = heart
 				if (vampheart.fakingit)
 					vampheart.beating = 1
-					..(M,user)
+					..()
 					vampheart.beating = 0
 					return
-	return ..(M,user)
+	return ..()

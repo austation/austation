@@ -26,11 +26,6 @@
 // Takes care blood loss and regeneration
 /mob/living/carbon/human/handle_blood()
 
-	// austation begin -- Adding Bloodsuckers by Coolsurf6
-	if (HAS_TRAIT(src, TRAIT_NOPULSE)) // Bloodsuckers don't need to be here.
-		return
-	// austation end
-
 	if(NOBLOOD in dna.species.species_traits)
 		bleed_rate = 0
 		return
