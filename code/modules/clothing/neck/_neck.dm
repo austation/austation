@@ -86,10 +86,6 @@
 			if(M.stat == DEAD && heart && world.time - M.timeofdeath < DEFIB_TIME_LIMIT * 10)
 				heart_strength = "<span class='boldannounce'>a faint, fluttery</span>"
 
-			if(heart && istype(heart,/obj/item/organ/heart/vampheart/)) // austation begin -- Blooduscker integration
-				var/obj/item/organ/heart/vampheart/vampheart = heart
-				heart_strength = vampheart.HeartStrengthMessage() // austation end
-
 			var/diagnosis = (body_part == BODY_ZONE_CHEST ? "You hear [heart_strength] pulse and [lung_strength] respiration." : "You faintly hear [heart_strength] pulse.")
 			user.visible_message("[user] places [src] against [M]'s [body_part] and listens attentively.", "<span class='notice'>You place [src] against [M]'s [body_part]. [diagnosis]</span>")
 			return

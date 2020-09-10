@@ -171,3 +171,4 @@
 #include "code\modules\mob\mob_movement.dm"
 #include "code\modules\mob\living\carbon\damage_procs.dm"
 #include "code\modules\mob\living\carbon\life.dm"
+#include "code\modules\clothing\neck\_neck.dm"
