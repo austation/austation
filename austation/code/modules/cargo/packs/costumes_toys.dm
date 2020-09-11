@@ -14,6 +14,10 @@
 					/obj/item/clothing/under/suit/white, // white is a weird color for a groom but some people are weird
 					/obj/item/clothing/under/dress/wedding,
 					/obj/item/clothing/under/dress/wedding, // this is what you actually bought the crate for. You can't get these anywhere else.
+					/obj/item/clothing/under/plasmaman/tux
+					/obj/item/clothing/under/plasmaman/tux
+					/obj/item/clothing/head/helmet/space/plasmaman/white
+					/obj/item/clothing/head/helmet/space/plasmaman/white
 					/obj/item/clothing/under/dress/wedding/orange,
 					/obj/item/clothing/under/dress/wedding/orange,
 					/obj/item/clothing/under/dress/wedding/purple,
