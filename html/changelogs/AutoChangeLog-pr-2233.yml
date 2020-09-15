@@ -1,0 +1,4 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - rscadd: "PanDEMIC 2200 UI now includes severity for the overall disease and each symptom."
