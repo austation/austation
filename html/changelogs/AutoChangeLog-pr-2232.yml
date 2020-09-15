@@ -1,0 +1,4 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - bugfix: "Spraycans with less than 2 but more than 0 charges left can no longer be used on objects"
