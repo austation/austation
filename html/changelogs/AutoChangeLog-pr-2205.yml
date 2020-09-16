@@ -1,0 +1,6 @@
+author: "totallynotkatfood"
+delete-after: True
+changes: 
+  - rscadd: "Added more clothes to vendors and aushop"
+  - rscadd: "Added the wedding crate"
+  - imageadd: "added some icons for clothings"
