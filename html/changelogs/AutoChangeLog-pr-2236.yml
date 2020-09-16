@@ -1,5 +1,0 @@
-author: "AustationBot"
-delete-after: True
-changes: 
-  - tweak: "vehicles no longer block bullets for you"
-  - tweak: "mobs which pass tables can move past vehicles"

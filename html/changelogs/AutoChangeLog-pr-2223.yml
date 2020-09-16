@@ -1,4 +1,0 @@
-author: "AustationBot"
-delete-after: True
-changes: 
-  - bugfix: "Fixes a cargo bug where items wouldn't be sold if placed in an anchored container"
