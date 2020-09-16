@@ -160,10 +160,7 @@
 	  */
 	var/list/mob_spell_list = list()
 
-<<<<<<< HEAD
-=======
 
->>>>>>> a5573c7ec0... 3rd time's the charm (#2406)
 	/// bitflags defining which status effects can be inflicted (replaces canknockdown, canstun, etc)
 	var/status_flags = CANSTUN|CANKNOCKDOWN|CANUNCONSCIOUS|CANPUSH
 
