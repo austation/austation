@@ -103,8 +103,9 @@
 
 	// AuStation Wear Examines (Human)
 	if(istype(src, /mob/living/carbon/human))
-		var/mob/living/carbon/human/H = src
-		. += H.austation_wear_examine(user)
+		if(ringsoff == FALSE)
+			var/mob/living/carbon/human/H = src
+			. += H.austation_wear_examine(user)
 
 	//Status effects
 	. += status_effect_examines()
