@@ -37,3 +37,12 @@
 	centerspawner = FALSE
 	template_height = 10
 	template_width = 10
+
+/datum/map_template/random_room/sk_rdm212
+	name = "cheese"
+	room_id = "sk_rdm212_cheese"
+	mappath = "_maps/RandomRooms/3x3/sk_rdm212_cheese.dmm"
+	centerspawner = FALSE
+	template_height = 3
+	template_width = 3
+	stock = 1
