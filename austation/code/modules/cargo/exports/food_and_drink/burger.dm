@@ -1,60 +1,61 @@
 /datum/export/humanburger
-	cost = 20
+	cost = 50
+	export_category = EXPORT_CONTRABAND
 	unit_name = "Human burger"
 	export_types = list(/obj/item/reagent_containers/food/snacks/burger/human)
 
 /datum/export/burger
-	cost = 18
+	cost = 45
 	unit_name = "Burger"
 	export_types = list(/obj/item/reagent_containers/food/snacks/burger/plain)
 
 /datum/export/corgiburger
-	cost = 33
+	cost = 66
 	unit_name = "Corgi burger"
 	export_types = list(/obj/item/reagent_containers/food/snacks/burger/corgi)
 
 /datum/export/appendixburger
-	cost = 20
+	cost = 45
 	unit_name = "Appendix burger"
 	export_types = list(/obj/item/reagent_containers/food/snacks/burger/appendix)
 
 /datum/export/brainburger
-	cost = 30
+	cost = 90
 	unit_name = "Brain burger"
 	export_types = list(/obj/item/reagent_containers/food/snacks/burger/brain)
 
 /datum/export/xenoburger
-	cost = 75
+	cost = 150
 	unit_name = "Xeno burger"
 	export_types = list(/obj/item/reagent_containers/food/snacks/burger/xeno)
 
 /datum/export/bearger
-	cost = 50
+	cost = 125
 	unit_name = "Bearger"
 	export_types = list(/obj/item/reagent_containers/food/snacks/burger/bearger)
 
 /datum/export/fishburger
-	cost = 42
+	cost = 75
 	unit_name = "Fish burger"
 	export_types = list(/obj/item/reagent_containers/food/snacks/burger/fish)
 
 /datum/export/tofuburger
-	cost = 15
+	cost = 25
 	unit_name = "Tofu burger"
 	export_types = list(/obj/item/reagent_containers/food/snacks/burger/tofu)
 
 /datum/export/ghostburger
-	cost = 45
+	cost = 40
 	unit_name = "Ghost burger"
 	export_types = list(/obj/item/reagent_containers/food/snacks/burger/ghost)
 
 /datum/export/clownburger
-	cost = 25
+	cost = 40
 	unit_name = "Clown burger"
 	export_types = list(/obj/item/reagent_containers/food/snacks/burger/clown)
 
 /datum/export/mimeburger
-	cost = 25
+	cost = 35
 	unit_name = "Mime burger"
 	export_types = list(/obj/item/reagent_containers/food/snacks/burger/mime)
 
@@ -99,62 +100,62 @@
 	export_types = list(/obj/item/reagent_containers/food/snacks/burger/white)
 
 /datum/export/spellburger
-	cost = 25
+	cost = 49
 	unit_name = "Spell burger"
 	export_types = list(/obj/item/reagent_containers/food/snacks/burger/spell)
 
 /datum/export/bigbiteburger
-	cost = 45
+	cost = 70
 	unit_name = "Big bite burger"
 	export_types = list(/obj/item/reagent_containers/food/snacks/burger/bigbite)
 
 /datum/export/superbiteburger
-	cost = 120
+	cost = 150
 	unit_name = "Super bite burger"
 	export_types = list(/obj/item/reagent_containers/food/snacks/burger/superbite)
 
 /datum/export/slimeburger
-	cost = 35
+	cost = 54
 	unit_name = "Jelly burger"
 	export_types = list(/obj/item/reagent_containers/food/snacks/burger/jelly/slime)
 
 /datum/export/jellyburger
-	cost = 20
+	cost = 30
 	unit_name = "Jelly burger"
 	export_types = list(/obj/item/reagent_containers/food/snacks/burger/jelly/cherry)
 
 /datum/export/fivealarmburger
-	cost = 50
+	cost = 65
 	unit_name = "Five alarm burger"
 	export_types = list(/obj/item/reagent_containers/food/snacks/burger/fivealarm)
 
 /datum/export/ratburger
-	cost = 22
+	cost = 25
 	unit_name = "Rat burger"
 	export_types = list(/obj/item/reagent_containers/food/snacks/burger/rat)
 
 /datum/export/baseballburger
-	cost = 52
+	cost = 55
 	unit_name = "Home run baseball burger"
 	export_types = list(/obj/item/reagent_containers/food/snacks/burger/baseball)
 
 /datum/export/baconburger
-	cost = 20
+	cost = 35
 	unit_name = "Bacon Burger"
 	export_types = list(/obj/item/reagent_containers/food/snacks/burger/baconburger)
 
 /datum/export/empoweredburger
-	cost = 150
+	cost = 175
 	unit_name = "Empowered Burger"
 	export_types = list(/obj/item/reagent_containers/food/snacks/burger/empoweredburger)
 
 /datum/export/crabburger
-	cost = 29
+	cost = 35
 	unit_name = "Crab Burger"
 	export_types = list(/obj/item/reagent_containers/food/snacks/burger/crab)
 
 /datum/export/cheeseburger
-	cost = 25
+	cost = 40
 	unit_name = "Cheese Burger"
 	export_types = list(/obj/item/reagent_containers/food/snacks/burger/cheese)
 
@@ -174,6 +175,6 @@
 	export_types = list(/obj/item/reagent_containers/food/snacks/burger/mcguffin)
 
 /datum/export/chickenburger
-	cost = 40
+	cost = 50
 	unit_name = "Chicken Sandwich"
 	export_types = list(result = /obj/item/reagent_containers/food/snacks/burger/chicken)
