@@ -21,8 +21,8 @@
 	possible_a_intents = list(INTENT_HELP, INTENT_HARM)
 	speed = 0
 //Basically we are just a mob that is dextrous that has the drone inventory system.
-//Also admins who want to use this are expected to change the icon to whatever meme they want
-//they need to change "icon" "icon_state" "icon_dead" and "icon_living" with the VV panel.
+//Also admins who want to use this are expected to change the icon to whatever meme they want.
+//They need to change "icon" "icon_state" "icon_dead" and "icon_living" with the VV panel.
 
 /mob/living/simple_animal/hostile/generic/doUnEquip(obj/item/I, force) //inventory stuff from drone code
 	if(..())
