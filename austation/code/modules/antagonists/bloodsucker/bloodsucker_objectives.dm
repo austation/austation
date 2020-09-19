@@ -75,7 +75,7 @@
 		"Research Director",
 		"Chief Engineer",
 		"Chief Medical Officer",
-		"Quartermaster"
+		"Head of Personnel"
 	)
 
 
