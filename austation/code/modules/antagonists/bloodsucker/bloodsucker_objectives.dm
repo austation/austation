@@ -101,8 +101,8 @@
 				department_string = "Engineering"
 			if("Chief Medical Officer")
 				department_string = "Medical"
-			if("Quartermaster")
-				department_string = "Cargo"
+			if("Head of Personnel")
+				department_string = "Cargo and/or Service"
 		target_amount = rand(round(SSticker.mode.num_players() / 20), round(SSticker.mode.num_players() / 10))
 		target_amount = clamp(target_amount, 2, 4)
 	..()
