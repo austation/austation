@@ -94,6 +94,10 @@
 
 	return ..()
 
+/datum/game_mode/bloodsucker/generate_report()
+	return "Persisting rumours about ancient lineages of haematophagic undeads (i. e. vampires) entered a new phase, and there are now hard-to-dispel rumours about vampires trying to expand their reaches into space. \
+			Investigate whether there is any sign of vampiric activities onboard the station."
+			
 // Checking for ACTUALLY Dead Vamps
 /datum/game_mode/bloodsucker/are_special_antags_dead()
 	// Bloodsucker not Final Dead
