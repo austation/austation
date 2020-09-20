@@ -1,0 +1,4 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - balance: "Increased ATMOSfan max signs to 6"
