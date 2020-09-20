@@ -11,5 +11,5 @@
 	integer = TRUE
 
 /datum/config_entry/number/ratcap
-	config_entry_value = 64
+	config_entry_value = 128
 	min_val = 0
