@@ -44,7 +44,7 @@
 	if(!..())
 		return
 	var/mob/living/silicon/pai/pAI = usr
-	pAI.choose_chassis()
+	pAI.choose_chassis_austation() //austation -- replaces choose_chassis() with choose_chassis_austation()
 
 /obj/screen/pai/rest
 	name = "Rest"

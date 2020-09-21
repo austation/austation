@@ -1575,6 +1575,18 @@
 	name = "Spikes"
 	icon_state = "spikes"
 
+/datum/sprite_accessory/tails/lizard/spikes
+	name = "Clockwork"
+	icon_state = "clockwork"
+	locked = TRUE
+	color_src = null
+
+/datum/sprite_accessory/tails_animated/lizard/spikes
+	name = "Clockwork"
+	icon_state = "clockwork"
+	locked = TRUE
+	color_src = null
+
 /datum/sprite_accessory/tails/human/none
 	name = "None"
 	icon_state = "none"
@@ -1693,6 +1705,38 @@
 	dimension_x = 96
 	center = TRUE
 	dimension_y = 32
+
+/datum/sprite_accessory/wings/apid
+	name = "Bee"
+	icon_state = "apid"
+	color_src = 0
+	dimension_x = 46
+	center = TRUE
+	dimension_y = 34
+	
+/datum/sprite_accessory/wings_open/apid
+	name = "Bee"
+	icon_state = "apid"
+	color_src = 0
+	dimension_x = 46
+	center = TRUE
+	dimension_y = 34
+
+/datum/sprite_accessory/wings/robot
+	name = "Robot"
+	icon_state = "robo"
+	color_src = 0
+	dimension_x = 46
+	center = TRUE
+	dimension_y = 34
+	
+/datum/sprite_accessory/wings_open/robot
+	name = "Robot"
+	icon_state = "robo"
+	color_src = 0
+	dimension_x = 46
+	center = TRUE
+	dimension_y = 34
 
 /datum/sprite_accessory/frills
 	icon = 'icons/mob/mutant_bodyparts.dmi'
@@ -1823,6 +1867,11 @@
 /datum/sprite_accessory/moth_wings/whitefly
 	name = "White Fly"
 	icon_state = "whitefly"
+
+/datum/sprite_accessory/moth_wings/clockwork
+	name = "Clockwork"
+	icon_state = "clockwork"
+	locked = TRUE
 
 /datum/sprite_accessory/moth_wings/punished
 	name = "Burnt Off"

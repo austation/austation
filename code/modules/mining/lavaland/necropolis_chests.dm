@@ -12,8 +12,17 @@
 /obj/structure/closet/crate/necropolis/tendril
 	desc = "It's watching you suspiciously."
 
-/obj/structure/closet/crate/necropolis/tendril/PopulateContents()
+/obj/structure/closet/crate/necropolis/tendril/PopulateContents(var/reroll = FALSE) //AUStation modification to reroll disabled loot
 	var/loot = rand(1,30)
+
+	// AUStation Code Start -- Beeloot is the number of non disabled bee tendril loot items
+	// not updating bee loot amount will cause au tendril loot to have a higher spawn chance
+	var/Beeloot_Amount = 28
+	if(!reroll)
+		if(AU_PopulateContents(Beeloot_Amount))
+			return
+	// AUStation Code End
+
 	switch(loot)
 		if(1)
 			new /obj/item/shared_storage/red(src)
@@ -30,10 +39,14 @@
 		if(7)
 			new /obj/item/pickaxe/diamond(src)
 		if(8)
+			// AUStation Code Start -- flab loot removal
+			PopulateContents(TRUE)
+			/*
 			if(prob(50))
 				new /obj/item/disk/design_disk/modkit_disc/resonator_blast(src)
 			else
 				new /obj/item/disk/design_disk/modkit_disc/rapid_repeater(src)
+			*/// AUStation Code End
 		if(9)
 			new /obj/item/rod_of_asclepius(src)
 		if(10)
@@ -51,10 +64,14 @@
 		if(16)
 			new /obj/item/guardiancreator/hive(src)
 		if(17)
+			// AUStation Code Start -- flab loot removal
+			PopulateContents(TRUE)
+			/*
 			if(prob(50))
 				new /obj/item/disk/design_disk/modkit_disc/mob_and_turf_aoe(src)
 			else
 				new /obj/item/disk/design_disk/modkit_disc/bounty(src)
+			*/// AUStation Code End
 		if(18)
 			new /obj/item/warp_cube/red(src)
 		if(19)
@@ -153,7 +170,7 @@
 	desc = "A wooden rod about the size of your forearm with a snake carved around it, winding its way up the sides of the rod. Something about it seems to inspire in you the responsibilty and duty to help others."
 	icon = 'icons/obj/lavaland/artefacts.dmi'
 	icon_state = "asclepius_dormant"
-	block_upgrade_walk = 1 
+	block_upgrade_walk = 1
 	block_level = 2
 	block_power = 40 //blocks very well to encourage using it. Just because you're a pacifist doesn't mean you can't defend yourself
 	block_flags = null //not active, so it's null
@@ -628,25 +645,41 @@
 	name = "Flight Potion"
 	description = "Strange mutagenic compound of unknown origins."
 	reagent_state = LIQUID
+	process_flags = ORGANIC | SYNTHETIC
 	color = "#FFEBEB"
 
 /datum/reagent/flightpotion/reaction_mob(mob/living/M, method=TOUCH, reac_volume, show_message = 1)
 	if(iscarbon(M) && M.stat != DEAD)
 		var/mob/living/carbon/C = M
 		var/holycheck = ishumanbasic(C)
-		if(!(holycheck || islizard(C)) || reac_volume < 5) // implying xenohumans are holy //as with all things,
+		if(reac_volume < 5) // implying xenohumans are holy //as with all things,
 			if(method == INGEST && show_message)
 				to_chat(C, "<span class='notice'><i>You feel nothing but a terrible aftertaste.</i></span>")
 			return ..()
-
-		to_chat(C, "<span class='userdanger'>A terrible pain travels down your back as wings burst out!</span>")
-		C.dna.species.give_species_flight(C)
+		if(ishuman(C))
+			var/mob/living/carbon/human/H = C
+			var/obj/item/organ/wings/wings = H.getorganslot(ORGAN_SLOT_WINGS)
+			if(H.getorgan(/obj/item/organ/wings))
+				if(wings.flight_level <= WINGS_FLIGHTLESS)
+					wings.flight_level += 1 //upgrade the flight level
+					wings.Refresh(H) //they need to insert to get the flight emote
+			else
+				if(MOB_ROBOTIC in H.mob_biotypes)
+					var/obj/item/organ/wings/cybernetic/newwings = new()
+					newwings.Insert(H)
+				else if(holycheck)
+					var/obj/item/organ/wings/angel/newwings = new()
+					newwings.Insert(H)
+				else
+					var/obj/item/organ/wings/dragon/newwings = new()
+					newwings.Insert(H)
+				to_chat(C, "<span class='userdanger'>A terrible pain travels down your back as wings burst out!</span>")
+				playsound(C.loc, 'sound/items/poster_ripped.ogg', 50, TRUE, -1)
+				C.adjustBruteLoss(20)
+				C.emote("scream")
 		if(holycheck)
 			to_chat(C, "<span class='notice'>You feel blessed!</span>")
 			ADD_TRAIT(C, TRAIT_HOLY, SPECIES_TRAIT)
-		playsound(C.loc, 'sound/items/poster_ripped.ogg', 50, TRUE, -1)
-		C.adjustBruteLoss(20)
-		C.emote("scream")
 	..()
 
 
@@ -807,7 +840,7 @@
 	w_class = WEIGHT_CLASS_BULKY
 	force = 1
 	throwforce = 1
-	block_upgrade_walk = 1 
+	block_upgrade_walk = 1
 	block_level = 1
 	block_power = 20
 	block_flags = BLOCKING_ACTIVE | BLOCKING_NASTY

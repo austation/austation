@@ -9,10 +9,11 @@
 		if(prefs.ring_type != RING_DISABLED)
 			switch(prefs.ring_type)
 				if(RING_CASUAL)
-					. += "<span class='info'>[t_He] [t_is] wearing a casual ring[prefs.ring_engraved ? " with " + prefs.ring_engraved + "'s name etched into it" : ""]~</span>"
+					. += "<span class='info'>[t_He] [t_is] wearing a casual ring[prefs.ring_engraved ? " with *" + prefs.ring_engraved + "* etched into it" : ""]~</span>"
 				if(RING_ENGAGEMENT)
-					. += "<span class='info'>[t_He] [t_is] wearing an engagement ring[prefs.ring_engraved ? " with " + prefs.ring_engraved + "'s name etched into it" : ""]~</span>"
+					. += "<span class='info'>[t_He] [t_is] wearing an engagement ring[prefs.ring_engraved ? " with *" + prefs.ring_engraved + "* etched into it" : ""]~</span>"
 				if(RING_WEDDING)
-					. += "<span class='info'>[t_He] [t_is] wearing a wedding ring[prefs.ring_engraved ? " with " + prefs.ring_engraved + "'s name etched into it" : ""]~</span>"
-
+					. += "<span class='info'>[t_He] [t_is] wearing a wedding ring[prefs.ring_engraved ? " with *" + prefs.ring_engraved + "* etched into it" : ""]~</span>"
+				if(RING_AUSTRALIUM)
+					. += "<span class='info'>[t_He] [t_is] wearing a shiny australium ring[prefs.ring_engraved ? " with *" + prefs.ring_engraved + "* etched into it" : ""]~</span>"
 	SEND_SIGNAL(src, COMSIG_PARENT_EXAMINE, user, .) // circle game
