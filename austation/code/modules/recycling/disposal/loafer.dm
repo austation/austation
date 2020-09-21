@@ -21,6 +21,21 @@
 	else
 		stored = new /obj/structure/disposalconstruct/au(src, null , SOUTH , FALSE , src)
 
+/obj/structure/disposalpipe/loafer/Destroy()
+	var/obj/structure/disposalholder/H = locate() in src
+	if(H)
+		for(var/atom/movable/AM in H.contents)
+			if(istype(AM, /obj/item/reagent_containers/food/snacks/store/bread/recycled))
+				var/obj/item/reagent_containers/food/snacks/store/bread/recycled/looef = AM
+				if(looef.bread_density < 10)
+					qdel(AM)
+			if(isliving(AM))
+				var/mob/living/L = AM
+				L.adjustBruteLoss(40) //ouchie
+		expel(H, get_turf(src), 0)
+	QDEL_NULL(stored)
+	return ..()
+
 obj/structure/disposalpipe/loafer/emag_act(mob/user)
 	if(obj_flags & EMAGGED)
 		return
