@@ -1,5 +1,7 @@
 // CHAPLAIN CUSTOM ARMORS //
-
+/obj/item/clothing/suit/armor/riot/chaplain/Initialize() //-austation, Makes chaplain armor magic immune
+	. = ..()
+	AddComponent(/datum/component/anti_magic, TRUE, TRUE, null, FALSE)
 /obj/item/clothing/head/helmet/chaplain
 	name = "crusader helmet"
 	desc = "Deus Vult."
@@ -22,7 +24,7 @@
 
 /obj/item/choice_beacon/holy
 	name = "armaments beacon"
-	desc = "Contains a set of armaments for the chaplain."
+	desc = "Contains a set of armaments for the chaplain that have been reinforced with a silver and beryllium-bronze alloy, providing immunity to magic and its influences."
 
 /obj/item/choice_beacon/holy/canUseBeacon(mob/living/user)
 	if(user.mind?.isholy)
