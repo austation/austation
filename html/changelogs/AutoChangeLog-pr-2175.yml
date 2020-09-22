@@ -1,0 +1,8 @@
+author: "jbox144"
+delete-after: True
+changes: 
+  - rscadd: "Added \"claws\" mutation, which felinids are predisposed to. Grants 3x unarmed melee damage. Incompatible with hulk."
+  - rscadd: "Added \"Nya\" mutation, a deadly mutation that inhibits various parts of the brain."
+  - tweak: "Cat tails now allow you to get up instantly from lying down, instead of the normal 10 tick delay"
+  - tweak: "Tails provide immunity to shuttle knockdown"
+  - balance: "Moths now have night vision on par with Apids. Why do apids get all the cool stuff?"
