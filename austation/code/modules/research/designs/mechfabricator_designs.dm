@@ -7,6 +7,24 @@
 	construction_time = 120
 	category = list("Cyborg Upgrade Modules")
 
+/datum/design/borg/kitchen
+	name = "Cyborg Upgrade (Service)"
+	id = "borg_upgrade_cooking"
+	build_type = MECHFAB
+	build_path = /obj/item/borg/upgrade/kitchen
+	materials = list(/datum/material/iron = 10000, /datum/material/glass = 4000)
+	construction_time = 100
+	category = list("Cyborg Upgrade Modules")
+
+/datum/design/borg/cutter
+	name = "Cyborg Upgrade (Plasma Cutter)"
+	id = "borg_upgrade_cutter"
+	build_type = MECHFAB
+	build_path = /obj/item/borg/upgrade/cutter
+	materials = list(/datum/material/iron = 4500, /datum/material/glass = 500, /datum/material/plasma = 400) //same as normal cutter but with more iron
+	construction_time = 100
+	category = list("Cyborg Upgrade Modules")
+
 //Gygax
 /datum/design/gygax_chassis
 	name = "Exosuit Chassis (\"Gygax\")"
