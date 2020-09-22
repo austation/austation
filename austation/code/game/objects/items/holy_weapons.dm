@@ -1,5 +1,5 @@
 // CHAPLAIN CUSTOM ARMORS //
-/obj/item/clothing/suit/armor/riot/chaplain/Initialize() //-austation, Makes chaplain armor magic immune
+/obj/item/clothing/suit/armor/riot/chaplain/Initialize() //-austation Makes chaplain armor magic immune
 	. = ..()
 	AddComponent(/datum/component/anti_magic, TRUE, TRUE, null, FALSE)
 /obj/item/clothing/head/helmet/chaplain
