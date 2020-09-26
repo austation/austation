@@ -1,0 +1,5 @@
+author: "jbox144"
+delete-after: True
+changes: 
+  - tweak: "Bonfires now push heat to the environment, heating up the air around it to 25C, with the same efficiency as a T1 space heater."
+  - code_imp: "Fixed some ugly indentation in towercap.dm"
