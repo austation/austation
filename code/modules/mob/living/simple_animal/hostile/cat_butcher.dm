@@ -45,7 +45,6 @@
 		visible_message("[src] medicates themself.", "<span class='notice'>You medicate yourself.</span>")
 		health += healamount
 
-/* austation begin -- hold it right there, criminal scum
 /mob/living/simple_animal/hostile/cat_butcherer/CanAttack(atom/the_target)
 	if(iscarbon(target))
 		var/mob/living/carbon/human/C = target
@@ -55,9 +54,7 @@
 			else
 				return FALSE
 	return ..()
-austation end */
 
-/* austation begin -- hold it RIGHT THERE, CRIMINAL SCUM REE
 /mob/living/simple_animal/hostile/cat_butcherer/AttackingTarget()
 	if(iscarbon(target))
 		var/mob/living/carbon/human/L = target
@@ -92,7 +89,7 @@ austation end */
 			if(L.mind && maxHealth <= 300) //if he robusts a tider, he becomes stronger
 				maxHealth += 20
 			adjustHealth(-(maxHealth)) //he heals whenever he finishes
-		else if(L.stat) //quickly heal them up and move on to our next target! 
+		else if(L.stat) //quickly heal them up and move on to our next target!
 			visible_message("[src] injects [L] with an unknown medicine!", "<span class='notice'>You inject [L] with medicine.</span>")
 			L.SetSleeping(0, FALSE)
 			L.SetUnconscious(0, FALSE)
@@ -123,4 +120,3 @@ austation end */
 				say("Bah!!")
 			return
 	return ..()
- austation end */

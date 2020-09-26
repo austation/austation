@@ -103,7 +103,6 @@
 #include "code\modules\mob\living\simple_animal\friendly\drone\emote.dm"
 #include "code\modules\mob\living\simple_animal\friendly\drone\visuals_icons.dm"
 #include "code\modules\mob\living\simple_animal\friendly\mouse.dm"
-#include "code\modules\mob\living\simple_animal\hostile\cat_butcher.dm"
 #include "code\modules\mob\living\simple_animal\hostile\regalrat.dm"
 #include "code\modules\mob\living\simple_animal\hostile\retaliate\kangaroo.dm"
 #include "code\modules\mob\living\simple_animal\slime\slime.dm"
