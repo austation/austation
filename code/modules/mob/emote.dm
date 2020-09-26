@@ -21,14 +21,9 @@
 			silenced = TRUE
 			continue
 		if(P.run_emote(src, param, m_type, intentional))
-<<<<<<< HEAD
-			return TRUE
-	if(intentional && !silenced)
-=======
 			SEND_SIGNAL(src, COMSIG_MOB_EMOTE, P, act, m_type, message, intentional)
-			return
-	if(intentional)
->>>>>>> 033f3c9171... Adds immersion smite (#2467)
+			return true
+	if(intentional && !silenced)
 		to_chat(src, "<span class='notice'>Unusable emote '[act]'. Say *help for a list.</span>")
 	return FALSE
 	//austation end
