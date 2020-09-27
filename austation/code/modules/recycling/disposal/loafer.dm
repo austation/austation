@@ -55,6 +55,8 @@ obj/structure/disposalpipe/loafer/emag_act(mob/user)
 
 		var/obj/item/reagent_containers/food/snacks/store/bread/recycled/looef = new(H)
 
+		var/supermatter_singulo = FALSE
+
 		for(var/atom/movable/AM in H.contents)
 			if(AM == looef)
 				continue
@@ -69,23 +71,9 @@ obj/structure/disposalpipe/loafer/emag_act(mob/user)
 				qdel(AM)
 				continue
 
-			if(istype(looef, /obj/item/reagent_containers/food/snacks/store/bread/supermatter))
-				var/turf/T = get_turf(src)
-				var/area/A = get_area(src)
-				var/mob/culprit = get_mob_by_key(fingerprintslast)
-				var/culprit_message
-				priority_announce("We have detected an extremely high concentration of gluten and supermatter in [A.name], we suggest evacuating the immediate area")
-				visible_message("<span class='userdanger'>[src] collapses into a singularity under its own weight!</span>")
-				var/obj/singularity/oof = new(get_turf(src))
-				oof.energy = 800
-				oof.name = "supercharged gravitational breadularity"
-				oof.desc = "Glucose and supermatter do not mix well!"
-				oof.consumedSupermatter = TRUE
-				qdel(src)
-				if(culprit)
-					culprit_message = " - Loafer last touched by: [ADMIN_LOOKUPFLW(culprit)]"
+			if(istype(AM, /obj/item/reagent_containers/food/snacks/store/bread/supermatter))
+				supermatter_singulo = TRUE
 
-			message_admins("Bread singularity released in [ADMIN_VERBOSEJMP(T)][culprit_message]")
 			if(isliving(AM)) // uh oh
 				var/mob/living/L = AM
 				if(obj_flags & EMAGGED || !L.mind)
@@ -158,7 +146,7 @@ obj/structure/disposalpipe/loafer/emag_act(mob/user)
 				return
 			visible_message("<span class='warning'>\The [src] buzzes grumpily!</span>")
 			playsound(src.loc, 'sound/machines/buzz-two.ogg', 40, 1)
-		else if(looef.bread_density >= 3400 && obj_flags & EMAGGED || looef == /obj/item/reagent_containers/food/snacks/store/bread/supermatter)
+		else if(looef.bread_density >= 3400 && obj_flags & EMAGGED || supermatter_singulo)
 			var/turf/T = get_turf(src)
 			var/area/A = get_area(src)
 			var/mob/culprit = get_mob_by_key(fingerprintslast)
@@ -166,7 +154,10 @@ obj/structure/disposalpipe/loafer/emag_act(mob/user)
 			priority_announce("We have detected an extremely high concentration of gluten in [A.name], we suggest evacuating the immediate area")
 			visible_message("<span class='userdanger'>[src] collapses into a singularity under its own weight!</span>")
 			var/obj/singularity/oof = new(get_turf(src))
-			oof.name = "gravitational breadularity"
+			if(supermatter_singulo)
+				oof.consumedSupermatter = supermatter_singulo
+				oof.energy = 800
+			oof.name = "[supermatter_singulo ? "supercharged" : ""] gravitational breadularity"
 			oof.desc = "I have done nothing but compress bread for 3 days."
 			qdel(src)
 			if(culprit)
