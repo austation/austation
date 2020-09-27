@@ -73,6 +73,7 @@
 #include "code\modules\food_and_drinks\drinks\drinks.dm"
 #include "code\modules\food_and_drinks\food\snacks_bread.dm"
 #include "code\modules\food_and_drinks\food\snacks_other.dm"
+#include "code\modules\food_and_drinks\food\tablecraft\recipes_bread.dm"
 #include "code\modules\food_and_drinks\recipes\drinks_recipes.dm"
 #include "code\modules\food_and_drinks\recipes\recipes_misc.dm"
 #include "code\modules\jobs\job_types\assistant.dm"

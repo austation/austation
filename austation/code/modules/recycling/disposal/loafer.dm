@@ -69,6 +69,23 @@ obj/structure/disposalpipe/loafer/emag_act(mob/user)
 				qdel(AM)
 				continue
 
+			if(istype(looef, /obj/item/reagent_containers/food/snacks/store/bread/supermatter))
+				var/turf/T = get_turf(src)
+				var/area/A = get_area(src)
+				var/mob/culprit = get_mob_by_key(fingerprintslast)
+				var/culprit_message
+				priority_announce("We have detected an extremely high concentration of gluten and supermatter in [A.name], we suggest evacuating the immediate area")
+				visible_message("<span class='userdanger'>[src] collapses into a singularity under its own weight!</span>")
+				var/obj/singularity/oof = new(get_turf(src))
+				oof.energy = 800
+				oof.name = "supercharged gravitational breadularity"
+				oof.desc = "Glucose and supermatter do not mix well!"
+				oof.consumedSupermatter = TRUE
+				qdel(src)
+				if(culprit)
+					culprit_message = " - Loafer last touched by: [ADMIN_LOOKUPFLW(culprit)]"
+
+			message_admins("Bread singularity released in [ADMIN_VERBOSEJMP(T)][culprit_message]")
 			if(isliving(AM)) // uh oh
 				var/mob/living/L = AM
 				if(obj_flags & EMAGGED || !L.mind)
@@ -141,7 +158,7 @@ obj/structure/disposalpipe/loafer/emag_act(mob/user)
 				return
 			visible_message("<span class='warning'>\The [src] buzzes grumpily!</span>")
 			playsound(src.loc, 'sound/machines/buzz-two.ogg', 40, 1)
-		else if(looef.bread_density >= 3400 && obj_flags & EMAGGED)
+		else if(looef.bread_density >= 3400 && obj_flags & EMAGGED || looef == /obj/item/reagent_containers/food/snacks/store/bread/supermatter)
 			var/turf/T = get_turf(src)
 			var/area/A = get_area(src)
 			var/mob/culprit = get_mob_by_key(fingerprintslast)

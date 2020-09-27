@@ -264,3 +264,18 @@
 		var/mob/living/simple_animal/hostile/breadloaf/brad = new(src.loc)
 		brad.melee_damage = force
 		qdel(src)
+
+/obj/item/reagent_containers/food/snacks/store/bread/supermatter
+	name = "supermatter bread"
+	desc = "Someone managed to wrap the supermatter crystal in.. bread!?"
+	icon = 'austation/icons/obj/food/burgerbread.dmi'
+	icon_state = "smbread"
+	list_reagents = list(/datum/reagent/antimatter = 10)
+	w_class = WEIGHT_CLASS_HUGE
+	slice_path = /obj/machinery/power/supermatter_crystal // yes, you can use this to transport the supermatter crystal
+	slices_num = 1
+	var/rad_power = 10
+
+/obj/item/reagent_containers/food/snacks/store/bread/supermatter/process()
+	if(prob(20))
+		radiation_pulse(src, rad_power, 3)
