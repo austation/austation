@@ -14,7 +14,10 @@
         "butterfly" = image(icon = 'icons/mob/pai.dmi', icon_state = "butterfly"),
         "hawk" = image(icon = 'icons/mob/pai.dmi', icon_state = "hawk"),
         "lizard" = image(icon = 'icons/mob/pai.dmi', icon_state = "lizard"),
-        "duffel" = image(icon = 'icons/mob/pai.dmi', icon_state = "duffel"))
+        "duffel" = image(icon = 'icons/mob/pai.dmi', icon_state = "duffel"),
+		"snake" = image(icon = 'icons/mob/pai.dmi', icon_state = "snake"),
+		"spider" = image(icon = 'icons/mob/pai.dmi', icon_state = "spider"),
+		"frog" = image(icon = 'icons/mob/pai.dmi', icon_state = "frog"))
 
     var/choice = show_radial_menu(usr, usr , chassis_icon, custom_check = CALLBACK(src, .proc/check_menu, usr), radius = 42, require_near = TRUE)
 
