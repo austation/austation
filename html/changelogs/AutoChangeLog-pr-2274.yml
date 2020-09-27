@@ -1,0 +1,4 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - tweak: "Deepfried pets no longer reappear after being bitten(why would you ever do that)."
