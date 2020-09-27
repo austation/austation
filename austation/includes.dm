@@ -57,6 +57,7 @@
 #include "code\modules\clothing\glasses\hud.dm"
 #include "code\modules\clothing\head\helmet.dm"
 #include "code\modules\clothing\masks\miscellaneous.dm"
+#include "code\modules\clothing\spacesuit\hardsuit.dm"
 #include "code\modules\clothing\spacesuit\miscellaneous.dm"
 #include "code\modules\clothing\under\color.dm"
 #include "code\modules\clothing\under\miscellaneous.dm"
