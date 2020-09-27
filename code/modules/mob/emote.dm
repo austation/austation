@@ -50,7 +50,7 @@
 	. = ..()
 	if(.)
 		user.spin(20, 1)
-/* austation start -- removes borg combat spin
+
 		if(iscyborg(user) && user.has_buckled_mobs())
 			var/mob/living/silicon/robot/R = user
 			var/datum/component/riding/riding_datum = R.GetComponent(/datum/component/riding)
@@ -59,4 +59,4 @@
 					riding_datum.force_dismount(M)
 			else
 				R.unbuckle_all_mobs()
-*/// austation end
+
