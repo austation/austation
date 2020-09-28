@@ -276,6 +276,14 @@
 	slices_num = 1
 	var/rad_power = 10
 
+/obj/item/reagent_containers/food/snacks/store/bread/supermatter/New(loc, ...)
+	START_PROCESSING(SSobj, src)
+	. = ..()
+
+/obj/item/reagent_containers/food/snacks/store/bread/supermatter/Destroy()
+	STOP_PROCESSING(SSobj, src)
+	. = ..()
+
 /obj/item/reagent_containers/food/snacks/store/bread/supermatter/process()
 	if(prob(20))
 		radiation_pulse(src, rad_power, 3)
