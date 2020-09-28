@@ -270,6 +270,8 @@
 	desc = "Someone managed to wrap the supermatter crystal in.. bread!?"
 	icon = 'austation/icons/obj/food/burgerbread.dmi'
 	icon_state = "smbread"
+	force = 15
+	throwforce = 15
 	list_reagents = list(/datum/reagent/antimatter = 10)
 	w_class = WEIGHT_CLASS_HUGE
 	slice_path = /obj/machinery/power/supermatter_crystal // yes, you can use this to transport the supermatter crystal
@@ -281,6 +283,7 @@
 	. = ..()
 
 /obj/item/reagent_containers/food/snacks/store/bread/supermatter/Destroy()
+	explosion(get_turf(src),2,4,6)
 	STOP_PROCESSING(SSobj, src)
 	. = ..()
 
