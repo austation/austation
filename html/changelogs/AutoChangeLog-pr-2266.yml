@@ -1,5 +1,0 @@
-author: "AustationBot"
-delete-after: True
-changes: 
-  - rscadd: "Ports Heretics from tg"
-  - rscadd: "Support for pointed spells."
