@@ -11,4 +11,4 @@
 /datum/mood_event/criticalheadpat
 	description = "<span class='nicegreen'>It was a critical headpat!</span>\n"
 	mood_change = 3
-	timeout = 2 MINUTES
+	timeout = 4 MINUTES
