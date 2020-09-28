@@ -15,9 +15,13 @@
 	else
 		return FALSE
 
-/datum/crafting_recipe/food/chef_only/supermatterbread/post_craft(mob/user)
-	var/obj/machinery/power/supermatter_crystal/engine/cyrsteel = locate() in range(1, user)
-	if(cyrsteel)
-		qdel(cyrsteel)
-		return
-	message_admins("Somebody got supermatter bread without deleting the supermatter crystal, somehow, at [ADMIN_JMP(user)]")
+/datum/crafting_recipe/food/chef_only/supermatterbread/post_craft(mob/user, obj/result)
+    var/obj/machinery/power/supermatter_crystal/engine/cyrsteel = locate() in range(1, user)
+    var/obj/item/reagent_containers/food/snacks/store/bread/supermatter/S = result
+    if(!istype(S)) // check that the new variable is actually a supermatter bread object
+        return
+    if(cyrsteel)
+        S.power = cyrsteel.damage + 20 // for the radiation power of the bread
+        qdel(cyrsteel)
+        return
+    message_admins("Somebody got supermatter bread without deleting the supermatter crystal, somehow, at [ADMIN_JMP(user)]")

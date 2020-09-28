@@ -276,7 +276,7 @@
 	w_class = WEIGHT_CLASS_HUGE
 	slice_path = /obj/machinery/power/supermatter_crystal // yes, you can use this to transport the supermatter crystal
 	slices_num = 1
-	var/rad_power = 10
+	var/power = 0
 
 /obj/item/reagent_containers/food/snacks/store/bread/supermatter/New(loc, ...)
 	START_PROCESSING(SSobj, src)
@@ -289,4 +289,4 @@
 
 /obj/item/reagent_containers/food/snacks/store/bread/supermatter/process()
 	if(prob(20))
-		radiation_pulse(src, rad_power, 3)
+		radiation_pulse(src, power/2, 3)
