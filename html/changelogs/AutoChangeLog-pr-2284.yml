@@ -1,0 +1,5 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - bugfix: "the eighties floor not spawning.
+adds:the eighties floor tiles to the carpet luxury crate."
