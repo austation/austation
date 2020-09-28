@@ -304,6 +304,10 @@
 					"<span class='notice'>You pat [src] on the head.</span>")
 		if(is_species(src, /datum/species/human/felinid)) //austation begin -- do not question this
 			SEND_SIGNAL(src, COMSIG_ADD_MOOD_EVENT, "friendly_pat", /datum/mood_event/betterheadpat)
+			if (is_species(M, /datum/species/human/felinid) && prob(1))
+				M.visible_message("<span class='warning'>It was a critical headpat!")
+				SEND_SIGNAL(src, COMSIG_ADD_MOOD_EVENT, "friendly_pat", /datum/mood_event/criticalheadpat)
+				SEND_SIGNAL(M, COMSIG_ADD_MOOD_EVENT, "friendly_pat", /datum/mood_event/criticalheadpat)
 		else
 			SEND_SIGNAL(src, COMSIG_ADD_MOOD_EVENT, "pat", /datum/mood_event/headpat) //austation end
 	else if((M.zone_selected == BODY_ZONE_L_ARM) || (M.zone_selected == BODY_ZONE_R_ARM))
