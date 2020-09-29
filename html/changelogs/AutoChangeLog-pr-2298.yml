@@ -1,0 +1,4 @@
+author: "park66665"
+delete-after: True
+changes: 
+  - tweak: "increased required_players of heresy so it wouldn't happen on rounds with too few initial players"

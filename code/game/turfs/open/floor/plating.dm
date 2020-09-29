@@ -120,6 +120,11 @@
 /turf/open/floor/plating/make_plating()
 	return
 
+/turf/open/floor/plating/rust_heretic_act()
+	if(prob(70))
+		new /obj/effect/temp_visual/glowing_rune(src)
+	ChangeTurf(/turf/open/floor/plating/rust)
+
 /turf/open/floor/plating/foam
 	name = "metal foam plating"
 	desc = "Thin, fragile flooring created with metal foam."
@@ -174,3 +179,4 @@
 	if(locate(/obj/structure/lattice/catwalk, src))
 		return 0
 	return 1
+
