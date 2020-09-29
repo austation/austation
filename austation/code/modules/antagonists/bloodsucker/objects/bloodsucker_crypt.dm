@@ -480,7 +480,7 @@
 	if (HAS_TRAIT(target, TRAIT_MINDSHIELD))
 		for(var/obj/item/implant/I in target.implants)
 			if(I.type == /obj/item/implant/mindshield)
-				I.removed(target,silent=TRUE)
+				I.removed(target,TRUE,1)
 
 
 
