@@ -100,9 +100,9 @@ By design, d1 is the smallest direction and d2 is the highest
 	GLOB.cable_list += src //add it to the global cable list
 
 	if(d1)
-		stored = new/obj/item/stack/cable_coil(null,2,cable_color)
+		stored = new/obj/item/stack/cable_coil(null,2,param_color) // austation start -- fix cut cable colors
 	else
-		stored = new/obj/item/stack/cable_coil(null,1,cable_color)
+		stored = new/obj/item/stack/cable_coil(null,1,param_color) // austation end
 
 	var/list/cable_colors = GLOB.cable_colors
 	cable_color = param_color || cable_color || pick(cable_colors)
