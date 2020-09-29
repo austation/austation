@@ -28,7 +28,7 @@ GLOBAL_VAR_INIT(normal_ooc_colour, "#002eb8")
 	if(QDELETED(src))
 		return
 
-	msg = copytext(sanitize(msg), 1, MAX_MESSAGE_LEN)
+	msg = copytext_char(sanitize(msg), 1, MAX_MESSAGE_LEN)
 	var/raw_msg = msg
 
 	if(!msg)
@@ -36,7 +36,7 @@ GLOBAL_VAR_INIT(normal_ooc_colour, "#002eb8")
 
 	msg = emoji_parse(msg)
 
-	if((copytext(msg, 1, 2) in list(".",";",":","#")) || (findtext(lowertext(copytext(msg, 1, 5)), "say")))
+	if((msg[1] in list(".",";",":","#")) || findtext_char(msg, "say", 1, 5))
 		if(alert("Your message \"[raw_msg]\" looks like it was meant for in game communication, say it in OOC?", "Meant for OOC?", "No", "Yes") != "Yes")
 			return
 
@@ -48,6 +48,13 @@ GLOBAL_VAR_INIT(normal_ooc_colour, "#002eb8")
 			log_admin("[key_name(src)] has attempted to advertise in OOC: [msg]")
 			message_admins("[key_name_admin(src)] has attempted to advertise in OOC: [msg]")
 			return
+		/* austation begin -- keeps clickable links
+		if(findtext(msg, "://") || findtext(msg, "www."))
+			to_chat(src, "<B>Posting clickable links in OOC is not allowed.</B>")
+			log_admin("[key_name(src)] has attempted to post a clickable link in OOC: [msg]")
+			message_admins("[key_name_admin(src)] has attempted to post a clickable link in OOC: [msg]")
+			return
+		austation end */
 
 	if(!(prefs.chat_toggles & CHAT_OOC))
 		to_chat(src, "<span class='danger'>You have OOC muted.</span>")
@@ -254,7 +261,7 @@ GLOBAL_VAR_INIT(normal_ooc_colour, "#002eb8")
 	chatOutput.start()
 	chatOutput.load()
 	alert(src, "Your chat has been force recreated. If this still hasnt fixed issues, please make an issue report, with your BYOND version, Windows version, and IE Version.", "Done", "Ok")
-				
+
 /client/verb/motd()
 	set name = "MOTD"
 	set category = "OOC"
@@ -287,7 +294,7 @@ GLOBAL_VAR_INIT(normal_ooc_colour, "#002eb8")
 		return
 
 	var/list/body = list()
-	body += "<html><head><title>Playtime for [key]</title></head><BODY><BR>Playtime:"
+	body += "<html><head><meta http-equiv='Content-Type' content='text/html; charset=UTF-8'><title>Playtime for [key]</title></head><BODY><BR>Playtime:"
 	body += get_exp_report()
 	body += "</BODY></HTML>"
 	usr << browse(body.Join(), "window=playerplaytime[ckey];size=550x615")

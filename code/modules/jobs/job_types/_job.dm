@@ -220,7 +220,7 @@
 		return 0
 	if(!SSdbcore.Connect())
 		return 0 //Without a database connection we can't get a player's age so we'll assume they're old enough for all jobs
-	if(!isnum(minimal_player_age))
+	if(!isnum_safe(minimal_player_age))
 		return 0
 
 	return max(0, minimal_player_age - C.player_age)
@@ -270,6 +270,16 @@
 		else
 			back = backpack //Department backpack
 
+	//austation start -- converts the uniform string into the path we'll wear, whether it's the skirt or regular variant
+	var/holder
+	if(H.jumpsuit_style == PREF_SKIRT)
+		holder = "[uniform]/skirt"
+		if(!text2path(holder))
+			holder = "[uniform]"
+	else
+		holder = "[uniform]"
+	uniform = text2path(holder)
+	//austation end
 /datum/outfit/job/post_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
 	if(visualsOnly)
 		return

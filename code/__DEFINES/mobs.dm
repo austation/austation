@@ -125,6 +125,12 @@
 
 #define BRAIN_DAMAGE_INTEGRITY_MULTIPLIER 0.5
 
+//wing defines
+#define WINGS_COSMETIC 0 //Absolutely fucking useless
+#define WINGS_FLIGHTLESS 1 //can't generate lift, will only fly in 0-G, while atmos is present
+#define WINGS_FLYING 2 //can generate lift and fly if atmos is present
+#define WINGS_MAGIC 3 //can fly regardless of atmos
+
 //Surgery Defines
 #define BIOWARE_GENERIC "generic"
 #define BIOWARE_NERVES "nerves"
@@ -282,7 +288,7 @@
 #define DOOR_CRUSH_DAMAGE	15	//! the amount of damage that airlocks deal when they crush you
 
 #define	HUNGER_FACTOR		0.1	//! factor at which mob nutrition decreases
-#define	ETHEREAL_CHARGE_FACTOR	0.12 //! factor at which ethereal's charge decreases
+#define	ETHEREAL_CHARGE_FACTOR	0.1 //! factor at which ethereal's charge decreases
 #define	HYGIENE_FACTOR  0.1	//! factor at which mob hygiene decreases
 #define	REAGENTS_METABOLISM 0.4	//! How many units of reagent are consumed per tick, by default.
 #define REAGENTS_EFFECT_MULTIPLIER (REAGENTS_METABOLISM / 0.4)	//! By defining the effect multiplier this way, it'll exactly adjust all effects according to how they originally were with the 0.4 metabolism
@@ -327,3 +333,5 @@
 #define WABBAJACK     (1<<6)
 
 #define SLEEP_CHECK_DEATH(X) sleep(X); if(QDELETED(src) || stat == DEAD) return;
+
+#define SILENCE_RANGED_MESSAGE (1<<0)

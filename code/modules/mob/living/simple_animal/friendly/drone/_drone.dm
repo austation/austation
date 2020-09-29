@@ -9,7 +9,6 @@
 #define MAINTDRONE	"drone_maint"
 #define REPAIRDRONE	"drone_repair"
 #define SCOUTDRONE	"drone_scout"
-#define CLOCKDRONE	"drone_clock"
 
 #define MAINTDRONE_HACKED "drone_maint_red"
 #define REPAIRDRONE_HACKED "drone_repair_hacked"
@@ -51,6 +50,7 @@
 	lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE
 	see_in_dark = 7
 	can_be_held = TRUE
+	worn_slot_flags = ITEM_SLOT_HEAD
 	held_items = list(null, null)
 	var/staticChoice = "static"
 	var/list/staticChoices = list("static", "blank", "letter", "animal")
@@ -132,7 +132,7 @@
 		to_chat(src, "[flavortext]")
 
 	if(!picked)
-		pickVisualAppearence()
+		pickVisualAppearenceAustation() //austation begin -- Replaces pickVisualAppearence() with pickVisualAppearenceAustation
 
 /mob/living/simple_animal/drone/auto_deadmin_on_login()
 	if(!client?.holder)
@@ -153,23 +153,6 @@
 
 /mob/living/simple_animal/drone/gib()
 	dust()
-
-/mob/living/simple_animal/drone/ratvar_act()
-	if(status_flags & GODMODE)
-		return
-
-	if(internal_storage)
-		dropItemToGround(internal_storage)
-	if(head)
-		dropItemToGround(head)
-	var/mob/living/simple_animal/drone/cogscarab/ratvar/R = new /mob/living/simple_animal/drone/cogscarab/ratvar(loc)
-	R.setDir(dir)
-	if(mind)
-		mind.transfer_to(R, 1)
-	else
-		R.key = key
-	qdel(src)
-
 
 /mob/living/simple_animal/drone/examine(mob/user)
 	. = list("<span class='info'>*---------*\nThis is [icon2html(src, user)] \a <b>[src]</b>!")

@@ -94,6 +94,12 @@
 	if(wear_id)
 		. += "[t_He] [t_is] wearing [wear_id.get_examine_string(user)]."
 
+	// AuStation Wear Examines (Human)
+	if(istype(src, /mob/living/carbon/human))
+		if(ringsoff == FALSE)
+			var/mob/living/carbon/human/H = src
+			. += H.austation_wear_examine(user)
+
 	//Status effects
 	. += status_effect_examines()
 
@@ -252,21 +258,22 @@
 			if(91.01 to INFINITY)
 				msg += "[t_He] [t_is] a shitfaced, slobbering wreck.\n"
 
-	if(HAS_TRAIT(user, TRAIT_EMPATH) && !appears_dead && (src != user))
-		if (a_intent != INTENT_HELP)
-			msg += "[t_He] seem[p_s()] to be on guard.\n"
-		if (getOxyLoss() >= 10)
-			msg += "[t_He] seem[p_s()] winded.\n"
-		if (getToxLoss() >= 10)
-			msg += "[t_He] seem[p_s()] sickly.\n"
-		var/datum/component/mood/mood = src.GetComponent(/datum/component/mood)
-		if(mood.sanity <= SANITY_DISTURBED)
-			msg += "[t_He] seem[p_s()] distressed.\n"
-			SEND_SIGNAL(user, COMSIG_ADD_MOOD_EVENT, "empath", /datum/mood_event/sad_empath, src)
-		if (HAS_TRAIT(src, TRAIT_BLIND))
-			msg += "[t_He] appear[p_s()] to be staring off into space.\n"
-		if (HAS_TRAIT(src, TRAIT_DEAF))
-			msg += "[t_He] appear[p_s()] to not be responding to noises.\n"
+	if(ismob(user))
+		if(HAS_TRAIT(user, TRAIT_EMPATH) && !appears_dead && (src != user))
+			if (a_intent != INTENT_HELP)
+				msg += "[t_He] seem[p_s()] to be on guard.\n"
+			if (getOxyLoss() >= 10)
+				msg += "[t_He] seem[p_s()] winded.\n"
+			if (getToxLoss() >= 10)
+				msg += "[t_He] seem[p_s()] sickly.\n"
+			var/datum/component/mood/mood = src.GetComponent(/datum/component/mood)
+			if(mood.sanity <= SANITY_DISTURBED)
+				msg += "[t_He] seem[p_s()] distressed.\n"
+				SEND_SIGNAL(user, COMSIG_ADD_MOOD_EVENT, "empath", /datum/mood_event/sad_empath, src)
+			if (HAS_TRAIT(src, TRAIT_BLIND))
+				msg += "[t_He] appear[p_s()] to be staring off into space.\n"
+			if (HAS_TRAIT(src, TRAIT_DEAF))
+				msg += "[t_He] appear[p_s()] to not be responding to noises.\n"
 
 	msg += "</span>"
 
@@ -334,6 +341,7 @@
 
 						. += "<span class='deptradio'>Criminal status:</span> <a href='?src=[REF(src)];hud=s;status=1'>\[[criminal]\]</a>"
 						. += jointext(list("<span class='deptradio'>Security record:</span> <a href='?src=[REF(src)];hud=s;view=1'>\[View\]</a>",
+							"<a href='?src=[REF(src)];hud=s;add_citation=1'>\[Add citation\]</a>",
 							"<a href='?src=[REF(src)];hud=s;add_crime=1'>\[Add crime\]</a>",
 							"<a href='?src=[REF(src)];hud=s;view_comment=1'>\[View comment log\]</a>",
 							"<a href='?src=[REF(src)];hud=s;add_comment=1'>\[Add comment\]</a>"), "")

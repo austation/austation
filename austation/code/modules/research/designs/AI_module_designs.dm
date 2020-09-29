@@ -24,3 +24,12 @@
 	build_path = /obj/item/aiModule/core/full/dagothur
 	category = list("AI Modules")
 	departmental_flags = DEPARTMENTAL_FLAG_SCIENCE
+
+/datum/design/board/crewsimov_module
+	name = "Core Module Design (Crewsimov)"
+	desc = "Allows for the construction of a Crewsimov AI Core Module."
+	id = "crewsimov_module"
+	materials = list(/datum/material/glass = 1000, /datum/material/diamond = 2000)
+	build_path = /obj/item/aiModule/core/full/crewsimov
+	category = list("AI Modules")
+	departmental_flags = DEPARTMENTAL_FLAG_SCIENCE

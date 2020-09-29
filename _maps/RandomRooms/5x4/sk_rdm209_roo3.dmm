@@ -1,0 +1,64 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/obj/structure/flora/rock,
+/turf/open/floor/plating/asteroid,
+/area/template_noop)
+"g" = (
+/turf/open/floor/plating/asteroid,
+/area/template_noop)
+"h" = (
+/obj/structure/flora/ausbushes/palebush,
+/turf/open/floor/plating/asteroid,
+/area/template_noop)
+"i" = (
+/obj/structure/flora/ausbushes,
+/turf/open/floor/plating/asteroid,
+/area/template_noop)
+"j" = (
+/obj/structure/flora/ausbushes,
+/mob/living/simple_animal/hostile/retaliate/kangaroo,
+/turf/open/floor/plating/asteroid,
+/area/template_noop)
+"m" = (
+/obj/structure/flora/rock/pile,
+/turf/open/floor/plating/asteroid,
+/area/template_noop)
+"s" = (
+/mob/living/simple_animal/hostile/retaliate/kangaroo,
+/turf/open/floor/plating/asteroid,
+/area/template_noop)
+"Y" = (
+/obj/structure/sink/puddle,
+/turf/open/floor/plating/asteroid,
+/area/template_noop)
+
+(1,1,1) = {"
+a
+s
+g
+j
+"}
+(2,1,1) = {"
+g
+i
+h
+m
+"}
+(3,1,1) = {"
+s
+Y
+s
+a
+"}
+(4,1,1) = {"
+i
+g
+m
+i
+"}
+(5,1,1) = {"
+m
+s
+i
+s
+"}

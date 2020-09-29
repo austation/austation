@@ -13,12 +13,13 @@
 	)
 	restricted_gases = list(
 		/datum/gas/bz=10,
+		/datum/gas/miasma=5, //austation - i dunno how to add to lists that shits fucky so directly adding to this, yell at me
 		/datum/gas/plasma=0.1,
 		/datum/gas/water_vapor=0.1,
 	)
 	restricted_chance = 50
 
-	minimum_pressure = HAZARD_LOW_PRESSURE + 10
+	minimum_pressure = WARNING_LOW_PRESSURE + 10
 	maximum_pressure = LAVALAND_EQUIPMENT_EFFECT_PRESSURE - 1
 
 	minimum_temp = BODYTEMP_COLD_DAMAGE_LIMIT + 1

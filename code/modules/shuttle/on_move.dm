@@ -183,6 +183,8 @@ All ShuttleMove procs go here
 
 /obj/machinery/door/airlock/afterShuttleMove(turf/oldT, list/movement_force, shuttle_dir, shuttle_preferred_direction, move_dir, rotation)
 	. = ..()
+	update_aac_docked(oldT)
+	update_aac_docked()
 	var/current_area = get_area(src)
 	for(var/obj/machinery/door/airlock/A in orange(1, src))  // does not include src
 		if(get_area(A) != current_area)  // does not include double-wide airlocks unless actually docked
@@ -316,8 +318,11 @@ All ShuttleMove procs go here
 	. = ..()
 
 	var/knockdown = movement_force["KNOCKDOWN"]
-	if(knockdown)
+	//austation begin -- cat tails prevent shuttle knockdown
+	var/obj/item/organ/tail/O = getorganslot(ORGAN_SLOT_TAIL)
+	if(knockdown && !istype(O))
 		Paralyze(knockdown)
+	//austation end
 
 
 /mob/living/simple_animal/hostile/megafauna/onShuttleMove(turf/newT, turf/oldT, list/movement_force, move_dir, obj/docking_port/stationary/old_dock, obj/docking_port/mobile/moving_dock)
