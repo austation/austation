@@ -1,3 +1,11 @@
+/**
+  * Run some code once crafting completes
+  *
+  * user: the /mob that initiated crafting
+  */
+/datum/crafting_recipe/proc/post_craft(mob/user)
+	return
+
 /datum/crafting_recipe/femur_breaker
 	name = "Femur Breaker"
 	result = /obj/structure/femur_breaker
