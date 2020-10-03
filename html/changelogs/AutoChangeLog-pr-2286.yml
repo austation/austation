@@ -1,0 +1,5 @@
+author: "TheFakeElon"
+delete-after: True
+changes: 
+  - rscadd: "Supermatter bread, a special kind of bread that can only be made by the most skilled of chefs"
+  - code_imp: "post-craft checks for crafting recipes"
