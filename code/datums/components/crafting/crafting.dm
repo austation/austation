@@ -195,6 +195,7 @@
 				var/list/parts = del_reqs(R, user)
 				var/atom/movable/I = new R.result (get_turf(user.loc))
 				I.CheckParts(parts, R)
+				R.post_craft(user, I) // austation -- supermatter bread (and crafting changes)
 				if(isitem(I))
 					user.put_in_hands(I)
 				if(send_feedback)

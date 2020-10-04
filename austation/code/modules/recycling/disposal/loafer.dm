@@ -21,6 +21,21 @@
 	else
 		stored = new /obj/structure/disposalconstruct/au(src, null , SOUTH , FALSE , src)
 
+/obj/structure/disposalpipe/loafer/Destroy()
+	var/obj/structure/disposalholder/H = locate() in src
+	if(H)
+		for(var/atom/movable/AM in H.contents)
+			if(istype(AM, /obj/item/reagent_containers/food/snacks/store/bread/recycled))
+				var/obj/item/reagent_containers/food/snacks/store/bread/recycled/looef = AM
+				if(looef.bread_density < 10)
+					qdel(AM)
+			if(isliving(AM))
+				var/mob/living/L = AM
+				L.adjustBruteLoss(40) //ouchie
+		expel(H, get_turf(src), 0)
+	QDEL_NULL(stored)
+	return ..()
+
 obj/structure/disposalpipe/loafer/emag_act(mob/user)
 	if(obj_flags & EMAGGED)
 		return
@@ -40,6 +55,8 @@ obj/structure/disposalpipe/loafer/emag_act(mob/user)
 
 		var/obj/item/reagent_containers/food/snacks/store/bread/recycled/looef = new(H)
 
+		var/supermatter_singulo = FALSE
+
 		for(var/atom/movable/AM in H.contents)
 			if(AM == looef)
 				continue
@@ -53,6 +70,9 @@ obj/structure/disposalpipe/loafer/emag_act(mob/user)
 				looef.bread_density += recursive_looef.bread_density
 				qdel(AM)
 				continue
+
+			if(istype(AM, /obj/item/reagent_containers/food/snacks/store/bread/supermatter))
+				supermatter_singulo = TRUE
 
 			if(isliving(AM)) // uh oh
 				var/mob/living/L = AM
@@ -126,7 +146,7 @@ obj/structure/disposalpipe/loafer/emag_act(mob/user)
 				return
 			visible_message("<span class='warning'>\The [src] buzzes grumpily!</span>")
 			playsound(src.loc, 'sound/machines/buzz-two.ogg', 40, 1)
-		else if(looef.bread_density >= 3400 && obj_flags & EMAGGED)
+		else if(looef.bread_density >= 3400 && obj_flags & EMAGGED || supermatter_singulo)
 			var/turf/T = get_turf(src)
 			var/area/A = get_area(src)
 			var/mob/culprit = get_mob_by_key(fingerprintslast)
@@ -134,7 +154,10 @@ obj/structure/disposalpipe/loafer/emag_act(mob/user)
 			priority_announce("We have detected an extremely high concentration of gluten in [A.name], we suggest evacuating the immediate area")
 			visible_message("<span class='userdanger'>[src] collapses into a singularity under its own weight!</span>")
 			var/obj/singularity/oof = new(get_turf(src))
-			oof.name = "gravitational breadularity"
+			if(supermatter_singulo)
+				oof.consumedSupermatter = supermatter_singulo
+				oof.energy = 800
+			oof.name = "[supermatter_singulo ? "supercharged" : ""] gravitational breadularity"
 			oof.desc = "I have done nothing but compress bread for 3 days."
 			qdel(src)
 			if(culprit)
