@@ -1,9 +1,10 @@
 /datum/round_event_control/bruh_moment
 	name = "Bruh Moment"
 	typepath = /datum/round_event/bruh_moment
-	weight = 10
+	weight = 5
 	min_players = 1
-	max_occurrences = 0
+	earliest_start = 10 MINUTES
+	max_occurrences = 1
 
 /datum/round_event/bruh_moment
 	startWhen = 8
