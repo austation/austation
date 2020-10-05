@@ -1,0 +1,4 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - rscdel: "removed FASTDMM_PROP from advanced airlock controllers."
