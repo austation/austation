@@ -1,0 +1,4 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - tweak: "Abusable circuit components have been given a limit to how many can be out in a circuit."
