@@ -105,7 +105,7 @@
 
 	wires = new /datum/wires/robot(src)
 	AddComponent(/datum/component/empprotection, EMP_PROTECT_WIRES)
-
+	
 	RegisterSignal(src, COMSIG_PROCESS_BORGCHARGER_OCCUPANT, .proc/charge)
 
 	robot_modules_background = new()
@@ -1189,9 +1189,7 @@
 		else
 			M.visible_message("<span class='boldwarning'>[M] can't climb onto [src] because [M.p_their()] hands are full!</span>")
 		return
-	M.visible_message("<span class='boldwarning'>[M] is being loaded onto [src]!</span>") //austation start -- adds borg buckle delay #2278
-	if(do_after(src, 5, target = M))
-		. = ..(M, force, check_loc) //austation end
+	. = ..(M, force, check_loc)
 
 /mob/living/silicon/robot/unbuckle_mob(mob/user, force=FALSE)
 	if(iscarbon(user))
