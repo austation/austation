@@ -105,7 +105,7 @@
 
 	wires = new /datum/wires/robot(src)
 	AddComponent(/datum/component/empprotection, EMP_PROTECT_WIRES)
-	
+
 	RegisterSignal(src, COMSIG_PROCESS_BORGCHARGER_OCCUPANT, .proc/charge)
 
 	robot_modules_background = new()
