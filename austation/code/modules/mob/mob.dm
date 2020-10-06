@@ -30,7 +30,7 @@
 
 	var/list/lickable = list()
 	for(var/mob/living/L in view(1))
-		if(L != src && !L.ckey && Adjacent(L))
+		if(L != src && Adjacent(L))
 			LAZYADD(lickable, L)
 	for(var/mob/living/listed in lickable)
 		lickable[listed] = new /mutable_appearance(listed)
