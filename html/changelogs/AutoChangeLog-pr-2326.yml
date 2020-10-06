@@ -1,5 +1,0 @@
-author: "AustationBot"
-delete-after: True
-changes: 
-  - rscadd: "Adds 3 new chameleon items to the traitor uplink: Chameleon Bangproof Headset, Chameleon Flashproof Glasses and Chameleon Combat Gloves."
-  - tweak: "Chameleon plasmaman envirohelmet is no longer permanently flashproof."
