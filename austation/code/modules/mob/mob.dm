@@ -18,29 +18,3 @@
 			to_chat(src, "<span class='notice'>You put your rings back on.</span>")
 	else
 		to_chat(src, "<span class='warning'>You don't have any rings.</span>")
-
-/mob/living/carbon/human/verb/lick()
-	set name = "Lick Someone"
-	set category = "IC"
-	set desc = "Lick someone nearby!"
-
-	if(incapacitated(ignore_restraints = TRUE))
-		to_chat(src, "<span class='warning'>You can't do that while incapacitated.</span>")
-		return
-
-	var/list/lickable = list()
-	for(var/mob/living/L in view(1))
-		if(L != src && !L.ckey && Adjacent(L))
-			LAZYADD(lickable, L)
-	for(var/mob/living/listed in lickable)
-		lickable[listed] = new /mutable_appearance(listed)
-
-	if(!lickable)
-		return
-
-	var/mob/living/tasted = show_radial_menu(src, src, lickable, radius = 40, require_near = TRUE)
-
-	if(QDELETED(tasted) || !Adjacent(tasted) || incapacitated(ignore_restraints = TRUE))
-		return
-
-	visible_message("<span class='warning'>[src] licks [tasted]!</span>","<span class='notice'>You lick [tasted].</span>","<b>Slurp!</b>")
