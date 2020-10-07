@@ -104,6 +104,7 @@
 #include "code\modules\mob\living\simple_animal\friendly\drone\_drone.dm"
 #include "code\modules\mob\living\simple_animal\friendly\drone\drone_movement.dm"
 #include "code\modules\mob\living\simple_animal\friendly\drone\emote.dm"
+#include "code\modules\mob\living\simple_animal\friendly\drone\say.dm"
 #include "code\modules\mob\living\simple_animal\friendly\drone\visuals_icons.dm"
 #include "code\modules\mob\living\simple_animal\friendly\mouse.dm"
 #include "code\modules\mob\living\simple_animal\hostile\generic.dm"
