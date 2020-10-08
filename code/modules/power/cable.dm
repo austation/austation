@@ -99,23 +99,15 @@ By design, d1 is the smallest direction and d2 is the highest
 		hide(T.intact)
 	GLOB.cable_list += src //add it to the global cable list
 
-	var/list/cable_colors = GLOB.cable_colors 	// austation start -- fix cut cable colors
-	cable_color = param_color || cable_color || pick(cable_colors)
-	if(cable_colors[cable_color])
-		cable_color = cable_colors[cable_color] // austation end
-
 	if(d1)
 		stored = new/obj/item/stack/cable_coil(null,2,cable_color)
 	else
 		stored = new/obj/item/stack/cable_coil(null,1,cable_color)
 
-	// austation start -- fix cut cable colors
-	/* var/list/cable_colors = GLOB.cable_colors
+	var/list/cable_colors = GLOB.cable_colors
 	cable_color = param_color || cable_color || pick(cable_colors)
 	if(cable_colors[cable_color])
-		cable_color = cable_colors[cable_color]*/
-	// austation end
-
+		cable_color = cable_colors[cable_color]
 	update_icon()
 
 /obj/structure/cable/Destroy()					// called when a cable is deleted
