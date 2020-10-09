@@ -1,0 +1,4 @@
+author: "park66665"
+delete-after: True
+changes: 
+  - bugfix: "Cables now always return correctly colored cable pieces when cut"
