@@ -1,0 +1,8 @@
+/obj/structure/closet/crate/secure/loot/Initialize()
+	. = ..()
+	switch(loot)
+		if(101)
+			new /obj/item/storage/belt/darksabre(src)
+			new /obj/item/clothing/suit/armor/vest/capcarapace/dark(src)
+			new /obj/item/clothing/neck/cloak/inferno(src)
+			new /obj/item/clothing/accessory/medal/steele(src)

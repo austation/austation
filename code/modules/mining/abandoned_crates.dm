@@ -20,7 +20,7 @@
 		code += dig
 		digits -= dig  //there are never matching digits in the answer
 
-	var/loot = rand(1,100) //100 different crates with varying chances of spawning
+	var/loot = rand(1,101) //100 different crates with varying chances of spawning //austation -- extra loots
 	switch(loot)
 		if(1 to 5) //5% chance
 			new /obj/item/reagent_containers/food/drinks/bottle/rum(src)
