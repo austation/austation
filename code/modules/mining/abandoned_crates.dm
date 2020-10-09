@@ -149,6 +149,13 @@
 			new /obj/item/clothing/mask/luchador(src)
 		if(100)
 			new /obj/item/clothing/head/bearpelt(src)
+		//austation begin -- cratestuff
+		if(101)
+			new /obj/item/storage/belt/darksabre(src)
+			new /obj/item/clothing/suit/armor/vest/capcarapace/dark(src)
+			new /obj/item/clothing/neck/cloak/inferno(src)
+			new /obj/item/clothing/accessory/medal/steele(src)
+		//austation end
 
 //ATTACK HAND IGNORING PARENT RETURN VALUE
 /obj/structure/closet/crate/secure/loot/attack_hand(mob/user)
