@@ -1,0 +1,5 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - bugfix: "Added input capping and sanitization"
+  - config: "Added some new input wrappers"
