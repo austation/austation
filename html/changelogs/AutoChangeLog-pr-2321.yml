@@ -1,4 +1,0 @@
-author: "AustationBot"
-delete-after: True
-changes: 
-  - server: "ss13_feedback can now be disabled with the LIMITED_FEEDBACK flag."
