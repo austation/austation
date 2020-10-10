@@ -163,3 +163,4 @@
 #include "code\modules\cargo\exports\organs.dm"
 #include "code\modules\cargo\packs\packs.dm"
 #include "code\modules\cargo\packs\costumes_toys.dm"
+#include "code\modules\surgery\organs\ears.dm"

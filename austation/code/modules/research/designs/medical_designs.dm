@@ -29,3 +29,14 @@
 	id = "surgery_cortex_folding"
 	surgery = /datum/surgery/advanced/bioware/cortex_folding
 	research_icon_state = "surgery_head"
+
+/datum/design/catcybernetic
+	name = "Cybernetic Cat-ears"
+	desc = "A pair of cybernetic Cat-ears, With synthetic skin lining, you can't believe robotic cat ears really do exist."
+	id = "catcybernetic"
+	build_type = PROTOLATHE | MECHFAB
+	construction_time = 50
+	materials = list(/datum/material/iron = 500, /datum/material/glass = 500, /datum/material/silver = 500, /datum/material/copper = 300)
+	build_path = /obj/item/organ/ears/catcybernetic
+	category = list("Misc", "Medical Designs")
+	departmental_flags = DEPARTMENTAL_FLAG_MEDICAL
