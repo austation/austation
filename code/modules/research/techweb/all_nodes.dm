@@ -522,14 +522,6 @@
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 1000)
 	export_price = 5000
 
-/datum/techweb_node/cyber_organs_upgraded
-	id = "cyber_organs_upgraded"
-	display_name = "Upgraded Cybernetic Organs"
-	description = "We have the technology to upgrade him."
-	prereq_ids = list("cyber_organs")
-	design_ids = list("cybernetic_heart_u", "cybernetic_liver_u", "cybernetic_lungs_u")
-	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 1500)
-	export_price = 5000
 
 /datum/techweb_node/ipc_organs
 	id = "ipc_organs"
