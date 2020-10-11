@@ -1,0 +1,4 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - bugfix: "4 random runtimes, including gibs not always spawning on human death"
