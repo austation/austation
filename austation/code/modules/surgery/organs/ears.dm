@@ -3,7 +3,7 @@
 	icon = 'icons/obj/clothing/hats.dmi'
 	icon_state = "kitty"
 	status = ORGAN_ROBOTIC
-	organ_flags = ORGAN_SYNTHETIC
+	organ_flags = ORGAN_SYNTHETIC //this makes a "version" of cat ears that are immune to bangs
 
 
 /obj/item/organ/ears/catcybernetic/Insert(mob/living/carbon/human/H, special = 0, drop_if_replaced = TRUE)
