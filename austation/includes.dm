@@ -70,6 +70,7 @@
 #include "code\modules\clothing\under\costume.dm"
 #include "code\modules\events\bruh_moment.dm"
 #include "code\modules\hydroponics\grown.dm"
+#include "code\modules\hydroponics\grown\nettle.dm"
 #include "code\modules\hydroponics\grown\towercap.dm"
 #include "code\modules\hydroponics\plant_genes.dm"
 #include "code\modules\food_and_drinks\drinks\drinks.dm"
