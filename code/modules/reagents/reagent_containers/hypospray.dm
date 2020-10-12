@@ -51,10 +51,7 @@
 
 			log_combat(user, M, "injected", src, "([contained])")
 
-/obj/item/reagent_containers/hypospray/CMO/verb/empty()
-	set name = "Empty Hypospray"
-	set category = "Object"
-	set src in usr
+/obj/item/reagent_containers/hypospray/CMO/AltClick(mob/user) // austation -- change this to an alt click
 	if(usr.incapacitated())
 		return
 	if (alert(usr, "Are you sure you want to empty that?", "Empty Bottle:", "Yes", "No") != "Yes")
@@ -63,6 +60,7 @@
 		to_chat(usr, "<span class='notice'>You empty \the [src] onto the floor.</span>")
 		reagents.reaction(usr.loc)
 		src.reagents.clear_reagents()
+
 /obj/item/reagent_containers/hypospray/CMO
 	list_reagents = list(/datum/reagent/medicine/omnizine = 30)
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | ACID_PROOF

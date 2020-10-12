@@ -125,6 +125,7 @@
 #include "code\modules\reagents\chemistry\recipes.dm"
 #include "code\modules\reagents\reagent_containers\bottle.dm"
 #include "code\modules\reagents\reagent_containers\custompen.dm"
+#include "code\modules\reagents\reagent_containers\hypospray.dm"
 #include "code\modules\recycling\disposal\construction.dm"
 #include "code\modules\recycling\disposal\loafer.dm"
 #include "code\modules\research\designs\AI_module_designs.dm"
