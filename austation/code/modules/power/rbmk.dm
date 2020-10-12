@@ -312,7 +312,7 @@ The reactor CHEWS through moderator. It does not do this slowly. Be very careful
 	if(power >= 90 && world.time >= next_flicker) //You're overloading the reactor. Give a more subtle warning that power is getting out of control.
 		next_flicker = world.time + 1.5 MINUTES
 		for(var/obj/machinery/light/L in GLOB.machines)
-			if(prob(25) && is_station_level(L.z)) //If youre running the reactor cold though, no need to flicker the lights.
+			if(prob(25) && L.z == z) //If youre running the reactor cold though, no need to flicker the lights.
 				L.flicker()
 	for(var/atom/movable/I in get_turf(src))
 		if(isliving(I))
@@ -503,6 +503,7 @@ The reactor CHEWS through moderator. It does not do this slowly. Be very careful
 /obj/machinery/computer/reactor
 	name = "Reactor control console"
 	desc = "Scream"
+	icon = 'austation/icons/obj/computer.dmi'
 	icon_state = "oldcomp"
 	icon_screen = "library"
 	icon_keyboard = null
@@ -713,17 +714,6 @@ The reactor CHEWS through moderator. It does not do this slowly. Be very careful
 	name = "Reactor moderator valve computer"
 	icon_screen = "rbmk_moderator"
 	id = "rbmk_moderator"
-
-//SPENT FUEL POOL
-//FINALLY WE CAN RECREATE THE ROBLOX NUCLEAR DISASTER - 18/08/2020
-
-/turf/open/indestructible/sound/pool/spentfuel
-	name = "Spent fuel pool"
-	desc = "A dumping ground for spent nuclear fuel, can you touch the bottom?."
-	icon_state = "spentfuelpool"
-
-/turf/open/indestructible/sound/pool/spentfuel/wall
-	icon_state = "spentfuelpoolwall"
 
 //Monitoring program.
 /datum/computer_file/program/nuclear_monitor
