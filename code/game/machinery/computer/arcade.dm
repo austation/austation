@@ -45,11 +45,8 @@ GLOBAL_LIST_INIT(arcade_prize_pool, list(
 		/obj/item/card/emagfake = 1,
 		/obj/item/clothing/shoes/wheelys = 2,
 		/obj/item/clothing/shoes/kindleKicks = 2,
-<<<<<<< HEAD
-		/mob/living/simple_animal/bot/secbot/deathsky/toy = 2, //austation
-=======
+		/mob/living/simple_animal/bot/secbot/deathsky/toy = 2, //austation -- deathsky
 		/obj/item/toy/plush/moth = 2,
->>>>>>> 2093c9d1f1... Add moth plush (#2454)
 		/obj/item/storage/belt/military/snack = 2))
 
 /obj/machinery/computer/arcade
