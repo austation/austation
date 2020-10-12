@@ -4,6 +4,9 @@
 #include "code\_GLOBALS\misc.dm"
 #include "code\_GLOBALS\pool_globals.dm"
 
+// Helpers Section
+#include "code\_HELPERS\matrices.dm"
+
 // Main Includes Section
 #include "code\_globalvars\lists\maintenance_loot.dm"
 #include "code\controllers\configuration\entries\game_options.dm"
@@ -24,6 +27,7 @@
 #include "code\datums\status_effects\buffs.dm"
 #include "code\datums\wires\apc.dm"
 #include "code\game\sound.dm"
+#include "code\game\areas.dm"
 #include "code\game\area\Space_Station_13_areas.dm"
 #include "code\game\machinery\syndicatebeacon.dm"
 #include "code\game\mecha\equipment\tools\other_tools.dm"
@@ -147,6 +151,7 @@
 #include "code\modules\pool\pool_wires.dm"
 #include "code\modules\projectiles\boxes_magazine\internal\makeshift_mags.dm"
 #include "code\modules\projectiles\guns\ballistic\makeshift_pistol.dm"
+#include "code\modules\power\rbmk.dm"
 #include "code\modules\vending\_vending.dm"
 #include "code\modules\vending\autodrobe.dm"
 #include "code\modules\vending\clothesmate.dm"
