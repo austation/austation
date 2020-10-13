@@ -30356,9 +30356,6 @@
 /obj/machinery/atmospherics/pipe/simple/purple/hidden/layer1{
 	dir = 10
 	},
-/obj/structure/chair/office/light{
-	dir = 1
-	},
 /obj/item/radio/intercom{
 	pixel_x = 26
 	},
@@ -49012,10 +49009,6 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1,
 /turf/open/floor/plasteel/white,
 /area/security/brig)
-"hpL" = (
-/obj/machinery/atmospherics/pipe/layer_manifold/visible,
-/turf/open/floor/engine,
-/area/engine/engineering/reactor_core)
 "hpO" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 10
@@ -50247,6 +50240,16 @@
 /obj/effect/turf_decal/stripes/line,
 /turf/open/floor/plasteel,
 /area/quartermaster/storage)
+"hPI" = (
+/obj/machinery/atmospherics/pipe/simple/purple/hidden/layer1{
+	dir = 4
+	},
+/obj/structure/cable/yellow{
+	icon_state = "4-8"
+	},
+/obj/structure/chair/office/light,
+/turf/open/floor/carpet/royalblack,
+/area/engine/engineering/reactor_control)
 "hQG" = (
 /obj/structure/sign/departments/minsky/medical/medical2,
 /turf/closed/wall,
@@ -64431,6 +64434,10 @@
 	},
 /turf/open/floor/plasteel,
 /area/hallway/primary/central)
+"nHr" = (
+/obj/machinery/atmospherics/pipe/layer_manifold/visible,
+/turf/open/floor/engine,
+/area/engine/engineering/reactor_core)
 "nHH" = (
 /obj/machinery/door_timer{
 	id = "Cell 2";
@@ -72537,6 +72544,10 @@
 /obj/effect/spawner/structure/window,
 /turf/open/floor/plating,
 /area/medical/sleeper)
+"qMQ" = (
+/obj/effect/spawner/structure/window/plasma/reinforced/shutter,
+/turf/open/floor/plating,
+/area/engine/engineering/reactor_core)
 "qMR" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
 	dir = 4
@@ -75260,11 +75271,10 @@
 	pixel_y = 24
 	},
 /obj/structure/table,
-/obj/item/paper_bin,
-/obj/item/pen,
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
+/obj/machinery/computer/reactor/pump,
 /turf/open/floor/plasteel/dark,
 /area/engine/engineering/reactor_control)
 "rUK" = (
@@ -81075,6 +81085,10 @@
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/layer1,
 /turf/open/floor/plasteel,
 /area/hallway/primary/starboard)
+"uls" = (
+/obj/machinery/power/floodlight,
+/turf/open/floor/engine,
+/area/engine/engineering/reactor_core)
 "ult" = (
 /obj/machinery/navbeacon{
 	codes_txt = "patrol;next_patrol=14.5-Recreation";
@@ -139339,13 +139353,13 @@ oAh
 jef
 qXg
 lrz
-nVz
+uls
 dkd
 iem
 qOe
 tzk
 nVz
-juP
+qMQ
 lmf
 sdz
 lMJ
@@ -139602,7 +139616,7 @@ tGh
 uVm
 dkj
 uSl
-juP
+qMQ
 lmf
 sdz
 aaa
@@ -139859,7 +139873,7 @@ bHv
 qOe
 qiQ
 nVz
-juP
+qMQ
 lmf
 sdz
 lMJ
@@ -140363,14 +140377,14 @@ bzi
 aaa
 vcF
 rqA
-wnm
+hPI
 mjB
 vcF
 fTQ
 lgO
 ksv
 gRQ
-hpL
+nHr
 gkV
 nVz
 juP
@@ -140884,7 +140898,7 @@ jza
 juP
 mYp
 fSQ
-hpL
+nHr
 gkV
 nVz
 juP
