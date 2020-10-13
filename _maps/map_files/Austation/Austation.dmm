@@ -20226,6 +20226,7 @@
 	pixel_y = 2
 	},
 /obj/item/pen,
+/obj/effect/landmark/nuclear_waste_spawner,
 /turf/open/floor/circuit/green/telecomms/mainframe,
 /area/tcommsat/server)
 "bKN" = (
@@ -21328,6 +21329,7 @@
 /obj/machinery/light/small{
 	dir = 8
 	},
+/obj/effect/landmark/nuclear_waste_spawner/strong,
 /turf/open/floor/plasteel,
 /area/engine/atmos)
 "bNU" = (
@@ -40674,7 +40676,6 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
 	dir = 8
 	},
-/obj/effect/landmark/nuclear_waste_spawner,
 /turf/open/floor/plasteel,
 /area/engine/storage_shared)
 "dJO" = (
@@ -42024,8 +42025,9 @@
 /turf/open/floor/plasteel,
 /area/quartermaster/storage)
 "evA" = (
+/obj/effect/turf_decal/stripes/line,
 /obj/effect/landmark/nuclear_waste_spawner,
-/turf/open/floor/plasteel/dark,
+/turf/open/floor/plasteel,
 /area/engine/engineering)
 "evO" = (
 /obj/effect/turf_decal/tile/yellow{
@@ -43660,6 +43662,7 @@
 /area/hallway/secondary/entry)
 "fdn" = (
 /obj/machinery/atmospherics/pipe/layer_manifold/visible,
+/obj/effect/landmark/nuclear_waste_spawner/strong,
 /turf/open/floor/engine,
 /area/engine/engineering/reactor_core)
 "fdr" = (
@@ -43874,7 +43877,6 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
 	dir = 1
 	},
-/obj/effect/landmark/nuclear_waste_spawner,
 /turf/open/floor/plasteel,
 /area/engine/engineering)
 "fhU" = (
@@ -44315,12 +44317,9 @@
 /turf/open/floor/wood,
 /area/vacant_room/office)
 "frJ" = (
-/obj/machinery/atmospherics/pipe/simple/purple/visible{
-	dir = 4
-	},
-/obj/effect/landmark/nuclear_waste_spawner,
-/turf/open/floor/plasteel,
-/area/engine/atmos)
+/obj/effect/landmark/nuclear_waste_spawner/strong,
+/turf/open/floor/plasteel/dark,
+/area/engine/engineering)
 "frT" = (
 /obj/structure/table/wood,
 /obj/machinery/light,
@@ -46124,13 +46123,13 @@
 /turf/open/floor/plasteel/dark,
 /area/aisat)
 "gfz" = (
-/obj/effect/turf_decal/stripes/line{
-	dir = 8
+/obj/structure/disposalpipe/segment,
+/obj/structure/cable/yellow{
+	icon_state = "1-2"
 	},
-/obj/machinery/atmospherics/pipe/simple/cyan/visible,
 /obj/effect/landmark/nuclear_waste_spawner,
-/turf/open/floor/engine,
-/area/engine/engineering)
+/turf/open/floor/plasteel,
+/area/hallway/primary/starboard)
 "gfH" = (
 /obj/machinery/door/window{
 	dir = 1;
@@ -46332,7 +46331,6 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
 	dir = 4
 	},
-/obj/effect/landmark/nuclear_waste_spawner,
 /turf/open/floor/plasteel,
 /area/engine/atmos)
 "gle" = (
@@ -48415,7 +48413,6 @@
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
 	},
-/obj/effect/landmark/nuclear_waste_spawner/strong,
 /turf/open/floor/carpet/royalblack,
 /area/engine/engineering/reactor_control)
 "heA" = (
@@ -50196,7 +50193,6 @@
 /obj/structure/cable/yellow{
 	icon_state = "2-8"
 	},
-/obj/effect/landmark/nuclear_waste_spawner,
 /turf/open/floor/plasteel,
 /area/engine/break_room)
 "hPe" = (
@@ -51180,7 +51176,6 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
 	dir = 1
 	},
-/obj/effect/landmark/nuclear_waste_spawner,
 /turf/open/floor/plasteel,
 /area/engine/engineering)
 "ilj" = (
@@ -57268,6 +57263,7 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
 	dir = 6
 	},
+/obj/effect/landmark/nuclear_waste_spawner,
 /turf/open/floor/plasteel/dark,
 /area/engine/gravity_generator)
 "kEU" = (
@@ -58439,9 +58435,12 @@
 /turf/open/floor/plating,
 /area/maintenance/fore)
 "lid" = (
+/obj/structure/window/reinforced{
+	dir = 8
+	},
 /obj/effect/landmark/nuclear_waste_spawner,
-/turf/open/floor/plating,
-/area/maintenance/starboard)
+/turf/open/floor/carpet,
+/area/crew_quarters/theatre)
 "liA" = (
 /obj/item/twohanded/required/kirbyplants{
 	icon_state = "plant-03"
@@ -58857,10 +58856,9 @@
 /turf/open/floor/plasteel/white,
 /area/security/prison)
 "lsL" = (
-/obj/machinery/atmospherics/pipe/simple/purple/visible/layer1,
 /obj/effect/landmark/nuclear_waste_spawner,
-/turf/open/floor/plasteel,
-/area/engine/atmos)
+/turf/open/floor/plating,
+/area/maintenance/starboard)
 "ltb" = (
 /obj/effect/turf_decal/tile/red{
 	dir = 8
@@ -60540,7 +60538,6 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3,
-/obj/effect/landmark/nuclear_waste_spawner,
 /turf/open/floor/plasteel,
 /area/security/checkpoint/engineering)
 "mco" = (
@@ -60641,6 +60638,7 @@
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
 	},
+/obj/effect/landmark/nuclear_waste_spawner,
 /turf/open/floor/plasteel/dark,
 /area/ai_monitored/turret_protected/aisat_interior)
 "mgv" = (
@@ -61254,6 +61252,7 @@
 	},
 /obj/effect/landmark/event_spawn,
 /obj/machinery/holopad,
+/obj/effect/landmark/nuclear_waste_spawner/strong,
 /turf/open/floor/plasteel,
 /area/engine/engineering)
 "muh" = (
@@ -63655,6 +63654,7 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
 	dir = 8
 	},
+/obj/effect/landmark/nuclear_waste_spawner,
 /turf/open/floor/plasteel,
 /area/crew_quarters/heads/chief)
 "nqJ" = (
@@ -65861,15 +65861,9 @@
 /turf/open/floor/plasteel,
 /area/security/brig)
 "ofu" = (
-/obj/structure/cable/white{
-	icon_state = "1-4"
-	},
-/obj/structure/cable/white{
-	icon_state = "4-8"
-	},
-/obj/effect/landmark/nuclear_waste_spawner/strong,
-/turf/open/floor/engine,
-/area/engine/engineering/reactor_core)
+/obj/effect/landmark/nuclear_waste_spawner,
+/turf/closed/wall/r_wall,
+/area/science/explab)
 "ofy" = (
 /obj/effect/turf_decal/tile/purple{
 	dir = 1
@@ -67707,7 +67701,6 @@
 /obj/structure/cable/white{
 	icon_state = "2-8"
 	},
-/obj/effect/landmark/nuclear_waste_spawner/strong,
 /turf/open/floor/engine,
 /area/engine/engineering/reactor_core)
 "oOs" = (
@@ -74909,6 +74902,7 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
 	dir = 4
 	},
+/obj/effect/landmark/nuclear_waste_spawner,
 /turf/open/floor/plasteel,
 /area/hydroponics)
 "rMd" = (
@@ -80569,6 +80563,7 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
 	dir = 1
 	},
+/obj/effect/landmark/nuclear_waste_spawner,
 /turf/open/floor/plasteel,
 /area/hydroponics/garden)
 "ucG" = (
@@ -87336,6 +87331,7 @@
 	dir = 9
 	},
 /obj/structure/cable/yellow,
+/obj/effect/landmark/nuclear_waste_spawner/strong,
 /turf/open/floor/plasteel,
 /area/engine/break_room)
 "wRg" = (
@@ -125469,7 +125465,7 @@ iYF
 cVK
 dPU
 giC
-cgq
+ofu
 dwL
 uuO
 dwL
@@ -127753,7 +127749,7 @@ byN
 dhU
 bBZ
 bBZ
-bBZ
+lid
 fQj
 ecw
 dii
@@ -130063,7 +130059,7 @@ bry
 bry
 gAn
 bry
-bry
+gfz
 luS
 luS
 rsq
@@ -130548,7 +130544,7 @@ axY
 aBG
 dCk
 scX
-aFr
+evA
 aGT
 axY
 aJm
@@ -130589,8 +130585,8 @@ bKr
 bKr
 bKr
 bKr
+lsL
 apc
-lid
 alq
 alq
 iJW
@@ -133930,7 +133926,7 @@ bMh
 qCJ
 ieJ
 pHf
-lsL
+iBo
 iBo
 bUD
 oNb
@@ -134434,7 +134430,7 @@ tUN
 sph
 rew
 eLx
-frJ
+bCv
 bDZ
 bFT
 bHz
@@ -134924,7 +134920,7 @@ deI
 deW
 aMm
 dfd
-gfz
+deN
 dft
 dBB
 dbh
@@ -135950,7 +135946,7 @@ aHa
 ddZ
 ddZ
 ddZ
-ddZ
+frJ
 ddZ
 ddZ
 ddZ
@@ -136208,7 +136204,7 @@ ddZ
 ddZ
 ddZ
 aMo
-evA
+ddZ
 ddZ
 ddZ
 dfB
@@ -138569,7 +138565,7 @@ sna
 vcF
 iQp
 xed
-ofu
+tPl
 kOU
 beI
 udJ
