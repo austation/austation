@@ -2555,6 +2555,7 @@
 	},
 /obj/machinery/meter,
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/nuclear_waste_spawner,
 /turf/open/floor/plasteel,
 /area/maintenance/disposal/incinerator)
 "ajx" = (
@@ -40673,6 +40674,7 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
 	dir = 8
 	},
+/obj/effect/landmark/nuclear_waste_spawner,
 /turf/open/floor/plasteel,
 /area/engine/storage_shared)
 "dJO" = (
@@ -42021,6 +42023,10 @@
 	},
 /turf/open/floor/plasteel,
 /area/quartermaster/storage)
+"evA" = (
+/obj/effect/landmark/nuclear_waste_spawner,
+/turf/open/floor/plasteel/dark,
+/area/engine/engineering)
 "evO" = (
 /obj/effect/turf_decal/tile/yellow{
 	dir = 4
@@ -43868,6 +43874,7 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
 	dir = 1
 	},
+/obj/effect/landmark/nuclear_waste_spawner,
 /turf/open/floor/plasteel,
 /area/engine/engineering)
 "fhU" = (
@@ -44307,6 +44314,13 @@
 	},
 /turf/open/floor/wood,
 /area/vacant_room/office)
+"frJ" = (
+/obj/machinery/atmospherics/pipe/simple/purple/visible{
+	dir = 4
+	},
+/obj/effect/landmark/nuclear_waste_spawner,
+/turf/open/floor/plasteel,
+/area/engine/atmos)
 "frT" = (
 /obj/structure/table/wood,
 /obj/machinery/light,
@@ -46109,6 +46123,14 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/aisat)
+"gfz" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/cyan/visible,
+/obj/effect/landmark/nuclear_waste_spawner,
+/turf/open/floor/engine,
+/area/engine/engineering)
 "gfH" = (
 /obj/machinery/door/window{
 	dir = 1;
@@ -46310,6 +46332,7 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
 	dir = 4
 	},
+/obj/effect/landmark/nuclear_waste_spawner,
 /turf/open/floor/plasteel,
 /area/engine/atmos)
 "gle" = (
@@ -48392,6 +48415,7 @@
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
 	},
+/obj/effect/landmark/nuclear_waste_spawner/strong,
 /turf/open/floor/carpet/royalblack,
 /area/engine/engineering/reactor_control)
 "heA" = (
@@ -50172,6 +50196,7 @@
 /obj/structure/cable/yellow{
 	icon_state = "2-8"
 	},
+/obj/effect/landmark/nuclear_waste_spawner,
 /turf/open/floor/plasteel,
 /area/engine/break_room)
 "hPe" = (
@@ -51155,6 +51180,7 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
 	dir = 1
 	},
+/obj/effect/landmark/nuclear_waste_spawner,
 /turf/open/floor/plasteel,
 /area/engine/engineering)
 "ilj" = (
@@ -58412,6 +58438,10 @@
 /obj/item/clothing/head/festive,
 /turf/open/floor/plating,
 /area/maintenance/fore)
+"lid" = (
+/obj/effect/landmark/nuclear_waste_spawner,
+/turf/open/floor/plating,
+/area/maintenance/starboard)
 "liA" = (
 /obj/item/twohanded/required/kirbyplants{
 	icon_state = "plant-03"
@@ -58826,6 +58856,11 @@
 	},
 /turf/open/floor/plasteel/white,
 /area/security/prison)
+"lsL" = (
+/obj/machinery/atmospherics/pipe/simple/purple/visible/layer1,
+/obj/effect/landmark/nuclear_waste_spawner,
+/turf/open/floor/plasteel,
+/area/engine/atmos)
 "ltb" = (
 /obj/effect/turf_decal/tile/red{
 	dir = 8
@@ -60505,6 +60540,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3,
+/obj/effect/landmark/nuclear_waste_spawner,
 /turf/open/floor/plasteel,
 /area/security/checkpoint/engineering)
 "mco" = (
@@ -65824,6 +65860,16 @@
 	},
 /turf/open/floor/plasteel,
 /area/security/brig)
+"ofu" = (
+/obj/structure/cable/white{
+	icon_state = "1-4"
+	},
+/obj/structure/cable/white{
+	icon_state = "4-8"
+	},
+/obj/effect/landmark/nuclear_waste_spawner/strong,
+/turf/open/floor/engine,
+/area/engine/engineering/reactor_core)
 "ofy" = (
 /obj/effect/turf_decal/tile/purple{
 	dir = 1
@@ -67661,6 +67707,7 @@
 /obj/structure/cable/white{
 	icon_state = "2-8"
 	},
+/obj/effect/landmark/nuclear_waste_spawner/strong,
 /turf/open/floor/engine,
 /area/engine/engineering/reactor_core)
 "oOs" = (
@@ -130543,7 +130590,7 @@ bKr
 bKr
 bKr
 apc
-apc
+lid
 alq
 alq
 iJW
@@ -133883,7 +133930,7 @@ bMh
 qCJ
 ieJ
 pHf
-iBo
+lsL
 iBo
 bUD
 oNb
@@ -134387,7 +134434,7 @@ tUN
 sph
 rew
 eLx
-bCv
+frJ
 bDZ
 bFT
 bHz
@@ -134877,7 +134924,7 @@ deI
 deW
 aMm
 dfd
-deN
+gfz
 dft
 dBB
 dbh
@@ -136161,7 +136208,7 @@ ddZ
 ddZ
 ddZ
 aMo
-ddZ
+evA
 ddZ
 ddZ
 dfB
@@ -138522,7 +138569,7 @@ sna
 vcF
 iQp
 xed
-tPl
+ofu
 kOU
 beI
 udJ
