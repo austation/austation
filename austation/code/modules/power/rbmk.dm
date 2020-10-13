@@ -924,3 +924,12 @@ The reactor CHEWS through moderator. It does not do this slowly. Be very careful
 	icon = 'austation/icons/obj/inflatable.dmi'
 	icon_state = "sealant"
 	w_class = 1
+
+/area/engine/engineering/reactor_core
+	name = "Nuclear Reactor Core"
+
+/area/engine/engineering/reactor_control
+	name = "Reactor Control Room"
+
+/area/engine/engineering/reactor_room
+	name = "Reactor Section"
