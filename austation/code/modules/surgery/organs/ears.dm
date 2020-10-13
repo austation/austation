@@ -23,7 +23,7 @@
 		H.dna.species.mutant_bodyparts -= "ears"
 		H.update_body()
 
-/obj/item/organ/cybernetic_ears
+/obj/item/organ/ears/cybernetic_ears
 	name = "Robotic ears"
 	icon_state = "cyb_ears"
 	desc = "There are three parts to the ear. Inner, middle and outer. Only one of these parts should be normally visible."
