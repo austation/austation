@@ -21,9 +21,7 @@
 
 // Derelict drones don't speak machine, as its too modern for them.
 /datum/language_holder/drone/derelict
-	understood_languages = list(/datum/language/drone = list(LANGUAGE_ATOM),
-								/datum/language/machine = list(LANGUAGE_ATOM),
-								/datum/language/common = list(LANGUAGE_ATOM))
+	understood_languages = list(/datum/language/drone = list(LANGUAGE_ATOM))
 	spoken_languages = list(/datum/language/drone = list(LANGUAGE_ATOM))
 
 // Overwrites but references the upstream handle_message proc for binary. This allows drones to speak on binary, but
