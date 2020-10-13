@@ -23163,7 +23163,7 @@
 /turf/open/floor/plasteel,
 /area/hallway/primary/central)
 "bVi" = (
-/obj/machinery/atmospherics/pipe/simple/purple,
+/obj/machinery/atmospherics/pipe/simple/purple/visible,
 /turf/closed/wall/r_wall,
 /area/engine/engineering/reactor_core)
 "bVj" = (
@@ -56193,8 +56193,9 @@
 	},
 /obj/structure/cable/yellow,
 /obj/machinery/power/apc/highcap/ten_k{
-	areastring = "area/engine/engineering/reactor_core";
-	name = "Fission Reactor Core APC";
+	areastring = "/area/engine/engineering/reactor_core";
+	dir = 4;
+	name = "Reactor Core APC";
 	pixel_x = 24
 	},
 /turf/open/floor/engine,
@@ -58790,6 +58791,7 @@
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
 	},
+/obj/machinery/portable_atmospherics/canister/nitrogen,
 /turf/open/floor/engine,
 /area/engine/engineering/reactor_core)
 "lrM" = (
@@ -71105,13 +71107,13 @@
 /turf/open/floor/plating,
 /area/hallway/primary/fore)
 "qhs" = (
-/obj/machinery/atmospherics/pipe/simple/purple,
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
 /obj/structure/cable/white{
 	icon_state = "4-8"
 	},
+/obj/machinery/atmospherics/pipe/simple/purple/visible,
 /turf/open/floor/engine,
 /area/engine/engineering/reactor_core)
 "qhC" = (
@@ -75274,7 +75276,8 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
-/obj/machinery/computer/reactor/pump,
+/obj/item/paper_bin,
+/obj/item/pen,
 /turf/open/floor/plasteel/dark,
 /area/engine/engineering/reactor_control)
 "rUK" = (
@@ -81085,10 +81088,6 @@
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/layer1,
 /turf/open/floor/plasteel,
 /area/hallway/primary/starboard)
-"uls" = (
-/obj/machinery/power/floodlight,
-/turf/open/floor/engine,
-/area/engine/engineering/reactor_core)
 "ult" = (
 /obj/machinery/navbeacon{
 	codes_txt = "patrol;next_patrol=14.5-Recreation";
@@ -88671,7 +88670,7 @@
 /area/maintenance/fore)
 "xsO" = (
 /obj/effect/spawner/structure/window/plasma/reinforced,
-/obj/machinery/atmospherics/pipe/simple/purple,
+/obj/machinery/atmospherics/pipe/simple/purple/visible,
 /turf/open/floor/plating,
 /area/engine/engineering/reactor_core)
 "xtO" = (
@@ -139353,7 +139352,7 @@ oAh
 jef
 qXg
 lrz
-uls
+nVz
 dkd
 iem
 qOe
