@@ -86,6 +86,10 @@
 		if(isliving(AM) && (locate(/obj/structure/pool/ladder) in src))
 			return ..()			//climbing out
 		return istype(newloc, /turf/open/pool)
+	if(istype(AM, /obj/item/twohanded/required/fuel_rod)
+		if(filled)
+			var/obj/item/twohanded/required/fuel_rod/FC = AM
+			START_PROCESSING(SSradiation, FC)
 	return ..()
 
 // Exited logic
@@ -98,6 +102,10 @@
 
 // Entered logic
 /turf/open/pool/Entered(atom/movable/AM, atom/oldloc)
+	if(istype(AM, /obj/item/twohanded/required/fuel_rod)
+		if(filled)
+			var/obj/item/twohanded/required/fuel_rod/FC = AM
+			STOP_PROCESSING(SSradiation, FC)
 	if(istype(AM, /obj/effect/decal/cleanable))
 		var/obj/effect/decal/cleanable/C = AM
 		if(C.bloodiness == null)
