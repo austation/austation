@@ -20754,7 +20754,7 @@
 /area/engine/atmos)
 "bMh" = (
 /obj/machinery/meter,
-/obj/machinery/atmospherics/pipe/manifold4w,
+/obj/machinery/atmospherics/pipe/manifold4w/general/visible,
 /turf/open/floor/plasteel,
 /area/engine/atmos)
 "bMi" = (
@@ -41064,8 +41064,8 @@
 /turf/open/floor/plating,
 /area/maintenance/starboard)
 "dUd" = (
-/obj/machinery/atmospherics/pipe/layer_manifold,
 /obj/machinery/meter,
+/obj/machinery/atmospherics/pipe/layer_manifold/visible,
 /turf/closed/wall/r_wall,
 /area/engine/engineering/reactor_control)
 "dUl" = (
@@ -43661,8 +43661,8 @@
 /turf/closed/wall,
 /area/hallway/secondary/entry)
 "fdn" = (
-/obj/machinery/atmospherics/pipe/layer_manifold/visible,
 /obj/effect/landmark/nuclear_waste_spawner/strong,
+/obj/machinery/atmospherics/pipe/layer_manifold/visible,
 /turf/open/floor/engine,
 /area/engine/engineering/reactor_core)
 "fdr" = (
@@ -44217,11 +44217,11 @@
 /turf/open/floor/plasteel/dark,
 /area/security/brig)
 "fqf" = (
-/obj/machinery/atmospherics/components/unary/portables_connector{
-	dir = 1
-	},
 /obj/structure/cable/white{
 	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/components/unary/portables_connector/visible{
+	dir = 1
 	},
 /turf/open/floor/engine,
 /area/engine/engineering/reactor_core)
@@ -46315,7 +46315,7 @@
 /turf/open/floor/plating,
 /area/maintenance/fore)
 "gkV" = (
-/obj/machinery/atmospherics/components/unary/portables_connector{
+/obj/machinery/atmospherics/components/unary/portables_connector/visible{
 	dir = 1
 	},
 /turf/open/floor/engine,
@@ -47815,10 +47815,10 @@
 /obj/machinery/atmospherics/pipe/simple/cyan/visible/layer1{
 	dir = 8
 	},
-/obj/machinery/atmospherics/components/unary/portables_connector/layer1{
+/obj/effect/turf_decal/stripes/line,
+/obj/machinery/atmospherics/components/unary/portables_connector/visible/layer1{
 	dir = 1
 	},
-/obj/effect/turf_decal/stripes/line,
 /turf/open/floor/engine,
 /area/engine/engineering/reactor_core)
 "gSi" = (
@@ -49012,6 +49012,10 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1,
 /turf/open/floor/plasteel/white,
 /area/security/brig)
+"hpL" = (
+/obj/machinery/atmospherics/pipe/layer_manifold/visible,
+/turf/open/floor/engine,
+/area/engine/engineering/reactor_core)
 "hpO" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 10
@@ -58427,7 +58431,7 @@
 /turf/open/floor/plasteel,
 /area/hallway/primary/fore)
 "lgO" = (
-/obj/machinery/atmospherics/pipe/layer_manifold,
+/obj/machinery/atmospherics/pipe/layer_manifold/visible,
 /turf/closed/wall/r_wall,
 /area/engine/engineering/reactor_core)
 "lhb" = (
@@ -75199,7 +75203,7 @@
 	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/simple/cyan/visible/layer1,
-/obj/machinery/atmospherics/components/unary/portables_connector,
+/obj/machinery/atmospherics/components/unary/portables_connector/visible,
 /turf/open/floor/engine,
 /area/engine/engineering/reactor_core)
 "rTh" = (
@@ -140366,7 +140370,7 @@ fTQ
 lgO
 ksv
 gRQ
-qOe
+hpL
 gkV
 nVz
 juP
@@ -140880,7 +140884,7 @@ jza
 juP
 mYp
 fSQ
-qOe
+hpL
 gkV
 nVz
 juP
