@@ -25,7 +25,8 @@
 
 /obj/item/organ/ears/cybernetic_ears
 	name = "Robotic ears"
+	icon = 'austation/icons/obj/ausurgery.dmi'
 	icon_state = "cyb_ears"
-	desc = "There are three parts to the ear. Inner, middle and outer. Only one of these parts should be normally visible."
+	desc = "A pair of cybernetic ears for when the ones in your head fail."
 	status = ORGAN_ROBOTIC
 	organ_flags = ORGAN_SYNTHETIC
