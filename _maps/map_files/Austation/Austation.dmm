@@ -44223,7 +44223,7 @@
 /obj/machinery/atmospherics/components/unary/portables_connector/visible{
 	dir = 1
 	},
-/turf/open/floor/engine,
+/turf/open/floor/plating,
 /area/engine/engineering/reactor_core)
 "fqs" = (
 /obj/structure/bed,
@@ -46318,7 +46318,7 @@
 /obj/machinery/atmospherics/components/unary/portables_connector/visible{
 	dir = 1
 	},
-/turf/open/floor/engine,
+/turf/open/floor/plating,
 /area/engine/engineering/reactor_core)
 "gld" = (
 /obj/machinery/holopad,
@@ -56563,7 +56563,7 @@
 /area/security/execution/education)
 "kqM" = (
 /obj/machinery/light,
-/turf/open/floor/engine,
+/turf/open/floor/plating,
 /area/engine/engineering/reactor_core)
 "krk" = (
 /obj/machinery/light/small{
@@ -63454,7 +63454,7 @@
 /area/medical/plumbing)
 "nnu" = (
 /obj/structure/cable/white,
-/turf/open/floor/engine,
+/turf/open/floor/plating,
 /area/engine/engineering/reactor_core)
 "nnM" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
@@ -64444,7 +64444,7 @@
 /area/hallway/primary/central)
 "nHr" = (
 /obj/machinery/atmospherics/pipe/layer_manifold/visible,
-/turf/open/floor/engine,
+/turf/open/floor/plating,
 /area/engine/engineering/reactor_core)
 "nHH" = (
 /obj/machinery/door_timer{
@@ -81096,6 +81096,9 @@
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/layer1,
 /turf/open/floor/plasteel,
 /area/hallway/primary/starboard)
+"uls" = (
+/turf/open/floor/plating,
+/area/engine/engineering/reactor_core)
 "ult" = (
 /obj/machinery/navbeacon{
 	codes_txt = "patrol;next_patrol=14.5-Recreation";
@@ -140393,7 +140396,7 @@ ksv
 gRQ
 nHr
 gkV
-nVz
+uls
 juP
 lmf
 lmf
@@ -140907,7 +140910,7 @@ mYp
 fSQ
 nHr
 gkV
-nVz
+uls
 juP
 lmf
 lmf
