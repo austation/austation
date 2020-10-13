@@ -102,7 +102,7 @@
 
 // Entered logic
 /turf/open/pool/Entered(atom/movable/AM, atom/oldloc)
-	if(istype(AM, /obj/item/twohanded/required/fuel_rod)
+	if(istype(AM, /obj/item/twohanded/required/fuel_rod))
 		if(filled)
 			var/obj/item/twohanded/required/fuel_rod/FC = AM
 			STOP_PROCESSING(SSradiation, FC)
