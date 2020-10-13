@@ -38943,8 +38943,8 @@
 /turf/open/floor/plating,
 /area/maintenance/starboard/fore)
 "dkj" = (
-/obj/machinery/atmospherics/components/trinary/nuclear_reactor,
 /obj/structure/cable/white,
+/obj/machinery/atmospherics/components/trinary/nuclear_reactor/preset,
 /turf/open/floor/engine,
 /area/engine/engineering/reactor_core)
 "dkC" = (
