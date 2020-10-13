@@ -930,6 +930,3 @@ The reactor CHEWS through moderator. It does not do this slowly. Be very careful
 
 /area/engine/engineering/reactor_control
 	name = "Reactor Control Room"
-
-/obj/machinery/modular_computer/console/preset/engineering/install_programs()
-	hard_drive.store_file(new/datum/computer_file/program/nuclear_monitor())
