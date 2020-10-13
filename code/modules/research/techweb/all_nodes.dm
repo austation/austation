@@ -527,7 +527,7 @@
 	display_name = "Upgraded Cybernetic Organs"
 	description = "We have the technology to upgrade him."
 	prereq_ids = list("cyber_organs")
-	design_ids = list("cybernetic_heart_u", "cybernetic_liver_u", "cybernetic_lungs_u","catcybernetic") //austation - is this too far?, yeah adds cybernetic catears, cruel and unusal punishment
+	design_ids = list("cybernetic_heart_u", "cybernetic_liver_u", "cybernetic_lungs_u","catcybernetic","cybernetic_ears") //austation - is this too far?, yeah adds cybernetic catears and regular ears, cruel and unusal punishment
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 1500)
 	export_price = 5000
 
