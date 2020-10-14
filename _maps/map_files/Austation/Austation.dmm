@@ -5927,6 +5927,11 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plasteel,
 /area/quartermaster/warehouse)
+"aAS" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1,
+/obj/effect/spawner/structure/window/reinforced/shutter,
+/turf/open/floor/plating,
+/area/engine/atmos)
 "aAT" = (
 /obj/effect/turf_decal/bot_white/left,
 /obj/structure/closet/crate/silvercrate,
@@ -10265,6 +10270,12 @@
 	},
 /turf/open/floor/plasteel,
 /area/hallway/primary/starboard)
+"aTs" = (
+/obj/machinery/atmospherics/pipe/simple/purple/visible/layer1{
+	dir = 10
+	},
+/turf/open/space/basic,
+/area/space)
 "aTD" = (
 /obj/structure/cable/yellow{
 	icon_state = "0-4"
@@ -40885,13 +40896,6 @@
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/layer1,
 /turf/open/floor/plasteel,
 /area/science/explab)
-"dPO" = (
-/obj/structure/lattice,
-/obj/machinery/atmospherics/pipe/simple/purple/visible/layer1{
-	dir = 4
-	},
-/turf/open/space/basic,
-/area/space/nearstation)
 "dPU" = (
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
@@ -44495,6 +44499,13 @@
 /obj/machinery/atmospherics/pipe/heat_exchanging/junction,
 /turf/open/floor/plasteel/kitchen_coldroom/freezerfloor,
 /area/crew_quarters/kitchen/coldroom)
+"fwu" = (
+/obj/structure/lattice,
+/obj/machinery/atmospherics/pipe/simple/purple/visible/layer1{
+	dir = 4
+	},
+/turf/open/space,
+/area/space/nearstation)
 "fwP" = (
 /mob/living/simple_animal/pet/dog/pug{
 	desc = "It's Pugley IV, the research department's lovable pug clone. Hopefully nothing happens to this one - fourth time lucky!";
@@ -53639,10 +53650,6 @@
 	},
 /turf/open/floor/plasteel,
 /area/hallway/primary/central)
-"jkI" = (
-/obj/machinery/atmospherics/pipe/simple/purple/visible/layer1,
-/turf/closed/wall/r_wall,
-/area/engine/engineering/reactor_control)
 "jkK" = (
 /obj/structure/cable/yellow{
 	icon_state = "2-8"
@@ -54257,6 +54264,13 @@
 	},
 /turf/open/floor/plating,
 /area/maintenance/starboard/aft)
+"juz" = (
+/obj/machinery/atmospherics/pipe/simple/cyan/visible,
+/obj/machinery/atmospherics/pipe/simple/purple/visible/layer1{
+	dir = 4
+	},
+/turf/open/floor/plasteel/dark,
+/area/engine/atmos)
 "juG" = (
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
@@ -54946,6 +54960,10 @@
 	icon_state = "platingdmg2"
 	},
 /area/maintenance/aft)
+"jHD" = (
+/obj/machinery/atmospherics/pipe/simple/purple/visible/layer1,
+/turf/closed/wall/r_wall,
+/area/engine/engineering/reactor_control)
 "jHS" = (
 /obj/structure/cable/yellow{
 	icon_state = "1-4"
@@ -57891,6 +57909,14 @@
 	},
 /turf/open/floor/plasteel,
 /area/janitor)
+"kSU" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1,
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3,
+/obj/machinery/atmospherics/pipe/simple/purple/visible/layer1{
+	dir = 4
+	},
+/turf/closed/wall/r_wall,
+/area/engine/atmos)
 "kSY" = (
 /obj/effect/spawner/structure/window/reinforced,
 /obj/machinery/door/firedoor/window,
@@ -58251,13 +58277,6 @@
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer1,
 /turf/open/floor/plasteel,
 /area/crew_quarters/locker)
-"ldF" = (
-/obj/machinery/atmospherics/pipe/simple/cyan/visible,
-/obj/machinery/atmospherics/pipe/simple/purple/visible/layer1{
-	dir = 4
-	},
-/turf/open/floor/plasteel/dark,
-/area/engine/atmos)
 "ldT" = (
 /obj/structure/extinguisher_cabinet{
 	pixel_x = 27
@@ -58305,6 +58324,13 @@
 	},
 /turf/open/floor/plasteel/grimy,
 /area/security/main)
+"leG" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
+	dir = 4
+	},
+/obj/effect/spawner/structure/window/reinforced/shutter,
+/turf/open/floor/plating,
+/area/engine/atmos)
 "leJ" = (
 /obj/machinery/light_switch{
 	pixel_y = -25
@@ -63239,12 +63265,6 @@
 	},
 /turf/open/floor/plasteel,
 /area/engine/atmos)
-"nho" = (
-/obj/machinery/atmospherics/pipe/simple/purple/visible/layer1{
-	dir = 10
-	},
-/turf/open/space/basic,
-/area/space)
 "nhu" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3,
@@ -63395,12 +63415,6 @@
 	},
 /turf/open/floor/plasteel/white,
 /area/science/xenobiology)
-"nkR" = (
-/obj/machinery/atmospherics/pipe/simple/purple/visible/layer1{
-	dir = 4
-	},
-/turf/open/space/basic,
-/area/space)
 "nln" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -72621,6 +72635,13 @@
 	},
 /turf/open/floor/plasteel,
 /area/science/mixing)
+"qNP" = (
+/obj/structure/lattice,
+/obj/machinery/atmospherics/pipe/simple/purple/visible/layer1{
+	dir = 4
+	},
+/turf/open/space/basic,
+/area/space/nearstation)
 "qNX" = (
 /obj/structure/table,
 /obj/item/storage/pill_bottle/dice,
@@ -79376,6 +79397,11 @@
 	},
 /turf/open/floor/plasteel,
 /area/hallway/primary/port)
+"tBn" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3,
+/obj/effect/spawner/structure/window/reinforced/shutter,
+/turf/open/floor/plating,
+/area/engine/atmos)
 "tBs" = (
 /obj/machinery/light{
 	dir = 4
@@ -81637,14 +81663,6 @@
 	},
 /turf/open/floor/plating,
 /area/maintenance/central)
-"uyP" = (
-/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1,
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3,
-/obj/machinery/atmospherics/pipe/simple/purple/visible/layer1{
-	dir = 4
-	},
-/turf/closed/wall/r_wall,
-/area/engine/atmos)
 "uzT" = (
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
@@ -83271,6 +83289,12 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/crew_quarters/fitness/recreation)
+"vfp" = (
+/obj/machinery/atmospherics/pipe/simple/purple/visible/layer1{
+	dir = 4
+	},
+/turf/open/space/basic,
+/area/space)
 "vfy" = (
 /obj/machinery/door/airlock/maintenance{
 	req_access_txt = "12"
@@ -84434,6 +84458,13 @@
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/layer1,
 /turf/open/floor/plasteel/dark,
 /area/medical/surgery)
+"vFY" = (
+/obj/structure/lattice,
+/obj/machinery/atmospherics/pipe/simple/purple/visible/layer1{
+	dir = 9
+	},
+/turf/open/space/basic,
+/area/space/nearstation)
 "vGe" = (
 /obj/item/crowbar,
 /obj/item/wrench,
@@ -87850,13 +87881,6 @@
 	icon_state = "panelscorched"
 	},
 /area/maintenance/port/fore)
-"xam" = (
-/obj/structure/lattice,
-/obj/machinery/atmospherics/pipe/simple/purple/visible/layer1{
-	dir = 9
-	},
-/turf/open/space/basic,
-/area/space/nearstation)
 "xbk" = (
 /obj/machinery/door/airlock/external{
 	name = "Supply Dock Airlock";
@@ -88700,13 +88724,6 @@
 /obj/machinery/atmospherics/pipe/simple/purple/visible,
 /turf/open/floor/plating,
 /area/engine/engineering/reactor_core)
-"xtr" = (
-/obj/structure/lattice,
-/obj/machinery/atmospherics/pipe/simple/purple/visible/layer1{
-	dir = 4
-	},
-/turf/open/space,
-/area/space/nearstation)
 "xtO" = (
 /obj/effect/turf_decal/tile/neutral,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
@@ -135265,7 +135282,7 @@ bIZ
 fzW
 bMl
 bYB
-ldF
+juz
 bKG
 ccV
 qzZ
@@ -135522,7 +135539,7 @@ isy
 usu
 gEK
 nFa
-uyP
+kSU
 wyo
 vKo
 rsZ
@@ -135779,10 +135796,10 @@ bJb
 aaf
 bFY
 aaf
-xtr
+fwu
 pTP
 bWn
-mqr
+leG
 aaf
 aaf
 aaf
@@ -136036,7 +136053,7 @@ bCA
 gJs
 bFZ
 bAR
-xtr
+fwu
 pTP
 gvG
 mqr
@@ -136293,10 +136310,10 @@ bUI
 bVN
 bXr
 bAR
-xtr
+fwu
 pTP
 bWn
-mqr
+leG
 aaf
 aaa
 aaf
@@ -136550,11 +136567,11 @@ bUJ
 bVO
 bUJ
 bAR
-xtr
+fwu
 pTP
 bWn
 uID
-cgD
+aAS
 cgD
 chW
 cjn
@@ -136807,7 +136824,7 @@ bUJ
 bVP
 bXs
 bAR
-xtr
+fwu
 pTP
 bWn
 mhC
@@ -137064,11 +137081,11 @@ bAR
 bAR
 bAR
 bAR
-xtr
+fwu
 ccZ
 ccY
 lBp
-cgE
+tBn
 cgE
 chX
 cjn
@@ -137321,10 +137338,10 @@ aaf
 aaf
 aaf
 aaf
-xtr
+fwu
 pTP
 bWn
-mqr
+leG
 aaf
 aaa
 aaf
@@ -137578,7 +137595,7 @@ aaa
 aaa
 aaa
 aaa
-xtr
+fwu
 pTP
 bWn
 mqr
@@ -137835,10 +137852,10 @@ bzj
 bzj
 bzj
 hVj
-xam
+vFY
 pTP
 gvG
-mqr
+leG
 aaf
 vcA
 aai
@@ -138091,7 +138108,7 @@ aaf
 aaa
 aaa
 aaa
-nkR
+vfp
 vcF
 qiT
 vbo
@@ -138348,7 +138365,7 @@ bJf
 bzi
 bzi
 bzi
-dPO
+qNP
 vcF
 ckK
 bec
@@ -138605,7 +138622,7 @@ aaf
 aaa
 aaa
 aaa
-nkR
+vfp
 vcF
 ckL
 fKB
@@ -138862,7 +138879,7 @@ aai
 bzj
 bzj
 bzj
-dPO
+qNP
 vcF
 tAv
 xAu
@@ -139119,7 +139136,7 @@ aaa
 aaa
 aaa
 bzi
-nkR
+vfp
 vcF
 qiT
 fcv
@@ -139376,7 +139393,7 @@ aaa
 aaa
 aaa
 bzi
-dPO
+qNP
 vcF
 tFn
 oAh
@@ -139633,7 +139650,7 @@ aaa
 aaa
 aaa
 bzi
-nkR
+vfp
 vcF
 rTZ
 hdT
@@ -139890,7 +139907,7 @@ aaa
 aaa
 aaa
 bzi
-nkR
+vfp
 vcF
 jNa
 xrK
@@ -140147,8 +140164,8 @@ aaa
 aaa
 aaa
 bzi
-nho
-jkI
+aTs
+jHD
 oQM
 lGj
 jSa
