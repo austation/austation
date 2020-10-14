@@ -346,6 +346,24 @@ The reactor CHEWS through moderator. It does not do this slowly. Be very careful
 					if(!grilled_item.foodtype & FRIED)
 						grilled_item.foodtype |= FRIED
 
+/obj/machinery/atmospherics/components/trinary/nuclear_reactor/proc/relay(var/sound, var/message=null, loop = FALSE, channel = null) //Sends a sound + text message to the crew of a ship
+	for(var/mob/M in GLOB.player_list)
+		if(M.z == z)
+			var/area/A = get_area(M)
+			if(A != subtypesof(/area/space))
+				if(sound)
+					if(channel) //Doing this forbids overlapping of sounds
+						SEND_SOUND(M, sound(sound, repeat = loop, wait = 0, volume = 100, channel = channel))
+					else
+						SEND_SOUND(M, sound(sound, repeat = loop, wait = 0, volume = 100))
+				if(message)
+					to_chat(M, message)
+
+/obj/machinery/atmospherics/components/trinary/nuclear_reactor/proc/stop_relay(channel) //Stops all playing sounds for crewmen on N channel.
+	for(var/mob/M in GLOB.player_list)
+		if(M.z == z)
+			M.stop_sound_channel(channel)
+
 //Method to handle sound effects, reactor warnings, all that jazz.
 /obj/machinery/atmospherics/components/trinary/nuclear_reactor/proc/handle_alerts()
 	var/alert = FALSE //If we have an alert condition, we'd best let people know.
@@ -379,6 +397,7 @@ The reactor CHEWS through moderator. It does not do this slowly. Be very careful
 			return
 	if(warning)
 		if(!alert) //Congrats! You stopped the meltdown / blowout.
+			stop_relay(CHANNEL_REACTOR_ALERT)
 			warning = FALSE
 			set_light(0)
 			light_color = LIGHT_COLOR_CYAN
@@ -390,6 +409,7 @@ The reactor CHEWS through moderator. It does not do this slowly. Be very careful
 			return
 		next_warning = world.time + 30 SECONDS //To avoid engis pissing people off when reaaaally trying to stop the meltdown or whatever.
 		warning = TRUE //Start warning the crew of the imminent danger.
+		relay('austation/sound/effects/rbmk/alarm.ogg', null, loop=TRUE, channel = CHANNEL_REACTOR_ALERT)
 		set_light(0)
 		light_color = LIGHT_COLOR_RED
 		set_light(10)
@@ -405,10 +425,8 @@ The reactor CHEWS through moderator. It does not do this slowly. Be very careful
 	icon_state = "reactor_slagged"
 	AddComponent(/datum/component/radioactive, 15000 , src)
 	var/obj/effect/landmark/nuclear_waste_spawner/NSW = new /obj/effect/landmark/nuclear_waste_spawner/strong(get_turf(src))
-	for(var/mob/M in GLOB.player_list)
-		if(M.z == z)
-			SEND_SOUND(M, 'austation/sound/effects/rbmk/meltdown.ogg')
-			to_chat(M, "<span class='userdanger'>You hear a horrible metallic hissing.</span>")
+	relay('austation/sound/effects/rbmk/meltdown.ogg', "<span class='userdanger'>You hear a horrible metallic hissing.</span>")
+	stop_relay(CHANNEL_REACTOR_ALERT)
 	NSW.fire() //This will take out engineering for a decent amount of time as they have to clean up the sludge.
 	for(var/obj/machinery/power/apc/apc in GLOB.apcs_list)
 		if(prob(70))
