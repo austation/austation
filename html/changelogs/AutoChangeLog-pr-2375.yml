@@ -1,0 +1,5 @@
+author: "jupyterkat"
+delete-after: True
+changes: 
+  - rscadd: "Nanotrasen has assigned this station an experimental fission reactor using exotic gases to moderate"
+  - rscadd: "Added flex seals"
