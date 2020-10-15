@@ -14,7 +14,7 @@
 	if(depletion >= 40)
 		fuel_power = 0.40 // twice as powerful as plutonium, you'll want to get this one out quick!
 		name = "Exhausted Telecrystal Fuel Rod"
-		desc = "A highly energetic titanium sheathed rod containing a sizeable measure of fully grown telecrystals which can be removed by hand, it's extremely efficient as nuclear fuel, but will cause the reaction to get out of control if not properly utilised."
+		desc = "A highly energetic titanium sheathed rod containing a sizeable measure of telecrystal slots which can be removed by hand, it's extremely efficient as nuclear fuel, but will cause the reaction to get out of control if not properly utilised."
 		icon_state = "telecrystal_used"
 		grown = TRUE
 	else
@@ -47,12 +47,21 @@
 	if(grown)
 		to_chat(user, "<span class='notice'> You remove [telecrystal_amount] telecrystals from the [src].</span>")
 		var/obj/item/stack/telecrystal/tc = new(get_turf(src))
-		tc.amount = round(telecrystal_amount * multiplier)
+		tc.amount = round(telecrystal_amount * multiplier, 1)
 		expended = TRUE
+		telecyrstal_amount = 0
 		return
 
 	else
 		var/depletion_percentage = min(depletion / 40 * 100, 100) // can't go above 100%
 		to_chat(user, "<span class='warning'> The [src] has not fissiled enough to fully grow the sample. the progress bar shows it is [depletion_percentage]% complete. </span>")
 
+/obj/item/twohanded/required/fuel_rod/telecrystal/examine(mob/user)
+	. = ..()
+	if(expended)
+		. += "<span class='warning'>The material slots have been removed.</span>"
+		return
+	if(depletion)
+		. += "<span class='danger'>The sample is [depletion_percentage]% fissiled.</span>"
 
+	. += "<span class='disarm'>[telecyrstal_amount]/[max_telecrystal_amount] of the telecrystal slots are full.</span>"
