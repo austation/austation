@@ -3,13 +3,14 @@
 	desc = "A disguised titanium sheathed rod containing a measure of small telecrystals slots infused with uranium dioxide, can be inserted with telecrystals to grow more. Fissiles much faster than it's uranium counterpart"
 	icon_state = "telecrystal"
 	fuel_power = 0.20 // twice as powerful as a normal rod, you're going to need some engineering autism if you plan to mass produce TC
-	var/telecyrstal_amount = 0 // amount of telecrystals inside the rod?
+	var/telecrystal_amount = 0 // amount of telecrystals inside the rod?
 	var/max_telecrystal_amount = 8 // the max amount of TC that can be in the rod?
 	var/grown = FALSE // has the rod fissiled enough for us to remove the grown TC?
 	var/expended = FALSE // have we removed the TC already?
 	var/multiplier = 1.6 // how much do we multiply the inserted TC by?
 
-/obj/item/twohanded/required/fuel_rod/telecrystal/proc/deplete(amount=0.035)
+
+/obj/item/twohanded/required/fuel_rod/telecrystal/deplete(amount=0.035)
 	depletion += amount
 	if(depletion >= 40)
 		fuel_power = 0.40 // twice as powerful as plutonium, you'll want to get this one out quick!
@@ -49,12 +50,11 @@
 		var/obj/item/stack/telecrystal/tc = new(get_turf(src))
 		tc.amount = round(telecrystal_amount * multiplier, 1)
 		expended = TRUE
-		telecyrstal_amount = 0
+		telecrystal_amount = 0
 		return
 
 	else
-		var/depletion_percentage = min(depletion / 40 * 100, 100) // can't go above 100%
-		to_chat(user, "<span class='warning'> The [src] has not fissiled enough to fully grow the sample. the progress bar shows it is [depletion_percentage]% complete. </span>")
+		to_chat(user, "<span class='warning'> The [src] has not fissiled enough to fully grow the sample. the progress bar shows it is [min(depletion / 40 * 100, 100)]% complete. </span>")
 
 /obj/item/twohanded/required/fuel_rod/telecrystal/examine(mob/user)
 	. = ..()
@@ -62,6 +62,6 @@
 		. += "<span class='warning'>The material slots have been removed.</span>"
 		return
 	if(depletion)
-		. += "<span class='danger'>The sample is [depletion_percentage]% fissiled.</span>"
+		. += "<span class='danger'>The sample is [min(depletion / 40 * 100, 100)]% fissiled.</span>"
 
-	. += "<span class='disarm'>[telecyrstal_amount]/[max_telecrystal_amount] of the telecrystal slots are full.</span>"
+	. += "<span class='disarm'>[telecrystal_amount]/[max_telecrystal_amount] of the telecrystal slots are full.</span>"
