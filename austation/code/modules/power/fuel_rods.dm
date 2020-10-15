@@ -1,6 +1,6 @@
 /obj/item/twohanded/required/fuel_rod/telecrystal
 	name = "Telecrystal Fuel Rod"
-	desc = "A titanium sheathed rod containing a measure of small telecrystals slots infused with uranium dioxide, can be inserted with telecrystals to grow more. Fissiles much faster than it's uranium counterpart"
+	desc = "A disguised titanium sheathed rod containing a measure of small telecrystals slots infused with uranium dioxide, can be inserted with telecrystals to grow more. Fissiles much faster than it's uranium counterpart"
 	icon_state = "telecrystal"
 	fuel_power = 0.20 // twice as powerful as a normal rod, you're going to need some engineering autism if you plan to mass produce TC
 	var/telecyrstal_amount = 0 // amount of telecrystals inside the rod?
@@ -14,7 +14,7 @@
 	if(depletion >= 40)
 		fuel_power = 0.40 // twice as powerful as plutonium, you'll want to get this one out quick!
 		name = "Exhausted Telecrystal Fuel Rod"
-		desc = "A highly energetic titanium sheathed rod containing a sizeable measure of telecrystal slots which can be removed by hand, it's extremely efficient as nuclear fuel, but will cause the reaction to get out of control if not properly utilised."
+		desc = "A highly energetic disguised titanium sheathed rod containing a sizeable measure of telecrystal slots which can be removed by hand, it's extremely efficient as nuclear fuel, but will cause the reaction to get out of control if not properly utilised."
 		icon_state = "telecrystal_used"
 		grown = TRUE
 	else
