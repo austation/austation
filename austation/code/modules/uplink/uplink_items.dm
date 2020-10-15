@@ -15,7 +15,7 @@
 	item = /obj/item/sharpener/bluespace
 	restricted_roles = list("Cook")
 
-/datum/uplink_item/device_tools/powersink
+/datum/uplink_item/device_tools/tc_rod
 	name = "Telecrystal Fuel Rod"
 	desc = "This special fuel rod has eight material slots that can be inserted with telecrystals, \
 			once the rod has been fully depleted, you will be able to harvest the extra telecrystals. \
