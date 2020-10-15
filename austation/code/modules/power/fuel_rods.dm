@@ -2,7 +2,7 @@
 	name = "Telecrystal Fuel Rod"
 	desc = "A titanium sheathed rod containing a measure of small telecrystals slots infused with uranium dioxide, can be inserted with telecrystals to grow more. Fissiles much faster than it's uranium counterpart"
 	icon_state = "telecrystal"
-	fuel_power = 0.20 // twice as powerful as a normal rod
+	fuel_power = 0.20 // twice as powerful as a normal rod, you're going to need some engineering autism if you plan to mass produce TC
 	var/telecyrstal_amount = 0 // amount of telecrystals inside the rod?
 	var/max_telecrystal_amount = 8 // the max amount of TC that can be in the rod?
 	var/grown = FALSE // has the rod fissiled enough for us to remove the grown TC?
@@ -21,12 +21,23 @@
 		fuel_power = 0.20
 
 /obj/item/twohanded/required/fuel_rod/telecrystal/attackby(obj/item/W, mob/user, params)
-	if(istype(W, /obj/item/stack/telecrystal))
-		var/obj/item/stack/telecrystal/M = W
-		if(M.amount + telecrystal_amount >= max_telecrystal_amount) // does adding this many crystals push us over the capacity?
-			var/added_amount = M.amount - (max_telecrystal_amount - telecrystal_amount)
-			to_chat(user, "<span class='warning'> The sample slots are full!</span>")
-		M.amount += telecrystal_amount
+	if(depletion >= 10)
+		to_chat(user, "<span class='warning'> The sample slots have sealed themselves shut, it's too late to add crystals now!</span>")
+		return
+
+	if(!expended) // can't add crystals to a used rod!
+		if(istype(W, /obj/item/stack/telecrystal))
+			var/obj/item/stack/telecrystal/M = W
+			if(M.amount + telecrystal_amount >= max_telecrystal_amount) // does adding this many crystals push us over the capacity?
+				var/added_amount = M.amount - (max_telecrystal_amount - telecrystal_amount)
+				M.amount -= added_amount
+				telecrystal_amount += added_amount
+				to_chat(user, "<span class='warning'> The sample slots are full!</span>")
+			else
+				M.amount += telecrystal_amount
+				to_chat(user, "<span class='notice'> You insert [M.amount] telecrystals into the [src].</span>")
+	else
+		to_chat(user, "<span class='warning'> The [src]'s material slots have already been used.</span>")
 
 /obj/item/twohanded/required/fuel_rod/telecrystal/attack_self(mob/user)
 	if(expended)
@@ -41,7 +52,7 @@
 		return
 
 	else
-		var/depletion_percentage = depletion / 40 * 100
+		var/depletion_percentage = min(depletion / 40 * 100, 100) // can't go above 100%
 		to_chat(user, "<span class='warning'> The [src] has not fissiled enough to fully grow the sample. the progress bar shows it is [depletion_percentage]% complete. </span>")
 
 
