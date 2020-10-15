@@ -23,7 +23,7 @@
 /obj/item/twohanded/required/fuel_rod/telecrystal/attackby(obj/item/W, mob/user, params)
 	if(istype(W, /obj/item/stack/telecrystal))
 		var/obj/item/stack/telecrystal/M = W
-		if(M.amount + telecrystal_amount => max_telecrystal_amount) // does adding this many crystals push us over the capacity?
+		if(M.amount + telecrystal_amount >= max_telecrystal_amount) // does adding this many crystals push us over the capacity?
 			var/added_amount = M.amount - (max_telecrystal_amount - telecrystal_amount)
 			to_chat(user, "<span class='warning'> The sample slots are full!</span>")
 		M.amount += telecrystal_amount
@@ -38,8 +38,10 @@
 		var/obj/item/stack/telecrystal/tc = new(get_turf(src))
 		tc.amount = round(telecrystal_amount * multiplier)
 		expended = TRUE
+		return
 
 	else
-		to_chat(user, "<span class='warning'> The [src] has not fissiled enough to fully grow the sample.</span>")
+		var/depletion_percentage = depletion / 40 * 100
+		to_chat(user, "<span class='warning'> The [src] has not fissiled enough to fully grow the sample. the progress bar shows it is [depletion_percentage]% complete. </span>")
 
 
