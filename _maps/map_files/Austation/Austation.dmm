@@ -45546,13 +45546,13 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
 	dir = 4
 	},
-/obj/machinery/atmospherics/components/unary/portables_connector{
-	dir = 8
-	},
 /obj/machinery/power/apc/auto_name/north,
-/obj/machinery/portable_atmospherics/canister/nitrogen,
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
+	},
+/obj/machinery/atmospherics/components/binary/pump{
+	dir = 8;
+	name = "Moderator to Reactor"
 	},
 /turf/open/floor/engine,
 /area/engine/engineering/reactor_core)
@@ -54461,13 +54461,19 @@
 /area/maintenance/fore)
 "jza" = (
 /obj/structure/table/reinforced,
-/obj/item/sealant,
-/obj/item/sealant,
 /obj/machinery/light{
 	dir = 1
 	},
+/obj/item/sealant,
 /obj/effect/turf_decal/stripes/line{
 	dir = 5
+	},
+/obj/item/sealant{
+	pixel_x = 4
+	},
+/obj/item/reagent_containers/food/snacks/pizzaslice/meat{
+	pixel_x = -1;
+	pixel_y = 12
 	},
 /turf/open/floor/engine,
 /area/engine/engineering/reactor_core)
@@ -62641,7 +62647,7 @@
 /area/bridge)
 "mYp" = (
 /obj/machinery/atmospherics/components/unary/portables_connector,
-/obj/machinery/portable_atmospherics/canister/toxins,
+/obj/machinery/portable_atmospherics/canister/nitrogen,
 /turf/open/floor/engine,
 /area/engine/engineering/reactor_core)
 "mYJ" = (
@@ -63553,6 +63559,10 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
+/obj/machinery/atmospherics/components/unary/portables_connector{
+	dir = 8
+	},
+/obj/machinery/portable_atmospherics/canister/toxins,
 /turf/open/floor/engine,
 /area/engine/engineering/reactor_core)
 "nqb" = (
@@ -71079,7 +71089,7 @@
 /area/hallway/primary/fore)
 "qhs" = (
 /obj/machinery/atmospherics/components/binary/pump{
-	name = "Moderators to Reactor Scrubbers"
+	name = "Moderators to Reactor"
 	},
 /obj/effect/turf_decal/stripes/line,
 /obj/structure/cable/yellow{
