@@ -29,13 +29,13 @@
 	if(!expended) // can't add crystals to a used rod!
 		if(istype(W, /obj/item/stack/telecrystal))
 			var/obj/item/stack/telecrystal/M = W
-			if(M.amount <= 0)
-				qdel(M)
 			if(M.amount + telecrystal_amount >= max_telecrystal_amount) // does adding this many crystals push us over the capacity?
 				var/added_amount = min(M.amount, max_telecrystal_amount - telecrystal_amount)
 				M.amount -= added_amount
 				telecrystal_amount += added_amount
 				to_chat(user, "<span class='notice'> You insert [added_amount] telecrystals into the [src].</span>")
+				if(M.amount <= 0)
+					qdel(M)
 			else
 				to_chat(user, "<span class='warning'> The sample slots are full!</span>")
 
