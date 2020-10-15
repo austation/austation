@@ -23,32 +23,53 @@
 
 /obj/item/twohanded/required/fuel_rod/telecrystal/attackby(obj/item/W, mob/user, params)
 	if(depletion >= 10)
-		to_chat(user, "<span class='warning'> The sample slots have sealed themselves shut, it's too late to add crystals now!</span>") // no cheesing in crystals at 100%
+		to_chat(user, "<span class='warning'>The sample slots have sealed themselves shut, it's too late to add crystals now!</span>") // no cheesing in crystals at 100%
 		return
 
 	if(!expended) // can't add crystals to a used rod!
 		if(istype(W, /obj/item/stack/telecrystal))
 			var/obj/item/stack/telecrystal/M = W
-			if(M.amount + telecrystal_amount >= max_telecrystal_amount) // does adding this many crystals push us over the capacity?
-				var/added_amount = min(M.amount, max_telecrystal_amount - telecrystal_amount)
-				M.amount -= added_amount
-				telecrystal_amount += added_amount
-				to_chat(user, "<span class='notice'> You insert [added_amount] telecrystals into the [src].</span>")
-				if(M.amount <= 0)
-					qdel(M)
-			else
-				to_chat(user, "<span class='warning'> The sample slots are full!</span>")
+			if(M.amount => max_telecrystal_amount - telecrystal_amount)
+				var/TC = M.amount
+				telecrystal_amount -= TC
 
 	else
-		to_chat(user, "<span class='warning'> The [src]'s material slots have already been used.</span>")
+		to_chat(user, "<span class='warning'>The [src]'s material slots have already been used.</span>")
+
+/obj/item/twohanded/required/fuel_rod/telecrystal/attackby(obj/item/W, mob/user, params)
+	var/obj/item/stack/telecrystal/M = W
+	if(istype(M))
+		if(depletion >= 10)
+			to_chat(user, "<span class='warning'>The sample slots have sealed themselves shut, it's too late to add crystals now!</span>") // no cheesing in crystals at 100%
+			return
+		if(expended)
+			to_chat(user, "<span class='warning'>The [src]'s material slots have already been used.</span>")
+			return
+
+		if(telecrystal_amount < max_telecrystal_amount)
+			var/adding = 0
+			if(M.amount <= max_telecrystal_amount - telecrystal_amount)
+				adding = M.amount
+			else
+				adding = max_telecrystal_amount - telecrystal_amount
+			adding = min((max_telecrystal_amount - telecrystal_amount), M.amount)
+			M.amount -= adding
+			telecrystal_amount += adding
+			M.zero_amount()
+			to_chat(user, "<span class='notice'>You insert [adding] telecrystals into \the [src].</span>")
+		else
+			to_chat(user, "<span class='warning'>\The [src]'s material slots are full!</span>")
+			return
+	else
+		return ..()
 
 /obj/item/twohanded/required/fuel_rod/telecrystal/attack_self(mob/user)
 	if(expended)
-		to_chat(user, "<span class='notice'> You have already removed the telecrystals from the [src].</span>")
+		to_chat(user, "<span class='notice'>You have already removed the telecrystals from the [src].</span>")
 		return
 
 	if(grown)
-		to_chat(user, "<span class='notice'> You remove [telecrystal_amount] telecrystals from the [src].</span>")
+		to_chat(user, "<span class='notice'>You remove [telecrystal_amount] telecrystals from the [src].</span>")
 		var/obj/item/stack/telecrystal/tc = new(get_turf(src))
 		tc.amount = round(telecrystal_amount * multiplier, 1)
 		expended = TRUE
@@ -56,7 +77,7 @@
 		return
 
 	else
-		to_chat(user, "<span class='warning'> The [src] has not fissiled enough to fully grow the sample. the progress bar shows it is [min(depletion / 40 * 100, 100)]% complete. </span>")
+		to_chat(user, "<span class='warning'>The [src] has not fissiled enough to fully grow the sample. the progress bar shows it is [min(depletion / 40 * 100, 100)]% complete. </span>")
 
 /obj/item/twohanded/required/fuel_rod/telecrystal/examine(mob/user)
 	. = ..()
