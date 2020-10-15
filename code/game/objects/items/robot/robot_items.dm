@@ -71,7 +71,11 @@
 		if(0)
 			if(M.health >= 0)
 				if(user.zone_selected == BODY_ZONE_HEAD)
-					user.visible_message("<span class='notice'>[user] playfully boops [M] on the head!</span>", \
+					if(is_species(M, /datum/species/human/felinid))// Austation -- Borg hugs provide mood
+						SEND_SIGNAL(M, COMSIG_ADD_MOOD_EVENT, "friendly_pat", /datum/mood_event/betterheadpat) // Cant forget the felinid ExClUsIvE content
+					else
+						SEND_SIGNAL(M, COMSIG_ADD_MOOD_EVENT, "pat", /datum/mood_event/headpat)
+						user.visible_message("<span class='notice'>[user] playfully boops [M] on the head!</span>", \
 									"<span class='notice'>You playfully boop [M] on the head!</span>")
 					user.do_attack_animation(M, ATTACK_EFFECT_BOOP)
 					playsound(loc, 'sound/weapons/tap.ogg', 50, 1, -1)
@@ -80,6 +84,7 @@
 						user.visible_message("<span class='notice'>[user] shakes [M] trying to get [M.p_them()] up!</span>", \
 										"<span class='notice'>You shake [M] trying to get [M.p_them()] up!</span>")
 					else
+						SEND_SIGNAL(M, COMSIG_ADD_MOOD_EVENT, "hug", /datum/mood_event/hug)
 						user.visible_message("<span class='notice'>[user] hugs [M] to make [M.p_them()] feel better!</span>", \
 								"<span class='notice'>You hug [M] to make [M.p_them()] feel better!</span>")
 					if(M.resting)
@@ -87,7 +92,7 @@
 				else
 					user.visible_message("<span class='notice'>[user] pets [M]!</span>", \
 							"<span class='notice'>You pet [M]!</span>")
-				playsound(loc, 'sound/weapons/thudswoosh.ogg', 50, 1, -1)
+				playsound(loc, 'sound/weapons/thudswoosh.ogg', 50, 1, -1) // Austation end
 		if(1)
 			if(M.health >= 0)
 				if(ishuman(M))
