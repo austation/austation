@@ -7,7 +7,7 @@
 	var/max_telecrystal_amount = 8 // the max amount of TC that can be in the rod?
 	var/grown = FALSE // has the rod fissiled enough for us to remove the grown TC?
 	var/expended = FALSE // have we removed the TC already?
-	var/multiplier = 1.6 // how much do we multiply the inserted TC by?
+	var/multiplier = 3 // how much do we multiply the inserted TC by?
 
 
 /obj/item/twohanded/required/fuel_rod/telecrystal/deplete(amount=0.035)
@@ -30,13 +30,13 @@
 		if(istype(W, /obj/item/stack/telecrystal))
 			var/obj/item/stack/telecrystal/M = W
 			if(M.amount + telecrystal_amount >= max_telecrystal_amount) // does adding this many crystals push us over the capacity?
-				var/added_amount = M.amount - (max_telecrystal_amount - telecrystal_amount)
+				var/added_amount = max(M.amount, max_telecrystal_amount - telecrystal_amount)
 				M.amount -= added_amount
 				telecrystal_amount += added_amount
-				to_chat(user, "<span class='warning'> The sample slots are full!</span>")
+				to_chat(user, "<span class='notice'> You insert [added_amount] telecrystals into the [src].</span>")
 			else
-				M.amount += telecrystal_amount
-				to_chat(user, "<span class='notice'> You insert [M.amount] telecrystals into the [src].</span>")
+				to_chat(user, "<span class='warning'> The sample slots are full!</span>")
+
 	else
 		to_chat(user, "<span class='warning'> The [src]'s material slots have already been used.</span>")
 
