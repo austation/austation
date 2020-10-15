@@ -23,7 +23,7 @@
 
 /obj/item/twohanded/required/fuel_rod/telecrystal/attackby(obj/item/W, mob/user, params)
 	if(depletion >= 10)
-		to_chat(user, "<span class='warning'> The sample slots have sealed themselves shut, it's too late to add crystals now!</span>")
+		to_chat(user, "<span class='warning'> The sample slots have sealed themselves shut, it's too late to add crystals now!</span>") // no cheesing in crystals at 100%
 		return
 
 	if(!expended) // can't add crystals to a used rod!
