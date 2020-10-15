@@ -26919,7 +26919,7 @@
 "cjm" = (
 /obj/machinery/door/airlock/external{
 	name = "Atmospherics External Airlock";
-	req_access_txt = "13"
+	req_one_access_txt = "10;24"
 	},
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
 	dir = 1
@@ -43568,7 +43568,7 @@
 "fcv" = (
 /obj/machinery/door/airlock/engineering{
 	name = "Reactor Control";
-	req_access_txt = "10"
+	req_one_access_txt = "10;24"
 	},
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
 	dir = 8
@@ -74138,7 +74138,7 @@
 "ruw" = (
 /obj/machinery/door/airlock/engineering{
 	name = "Reactor Core";
-	req_access_txt = "10"
+	req_one_access_txt = "10;24"
 	},
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
@@ -79132,7 +79132,7 @@
 "twS" = (
 /obj/machinery/door/airlock/external{
 	name = "Atmospherics External Airlock";
-	req_access_txt = "13"
+	req_one_access_txt = "10;24"
 	},
 /obj/effect/mapping_helpers/airlock/cyclelink_helper,
 /turf/open/floor/plating,
@@ -83035,7 +83035,7 @@
 "vbo" = (
 /obj/machinery/door/airlock/engineering{
 	name = "Reactor Control";
-	req_access_txt = "10"
+	req_one_access_txt = "10;24"
 	},
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
 	dir = 4
