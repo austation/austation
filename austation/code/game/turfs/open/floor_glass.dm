@@ -265,13 +265,13 @@
 					src.ReplaceWithLattice()
 	*/
 
-	if(W.tool_behaviour == TOOL_WELDER && user.a_intent == INTENT_HELP))
+	if(W.tool_behaviour == TOOL_WELDER && user.a_intent == INTENT_HELP)
 		if(health < initial(health))
-			if(!I.tool_start_check(user, amount=0))
+			if(!W.tool_start_check(user, amount=0))
 				return
 
 			to_chat(user, "<span class='notice'>You begin repairing [src]...</span>")
-			if(I.use_tool(src, user, 40, volume=50))
+			if(W.use_tool(src, user, 40, volume=50))
 				health = initial(health)
 				healthcheck()
 				to_chat(user, "<span class='notice'>You repair [src].</span>")
@@ -373,7 +373,7 @@
 /obj/item/stack/tile/plasmarglass
 	name = "plasma glass tile"
 	desc = "A relatively clear reinforced plasma glass tile."
-	icon = "austation/icons/obj/items.dmi"
+	icon = 'austation/icons/obj/items.dmi'
 	icon_state = "tile_plasmarglass"
 	turf_type = /turf/open/floor/glass/plasma
 	merge_type = /obj/item/stack/tile/plasmarglass
@@ -381,7 +381,7 @@
 /obj/item/stack/tile/rglass
 	name = "glass tile"
 	desc = "A relatively clear reinforced glass tile."
-	icon = "austation/icons/obj/items.dmi"
+	icon = 'austation/icons/obj/items.dmi'
 	icon_state = "tile_rglass"
 	turf_type = /turf/open/floor/glass
 	merge_type = /obj/item/stack/tile/rglass
