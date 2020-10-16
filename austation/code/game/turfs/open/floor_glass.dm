@@ -13,7 +13,7 @@
 	intact = 0 // make pipes appear above space
 	floor_tile = /obj/item/stack/tile/rglass
 
-	var/health=400 // 2x that of an rwindow
+	var/health=80 // 2x that of an rwindow
 	var/sheetamount = 1 //Number of sheets needed to build this floor (determines how much shit is spawned via Destroy())
 	var/cracked_base = "fcrack"
 	var/shardtype = /obj/item/shard
@@ -118,15 +118,15 @@
 /turf/open/floor/glass/ex_act(severity)
 	switch(severity)
 		if(1.0)
-			health -= 1000
+			health -= rand(130, 160)
 			healthcheck(method="ex_act", no_teleport=TRUE)
 			return
 		if(2.0)
-			health -= rand(200, 500)
+			health -= rand(20, 50)
 			healthcheck(method="ex_act", no_teleport=TRUE)
 			return
 		if(3.0)
-			health -= rand(50, 150)
+			health -= rand(5, 15)
 			healthcheck(method="ex_act", no_teleport=TRUE)
 			return
 
@@ -362,7 +362,7 @@
 	shardtype = /obj/item/shard/plasma
 	sheettype = /obj/item/stack/sheet/plasmarglass
 	glass_state = "plasma_glass_floor"
-	health = 1000
+	health = 160
 	reinforced=TRUE
 	floor_tile = /obj/item/stack/tile/plasmarglass
 
