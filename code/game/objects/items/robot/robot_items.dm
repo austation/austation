@@ -71,7 +71,7 @@
 		if(0)
 			if(M.health >= 0)
 				if(user.zone_selected == BODY_ZONE_HEAD)
-					if(is_species(M, /datum/species/human/felinid))// Austation -- Borg hugs provide mood
+					if(is_species(M, /datum/species/human/felinid))// austation begin -- Borg hugs provide mood
 						SEND_SIGNAL(M, COMSIG_ADD_MOOD_EVENT, "friendly_pat", /datum/mood_event/betterheadpat) // Cant forget the felinid ExClUsIvE content
 					else
 						SEND_SIGNAL(M, COMSIG_ADD_MOOD_EVENT, "pat", /datum/mood_event/headpat)
@@ -84,7 +84,7 @@
 						user.visible_message("<span class='notice'>[user] shakes [M] trying to get [M.p_them()] up!</span>", \
 										"<span class='notice'>You shake [M] trying to get [M.p_them()] up!</span>")
 					else
-						SEND_SIGNAL(M, COMSIG_ADD_MOOD_EVENT, "hug", /datum/mood_event/hug) // Austation end
+						SEND_SIGNAL(M, COMSIG_ADD_MOOD_EVENT, "hug", /datum/mood_event/hug) // austation end
 						user.visible_message("<span class='notice'>[user] hugs [M] to make [M.p_them()] feel better!</span>", \
 								"<span class='notice'>You hug [M] to make [M.p_them()] feel better!</span>")
 					if(M.resting)
