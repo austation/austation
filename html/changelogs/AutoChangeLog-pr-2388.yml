@@ -1,0 +1,5 @@
+author: "TheFakeElon"
+delete-after: True
+changes: 
+  - tweak: "Reactor room is now larger and more spread out"
+  - bugfix: "Reactor is now wired to the grid properly"

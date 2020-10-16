@@ -1,0 +1,6 @@
+author: "MCterra10"
+delete-after: True
+changes: 
+  - bugfix: "Ring toggle breaking circle game"
+  - spellcheck: "Ring text spans"
+  - tweak: "Rings now bound to body not client"
