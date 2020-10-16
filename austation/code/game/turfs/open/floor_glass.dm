@@ -6,23 +6,25 @@
 	icon = 'icons/turf/space.dmi'
 	icon_state = "0"
 
-	heat_capacity = 10000
+	heat_capacity = 3200
 	plane = PLANE_SPACE
 	dynamic_lighting = 0
 	luminosity = 1
 	intact = 0 // make pipes appear above space
+	floor_tile = /obj/item/stack/tile/rglass
 
-	var/health=80 // 2x that of an rwindow
+	var/health=400 // 2x that of an rwindow
 	var/sheetamount = 1 //Number of sheets needed to build this floor (determines how much shit is spawned via Destroy())
 	var/cracked_base = "fcrack"
 	var/shardtype = /obj/item/shard
 	var/sheettype = /obj/item/stack/sheet/rglass //Used for deconstruction
 	var/glass_state = "glass_floor" // State of the glass itself.
 	var/reinforced = 0
-	var/construction_state = 2 // Fully constructed.
+	//var/construction_state = 2 // Fully constructed - no deconstructing
 	var/static/list/floor_overlays = list()
 	var/static/list/damage_overlays = list()
 	var/image/current_damage_overlay
+	var/breaksound = "shatter"
 
 /turf/open/floor/glass/New(loc)
 	..(loc)
@@ -95,6 +97,7 @@
 				message_admins("Glass floor with pressure [pressure]kPa broken (method=[method]) by [M.real_name] ([ADMIN_PP(M)]) at [ADMIN_VERBOSEJMP(src)]!")
 				log_admin("Window with pressure [pressure]kPa broken (method=[method]) by [M.real_name] ([M.ckey]) at [src]!")
 			M.visible_message("<span class='danger'>[M] falls through the glass!</span>", "<span style='font-size:largest' class='danger'>\The [src] breaks!</span>", "You hear breaking glass.")
+		playsound(src, breaksound, 70, 1)
 		break_turf(no_teleport)
 	else
 		if(sound)
@@ -115,15 +118,15 @@
 /turf/open/floor/glass/ex_act(severity)
 	switch(severity)
 		if(1.0)
-			health -= rand(100, 150)
+			health -= 1000
 			healthcheck(method="ex_act", no_teleport=TRUE)
 			return
 		if(2.0)
-			health -= rand(20, 50)
+			health -= rand(200, 500)
 			healthcheck(method="ex_act", no_teleport=TRUE)
 			return
 		if(3.0)
-			health -= rand(5, 15)
+			health -= rand(50, 150)
 			healthcheck(method="ex_act", no_teleport=TRUE)
 			return
 
@@ -209,7 +212,8 @@
 		return
 	attack_generic(user, rand(10, 15))
 
-/turf/open/floor/glass/attackby(var/obj/item/W, var/mob/user)
+/turf/open/floor/glass/attackby(var/obj/item/W, var/mob/user, params)
+	/* No deconstructing
 	switch(construction_state)
 		if(2) // intact
 			if(W.tool_behaviour == TOOL_SCREWDRIVER)
@@ -259,6 +263,20 @@
 						"<span class='warning'>You hear welding noises.</span>")
 					new sheettype(src, sheetamount)
 					src.ReplaceWithLattice()
+	*/
+	if(W.tool_behaviour == TOOL_WELDER && user.a_intent == INTENT_HELP))
+		if(health < initial(health))
+			if(!I.tool_start_check(user, amount=0))
+				return
+
+			to_chat(user, "<span class='notice'>You begin repairing [src]...</span>")
+			if(I.use_tool(src, user, 40, volume=50))
+				health = initial(health)
+				healthcheck()
+				to_chat(user, "<span class='notice'>You repair [src].</span>")
+		else
+			to_chat(user, "<span class='warning'>[src] is already in good condition!</span>")
+		return
 	if(ishuman(user) && user.a_intent != INTENT_HARM)
 		return
 	unhandled_attackby(W, user)
@@ -343,9 +361,26 @@
 	shardtype = /obj/item/shard/plasma
 	sheettype = /obj/item/stack/sheet/plasmarglass
 	glass_state = "plasma_glass_floor"
-	health = 160
+	health = 1000
 	reinforced=TRUE
+	floor_tile = /obj/item/stack/tile/plasmarglass
 
 /turf/open/floor/glass/plasma/airless
 	icon_state = "floor"
 	initial_gas_mix = AIRLESS_ATMOS
+
+/obj/item/stack/tile/plasmarglass
+	name = "plasma glass tile"
+	desc = "A relatively clear reinforced plasma glass tile."
+	icon = "austation/icons/obj/items.dmi"
+	icon_state = "tile_plasmarglass"
+	turf_type = /turf/open/floor/glass/plasma
+	merge_type = /obj/item/stack/tile/plasmarglass
+
+/obj/item/stack/tile/rglass
+	name = "glass tile"
+	desc = "A relatively clear reinforced glass tile."
+	icon = "austation/icons/obj/items.dmi"
+	icon_state = "tile_rglass"
+	turf_type = /turf/open/floor/glass
+	merge_type = /obj/item/stack/tile/rglass
