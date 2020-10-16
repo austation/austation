@@ -71,7 +71,7 @@ All ShuttleMove procs go here
 	oldT.TransferComponents(src)
 	var/shuttle_boundary = baseturfs.Find(/turf/baseturf_skipover/shuttle)
 	if(shuttle_boundary)
-		oldT.ScrapeAway(baseturfs.len - shuttle_boundary + 1)
+		oldT.ScrapeAway(baseturfs.len - shuttle_boundary + 1, flags = CHANGETURF_FORCEOP)
 
 	if(rotation)
 		shuttleRotate(rotation) //see shuttle_rotate.dm
@@ -318,8 +318,11 @@ All ShuttleMove procs go here
 	. = ..()
 
 	var/knockdown = movement_force["KNOCKDOWN"]
-	if(knockdown)
+	//austation begin -- cat tails prevent shuttle knockdown
+	var/obj/item/organ/tail/O = getorganslot(ORGAN_SLOT_TAIL)
+	if(knockdown && !istype(O))
 		Paralyze(knockdown)
+	//austation end
 
 
 /mob/living/simple_animal/hostile/megafauna/onShuttleMove(turf/newT, turf/oldT, list/movement_force, move_dir, obj/docking_port/stationary/old_dock, obj/docking_port/mobile/moving_dock)

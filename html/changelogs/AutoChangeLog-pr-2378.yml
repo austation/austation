@@ -1,0 +1,4 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - rscadd: "Most armoured suits and helmets' thick reinforced materials now prevent syringes, parapens and hypos."

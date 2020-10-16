@@ -1,3 +1,3 @@
 /datum/species/human/felinid
-	// memed
-	say_mod = "meows"
+	say_mod = "meows" // memed
+	inert_mutation = /datum/mutation/human/claws // Claws

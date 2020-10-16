@@ -359,8 +359,6 @@ GENE SCANNER
 			mutant = TRUE
 		else if (S.mutantstomach != initial(S.mutantstomach))
 			mutant = TRUE
-		else if (S.flying_species != initial(S.flying_species))
-			mutant = TRUE
 
 		to_chat(user, "<span class='info'>Species: [S.name][mutant ? "-derived mutant" : ""]</span>")
 	to_chat(user, "<span class='info'>Body temperature: [round(M.bodytemperature-T0C,0.1)] &deg;C ([round(M.bodytemperature,0.01)] &deg;K) </span>") // austation -- removes Fahrenheit for kelvin
@@ -476,6 +474,15 @@ GENE SCANNER
 /obj/item/analyzer/suicide_act(mob/living/carbon/user)
 	user.visible_message("<span class='suicide'>[user] begins to analyze [user.p_them()]self with [src]! The display shows that [user.p_theyre()] dead!</span>")
 	return BRUTELOSS
+
+/obj/item/analyzer/attackby(obj/O, mob/living/user)
+	if(istype(O, /obj/item/bodypart/l_arm/robot) || istype(O, /obj/item/bodypart/r_arm/robot))
+		to_chat(user, "<span class='notice'>You add [O] to [src].</span>")
+		qdel(O)
+		qdel(src)
+		user.put_in_hands(new /obj/item/bot_assembly/atmosbot)
+	else
+		..()
 
 /obj/item/analyzer/attack_self(mob/user)
 	add_fingerprint(user)
@@ -937,6 +944,8 @@ GENE SCANNER
 			return
 		symptomholder.name = chosen.name
 		symptomholder.symptoms += chosen
+		symptomholder.Finalize()
+		symptomholder.Refresh()
 		to_chat(user, "<span class='warning'>you begin isolating [chosen].</span>")
 		if(do_mob(user, AM, (600 / scanner.rating)))
 			create_culture(symptomholder, user)

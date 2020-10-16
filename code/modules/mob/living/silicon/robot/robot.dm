@@ -20,6 +20,9 @@
 	var/mob/living/silicon/ai/mainframe = null
 	var/datum/action/innate/undeployment/undeployment_action = new
 
+	var/obj/item/clockwork/clockwork_slab/internal_clock_slab = null
+	var/ratvar = FALSE
+
 //Hud stuff
 
 	var/obj/screen/inv1 = null
@@ -102,6 +105,8 @@
 
 	wires = new /datum/wires/robot(src)
 	AddComponent(/datum/component/empprotection, EMP_PROTECT_WIRES)
+
+	RegisterSignal(src, COMSIG_PROCESS_BORGCHARGER_OCCUPANT, .proc/charge)
 
 	robot_modules_background = new()
 	robot_modules_background.icon_state = "block"
@@ -267,6 +272,11 @@
 	var/datum/browser/alerts = new(usr, "robotalerts", "Current Station Alerts", 400, 410)
 	alerts.set_content(dat)
 	alerts.open()
+
+/mob/living/silicon/robot/verb/view_manifest()
+	set name = "View Crew Manifest"
+	set category = "Robot Commands"
+	ai_roster()
 
 /mob/living/silicon/robot/proc/ionpulse()
 	if(!ionpulse_on)
@@ -614,7 +624,7 @@
 		if(lamp_intensity > 2)
 			eye_lights.icon_state = "[module.special_light_key ? "[module.special_light_key]":"[module.cyborg_base_icon]"]_l"
 		else
-			eye_lights.icon_state = "[module.special_light_key ? "[module.special_light_key]":"[module.cyborg_base_icon]"]_e"
+			eye_lights.icon_state = "[module.special_light_key ? "[module.special_light_key]":"[module.cyborg_base_icon]"]_e[ratvar ? "_r" : ""]"
 		eye_lights.icon = icon
 		add_overlay(eye_lights)
 
@@ -687,6 +697,18 @@
 		throw_alert("hacked", /obj/screen/alert/hacked)
 	else
 		clear_alert("hacked")
+
+/mob/living/silicon/robot/proc/SetRatvar(new_state, rebuild=TRUE)
+	ratvar = new_state
+	if(rebuild)
+		module.rebuild_modules()
+	update_icons()
+	if(ratvar)
+		internal_clock_slab = new(src)
+		throw_alert("ratvar", /obj/screen/alert/ratvar)
+	else
+		qdel(internal_clock_slab)
+		clear_alert("ratvar")
 
 /mob/living/silicon/robot/verb/outputlaws()
 	set category = "Robot Commands"
@@ -1172,7 +1194,9 @@
 		else
 			M.visible_message("<span class='boldwarning'>[M] can't climb onto [src] because [M.p_their()] hands are full!</span>")
 		return
-	. = ..(M, force, check_loc)
+	M.visible_message("<span class='boldwarning'>[M] is being loaded onto [src]!</span>") //austation start -- adds borg buckle delay #2278
+	if(do_after(src, 5, target = M))
+		. = ..(M, force, check_loc) //austation end
 
 /mob/living/silicon/robot/unbuckle_mob(mob/user, force=FALSE)
 	if(iscarbon(user))
@@ -1198,3 +1222,11 @@
 			connected_ai.aicamera.stored[i] = TRUE
 		for(var/i in connected_ai.aicamera.stored)
 			aicamera.stored[i] = TRUE
+
+/mob/living/silicon/robot/proc/charge(datum/source, amount, repairs)
+	if(module)
+		module.respawn_consumable(src, amount * 0.005)
+	if(cell)
+		cell.charge = min(cell.charge + amount, cell.maxcharge)
+	if(repairs)
+		heal_bodypart_damage(repairs, repairs - 1)

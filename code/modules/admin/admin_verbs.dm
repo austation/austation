@@ -481,7 +481,7 @@ GLOBAL_PROTECT(admin_verbs_hideable)
 				mob.name = initial(mob.name)
 				mob.mouse_opacity = initial(mob.mouse_opacity)
 		else
-			var/new_key = ckeyEx(stripped_input(usr, "Enter your desired display name.", "Fake Key", key, 26))
+			var/new_key = ckeyEx(stripped_input(usr, "Enter your desired display name.", "Fake Key", key, max_length=26))
 			if(!new_key)
 				return
 			holder.fakekey = new_key
@@ -491,9 +491,9 @@ GLOBAL_PROTECT(admin_verbs_hideable)
 				mob.alpha = 0 //JUUUUST IN CASE
 				mob.name = " "
 				mob.mouse_opacity = MOUSE_OPACITY_TRANSPARENT
-		log_admin("[key_name(usr)] has turned stealth mode [holder.fakekey ? "ON" : "OFF"]")
-		message_admins("[key_name_admin(usr)] has turned stealth mode [holder.fakekey ? "ON" : "OFF"]")
-	SSblackbox.record_feedback("tally", "admin_verb", 1, "Stealth Mode") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+//		log_admin("[key_name(usr)] has turned stealth mode [holder.fakekey ? "ON" : "OFF"]")
+//		message_admins("[key_name_admin(usr)] has turned stealth mode [holder.fakekey ? "ON" : "OFF"]")
+//	SSblackbox.record_feedback("tally", "admin_verb", 1, "Stealth Mode") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /client/proc/drop_bomb()
 	set category = "Fun"
@@ -640,7 +640,7 @@ GLOBAL_PROTECT(admin_verbs_hideable)
 	set category = "Adminbus"
 	set name = "OSay"
 	set desc = "Makes an object say something."
-	var/message = input(usr, "What do you want the message to be?", "Make Sound") as text | null
+	var/message = capped_input(usr, "What do you want the message to be?", "Make Sound")
 	if(!message)
 		return
 	O.say(message)

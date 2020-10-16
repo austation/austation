@@ -663,6 +663,14 @@
 /atom/proc/ratvar_act()
 	SEND_SIGNAL(src, COMSIG_ATOM_RATVAR_ACT)
 
+/**
+  * Respond to the eminence clicking on our atom
+  *
+  * Default behaviour is to send COMSIG_ATOM_EMAG_ACT and return
+  */
+/atom/proc/eminence_act(mob/living/simple_animal/eminence/eminence)
+	SEND_SIGNAL(src, COMSIG_ATOM_EMINENCE_ACT, eminence)
+
 ///Return the values you get when an RCD eats you?
 /atom/proc/rcd_vals(mob/user, obj/item/construction/rcd/the_rcd)
 	return FALSE
@@ -1106,6 +1114,10 @@
 
 /// Helper for logging chat messages or other logs with arbitrary inputs (e.g. announcements)
 /atom/proc/log_talk(message, message_type, tag=null, log_globally=TRUE, forced_by=null)
+	if(istype(src, /mob/living))
+		var/mob/living/L = src
+		if(L?.client?.holder?.fakekey)
+			return
 	var/prefix = tag ? "([tag]) " : ""
 	var/suffix = forced_by ? " FORCED by [forced_by]" : ""
 	log_message("[prefix]\"[message]\"[suffix]", message_type, log_globally=log_globally)
@@ -1192,3 +1204,11 @@
 
 		custom_material.on_applied(src, materials[custom_material] * multiplier, material_flags)
 		custom_materials[custom_material] += materials[custom_material] * multiplier
+
+/**
+  * Causes effects when the atom gets hit by a rust effect from heretics
+  *
+  * Override this if you want custom behaviour in whatever gets hit by the rust
+  */
+/atom/proc/rust_heretic_act()
+	return
