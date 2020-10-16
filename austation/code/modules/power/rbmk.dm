@@ -107,6 +107,8 @@ The reactor CHEWS through moderator. It does not do this slowly. Be very careful
 	var/last_output_temperature = 0
 	var/last_heat_delta = 0 //For administrative cheating only. Knowing the delta lets you know EXACTLY what to set K at.
 
+	var/log_delay = 0
+
 //Use this in your maps if you want everything to be preset.
 /obj/machinery/atmospherics/components/trinary/nuclear_reactor/preset
 	id = "default_reactor_for_lazy_mappers"
@@ -133,7 +135,6 @@ The reactor CHEWS through moderator. It does not do this slowly. Be very careful
 			. += msg
 
 /obj/machinery/atmospherics/components/trinary/nuclear_reactor/attackby(obj/item/W, mob/user, params)
-	..()
 	if(istype(W, /obj/item/twohanded/required/fuel_rod))
 		if(power >= 20)
 			to_chat(user, "<span class='notice'>You cannot insert fuel into [src] when it has been raised above 20% power.</span>")
@@ -146,6 +147,8 @@ The reactor CHEWS through moderator. It does not do this slowly. Be very careful
 		if(do_after(user, 5 SECONDS, target=src))
 			if(!fuel_rods.len)
 				start_up() //That was the first fuel rod. Let's heat it up.
+				message_admins("Reactor first started up by [ADMIN_LOOKUPFLW(user)] in [ADMIN_VERBOSEJMP(src)]")
+				log_game("Reactor first started by [key_name(user)] in [AREACOORD(src)]")
 			fuel_rods += W
 			W.forceMove(src)
 			radiation_pulse(src, temperature) //Wear protective equipment when even breathing near a reactor!
@@ -166,6 +169,7 @@ The reactor CHEWS through moderator. It does not do this slowly. Be very careful
 			vessel_integrity += 10
 			vessel_integrity = CLAMP(vessel_integrity, 0, initial(vessel_integrity))
 		return TRUE
+	return ..()
 
 /obj/machinery/atmospherics/components/trinary/nuclear_reactor/welder_act(mob/living/user, obj/item/I)
 	if(power >= 20)
@@ -185,6 +189,7 @@ The reactor CHEWS through moderator. It does not do this slowly. Be very careful
 	for(var/I=0;I<5;I++){
 		fuel_rods += new /obj/item/twohanded/required/fuel_rod(src)
 	}
+	message_admins("Reactor started up by admins in [ADMIN_VERBOSEJMP(src)]")
 	start_up()
 
 /obj/machinery/atmospherics/components/trinary/nuclear_reactor/proc/deplete()
@@ -563,6 +568,10 @@ The reactor CHEWS through moderator. It does not do this slowly. Be very careful
 	if(action == "input")
 		var/input = text2num(params["target"])
 		reactor.desired_k = CLAMP(input, 0, 3)
+		if(reactor.log_delay < world.time) //Used to avoid spam
+			reactor.log_delay = world.time + 2 SECONDS
+			message_admins("Reactor rods set to [reactor.desired_k] by [ADMIN_LOOKUPFLW(usr)] in [ADMIN_VERBOSEJMP(src)]")
+			log_game("Reactor rods set to [reactor.desired_k] by [key_name(usr)] in [AREACOORD(src)]")
 
 /obj/machinery/computer/reactor/control_rods/ui_data(mob/user)
 	var/list/data = list()
