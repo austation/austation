@@ -11,7 +11,7 @@
 	dynamic_lighting = 0
 	luminosity = 1
 	intact = 0 // make pipes appear above space
-	floor_tile = /obj/item/stack/tile/rglass
+	baseturfs = /turf/baseturf_bottom
 
 	var/health=80 // 2x that of an rwindow
 	var/sheetamount = 1 //Number of sheets needed to build this floor (determines how much shit is spawned via Destroy())
@@ -364,7 +364,6 @@
 	glass_state = "plasma_glass_floor"
 	health = 160
 	reinforced=TRUE
-	floor_tile = /obj/item/stack/tile/plasmarglass
 
 /turf/open/floor/glass/plasma/airless
 	icon_state = "floor"
@@ -372,6 +371,7 @@
 
 /obj/item/stack/tile/plasmarglass
 	name = "plasma glass tile"
+	singular_name = "plasma glass tile"
 	desc = "A relatively clear reinforced plasma glass tile."
 	icon = 'austation/icons/obj/items.dmi'
 	icon_state = "tile_plasmarglass"
@@ -380,6 +380,7 @@
 
 /obj/item/stack/tile/rglass
 	name = "glass tile"
+	singular_name = "glass tile"
 	desc = "A relatively clear reinforced glass tile."
 	icon = 'austation/icons/obj/items.dmi'
 	icon_state = "tile_rglass"
