@@ -264,6 +264,7 @@
 					new sheettype(src, sheetamount)
 					src.ReplaceWithLattice()
 	*/
+
 	if(W.tool_behaviour == TOOL_WELDER && user.a_intent == INTENT_HELP))
 		if(health < initial(health))
 			if(!I.tool_start_check(user, amount=0))
