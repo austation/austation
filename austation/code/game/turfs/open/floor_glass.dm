@@ -29,8 +29,8 @@
 	icon_state = "[((x + y) ^ ~(x * y) + z) % 25]"
 	if(!floor_overlays[glass_state])
 		var/image/floor_overlay = image('austation/icons/turf/overlays.dmi', glass_state)
-		floor_overlay.plane = FLOOR_PLANE
-		floor_overlay.layer = TURF_LAYER
+		floor_overlay.plane = GAME_PLANE
+		floor_overlay.layer = CATWALK_LAYER
 		floor_overlays[glass_state] = floor_overlay
 	overlays += floor_overlays[glass_state]
 	update_icon()
@@ -47,8 +47,8 @@
 	var/icon_state = "[cracked_base][damage_fraction]"
 	if(!damage_overlays[icon_state])
 		var/image/_damage_overlay = image('austation/icons/obj/structures.dmi', icon_state)
-		_damage_overlay.plane = FLOOR_PLANE
-		_damage_overlay.layer = TURF_LAYER
+		_damage_overlay.plane = GAME_PLANE
+		_damage_overlay.layer = CATWALK_LAYER
 		damage_overlays[icon_state] = _damage_overlay
 	var/damage_overlay = damage_overlays[icon_state]
 	if(current_damage_overlay == damage_overlay)
@@ -139,7 +139,7 @@
 
 //Someone threw something at us, please advise
 // I don't think this shit works on turfs, but it's here just in case.
-/turf/open/floor/glass/hitby(AM as mob|obj)
+/turf/open/floor/glass/hitby(AM as mob|obj, skipcatch, hitpush, blocked, datum/thrownthing/throwingdatum)
 	. =  ..()
 	if(.)
 		return
@@ -339,6 +339,7 @@
 /turf/open/floor/glass/plasma
 	name = "plasma glass floor"
 	desc = "A floor made of reinforced plasma glass, used for looking into the void."
+	heat_capacity = 50000
 	shardtype = /obj/item/shard/plasma
 	sheettype = /obj/item/stack/sheet/plasmarglass
 	glass_state = "plasma_glass_floor"
