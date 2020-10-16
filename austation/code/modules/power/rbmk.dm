@@ -349,8 +349,7 @@ The reactor CHEWS through moderator. It does not do this slowly. Be very careful
 /obj/machinery/atmospherics/components/trinary/nuclear_reactor/proc/relay(var/sound, var/message=null, loop = FALSE, channel = null) //Sends a sound + text message to the crew of a ship
 	for(var/mob/M in GLOB.player_list)
 		if(M.z == z)
-			var/area/A = get_area(M)
-			if(A != subtypesof(/area/space))
+			if(!isinspace(M))
 				if(sound)
 					if(channel) //Doing this forbids overlapping of sounds
 						SEND_SOUND(M, sound(sound, repeat = loop, wait = 0, volume = 100, channel = channel))
