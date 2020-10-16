@@ -22,21 +22,6 @@
 		fuel_power = 0.20
 
 /obj/item/twohanded/required/fuel_rod/telecrystal/attackby(obj/item/W, mob/user, params)
-	if(depletion >= 10)
-		to_chat(user, "<span class='warning'>The sample slots have sealed themselves shut, it's too late to add crystals now!</span>") // no cheesing in crystals at 100%
-		return
-
-	if(!expended) // can't add crystals to a used rod!
-		if(istype(W, /obj/item/stack/telecrystal))
-			var/obj/item/stack/telecrystal/M = W
-			if(M.amount => max_telecrystal_amount - telecrystal_amount)
-				var/TC = M.amount
-				telecrystal_amount -= TC
-
-	else
-		to_chat(user, "<span class='warning'>The [src]'s material slots have already been used.</span>")
-
-/obj/item/twohanded/required/fuel_rod/telecrystal/attackby(obj/item/W, mob/user, params)
 	var/obj/item/stack/telecrystal/M = W
 	if(istype(M))
 		if(depletion >= 10)
