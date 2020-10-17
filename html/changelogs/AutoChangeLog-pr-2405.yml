@@ -1,0 +1,6 @@
+author: "MCterra10"
+delete-after: True
+changes: 
+  - rscadd: "Alt-click to bang tables"
+  - rscadd: "Plasmaglass tables"
+  - tweak: "Characters shift up a bit when on tables"
