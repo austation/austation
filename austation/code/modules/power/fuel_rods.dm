@@ -54,9 +54,10 @@
 		return
 
 	if(grown)
-		to_chat(user, "<span class='notice'>You remove [telecrystal_amount] telecrystals from the [src].</span>")
+		var/profit = round(telecrystal_amount * multiplier, 1)
+		to_chat(user, "<span class='notice'>You remove [profit] telecrystals from the [src].</span>")
 		var/obj/item/stack/telecrystal/tc = new(get_turf(src))
-		tc.amount = round(telecrystal_amount * multiplier, 1)
+		tc.amount = profit
 		expended = TRUE
 		telecrystal_amount = 0
 		return
