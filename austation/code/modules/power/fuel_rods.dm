@@ -68,7 +68,7 @@
 /obj/item/twohanded/required/fuel_rod/telecrystal/examine(mob/user)
 	. = ..()
 	if(expended)
-		. += "<span class='warning'>The material slots have been removed.</span>"
+		. += "<span class='warning'>The material slots have been slagged by the extreme heat, you can't grow crystals in this rod again...</span>"
 		return
 	if(depletion)
 		. += "<span class='danger'>The sample is [min(depletion / 40 * 100, 100)]% fissiled.</span>"
