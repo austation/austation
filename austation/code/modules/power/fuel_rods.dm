@@ -63,7 +63,7 @@
 		return
 
 	else
-		to_chat(user, "<span class='warning'>The [src] has not fissiled enough to fully grow the sample. the progress bar shows it is [min(depletion / 40 * 100, 100)]% complete. </span>")
+		to_chat(user, "<span class='warning'>The [src] has not fissiled enough to fully grow the sample. The progress bar shows it is [min(depletion / 40 * 100, 100)]% complete.</span>")
 
 /obj/item/twohanded/required/fuel_rod/telecrystal/examine(mob/user)
 	. = ..()
