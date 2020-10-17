@@ -152,6 +152,7 @@
 #include "code\modules\projectiles\boxes_magazine\internal\makeshift_mags.dm"
 #include "code\modules\projectiles\guns\ballistic\makeshift_pistol.dm"
 #include "code\modules\power\rbmk.dm"
+#include "code\modules\power\fuel_rods.dm"
 #include "code\modules\vending\_vending.dm"
 #include "code\modules\vending\autodrobe.dm"
 #include "code\modules\vending\clothesmate.dm"
