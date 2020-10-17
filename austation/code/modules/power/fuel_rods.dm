@@ -15,7 +15,7 @@
 	if(depletion >= 100)
 		fuel_power = 0.60 // thrice as powerful as plutonium, you'll want to get this one out quick!
 		name = "Exhausted Telecrystal Fuel Rod"
-		desc = "A highly energetic disguised titanium sheathed rod containing a sizeable measure of telecrystal slots which can be removed by hand, it's extremely efficient as nuclear fuel, but will cause the reaction to get out of control if not properly utilised."
+		desc = "A highly energetic, disguised titanium sheathed rod containing a number of slots filled with greatly expanded telecrystals which can be removed by hand. It's extremely efficient as nuclear fuel, but will cause the reaction to get out of control if not properly utilised."
 		icon_state = "telecrystal_used"
 		grown = TRUE
 	else
