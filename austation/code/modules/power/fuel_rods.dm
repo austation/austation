@@ -12,8 +12,8 @@
 
 /obj/item/twohanded/required/fuel_rod/telecrystal/deplete(amount=0.035)
 	depletion += amount
-	if(depletion >= 40)
-		fuel_power = 0.60 // twice as powerful as plutonium, you'll want to get this one out quick!
+	if(depletion >= 100)
+		fuel_power = 0.60 // thrice as powerful as plutonium, you'll want to get this one out quick!
 		name = "Exhausted Telecrystal Fuel Rod"
 		desc = "A highly energetic disguised titanium sheathed rod containing a sizeable measure of telecrystal slots which can be removed by hand, it's extremely efficient as nuclear fuel, but will cause the reaction to get out of control if not properly utilised."
 		icon_state = "telecrystal_used"
