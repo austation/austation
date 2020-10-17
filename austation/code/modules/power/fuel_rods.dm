@@ -1,5 +1,18 @@
 /obj/item/twohanded/required/fuel_rod
-	var/conversion = "plutonium "// what does this rod convert to when depleted?
+	var/conversion = "plutonium"// what does this rod convert to when depleted?
+	var/rad_strength = 500
+	var/half_life = 2000 // how many depletion ticks are needed to half the fuel_power (1 tick = 1 second)
+	var/time_created = 0
+	var/og_fuel_power = 0.20 //the original fuel power value
+
+	// TC rod only vars (yes I know, slight shitcode having them stored here but I don't want to make another proc for tc rods)
+	var/grown = FALSE // has the rod fissiled enough for us to remove the grown TC?
+	var/percentage = 0 //progress towards tc transmutation in percentage
+
+/obj/item/twohanded/required/fuel_rod/New()
+	time_created = world.time
+	AddComponent(/datum/component/radioactive, rad_strength, src)
+
 
 /obj/item/twohanded/required/fuel_rod/plutonium
 	fuel_power = 0.20
@@ -7,19 +20,13 @@
 	desc = "A highly energetic titanium sheathed rod containing a sizeable measure of weapons grade plutonium, it's highly efficient as nuclear fuel, but will cause the reaction to get out of control if not properly utilised."
 	icon_state = "inferior"
 	conversion = "depleted"
-	var/half_life_progress //depletion ticks that have passed
-	var/half_life = 2000 // how many depletion ticks are needed to half the fuel_power (1 tick = 1 second)
-	var/time_created = 0
-	var/og_fuel_power = 0.20 //the original fuel power value
-	AddComponent(/datum/component/radioactive, 1500 , src)
-
-/obj/item/twohanded/required/fuel_rod/plutonium/New()
-	time_created = world.time
+	rad_strength = 1500
 
 /obj/item/twohanded/required/fuel_rod/depleted
 	name = "Depleted Fuel Rod"
 	desc = "A highly radioactive fuel rod which has expended most of it's useful energy."
-	AddComponent(/datum/component/radioactive, 5000 , src) // you don't want to be near this fucker
+	icon_state = "normal"
+	rad_strength = 6000 // smelly
 
 /obj/item/twohanded/required/fuel_rod/telecrystal
 	name = "Telecrystal Fuel Rod"
@@ -28,31 +35,32 @@
 	fuel_power = 0.30 // twice as powerful as a normal rod, you're going to need some engineering autism if you plan to mass produce TC
 	conversion = "telecrystal"
 	depletion = 65 // headstart, otherwise it takes two hours
+	rad_strength = 1500
 	var/telecrystal_amount = 0 // amount of telecrystals inside the rod?
 	var/max_telecrystal_amount = 8 // the max amount of TC that can be in the rod?
-	var/grown = FALSE // has the rod fissiled enough for us to remove the grown TC?
 	var/expended = FALSE // have we removed the TC already?
 	var/multiplier = 3 // how much do we multiply the inserted TC by?
-	AddComponent(/datum/component/radioactive, 1500 , src)
 
-/obj/item/twohanded/required/fuel_rod/telecrystal/deplete(amount=0.035) // checks every second
+/obj/item/twohanded/required/fuel_rod/deplete(amount=0.035) // checks every second
 	depletion += amount
+	if(conversion == "telecrystal")
+		percentage = min(((depletion - 65) / 35) * 100, 1)
 	if(depletion >= 100)
 		switch(conversion)
-		if("plutonium") // uranium rod turns into plutonium
-			var/obj/item/twohanded/required/fuel_rod/plutonium/P = new(src)
-			P.depletion = depletion
-			qdel(src)
+			if("plutonium") // uranium rod turns into a different object for cargo reasons.
+				var/obj/item/twohanded/required/fuel_rod/plutonium/P = new(src)
+				P.depletion = depletion
+				qdel(src)
 
-		if("telecrystal") // telecrystal rod turns into processed telecrystal rod
-			var/percentage = ((depletion - 65) / 35) * 100 //
-			fuel_power = 0.60 // thrice as powerful as plutonium, you'll want to get this one out quick!
-			name = "Exhausted Telecrystal Fuel Rod"
-			desc = "A highly energetic, disguised titanium sheathed rod containing a number of slots filled with greatly expanded telecrystals which can be removed by hand. It's extremely efficient as nuclear fuel, but will cause the reaction to get out of control if not properly utilised."
-			icon_state = "telecrystal_used"
-			grown = TRUE
-		if("depleted") // plutonium rod turns into depleted fuel rod
-			fuel_power = og_fuel_power * 0.5**((world.time - time_created) / half_life SECONDS) // halves the fuel power every half life (33 minutes)
+			if("telecrystal") // telecrystal rod turns into processed telecrystal rod
+				fuel_power = 0.60 // thrice as powerful as plutonium, you'll want to get this one out quick!
+				name = "Exhausted Telecrystal Fuel Rod"
+				desc = "A highly energetic, disguised titanium sheathed rod containing a number of slots filled with greatly expanded telecrystals which can be removed by hand. It's extremely efficient as nuclear fuel, but will cause the reaction to get out of control if not properly utilised."
+				icon_state = "telecrystal_used"
+				grown = TRUE
+				AddComponent(/datum/component/radioactive, 3000, src)
+			if("depleted") // plutonium rod turns into depleted fuel rod
+				fuel_power = og_fuel_power * 0.5**((world.time - time_created) / half_life SECONDS) // halves the fuel power every half life (33 minutes)
 
 	else
 		fuel_power = 0.10
