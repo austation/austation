@@ -47,9 +47,6 @@
 
 // Table Banging
 /obj/structure/table/AltClick(mob/user)
-	if(!user.CheckActionCooldown(CLICK_CD_MELEE))
-		return
-	user.DelayNextAction()
 	if(user && Adjacent(user) && !user.incapacitated())
 		if(istype(user) && user.a_intent == INTENT_HARM)
 			user.visible_message("<span class='warning'>[user] slams [user.p_their()] palms down on [src].</span>", "<span class='warning'>You slam your palms down on [src].</span>")
