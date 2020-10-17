@@ -1,0 +1,4 @@
+author: "thelaughingbomb"
+delete-after: True
+changes: 
+  - rscadd: "Hug module now provides a mood buff"
