@@ -148,7 +148,7 @@ The reactor CHEWS through moderator. It does not do this slowly. Be very careful
 			if(!fuel_rods.len)
 				start_up() //That was the first fuel rod. Let's heat it up.
 				message_admins("Reactor first started up by [ADMIN_LOOKUPFLW(user)] in [ADMIN_VERBOSEJMP(src)]")
-				log_game("Reactor first started by [key_name(user)] in [AREACOORD(src)]")
+				investigate_log("Reactor first started by [key_name(user)] at [AREACOORD(src)]", INVESTIGATE_SINGULO)
 			fuel_rods += W
 			W.forceMove(src)
 			radiation_pulse(src, temperature) //Wear protective equipment when even breathing near a reactor!
@@ -242,6 +242,7 @@ The reactor CHEWS through moderator. It does not do this slowly. Be very careful
 			vessel_integrity -= temperature / 200 //Think fast loser.
 			take_damage(10) //Just for the sound effect, to let you know you've fucked up.
 			color = "[COLOR_RED]"
+			investigate_log("Reactor taking damage from the lack of coolants", INVESTIGATE_SINGULO)
 	//Now, heat up the output and set our pressure.
 	coolant_output.set_temperature(CELSIUS_TO_KELVIN(temperature)) //Heat the coolant output gas that we just had pass through us.
 	last_output_temperature = KELVIN_TO_CELSIUS(coolant_output.return_temperature())
@@ -299,6 +300,7 @@ The reactor CHEWS through moderator. It does not do this slowly. Be very careful
 	difference = CLAMP(difference, 0, control_rod_effectiveness) //And we can't instantly zap the K to what we want, so let's zap as much of it as we can manage....
 	if(difference > fuel_power && desired_k > K)
 		message_admins("Not enough fuel to get [difference]. We have fuel [fuel_power]")
+		investigate_log("Reactor has not enough fuel to get [difference]. We have fuel [fuel_power]", INVESTIGATE_SINGULO)
 		difference = fuel_power //Again, to stop you being able to run off of 1 fuel rod.
 	if(K != desired_k)
 		if(desired_k > K)
@@ -319,6 +321,7 @@ The reactor CHEWS through moderator. It does not do this slowly. Be very careful
 		for(var/obj/machinery/light/L in GLOB.machines)
 			if(prob(25) && L.z == z) //If youre running the reactor cold though, no need to flicker the lights.
 				L.flicker()
+		investigate_log("Reactor overloading at [power] power", INVESTIGATE_SINGULO)
 	for(var/atom/movable/I in get_turf(src))
 		if(isliving(I))
 			var/mob/living/L = I
@@ -376,9 +379,12 @@ The reactor CHEWS through moderator. It does not do this slowly. Be very careful
 	//First alert condition: Overheat
 	if(temperature >= RBMK_TEMPERATURE_CRITICAL)
 		alert = TRUE
+		investigate_log("Reactor reaching critical temperature at [temperature] C with rods at [desired_k]", INVESTIGATE_SINGULO)
+		message_admins("Reactor reaching critical temperature at [ADMIN_VERBOSEJMP(src)]")
 		if(temperature >= RBMK_TEMPERATURE_MELTDOWN)
 			vessel_integrity -= (temperature / 100)
 			if(vessel_integrity <= temperature/100) //It wouldn't be able to tank another hit.
+				investigate_log("Reactor melted down at [temperature] C with rods at [desired_k]", INVESTIGATE_SINGULO)
 				meltdown() //Oops! All meltdown
 				return
 	else
@@ -391,12 +397,15 @@ The reactor CHEWS through moderator. It does not do this slowly. Be very careful
 	//Second alert condition: Overpressurized (the more lethal one)
 	if(pressure >= RBMK_PRESSURE_CRITICAL)
 		alert = TRUE
+		investigate_log("Reactor reaching critical pressure at [pressure] PSI with rods at [desired_k]", INVESTIGATE_SINGULO)
+		message_admins("Reactor reaching critical pressure at [ADMIN_VERBOSEJMP(src)]")
 		shake_animation(0.5)
 		playsound(loc, 'sound/machines/clockcult/steam_whoosh.ogg', 100, TRUE)
 		var/turf/T = get_turf(src)
 		T.atmos_spawn_air("water_vapor=[pressure/100];TEMP=[CELSIUS_TO_KELVIN(temperature)]")
 		vessel_integrity -= (pressure/100)
 		if(vessel_integrity <= pressure/100) //It wouldn't be able to tank another hit.
+			investigate_log("Reactor blowout at [pressure] PSI with rods at [desired_k]", INVESTIGATE_SINGULO)
 			blowout()
 			return
 	if(warning)
@@ -571,7 +580,7 @@ The reactor CHEWS through moderator. It does not do this slowly. Be very careful
 		if(reactor.log_delay < world.time) //Used to avoid spam
 			reactor.log_delay = world.time + 2 SECONDS
 			message_admins("Reactor rods set to [reactor.desired_k] by [ADMIN_LOOKUPFLW(usr)] in [ADMIN_VERBOSEJMP(src)]")
-			log_game("Reactor rods set to [reactor.desired_k] by [key_name(usr)] in [AREACOORD(src)]")
+			investigate_log("reactor rods set to [reactor.desired_k] by [key_name(usr)] at [AREACOORD(src)]", INVESTIGATE_SINGULO)
 
 /obj/machinery/computer/reactor/control_rods/ui_data(mob/user)
 	var/list/data = list()
