@@ -25,16 +25,18 @@
 	var/static/list/damage_overlays = list()
 	var/image/current_damage_overlay
 	var/breaksound = "shatter"
+	var/very_clear_glass = FALSE
 
 /turf/open/floor/glass/New(loc)
 	..(loc)
-	icon_state = "[((x + y) ^ ~(x * y) + z) % 25]"
-	if(!floor_overlays[glass_state])
-		var/image/floor_overlay = image('austation/icons/turf/overlays.dmi', glass_state)
-		floor_overlay.plane = GAME_PLANE
-		floor_overlay.layer = CATWALK_LAYER
-		floor_overlays[glass_state] = floor_overlay
-	overlays += floor_overlays[glass_state]
+	if(!very_clear_glass)
+		icon_state = "[((x + y) ^ ~(x * y) + z) % 25]"
+		if(!floor_overlays[glass_state])
+			var/image/floor_overlay = image('austation/icons/turf/overlays.dmi', glass_state)
+			floor_overlay.plane = GAME_PLANE
+			floor_overlay.layer = CATWALK_LAYER
+			floor_overlays[glass_state] = floor_overlay
+		overlays += floor_overlays[glass_state]
 	update_icon()
 
 /turf/open/floor/glass/update_icon()
@@ -354,6 +356,11 @@
 /turf/open/floor/glass/airless
 	icon_state = "floor"
 	initial_gas_mix = AIRLESS_ATMOS
+
+/turf/open/floor/glass/ultraclear
+	name = "ultraclear glass floor"
+	desc = "A transparent glass floor, used for looking into the void. Jesus christ it's way too clear to be glass."
+	very_clear_glass = TRUE
 
 /turf/open/floor/glass/plasma
 	name = "plasma glass floor"
