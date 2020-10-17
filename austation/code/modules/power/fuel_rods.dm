@@ -28,7 +28,7 @@
 			to_chat(user, "<span class='warning'>The sample slots have sealed themselves shut, it's too late to add crystals now!</span>") // no cheesing in crystals at 100%
 			return
 		if(expended)
-			to_chat(user, "<span class='warning'>The [src]'s material slots have already been used.</span>")
+			to_chat(user, "<span class='warning'>\The [src]'s material slots have already been used.</span>")
 			return
 
 		if(telecrystal_amount < max_telecrystal_amount)
@@ -63,7 +63,7 @@
 		return
 
 	else
-		to_chat(user, "<span class='warning'>The [src] has not fissiled enough to fully grow the sample. The progress bar shows it is [min(depletion / 40 * 100, 100)]% complete.</span>")
+		to_chat(user, "<span class='warning'>\The [src] has not fissiled enough to fully grow the sample. The progress bar shows it is [min(depletion / 40 * 100, 100)]% complete.</span>")
 
 /obj/item/twohanded/required/fuel_rod/telecrystal/examine(mob/user)
 	. = ..()
