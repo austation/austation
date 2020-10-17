@@ -19,9 +19,11 @@
 	var/shardtype = /obj/item/shard
 	var/sheettype = /obj/item/stack/sheet/rglass //Used for deconstruction
 	var/glass_state = "glass_floor" // State of the glass itself.
+	var/lattice_state = "lattice"
 	var/reinforced = 0
 	//var/construction_state = 2 // Fully constructed - no deconstructing
 	var/static/list/floor_overlays = list()
+	var/static/list/lattice_overlays = list()
 	var/static/list/damage_overlays = list()
 	var/image/current_damage_overlay
 	var/breaksound = "shatter"
@@ -34,7 +36,13 @@
 		floor_overlay.plane = GAME_PLANE
 		floor_overlay.layer = CATWALK_LAYER
 		floor_overlays[glass_state] = floor_overlay
+	if(!lattice_overlays[lattice_state])
+		var/image/lattice_overlay = image('icons/obj/smooth_structures/lattice.dmi', lattice_state)
+		lattice_overlay.plane = GAME_PLANE
+		lattice_overlay.layer = TURF_LAYER
+		lattice_overlays[lattice_state] = lattice_overlay
 	overlays += floor_overlays[glass_state]
+	overlays += lattice_overlays[lattice_state]
 	update_icon()
 
 /turf/open/floor/glass/update_icon()
