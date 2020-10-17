@@ -8,8 +8,18 @@
 	icon_state = "inferior"
 	conversion = "depleted"
 	var/half_life_progress //depletion ticks that have passed
-	var/half_life = 2000 // how many depletion ticks are needed to half the fuel_power
+	var/half_life = 2000 // how many depletion ticks are needed to half the fuel_power (1 tick = 1 second)
+	var/time_created = 0
+	var/og_fuel_power = 0.20 //the original fuel power value
+	AddComponent(/datum/component/radioactive, 1500 , src)
 
+/obj/item/twohanded/required/fuel_rod/plutonium/New()
+	time_created = world.time
+
+/obj/item/twohanded/required/fuel_rod/depleted
+	name = "Depleted Fuel Rod"
+	desc = "A highly radioactive fuel rod which has expended most of it's useful energy."
+	AddComponent(/datum/component/radioactive, 5000 , src) // you don't want to be near this fucker
 
 /obj/item/twohanded/required/fuel_rod/telecrystal
 	name = "Telecrystal Fuel Rod"
@@ -17,41 +27,35 @@
 	icon_state = "telecrystal"
 	fuel_power = 0.30 // twice as powerful as a normal rod, you're going to need some engineering autism if you plan to mass produce TC
 	conversion = "telecrystal"
+	depletion = 65 // headstart, otherwise it takes two hours
 	var/telecrystal_amount = 0 // amount of telecrystals inside the rod?
 	var/max_telecrystal_amount = 8 // the max amount of TC that can be in the rod?
 	var/grown = FALSE // has the rod fissiled enough for us to remove the grown TC?
 	var/expended = FALSE // have we removed the TC already?
 	var/multiplier = 3 // how much do we multiply the inserted TC by?
+	AddComponent(/datum/component/radioactive, 1500 , src)
 
-
-/obj/item/twohanded/required/fuel_rod/telecrystal/deplete(amount=0.035)
+/obj/item/twohanded/required/fuel_rod/telecrystal/deplete(amount=0.035) // checks every second
 	depletion += amount
 	if(depletion >= 100)
 		switch(conversion)
-		if("plutonium") // override that allows us to use plutonium as a different object without complicated variable checking
+		if("plutonium") // uranium rod turns into plutonium
 			var/obj/item/twohanded/required/fuel_rod/plutonium/P = new(src)
 			P.depletion = depletion
 			qdel(src)
 
-		if("telecrystal")
+		if("telecrystal") // telecrystal rod turns into processed telecrystal rod
+			var/percentage = ((depletion - 65) / 35) * 100 //
 			fuel_power = 0.60 // thrice as powerful as plutonium, you'll want to get this one out quick!
 			name = "Exhausted Telecrystal Fuel Rod"
 			desc = "A highly energetic, disguised titanium sheathed rod containing a number of slots filled with greatly expanded telecrystals which can be removed by hand. It's extremely efficient as nuclear fuel, but will cause the reaction to get out of control if not properly utilised."
 			icon_state = "telecrystal_used"
 			grown = TRUE
-		if("depleted")
-			if(half_life_progress => half_life)
-				fuel_power = fuel_power / 2
-
-			if(fuel_power == 10)
-				name = "Depleted Fuel Rod"
-				desc = "A highly radioactive fuel rod which has expended most of it's useful energy."
-
-			else
-				half_life_progress += 1
-
+		if("depleted") // plutonium rod turns into depleted fuel rod
+			fuel_power = og_fuel_power * 0.5**((world.time - time_created) / half_life SECONDS) // halves the fuel power every half life (33 minutes)
 
 	else
+		fuel_power = 0.10
 
 /obj/item/twohanded/required/fuel_rod/telecrystal/attackby(obj/item/W, mob/user, params)
 	var/obj/item/stack/telecrystal/M = W
@@ -95,7 +99,7 @@
 		return
 
 	else
-		to_chat(user, "<span class='warning'>\The [src] has not fissiled enough to fully grow the sample. The progress bar shows it is [min(depletion / 40 * 100, 100)]% complete.</span>")
+		to_chat(user, "<span class='warning'>\The [src] has not fissiled enough to fully grow the sample. The progress bar shows it is [percentage]% complete.</span>")
 
 /obj/item/twohanded/required/fuel_rod/telecrystal/examine(mob/user)
 	. = ..()
@@ -103,6 +107,6 @@
 		. += "<span class='warning'>The material slots have been slagged by the extreme heat, you can't grow crystals in this rod again...</span>"
 		return
 	if(depletion)
-		. += "<span class='danger'>The sample is [min(depletion / 40 * 100, 100)]% fissiled.</span>"
+		. += "<span class='danger'>The sample is [percentage]% fissiled.</span>"
 
 	. += "<span class='disarm'>[telecrystal_amount]/[max_telecrystal_amount] of the telecrystal slots are full.</span>"

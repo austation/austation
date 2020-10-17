@@ -11,7 +11,7 @@
 #define RBMK_PRESSURE_OPERATING 1000 //PSI
 #define RBMK_PRESSURE_CRITICAL 1469.59 //PSI
 
-#define RBMK_MAX_CRITICALITY 3 //No more criticality than N for now.
+#define RBMK_MAX_CRITICALITY 4.5 //No more criticality than N for now.
 
 #define RBMK_POWER_FLAVOURISER 1000 //To turn those KWs into something usable
 
