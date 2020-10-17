@@ -113,6 +113,7 @@
 			. = damage_amount
 			var/old_integ = obj_integrity
 			obj_integrity = max(old_integ - damage_amount, 0)
+			update_icon()
 			if(obj_integrity <= 0)
 				break_turf(TRUE)
 
@@ -134,9 +135,6 @@
 /turf/open/floor/glass/ex_act(severity, target)
 	..() //contents explosion
 	if(QDELETED(src))
-		return
-	if(target == src)
-		take_damage(INFINITY, BRUTE, "bomb", 0)
 		return
 	switch(severity)
 		if(1)
@@ -170,7 +168,7 @@
 		if(O.level == 1)
 			O.hide(FALSE) // ALWAYS show subfloor stuff.
 
-/obj/bullet_act(obj/item/projectile/P)
+turf/open/floor/glass/bullet_act(obj/item/projectile/P)
 	. = ..()
 	playsound(src, P.hitsound, 50, 1)
 	visible_message("<span class='danger'>[src] is hit by \a [P]!</span>", null, null, COMBAT_MESSAGE_RANGE)
@@ -270,7 +268,9 @@
 	return take_damage(M.force*3, mech_damtype, "melee", play_soundeffect, get_dir(src, M)) // multiplied by 3 so we can hit objs hard but not be overpowered against mobs.
 
 /turf/open/floor/glass/hitby(atom/movable/AM, skipcatch, hitpush, blocked, datum/thrownthing/throwingdatum)
-	..()
+	. = ..()
+	if(.)
+		return
 	take_damage(AM.throwforce, BRUTE, "melee", 1, get_dir(src, AM))
 /*
 //Someone threw something at us, please advise
