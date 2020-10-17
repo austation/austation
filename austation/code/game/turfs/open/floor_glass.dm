@@ -13,7 +13,11 @@
 	intact = 0 // make pipes appear above space
 	baseturfs = /turf/baseturf_bottom
 
-	var/health=80 // 2x that of an rwindow
+	//var/health=80 // 2x that of an rwindow
+	var/datum/armor/armor = list("melee" = 50, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 25, "bio" = 100, "rad" = 100, "fire" = 80, "acid" = 100)
+	var/max_integrity = 400
+	var/obj_integrity
+	var/damage_deflection = 21
 	var/sheetamount = 1 //Number of sheets needed to build this floor (determines how much shit is spawned via Destroy())
 	var/cracked_base = "fcrack"
 	var/shardtype = /obj/item/shard
@@ -26,6 +30,17 @@
 	var/image/current_damage_overlay
 	var/breaksound = "shatter"
 	var/very_clear_glass = FALSE
+
+/turf/open/floor/glass/Initialize()
+	. = ..()
+	if (islist(armor))
+		armor = getArmor(arglist(armor))
+	else if (!armor)
+		armor = getArmor()
+	else if (!istype(armor, /datum/armor))
+		stack_trace("Invalid type [armor.type] found in .armor during /obj Initialize()")
+	if(obj_integrity == null)
+		obj_integrity = max_integrity
 
 /turf/open/floor/glass/New(loc)
 	..(loc)
@@ -40,14 +55,12 @@
 	update_icon()
 
 /turf/open/floor/glass/update_icon()
-	var/current_health = health
-	var/max_health = initial(health)
-	if(current_health >= max_health)
+	if(obj_integrity >= max_integrity)
 		if(current_damage_overlay)
 			overlays -= current_damage_overlay
 			current_damage_overlay = null
 		return
-	var/damage_fraction = clamp(round((max_health - current_health) / max_health * 5) + 1, 1, 5) //gives a number, 1-5, based on damagedness
+	var/damage_fraction = clamp(round((max_integrity - obj_integrity) / max_integrity * 5) + 1, 1, 5) //gives a number, 1-5, based on damagedness
 	var/icon_state = "[cracked_base][damage_fraction]"
 	if(!damage_overlays[icon_state])
 		var/image/_damage_overlay = image('austation/icons/obj/structures.dmi', icon_state)
@@ -64,13 +77,13 @@
 
 /turf/open/floor/glass/examine()
 	. = ..()
-	if(health >= initial(health)) //Sanity
+	if(obj_integrity >= max_integrity) //Sanity
 		. += "<span class='notice'>It's in perfect shape without a single scratch.</span>"
-	else if(health >= 0.8*initial(health))
+	else if(obj_integrity >= 0.8*max_integrity)
 		. += "<span class='notice'>It has a few scratches and a small impact.</span>"
-	else if(health >= 0.5*initial(health))
+	else if(obj_integrity >= 0.5*max_integrity)
 		. += "<span class='notice'>It has a few impacts with some cracks running from them.</span>"
-	else if(health >= 0.2*initial(health))
+	else if(obj_integrity >= 0.2*max_integrity)
 		. += "<span class='notice'>It's covered in impact marks and most of the outer layer is cracked.</span>"
 	else
 		. += "<span class='notice'>It's cracked over multiple layers and has many impact marks.</span>"
@@ -88,7 +101,52 @@
 	new shardtype(T, sheetamount)
 	new /obj/item/stack/rods(T, sheetamount+1) // Includes lattic)
 
-/turf/open/floor/glass/proc/healthcheck(var/mob/M, var/sound = 1, var/method="unknown", var/no_teleport=TRUE)
+/turf/open/floor/glass/proc/take_damage(damage_amount, damage_type = BRUTE, damage_flag = 0, sound_effect = 1, attack_dir, armour_penetration = 0)
+	if(QDELETED(src))
+		stack_trace("[src] taking damage after deletion")
+		return
+	if(sound_effect)
+		playsound(src, 'sound/effects/Glasshit.ogg', 75, 1)
+	if(obj_integrity > 0)
+		damage_amount = run_obj_armor(damage_amount, damage_type, damage_flag, attack_dir, armour_penetration)
+		if(damage_amount >= DAMAGE_PRECISION)
+			. = damage_amount
+			var/old_integ = obj_integrity
+			obj_integrity = max(old_integ - damage_amount, 0)
+			if(obj_integrity <= 0)
+				break_turf(TRUE)
+
+/turf/open/floor/glass/proc/run_obj_armor(damage_amount, damage_type, damage_flag = 0, attack_dir, armour_penetration = 0)
+	if(damage_flag == "melee" && damage_amount < damage_deflection)
+		return 0
+	switch(damage_type)
+		if(BRUTE)
+		if(BURN)
+		else
+			return 0
+	var/armor_protection = 0
+	if(damage_flag)
+		armor_protection = armor.getRating(damage_flag)
+	if(armor_protection)		//Only apply weak-against-armor/hollowpoint effects if there actually IS armor.
+		armor_protection = CLAMP(armor_protection - armour_penetration, min(armor_protection, 0), 100)
+	return round(damage_amount * (100 - armor_protection)*0.01, DAMAGE_PRECISION)
+
+/turf/open/floor/glass/ex_act(severity, target)
+	..() //contents explosion
+	if(QDELETED(src))
+		return
+	if(target == src)
+		take_damage(INFINITY, BRUTE, "bomb", 0)
+		return
+	switch(severity)
+		if(1)
+			take_damage(INFINITY, BRUTE, "bomb", 0)
+		if(2)
+			take_damage(rand(100, 250), BRUTE, "bomb", 0)
+		if(3)
+			take_damage(rand(10, 90), BRUTE, "bomb", 0)
+
+/*/turf/open/floor/glass/proc/healthcheck(var/mob/M, var/sound = 1, var/method="unknown", var/no_teleport=TRUE)
 	if(health <= 0)
 		if(M)
 			var/pressure = 0
@@ -105,13 +163,20 @@
 		if(sound)
 			playsound(src, 'sound/effects/Glasshit.ogg', 100, 1)
 		update_icon()
-
+*/
 
 /turf/open/floor/glass/levelupdate()
 	for(var/obj/O in src)
 		if(O.level == 1)
 			O.hide(FALSE) // ALWAYS show subfloor stuff.
 
+/obj/bullet_act(obj/item/projectile/P)
+	. = ..()
+	playsound(src, P.hitsound, 50, 1)
+	visible_message("<span class='danger'>[src] is hit by \a [P]!</span>", null, null, COMBAT_MESSAGE_RANGE)
+	if(!QDELETED(src)) //Bullet on_hit effect might have already destroyed this object
+		take_damage(P.damage, P.damage_type, P.flag, 0, turn(P.dir, 180), P.armour_penetration)
+/*
 /turf/open/floor/glass/bullet_act(var/obj/item/projectile/Proj)
 	health -= Proj.damage
 	..()
@@ -131,17 +196,83 @@
 			health -= rand(5, 15)
 			healthcheck(method="ex_act", no_teleport=TRUE)
 			return
-
+*/
 /turf/open/floor/glass/Entered(var/atom/movable/mover)
 	if(!reinforced  && istype(mover,/obj/mecha)) //OSHA spec glass flooring, woohoo
 		var/obj/mecha/M = mover
 		M.visible_message("<span class='warning'>\The [M] damages \the [src] with its sheer weight!</span>",
 		"<span class='warning'>You damage \the [src] with your sheer weight!</span>",
 		"<span class='italics'>You hear glass cracking!</span>")
-		health -= rand(20, 40)
-		healthcheck(M.occupant, FALSE, "mech weight")
+		take_damage(30, BRUTE, "melee", 0, get_dir(src, M))
 	return 1
 
+/turf/open/floor/glass/proc/hulk_damage()
+	return 150 //the damage hulks do on punches to this object, is affected by melee armor
+
+/turf/open/floor/glass/attack_hulk(mob/living/carbon/human/user, does_attack_animation = 0)
+	if(user.a_intent == INTENT_HARM)
+		..(user, 1)
+		user.visible_message("<span class='danger'>[user] smashes [src]!</span>", "<span class='danger'>You smash [src]!</span>", null, COMBAT_MESSAGE_RANGE)
+		playsound(src, 'sound/effects/Glasshit.ogg', 100, 1)
+		user.say(pick(";RAAAAAAAARGH!", ";HNNNNNNNNNGGGGGGH!", ";GWAAAAAAAARRRHHH!", "NNNNNNNNGGGGGGGGHH!", ";AAAAAAARRRGH!" ), forced="hulk")
+		take_damage(hulk_damage(), BRUTE, "melee", 0, get_dir(src, user))
+		return 1
+	return 0
+
+/turf/open/floor/glass/proc/attack_generic(mob/user, damage_amount = 0, damage_type = BRUTE, damage_flag = 0, sound_effect = 1, armor_penetration = 0) //used by attack_alien, attack_animal, and attack_slime
+	user.do_attack_animation(src)
+	user.changeNext_move(CLICK_CD_MELEE)
+	return take_damage(damage_amount, damage_type, damage_flag, sound_effect, get_dir(src, user), armor_penetration)
+
+/turf/open/floor/glass/attack_slime(mob/living/simple_animal/slime/user)
+	if(!user.is_adult)
+		return
+	attack_generic(user, rand(15), "melee", 1)
+
+/turf/open/floor/glass/attack_alien(mob/living/carbon/alien/humanoid/user)
+	if(attack_generic(user, 60, BRUTE, "melee", 0))
+		playsound(src.loc, 'sound/weapons/slash.ogg', 100, 1)
+
+/turf/open/floor/glass/attack_animal(mob/living/simple_animal/M)
+	if(!M.melee_damage && !M.obj_damage)
+		M.emote("custom", message = "[M.friendly] [src].")
+		return 0
+	else
+		var/play_soundeffect = 1
+		if(M.environment_smash)
+			play_soundeffect = 0
+		if(M.obj_damage)
+			. = attack_generic(M, M.obj_damage, M.melee_damage_type, "melee", play_soundeffect, M.armour_penetration)
+		else
+			. = attack_generic(M, M.melee_damage, M.melee_damage_type, "melee", play_soundeffect, M.armour_penetration)
+		if(. && !play_soundeffect)
+			playsound(src, 'sound/effects/meteorimpact.ogg', 100, 1)
+
+/turf/open/floor/glass/mech_melee_attack(obj/mecha/M)
+	M.do_attack_animation(src)
+	var/play_soundeffect = 0
+	var/mech_damtype = M.damtype
+	if(M.selected)
+		mech_damtype = M.selected.damtype
+		play_soundeffect = 1
+	else
+		switch(M.damtype)
+			if(BRUTE)
+				playsound(src, 'sound/weapons/punch4.ogg', 50, 1)
+			if(BURN)
+				playsound(src, 'sound/items/welder.ogg', 50, 1)
+			if(TOX)
+				playsound(src, 'sound/effects/spray2.ogg', 50, 1)
+				return 0
+			else
+				return 0
+	M.visible_message("<span class='danger'>[M.name] hits [src]!</span>", "<span class='danger'>You hit [src]!</span>", null, COMBAT_MESSAGE_RANGE)
+	return take_damage(M.force*3, mech_damtype, "melee", play_soundeffect, get_dir(src, M)) // multiplied by 3 so we can hit objs hard but not be overpowered against mobs.
+
+/turf/open/floor/glass/hitby(atom/movable/AM, skipcatch, hitpush, blocked, datum/thrownthing/throwingdatum)
+	..()
+	take_damage(AM.throwforce, BRUTE, "melee", 1, get_dir(src, AM))
+/*
 //Someone threw something at us, please advise
 // I don't think this shit works on turfs, but it's here just in case.
 /turf/open/floor/glass/hitby(AM as mob|obj, skipcatch, hitpush, blocked, datum/thrownthing/throwingdatum)
@@ -213,7 +344,7 @@
 	if(SL.is_adult == 0)
 		return
 	attack_generic(user, rand(10, 15))
-
+*/
 /turf/open/floor/glass/attackby(var/obj/item/W, var/mob/user, params)
 	/* No deconstructing
 	switch(construction_state)
@@ -268,21 +399,20 @@
 	*/
 
 	if(W.tool_behaviour == TOOL_WELDER && user.a_intent == INTENT_HELP)
-		if(health < initial(health))
+		if(obj_integrity < max_integrity)
 			if(!W.tool_start_check(user, amount=0))
 				return
 
 			to_chat(user, "<span class='notice'>You begin repairing [src]...</span>")
 			if(W.use_tool(src, user, 40, volume=50))
-				health = initial(health)
-				healthcheck()
+				obj_integrity = max_integrity
 				to_chat(user, "<span class='notice'>You repair [src].</span>")
 		else
 			to_chat(user, "<span class='warning'>[src] is already in good condition!</span>")
 		return
 	if(ishuman(user) && user.a_intent != INTENT_HARM)
 		return
-	unhandled_attackby(W, user)
+	attackby(W, user)
 
 /turf/open/floor/glass/attack_hand(mob/living/user) //Shamelessly copied from tableslam
 	if(Adjacent(user) && user.pulling)
@@ -298,19 +428,16 @@
 					"<span class='warning'>You shove \the [pushed_mob] into \the [src]!</span>")
 				if(user.grab_state == GRAB_AGGRESSIVE)
 					pushed_mob.apply_damage(10) //Nasty, but dazed and concussed at worst
-					health -= 5
 					visible_message("<span class='danger'>\The [user] slams \the [pushed_mob] into \the [src]!</span>", \
 					"<span class='danger'>You slam \the [pushed_mob] into \the [src]!</span>")
 				if(user.grab_state > GRAB_AGGRESSIVE)
 					pushed_mob.Stun(3)
 					pushed_mob.Knockdown(3) //Almost certainly shoved head or face-first, you're going to need a bit for the lights to come back on
 					pushed_mob.apply_damage(20) //That got to fucking hurt, you were basically flung into a window, most likely a shattered one at that
-					health -= 20 //Window won't like that
 					visible_message("<span class='danger'>\The [user] crushes \the [pushed_mob] into \the [src]!</span>", \
 					"<span class='danger'>You crush \the [pushed_mob] into \the [src]!</span>")
-			healthcheck(user, TRUE, "grabslam [user] -> [pushed_mob]")
 			log_combat(user, pushed_mob, "floor slammed", null, "against [src]")
-
+/*
 /turf/open/floor/glass/proc/unhandled_attackby(var/obj/item/W, var/mob/user)
 	user.do_attack_animation(src, W)
 	if(W.damtype == BRUTE || W.damtype == BURN)
@@ -321,6 +448,7 @@
 		healthcheck(user, TRUE, "attackby [W]")
 		return TRUE
 	return FALSE
+*/
 /*
 /turf/open/floor/glass/proc/handle_grabslam(var/mob/user)
 	if(istype(G.affecting, /mob/living))
@@ -369,8 +497,10 @@
 	shardtype = /obj/item/shard/plasma
 	sheettype = /obj/item/stack/sheet/plasmarglass
 	glass_state = "plasma_glass_floor"
-	health = 160
+	max_integrity = 2000
+	armor = list("melee" = 85, "bullet" = 20, "laser" = 0, "energy" = 0, "bomb" = 60, "bio" = 100, "rad" = 100, "fire" = 99, "acid" = 100)
 	reinforced=TRUE
+	damage_deflection = 30
 
 /turf/open/floor/glass/plasma/airless
 	icon_state = "floor"
