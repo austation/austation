@@ -275,6 +275,10 @@
 	prof.undershirt = H.undershirt
 	prof.socks = H.socks
 
+	// austation -- changelings steal rings
+	prof.ring_type = H.ring_type
+	prof.ring_engraved = H.ring_engraved
+
 	var/list/slots = list("head", "wear_mask", "back", "wear_suit", "w_uniform", "shoes", "belt", "gloves", "glasses", "ears", "wear_id", "s_store")
 	for(var/slot in slots)
 		if(slot in H.vars)
