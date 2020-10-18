@@ -271,6 +271,7 @@ turf/open/floor/glass/bullet_act(obj/item/projectile/P)
 	. = ..()
 	if(.)
 		return
+	visible_message("<span class='danger'>\The [I] slams into \the [src].</span>")
 	take_damage(AM.throwforce, BRUTE, "melee", 1, get_dir(src, AM))
 /*
 //Someone threw something at us, please advise
