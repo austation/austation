@@ -49,9 +49,12 @@
 	if(depletion >= 100)
 		switch(conversion)
 			if("plutonium") // uranium rod turns into a different object for cargo reasons.
-				var/obj/item/twohanded/required/fuel_rod/plutonium/P = new(src)
-				P.depletion = depletion
-				qdel(src)
+				var/obj/machinery/atmospherics/components/trinary/nuclear_reactor/N = loc // store the reactor we're inside of in a var
+				if(istype(N))
+					var/obj/item/twohanded/required/fuel_rod/plutonium/P = new(loc)
+					P.depletion = depletion
+					N.fuel_rods += P
+					qdel(src)
 
 			if("telecrystal") // telecrystal rod turns into processed telecrystal rod
 				fuel_power = 0.60 // thrice as powerful as plutonium, you'll want to get this one out quick!
