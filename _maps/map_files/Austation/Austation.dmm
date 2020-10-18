@@ -54486,6 +54486,7 @@
 "jzC" = (
 /obj/structure/table,
 /obj/item/hemostat,
+/obj/item/blood_filter,
 /turf/open/floor/plasteel/white/side,
 /area/medical/surgery)
 "jzZ" = (
