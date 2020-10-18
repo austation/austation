@@ -1,0 +1,8 @@
+author: "TheFakeElon"
+delete-after: True
+changes: 
+  - rscadd: "Adds depleted fuel rods"
+  - rscadd: "Adds the ability to sell plutonium via cargo"
+  - balance: "decreased the time it takes for telecrystal rods to fissile"
+  - bugfix: "telecrystal rods now show the correct fissile percentage"
+  - code_imp: "Made plutonium it's own object"
