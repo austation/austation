@@ -80,6 +80,7 @@
 				if(fuel_power < 10 || depletion >= 300) // you can also get depleted fuel with enough nitryl
 					fuel_power = 0
 					playsound(loc, 'sound/effects/supermatter.ogg', 100, TRUE)
+					if(istype(N))
 						var/obj/item/twohanded/required/fuel_rod/depleted/D = new(loc)
 						D.depletion = depletion
 						N.fuel_rods += D
