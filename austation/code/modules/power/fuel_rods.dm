@@ -13,7 +13,14 @@
 	..()
 	time_created = world.time
 	AddComponent(/datum/component/radioactive, rad_strength, src)
+	if(process)
+		START_PROCESSING(SSobj, src)
+	. = ..()
 
+/obj/item/twohanded/required/fuel_rod/Destroy()
+	if(process)
+		STOP_PROCESSING(SSobj, src)
+	. = ..()
 
 /obj/item/twohanded/required/fuel_rod/plutonium
 	fuel_power = 0.20
@@ -22,6 +29,10 @@
 	icon_state = "inferior"
 	conversion = "depleted"
 	rad_strength = 1500
+	process = TRUE // for half life code
+
+/obj/item/twohanded/required/fuel_rod/plutonium/process()
+	fuel_power = og_fuel_power * 0.5**((world.time - time_created) / half_life SECONDS) // halves the fuel power every half life (33 minutes)
 
 /obj/item/twohanded/required/fuel_rod/depleted
 	name = "Depleted Fuel Rod"
@@ -43,13 +54,13 @@
 	var/multiplier = 3 // how much do we multiply the inserted TC by?
 
 /obj/item/twohanded/required/fuel_rod/deplete(amount=0.035) // override for the one in rmbk.dm
+	var/obj/machinery/atmospherics/components/trinary/nuclear_reactor/N = loc // store the reactor we're inside of in a var
 	depletion += amount
 	if(conversion == "telecrystal")
 		percentage = min(((depletion - 65) / 35) * 100, 1)
 	if(depletion >= 100)
 		switch(conversion)
 			if("plutonium") // uranium rod turns into a different object for cargo reasons.
-				var/obj/machinery/atmospherics/components/trinary/nuclear_reactor/N = loc // store the reactor we're inside of in a var
 				if(istype(N))
 					var/obj/item/twohanded/required/fuel_rod/plutonium/P = new(loc)
 					P.depletion = depletion
@@ -63,8 +74,16 @@
 				icon_state = "telecrystal_used"
 				grown = TRUE
 				AddComponent(/datum/component/radioactive, 3000, src)
+
 			if("depleted") // plutonium rod turns into depleted fuel rod
-				fuel_power = og_fuel_power * 0.5**((world.time - time_created) / half_life SECONDS) // halves the fuel power every half life (33 minutes)
+
+				if(fuel_power < 10 || depletion >= 300) // you can also get depleted fuel with enough nitryl
+					fuel_power = 0
+					playsound(loc, 'sound/effects/supermatter.ogg', 100, TRUE)
+						var/obj/item/twohanded/required/fuel_rod/depleted/D = new(loc)
+						D.depletion = depletion
+						N.fuel_rods += D
+						qdel(src)
 
 	else
 		fuel_power = 0.10
