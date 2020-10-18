@@ -46089,9 +46089,6 @@
 	use_power = 0
 	},
 /obj/structure/lattice,
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
 /turf/open/space,
 /area/space/nearstation)
 "gcR" = (
