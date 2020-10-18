@@ -1,5 +1,5 @@
 if(!(Test-Path -Path "C:/byond")){
-    bash tools/appveyor/download_byond.sh 2>&1
+    bash tools/appveyor/download_byond.sh
     [System.IO.Compression.ZipFile]::ExtractToDirectory("C:/byond.zip", "C:/")
     Remove-Item C:/byond.zip
 }
