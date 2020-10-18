@@ -1,0 +1,12 @@
+author: "MrLostman"
+delete-after: True
+changes: 
+  - balance: "rebalanced stats of deafness, fever, spontaneous combustion, necrotizing fasciitis, narcolepsy, hyphema and vomiting, DAS"
+  - refactor: "modularized self resp fart removal"
+  - tweak: "bee infestation symbiotic and honey producing have been separated, bee spawn chance linked to stage speed and a no bee threshold"
+  - tweak: "pituitary disruption, superficial healing and nanite symbiosi has had zesko grief code removed"
+  - tweak: "viral aggressive meta doesn't make host immune if it cures"
+  - tweak: "weight loss threshold that stops people from getting fat"
+  - tweak: "spiked skin armour reverted to 60"
+  - tweak: "das stealth threshold removed and bad mutations removed from good threshold"
+  - tweak: "superficial healing threshold increased to 25 and 50, zesk grief code removed"
