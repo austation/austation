@@ -10,6 +10,7 @@
 	var/percentage = 0 //progress towards tc transmutation in percentage
 
 /obj/item/twohanded/required/fuel_rod/New()
+	..()
 	time_created = world.time
 	AddComponent(/datum/component/radioactive, rad_strength, src)
 
@@ -41,7 +42,7 @@
 	var/expended = FALSE // have we removed the TC already?
 	var/multiplier = 3 // how much do we multiply the inserted TC by?
 
-/obj/item/twohanded/required/fuel_rod/deplete(amount=0.035) // checks every second
+/obj/item/twohanded/required/fuel_rod/deplete(amount=0.035) // override for the one in rmbk.dm
 	depletion += amount
 	if(conversion == "telecrystal")
 		percentage = min(((depletion - 65) / 35) * 100, 1)
