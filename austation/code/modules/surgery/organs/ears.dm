@@ -1,7 +1,7 @@
 /obj/item/organ/ears/catcybernetic
 	name = "cybernetic cat ears"
 	icon = 'icons/obj/clothing/hats.dmi'
-	desc = "These ears act as cones for sound while an implant filters loud noise, all while covered in synthetic fur"
+	desc = "These ears act as cones for sound while an implant filters loud noise, all while covered in synthetic fur" // spare me god
 	icon_state = "kitty"
 	status = ORGAN_ROBOTIC
 	organ_flags = ORGAN_SYNTHETIC //this makes a "version" of cat ears that are immune to bangs
