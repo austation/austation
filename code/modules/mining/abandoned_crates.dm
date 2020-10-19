@@ -20,7 +20,7 @@
 		code += dig
 		digits -= dig  //there are never matching digits in the answer
 
-	var/loot = rand(1,101) //100 different crates with varying chances of spawning //austation -- extra loots
+	var/loot = rand(1,100) //100 different crates with varying chances of spawning
 	switch(loot)
 		if(1 to 5) //5% chance
 			new /obj/item/reagent_containers/food/drinks/bottle/rum(src)
@@ -149,13 +149,6 @@
 			new /obj/item/clothing/mask/luchador(src)
 		if(100)
 			new /obj/item/clothing/head/bearpelt(src)
-		//austation begin -- cratestuff
-		if(101)
-			new /obj/item/storage/belt/darksabre(src)
-			new /obj/item/clothing/suit/armor/vest/capcarapace/dark(src)
-			new /obj/item/clothing/neck/cloak/inferno(src)
-			new /obj/item/clothing/accessory/medal/steele(src)
-		//austation end
 
 //ATTACK HAND IGNORING PARENT RETURN VALUE
 /obj/structure/closet/crate/secure/loot/attack_hand(mob/user)
