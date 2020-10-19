@@ -55,6 +55,7 @@
 #include "code\game\objects\structures\mirror.dm"
 #include "code\game\objects\structures\tables_racks.dm"
 #include "code\game\turfs\open\lava.dm"
+#include "code\modules\admin\admin_verbs.dm"
 #include "code\modules\admin\chat_commands.dm"
 #include "code\modules\admin\topic.dm"
 #include "code\modules\admin\verbs\fix_air.dm"
