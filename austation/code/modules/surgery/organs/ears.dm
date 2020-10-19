@@ -27,6 +27,6 @@
 	name = "Robotic ears"
 	icon = 'austation/icons/obj/ausurgery.dmi'
 	icon_state = "cyb_ears"
-	desc = "A pair of cybernetic ears for when the ones in your head fail."
+	desc = "A pair of cybernetic ears for when the ones in your head fail." //this PR has taken alot out of me
 	status = ORGAN_ROBOTIC
 	organ_flags = ORGAN_SYNTHETIC
