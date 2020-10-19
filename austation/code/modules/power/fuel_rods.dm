@@ -94,7 +94,7 @@
 /obj/item/twohanded/required/fuel_rod/telecrystal/attackby(obj/item/W, mob/user, params)
 	var/obj/item/stack/telecrystal/M = W
 	if(istype(M))
-		if(depletion >= 10)
+		if(depletion >= 75)
 			to_chat(user, "<span class='warning'>The sample slots have sealed themselves shut, it's too late to add crystals now!</span>") // no cheesing in crystals at 100%
 			return
 		if(expended)
