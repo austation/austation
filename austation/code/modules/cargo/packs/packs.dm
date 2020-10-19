@@ -24,7 +24,7 @@
 	dangerous = TRUE
 
 /datum/supply_pack/engine/reactor
-	name = "Build Your Own Reactor Kit"
+	name = "RMBK Nuclear Reactor Kit"
 	desc = "Contains a reactor beacon and 3 reactor consoles. Uranium rods not included."
 	cost = 12000
 	access = ACCESS_CE
@@ -32,6 +32,6 @@
 					/obj/machinery/computer/reactor/control_rods/cargo,
 					/obj/machinery/computer/reactor/stats/cargo,
 					/obj/machinery/computer/reactor/fuel_rods/cargo)
-	crate_name = "Uranium-235 Fuel Rod crate"
+	crate_name = "Build Your Own Reactor Kit"
 	crate_type = /obj/structure/closet/crate/secure/engineering
 	dangerous = TRUE
