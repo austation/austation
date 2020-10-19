@@ -11,12 +11,12 @@
 		src.id = I.buffer
 		return TRUE
 
-/obj/machinery/atmospherics/components/trinary/nuclear_reactor/cargo
+/obj/machinery/atmospherics/components/trinary/nuclear_reactor/cargo // easier on the brain
+
+/obj/machinery/atmospherics/components/trinary/nuclear_reactor/cargo/New()
 	id = rand(1, 1000000) // cmon, what are the chances?
 
-/obj/machinery/computer/reactor/cargo
-	anchored = FALSE
-	id = null
+// Cargo varients can be wrenched down and don't start linked to the default RMBK reactor
 
 /obj/machinery/computer/reactor/control_rods/cargo
 	anchored = FALSE
