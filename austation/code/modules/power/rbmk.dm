@@ -308,8 +308,8 @@ The reactor CHEWS through moderator. It does not do this slowly. Be very careful
 		else if(desired_k < K)
 			K -= difference
 	if(K == desired_k && last_user)
-		message_admins("Reactor desired criticality set to [reactor.desired_k] by [ADMIN_LOOKUPFLW(last_user)] in [ADMIN_VERBOSEJMP(src)]")
-		investigate_log("reactor desired criticality set to [reactor.desired_k] by [key_name(last_user)] at [AREACOORD(src)]", INVESTIGATE_SINGULO)
+		message_admins("Reactor desired criticality set to [desired_k] by [ADMIN_LOOKUPFLW(last_user)] in [ADMIN_VERBOSEJMP(src)]")
+		investigate_log("reactor desired criticality set to [desired_k] by [key_name(last_user)] at [AREACOORD(src)]", INVESTIGATE_SINGULO)
 
 	K = CLAMP(K, 0, RBMK_MAX_CRITICALITY)
 	if(has_fuel())
