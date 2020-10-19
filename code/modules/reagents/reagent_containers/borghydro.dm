@@ -197,7 +197,6 @@ Borg Shaker
 			/datum/reagent/consumable/ethanol/vodka,
 			/datum/reagent/consumable/ethanol/whiskey,
 			/datum/reagent/consumable/ethanol/wine,
-			/datum/reagent/consumable/enzyme,
 			/datum/reagent/consumable/banana,
 			/datum/reagent/consumable/coffee,
 			/datum/reagent/consumable/cream,
