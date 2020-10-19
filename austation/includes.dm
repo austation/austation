@@ -71,6 +71,8 @@
 #include "code\game\objects\structures\mirror.dm"
 #include "code\game\objects\structures\tables_racks.dm"
 #include "code\game\turfs\open\lava.dm"
+#include "code\game\turfs\open\floor_glass.dm"
+#include "code\game\turfs\open\space\space.dm"
 #include "code\modules\admin\chat_commands.dm"
 #include "code\modules\admin\topic.dm"
 #include "code\modules\admin\verbs\fix_air.dm"
