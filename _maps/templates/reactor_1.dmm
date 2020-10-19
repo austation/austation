@@ -24,7 +24,7 @@
 /area/space)
 "d" = (
 /obj/structure/cable/yellow,
-/obj/machinery/atmospherics/components/trinary/nuclear_reactor,
+/obj/machinery/atmospherics/components/trinary/nuclear_reactor/cargo,
 /turf/open/floor/engine,
 /area/space)
 "e" = (

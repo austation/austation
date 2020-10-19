@@ -190,6 +190,7 @@
 #include "code\modules\projectiles\guns\ballistic\makeshift_pistol.dm"
 #include "code\modules\power\reactor\rbmk.dm"
 #include "code\modules\power\reactor\fuel_rods.dm"
+#include "code\modules\power\reactor\reactor_cargo.dm"
 #include "code\modules\vending\_vending.dm"
 #include "code\modules\vending\autodrobe.dm"
 #include "code\modules\vending\clothesmate.dm"
