@@ -1,0 +1,4 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - rscadd: "smartfridges will automatically load items off conveyor belts, or items thrown at them."
