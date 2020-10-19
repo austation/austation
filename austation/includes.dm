@@ -174,7 +174,6 @@
 #include "code\modules\research\techweb\all_nodes.dm"
 #include "code\modules\research\xenobiology\crossbreeding\_potions.dm"
 #include "code\modules\surgery\tools.dm"
-#include "code\modules\surgery\organs\ears.dm"
 #include "code\modules\surgery\organs\eyes.dm"
 #include "code\modules\surgery\advanced\bioware\cortex_folding.dm"
 #include "code\modules\surgery\advanced\bioware\cortex_imprint.dm"
@@ -207,3 +206,4 @@
 #include "code\modules\cargo\exports\organs.dm"
 #include "code\modules\cargo\packs\packs.dm"
 #include "code\modules\cargo\packs\costumes_toys.dm"
+#include "code\modules\surgery\organs\ears.dm"
