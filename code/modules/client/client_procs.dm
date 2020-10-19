@@ -401,7 +401,17 @@ GLOBAL_LIST_EMPTY(external_rsc_urls)
 		if (CONFIG_GET(flag/irc_first_connection_alert))
 			send2irc_adminless_only("new_byond_user", "[key_name(src)] (IP: [address], ID: [computer_id]) is a new BYOND account [account_age] day[(account_age==1?"":"s")] old, created on [account_join_date].")
 	get_message_output("watchlist entry", ckey)
-	check_ip_intel()
+
+	if(check_ip_intel()) // austation begin -- vpn ban
+		to_chat(src, "<span class='userdanger'>You are attempting to connect through a VPN.</span>")
+		to_chat(src, "<span class='danger'>VPNs are not permitted on AuStation to reduce the prevalence of ban evasion.</span>")
+		to_chat(src, "<span class='danger'>Please disable your VPN and try reconnecting in 3 hours.</span>")
+		if(connecting_admin)
+			to_chat(src, "<span class='adminnotice'><b>As an admin, you have been allowed to bypass this restriction. However, you should disable your VPN to remove this nag.</b></span>")
+		else
+			qdel(src)
+			return 0 // austation end
+
 	validate_key_in_db()
 
 	fetch_uuid()
@@ -718,7 +728,7 @@ GLOBAL_LIST_EMPTY(external_rsc_urls)
 	if(key != sql_key)
 		var/datum/http_request/http = new()
 		http = http.get_request("http://byond.com/members/[ckey]?format=text")
-		
+
 		if(!http)
 			log_world("Failed to connect to byond member page to get changed key for [ckey]")
 			return
@@ -859,6 +869,7 @@ GLOBAL_LIST_EMPTY(external_rsc_urls)
 		var/datum/ipintel/res = get_ip_intel(address)
 		if (res.intel >= CONFIG_GET(number/ipintel_rating_bad))
 			message_admins("<span class='adminnotice'>Proxy Detection: [key_name_admin(src)] IP intel rated [res.intel*100]% likely to be a Proxy/VPN.</span>")
+			. = TRUE // austation -- vpn ban
 		ip_intel = res.intel
 
 /client/Click(atom/object, atom/location, control, params)
