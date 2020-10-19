@@ -1974,6 +1974,8 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	character.backbag = backbag
 
 	character.jumpsuit_style = jumpsuit_style //austation -- skirts
+	character.ring_type = ring_type // austation -- rings
+	character.ring_engraved = ring_engraved // austation -- rings
 
 	var/datum/species/chosen_species
 	chosen_species = pref_species.type
