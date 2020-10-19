@@ -1,17 +1,13 @@
 /*
 //////////////////////////////////////
-
 Self-Respiration
-
 	Slightly hidden.
 	Lowers resistance significantly.
 	Decreases stage speed significantly.
 	Decreases transmittablity tremendously.
 	Fatal Level.
-
 Bonus
 	The body generates salbutamol.
-
 //////////////////////////////////////
 */
 
@@ -29,11 +25,9 @@ Bonus
 	symptom_delay_min = 1
 	symptom_delay_max = 1
 	var/regenerate_blood = FALSE
-/* austation begin -- fetish content
 	var/gas_type = /datum/gas/miasma
 	var/base_moles = 3
 	var/emote = "fart"
-austation end */
 	threshold_desc = "<b>Resistance 8:</b> Additionally regenerates lost blood.<br>"
 
 /datum/symptom/oxygen/Start(datum/disease/advance/A)
@@ -53,8 +47,6 @@ austation end */
 			M.losebreath = max(0, M.losebreath - 4)
 			if(regenerate_blood && M.blood_volume < BLOOD_VOLUME_NORMAL)
 				M.blood_volume += 1
-/* austation begin -- fetish content
-			if(prob(1) && prob(70))
 			if(prob(1) && prob(50))
 				var/turf/open/T = get_turf(M)
 				if(!istype(T))
@@ -63,8 +55,6 @@ austation end */
 				air.set_moles(gas_type, air.get_moles(gas_type) + base_moles)
 				T.air_update_turf()
 				M.emote(emote)
-austation end */
-
 		else
 			if(prob(base_message_chance))
 				to_chat(M, "<span class='notice'>[pick("Your lungs feel great.", "You realize you haven't been breathing.", "You don't feel the need to breathe.", "Something smells rotten", "You feel peckish")]</span>")
