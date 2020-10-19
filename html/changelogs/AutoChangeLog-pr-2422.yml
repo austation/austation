@@ -1,4 +1,0 @@
-author: "Phil Smith"
-delete-after: True
-changes: 
-  - bugfix: "IPCs no longer take brute and burn after death."
