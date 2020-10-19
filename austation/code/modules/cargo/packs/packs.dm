@@ -24,7 +24,7 @@
 	dangerous = TRUE
 
 /datum/supply_pack/engine/reactor
-	name = "RMBK Nuclear Reactor Kit"
+	name = "RMBK Nuclear Reactor Kit" // (not) a toy
 	desc = "Contains a reactor beacon and 3 reactor consoles. Uranium rods not included."
 	cost = 12000
 	access = ACCESS_CE
