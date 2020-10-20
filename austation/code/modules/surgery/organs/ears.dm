@@ -24,9 +24,10 @@
 		H.update_body()
 
 /obj/item/organ/ears/cybernetic_ears
-	name = "Robotic ears"
+	name = "cybernetic ears"
 	icon = 'austation/icons/obj/ausurgery.dmi'
 	icon_state = "cyb_ears"
-	desc = "A pair of cybernetic ears for when the ones in your head fail." //this PR has taken alot out of me
+	desc = "A basic pair of cybernetic ears for when the ones in your head fail."
 	status = ORGAN_ROBOTIC
 	organ_flags = ORGAN_SYNTHETIC
+	damage_multiplier = 0.5
