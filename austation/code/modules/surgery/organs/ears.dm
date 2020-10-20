@@ -31,3 +31,4 @@
 	status = ORGAN_ROBOTIC
 	organ_flags = ORGAN_SYNTHETIC
 	damage_multiplier = 0.5
+	bang_protect = 1 //-austation now this isn't pointless, stupid sweaty redditors
