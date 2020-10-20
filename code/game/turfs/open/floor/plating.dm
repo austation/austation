@@ -91,19 +91,22 @@
 						return
 			var/obj/item/stack/tile/W = C
 			if(!W.use(1))
-				return  //  austation begin  "You can build plating on asteroid surfaces #2156"
-			if(!istype(src, /turf/open/floor/plating/asteroid))
-				var/turf/open/floor/T = PlaceOnTop(W.turf_type, flags = CHANGETURF_INHERIT_AIR)
-				if(istype(W, /obj/item/stack/tile/light)) //TODO: get rid of this ugly check somehow
-					var/obj/item/stack/tile/light/L = W
-					var/turf/open/floor/light/F = T
-					F.state = L.state
-			else
-				var/turf/open/floor/plating/asteroid/T = src
-				if(T.dug)
-					PlaceOnTop(/turf/open/floor/plating, flags = CHANGETURF_INHERIT_AIR)
+				return  //  austation begin  "You can build plating on asteroid surfaces #2156" "Glass tiles"
+			if(!istype(W, /obj/item/stack/tile/plasmarglass) && !istype(W, /obj/item/stack/tile/rglass))
+				if(!istype(src, /turf/open/floor/plating/asteroid))
+					var/turf/open/floor/T = PlaceOnTop(W.turf_type, flags = CHANGETURF_INHERIT_AIR)
+					if(istype(W, /obj/item/stack/tile/light)) //TODO: get rid of this ugly check somehow
+						var/obj/item/stack/tile/light/L = W
+						var/turf/open/floor/light/F = T
+						F.state = L.state
 				else
-					to_chat(user, "<span class='warning'>You need to dig below the foundations first!</span>")  //  austation end #2156
+					var/turf/open/floor/plating/asteroid/T = src
+					if(T.dug)
+						PlaceOnTop(/turf/open/floor/plating, flags = CHANGETURF_INHERIT_AIR)
+					else
+						to_chat(user, "<span class='warning'>You need to dig below the foundations first!</span>")
+			else
+				to_chat(user, "<span class='warning'>You can't place glass tiles over the platings!</span>")  //  austation end #2156
 			playsound(src, 'sound/weapons/genhit.ogg', 50, 1)
 		else
 			to_chat(user, "<span class='warning'>This section is too damaged to support a tile! Use a welder to fix the damage.</span>")
