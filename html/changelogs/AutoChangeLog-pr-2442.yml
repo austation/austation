@@ -1,0 +1,5 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - bugfix: "You can fireman carry from neck or kill grabs again."
+  - bugfix: "You can't piggyback to get out of neck or kill grabs."
