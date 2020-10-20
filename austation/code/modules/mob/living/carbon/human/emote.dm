@@ -14,7 +14,7 @@
 	key_third_person = "cheeses"
 	message = "thinks this is cheese"
 	emote_type = EMOTE_AUDIBLE
-	sound = 'austation/sound/misc/cheese.ogg'
+	sound = 'austation/sound/misc/cheese.ogg' //CHEESE
 	cooldown = (5 SECONDS)
 
 /datum/emote/living/carbon/human/beans
