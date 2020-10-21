@@ -27,10 +27,9 @@
 	name = "esoteric ears"
 	icon = 'austation/icons/obj/ausurgery.dmi'
 	icon_state = "eso_ears"
-	desc = "An advanced pair of ears designed to grant the user nigh immunity to loud noises."
+	desc = "An advanced pair of ears designed to restore their condition after sustaining damage."
 	status = ORGAN_ROBOTIC
 	organ_flags = ORGAN_SYNTHETIC
 	damage_multiplier = 0.1
 	maxHealth = 2 * STANDARD_ORGAN_THRESHOLD
-	healing_factor = 0.5 * STANDARD_ORGAN_HEALING
-	bang_protect = 1 //fear the esoteric ears
+	healing_factor = 1.5 * STANDARD_ORGAN_HEALING //instead of having bang resistance it just heals quicker
