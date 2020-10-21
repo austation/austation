@@ -9,6 +9,22 @@
 	sound = 'austation/sound/misc/bruh.ogg'
 	cooldown = (5 SECONDS)
 
+/datum/emote/living/carbon/human/cheese
+	key = "cheese"
+	key_third_person = "cheeses"
+	message = "thinks this is cheese"
+	emote_type = EMOTE_AUDIBLE
+	sound = 'austation/sound/misc/cheese.ogg' //CHEESE
+	cooldown = (5 SECONDS)
+
+/datum/emote/living/carbon/human/beans
+	key = "beans"
+	key_third_person = "beanss"
+	message = "thinks this is beans"
+	emote_type = EMOTE_AUDIBLE
+	sound = 'austation/sound/misc/beans.ogg'
+	cooldown = (5 SECONDS)
+
 /datum/emote/living/carbon/human/enthusiastic
 	key = "yes"
 	key_third_person = "yess"
