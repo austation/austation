@@ -48,7 +48,7 @@
 	build_type = PROTOLATHE | MECHFAB
 	construction_time = 50
 	materials = list(/datum/material/iron = 500, /datum/material/glass = 500, /datum/material/silver = 500, /datum/material/copper = 300, /datum/material/gold = 500, /datum/material/bluespace = 1000)
-	build_path = /obj/item/organ/ears/eso_ears
+	build_path = /obj/item/organ/ears/cybernetic/eso_ears
 	category = list("Misc", "Medical Designs")
 	departmental_flags = DEPARTMENTAL_FLAG_MEDICAL
 
@@ -59,7 +59,7 @@
 	build_type = PROTOLATHE | MECHFAB
 	construction_time = 50
 	materials = list(/datum/material/iron = 500, /datum/material/glass = 500, /datum/material/silver = 500, /datum/material/copper = 300, /datum/material/gold = 500, /datum/material/bluespace = 1000)
-	build_path = /obj/item/organ/liver/eso_liver
+	build_path = /obj/item/organ/liver/cybernetic/eso_liver
 	category = list("Misc", "Medical Designs")
 	departmental_flags = DEPARTMENTAL_FLAG_MEDICAL
 
@@ -70,7 +70,7 @@
 	build_type = PROTOLATHE | MECHFAB
 	construction_time = 50
 	materials = list(/datum/material/iron = 500, /datum/material/glass = 500, /datum/material/silver = 500, /datum/material/copper = 300, /datum/material/gold = 500, /datum/material/bluespace = 1000)
-	build_path = /obj/item/organ/lungs/eso_lungs
+	build_path = /obj/item/organ/lungs/cybernetic/eso_lungs
 	category = list("Misc", "Medical Designs")
 	departmental_flags = DEPARTMENTAL_FLAG_MEDICAL
 
@@ -81,7 +81,7 @@
 	build_type = PROTOLATHE | MECHFAB
 	construction_time = 50
 	materials = list(/datum/material/iron = 500, /datum/material/glass = 500, /datum/material/silver = 500, /datum/material/copper = 300, /datum/material/gold = 500, /datum/material/bluespace = 1000)
-	build_path = /obj/item/organ/stomach/eso_stomach
+	build_path = /obj/item/organ/stomach/cybernetic/eso_stomach
 	category = list("Misc", "Medical Designs")
 	departmental_flags = DEPARTMENTAL_FLAG_MEDICAL
 
@@ -92,6 +92,6 @@
 	build_type = PROTOLATHE | MECHFAB
 	construction_time = 50
 	materials = list(/datum/material/iron = 500, /datum/material/glass = 500, /datum/material/silver = 500, /datum/material/copper = 300, /datum/material/gold = 500, /datum/material/bluespace = 1000)
-	build_path = /obj/item/organ/heart/eso_heart
+	build_path = /obj/item/organ/heart/cybernetic/eso_heart
 	category = list("Misc", "Medical Designs")
 	departmental_flags = DEPARTMENTAL_FLAG_MEDICAL
