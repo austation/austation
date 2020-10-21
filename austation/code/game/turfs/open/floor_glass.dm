@@ -2,9 +2,12 @@
 	name = "glass floor"
 	desc = "A floor made of reinforced glass, used for looking into the void."
 
-	// Oldspace for people who don't have parallax.
-	icon = 'icons/turf/space.dmi'
-	icon_state = "0"
+	//icon = 'icons/turf/space.dmi'
+	//icon_state = "0"
+
+	//This is to make the glass actually visible in the map editor and not just a space tile
+	icon = 'austation/icons/turf/overlays.dmi'
+	icon_state = "glass_floor"
 
 	heat_capacity = 3200
 	plane = PLANE_SPACE
@@ -33,6 +36,8 @@
 
 /turf/open/floor/glass/Initialize()
 	. = ..()
+	icon = 'icons/turf/space.dmi'
+	icon_state = "0"
 	if (islist(armor))
 		armor = getArmor(arglist(armor))
 	else if (!armor)
@@ -438,6 +443,10 @@ turf/open/floor/glass/bullet_act(obj/item/projectile/P)
 					visible_message("<span class='danger'>\The [user] crushes \the [pushed_mob] into \the [src]!</span>", \
 					"<span class='danger'>You crush \the [pushed_mob] into \the [src]!</span>")
 			log_combat(user, pushed_mob, "floor slammed", null, "against [src]")
+
+/turf/open/floor/glass/handle_decompression_floor_rip(sum)
+	if(sum > 20 && prob(CLAMP(sum / 10, 0, 30)) && !reinforced)
+		take_damage(25, BRUTE, "melee", 0)
 /*
 /turf/open/floor/glass/proc/unhandled_attackby(var/obj/item/W, var/mob/user)
 	user.do_attack_animation(src, W)
@@ -483,7 +492,6 @@ turf/open/floor/glass/bullet_act(obj/item/projectile/P)
 	return FALSE
 */
 /turf/open/floor/glass/airless
-	icon_state = "floor"
 	initial_gas_mix = AIRLESS_ATMOS
 
 /turf/open/floor/glass/ultraclear
@@ -494,6 +502,8 @@ turf/open/floor/glass/bullet_act(obj/item/projectile/P)
 /turf/open/floor/glass/plasma
 	name = "plasma glass floor"
 	desc = "A floor made of reinforced plasma glass, used for looking into the void."
+	icon = 'austation/icons/turf/overlays.dmi'
+	icon_state = "plasma_glass_floor"
 	heat_capacity = 50000
 	shardtype = /obj/item/shard/plasma
 	sheettype = /obj/item/stack/sheet/plasmarglass
@@ -504,7 +514,6 @@ turf/open/floor/glass/bullet_act(obj/item/projectile/P)
 	damage_deflection = 30
 
 /turf/open/floor/glass/plasma/airless
-	icon_state = "floor"
 	initial_gas_mix = AIRLESS_ATMOS
 
 /obj/item/stack/tile/plasmarglass
