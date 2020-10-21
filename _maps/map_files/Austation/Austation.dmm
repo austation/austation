@@ -19703,13 +19703,6 @@
 	},
 /turf/open/floor/plasteel/cafeteria,
 /area/engine/atmos)
-"bIZ" = (
-/obj/machinery/atmospherics/pipe/simple/cyan/visible,
-/obj/machinery/atmospherics/pipe/simple/yellow/visible{
-	dir = 4
-	},
-/turf/open/floor/plasteel/dark,
-/area/engine/atmos)
 "bJb" = (
 /obj/structure/lattice,
 /obj/machinery/atmospherics/pipe/simple/yellow/visible{
@@ -25256,13 +25249,6 @@
 /obj/machinery/atmospherics/pipe/simple/green/visible,
 /obj/machinery/atmospherics/pipe/simple/dark/visible{
 	dir = 4
-	},
-/turf/open/floor/plasteel/dark,
-/area/engine/atmos)
-"ccP" = (
-/obj/machinery/atmospherics/pipe/simple/yellow/visible,
-/obj/structure/cable/yellow{
-	icon_state = "1-4"
 	},
 /turf/open/floor/plasteel/dark,
 /area/engine/atmos)
@@ -60736,6 +60722,13 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3,
 /turf/open/floor/plasteel,
 /area/security/checkpoint/engineering)
+"mbI" = (
+/obj/structure/cable/yellow{
+	icon_state = "1-4"
+	},
+/obj/machinery/atmospherics/pipe/layer_manifold/visible,
+/turf/open/floor/plasteel/dark,
+/area/engine/atmos)
 "mco" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 10
@@ -73750,7 +73743,9 @@
 /turf/open/floor/plasteel,
 /area/hallway/primary/central)
 "rfi" = (
-/obj/machinery/power/apc/auto_name/north,
+/obj/machinery/power/apc/auto_name/north{
+	pixel_y = 24
+	},
 /obj/structure/cable/yellow{
 	icon_state = "0-8"
 	},
@@ -78498,6 +78493,13 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3,
 /turf/open/floor/plasteel/grimy,
 /area/chapel/office)
+"teq" = (
+/obj/structure/cable/yellow{
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/layer_manifold/visible,
+/turf/open/floor/plasteel/dark,
+/area/engine/atmos)
 "teB" = (
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
@@ -90511,6 +90513,13 @@
 	},
 /turf/open/floor/plasteel,
 /area/hallway/secondary/exit/departure_lounge)
+"xVi" = (
+/obj/machinery/atmospherics/pipe/simple/cyan/visible,
+/obj/machinery/atmospherics/pipe/layer_manifold/visible{
+	dir = 4
+	},
+/turf/open/floor/plasteel/dark,
+/area/engine/atmos)
 "xVl" = (
 /turf/closed/wall,
 /area/hallway/secondary/service)
@@ -133096,7 +133105,7 @@ bXj
 bYx
 chF
 cbf
-ccP
+mbI
 tVe
 cfv
 cgA
@@ -134124,7 +134133,7 @@ bXm
 bYz
 bZJ
 cbj
-qwU
+teq
 tVe
 cfw
 cgA
@@ -135652,15 +135661,15 @@ bCx
 bEc
 bFW
 bHB
-bIZ
+xVi
 pyA
 bMl
 dhj
-bIZ
+xVi
 bKG
 bMl
 bKG
-bIZ
+xVi
 fzW
 bMl
 bYB
