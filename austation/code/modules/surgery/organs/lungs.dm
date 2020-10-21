@@ -1,5 +1,5 @@
 obj/item/organ/lungs/cybernetic/eso_lungs
-	name = "upgraded cybernetic lungs"
+	name = "Esoteric lungs"
 	desc = "A pair of lungs created with such advanced technologies that it is capable of filtering great amounts of Co2 and toxin from the air aswell as being far more efficent with Oxygen consumption, it even automatically repairs itself"
 	icon = 'austation/icons/obj/ausurgery.dmi'
 	icon_state = "eso_lungs"

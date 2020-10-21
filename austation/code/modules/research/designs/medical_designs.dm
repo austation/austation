@@ -53,7 +53,7 @@
 	departmental_flags = DEPARTMENTAL_FLAG_MEDICAL
 
 /datum/design/eso_liver
-	name = "Esoteric Liver"
+	name = "Esoteric liver"
 	desc = "A liver that provides nigh immunity to alcohol and toxins."
 	id = "eso_liver"
 	build_type = PROTOLATHE | MECHFAB
@@ -64,7 +64,7 @@
 	departmental_flags = DEPARTMENTAL_FLAG_MEDICAL
 
 /datum/design/eso_lungs
-	name = "Esoteric Lungs"
+	name = "Esoteric lungs"
 	desc = "A pair of lungs with the sole purpose of defying natural evolution."
 	id = "eso_lungs"
 	build_type = PROTOLATHE | MECHFAB
