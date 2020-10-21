@@ -41,13 +41,57 @@
 	category = list("Misc", "Medical Designs")
 	departmental_flags = DEPARTMENTAL_FLAG_MEDICAL
 
-/datum/design/cybernetic_ears
-	name = "Cybernetic ears"
-	desc = "A pair of cybernetic ears."
-	id = "cybernetic_ears"
+/datum/design/eso_ears
+	name = "Esoteric ears"
+	desc = "A pair of hyper advanced ears that provide immunity to loud noises."
+	id = "eso_ears"
 	build_type = PROTOLATHE | MECHFAB
 	construction_time = 50
-	materials = list(/datum/material/iron = 500, /datum/material/glass = 500, /datum/material/silver = 500, /datum/material/copper = 300)
-	build_path = /obj/item/organ/ears/cybernetic_ears
+	materials = list(/datum/material/iron = 500, /datum/material/glass = 500, /datum/material/silver = 500, /datum/material/copper = 300, /datum/material/gold = 500, /datum/material/bluespace = 1000)
+	build_path = /obj/item/organ/ears/eso_ears
+	category = list("Misc", "Medical Designs")
+	departmental_flags = DEPARTMENTAL_FLAG_MEDICAL
+
+/datum/design/eso_liver
+	name = "Esoteric Liver"
+	desc = "A liver that provides nigh immunity to alcohol and toxins."
+	id = "eso_liver"
+	build_type = PROTOLATHE | MECHFAB
+	construction_time = 50
+	materials = list(/datum/material/iron = 500, /datum/material/glass = 500, /datum/material/silver = 500, /datum/material/copper = 300, /datum/material/gold = 500, /datum/material/bluespace = 1000)
+	build_path = /obj/item/organ/ears/eso_liver
+	category = list("Misc", "Medical Designs")
+	departmental_flags = DEPARTMENTAL_FLAG_MEDICAL
+
+/datum/design/eso_lungs
+	name = "Esoteric Lungs"
+	desc = "A pair of lungs with the sole purpose of defying natural evolution."
+	id = "eso_lungs"
+	build_type = PROTOLATHE | MECHFAB
+	construction_time = 50
+	materials = list(/datum/material/iron = 500, /datum/material/glass = 500, /datum/material/silver = 500, /datum/material/copper = 300, /datum/material/gold = 500, /datum/material/bluespace = 1000)
+	build_path = /obj/item/organ/ears/eso_lungs
+	category = list("Misc", "Medical Designs")
+	departmental_flags = DEPARTMENTAL_FLAG_MEDICAL
+
+/datum/design/eso_stomach
+	name = "Esoteric stomach"
+	desc = "A robust stomach designed to self neutralize feelings of disgust."
+	id = "eso_stomach"
+	build_type = PROTOLATHE | MECHFAB
+	construction_time = 50
+	materials = list(/datum/material/iron = 500, /datum/material/glass = 500, /datum/material/silver = 500, /datum/material/copper = 300, /datum/material/gold = 500, /datum/material/bluespace = 1000)
+	build_path = /obj/item/organ/ears/eso_stomach
+	category = list("Misc", "Medical Designs")
+	departmental_flags = DEPARTMENTAL_FLAG_MEDICAL
+
+/datum/design/eso_heart
+	name = "Esoteric heart"
+	desc = "An artifical heart with such delicate design with the sole purpose of denying weakness to EMP and laughing at puny decayed human organs."
+	id = "eso_heart"
+	build_type = PROTOLATHE | MECHFAB
+	construction_time = 50
+	materials = list(/datum/material/iron = 500, /datum/material/glass = 500, /datum/material/silver = 500, /datum/material/copper = 300, /datum/material/gold = 500, /datum/material/bluespace = 1000)
+	build_path = /obj/item/organ/ears/eso_heart
 	category = list("Misc", "Medical Designs")
 	departmental_flags = DEPARTMENTAL_FLAG_MEDICAL

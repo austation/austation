@@ -196,3 +196,7 @@
 #include "code\modules\vending\clothesmate.dm"
 #include "code\modules\vending\wardrobes.dm"
 #include "code\modules\surgery\organs\ears.dm"
+#include "code\modules\surgery\organs\stomach.dm"
+#include "code\modules\surgery\organs\liver.dm"
+#include "code\modules\surgery\organs\lungs.dm"
+#include "code\modules\surgery\organs\heart.dm"

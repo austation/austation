@@ -13,3 +13,13 @@
 	design_ids = list("mech_kinetic_accelerator", "hyperaoemod", "repeatermod", "resonatormod", "bountymod")
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 1000)
 	export_price = 5000
+
+////////////////////////Medical tech//////////////////////////
+/datum/techweb_node/eso_augments
+	id = "eso_augments"
+	display_name = "Esoteric Cybernetic Organs"
+	description = "These organs operate on what most scientists would agree is pure pseudoscience"
+	prereq_ids = list("adv_cyber_implants", "micro_bluespace, cyber_organs_upgraded")
+	design_ids = list("eso_stomach", "eso_heart", "eso_lungs", "eso_ears", "eso_liver", "eso_catears")
+	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 1000)
+	export_price = 25000

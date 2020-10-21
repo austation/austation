@@ -23,11 +23,13 @@
 		H.dna.species.mutant_bodyparts -= "ears"
 		H.update_body()
 
-/obj/item/organ/ears/cybernetic_ears
-	name = "cybernetic ears"
+/obj/item/organ/ears/eso_ears
+	name = "esoteric ears"
 	icon = 'austation/icons/obj/ausurgery.dmi'
-	icon_state = "cyb_ears"
-	desc = "A basic pair of cybernetic ears for when the ones in your head fail."
+	icon_state = "eso_ears"
+	desc = "An advanced pair of ears designed to grant the user nigh immunity to loud noises."
 	status = ORGAN_ROBOTIC
 	organ_flags = ORGAN_SYNTHETIC
-	damage_multiplier = 0.5
+	damage_multiplier = 0.1
+	bang_protect = 1 //fear the esoteric ears
+	emp_vulnerability = 0
