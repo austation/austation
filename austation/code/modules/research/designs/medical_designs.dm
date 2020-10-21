@@ -48,7 +48,7 @@
 	build_type = PROTOLATHE | MECHFAB
 	construction_time = 50
 	materials = list(/datum/material/iron = 500, /datum/material/glass = 500, /datum/material/silver = 500, /datum/material/copper = 300, /datum/material/gold = 500, /datum/material/bluespace = 1000)
-	build_path = /obj/item/organ/ears/cybernetic/eso_ears
+	build_path = /obj/item/organ/ears/eso_ears
 	category = list("Misc", "Medical Designs")
 	departmental_flags = DEPARTMENTAL_FLAG_MEDICAL
 
