@@ -31,5 +31,6 @@
 	status = ORGAN_ROBOTIC
 	organ_flags = ORGAN_SYNTHETIC
 	damage_multiplier = 0.1
+	maxHealth = 2 * STANDARD_ORGAN_THRESHOLD
+	healing_factor = 0.5 * STANDARD_ORGAN_HEALING
 	bang_protect = 1 //fear the esoteric ears
-	emp_vulnerability = 0
