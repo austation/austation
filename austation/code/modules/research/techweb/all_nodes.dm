@@ -19,7 +19,7 @@
 	id = "eso_augments"
 	display_name = "Esoteric Cybernetic Organs"
 	description = "These organs operate on what most scientists would agree is pure pseudoscience"
-	prereq_ids = list("cyber_organs_upgraded", "micro_bluespace, adv_cyber_implants", "alien_tech")
+	prereq_ids = list("cyber_organs_upgraded", "micro_bluespace, adv_cyber_implants")
 	design_ids = list("eso_stomach", "eso_heart", "eso_lungs", "eso_ears", "eso_liver")
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 1000)
-	export_price = 25000
+	export_price = 7500
