@@ -10,3 +10,4 @@
 	toxLethality = 0.008 //20% less damage than a normal liver
 	status = ORGAN_ROBOTIC
 	organ_flags = ORGAN_SYNTHETIC
+// this esoteric technology can be researched with the most advanced BST
