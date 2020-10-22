@@ -170,26 +170,6 @@
 /datum/component/personal_crafting/proc/construct_item(atom/a, datum/crafting_recipe/R)
 	var/list/contents = get_surroundings(a,R.blacklist)
 	var/send_feedback = 1
-<<<<<<< HEAD
-	if(check_contents(user, R, contents))
-		if(check_tools(user, R, contents))
-			if(do_after(user, R.time, target = user))
-				contents = get_surroundings(user)
-				if(!check_contents(user, R, contents))
-					return ", missing component."
-				if(!check_tools(user, R, contents))
-					return ", missing tool."
-				var/list/parts = del_reqs(R, user)
-				var/atom/movable/I = new R.result (get_turf(user.loc))
-				I.CheckParts(parts, R)
-				R.post_craft(user, I) // austation -- supermatter bread (and crafting changes)
-				if(isitem(I))
-					user.put_in_hands(I)
-				if(send_feedback)
-					SSblackbox.record_feedback("tally", "object_crafted", 1, I.type)
-				return 0
-			return "."
-=======
 	if(check_contents(a, R, contents))
 		if(check_tools(a, R, contents))
 			//If we're a mob we'll try a do_after; non mobs will instead instantly construct the item
@@ -203,10 +183,10 @@
 			var/list/parts = del_reqs(R, a)
 			var/atom/movable/I = new R.result (get_turf(a.loc))
 			I.CheckParts(parts, R)
+			R.post_craft(user, I) // austation -- supermatter bread (and crafting changes)
 			if(send_feedback)
 				SSblackbox.record_feedback("tally", "object_crafted", 1, I.type)
 			return I //Send the item back to whatever called this proc so it can handle whatever it wants to do with the new item
->>>>>>> 17b13d38d1... [PORT] TGUI 4.0, Smart Asset Caching, TGchat (#2336)
 		return ", missing tool."
 	return ", missing component."
 
