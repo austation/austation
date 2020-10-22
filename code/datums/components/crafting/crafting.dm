@@ -183,7 +183,7 @@
 			var/list/parts = del_reqs(R, a)
 			var/atom/movable/I = new R.result (get_turf(a.loc))
 			I.CheckParts(parts, R)
-			R.post_craft(user, I) // austation -- supermatter bread (and crafting changes)
+			R.post_craft(a, I) // austation -- supermatter bread (and crafting changes)
 			if(send_feedback)
 				SSblackbox.record_feedback("tally", "object_crafted", 1, I.type)
 			return I //Send the item back to whatever called this proc so it can handle whatever it wants to do with the new item
