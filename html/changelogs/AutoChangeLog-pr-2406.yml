@@ -1,6 +1,0 @@
-author: "thelaughingbomb"
-delete-after: True
-changes: 
-  - rscadd: "You can now *cheese and *beans"
-  - soundadd: "beans.ogg"
-  - soundadd: "cheese.ogg"
