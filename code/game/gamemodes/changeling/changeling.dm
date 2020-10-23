@@ -99,6 +99,10 @@ GLOBAL_LIST_INIT(slot2type, list("head" = /obj/item/clothing/head/changeling, "w
 	user.undershirt = chosen_prof.undershirt
 	user.socks = chosen_prof.socks
 
+	// austation -- changelings steal rings
+	user.ring_type = chosen_prof.ring_type
+	user.ring_engraved = chosen_prof.ring_engraved
+
 	chosen_dna.transfer_identity(user, 1)
 	user.updateappearance(mutcolor_update=1)
 	user.update_body()

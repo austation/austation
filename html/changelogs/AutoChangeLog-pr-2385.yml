@@ -1,4 +1,0 @@
-author: "AustationBot"
-delete-after: True
-changes: 
-  - tweak: "Crew monitors and pinpointers now work with multi-z maps"
