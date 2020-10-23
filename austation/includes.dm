@@ -60,6 +60,8 @@
 #include "code\modules\admin\verbs\fix_air.dm"
 #include "code\modules\admin\verbs\mapping.dm"
 #include "code\modules\antagonists\changeling\changeling.dm"
+#include "code\modules\antagonists\cult\blood_magic.dm"
+#include "code\modules\antagonists\cult\cult_items.dm"
 #include "code\modules\client\preferences_savefile.dm"
 #include "code\modules\client\loadout\loadout_uniform.dm"
 #include "code\modules\clothing\glasses\hud.dm"
