@@ -16474,9 +16474,9 @@
 /turf/open/floor/plasteel,
 /area/hallway/secondary/entry)
 "btQ" = (
-/obj/effect/spawner/structure/window/reinforced,  //lavaland science shuttle shape changed on austation begin
+/obj/effect/spawner/structure/window/reinforced,
 /obj/machinery/atmospherics/pipe/layer_manifold{
-	dir = 4  //lavaland science shuttle shape changed on austation end
+	dir = 4
 	},
 /turf/open/floor/plating,
 /area/science/shuttledock)
@@ -19765,9 +19765,9 @@
 /obj/structure/closet/crate,
 /obj/effect/spawner/lootdrop/maintenance/two,
 /obj/effect/turf_decal/tile/purple,
-/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{  //lavaland science shuttle shape changed on austation begin
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
 	dir = 8
-	},  //lavaland science shuttle shape changed on austation end
+	},
 /turf/open/floor/plasteel/white,
 /area/science/shuttledock)
 "bJv" = (
@@ -41047,14 +41047,14 @@
 /turf/open/floor/plasteel/white,
 /area/science/xenobiology)
 "dSL" = (
-/obj/effect/turf_decal/tile/purple{  //lavaland science shuttle shape changed on austation
+/obj/effect/turf_decal/tile/purple{
 	dir = 1
 	},
-/obj/machinery/atmospherics/pipe/manifold/supply/hidden/layer1{  //lavaland science shuttle shape changed on austation
-	dir = 4  //lavaland science shuttle shape changed on austation
+/obj/machinery/atmospherics/pipe/manifold/supply/hidden/layer1{
+	dir = 4
 	},
-/obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/layer3{  //lavaland science shuttle shape changed on austation
-	dir = 4  //lavaland science shuttle shape changed on austation
+/obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/layer3{
+	dir = 4
 	},
 /turf/open/floor/plasteel/white,
 /area/science/shuttledock)
@@ -45587,7 +45587,7 @@
 /turf/open/floor/plasteel,
 /area/security/brig)
 "fSC" = (
-/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{  //lavaland science shuttle shape changed on austation
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
 	dir = 4
 	},
 /turf/open/floor/plasteel/white,
@@ -47055,11 +47055,11 @@
 /turf/open/floor/plating,
 /area/maintenance/starboard/fore)
 "gDr" = (
-/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{  //lavaland science shuttle shape changed on austation
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
 	dir = 4
 	},
-/obj/machinery/atmospherics/pipe/simple/supply/hidden{  //lavaland science shuttle shape changed on austation
-	dir = 6  //lavaland science shuttle shape changed on austation
+/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+	dir = 6
 	},
 /turf/open/floor/plating,
 /area/science/shuttledock)
@@ -47263,12 +47263,12 @@
 	},
 /turf/open/floor/carpet/blue,
 /area/bridge)
-"gGe" = (  //lavaland science shuttle shape changed on austation begin
+"gGe" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
 	dir = 8
 	},
 /turf/closed/wall,
-/area/science/shuttledock)  //lavaland science shuttle shape changed on austation end
+/area/science/shuttledock)
 "gGq" = (
 /obj/item/reagent_containers/glass/bucket,
 /obj/structure/cable/yellow{
@@ -53005,9 +53005,9 @@
 /area/ai_monitored/turret_protected/aisat_interior)
 "iTg" = (
 /obj/effect/turf_decal/tile/purple,
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{  //lavaland science shuttle shape changed on austation begin
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
 	dir = 4
-	},  //lavaland science shuttle shape changed on austation end
+	},
 /turf/open/floor/plasteel/white,
 /area/science/shuttledock)
 "iTj" = (
@@ -60698,7 +60698,7 @@
 	dir = 1;
 	pixel_y = -24
 	},
-/obj/machinery/atmospherics/components/binary/dp_vent_pump/high_volume,  //lavaland science shuttle shape changed on austation
+/obj/machinery/atmospherics/components/binary/dp_vent_pump/high_volume,
 /turf/open/floor/plating,
 /area/science/shuttledock)
 "map" = (
@@ -61818,9 +61818,9 @@
 /obj/effect/turf_decal/tile/purple{
 	dir = 1
 	},
-/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{  //lavaland science shuttle shape changed on austation begin
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
 	dir = 5
-	},  //lavaland science shuttle shape changed on austation end
+	},
 /turf/open/floor/plasteel/white,
 /area/science/shuttledock)
 "mBU" = (
@@ -62901,8 +62901,8 @@
 /turf/open/floor/plasteel,
 /area/quartermaster/miningoffice)
 "mZh" = (
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{  //lavaland science shuttle shape changed on austation
-	dir = 4  //lavaland science shuttle shape changed on austation
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
+	dir = 4
 	},
 /turf/open/floor/plasteel/white,
 /area/science/shuttledock)
@@ -63354,8 +63354,8 @@
 /turf/open/floor/plasteel/dark,
 /area/crew_quarters/fitness/recreation)
 "nfT" = (
-/obj/effect/spawner/structure/window/reinforced,  //lavaland science shuttle shape changed on austation
-/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{  //lavaland science shuttle shape changed on austation
+/obj/effect/spawner/structure/window/reinforced,
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
 	dir = 4
 	},
 /turf/open/floor/plating,
@@ -63631,10 +63631,10 @@
 /turf/open/floor/plasteel,
 /area/hallway/primary/aft)
 "nmh" = (
-/obj/machinery/atmospherics/pipe/layer_manifold{  //lavaland science shuttle shape changed on austation begin
+/obj/machinery/atmospherics/pipe/layer_manifold{
 	dir = 4
 	},
-/turf/closed/wall,  //lavaland science shuttle shape changed on austation end
+/turf/closed/wall,
 /area/science/shuttledock)
 "nnf" = (
 /obj/machinery/light/floor,
@@ -69513,10 +69513,10 @@
 /turf/open/floor/plasteel,
 /area/vacant_room/commissary)
 "pqW" = (
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{  //lavaland science shuttle shape changed on austation
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
 	dir = 4
 	},
-/turf/closed/wall,  //lavaland science shuttle shape changed on austation
+/turf/closed/wall,
 /area/science/shuttledock)
 "pqZ" = (
 /obj/machinery/button/door{
@@ -70108,12 +70108,12 @@
 	},
 /turf/open/floor/plasteel,
 /area/quartermaster/miningoffice)
-"pDi" = (  //lavaland science shuttle shape changed on austation begin
+"pDi" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
 	dir = 8
 	},
 /turf/open/floor/plasteel/white,
-/area/science/shuttledock)  //lavaland science shuttle shape changed on austation end
+/area/science/shuttledock)
 "pDy" = (
 /obj/item/beacon,
 /obj/effect/turf_decal/tile/yellow{
@@ -75229,13 +75229,13 @@
 /turf/open/floor/plasteel,
 /area/security/courtroom)
 "rMp" = (
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{  //lavaland science shuttle shape changed on austation
-	dir = 4  //lavaland science shuttle shape changed on austation
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
+	dir = 4
 	},
-/obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden{  //lavaland science shuttle shape changed on austation begin
+/obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden{
 	dir = 8
 	},
-/turf/closed/wall,  //lavaland science shuttle shape changed on austation end
+/turf/closed/wall,
 /area/science/shuttledock)
 "rMu" = (
 /obj/structure/extinguisher_cabinet{
@@ -75870,8 +75870,8 @@
 /turf/closed/wall/r_wall,
 /area/engine/engineering)
 "saf" = (
-/obj/effect/turf_decal/tile/purple,  //lavaland science shuttle shape changed on austation
-/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{  //lavaland science shuttle shape changed on austation
+/obj/effect/turf_decal/tile/purple,
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
 	dir = 4
 	},
 /turf/open/floor/plasteel/white,
@@ -77700,7 +77700,7 @@
 	},
 /turf/open/floor/plasteel,
 /area/hydroponics)
-"sOP" = (  //lavaland science shuttle shape changed on austation begin
+"sOP" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
 	dir = 8
 	},
@@ -77708,7 +77708,7 @@
 	dir = 5
 	},
 /turf/closed/wall,
-/area/science/shuttledock)  //lavaland science shuttle shape changed on austation end
+/area/science/shuttledock)
 "sPe" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -79069,8 +79069,8 @@
 /turf/open/floor/plating,
 /area/maintenance/starboard/fore)
 "toE" = (
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,  //lavaland science shuttle shape changed on austation
-/turf/open/floor/plating,  //lavaland science shuttle shape changed on austation
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
+/turf/open/floor/plating,
 /area/science/shuttledock)
 "toJ" = (
 /obj/structure/cable/yellow{
@@ -80780,9 +80780,9 @@
 /obj/effect/turf_decal/tile/purple{
 	dir = 1
 	},
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{  //lavaland science shuttle shape changed on austation begin
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
 	dir = 6
-	},  //lavaland science shuttle shape changed on austation end
+	},
 /turf/open/floor/plasteel/white,
 /area/science/shuttledock)
 "tYS" = (
@@ -85446,13 +85446,13 @@
 /turf/open/floor/plasteel,
 /area/hallway/primary/central)
 "vRh" = (
-/obj/machinery/advanced_airlock_controller{  //lavaland science shuttle shape changed on austation begin
+/obj/machinery/advanced_airlock_controller{
 	dir = 1;
 	pixel_y = -24
 	},
 /obj/machinery/atmospherics/components/binary/dp_vent_pump/high_volume{
 	dir = 1
-	},  //lavaland science shuttle shape changed on austation end
+	},
 /turf/open/floor/plating,
 /area/science/shuttledock)
 "vRp" = (
@@ -88500,7 +88500,7 @@
 /obj/effect/turf_decal/tile/purple{
 	dir = 1
 	},
-/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1,  //lavaland science shuttle shape changed on austation
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1,
 /turf/open/floor/plasteel/white,
 /area/science/shuttledock)
 "xht" = (
@@ -129543,10 +129543,10 @@ vRA
 fzb
 fSC
 fzb
-mZh  //lavaland science shuttle shape changed on austation
+mZh
 fzb
 kFc
-pDi  //lavaland science shuttle shape changed on austation
+pDi
 dDT
 dQV
 aaf
@@ -129797,12 +129797,12 @@ nbv
 ovj
 mjJ
 ptD
-dDT  //lavaland science shuttle shape changed on austation
+dDT
 saf
-dDT  //lavaland science shuttle shape changed on austation
+dDT
 iTg
-dDT  //lavaland science shuttle shape changed on austation
-dDT  //lavaland science shuttle shape changed on austation
+dDT
+dDT
 bJt
 rYa
 dQV
@@ -130057,10 +130057,10 @@ dDB
 mjJ
 nfT
 jzi
-pqW  //lavaland science shuttle shape changed on austation
+pqW
 lsq
 jzi
-gGe  //lavaland science shuttle shape changed on austation
+gGe
 mjJ
 mjJ
 aaa
@@ -130309,17 +130309,17 @@ vLD
 vLD
 vLD
 gcF
-mjJ  //lavaland science shuttle shape changed on austation
+mjJ
 dQV
 mjJ
-gDr  //lavaland science shuttle shape changed on austation
+gDr
 lZP
-rMp  //lavaland science shuttle shape changed on austation begin
+rMp
 toE
 vRh
 sOP
 aaa
-lMJ  //lavaland science shuttle shape changed on austation end
+lMJ
 aaf
 aaf
 aaf
@@ -130568,14 +130568,14 @@ aaf
 vLD
 aaa
 aaa
-mjJ  //lavaland science shuttle shape changed on austation
+mjJ
 btQ
 bcp
 nmh
 lsq
-kFX  //lavaland science shuttle shape changed on austation begin
+kFX
 nmh
-aaa  //lavaland science shuttle shape changed on austation end
+aaa
 lMJ
 aaf
 aaa
