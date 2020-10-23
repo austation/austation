@@ -153,7 +153,8 @@
 	if(!robotstyles_peace)
 		robotstyles_peace = list(
 		"Default" = image(icon = 'icons/mob/robots.dmi', icon_state = "peace"),
-		"Spider" = image(icon = 'austation/icons/mob/robot.dmi', icon_state = "whitespider"))
+		"Spider" = image(icon = 'austation/icons/mob/robot.dmi', icon_state = "whitespider"),
+		"Skirt" = image(icon = 'austation/icons/mob/robot.dmi', icon_state = "banangarang-Peacekeeper"))
 
 	var/peace_borg_icon = show_radial_menu(R, R , robotstyles_peace, custom_check = CALLBACK(src, .proc/check_menu, R), radius = 42, require_near = TRUE)
 
@@ -163,6 +164,11 @@
 		if("Spider")
 			R.icon = 'austation/icons/mob/robot.dmi'
 			cyborg_base_icon = "whitespider"
+		if("Skirt")
+			R.icon = 'austation/icons/mob/robot.dmi'
+			cyborg_base_icon = "banangarang-Peacekeeper"
+			special_light_key = "banangarang-Peacekeeper"
+			hat_offset = 0
 		else
 			return FALSE
 	return ..()
