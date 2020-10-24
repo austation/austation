@@ -111,11 +111,13 @@
 	key_third_person = "lets out a nya"
 	message = "lets out a nya!"
 	emote_type = EMOTE_AUDIBLE
+	sound = 'austation/sound/misc/nya.ogg'
+	cooldown = (5 SECONDS)
 
-/datum/emote/living/nya/run_emote(mob/living/user, params)
-	if(ishuman(user))
-		if(user.nextsoundemote >= world.time)
-			return
-		user.nextsoundemote = world.time + 7
-		playsound(user, 'modular_citadel/sound/voice/nya.ogg', 50, 1, -1)
-	. = ..()
+/datum/emote/living/nya/can_run_emote(mob/user, status_check = TRUE , intentional)
+	if(!..())
+		return FALSE
+	var/mob/living/carbon/human/H = user
+	if(istype(H))
+		return iscatperson(H)
+	return FALSE
