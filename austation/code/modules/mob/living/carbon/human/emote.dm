@@ -86,9 +86,7 @@
 	if(!..())
 		return FALSE
 	var/mob/living/carbon/human/H = user
-	if(istype(H))
-		return iscatperson(H)
-	return FALSE
+	return iscatperson(H)
 
 /datum/emote/living/purr
 	key = "purr"
@@ -102,9 +100,7 @@
 	if(!..())
 		return FALSE
 	var/mob/living/carbon/human/H = user
-	if(istype(H))
-		return iscatperson(H)
-	return FALSE
+	return iscatperson(H)
 
 /datum/emote/living/nya
 	key = "nya"
@@ -118,6 +114,4 @@
 	if(!..())
 		return FALSE
 	var/mob/living/carbon/human/H = user
-	if(istype(H))
-		return iscatperson(H)
-	return FALSE
+	return iscatperson(H)
