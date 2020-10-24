@@ -72,6 +72,7 @@
 #include "code\game\objects\structures\mirror.dm"
 #include "code\game\objects\structures\closets\secure.dm"
 #include "code\game\objects\structures\tables_racks.dm"
+#include "code\game\turfs\open\floor.dm"
 #include "code\game\turfs\open\floor_glass.dm"
 #include "code\game\turfs\open\lava.dm"
 #include "code\game\turfs\open\space\space.dm"
