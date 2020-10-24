@@ -108,6 +108,7 @@ The reactor CHEWS through moderator. It does not do this slowly. Be very careful
 	var/last_heat_delta = 0 //For administrative cheating only. Knowing the delta lets you know EXACTLY what to set K at.
 
 	var/last_user = null
+	var/current_desired_k = null
 
 //Use this in your maps if you want everything to be preset.
 /obj/machinery/atmospherics/components/trinary/nuclear_reactor/preset
@@ -152,6 +153,7 @@ The reactor CHEWS through moderator. It does not do this slowly. Be very careful
 			fuel_rods += W
 			W.forceMove(src)
 			radiation_pulse(src, temperature) //Wear protective equipment when even breathing near a reactor!
+			investigate_log("Rod added to reactor by [key_name(user)] at [AREACOORD(src)]", INVESTIGATE_SINGULO)
 		return TRUE
 	if(istype(W, /obj/item/sealant))
 		if(power >= 20)
@@ -307,7 +309,8 @@ The reactor CHEWS through moderator. It does not do this slowly. Be very careful
 			K += difference
 		else if(desired_k < K)
 			K -= difference
-	if(K == desired_k && last_user)
+	if(K == desired_k && last_user && current_desired_k != desired_k)
+		current_desired_k = desired_k
 		message_admins("Reactor desired criticality set to [desired_k] by [ADMIN_LOOKUPFLW(last_user)] in [ADMIN_VERBOSEJMP(src)]")
 		investigate_log("reactor desired criticality set to [desired_k] by [key_name(last_user)] at [AREACOORD(src)]", INVESTIGATE_SINGULO)
 
