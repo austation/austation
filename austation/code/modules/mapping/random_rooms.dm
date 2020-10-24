@@ -46,3 +46,12 @@
 	template_height = 3
 	template_width = 3
 	stock = 1
+
+/datum/map_template/random_room/sk_rdm213
+	name = "wikipedia server room"
+	room_id = "sk_rdm141_wikipediaserverroom"
+	mappath = "_maps/RandomRooms/5x4/sk_rdm141_wikipediaserverroom.dmm"
+	centerspawner = FALSE
+	template_height = 4
+	template_width = 5
+	weight = 2
