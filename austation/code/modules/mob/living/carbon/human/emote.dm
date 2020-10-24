@@ -86,7 +86,7 @@
 	if(!..())
 		return FALSE
 	var/mob/living/carbon/human/H = user
-	return iscatperson(H)
+	return iscatperson(H) || iscat(user)
 
 /datum/emote/living/purr
 	key = "purr"
@@ -100,9 +100,9 @@
 	if(!..())
 		return FALSE
 	var/mob/living/carbon/human/H = user
-	return iscatperson(H)
+	return iscatperson(H) || iscat(user)
 
-/datum/emote/living/nya
+/datum/emote/living/carbon/human/nya
 	key = "nya"
 	key_third_person = "lets out a nya"
 	message = "lets out a nya!"
@@ -110,7 +110,7 @@
 	sound = 'austation/sound/misc/nya.ogg'
 	cooldown = (5 SECONDS)
 
-/datum/emote/living/nya/can_run_emote(mob/user, status_check = TRUE , intentional)
+/datum/emote/living/carbon/human/nya/can_run_emote(mob/user, status_check = TRUE , intentional)
 	if(!..())
 		return FALSE
 	var/mob/living/carbon/human/H = user
