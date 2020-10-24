@@ -86,8 +86,8 @@
 					qdel(src)
 					return FALSE
 			if(P.reflectable & REFLECT_NORMAL)
-				return FALSE //To avoid reflection chance double-dipping with block chance
-					..()
+				. = ..()
+
 		if(.)
 			playsound(src, 'sound/weapons/parry.ogg', 100, 1)
 			if(illusions > 0)
