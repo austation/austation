@@ -50,6 +50,7 @@
 #include "code\game\mecha\equipment\tools\other_tools.dm"
 #include "code\game\mecha\equipment\tools\work_tools.dm"
 #include "code\game\mecha\equipment\weapons\weapons.dm"
+#include "code\game\objects\effects\mainttraps.dm"
 #include "code\game\objects\effects\decals\turfdecal\markings.dm"
 #include "code\game\objects\items.dm"
 #include "code\game\objects\items\AI_modules.dm"
