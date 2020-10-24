@@ -1,0 +1,5 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - tweak: "Lipid extractor has slightly different recipe."
+  - bugfix: "Spawned lipid extractor will now correctly deconstruct."
