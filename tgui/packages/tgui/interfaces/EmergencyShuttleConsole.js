@@ -13,9 +13,7 @@ export const EmergencyShuttleConsole = (props, context) => {
     authorizations = [],
   } = data;
   return (
-    <Window
-      width={400}
-      height={350}>
+    <Window>
       <Window.Content>
         <Section>
           <Box

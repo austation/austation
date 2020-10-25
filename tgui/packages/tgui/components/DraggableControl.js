@@ -1,15 +1,7 @@
-/**
- * @file
- * @copyright 2020 Aleksej Komarov
- * @license MIT
- */
-
 import { clamp } from 'common/math';
 import { pureComponentHooks } from 'common/react';
 import { Component, createRef } from 'inferno';
 import { AnimatedNumber } from './AnimatedNumber';
-
-const DEFAULT_UPDATE_RATE = 400;
 
 /**
  * Reduces screen offset to a single number based on the matrix provided.
@@ -74,7 +66,7 @@ export class DraggableControl extends Component {
         if (dragging && onDrag) {
           onDrag(e, value);
         }
-      }, this.props.updateRate || DEFAULT_UPDATE_RATE);
+      }, 500);
       document.addEventListener('mousemove', this.handleDragMove);
       document.addEventListener('mouseup', this.handleDragEnd);
     };
@@ -221,16 +213,7 @@ export class DraggableControl extends Component {
           if (!editing) {
             return;
           }
-          const value = clamp(
-            parseFloat(e.target.value),
-            minValue,
-            maxValue);
-          if (Number.isNaN(value)) {
-            this.setState({
-              editing: false,
-            });
-            return;
-          }
+          const value = clamp(e.target.value, minValue, maxValue);
           this.setState({
             editing: false,
             value,
@@ -245,16 +228,7 @@ export class DraggableControl extends Component {
         }}
         onKeyDown={e => {
           if (e.keyCode === 13) {
-            const value = clamp(
-              parseFloat(e.target.value),
-              minValue,
-              maxValue);
-            if (Number.isNaN(value)) {
-              this.setState({
-                editing: false,
-              });
-              return;
-            }
+            const value = clamp(e.target.value, minValue, maxValue);
             this.setState({
               editing: false,
               value,

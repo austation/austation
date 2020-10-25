@@ -1,9 +1,3 @@
-/**
- * @file
- * @copyright 2020 Aleksej Komarov
- * @license MIT
- */
-
 import { clamp01, scale, keyOfMatchingRange, toFixed } from 'common/math';
 import { classes, pureComponentHooks } from 'common/react';
 import { computeBoxClassName, computeBoxProps } from './Box';

@@ -17,9 +17,7 @@ export const SuitStorageUnit = (props, context) => {
     storage,
   } = data;
   return (
-    <Window
-      width={400}
-      height={305}>
+    <Window>
       <Window.Content>
         {!!(occupied && safeties) && (
           <NoticeBox>

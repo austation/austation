@@ -6,10 +6,7 @@ import { InterfaceLockNoticeBox } from './common/InterfaceLockNoticeBox';
 
 export const Apc = (props, context) => {
   return (
-    <Window
-      resizable
-      width={450}
-      height={460}>
+    <Window resizable>
       <Window.Content scrollable>
         <ApcContent />
       </Window.Content>
@@ -209,7 +206,6 @@ const ApcContent = (props, context) => {
             <Button
               icon="lightbulb-o"
               content={data.nightshiftLights ? 'Enabled' : 'Disabled'}
-              disabled={locked}
               onClick={() => act('toggle_nightshift')} />
           )} />
       </Section>

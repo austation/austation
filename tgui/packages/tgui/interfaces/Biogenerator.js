@@ -15,10 +15,7 @@ export const Biogenerator = (props, context) => {
     processing,
   } = data;
   return (
-    <Window
-      resizable
-      width={550}
-      height={380}>
+    <Window resizable>
       {!!processing && (
         <Dimmer fontSize="32px">
           <Icon name="cog" spin={1} />

@@ -4,8 +4,8 @@
 	icon = 'icons/obj/machines/research.dmi'
 	icon_state = "nanite_cloud_controller"
 	circuit = /obj/item/circuitboard/computer/nanite_cloud_controller
-
-
+	ui_x = 375
+	ui_y = 700
 
 	var/obj/item/disk/nanite_program/disk
 	var/list/datum/nanite_cloud_backup/cloud_backups = list()
@@ -59,14 +59,10 @@
 	backup.nanites = cloud_copy
 	investigate_log("[key_name(user)] created a new nanite cloud backup with id #[cloud_id]", INVESTIGATE_NANITES)
 
-
-/obj/machinery/computer/nanite_cloud_controller/ui_state(mob/user)
-	return GLOB.default_state
-
-/obj/machinery/computer/nanite_cloud_controller/ui_interact(mob/user, datum/tgui/ui)
-	ui = SStgui.try_update_ui(user, src, ui)
+/obj/machinery/computer/nanite_cloud_controller/ui_interact(mob/user, ui_key = "main", datum/tgui/ui = null, force_open = FALSE, datum/tgui/master_ui = null, datum/ui_state/state = GLOB.default_state)
+	ui = SStgui.try_update_ui(user, src, ui_key, ui, force_open)
 	if(!ui)
-		ui = new(user, src, "NaniteCloudControl")
+		ui = new(user, src, ui_key, "NaniteCloudControl", name, ui_x, ui_y, master_ui, state)
 		ui.open()
 
 /obj/machinery/computer/nanite_cloud_controller/ui_data()

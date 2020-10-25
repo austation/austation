@@ -10,10 +10,7 @@ export const ExosuitControlConsole = (props, context) => {
     mechs = [],
   } = data;
   return (
-    <Window
-      resizable
-      width={500}
-      height={500}>
+    <Window resizable>
       <Window.Content scrollable>
         {mechs.length === 0 && (
           <NoticeBox>

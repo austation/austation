@@ -1,22 +1,20 @@
-@use '../base.scss';
-
-$background-color: rgba(0, 0, 0, 0.33) !default;
+$color-background: rgba(0, 0, 0, 0.33) !default;
 
 .CameraConsole__left {
   position: absolute;
   top: 0;
   bottom: 0;
   left: 0;
-  width: base.em(220px);
+  width: 220px;
 }
 
 .CameraConsole__right {
   position: absolute;
   top: 0;
   bottom: 0;
-  left: base.em(220px);
+  left: 220px;
   right: 0;
-  background-color: $background-color;
+  background-color: $color-background;
 }
 
 .CameraConsole__toolbar {
@@ -24,30 +22,33 @@ $background-color: rgba(0, 0, 0, 0.33) !default;
   top: 0;
   left: 0;
   right: 0;
-  height: 2em;
-  line-height: 2em;
-  margin: 0.25em 1em 0;
+  height: 24px;
+  line-height: 24px;
+  margin: 3px 12px 0;
+  // background-color: #0a0;
 }
 
 .CameraConsole__toolbarRight {
   position: absolute;
   top: 0;
   right: 0;
-  height: 2em;
-  line-height: 2em;
-  margin: 0.33em 0.5em 0;
+  height: 24px;
+  line-height: 24px;
+  margin: 4px 6px 0;
+  // background-color: #aa0;
 }
 
 .CameraConsole__map {
   position: absolute;
-  top: base.em(26px);
+  top: 26px;
   bottom: 0;
   left: 0;
   right: 0;
-  margin: 0.5em;
+  // background-color: #00a;
+  margin: 6px;
   text-align: center;
 
   .NoticeBox {
-    margin-top: calc(50% - 2em);
+    margin-top: calc(50% - 24px);
   }
 }

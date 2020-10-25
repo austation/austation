@@ -9,9 +9,7 @@ export const GravityGenerator = (props, context) => {
     operational,
   } = data;
   return (
-    <Window
-      width={400}
-      height={600}>
+    <Window>
       <Window.Content>
         {!operational && (
           <NoticeBox>

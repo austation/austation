@@ -12,9 +12,7 @@ export const ChemSynthesizer = (props, context) => {
     possible_amounts = [],
   } = data;
   return (
-    <Window
-      width={300}
-      height={375}>
+    <Window>
       <Window.Content>
         <Section>
           <Box>

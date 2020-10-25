@@ -5,9 +5,7 @@ import { Window } from '../layouts';
 export const ChemAcclimator = (props, context) => {
   const { act, data } = useBackend(context);
   return (
-    <Window
-      width={320}
-      height={271}>
+    <Window>
       <Window.Content>
         <Section title="Acclimator">
           <LabeledList>

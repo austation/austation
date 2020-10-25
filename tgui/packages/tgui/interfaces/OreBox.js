@@ -7,10 +7,7 @@ export const OreBox = (props, context) => {
   const { act, data } = useBackend(context);
   const { materials } = data;
   return (
-    <Window
-      resizable
-      width={335}
-      height={415}>
+    <Window resizable>
       <Window.Content scrollable>
         <Section
           title="Ores"

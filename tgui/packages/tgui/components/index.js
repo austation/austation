@@ -1,9 +1,3 @@
-/**
- * @file
- * @copyright 2020 Aleksej Komarov
- * @license MIT
- */
-
 export { AnimatedNumber } from './AnimatedNumber';
 export { BlockQuote } from './BlockQuote';
 export { Box } from './Box';
@@ -14,7 +8,6 @@ export { Collapsible } from './Collapsible';
 export { ColorBox } from './ColorBox';
 export { Dimmer } from './Dimmer';
 export { Divider } from './Divider';
-export { DraggableControl } from './DraggableControl';
 export { Dropdown } from './Dropdown';
 export { Flex } from './Flex';
 export { Grid } from './Grid';
@@ -33,4 +26,3 @@ export { Table } from './Table';
 export { TextArea } from './TextArea';
 export { Tabs } from './Tabs';
 export { Tooltip } from './Tooltip';
-export { TimeDisplay } from './TimeDisplay';

@@ -286,10 +286,7 @@ export const Pandemic = (props, context) => {
   const { data } = useBackend(context);
 
   return (
-    <Window
-      resizable
-      width={520}
-      height={550}>
+    <Window resizable>
       <Window.Content scrollable>
         <PandemicBeakerDisplay />
         {!!data.has_blood && (

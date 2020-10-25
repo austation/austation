@@ -261,15 +261,11 @@
 	else
 		ui_interact(owner)
 
+/datum/action/innate/swap_body/ui_interact(mob/user, ui_key = "main", datum/tgui/ui = null, force_open = FALSE, datum/tgui/master_ui = null, datum/ui_state/state = GLOB.always_state)
 
-/datum/action/innate/swap_body/ui_state(mob/user)
-	return GLOB.always_state
-
-/datum/action/innate/swap_body/ui_interact(mob/user, datum/tgui/ui)
-
-	ui = SStgui.try_update_ui(user, src, ui)
+	ui = SStgui.try_update_ui(user, src, ui_key, ui, force_open)
 	if(!ui)
-		ui = new(user, src, "SlimeBodySwapper")
+		ui = new(user, src, ui_key, "SlimeBodySwapper", name, 400, 400, master_ui, state)
 		ui.open()
 
 /datum/action/innate/swap_body/ui_data(mob/user)

@@ -59,9 +59,7 @@ export const SlimeBodySwapper = (props, context) => {
   } = data;
 
   return (
-    <Window
-      width={400}
-      height={400}>
+    <Window>
       <Window.Content scrollable>
         <Section>
           {bodies.map(body => (

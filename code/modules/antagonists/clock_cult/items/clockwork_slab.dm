@@ -127,15 +127,12 @@ GLOBAL_LIST_INIT(clockwork_slabs, list())
 		return
 	ui_interact(user)
 
-/obj/item/clockwork/clockwork_slab/ui_interact(mob/user, datum/tgui/ui)
-	ui = SStgui.try_update_ui(user, src, ui)
+/obj/item/clockwork/clockwork_slab/ui_interact(mob/user, ui_key, datum/tgui/ui, force_open, datum/tgui/master_ui, datum/ui_state/state)
+	ui = SStgui.try_update_ui(user, src, ui_key, ui, force_open)
 	if(!ui)
-		ui = new(user, src, "ClockworkSlab")
+		ui = new(user, src, ui_key, "ClockworkSlab", name, 860, 700, master_ui, state)
 		ui.set_autoupdate(TRUE)
 		ui.open()
-
-/obj/item/clockwork/clockwork_slab/ui_state(mob/user)
-	return GLOB.default_state
 
 /obj/item/clockwork/clockwork_slab/ui_data(mob/user)
 	//Data

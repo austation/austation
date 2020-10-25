@@ -24,9 +24,7 @@ export const Mule = (props, context) => {
   } = data;
   const locked = data.locked && !data.siliconUser;
   return (
-    <Window
-      width={350}
-      height={425}>
+    <Window>
       <Window.Content>
         <InterfaceLockNoticeBox />
         <Section

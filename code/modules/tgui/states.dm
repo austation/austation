@@ -1,9 +1,7 @@
 /**
- * Base state and helpers for states. Just does some sanity checks,
- * implement a proper state for in-depth checks.
+ * tgui states
  *
- * Copyright (c) 2020 Aleksej Komarov
- * SPDX-License-Identifier: MIT
+ * Base state and helpers for states. Just does some sanity checks, implement a state for in-depth checks.
  */
 
 /**
@@ -28,10 +26,9 @@
 			. = max(., UI_INTERACTIVE)
 
 		// Regular ghosts can always at least view if in range.
-		if(user.client)
-			var/clientviewlist = getviewsize(user.client.view)
-			if(get_dist(src_object, user) < max(clientviewlist[1], clientviewlist[2]))
-				. = max(., UI_UPDATE)
+		var/clientviewlist = getviewsize(user.client.view)
+		if(get_dist(src_object, user) < max(clientviewlist[1],clientviewlist[2]))
+			. = max(., UI_UPDATE)
 
 	// Check if the state allows interaction
 	var/result = state.can_use_topic(src_object, user)
@@ -49,8 +46,7 @@
  * return UI_state The state of the UI.
  */
 /datum/ui_state/proc/can_use_topic(src_object, mob/user)
-	// Don't allow interaction by default.
-	return UI_CLOSE
+	return UI_CLOSE // Don't allow interaction by default.
 
 /**
  * public
@@ -60,14 +56,11 @@
  * return UI_state The state of the UI.
  */
 /mob/proc/shared_ui_interaction(src_object)
-	// Close UIs if mindless.
-	if(!client)
+	if(!client) // Close UIs if mindless.
 		return UI_CLOSE
-	// Disable UIs if unconcious.
-	else if(stat)
+	else if(stat) // Disable UIs if unconcious.
 		return UI_DISABLED
-	// Update UIs if incapicitated but concious.
-	else if(incapacitated())
+	else if(incapacitated()) // Update UIs if incapicitated but concious.
 		return UI_UPDATE
 	return UI_INTERACTIVE
 
@@ -77,14 +70,12 @@
 		return UI_UPDATE
 
 /mob/living/silicon/ai/shared_ui_interaction(src_object)
-	// Disable UIs if the AI is unpowered.
-	if(lacks_power())
+	if(lacks_power()) // Disable UIs if the AI is unpowered.
 		return UI_DISABLED
 	return ..()
 
 /mob/living/silicon/robot/shared_ui_interaction(src_object)
-	// Disable UIs if the Borg is unpowered or locked.
-	if(!cell || cell.charge <= 0 || lockcharge)
+	if(!cell || cell.charge <= 0 || lockcharge) // Disable UIs if the Borg is unpowered or locked.
 		return UI_DISABLED
 	return ..()
 
@@ -101,8 +92,7 @@
  * return UI_state The state of the UI.
  */
 /atom/proc/contents_ui_distance(src_object, mob/living/user)
-	// Just call this mob's check.
-	return user.shared_living_ui_distance(src_object)
+	return user.shared_living_ui_distance(src_object) // Just call this mob's check.
 
 /**
  * public
@@ -114,21 +104,17 @@
  * return UI_state The state of the UI.
  */
 /mob/living/proc/shared_living_ui_distance(atom/movable/src_object, viewcheck = TRUE)
-	// If the object is obscured, close it.
-	if(viewcheck && !(src_object in view(src)))
+	if(viewcheck && !(src_object in view(src))) // If the object is obscured, close it.
 		return UI_CLOSE
+
 	var/dist = get_dist(src_object, src)
-	// Open and interact if 1-0 tiles away.
-	if(dist <= 1)
+	if(dist <= 1) // Open and interact if 1-0 tiles away.
 		return UI_INTERACTIVE
-	// View only if 2-3 tiles away.
-	else if(dist <= 2)
+	else if(dist <= 2) // View only if 2-3 tiles away.
 		return UI_UPDATE
-	// Disable if 5 tiles away.
-	else if(dist <= 5)
+	else if(dist <= 5) // Disable if 5 tiles away.
 		return UI_DISABLED
-	// Otherwise, we got nothing.
-	return UI_CLOSE
+	return UI_CLOSE // Otherwise, we got nothing.
 
 /mob/living/carbon/human/shared_living_ui_distance(atom/movable/src_object, viewcheck = TRUE)
 	if(dna.check_mutation(TK) && tkMaxRangeCheck(src, src_object))

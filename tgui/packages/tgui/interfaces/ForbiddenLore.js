@@ -18,10 +18,7 @@ export const ForbiddenLore = (props, context) => {
   ])(data.to_know || []);
 
   return (
-    <Window
-      resizable
-      width={500}
-      height={900}>
+    <Window resizable>
       <Window.Content scrollable>
         <Section title="Research Eldritch Knowledge">
           Charges left : {charges}

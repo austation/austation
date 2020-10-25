@@ -12,9 +12,7 @@ export const Timer = (props, context) => {
     loop,
   } = data;
   return (
-    <Window
-      width={275}
-      height={115}>
+    <Window>
       <Window.Content>
         <Section
           title="Timing Unit"

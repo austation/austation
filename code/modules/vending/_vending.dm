@@ -639,18 +639,16 @@ GLOBAL_LIST_EMPTY(vending_products)
 
 	return ..()
 
-/obj/machinery/vending/ui_assets(mob/user)
-	return list(
-		get_asset_datum(/datum/asset/spritesheet/vending),
-	)
+/obj/machinery/vending/ui_base_html(html)
+	var/datum/asset/spritesheet/assets = get_asset_datum(/datum/asset/spritesheet/vending)
+	. = replacetext(html, "<!--customheadhtml-->", assets.css_tag())
 
-/obj/machinery/vending/ui_state(mob/user)
-	return GLOB.default_state
-
-/obj/machinery/vending/ui_interact(mob/user, datum/tgui/ui)
-	ui = SStgui.try_update_ui(user, src, ui)
+/obj/machinery/vending/ui_interact(mob/user, ui_key = "main", datum/tgui/ui = null, force_open, datum/tgui/master_ui = null, datum/ui_state/state = GLOB.default_state)
+	ui = SStgui.try_update_ui(user, src, ui_key, ui, force_open)
 	if(!ui)
-		ui = new(user, src, "Vending")
+		var/datum/asset/assets = get_asset_datum(/datum/asset/spritesheet/vending)
+		assets.send(user)
+		ui = new(user, src, ui_key, "Vending", ui_key, 450, 600, master_ui, state)
 		ui.open()
 
 /obj/machinery/vending/ui_static_data(mob/user)

@@ -9,18 +9,11 @@ $background-beige: #E8E4C9;
 
 .NuclearBomb__displayBox {
   background-color: #002003;
-  border: 0.167em inset $background-beige;
+  border: 4px inset $background-beige;
   color: #03e017;
-  font-size: 2em;
+  font-size: 24px;
   font-family: monospace;
-  padding: 0.25em;
-}
-
-.NuclearBomb__Button {
-  outline-width: 0.25rem !important;
-  border-width: 0.65rem !important;
-  padding-left: 0 !important;
-  padding-right: 0 !important;
+  padding: 6px;
 }
 
 .NuclearBomb__Button--keypad {

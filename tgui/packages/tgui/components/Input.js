@@ -1,19 +1,13 @@
-/**
- * @file
- * @copyright 2020 Aleksej Komarov
- * @license MIT
- */
-
-import { classes } from 'common/react';
+import { classes, isFalsy } from 'common/react';
 import { Component, createRef } from 'inferno';
 import { Box } from './Box';
-import { KEY_ESCAPE, KEY_ENTER } from 'common/keycodes';
 
-export const toInputValue = value => (
-  typeof value !== 'number' && typeof value !== 'string'
-    ? ''
-    : String(value)
-);
+const toInputValue = value => {
+  if (isFalsy(value)) {
+    return '';
+  }
+  return value;
+};
 
 export class Input extends Component {
   constructor() {
@@ -50,7 +44,7 @@ export class Input extends Component {
     };
     this.handleKeyDown = e => {
       const { onInput, onChange, onEnter } = this.props;
-      if (e.keyCode === KEY_ENTER) {
+      if (e.keyCode === 13) {
         this.setEditing(false);
         if (onChange) {
           onChange(e, e.target.value);
@@ -68,7 +62,7 @@ export class Input extends Component {
         }
         return;
       }
-      if (e.keyCode === KEY_ESCAPE) {
+      if (e.keyCode === 27) {
         this.setEditing(false);
         e.target.value = toInputValue(this.props.value);
         e.target.blur();
@@ -82,9 +76,6 @@ export class Input extends Component {
     const input = this.inputRef.current;
     if (input) {
       input.value = toInputValue(nextValue);
-    }
-    if (this.props.autoFocus) {
-      setTimeout(() => input.focus(), 1);
     }
   }
 
@@ -119,7 +110,6 @@ export class Input extends Component {
     const {
       className,
       fluid,
-      monospace,
       ...rest
     } = boxProps;
     return (
@@ -127,7 +117,6 @@ export class Input extends Component {
         className={classes([
           'Input',
           fluid && 'Input--fluid',
-          monospace && 'Input--monospace',
           className,
         ])}
         {...rest}>

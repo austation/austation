@@ -53,10 +53,7 @@ export const NuclearBomb = (props, context) => {
     status2,
   } = data;
   return (
-    <Window
-      theme="retro"
-      width={350}
-      height={442}>
+    <Window theme="retro">
       <Window.Content>
         <Box m={1}>
           <Box

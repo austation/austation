@@ -56,8 +56,8 @@
 	integrity_failure = 50
 	resistance_flags = FIRE_PROOF
 	interaction_flags_machine = INTERACT_MACHINE_WIRES_IF_OPEN | INTERACT_MACHINE_ALLOW_SILICON | INTERACT_MACHINE_OPEN_SILICON
-
-
+	ui_x = 450
+	ui_y = 460
 
 	FASTDMM_PROP(\
 		set_instance_vars(\
@@ -831,19 +831,12 @@
 	if((stat & MAINT) && !opened) //no board; no interface
 		return
 
-
-/obj/machinery/power/apc/ui_state(mob/user)
-	if(isAI(user))
-		var/mob/living/silicon/ai/AI = user
-		if(AI.apc_override == src)
-			return GLOB.conscious_state
-	return GLOB.default_state
-
-/obj/machinery/power/apc/ui_interact(mob/user, datum/tgui/ui)
-	ui = SStgui.try_update_ui(user, src, ui)
+/obj/machinery/power/apc/ui_interact(mob/user, ui_key = "main", datum/tgui/ui = null, force_open = FALSE, \
+										datum/tgui/master_ui = null, datum/ui_state/state = GLOB.default_state)
+	ui = SStgui.try_update_ui(user, src, ui_key, ui, force_open)
 
 	if(!ui)
-		ui = new(user, src, "Apc")
+		ui = new(user, src, ui_key, "Apc", name, ui_x, ui_y, master_ui, state)
 		ui.open()
 
 /obj/machinery/power/apc/ui_data(mob/user)
@@ -1021,12 +1014,6 @@
 					INVOKE_ASYNC(L, /obj/machinery/light/.proc/update, FALSE)
 				CHECK_TICK
 	return 1
-
-/obj/machinery/power/apc/ui_close(mob/user)
-	if(isAI(user))
-		var/mob/living/silicon/ai/AI = user
-		if(AI.apc_override == src)
-			AI.apc_override = null
 
 /obj/machinery/power/apc/proc/toggle_breaker(mob/user)
 	if(!is_operational() || failure_timer)

@@ -21,9 +21,7 @@ export const Canister = (props, context) => {
     restricted,
   } = data;
   return (
-    <Window
-      width={300}
-      height={232}>
+    <Window>
       <Window.Content>
         <Section
           title="Canister"

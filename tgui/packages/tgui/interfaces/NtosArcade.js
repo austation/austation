@@ -5,9 +5,7 @@ import { NtosWindow } from '../layouts';
 export const NtosArcade = (props, context) => {
   const { act, data } = useBackend(context);
   return (
-    <NtosWindow
-      width={450}
-      height={350}>
+    <NtosWindow>
       <NtosWindow.Content>
         <Section
           title="Outbomb Cuban Pete Ultra"

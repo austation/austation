@@ -22,9 +22,7 @@ export const NtosNetChat = (props, context) => {
   const authorized = (authed || adminmode);
 
   return (
-    <NtosWindow
-      width={900}
-      height={675}>
+    <NtosWindow>
       <NtosWindow.Content>
         <Section
           height="600px">

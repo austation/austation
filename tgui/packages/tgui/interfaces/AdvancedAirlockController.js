@@ -27,9 +27,7 @@ export const AdvancedAirlockController = (props, context) => {
   const { act, data } = useBackend(context);
   const locked = data.locked && !data.siliconUser;
   return (
-    <Window
-      width={440}
-      height={650}>
+    <Window>
       <Window.Content>
         <Fragment>
           <InterfaceLockNoticeBox

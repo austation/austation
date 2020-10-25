@@ -11,14 +11,11 @@
 	. = ..()
 	. += "<span class='notice'>Has a neat <i>selection menu</i> for modifying airlock access levels.</span>"
 
-
-/obj/item/electronics/airlock/ui_state(mob/user)
-	return GLOB.hands_state
-
-/obj/item/electronics/airlock/ui_interact(mob/user, datum/tgui/ui)
-	ui = SStgui.try_update_ui(user, src, ui)
+/obj/item/electronics/airlock/ui_interact(mob/user, ui_key = "main", datum/tgui/ui = null, force_open = FALSE, \
+													datum/tgui/master_ui = null, datum/ui_state/state = GLOB.hands_state)
+	ui = SStgui.try_update_ui(user, src, ui_key, ui, force_open)
 	if(!ui)
-		ui = new(user, src, "AirlockElectronics")
+		ui = new(user, src, ui_key, "AirlockElectronics", name, 420, 485, master_ui, state)
 		ui.open()
 
 /obj/item/electronics/airlock/ui_static_data(mob/user)

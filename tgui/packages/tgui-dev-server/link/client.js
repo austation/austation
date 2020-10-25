@@ -1,9 +1,3 @@
-/**
- * @file
- * @copyright 2020 Aleksej Komarov
- * @license MIT
- */
-
 let socket;
 const queue = [];
 const subscribers = [];
@@ -37,7 +31,7 @@ if (process.env.NODE_ENV !== 'production') {
   window.onunload = () => socket && socket.close();
 }
 
-export const subscribe = fn => subscribers.push(fn);
+const subscribe = fn => subscribers.push(fn);
 
 /**
  * A json serializer which handles circular references and other junk.
@@ -68,10 +62,7 @@ const serializeObject = obj => {
       }
       refs.push(value);
       // Error object
-      const isError = value instanceof Error || (
-        value.code && value.message && value.message.includes('Error')
-      );
-      if (isError) {
+      if (value instanceof Error) {
         return {
           __error__: true,
           string: String(value),
@@ -91,7 +82,7 @@ const serializeObject = obj => {
   return json;
 };
 
-export const sendMessage = msg => {
+const sendRawMessage = msg => {
   if (process.env.NODE_ENV !== 'production') {
     const json = serializeObject(msg);
     // Send message using WebSocket
@@ -101,8 +92,8 @@ export const sendMessage = msg => {
         socket.send(json);
       }
       else {
-        // Keep only 100 latest messages in the queue
-        if (queue.length > 100) {
+        // Keep only 10 latest messages in the queue
+        if (queue.length > 10) {
           queue.shift();
         }
         queue.push(json);
@@ -112,8 +103,8 @@ export const sendMessage = msg => {
     else {
       const DEV_SERVER_IP = process.env.DEV_SERVER_IP || '127.0.0.1';
       const req = new XMLHttpRequest();
-      req.open('POST', `http://${DEV_SERVER_IP}:3001`, true);
-      req.timeout = 250;
+      req.open('POST', `http://${DEV_SERVER_IP}:3001`);
+      req.timeout = 500;
       req.send(json);
     }
   }
@@ -122,7 +113,7 @@ export const sendMessage = msg => {
 export const sendLogEntry = (level, ns, ...args) => {
   if (process.env.NODE_ENV !== 'production') {
     try {
-      sendMessage({
+      sendRawMessage({
         type: 'log',
         payload: {
           level,

@@ -150,8 +150,9 @@
 				sleep(50)
 				to_chat(src, "Receiving control information from APC.")
 				sleep(2)
-				apc_override = theAPC
-				theAPC.ui_interact(src)
+				apc_override = 1
+				theAPC.ui_interact(src, state = GLOB.conscious_state)
+				apc_override = 0
 				aiRestorePowerRoutine = POWER_RESTORATION_APC_FOUND
 		sleep(50)
 		theAPC = null

@@ -1,9 +1,3 @@
-/**
- * @file
- * @copyright 2020 Aleksej Komarov
- * @license MIT
- */
-
 import { classes, pureComponentHooks } from 'common/react';
 import { Box, unit } from './Box';
 import { Divider } from './Divider';
@@ -43,7 +37,11 @@ export const LabeledListItem = props => {
           'LabeledList__cell',
           'LabeledList__label',
         ])}>
-        {label ? label + ':' : null}
+        {label
+          && (typeof label === 'string'
+            && label + ':'
+            || label)
+          || null}
       </Box>
       <Box
         as="td"

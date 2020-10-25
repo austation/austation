@@ -16,9 +16,7 @@ export const PortablePump = (props, context) => {
   } = data;
 
   return (
-    <Window
-      width={300}
-      height={315}>
+    <Window>
       <Window.Content>
         <PortableBasicInfo />
         <Section

@@ -17,9 +17,7 @@ export const DnaVault = (props, context) => {
     animals_max,
   } = data;
   return (
-    <Window
-      width={350}
-      height={400}>
+    <Window>
       <Window.Content>
         <Section title="DNA Vault Database">
           <LabeledList>

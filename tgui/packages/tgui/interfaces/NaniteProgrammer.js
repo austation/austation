@@ -228,10 +228,7 @@ export const NaniteExtraBoolean = (props, context) => {
 
 export const NaniteProgrammer = (props, context) => {
   return (
-    <Window
-      resizable
-      width={420}
-      height={550}>
+    <Window resizable>
       <Window.Content scrollable>
         <NaniteProgrammerContent />
       </Window.Content>

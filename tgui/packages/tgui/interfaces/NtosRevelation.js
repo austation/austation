@@ -6,10 +6,7 @@ export const NtosRevelation = (props, context) => {
   const { act, data } = useBackend(context);
 
   return (
-    <NtosWindow
-      theme="syndicate"
-      width={400}
-      height={250}>
+    <NtosWindow theme="syndicate">
       <NtosWindow.Content>
         <Section>
           <Button.Input

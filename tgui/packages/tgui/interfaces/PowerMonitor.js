@@ -16,10 +16,7 @@ const powerRank = str => {
 
 export const PowerMonitor = () => {
   return (
-    <Window
-      resizable
-      width={550}
-      height={700}>
+    <Window resizable>
       <Window.Content scrollable>
         <PowerMonitorContent />
       </Window.Content>

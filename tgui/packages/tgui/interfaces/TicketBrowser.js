@@ -15,9 +15,7 @@ export const TicketBrowser = (props, context) => {
   return (
     <Window
       theme="admin"
-      resizable
-      width={720}
-      height={480}>
+      resizable>
       <Window.Content scrollable>
         <Section
           title={

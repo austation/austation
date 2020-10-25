@@ -202,18 +202,9 @@
 	WRITE_LOG(GLOB.world_map_error_log, text)
 
 /* ui logging */
-/proc/log_tgui(user_or_client, text)
-	var/entry = ""
-	if(!user_or_client)
-		entry += "no user"
-	else if(istype(user_or_client, /mob))
-		var/mob/user = user_or_client
-		entry += "[user.ckey] (as [user])"
-	else if(istype(user_or_client, /client))
-		var/client/client = user_or_client
-		entry += "[client.ckey]"
-	entry += ":\n[text]"
-	WRITE_LOG(GLOB.tgui_log, entry)
+
+/proc/log_tgui(text)
+	WRITE_LOG(GLOB.tgui_log, text)
 
 /* For logging round startup. */
 /proc/start_log(log)

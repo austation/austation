@@ -5,7 +5,7 @@ import { createSearch } from 'common/string';
 import { Fragment } from 'inferno';
 import { useBackend, useLocalState } from '../backend';
 import { Button, ByondUi, Input, Section } from '../components';
-import { Window } from '../layouts';
+import { refocusLayout, Window } from '../layouts';
 
 /**
  * Returns previous and next camera names relative to the currently
@@ -50,10 +50,7 @@ export const CameraConsole = (props, context) => {
     nextCameraName,
   ] = prevNextCamera(cameras, activeCamera);
   return (
-    <Window
-      resizable
-      width={870}
-      height={708}>
+    <Window resizable>
       <div className="CameraConsole__left">
         <Window.Content scrollable>
           <CameraConsoleContent />
@@ -84,6 +81,7 @@ export const CameraConsole = (props, context) => {
           className="CameraConsole__map"
           params={{
             id: mapRef,
+            parent: config.window,
             type: 'map',
           }} />
       </div>
@@ -122,9 +120,12 @@ export const CameraConsoleContent = (props, context) => {
                 && camera.name === activeCamera.name
                 && 'Button--selected',
             ])}
-            onClick={() => act('switch_camera', {
-              name: camera.name,
-            })}>
+            onClick={() => {
+              refocusLayout();
+              act('switch_camera', {
+                name: camera.name,
+              });
+            }}>
             {camera.name}
           </div>
         ))}
