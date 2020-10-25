@@ -1,4 +1,0 @@
-author: "jupyterkat"
-delete-after: True
-changes: 
-  - bugfix: "fixed the glass floor getting turned into plating when atmos rips it"
