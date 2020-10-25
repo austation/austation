@@ -1,5 +1,5 @@
 /datum/quirk/sweetaholic
-	name = "Sweetaholic"
+	name = "Sweet-junkie"
 	desc = "You find yourself craving sugary treats. Can't get enough of them!"
 	value = 0
 	gain_text = "<span class='notice'>You feel an intense craving for sweets.</span>"
