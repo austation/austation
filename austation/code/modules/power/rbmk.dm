@@ -550,13 +550,10 @@ The reactor CHEWS through moderator. It does not do this slowly. Be very careful
 	. = ..()
 	ui_interact(user)
 
-/obj/machinery/computer/reactor/control_rods/ui_state(mob/user)
-	return GLOB.default_state
-
-/obj/machinery/computer/reactor/control_rods/ui_interact(mob/user, datum/tgui/ui)
-	ui = SStgui.try_update_ui(user, src, ui)
+/obj/machinery/computer/reactor/control_rods/ui_interact(mob/user, ui_key, datum/tgui/ui, force_open, datum/tgui/master_ui, datum/ui_state/state)
+	ui = SStgui.try_update_ui(user, src, ui_key, ui, force_open)
 	if(!ui)
-		ui = new(user, src, "RbmkControlRods")
+		ui = new(user, src, ui_key, "RbmkControlRods", name, 300, 300, master_ui, state)
 		ui.open()
 
 /obj/machinery/computer/reactor/control_rods/ui_act(action, params)
@@ -593,13 +590,10 @@ The reactor CHEWS through moderator. It does not do this slowly. Be very careful
 	. = ..()
 	ui_interact(user)
 
-/obj/machinery/computer/reactor/stats/ui_state(mob/user)
-	return GLOB.default_state
-
-/obj/machinery/computer/reactor/stats/ui_interact(mob/user, datum/tgui/ui)
-	ui = SStgui.try_update_ui(user, src, ui)
+/obj/machinery/computer/reactor/stats/ui_interact(mob/user, ui_key, datum/tgui/ui, force_open, datum/tgui/master_ui, datum/ui_state/state)
+	ui = SStgui.try_update_ui(user, src, ui_key, ui, force_open)
 	if(!ui)
-		ui = new(user, src, "RbmkStats")
+		ui = new(user, src, ui_key, "RbmkStats", name, 350, 500, master_ui, state)
 		ui.open()
 
 /obj/machinery/computer/reactor/stats/process()
