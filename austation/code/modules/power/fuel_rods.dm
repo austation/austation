@@ -55,11 +55,31 @@
 	var/expended = FALSE // have we removed the TC already?
 	var/multiplier = 3 // how much do we multiply the inserted TC by?
 
+/obj/item/twohanded/required/fuel_rod/bluespace
+	name = "Bluespace Crystal Fuel Rod"
+	desc = "A heavy-duty low-grade fuel rod which fissiles much slower than standard counterparts. However, it's complex and sophisticated design allows insertion and utilisation of a certain material with special properties, namely bluespace crystals."
+	icon_state = "bluespace"
+	fuel_power = 0.05 // bluespace growth shouldn't be *that* interesting, isn't it?
+	conversion = "bluespace"
+	depletion = 50
+	rad_strength = 200
+	og_fuel_power = 0.05
+	var/bluespace_crystal_initial_amount = 0
+	var/bluespace_crystal_slot = 15 // I dare you to insert *this* many
+	var/bluespace_crystal_grown_amount = 0
+	var/bananium_initial_amount = 0
+	var/bananium_slot = 2 // going double bananium won't hurt, I promise
+	var/bananium_grown_amount = 0
+	var/growth_factor = 3
+	var/expended = FALSE
+
 /obj/item/twohanded/required/fuel_rod/deplete(amount=0.035) // override for the one in rmbk.dm
 	var/obj/machinery/atmospherics/components/trinary/nuclear_reactor/N = loc // store the reactor we're inside of in a var
 	depletion += amount
 	if(conversion == "telecrystal")
 		percentage = min(((depletion - 65) / 35) * 100, 1)
+	if(conversion == "bluespace" && rad_strength > 300 && prob(10))
+		playsound(src, pick('sound/items/bikehorn.ogg', 'sound/misc/bikehorn_creepy.ogg'), 50) // HONK
 	if(depletion >= 100)
 		switch(conversion)
 			if("plutonium") // uranium rod turns into a different object for cargo reasons.
@@ -87,6 +107,20 @@
 						D.depletion = depletion
 						N.fuel_rods += D
 						qdel(src)
+
+			if("bluespace") // telecrystal rod turns into processed telecrystal rod
+				if(!grown)
+					name = "Fully Grown Bluespace Crystal Fuel Rod"
+					desc = "A heavy-duty low-grade fuel rod which fissiles much slower than standard counterparts. Its growth stage has finished, and its power now starts to wane. You also can harvest bluespace crystals which should've been multiplied by now."
+					if (rad_strength > 200)
+						icon_state = "bluespace_bananium"
+					else
+						icon_state = "bluespace_used"
+					grown = TRUE
+					rad_strength *= 5
+					og_fuel_power *= 2  
+				AddComponent(/datum/component/radioactive, rad_strength, src)
+				fuel_power = max(og_fuel_power - (depletion - 100) / 500, 0)
 
 	else
 		fuel_power = 0.10
@@ -144,3 +178,140 @@
 		. += "<span class='danger'>The sample is [percentage]% fissiled.</span>"
 
 	. += "<span class='disarm'>[telecrystal_amount]/[max_telecrystal_amount] of the telecrystal slots are full.</span>"
+
+/obj/item/twohanded/required/fuel_rod/bluespace/proc/update_stats()
+	growth_factor = 3 + bananium_initial_amount
+	og_fuel_power = 0.05 + bluespace_crystal_initial_amount * 0.01 // 0.2 would be high-end cases
+	rad_strength = 200 + bananium_initial_amount * 100
+	if(!grown)
+		fuel_power = og_fuel_power
+
+/obj/item/twohanded/required/fuel_rod/bluespace/proc/expend()
+	expended = TRUE
+	icon_state = "bluespace_harvested"
+	update_stats() // Return to baseline
+
+/obj/item/twohanded/required/fuel_rod/bluespace/attackby(obj/item/W, mob/user, params)
+	if(istype(W, /obj/item/stack/sheet/bluespace_crystal) || istype(W, /obj/item/stack/ore/bluespace_crystal))
+		if(istype(W, /obj/item/stack/ore/bluespace_crystal/artificial))
+			to_chat(user, "<span class='warning'>Artificial bluespace crystals won't work, sadly.</span>")
+			return
+		if(!istype(W, /obj/item/stack/ore/bluespace_crystal/refined) && istype(W, /obj/item/stack/ore/bluespace_crystal))
+			to_chat(user, "<span class='warning'>Unrefined bluespace crystals won't work, sadly.</span>")
+			return
+		if(grown)
+			to_chat(user, "<span class='warning'>\The [src]'s life is over. No point in adding more crystals now.</span>")
+			return
+		if(depletion >= 60)
+			to_chat(user, "<span class='warning'>Markers indicate that adding more bluespace crystals now is not safe, it's too late to add crystals now!</span>") // no cheesing in crystals at 100%
+			return
+		var/obj/item/stack/C = W
+
+		if(bluespace_crystal_initial_amount < bluespace_crystal_slot)
+			icon_state = "bluespace_ready"
+			var/adding = 0
+			adding = min(bluespace_crystal_slot - bluespace_crystal_initial_amount, C.amount)
+			C.amount -= adding
+			bluespace_crystal_initial_amount += adding
+			C.zero_amount()
+			update_stats()
+			if(bluespace_crystal_initial_amount < 10)
+				to_chat(user, "<span class='notice'>You insert [adding] bluespace crystals into \the [src].</span>")
+			else
+				to_chat(user, "<span class='warning'>You insert [adding] bluespace crystals into \the [src], but an inbuilt sensor indicates that it is reaching not-very-safe levels.</span>")
+		else
+			to_chat(user, "<span class='warning'>\The [src]'s bluespace crystal slots are full!</span>")
+			return
+	else if(istype(W, /obj/item/stack/sheet/mineral/bananium))
+		if(grown)
+			to_chat(user, "<span class='warning'>\The [src]'s life is over. No point in adding more bananium now.</span>")
+			return
+		if(depletion >= 60)
+			to_chat(user, "<span class='warning'>Markers indicate that adding something more now is not safe, it's too late to add something now!</span>") // no cheesing in crystals at 100%
+			return
+		var/obj/item/stack/C = W
+
+		if(bananium_initial_amount < bananium_slot)
+			var/adding = 0
+			adding = min(bananium_slot - bananium_initial_amount, C.amount)
+			C.amount -= adding
+			bananium_initial_amount += adding
+			C.zero_amount()
+			update_stats()
+			to_chat(user, "<span class='notice'>You manage to slide [adding] bananium sheets into \the [src]. What could go wrong?</span>")
+		else
+			to_chat(user, "<span class='warning'>\The [src] looks unable to hold more bananium!</span>")
+	else
+		return ..()
+
+/obj/item/twohanded/required/fuel_rod/bluespace/attack_self(mob/user)
+	if(expended)
+		to_chat(user, "<span class='warning'>This rod has already been harvested!</span>")
+		return
+	if(grown)
+		if(!bluespace_crystal_grown_amount && !bananium_grown_amount)
+			bluespace_crystal_grown_amount = bluespace_crystal_initial_amount * growth_factor
+			bananium_grown_amount = bananium_initial_amount * 2
+		if(bluespace_crystal_grown_amount)
+			var/obj/item/stack/sheet/bluespace_crystal/bc = new(get_turf(user))
+			var/output = min(bluespace_crystal_grown_amount, bc.max_amount)
+			to_chat(user, "<span class='notice'>You harvest [output] bluespace crystals from \the [src].</span>")
+			bc.amount = output
+			bluespace_crystal_grown_amount -= output
+			if(!bluespace_crystal_grown_amount && !bananium_grown_amount)
+				expend()
+			return
+		if(bananium_grown_amount)
+			var/obj/item/stack/sheet/mineral/bananium/ba = new(get_turf(user))
+			var/output = min(bananium_grown_amount, ba.max_amount)
+			to_chat(user, "<span class='notice'>You harvest [output] sheets of bananium from \the [src].</span>")
+			ba.amount = output
+			bananium_grown_amount -= output
+			if(!bananium_grown_amount)
+				expend()
+			return
+		// No material input case goes here
+		to_chat(user, "<span class='warning'>Nothing can be harvested from \the [src]!</span>")
+		expend()
+		
+	else
+		var/didsomething = FALSE
+		if(bluespace_crystal_initial_amount)
+			var/obj/item/stack/sheet/bluespace_crystal/bc = new(get_turf(user))
+			var/output = min(bluespace_crystal_initial_amount, bc.max_amount)
+			to_chat(user, "<span class='notice'>You remove [output] bluespace crystals from \the [src].</span>")
+			bc.amount = output
+			bluespace_crystal_initial_amount -= output
+			didsomething = TRUE
+			icon_state = "bluespace"
+		if(bananium_initial_amount)
+			var/obj/item/stack/sheet/mineral/bananium/ba = new(get_turf(user))
+			var/output = min(bananium_initial_amount, ba.max_amount)
+			to_chat(user, "<span class='notice'>You remove [output] sheets of bananium from \the [src].</span>")
+			ba.amount = output
+			bananium_initial_amount -= output
+			didsomething = TRUE
+		if(!didsomething)
+			to_chat(user, "<span class='warning'>Nothing can be removed from \the [src]!</span>")
+
+/obj/item/twohanded/required/fuel_rod/bluespace/examine(mob/user)
+	. = ..()
+	if(expended)
+		. += "<span class='warning'>This fuel rod has been fully harvested.</span>"
+	else if(grown)
+		if(bluespace_crystal_grown_amount || bananium_grown_amount)
+			. += "<span class='warning'>This fuel rod is undergoing a process of bluespace crystal harvesting, and it currently has [bluespace_crystal_grown_amount] bluespace crystals.</span>"
+			if(bananium_initial_amount)
+				. += "<span class='warning'>... and [bananium_grown_amount] sheets of bananium.</span>"
+		else if(bluespace_crystal_initial_amount)
+			. += "<span class='warning'>This fuel rod's bluespace crystals are now fully grown, and it currently bears harvestable bluespace crystals.</span>"
+			if(bananium_initial_amount)
+				. += "<span class='warning'>... and a few sheets of bananium.</span>"
+		else if(bananium_initial_amount)
+			. += "<span class='warning'>This rod shows unusual growth of strange material with hilarious properties.</span>"
+		else
+			. += "<span class='warning'>This rod somehow seems to lack bluespace crystal growth. Bluespace crystals aren't likely be produced here.</span>"
+	else
+		. += "<span class='disarm'>[bluespace_crystal_initial_amount]/[bluespace_crystal_slot] of the bluespace crystal slots are full.</span>"
+		if (bananium_initial_amount)
+			. += "<span class='disarm'>[bananium_initial_amount]/[bananium_slot] of the bananium \"slots\" are full.</span>"
