@@ -351,6 +351,7 @@
 /* Commenting this out because it doesnt work
 when the syndie borg spawns in the prompt isnt shown, im thinking its because the borg is spawned THEN the ghost is put into the borg,
 leaving this here until i figure out a way to fix it or if someone else wants to take it up.
+probably requires a custom proc to get the menu to appear AFTER the ghost takes control or maybe abandon the radial menu for it :pensive: .
 
 /obj/item/robot_module/syndicate/be_transformed_to(obj/item/robot_module/old_module) //syndie assault
 	var/mob/living/silicon/robot/R = loc
