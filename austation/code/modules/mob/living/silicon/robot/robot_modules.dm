@@ -325,7 +325,7 @@
 		"Default" = image(icon = 'icons/mob/robots.dmi', icon_state = "robot"),
 		"Marina" = image(icon = 'austation/icons/mob/robot.dmi', icon_state = "marinasd"),
 		"Heavy" = image(icon = 'austation/icons/mob/robot.dmi', icon_state = "heavysd"),
-		"Skirt" = image(icon = 'austation/icons/mob/robot.dmi', icon_state = "skirtsd"))
+		"Skirt" = image(icon = 'austation/icons/mob/robot.dmi', icon_state = "banangarang-skirtsd"))
 
 	var/standard_borg_icon = show_radial_menu(R, R , robotstyles_standard, custom_check = CALLBACK(src, .proc/check_menu, R), radius = 42, require_near = TRUE)
 
@@ -342,7 +342,7 @@
 			hat_offset = -3
 		if("Skirt")
 			R.icon = 'austation/icons/mob/robot.dmi'
-			cyborg_base_icon = "skirtsd"
+			cyborg_base_icon = "banangarang-skirtsd"
 			hat_offset = 0
 		else
 			return FALSE
@@ -361,7 +361,7 @@ leaving this here until i figure out a way to fix it or if someone else wants to
 		"Default" = image(icon = 'icons/mob/robots.dmi', icon_state = "synd_sec"),
 		"Spider" = image(icon = 'austation/icons/mob/robot.dmi', icon_state = "spidersyndi"),
 		"Heavy" = image(icon = 'austation/icons/mob/robot.dmi', icon_state = "syndieheavy"),
-		"Skirt" = image(icon = 'austation/icons/mob/robot.dmi', icon_state = "robomaid_synd"))
+		"Skirt" = image(icon = 'austation/icons/mob/robot.dmi', icon_state = "banangarang-synd"))
 
 	var/syndicate_borg_icon = show_radial_menu(R, R , robotstyles_syndicate, custom_check = CALLBACK(src, .proc/check_menu, R), radius = 42, require_near = TRUE)
 
@@ -378,7 +378,7 @@ leaving this here until i figure out a way to fix it or if someone else wants to
 			hat_offset = -3
 		if("Skirt")
 			R.icon = 'austation/icons/mob/robot.dmi'
-			cyborg_base_icon = "robomaid_synd"
+			cyborg_base_icon = "banangarang-synd"
 			hat_offset = 0
 		else
 			return FALSE
