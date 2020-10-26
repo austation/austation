@@ -538,6 +538,12 @@
 	name = "science outpost shuttle"
 	can_be_bought = FALSE
 
+/datum/map_template/shuttle/science/aus
+	port_id = "science"
+	suffix = "outpost_aus"
+	name = "science outpost shuttle"
+	can_be_bought = FALSE
+
 /datum/map_template/shuttle/labour/delta
 	suffix = "delta"
 	name = "labour shuttle (Delta)"

@@ -836,7 +836,7 @@
 	height = 6;
 	id = "science_outpost";
 	name = "outpost shuttle dock";
-	roundstart_template = /datum/map_template/shuttle/science;
+	roundstart_template = /datum/map_template/shuttle/science/aus;  // adjusted shuttle on AuStation
 	width = 9
 	},
 /turf/open/floor/plating,
