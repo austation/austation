@@ -182,6 +182,7 @@
 	if(broken || burnt)
 		broken = 0
 		burnt = 0
+		current_overlay = null //austation -- floor painter
 		if(user && !silent)
 			to_chat(user, "<span class='notice'>You remove the broken plating.</span>")
 	else
