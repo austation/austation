@@ -830,13 +830,14 @@
 	},
 /turf/closed/wall,
 /area/mine/laborcamp)
+//  shuttle changed to science/aus because the bee shuttle is poopy
 "du" = (
 /obj/docking_port/stationary{
 	dwidth = 6;
 	height = 6;
 	id = "science_outpost";
 	name = "outpost shuttle dock";
-	roundstart_template = /datum/map_template/shuttle/science/aus;  // adjusted shuttle on AuStation
+	roundstart_template = /datum/map_template/shuttle/science/aus;
 	width = 9
 	},
 /turf/open/floor/plating,
