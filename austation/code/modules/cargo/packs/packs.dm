@@ -28,8 +28,8 @@
 	desc = "Two Fuel Rod Cores designed to utilize and multiply bluespace crystals in a reactor, requires CE access to open. Caution: Mildly Radioactive"
 	cost = 5500
 	access = ACCESS_CE
-	contains = list(/obj/item/twohanded/required/fuel_rod/bluespace,
-					/obj/item/twohanded/required/fuel_rod/bluespace)
+	contains = list(/obj/item/twohanded/required/fuel_rod/material/bluespace,
+					/obj/item/twohanded/required/fuel_rod/material/bluespace)
 	crate_name = "Bluespace Crystal Fuel Rod crate"
 	crate_type = /obj/structure/closet/crate/secure/engineering
 	dangerous = TRUE
