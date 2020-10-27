@@ -6,18 +6,15 @@
 	var/og_fuel_power = 0.20 //the original fuel power value
 	var/process =  FALSE
 
-
-	// TC rod only vars (yes I know, slight shitcode having them stored here but I don't want to make another proc for tc rods)
-	var/grown = FALSE // has the rod fissiled enough for us to remove the grown TC?
-	var/percentage = 0 //progress towards tc transmutation in percentage
-
-/obj/item/twohanded/required/fuel_rod/New()
-	..()
+/obj/item/twohanded/required/fuel_rod/Initialize()
+	. = ..()
 	time_created = world.time
+	var/datum/component/radioactive/oldradcomponent = GetComponent(/datum/component/radioactive)
+	if(istype(oldradcomponent))
+		oldradcomponent.RemoveComponent()
 	AddComponent(/datum/component/radioactive, rad_strength, src)
 	if(process)
 		START_PROCESSING(SSobj, src)
-	. = ..()
 
 /obj/item/twohanded/required/fuel_rod/Destroy()
 	if(process)
