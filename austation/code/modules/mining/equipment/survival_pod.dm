@@ -1,4 +1,4 @@
-// yes, I COULD make it a seperate object from the surv capsule but the code needed is indeticle soo...\
+// yes, I COULD make it a seperate object from the surv capsule but the code needed is indeticle soo...
 
 /obj/item/survivalcapsule/reactor // the not-so-survival capsule
 	name = "RMBK Reactor Beacon"
