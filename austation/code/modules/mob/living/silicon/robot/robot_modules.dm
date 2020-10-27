@@ -348,11 +348,8 @@
 			return FALSE
 	return ..()
 
-/* Commenting this out because it doesnt work
-when the syndie borg spawns in the prompt isnt shown, im thinking its because the borg is spawned THEN the ghost is put into the borg,
-leaving this here until i figure out a way to fix it or if someone else wants to take it up.
-
-/obj/item/robot_module/syndicate/be_transformed_to(obj/item/robot_module/old_module) //syndie assault
+/obj/item/robot_module/syndicate/do_transform_animation() //asks the player to pick a sprite AFTER they spawn in and transform
+	..()
 	var/mob/living/silicon/robot/R = loc
 	var/static/list/robotstyles_syndicate
 
@@ -382,7 +379,7 @@ leaving this here until i figure out a way to fix it or if someone else wants to
 			hat_offset = 0
 		else
 			return FALSE
-	return ..() */
+	return ..()
 
 /obj/item/robot_module/proc/check_menu(mob/living/user)
 	if(!istype(user))
