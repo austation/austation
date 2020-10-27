@@ -31,7 +31,6 @@
 		qdel(src)
 
 /obj/item/twohanded/required/fuel_rod/deplete(amount=0.035) // override for the one in rmbk.dm
-	message_admins("2nd deplete proc operational")
 	depletion += amount * depletion_speed_modifier
 	if(depletion >= depletion_threshold)
 		Final_Depletion()
@@ -73,7 +72,7 @@
 	var/initial_amount = 0
 	var/max_initial_amount = 10
 	var/grown_amount = 0
-	var/multiplier = 3
+	var/multiplier = 2
 	depletion_speed_modifier = 2
 	var/material_input_deadline = 25
 
@@ -154,7 +153,6 @@
 	fuel_power = 0.30 // twice as powerful as a normal rod, you're going to need some engineering autism if you plan to mass produce TC
 	depletion_speed_modifier = 3 // headstart, otherwise it takes two hours
 	rad_strength = 1500
-	initial_amount = 0
 	max_initial_amount = 8
 	multiplier = 3
 	material_type = /obj/item/stack/telecrystal
@@ -174,7 +172,6 @@
 	fuel_power = 0.05 // bluespace growth shouldn't be *that* interesting, isn't it?
 	rad_strength = 200
 	og_fuel_power = 0.05
-	initial_amount = 0
 	max_initial_amount = 15
 	multiplier = 3
 	material_type = /obj/item/stack/sheet/bluespace_crystal
