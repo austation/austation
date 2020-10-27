@@ -127,6 +127,8 @@
 #include "code\modules\jobs\job_types\medical_doctor.dm"
 #include "code\modules\mapping\writer.dm"
 #include "code\modules\mapping\random_rooms.dm"
+#include "code\modules\mining\shelters.dm"
+#include "code\modules\mining\equipment\survival_pod.dm"
 #include "code\modules\mining\lavaland\necropolis_chests.dm"
 #include "code\modules\mob\mob_defines.dm"
 #include "code\modules\mob\dead\new_player\new_player.dm"
