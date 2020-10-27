@@ -1,0 +1,5 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - balance: "Resonators now detonate all their sonic blasts on use."
+  - balance: "Plasma cutters consume more plasma now."
