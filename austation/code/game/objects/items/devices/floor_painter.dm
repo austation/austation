@@ -46,6 +46,9 @@
 	F.icon_regular_floor = floor_state
 	F.dir = floor_dir
 	F.icon = 'austation/icons/turf/floors.dmi'
+	F.broken_states = list("damaged1", "damaged2", "damaged3", "damaged4", "damaged5")
+	F.burnt_states = list("floorscorched1", "floorscorched2")
+	F.painted = TRUE
 
 /obj/item/floor_painter/attack_self(var/mob/user)
 	if(!user)
