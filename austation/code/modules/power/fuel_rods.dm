@@ -4,7 +4,9 @@
 	var/time_created = 0
 	var/og_fuel_power = 0.20 //the original fuel power value
 	var/process = FALSE
+	// The depletion where Final_Depletion() will be called (and does something)
 	var/depletion_threshold = 100
+	// How fast this rod will deplete
 	var/depletion_speed_modifier = 1
 	var/depleted_final = FALSE // Final_Depletion should run only once
 
@@ -20,6 +22,7 @@
 		STOP_PROCESSING(SSobj, src)
 	. = ..()
 
+// Child types should override this or your fuel rod will be turned to plutonium fuel rod
 /obj/item/twohanded/required/fuel_rod/proc/Final_Depletion()
 	var/obj/machinery/atmospherics/components/trinary/nuclear_reactor/N = loc
 	if(istype(N))
@@ -30,10 +33,9 @@
 
 /obj/item/twohanded/required/fuel_rod/deplete(amount=0.035) // override for the one in rmbk.dm
 	depletion += amount * depletion_speed_modifier
-	if(depletion >= depletion_threshold)
-		if(!depleted_final)
-			depleted_final = TRUE
-			Final_Depletion()
+	if(depletion >= depletion_threshold && !depleted_final)
+		depleted_final = TRUE
+		Final_Depletion()
 
 /obj/item/twohanded/required/fuel_rod/plutonium
 	fuel_power = 0.20
@@ -64,24 +66,32 @@
 	icon_state = "normal"
 	rad_strength = 6000 // smelly
 
+// Does nothing. Depletion_threshold doesn't matter anyway.
 /obj/item/twohanded/required/fuel_rod/depleted/Final_Depletion()
 	return
 
 // Master type for material optional (or requiring, wyci) and/or producing rods
 /obj/item/twohanded/required/fuel_rod/material
+	// Whether the rod has been harvested. Should be set in expend().
 	var/expended = FALSE
-	var/material_type // Should be some sort of /obj/item/stack
+	// The material that will be inserted and then multiplied (or not). Should be some sort of /obj/item/stack
+	var/material_type
+	// The name of material that'll be used for texts
 	var/material_name
 	var/initial_amount = 0
+	// The maximum amount of material the rod can hold
 	var/max_initial_amount = 10
 	var/grown_amount = 0
+	// The multiplier for growth. 1 for the same 2 for double etc etc
 	var/multiplier = 2
-	depletion_speed_modifier = 2
+	// After this depletion, you won't be able to add new materials
 	var/material_input_deadline = 25
 
+// Called when the rod is fully harvested
 /obj/item/twohanded/required/fuel_rod/material/proc/expend()
 	expended = TRUE
 
+// Basic checks for material rods
 /obj/item/twohanded/required/fuel_rod/material/proc/check_material_input(mob/user)
 	if(depletion >= material_input_deadline)
 		to_chat(user, "<span class='warning'>The sample slots have sealed themselves shut, it's too late to add [material_name] now!</span>") // no cheesing in crystals at 100%
@@ -91,6 +101,7 @@
 		return FALSE
 	return TRUE
 
+// The actual growth
 /obj/item/twohanded/required/fuel_rod/material/Final_Depletion()
 	grown_amount = initial_amount * multiplier
 
@@ -169,6 +180,7 @@
 	og_fuel_power = 0.05
 	max_initial_amount = 15
 	multiplier = 3
+	depletion_speed_modifier = 2
 	material_type = /obj/item/stack/sheet/bluespace_crystal
 	material_name = "bluespace crystals"
 	// bananium specific stuff
@@ -178,7 +190,7 @@
 
 /obj/item/twohanded/required/fuel_rod/material/bluespace/deplete(amount=0.035)
 	..()
-	if(bananium_initial_amount >= 2 && prob(10))
+	if(bananium_initial_amount == bananium_slot && prob(10))
 		playsound(src, pick('sound/items/bikehorn.ogg', 'sound/misc/bikehorn_creepy.ogg'), 50) // HONK
 	fuel_power = max(og_fuel_power - (depletion - 100) / 500, 0)
 
