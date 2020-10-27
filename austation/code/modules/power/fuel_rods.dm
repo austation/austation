@@ -3,9 +3,10 @@
 	var/half_life = 2000 // how many depletion ticks are needed to half the fuel_power (1 tick = 1 second)
 	var/time_created = 0
 	var/og_fuel_power = 0.20 //the original fuel power value
-	var/process =  FALSE
+	var/process = FALSE
 	var/depletion_threshold = 100
 	var/depletion_speed_modifier = 1
+	var/depleted_final = FALSE // Final_Depletion should run only once
 
 /obj/item/twohanded/required/fuel_rod/Initialize()
 	. = ..()
@@ -30,7 +31,9 @@
 /obj/item/twohanded/required/fuel_rod/deplete(amount=0.035) // override for the one in rmbk.dm
 	depletion += amount * depletion_speed_modifier
 	if(depletion >= depletion_threshold)
-		Final_Depletion()
+		if(!depleted_final)
+			depleted_final = TRUE
+			Final_Depletion()
 
 /obj/item/twohanded/required/fuel_rod/plutonium
 	fuel_power = 0.20
@@ -61,11 +64,13 @@
 	icon_state = "normal"
 	rad_strength = 6000 // smelly
 
+/obj/item/twohanded/required/fuel_rod/depleted/Final_Depletion()
+	return
+
 // Master type for material optional (or requiring, wyci) and/or producing rods
 /obj/item/twohanded/required/fuel_rod/material
-	var/grown = FALSE
 	var/expended = FALSE
-	var/material_type
+	var/material_type // Should be some sort of /obj/item/stack
 	var/material_name
 	var/initial_amount = 0
 	var/max_initial_amount = 10
@@ -87,7 +92,6 @@
 	return TRUE
 
 /obj/item/twohanded/required/fuel_rod/material/Final_Depletion()
-	grown = TRUE
 	grown_amount = initial_amount * multiplier
 
 /obj/item/twohanded/required/fuel_rod/material/attackby(obj/item/W, mob/user, params)
@@ -112,32 +116,24 @@
 		to_chat(user, "<span class='notice'>You have already removed [material_name] from \the [src].</span>")
 		return
 
-	if(grown)
-		do
-			var/obj/item/stack/st = new material_type(user.loc)
-			var/output = min(grown_amount, st.max_amount)
-			to_chat(user, "<span class='notice'>You harvest [output] [material_name] from \the [src].</span>")
-			grown_amount -= output
-			st.amount = output
-		while(grown_amount)
+	if(depleted_final)
+		new material_type(user.loc, grown_amount)
+		to_chat(user, "<span class='notice'>You harvest [grown_amount] [material_name] from \the [src].</span>")
+		grown_amount = 0
 		expend()
 	else if(depletion)
 		to_chat(user, "<span class='warning'>\The [src] has not fissiled enough to fully grow the sample. The progress bar shows it is [min(depletion/depletion_threshold*100,100)]% complete.</span>")
 	else if(initial_amount)
-		do
-			var/obj/item/stack/st = new material_type(user.loc)
-			var/output = min(initial_amount, st.max_amount)
-			to_chat(user, "<span class='notice'>You remove [output] [material_name] from \the [src].</span>")
-			initial_amount -= output
-			st.amount = output
-		while(initial_amount)
+		new material_type(user.loc, initial_amount)
+		to_chat(user, "<span class='notice'>You remove [initial_amount] [material_name] from \the [src].</span>")
+		initial_amount = 0
 
 /obj/item/twohanded/required/fuel_rod/material/examine(mob/user)
 	. = ..()
 	if(expended)
 		. += "<span class='warning'>The material slots have been slagged by the extreme heat, you can't grow [material_name] in this rod again...</span>"
 		return
-	else if(grown)
+	else if(depleted_final)
 		. += "<span class='warning'>This fuel rod's [material_name] are now fully grown, and it currently bears [grown_amount] [material_name].</span>"
 		return
 	if(depletion)
@@ -194,6 +190,7 @@
 		icon_state = "bluespace_bananium"
 	else
 		icon_state = "bluespace_used"
+	bananium_grown_amount = bananium_initial_amount * 2
 	rad_strength *= 5
 	og_fuel_power *= 2  
 	AddComponent(/datum/component/radioactive, rad_strength, src) // Rads only go up
@@ -202,7 +199,7 @@
 	multiplier = 3 + bananium_initial_amount
 	og_fuel_power = 0.05 + initial_amount * 0.01 // 0.2 would be high-end cases
 	rad_strength = 200 + bananium_initial_amount * 100 + initial_amount * 10
-	if(!grown)
+	if(!depleted_final)
 		fuel_power = og_fuel_power
 
 /obj/item/twohanded/required/fuel_rod/material/bluespace/expend()
@@ -211,7 +208,7 @@
 	update_stats() // Return to baseline
 
 /obj/item/twohanded/required/fuel_rod/material/bluespace/attackby(obj/item/W, mob/user, params)
-	if(istype(W, istype(W, /obj/item/stack/ore/bluespace_crystal)))
+	if(istype(W, /obj/item/stack/ore/bluespace_crystal))
 		// Common message
 		if(!check_material_input(user))
 			return
@@ -253,32 +250,30 @@
 			to_chat(user, "<span class='warning'>\The [src] looks unable to hold more bananium!</span>")
 	else
 		. = ..()
-		update_stats()
-		if(initial_amount)
+		if(initial_amount && !depleted_final)
+			update_stats()
 			icon_state = "bluespace_ready"
 
 /obj/item/twohanded/required/fuel_rod/material/bluespace/attack_self(mob/user)
 	..()
 	if(!initial_amount)
 		icon_state = "bluespace"
-	if(grown)
+	if(depleted_final)
 		if(bananium_grown_amount)
-			var/obj/item/stack/sheet/mineral/bananium/ba = new(user.loc)
-			var/output = min(bananium_grown_amount, ba.max_amount)
-			to_chat(user, "<span class='notice'>You harvest [output] sheets of bananium from \the [src].</span>")
-			ba.amount = output
-			bananium_grown_amount -= output
+			new /obj/item/stack/sheet/mineral/bananium(user.loc, bananium_grown_amount)
+			to_chat(user, "<span class='notice'>You harvest [bananium_grown_amount] sheets of bananium from \the [src].</span>")
+			bananium_grown_amount = 0
 	else if(bananium_initial_amount)
-		var/obj/item/stack/sheet/mineral/bananium/ba = new(user.loc)
-		var/output = min(bananium_initial_amount, ba.max_amount)
-		to_chat(user, "<span class='notice'>You remove [output] sheets of bananium from \the [src].</span>")
-		ba.amount = output
-		bananium_initial_amount -= output
+		new /obj/item/stack/sheet/mineral/bananium(user.loc, bananium_initial_amount)
+		to_chat(user, "<span class='notice'>You remove [bananium_initial_amount] sheets of bananium from \the [src].</span>")
+		bananium_initial_amount = 0
 
 /obj/item/twohanded/required/fuel_rod/material/bluespace/examine(mob/user)
 	. = ..()
 	if(bananium_initial_amount)
-		if(grown)
+		if(expended)
+			return
+		else if(depleted_final)
 			. += "<span class='warning'>... and [bananium_grown_amount] sheets of bananium.</span>"
 			return
 		. += "<span class='disarm'>[bananium_initial_amount]/[bananium_slot] of the bananium \"slots\" are full.</span>"
