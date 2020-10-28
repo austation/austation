@@ -126,7 +126,7 @@
 	item_state = "crossbow"
 	ammo_type = list(/obj/item/ammo_casing/energy/bolt/radbolt)
 	overheat_time = 250
-
+/* austation begin
 /obj/item/gun/energy/plasmacutter
 	name = "plasma cutter"
 	desc = "A mining tool capable of expelling concentrated plasma bursts. You could use it to cut limbs off xenos! Or, you know, mine stuff."
@@ -151,7 +151,7 @@
 	weapon_weight = WEAPON_LIGHT
 	fire_rate = 3
 	automatic = 1
-
+austation end */
 /obj/item/gun/energy/plasmacutter/Initialize()
 	. = ..()
 	AddComponent(/datum/component/butchering, 25, 105, 0, 'sound/weapons/plasma_cutter.ogg')
@@ -160,7 +160,7 @@
 	. = ..()
 	if(cell)
 		. += "<span class='notice'>[src] is [round(cell.percent())]% charged.</span>"
-
+/* austation begin
 /obj/item/gun/energy/plasmacutter/attackby(obj/item/I, mob/user)
 	var/charge_multiplier = 0 //2 = Refined stack, 1 = Ore
 	if(istype(I, /obj/item/stack/sheet/mineral/plasma))
@@ -176,7 +176,7 @@
 		to_chat(user, "<span class='notice'>You insert [I] in [src], recharging it.</span>")
 	else
 		..()
-
+austation end */
 // Tool procs, in case plasma cutter is used as welder
 // Can we start welding?
 /obj/item/gun/energy/plasmacutter/tool_start_check(mob/living/user, amount)
