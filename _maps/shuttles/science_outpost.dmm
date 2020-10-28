@@ -1,7 +1,7 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "a" = (
-/obj/structure/table/reinforced,
-/turf/open/floor/mineral/titanium/purple,
+/obj/structure/shuttle/engine/propulsion,
+/turf/closed/wall/mineral/titanium,
 /area/shuttle/science)
 "c" = (
 /obj/machinery/button/door{
@@ -31,7 +31,8 @@
 	dir = 8;
 	light_color = "#e8eaff"
 	},
-/turf/open/floor/mineral/titanium/purple,
+/obj/effect/turf_decal/box,
+/turf/open/floor/mineral/titanium/white,
 /area/shuttle/science)
 "i" = (
 /obj/structure/closet/crate/science,
@@ -42,13 +43,6 @@
 /obj/item/storage/toolbox/electrical,
 /turf/open/floor/mineral/titanium/white,
 /area/shuttle/science)
-"k" = (
-/obj/structure/shuttle/engine/propulsion,
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/turf/open/floor/plating,
-/area/shuttle/science)
 "n" = (
 /obj/structure/table/reinforced,
 /obj/machinery/light{
@@ -57,14 +51,8 @@
 /turf/open/floor/mineral/titanium/purple,
 /area/shuttle/science)
 "o" = (
-/obj/structure/shuttle/engine/heater,
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/turf/open/floor/plating,
+/obj/effect/turf_decal/box,
+/turf/open/floor/mineral/titanium/purple,
 /area/shuttle/science)
 "r" = (
 /obj/machinery/door/airlock/titanium,
@@ -103,7 +91,7 @@
 /turf/closed/wall/mineral/titanium,
 /area/shuttle/science)
 "z" = (
-/obj/effect/spawner/structure/window/reinforced,
+/obj/effect/spawner/structure/window/plasma/reinforced,
 /turf/open/floor/mineral/titanium/white,
 /area/shuttle/science)
 "A" = (
@@ -111,25 +99,18 @@
 /turf/open/floor/mineral/titanium/white,
 /area/shuttle/science)
 "H" = (
-/obj/machinery/door/airlock/titanium,
+/obj/machinery/door/poddoor{
+	id = "sciencecargo"
+	},
 /turf/open/floor/mineral/titanium/white,
 /area/shuttle/science)
 "I" = (
-/obj/structure/shuttle/engine/propulsion,
-/obj/structure/window/reinforced{
-	dir = 8
-	},
-/turf/open/floor/plating,
+/obj/structure/shuttle/engine/heater,
+/turf/closed/wall/mineral/titanium,
 /area/shuttle/science)
 "J" = (
-/obj/structure/shuttle/engine/heater,
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/obj/structure/window/reinforced{
-	dir = 8
-	},
-/turf/open/floor/plating,
+/obj/effect/turf_decal/box,
+/turf/open/floor/mineral/titanium/white,
 /area/shuttle/science)
 "K" = (
 /turf/open/floor/mineral/titanium/purple,
@@ -160,8 +141,8 @@ y
 y
 y
 y
-y
-y
+I
+a
 "}
 (2,1,1) = {"
 d
@@ -169,9 +150,9 @@ c
 i
 N
 y
-a
+K
 h
-Q
+o
 y
 "}
 (3,1,1) = {"
@@ -181,20 +162,20 @@ Q
 U
 z
 S
-S
 J
-I
+J
+y
 "}
 (4,1,1) = {"
 d
 A
 Q
 S
-H
+z
 S
-S
-o
-k
+J
+J
+y
 "}
 (5,1,1) = {"
 d
@@ -203,8 +184,8 @@ x
 s
 y
 K
-K
-Q
+J
+o
 y
 "}
 (6,1,1) = {"
@@ -214,7 +195,7 @@ r
 y
 t
 H
-y
-y
-y
+H
+I
+a
 "}

@@ -12619,6 +12619,9 @@
 /turf/open/floor/plasteel,
 /area/storage/tools)
 "bcp" = (
+/obj/machinery/atmospherics/pipe/manifold/supply/hidden{
+	dir = 4
+	},
 /obj/machinery/door/airlock/external,
 /turf/open/floor/plating,
 /area/science/shuttledock)
@@ -16474,9 +16477,13 @@
 /turf/open/floor/plasteel,
 /area/hallway/secondary/entry)
 "btQ" = (
-/obj/effect/spawner/structure/window/reinforced,
-/obj/machinery/atmospherics/pipe/layer_manifold{
-	dir = 4
+/obj/structure/plasticflaps/opaque,
+/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+	dir = 10
+	},
+/obj/machinery/conveyor{
+	dir = 8;
+	id = "SciLoad"
 	},
 /turf/open/floor/plating,
 /area/science/shuttledock)
@@ -19765,9 +19772,6 @@
 /obj/structure/closet/crate,
 /obj/effect/spawner/lootdrop/maintenance/two,
 /obj/effect/turf_decal/tile/purple,
-/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
-	dir = 8
-	},
 /turf/open/floor/plasteel/white,
 /area/science/shuttledock)
 "bJv" = (
@@ -41047,14 +41051,14 @@
 /turf/open/floor/plasteel/white,
 /area/science/xenobiology)
 "dSL" = (
-/obj/effect/turf_decal/tile/purple{
+/obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/layer3{
 	dir = 1
 	},
-/obj/machinery/atmospherics/pipe/manifold/supply/hidden/layer1{
-	dir = 4
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
+	dir = 9
 	},
-/obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/layer3{
-	dir = 4
+/obj/effect/turf_decal/tile/purple{
+	dir = 1
 	},
 /turf/open/floor/plasteel/white,
 /area/science/shuttledock)
@@ -45587,7 +45591,7 @@
 /turf/open/floor/plasteel,
 /area/security/brig)
 "fSC" = (
-/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
+/obj/machinery/atmospherics/pipe/layer_manifold{
 	dir = 4
 	},
 /turf/open/floor/plasteel/white,
@@ -47055,11 +47059,12 @@
 /turf/open/floor/plating,
 /area/maintenance/starboard/fore)
 "gDr" = (
-/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
+/obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 4
 	},
-/obj/machinery/atmospherics/pipe/simple/supply/hidden{
-	dir = 6
+/obj/machinery/conveyor{
+	dir = 8;
+	id = "SciLoad"
 	},
 /turf/open/floor/plating,
 /area/science/shuttledock)
@@ -47263,12 +47268,6 @@
 	},
 /turf/open/floor/carpet/blue,
 /area/bridge)
-"gGe" = (
-/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
-	dir = 8
-	},
-/turf/closed/wall,
-/area/science/shuttledock)
 "gGq" = (
 /obj/item/reagent_containers/glass/bucket,
 /obj/structure/cable/yellow{
@@ -53004,10 +53003,8 @@
 /turf/open/floor/plasteel/dark,
 /area/ai_monitored/turret_protected/aisat_interior)
 "iTg" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
 /obj/effect/turf_decal/tile/purple,
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
-	dir = 4
-	},
 /turf/open/floor/plasteel/white,
 /area/science/shuttledock)
 "iTj" = (
@@ -60698,7 +60695,9 @@
 	dir = 1;
 	pixel_y = -24
 	},
-/obj/machinery/atmospherics/components/binary/dp_vent_pump/high_volume,
+/obj/machinery/atmospherics/components/binary/dp_vent_pump/high_volume{
+	dir = 8
+	},
 /turf/open/floor/plating,
 /area/science/shuttledock)
 "map" = (
@@ -61818,9 +61817,6 @@
 /obj/effect/turf_decal/tile/purple{
 	dir = 1
 	},
-/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
-	dir = 5
-	},
 /turf/open/floor/plasteel/white,
 /area/science/shuttledock)
 "mBU" = (
@@ -62901,9 +62897,10 @@
 /turf/open/floor/plasteel,
 /area/quartermaster/miningoffice)
 "mZh" = (
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
-	dir = 4
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
+	dir = 6
 	},
+/obj/effect/turf_decal/tile/purple,
 /turf/open/floor/plasteel/white,
 /area/science/shuttledock)
 "mZO" = (
@@ -63354,9 +63351,13 @@
 /turf/open/floor/plasteel/dark,
 /area/crew_quarters/fitness/recreation)
 "nfT" = (
-/obj/effect/spawner/structure/window/reinforced,
-/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
+/obj/structure/plasticflaps/opaque,
+/obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 4
+	},
+/obj/machinery/conveyor{
+	dir = 8;
+	id = "SciLoad"
 	},
 /turf/open/floor/plating,
 /area/science/shuttledock)
@@ -63631,10 +63632,9 @@
 /turf/open/floor/plasteel,
 /area/hallway/primary/aft)
 "nmh" = (
-/obj/machinery/atmospherics/pipe/layer_manifold{
-	dir = 4
-	},
-/turf/closed/wall,
+/obj/effect/spawner/structure/window/reinforced,
+/obj/machinery/atmospherics/pipe/simple/supply/hidden,
+/turf/open/floor/plating,
 /area/science/shuttledock)
 "nnf" = (
 /obj/machinery/light/floor,
@@ -69513,10 +69513,11 @@
 /turf/open/floor/plasteel,
 /area/vacant_room/commissary)
 "pqW" = (
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
+/obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden{
 	dir = 4
 	},
-/turf/closed/wall,
+/obj/effect/turf_decal/tile/purple,
+/turf/open/floor/plasteel/white,
 /area/science/shuttledock)
 "pqZ" = (
 /obj/machinery/button/door{
@@ -70108,12 +70109,6 @@
 	},
 /turf/open/floor/plasteel,
 /area/quartermaster/miningoffice)
-"pDi" = (
-/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
-	dir = 8
-	},
-/turf/open/floor/plasteel/white,
-/area/science/shuttledock)
 "pDy" = (
 /obj/item/beacon,
 /obj/effect/turf_decal/tile/yellow{
@@ -75229,13 +75224,11 @@
 /turf/open/floor/plasteel,
 /area/security/courtroom)
 "rMp" = (
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
-	dir = 4
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
+	dir = 5
 	},
-/obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden{
-	dir = 8
-	},
-/turf/closed/wall,
+/obj/effect/turf_decal/tile/purple,
+/turf/open/floor/plasteel/white,
 /area/science/shuttledock)
 "rMu" = (
 /obj/structure/extinguisher_cabinet{
@@ -75870,10 +75863,14 @@
 /turf/closed/wall/r_wall,
 /area/engine/engineering)
 "saf" = (
-/obj/effect/turf_decal/tile/purple,
-/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
+/obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 4
 	},
+/obj/machinery/conveyor{
+	dir = 8;
+	id = "SciLoad"
+	},
+/obj/effect/turf_decal/tile/purple,
 /turf/open/floor/plasteel/white,
 /area/science/shuttledock)
 "saj" = (
@@ -77700,15 +77697,6 @@
 	},
 /turf/open/floor/plasteel,
 /area/hydroponics)
-"sOP" = (
-/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
-	dir = 8
-	},
-/obj/machinery/atmospherics/pipe/simple/supply/hidden{
-	dir = 5
-	},
-/turf/closed/wall,
-/area/science/shuttledock)
 "sPe" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -79069,8 +79057,11 @@
 /turf/open/floor/plating,
 /area/maintenance/starboard/fore)
 "toE" = (
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
-/turf/open/floor/plating,
+/obj/machinery/conveyor_switch{
+	id = "SciLoad"
+	},
+/obj/effect/turf_decal/tile/purple,
+/turf/open/floor/plasteel/white,
 /area/science/shuttledock)
 "toJ" = (
 /obj/structure/cable/yellow{
@@ -80779,9 +80770,6 @@
 	},
 /obj/effect/turf_decal/tile/purple{
 	dir = 1
-	},
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
-	dir = 6
 	},
 /turf/open/floor/plasteel/white,
 /area/science/shuttledock)
@@ -85446,13 +85434,9 @@
 /turf/open/floor/plasteel,
 /area/hallway/primary/central)
 "vRh" = (
-/obj/machinery/advanced_airlock_controller{
-	dir = 1;
-	pixel_y = -24
-	},
-/obj/machinery/atmospherics/components/binary/dp_vent_pump/high_volume{
-	dir = 1
-	},
+/obj/effect/spawner/structure/window/reinforced,
+/obj/effect/spawner/structure/window/reinforced,
+/obj/machinery/door/firedoor/window,
 /turf/open/floor/plating,
 /area/science/shuttledock)
 "vRp" = (
@@ -88500,7 +88484,6 @@
 /obj/effect/turf_decal/tile/purple{
 	dir = 1
 	},
-/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1,
 /turf/open/floor/plasteel/white,
 /area/science/shuttledock)
 "xht" = (
@@ -129543,10 +129526,10 @@ vRA
 fzb
 fSC
 fzb
-mZh
 fzb
+fSC
 kFc
-pDi
+fzb
 dDT
 dQV
 aaf
@@ -129797,12 +129780,12 @@ nbv
 ovj
 mjJ
 ptD
-dDT
+toE
 saf
-dDT
+mZh
 iTg
-dDT
-dDT
+pqW
+rMp
 bJt
 rYa
 dQV
@@ -130057,10 +130040,10 @@ dDB
 mjJ
 nfT
 jzi
-pqW
+lsq
 lsq
 jzi
-gGe
+lsq
 mjJ
 mjJ
 aaa
@@ -130309,17 +130292,17 @@ vLD
 vLD
 vLD
 gcF
-mjJ
 dQV
-mjJ
+vRh
+dQV
 gDr
 lZP
-rMp
-toE
-vRh
-sOP
-aaa
-lMJ
+mjJ
+lsq
+lZP
+mjJ
+mjJ
+vLD
 aaf
 aaf
 aaf
@@ -130568,14 +130551,14 @@ aaf
 vLD
 aaa
 aaa
-mjJ
+dQV
 btQ
 bcp
 nmh
-lsq
-kFX
 nmh
-aaa
+kFX
+lsq
+mjJ
 lMJ
 aaf
 aaa
