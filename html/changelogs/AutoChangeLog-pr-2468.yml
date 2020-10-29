@@ -1,0 +1,4 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - tweak: "Custom ship navigation computer now get offsets and view range depends on ship size."
