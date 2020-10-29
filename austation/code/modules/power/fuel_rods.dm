@@ -191,7 +191,7 @@
 /obj/item/twohanded/required/fuel_rod/material/bananium/depletion_final()
 	..()
 	fuel_power = 0.3 // Be warned
-	name = "Fully Grown Bluespace Crystal Fuel Rod"
+	name = "Fully Grown Bananium Fuel Rod"
 	desc = "A hilarious heavy-duty fuel rod which fissiles a bit slower than it cowardly counterparts. Its greatly grimacing grwoth stage is now over, and bananium outgrowth hums as if it's blatantly honking bike horns."
 	icon_state = "bananium_used"
 	AddComponent(/datum/component/radioactive, 1250, src)
