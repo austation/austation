@@ -1,4 +1,4 @@
-//Picking a cutom borg sprite, called after a player picks their module
+//Picking a custom borg sprite, called after a player picks their module
 /obj/item/robot_module/medical/be_transformed_to(obj/item/robot_module/old_module) //medical
 	var/mob/living/silicon/robot/R = loc
 	var/static/list/robotstyles_med
@@ -154,7 +154,8 @@
 		robotstyles_peace = list(
 		"Default" = image(icon = 'icons/mob/robots.dmi', icon_state = "peace"),
 		"Spider" = image(icon = 'austation/icons/mob/robot.dmi', icon_state = "whitespider"),
-		"Skirt" = image(icon = 'austation/icons/mob/robot.dmi', icon_state = "banangarang-Peacekeeper"))
+		"Skirt" = image(icon = 'austation/icons/mob/robot.dmi', icon_state = "banangarang-Peacekeeper"),
+		"Marina" = image(icon = 'austation/icons/mob/robot.dmi', icon_state = "marinapeace"))
 
 	var/peace_borg_icon = show_radial_menu(R, R , robotstyles_peace, custom_check = CALLBACK(src, .proc/check_menu, R), radius = 42, require_near = TRUE)
 
@@ -164,6 +165,10 @@
 		if("Spider")
 			R.icon = 'austation/icons/mob/robot.dmi'
 			cyborg_base_icon = "whitespider"
+		if("Marina")
+			R.icon = 'austation/icons/mob/robot.dmi'
+			cyborg_base_icon = "marinapeace"
+			hat_offset = 2
 		if("Skirt")
 			R.icon = 'austation/icons/mob/robot.dmi'
 			cyborg_base_icon = "banangarang-Peacekeeper"
@@ -306,6 +311,71 @@
 			R.icon = 'austation/icons/mob/robot.dmi'
 			cyborg_base_icon = "banangarang-Miner"
 			special_light_key = "banangarang-Standard"
+			hat_offset = 0
+		else
+			return FALSE
+	return ..()
+
+/obj/item/robot_module/standard/be_transformed_to(obj/item/robot_module/old_module) //standard
+	var/mob/living/silicon/robot/R = loc
+	var/static/list/robotstyles_standard
+
+	if(!robotstyles_standard)
+		robotstyles_standard = list(
+		"Default" = image(icon = 'icons/mob/robots.dmi', icon_state = "robot"),
+		"Marina" = image(icon = 'austation/icons/mob/robot.dmi', icon_state = "marinasd"),
+		"Heavy" = image(icon = 'austation/icons/mob/robot.dmi', icon_state = "heavysd"),
+		"Skirt" = image(icon = 'austation/icons/mob/robot.dmi', icon_state = "banangarang-skirtsd"))
+
+	var/standard_borg_icon = show_radial_menu(R, R , robotstyles_standard, custom_check = CALLBACK(src, .proc/check_menu, R), radius = 42, require_near = TRUE)
+
+	switch(standard_borg_icon)
+		if("Default")
+			cyborg_base_icon = "robot"
+		if("Marina")
+			R.icon = 'austation/icons/mob/robot.dmi'
+			cyborg_base_icon = "marinasd"
+			hat_offset = 2
+		if("Heavy")
+			R.icon = 'austation/icons/mob/robot.dmi'
+			cyborg_base_icon = "heavysd"
+			hat_offset = -3
+		if("Skirt")
+			R.icon = 'austation/icons/mob/robot.dmi'
+			cyborg_base_icon = "banangarang-skirtsd"
+			hat_offset = 0
+		else
+			return FALSE
+	return ..()
+
+/obj/item/robot_module/syndicate/do_transform_animation() //asks the player to pick a sprite AFTER they spawn in and transform
+	..()
+	var/mob/living/silicon/robot/R = loc
+	var/static/list/robotstyles_syndicate
+
+	if(!robotstyles_syndicate)
+		robotstyles_syndicate = list(
+		"Default" = image(icon = 'icons/mob/robots.dmi', icon_state = "synd_sec"),
+		"Spider" = image(icon = 'austation/icons/mob/robot.dmi', icon_state = "spidersyndi"),
+		"Heavy" = image(icon = 'austation/icons/mob/robot.dmi', icon_state = "syndieheavy"),
+		"Skirt" = image(icon = 'austation/icons/mob/robot.dmi', icon_state = "banangarang-synd"))
+
+	var/syndicate_borg_icon = show_radial_menu(R, R , robotstyles_syndicate, custom_check = CALLBACK(src, .proc/check_menu, R), radius = 42, require_near = TRUE)
+
+	switch(syndicate_borg_icon)
+		if("Default")
+			cyborg_base_icon = "synd_sec"
+		if("Spider")
+			R.icon = 'austation/icons/mob/robot.dmi'
+			cyborg_base_icon = "spidersyndi"
+			hat_offset = -3
+		if("Heavy")
+			R.icon = 'austation/icons/mob/robot.dmi'
+			cyborg_base_icon = "syndieheavy"
+			hat_offset = -3
+		if("Skirt")
+			R.icon = 'austation/icons/mob/robot.dmi'
+			cyborg_base_icon = "banangarang-synd"
 			hat_offset = 0
 		else
 			return FALSE
