@@ -1,0 +1,5 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - tweak: "fusion is no longer caused by hotspot react()"
+  - bugfix: "fire probably became a tiny tiny bit faster"
