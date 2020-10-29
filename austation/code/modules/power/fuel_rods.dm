@@ -4,11 +4,11 @@
 	var/time_created = 0
 	var/og_fuel_power = 0.20 //the original fuel power value
 	var/process = FALSE
-	// The depletion where Final_Depletion() will be called (and does something)
+	// The depletion where depletion_final() will be called (and does something)
 	var/depletion_threshold = 100
 	// How fast this rod will deplete
 	var/depletion_speed_modifier = 1
-	var/depleted_final = FALSE // Final_Depletion should run only once
+	var/depleted_final = FALSE // depletion_final should run only once
 
 /obj/item/twohanded/required/fuel_rod/Initialize()
 	. = ..()
@@ -23,7 +23,7 @@
 	. = ..()
 
 // Child types should override this or your fuel rod will be turned to plutonium fuel rod
-/obj/item/twohanded/required/fuel_rod/proc/Final_Depletion()
+/obj/item/twohanded/required/fuel_rod/proc/depletion_final()
 	var/obj/machinery/atmospherics/components/trinary/nuclear_reactor/N = loc
 	if(istype(N))
 		var/obj/item/twohanded/required/fuel_rod/plutonium/P = new(loc)
@@ -35,7 +35,7 @@
 	depletion += amount * depletion_speed_modifier
 	if(depletion >= depletion_threshold && !depleted_final)
 		depleted_final = TRUE
-		Final_Depletion()
+		depletion_final()
 
 /obj/item/twohanded/required/fuel_rod/plutonium
 	fuel_power = 0.20
@@ -49,7 +49,7 @@
 /obj/item/twohanded/required/fuel_rod/plutonium/process()
 	fuel_power = og_fuel_power * 0.5**((world.time - time_created) / half_life SECONDS) // halves the fuel power every half life (33 minutes)
 
-/obj/item/twohanded/required/fuel_rod/plutonium/Final_Depletion()
+/obj/item/twohanded/required/fuel_rod/plutonium/depletion_final()
 	if(fuel_power < 10)
 		var/obj/machinery/atmospherics/components/trinary/nuclear_reactor/N = loc
 		fuel_power = 0
@@ -67,7 +67,7 @@
 	rad_strength = 6000 // smelly
 
 // Does nothing. Depletion_threshold doesn't matter anyway.
-/obj/item/twohanded/required/fuel_rod/depleted/Final_Depletion()
+/obj/item/twohanded/required/fuel_rod/depleted/depletion_final()
 	return
 
 // Master type for material optional (or requiring, wyci) and/or producing rods
@@ -102,7 +102,7 @@
 	return TRUE
 
 // The actual growth
-/obj/item/twohanded/required/fuel_rod/material/Final_Depletion()
+/obj/item/twohanded/required/fuel_rod/material/depletion_final()
 	grown_amount = initial_amount * multiplier
 
 /obj/item/twohanded/required/fuel_rod/material/attackby(obj/item/W, mob/user, params)
@@ -163,7 +163,7 @@
 	material_type = /obj/item/stack/telecrystal
 	material_name = "telecrystals"
 
-/obj/item/twohanded/required/fuel_rod/material/telecrystal/Final_Depletion()
+/obj/item/twohanded/required/fuel_rod/material/telecrystal/depletion_final()
 	..()
 	fuel_power = 0.60 // thrice as powerful as plutonium, you'll want to get this one out quick!
 	name = "Exhausted Telecrystal Fuel Rod"
@@ -171,121 +171,27 @@
 	icon_state = "telecrystal_used"
 	AddComponent(/datum/component/radioactive, 3000, src)
 
-/obj/item/twohanded/required/fuel_rod/material/bluespace
-	name = "Bluespace Crystal Fuel Rod"
-	desc = "A heavy-duty low-grade fuel rod which fissiles much slower than standard counterparts. However, it's complex and sophisticated design allows insertion and utilisation of a certain material with special properties, namely bluespace crystals."
-	icon_state = "bluespace"
-	fuel_power = 0.05 // bluespace growth shouldn't be *that* interesting, isn't it?
-	rad_strength = 200
-	og_fuel_power = 0.05
-	max_initial_amount = 15
+/obj/item/twohanded/required/fuel_rod/material/bananium
+	name = "Bananium Fuel Rod"
+	desc = "A hilarious heavy-duty fuel rod which fissiles a bit slower than its cowardly counterparts. However, its cutting-edge cosmic clown technology allows rooms for extraordinarily exhilarating extraterrestrial element called bananium to menacingly multiply."
+	icon_state = "bananium"
+	fuel_power = 0.15
+	depletion_speed_modifier = 3
+	rad_strength = 350
+	max_initial_amount = 10
 	multiplier = 3
-	depletion_speed_modifier = 2
-	material_type = /obj/item/stack/sheet/bluespace_crystal
-	material_name = "bluespace crystals"
-	// bananium specific stuff
-	var/bananium_initial_amount = 0
-	var/bananium_slot = 2 // going double bananium won't hurt, I promise
-	var/bananium_grown_amount = 0
+	material_type = /obj/item/stack/sheet/mineral/bananium
+	material_name = "sheets of bananium"
 
-/obj/item/twohanded/required/fuel_rod/material/bluespace/deplete(amount=0.035)
+/obj/item/twohanded/required/fuel_rod/material/bananium/deplete(amount=0.035)
 	..()
-	if(bananium_initial_amount == bananium_slot && prob(10))
+	if(initial_amount == max_initial_amount && prob(10))
 		playsound(src, pick('sound/items/bikehorn.ogg', 'sound/misc/bikehorn_creepy.ogg'), 50) // HONK
-	fuel_power = max(og_fuel_power - (depletion - 100) / 500, 0)
 
-/obj/item/twohanded/required/fuel_rod/material/bluespace/Final_Depletion()
+/obj/item/twohanded/required/fuel_rod/material/bananium/depletion_final()
 	..()
+	fuel_power = 0.3 // Be warned
 	name = "Fully Grown Bluespace Crystal Fuel Rod"
-	desc = "A heavy-duty low-grade fuel rod which fissiles much slower than standard counterparts. Its growth stage has finished, and its power now starts to wane. You also can harvest bluespace crystals which should've been multiplied by now."
-	if (bananium_initial_amount)
-		icon_state = "bluespace_bananium"
-	else
-		icon_state = "bluespace_used"
-	bananium_grown_amount = bananium_initial_amount * 2
-	rad_strength *= 5
-	og_fuel_power *= 2  
-	AddComponent(/datum/component/radioactive, rad_strength, src) // Rads only go up
-
-/obj/item/twohanded/required/fuel_rod/material/bluespace/proc/update_stats()
-	multiplier = 3 + bananium_initial_amount
-	og_fuel_power = 0.05 + initial_amount * 0.01 // 0.2 would be high-end cases
-	rad_strength = 200 + bananium_initial_amount * 100 + initial_amount * 10
-	if(!depleted_final)
-		fuel_power = og_fuel_power
-
-/obj/item/twohanded/required/fuel_rod/material/bluespace/expend()
-	..()
-	icon_state = "bluespace_harvested"
-	update_stats() // Return to baseline
-
-/obj/item/twohanded/required/fuel_rod/material/bluespace/attackby(obj/item/W, mob/user, params)
-	if(istype(W, /obj/item/stack/ore/bluespace_crystal))
-		// Common message
-		if(!check_material_input(user))
-			return
-		// Bluespace crystal specific messages
-		if(istype(W, /obj/item/stack/ore/bluespace_crystal/artificial))
-			to_chat(user, "<span class='warning'>Artificial bluespace crystals won't work, sadly.</span>")
-			return
-		if(!istype(W, /obj/item/stack/ore/bluespace_crystal/refined) && istype(W, /obj/item/stack/ore/bluespace_crystal))
-			to_chat(user, "<span class='warning'>Unrefined bluespace crystals won't work, sadly.</span>")
-			return
-		// Why is single refined bluespace crystal a different item??!?
-		var/obj/item/stack/ore/bluespace_crystal/refined/C = W
-
-		if(istype(C))
-			if(initial_amount < max_initial_amount)
-				icon_state = "bluespace_ready"
-				initial_amount++
-				qdel(C)
-				update_stats()
-				to_chat(user, "<span class='notice'>You insert single bluespace crystal into \the [src].</span>")
-			else
-				to_chat(user, "<span class='warning'>\The [src]'s material slots are full!</span>")
-		return
-	else if(istype(W, /obj/item/stack/sheet/mineral/bananium))
-		// Common message
-		if(!check_material_input(user))
-			return
-		var/obj/item/stack/C = W
-
-		if(bananium_initial_amount < bananium_slot)
-			var/adding = 0
-			adding = min(bananium_slot - bananium_initial_amount, C.amount)
-			C.amount -= adding
-			bananium_initial_amount += adding
-			C.zero_amount()
-			update_stats()
-			to_chat(user, "<span class='notice'>You manage to slide [adding] bananium sheets into \the [src]. What could go wrong?</span>")
-		else
-			to_chat(user, "<span class='warning'>\The [src] looks unable to hold more bananium!</span>")
-	else
-		. = ..()
-		if(initial_amount && !depleted_final)
-			update_stats()
-			icon_state = "bluespace_ready"
-
-/obj/item/twohanded/required/fuel_rod/material/bluespace/attack_self(mob/user)
-	..()
-	if(!initial_amount)
-		icon_state = "bluespace"
-	if(depleted_final)
-		if(bananium_grown_amount)
-			new /obj/item/stack/sheet/mineral/bananium(user.loc, bananium_grown_amount)
-			to_chat(user, "<span class='notice'>You harvest [bananium_grown_amount] sheets of bananium from \the [src].</span>")
-			bananium_grown_amount = 0
-	else if(bananium_initial_amount)
-		new /obj/item/stack/sheet/mineral/bananium(user.loc, bananium_initial_amount)
-		to_chat(user, "<span class='notice'>You remove [bananium_initial_amount] sheets of bananium from \the [src].</span>")
-		bananium_initial_amount = 0
-
-/obj/item/twohanded/required/fuel_rod/material/bluespace/examine(mob/user)
-	. = ..()
-	if(bananium_initial_amount)
-		if(expended)
-			return
-		else if(depleted_final)
-			. += "<span class='warning'>... and [bananium_grown_amount] sheets of bananium.</span>"
-			return
-		. += "<span class='disarm'>[bananium_initial_amount]/[bananium_slot] of the bananium \"slots\" are full.</span>"
+	desc = "A hilarious heavy-duty fuel rod which fissiles a bit slower than it cowardly counterparts. Its greatly grimacing grwoth stage is now over, and bananium outgrowth hums as if it's blatantly honking bike horns."
+	icon_state = "bananium_used"
+	AddComponent(/datum/component/radioactive, 1250, src)

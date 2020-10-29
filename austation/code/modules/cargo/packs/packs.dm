@@ -23,13 +23,14 @@
 	crate_type = /obj/structure/closet/crate/secure/engineering
 	dangerous = TRUE
 
-/datum/supply_pack/engine/boring_fuel_rod
+/datum/supply_pack/engine/bananium_fuel_rod
 	name = "Bluespace Crystal Fuel Rod Core crate"
-	desc = "Two Fuel Rod Cores designed to utilize and multiply bluespace crystals in a reactor, requires CE access to open. Caution: Mildly Radioactive"
-	cost = 5500
-	access = ACCESS_CE
-	contains = list(/obj/item/twohanded/required/fuel_rod/material/bluespace,
-					/obj/item/twohanded/required/fuel_rod/material/bluespace)
+	desc = "Two Fuel Rod Cores designed to utilize and multiply bananium in a reactor, requires CE access to open. Caution: Mildly Radioactive"
+	cost = 4000
+	access = ACCESS_CE // Nag your local CE
+	contains = list(/obj/item/twohanded/required/fuel_rod/material/bananium,
+					/obj/item/twohanded/required/fuel_rod/material/bananium)
 	crate_name = "Bluespace Crystal Fuel Rod crate"
 	crate_type = /obj/structure/closet/crate/secure/engineering
 	dangerous = TRUE
+	contraband = TRUE
