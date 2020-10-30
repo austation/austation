@@ -830,7 +830,6 @@
 	},
 /turf/closed/wall,
 /area/mine/laborcamp)
-
 "du" = (
 /obj/docking_port/stationary{
 	dwidth = 6;
