@@ -19,6 +19,7 @@
 #include "code\datums\emotes.dm"
 #include "code\datums\brain_damage\imaginary_friend.dm"
 #include "code\datums\components\spikes.dm"
+#include "code\datums\traits\neutral.dm"
 #include "code\datums\components\crafting\crafting.dm"
 #include "code\datums\diseases\advance\symptoms\beesymptom.dm"
 #include "code\datums\diseases\advance\symptoms\deafness.dm"
