@@ -1,5 +1,0 @@
-author: "AustationBot"
-delete-after: True
-changes: 
-  - balance: "hyperperspiration thresholds lowered, new threshold added."
-  - tweak: "ducatopod now synthesizes lube"
