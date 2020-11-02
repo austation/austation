@@ -78,6 +78,7 @@
 	var/material_type
 	// The name of material that'll be used for texts
 	var/material_name
+	var/material_name_singular
 	var/initial_amount = 0
 	// The maximum amount of material the rod can hold
 	var/max_initial_amount = 10
@@ -114,7 +115,10 @@
 			var/adding = min((max_initial_amount - initial_amount), M.amount)
 			M.amount -= adding
 			initial_amount += adding
-			to_chat(user, "<span class='notice'>You insert [adding] \the [M] into \the [src].</span>")
+			if (adding == 1)
+				to_chat(user, "<span class='notice'>You insert [adding] [material_name_singular] into \the [src].</span>")
+			else
+				to_chat(user, "<span class='notice'>You insert [adding] [material_name] into \the [src].</span>")
 			M.zero_amount()
 		else
 			to_chat(user, "<span class='warning'>\The [src]'s material slots are full!</span>")
@@ -129,14 +133,20 @@
 
 	if(depleted_final)
 		new material_type(user.loc, grown_amount)
-		to_chat(user, "<span class='notice'>You harvest [grown_amount] [material_name] from \the [src].</span>")
+		if (grown_amount == 1)
+			to_chat(user, "<span class='notice'>You harvest [grown_amount] [material_name_singular] from \the [src].</span>") // Unlikely
+		else
+			to_chat(user, "<span class='notice'>You harvest [grown_amount] [material_name] from \the [src].</span>")
 		grown_amount = 0
 		expend()
 	else if(depletion)
 		to_chat(user, "<span class='warning'>\The [src] has not fissiled enough to fully grow the sample. The progress bar shows it is [min(depletion/depletion_threshold*100,100)]% complete.</span>")
 	else if(initial_amount)
 		new material_type(user.loc, initial_amount)
-		to_chat(user, "<span class='notice'>You remove [initial_amount] [material_name] from \the [src].</span>")
+		if (initial_amount == 1)
+			to_chat(user, "<span class='notice'>You remove [initial_amount] [material_name_singular] from \the [src].</span>")
+		else
+			to_chat(user, "<span class='notice'>You remove [initial_amount] [material_name] from \the [src].</span>")
 		initial_amount = 0
 
 /obj/item/twohanded/required/fuel_rod/material/examine(mob/user)
@@ -145,7 +155,10 @@
 		. += "<span class='warning'>The material slots have been slagged by the extreme heat, you can't grow [material_name] in this rod again...</span>"
 		return
 	else if(depleted_final)
-		. += "<span class='warning'>This fuel rod's [material_name] are now fully grown, and it currently bears [grown_amount] [material_name].</span>"
+		if(grown_amount == 1)
+			. += "<span class='warning'>This fuel rod's [material_name] are now fully grown, and it currently bears [grown_amount] harvestable [material_name_singular].</span>"
+		else
+			. += "<span class='warning'>This fuel rod's [material_name] are now fully grown, and it currently bears [grown_amount] harvestable [material_name].</span>"
 		return
 	if(depletion)
 		. += "<span class='danger'>The sample is [min(depletion/depletion_threshold*100,100)]% fissiled.</span>"
@@ -162,6 +175,7 @@
 	multiplier = 3
 	material_type = /obj/item/stack/telecrystal
 	material_name = "telecrystals"
+	material_name_singular = "telecrystal"
 
 /obj/item/twohanded/required/fuel_rod/material/telecrystal/depletion_final()
 	..()
@@ -182,6 +196,7 @@
 	multiplier = 3
 	material_type = /obj/item/stack/sheet/mineral/bananium
 	material_name = "sheets of bananium"
+	material_name_singular = "sheet of bananium"
 
 /obj/item/twohanded/required/fuel_rod/material/bananium/deplete(amount=0.035)
 	..()
