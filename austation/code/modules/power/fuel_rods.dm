@@ -28,11 +28,11 @@
 /obj/item/twohanded/required/fuel_rod/proc/depletion_final(result_rod = "")
 	if(result_rod)
 		var/obj/machinery/atmospherics/components/trinary/nuclear_reactor/N = loc
-		// Rod conversion is moot when you can't find the reactor.
+		// Rod conversion is moot when you can't find the reactor
 		if(istype(N))
 			var/obj/item/twohanded/required/fuel_rod/R
 
-			// You can add your own depletion scheme and not override this proc
+			// You can add your own depletion scheme and not override this proc if you are going to convert a fuel rod into another type
 			switch(result_rod)
 				if("plutonium")
 					R = new /obj/item/twohanded/required/fuel_rod/plutonium(loc)
