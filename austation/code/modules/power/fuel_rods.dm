@@ -28,23 +28,28 @@
 /obj/item/twohanded/required/fuel_rod/proc/depletion_final(result_rod = "")
 	if(result_rod)
 		var/obj/machinery/atmospherics/components/trinary/nuclear_reactor/N = loc
-		var/obj/item/twohanded/required/fuel_rod/R
-		// You can add your own depletion scheme and not override this proc
-		switch(result_rod)
-			if("plutonium")
-				if(istype(N))
+		// Rod conversion is moot when you can't find the reactor.
+		if(istype(N))
+			var/obj/item/twohanded/required/fuel_rod/R
+
+			// You can add your own depletion scheme and not override this proc
+			switch(result_rod)
+				if("plutonium")
 					R = new /obj/item/twohanded/required/fuel_rod/plutonium(loc)
 					R.depletion = depletion
-			if("depleted")
-				if(fuel_power < 10)
-					fuel_power = 0
-					playsound(loc, 'sound/effects/supermatter.ogg', 100, TRUE)
-					if(istype(N))
+				if("depleted")
+					if(fuel_power < 10)
+						fuel_power = 0
+						playsound(loc, 'sound/effects/supermatter.ogg', 100, TRUE)
 						R = new /obj/item/twohanded/required/fuel_rod/depleted(loc)
 						R.depletion = depletion
-		if(istype(R))
-			N.fuel_rods += R
-			qdel(src)
+			
+			// Finalization of conversion
+			if(istype(R))
+				N.fuel_rods += R
+				qdel(src)
+		else
+			depleted_final = FALSE // Maybe try again later?
 
 /obj/item/twohanded/required/fuel_rod/deplete(amount=0.035) // override for the one in rmbk.dm
 	depletion += amount * depletion_speed_modifier
