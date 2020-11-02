@@ -18,6 +18,7 @@
 		/datum/language/codespeak,
 		/datum/language/common,
 		/datum/language/draconic,
+		/datum/language/meownese,
 		/datum/language/moffic,
 		/datum/language/monkey,
 		/datum/language/narsie,
@@ -191,6 +192,12 @@
 	icon_state = "tonguefly"
 	say_mod = "buzzes"
 	taste_sensitivity = 5
+
+/obj/item/organ/tongue/felinid
+	name = "cat's tongue"
+	desc = "A rough tongue not much unlike a humans, but covered in sharp barbs."
+	say_mod = "meows"
+	taste_sensitivity = 1
 
 /obj/item/organ/tongue/bone
 	name = "bone \"tongue\""

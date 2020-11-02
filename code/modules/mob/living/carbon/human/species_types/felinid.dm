@@ -8,7 +8,9 @@
 	liked_food = DAIRY | MEAT
 
 	mutant_bodyparts = list("ears", "tail_human")
+	mutanttongue = /obj/item/organ/tongue/felinid
 	default_features = list("mcolor" = "FFF", "tail_human" = "Cat", "ears" = "Cat", "wings" = "None")
+	species_language_holder = /datum/language_holder/felinid
 
 	mutantears = /obj/item/organ/ears/cat
 	mutanttail = /obj/item/organ/tail/cat
