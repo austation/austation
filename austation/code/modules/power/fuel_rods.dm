@@ -21,6 +21,9 @@
 /obj/item/twohanded/required/fuel_rod/Destroy()
 	if(process)
 		STOP_PROCESSING(SSobj, src)
+	var/obj/machinery/atmospherics/components/trinary/nuclear_reactor/N = loc
+	if(istype(N))
+		N.fuel_rods -= src
 	. = ..()
 
 // This proc will try to convert your fuel rod if you don't override this proc
