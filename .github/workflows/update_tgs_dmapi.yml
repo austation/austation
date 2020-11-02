@@ -30,7 +30,7 @@ jobs:
         git config user.name "AustationBot"
         git config user.email "austation@mcterra.id.au"
         git add *
-        git commit -m 'Update TGS DMAPI [ci skip]'
+        git commit -m 'Update TGS DMAPI [ci skip]' || true
         git push -f -u origin tgs-dmapi-update
 
     - name: Create Pull Request
