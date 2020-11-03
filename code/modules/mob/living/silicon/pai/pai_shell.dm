@@ -82,7 +82,11 @@
 	icon_state = "[chassis]"
 	held_state = "[chassis]"
 	update_resting()
+<<<<<<< HEAD
 	to_chat(src, "<span class='boldnotice'>You switch your holochassis projection composite to [chassis]</span>") -- austation end */
+=======
+	to_chat(src, "<span class='boldnotice'>You switch your holochassis projection composite to [chassis].</span>")
+>>>>>>> 35ef124efb... Fix: Random Names and Grammar (#2435)
 
 /mob/living/silicon/pai/update_resting()
 	. = ..()
@@ -91,7 +95,7 @@
 	else
 		icon_state = "[chassis]"
 	if(loc != card)
-		visible_message("<span class='notice'>[src] [resting? "lays down for a moment..." : "perks up from the ground"]</span>")
+		visible_message("<span class='notice'>[src] [resting? "lays down for a moment." : "perks up from the ground."]</span>")
 
 /mob/living/silicon/pai/start_pulling(atom/movable/AM, state, force = move_force, supress_message = FALSE)
 	return FALSE
