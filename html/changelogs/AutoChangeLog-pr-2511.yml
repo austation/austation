@@ -1,4 +1,0 @@
-author: "MrLostman"
-delete-after: True
-changes: 
-  - bugfix: "fixed server crashing amount of bees"
