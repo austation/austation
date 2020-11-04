@@ -1,5 +1,0 @@
-author: "AustationBot"
-delete-after: True
-changes: 
-  - rscadd: "gives artificer a summon door spell"
-  - rscdel: "removes the revival rune spell from artificer"
