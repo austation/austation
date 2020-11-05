@@ -1,0 +1,4 @@
+author: "Ohagi-Chan"
+delete-after: True
+changes: 
+  - code_imp: "mechs no longer check to see which direction nearby ores are in"
