@@ -1,0 +1,6 @@
+author: "TheFakeElon"
+delete-after: True
+changes: 
+  - rscadd: "Adds a Reactor Kit purchasable by cargo"
+  - tweak: "Uranium rods are now slightly cheaper"
+  - tweak: "You can now link reactor consoles with a multitool"
