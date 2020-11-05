@@ -1,3 +1,5 @@
+#define MEGAWATTS /1e+6
+
 // autism rod launching thingo mibob
 /obj/structure/disposalpipe/coilgun
 	name = "coilgun tube"
@@ -54,3 +56,39 @@
 
 
 	return ..()
+
+/obj/structure/disposalpipe/coilgun/charger
+	name = "coilgun charger"
+	desc = "A powered electromagnetic tube used to accelerate magnetive objects, use cooling units to prevent the projectile from overheating. Requires direct power connection to function"
+	icon = 'austation/icons/obj/railgun.dmi'
+	icon_state = "charger"
+	var/speed_increase = 10 //how much speed the charger will add to the projectile
+	var/current_power_use = 0
+	var/min_power_use = 120
+	var/max_power_use = null
+	var/obj/structure/cable/attached // attached cable
+
+/obj/structure/disposalpipe/coilgun/charger/attack_hand(mob/user)
+	. = ..()
+	if(.)
+		return
+	if(!attached)
+		to_chat(user, "<span class='warning'>\The [src] must be placed over an exposed, powered cable node!</span>")
+	else
+		START_PROCESSING(SSobj, src)
+
+/obj/structure/disposalpipe/coilgun/charger/process()
+	if(!attached)
+		STOP_PROCESSING(SSobj, src)
+
+	var/datum/powernet/PN = attached.powernet
+	if(PN)
+		if(current_power_use >= min_power_use)
+			set_light(1)
+			var/drained = min(current_power_use, attached.newavail()) // coilgun can't use any less than min_power_use
+			attached.add_delayedload(drained)
+		else
+			set_light(0)
+
+/obj/structure/disposalpipe/coilgun/charger/transfer()
+
