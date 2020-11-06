@@ -59,24 +59,3 @@
 		loc.visible_message("<span class='notice'>[user] spills the contents of the [C] all over the floor.</span>")
 		return
 	. = ..()
-
-/obj/item/gun/energy/plasmacutter/cyborg
-	name = "cyborg plasma cutter"
-	desc = "A mining tool capable of expelling concentrated plasma bursts. You could use it to cut limbs off xenos! Or, you know, mine stuff."
-	icon_state = "plasmacutter"
-	item_state = "plasmacutter"
-	ammo_type = list(/obj/item/ammo_casing/energy/plasma/cyborg)
-	flags_1 = CONDUCT_1
-	attack_verb = list("attacked", "slashed", "cut", "sliced")
-	force = 12
-	sharpness = IS_SHARP
-	can_charge = FALSE
-	use_cyborg_cell = TRUE
-	tool_behaviour = null //sorry no infinite welder for you
-
-/obj/item/ammo_casing/energy/plasma/cyborg
-	projectile_type = /obj/item/projectile/plasma
-	select_name = "plasma burst"
-	fire_sound = 'sound/weapons/plasma_cutter.ogg'
-	delay = 15
-	e_cost = 250

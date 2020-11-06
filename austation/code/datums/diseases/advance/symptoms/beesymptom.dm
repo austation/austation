@@ -87,10 +87,16 @@ datum/symptom/beesease
 				M.visible_message("<span class='danger'>[M] coughs up a bee!</span>", \
 				"<span class='userdanger'>You cough up a bee!</span>")
 
+				var/mob/living/simple_animal/hostile/poison/bees/viro/newbee = new /mob/living/simple_animal/hostile/poison/bees/viro(M.loc)
 				if(toxic_bees)
-					new /mob/living/simple_animal/hostile/poison/bees/toxin(M.loc)
+					var/datum/reagent/R = pick(typesof(/datum/reagent/toxin))
+					newbee.assign_reagent(GLOB.chemical_reagents_list[R])
 				else if(honey)
-					var/mob/living/simple_animal/hostile/poison/bees/newbee = new /mob/living/simple_animal/hostile/poison/bees(M.loc)
 					newbee.assign_reagent(GLOB.chemical_reagents_list[/datum/reagent/consumable/honey])
-				else
-					new /mob/living/simple_animal/hostile/poison/bees(M.loc)
+
+/mob/living/simple_animal/hostile/poison/bees/viro
+	desc = "These bees seem unstable and won't survive for long."
+
+/mob/living/simple_animal/hostile/poison/bees/viro/Initialize()
+	. = ..()
+	addtimer(CALLBACK(src, .proc/death), 5 SECONDS)
