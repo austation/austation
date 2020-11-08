@@ -396,11 +396,8 @@
 				mode = SHUTTLE_ESCAPE
 				launch_status = ENDGAME_LAUNCHED
 				setTimer(SSshuttle.emergencyEscapeTime * engine_coeff)
-<<<<<<< HEAD
-				priority_announce("The Emergency Shuttle has left the station. Estimate [timeLeft(600)] minutes until the shuttle docks at Central Command.", null, 'goon/sound/misc/shuttle_enroute.ogg', "Priority") //austation, was null
-=======
-				priority_announce("The Emergency Shuttle has left the station. Estimate: [timeLeft(600)] minutes until the shuttle docks at Central Command.", null, null, "Priority")
->>>>>>> 35ef124efb... Fix: Random Names and Grammar (#2435)
+				
+				priority_announce("The Emergency Shuttle has left the station. Estimate: [timeLeft(600)] minutes until the shuttle docks at Central Command.", null, 'goon/sound/misc/shuttle_enroute.ogg', "Priority") //austation -- was null
 
 		if(SHUTTLE_STRANDED)
 			SSshuttle.checkHostileEnvironment()
