@@ -82,11 +82,7 @@
 	icon_state = "[chassis]"
 	held_state = "[chassis]"
 	update_resting()
-<<<<<<< HEAD
-	to_chat(src, "<span class='boldnotice'>You switch your holochassis projection composite to [chassis]</span>") -- austation end */
-=======
-	to_chat(src, "<span class='boldnotice'>You switch your holochassis projection composite to [chassis].</span>")
->>>>>>> 35ef124efb... Fix: Random Names and Grammar (#2435)
+	to_chat(src, "<span class='boldnotice'>You switch your holochassis projection composite to [chassis].</span>") -- austation end */
 
 /mob/living/silicon/pai/update_resting()
 	. = ..()
