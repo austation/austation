@@ -396,7 +396,6 @@
 				mode = SHUTTLE_ESCAPE
 				launch_status = ENDGAME_LAUNCHED
 				setTimer(SSshuttle.emergencyEscapeTime * engine_coeff)
-				
 				priority_announce("The Emergency Shuttle has left the station. Estimate: [timeLeft(600)] minutes until the shuttle docks at Central Command.", null, 'goon/sound/misc/shuttle_enroute.ogg', "Priority") //austation -- was null
 
 		if(SHUTTLE_STRANDED)
