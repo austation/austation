@@ -11,14 +11,6 @@
 	require_module = TRUE
 	module_type = /obj/item/robot_module/butler
 
-/obj/item/borg/upgrade/cutter
-	name = "cyborg upgrade (plasma cutter)"
-	desc = "A basic plasma cutter for borgs. Very heavy on the cyborgs power cell"
-	icon_state = "cyborg_upgrade5"
-	require_module = TRUE
-	module_type = /obj/item/robot_module/miner
-
-
 /obj/item/borg/upgrade/kitchen/action(mob/living/silicon/robot/R, user = usr)
 	. = ..()
 	if(.)
@@ -46,31 +38,11 @@
 		var/obj/item/borg/upgrade/kitchen/K = locate() in R.module
 		if (K)
 			R.module.remove_module(K, TRUE)
-		
+
 		var/obj/item/borg/upgrade/kitchen/T = locate() in R.module
 		if (T)
 			R.module.remove_module(T, TRUE)
-		
+
 		var/obj/item/borg/apparatus/food/F = locate() in R.module
 		if (F)
 			R.module.remove_module(F, TRUE)
-
-/obj/item/borg/upgrade/cutter/action(mob/living/silicon/robot/R, user = usr)
-	. = ..()
-	if(.)
-
-		var/obj/item/gun/energy/plasmacutter/cyborg/C = locate() in R.module
-		if(C)
-			to_chat(user, "<span class='warning'>This unit is already equipped with a plasma cutter.</span>")
-			return FALSE
-
-		C = new(R.module)
-		R.module.basic_modules += C
-		R.module.add_module(C, FALSE, TRUE)
-
-/obj/item/borg/upgrade/cutter/deactivate(mob/living/silicon/robot/R, user = usr)
-	. = ..()
-	if (.)
-		var/obj/item/gun/energy/plasmacutter/cyborg/C = locate() in R.module
-		if (C)
-			R.module.remove_module(C, TRUE)

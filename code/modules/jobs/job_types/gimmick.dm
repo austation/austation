@@ -76,7 +76,7 @@
 	ears = null //hobos dont start with a headset
 	uniform = /obj/item/clothing/under/pants/jeans
 	suit = /obj/item/clothing/suit/jacket
-	
+
 
 /datum/outfit/job/gimmick/hobo/post_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
 	..()
@@ -114,8 +114,8 @@
 	title = "VIP"
 	flag = CELEBRITY
 	outfit = /datum/outfit/job/gimmick/celebrity
-	access = list(ACCESS_HEADS, ACCESS_MAINT_TUNNELS) //there is no way whatsoever this could go wrong
-	minimal_access = list(ACCESS_HEADS, ACCESS_MAINT_TUNNELS)
+	access = list(/*ACCESS_HEADS, */ACCESS_MAINT_TUNNELS) //there is no way whatsoever this could go wrong // austation -- ERASES VIP Head Access
+	minimal_access = list(/*ACCESS_HEADS, */ACCESS_MAINT_TUNNELS) // austation -- ERASES VIP Head Access
 	gimmick = TRUE
 	paycheck = PAYCHECK_VIP //our power is being fucking rich
 

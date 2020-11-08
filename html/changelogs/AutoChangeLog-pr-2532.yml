@@ -1,0 +1,4 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - bugfix: "assembly's now can be interacted with while inside other objects like TTV"
