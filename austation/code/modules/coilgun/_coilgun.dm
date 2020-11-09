@@ -126,6 +126,7 @@
 						projectile.on_transfer() // calls the "on_tranfer" proc for the projectile
 						current_power_use == clamp(min_power_use + (projectile.speed * 0.5) * (projectile.heat * 0.5) * (target_power_usage / 100), min_power_use, max_power_use) //big scary line, determins power usage
 						continue
+
 				if(isliving(AM)) // no non-magnetic hoomans
 					var/mob/living/L = AM
 					playsound(src.loc, 'sound/machines/buzz-two.ogg', 40, 1)
