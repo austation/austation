@@ -68,8 +68,8 @@
 	var/heat_increase = 10 // how much the charger will heat up the projectile
 	var/target_power_usage = 0 // the set percentage of excess power to be used by the charger
 	var/current_power_use = 0 // how much power it is currently drawing
-	var/min_power_use = 120 // the lowest power it can use to function in watts
-	var/max_power_use = INFINITY // the maximum amount of power the charger can draw in watts
+	var/min_power_use = 120 // the lowest power it can use to function in kilowatts
+	var/max_power_use = INFINITY // the maximum amount of power the charger can draw in kilowatts
 	var/obj/structure/cable/attached // attached cable
 
 /obj/structure/disposalpipe/coilgun/charger/attack_hand(mob/user)
@@ -100,15 +100,15 @@
 	var/datum/powernet/PN = attached.powernet
 	if(PN)
 		if(current_power_use >= min_power_use) // coilgun can't use any less than min_power_use
-			can_charge == TRUE
+			can_charge = TRUE
 			set_light(2)
 			var/drained = min(current_power_use, attached.newavail()) // set our power use
-			if(current_power_use > drained)
+			if(current_power_use >> drained)
 				visible_message("<span class='warning'>Insufficient power!</span>")
-				can_charge == FALSE
+				can_charge = FALSE
 			attached.add_delayedload(drained) // apply our power use
 		else
-			can_charge == FALSE
+			can_charge = FALSE
 			set_light(1) // dim the light if we don't have enough power to use the charger
 
 /obj/structure/disposalpipe/coilgun/charger/transfer()
@@ -120,11 +120,11 @@
 				if(AM == projectile) // if it's a projectile, continue
 					var/datum/powernet/PN = attached.powernet
 					if(PN)
-						speed_increase == target_power_usage / 100 // what percentage of speed_increase to apply
+						speed_increase = target_power_usage / 100 // what percentage of speed_increase to apply
 						projectile.speed += speed_increase // add speed to projectile
 						projectile.heat += heat_increase // add heat to projectile
 						projectile.on_transfer() // calls the "on_tranfer" proc for the projectile
-						current_power_use == clamp(min_power_use + (projectile.speed * 0.5) * (projectile.heat * 0.5) * (target_power_usage / 100), min_power_use, max_power_use) //big scary line, determins power usage
+						current_power_use = clamp(min_power_use + (projectile.speed * 0.5) * (projectile.heat * 0.5) * (target_power_usage / 100), min_power_use, max_power_use) //big scary line, determins power usage
 						continue
 
 				if(isliving(AM)) // no non-magnetic hoomans
