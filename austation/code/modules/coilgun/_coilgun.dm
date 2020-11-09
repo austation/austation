@@ -63,7 +63,9 @@
 	icon = 'austation/icons/obj/railgun.dmi'
 	icon_state = "charger"
 	var/enabled = FALSE // is the charger turned on?
-	var/speed_increase = 10 //how much speed the charger will add to the projectile
+	var/can_charge = FALSE // can we speed up the projectile
+	var/speed_increase = 10 // how much speed the charger will add to the projectile
+	var/heat_increase = 10 // how much the charger will heat up the projectile
 	var/target_power_usage = 0 // the set percentage of excess power to be used by the charger
 	var/current_power_use = 0 // how much power it is currently drawing
 	var/min_power_use = 120 // the lowest power it can use to function in watts
@@ -75,17 +77,17 @@
 	if(.)
 		return
 	if(!enabled)
-		if(!attached)
+		if(!attached) // if we're not attached to a cable...
 			to_chat(user, "<span class='warning'>\The [src] must be placed over an exposed, powered cable node!</span>")
 		else
 			START_PROCESSING(SSobj, src)
 			to_chat(user, "<span class='notice'>You turn \the [src] on.</span>")
-	else
-		if(target_power_usage == 100)
+	else // if we are!
+		if(target_power_usage == 100) // if we are already using the max amount of power
 			STOP_PROCESSING(SSobj, src)
 			set_light(0)
 			to_chat(user, "<span class='notice'>You turn \the [src] off.</span>")
-		else
+		else // if we aren't, increase it by 20%
 			target_power_usage += 20
 			to_chat(user, "<span class='notice'>You set \the [src] to use [target_power_usage]% of the powernet's excess energy.</span>")
 
@@ -97,12 +99,46 @@
 
 	var/datum/powernet/PN = attached.powernet
 	if(PN)
-		if(current_power_use >= min_power_use)
+		if(current_power_use >= min_power_use) // coilgun can't use any less than min_power_use
+			can_charge == TRUE
 			set_light(2)
-			var/drained = min(current_power_use, attached.newavail()) // coilgun can't use any less than min_power_use
-			attached.add_delayedload(drained)
+			var/drained = min(current_power_use, attached.newavail()) // set our power use
+			if(current_power_use > drained)
+				visible_message("<span class='warning'>Insufficient power!</span>")
+				can_charge == FALSE
+			attached.add_delayedload(drained) // apply our power use
 		else
-			set_light(1)
+			can_charge == FALSE
+			set_light(1) // dim the light if we don't have enough power to use the charger
 
 /obj/structure/disposalpipe/coilgun/charger/transfer()
+
+	if(H.contents.len)
+		if(can_charge)
+			var/obj/item/projectile/coilshot/projectile
+			for(var/atom/movable/AM in H.contents) // run the loop below for every movable that passes through the charger
+				if(AM == projectile) // if it's a projectile, continue
+					var/datum/powernet/PN = attached.powernet
+					if(PN)
+						speed_increase == target_power_usage / 100 // what percentage of speed_increase to apply
+						projectile.speed += speed_increase // add speed to projectile
+						projectile.heat += heat_increase // add heat to projectile
+						projectile.on_transfer() // calls the "on_tranfer" proc for the projectile
+						current_power_use == clamp(min_power_use + (projectile.speed * 0.5) * (projectile.heat * 0.5) * (target_power_usage / 100), min_power_use, max_power_use) //big scary line, determins power usage
+						continue
+				if(isliving(AM)) // no non-magnetic hoomans
+					var/mob/living/L = AM
+					playsound(src.loc, 'sound/machines/buzz-two.ogg', 40, 1)
+					visible_message("<span class='warning'>\The [src]'s safety mechanism engages, ejecting [L] through the maintenance hatch!</span>")
+					L.forceMove(get_turf(src))
+					continue
+
+				else // eject the item if it's none of the above
+					visible_message("<span class='warning'>\The [src]'s safety mechanism engages, ejecting \the [AM] through the maintenance hatch!</span>")
+					AM.forceMove(get_turf(src))
+					continue
+			if(!H.contents)
+				qdel(H)
+				return
+	return ..()
 
