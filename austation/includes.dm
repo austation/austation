@@ -180,6 +180,7 @@
 #include "code\modules\research\designs\mechfabricator_designs.dm"
 #include "code\modules\research\designs\medical_designs.dm"
 #include "code\modules\research\designs\autolathe_designs.dm"
+#include "code\modules\research\techweb\_techweb_node.dm"
 #include "code\modules\research\techweb\all_nodes.dm"
 #include "code\modules\research\xenobiology\crossbreeding\_potions.dm"
 #include "code\modules\surgery\tools.dm"
