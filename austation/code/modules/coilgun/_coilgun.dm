@@ -4,13 +4,12 @@
 /obj/structure/disposalpipe/coilgun
 	name = "coilgun tube"
 	desc = "A special tube that allows the safe transportation of high speed magnetic projectiles"
-	icon = 'austation/icons/obj/railgun.dmi'
-	icon_state = "coil"
+	icon = 'austation/icons/obj/coilgun.dmi'
 
 /obj/structure/disposalpipe/coilgun/magnetizer
 	name = "magnetizer"
 	desc = "A machine that glazes inserted objects with neodymium, making the object magnetive"
-	icon = 'austation/icons/obj/railgun.dmi'
+	icon = 'austation/icons/obj/coilgun.dmi'
 	icon_state = "magnet"
 
 
@@ -32,14 +31,14 @@
 				if(ishuman(L) && !isdead(L))
 					L.Paralyze(amount = 50, ignore_canstun = TRUE)
 					L.emote("scream")
-					boolet.mass == 5
+					boolet.mass = 5
 					sleep(30)
 					continue
 
 			if(isitem(AM))
 				var/obj/item/I = AM
 				if(I.w_class)
-					boolet.mass == I.w_class
+					boolet.mass = I.w_class
 					playsound(src.loc, 'sound/machines/ping.ogg', 40, 1)
 					continue
 				else
@@ -51,7 +50,7 @@
 			boolet.desc = AM.desc
 			boolet.icon = AM.icon
 			boolet.icon_state = AM.icon_state
-			AM.loc = boolet //put the original inserted objected inside the coilgun projectile to drop on deletion
+			AM.loc = boolet //put the original inserted objected inside the coilgun projectile
 
 
 
@@ -60,7 +59,7 @@
 /obj/structure/disposalpipe/coilgun/charger
 	name = "coilgun charger"
 	desc = "A powered electromagnetic tube used to accelerate magnetive objects, use cooling units to prevent the projectile from overheating. Requires direct power connection to function"
-	icon = 'austation/icons/obj/railgun.dmi'
+	icon = 'austation/icons/obj/coilgun.dmi'
 	icon_state = "charger"
 	var/enabled = FALSE // is the charger turned on?
 	var/can_charge = FALSE // can we speed up the projectile
