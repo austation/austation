@@ -1,7 +1,0 @@
-author: "AustationBot"
-delete-after: True
-changes: 
-  - bugfix: "Many names and descriptions are now grammatically correct."
-  - bugfix: "Emotes no longer add extra punctuation."
-  - tweak: "\"Stimulants\" renamed to amphetamine."
-  - tweak: "Viruses with purely cosmetic effects are now displayed in blue text to all parties rather than red text to observers."

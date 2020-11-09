@@ -1,4 +1,0 @@
-author: "AustationBot"
-delete-after: True
-changes: 
-  - rscadd: "Bee downstreams can now decide to automatically block you from joining if you're banned from bee."
