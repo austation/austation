@@ -12,7 +12,7 @@
 	austation_design_ids = list("BScustom_epi")
 
 /datum/techweb_node/unregulated_bluespace
-	design_ids = list("desynchronizer", "bluespace_jar")
+	austation_design_ids = list("bluespace_jar")
 
 /////////////////////////Mining tech/////////////////////////
 

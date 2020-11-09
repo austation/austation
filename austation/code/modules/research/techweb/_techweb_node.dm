@@ -4,6 +4,6 @@
 	var/list/austation_design_ids_remove = list()
 
 /datum/techweb_node/Initialize()
-	design_ids.Remove(austation_design_ids_remove)
-	design_ids.Add(austation_design_ids)
+	design_ids -= austation_design_ids_remove
+	design_ids += austation_design_ids
 	..()
