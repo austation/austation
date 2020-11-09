@@ -1,0 +1,4 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - tweak: "Cyborgs no longer get confused after getting flashed/flashbanged."
