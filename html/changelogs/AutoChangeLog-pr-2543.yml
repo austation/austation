@@ -1,4 +1,0 @@
-author: "AustationBot"
-delete-after: True
-changes: 
-  - bugfix: "Changelings don't deathgasp twice when entering reviving stasis"

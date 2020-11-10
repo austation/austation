@@ -1,7 +1,0 @@
-author: "jbox144"
-delete-after: True
-changes: 
-  - rscadd: "Drones get a built-in radio, connected to the common and engineering channels. It cannot transmit however."
-  - rscadd: "Drones can be built at mech fabricators, once basic robotics is researched, at the cost of iron, glass and some gold."
-  - tweak: "Drones can speak in silicon, and can understand common. Derelict drones cannot speak silicon."
-  - tweak: "Drones can speak on binary with the :b prefix. The drone exclusive channel has been moved to the :d prefix. Derelict drones can only use dronechat."
