@@ -1,5 +1,3 @@
-#define MEGAWATTS /1e+6
-
 // autism rod launching thingo mibob
 /obj/structure/disposalpipe/coilgun
 	name = "coilgun tube"
@@ -9,7 +7,6 @@
 /obj/structure/disposalpipe/coilgun/magnetizer
 	name = "magnetizer"
 	desc = "A machine that glazes inserted objects with neodymium, making the object magnetive"
-	icon = 'austation/'
 	icon_state = "magnet"
 
 /obj/structure/disposalpipe/coilgun/magnetizer/transfer(obj/structure/disposalholder/H) // what do you mean it looks like loafer code?
@@ -58,7 +55,6 @@
 /obj/structure/disposalpipe/coilgun/charger
 	name = "coilgun charger"
 	desc = "A powered electromagnetic tube used to accelerate magnetive objects, use cooling units to prevent the projectile from overheating. Requires direct power connection to function"
-	icon = 'austation/'
 	icon_state = "charger"
 
 	var/enabled = FALSE // is the charger turned on?
