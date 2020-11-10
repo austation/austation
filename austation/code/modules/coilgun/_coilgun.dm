@@ -4,14 +4,13 @@
 /obj/structure/disposalpipe/coilgun
 	name = "coilgun tube"
 	desc = "A special tube that allows the safe transportation of high speed magnetic projectiles"
-	icon = 'austation/icons/obj/coilgun.dmi'
+	icon = 'austation/icons/obj/atmospherics/pipes/disposal.dmi'
 
 /obj/structure/disposalpipe/coilgun/magnetizer
 	name = "magnetizer"
 	desc = "A machine that glazes inserted objects with neodymium, making the object magnetive"
-	icon = 'austation/icons/obj/coilgun.dmi'
+	icon = 'austation/'
 	icon_state = "magnet"
-
 
 /obj/structure/disposalpipe/coilgun/magnetizer/transfer(obj/structure/disposalholder/H) // what do you mean it looks like loafer code?
 
@@ -59,8 +58,9 @@
 /obj/structure/disposalpipe/coilgun/charger
 	name = "coilgun charger"
 	desc = "A powered electromagnetic tube used to accelerate magnetive objects, use cooling units to prevent the projectile from overheating. Requires direct power connection to function"
-	icon = 'austation/icons/obj/coilgun.dmi'
+	icon = 'austation/'
 	icon_state = "charger"
+
 	var/enabled = FALSE // is the charger turned on?
 	var/can_charge = FALSE // can we speed up the projectile
 	var/speed_increase = 10 // how much speed the charger will add to the projectile
