@@ -1,7 +1,7 @@
 // autism rod launching thingo mibob
 /obj/structure/disposalpipe/coilgun
 	name = "coilgun tube"
-	desc = "A special tube that allows the safe transportation of high speed magnetic projectiles"
+	desc = "An electromagnetic tube that allows the safe transportation of high speed magnetic projectiles"
 	icon = 'austation/icons/obj/atmospherics/pipes/disposal.dmi'
 
 /obj/structure/disposalpipe/coilgun/magnetizer
@@ -136,4 +136,32 @@
 			if(!H.contents)
 				qdel(H)
 				return
+	return ..()
+
+/obj/structure/disposalpipe/coilgun/passive_cooler
+	name = "passive coilgun cooler"
+	desc = "A densely packed array of radiator fins designed to passively remove heat from a magnetic projectile"
+	icon_state = "p_cooler"
+	var/heat_removal = 3 // how much heat we will remove from the projectile
+	var/speed_penalty = 0.98
+
+/obj/structure/disposalpipe/coilgun/passive_cooler/transfer(obj/structure/disposalholder/H)
+	if(H.contents.len)
+		var/obj/item/projectile/coilshot/projectile
+		for(var/atom/movable/AM in H.contents) // run the loop below for every movable that passes through the charger
+			if(AM == projectile) // if it's a projectile, continue
+				projectile.heat -= heat_removal
+				projectile.speed = projectile.speed * speed_penalty
+			if(isliving(AM)) // no non-magnetic hoomans
+				var/mob/living/L = AM
+				playsound(src.loc, 'sound/machines/buzz-two.ogg', 40, 1)
+				visible_message("<span class='warning'>\The [src]'s safety mechanism engages, ejecting [L] through the maintenance hatch!</span>")
+				L.forceMove(get_turf(src))
+				continue
+
+			else // eject the item if it's none of the above
+				visible_message("<span class='warning'>\The [src]'s safety mechanism engages, ejecting \the [AM] through the maintenance hatch!</span>")
+				AM.forceMove(get_turf(src))
+				continue
+
 	return ..()
