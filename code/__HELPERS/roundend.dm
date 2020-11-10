@@ -671,11 +671,11 @@
 	discordmsg = ""
 	var/list/ded = SSblackbox.first_death
 	if(ded)
-	    discordmsg += "First Death: [ded["name"]], [ded["role"]], at [ded["area"]]\n"
-	    var/last_words = ded["last_words"] ? "Their last words were: \"[ded["last_words"]]\"\n" : "They had no last words.\n"
-	    discordmsg += "[last_words]\n"
+		discordmsg += "First Death: [ded["name"]], [ded["role"]], at [ded["area"]]\n"
+		var/last_words = ded["last_words"] ? "Their last words were: \"[ded["last_words"]]\"\n" : "They had no last words.\n"
+		discordmsg += "[last_words]\n"
 	else
-	    discordmsg += "Nobody died!\n"
+		discordmsg += "Nobody died!\n"
 	discordmsg += "--------------------------------------\n"
 	discordsendmsg("ooc", discordmsg)
 	send2chat(discordmsg, "status") //austation --roundend summary
