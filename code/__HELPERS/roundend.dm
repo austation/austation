@@ -667,7 +667,7 @@
     discordmsg += "Integrity: [integrity]\n"
     discordmsg += "Gamemode: [SSticker.mode.name]\n"
     discordsendmsg("ooc", discordmsg)
-	send2chat(discordmsg, "status") //austation --roundend summary
+	send2chat("[discordmsg]", "status") //austation --roundend summary
     discordmsg = ""
     var/list/ded = SSblackbox.first_death
     if(ded)
@@ -678,4 +678,4 @@
         discordmsg += "Nobody died!\n"
     discordmsg += "--------------------------------------\n"
     discordsendmsg("ooc", discordmsg)
-	send2chat(discordmsg, "status") //austation --roundend summary
+	send2chat("[discordmsg]", "status") //austation --roundend summary
