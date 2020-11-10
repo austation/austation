@@ -110,7 +110,7 @@
 			can_charge = FALSE
 			set_light(1) // dim the light if we don't have enough power to use the charger
 
-/obj/structure/disposalpipe/coilgun/charger/transfer()
+/obj/structure/disposalpipe/coilgun/charger/transfer(obj/structure/disposalholder/H)
 
 	if(H.contents.len)
 		if(can_charge)
