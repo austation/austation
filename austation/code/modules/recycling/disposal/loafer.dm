@@ -19,7 +19,7 @@
 		make_from.forceMove(src)
 		stored = make_from
 	else
-		stored = new /obj/structure/disposalconstruct/au(src, null , SOUTH , FALSE , src)
+		stored = new /obj/structure/disposalconstruct/loafer(src, null , SOUTH , FALSE , src)
 
 /obj/structure/disposalpipe/loafer/Destroy()
 	var/obj/structure/disposalholder/H = locate() in src

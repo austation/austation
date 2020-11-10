@@ -98,7 +98,7 @@
 			can_charge = TRUE
 			set_light(2)
 			var/drained = min(current_power_use, attached.newavail()) // set our power use
-			if(current_power_use >> drained)
+			if(current_power_use > drained)
 				visible_message("<span class='warning'>Insufficient power!</span>")
 				can_charge = FALSE
 			attached.add_delayedload(drained) // apply our power use

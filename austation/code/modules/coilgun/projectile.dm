@@ -25,6 +25,7 @@
 		momentum = mass*speed
 	else
 		gameover()
+		return
 
 	if(istype(loc, /turf/closed/wall))
 		var/turf/closed/wall/W = loc
@@ -33,6 +34,17 @@
 			momentum -= 100
 		else
 			gameover()
+			return
+
+	if(istype(loc, /turf/open/floor))
+		var/turf/open/floor/W = loc
+		if(momentum <= 1)
+			gameover()
+			return
+		momentum--
+
+
+
 
 
 
@@ -44,5 +56,13 @@
 		melted.desc = "Ahahah that's hot, that's hot."
 		qdel(src)
 
-// called when projectile has expired, replaces coilshot projectile with the original projectile
+// called when projectile has expired, replaces coilshot projectile with the original projectile, uses some locker code
 /obj/item/projectile/coilshot/gameover()
+	var/atom/L = drop_location()
+	for(var/atom/movable/AM in src)
+		AM.forceMove(L)
+		if(throwing) // you keep some momentum when getting out of a thrown closet
+			step(AM, dir)
+	if(throwing)
+		throwing.finalize(FALSE)
+	qdel(src)

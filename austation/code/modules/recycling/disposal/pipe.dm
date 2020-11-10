@@ -11,3 +11,4 @@
 			holder = "[icon]"
 	else
 		holder = "[icon]"
+	icon = text2path(holder)
