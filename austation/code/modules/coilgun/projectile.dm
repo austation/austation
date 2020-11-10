@@ -18,8 +18,6 @@
 
 /obj/item/projectile/coilshot/Range()
 	..()
-	var/amount_destruction = EXPLODE_NONE
-	var/wallbreak_chance = 0
 	var/momentum = 0
 	if(speed && mass)
 		momentum = mass*speed
@@ -31,7 +29,7 @@
 		var/turf/closed/wall/W = loc
 		if(momentum >= 100) // uses 100 momentum to destroy a wall
 			W.dismantle_wall(TRUE, TRUE)
-			momentum -= 100
+			speed -= 100
 		else
 			gameover()
 			return
@@ -41,22 +39,22 @@
 		if(momentum <= 1)
 			gameover()
 			return
-		momentum--
+		speed--
+
+	if(speed <= 1)
+		gameover()
 
 
-
-
-
-
-/obj/item/projectile/coilshot/on_transfer()// called when we pass through a charger
+/// called when we pass through a charger
+/obj/item/projectile/coilshot/on_transfer()
 	if(heat >= heat_capacity)
-		var/obj/effect/decal/cleanable/ash/melted = new(loc) // make a new
+		var/obj/effect/decal/cleanable/ash/melted = new(loc) // make an ash pile where we die ;-;
 		playsound(loc, 'sound/items/welder.ogg', 150, 1)
 		melted.name = "slagged [name]"
 		melted.desc = "Ahahah that's hot, that's hot."
 		qdel(src)
 
-// called when projectile has expired, replaces coilshot projectile with the original projectile, uses some locker code
+/// called when projectile has expired, replaces coilshot projectile with the original projectile.
 /obj/item/projectile/coilshot/gameover()
 	var/atom/L = drop_location()
 	for(var/atom/movable/AM in src)

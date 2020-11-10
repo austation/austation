@@ -63,7 +63,7 @@
 	var/heat_increase = 10 // how much the charger will heat up the projectile
 	var/target_power_usage = 0 // the set percentage of excess power to be used by the charger
 	var/current_power_use = 0 // how much power it is currently drawing
-	var/min_power_use = 120 // the lowest power it can use to function in kilowatts
+	var/min_power_use = 120000 // the lowest power it can use to function in kilowatts
 	var/max_power_use = INFINITY // the maximum amount of power the charger can draw in kilowatts
 	var/obj/structure/cable/attached // attached cable
 
@@ -107,7 +107,6 @@
 			set_light(1) // dim the light if we don't have enough power to use the charger
 
 /obj/structure/disposalpipe/coilgun/charger/transfer(obj/structure/disposalholder/H)
-
 	if(H.contents.len)
 		if(can_charge)
 			var/obj/item/projectile/coilshot/projectile
@@ -115,7 +114,7 @@
 				if(AM == projectile) // if it's a projectile, continue
 					var/datum/powernet/PN = attached.powernet
 					if(PN)
-						speed_increase = target_power_usage / 100 // what percentage of speed_increase to apply
+						speed_increase = (target_power_usage / 100) * (current_power_use / min_power_use) // (0-100 divided by 100) * (how much power we're using divided by the minimum power use)
 						projectile.speed += speed_increase // add speed to projectile
 						projectile.heat += heat_increase // add heat to projectile
 						projectile.on_transfer() // calls the "on_tranfer" proc for the projectile
@@ -133,6 +132,7 @@
 					visible_message("<span class='warning'>\The [src]'s safety mechanism engages, ejecting \the [AM] through the maintenance hatch!</span>")
 					AM.forceMove(get_turf(src))
 					continue
+
 			if(!H.contents)
 				qdel(H)
 				return
