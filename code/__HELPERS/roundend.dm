@@ -657,6 +657,7 @@
 
 
 /datum/controller/subsystem/ticker/proc/sendtodiscord(var/survivors, var/escapees, var/integrity)
+	//austation start send2chat & indentations
 	var/discordmsg = ""
 	discordmsg += "--------------ROUND END--------------\n"
 	discordmsg += "Round Number: [GLOB.round_id]\n"
@@ -667,7 +668,7 @@
 	discordmsg += "Integrity: [integrity]\n"
 	discordmsg += "Gamemode: [SSticker.mode.name]\n"
 	discordsendmsg("ooc", discordmsg)
-	send2chat(discordmsg, "status") //austation --roundend summary
+	send2chat(discordmsg, "status")
 	discordmsg = ""
 	var/list/ded = SSblackbox.first_death
 	if(ded)
@@ -678,4 +679,5 @@
 		discordmsg += "Nobody died!\n"
 	discordmsg += "--------------------------------------\n"
 	discordsendmsg("ooc", discordmsg)
-	send2chat(discordmsg, "status") //austation --roundend summary
+	send2chat(discordmsg, "status")
+	//austation end
