@@ -933,10 +933,13 @@
 /turf/open/floor/plating,
 /area/mine/laborcamp)
 "dL" = (
-/obj/machinery/door/airlock/external/glass,
 /obj/structure/fans/tiny,
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
+	},
+/obj/machinery/door/airlock/external{
+	name = "Science Outpost Airlock";
+	req_one_access_txt = "47,54"
 	},
 /turf/open/floor/plating,
 /area/mine/science)
@@ -992,7 +995,7 @@
 	name = "Shutters Control Button";
 	pixel_x = -6;
 	pixel_y = 24;
-	req_access_txt = "47"
+	req_one_access_txt = "47,54"
 	},
 /obj/machinery/atmospherics/components/unary/vent_pump/on,
 /obj/effect/decal/cleanable/dirt/dust,
@@ -1087,7 +1090,7 @@
 	},
 /obj/machinery/door/airlock/external{
 	name = "Science Outpost Airlock";
-	req_access_txt = "47"
+	req_one_access_txt = "47,54"
 	},
 /turf/open/floor/plasteel,
 /area/mine/science)
@@ -3180,15 +3183,15 @@
 /area/mine/science)
 "of" = (
 /obj/structure/barricade/wooden/crude,
-/obj/machinery/door/airlock/research{
-	name = "Robotics Lab";
-	req_access_txt = "29"
-	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
 	dir = 4
+	},
+/obj/machinery/door/airlock/research{
+	name = "Outpost Transport Dock";
+	req_one_access_txt = "47,54"
 	},
 /turf/open/floor/plasteel,
 /area/mine/science)
@@ -3232,7 +3235,7 @@
 	},
 /obj/machinery/door/airlock/external{
 	name = "Science Outpost Airlock";
-	req_access_txt = "47"
+	req_one_access_txt = "47,54"
 	},
 /turf/open/floor/plasteel,
 /area/mine/science)
@@ -3315,11 +3318,11 @@
 	dir = 8
 	},
 /obj/structure/barricade/wooden/crude,
-/obj/machinery/door/airlock/research{
-	name = "Testing Lab";
-	req_access_txt = "47"
-	},
 /obj/effect/decal/cleanable/oil/slippery,
+/obj/machinery/door/airlock/research{
+	name = "Outpost Transport Dock";
+	req_one_access_txt = "47,54"
+	},
 /turf/open/floor/plasteel,
 /area/mine/science)
 "pi" = (
@@ -3964,8 +3967,8 @@
 "xk" = (
 /obj/structure/barricade/wooden/crude,
 /obj/machinery/door/airlock/research{
-	name = "tachyon-doppler array booth";
-	req_access_txt = "7"
+	name = "Outpost Transport Dock";
+	req_one_access_txt = "47,54"
 	},
 /turf/open/floor/plating,
 /area/mine/science)
@@ -4506,16 +4509,16 @@
 /turf/open/floor/plasteel,
 /area/mine/science)
 "Ef" = (
-/obj/machinery/door/airlock/research/glass{
-	name = "Research Division Atrium";
-	req_access_txt = "47"
-	},
 /obj/structure/barricade/wooden/crude,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
 	dir = 1
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 1
+	},
+/obj/machinery/door/airlock/research{
+	name = "Outpost Transport Dock";
+	req_one_access_txt = "47,54"
 	},
 /turf/open/floor/plasteel,
 /area/mine/science)
@@ -5080,7 +5083,7 @@
 "JX" = (
 /obj/machinery/door/airlock/external{
 	name = "Science Outpost Airlock";
-	req_access_txt = "47"
+	req_one_access_txt = "47,54"
 	},
 /turf/open/floor/plating,
 /area/mine/science)
@@ -5302,15 +5305,15 @@
 /area/mine/production)
 "Mz" = (
 /obj/structure/barricade/wooden/crude,
-/obj/machinery/door/airlock/medical/glass{
-	name = "Chemistry Lab";
-	req_access_txt = "5; 33"
-	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
 	dir = 8
+	},
+/obj/machinery/door/airlock/research{
+	name = "Outpost Transport Dock";
+	req_one_access_txt = "47,54"
 	},
 /turf/open/floor/engine,
 /area/mine/science)
@@ -5448,7 +5451,7 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3,
 /obj/machinery/door/airlock/research{
 	name = "Outpost Transport Dock";
-	req_access_txt = "47"
+	req_one_access_txt = "47,54"
 	},
 /obj/effect/decal/cleanable/oil/slippery,
 /turf/open/floor/plasteel,
@@ -5950,12 +5953,12 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 4
 	},
-/obj/machinery/door/airlock/research{
-	name = "Subspace Listening Lab";
-	req_access_txt = "47"
-	},
 /obj/structure/barricade/wooden/crude,
 /obj/effect/decal/cleanable/oil/slippery,
+/obj/machinery/door/airlock/research{
+	name = "Outpost Transport Dock";
+	req_one_access_txt = "47,54"
+	},
 /turf/open/floor/plasteel,
 /area/mine/science)
 "UE" = (
