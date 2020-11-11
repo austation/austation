@@ -4,6 +4,47 @@
 	desc = "An electromagnetic tube that allows the safe transportation of high speed magnetic projectiles"
 	icon = 'austation/icons/obj/atmospherics/pipes/disposal.dmi'
 
+/obj/structure/disposalpipe/coilgun/expel(obj/structure/disposalholder/H, turf/T, direction, atom/target, params)
+	var/turf/target
+	var/eject_range = 5
+	var/turf/open/floor/floorturf
+
+	if(isfloorturf(T)) //intact floor, pop the tile
+		floorturf = T
+		if(floorturf.floor_tile)
+			new floorturf.floor_tile(T)
+		floorturf.make_plating()
+
+	if(direction)		// direction is specified
+		if(isspaceturf(T)) // if ended in space, then range is unlimited
+			target = get_edge_target_turf(T, direction)
+		else						// otherwise limit to 10 tiles
+			target = get_ranged_target_turf(T, direction, 10)
+
+		eject_range = 10
+
+	else if(floorturf)
+		target = get_offset_target_turf(T, rand(5)-rand(5), rand(5)-rand(5))
+
+	playsound(src, 'sound/machines/hiss.ogg', 50, 0, 0)
+	for(var/A in H)
+		var/atom/movable/AM = A
+		AM.forceMove(get_turf(src))
+		AM.pipe_eject(direction)
+		if(istype(AM, /obj/item/projectile/coilshot))
+			var/obj/item/projectile/coilshot/speedy
+			if(speedy.p_speed)
+				var/turf/starting = get_turf(src)
+				var/turf/targturf = get_turf(target)
+				speedy.preparePixelProjectile(target, get_turf(src), params, 0)
+				speedy.fire()
+
+		if(target)
+			AM.throw_at(target, eject_range, 1)
+	H.vent_gas(T)
+	qdel(H)
+
+
 /obj/structure/disposalpipe/coilgun/magnetizer
 	name = "magnetizer"
 	desc = "A machine that glazes inserted objects with neodymium, making the object magnetive"
@@ -115,8 +156,8 @@
 					var/datum/powernet/PN = attached.powernet
 					if(PN)
 						speed_increase = (target_power_usage / 100) * (current_power_use / min_power_use) // (0-100 divided by 100) * (how much power we're using divided by the minimum power use)
-						projectile.speed += speed_increase // add speed to projectile
-						projectile.heat += heat_increase // add heat to projectile
+						projectile.p_speed += speed_increase // add speed to projectile
+						projectile.p_heat += heat_increase // add heat to projectile
 						projectile.on_transfer() // calls the "on_tranfer" proc for the projectile
 						current_power_use = clamp(min_power_use + (projectile.speed * 0.5) * (projectile.heat * 0.5) * (target_power_usage / 100), min_power_use, max_power_use) //big scary line, determins power usage
 						continue
@@ -151,8 +192,8 @@
 		var/obj/item/projectile/coilshot/projectile
 		for(var/atom/movable/AM in H.contents) // run the loop below for every movable that passes through the charger
 			if(AM == projectile) // if it's a projectile, continue
-				projectile.heat -= heat_removal
-				projectile.speed = projectile.speed * speed_penalty
+				projectile.p_heat -= heat_removal
+				projectile.p_speed = projectile.p_speed * speed_penalty
 			if(isliving(AM)) // no non-magnetic hoomans
 				var/mob/living/L = AM
 				playsound(src.loc, 'sound/machines/buzz-two.ogg', 40, 1)

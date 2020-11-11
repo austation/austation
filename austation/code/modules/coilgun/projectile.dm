@@ -40,8 +40,10 @@
 			gameover()
 			return
 		speed--
+		damage = momentum * 0.2
+		range = momentum
 
-	if(speed <= 1)
+	if(momentum <= 1)
 		gameover()
 
 
