@@ -138,14 +138,15 @@
 				return
 	return ..()
 
-/obj/structure/disposalpipe/coilgun/passive_cooler
+// passive cooler
+/obj/structure/disposalpipe/coilgun/cooler
 	name = "passive coilgun cooler"
-	desc = "A densely packed array of radiator fins designed to passively remove heat from a magnetic projectile"
+	desc = "A densely packed array of radiator fins designed to passively remove heat from a magnetic projectile, slightly slows down the projectile"
 	icon_state = "p_cooler"
-	var/heat_removal = 3 // how much heat we will remove from the projectile
-	var/speed_penalty = 0.98
+	var/heat_removal = 2.5 // how much heat we will remove from the projectile
+	var/speed_penalty = 0.985 // multiplies projectile speed by this
 
-/obj/structure/disposalpipe/coilgun/passive_cooler/transfer(obj/structure/disposalholder/H)
+/obj/structure/disposalpipe/coilgun/cooler/transfer(obj/structure/disposalholder/H)
 	if(H.contents.len)
 		var/obj/item/projectile/coilshot/projectile
 		for(var/atom/movable/AM in H.contents) // run the loop below for every movable that passes through the charger
@@ -165,3 +166,10 @@
 				continue
 
 	return ..()
+
+/obj/structure/disposalpipe/coilgun/cooler/active
+	name = "active coilgun cooler"
+	desc = "A tube with multiple small, fast fans used for cooling any projectile that passes through it, more effective than a passive cooler but slows the projectile down more"
+	icon_state = "a_cooler"
+	heat_removal = 5
+	speed_penalty = 0.95
