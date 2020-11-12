@@ -31,13 +31,13 @@
 		var/atom/movable/AM = A
 		AM.forceMove(get_turf(src))
 		AM.pipe_eject(direction)
-		if(istype(AM, /obj/item/projectile/coilshot))
-			var/obj/item/projectile/coilshot/speedy
+		if(istype(AM, /obj/effect/coilshot))
+			var/obj/effect/coilshot/speedy = AM
 			if(speedy.p_speed)
 				var/turf/starting = get_turf(src)
 				var/turf/targturf = get_turf(target)
-				speedy.preparePixelProjectile(target, get_turf(src), params, 0)
-				speedy.fire()
+				speedy.dir = dir
+				speedy.launch()
 
 		if(target)
 			AM.throw_at(target, eject_range, 1)
@@ -56,7 +56,7 @@
 
 		icon_state = "amagnet"
 		update_icon()
-		var/obj/item/projectile/coilshot/boolet =  new(H)
+		var/obj/effect/coilshot/boolet =  new(H)
 
 		for(var/atom/movable/AM in H.contents)
 			if(AM == boolet)
@@ -150,7 +150,7 @@
 /obj/structure/disposalpipe/coilgun/charger/transfer(obj/structure/disposalholder/H)
 	if(H.contents.len)
 		if(can_charge)
-			var/obj/item/projectile/coilshot/projectile
+			var/obj/effect/coilshot/projectile
 			for(var/atom/movable/AM in H.contents) // run the loop below for every movable that passes through the charger
 				if(AM == projectile) // if it's a projectile, continue
 					var/datum/powernet/PN = attached.powernet
@@ -189,7 +189,7 @@
 
 /obj/structure/disposalpipe/coilgun/cooler/transfer(obj/structure/disposalholder/H)
 	if(H.contents.len)
-		var/obj/item/projectile/coilshot/projectile
+		var/obj/effect/coilshot/projectile
 		for(var/atom/movable/AM in H.contents) // run the loop below for every movable that passes through the charger
 			if(AM == projectile) // if it's a projectile, continue
 				projectile.p_heat -= heat_removal
