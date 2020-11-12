@@ -198,6 +198,7 @@
 #include "code\modules\pool\pool_wires.dm"
 #include "code\modules\projectiles\boxes_magazine\internal\makeshift_mags.dm"
 #include "code\modules\projectiles\guns\ballistic\makeshift_pistol.dm"
+#include "code\modules\projectiles\guns\misc\chem_gun.dm"
 #include "code\modules\power\reactor\rbmk.dm"
 #include "code\modules\power\reactor\fuel_rods.dm"
 #include "code\modules\power\reactor\reactor_cargo.dm"
