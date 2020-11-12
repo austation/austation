@@ -18,7 +18,7 @@
 
 /datum/design/meddarter
 	name = "Medical Dartgun"
-	id = "meddart"
+	id = "meddarter"
 	build_type = PROTOLATHE
 	departmental_flags = DEPARTMENTAL_FLAG_MEDICAL
 	materials = list(/datum/material/glass = 6000, /datum/material/iron = 10000, /datum/material/titanium = 2000)
