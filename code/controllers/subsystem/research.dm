@@ -132,10 +132,10 @@ SUBSYSTEM_DEF(research)
 		returned[initial(TN.id)] = TN
 		if(TN.starting_node)
 			techweb_nodes_starting[TN.id] = TRUE
-	for(var/id in techweb_nodes)
-		var/datum/techweb_node/TN = techweb_nodes[id]
-		TN.Initialize()
 	techweb_nodes = returned
+	for(var/id in techweb_nodes) // austation begin -- re-order techweb init code (move below `techweb_nodes = returned`)
+		var/datum/techweb_node/TN = techweb_nodes[id]
+		TN.Initialize() // austation end
 	verify_techweb_nodes()				//Verify all nodes have ids and such.
 	calculate_techweb_nodes()
 	calculate_techweb_boost_list()

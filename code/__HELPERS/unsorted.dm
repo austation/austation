@@ -1579,11 +1579,11 @@ config_setting should be one of the following:
 	var/list/channels_to_use = list()
 	for(var/I in world.TgsChatChannelInfo())
 		var/datum/tgs_chat_channel/channel = I
-		if(channel.tag == config_setting)
+		if(channel.custom_tag == config_setting) // austation -- fix tgs chat code
 			channels_to_use += channel
 
 	if(channels_to_use.len)
-		world.TgsChatBroadcast()
+		world.TgsChatBroadcast(message, channels_to_use) // austation -- fix tgs chat code
 
 /proc/num2sign(numeric)
 	if(numeric > 0)
