@@ -103,21 +103,22 @@
 	charging = FALSE
 	return
 
+// Originally this code was a yandere dev meme T_T
 /obj/item/gun/ballistic/crossbow/examine(mob/user)
 	. = ..()
-	var/bowstring = "The bow string is "
-	if (charge > 2)
-		bowstring = bowstring + "drawn back fully"
-	else if (charge > 1)
-		bowstring = bowstring + "drawn back most the way"
-	else if (charge > 0)
-		bowstring = bowstring + "drawn back a little"
-	else
-		bowstring = bowstring + "not drawn"
-	. += "[bowstring][charge > 2 ? "!" : "."]"
+	. += "The bow string is "
+	switch (charge)
+		if (3)
+			. += "drawn back fully!"
+		if (2)
+			. += "drawn back most the way."
+		if (1)
+			. += "drawn back a little."
+		if (0)
+			. += "not drawn."
 
 	if (chambered?.BB)
-		. += "A [chambered.BB] is loaded."
+		. += "<br>A [chambered.BB] is loaded."
 
 /obj/item/gun/ballistic/crossbow/update_icon()
 	..()
