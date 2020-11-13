@@ -4,7 +4,7 @@
 	desc = "An electromagnetic tube that allows the safe transportation of high speed magnetic projectiles"
 	icon = 'austation/icons/obj/atmospherics/pipes/disposal.dmi'
 
-/obj/structure/disposalpipe/coilgun/expel(obj/structure/disposalholder/H, turf/T, direction, atom/target, params)
+/obj/structure/disposalpipe/coilgun/expel(obj/structure/disposalholder/H, turf/T, direction, params) // atom/target,
 	var/turf/target
 	var/eject_range = 5
 	var/turf/open/floor/floorturf
@@ -160,7 +160,7 @@
 						projectile.p_speed += speed_increase // add speed to projectile
 						projectile.p_heat += heat_increase // add heat to projectile
 						projectile.on_transfer() // calls the "on_tranfer" proc for the projectile
-						current_power_use = clamp(min_power_use + (projectile.speed * 0.5) * (projectile.heat * 0.5) * (target_power_usage / 100), min_power_use, max_power_use) //big scary line, determins power usage
+						current_power_use = clamp(min_power_use + (projectile.p_speed * 0.5) * (projectile.p_heat * 0.5) * (target_power_usage / 100), min_power_use, max_power_use) //big scary line, determins power usage
 						continue
 
 				if(isliving(AM)) // no non-magnetic hoomans

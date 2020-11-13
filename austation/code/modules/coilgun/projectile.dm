@@ -17,8 +17,8 @@
 	var/charged = FALSE //has the projectile been overcharged already
 	var/momentum = 0
 
-/obj/effect/coilshot/launch()
-	addtimer(CALLBACK(src, .proc/move), max(1, 1 / (p_speed / 100)) //projectile can't go any slower than 1
+/obj/effect/coilshot/proc/launch()
+	addtimer(CALLBACK(src, .proc/move), max(1, 1 / (p_speed / 100))) //projectile can't go any slower than 1
 
 /obj/effect/coilshot/Bump(atom/A)
 	if(A)
@@ -26,13 +26,13 @@
 			var/turf/closed/wall/W = loc
 			if(momentum >= 100) // uses 100 momentum to destroy a wall
 				W.dismantle_wall(TRUE, TRUE)
-				speed -= 100
+				p_speed -= 100
 			else
 				gameover()
 				return
 
 		if(istype(loc, /turf/open/floor))
-			var/turf/open/floor/W = loc
+			p_speed -= 1
 			if(momentum <= 1)
 				gameover()
 				return
@@ -41,11 +41,11 @@
 /obj/effect/coilshot/proc/move()
 	if(!step(src,dir))
 		forceMove(get_step(src,dir))
-	speed--
+	p_speed--
 	throwforce = momentum * 0.2
 
-	if(speed && mass)
-		momentum = mass*speed
+	if(p_speed && mass)
+		momentum = mass*p_speed
 	else
 		gameover()
 		return
@@ -55,12 +55,12 @@
 
 
 /// called when we pass through a charger
-/obj/effect/coilshot/on_transfer()
+/obj/effect/coilshot/proc/on_transfer()
 	if(p_heat >= heat_capacity)
 		overspice()
 
 /// melts the projectile when over heated
-/obj/effect/coilshot/overspice()
+/obj/effect/coilshot/proc/overspice()
 	var/obj/effect/decal/cleanable/ash/melted = new(loc) // make an ash pile where we die ;-;
 	playsound(loc, 'sound/items/welder.ogg', 150, 1)
 	melted.name = "slagged [name]"
@@ -68,7 +68,7 @@
 	qdel(src)
 
 /// called when projectile has expired, replaces coilshot projectile with the original projectile.
-/obj/effect/coilshot/gameover()
+/obj/effect/coilshot/proc/gameover()
 	var/atom/L = drop_location()
 	for(var/atom/movable/AM in src)
 		AM.forceMove(L)
