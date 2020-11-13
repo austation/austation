@@ -34,8 +34,8 @@
 		if(istype(AM, /obj/effect/coilshot))
 			var/obj/effect/coilshot/speedy = AM
 			if(speedy.p_speed)
-				var/turf/starting = get_turf(src)
-				var/turf/targturf = get_turf(target)
+//				var/turf/starting = get_turf(src)
+//				var/turf/targturf = get_turf(target)
 				speedy.dir = dir
 				speedy.launch()
 
@@ -88,6 +88,7 @@
 			boolet.icon = AM.icon
 			boolet.icon_state = AM.icon_state
 			AM.loc = boolet //put the original inserted objected inside the coilgun projectile
+			icon_state = "magnet"
 
 
 
