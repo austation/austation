@@ -11,3 +11,13 @@
 	category = list("Bluespace Designs")
 	departmental_flags = DEPARTMENTAL_FLAG_SCIENCE
 
+/datum/design/bluespace_Jar
+	name = "Bluespace Jar"
+	desc = "A jar used to contain creatures, using the power of bluespace."
+	id = "bluespace_jar"
+	build_type = PROTOLATHE
+	build_path = /obj/item/bluespace_jar
+	materials = list(/datum/material/glass = 3000, /datum/material/bluespace = 1200)
+	category = list("Bluespace Designs")
+	departmental_flags = DEPARTMENTAL_FLAG_SCIENCE
+

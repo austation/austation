@@ -322,6 +322,8 @@
 	new /obj/item/book/granter/action/origami(src)
 	for(var/i in 1 to 5)
 		new /obj/item/paper(src)
+	var/obj/item/paper/construction/redpaper = new /obj/item/paper/construction(src)
+	redpaper.color = "#FF0000" //Red paper, for an extra special calling card flair
 
 /obj/item/storage/box/syndie_kit/imp_freedom
 	name = "freedom implant box"
@@ -470,6 +472,9 @@
 	new /obj/item/radio/headset/chameleon(src)
 	new /obj/item/stamp/chameleon(src)
 	new /obj/item/pda/chameleon(src)
+	new /obj/item/razor(src)
+	new /obj/item/handmirror(src)
+	new /obj/item/clothing/head/wig(src)
 
 /obj/item/storage/box/syndie_kit/plasmachameleon
 	name = "plasmaman chameleon kit"
@@ -494,7 +499,7 @@
 	for(var/i in 1 to 5)
 		new /obj/item/throwing_star(src)
 	for(var/i in 1 to 2)
-		new /obj/item/paperplane/syndicate(src)
+		new /obj/item/origami/paperplane/syndicate(src)
 	new /obj/item/restraints/legcuffs/bola/tactical(src)
 	new /obj/item/restraints/legcuffs/bola/tactical(src)
 

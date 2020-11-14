@@ -102,7 +102,7 @@
 	var/datum/gas_mixture/breath
 
 	if(!getorganslot(ORGAN_SLOT_BREATHING_TUBE))
-		if(health <= HEALTH_THRESHOLD_FULLCRIT || (pulledby && pulledby.grab_state >= GRAB_KILL) || HAS_TRAIT(src, TRAIT_MAGIC_CHOKE) || lungs.organ_flags & ORGAN_FAILING)
+		if(health <= HEALTH_THRESHOLD_FULLCRIT || (pulledby && pulledby.grab_state >= GRAB_KILL) || HAS_TRAIT(src, TRAIT_MAGIC_CHOKE) || !lungs || lungs.organ_flags & ORGAN_FAILING)
 			losebreath++  //You can't breath at all when in critical or when being choked, so you're going to miss a breath
 
 		else if(health <= crit_threshold)
@@ -481,6 +481,9 @@ GLOBAL_LIST_INIT(ballmer_windows_me_msg, list("Yo man, what if, we like, uh, put
 	if(cultslurring)
 		cultslurring = max(cultslurring-1, 0)
 
+	if(clockslurring)
+		clockslurring = max(clockslurring-1, 0)
+
 	if(silent)
 		silent = max(silent-1, 0)
 
@@ -550,16 +553,16 @@ GLOBAL_LIST_INIT(ballmer_windows_me_msg, list("Yo man, what if, we like, uh, put
 		if(drunkenness >= 81)
 			adjustToxLoss(1)
 			if(prob(5) && !stat)
-				to_chat(src, "<span class='warning'>Maybe you should lie down for a bit...</span>")
+				to_chat(src, "<span class='warning'>Maybe you should lie down for a bit.</span>")
 
 		if(drunkenness >= 91)
 			adjustToxLoss(1)
 			adjustOrganLoss(ORGAN_SLOT_BRAIN, 0.4)
 			if(prob(20) && !stat)
 				if(SSshuttle.emergency.mode == SHUTTLE_DOCKED && is_station_level(z)) //QoL mainly
-					to_chat(src, "<span class='warning'>You're so tired... but you can't miss that shuttle...</span>")
+					to_chat(src, "<span class='warning'>You're so tired, but you can't miss that shuttle.</span>")
 				else
-					to_chat(src, "<span class='warning'>Just a quick nap...</span>")
+					to_chat(src, "<span class='warning'>Just a quick nap.</span>")
 					Sleeping(900)
 
 		if(drunkenness >= 101)

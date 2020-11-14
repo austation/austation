@@ -16,7 +16,7 @@
 	if(R.module.type != /obj/item/robot_module)
 		R.hud_used.toggle_show_robot_modules()
 		return 1
-	R.pick_module()
+	R.pick_module_austation() //austation begin -- Replaces R.pick_module() with R.pick_module_austation()
 
 /obj/screen/robot/module1
 	name = "module1"
@@ -222,7 +222,7 @@
 		screenmob.client.screen += module_store_icon	//"store" icon
 
 		if(!R.module.modules)
-			to_chat(usr, "<span class='danger'>Selected module has no modules to select</span>")
+			to_chat(usr, "<span class='danger'>Selected module has no modules to select.</span>")
 			return
 
 		if(!R.robot_modules_background)

@@ -61,16 +61,21 @@
 	if(!(end in list("!", ".", "?", ":", "\"", "-")))
 		msg += "."
 
-	user.log_message(msg, LOG_EMOTE)
+	var/admin_stealth = FALSE
+	if(user?.client?.holder?.fakekey)
+		admin_stealth = TRUE
 
-	msg = "<b>[user]</b> " + msg
+	if(!admin_stealth)
+		user.log_message(msg, LOG_EMOTE)
+
+	msg = "<span class='emote'><b>[user]</b> " + msg + "</span>"
 
 	var/tmp_sound = get_sound(user)
 	if(tmp_sound && (!only_forced_audio || !intentional))
 		playsound(user, tmp_sound, 50, vary)
 
 	for(var/mob/M in GLOB.dead_mob_list)
-		if(!M.client || isnewplayer(M))
+		if(!M.client || isnewplayer(M) || admin_stealth)
 			continue
 		var/T = get_turf(user)
 		if(M.stat == DEAD && M.client && (M.client.prefs.chat_toggles & CHAT_GHOSTSIGHT) && !(M in viewers(T, null)))

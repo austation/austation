@@ -106,7 +106,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 	var/ambientocclusion = TRUE
 	///Should we automatically fit the viewport?
-	var/auto_fit_viewport = FALSE
+	var/auto_fit_viewport = TRUE
 	///What size should pixels be displayed as? 0 is strech to fit
 	var/pixel_size = 0
 	///What scaling method should we use?
@@ -261,6 +261,8 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 						button_name = RING_ENGAGEMENT_NAME
 					if(RING_WEDDING)
 						button_name = RING_WEDDING_NAME
+					if(RING_AUSTRALIUM)
+						button_name = RING_AUSTRALIUM_NAME
 
 			dat += "<b>Ring Type:</b><BR><a href = '?_src_=prefs;preference=ring_type;task=input'>[button_name]</a><BR>" // austation end
 
@@ -1038,7 +1040,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 		ShowChoices(user)
 		return
 
-	if (!isnum(desiredLvl))
+	if (!isnum_safe(desiredLvl))
 		to_chat(user, "<span class='danger'>UpdateJobPreference - desired level was not a number. Please notify coders!</span>")
 		ShowChoices(user)
 		return
@@ -1447,12 +1449,19 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					var/result = input(user, "Select a species", "Species Selection") as null|anything in GLOB.roundstart_races
 
 					if(result)
-						var/newtype = GLOB.species_list[result]
-						pref_species = new newtype()
-						//Now that we changed our species, we must verify that the mutant colour is still allowed.
-						var/temp_hsv = RGBtoHSV(features["mcolor"])
-						if(features["mcolor"] == "#000" || (!(MUTCOLORS_PARTSONLY in pref_species.species_traits) && ReadHSV(temp_hsv)[3] < ReadHSV("#7F7F7F")[3]))
-							features["mcolor"] = pref_species.default_color
+						var/new_species_type = GLOB.species_list[result]
+						var/datum/species/new_species = new new_species_type()
+
+						if (!CONFIG_GET(keyed_list/paywall_races)[new_species.id] || IS_PATRON(parent.ckey) || parent.holder)
+							pref_species = new_species
+							//Now that we changed our species, we must verify that the mutant colour is still allowed.
+							var/temp_hsv = RGBtoHSV(features["mcolor"])
+							if(features["mcolor"] == "#000" || (!(MUTCOLORS_PARTSONLY in pref_species.species_traits) && ReadHSV(temp_hsv)[3] < ReadHSV("#7F7F7F")[3]))
+								features["mcolor"] = pref_species.default_color
+						else
+							if(alert(parent, "This species is only accessible to our patrons. Would you like to subscribe?", "Patron Locked", "Yes", "No") == "Yes")
+								parent.donate()
+
 
 				if("mutant_color")
 					var/new_mutantcolor = input(user, "Choose your character's alien/mutant color:", "Character Preference","#"+features["mcolor"]) as color|null
@@ -1602,6 +1611,8 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 							ring_type = RING_ENGAGEMENT
 						if(RING_WEDDING_NAME)
 							ring_type = RING_WEDDING
+						if(RING_AUSTRALIUM_NAME)
+							ring_type = RING_AUSTRALIUM
 					var/chosen_ring_engraved = reject_bad_name( input(user, "Would you like to engrave a name on the ring? Blank for none.", "Character Preference")  as text|null , TRUE)
 					if(chosen_ring_engraved)
 						ring_engraved = chosen_ring_engraved
@@ -1818,6 +1829,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 							pixel_size = PIXEL_SCALING_3X
 						if(PIXEL_SCALING_3X)
 							pixel_size = PIXEL_SCALING_AUTO
+					user.client.view_size.setDefault(getScreenSize(user))	//Fix our viewport size so it doesn't reset on change
 					user.client.view_size.apply() //Let's winset() it so it actually works
 
 				if("scaling_method")
@@ -1963,6 +1975,8 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	character.backbag = backbag
 
 	character.jumpsuit_style = jumpsuit_style //austation -- skirts
+	character.ring_type = ring_type // austation -- rings
+	character.ring_engraved = ring_engraved // austation -- rings
 
 	var/datum/species/chosen_species
 	chosen_species = pref_species.type
@@ -2008,7 +2022,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	if(!namedata)
 		return
 
-	var/raw_name = input(user, "Choose your character's [namedata["qdesc"]]:","Character Preference") as text|null
+	var/raw_name = capped_input(user, "Choose your character's [namedata["qdesc"]]:","Character Preference")
 	if(!raw_name)
 		if(namedata["allow_null"])
 			custom_names[name_id] = get_default_name(name_id)

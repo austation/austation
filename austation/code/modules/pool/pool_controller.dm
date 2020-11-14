@@ -16,7 +16,7 @@
 	use_power = TRUE
 	idle_power_usage = 75
 	/// How far it scans for pool objects
-	var/scan_range = 6
+	var/scan_range = 7
 	/// Is pool mist currently on?
 	var/mist_state = FALSE
 	/// Linked mist effects

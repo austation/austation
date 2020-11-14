@@ -48,13 +48,16 @@ map multiz_debug
 endmap
 
 map kilostation
-    minplayers 30
-    maxplayers 80
+    maxplayers 60
 	votable
-	disabled
 endmap
 
 map austation
     default
     votable
+endmap
+
+map orbitalstation
+	maxplayers 20
+	votable
 endmap

@@ -132,10 +132,10 @@ SUBSYSTEM_DEF(research)
 		returned[initial(TN.id)] = TN
 		if(TN.starting_node)
 			techweb_nodes_starting[TN.id] = TRUE
-	for(var/id in techweb_nodes)
-		var/datum/techweb_node/TN = techweb_nodes[id]
-		TN.Initialize()
 	techweb_nodes = returned
+	for(var/id in techweb_nodes) // austation begin -- re-order techweb init code (move below `techweb_nodes = returned`)
+		var/datum/techweb_node/TN = techweb_nodes[id]
+		TN.Initialize() // austation end
 	verify_techweb_nodes()				//Verify all nodes have ids and such.
 	calculate_techweb_nodes()
 	calculate_techweb_boost_list()
@@ -194,7 +194,7 @@ SUBSYSTEM_DEF(research)
 			var/list/points = N.boost_item_paths[p]
 			if(islist(points))
 				for(var/i in points)
-					if(!isnum(points[i]))
+					if(!isnum_safe(points[i]))
 						node_boost_error(N.id, "[points[i]] is not a valid number.")
 					else if(!point_types[i])
 						node_boost_error(N.id, "[i] is not a valid point type.")

@@ -53,11 +53,6 @@
 		return wear_mask
 	if(check_glasses && glasses && (glasses.flags_cover & GLASSESCOVERSEYES))
 		return glasses
-/mob/living/carbon/is_pepper_proof(check_head = TRUE, check_mask = TRUE)
-	if(check_head &&(head?.flags_cover & PEPPERPROOF))
-		return head
-	if(check_mask &&(wear_mask?.flags_cover & PEPPERPROOF))
-		return wear_mask
 
 /mob/living/carbon/check_projectile_dismemberment(obj/item/projectile/P, def_zone)
 	var/obj/item/bodypart/affecting = get_bodypart(def_zone)
@@ -128,7 +123,7 @@
 		if(I.sharpness)
 			dismemberthreshold = min(((affecting.max_damage * 2) - affecting.get_damage()), dismemberthreshold) //makes it so limbs wont become immune to being dismembered if the item is sharp
 			if(stat == DEAD)
-				dismemberthreshold = dismemberthreshold / 3 
+				dismemberthreshold = dismemberthreshold / 3
 		if(I.force >= dismemberthreshold && I.force >= 10)
 			if(affecting.dismember(I.damtype))
 				I.add_mob_blood(src)
@@ -302,6 +297,10 @@
 	else if(M.zone_selected == BODY_ZONE_HEAD)
 		M.visible_message("<span class='notice'>[M] pats [src] on the head.</span>", \
 					"<span class='notice'>You pat [src] on the head.</span>")
+		if(is_species(src, /datum/species/human/felinid)) //austation begin -- do not question this
+			SEND_SIGNAL(src, COMSIG_ADD_MOOD_EVENT, "friendly_pat", /datum/mood_event/betterheadpat)
+		else
+			SEND_SIGNAL(src, COMSIG_ADD_MOOD_EVENT, "pat", /datum/mood_event/headpat) //austation end
 	else if((M.zone_selected == BODY_ZONE_L_ARM) || (M.zone_selected == BODY_ZONE_R_ARM))
 		if(!get_bodypart(check_zone(M.zone_selected)))
 			to_chat(M, "<span class='warning'>[src] does not have a [M.zone_selected == BODY_ZONE_L_ARM ? "left" : "right"] arm!</span>")
@@ -384,7 +383,8 @@
 	var/effect_amount = intensity - ear_safety
 	if(effect_amount > 0)
 		if(stun_pwr)
-			Paralyze(stun_pwr*effect_amount)
+			Paralyze((stun_pwr*effect_amount)*0.1)
+			Knockdown(stun_pwr*effect_amount)
 
 		if(istype(ears) && (deafen_pwr || damage_pwr))
 			var/ear_damage = damage_pwr * effect_amount
