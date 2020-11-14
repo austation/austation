@@ -11,9 +11,8 @@ Beeloot is the number of items in Bees loot table excluding disabled loot
 		switch(AU_lootroll)
 			if(1)
 				new /obj/item/tank/internals/occult(src)
-		return TRUE
 			if(2)
-				/obj/item/clothing/mask/facehugger
+				new /obj/item/clothing/mask/facehugger(src)
 		return TRUE
 	else
 		return FALSE
