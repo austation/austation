@@ -1,0 +1,5 @@
+author: "ZombiesVsPlants"
+delete-after: True
+changes: 
+  - rscadd: "facehuggers to the lootpool"
+  - code_imp: "yeah I changed some code in the austation mining file"
