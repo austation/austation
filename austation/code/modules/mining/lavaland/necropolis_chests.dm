@@ -3,7 +3,7 @@ AUStation Necro Chest Loot Table
 Beeloot is the number of items in Bees loot table excluding disabled loot
 */
 /obj/structure/closet/crate/necropolis/tendril/proc/AU_PopulateContents(var/Beeloot_Amount = 0)
-	var/AUloot_Amount = 2
+	var/AUloot_Amount = 1
 	var/AUloot_Roll_Chance = (100 / (Beeloot_Amount + AUloot_Amount)) * AUloot_Amount
 
 	if(prob(AUloot_Roll_Chance))
@@ -11,8 +11,6 @@ Beeloot is the number of items in Bees loot table excluding disabled loot
 		switch(AU_lootroll)
 			if(1)
 				new /obj/item/tank/internals/occult(src)
-			if(2)
-				new /obj/item/clothing/mask/facehugger(src)
 		return TRUE
 	else
 		return FALSE
