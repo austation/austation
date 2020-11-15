@@ -1,0 +1,4 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - bugfix: "Fixes Abductor locker to be animated and animates the alien locker"
