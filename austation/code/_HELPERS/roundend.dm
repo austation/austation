@@ -9,7 +9,7 @@
 		discordmsg += "Escapees: [escapees]\n"
 		discordmsg += "Integrity: [integrity]\n"
 		discordmsg += "Gamemode: [SSticker.mode.name]\n"
-		send2chat(discordmsg, "status")
+		send2chat(discordmsg, "roundend")
 		discordmsg = ""
 		var/list/ded = SSblackbox.first_death
 		if(ded)
