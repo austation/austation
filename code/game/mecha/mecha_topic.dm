@@ -93,7 +93,7 @@
 		"[MECHA_INT_FIRE]" = "<span class='userdanger'>INTERNAL FIRE</span>",
 		"[MECHA_INT_TEMP_CONTROL]" = "<span class='userdanger'>LIFE SUPPORT SYSTEM MALFUNCTION</span>",
 		"[MECHA_INT_TANK_BREACH]" = "<span class='userdanger'>GAS TANK BREACH</span>",
-		"[MECHA_INT_CONTROL_LOST]" = "<span class='userdanger'>COORDINATION SYSTEM CALIBRATION FAILURE</span> - <a href='?src=[REF(src)];repair_int_control_lost=1'>Recalibrate</a>",
+		"[MECHA_INT_CONTROL_LOST]" = "<span class='userdanger'>COORDINATION SYSTEM CALIBRATION FAILURE</span>", // AuStation -- Fixes a bug that made the "Coordination system calibration failure" internal damage unfixable
 		"[MECHA_INT_SHORT_CIRCUIT]" = "<span class='userdanger'>SHORT CIRCUIT</span>"
 								)
 	for(var/tflag in dam_reports)
@@ -103,6 +103,11 @@
 			. += "<br />"
 	if(return_pressure() > WARNING_HIGH_PRESSURE)
 		. += "<span class='userdanger'>DANGEROUSLY HIGH CABIN PRESSURE</span><br />"
+
+	// AuStation begin -- Fixes a bug that made the "Coordination system calibration failure" internal damage unfixable
+	if (internal_damage & MECHA_INT_CONTROL_LOST)
+		. += "<a href='?src=[REF(src)];repair_int_control_lost=1'>Recalibrate</a><br />"
+	// AuStation end
 
 /obj/mecha/proc/get_equipment_list() //outputs mecha equipment list in html
 	if(!equipment.len)

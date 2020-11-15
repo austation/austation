@@ -1,0 +1,4 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - tweak: "Airlocks to bridge and other high security areas such as the heads' offices, EVA, teleporter and gateway now start reinforced with plasteel."
