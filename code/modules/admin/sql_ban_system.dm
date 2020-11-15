@@ -326,11 +326,7 @@
 									ROLE_SERVANT_OF_RATVAR,
 									ROLE_OVERTHROW, ROLE_REV, ROLE_REVENANT,
 									ROLE_REV_HEAD, ROLE_SYNDICATE,
-<<<<<<< HEAD
-									ROLE_TRAITOR, ROLE_WIZARD, ROLE_HIVE, ROLE_GANG, CATBAN)) //ROLE_REV_HEAD is excluded from this because rev jobbans are handled by ROLE_REV // austation -- adds catbans
-=======
-									ROLE_TRAITOR, ROLE_WIZARD, ROLE_HIVE, ROLE_GANG, ROLE_TERATOMA)) //ROLE_REV_HEAD is excluded from this because rev jobbans are handled by ROLE_REV
->>>>>>> 7c8134b866... Teratomas are actual antags now (#2782)
+									ROLE_TRAITOR, ROLE_WIZARD, ROLE_HIVE, ROLE_GANG, ROLE_TERATOMA, CATBAN)) //ROLE_REV_HEAD is excluded from this because rev jobbans are handled by ROLE_REV
 		for(var/department in long_job_lists)
 			output += "<div class='column'><label class='rolegroup long [ckey(department)]'><input type='checkbox' name='[department]' class='hidden' [usr.client.prefs.tgui_fancy ? " onClick='toggle_checkboxes(this, \"_com\")'" : ""]>[department]</label><div class='content'>"
 			break_counter = 0
