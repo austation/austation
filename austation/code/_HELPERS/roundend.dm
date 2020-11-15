@@ -19,6 +19,6 @@
 		else
 			discordmsg += "Nobody died!\n"
 		discordmsg += "--------------------------------------\n"
-		send2chat(discordmsg, "status")
+		send2chat(discordmsg, "roundend")
 	else
 		..()
