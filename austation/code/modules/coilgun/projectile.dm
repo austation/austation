@@ -65,8 +65,8 @@
 	if(momentum <= 1)
 		gameover()
 		return
-	var/move_delay = max(0.2, round(0.9994 ** projectile.p_speed)) // it just works
-	sleep(min(1, move_delay))
+	var/move_delay = clamp(round(0.9994 ** p_speed), 0.01, 0.2) // it just works
+	sleep(move_delay))
 	move()
 /// called when we pass through a charger
 /obj/effect/coilshot/proc/on_transfer()
@@ -91,3 +91,14 @@
 	if(throwing)
 		throwing.finalize(FALSE)
 	qdel(src)
+
+
+/obj/effect/coilshot/debug
+	p_speed = 700
+	p_mass = 3
+/obj/effect/coilshot/adminbuse
+	p_speed = 10000
+	p_mass = 50
+
+/obj/effect/coilshot/debug/Initialize()
+	launch()

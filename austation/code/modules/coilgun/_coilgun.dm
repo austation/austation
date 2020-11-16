@@ -82,12 +82,13 @@
 				else
 					qdel(boolet)
 					qdel(I)
-					continue
+					return
 
 			boolet.name = AM.name
 			boolet.desc = AM.desc
 			boolet.icon = AM.icon
 			boolet.icon_state = AM.icon_state
+			boolet.p_speed = 1
 			AM.loc = boolet //put the original inserted objected inside the coilgun projectile
 			icon_state = "magnet"
 
@@ -104,8 +105,8 @@
 	var/heat_increase = 10 // how much the charger will heat up the projectile
 	var/target_power_usage = 0 // the set percentage of excess power to be used by the charger
 	var/current_power_use = 0 // how much power it is currently drawing
-	var/min_power_use = 120000 // the lowest power it can use to function in kilowatts
-	var/max_power_use = INFINITY // the maximum amount of power the charger can draw in kilowatts
+	var/min_power_use = 120000 // the lowest power it can use to function in watts
+	var/max_power_use = INFINITY // the maximum amount of power the charger can draw in watts
 	var/obj/structure/cable/attached // attached cable
 
 /obj/structure/disposalpipe/coilgun/charger/attack_hand(mob/user)
@@ -132,7 +133,7 @@
 			enabled = FALSE
 		else // if we aren't, increase it by 20%
 			target_power_usage += 20
-			to_chat(user, "<span class='notice'>You set \the [src] to use [target_power_usage]% of the powernet's excess energy.</span>")
+			to_chat(user, "<span class='notice'>You set \the [src] to use [target_power_usage]% of the powergrid's excess energy.</span>")
 
 
 /obj/structure/disposalpipe/coilgun/charger/process()
@@ -156,7 +157,7 @@
 
 /obj/structure/disposalpipe/coilgun/charger/transfer(obj/structure/disposalholder/H)
 	if(H.contents.len)
-		if(can_charge)
+		if(can_charge) // do we have enough power?
 			var/obj/effect/coilshot/projectile
 			for(var/atom/movable/AM in H.contents) // run the loop below for every movable that passes through the charger
 				if(AM == projectile) // if it's a projectile, continue
