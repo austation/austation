@@ -1,5 +1,0 @@
-author: "jbox144"
-delete-after: True
-changes: 
-  - bugfix: "Fixed a bug which made the \"coordination failure\" mecha internal damage unfixable. Technically this is a salt PR..."
-  - bugfix: "Fixed a bug which meant the roboticist didn't get a suitskirt roundstart even if suitskirt prefs are enabled."
