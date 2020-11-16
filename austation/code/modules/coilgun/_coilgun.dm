@@ -3,6 +3,7 @@
 	name = "coilgun tube"
 	desc = "An electromagnetic tube that allows the safe transportation of high speed magnetic projectiles"
 	icon = 'austation/icons/obj/atmospherics/pipes/disposal.dmi'
+	coilgun = TRUE
 
 /obj/structure/disposalpipe/coilgun/expel(obj/structure/disposalholder/H, turf/T, direction, params) // atom/target,
 	var/turf/target
@@ -90,13 +91,11 @@
 			AM.loc = boolet //put the original inserted objected inside the coilgun projectile
 			icon_state = "magnet"
 
-
-
 	return ..()
 
 /obj/structure/disposalpipe/coilgun/charger
 	name = "coilgun charger"
-	desc = "A powered electromagnetic tube used to accelerate magnetive objects, use cooling units to prevent the projectile from overheating. Requires direct power connection to function"
+	desc = "A powered electromagnetic tube used to accelerate magnetive objects, requires the use of cooling units to prevent the projectile from overheating. Requires direct power connection to function"
 	icon_state = "charger"
 
 	var/enabled = FALSE // is the charger turned on?
@@ -114,16 +113,23 @@
 	if(.)
 		return
 	if(!enabled)
-		if(!attached) // if we're not attached to a cable...
-			to_chat(user, "<span class='warning'>\The [src] must be placed over an exposed, powered cable node!</span>")
+		var/turf/T = loc
+		if(isturf(T) && !T.intact)
+			attached = locate() in T
+			if(!attached) // if we're not attached to a cable...
+				to_chat(user, "<span class='warning'>\The [src] must be placed over an exposed, powered cable node!</span>")
+			else
+				START_PROCESSING(SSobj, src)
+				enabled = TRUE
+				to_chat(user, "<span class='notice'>You turn \the [src] on.</span>")
 		else
-			START_PROCESSING(SSobj, src)
-			to_chat(user, "<span class='notice'>You turn \the [src] on.</span>")
+			to_chat(user, "<span class='warning'>\The [src] must be placed over an exposed, powered cable node!</span>")
 	else // if we are!
 		if(target_power_usage == 100) // if we are already using the max amount of power
 			STOP_PROCESSING(SSobj, src)
 			set_light(0)
 			to_chat(user, "<span class='notice'>You turn \the [src] off.</span>")
+			enabled = FALSE
 		else // if we aren't, increase it by 20%
 			target_power_usage += 20
 			to_chat(user, "<span class='notice'>You set \the [src] to use [target_power_usage]% of the powernet's excess energy.</span>")
@@ -174,10 +180,6 @@
 					visible_message("<span class='warning'>\The [src]'s safety mechanism engages, ejecting \the [AM] through the maintenance hatch!</span>")
 					AM.forceMove(get_turf(src))
 					continue
-
-			if(!H.contents)
-				qdel(H)
-				return
 	return ..()
 
 // passive cooler

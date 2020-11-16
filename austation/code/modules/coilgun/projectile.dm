@@ -4,11 +4,11 @@
 	icon = 'icons/obj/objects.dmi'
 	icon_state = "immrod"
 	throwforce = 5
+	density = TRUE
+	anchored = TRUE
 	move_force = INFINITY
 	move_resist = INFINITY
 	pull_force = INFINITY
-	density = TRUE
-	anchored = TRUE
 	var/heat_capacity = 80
 	var/mass = 0
 	var/special = "none" //special propeties
@@ -18,25 +18,35 @@
 	var/momentum = 0
 
 /obj/effect/coilshot/proc/launch()
-	addtimer(CALLBACK(src, .proc/move), max(1, 1 / (p_speed / 100))) //projectile can't go any slower than 1
+	addtimer(CALLBACK(src, .proc/move), 1)
 
-/obj/effect/coilshot/Bump(atom/A)
-	if(A)
-		if(istype(loc, /turf/closed/wall))
-			var/turf/closed/wall/W = loc
-			if(momentum >= 100) // uses 100 momentum to destroy a wall
-				W.dismantle_wall(TRUE, TRUE)
+/obj/effect/coilshot/Bump(atom/clong) // lots of rod code in here
+	if(prob(10))
+		playsound(src, 'sound/effects/bang.ogg', 50, 1)
+		audible_message("<span class='danger'>You hear a CLANG!</span>")
+	var/change_dir_chance = -max(1, momentum / 100) + 100 // chance to change to collided direction increases as momentum decreases
+	if(clong && prob(change_dir_chance))
+		x = clong.x
+		y = clong.y
+	if(isturf(clong) || isobj(clong))
+		if(momentum >= 100)
+			if(clong.density)
+				clong.ex_act(EXPLODE_HEAVY)
 				p_speed -= 100
-			else
-				gameover()
-				return
+		else
+			gameover()
+			return
+	else if(isliving(clong))
+		penetrate(clong)
 
-		if(istype(loc, /turf/open/floor))
-			p_speed -= 1
-			if(momentum <= 1)
-				gameover()
-				return
-
+/obj/effect/coilshot/proc/penetrate(mob/living/L)
+	L.visible_message("<span class='danger'>[L] is penetrated by \the [src]!</span>" , "<span class='userdanger'>\The [src] penetrates you!</span>" , "<span class ='danger'>You hear a CLANG!</span>")
+	if(ishuman(L))
+		var/mob/living/carbon/human/H = L
+		var/projdamage = max(15, momentum / 100)
+		H.adjustBruteLoss(projdamage)
+	if(L && (L.density || prob(10)))
+		L.ex_act(EXPLODE_HEAVY)
 
 /obj/effect/coilshot/proc/move()
 	if(!step(src,dir))
@@ -46,14 +56,17 @@
 
 	if(p_speed && mass)
 		momentum = mass*p_speed
+
 	else
 		gameover()
 		return
-
+	if(istype(loc, /turf/open/floor))
+		p_speed -= 1
 	if(momentum <= 1)
 		gameover()
-
-
+		return
+	sleep(max(1, p_speed / 100))
+	move()
 /// called when we pass through a charger
 /obj/effect/coilshot/proc/on_transfer()
 	if(p_heat >= heat_capacity)

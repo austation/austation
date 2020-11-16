@@ -2,6 +2,7 @@
 	var/coilgun = FALSE // is this pipe part of a coilgun? Used for determining icon and if a coilgun projectile is allowed inside it
 
 // coilgun uses the austation icon file
+/*
 /obj/structure/disposalpipe/Initialize()
 	. = ..()
 	var/holder
@@ -12,3 +13,4 @@
 	else
 		holder = "[icon]"
 	icon = text2path(holder)
+*/
