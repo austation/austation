@@ -162,7 +162,9 @@
 				if(AM == projectile) // if it's a projectile, continue
 					var/datum/powernet/PN = attached.powernet
 					if(PN)
-						speed_increase = (target_power_usage / 100) * (current_power_use / min_power_use) // (0-100 divided by 100) * (how much power we're using divided by the minimum power use)
+
+						var/prelim = (target_power_usage / 100) * (current_power_use / min_power_use) // (0-100 divided by 100) * (how much power we're using divided by the minimum power use)
+						speed_increase = prelim * 0.5 ** projectile.p_speed
 						projectile.p_speed += speed_increase // add speed to projectile
 						projectile.p_heat += heat_increase // add heat to projectile
 						projectile.on_transfer() // calls the "on_tranfer" proc for the projectile

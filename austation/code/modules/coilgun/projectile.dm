@@ -65,7 +65,8 @@
 	if(momentum <= 1)
 		gameover()
 		return
-	sleep(max(1, p_speed / 100))
+	var/move_delay = max(0.2, round(0.9994 ** projectile.p_speed)) // it just works
+	sleep(min(1, move_delay))
 	move()
 /// called when we pass through a charger
 /obj/effect/coilshot/proc/on_transfer()
