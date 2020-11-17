@@ -1,4 +1,0 @@
-author: "AustationBot"
-delete-after: True
-changes: 
-  - rscdel: "SRM-8 Missile Rack can no longer be printed."
