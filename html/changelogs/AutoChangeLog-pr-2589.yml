@@ -1,0 +1,4 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - bugfix: "Fixed being able to put intercoms and other anchored objects inside of trash bags."
