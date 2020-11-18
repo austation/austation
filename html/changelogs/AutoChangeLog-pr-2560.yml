@@ -1,0 +1,4 @@
+author: "BobJoga, Useroth"
+delete-after: True
+changes: 
+  - rscadd: "Adds the Crossbow, a makeshift weapon that fires iron rods."
