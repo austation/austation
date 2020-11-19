@@ -58,12 +58,13 @@
 
 		icon_state = "amagnet"
 		update_icon()
-		var/obj/effect/coilshot/boolet =  new(H)
+		var/obj/effect/coilshot/boolet
 
 		for(var/atom/movable/AM in H.contents)
 			if(AM == boolet)
 				continue
 			else
+				booolet = new(H)
 				boolet.name = AM.name
 				boolet.desc = AM.desc
 				boolet.icon = AM.icon
@@ -80,6 +81,9 @@
 					boolet.mass = 5
 					sleep(30)
 					continue
+				else
+					boolet.mass = 3
+					continue
 
 			if(isitem(AM))
 				var/obj/item/I = AM
@@ -92,7 +96,7 @@
 					qdel(I)
 					return
 
-			icon_state = "magnet"
+		icon_state = "magnet"
 
 	return ..()
 
@@ -125,14 +129,17 @@
 				START_PROCESSING(SSobj, src)
 				enabled = TRUE
 				to_chat(user, "<span class='notice'>You turn \the [src] on.</span>")
+				return
 		else
 			to_chat(user, "<span class='warning'>\The [src] must be placed over an exposed, powered cable node!</span>")
 	else // if we are!
 		if(target_power_usage == 100) // if we are already using the max amount of power
+			target_power_usage == 0
 			STOP_PROCESSING(SSobj, src)
 			set_light(0)
 			to_chat(user, "<span class='notice'>You turn \the [src] off.</span>")
 			enabled = FALSE
+			return
 		else // if we aren't, increase it by 20%
 			target_power_usage += 20
 			to_chat(user, "<span class='notice'>You set \the [src] to use [target_power_usage]% of the powergrid's excess energy.</span>")
@@ -173,6 +180,7 @@
 						projectile.p_heat += heat_increase // add heat to projectile
 						projectile.on_transfer() // calls the "on_tranfer" proc for the projectile
 						current_power_use = clamp(min_power_use + (projectile.p_speed * 0.5) * (projectile.p_heat * 0.5) * (target_power_usage / 100), min_power_use, max_power_use) //big scary line, determins power usage
+						playsound(get_turf(src), 'sound/weapons/emitter2.ogg', 50, 1)
 						continue
 
 				if(isliving(AM)) // no non-magnetic hoomans
