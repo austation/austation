@@ -6,10 +6,15 @@
 
 	announce_span = "info"
 	announce_text = "Build your own station... or just shoot each other!"
-	
+
 	allow_persistence_save = FALSE
 
 /datum/game_mode/sandbox/pre_setup()
+	//Disables Random Events
+	var/new_are = !CONFIG_GET(flag/allow_random_events)
+	CONFIG_SET(flag/allow_random_events, new_are)
+
+	//Enables player spawing
 	for(var/mob/M in GLOB.player_list)
 		M.CanBuild()
 	return 1
