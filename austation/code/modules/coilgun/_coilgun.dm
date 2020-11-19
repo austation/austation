@@ -3,6 +3,7 @@
 	name = "coilgun tube"
 	desc = "An electromagnetic tube that allows the safe transportation of high speed magnetic projectiles"
 	icon = 'austation/icons/obj/atmospherics/pipes/disposal.dmi'
+	initialize_dirs = DISP_DIR_FLIP
 	coilgun = TRUE
 
 /obj/structure/disposalpipe/coilgun/expel(obj/structure/disposalholder/H, turf/T, direction, params) // atom/target,
@@ -62,6 +63,13 @@
 		for(var/atom/movable/AM in H.contents)
 			if(AM == boolet)
 				continue
+			else
+				boolet.name = AM.name
+				boolet.desc = AM.desc
+				boolet.icon = AM.icon
+				boolet.icon_state = AM.icon_state
+				boolet.p_speed = 1
+				AM.loc = boolet //put the original inserted objected inside the coilgun projectile
 
 			if(isliving(AM))
 				var/mob/living/L = AM
@@ -84,12 +92,6 @@
 					qdel(I)
 					return
 
-			boolet.name = AM.name
-			boolet.desc = AM.desc
-			boolet.icon = AM.icon
-			boolet.icon_state = AM.icon_state
-			boolet.p_speed = 1
-			AM.loc = boolet //put the original inserted objected inside the coilgun projectile
 			icon_state = "magnet"
 
 	return ..()
@@ -156,6 +158,7 @@
 			set_light(1) // dim the light if we don't have enough power to use the charger
 
 /obj/structure/disposalpipe/coilgun/charger/transfer(obj/structure/disposalholder/H)
+	visible_message("<span class='danger'>debug: holder entered transfer proc!</span>") // au debug
 	if(H.contents.len)
 		if(can_charge) // do we have enough power?
 			var/obj/effect/coilshot/projectile

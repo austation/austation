@@ -66,8 +66,8 @@
 		gameover()
 		return
 	var/move_delay = clamp(round(0.9994 ** p_speed), 0.01, 0.2) // it just works
-	sleep(move_delay))
-	move()
+	addtimer(CALLBACK(src, .proc/move), move_delay)
+
 /// called when we pass through a charger
 /obj/effect/coilshot/proc/on_transfer()
 	if(p_heat >= heat_capacity)
@@ -95,10 +95,11 @@
 
 /obj/effect/coilshot/debug
 	p_speed = 700
-	p_mass = 3
-/obj/effect/coilshot/adminbuse
+	mass = 3
+/obj/effect/coilshot/debug/adminbus
 	p_speed = 10000
-	p_mass = 50
+	mass = 50
 
 /obj/effect/coilshot/debug/Initialize()
+	. = ..()
 	launch()
