@@ -1,4 +1,0 @@
-author: "AustationBot"
-delete-after: True
-changes: 
-  - rscadd: "Runechat text will be displayed even when inside another object such as lockers or crates."

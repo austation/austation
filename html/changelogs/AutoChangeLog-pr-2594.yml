@@ -1,5 +1,0 @@
-author: "AustationBot"
-delete-after: True
-changes: 
-  - bugfix: "Station goals are buyable again"
-  - rscadd: "You also get a centcomm report telling you what the goal is, in absence of the intercept report."

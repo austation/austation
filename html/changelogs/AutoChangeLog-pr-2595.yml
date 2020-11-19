@@ -1,5 +1,0 @@
-author: "AustationBot"
-delete-after: True
-changes: 
-  - tweak: "Explosions throw farther"
-  - tweak: "Explosions throw all movable atoms"
