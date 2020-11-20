@@ -64,7 +64,7 @@
 			if(AM == boolet)
 				continue
 			else
-				booolet = new(H)
+				boolet = new(H)
 				boolet.name = AM.name
 				boolet.desc = AM.desc
 				boolet.icon = AM.icon
@@ -134,7 +134,7 @@
 			to_chat(user, "<span class='warning'>\The [src] must be placed over an exposed, powered cable node!</span>")
 	else // if we are!
 		if(target_power_usage == 100) // if we are already using the max amount of power
-			target_power_usage == 0
+			target_power_usage = 0
 			STOP_PROCESSING(SSobj, src)
 			set_light(0)
 			to_chat(user, "<span class='notice'>You turn \the [src] off.</span>")

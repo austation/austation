@@ -10,7 +10,7 @@
 	move_resist = INFINITY
 	pull_force = INFINITY
 	var/heat_capacity = 80
-	var/mass = 0
+	var/mass = 0 // how heavy the object is
 	var/special = "none" //special propeties
 	var/p_heat = 0 //how hot this projectile is
 	var/p_speed = 0 //how fast the projectile will exit the barrel
@@ -100,6 +100,6 @@
 	p_speed = 10000
 	mass = 50
 
-/obj/effect/coilshot/debug/Initialize()
+/obj/effect/coilshot/debug/New()
 	. = ..()
 	launch()
