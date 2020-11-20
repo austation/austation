@@ -21,7 +21,7 @@
 	addtimer(CALLBACK(src, .proc/move), 1)
 
 /obj/effect/coilshot/Bump(atom/clong) // lots of rod code in here
-	if(prob(10))
+	if(prob(80))
 		playsound(src, 'sound/effects/bang.ogg', 50, 1)
 		audible_message("<span class='danger'>You hear a CLANG!</span>")
 	var/change_dir_chance = -max(1, momentum / 100) + 100 // chance to change to collided direction increases as momentum decreases
@@ -101,5 +101,5 @@
 	mass = 50
 
 /obj/effect/coilshot/debug/New()
-	. = ..()
+	..()
 	launch()
