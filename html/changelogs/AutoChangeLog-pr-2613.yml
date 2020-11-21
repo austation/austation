@@ -1,0 +1,4 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - server: "libmariadb.dll is no longer a required static file"
