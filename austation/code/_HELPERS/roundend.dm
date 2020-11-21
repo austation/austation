@@ -35,9 +35,10 @@
 
 			discordmsg += "[antag_info["key"]] was [antag_info["name"]] the [antag_info["antagonist_name"]]\n"
 
-			var/list/objective_info = list()d
+			var/list/objective_info = list()
 			var/greentexted = TRUE
 			var/num = 0
+
 			if(A.objectives.len)
 				for(var/datum/objective/O in A.objectives)
 					var/result = O.check_completion() ? "SUCCESS" : "FAIL"
