@@ -588,7 +588,6 @@
 /obj/item/storage/pod/AltClick(mob/user)
 	if(!can_interact(user))
 		return
-	..()
 
 /obj/item/storage/pod/can_interact(mob/user)
 	if(!..())
