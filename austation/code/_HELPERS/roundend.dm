@@ -50,9 +50,9 @@
 					discordmsg += "Objective #[num]: objective_info["text"] objective_info["result"]\n"
 
 			if(greentexted == FALSE)
-				discordmsg += "The [antag_info["name"]] has failed!"
+				discordmsg += "The [antag_info["antagonist_name"]] has failed!"
 			else
-				discordmsg += "The [antag_info["name"]] has succeded!"
+				discordmsg += "The [antag_info["antagonist_name"]] has succeded!"
 
 			send2chat(discordmsg, "roundend")
 
