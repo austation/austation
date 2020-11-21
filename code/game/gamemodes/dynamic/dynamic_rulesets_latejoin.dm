@@ -59,11 +59,7 @@
 	name = "Syndicate Infiltrator"
 	antag_datum = /datum/antagonist/traitor
 	antag_flag = ROLE_TRAITOR
-<<<<<<< HEAD
-	protected_roles = list("Security Officer", "Warden", "Head of Personnel", "Detective", "Head of Security", "Head of Personnel", "Captain") // austation -- HOP can no longer be antag
-=======
 	protected_roles = list("Security Officer", "Warden", "Detective", "Head of Security", "Captain", "Head of Personnel", "Brig Physician")
->>>>>>> 0ec5c0879d... Some fixes to roles in dynamic rulesets (#2957)
 	restricted_roles = list("AI","Cyborg")
 	required_candidates = 1
 	weight = 7

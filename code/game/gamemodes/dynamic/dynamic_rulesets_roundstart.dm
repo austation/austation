@@ -11,11 +11,7 @@
 	antag_flag = ROLE_TRAITOR
 	antag_datum = /datum/antagonist/traitor
 	minimum_required_age = 0
-<<<<<<< HEAD
-	protected_roles = list("Security Officer", "Warden", "Detective", "Head of Security", "Head of Personnel", "Captain") // austation -- HOP can no longer be antag
-=======
-	protected_roles = list("Security Officer", "Warden", "Detective", "Head of Security", "Captain", "Brig Physician")
->>>>>>> 0ec5c0879d... Some fixes to roles in dynamic rulesets (#2957)
+	protected_roles = list("Security Officer", "Warden", "Detective", "Head of Security", "Head of Personnel", "Captain", "Brig Physician") // austation -- HOP can no longer be antag
 	restricted_roles = list("Cyborg")
 	required_candidates = 1
 	weight = 5
@@ -54,11 +50,7 @@
 	name = "Blood Brothers"
 	antag_flag = ROLE_BROTHER
 	antag_datum = /datum/antagonist/brother/
-<<<<<<< HEAD
-	protected_roles = list("Security Officer", "Warden", "Detective", "Head of Security", "Head of Personnel", "Captain") // austation -- HOP can no longer be antag
-=======
-	protected_roles = list("Security Officer", "Warden", "Detective", "Head of Security", "Captain", "Brig Physician")
->>>>>>> 0ec5c0879d... Some fixes to roles in dynamic rulesets (#2957)
+	protected_roles = list("Security Officer", "Warden", "Detective", "Head of Security", "Head of Personnel", "Captain", "Brig Physician") // austation -- HOP can no longer be antag
 	restricted_roles = list("Cyborg", "AI")
 	required_candidates = 2
 	weight = 4
@@ -106,11 +98,7 @@
 	name = "Changelings"
 	antag_flag = ROLE_CHANGELING
 	antag_datum = /datum/antagonist/changeling
-<<<<<<< HEAD
-	protected_roles = list("Security Officer", "Warden", "Detective", "Head of Security", "Head of Personnel", "Captain") // austation -- HOP can no longer be antag
-=======
-	protected_roles = list("Security Officer", "Warden", "Detective", "Head of Security", "Captain", "Brig Physician")
->>>>>>> 0ec5c0879d... Some fixes to roles in dynamic rulesets (#2957)
+	protected_roles = list("Security Officer", "Warden", "Detective", "Head of Security", "Head of Personnel", "Captain", "Brig Physician") // austation -- HOP can no longer be antag
 	restricted_roles = list("AI", "Cyborg")
 	required_candidates = 1
 	weight = 3
@@ -704,7 +692,7 @@
 	flags = HIGHLANDER_RULESET
 	var/datum/team/clock_cult/main_cult
 	var/list/selected_servants = list()
-	
+
 /datum/dynamic_ruleset/roundstart/clockcult/pre_execute()
 	//Load Reebe
 	var/list/errorList = list()
