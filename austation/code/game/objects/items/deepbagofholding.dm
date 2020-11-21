@@ -2,7 +2,7 @@
 
 /obj/item/deepbackpack
 	name = "deep bag of holding"
-	desc = "A bluespace bag, increasing the size of it's pocket dimension. It's huge!"
+	desc = "A bluespace bag, with a pocket dimension large enough to live in. It's huge!"
 	// Alternative descriptions: "Enslaved Tardis", "It's bigger on the inside", "Mobile ERP den", "Mobile dormitory", "Mini drug lab", e.t.c
 	icon = 'austation/icons/obj/deepbagofholding.dmi'
 	icon_state = "holdingpack"
