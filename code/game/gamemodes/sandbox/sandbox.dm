@@ -10,11 +10,12 @@
 	allow_persistence_save = FALSE
 
 /datum/game_mode/sandbox/pre_setup()
-	//Disables Random Events
-	var/new_are = !CONFIG_GET(flag/allow_random_events)
-	CONFIG_SET(flag/allow_random_events, new_are)
 
-	//Enables player spawing
+	//austation begin -- <Disables Random Events, makes Sandbox a "Peaceful" Mode>
+	CONFIG_SET(flag/allow_random_events, FALSE)
+	//austation end
+
+	//Enables player item spawing
 	for(var/mob/M in GLOB.player_list)
 		M.CanBuild()
 	return 1
