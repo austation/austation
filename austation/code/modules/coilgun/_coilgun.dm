@@ -75,7 +75,7 @@
 
 			if(isliving(AM))
 				var/mob/living/L = AM
-				L.adjustBruteLoss(30)
+				L.adjustBruteLoss(20)
 				if(ishuman(L) && !isdead(L))
 					L.Paralyze(amount = 50, ignore_canstun = TRUE)
 					L.emote("scream")
@@ -181,7 +181,7 @@
 						projectile.p_speed += speed_increase // add speed to projectile
 						projectile.p_heat += heat_increase // add heat to projectile
 						projectile.on_transfer() // calls the "on_tranfer" proc for the projectile
-						current_power_use = clamp(min_power_use + (projectile.p_speed * 0.5) * (projectile.p_heat * 0.5) * (target_power_usage / 100), min_power_use, max_power_use) //big scary line, determins power usage
+						current_power_use = clamp(min_power_use + (projectile.p_speed * 500) * (projectile.p_heat * 0.5) * (target_power_usage / 100), min_power_use, max_power_use) //big scary line, determins power usage
 						cps = p_speed
 						playsound(get_turf(src), 'sound/weapons/emitter2.ogg', 50, 1)
 						continue
@@ -222,6 +222,8 @@
 			if(isliving(AM)) // no non-magnetic hoomans
 				var/mob/living/L = AM
 				playsound(src.loc, 'sound/machines/buzz-two.ogg', 40, 1)
+				L.adjustBruteLoss(25)
+				L.emote("scream")
 				visible_message("<span class='warning'>\The [src]'s safety mechanism engages, ejecting [L] through the maintenance hatch!</span>")
 				L.forceMove(get_turf(src))
 				continue
@@ -235,7 +237,7 @@
 
 /obj/structure/disposalpipe/coilgun/cooler/active
 	name = "active coilgun cooler"
-	desc = "A tube with multiple small, fast fans used for cooling any projectile that passes through it, more effective than a passive cooler but slows the projectile down more"
+	desc = "A tube with multiple small, fast fans used for cooling any projectile that passes through it. Much more effective than a passive cooler but slows the projectile down more"
 	icon_state = "a_cooler"
 	heat_removal = 5
 	speed_penalty = 0.95
