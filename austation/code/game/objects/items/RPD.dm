@@ -3,23 +3,40 @@
 GLOBAL_LIST_INIT(coilgun_recipes, list(
 	"Coilgun Pipes" = list(
 		new /datum/pipe_info/coilgun("Pipe",			/obj/structure/disposalpipe/segment/coilgun, PIPE_BENDABLE),
-		new /datum/pipe_info/coilgun("Junction",		/obj/structure/disposalpipe/junction/coilgun, PIPE_TRIN_M),
+//		new /datum/pipe_info/coilgun("Junction",		/obj/structure/disposalpipe/junction/coilgun, PIPE_TRIN_M),
 		new /datum/pipe_info/coilgun("Magnetizer",		/obj/structure/disposalpipe/coilgun/magnetizer),
 		new /datum/pipe_info/coilgun("Cooler",			/obj/structure/disposalpipe/coilgun/cooler),
 		new /datum/pipe_info/coilgun("Active Cooler",	/obj/structure/disposalpipe/coilgun/cooler/active),
 	)
 ))
 
+/datum/pipe_info/coilgun/New(label, obj/path, dt=PIPE_UNARY)
+	name = label
+	id = path
+
+	icon_state = initial(path.icon_state)
+	if(ispath(path, /obj/structure/disposalpipe))
+		icon_state = "con[icon_state]"
+
+	dirtype = dt
+
+/datum/pipe_info/coilgun/Params()
+	return "dmake=[id]&type=[dirtype]"
+
 /obj/item/pipe_dispenser
 	var/static/datum/pipe_info/first_coilgun
 
+/*
+
+The following has been moved into the main file due to proc specific variable.
 
 /obj/item/pipe_dispenser/ui_data(mob/user)
+	var/au_recipes
 	. = ..()
 	if(category == COILGUN_CATEGORY)
 		recipes = GLOB.coilgun_recipes
-
-/obj/item/pipe_dispenser/ui_data(mob/user)
+*/
+/obj/item/pipe_dispenser/ui_act(mob/user)
 	. = ..()
 	if(category == COILGUN_CATEGORY)
 		recipe = first_coilgun
@@ -43,3 +60,4 @@ GLOBAL_LIST_INIT(coilgun_recipes, list(
 	category = COILGUN_CATEGORY
 
 #undef COILGUN_CATEGORY
+#undef DISPOSALS_CATEGORY

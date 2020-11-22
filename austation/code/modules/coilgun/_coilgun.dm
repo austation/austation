@@ -182,7 +182,7 @@
 						projectile.p_heat += heat_increase // add heat to projectile
 						projectile.on_transfer() // calls the "on_tranfer" proc for the projectile
 						current_power_use = clamp(min_power_use + (projectile.p_speed * 500) * (projectile.p_heat * 0.5) * (target_power_usage / 100), min_power_use, max_power_use) //big scary line, determins power usage
-						cps = p_speed
+						cps = projectile.p_speed
 						playsound(get_turf(src), 'sound/weapons/emitter2.ogg', 50, 1)
 						continue
 
