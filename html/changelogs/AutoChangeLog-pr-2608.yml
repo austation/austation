@@ -1,4 +1,0 @@
-author: "AustationBot"
-delete-after: True
-changes: 
-  - tweak: "recycler will no longer grind down raw/material stacks"
