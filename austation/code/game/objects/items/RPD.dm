@@ -1,4 +1,3 @@
-#define COILGUN_CATEGORY 4
 
 GLOBAL_LIST_INIT(coilgun_recipes, list(
 	"Coilgun Pipes" = list(
@@ -59,5 +58,4 @@ The following has been moved into the main file due to proc specific variable.
 	..()
 	category = COILGUN_CATEGORY
 
-#undef COILGUN_CATEGORY
 #undef DISPOSALS_CATEGORY
