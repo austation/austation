@@ -21,35 +21,9 @@
 
 /obj/item/gun/chem/medical/Initialize()
 	. = ..()
-
 	allowedchems = typesof(/datum/reagent/medicine) + typesof(/datum/reagent/vaccine) + typesof(/datum/reagent/water) //easier to define allowed chems then to blacklist them
 	allowedchems.Remove(/datum/reagent/medicine/morphine, /datum/reagent/medicine/silver_sulfadiazine, /datum/reagent/medicine/styptic_powder) //these are considered medicine but arent beneficial
-
-	chambered = new casing(src)
-	START_PROCESSING(SSobj, src)
 	create_reagents(120, OPENCONTAINER)
-
-/obj/item/gun/chem/medical/Destroy()
-	. = ..()
-	STOP_PROCESSING(SSobj, src)
-
-/obj/item/gun/chem/medical/can_shoot()
-	return syringes_left
-
-/obj/item/gun/chem/medical/process_chamber()
-	if(chambered && !chambered.BB && syringes_left)
-		chambered.newshot()
-
-/obj/item/gun/chem/medical/process()
-	if(syringes_left >= max_syringes)
-		return
-	if(world.time < last_synth+time_per_syringe)
-		return
-	to_chat(loc, "<span class='warning'>You hear a click as the [src] synthesizes a new dart.</span>")
-	syringes_left++
-	if(chambered && !chambered.BB)
-		chambered.newshot()
-	last_synth = world.time
 
 // chem check
 
