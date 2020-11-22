@@ -21,9 +21,7 @@
 	..()
 	if(istype(I, /obj/item/reagent_containers))
 		for(var/datum/reagent/R in I.reagents.reagent_list)
-			if(R.type in allowedchems)
-
-			else
+			if(!(R.type in allowedchems))
 				to_chat(user, "<span class='notice'>The dart gun refuses as [I] has harmful chemicals.</span>")
 				return TRUE
 
