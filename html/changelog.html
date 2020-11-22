@@ -56,6 +56,248 @@
 		-->
 		<div class="commit sansserif">
 
+			<h2 class="date">22 November 2020</h2>
+			<h3 class="author">AustationBot updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="tweak">Radio jammer is now part of contractor kit standard loadout</li>
+				<li class="tweak">Tweaks contractor kit starting items pool by removing useless items and adding some new</li>
+				<li class="tweak">Radios now only play to the person wearing the headset / holding the radio.</li>
+				<li class="rscdel">Exolocomotive Xenomitosis has been removed.</li>
+				<li class="bugfix">Brig Physician can no longer be a traitor.</li>
+				<li class="rscadd">animated crates</li>
+				<li class="rscadd">Glass shards can now be made by using glass in-hand.</li>
+				<li class="tweak">Round will not end the instant all heretics are dead</li>
+				<li class="tweak">Adds heretics to the endgame credits</li>
+				<li class="balance">Departmental budget money increases are now static and are no longer exploitable.</li>
+				<li class="bugfix">Dynamic midround traitor triggered by roundstart traitor ruleset no longer ignores protected roles.</li>
+				<li class="tweak">recycler will no longer grind down raw/material stacks</li>
+				<li class="balance">Mindswapping with a slaughter demon is a terrible idea.</li>
+				<li class="server">libmariadb.dll is no longer a required static file</li>
+				<li class="admin">Allows resizing of the ticket messenger</li>
+			</ul>
+
+			<h2 class="date">19 November 2020</h2>
+			<h3 class="author">AustationBot updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="bugfix">Fixed being able to put intercoms and other anchored objects inside of trash bags.</li>
+				<li class="rscadd">Runechat text will be displayed even when inside another object such as lockers or crates.</li>
+				<li class="bugfix">Fixes ambience runtime</li>
+				<li class="tweak">Explosions throw farther</li>
+				<li class="tweak">Explosions throw all movable atoms</li>
+				<li class="tweak">Updated the rust-g dependency</li>
+				<li class="bugfix">Fixes a runtime issue with invalid research design disk.</li>
+				<li class="bugfix">Fixed "Show All" tab in player panel logs being broken.</li>
+				<li class="bugfix">Whispers, OOC, and various other things display differently in logs, visually distinguishing them from say logs.</li>
+				<li class="refactor">Player panel logs will now show all logs chronologically, so you'll see commingled say and attack logs if you're on the "Show All" tab, etc...</li>
+				<li class="bugfix">you no longer get IC muted for forced speech</li>
+				<li class="bugfix">Station goals are buyable again</li>
+				<li class="rscadd">You also get a centcomm report telling you what the goal is, in absence of the intercept report.</li>
+			</ul>
+			<h3 class="author">BobJoga, Useroth updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="rscadd">Adds the Crossbow, a makeshift weapon that fires iron rods.</li>
+			</ul>
+			<h3 class="author">Zandario updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="rscadd">PDA now have sounds.</li>
+			</ul>
+
+			<h2 class="date">17 November 2020</h2>
+			<h3 class="author">AustationBot updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="rscdel">SRM-8 Missile Rack can no longer be printed.</li>
+				<li class="bugfix">Reebe void is now jaunt proof</li>
+				<li class="bugfix">Prosperity prisms now heal servants.</li>
+				<li class="tweak">xeno queens can smack the emergency shuttle console to clear the xeno hostile environment rather than waiting it out</li>
+				<li class="tweak">Xeno queens will delay the escape shuttle for a while unless they are killed</li>
+				<li class="tweak">the shuttle will get auto called at the end of the timer if the queen is alive and it hasn't been called already to prevent super xeno extended rounds</li>
+				<li class="rscadd">Teratomas are actual antagonists now!</li>
+				<li class="rscadd">You can now make someone teratoma in traitor panel.</li>
+				<li class="tweak">Teratomas cannot be made into a human with DNA sting or by mutadone!</li>
+				<li class="refactor">fixed some shitcode in monkey (who cares).</li>
+				<li class="tweak">Science outpost doors now allow miners to travel a little more freely.</li>
+				<li class="tweak">Hermits no longer wake up to discover that their cave is flooded with toxic gas.</li>
+				<li class="bugfix">Red and blue cubes respect no_teleport</li>
+				<li class="tweak">Alloys are now given their proper names in the techfab.</li>
+			</ul>
+
+			<h2 class="date">16 November 2020</h2>
+			<h3 class="author">AustationBot updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="tweak">Updated RD cloak sprite</li>
+				<li class="tweak">Airlocks to bridge and other high security areas such as the heads' offices, EVA, teleporter and gateway now start reinforced with plasteel.</li>
+				<li class="bugfix">Fixes Abductor locker to be animated and animates the alien locker</li>
+				<li class="rscadd">Radios now make noises when you use them</li>
+				<li class="tweak">Replaced syndicate playing cards with a maintenance loot spawn.</li>
+				<li class="tweak">removes access levels from VIP</li>
+			</ul>
+			<h3 class="author">Paxilmaniac updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="rscadd">Traitor engineers can setup a sentry gun for 11 TC</li>
+			</ul>
+			<h3 class="author">Skoglol, Cenrus, and others updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="bugfix">Dynamic mode fixes</li>
+				<li class="bugfix">Revolution ending dynamic earlier than expected</li>
+				<li class="rscadd">Clockwork Cult and Abductors have been implemented into dynamic mode</li>
+				<li class="rscadd">The revolution gamemode will no longer be selected if there are no head of staff players</li>
+				<li class="rscadd">Dynamic added to secret rotation</li>
+			</ul>
+			<h3 class="author">jbox144 updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="bugfix">Fixed a bug which made the "coordination failure" mecha internal damage unfixable. Technically this is a salt PR...</li>
+				<li class="bugfix">Fixed a bug which meant the roboticist didn't get a suitskirt roundstart even if suitskirt prefs are enabled.</li>
+			</ul>
+			<h3 class="author">jupyterkat updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="rscadd">Roundend summaries are now on discord</li>
+			</ul>
+
+			<h2 class="date">15 November 2020</h2>
+			<h3 class="author">AustationBot updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="bugfix">Stasis beds now stop diseases from progressing</li>
+				<li class="rscadd">Botany's biogenerator can now produce toolbelts.</li>
+				<li class="balance">Absorbing another changeling made more rewarding again.</li>
+				<li class="tweak">Fleshmend is now an active ability rather than passive heal again.</li>
+				<li class="tweak">Augmented Eyesight now blocks flashes again.</li>
+				<li class="tweak">Organic Flesh suit now only costs 1 point, has less slowdown and is armoured.</li>
+				<li class="tweak">Updated extools</li>
+				<li class="rscadd">Adds small recoil to shotguns.</li>
+			</ul>
+			<h3 class="author">Smith, Golgor updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="rscadd">The Crazy Hamburger recipe</li>
+				<li class="imageadd">Crazy Hamburger sprite by Golgor</li>
+			</ul>
+			<h3 class="author">ZombiesVsPlants updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="rscadd">facehuggers to the lootpool</li>
+				<li class="code_imp">yeah I changed some code in the austation mining file</li>
+			</ul>
+
+			<h2 class="date">14 November 2020</h2>
+			<h3 class="author">AustationBot updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="rscadd">Nanotrasen battle royale.</li>
+				<li class="bugfix">Fixes statues being able to move while looked at.</li>
+				<li class="tweak">Integration cogs suppress APC power warnings.</li>
+				<li class="admin">More botany logging.</li>
+			</ul>
+
+			<h2 class="date">11 November 2020</h2>
+			<h3 class="author">AustationBot updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="balance">Makes searing tools small sized item</li>
+			</ul>
+			<h3 class="author">LemonInTheDark updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="bugfix">You will keep your angle when you drift through space now. Oh and immovable rods do the same, so things might get a bit more messy then usual.</li>
+			</ul>
+			<h3 class="author">MCterra10 updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="code_imp">modularized techweb changes</li>
+			</ul>
+
+			<h2 class="date">10 November 2020</h2>
+			<h3 class="author">AustationBot updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="bugfix">Changelings don't deathgasp twice when entering reviving stasis</li>
+				<li class="rscadd">Adds weed killer spray to janiborg</li>
+				<li class="rscadd">Adds acid spray to emagged janiborg</li>
+				<li class="refactor">Refactors cyborg spray bottles</li>
+			</ul>
+			<h3 class="author">jbox144 updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="rscadd">Drones get a built-in radio, connected to the common and engineering channels. It cannot transmit however.</li>
+				<li class="rscadd">Drones can be built at mech fabricators, once basic robotics is researched, at the cost of iron, glass and some gold.</li>
+				<li class="tweak">Drones can speak in silicon, and can understand common. Derelict drones cannot speak silicon.</li>
+				<li class="tweak">Drones can speak on binary with the :b prefix. The drone exclusive channel has been moved to the :d prefix. Derelict drones can only use dronechat.</li>
+			</ul>
+			<h3 class="author">wesoda25 updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="tweak">Flashbangs have been changed, their stun duration reduced in exchange for some paralysis followed by knockdown.</li>
+			</ul>
+
+			<h2 class="date">09 November 2020</h2>
+			<h3 class="author">AustationBot updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="bugfix">Many names and descriptions are now grammatically correct.</li>
+				<li class="bugfix">Emotes no longer add extra punctuation.</li>
+				<li class="tweak">"Stimulants" renamed to amphetamine.</li>
+				<li class="tweak">Viruses with purely cosmetic effects are now displayed in blue text to all parties rather than red text to observers.</li>
+				<li class="rscadd">Bee downstreams can now decide to automatically block you from joining if you're banned from bee.</li>
+				<li class="tweak">Made auto viewport fit default</li>
+				<li class="bugfix">assembly's now can be interacted with while inside other objects like TTV</li>
+				<li class="rscdel">Major and minor crimes are gone.</li>
+				<li class="tweak">Adding a crime recond in sechuds in only 1 pop-up now.</li>
+				<li class="rscadd">You can add details to a crime separately.</li>
+				<li class="refactor">Cleaned up sec console code and hud glasses code.</li>
+				<li class="rscdel">Removed the old autolathe UI</li>
+				<li class="rscadd">TGUI autolathe UI</li>
+				<li class="tweak">Multiple users can browse autolathe UI without seeing the same tabs.</li>
+				<li class="rscadd">You can now eject materials from an autolathe</li>
+				<li class="rscadd">You can now queue items in an autolathe</li>
+				<li class="rscadd">You can now toggle continuous fabrication mode on an autolathe queue, or an item in the autolathe queue meaning it will build repeatedly until the autolathe runs out of materials.</li>
+				<li class="rscadd">Trigger build wire on autolathes</li>
+				<li class="rscadd">Autolathe queue</li>
+				<li class="rscadd">Autolathe ejection direction.</li>
+				<li class="rscadd">The name and job of the announcer are now shown on announcements.</li>
+				<li class="bugfix">no more with exponential thermal energy, fusion now correctly produces heat: supply plasma to your nuclear fusion 'reactor', dammit!</li>
+				<li class="balance">in an attempt to preserve fun, I tweaked some numbers and logics in fusion to create some healthy fun</li>
+				<li class="rscdel">e30 fusion</li>
+				<li class="balance">rad now scales with fusion temperature, which means that you will get meager rads if you are bad at fusion (e.g. canister fusion), or stronger rads than before if you manage to keep a strong and robust fusion</li>
+				<li class="rscadd">in order to help you gauge the strength of your fusion, fusion-derived nuclear particles (aka radballs) are color-coded; and adjective-coded, so you can also gauge how damned you are after being hit by a radball</li>
+				<li class="refactor">lightly refactored fusion code in general</li>
+				<li class="tweak">Guns no longer use changeNext_move</li>
+				<li class="rscadd">:pensive:</li>
+				<li class="code_imp">pepper proofing now checks eye and mouth covering instead of a snowflake flag</li>
+				<li class="bugfix">spraypaint now uses eye covering instead of flash protection</li>
+				<li class="rscadd">Some new items in the mining vendor.</li>
+				<li class="tweak">Some prices changed in the mining vendor, can also eat through explorer mask.</li>
+				<li class="tweak">Cyborgs no longer get confused after getting flashed/flashbanged.</li>
+				<li class="bugfix">Paper stamping fixed</li>
+				<li class="bugfix">Examining paper on airlocks works</li>
+				<li class="tweak">Changed the view width to 17x15</li>
+				<li class="bugfix">Mirage borders sometimes not working properly</li>
+				<li class="code_imp">Proper zooming out procs.</li>
+			</ul>
+			<h3 class="author">jupyterkat updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="bugfix">You can't smack the reactor with rods anymore</li>
+				<li class="admin">Added more loggings to the reactor</li>
+			</ul>
+			<h3 class="author">park66665 updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="rscadd">Bananium Fuel Rod</li>
+				<li class="bugfix">Fixes a few problems around fuel rods</li>
+			</ul>
+
+			<h2 class="date">06 November 2020</h2>
+			<h3 class="author">AustationBot updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="tweak">Syndicate encryption key is restricted on incursion gamemode</li>
+				<li class="tweak">Syndicate mega bundle is no longer restricted on incursion gamemode.</li>
+			</ul>
+			<h3 class="author">Gandalf2k15 updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="tweak">Changed explosion sound code to be more noticeable and terrifying throughout the station during siginificant explosive events.</li>
+			</ul>
+			<h3 class="author">Krysonism updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="bugfix">fixed a gulag stacking machine exploit that would let you farm points with minimal or no ores mined.</li>
+			</ul>
+			<h3 class="author">Ohagi-Chan updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="code_imp">mechs no longer check to see which direction nearby ores are in</li>
+			</ul>
+			<h3 class="author">TheFakeElon updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="rscadd">Adds a Reactor Kit purchasable by cargo</li>
+				<li class="tweak">Uranium rods are now slightly cheaper</li>
+				<li class="tweak">You can now link reactor consoles with a multitool</li>
+			</ul>
+
 			<h2 class="date">05 November 2020</h2>
 			<h3 class="author">AustationBot updated:</h3>
 			<ul class="changes bgimages16">
@@ -713,168 +955,6 @@
 			<h3 class="author">nemvar updated:</h3>
 			<ul class="changes bgimages16">
 				<li class="rscadd">Colored lights now shine in different colours.</li>
-			</ul>
-
-			<h2 class="date">18 September 2020</h2>
-			<h3 class="author">AustationBot updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="bugfix">You now actually target the chest roundstart</li>
-			</ul>
-
-			<h2 class="date">16 September 2020</h2>
-			<h3 class="author">AustationBot updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="tweak">organs take three times as long to decay</li>
-				<li class="tweak">biometallic replication has slightly better stats, buffs preexisting robot limbs</li>
-				<li class="bugfix">TRD now works on mechanical limbs as intended</li>
-				<li class="bugfix">fixed exolocomotive xenomitosis capitalization and healing threshold</li>
-				<li class="tweak">exolocomotive xenomitosis now works on monky</li>
-				<li class="imageadd">pink zombies and macrophages, so exolocomotive xenomitosis can be more aesthetic</li>
-				<li class="bugfix">Spraycans with less than 2 but more than 0 charges left can no longer be used on objects</li>
-				<li class="bugfix">You can't order stuff from the express supply console as a ghost anymore</li>
-				<li class="rscdel">A clearly illegal slaughterhouse to the west of the research division on boxstation has been permanently removed.</li>
-				<li class="rscadd">An actual medbay with treatment separation and more than one surgery room has been installed in the place of the removed slaughterhouse.</li>
-				<li class="bugfix">Fixes a cargo bug where items wouldn't be sold if placed in an anchored container</li>
-				<li class="rscadd">PanDEMIC 2200 UI now includes severity for the overall disease and each symptom.</li>
-				<li class="tweak">Cult stun now works on mindshield instead of hearing protection</li>
-				<li class="bugfix">The ashwalker's bonfire does not require oxygen to burn anymore.</li>
-				<li class="tweak">vehicles no longer block bullets for you</li>
-				<li class="tweak">mobs which pass tables can move past vehicles</li>
-			</ul>
-			<h3 class="author">ExcessiveUseOfCobblestone(Idea by Arathian) updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="tweak">Mutation tox now has a minute window where you can purge the chem to avoid being changed (It functions EXACTLY like old slime mutation toxin)</li>
-				<li class="tweak">Slime Mutation Toxin is replaced by Mutation Toxin since they now function 100% the same. Think of this as just a name change!</li>
-			</ul>
-			<h3 class="author">totallynotkatfood updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="rscadd">Added more clothes to vendors and aushop</li>
-				<li class="rscadd">Added the wedding crate</li>
-				<li class="imageadd">added some icons for clothings</li>
-			</ul>
-
-			<h2 class="date">12 September 2020</h2>
-			<h3 class="author">AustationBot updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="bugfix">You can fold origami properly now.</li>
-				<li class="bugfix">Security webbing has +1 slot compared to sec belts again, and sec belts allow you to use all slots again.</li>
-			</ul>
-
-			<h2 class="date">11 September 2020</h2>
-			<h3 class="author">totallynotkatfood updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="rscadd">Added AI holomaids</li>
-			</ul>
-
-			<h2 class="date">10 September 2020</h2>
-			<h3 class="author">kriskog/Fikou ported by Archanial updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="rscadd">Omnitool.</li>
-				<li class="rscadd">Debug outfit has been updated and adjusted.</li>
-				<li class="balance">Admin RCD is superfast now and has upgrades.</li>
-			</ul>
-
-			<h2 class="date">08 September 2020</h2>
-			<h3 class="author">AustationBot updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="tweak">reworked phobias</li>
-			</ul>
-
-			<h2 class="date">07 September 2020</h2>
-			<h3 class="author">thelaughingbomb updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="rscadd">Royal rats and royal cheese.</li>
-				<li class="imageadd">The royal rats and royal cheese have their own sprites.</li>
-				<li class="code_imp">The code from the port was adjusted slightly to make them stronger by buffing their obj_damage to 21. They now gib on death to stop people from using abilities when dead. map: Random maint spawn for royal cheese</li>
-			</ul>
-
-			<h2 class="date">06 September 2020</h2>
-			<h3 class="author">AustationBot updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="rscadd">Paper can be folded into more types of origami.</li>
-				<li class="rscadd">Added plungers to chemistry closets</li>
-				<li class="tweak">replaces the glass in the labor camp with reinforced plasma glass.</li>
-				<li class="tweak">Changes the sound effect of the action_button/click</li>
-				<li class="bugfix">Observers no longer add highlights when hovering over things</li>
-				<li class="bugfix">Items with the 'SLOWS_IN_HAND' flag will now update your movement speed when equipped and dropped.</li>
-				<li class="bugfix">fixed the paper wizard den so everything doesnt instantly die from low pressure anymore.</li>
-				<li class="bugfix">fixed IAA AI being unable to complete the survive objective</li>
-				<li class="tweak">Bartender quits buying new monkeys for every shift. Pun Pun is back!</li>
-				<li class="tweak">Scrubbers filter BZ by default</li>
-				<li class="rscadd">Adds sterilizer spray to robodrobe</li>
-				<li class="rscadd">Adds morgue to robotics on DeltaStation and PubbyStation</li>
-				<li class="tweak">Defibrillation and revival surgery now snatch the ghost into the body.</li>
-				<li class="rscadd">Shotguns now blow people away at point blank.</li>
-				<li class="rscadd">Added an electric razor and wig to the chameleon kit, allowing you to disguise your hair also.</li>
-				<li class="code_imp">Removed rust-g overrides</li>
-			</ul>
-			<h3 class="author">Zeskorion, thatguythere03 updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="rscadd">Biometallic Replication, level nine symptom that does robot stuff. See the wiki.</li>
-				<li class="rscadd">Exolocomotive Xenomitosis, the tubby custard virus. See the wiki.</li>
-				<li class="rscadd">antivirus, cures IPCS and other robots of diseases. printable in med or sci</li>
-				<li class="tweak">vitiligo and revitiligo work on mutcolors, are now curable</li>
-				<li class="tweak">bee infestation resistance threshold lowered, demoted to level 0</li>
-				<li class="tweak">nano symbiosis and silicolysis now heal and damage robot bits, respectively</li>
-				<li class="tweak">made sure most healsymptoms wont work on robotic limbs</li>
-				<li class="balance">pituitary disruption healing and cell damage have both been boosted a bit</li>
-				<li class="tweak">ipcs are no longer completely virus immune</li>
-				<li class="imageadd">new sprites by thatguythere03, as well as some shitty codersprites by myself</li>
-			</ul>
-			<h3 class="author">totallynotkatfood updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="rscadd">Added a toggle ring verb</li>
-				<li class="bugfix">fixed borg lights again(tm)</li>
-			</ul>
-			<h3 class="author">yorii updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="bugfix">fixed ethereal charging</li>
-			</ul>
-
-			<h2 class="date">04 September 2020</h2>
-			<h3 class="author">AustationBot updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="rscadd">Added the holofan to engi borgs</li>
-				<li class="rscadd">Added chugging! Target mouth with a drinking glass to down 50u of a drink.</li>
-				<li class="rscadd">Added Fourth Wall: A drink that gives temporary brain traumas over time that are cured when the drink is out of your system.</li>
-				<li class="rscadd">Added Rat'vander Cocktail: A drink that makes you slur like the Nar'sour, but clock-cult styled. Explodes if mixed with Nar'sour.</li>
-				<li class="rscadd">Added Icewing: A drink that cools you down if hot, and heals some burn damage if too cold. Perfect for watcher hunting!</li>
-				<li class="rscadd">Added Sarsaparillian Sunset: a drink that slowly heals burn damage, but if overdosed over 50u, deals rapid burn damage and grants fire breath.</li>
-				<li class="rscadd">Added Bee's Knees: A drink that tastes bad to everyone except apids, but tastes fantastic to apids and heals them.</li>
-				<li class="tweak">Gave Plasmaflood (drink) a clear message of its effects.</li>
-				<li class="bugfix">Fixed a Nar'sour typo.</li>
-				<li class="imageadd">Added sprites for all drinks.</li>
-				<li class="rscadd">Nanotrasen has taught all crew how to properly point</li>
-				<li class="rscadd">Bees can now vent crawl</li>
-				<li class="bugfix">Updates our external RSC url to be actually functional</li>
-				<li class="bugfix">organic flux induction stealth threshold works proper now</li>
-				<li class="bugfix">pituitary disruption wont rip you out of your new body if your old body regrows a head</li>
-				<li class="rscadd">added a paper for the syndicate comms agent containing all the frequencies, and how to use their equipment</li>
-				<li class="rscadd">Syndie kit lootbox</li>
-				<li class="bugfix">mega syndie kit is restricted on nuke ops again.</li>
-			</ul>
-			<h3 class="author">MrLostman updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="rscadd">added occult tank</li>
-				<li class="rscdel">removed cursed oxygen tank</li>
-				<li class="tweak">removed hyperaoemod, repeatermod, resonatormod and bountymod tech disks from necro chest loot list</li>
-				<li class="tweak">adds hyperaoemod, repeatermod, resonatormod and bountymod to advanced mining</li>
-				<li class="tweak">second short wire changed to an on/off wire</li>
-			</ul>
-			<h3 class="author">thelaughingbomb updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="bugfix">Observers are no longer being told about loading ammo boxes into makeshift pistol, or that it jams.</li>
-			</ul>
-			<h3 class="author">totallynotkatfood updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="rscadd">Added RDX and TaTP</li>
-				<li class="rscadd">Added component chems for RDX and TaTP</li>
-			</ul>
-			<h3 class="author">yorii updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="imageadd">Added missing hud icons for the gimmick jobs.</li>
-				<li class="imageadd">Service job icons are now green.</li>
-				<li class="imageadd">Slight tweaking of a few pixels to make mime icon look more like a mime.</li>
 			</ul>
 		</div>
 

@@ -160,9 +160,9 @@ SUBSYSTEM_DEF(ticker)
 				window_flash(C, ignorepref = TRUE) //let them know lobby has opened up.
 			to_chat(world, "<span class='boldnotice'>Welcome to [station_name()]!</span>")
 			if(GLOB.master_mode == "sandbox") // austation start -- TGS bot now pings notification squad role, also hopefully fixes TGS issues
-				world.TgsTargetedChatBroadcast("New sandbox round starting on [SSmapping.config.map_name]!", FALSE)
+				send2chat("New sandbox round starting on [SSmapping.config.map_name]!", "status")
 			else
-				world.TgsTargetedChatBroadcast("<@&586792483892232209> New round starting on [SSmapping.config.map_name]!", FALSE) // austation end
+				send2chat("<@&586792483892232209> New round starting on [SSmapping.config.map_name]!", "status") // austation end
 			current_state = GAME_STATE_PREGAME
 			//Everyone who wants to be an observer is now spawned
 			create_observers()
@@ -256,7 +256,7 @@ SUBSYSTEM_DEF(ticker)
 	var/can_continue = 0
 	can_continue = src.mode.pre_setup()		//Choose antagonists
 	CHECK_TICK
-	can_continue = can_continue && SSjob.DivideOccupations() 				//Distribute jobs
+	can_continue = can_continue && SSjob.DivideOccupations(mode.required_jobs) 				//Distribute jobs
 	CHECK_TICK
 
 	to_chat(world, "<span class='boldannounce'>Starting game...</span>")
