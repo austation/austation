@@ -3,6 +3,7 @@
 	name = "coilgun tube"
 	desc = "An electromagnetic tube that allows the safe transportation of high speed magnetic projectiles"
 	icon = 'austation/icons/obj/atmospherics/pipes/disposal.dmi'
+	layer = 2.45
 	initialize_dirs = DISP_DIR_FLIP
 	coilgun = TRUE
 
@@ -114,6 +115,7 @@
 	var/min_power_use = 120000 // the lowest power it can use to function in watts
 	var/max_power_use = INFINITY // the maximum amount of power the charger can draw in watts
 	var/obj/structure/cable/attached // attached cable
+	var/cps = 0 // current projectile speed, stored in a var fotr examining the charger
 
 /obj/structure/disposalpipe/coilgun/charger/attack_hand(mob/user)
 	. = ..()
@@ -180,6 +182,7 @@
 						projectile.p_heat += heat_increase // add heat to projectile
 						projectile.on_transfer() // calls the "on_tranfer" proc for the projectile
 						current_power_use = clamp(min_power_use + (projectile.p_speed * 0.5) * (projectile.p_heat * 0.5) * (target_power_usage / 100), min_power_use, max_power_use) //big scary line, determins power usage
+						cps = p_speed
 						playsound(get_turf(src), 'sound/weapons/emitter2.ogg', 50, 1)
 						continue
 
@@ -195,6 +198,11 @@
 					AM.forceMove(get_turf(src))
 					continue
 	return ..()
+
+/obj/structure/disposalpipe/coilgun/charger/examine(mob/user)
+	. = ..()
+	if(cps)
+		. += "<span class='info'>The projectile speed indicator reads: [cps]km/h.</span>"
 
 // passive cooler
 /obj/structure/disposalpipe/coilgun/cooler
