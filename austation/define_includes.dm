@@ -5,5 +5,4 @@
 #include "code\_DEFINES\mobs.dm"
 #include "code\_DEFINES\movespeed_modification.dm"
 #include "code\_DEFINES\pool.dm"
-#include "code\_DEFINES\RPD.dm"
 #include "code\_DEFINES\traits.dm"

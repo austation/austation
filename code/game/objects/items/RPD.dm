@@ -293,8 +293,6 @@ GLOBAL_LIST_INIT(fluid_duct_recipes, list(
 			recipes = GLOB.transit_tube_recipes
 		if(PLUMBING_CATEGORY)
 			recipes = GLOB.fluid_duct_recipes
-		if(COILGUN_CATEGORY) // austation -- Adds coilguns #2541
-			recipes = GLOB.coilgun_recipes
 	for(var/c in recipes)
 		var/list/cat = recipes[c]
 		var/list/r = list()
