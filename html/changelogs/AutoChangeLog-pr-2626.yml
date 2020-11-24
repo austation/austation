@@ -1,4 +1,0 @@
-author: "AustationBot"
-delete-after: True
-changes: 
-  - bugfix: "Fixes not being able to use syringes on arms and legs whilst wearing an armour vest."
