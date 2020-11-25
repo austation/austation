@@ -18,9 +18,9 @@
 	else
 		discordmsg += "Nobody died!\n"
 	if(GLOB.antagonists.len)
-		discordmsg += "Antagonists at round end were..."
+		discordmsg += "Antagonists at round end were...\n"
 	else
-		discordmsg += "There were no antagonists!"
+		discordmsg += "There were no antagonists!\n"
 	send2chat(discordmsg, "roundend")
 	discordmsg = ""
 	if(GLOB.antagonists.len)
@@ -51,9 +51,9 @@
 					discordmsg += "Objective #[num]: objective_info["text"] objective_info["result"]\n"
 
 			if(greentexted == FALSE)
-				discordmsg += "The [antag_info["antagonist_name"]] has failed!"
+				discordmsg += "The [antag_info["antagonist_name"]] has failed!\n"
 			else
-				discordmsg += "The [antag_info["antagonist_name"]] has succeded!"
+				discordmsg += "The [antag_info["antagonist_name"]] has succeded!\n"
 
 			send2chat(discordmsg, "roundend")
 
