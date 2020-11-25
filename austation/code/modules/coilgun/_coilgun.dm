@@ -7,47 +7,6 @@
 	initialize_dirs = DISP_DIR_FLIP
 	coilgun = TRUE
 
-/obj/structure/disposalpipe/coilgun/expel(obj/structure/disposalholder/H, turf/T, direction, params) // atom/target,
-	var/turf/target
-	var/eject_range = 5
-	var/turf/open/floor/floorturf
-
-	if(isfloorturf(T)) //intact floor, pop the tile
-		floorturf = T
-		if(floorturf.floor_tile)
-			new floorturf.floor_tile(T)
-		floorturf.make_plating()
-
-	if(direction)		// direction is specified
-		if(isspaceturf(T)) // if ended in space, then range is unlimited
-			target = get_edge_target_turf(T, direction)
-		else						// otherwise limit to 10 tiles
-			target = get_ranged_target_turf(T, direction, 10)
-
-		eject_range = 10
-
-	else if(floorturf)
-		target = get_offset_target_turf(T, rand(5)-rand(5), rand(5)-rand(5))
-
-	playsound(src, 'sound/machines/hiss.ogg', 50, 0, 0)
-	for(var/A in H)
-		var/atom/movable/AM = A
-		AM.forceMove(get_turf(src))
-		AM.pipe_eject(direction)
-		if(istype(AM, /obj/effect/coilshot))
-			var/obj/effect/coilshot/speedy = AM
-			if(speedy.p_speed)
-//				var/turf/starting = get_turf(src)
-//				var/turf/targturf = get_turf(target)
-				speedy.dir = dir
-				speedy.launch()
-
-		if(target)
-			AM.throw_at(target, eject_range, 1)
-	H.vent_gas(T)
-	qdel(H)
-
-
 /obj/structure/disposalpipe/coilgun/magnetizer
 	name = "magnetizer"
 	desc = "A machine that glazes inserted objects with neodymium, making the object magnetive"

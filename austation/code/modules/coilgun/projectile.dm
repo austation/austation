@@ -29,10 +29,10 @@
 		x = clong.x
 		y = clong.y
 	if(isturf(clong) || isobj(clong))
-		if(momentum >= 100)
+		if(momentum >= 50)
 			if(clong.density)
 				clong.ex_act(EXPLODE_HEAVY)
-				p_speed -= 100
+				p_speed -= 50
 		else
 			gameover()
 			return
@@ -81,12 +81,12 @@
 	melted.desc = "Ahahah that's hot, that's hot."
 	qdel(src)
 
-/// called when projectile has expired, replaces coilshot projectile with the original projectile.
+/// called when the projectile has expired, replaces coilshot projectile with the original item used to make it.
 /obj/effect/coilshot/proc/gameover()
 	var/atom/L = drop_location()
 	for(var/atom/movable/AM in src)
 		AM.forceMove(L)
-		if(throwing) // you keep some momentum when getting out of a thrown closet
+		if(throwing) // you keep some momentum
 			step(AM, dir)
 	if(throwing)
 		throwing.finalize(FALSE)
@@ -96,9 +96,9 @@
 /obj/effect/coilshot/debug
 	p_speed = 700
 	mass = 3
-/obj/effect/coilshot/debug/adminbus
+/obj/effect/coilshot/debug/badmin
 	p_speed = 10000
-	mass = 50
+	mass = 55
 
 /obj/effect/coilshot/debug/New()
 	..()
