@@ -1,0 +1,4 @@
+author: "jupyterkat"
+delete-after: True
+changes: 
+  - rscadd: "adds antag info to roundend channel"
