@@ -1,4 +1,0 @@
-author: "TheFakeElon"
-delete-after: True
-changes: 
-  - rscdel: "Removed tg maintainers from code owner list"
