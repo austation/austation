@@ -258,12 +258,9 @@
 		hit_atom.visible_message("<span class='danger'>[M] has been splashed with something!</span>", \
 						"<span class='userdanger'>[M] has been splashed with something!</span>")
 		var/turf/TT = get_turf(hit_atom)
-		var/throwerstring
 		if(thrownby)
 			log_combat(thrownby, M, "splashed", R)
-			var/turf/AT = get_turf(thrownby)
-			throwerstring = " THROWN BY [key_name(thrownby)] at [AT] (AREACOORD(AT)]"
-		log_reagent("SPLASH: [src] mob throw_impact() onto [key_name(hit_atom)] at [TT] ([AREACOORD(TT)])[throwerstring] - [R]")
+			message_admins("[ADMIN_LOOKUPFLW(thrownby)] splashed (thrown) [english_list(reagents.reagent_list)] on [TT] at [ADMIN_VERBOSEJMP(TT)].")
 		reagents.reaction(hit_atom, TOUCH)
 		reagents.clear_reagents()
 
