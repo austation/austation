@@ -79,8 +79,10 @@
 	if(reagents)
 		if(open)
 			spillable = FALSE
+			reagents.flags = NONE
 		else
 			spillable = TRUE
+			reagents.flags = OPENCONTAINER
 	if(open)
 		to_chat(user, "<span class='notice'>You close [src]'s [entrance_name].</span>")
 		playsound(user, 'sound/effects/bin_close.ogg', 50, TRUE)
