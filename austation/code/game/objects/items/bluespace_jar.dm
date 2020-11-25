@@ -46,14 +46,6 @@
 	STOP_PROCESSING(SSobj, src)
 	return ..()
 
-/obj/item/bluespace_jar/attack_self(mob/living/user)
-	..()
-	if(reagents)
-		if(open)
-			spillable = FALSE
-		else
-			spillable = TRUE
-
 /obj/item/bluespace_jar/Destroy()
 	if(occupants.len)
 		for(var/V in occupants)
@@ -85,12 +77,13 @@
 		. += "<span class='notice'>Activate it in your hand to [open ? "close" : "open"] its [entrance_name].</span>"
 		if(!open)
 			. += "<span class='notice'>Alt-click to [locked ? "unlock" : "lock"] its [entrance_name].</span>"
-		if(!spillable)
-			. += "<span class='notice'>The cap is on to prevent spilling. Click to remove the cap.</span>"
-		else
-			. += "<span class='notice'>The cap has been taken off. Click to put a cap on.</span>"
 
 /obj/item/bluespace_jar/attack_self(mob/living/user)
+	if(reagents)
+		if(open)
+			spillable = FALSE
+		else
+			spillable = TRUE
 	if(open)
 		to_chat(user, "<span class='notice'>You close [src]'s [entrance_name].</span>")
 		playsound(user, 'sound/effects/bin_close.ogg', 50, TRUE)
