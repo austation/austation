@@ -36,7 +36,6 @@
 	var/sipping_level = 150 //level until the reagent gets INGEST ed instead of TOUCH
 	var/sipping_probably = 99 //prob50 level of sipping
 	var/transfer_rate = 5 //chem transfer rate / second
-	var/spillable = TRUE
 
 /obj/item/bluespace_jar/Initialize()
 	. = ..()
@@ -78,10 +77,8 @@
 /obj/item/bluespace_jar/attack_self(mob/living/user)
 	if(reagents)
 		if(open)
-			spillable = FALSE
 			reagents.flags = NONE
 		else
-			spillable = TRUE
 			reagents.flags = OPENCONTAINER
 	if(open)
 		to_chat(user, "<span class='notice'>You close [src]'s [entrance_name].</span>")
@@ -243,7 +240,7 @@
 	if(occupants.len)
 		loc.visible_message("<span class='warning'>The bluespace jar smashes, releasing [occupants[1]]!</span>")
 
-	if(reagents?.total_volume && ismob(hit_atom) && hit_atom.reagents && (spillable == TRUE))
+	if(reagents?.total_volume && ismob(hit_atom) && hit_atom.reagents && open)
 		reagents.total_volume *= rand(5,10) * 0.1 //Not all of it makes contact with the target
 		var/mob/M = hit_atom
 		var/R = reagents.log_list()
