@@ -1,0 +1,6 @@
+author: "toasterroboto"
+delete-after: True
+changes: 
+  - rscadd: "Ginger beer with accompanying bottle to boozeomats and cola machines."
+  - bugfix: "Ginger beer now has a sprite when poured into a drinking glass."
+  - tweak: "Ginger beer now has a description that isn't 'mmmm ginger'."
