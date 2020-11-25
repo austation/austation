@@ -43,13 +43,10 @@
 	create_reagents(300, OPENCONTAINER) //equivalent of bsbeakers
 
 /obj/item/bluespace_jar/Destroy()
-	STOP_PROCESSING(SSobj, src)
-	return ..()
-
-/obj/item/bluespace_jar/Destroy()
 	if(occupants.len)
 		for(var/V in occupants)
 			remove_occupant(V)
+	STOP_PROCESSING(SSobj, src)
 	return ..()
 
 /obj/item/bluespace_jar/Exited(atom/movable/occupant)
@@ -265,6 +262,7 @@
 	if(!occupant_gas_supply)
 		occupant_gas_supply = new
 	if(ishuman(occupant)) //humans require resistance to cold/heat and living in no air while inside, and lose this when outside
+		START_PROCESSING(SSobj, src)
 		ADD_TRAIT(occupant, TRAIT_RESISTCOLD, "bluespace_container_cold_resist")
 		ADD_TRAIT(occupant, TRAIT_RESISTHEAT, "bluespace_container_heat_resist")
 		ADD_TRAIT(occupant, TRAIT_NOBREATH, "bluespace_container_no_breath")
