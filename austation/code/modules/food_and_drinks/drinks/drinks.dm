@@ -17,3 +17,11 @@
 	icon_state = "gingerbottle"
 	list_reagents = list(/datum/reagent/consumable/ginger_beer = 30)
 	foodtype = SUGAR | JUNKFOOD
+
+/obj/item/reagent_containers/food/drinks/bottle/bitters
+	name = "Narrowing Bitters"
+	desc = "A dash is always nice. A swig proves why they call it Narrowing Bitters."
+	icon = 'austation/icons/obj/drinks.dmi'
+	icon_state = "bitters"
+	list_reagents = list(/datum/reagent/consumable/ethanol/bitters = 50)
+	foodtype = GRAIN | ALCOHOL
