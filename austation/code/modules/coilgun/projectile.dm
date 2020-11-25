@@ -1,4 +1,4 @@
-/obj/effect/coilshot
+/obj/effect/hvp
 	name = "coilgun projectile"
 	desc = "oopsy woopsy, if you can read this, coder has messed up."
 	icon = 'icons/obj/objects.dmi'
@@ -17,10 +17,10 @@
 	var/charged = FALSE //has the projectile been overcharged already
 	var/momentum = 0
 
-/obj/effect/coilshot/proc/launch()
+/obj/effect/hvp/proc/launch()
 	addtimer(CALLBACK(src, .proc/move), 1)
 
-/obj/effect/coilshot/Bump(atom/clong) // lots of rod code in here
+/obj/effect/hvp/Bump(atom/clong) // lots of rod code in here
 	if(prob(80))
 		playsound(src, 'sound/effects/bang.ogg', 50, 1)
 		audible_message("<span class='danger'>You hear a CLANG!</span>")
@@ -39,7 +39,7 @@
 	else if(isliving(clong))
 		penetrate(clong)
 
-/obj/effect/coilshot/proc/penetrate(mob/living/L)
+/obj/effect/hvp/proc/penetrate(mob/living/L)
 	L.visible_message("<span class='danger'>[L] is penetrated by \the [src]!</span>" , "<span class='userdanger'>\The [src] penetrates you!</span>" , "<span class ='danger'>You hear a CLANG!</span>")
 	if(ishuman(L))
 		var/mob/living/carbon/human/H = L
@@ -48,7 +48,7 @@
 	if(L && (L.density || prob(10)))
 		L.ex_act(EXPLODE_HEAVY)
 
-/obj/effect/coilshot/proc/move()
+/obj/effect/hvp/proc/move()
 	if(!step(src,dir))
 		forceMove(get_step(src,dir))
 	p_speed--
@@ -69,20 +69,20 @@
 	addtimer(CALLBACK(src, .proc/move), move_delay)
 
 /// called when we pass through a charger
-/obj/effect/coilshot/proc/on_transfer()
+/obj/effect/hvp/proc/on_transfer()
 	if(p_heat >= heat_capacity)
 		overspice()
 
 /// melts the projectile when over heated
-/obj/effect/coilshot/proc/overspice()
+/obj/effect/hvp/proc/overspice()
 	var/obj/effect/decal/cleanable/ash/melted = new(loc) // make an ash pile where we die ;-;
 	playsound(loc, 'sound/items/welder.ogg', 150, 1)
 	melted.name = "slagged [name]"
 	melted.desc = "Ahahah that's hot, that's hot."
 	qdel(src)
 
-/// called when the projectile has expired, replaces coilshot projectile with the original item used to make it.
-/obj/effect/coilshot/proc/gameover()
+/// called when the projectile has expired, replaces hvp projectile with the original item used to make it.
+/obj/effect/hvp/proc/gameover()
 	var/atom/L = drop_location()
 	for(var/atom/movable/AM in src)
 		AM.forceMove(L)
@@ -93,13 +93,13 @@
 	qdel(src)
 
 
-/obj/effect/coilshot/debug
+/obj/effect/hvp/debug
 	p_speed = 700
 	mass = 3
-/obj/effect/coilshot/debug/badmin
+/obj/effect/hvp/debug/badmin
 	p_speed = 10000
 	mass = 55
 
-/obj/effect/coilshot/debug/New()
+/obj/effect/hvp/debug/New()
 	..()
 	launch()

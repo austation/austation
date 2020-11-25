@@ -18,7 +18,7 @@
 
 		icon_state = "amagnet"
 		update_icon()
-		var/obj/effect/coilshot/boolet
+		var/obj/effect/hvp/boolet
 
 		for(var/atom/movable/AM in H.contents)
 			if(AM == boolet)
@@ -129,7 +129,7 @@
 	visible_message("<span class='danger'>debug: holder entered transfer proc!</span>") // au debug
 	if(H.contents.len)
 		if(can_charge) // do we have enough power?
-			var/obj/effect/coilshot/projectile
+			var/obj/effect/hvp/projectile
 			for(var/atom/movable/AM in H.contents) // run the loop below for every movable that passes through the charger
 				if(AM == projectile) // if it's a projectile, continue
 					var/datum/powernet/PN = attached.powernet
@@ -173,7 +173,7 @@
 
 /obj/structure/disposalpipe/coilgun/cooler/transfer(obj/structure/disposalholder/H)
 	if(H.contents.len)
-		var/obj/effect/coilshot/projectile
+		var/obj/effect/hvp/projectile
 		for(var/atom/movable/AM in H.contents) // run the loop below for every movable that passes through the charger
 			if(AM == projectile) // if it's a projectile, continue
 				projectile.p_heat -= heat_removal

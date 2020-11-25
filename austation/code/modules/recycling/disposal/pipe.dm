@@ -42,8 +42,8 @@
 	for(var/A in H)
 		var/atom/movable/AM = A
 		AM.forceMove(get_turf(src))
-		if(istype(AM, /obj/effect/coilshot))
-			var/obj/effect/coilshot/speedy = AM
+		if(istype(AM, /obj/effect/hvp))
+			var/obj/effect/hvp/speedy = AM
 			if(speedy.p_speed >= 1)
 				speedy.dir = dir
 				speedy.launch()
