@@ -2,7 +2,10 @@
 
 // The base used for calculating speed increase
 // lower values make speed increases more diminishing
-#define BASE 0.975
+#define BASE 0.995
+
+// the smallest amount of power the charger can use to function in watts.
+#define MIN_POWER_USE 100000
 
 
 /obj/structure/disposalpipe/coilgun
@@ -77,7 +80,6 @@
 	var/heat_increase = 10 // how much the charger will heat up the projectile
 	var/target_power_usage = 0 // the set percentage of excess power to be used by the charger
 	var/current_power_use = 0 // how much power it is currently drawing
-	var/min_power_use = 120000 // the lowest power it can use to function in watts
 	var/max_power_use = INFINITY // the maximum amount of power the charger can draw in watts
 	var/obj/structure/cable/attached // attached cable
 	var/cps = 0 // current projectile speed, stored in a var fotr examining the charger
@@ -120,7 +122,7 @@
 
 	var/datum/powernet/PN = attached.powernet
 	if(PN)
-		var/drained = clamp(min(current_power_use, attached.newavail()), min_power_use, max_power_use) // set our power use
+		var/drained = clamp(min(current_power_use, attached.newavail()), MIN_POWER_USE, max_power_use) // set our power use
 		if(current_power_use > drained) // are we using more power than we have connected?
 			visible_message("<span class='warning'>Insufficient power!</span>")
 			can_charge = FALSE
@@ -139,13 +141,13 @@
 					var/datum/powernet/PN = attached.powernet
 
 					if(PN)
-						var/prelim = (target_power_usage / 100) * (current_power_use / min_power_use) // (0-100 divided by 100) * (how much power we're using divided by the minimum power use)
+						var/prelim = (target_power_usage / 100) * (current_power_use / MIN_POWER_USE) // (0-100 divided by 100) * (how much power we're using divided by the minimum power use)
 
 						speed_increase = prelim * BASE ** projectile.p_speed
 						projectile.p_speed += speed_increase // add speed to projectile
 						projectile.p_heat += heat_increase // add heat to projectile
 						projectile.on_transfer() // calls the "on_tranfer" proc for the projectile
-						current_power_use = clamp(min_power_use + (projectile.p_speed * 500) * (projectile.p_heat * 0.5) * (target_power_usage / 100), min_power_use, max_power_use) //big scary line, determins power usage
+						current_power_use = clamp(MIN_POWER_USE + (projectile.p_speed * 500) * (projectile.p_heat * 0.5) * (target_power_usage / 100), MIN_POWER_USE, max_power_use) //big scary line, determins power usage
 						cps = round(projectile.p_speed * 10)
 						playsound(get_turf(src), 'sound/weapons/emitter2.ogg', 50, 1)
 						visible_message("<span class='danger'>debug: speed increased by [speed_increase]!</span>")
