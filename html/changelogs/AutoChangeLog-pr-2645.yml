@@ -1,0 +1,6 @@
+author: "toasterroboto"
+delete-after: True
+changes: 
+  - rscadd: "Angostura bitters, found in the booze locker in the bar backroom."
+  - rscadd: "Lemon lime bitters, made with 1 part bitters and 5 parts lemon-lime."
+  - rscadd: "Moscow Mule, a drink made with 2 parts ginger beer, 1 part ice, 1 part lime juice and 1 part vodka."
