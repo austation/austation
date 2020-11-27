@@ -23,3 +23,15 @@
 	id = /datum/reagent/consumable/ethanol/bushranger
 	results = list(/datum/reagent/consumable/ethanol/bushranger = 2)
 	required_reagents = list(/datum/reagent/consumable/ethanol/bahama_mama = 1, /datum/reagent/consumable/ethanol/rum = 1, /datum/reagent/consumable/ginger_beer = 1, /datum/reagent/consumable/ethanol/quadruple_sec = 1)
+
+/datum/chemical_reaction/moscowmule
+	name = "Moscow Mule"
+	id = /datum/reagent/consumable/ethanol/moscowmule
+	results = list(/datum/reagent/consumable/ethanol/moscowmule = 4)
+	required_reagents = list(/datum/reagent/consumable/ginger_beer = 2, /datum/reagent/consumable/limejuice = 1, /datum/reagent/consumable/ice = 1, /datum/reagent/consumable/ethanol/vodka = 1)
+
+/datum/chemical_reaction/lemonlimebitters
+	name = "Lemon Lime Bitters"
+	id = /datum/reagent/consumable/ethanol/lemomlimebitters
+	results = list(/datum/reagent/consumable/ethanol/lemomlimebitters = 2)
+	required_reagents = list(/datum/reagent/consumable/ethanol/bitters = 1, /datum/reagent/consumable/lemon_lime = 5)
