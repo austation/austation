@@ -78,6 +78,7 @@
 	var/obj/structure/cable/attached // attached cable
 	var/cps = 0 // current projectile speed, stored in a var fotr examining the charger
 
+// because I don't want to make a GUI
 /obj/structure/disposalpipe/coilgun/charger/attack_hand(mob/user)
 	. = ..()
 	if(.)
@@ -176,14 +177,17 @@
 	icon_state = "p_cooler"
 	var/heat_removal = 2.5 // how much heat we will remove from the projectile
 	var/speed_penalty = 0.985 // multiplies projectile speed by this
+	var/hugbox = FALSE
 
 /obj/structure/disposalpipe/coilgun/cooler/transfer(obj/structure/disposalholder/H)
 	if(H.contents.len)
-		var/obj/effect/hvp/projectile
 		for(var/atom/movable/AM in H.contents) // run the loop below for every movable that passes through the charger
-			if(AM == projectile) // if it's a projectile, continue
+			if(istype(AM, /obj/effect/hvp)) // if it's a projectile, continue
+				var/obj/effect/hvp/projectile = AM
 				projectile.p_heat -= heat_removal
-				projectile.p_speed = projectile.p_speed * speed_penalty
+				if(!hugbox)
+					projectile.p_speed = projectile.p_speed * speed_penalty
+				continue
 			if(isliving(AM)) // no non-magnetic hoomans
 				var/mob/living/L = AM
 				playsound(src.loc, 'sound/machines/buzz-two.ogg', 40, 1)
@@ -191,18 +195,18 @@
 				L.emote("scream")
 				visible_message("<span class='warning'>\The [src]'s safety mechanism engages, ejecting [L] through the maintenance hatch!</span>")
 				L.forceMove(get_turf(src))
-
+				continue
 
 			else // eject the item if it's none of the above
 				visible_message("<span class='warning'>\The [src]'s safety mechanism engages, ejecting \the [AM] through the maintenance hatch!</span>")
 				AM.forceMove(get_turf(src))
-
-
+				continue
 	return ..()
 
 /obj/structure/disposalpipe/coilgun/cooler/active
 	name = "active coilgun cooler"
 	desc = "A tube with multiple small, fast fans used for cooling any projectile that passes through it. Much more effective than a passive cooler but slows the projectile down more"
+	icon = 'austation/icons/obj/atmospherics/pipes/disposal.dmi'
 	icon_state = "a_cooler"
 	heat_removal = 5
 	speed_penalty = 0.95
