@@ -17,9 +17,6 @@
 	var/charged = FALSE //has the projectile been overcharged already
 	var/momentum = 0
 
-/obj/effect/hvp/Destroy()
-	gameover()
-
 /obj/effect/hvp/proc/launch()
 
 	momentum = mass*p_speed

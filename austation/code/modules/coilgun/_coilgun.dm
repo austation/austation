@@ -1,5 +1,9 @@
-
 // TheFakeElon's funni projectile launcher
+
+// The base used for calculating speed increase
+// lower values make speed increases more diminishing
+#define BASE 0.975
+
 
 /obj/structure/disposalpipe/coilgun
 	name = "coilgun tube"
@@ -137,12 +141,12 @@
 					if(PN)
 						var/prelim = (target_power_usage / 100) * (current_power_use / min_power_use) // (0-100 divided by 100) * (how much power we're using divided by the minimum power use)
 
-						speed_increase = prelim * 0.5 ** projectile.p_speed
+						speed_increase = prelim * BASE ** projectile.p_speed
 						projectile.p_speed += speed_increase // add speed to projectile
 						projectile.p_heat += heat_increase // add heat to projectile
 						projectile.on_transfer() // calls the "on_tranfer" proc for the projectile
 						current_power_use = clamp(min_power_use + (projectile.p_speed * 500) * (projectile.p_heat * 0.5) * (target_power_usage / 100), min_power_use, max_power_use) //big scary line, determins power usage
-						cps = round(projectile.p_speed)
+						cps = round(projectile.p_speed * 10)
 						playsound(get_turf(src), 'sound/weapons/emitter2.ogg', 50, 1)
 						visible_message("<span class='danger'>debug: speed increased by [speed_increase]!</span>")
 						continue
@@ -210,3 +214,5 @@
 	icon_state = "a_cooler"
 	heat_removal = 5
 	speed_penalty = 0.95
+
+#undef BASE
