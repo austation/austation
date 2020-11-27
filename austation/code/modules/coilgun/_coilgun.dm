@@ -1,4 +1,6 @@
-// autism rod launching thingo mibob
+
+// TheFakeElon's funni projectile launcher
+
 /obj/structure/disposalpipe/coilgun
 	name = "coilgun tube"
 	desc = "An electromagnetic tube that allows the safe transportation of high speed magnetic projectiles"
@@ -113,39 +115,38 @@
 
 	var/datum/powernet/PN = attached.powernet
 	if(PN)
-		if(current_power_use >= min_power_use) // coilgun can't use any less than min_power_use
+		var/drained = clamp(min(current_power_use, attached.newavail()), min_power_use, max_power_use) // set our power use
+		if(current_power_use > drained) // are we using more power than we have connected?
+			visible_message("<span class='warning'>Insufficient power!</span>")
+			can_charge = FALSE
+		else
+			attached.add_delayedload(drained) // apply our power use
 			can_charge = TRUE
 			set_light(2)
-			var/drained = min(current_power_use, attached.newavail()) // set our power use
-			if(current_power_use > drained)
-				visible_message("<span class='warning'>Insufficient power!</span>")
-				can_charge = FALSE
-			attached.add_delayedload(drained) // apply our power use
-		else
-			can_charge = FALSE
-			set_light(1) // dim the light if we don't have enough power to use the charger
 
 /obj/structure/disposalpipe/coilgun/charger/transfer(obj/structure/disposalholder/H)
-	visible_message("<span class='danger'>debug: holder entered transfer proc!</span>") // au debug
 	if(H.contents.len)
 		if(can_charge) // do we have enough power?
-			var/obj/effect/hvp/projectile
 			for(var/atom/movable/AM in H.contents) // run the loop below for every movable that passes through the charger
-				if(AM == projectile) // if it's a projectile, continue
-					var/datum/powernet/PN = attached.powernet
-					if(PN)
+				if(istype(AM, /obj/effect/hvp)) // if it's a coilgun projectile, continue
 
+					var/obj/effect/hvp/projectile = AM
+					var/datum/powernet/PN = attached.powernet
+
+					if(PN)
 						var/prelim = (target_power_usage / 100) * (current_power_use / min_power_use) // (0-100 divided by 100) * (how much power we're using divided by the minimum power use)
+
 						speed_increase = prelim * 0.5 ** projectile.p_speed
 						projectile.p_speed += speed_increase // add speed to projectile
 						projectile.p_heat += heat_increase // add heat to projectile
 						projectile.on_transfer() // calls the "on_tranfer" proc for the projectile
 						current_power_use = clamp(min_power_use + (projectile.p_speed * 500) * (projectile.p_heat * 0.5) * (target_power_usage / 100), min_power_use, max_power_use) //big scary line, determins power usage
-						cps = projectile.p_speed
+						cps = round(projectile.p_speed)
 						playsound(get_turf(src), 'sound/weapons/emitter2.ogg', 50, 1)
+						visible_message("<span class='danger'>debug: speed increased by [speed_increase]!</span>")
 						continue
 
-				if(isliving(AM)) // no non-magnetic hoomans
+				else if(isliving(AM)) // no non-magnetic hoomans
 					var/mob/living/L = AM
 					playsound(src.loc, 'sound/machines/buzz-two.ogg', 40, 1)
 					visible_message("<span class='warning'>\The [src]'s safety mechanism engages, ejecting [L] through the maintenance hatch!</span>")
@@ -156,12 +157,17 @@
 					visible_message("<span class='warning'>\The [src]'s safety mechanism engages, ejecting \the [AM] through the maintenance hatch!</span>")
 					AM.forceMove(get_turf(src))
 					continue
+	else
+		qdel(H)
+
 	return ..()
 
 /obj/structure/disposalpipe/coilgun/charger/examine(mob/user)
 	. = ..()
 	if(cps)
 		. += "<span class='info'>The projectile speed indicator reads: [cps]km/h.</span>"
+	else
+		. += "<span class='info'>No moving projectile detected.</span>"
 
 // passive cooler
 /obj/structure/disposalpipe/coilgun/cooler
@@ -185,12 +191,12 @@
 				L.emote("scream")
 				visible_message("<span class='warning'>\The [src]'s safety mechanism engages, ejecting [L] through the maintenance hatch!</span>")
 				L.forceMove(get_turf(src))
-				continue
+
 
 			else // eject the item if it's none of the above
 				visible_message("<span class='warning'>\The [src]'s safety mechanism engages, ejecting \the [AM] through the maintenance hatch!</span>")
 				AM.forceMove(get_turf(src))
-				continue
+
 
 	return ..()
 

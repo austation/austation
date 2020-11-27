@@ -18,7 +18,12 @@
 	var/momentum = 0
 
 /obj/effect/hvp/proc/launch()
-	addtimer(CALLBACK(src, .proc/move), 1)
+
+	momentum = mass*p_speed
+	if(momentum >= 1)
+		addtimer(CALLBACK(src, .proc/move), 1)
+	else
+		gameover()
 
 /obj/effect/hvp/Bump(atom/clong) // lots of rod code in here
 	if(prob(80))
@@ -29,13 +34,12 @@
 		x = clong.x
 		y = clong.y
 	if(isturf(clong) || isobj(clong))
-		if(momentum >= 50)
-			if(clong.density)
-				clong.ex_act(EXPLODE_HEAVY)
-				p_speed -= 50
-		else
-			gameover()
-			return
+		if(clong.density)
+			if(momentum <= 50)
+				gameover()
+				return
+			clong.ex_act(EXPLODE_HEAVY)
+			p_speed -= 50
 	else if(isliving(clong))
 		penetrate(clong)
 
@@ -45,8 +49,8 @@
 		var/mob/living/carbon/human/H = L
 		var/projdamage = max(15, momentum / 100)
 		H.adjustBruteLoss(projdamage)
-	if(L && (L.density || prob(10)))
-		L.ex_act(EXPLODE_HEAVY)
+//	if(L && (L.density || prob(10)))
+//		L.ex_act(EXPLODE_HEAVY)
 
 /obj/effect/hvp/proc/move()
 	if(!step(src,dir))
