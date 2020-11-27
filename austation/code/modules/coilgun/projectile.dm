@@ -17,6 +17,9 @@
 	var/charged = FALSE //has the projectile been overcharged already
 	var/momentum = 0
 
+/obj/effect/hvp/Destroy()
+	gameover()
+
 /obj/effect/hvp/proc/launch()
 
 	momentum = mass*p_speed
@@ -96,6 +99,10 @@
 		throwing.finalize(FALSE)
 	qdel(src)
 
+/obj/effect/hvp/relaymove(mob/living/user)
+	if(istype(loc, /obj/structure/disposalholder))
+		var/obj/structure/disposalholder/DH = loc
+		DH.relaymove()
 
 /obj/effect/hvp/debug
 	p_speed = 700
