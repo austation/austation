@@ -48,7 +48,7 @@
 
 					objective_info["result"] = result
 					objective_info["text"] = O.explanation_text
-					discordmsg += "Objective #[num]: objective_info["text"] objective_info["result"]\n"
+					discordmsg += "Objective #[num]: [objective_info["text"]] **[objective_info["result"]]**\n"
 
 			if(greentexted == FALSE)
 				discordmsg += "The [antag_info["antagonist_name"]] has failed!"
