@@ -554,7 +554,6 @@
 
 		if(STATE_PURCHASE)
 			var/datum/bank_account/D = SSeconomy.get_dep_account(ACCOUNT_CAR)
-			var/obj/item/circuitboard/computer/communications/CM = circuit
 			dat += "Budget: [D.account_balance] Credits.<BR>"
 			dat += "<BR>"
 			if((obj_flags & EMAGGED)) // austation -- remove screwdrivering
