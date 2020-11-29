@@ -101,6 +101,7 @@
 	required_reagents = list(/datum/reagent/toxin/mindbreaker = 1, /datum/reagent/teslium = 1, /datum/reagent/toxin/fentanyl = 1)
 	mix_message = "<span class='danger'>After sparks, fire, and the smell of mindbreaker, the mix is constantly spinning with no stop in sight.</span>"
 
+<<<<<<< HEAD
 /* austation begin -- deletes skewium because it's fucking cringe and crashes people's games
 /datum/chemical_reaction/skewium
 	name = "Skewium"
@@ -110,6 +111,8 @@
 	mix_message = "<span class='danger'>Wow! it turns out if you mix rotatium with some plasma and sulphuric acid, it gets even worse!</span>"
 austation end */
 
+=======
+>>>>>>> 01c43fe185... removes crashchem (#3037)
 /datum/chemical_reaction/anacea
 	name = "Anacea"
 	id = /datum/reagent/toxin/anacea
