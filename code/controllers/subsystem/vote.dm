@@ -158,13 +158,8 @@ SUBSYSTEM_DEF(vote)
 					if(C)
 						C.post_status("shuttle")
 	if(restart)
-<<<<<<< HEAD
-		var/active_admins = 0
-		for(var/client/C in GLOB.admins+GLOB.deadmins) //austation -- restart votes doesn't ignore deadmins
-=======
 		var/active_admins = FALSE
-		for(var/client/C in GLOB.admins+GLOB.deadmins)
->>>>>>> d3406dbffb... [PORT] restart votes check for deadmins (#3036)
+		for(var/client/C in GLOB.admins+GLOB.deadmins) // austation -- credit to @jupyterkat
 			if(!C.is_afk() && check_rights_for(C, R_SERVER))
 				active_admins = TRUE
 				break
