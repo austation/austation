@@ -1,5 +1,0 @@
-author: "AustationBot"
-delete-after: True
-changes: 
-  - rscadd: "Ambient fading"
-  - rscadd: "Sound effect subsystem"
