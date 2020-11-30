@@ -22,12 +22,12 @@
 	else
 		discordmsg += "There were no antagonists!\n"
 	send2chat(discordmsg, "roundend")
-	discordmsg = ""
 	if(GLOB.antagonists.len)
 		for(var/datum/antagonist/A in GLOB.antagonists)
 			if(!A.owner)
 				continue
 
+			discordmsg = ""			
 			var/list/antag_info = list()
 			antag_info["key"] = A.owner.key
 			antag_info["name"] = A.owner.name
