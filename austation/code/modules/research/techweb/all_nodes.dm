@@ -28,7 +28,7 @@
 /////////////////////////Biotech/////////////////////////
 
 /datum/techweb_node/adv_biotech
-	austation_design_ids = list("custom_epi")
+	austation_design_ids = list("custom_epi", "meddarter")
 
 /////////////////////////Advanced Surgery/////////////////////////
 

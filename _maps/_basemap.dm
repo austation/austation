@@ -14,7 +14,7 @@
 		#include "map_files\KiloStation\KiloStation.dmm"
 		#include "map_files\Austation\Austation.dmm" //austation -- pool map
 
-		#ifdef TRAVISBUILDING
+		#ifdef CIBUILDING
 			#include "templates.dm"
 		#endif
 	#endif

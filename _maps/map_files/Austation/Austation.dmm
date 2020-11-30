@@ -1289,7 +1289,7 @@
 /obj/item/clothing/mask/gas,
 /obj/item/clothing/mask/gas,
 /obj/structure/closet/crate{
-	icon_state = "crateopen"
+	opened = TRUE
 	},
 /obj/machinery/atmospherics/pipe/manifold/general/visible,
 /obj/item/wrench,
@@ -8132,7 +8132,7 @@
 "aKw" = (
 /obj/effect/decal/cleanable/cobweb,
 /obj/structure/closet/crate{
-	icon_state = "crateopen"
+	opened = TRUE
 	},
 /obj/item/wirecutters,
 /obj/item/weldingtool,
@@ -9451,7 +9451,7 @@
 /area/quartermaster/qm)
 "aQu" = (
 /obj/structure/closet/crate{
-	icon_state = "crateopen"
+	opened = TRUE
 	},
 /obj/machinery/light{
 	dir = 8
@@ -10117,7 +10117,7 @@
 /area/construction/mining/aux_base)
 "aSP" = (
 /obj/structure/closet/crate{
-	icon_state = "crateopen"
+	opened = TRUE
 	},
 /turf/open/floor/plating,
 /area/maintenance/port/fore)
@@ -14734,7 +14734,7 @@
 /area/quartermaster/office)
 "bks" = (
 /obj/structure/closet/crate{
-	icon_state = "crateopen"
+	opened = TRUE
 	},
 /obj/effect/spawner/lootdrop/maintenance,
 /obj/effect/turf_decal/tile/brown{
@@ -19515,7 +19515,7 @@
 /area/gateway)
 "bIp" = (
 /obj/structure/closet/crate{
-	icon_state = "crateopen"
+	opened = TRUE
 	},
 /obj/item/stack/sheet/rglass{
 	amount = 50
@@ -26558,7 +26558,7 @@
 /area/maintenance/starboard)
 "chD" = (
 /obj/structure/closet/crate{
-	icon_state = "crateopen"
+	opened = TRUE
 	},
 /obj/item/cane,
 /obj/effect/spawner/lootdrop/maintenance,
@@ -59776,7 +59776,7 @@
 /area/lawoffice)
 "lLb" = (
 /obj/structure/closet/crate{
-	icon_state = "crateopen"
+	opened = TRUE
 	},
 /obj/effect/spawner/lootdrop/maintenance/two,
 /obj/effect/turf_decal/bot,

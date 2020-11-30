@@ -87,3 +87,42 @@
 		QDEL_NULL(rage)
 	..()
 
+/datum/reagent/consumable/ethanol/moscowmule
+	name = "Moscow Mule"
+	description = "Made of neither Muscovites or Mules, unfortunately."
+	color = "#ffd666" // rgb: 255, 214, 102
+	aus = TRUE
+	boozepwr = 50
+	metabolization_rate = REAGENTS_METABOLISM
+	quality = DRINK_FANTASTIC
+	taste_description = "ginger and lime"
+	glass_icon_state = "moscowmule"
+	glass_name = "Moscow Mule"
+	glass_desc = "Experts say the copper mug is dangerous. Dangerously cool!"
+
+/datum/reagent/consumable/ethanol/lemomlimebitters
+	name = "Lemon Lime Bitters"
+	description = "Made of neither Muscovites or Mules, unfortunately."
+	color = "#ff704d" // rgb: 255, 112, 77
+	aus = TRUE
+	boozepwr = 5
+	metabolization_rate = REAGENTS_METABOLISM
+	quality = DRINK_FANTASTIC
+	taste_description = "Lemonade, lime cordial and bitters."
+	glass_icon_state = "llbitters"
+	glass_name = "Lemon-Lime Bitters"
+	glass_desc = "Tastes like last summer."
+
+/datum/reagent/consumable/ethanol/bitters
+	name = "Narrowing Bitters"
+	description = "A dash is always nice. A swig proves why they call it Narrowing Bitters."
+	color = "#4d0f00" // rgb: 77, 15, 0
+	aus = TRUE
+	boozepwr = 50
+	metabolization_rate = REAGENTS_METABOLISM
+	quality = DRINK_NICE
+	taste_description = "sharp herbal liqour"
+	glass_icon_state = "llbitters"
+	glass_name = "Bitters"
+	glass_desc = "You get the feeling this is more than a dash."
+
