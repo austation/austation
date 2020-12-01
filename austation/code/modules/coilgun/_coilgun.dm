@@ -43,7 +43,7 @@
 
 			if(isliving(AM))
 				var/mob/living/L = AM
-				L.adjustBruteLoss(20)
+				L.adjustBruteLoss(10)
 				if(ishuman(L) && !isdead(L))
 					L.Paralyze(amount = 50, ignore_canstun = TRUE)
 					L.emote("scream")
@@ -63,9 +63,12 @@
 				else
 					qdel(boolet)
 					qdel(I)
+					qdel(H)
 					return
 
 		icon_state = "magnet"
+	else
+		qdel(H)
 
 	return ..()
 
@@ -168,6 +171,13 @@
 		qdel(H)
 
 	return ..()
+
+/obj/structure/disposalpipe/coilgun/charger/AltClick(mob/living/user)
+	build_charger()
+
+/obj/structure/disposalpipe/coilgun/charger/proc/build_charger()
+	var/list/members = list()
+	var/charger = /obj/structure/disposalpipe/coilgun/charger
 
 /obj/structure/disposalpipe/coilgun/charger/examine(mob/user)
 	. = ..()
