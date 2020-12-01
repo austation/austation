@@ -87,38 +87,59 @@
 	var/obj/structure/cable/attached // attached cable
 	var/cps = 0 // current projectile speed, stored in a var fotr examining the charger
 	var/list/members = list()
-	var/parent = FALSE // used for linking coilgun chargers, is this
+	var/parent = null // used for linking coilgun chargers, what charger is parent?
+	var/is_child = FALSE // is this linked to a parent?
 
 // because I don't want to make a GUI
 /obj/structure/disposalpipe/coilgun/charger/attack_hand(mob/user)
 	. = ..()
 	if(.)
 		return
-	if(!enabled)
+	if(!members)
+		members += src
+	parent = src
+	build_charger(parent)
+	if(enabled)
+		if(check_power())
+			if(target_power_usage >= 100)
+				enabled = FALSE
+				target_power_usage = 0
+				STOP_PROCESSING(SSobj, src)
+				to_chat(user, "<span class='notice'>You turn off \the [src].</span>")
+			else
+				target_power_usage += 20
+				to_chat(user, "<span class='notice'>You increase \the [src]'s power to [target_power_usage]%</span>")
+		else
+			to_chat(user, "<span class='warning'>No power!</span>")
+	else
+		enabled = TRUE
+		START_PROCESSING(SSobj, src)
+		to_chat(user, "<span class='notice'>You turn on \the [src].</span>")
+	if(members)
+		for(var/obj/structure/disposalpipe/coilgun/charger/C in members)
+			C.target_power_usage = target_power_usage
+			C.enabled = enabled
+			C.attached = attached
+
+/obj/structure/disposalpipe/coilgun/charger/proc/build_charger(obj/structure/disposalpipe/coilgun/charger/P)
+	var/obj/structure/disposalpipe/coilgun/charger/C
+	for(var/turf/T in range(1, loc))
+		C = locate() in T
+		if(C && C.dir == dir && !C.parent)
+			P.members += C
+			C.parent = P
+			C.build_charger(P)
+			C.visible_message("<span class='warning'>Debug: synced with parent!</span>")
+
+/obj/structure/disposalpipe/coilgun/charger/proc/check_power()
+	for(var/obj/structure/disposalpipe/coilgun/charger/C in members)
 		var/turf/T = loc
 		if(isturf(T) && !T.intact)
 			attached = locate() in T
-			if(!attached) // if we're not attached to a cable...
-				to_chat(user, "<span class='warning'>\The [src] must be placed over an exposed, powered cable node!</span>")
-			else
-				START_PROCESSING(SSobj, src)
-				enabled = TRUE
-				to_chat(user, "<span class='notice'>You turn \the [src] on.</span>")
-				return
-		else
-			to_chat(user, "<span class='warning'>\The [src] must be placed over an exposed, powered cable node!</span>")
-	else // if we are!
-		if(target_power_usage == 100) // if we are already using the max amount of power
-			target_power_usage = 0
-			STOP_PROCESSING(SSobj, src)
-			set_light(0)
-			to_chat(user, "<span class='notice'>You turn \the [src] off.</span>")
-			enabled = FALSE
-			return
-		else // if we aren't, increase it by 20%
-			target_power_usage += 20
-			to_chat(user, "<span class='notice'>You set \the [src] to use [target_power_usage]% of the powergrid's excess energy.</span>")
+			if(attached)
+				return TRUE
 
+	return FALSE
 
 /obj/structure/disposalpipe/coilgun/charger/process()
 	if(!attached)
@@ -127,14 +148,15 @@
 
 	var/datum/powernet/PN = attached.powernet
 	if(PN)
-		var/drained = clamp(min(current_power_use, attached.newavail()), MIN_POWER_USE, max_power_use) // set our power use
-		if(current_power_use > drained) // are we using more power than we have connected?
-			visible_message("<span class='warning'>Insufficient power!</span>")
-			can_charge = FALSE
-		else
-			attached.add_delayedload(drained) // apply our power use
-			can_charge = TRUE
-			set_light(2)
+		if(!parent)
+			var/drained = clamp(min(current_power_use, attached.newavail()) * members.len, MIN_POWER_USE, max_power_use) // set our power use
+			if(current_power_use > drained) // are we using more power than we have connected?
+				visible_message("<span class='warning'>Insufficient power!</span>")
+				can_charge = FALSE
+			else
+				attached.add_delayedload(drained) // apply our power use
+				can_charge = TRUE
+				set_light(2)
 
 /obj/structure/disposalpipe/coilgun/charger/transfer(obj/structure/disposalholder/H)
 	if(H.contents.len)
@@ -173,19 +195,6 @@
 		qdel(H)
 
 	return ..()
-
-/obj/structure/disposalpipe/coilgun/charger/AltClick(mob/living/user)
-	build_charger()
-
-/obj/structure/disposalpipe/coilgun/charger/proc/build_charger()
-	var/obj/structure/disposalpipe/coilgun/charger/C
-	for(var/turf/T in range(1, loc))
-		C = locate() in T
-		if(C && !C.members)
-			parent = TRUE
-			members += C
-
-
 
 /obj/structure/disposalpipe/coilgun/charger/examine(mob/user)
 	. = ..()
