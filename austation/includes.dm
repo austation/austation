@@ -115,6 +115,7 @@
 #include "code\modules\clothing\under\skirt_dress.dm"
 #include "code\modules\clothing\under\costume.dm"
 #include "code\modules\coilgun\_coilgun.dm"
+#include "code\modules\coilgun\charger.dm"
 #include "code\modules\coilgun\projectile.dm"
 #include "code\modules\coilgun\segments.dm"
 #include "code\modules\events\bruh_moment.dm"
