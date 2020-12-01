@@ -86,6 +86,8 @@
 	var/max_power_use = INFINITY // the maximum amount of power the charger can draw in watts
 	var/obj/structure/cable/attached // attached cable
 	var/cps = 0 // current projectile speed, stored in a var fotr examining the charger
+	var/list/members = list()
+	var/parent = FALSE // used for linking coilgun chargers, is this
 
 // because I don't want to make a GUI
 /obj/structure/disposalpipe/coilgun/charger/attack_hand(mob/user)
@@ -176,8 +178,14 @@
 	build_charger()
 
 /obj/structure/disposalpipe/coilgun/charger/proc/build_charger()
-	var/list/members = list()
-	var/charger = /obj/structure/disposalpipe/coilgun/charger
+	var/obj/structure/disposalpipe/coilgun/charger/C
+	for(var/turf/T in range(1, loc))
+		C = locate() in T
+		if(C && !C.members)
+			parent = TRUE
+			members += C
+
+
 
 /obj/structure/disposalpipe/coilgun/charger/examine(mob/user)
 	. = ..()
