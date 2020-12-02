@@ -1,3 +1,11 @@
+
+// The base used for calculating speed increase
+// lower values make speed increases more diminishing
+#define BASE 0.995
+
+// the smallest amount of power the charger can use to function in watts.
+#define MIN_POWER_USE 100000
+
 /obj/structure/disposalpipe/coilgun/charger
 	name = "coilgun charger"
 	desc = "A powered electromagnetic tube used to accelerate magnetive objects, requires the use of cooling units to prevent the projectile from overheating. Requires direct power connection to function"
@@ -21,12 +29,12 @@
 	. = ..()
 	if(.)
 		return
-	if(!members)
+	if(!members.len)
 		members += src
-	parent = src
-	build_charger(parent)
+	if(!parent)
+		parent = src
 	if(enabled)
-		if(check_power())
+		if(check_power(parent))
 			if(target_power_usage >= 100)
 				enabled = FALSE
 				target_power_usage = 0
@@ -41,26 +49,35 @@
 		enabled = TRUE
 		START_PROCESSING(SSobj, src)
 		to_chat(user, "<span class='notice'>You turn on \the [src].</span>")
-	if(members)
-		for(var/obj/structure/disposalpipe/coilgun/charger/C in members)
-			C.target_power_usage = target_power_usage
-			C.enabled = enabled
-			C.attached = attached
 
-/// C for child, P for parent. Sorry CM admins :/
+	if(members.len <= 1 && parent == src) // if it's not a child or parent of another object, try to connect nearby chargers
+		build_charger(parent)
+		update_chargers(parent)
+	else
+		update_chargers(parent) // if it is, sync the connected charger's settings
+
+/// updates the
+/obj/structure/disposalpipe/coilgun/charger/proc/update_chargers(obj/structure/disposalpipe/coilgun/charger/P)
+	for(var/obj/structure/disposalpipe/coilgun/charger/C in P.members)
+		C.target_power_usage = target_power_usage
+		C.enabled = enabled
+		C.attached = attached
+
+// C for child, P for parent.
+/// Finds all chargers connected to the parent and makes them members
 /obj/structure/disposalpipe/coilgun/charger/proc/build_charger(obj/structure/disposalpipe/coilgun/charger/P)
 	var/obj/structure/disposalpipe/coilgun/charger/C
-	for(var/turf/T in range(1, loc))
-		C = locate() in T
-		if(C && C.dpdir == dpdir && !C.parent)
+	for(var/turf/T in range(1, loc)) // for every tile next to the charger
+		C = locate() in T // checks said
+		if(C && C.dpdir == dpdir && (!C.parent || C.parent == C))
 			if(!(C in P.members))
 				P.members += C
 				C.parent = P
 			C.build_charger(P)
 			C.visible_message("<span class='warning'>Debug: synced with parent!</span>")
 
-/obj/structure/disposalpipe/coilgun/charger/proc/check_power()
-	for(var/obj/structure/disposalpipe/coilgun/charger/C in members)
+/obj/structure/disposalpipe/coilgun/charger/proc/check_power(obj/structure/disposalpipe/coilgun/charger/P)
+	for(var/obj/structure/disposalpipe/coilgun/charger/C in P.members)
 		var/turf/T = loc
 		if(isturf(T) && !T.intact)
 			attached = locate() in T
@@ -70,23 +87,24 @@
 	return FALSE
 
 /obj/structure/disposalpipe/coilgun/charger/process()
-	if(!parent)
-		if(!attached)
-			STOP_PROCESSING(SSobj, src)
-
+	if(attached)
 		var/datum/powernet/PN = attached.powernet
 		if(PN)
-			if(!parent)
+			if(parent == src)
 				var/drained = clamp(min(current_power_use, attached.newavail()), MIN_POWER_USE, max_power_use) // set our power use
+				attached.add_delayedload(drained) // apply our power use
 				if(current_power_use > drained) // are we using more power than we have connected?
 					visible_message("<span class='warning'>Insufficient power!</span>")
 					can_charge = FALSE
+					return
 				else
-					attached.add_delayedload(drained) // apply our power use
 					can_charge = TRUE
+					return
+			else
+				can_charge = parent.can_charge
 
-	else
-		STOP_PROCESSING(SSobj, src)
+	enabled = FALSE
+	STOP_PROCESSING(SSobj, src)
 
 /obj/structure/disposalpipe/coilgun/charger/transfer(obj/structure/disposalholder/H)
 	if(H.contents.len)
@@ -132,3 +150,6 @@
 		. += "<span class='info'>The projectile speed indicator reads: [cps]km/h.</span>"
 	else
 		. += "<span class='info'>No moving projectile detected.</span>"
+
+#undef BASE
+#undef MIN_POWER_USE

@@ -1,12 +1,5 @@
-// TheFakeElon's funni projectile launcher
 
-// The base used for calculating speed increase
-// lower values make speed increases more diminishing
-#define BASE 0.995
-
-// the smallest amount of power the charger can use to function in watts.
-#define MIN_POWER_USE 100000
-
+// TheFakeElon's funni high-velocity-projectile launcher
 
 /obj/structure/disposalpipe/coilgun
 	name = "coilgun tube"
@@ -112,5 +105,3 @@
 	icon_state = "a_cooler"
 	heat_removal = 5
 	speed_penalty = 0.95
-
-#undef BASE

@@ -35,11 +35,14 @@
 		y = clong.y
 	if(isturf(clong) || isobj(clong))
 		if(clong.density)
-			if(momentum <= 50)
+			if(momentum >= 100)
+				clong.ex_act(EXPLODE_DEVASTATE)
+			else if(momentum > 10)
+				clong.ex_act(EXPLODE_HEAVY)
+			else
 				gameover()
 				return
-			clong.ex_act(EXPLODE_HEAVY)
-			p_speed -= 50
+			p_speed -= 10
 	else if(isliving(clong))
 		penetrate(clong)
 
@@ -47,7 +50,7 @@
 	L.visible_message("<span class='danger'>[L] is penetrated by \the [src]!</span>" , "<span class='userdanger'>\The [src] penetrates you!</span>" , "<span class ='danger'>You hear a CLANG!</span>")
 	if(ishuman(L))
 		var/mob/living/carbon/human/H = L
-		var/projdamage = max(15, momentum / 100)
+		var/projdamage = max(15, momentum / 3)
 		H.adjustBruteLoss(projdamage)
 //	if(L && (L.density || prob(10)))
 //		L.ex_act(EXPLODE_HEAVY)
