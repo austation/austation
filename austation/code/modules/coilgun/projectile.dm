@@ -72,7 +72,8 @@
 	if(momentum <= 1)
 		gameover()
 		return
-	var/move_delay = clamp(round(0.9994 ** p_speed), 0.01, 0.2) // it just works
+	var/move_delay = clamp(round(0.9994 ** p_speed), 0.05, 0.2) // it just works
+
 	addtimer(CALLBACK(src, .proc/move), move_delay)
 
 /// called when we pass through a charger
