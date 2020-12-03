@@ -1,0 +1,5 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - rscadd: "Adds a communication implant"
+  - rscadd: "Blood brothers get a communication implant to their team roundstart"
