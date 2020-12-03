@@ -105,7 +105,7 @@
 	for(var/mob/dead/observer/O in GLOB.player_list)
 		if(O.key == expected_key)
 			if(O.client?.address == addr)
-				new /obj/screen/splash(O.client, TRUE)
+				new /atom/movable/screen/splash(O.client, TRUE)
 			break
 
 /datum/world_topic/adminmsg
@@ -217,5 +217,3 @@
 		.["identified_ckey"] = query_ckey_lookup.item[1]
 	qdel(query_ckey_lookup)
 	return .
-
-
