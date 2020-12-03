@@ -4,7 +4,7 @@
 #define BASE 0.9975
 
 // the smallest amount of power the charger can use to function in watts.
-#define MIN_POWER_USE 100000
+#define POWER_DIVIDER 100000
 
 /obj/structure/disposalpipe/coilgun/charger
 	name = "coilgun charger"
@@ -23,16 +23,17 @@
 	var/list/members = list()
 	var/parent = null // used for linking coilgun chargers, what charger is parent?
 	var/is_child = FALSE // is this linked to a parent?
+	var/laststep // used in charger chain building, stops infinite loops. did we just run the proc on this pipe?
 
 // because I don't want to make a GUI
+
+/obj/structure/disposalpipe/coilgun/charger/New()
+	parent = src
+	members += src
 /obj/structure/disposalpipe/coilgun/charger/attack_hand(mob/user)
 	. = ..()
 	if(.)
 		return
-	if(!members.len)
-		members += src
-	if(!parent)
-		parent = src
 	if(enabled)
 		if(check_power(parent))
 			if(target_power_usage >= 100)
@@ -67,10 +68,14 @@
 	var/obj/structure/disposalpipe/coilgun/charger/C
 	for(var/turf/T in range(1, loc)) // for every tile next to the charger
 		C = locate() in T // checks said
-		if(C && C.dpdir == dpdir && (!C.parent || C.parent == C))
+		if(C && C.dpdir == dpdir && (!C.parent || C.parent == C) && C.laststep != laststep)
+			if(laststep == C)
+				continue
+			laststep = src
 			if(!(C in P.members))
 				P.members += C
 				C.parent = P
+			C.visible_message("<span class='warning'>Debug: building charger...</span>")
 			C.build_charger(P)
 			C.visible_message("<span class='warning'>Debug: synced with parent!</span>")
 
@@ -90,19 +95,16 @@
 			if(attached)
 				var/datum/powernet/PN = attached.powernet
 				if(PN)
-					if(parent == src)
-						var/drained = min(min(current_power_use, attached.newavail()), max_power_use) // set our power use
-						attached.add_delayedload(drained) // apply our power use
-						if(current_power_use > drained) // are we using more power than we have connected?
-							visible_message("<span class='warning'>Insufficient power!</span>")
-							can_charge = FALSE
-							continue
-						else
-							can_charge = TRUE
-							continue
-					else
-						can_charge = parent.can_charge
+					var/drained = min(min(current_power_use, attached.newavail()), max_power_use) // set our power use
+					attached.add_delayedload(drained) // apply our power use
+					if(current_power_use > drained) // are we using more power than we have connected?
+						visible_message("<span class='warning'>Insufficient power!</span>")
+						can_charge = FALSE
 						continue
+					else
+						can_charge = TRUE
+						continue
+
 		else
 			return
 	// if we didn't return, disable the charger
@@ -121,7 +123,7 @@
 					var/datum/powernet/PN = attached.powernet
 
 					if(PN)
-						var/prelim = (target_power_usage / 100) * (current_power_use / MIN_POWER_USE) // (0-100 divided by 100) * (how much power we're using divided by the minimum power use)
+						var/prelim = (target_power_usage / 100) * ((current_power_use + POWER_DIVIDER) / POWER_DIVIDER) // (0 to 1) * (multiples of POWER_DIVIDER)
 
 						speed_increase = prelim * BASE ** projectile.p_speed
 						projectile.p_speed += speed_increase // add speed to projectile
@@ -145,6 +147,8 @@
 					visible_message("<span class='warning'>\The [src]'s safety mechanism engages, ejecting \the [AM] through the maintenance hatch!</span>")
 					AM.forceMove(get_turf(src))
 					continue
+		else
+			can_charge = check_power(parent)
 	else
 		qdel(H)
 
@@ -158,4 +162,4 @@
 		. += "<span class='info'>No moving projectile detected.</span>"
 
 #undef BASE
-#undef MIN_POWER_USE
+#undef POWER_DIVIDER
