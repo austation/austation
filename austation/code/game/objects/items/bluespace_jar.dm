@@ -33,11 +33,19 @@
 	var/has_lock_sprites = FALSE //whether to load the lock overlays or not
 	var/allows_hostiles = TRUE //does the jar allow hostile entities to be held within it?
 	var/datum/gas_mixture/occupant_gas_supply
+	var/sipping_level = 150 //level until the reagent gets INGEST ed instead of TOUCH
+	var/sipping_probably = 99 //prob50 level of sipping
+	var/transfer_rate = 5 //chem transfer rate / second
+
+/obj/item/bluespace_jar/Initialize()
+	. = ..()
+	create_reagents(300, OPENCONTAINER) //equivalent of bsbeakers
 
 /obj/item/bluespace_jar/Destroy()
 	if(occupants.len)
 		for(var/V in occupants)
 			remove_occupant(V)
+	STOP_PROCESSING(SSobj, src)
 	return ..()
 
 /obj/item/bluespace_jar/Exited(atom/movable/occupant)
@@ -67,6 +75,11 @@
 			. += "<span class='notice'>Alt-click to [locked ? "unlock" : "lock"] its [entrance_name].</span>"
 
 /obj/item/bluespace_jar/attack_self(mob/living/user)
+	if(reagents)
+		if(open)
+			reagents.flags = NONE
+		else
+			reagents.flags = OPENCONTAINER
 	if(open)
 		to_chat(user, "<span class='notice'>You close [src]'s [entrance_name].</span>")
 		playsound(user, 'sound/effects/bin_close.ogg', 50, TRUE)
@@ -221,11 +234,25 @@
 	else
 		icon_state = "bluespace_jar"
 
-/obj/item/bluespace_jar/throw_impact()
+/obj/item/bluespace_jar/throw_impact(atom/hit_atom, datum/thrownthing/throwingdatum)
 	. = ..()
 	//delete the item upon impact, releasing the creature inside (this is handled by its deletion)
 	if(occupants.len)
 		loc.visible_message("<span class='warning'>The bluespace jar smashes, releasing [occupants[1]]!</span>")
+
+	if(reagents?.total_volume && ismob(hit_atom) && hit_atom.reagents && open)
+		reagents.total_volume *= rand(5,10) * 0.1 //Not all of it makes contact with the target
+		var/mob/M = hit_atom
+		var/R = reagents.log_list()
+		hit_atom.visible_message("<span class='danger'>[M] has been splashed with something!</span>", \
+						"<span class='userdanger'>[M] has been splashed with something!</span>")
+		var/turf/TT = get_turf(hit_atom)
+		if(thrownby)
+			log_combat(thrownby, M, "splashed", R)
+			message_admins("[ADMIN_LOOKUPFLW(thrownby)] splashed (thrown) [english_list(reagents.reagent_list)] on [TT] at [ADMIN_VERBOSEJMP(TT)].")
+		reagents.reaction(hit_atom, TOUCH)
+		reagents.clear_reagents()
+
 	playsound(src, "shatter", 70, 1)
 	qdel(src)
 
@@ -233,25 +260,35 @@
 	. = ..()
 	if(!occupant_gas_supply)
 		occupant_gas_supply = new
-	if(isanimal(occupant))
-//		var/mob/living/simple_animal/animal = occupant
-//		occupant_gas_supply.temperature = animal.minbodytemp //simple animals only care about temperature when their turf isnt a location
-	else
-		if(ishuman(occupant)) //humans require resistance to cold/heat and living in no air while inside, and lose this when outside
-			ADD_TRAIT(occupant, TRAIT_RESISTCOLD, "bluespace_container_cold_resist")
-			ADD_TRAIT(occupant, TRAIT_RESISTHEAT, "bluespace_container_heat_resist")
-			ADD_TRAIT(occupant, TRAIT_NOBREATH, "bluespace_container_no_breath")
-			ADD_TRAIT(occupant, TRAIT_RESISTHIGHPRESSURE, "bluespace_container_resist_high_pressure")
-			ADD_TRAIT(occupant, TRAIT_RESISTLOWPRESSURE, "bluespace_container_resist_low_pressure")
+	if(ishuman(occupant)) //humans require resistance to cold/heat and living in no air while inside, and lose this when outside
+		START_PROCESSING(SSobj, src)
+		ADD_TRAIT(occupant, TRAIT_RESISTCOLD, "bluespace_container_cold_resist")
+		ADD_TRAIT(occupant, TRAIT_RESISTHEAT, "bluespace_container_heat_resist")
+		ADD_TRAIT(occupant, TRAIT_NOBREATH, "bluespace_container_no_breath")
+		ADD_TRAIT(occupant, TRAIT_RESISTHIGHPRESSURE, "bluespace_container_resist_high_pressure")
+		ADD_TRAIT(occupant, TRAIT_RESISTLOWPRESSURE, "bluespace_container_resist_low_pressure")
 
 /obj/item/bluespace_jar/remove_occupant(mob/living/occupant)
 	. = ..()
 	if(ishuman(occupant))
+		STOP_PROCESSING(SSobj, src)
 		REMOVE_TRAIT(occupant, TRAIT_RESISTCOLD, "bluespace_container_cold_resist")
 		REMOVE_TRAIT(occupant, TRAIT_RESISTHEAT, "bluespace_container_heat_resist")
 		REMOVE_TRAIT(occupant, TRAIT_NOBREATH, "bluespace_container_no_breath")
 		REMOVE_TRAIT(occupant, TRAIT_RESISTHIGHPRESSURE, "bluespace_container_resist_high_pressure")
 		REMOVE_TRAIT(occupant, TRAIT_RESISTLOWPRESSURE, "bluespace_container_resist_low_pressure")
+
+/obj/item/bluespace_jar/process()
+	if(!reagents)
+		return
+	for(var/mob/living/L in occupants)
+		if(!ishuman(L))
+			continue
+		if((reagents.total_volume >= sipping_level) || ((reagents.total_volume >= sipping_probably) && prob(50))) //sipp
+			reagents.reaction(L, INGEST) //consume
+			reagents.trans_to(L, transfer_rate)
+		else
+			reagents.reaction(L, TOUCH, show_message = FALSE)
 
 /obj/item/bluespace_jar/return_air()
 	if(!occupant_gas_supply)

@@ -286,9 +286,18 @@
 
 		log_combat(src, M, "grabbed", addition="passive grab")
 		if(!supress_message && !(iscarbon(AM) && HAS_TRAIT(src, TRAIT_STRONG_GRABBER)))
-			M.visible_message("<span class='warning'>[src] grabs [M] [(zone_selected == "l_arm" || zone_selected == "r_arm")? "by their hands":"passively"]!</span>", \
-							"<span class='warning'>[src] grabs you [(zone_selected == "l_arm" || zone_selected == "r_arm")? "by your hands":"passively"]!</span>", null, null, src)
-			to_chat(src, "<span class='notice'>You grab [M] [(zone_selected == "l_arm" || zone_selected == "r_arm")? "by their hands":"passively"]!</span>")
+			if(zone_selected == BODY_ZONE_PRECISE_GROIN && istype(getorganslot(ORGAN_SLOT_TAIL), /obj/item/organ/tail)) // austation begin -- tail entwining, this time with catgirl/human ships in mind too
+				var/mob/living/L = M
+				if(istype(L) && istype(L.getorganslot(ORGAN_SLOT_TAIL), /obj/item/organ/tail)) // we both have tails
+					M.visible_message("<span class='warning'>[src] entwines their tail with [L]'s, wow is that okay in public?!</span>", "[src] entwines their tail with your own!", null, null, src)
+					to_chat(src, "You entwine your tail with [L]'s.")
+				else // only we have a tail
+					M.visible_message("<span class='warning'>[src] wraps their tail around [L]'s arm, wow is that okay in public?!</span>", "[src] wraps their tail around your arm!", null, null, src)
+					to_chat(src, "You wrap your tail around [L]'s arm.")
+			else
+				M.visible_message("<span class='warning'>[src] grabs [M] [(zone_selected == "l_arm" || zone_selected == "r_arm")? "by their hands":"passively"]!</span>", \
+								"<span class='warning'>[src] grabs you [(zone_selected == "l_arm" || zone_selected == "r_arm")? "by your hands":"passively"]!</span>", null, null, src)
+				to_chat(src, "<span class='notice'>You grab [M] [(zone_selected == "l_arm" || zone_selected == "r_arm")? "by their hands":"passively"]!</span>") // austation end
 		if(!iscarbon(src))
 			M.LAssailant = null
 		else
@@ -805,11 +814,11 @@
 			clear_alert("gravity")
 		else
 			if(has_gravity >= GRAVITY_DAMAGE_TRESHOLD)
-				throw_alert("gravity", /obj/screen/alert/veryhighgravity)
+				throw_alert("gravity", /atom/movable/screen/alert/veryhighgravity)
 			else
-				throw_alert("gravity", /obj/screen/alert/highgravity)
+				throw_alert("gravity", /atom/movable/screen/alert/highgravity)
 	else
-		throw_alert("gravity", /obj/screen/alert/weightless)
+		throw_alert("gravity", /atom/movable/screen/alert/weightless)
 	if(!override && !is_flying())
 		float(!has_gravity)
 
@@ -820,9 +829,8 @@
 	if(anchored || (buckled && buckled.anchored))
 		fixed = 1
 	if(on && !(movement_type & FLOATING) && !fixed)
-		animate(src, pixel_y = pixel_y + 2, time = 10, loop = -1)
-		sleep(10)
-		animate(src, pixel_y = pixel_y - 2, time = 10, loop = -1)
+		animate(src, pixel_y = 2, time = 10, loop = -1, flags = ANIMATION_RELATIVE)
+		animate(pixel_y = -2, time = 10, loop = -1, flags = ANIMATION_RELATIVE)
 		setMovetype(movement_type | FLOATING)
 	else if(((!on || fixed) && (movement_type & FLOATING)))
 		animate(src, pixel_y = get_standard_pixel_y_offset(lying), time = 10)
@@ -1069,7 +1077,7 @@
 		src.visible_message("<span class='warning'>[src] catches fire!</span>", \
 						"<span class='userdanger'>You're set on fire!</span>")
 		new/obj/effect/dummy/lighting_obj/moblight/fire(src)
-		throw_alert("fire", /obj/screen/alert/fire)
+		throw_alert("fire", /atom/movable/screen/alert/fire)
 		update_fire()
 		SEND_SIGNAL(src, COMSIG_LIVING_IGNITED,src)
 		return TRUE
