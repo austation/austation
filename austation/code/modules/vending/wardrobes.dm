@@ -11,7 +11,7 @@
 	aus_products = list(/obj/item/clothing/under/rank/cargo/tech/skirt = 3)
 
 /obj/machinery/vending/wardrobe/robo_wardrobe
-	aus_products = list(/obj/item/clothing/under/rank/engineering/roboticist/skirt = 2)
+	aus_products = list(/obj/item/clothing/under/rank/rnd/roboticist/skirt = 2)
 
 /obj/machinery/vending/wardrobe/science_wardrobe
 	aus_products = list(/obj/item/clothing/under/rank/rnd/scientist/skirt = 3)

@@ -1289,7 +1289,7 @@
 /obj/item/clothing/mask/gas,
 /obj/item/clothing/mask/gas,
 /obj/structure/closet/crate{
-	icon_state = "crateopen"
+	opened = TRUE
 	},
 /obj/machinery/atmospherics/pipe/manifold/general/visible,
 /obj/item/wrench,
@@ -8132,7 +8132,7 @@
 "aKw" = (
 /obj/effect/decal/cleanable/cobweb,
 /obj/structure/closet/crate{
-	icon_state = "crateopen"
+	opened = TRUE
 	},
 /obj/item/wirecutters,
 /obj/item/weldingtool,
@@ -9451,7 +9451,7 @@
 /area/quartermaster/qm)
 "aQu" = (
 /obj/structure/closet/crate{
-	icon_state = "crateopen"
+	opened = TRUE
 	},
 /obj/machinery/light{
 	dir = 8
@@ -10117,7 +10117,7 @@
 /area/construction/mining/aux_base)
 "aSP" = (
 /obj/structure/closet/crate{
-	icon_state = "crateopen"
+	opened = TRUE
 	},
 /turf/open/floor/plating,
 /area/maintenance/port/fore)
@@ -14734,7 +14734,7 @@
 /area/quartermaster/office)
 "bks" = (
 /obj/structure/closet/crate{
-	icon_state = "crateopen"
+	opened = TRUE
 	},
 /obj/effect/spawner/lootdrop/maintenance,
 /obj/effect/turf_decal/tile/brown{
@@ -19515,7 +19515,7 @@
 /area/gateway)
 "bIp" = (
 /obj/structure/closet/crate{
-	icon_state = "crateopen"
+	opened = TRUE
 	},
 /obj/item/stack/sheet/rglass{
 	amount = 50
@@ -20478,7 +20478,8 @@
 	},
 /obj/machinery/door/airlock/command{
 	name = "Corporate Showroom";
-	req_access_txt = "19"
+	req_access_txt = "19";
+	security_level = 1
 	},
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
@@ -26557,7 +26558,7 @@
 /area/maintenance/starboard)
 "chD" = (
 /obj/structure/closet/crate{
-	icon_state = "crateopen"
+	opened = TRUE
 	},
 /obj/item/cane,
 /obj/effect/spawner/lootdrop/maintenance,
@@ -49542,7 +49543,8 @@
 "hzS" = (
 /obj/machinery/door/airlock/command{
 	name = "Corporate Showroom";
-	req_access_txt = "19"
+	req_access_txt = "19";
+	security_level = 1
 	},
 /obj/effect/turf_decal/stripes/line,
 /obj/effect/turf_decal/stripes/line{
@@ -53368,7 +53370,8 @@
 "jbQ" = (
 /obj/machinery/door/airlock/maintenance{
 	name = "Gateway Maintenance";
-	req_access_txt = "17"
+	req_access_txt = "17";
+	security_level = 6
 	},
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
@@ -59773,7 +59776,7 @@
 /area/lawoffice)
 "lLb" = (
 /obj/structure/closet/crate{
-	icon_state = "crateopen"
+	opened = TRUE
 	},
 /obj/effect/spawner/lootdrop/maintenance/two,
 /obj/effect/turf_decal/bot,
@@ -63988,7 +63991,8 @@
 "nrP" = (
 /obj/machinery/door/airlock/security{
 	name = "Armory";
-	req_access_txt = "3"
+	req_access_txt = "3";
+	security_level = 6
 	},
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
@@ -72534,7 +72538,8 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/door/airlock/public/glass{
-	name = "Gateway Chamber"
+	name = "Gateway Chamber";
+	security_level = 6
 	},
 /obj/structure/cable/yellow{
 	icon_state = "1-8"
@@ -83491,7 +83496,8 @@
 "vcm" = (
 /obj/machinery/door/airlock/command{
 	name = "Corporate Showroom";
-	req_access_txt = "19"
+	req_access_txt = "19";
+	security_level = 1
 	},
 /obj/effect/turf_decal/stripes/line,
 /obj/effect/turf_decal/stripes/line{

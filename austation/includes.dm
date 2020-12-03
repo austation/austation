@@ -7,6 +7,7 @@
 // Helpers Section
 #include "code\_HELPERS\matrices.dm"
 #include "code\_HELPERS\radiation.dm"
+#include "code\_HELPERS\roundend.dm"
 
 // Main Includes Section
 #include "code\_globalvars\lists\maintenance_loot.dm"
@@ -47,6 +48,7 @@
 #include "code\game\atoms.dm"
 #include "code\game\sound.dm"
 #include "code\game\area\Space_Station_13_areas.dm"
+#include "code\game\machinery\porta_turret\portable_turret.dm"
 #include "code\game\machinery\syndicatebeacon.dm"
 #include "code\game\mecha\equipment\tools\other_tools.dm"
 #include "code\game\mecha\equipment\tools\work_tools.dm"
@@ -55,6 +57,7 @@
 #include "code\game\objects\items.dm"
 #include "code\game\objects\items\AI_modules.dm"
 #include "code\game\objects\items\bluespace_jar.dm"
+#include "code\game\objects\items\devices\traitordevices.dm"
 #include "code\game\objects\items\storage\belt.dm"
 #include "code\game\objects\items\storage\fancy.dm"
 #include "code\game\objects\items\storage\firstaid.dm"
@@ -197,7 +200,9 @@
 #include "code\modules\pool\pool_structures.dm"
 #include "code\modules\pool\pool_wires.dm"
 #include "code\modules\projectiles\boxes_magazine\internal\makeshift_mags.dm"
+#include "code\modules\projectiles\guns\ballistic\crossbow.dm"
 #include "code\modules\projectiles\guns\ballistic\makeshift_pistol.dm"
+#include "code\modules\projectiles\guns\misc\chem_gun.dm"
 #include "code\modules\power\reactor\rbmk.dm"
 #include "code\modules\power\reactor\fuel_rods.dm"
 #include "code\modules\power\reactor\reactor_cargo.dm"

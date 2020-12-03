@@ -8,5 +8,6 @@
 	color = "#876300"
 	aus = TRUE
 	taste_description = "ginger"
+	glass_icon_state = "gingerfizzy"
 	glass_name = "glass of ginger beer"
-	glass_desc = "mmmm. ginger"
+	glass_desc = "A non-alcoholic glass of fine Space Queenslandian gold."
