@@ -1,14 +1,14 @@
 
 // The base used for calculating speed increase
 // lower values make speed increases more diminishing
-#define BASE 0.995
+#define BASE 0.9975
 
 // the smallest amount of power the charger can use to function in watts.
 #define MIN_POWER_USE 100000
 
 /obj/structure/disposalpipe/coilgun/charger
 	name = "coilgun charger"
-	desc = "A powered electromagnetic tube used to accelerate magnetive objects, requires the use of cooling units to prevent the projectile from overheating. Requires direct power connection to function"
+	desc = "A powered electromagnetic tube used to accelerate magnetive projectiles, requires the use of cooling units to prevent the projectile from overheating. Requires direct power connection to function"
 	icon_state = "charger"
 
 	var/enabled = FALSE // is the charger turned on?
@@ -17,6 +17,7 @@
 	var/heat_increase = 10 // how much the charger will heat up the projectile
 	var/target_power_usage = 0 // the set percentage of excess power to be used by the charger
 	var/current_power_use = 0 // how much power it is currently drawing
+	var/idle = 10 // is the coilgun actually being used? checked for power use
 	var/max_power_use = INFINITY // the maximum amount of power the charger can draw in watts
 	var/obj/structure/cable/attached // attached cable
 	var/cps = 0 // current projectile speed, stored in a var fotr examining the charger
@@ -52,11 +53,9 @@
 
 	if(members.len <= 1 && parent == src) // if it's not a child or parent of another object, try to connect nearby chargers
 		build_charger(parent)
-		update_chargers(parent)
-	else
-		update_chargers(parent) // if it is, sync the connected charger's settings
+	update_chargers(parent) //sync the connected charger's settings
 
-/// updates the
+/// updates the chargers connected to the parent
 /obj/structure/disposalpipe/coilgun/charger/proc/update_chargers(obj/structure/disposalpipe/coilgun/charger/P)
 	for(var/obj/structure/disposalpipe/coilgun/charger/C in P.members)
 		C.target_power_usage = target_power_usage
@@ -87,22 +86,26 @@
 	return FALSE
 
 /obj/structure/disposalpipe/coilgun/charger/process()
-	if(attached)
-		var/datum/powernet/PN = attached.powernet
-		if(PN)
-			if(parent == src)
-				var/drained = clamp(min(current_power_use, attached.newavail()), MIN_POWER_USE, max_power_use) // set our power use
-				attached.add_delayedload(drained) // apply our power use
-				if(current_power_use > drained) // are we using more power than we have connected?
-					visible_message("<span class='warning'>Insufficient power!</span>")
-					can_charge = FALSE
-					return
+	if(current_power_use)
+		if(attached)
+			var/datum/powernet/PN = attached.powernet
+			if(PN)
+				if(parent == src)
+					var/drained = min(min(current_power_use, attached.newavail()), max_power_use) // set our power use
+					attached.add_delayedload(drained) // apply our power use
+					if(current_power_use > drained) // are we using more power than we have connected?
+						visible_message("<span class='warning'>Insufficient power!</span>")
+						can_charge = FALSE
+						return
+					else
+						can_charge = TRUE
+						return
 				else
-					can_charge = TRUE
+					can_charge = parent.can_charge
 					return
-			else
-				can_charge = parent.can_charge
-
+	// if we didn't return, disable the charger
+	else
+		return
 	enabled = FALSE
 	STOP_PROCESSING(SSobj, src)
 
@@ -122,7 +125,7 @@
 						projectile.p_speed += speed_increase // add speed to projectile
 						projectile.p_heat += heat_increase // add heat to projectile
 						projectile.on_transfer() // calls the "on_tranfer" proc for the projectile
-						current_power_use = clamp(MIN_POWER_USE + (projectile.p_speed * 500) * (projectile.p_heat * 0.5) * (target_power_usage / 100), MIN_POWER_USE, max_power_use) //big scary line, determins power usage
+						current_power_use = min((projectile.p_speed * 500) * (projectile.p_heat * 0.5) * (target_power_usage / 100), max_power_use) //big scary line, determins power usage
 						cps = round(projectile.p_speed * 10)
 						playsound(get_turf(src), 'sound/weapons/emitter2.ogg', 50, 1)
 						visible_message("<span class='danger'>debug: speed increased by [speed_increase]!</span>")
