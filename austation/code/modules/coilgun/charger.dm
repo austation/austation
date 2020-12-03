@@ -17,7 +17,6 @@
 	var/heat_increase = 10 // how much the charger will heat up the projectile
 	var/target_power_usage = 0 // the set percentage of excess power to be used by the charger
 	var/current_power_use = 0 // how much power it is currently drawing
-	var/idle = 10 // is the coilgun actually being used? checked for power use
 	var/max_power_use = INFINITY // the maximum amount of power the charger can draw in watts
 	var/obj/structure/cable/attached // attached cable
 	var/cps = 0 // current projectile speed, stored in a var fotr examining the charger
@@ -85,30 +84,33 @@
 
 	return FALSE
 
-/obj/structure/disposalpipe/coilgun/charger/process()
-	if(current_power_use)
-		if(attached)
-			var/datum/powernet/PN = attached.powernet
-			if(PN)
-				if(parent == src)
-					var/drained = min(min(current_power_use, attached.newavail()), max_power_use) // set our power use
-					attached.add_delayedload(drained) // apply our power use
-					if(current_power_use > drained) // are we using more power than we have connected?
-						visible_message("<span class='warning'>Insufficient power!</span>")
-						can_charge = FALSE
-						return
+/obj/structure/disposalpipe/coilgun/charger/proc/power_process(ticks)
+	for(var/i in 1 to ticks)
+		if(current_power_use)
+			if(attached)
+				var/datum/powernet/PN = attached.powernet
+				if(PN)
+					if(parent == src)
+						var/drained = min(min(current_power_use, attached.newavail()), max_power_use) // set our power use
+						attached.add_delayedload(drained) // apply our power use
+						if(current_power_use > drained) // are we using more power than we have connected?
+							visible_message("<span class='warning'>Insufficient power!</span>")
+							can_charge = FALSE
+							continue
+						else
+							can_charge = TRUE
+							continue
 					else
-						can_charge = TRUE
-						return
-				else
-					can_charge = parent.can_charge
-					return
+						can_charge = parent.can_charge
+						continue
+		else
+			return
 	// if we didn't return, disable the charger
-	else
-		return
-	enabled = FALSE
-	STOP_PROCESSING(SSobj, src)
 
+		enabled = FALSE
+		return
+
+/// called every time an object passes through the pipe
 /obj/structure/disposalpipe/coilgun/charger/transfer(obj/structure/disposalholder/H)
 	if(H.contents.len)
 		if(can_charge) // do we have enough power?
@@ -129,6 +131,7 @@
 						cps = round(projectile.p_speed * 10)
 						playsound(get_turf(src), 'sound/weapons/emitter2.ogg', 50, 1)
 						visible_message("<span class='danger'>debug: speed increased by [speed_increase]!</span>")
+						power_process(1000)
 						continue
 
 				else if(isliving(AM)) // no non-magnetic hoomans

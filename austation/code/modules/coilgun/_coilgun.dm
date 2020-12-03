@@ -18,7 +18,6 @@
 
 	if(H.contents.len) // is there an object in here?
 
-		icon_state = "amagnet"
 		update_icon()
 		var/obj/effect/hvp/boolet
 
@@ -59,7 +58,6 @@
 					qdel(H)
 					return
 
-		icon_state = "magnet"
 	else
 		qdel(H)
 
@@ -83,15 +81,6 @@
 				if(!hugbox)
 					projectile.p_speed = projectile.p_speed * speed_penalty
 				continue
-			if(isliving(AM)) // no non-magnetic hoomans
-				var/mob/living/L = AM
-				playsound(src.loc, 'sound/machines/buzz-two.ogg', 40, 1)
-				L.adjustBruteLoss(25)
-				L.emote("scream")
-				visible_message("<span class='warning'>\The [src]'s safety mechanism engages, ejecting [L] through the maintenance hatch!</span>")
-				L.forceMove(get_turf(src))
-				continue
-
 			else // eject the item if it's none of the above
 				visible_message("<span class='warning'>\The [src]'s safety mechanism engages, ejecting \the [AM] through the maintenance hatch!</span>")
 				AM.forceMove(get_turf(src))
