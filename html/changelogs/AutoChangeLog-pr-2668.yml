@@ -1,4 +1,0 @@
-author: "AustationBot"
-delete-after: True
-changes: 
-  - admin: "Admins now get a message if the AI or a borg decides to delete Crew mainfest entries"

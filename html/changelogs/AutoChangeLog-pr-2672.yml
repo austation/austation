@@ -1,6 +1,0 @@
-author: "AustationBot"
-delete-after: True
-changes: 
-  - bugfix: "fixes a back sprite icon that was not properly mirrored"
-  - bugfix: "minecart beeing animated"
-  - refactor: "refactored some code regarding the crate animation to use actual sphere coordinates instead"
