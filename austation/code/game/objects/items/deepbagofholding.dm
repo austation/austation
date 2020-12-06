@@ -127,23 +127,21 @@
 		else
 			safety = alert(user, "You are trying to insert [A.name]. This can have dire consequences for the station and it's crew.", "Put in [A.name]?", "Abort", "Proceed")
 		if(safety != "Proceed")
-			return 1
+			return TRUE
 		safety = alert(user, "Are you absolutely sure? Be absolutely certain you want to do this.", "Put in [A.name]?", "Abort", "Proceed")
 		if(safety != "Proceed")
-			return 1
+			return TRUE
 		safety = alert(user, "Last warning. Are you positive there is no other option for you?", "Put in [A.name]?", "Abort", "Proceed")
 		if(safety != "Proceed" || QDELETED(A) || QDELETED(src) || QDELETED(user) || !user.canUseTopic(A, BE_CLOSE, iscarbon(user))) // need to be holding the bag you're "inserting"
-			return 1
+			return TRUE
 		var/turf/loccheck = get_turf(A)
 		if(is_reebe(loccheck.z))
 			user.visible_message("<span class='warning'>An unseen force knocks [user] to the ground!</span>", "<span class='big_brass'>\"I think not!\"</span>")
 			user.Paralyze(60)
-			return 1
+			return TRUE
 		failure(A, user)
-		qdel(A)
-		qdel(src)
-		return 1
-	return 0
+		return TRUE
+	return FALSE
 
 /obj/item/deepbackpack/proc/failure(atom/movable/A, mob/user, failure_state = 0)
 	if(failure_state == 0)
@@ -157,7 +155,7 @@
 			user.visible_message("<span class='warning'>[user] inserts [A.name] into [src], causing it to fizzle out of existence!</span>", "<span class='warning'>[src] fizzles out of existence! What a waste!</span>")
 		if (2) // The user is destroyed with the bags
 			user.visible_message("<span class='danger'>[user] inserts [A.name] into [src], causing them to fizzle out of existence!</span>", "<span class='userdanger'>You feel your body being dragged out of space and time!</span>")
-			qdel(user)
+			dust(user)
 		if (3) // Maxcap.exe
 			user.visible_message("<span class='danger'>[user] inserts [A.name] into [src], causing them to violently explode!</span>", "<span class='userdanger'>[src] explodes violently!</span>")
 			playsound(get_turf(src), 'sound/effects/supermatter.ogg', 50, 1) // BZZZZT!!
@@ -166,6 +164,9 @@
 			user.visible_message("<span class='danger'>[user] inserts [A.name] into [src], causing space time to collapse!</span>", "<span class='userdanger'>[src] collapses in on itself!</span>")
 			playsound(get_turf(src), 'sound/effects/supermatter.ogg', 50, 1) // BZZZZT!!
 			new /obj/singularity(loc)
+
+	qdel(A) // Hide the evidence
+	qdel(src)
 
 // Ejects everyone in the room
 /obj/item/deepbackpack/proc/ejectContents()
