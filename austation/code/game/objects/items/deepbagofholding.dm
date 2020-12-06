@@ -87,7 +87,7 @@
 
 		// Oh, and if they're holding the bag, drop it. Because otherwise you essentially trap yoruself
 		if(src in M.contents)
-			src.forceMove(M.loc)
+			src.forceMove(get_turf(M))
 
 	// Inserting the item
 	insert(A, user)
@@ -156,13 +156,15 @@
 		if (1) // Nothing happens
 			user.visible_message("<span class='warning'>[user] inserts [A.name] into [src], causing it to fizzle out of existence!</span>", "<span class='warning'>[src] fizzles out of existence! What a waste!</span>")
 		if (2) // The user is destroyed with the bags
-			user.visible_message("<span class='warning'>[user] inserts [A.name] into [src], causing them to fizzle out of existence!</span>", "<span class='warning'>You feel your body being dragged out of space and time!</span>")
+			user.visible_message("<span class='danger'>[user] inserts [A.name] into [src], causing them to fizzle out of existence!</span>", "<span class='userdanger'>You feel your body being dragged out of space and time!</span>")
 			qdel(user)
 		if (3) // Maxcap.exe
-			user.visible_message("<span class='warning'>[user] inserts [A.name] into [src], causing them to violently explode!</span>", "<span class='warning'>[src] explodes violently!</span>")
+			user.visible_message("<span class='danger'>[user] inserts [A.name] into [src], causing them to violently explode!</span>", "<span class='userdanger'>[src] explodes violently!</span>")
+			playsound(get_turf(src), 'sound/effects/supermatter.ogg', 50, 1) // BZZZZT!!
 			explosion(src, 3, 7, 12, 0)
 		if (4) // Lord singulo
-			user.visible_message("<span class='warning'>[user] inserts [A.name] into [src], causing space time to collapse!</span>", "<span class='warning'>[src] collapses in on itself!</span>")
+			user.visible_message("<span class='danger'>[user] inserts [A.name] into [src], causing space time to collapse!</span>", "<span class='userdanger'>[src] collapses in on itself!</span>")
+			playsound(get_turf(src), 'sound/effects/supermatter.ogg', 50, 1) // BZZZZT!!
 			new /obj/singularity(loc)
 
 // Ejects everyone in the room
@@ -177,6 +179,37 @@
                         to_chat(M, "<span class='warning'>As reality itself seems torn apart you are suddenly ejected from the pocket dimension!</span>")
                 if(isitem(A))
                     A.forceMove(src.loc)
+
+// Adds extra code to the "shock act" that checks if there's a bag of holding with a bluespace anomally core in it, and if so, turn it into a deep BoH
+/mob/living/carbon/electrocute_act(shock_damage, source, siemens_coeff = 1, safety = 0, tesla_shock = 0, illusion = 0, stun = TRUE)
+	. = ..()
+	if (illusion)
+		return .
+	if (shock_damage >= 100) // oof
+		var/list/obj/item/bags = typecache_filter_list(src.GetAllContents(), typecacheof(/obj/item/storage/backpack/holding))
+		for (var/obj/item/storage/backpack/holding/I in bags) // Check each bag for a core
+			var/list/obj/item/cores = typecache_filter_list(I.GetAllContents(), typecacheof(/obj/item/assembly/signaler/anomaly/bluespace))
+			if(cores.len) // If there are cores
+				src.visible_message("<span class='danger'>[I] reacts with [cores[1]], collapsing into a deep bag of holding!</span>", "<span class='danger'>[I] reacts with [cores[1]], collapsing into collapsing into a deep bag of holding!</span>")
+
+				I.emptyStorage() // Dump the contents so you don't loose your shit
+
+				qdel(I) // Delete the old bag
+				qdel(cores[1]) // Delete the core used in the reaction
+
+				new /obj/item/deepbackpack(get_turf(src)) // Create the new backpack
+				playsound(get_turf(src), 'sound/effects/supermatter.ogg', 50, 1) // BZZZZT!!
+
+				message_admins("[ADMIN_LOOKUPFLW(src)] created a deep bag of holding at [ADMIN_VERBOSEJMP(loc)].")
+				log_game("[key_name(src)] created a deep bag of holding at [loc_name(loc)].")
+	return .
+
+// Extra code to prevent you from putting a DBoH in a BoH, letting our code do the work
+/datum/component/storage/concrete/bluespace/bag_of_holding/handle_item_insertion(obj/item/W, prevent_warning = FALSE, mob/living/user)
+	if(istype(W, /obj/item/deepbackpack))
+		W.attackby(src.parent, user)
+		return
+	return ..()
 
 /turf/open/indestructible/deepBluespaceExit
     name = "Bluespace Tunnel"
