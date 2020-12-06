@@ -155,7 +155,7 @@
 			user.visible_message("<span class='warning'>[user] inserts [A.name] into [src], causing it to fizzle out of existence!</span>", "<span class='warning'>[src] fizzles out of existence! What a waste!</span>")
 		if (2) // The user is destroyed with the bags
 			user.visible_message("<span class='danger'>[user] inserts [A.name] into [src], causing them to fizzle out of existence!</span>", "<span class='userdanger'>You feel your body being dragged out of space and time!</span>")
-			dust(user)
+			user.dust(force = TRUE)
 		if (3) // Maxcap.exe
 			user.visible_message("<span class='danger'>[user] inserts [A.name] into [src], causing them to violently explode!</span>", "<span class='userdanger'>[src] explodes violently!</span>")
 			playsound(get_turf(src), 'sound/effects/supermatter.ogg', 50, 1) // BZZZZT!!
