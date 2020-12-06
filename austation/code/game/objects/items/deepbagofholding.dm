@@ -63,7 +63,7 @@
 			viewing.show_message("<span class='notice'>[user] puts [I] into [src].</span>", 1)
 
 	// Inserting the item
-	mobinsert(I, user)
+	insert(I, user)
 
 // Called when we attack something with the bag
 /obj/item/deepbackpack/afterattack(atom/movable/A, mob/user, proximity)
@@ -90,16 +90,17 @@
 			src.forceMove(M.loc)
 
 	// Inserting the item
-	mobinsert(A, user)
-
-// Use this if a mob is inserting an item into the bag. This adds some animations and shit for the sake of it.
-/obj/item/deepbackpack/proc/mobinsert(atom/movable/A, mob/user)
-	playsound(src, "rustle", 50, 1, -5)
-	add_fingerprint(user)
-	insert(A)
+	insert(A, user)
 
 // Use this if you just want to put an item into the bag. This is the mechanical part.
-/obj/item/deepbackpack/proc/insert(atom/movable/A)
+/obj/item/deepbackpack/proc/insert(atom/movable/A, mob/user)
+	if (safety_check(A, user))
+		return
+
+	playsound(src, "rustle", 50, 1, -5)
+
+	if(ismob(user))
+		add_fingerprint(user)
 
 	 // If this is in a mobs inventory, drop it.
 	var/mob/M
@@ -115,10 +116,54 @@
 	if(ismob(M) && isitem(A))
 		I.dropped(M)
 
-// Doesn't work as of now. Not sure if I will make it work.
-/*/obj/item/deepbackpack/process()
-	var/turf/T = get_turf(src)
-	T.air.share(entry/air)*/
+/obj/item/deepbackpack/proc/safety_check(atom/movable/A, mob/living/user)
+	var/list/obj/item/matching = typecache_filter_list(A.GetAllContents(), typecacheof(/obj/item/storage/backpack/holding))
+	matching += typecache_filter_list(A.GetAllContents(), typecacheof(/obj/item/deepbackpack))
+	matching -= src
+	if(istype(A, /obj/item/storage/backpack/holding) || istype(A, /obj/item/deepbackpack) || matching.len)
+		var/safety = ""
+		if(matching.len)
+			safety = alert(user, "You are trying to insert [A.name], which contains [matching[1].name]. This can have dire consequences for the station and it's crew.", "Put in [A.name]?", "Abort", "Proceed")
+		else
+			safety = alert(user, "You are trying to insert [A.name]. This can have dire consequences for the station and it's crew.", "Put in [A.name]?", "Abort", "Proceed")
+		if(safety != "Proceed")
+			return 1
+		safety = alert(user, "Are you absolutely sure? Be absolutely certain you want to do this.", "Put in [A.name]?", "Abort", "Proceed")
+		if(safety != "Proceed")
+			return 1
+		safety = alert(user, "Last warning. Are you positive there is no other option for you?", "Put in [A.name]?", "Abort", "Proceed")
+		if(safety != "Proceed" || QDELETED(A) || QDELETED(src) || QDELETED(user) || !user.canUseTopic(A, BE_CLOSE, iscarbon(user))) // need to be holding the bag you're "inserting"
+			return 1
+		var/turf/loccheck = get_turf(A)
+		if(is_reebe(loccheck.z))
+			user.visible_message("<span class='warning'>An unseen force knocks [user] to the ground!</span>", "<span class='big_brass'>\"I think not!\"</span>")
+			user.Paralyze(60)
+			return 1
+		failure(A, user)
+		qdel(A)
+		qdel(src)
+		return 1
+	return 0
+
+/obj/item/deepbackpack/proc/failure(atom/movable/A, mob/user, failure_state = 0)
+	if(failure_state == 0)
+		failure_state = rand(1,4)
+
+	message_admins("[ADMIN_LOOKUPFLW(user)] detonated a DEEP bag of holding at [ADMIN_VERBOSEJMP(loc)]. Failure state: [failure_state]")
+	log_game("[key_name(user)] detonated a DEEP bag of holding at [loc_name(loc)]. Failure state: [failure_state]")
+
+	switch (failure_state)
+		if (1) // Nothing happens
+			user.visible_message("<span class='warning'>[user] inserts [A.name] into [src], causing it to fizzle out of existence!</span>", "<span class='warning'>[src] fizzles out of existence! What a waste!</span>")
+		if (2) // The user is destroyed with the bags
+			user.visible_message("<span class='warning'>[user] inserts [A.name] into [src], causing them to fizzle out of existence!</span>", "<span class='warning'>You feel your body being dragged out of space and time!</span>")
+			qdel(user)
+		if (3) // Maxcap.exe
+			user.visible_message("<span class='warning'>[user] inserts [A.name] into [src], causing them to violently explode!</span>", "<span class='warning'>[src] explodes violently!</span>")
+			explosion(src, 3, 7, 12, 0)
+		if (4) // Lord singulo
+			user.visible_message("<span class='warning'>[user] inserts [A.name] into [src], causing space time to collapse!</span>", "<span class='warning'>[src] collapses in on itself!</span>")
+			new /obj/singularity(loc)
 
 // Ejects everyone in the room
 /obj/item/deepbackpack/proc/ejectContents()
