@@ -35,7 +35,7 @@
 		y = clong.y
 	if(isturf(clong) || isobj(clong))
 		if(clong.density)
-			if(momentum >= 100)
+			if(momentum >= 100 || istype(clong, /obj/structure/window))
 				clong.ex_act(EXPLODE_DEVASTATE)
 			else if(momentum > 10)
 				clong.ex_act(EXPLODE_HEAVY)
