@@ -1,0 +1,4 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - rscdel: "Removes unconciousness from mech brute attacks"
