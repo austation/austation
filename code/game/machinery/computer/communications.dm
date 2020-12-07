@@ -556,11 +556,7 @@
 			var/datum/bank_account/D = SSeconomy.get_dep_account(ACCOUNT_CAR)
 			dat += "Budget: [D.account_balance] Credits.<BR>"
 			dat += "<BR>"
-<<<<<<< HEAD
 			if((obj_flags & EMAGGED)) // austation -- remove screwdrivering
-=======
-			if((obj_flags & EMAGGED) || CM.insecure)
->>>>>>> 97049f39a4... make list reject illegals (#3076)
 				dat += "<b>WARNING: Safety features disabled. Non-certified shuttles included. Order at your own peril.</b><BR><BR>"
 			else
 				dat += "<b>Safety protocols in effect: These shuttles all fulfill NT safety standards.</b><BR><BR>" //not that they're very high but these won't kill everyone aboard
