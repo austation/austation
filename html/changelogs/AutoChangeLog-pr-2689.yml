@@ -1,5 +1,0 @@
-author: "AustationBot"
-delete-after: True
-changes: 
-  - admin: "VV now works more reliably"
-  - bugfix: "VV can now show the panel of objects with invalid iconstates"
