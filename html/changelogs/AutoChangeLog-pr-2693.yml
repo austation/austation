@@ -1,6 +1,0 @@
-author: "AustationBot"
-delete-after: True
-changes: 
-  - bugfix: "limbsnakes properly disember limbs"
-  - tweak: "Chimeracost doubled"
-  - tweak: "biodegrade cost halved"
