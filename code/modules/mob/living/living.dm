@@ -67,18 +67,12 @@
 		if(prob(10))
 			playsound(get_turf(src), "punch", 25, 1, -1)
 			visible_message("<span class='warning'>[src] [pick("ran", "slammed")] into \the [A]!</span>")
-<<<<<<< HEAD
-			Knockdown(20) //austation -- knockdown instead of hardstun with damage
-//			apply_damage(5, BRUTE)
-//			Paralyze(40)
-=======
 			apply_damage(5, BRUTE)
-			Paralyze(40)
+			Knockdown(40) // austation -- confusion applies knockdown instead of paralyze (#1831 & #2703)
 			addtimer(CALLBACK(src, .proc/can_bumpslam), 200)
 		else
 			addtimer(CALLBACK(src, .proc/can_bumpslam), 50)
 
->>>>>>> f203c93993... Nerfs bumpslams (#3101)
 
 	if(ismob(A))
 		var/mob/M = A
