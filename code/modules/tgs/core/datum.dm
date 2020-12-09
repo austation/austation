@@ -12,7 +12,7 @@ TGS_DEFINE_AND_SET_GLOBAL(tgs, null)
 /datum/tgs_api/latest
 	parent_type = /datum/tgs_api/v5
 
-//TGS_PROTECT_DATUM(/datum/tgs_api) // austation -- allow tgs datum access (no way this could go wrong)
+TGS_PROTECT_DATUM(/datum/tgs_api)
 
 /datum/tgs_api/proc/ApiVersion()
 	return TGS_UNIMPLEMENTED
