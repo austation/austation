@@ -35,8 +35,8 @@ jobs:
 
     - name: Create Pull Request
       run: |
-        export GITHUB_TOKEN = ${{ secrets.BOT_TOKEN }}
-        export GITHUB_USER = "AustationBot"
+        export GITHUB_TOKEN=${{ secrets.BOT_TOKEN }}
+        export GITHUB_USER=AustationBot
         git remote set-url origin "https://github.com/austation/austation"
         git fetch origin
         hub pull-request -b austation:master -h austation:tgs-dmapi-update -m "Automatic TGS DMAPI Update" -m "This pull request updates the TGS DMAPI to the latest version. Please note any breaking or unimplemented changes before merging." -l "Tools"
