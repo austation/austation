@@ -19,7 +19,7 @@
 	var/current_power_use = 0 // how much power it is currently drawing
 	var/max_power_use = INFINITY // the maximum amount of power the charger can draw in watts
 	var/obj/structure/cable/attached // attached cable
-	var/cps = 0 // current projectile speed, stored in a var fotr examining the charger
+	var/cps = 0 // current projectile speed, stored in a var for examining the charger
 	var/list/members = list()
 	var/parent = null // used for linking coilgun chargers, what charger is parent?
 	var/is_child = FALSE // is this linked to a parent?
@@ -90,7 +90,9 @@
 	return FALSE
 
 /obj/structure/disposalpipe/coilgun/charger/proc/power_process(ticks)
+	visible_message("<span class='warning'>power process called!</span>")
 	for(var/i in 1 to ticks)
+		stoplag()
 		if(current_power_use)
 			if(attached)
 				var/datum/powernet/PN = attached.powernet
@@ -100,15 +102,14 @@
 					if(current_power_use > drained) // are we using more power than we have connected?
 						visible_message("<span class='warning'>Insufficient power!</span>")
 						can_charge = FALSE
-						continue
+						current_power_use = 0
+						return
 					else
 						can_charge = TRUE
 						continue
-
 		else
 			return
-	// if we didn't return, disable the charger
-
+		// if we didn't return, disable the charger
 		enabled = FALSE
 		return
 
@@ -119,21 +120,23 @@
 			for(var/atom/movable/AM in H.contents) // run the loop below for every movable that passes through the charger
 				if(istype(AM, /obj/effect/hvp)) // if it's a coilgun projectile, continue
 
-					var/obj/effect/hvp/projectile = AM
+					var/obj/effect/hvp/P = AM
 					var/datum/powernet/PN = attached.powernet
 
-					if(PN)
+					if(PN && target_power_usage)
 						var/prelim = (target_power_usage / 100) * ((current_power_use + POWER_DIVIDER) / POWER_DIVIDER) // (0 to 1) * (multiples of POWER_DIVIDER)
+						visible_message("<span class='danger'>debug: prelim reads [prelim]!</span>")
+						current_power_use = min((P.p_speed * 500) * (P.p_heat * 0.5) * (target_power_usage / 100), max_power_use) //big scary line, determins power usage
 
-						speed_increase = prelim * BASE ** projectile.p_speed
-						projectile.p_speed += speed_increase // add speed to projectile
-						projectile.p_heat += heat_increase // add heat to projectile
-						projectile.on_transfer() // calls the "on_tranfer" proc for the projectile
-						current_power_use = min((projectile.p_speed * 500) * (projectile.p_heat * 0.5) * (target_power_usage / 100), max_power_use) //big scary line, determins power usage
-						cps = round(projectile.p_speed * 10)
+						speed_increase = prelim * BASE ** P.p_speed
+						P.p_speed += speed_increase // add speed to projectile
+						P.p_heat += heat_increase // add heat to projectile
+						P.on_transfer() // calls the "on_tranfer" proc for the projectile
+						cps = round(P.p_speed * 10)
 						playsound(get_turf(src), 'sound/weapons/emitter2.ogg', 50, 1)
 						visible_message("<span class='danger'>debug: speed increased by [speed_increase]!</span>")
-						power_process(1000)
+						INVOKE_ASYNC(src, .proc/power_process, 100)
+						H.count = 1000 // resets the amount of moves the disposalholder has
 						continue
 
 				else if(isliving(AM)) // no non-magnetic hoomans

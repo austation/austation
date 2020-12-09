@@ -9,7 +9,7 @@
 	move_force = INFINITY
 	move_resist = INFINITY
 	pull_force = INFINITY
-	var/heat_capacity = 80
+	var/heat_capacity = 100 // how hot the object can get before melting
 	var/mass = 0 // how heavy the object is
 	var/special = "none" //special propeties
 	var/p_heat = 0 //how hot this projectile is
@@ -25,7 +25,7 @@
 	else
 		gameover()
 
-/obj/effect/hvp/Bump(atom/clong) // lots of rod code in here
+/obj/effect/hvp/proc/Bonk(atom/clong) // lots of rod code in here xd
 	if(prob(80))
 		playsound(src, 'sound/effects/bang.ogg', 50, 1)
 		audible_message("<span class='danger'>You hear a CLANG!</span>")
@@ -55,7 +55,7 @@
 //	if(L && (L.density || prob(10)))
 //		L.ex_act(EXPLODE_HEAVY)
 
-/obj/effect/hvp/proc/move()
+/obj/effect/hvp/proc/move(atom/collided)
 	if(!step(src,dir))
 		forceMove(get_step(src,dir))
 	p_speed--
@@ -63,7 +63,6 @@
 
 	if(p_speed && mass)
 		momentum = mass*p_speed
-
 	else
 		gameover()
 		return
@@ -73,6 +72,11 @@
 		gameover()
 		return
 	var/move_delay = clamp(round(0.9994 ** p_speed), 0.05, 0.2) // it just works
+
+	var/turf/T = get_turf(src)
+	collided = locate() in T
+	if(isturf(collided)) // I know it's similar to bump but this should stop fast moving projectiles skipping turfs
+		Bonk(collided)
 
 	addtimer(CALLBACK(src, .proc/move), move_delay)
 

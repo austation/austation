@@ -77,7 +77,7 @@
 		for(var/atom/movable/AM in H.contents) // run the loop below for every movable that passes through the charger
 			if(istype(AM, /obj/effect/hvp)) // if it's a projectile, continue
 				var/obj/effect/hvp/projectile = AM
-				projectile.p_heat -= heat_removal
+				projectile.p_heat = max(projectile.p_heat - heat_removal, 0) // projectile can't go below zero
 				if(!hugbox)
 					projectile.p_speed = projectile.p_speed * speed_penalty
 				continue
