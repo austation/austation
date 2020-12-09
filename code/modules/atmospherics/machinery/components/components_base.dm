@@ -87,14 +87,14 @@
 	var/i = parents.Find(reference)
 	reference.other_airs -= airs[i]
 	reference.other_atmosmch -= src
-	/** 
+	/**
 	 *  We explicitly qdel pipeline when this particular pipeline
 	 *  is projected to have no member and cause GC problems.
 	 *  We have to do this because components don't qdel pipelines
 	 *  while pipes must and will happily wreck and rebuild everything again
 	 *  every time they are qdeleted.
 	 */
-	if(!(reference.other_atmosmch.len || reference.members.len))
+	if(!(reference.other_atmosmch.len || reference.members.len || QDESTROYING(reference)))
 		qdel(reference)
 	parents[i] = null
 
