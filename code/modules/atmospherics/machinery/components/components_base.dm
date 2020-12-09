@@ -65,9 +65,9 @@
 // Pipenet stuff; housekeeping
 
 /obj/machinery/atmospherics/components/nullifyNode(i)
-	if(nodes[i])
-		nullifyPipenet(parents[i])
-		QDEL_NULL(airs[i])
+	// Every node has a parent pipeline and an air associated with it.
+	nullifyPipenet(parents[i])
+	QDEL_NULL(airs[i])
 	..()
 
 /obj/machinery/atmospherics/components/on_construction()
@@ -76,7 +76,7 @@
 
 /obj/machinery/atmospherics/components/build_network()
 	for(var/i in 1 to device_type)
-		if(!parents[i])
+		if(QDELETED(parents[i]))
 			parents[i] = new /datum/pipeline()
 			var/datum/pipeline/P = parents[i]
 			P.build_pipeline(src)
