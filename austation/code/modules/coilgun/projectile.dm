@@ -25,7 +25,7 @@
 	else
 		gameover()
 
-/obj/effect/hvp/proc/Bonk(atom/clong) // lots of rod code in here xd
+/obj/effect/hvp/Bump(atom/clong) // lots of rod code in here xd
 	if(prob(80))
 		playsound(src, 'sound/effects/bang.ogg', 50, 1)
 		audible_message("<span class='danger'>You hear a CLANG!</span>")
@@ -34,7 +34,7 @@
 		x = clong.x
 		y = clong.y
 	if(isturf(clong) || isobj(clong))
-		if(momentum >= 100 || istype(clong, /obj/structure/window))
+		if(momentum >= 100 || istype(clong, /obj/structure/window)) // stops windows from taking a tiny crack instead of a smash
 			clong.ex_act(EXPLODE_DEVASTATE)
 		else if(momentum > 10)
 			clong.ex_act(EXPLODE_HEAVY)
@@ -54,9 +54,9 @@
 //	if(L && (L.density || prob(10)))
 //		L.ex_act(EXPLODE_HEAVY)
 
-/obj/effect/hvp/proc/move(atom/collided)
+/obj/effect/hvp/proc/move()
 	if(!step(src,dir))
-		forceMove(get_step(src,dir))
+		Move(get_step(src,dir))
 	p_speed--
 	throwforce = momentum * 0.2
 
@@ -71,11 +71,6 @@
 		gameover()
 		return
 	var/move_delay = clamp(round(0.9994 ** p_speed), 0.05, 0.2) // it just works
-
-	var/turf/T = get_turf(src)
-	collided = locate() in T
-	if(!isturf(T))
-		Bonk(collided)
 	addtimer(CALLBACK(src, .proc/move), move_delay)
 
 /// called when we pass through a charger

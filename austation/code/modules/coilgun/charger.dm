@@ -91,7 +91,7 @@
 /obj/structure/disposalpipe/coilgun/charger/proc/power_process(ticks)
 	power_process = TRUE
 	for(, ticks > 0, ticks--)
-		stoplag()
+		sleep(10)
 		if(current_power_use)
 			if(attached)
 				var/datum/powernet/PN = attached.powernet
@@ -101,7 +101,7 @@
 					attached.add_delayedload(drained) // apply our power use
 					if(current_power_use > drained) // are we using more power than we have connected?
 						visible_message("<span class='warning'>Insufficient power!</span>")
-						current_power_use = drained
+						current_power_use -= (current_power_use - drained)
 						return
 					else
 						can_charge = TRUE
@@ -135,7 +135,7 @@
 						playsound(get_turf(src), 'sound/weapons/emitter2.ogg', 50, 1)
 						visible_message("<span class='danger'>debug: speed increased by [speed_increase]!</span>")
 						if(!power_process)
-							INVOKE_ASYNC(src, .proc/power_process, 100)
+							INVOKE_ASYNC(src, .proc/power_process, 10) // applies our power use for 10 seconds
 						H.count = 1000 // resets the amount of moves the disposalholder has
 						continue
 
