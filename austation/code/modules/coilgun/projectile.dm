@@ -34,15 +34,14 @@
 		x = clong.x
 		y = clong.y
 	if(isturf(clong) || isobj(clong))
-		if(clong.density)
-			if(momentum >= 100 || istype(clong, /obj/structure/window))
-				clong.ex_act(EXPLODE_DEVASTATE)
-			else if(momentum > 10)
-				clong.ex_act(EXPLODE_HEAVY)
-			else
-				gameover()
-				return
-			p_speed -= 10
+		if(momentum >= 100 || istype(clong, /obj/structure/window))
+			clong.ex_act(EXPLODE_DEVASTATE)
+		else if(momentum > 10)
+			clong.ex_act(EXPLODE_HEAVY)
+		else
+			gameover()
+			return
+		p_speed -= 10
 	else if(isliving(clong))
 		penetrate(clong)
 
@@ -75,9 +74,8 @@
 
 	var/turf/T = get_turf(src)
 	collided = locate() in T
-	if(isturf(collided)) // I know it's similar to bump but this should stop fast moving projectiles skipping turfs
+	if(!isturf(T))
 		Bonk(collided)
-
 	addtimer(CALLBACK(src, .proc/move), move_delay)
 
 /// called when we pass through a charger
@@ -87,6 +85,9 @@
 
 /// melts the projectile when over heated
 /obj/effect/hvp/proc/overspice()
+	for(var/mob/living/M in contents)
+		M.adjustFireLoss(20)
+		forceMove(get_turf(src))
 	var/obj/effect/decal/cleanable/ash/melted = new(loc) // make an ash pile where we die ;-;
 	playsound(loc, 'sound/items/welder.ogg', 150, 1)
 	melted.name = "slagged [name]"

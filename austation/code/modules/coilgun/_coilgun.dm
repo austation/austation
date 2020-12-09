@@ -15,7 +15,6 @@
 	icon_state = "magnet"
 
 /obj/structure/disposalpipe/coilgun/magnetizer/transfer(obj/structure/disposalholder/H) // what do you mean it looks like loafer code?
-
 	if(H.contents.len) // is there an object in here?
 
 		update_icon()
@@ -32,7 +31,6 @@
 				boolet.icon_state = AM.icon_state
 				boolet.p_speed = 1
 				AM.loc = boolet //put the original inserted objected inside the coilgun projectile
-
 			if(isliving(AM))
 				var/mob/living/L = AM
 				L.adjustBruteLoss(10)
@@ -45,7 +43,6 @@
 				else
 					boolet.mass = 3
 					continue
-
 			if(isitem(AM))
 				var/obj/item/I = AM
 				if(I.w_class)
@@ -57,7 +54,6 @@
 					qdel(I)
 					qdel(H)
 					return
-
 	else
 		qdel(H)
 
