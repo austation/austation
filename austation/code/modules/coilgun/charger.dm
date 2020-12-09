@@ -1,14 +1,14 @@
 
 // The base used for calculating speed increase
 // lower values make speed increases more diminishing
-#define BASE 0.995
+#define BASE 0.9975
 
 // the smallest amount of power the charger can use to function in watts.
-#define MIN_POWER_USE 100000
+#define POWER_DIVIDER 100000
 
 /obj/structure/disposalpipe/coilgun/charger
 	name = "coilgun charger"
-	desc = "A powered electromagnetic tube used to accelerate magnetive objects, requires the use of cooling units to prevent the projectile from overheating. Requires direct power connection to function"
+	desc = "A powered electromagnetic tube used to accelerate magnetive projectiles, requires the use of cooling units to prevent the projectile from overheating. Requires direct power connection to function"
 	icon_state = "charger"
 
 	var/enabled = FALSE // is the charger turned on?
@@ -23,16 +23,17 @@
 	var/list/members = list()
 	var/parent = null // used for linking coilgun chargers, what charger is parent?
 	var/is_child = FALSE // is this linked to a parent?
+	var/laststep // used in charger chain building, stops infinite loops. did we just run the proc on this pipe?
 
 // because I don't want to make a GUI
+
+/obj/structure/disposalpipe/coilgun/charger/New()
+	parent = src
+	members += src
 /obj/structure/disposalpipe/coilgun/charger/attack_hand(mob/user)
 	. = ..()
 	if(.)
 		return
-	if(!members.len)
-		members += src
-	if(!parent)
-		parent = src
 	if(enabled)
 		if(check_power(parent))
 			if(target_power_usage >= 100)
@@ -52,11 +53,9 @@
 
 	if(members.len <= 1 && parent == src) // if it's not a child or parent of another object, try to connect nearby chargers
 		build_charger(parent)
-		update_chargers(parent)
-	else
-		update_chargers(parent) // if it is, sync the connected charger's settings
+	update_chargers(parent) //sync the connected charger's settings
 
-/// updates the
+/// updates the chargers connected to the parent
 /obj/structure/disposalpipe/coilgun/charger/proc/update_chargers(obj/structure/disposalpipe/coilgun/charger/P)
 	for(var/obj/structure/disposalpipe/coilgun/charger/C in P.members)
 		C.target_power_usage = target_power_usage
@@ -69,10 +68,14 @@
 	var/obj/structure/disposalpipe/coilgun/charger/C
 	for(var/turf/T in range(1, loc)) // for every tile next to the charger
 		C = locate() in T // checks said
-		if(C && C.dpdir == dpdir && (!C.parent || C.parent == C))
+		if(C && C.dpdir == dpdir && (!C.parent || C.parent == C) && C.laststep != laststep)
+			if(laststep == C)
+				continue
+			laststep = src
 			if(!(C in P.members))
 				P.members += C
 				C.parent = P
+			C.visible_message("<span class='warning'>Debug: building charger...</span>")
 			C.build_charger(P)
 			C.visible_message("<span class='warning'>Debug: synced with parent!</span>")
 
@@ -86,26 +89,30 @@
 
 	return FALSE
 
-/obj/structure/disposalpipe/coilgun/charger/process()
-	if(attached)
-		var/datum/powernet/PN = attached.powernet
-		if(PN)
-			if(parent == src)
-				var/drained = clamp(min(current_power_use, attached.newavail()), MIN_POWER_USE, max_power_use) // set our power use
-				attached.add_delayedload(drained) // apply our power use
-				if(current_power_use > drained) // are we using more power than we have connected?
-					visible_message("<span class='warning'>Insufficient power!</span>")
-					can_charge = FALSE
-					return
-				else
-					can_charge = TRUE
-					return
-			else
-				can_charge = parent.can_charge
+/obj/structure/disposalpipe/coilgun/charger/proc/power_process(ticks)
+	for(var/i in 1 to ticks)
+		if(current_power_use)
+			if(attached)
+				var/datum/powernet/PN = attached.powernet
+				if(PN)
+					var/drained = min(min(current_power_use, attached.newavail()), max_power_use) // set our power use
+					attached.add_delayedload(drained) // apply our power use
+					if(current_power_use > drained) // are we using more power than we have connected?
+						visible_message("<span class='warning'>Insufficient power!</span>")
+						can_charge = FALSE
+						continue
+					else
+						can_charge = TRUE
+						continue
 
-	enabled = FALSE
-	STOP_PROCESSING(SSobj, src)
+		else
+			return
+	// if we didn't return, disable the charger
 
+		enabled = FALSE
+		return
+
+/// called every time an object passes through the pipe
 /obj/structure/disposalpipe/coilgun/charger/transfer(obj/structure/disposalholder/H)
 	if(H.contents.len)
 		if(can_charge) // do we have enough power?
@@ -116,16 +123,17 @@
 					var/datum/powernet/PN = attached.powernet
 
 					if(PN)
-						var/prelim = (target_power_usage / 100) * (current_power_use / MIN_POWER_USE) // (0-100 divided by 100) * (how much power we're using divided by the minimum power use)
+						var/prelim = (target_power_usage / 100) * ((current_power_use + POWER_DIVIDER) / POWER_DIVIDER) // (0 to 1) * (multiples of POWER_DIVIDER)
 
 						speed_increase = prelim * BASE ** projectile.p_speed
 						projectile.p_speed += speed_increase // add speed to projectile
 						projectile.p_heat += heat_increase // add heat to projectile
 						projectile.on_transfer() // calls the "on_tranfer" proc for the projectile
-						current_power_use = clamp(MIN_POWER_USE + (projectile.p_speed * 500) * (projectile.p_heat * 0.5) * (target_power_usage / 100), MIN_POWER_USE, max_power_use) //big scary line, determins power usage
+						current_power_use = min((projectile.p_speed * 500) * (projectile.p_heat * 0.5) * (target_power_usage / 100), max_power_use) //big scary line, determins power usage
 						cps = round(projectile.p_speed * 10)
 						playsound(get_turf(src), 'sound/weapons/emitter2.ogg', 50, 1)
 						visible_message("<span class='danger'>debug: speed increased by [speed_increase]!</span>")
+						power_process(1000)
 						continue
 
 				else if(isliving(AM)) // no non-magnetic hoomans
@@ -139,6 +147,8 @@
 					visible_message("<span class='warning'>\The [src]'s safety mechanism engages, ejecting \the [AM] through the maintenance hatch!</span>")
 					AM.forceMove(get_turf(src))
 					continue
+		else
+			can_charge = check_power(parent)
 	else
 		qdel(H)
 
@@ -152,4 +162,4 @@
 		. += "<span class='info'>No moving projectile detected.</span>"
 
 #undef BASE
-#undef MIN_POWER_USE
+#undef POWER_DIVIDER
