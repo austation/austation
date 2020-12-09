@@ -18519,7 +18519,7 @@
 /area/quartermaster/warehouse)
 "aQf" = (
 /obj/structure/closet/crate{
-	opened = TRUE
+	opened = 1
 	},
 /obj/effect/spawner/lootdrop/maintenance,
 /obj/effect/decal/cleanable/dirt,
@@ -19390,7 +19390,7 @@
 /area/maintenance/department/crew_quarters/bar)
 "aRY" = (
 /obj/structure/closet/crate{
-	opened = TRUE
+	opened = 1
 	},
 /obj/effect/spawner/lootdrop/maintenance,
 /turf/open/floor/plating,
@@ -20085,7 +20085,7 @@
 	dir = 9
 	},
 /obj/structure/closet/crate{
-	opened = TRUE
+	opened = 1
 	},
 /turf/open/floor/plating,
 /area/maintenance/disposal)
@@ -21501,7 +21501,7 @@
 /area/quartermaster/storage)
 "aWz" = (
 /obj/structure/closet/crate{
-	opened = TRUE
+	opened = 1
 	},
 /obj/effect/spawner/lootdrop/maintenance/two,
 /obj/effect/turf_decal/bot,
@@ -35826,7 +35826,7 @@
 /area/science/xenobiology)
 "bBV" = (
 /obj/structure/closet/crate{
-	opened = TRUE
+	opened = 1
 	},
 /obj/effect/spawner/lootdrop/maintenance/two,
 /obj/item/clothing/mask/balaclava,
@@ -37451,7 +37451,7 @@
 /area/hallway/primary/aft)
 "bEQ" = (
 /obj/structure/closet/crate{
-	opened = TRUE
+	opened = 1
 	},
 /obj/item/stock_parts/matter_bin,
 /obj/item/stock_parts/matter_bin,
@@ -56251,7 +56251,7 @@
 "gXg" = (
 /obj/item/extinguisher,
 /obj/structure/closet/crate{
-	opened = TRUE
+	opened = 1
 	},
 /turf/open/floor/plating,
 /area/maintenance/department/science)
@@ -58492,7 +58492,7 @@
 /area/tcommsat/computer)
 "kFu" = (
 /obj/structure/closet/crate{
-	opened = TRUE
+	opened = 1
 	},
 /obj/effect/spawner/lootdrop/maintenance,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
@@ -62894,7 +62894,7 @@
 /area/hallway/secondary/exit/departure_lounge)
 "srZ" = (
 /obj/structure/closet/crate{
-	opened = TRUE
+	opened = 1
 	},
 /turf/open/floor/plating,
 /area/maintenance/disposal)
