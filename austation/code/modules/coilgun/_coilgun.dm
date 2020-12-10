@@ -1,5 +1,5 @@
 
-// TheFakeElon's funni high-velocity-projectile launcher
+// TheFakeElon's funni high-velocity-projectile launcher.
 
 /obj/structure/disposalpipe/coilgun
 	name = "coilgun tube"
@@ -14,7 +14,7 @@
 	desc = "A machine that glazes inserted objects with neodymium, making the object magnetive"
 	icon_state = "magnet"
 
-/obj/structure/disposalpipe/coilgun/magnetizer/transfer(obj/structure/disposalholder/H) // what do you mean it looks like loafer code?
+/obj/structure/disposalpipe/coilgun/magnetizer/transfer(obj/structure/disposalholder/H)
 	if(H.contents.len) // is there an object in here?
 
 		update_icon()
