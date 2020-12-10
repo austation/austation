@@ -1,0 +1,4 @@
+author: "Tiviplus, Rohesie, ninjanomnom, ike709, park66665"
+delete-after: True
+changes: 
+  - refactor: "converted decals from components to elements"
