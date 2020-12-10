@@ -35,8 +35,8 @@
 		    	  linkedDim.bottom_left_coords[2] + linkedDimTemp.landingZoneRelativeY, \
 		   		  linkedDim.bottom_left_coords[3])
 
-	// Start processing air and shit
-	START_PROCESSING(SSobj, src)
+	// Gonna leave this here for a latter date. This is for atmos interactions, but it doesn't work at the moment, so for now it's depricated.
+	// START_PROCESSING(SSobj, src)
 
 /obj/item/deepbackpack/Destroy()
     ejectContents()
