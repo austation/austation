@@ -57,6 +57,7 @@
 #include "code\game\objects\items.dm"
 #include "code\game\objects\items\AI_modules.dm"
 #include "code\game\objects\items\bluespace_jar.dm"
+#include "code\game\objects\items\deepbagofholding.dm"
 #include "code\game\objects\items\devices\traitordevices.dm"
 #include "code\game\objects\items\storage\belt.dm"
 #include "code\game\objects\items\storage\fancy.dm"

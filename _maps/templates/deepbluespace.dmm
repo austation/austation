@@ -1,0 +1,126 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/turf/closed/indestructible/riveted,
+/area/deepbluespace)
+"b" = (
+/turf/open/indestructible/deepBluespaceExit,
+/area/deepbluespace)
+"c" = (
+/turf/open/floor/plating,
+/area/deepbluespace)
+"e" = (
+/obj/machinery/power/apc/auto_name/north,
+/turf/open/floor/plating,
+/area/deepbluespace)
+"f" = (
+/obj/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/deepbluespace)
+"g" = (
+/obj/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/deepbluespace)
+
+(1,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+a
+a
+"}
+(2,1,1) = {"
+a
+c
+c
+c
+f
+c
+c
+c
+a
+"}
+(3,1,1) = {"
+a
+e
+c
+c
+c
+c
+c
+c
+a
+"}
+(4,1,1) = {"
+a
+c
+c
+c
+c
+c
+c
+c
+a
+"}
+(5,1,1) = {"
+b
+c
+c
+c
+c
+c
+c
+c
+a
+"}
+(6,1,1) = {"
+a
+c
+c
+c
+c
+c
+c
+c
+a
+"}
+(7,1,1) = {"
+a
+c
+c
+c
+c
+c
+c
+c
+a
+"}
+(8,1,1) = {"
+a
+c
+c
+c
+g
+c
+c
+c
+a
+"}
+(9,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+a
+a
+"}
