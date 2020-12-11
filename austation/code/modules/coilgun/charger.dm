@@ -92,15 +92,16 @@
 	power_process = TRUE
 	for(, ticks > 0, ticks--)
 		sleep(10)
-		if(current_power_use)
+		if(current_power_use && target_power_use)
 			if(attached)
 				var/datum/powernet/PN = attached.powernet
 				if(PN)
-					var/drained = min(min(current_power_use, attached.newavail()), max_power_use) // set our power use
+					var/drained = min(current_power_use, max_power_use)// set our power use
 					visible_message("<span class='warning'>Drained reads [drained]!</span>")
 					attached.add_delayedload(drained) // apply our power use
-					if(current_power_use > drained) // are we using more power than we have connected?
-						visible_message("<span class='warning'>Insufficient power!</span>")
+					if(attached.newavail() > drained) // are we using more power than we have connected?
+						target_power_use -= 20
+						visible_message("<span class='warning'>Insufficient power, lowering throttle to [target_power_use]!</span>")
 						current_power_use -= (current_power_use - drained)
 						return
 					else
