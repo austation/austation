@@ -1,5 +1,5 @@
 
-// TheFakeElon's funni high-velocity-projectile launcher
+// TheFakeElon's funni high-velocity-projectile launcher.
 
 /obj/structure/disposalpipe/coilgun
 	name = "coilgun tube"
@@ -14,8 +14,7 @@
 	desc = "A machine that glazes inserted objects with neodymium, making the object magnetive"
 	icon_state = "magnet"
 
-/obj/structure/disposalpipe/coilgun/magnetizer/transfer(obj/structure/disposalholder/H) // what do you mean it looks like loafer code?
-
+/obj/structure/disposalpipe/coilgun/magnetizer/transfer(obj/structure/disposalholder/H)
 	if(H.contents.len) // is there an object in here?
 
 		update_icon()
@@ -32,7 +31,6 @@
 				boolet.icon_state = AM.icon_state
 				boolet.p_speed = 1
 				AM.loc = boolet //put the original inserted objected inside the coilgun projectile
-
 			if(isliving(AM))
 				var/mob/living/L = AM
 				L.adjustBruteLoss(10)
@@ -45,7 +43,6 @@
 				else
 					boolet.mass = 3
 					continue
-
 			if(isitem(AM))
 				var/obj/item/I = AM
 				if(I.w_class)
@@ -57,7 +54,6 @@
 					qdel(I)
 					qdel(H)
 					return
-
 	else
 		qdel(H)
 
@@ -77,7 +73,7 @@
 		for(var/atom/movable/AM in H.contents) // run the loop below for every movable that passes through the charger
 			if(istype(AM, /obj/effect/hvp)) // if it's a projectile, continue
 				var/obj/effect/hvp/projectile = AM
-				projectile.p_heat -= heat_removal
+				projectile.p_heat = max(projectile.p_heat - heat_removal, 0) // projectile can't go below zero
 				if(!hugbox)
 					projectile.p_speed = projectile.p_speed * speed_penalty
 				continue

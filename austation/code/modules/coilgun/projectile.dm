@@ -9,7 +9,7 @@
 	move_force = INFINITY
 	move_resist = INFINITY
 	pull_force = INFINITY
-	var/heat_capacity = 80
+	var/heat_capacity = 100 // how hot the object can get before melting
 	var/mass = 0 // how heavy the object is
 	var/special = "none" //special propeties
 	var/p_heat = 0 //how hot this projectile is
@@ -25,7 +25,7 @@
 	else
 		gameover()
 
-/obj/effect/hvp/Bump(atom/clong) // lots of rod code in here
+/obj/effect/hvp/Bump(atom/clong) // lots of rod code in here xd
 	if(prob(80))
 		playsound(src, 'sound/effects/bang.ogg', 50, 1)
 		audible_message("<span class='danger'>You hear a CLANG!</span>")
@@ -34,15 +34,14 @@
 		x = clong.x
 		y = clong.y
 	if(isturf(clong) || isobj(clong))
-		if(clong.density)
-			if(momentum >= 100)
-				clong.ex_act(EXPLODE_DEVASTATE)
-			else if(momentum > 10)
-				clong.ex_act(EXPLODE_HEAVY)
-			else
-				gameover()
-				return
-			p_speed -= 10
+		if(momentum >= 100 || istype(clong, /obj/structure/window)) // stops windows from taking a tiny crack instead of a smash
+			clong.ex_act(EXPLODE_DEVASTATE)
+		else if(momentum > 10)
+			clong.ex_act(EXPLODE_HEAVY)
+		else
+			gameover()
+			return
+		p_speed -= 10
 	else if(isliving(clong))
 		penetrate(clong)
 
@@ -57,13 +56,12 @@
 
 /obj/effect/hvp/proc/move()
 	if(!step(src,dir))
-		forceMove(get_step(src,dir))
+		Move(get_step(src,dir))
 	p_speed--
 	throwforce = momentum * 0.2
 
 	if(p_speed && mass)
 		momentum = mass*p_speed
-
 	else
 		gameover()
 		return
@@ -73,7 +71,6 @@
 		gameover()
 		return
 	var/move_delay = clamp(round(0.9994 ** p_speed), 0.05, 0.2) // it just works
-
 	addtimer(CALLBACK(src, .proc/move), move_delay)
 
 /// called when we pass through a charger
@@ -83,6 +80,9 @@
 
 /// melts the projectile when over heated
 /obj/effect/hvp/proc/overspice()
+	for(var/mob/living/M in contents)
+		M.adjustFireLoss(20)
+		forceMove(get_turf(src))
 	var/obj/effect/decal/cleanable/ash/melted = new(loc) // make an ash pile where we die ;-;
 	playsound(loc, 'sound/items/welder.ogg', 150, 1)
 	melted.name = "slagged [name]"
