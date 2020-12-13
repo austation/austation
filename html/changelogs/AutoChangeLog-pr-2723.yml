@@ -1,4 +1,0 @@
-author: "AustationBot"
-delete-after: True
-changes: 
-  - tweak: "The name of a beaker is now displayed when someone tries to feed you it"
