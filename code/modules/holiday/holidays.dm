@@ -292,6 +292,14 @@
 /datum/holiday/beer/getStationPrefix()
 	return pick("Stout","Porter","Lager","Ale","Malt","Bock","Doppelbock","Hefeweizen","Pilsner","IPA","Lite") //I'm sorry for the last one
 
+/datum/holiday/anz
+	name = "ANZAC Day"
+	begin_day = 25
+	begin_month = APRIL
+
+/datum/holiday/anz/getStationPrefix()
+	return pick("Australian","New Zealand","Poppy", "Southern Cross")
+
 /datum/holiday/pirate
 	name = "Talk-Like-a-Pirate Day"
 	begin_day = 19
