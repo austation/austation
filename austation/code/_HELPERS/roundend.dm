@@ -8,6 +8,7 @@
 	discordmsg += "Escapees: [escapees]\n"
 	discordmsg += "Integrity: [integrity]\n"
 	discordmsg += "Gamemode: [SSticker.mode.name]\n"
+	msg2url(discordmsg)
 	send2chat(discordmsg, "roundend")
 	discordmsg = ""
 	var/list/ded = SSblackbox.first_death
@@ -21,13 +22,13 @@
 		discordmsg += "Antagonists at round end were...\n"
 	else
 		discordmsg += "There were no antagonists!\n"
+	msg2url(discordmsg)
 	send2chat(discordmsg, "roundend")
 	if(GLOB.antagonists.len)
 		for(var/datum/antagonist/A in GLOB.antagonists)
 			if(!A.owner)
 				continue
-
-			discordmsg = ""			
+			discordmsg = ""
 			var/list/antag_info = list()
 			antag_info["key"] = A.owner.key
 			antag_info["name"] = A.owner.name
@@ -55,5 +56,6 @@
 			else
 				discordmsg += "The [antag_info["antagonist_name"]] has succeded!\n"
 
+			msg2url(discordmsg)
 			send2chat(discordmsg, "roundend")
 
