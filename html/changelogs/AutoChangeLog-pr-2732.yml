@@ -1,0 +1,5 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - bugfix: "improved decal performance"
+  - bugfix: "decals no longer disappear on shuttle move"
