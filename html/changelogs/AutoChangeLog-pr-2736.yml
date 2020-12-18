@@ -1,5 +1,0 @@
-author: "AustationBot"
-delete-after: True
-changes: 
-  - bugfix: "Fixed the stray bullet hallucination runtiming."
-  - tweak: "Stray bullet hallucination is less frequent."

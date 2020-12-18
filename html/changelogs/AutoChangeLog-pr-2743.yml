@@ -1,5 +1,0 @@
-author: "AustationBot"
-delete-after: True
-changes: 
-  - rscadd: "Aux base access."
-  - tweak: "Curator no longer has construction access."
