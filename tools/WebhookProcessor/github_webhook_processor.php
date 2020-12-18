@@ -254,15 +254,11 @@ function tag_pr($payload, $opened) {
 		$tags[] = 'Merge Conflict';
 
 	$treetags = array('_maps' => 'Map Edit', 'tools' => 'Tools', 'SQL' => 'SQL', '.github' => 'GitHub');
-<<<<<<< HEAD
-	$addonlytags = array('icons' => 'Sprites', 'sound' => 'Sound', 'config' => 'Config Update', 'code/controllers/configuration/entries' => 'Config Update', 'tgui' => 'UI');
+	$addonlytags = array('icons' => 'Sprites', 'sound' => 'Sound', 'config' => 'Config Update', 'code/controllers/configuration/entries' => 'Config Update', 'code/modules/unit_tests' => 'Unit Tests', 'tgui' => 'UI');
 
 	get_diff($payload);
 	global $github_diff;
 
-=======
-	$addonlytags = array('icons' => 'Sprites', 'sound' => 'Sound', 'config' => 'Config Update', 'code/controllers/configuration/entries' => 'Config Update', 'code/modules/unit_tests' => 'Unit Tests', 'tgui' => 'UI');
->>>>>>> 81c9b6a05c... Webhook Processor Ports (#3164)
 	foreach($treetags as $tree => $tag)
 		if(has_tree_been_edited($payload, $tree))
 			$tags[] = $tag;
@@ -987,13 +983,8 @@ function checkchangelog($payload, $compile = true) {
 
 function game_server_send($addr, $port, $str) {
 	// All queries must begin with a question mark (ie "?players")
-<<<<<<< HEAD
-	if($str{0} != '?') $str = ('?' . $str);
-
-=======
 	if($str[0] != '?') $str = ('?' . $str);
 	
->>>>>>> 81c9b6a05c... Webhook Processor Ports (#3164)
 	/* --- Prepare a packet to send to the server (based on a reverse-engineered packet structure) --- */
 	$query = "\x00\x83" . pack('n', strlen($str) + 6) . "\x00\x00\x00\x00\x00" . $str . "\x00";
 
@@ -1022,23 +1013,14 @@ function game_server_send($addr, $port, $str) {
 	socket_close($server); // we don't need this anymore
 
 	if($result != "") {
-<<<<<<< HEAD
-		if($result{0} == "\x00" || $result{1} == "\x83") { // make sure it's the right packet format
-=======
 		if($result[0] == "\x00" || $result[1] == "\x83") { // make sure it's the right packet format
->>>>>>> 81c9b6a05c... Webhook Processor Ports (#3164)
 
 			// Actually begin reading the output:
 			$sizebytes = unpack('n', $result[2] . $result[3]); // array size of the type identifier and content
 			$size = $sizebytes[1] - 1; // size of the string/floating-point (minus the size of the identifier byte)
 
-<<<<<<< HEAD
-			if($result{4} == "\x2a") { // 4-byte big-endian floating-point
-				$unpackint = unpack('f', $result{5} . $result{6} . $result{7} . $result{8}); // 4 possible bytes: add them up together, unpack them as a floating-point
-=======
 			if($result[4] == "\x2a") { // 4-byte big-endian floating-point
 				$unpackint = unpack('f', $result[5] . $result[6] . $result[7] . $result[8]); // 4 possible bytes: add them up together, unpack them as a floating-point
->>>>>>> 81c9b6a05c... Webhook Processor Ports (#3164)
 				return $unpackint[1];
 			}
 			else if($result[4] == "\x06") { // ASCII string
