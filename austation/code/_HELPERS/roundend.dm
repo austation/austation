@@ -18,13 +18,13 @@
 		discordmsg += "[last_words]\n"
 	else
 		discordmsg += "Nobody died!\n"
-	if(GLOB.antagonists.len)
+	/*if(GLOB.antagonists.len)
 		discordmsg += "Antagonists at round end were...\n"
 	else
-		discordmsg += "There were no antagonists!\n"
+		discordmsg += "There were no antagonists!\n"*/
 	msg2url(discordmsg)
 	send2chat(discordmsg, "ooc")
-	if(GLOB.antagonists.len)
+	/*if(GLOB.antagonists.len)
 		for(var/datum/antagonist/A in GLOB.antagonists)
 			if(!A.owner)
 				continue
@@ -57,8 +57,7 @@
 				discordmsg += "The [antag_info["antagonist_name"]] has succeded!\n"
 
 			msg2url(discordmsg)
-			send2chat(discordmsg, "ooc")
+			send2chat(discordmsg, "ooc")*/
 	discordmsg = ""
 	discordmsg += "-------------------------------------\n"
 	send2chat(discordmsg, "ooc")
-
