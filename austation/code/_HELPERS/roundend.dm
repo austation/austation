@@ -58,4 +58,7 @@
 
 			msg2url(discordmsg)
 			send2chat(discordmsg, "roundend")
+	discordmsg = ""
+	discordmsg += "-------------------------------------\n"
+	send2chat(discordmsg, "roundend")
 
