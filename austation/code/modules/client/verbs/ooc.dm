@@ -1,4 +1,4 @@
-/client/ooc(msg)
+/client/ooc(msg as text)
 	. = ..()
 	if(holder?.fakekey)
 		send2chat("**[holder.fakekey]:** [msg2url(msg)]", "ooc")
