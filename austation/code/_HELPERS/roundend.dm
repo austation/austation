@@ -8,7 +8,7 @@
 	discordmsg += "Escapees: [escapees]\n"
 	discordmsg += "Integrity: [integrity]\n"
 	discordmsg += "Gamemode: [SSticker.mode.name]\n"
-	msg2url(discordmsg)
+	discordmsg = msg2url(discordmsg)
 	send2chat(discordmsg, "ooc")
 	discordmsg = ""
 	var/list/ded = SSblackbox.first_death
@@ -22,7 +22,7 @@
 		discordmsg += "Antagonists at round end were...\n"
 	else
 		discordmsg += "There were no antagonists!\n"*/
-	msg2url(discordmsg)
+	discordmsg = msg2url(discordmsg)
 	send2chat(discordmsg, "ooc")
 	/*if(GLOB.antagonists.len)
 		for(var/datum/antagonist/A in GLOB.antagonists)
