@@ -26,11 +26,11 @@
 	var/laststep // used in charger chain building, stops infinite loops. did we just run the proc on this pipe?
 	var/power_process = FALSE // are we currently processing power?
 
-// because I don't want to make a GUI
-
 /obj/structure/disposalpipe/coilgun/charger/New()
 	parent = src
 	members += src
+
+// because I don't want to make a GUI
 /obj/structure/disposalpipe/coilgun/charger/attack_hand(mob/user)
 	. = ..()
 	if(.)
@@ -43,9 +43,9 @@
 				to_chat(user, "<span class='notice'>You turn off \the [src].</span>")
 			else
 				target_power_usage += 20
-				to_chat(user, "<span class='notice'>You increase \the [src]'s power to [target_power_usage]%</span>")
+				to_chat(user, "<span class='notice'>You increase \the [src]'s power throttle to [target_power_usage]%</span>")
 		else
-			to_chat(user, "<span class='warning'>No power!</span>")
+			to_chat(user, "<span class='warning'>\The [src] has no power!</span>")
 	else
 		enabled = TRUE
 		to_chat(user, "<span class='notice'>You turn on \the [src].</span>")
@@ -90,28 +90,31 @@
 
 /obj/structure/disposalpipe/coilgun/charger/proc/power_process(ticks)
 	power_process = TRUE
-	for(, ticks > 0, ticks--)
+	for(var/i=0, ticks >= i, i++)
 		sleep(10)
-		if(current_power_use && target_power_use)
+		if(current_power_use && target_power_usage)
 			if(attached)
 				var/datum/powernet/PN = attached.powernet
 				if(PN)
-					var/drained = min(current_power_use, max_power_use)// set our power use
+					var/drained = min(current_power_use / (target_power_usage / 100), max_power_use)// set our power use
 					visible_message("<span class='warning'>Drained reads [drained]!</span>")
-					attached.add_delayedload(drained) // apply our power use
-					if(attached.newavail() > drained) // are we using more power than we have connected?
-						target_power_use -= 20
-						visible_message("<span class='warning'>Insufficient power, lowering throttle to [target_power_use]!</span>")
-						current_power_use -= (current_power_use - drained)
-						return
+					attached.add_delayedload(drained) // apply our power use to the connected wire
+					if(attached.newavail() < drained) // are we using more power than we have connected?
+						target_power_usage -= 20
+						if(target_power_usage)
+							visible_message("<span class='warning'>\The [src]'s has power warning light flickers, lowering throttle to [target_power_usage]!</span>")
+						else
+							visible_message("<span class='warning'>\The [src]'s has power warning light flickers, turning itself off!</span>")
+						break
 					else
+						current_power_use = drained
 						can_charge = TRUE
 						continue
 		else
-			return
-		// if we didn't return, disable the charger
+			break
+		// if we failed any of the checks, disable the charger
 		enabled = FALSE
-		return
+		break
 	power_process = FALSE // when the loop ends, allow the proc to be called again
 
 /// called every time an object passes through the pipe
@@ -125,9 +128,9 @@
 					var/datum/powernet/PN = attached.powernet
 
 					if(PN && target_power_usage)
-						var/prelim = (target_power_usage / 100) * ((current_power_use + POWER_DIVIDER) / POWER_DIVIDER)
+						var/prelim = (current_power_use + POWER_DIVIDER) / POWER_DIVIDER
 						visible_message("<span class='danger'>debug: prelim reads [prelim]!</span>")
-						current_power_use = min((P.p_speed * 500) * (target_power_usage / 100), max_power_use) //determins power usage
+//						current_power_use = min((P.p_speed * 500) * (target_power_usage / 100), max_power_use) //determins power usage
 						speed_increase = prelim * BASE ** P.p_speed
 						P.p_speed += speed_increase // add speed to projectile
 						P.p_heat += heat_increase // add heat to projectile
@@ -135,20 +138,15 @@
 						cps = round(P.p_speed * 10)
 						playsound(get_turf(src), 'sound/weapons/emitter2.ogg', 50, 1)
 						visible_message("<span class='danger'>debug: speed increased by [speed_increase]!</span>")
+						current_power_use += P.p_speed * 5
 						if(!power_process)
 							INVOKE_ASYNC(src, .proc/power_process, 10) // applies our power use for 10 seconds
 						H.count = 1000 // resets the amount of moves the disposalholder has
 						continue
 
-				else if(isliving(AM)) // no non-magnetic hoomans
-					var/mob/living/L = AM
+				else // no non-magnetic items allowed in the coilgun :(
 					playsound(src.loc, 'sound/machines/buzz-two.ogg', 40, 1)
-					visible_message("<span class='warning'>\The [src]'s safety mechanism engages, ejecting [L] through the maintenance hatch!</span>")
-					L.forceMove(get_turf(src))
-					continue
-
-				else // eject the item if it's none of the above
-					visible_message("<span class='warning'>\The [src]'s safety mechanism engages, ejecting \the [AM] through the maintenance hatch!</span>")
+					visible_message("<span class='warning'>\The [src]'s safety mechanism engages, ejecting [AM] through the maintenance hatch!</span>")
 					AM.forceMove(get_turf(src))
 					continue
 		else
@@ -164,6 +162,8 @@
 		. += "<span class='info'>The projectile speed indicator reads: [cps]km/h.</span>"
 	else
 		. += "<span class='info'>No moving projectile detected.</span>"
+	if(current_power_use)
+		. += "<span class='info'>The power indicator reads: [current_power_use / 1000]KW.</span>"
 
 #undef BASE
 #undef POWER_DIVIDER
