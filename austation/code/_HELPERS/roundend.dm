@@ -64,7 +64,7 @@
 
 proc/msg2discord(var/msg as text)
     var/list/conversions = list(
-    	"@" = "\[at]" // no @ abuse
+    	"@" = "\[at]", // no @ abuse
 		"#" = "\[hash]"
     )
     for(var/c in conversions)
