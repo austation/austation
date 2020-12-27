@@ -246,6 +246,8 @@
 	back = /obj/item/storage/backpack
 	shoes = /obj/item/clothing/shoes/sneakers/black
 	box = /obj/item/storage/box/survival
+	suit = /obj/item/clothing/suit/snowman
+	head = /obj/item/clothing/head/snowman
 
 	var/backpack = /obj/item/storage/backpack
 	var/satchel  = /obj/item/storage/backpack/satchel
