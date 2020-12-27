@@ -12,6 +12,7 @@
 		#include "map_files\BoxStation\BoxStation.dmm"
 		#include "map_files\Donutstation\Donutstation.dmm"
 		#include "map_files\KiloStation\KiloStation.dmm"
+		#include "map_files\Austation\Sand_Austation.dmm"
 		#include "map_files\Austation\Austation.dmm" //austation -- pool map
 
 		#ifdef CIBUILDING

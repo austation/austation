@@ -53,6 +53,10 @@ map kilostation
 endmap
 
 map austation
+    votable
+endmap
+
+map sand_austation
     default
     votable
 endmap
