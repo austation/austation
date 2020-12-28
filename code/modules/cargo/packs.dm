@@ -1158,7 +1158,7 @@
 	name = "20 Diamond Sheets"
 	desc = "Shine on, these crazy diamonds."
 	cost = 7000
-	contains = list(/obj/item/stack/sheet/diamond/twenty)
+	contains = list(/obj/item/stack/sheet/mineral/diamond/twenty)
 	crate_name = "diamond sheets crate"
 
 /datum/supply_pack/materials/glass50
@@ -1168,7 +1168,7 @@
 	contains = list(/obj/item/stack/sheet/glass/fifty)
 	crate_name = "glass sheets crate"
 
-/datum/supply_pack/materials/gold20	//austation change,  new material crate: the standard price is 130% of the resale value, plus 500 for the crate and then rounded up
+/datum/supply_pack/materials/gold50	//austation change,  new material crate: the standard price is 130% of the resale value, plus 500 for the crate and then rounded up
 	name = "20 Gold Sheets"
 	desc = "Begin your long task to turn this station into the new El Dorado!"
 	cost = 4000
@@ -1186,7 +1186,7 @@
 	name = "50 Plasma Sheets"
 	desc = "I thought we sent YOU to mine this stuff?"
 	cost = 7000
-	contains = list(/obj/item/stack/sheet/plasma/fifty)
+	contains = list(/obj/item/stack/sheet/mineral/plasma/fifty)
 	crate_name = "plasma sheets crate"
 
 /datum/supply_pack/materials/plasteel20
