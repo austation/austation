@@ -35,12 +35,12 @@
 	message = "cm3 of bananium"
 
 /datum/export/material/diamond
-	cost = 500
+	cost = 250	//austation change - halved export price.  Nobody sells diamonds and realistically 500 per sheet is just too much.  Lets me add diamond as an import without it costing 40K per crate.
 	material_id = /datum/material/diamond
 	message = "cm3 of diamonds"
 
 /datum/export/material/plasma
-	cost = 200
+	cost = 100
 	k_elasticity = 0
 	material_id = /datum/material/plasma
 	message = "cm3 of plasma"
