@@ -1143,56 +1143,105 @@
 /datum/supply_pack/materials/cardboard50
 	name = "50 Cardboard Sheets"
 	desc = "Create a bunch of boxes."
-	cost = 1000
+	cost = 600	//austation change. down from 1000 because you can't sell cardboard
 	contains = list(/obj/item/stack/sheet/cardboard/fifty)
 	crate_name = "cardboard sheets crate"
+
+/datum/supply_pack/materials/copper50	//austation change,  new material crate: the standard price is 130% of the resale value, plus 500 for the crate and then rounded up
+	name = "50 Copper Sheets"
+	desc = "Not at all a beloved furnishing in mafia hideouts."
+	cost = 1500
+	contains = list(/obj/item/stack/sheet/mineral/copper/fifty)
+	crate_name = "wood planks crate"
+
+/datum/supply_pack/materials/diamond20	//austation change,  new material crate: the standard price is 130% of the resale value, plus 500 for the crate and then rounded up
+	name = "20 Diamond Sheets"
+	desc = "Shine on, these crazy diamonds."
+	cost = 7000
+	contains = list(/obj/item/stack/sheet/diamond/twenty)
+	crate_name = "diamond sheets crate"
 
 /datum/supply_pack/materials/glass50
 	name = "50 Glass Sheets"
 	desc = "Let some nice light in with fifty glass sheets!"
-	cost = 1000
+	cost = 850	//austation change. down from 1000 to fall in line with other prices
 	contains = list(/obj/item/stack/sheet/glass/fifty)
 	crate_name = "glass sheets crate"
+
+/datum/supply_pack/materials/gold20	//austation change,  new material crate: the standard price is 130% of the resale value, plus 500 for the crate and then rounded up
+	name = "20 Gold Sheets"
+	desc = "Begin your long task to turn this station into the new El Dorado!"
+	cost = 4000
+	contains = list(/obj/item/stack/sheet/mineral/gold/fifty)
+	crate_name = "gold leaves crate"
 
 /datum/supply_pack/materials/iron50
 	name = "50 Iron Sheets"
 	desc = "Any construction project begins with a good stack of fifty iron sheets!"
-	cost = 1000
+	cost = 850	//austation change. down from 1000 to fall in line with other prices
 	contains = list(/obj/item/stack/sheet/iron/fifty)
 	crate_name = "iron sheets crate"
+
+/datum/supply_pack/materials/plasma50	//austation change,  new material crate: the standard price is 130% of the resale value, plus 500 for the crate and then rounded up
+	name = "50 Plasma Sheets"
+	desc = "I thought we sent YOU to mine this stuff?"
+	cost = 7000
+	contains = list(/obj/item/stack/sheet/plasma/fifty)
+	crate_name = "plasma sheets crate"
 
 /datum/supply_pack/materials/plasteel20
 	name = "20 Plasteel Sheets"
 	desc = "Reinforce the station's integrity with twenty plasteel sheets!"
-	cost = 7500
+	cost = 4500	//austation change, down from 7500 to fall in line with other prices
 	contains = list(/obj/item/stack/sheet/plasteel/twenty)
 	crate_name = "plasteel sheets crate"
 
 /datum/supply_pack/materials/plasteel50
 	name = "50 Plasteel Sheets"
 	desc = "For when you REALLY have to reinforce something."
-	cost = 16500
+	cost = 10500	//austation change, down from 16500 to fall in line with other prices
 	contains = list(/obj/item/stack/sheet/plasteel/fifty)
 	crate_name = "plasteel sheets crate"
 
 /datum/supply_pack/materials/plastic50
 	name = "50 Plastic Sheets"
 	desc = "Build a limitless amount of toys with fifty plastic sheets!"
-	cost = 1000
+	cost = 600	//austation change. down from 1000 because you can't sell plastic
 	contains = list(/obj/item/stack/sheet/plastic/fifty)
 	crate_name = "plastic sheets crate"
 
 /datum/supply_pack/materials/sandstone30
 	name = "30 Sandstone Blocks"
 	desc = "Neither sandy nor stoney, these thirty blocks will still get the job done."
-	cost = 1000
+	cost = 850	//austation change. down from 1000 because you can't sell sandstone
 	contains = list(/obj/item/stack/sheet/mineral/sandstone/thirty)
 	crate_name = "sandstone blocks crate"
+
+/datum/supply_pack/materials/silver20	//austation change,  new material crate: the standard price is 130% of the resale value, plus 500 for the crate and then rounded up
+	name = "20 Silver Sheets"
+	desc = "Furnish your station with tacky silver statues or do something useful with it."
+	cost = 3200
+	contains = list(/obj/item/stack/sheet/mineral/silver/fifty)
+	crate_name = "silver ingots crate"
+
+/datum/supply_pack/materials/titanium50	//austation change,  new material crate: the standard price is 130% of the resale value, plus 500 for the crate and then rounded up
+	name = "50 Titanium Sheets"
+	desc = "Almost, not quite the most expensive material crate on the list.  We checked twice."
+	cost = 8500
+	contains = list(/obj/item/stack/sheet/mineral/titanium/fifty)
+	crate_name = "titanium sheets crate"
+
+/datum/supply_pack/materials/uranium50	//austation change,  new material crate: the standard price is 130% of the resale value, plus 500 for the crate and then rounded up
+	name = "50 Uranium sheets"
+	desc = "Who knew it was this easy to order fissile material without a single permit check in place?"
+	cost = 7000
+	contains = list(/obj/item/stack/sheet/mineral/uranium/fifty)
+	crate_name = "uranium bars crate"
 
 /datum/supply_pack/materials/wood50
 	name = "50 Wood Planks"
 	desc = "Turn cargo's boring metal groundwork into beautiful panelled flooring and much more with fifty wooden planks!"
-	cost = 2000
+	cost = 850	//austation change. down from 1000 to fall in line with other prices.  prices of wooden crates has been reduced too
 	contains = list(/obj/item/stack/sheet/mineral/wood/fifty)
 	crate_name = "wood planks crate"
 
