@@ -608,7 +608,6 @@
 	name = "corgium"
 	id = "corgium"
 	required_reagents = list(/datum/reagent/consumable/nutriment = 1, /datum/reagent/colorful_reagent = 1, /datum/reagent/medicine/strange_reagent = 1, /datum/reagent/blood = 1)
-	required_temp = 374
 
 /datum/chemical_reaction/corgium/on_reaction(datum/reagents/holder, created_volume)
 	var/location = get_turf(holder.my_atom)
