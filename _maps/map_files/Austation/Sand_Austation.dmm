@@ -4713,7 +4713,15 @@
 /obj/effect/turf_decal/tile/blue{
 	dir = 8
 	},
-/turf/open/floor/plating/beach/sand,
+/turf/open/floor/plasteel{
+	barefootstep = "sand";
+	clawfootstep = "sand";
+	desc = "a fake sandy tile that looks like it came straight from a real beach.";
+	footstep = "sand";
+	icon = 'icons/misc/beach.dmi';
+	icon_state = "sand";
+	name = "sand"
+	},
 /area/hallway/primary/aft)
 "atE" = (
 /obj/effect/spawner/room/threexthree,
@@ -5598,7 +5606,15 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3,
-/turf/open/floor/plating/beach/sand,
+/turf/open/floor/plasteel{
+	barefootstep = "sand";
+	clawfootstep = "sand";
+	desc = "a fake sandy tile that looks like it came straight from a real beach.";
+	footstep = "sand";
+	icon = 'icons/misc/beach.dmi';
+	icon_state = "sand";
+	name = "sand"
+	},
 /area/hallway/primary/aft)
 "azo" = (
 /obj/structure/cable/yellow{
@@ -17940,7 +17956,9 @@
 /turf/open/floor/carpet/blue,
 /area/crew_quarters/heads/hop)
 "bzh" = (
-/obj/machinery/atmospherics/components/unary/thermomachine/heater/on,
+/obj/machinery/atmospherics/components/unary/thermomachine/heater/on{
+	target_temperature = 313.15
+	},
 /obj/effect/turf_decal/tile/yellow{
 	dir = 4
 	},
@@ -23538,7 +23556,15 @@
 	dir = 1
 	},
 /obj/machinery/door/firedoor/border_only,
-/turf/open/floor/plating/beach/sand,
+/turf/open/floor/plasteel{
+	barefootstep = "sand";
+	clawfootstep = "sand";
+	desc = "a fake sandy tile that looks like it came straight from a real beach.";
+	footstep = "sand";
+	icon = 'icons/misc/beach.dmi';
+	icon_state = "sand";
+	name = "sand"
+	},
 /area/hallway/primary/aft)
 "bZi" = (
 /obj/structure/sign/directions/medical{
@@ -23832,7 +23858,15 @@
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
 	},
-/turf/open/floor/plating/beach/sand,
+/turf/open/floor/plasteel{
+	barefootstep = "sand";
+	clawfootstep = "sand";
+	desc = "a fake sandy tile that looks like it came straight from a real beach.";
+	footstep = "sand";
+	icon = 'icons/misc/beach.dmi';
+	icon_state = "sand";
+	name = "sand"
+	},
 /area/hallway/primary/aft)
 "cat" = (
 /obj/structure/table,
@@ -25177,7 +25211,15 @@
 	icon_state = "1-2"
 	},
 /obj/structure/disposalpipe/segment,
-/turf/open/floor/plating/beach/sand,
+/turf/open/floor/plasteel{
+	barefootstep = "sand";
+	clawfootstep = "sand";
+	desc = "a fake sandy tile that looks like it came straight from a real beach.";
+	footstep = "sand";
+	icon = 'icons/misc/beach.dmi';
+	icon_state = "sand";
+	name = "sand"
+	},
 /area/hallway/primary/aft)
 "ceN" = (
 /obj/structure/table,
@@ -25250,7 +25292,15 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3,
-/turf/open/floor/plating/beach/sand,
+/turf/open/floor/plasteel{
+	barefootstep = "sand";
+	clawfootstep = "sand";
+	desc = "a fake sandy tile that looks like it came straight from a real beach.";
+	footstep = "sand";
+	icon = 'icons/misc/beach.dmi';
+	icon_state = "sand";
+	name = "sand"
+	},
 /area/hallway/primary/aft)
 "ceX" = (
 /obj/item/radio/intercom{
@@ -27696,7 +27746,15 @@
 /obj/effect/turf_decal/tile/yellow{
 	dir = 8
 	},
-/turf/open/floor/plating/beach/sand,
+/turf/open/floor/plasteel{
+	barefootstep = "sand";
+	clawfootstep = "sand";
+	desc = "a fake sandy tile that looks like it came straight from a real beach.";
+	footstep = "sand";
+	icon = 'icons/misc/beach.dmi';
+	icon_state = "sand";
+	name = "sand"
+	},
 /area/hallway/primary/aft)
 "cpb" = (
 /obj/effect/turf_decal/tile/purple{
@@ -27709,7 +27767,15 @@
 /obj/effect/turf_decal/tile/purple{
 	dir = 8
 	},
-/turf/open/floor/plating/beach/sand,
+/turf/open/floor/plasteel{
+	barefootstep = "sand";
+	clawfootstep = "sand";
+	desc = "a fake sandy tile that looks like it came straight from a real beach.";
+	footstep = "sand";
+	icon = 'icons/misc/beach.dmi';
+	icon_state = "sand";
+	name = "sand"
+	},
 /area/hallway/primary/aft)
 "cpd" = (
 /obj/effect/landmark/start/scientist,
@@ -28298,7 +28364,15 @@
 	icon_state = "1-4"
 	},
 /obj/structure/disposalpipe/segment,
-/turf/open/floor/plating/beach/sand,
+/turf/open/floor/plasteel{
+	barefootstep = "sand";
+	clawfootstep = "sand";
+	desc = "a fake sandy tile that looks like it came straight from a real beach.";
+	footstep = "sand";
+	icon = 'icons/misc/beach.dmi';
+	icon_state = "sand";
+	name = "sand"
+	},
 /area/hallway/primary/aft)
 "crN" = (
 /obj/effect/spawner/structure/window/reinforced,
@@ -28732,7 +28806,15 @@
 /obj/machinery/door/firedoor/border_only{
 	dir = 1
 	},
-/turf/open/floor/plating/beach/sand,
+/turf/open/floor/plasteel{
+	barefootstep = "sand";
+	clawfootstep = "sand";
+	desc = "a fake sandy tile that looks like it came straight from a real beach.";
+	footstep = "sand";
+	icon = 'icons/misc/beach.dmi';
+	icon_state = "sand";
+	name = "sand"
+	},
 /area/hallway/primary/aft)
 "ctJ" = (
 /obj/item/storage/toolbox/emergency,
@@ -29055,7 +29137,15 @@
 /obj/effect/turf_decal/tile/blue{
 	dir = 8
 	},
-/turf/open/floor/plating/beach/sand,
+/turf/open/floor/plasteel{
+	barefootstep = "sand";
+	clawfootstep = "sand";
+	desc = "a fake sandy tile that looks like it came straight from a real beach.";
+	footstep = "sand";
+	icon = 'icons/misc/beach.dmi';
+	icon_state = "sand";
+	name = "sand"
+	},
 /area/medical/genetics)
 "cuF" = (
 /obj/machinery/computer/nanite_cloud_controller,
@@ -29456,7 +29546,15 @@
 /obj/effect/turf_decal/tile/blue{
 	dir = 8
 	},
-/turf/open/floor/plating/beach/sand,
+/turf/open/floor/plasteel{
+	barefootstep = "sand";
+	clawfootstep = "sand";
+	desc = "a fake sandy tile that looks like it came straight from a real beach.";
+	footstep = "sand";
+	icon = 'icons/misc/beach.dmi';
+	icon_state = "sand";
+	name = "sand"
+	},
 /area/medical/genetics)
 "cvH" = (
 /turf/closed/wall,
@@ -31658,7 +31756,15 @@
 /obj/effect/turf_decal/tile/purple{
 	dir = 8
 	},
-/turf/open/floor/plating/beach/sand,
+/turf/open/floor/plasteel{
+	barefootstep = "sand";
+	clawfootstep = "sand";
+	desc = "a fake sandy tile that looks like it came straight from a real beach.";
+	footstep = "sand";
+	icon = 'icons/misc/beach.dmi';
+	icon_state = "sand";
+	name = "sand"
+	},
 /area/science/robotics/lab)
 "cEj" = (
 /obj/structure/table/reinforced,
@@ -32752,7 +32858,15 @@
 /obj/effect/turf_decal/tile/red{
 	dir = 8
 	},
-/turf/open/floor/plating/beach/sand,
+/turf/open/floor/plasteel{
+	barefootstep = "sand";
+	clawfootstep = "sand";
+	desc = "a fake sandy tile that looks like it came straight from a real beach.";
+	footstep = "sand";
+	icon = 'icons/misc/beach.dmi';
+	icon_state = "sand";
+	name = "sand"
+	},
 /area/hallway/primary/aft)
 "cIH" = (
 /turf/closed/wall/r_wall,
@@ -33068,7 +33182,15 @@
 /obj/machinery/door/firedoor/border_only{
 	dir = 1
 	},
-/turf/open/floor/plating/beach/sand,
+/turf/open/floor/plasteel{
+	barefootstep = "sand";
+	clawfootstep = "sand";
+	desc = "a fake sandy tile that looks like it came straight from a real beach.";
+	footstep = "sand";
+	icon = 'icons/misc/beach.dmi';
+	icon_state = "sand";
+	name = "sand"
+	},
 /area/hallway/secondary/exit/departure_lounge)
 "cJH" = (
 /obj/structure/table,
@@ -38484,7 +38606,15 @@
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/layer3{
 	dir = 4
 	},
-/turf/open/floor/plating/beach/sand,
+/turf/open/floor/plasteel{
+	barefootstep = "sand";
+	clawfootstep = "sand";
+	desc = "a fake sandy tile that looks like it came straight from a real beach.";
+	footstep = "sand";
+	icon = 'icons/misc/beach.dmi';
+	icon_state = "sand";
+	name = "sand"
+	},
 /area/hallway/primary/aft)
 "dlp" = (
 /obj/machinery/door/airlock/maintenance{
@@ -39859,7 +39989,15 @@
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer3{
 	dir = 4
 	},
-/turf/open/floor/plating/beach/sand,
+/turf/open/floor/plasteel{
+	barefootstep = "sand";
+	clawfootstep = "sand";
+	desc = "a fake sandy tile that looks like it came straight from a real beach.";
+	footstep = "sand";
+	icon = 'icons/misc/beach.dmi';
+	icon_state = "sand";
+	name = "sand"
+	},
 /area/hallway/primary/aft)
 "dDG" = (
 /obj/effect/landmark/event_spawn,
@@ -40989,7 +41127,15 @@
 /obj/effect/turf_decal/tile/neutral,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1,
-/turf/open/floor/plating/beach/sand,
+/turf/open/floor/plasteel{
+	barefootstep = "sand";
+	clawfootstep = "sand";
+	desc = "a fake sandy tile that looks like it came straight from a real beach.";
+	footstep = "sand";
+	icon = 'icons/misc/beach.dmi';
+	icon_state = "sand";
+	name = "sand"
+	},
 /area/hallway/primary/aft)
 "ebK" = (
 /obj/item/radio/intercom{
@@ -41297,7 +41443,15 @@
 /obj/structure/sign/departments/evac{
 	pixel_x = -32
 	},
-/turf/open/floor/plating/beach/sand,
+/turf/open/floor/plasteel{
+	barefootstep = "sand";
+	clawfootstep = "sand";
+	desc = "a fake sandy tile that looks like it came straight from a real beach.";
+	footstep = "sand";
+	icon = 'icons/misc/beach.dmi';
+	icon_state = "sand";
+	name = "sand"
+	},
 /area/hallway/primary/aft)
 "ekG" = (
 /obj/machinery/camera{
@@ -42213,7 +42367,15 @@
 /obj/effect/turf_decal/tile/purple,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3,
-/turf/open/floor/plating/beach/sand,
+/turf/open/floor/plasteel{
+	barefootstep = "sand";
+	clawfootstep = "sand";
+	desc = "a fake sandy tile that looks like it came straight from a real beach.";
+	footstep = "sand";
+	icon = 'icons/misc/beach.dmi';
+	icon_state = "sand";
+	name = "sand"
+	},
 /area/hallway/primary/aft)
 "eEx" = (
 /obj/structure/cable/yellow{
@@ -42613,7 +42775,8 @@
 	dir = 4
 	},
 /obj/machinery/atmospherics/components/unary/thermomachine/heater/on{
-	dir = 8
+	dir = 8;
+	target_temperature = 313.15
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3,
 /turf/open/floor/plasteel/dark/corner{
@@ -42809,7 +42972,15 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
 	dir = 4
 	},
-/turf/open/floor/plating/beach/sand,
+/turf/open/floor/plasteel{
+	barefootstep = "sand";
+	clawfootstep = "sand";
+	desc = "a fake sandy tile that looks like it came straight from a real beach.";
+	footstep = "sand";
+	icon = 'icons/misc/beach.dmi';
+	icon_state = "sand";
+	name = "sand"
+	},
 /area/hallway/primary/aft)
 "eRa" = (
 /obj/structure/disposalpipe/segment{
@@ -43703,7 +43874,15 @@
 	dir = 8
 	},
 /obj/item/twohanded/required/kirbyplants/random,
-/turf/open/floor/plating/beach/sand,
+/turf/open/floor/plasteel{
+	barefootstep = "sand";
+	clawfootstep = "sand";
+	desc = "a fake sandy tile that looks like it came straight from a real beach.";
+	footstep = "sand";
+	icon = 'icons/misc/beach.dmi';
+	icon_state = "sand";
+	name = "sand"
+	},
 /area/hallway/primary/aft)
 "fjL" = (
 /obj/structure/table/wood,
@@ -44780,7 +44959,15 @@
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer3{
 	dir = 4
 	},
-/turf/open/floor/plating/beach/sand,
+/turf/open/floor/plasteel{
+	barefootstep = "sand";
+	clawfootstep = "sand";
+	desc = "a fake sandy tile that looks like it came straight from a real beach.";
+	footstep = "sand";
+	icon = 'icons/misc/beach.dmi';
+	icon_state = "sand";
+	name = "sand"
+	},
 /area/hallway/primary/aft)
 "fFl" = (
 /obj/structure/cable/yellow{
@@ -44811,7 +44998,15 @@
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/layer1{
 	dir = 4
 	},
-/turf/open/floor/plating/beach/sand,
+/turf/open/floor/plasteel{
+	barefootstep = "sand";
+	clawfootstep = "sand";
+	desc = "a fake sandy tile that looks like it came straight from a real beach.";
+	footstep = "sand";
+	icon = 'icons/misc/beach.dmi';
+	icon_state = "sand";
+	name = "sand"
+	},
 /area/hallway/primary/aft)
 "fFG" = (
 /obj/structure/sink{
@@ -44844,7 +45039,15 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1,
-/turf/open/floor/plating/beach/sand,
+/turf/open/floor/plasteel{
+	barefootstep = "sand";
+	clawfootstep = "sand";
+	desc = "a fake sandy tile that looks like it came straight from a real beach.";
+	footstep = "sand";
+	icon = 'icons/misc/beach.dmi';
+	icon_state = "sand";
+	name = "sand"
+	},
 /area/hallway/primary/aft)
 "fGU" = (
 /obj/machinery/door/airlock/highsecurity{
@@ -46110,7 +46313,15 @@
 /obj/machinery/door/firedoor/border_only,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3,
-/turf/open/floor/plating/beach/sand,
+/turf/open/floor/plasteel{
+	barefootstep = "sand";
+	clawfootstep = "sand";
+	desc = "a fake sandy tile that looks like it came straight from a real beach.";
+	footstep = "sand";
+	icon = 'icons/misc/beach.dmi';
+	icon_state = "sand";
+	name = "sand"
+	},
 /area/hallway/primary/aft)
 "giV" = (
 /obj/structure/cable/yellow{
@@ -49772,7 +49983,15 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
 	},
-/turf/open/floor/plating/beach/sand,
+/turf/open/floor/plasteel{
+	barefootstep = "sand";
+	clawfootstep = "sand";
+	desc = "a fake sandy tile that looks like it came straight from a real beach.";
+	footstep = "sand";
+	icon = 'icons/misc/beach.dmi';
+	icon_state = "sand";
+	name = "sand"
+	},
 /area/hallway/primary/aft)
 "hIT" = (
 /obj/structure/cable/yellow{
@@ -50309,7 +50528,15 @@
 	},
 /obj/machinery/atmospherics/pipe/manifold4w/supply/hidden/layer1,
 /obj/machinery/atmospherics/pipe/manifold4w/scrubbers/hidden/layer3,
-/turf/open/floor/plating/beach/sand,
+/turf/open/floor/plasteel{
+	barefootstep = "sand";
+	clawfootstep = "sand";
+	desc = "a fake sandy tile that looks like it came straight from a real beach.";
+	footstep = "sand";
+	icon = 'icons/misc/beach.dmi';
+	icon_state = "sand";
+	name = "sand"
+	},
 /area/hallway/primary/aft)
 "hTo" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
@@ -50629,7 +50856,15 @@
 /obj/effect/turf_decal/tile/blue{
 	dir = 8
 	},
-/turf/open/floor/plating/beach/sand,
+/turf/open/floor/plasteel{
+	barefootstep = "sand";
+	clawfootstep = "sand";
+	desc = "a fake sandy tile that looks like it came straight from a real beach.";
+	footstep = "sand";
+	icon = 'icons/misc/beach.dmi';
+	icon_state = "sand";
+	name = "sand"
+	},
 /area/hallway/primary/aft)
 "icc" = (
 /obj/machinery/airalarm{
@@ -52196,7 +52431,15 @@
 	dir = 1
 	},
 /obj/machinery/door/firedoor/border_only,
-/turf/open/floor/plating/beach/sand,
+/turf/open/floor/plasteel{
+	barefootstep = "sand";
+	clawfootstep = "sand";
+	desc = "a fake sandy tile that looks like it came straight from a real beach.";
+	footstep = "sand";
+	icon = 'icons/misc/beach.dmi';
+	icon_state = "sand";
+	name = "sand"
+	},
 /area/hallway/primary/aft)
 "iIa" = (
 /obj/machinery/firealarm{
@@ -52502,7 +52745,15 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
 	},
-/turf/open/floor/plating/beach/sand,
+/turf/open/floor/plasteel{
+	barefootstep = "sand";
+	clawfootstep = "sand";
+	desc = "a fake sandy tile that looks like it came straight from a real beach.";
+	footstep = "sand";
+	icon = 'icons/misc/beach.dmi';
+	icon_state = "sand";
+	name = "sand"
+	},
 /area/hallway/primary/aft)
 "iNr" = (
 /obj/item/cartridge/engineering{
@@ -53068,7 +53319,15 @@
 /obj/effect/turf_decal/tile/neutral,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3,
-/turf/open/floor/plating/beach/sand,
+/turf/open/floor/plasteel{
+	barefootstep = "sand";
+	clawfootstep = "sand";
+	desc = "a fake sandy tile that looks like it came straight from a real beach.";
+	footstep = "sand";
+	icon = 'icons/misc/beach.dmi';
+	icon_state = "sand";
+	name = "sand"
+	},
 /area/hallway/primary/aft)
 "iWy" = (
 /obj/machinery/pool/filter{
@@ -53266,7 +53525,15 @@
 	dir = 8
 	},
 /obj/item/twohanded/required/kirbyplants/random,
-/turf/open/floor/plating/beach/sand,
+/turf/open/floor/plasteel{
+	barefootstep = "sand";
+	clawfootstep = "sand";
+	desc = "a fake sandy tile that looks like it came straight from a real beach.";
+	footstep = "sand";
+	icon = 'icons/misc/beach.dmi';
+	icon_state = "sand";
+	name = "sand"
+	},
 /area/hallway/primary/aft)
 "jaP" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1,
@@ -53530,7 +53797,15 @@
 /obj/effect/turf_decal/tile/purple,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1,
-/turf/open/floor/plating/beach/sand,
+/turf/open/floor/plasteel{
+	barefootstep = "sand";
+	clawfootstep = "sand";
+	desc = "a fake sandy tile that looks like it came straight from a real beach.";
+	footstep = "sand";
+	icon = 'icons/misc/beach.dmi';
+	icon_state = "sand";
+	name = "sand"
+	},
 /area/hallway/primary/aft)
 "jhv" = (
 /obj/structure/mirror{
@@ -55079,7 +55354,15 @@
 /obj/machinery/door/firedoor/border_only,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1,
-/turf/open/floor/plating/beach/sand,
+/turf/open/floor/plasteel{
+	barefootstep = "sand";
+	clawfootstep = "sand";
+	desc = "a fake sandy tile that looks like it came straight from a real beach.";
+	footstep = "sand";
+	icon = 'icons/misc/beach.dmi';
+	icon_state = "sand";
+	name = "sand"
+	},
 /area/hallway/primary/aft)
 "jHu" = (
 /obj/structure/disposalpipe/segment{
@@ -55224,7 +55507,15 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3,
-/turf/open/floor/plating/beach/sand,
+/turf/open/floor/plasteel{
+	barefootstep = "sand";
+	clawfootstep = "sand";
+	desc = "a fake sandy tile that looks like it came straight from a real beach.";
+	footstep = "sand";
+	icon = 'icons/misc/beach.dmi';
+	icon_state = "sand";
+	name = "sand"
+	},
 /area/hallway/primary/aft)
 "jKv" = (
 /obj/structure/cable/yellow{
@@ -55709,7 +56000,15 @@
 /obj/effect/turf_decal/tile/neutral,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3,
-/turf/open/floor/plating/beach/sand,
+/turf/open/floor/plasteel{
+	barefootstep = "sand";
+	clawfootstep = "sand";
+	desc = "a fake sandy tile that looks like it came straight from a real beach.";
+	footstep = "sand";
+	icon = 'icons/misc/beach.dmi';
+	icon_state = "sand";
+	name = "sand"
+	},
 /area/hallway/primary/aft)
 "jXo" = (
 /obj/structure/cable/yellow{
@@ -58304,7 +58603,15 @@
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/layer1{
 	dir = 4
 	},
-/turf/open/floor/plating/beach/sand,
+/turf/open/floor/plasteel{
+	barefootstep = "sand";
+	clawfootstep = "sand";
+	desc = "a fake sandy tile that looks like it came straight from a real beach.";
+	footstep = "sand";
+	icon = 'icons/misc/beach.dmi';
+	icon_state = "sand";
+	name = "sand"
+	},
 /area/hallway/primary/aft)
 "kWk" = (
 /obj/structure/disposalpipe/segment{
@@ -59855,7 +60162,15 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
 	},
-/turf/open/floor/plating/beach/sand,
+/turf/open/floor/plasteel{
+	barefootstep = "sand";
+	clawfootstep = "sand";
+	desc = "a fake sandy tile that looks like it came straight from a real beach.";
+	footstep = "sand";
+	icon = 'icons/misc/beach.dmi';
+	icon_state = "sand";
+	name = "sand"
+	},
 /area/hallway/primary/aft)
 "lJx" = (
 /obj/structure/sign/poster/official/random{
@@ -63854,7 +64169,15 @@
 /obj/effect/turf_decal/tile/neutral,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3,
-/turf/open/floor/plating/beach/sand,
+/turf/open/floor/plasteel{
+	barefootstep = "sand";
+	clawfootstep = "sand";
+	desc = "a fake sandy tile that looks like it came straight from a real beach.";
+	footstep = "sand";
+	icon = 'icons/misc/beach.dmi';
+	icon_state = "sand";
+	name = "sand"
+	},
 /area/hallway/primary/aft)
 "nmh" = (
 /obj/machinery/atmospherics/pipe/layer_manifold{
@@ -64467,7 +64790,15 @@
 /obj/effect/turf_decal/tile/neutral,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1,
-/turf/open/floor/plating/beach/sand,
+/turf/open/floor/plasteel{
+	barefootstep = "sand";
+	clawfootstep = "sand";
+	desc = "a fake sandy tile that looks like it came straight from a real beach.";
+	footstep = "sand";
+	icon = 'icons/misc/beach.dmi';
+	icon_state = "sand";
+	name = "sand"
+	},
 /area/hallway/primary/aft)
 "nxA" = (
 /obj/structure/chair{
@@ -64771,7 +65102,15 @@
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer1{
 	dir = 4
 	},
-/turf/open/floor/plating/beach/sand,
+/turf/open/floor/plasteel{
+	barefootstep = "sand";
+	clawfootstep = "sand";
+	desc = "a fake sandy tile that looks like it came straight from a real beach.";
+	footstep = "sand";
+	icon = 'icons/misc/beach.dmi';
+	icon_state = "sand";
+	name = "sand"
+	},
 /area/hallway/primary/aft)
 "nDY" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
@@ -65609,7 +65948,15 @@
 /obj/effect/turf_decal/tile/neutral,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1,
-/turf/open/floor/plating/beach/sand,
+/turf/open/floor/plasteel{
+	barefootstep = "sand";
+	clawfootstep = "sand";
+	desc = "a fake sandy tile that looks like it came straight from a real beach.";
+	footstep = "sand";
+	icon = 'icons/misc/beach.dmi';
+	icon_state = "sand";
+	name = "sand"
+	},
 /area/hallway/primary/aft)
 "nSo" = (
 /obj/structure/cable/yellow{
@@ -65974,7 +66321,15 @@
 /obj/effect/turf_decal/tile/yellow{
 	dir = 8
 	},
-/turf/open/floor/plating/beach/sand,
+/turf/open/floor/plasteel{
+	barefootstep = "sand";
+	clawfootstep = "sand";
+	desc = "a fake sandy tile that looks like it came straight from a real beach.";
+	footstep = "sand";
+	icon = 'icons/misc/beach.dmi';
+	icon_state = "sand";
+	name = "sand"
+	},
 /area/hallway/primary/aft)
 "oat" = (
 /obj/structure/disposalpipe/segment{
@@ -66410,9 +66765,31 @@
 /turf/open/floor/plasteel,
 /area/security/main)
 "ogb" = (
-/obj/machinery/grill,
-/turf/open/floor/plasteel,
-/area/awaymission/beach)
+/obj/structure/table/reinforced,
+/obj/item/paper_bin{
+	pixel_x = -2;
+	pixel_y = 6
+	},
+/obj/effect/turf_decal/tile/purple{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/purple,
+/obj/effect/turf_decal/tile/purple{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/purple{
+	dir = 8
+	},
+/turf/open/floor/plasteel{
+	barefootstep = "sand";
+	clawfootstep = "sand";
+	desc = "a fake sandy tile that looks like it came straight from a real beach.";
+	footstep = "sand";
+	icon = 'icons/misc/beach.dmi';
+	icon_state = "sand";
+	name = "sand"
+	},
+/area/hallway/primary/aft)
 "ogU" = (
 /obj/effect/landmark/event_spawn,
 /obj/effect/turf_decal/tile/red{
@@ -67253,7 +67630,15 @@
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/layer3{
 	dir = 4
 	},
-/turf/open/floor/plating/beach/sand,
+/turf/open/floor/plasteel{
+	barefootstep = "sand";
+	clawfootstep = "sand";
+	desc = "a fake sandy tile that looks like it came straight from a real beach.";
+	footstep = "sand";
+	icon = 'icons/misc/beach.dmi';
+	icon_state = "sand";
+	name = "sand"
+	},
 /area/hallway/primary/aft)
 "owR" = (
 /turf/closed/wall,
@@ -67408,7 +67793,15 @@
 /obj/structure/sign/departments/minsky/research/genetics{
 	pixel_x = -32
 	},
-/turf/open/floor/plating/beach/sand,
+/turf/open/floor/plasteel{
+	barefootstep = "sand";
+	clawfootstep = "sand";
+	desc = "a fake sandy tile that looks like it came straight from a real beach.";
+	footstep = "sand";
+	icon = 'icons/misc/beach.dmi';
+	icon_state = "sand";
+	name = "sand"
+	},
 /area/hallway/primary/aft)
 "oAg" = (
 /obj/structure/disposalpipe/segment{
@@ -67705,7 +68098,15 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
 	},
-/turf/open/floor/plating/beach/sand,
+/turf/open/floor/plasteel{
+	barefootstep = "sand";
+	clawfootstep = "sand";
+	desc = "a fake sandy tile that looks like it came straight from a real beach.";
+	footstep = "sand";
+	icon = 'icons/misc/beach.dmi';
+	icon_state = "sand";
+	name = "sand"
+	},
 /area/hallway/primary/aft)
 "oES" = (
 /obj/structure/disposalpipe/segment{
@@ -69734,7 +70135,15 @@
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer1{
 	dir = 4
 	},
-/turf/open/floor/plating/beach/sand,
+/turf/open/floor/plasteel{
+	barefootstep = "sand";
+	clawfootstep = "sand";
+	desc = "a fake sandy tile that looks like it came straight from a real beach.";
+	footstep = "sand";
+	icon = 'icons/misc/beach.dmi';
+	icon_state = "sand";
+	name = "sand"
+	},
 /area/hallway/primary/aft)
 "ppp" = (
 /obj/machinery/door/airlock/engineering/glass{
@@ -72018,7 +72427,15 @@
 	dir = 1
 	},
 /obj/machinery/door/firedoor/border_only,
-/turf/open/floor/plating/beach/sand,
+/turf/open/floor/plasteel{
+	barefootstep = "sand";
+	clawfootstep = "sand";
+	desc = "a fake sandy tile that looks like it came straight from a real beach.";
+	footstep = "sand";
+	icon = 'icons/misc/beach.dmi';
+	icon_state = "sand";
+	name = "sand"
+	},
 /area/hallway/primary/aft)
 "qpJ" = (
 /obj/structure/cable/yellow{
@@ -72924,7 +73341,15 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
 	dir = 4
 	},
-/turf/open/floor/plating/beach/sand,
+/turf/open/floor/plasteel{
+	barefootstep = "sand";
+	clawfootstep = "sand";
+	desc = "a fake sandy tile that looks like it came straight from a real beach.";
+	footstep = "sand";
+	icon = 'icons/misc/beach.dmi';
+	icon_state = "sand";
+	name = "sand"
+	},
 /area/hallway/primary/aft)
 "qIk" = (
 /obj/structure/closet/emcloset,
@@ -74038,7 +74463,15 @@
 /obj/effect/turf_decal/tile/blue{
 	dir = 8
 	},
-/turf/open/floor/plating/beach/sand,
+/turf/open/floor/plasteel{
+	barefootstep = "sand";
+	clawfootstep = "sand";
+	desc = "a fake sandy tile that looks like it came straight from a real beach.";
+	footstep = "sand";
+	icon = 'icons/misc/beach.dmi';
+	icon_state = "sand";
+	name = "sand"
+	},
 /area/hallway/primary/aft)
 "rcb" = (
 /obj/machinery/door/airlock{
@@ -74441,7 +74874,15 @@
 /obj/effect/turf_decal/tile/blue{
 	dir = 1
 	},
-/turf/open/floor/plating/beach/sand,
+/turf/open/floor/plasteel{
+	barefootstep = "sand";
+	clawfootstep = "sand";
+	desc = "a fake sandy tile that looks like it came straight from a real beach.";
+	footstep = "sand";
+	icon = 'icons/misc/beach.dmi';
+	icon_state = "sand";
+	name = "sand"
+	},
 /area/hallway/primary/aft)
 "rlU" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
@@ -74835,7 +75276,15 @@
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/layer1{
 	dir = 4
 	},
-/turf/open/floor/plating/beach/sand,
+/turf/open/floor/plasteel{
+	barefootstep = "sand";
+	clawfootstep = "sand";
+	desc = "a fake sandy tile that looks like it came straight from a real beach.";
+	footstep = "sand";
+	icon = 'icons/misc/beach.dmi';
+	icon_state = "sand";
+	name = "sand"
+	},
 /area/hallway/primary/aft)
 "rsp" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
@@ -75425,7 +75874,15 @@
 /turf/open/floor/plating,
 /area/engine/engineering)
 "rHe" = (
-/turf/open/floor/plating/beach/sand,
+/turf/open/floor/plasteel{
+	barefootstep = "sand";
+	clawfootstep = "sand";
+	desc = "a fake sandy tile that looks like it came straight from a real beach.";
+	footstep = "sand";
+	icon = 'icons/misc/beach.dmi';
+	icon_state = "sand";
+	name = "sand"
+	},
 /area/hallway/primary/aft)
 "rHm" = (
 /obj/structure/chair,
@@ -75733,7 +76190,15 @@
 /obj/effect/turf_decal/tile/neutral,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1,
-/turf/open/floor/plating/beach/sand,
+/turf/open/floor/plasteel{
+	barefootstep = "sand";
+	clawfootstep = "sand";
+	desc = "a fake sandy tile that looks like it came straight from a real beach.";
+	footstep = "sand";
+	icon = 'icons/misc/beach.dmi';
+	icon_state = "sand";
+	name = "sand"
+	},
 /area/hallway/primary/aft)
 "rMH" = (
 /obj/structure/reagent_dispensers/peppertank{
@@ -76384,7 +76849,15 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
 	},
-/turf/open/floor/plating/beach/sand,
+/turf/open/floor/plasteel{
+	barefootstep = "sand";
+	clawfootstep = "sand";
+	desc = "a fake sandy tile that looks like it came straight from a real beach.";
+	footstep = "sand";
+	icon = 'icons/misc/beach.dmi';
+	icon_state = "sand";
+	name = "sand"
+	},
 /area/hallway/primary/aft)
 "rZm" = (
 /obj/machinery/airalarm{
@@ -76398,7 +76871,15 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
 	},
-/turf/open/floor/plating/beach/sand,
+/turf/open/floor/plasteel{
+	barefootstep = "sand";
+	clawfootstep = "sand";
+	desc = "a fake sandy tile that looks like it came straight from a real beach.";
+	footstep = "sand";
+	icon = 'icons/misc/beach.dmi';
+	icon_state = "sand";
+	name = "sand"
+	},
 /area/hallway/primary/aft)
 "rZG" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
@@ -76897,7 +77378,15 @@
 /obj/structure/sign/departments/minsky/medical/chemistry/chemical2{
 	pixel_x = -32
 	},
-/turf/open/floor/plating/beach/sand,
+/turf/open/floor/plasteel{
+	barefootstep = "sand";
+	clawfootstep = "sand";
+	desc = "a fake sandy tile that looks like it came straight from a real beach.";
+	footstep = "sand";
+	icon = 'icons/misc/beach.dmi';
+	icon_state = "sand";
+	name = "sand"
+	},
 /area/hallway/primary/aft)
 "sjg" = (
 /obj/structure/cable/yellow{
@@ -77149,7 +77638,15 @@
 	dir = 1
 	},
 /obj/machinery/door/firedoor/border_only,
-/turf/open/floor/plating/beach/sand,
+/turf/open/floor/plasteel{
+	barefootstep = "sand";
+	clawfootstep = "sand";
+	desc = "a fake sandy tile that looks like it came straight from a real beach.";
+	footstep = "sand";
+	icon = 'icons/misc/beach.dmi';
+	icon_state = "sand";
+	name = "sand"
+	},
 /area/hallway/primary/aft)
 "soB" = (
 /obj/structure/cable/yellow{
@@ -77691,7 +78188,15 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
 	dir = 4
 	},
-/turf/open/floor/plating/beach/sand,
+/turf/open/floor/plasteel{
+	barefootstep = "sand";
+	clawfootstep = "sand";
+	desc = "a fake sandy tile that looks like it came straight from a real beach.";
+	footstep = "sand";
+	icon = 'icons/misc/beach.dmi';
+	icon_state = "sand";
+	name = "sand"
+	},
 /area/hallway/primary/aft)
 "sDf" = (
 /obj/structure/cable/yellow{
@@ -79037,7 +79542,15 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1,
-/turf/open/floor/plating/beach/sand,
+/turf/open/floor/plasteel{
+	barefootstep = "sand";
+	clawfootstep = "sand";
+	desc = "a fake sandy tile that looks like it came straight from a real beach.";
+	footstep = "sand";
+	icon = 'icons/misc/beach.dmi';
+	icon_state = "sand";
+	name = "sand"
+	},
 /area/hallway/secondary/exit/departure_lounge)
 "tdh" = (
 /obj/structure/cable/yellow{
@@ -80388,7 +80901,15 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3,
-/turf/open/floor/plating/beach/sand,
+/turf/open/floor/plasteel{
+	barefootstep = "sand";
+	clawfootstep = "sand";
+	desc = "a fake sandy tile that looks like it came straight from a real beach.";
+	footstep = "sand";
+	icon = 'icons/misc/beach.dmi';
+	icon_state = "sand";
+	name = "sand"
+	},
 /area/hallway/primary/aft)
 "tBI" = (
 /obj/effect/turf_decal/tile/neutral{
@@ -81708,7 +82229,15 @@
 /obj/effect/turf_decal/tile/yellow{
 	dir = 1
 	},
-/turf/open/floor/plating/beach/sand,
+/turf/open/floor/plasteel{
+	barefootstep = "sand";
+	clawfootstep = "sand";
+	desc = "a fake sandy tile that looks like it came straight from a real beach.";
+	footstep = "sand";
+	icon = 'icons/misc/beach.dmi';
+	icon_state = "sand";
+	name = "sand"
+	},
 /area/hallway/primary/aft)
 "udh" = (
 /obj/effect/turf_decal/tile/neutral{
@@ -84082,7 +84611,15 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
 	dir = 4
 	},
-/turf/open/floor/plating/beach/sand,
+/turf/open/floor/plasteel{
+	barefootstep = "sand";
+	clawfootstep = "sand";
+	desc = "a fake sandy tile that looks like it came straight from a real beach.";
+	footstep = "sand";
+	icon = 'icons/misc/beach.dmi';
+	icon_state = "sand";
+	name = "sand"
+	},
 /area/hallway/primary/aft)
 "vaw" = (
 /obj/structure/cable/yellow{
@@ -86705,7 +87242,15 @@
 /obj/machinery/door/firedoor/border_only{
 	dir = 1
 	},
-/turf/open/floor/plating/beach/sand,
+/turf/open/floor/plasteel{
+	barefootstep = "sand";
+	clawfootstep = "sand";
+	desc = "a fake sandy tile that looks like it came straight from a real beach.";
+	footstep = "sand";
+	icon = 'icons/misc/beach.dmi';
+	icon_state = "sand";
+	name = "sand"
+	},
 /area/hallway/secondary/exit/departure_lounge)
 "vYe" = (
 /obj/structure/sink{
@@ -87944,7 +88489,15 @@
 /obj/machinery/door/firedoor/border_only{
 	dir = 1
 	},
-/turf/open/floor/plating/beach/sand,
+/turf/open/floor/plasteel{
+	barefootstep = "sand";
+	clawfootstep = "sand";
+	desc = "a fake sandy tile that looks like it came straight from a real beach.";
+	footstep = "sand";
+	icon = 'icons/misc/beach.dmi';
+	icon_state = "sand";
+	name = "sand"
+	},
 /area/hallway/primary/aft)
 "wzL" = (
 /obj/structure/sign/warning/pods{
@@ -89814,7 +90367,15 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
 	},
-/turf/open/floor/plating/beach/sand,
+/turf/open/floor/plasteel{
+	barefootstep = "sand";
+	clawfootstep = "sand";
+	desc = "a fake sandy tile that looks like it came straight from a real beach.";
+	footstep = "sand";
+	icon = 'icons/misc/beach.dmi';
+	icon_state = "sand";
+	name = "sand"
+	},
 /area/hallway/primary/aft)
 "xpn" = (
 /obj/structure/disposalpipe/sorting/mail/flip{
@@ -91040,7 +91601,15 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
 	},
-/turf/open/floor/plating/beach/sand,
+/turf/open/floor/plasteel{
+	barefootstep = "sand";
+	clawfootstep = "sand";
+	desc = "a fake sandy tile that looks like it came straight from a real beach.";
+	footstep = "sand";
+	icon = 'icons/misc/beach.dmi';
+	icon_state = "sand";
+	name = "sand"
+	},
 /area/hallway/primary/aft)
 "xLs" = (
 /obj/structure/cable/yellow{
@@ -91456,7 +92025,15 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1,
-/turf/open/floor/plating/beach/sand,
+/turf/open/floor/plasteel{
+	barefootstep = "sand";
+	clawfootstep = "sand";
+	desc = "a fake sandy tile that looks like it came straight from a real beach.";
+	footstep = "sand";
+	icon = 'icons/misc/beach.dmi';
+	icon_state = "sand";
+	name = "sand"
+	},
 /area/hallway/primary/aft)
 "xTS" = (
 /obj/structure/cable/yellow{
@@ -92241,7 +92818,15 @@
 /obj/effect/turf_decal/tile/blue{
 	dir = 8
 	},
-/turf/open/floor/plating/beach/sand,
+/turf/open/floor/plasteel{
+	barefootstep = "sand";
+	clawfootstep = "sand";
+	desc = "a fake sandy tile that looks like it came straight from a real beach.";
+	footstep = "sand";
+	icon = 'icons/misc/beach.dmi';
+	icon_state = "sand";
+	name = "sand"
+	},
 /area/hallway/primary/aft)
 "ykL" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1,
@@ -120286,7 +120871,7 @@ cvH
 mxR
 cvH
 cvH
-cqv
+ogb
 cEi
 cCq
 cCq
@@ -120769,7 +121354,7 @@ bNj
 bQn
 bQn
 drB
-ogb
+jwR
 dph
 aYX
 wrD
