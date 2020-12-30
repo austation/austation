@@ -1,4 +1,0 @@
-author: "AustationBot"
-delete-after: True
-changes: 
-  - rscadd: "Health scanning someone as a ghost now also shows the chemicals inside their body."

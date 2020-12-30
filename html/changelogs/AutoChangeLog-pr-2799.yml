@@ -1,5 +1,0 @@
-author: "AustationBot"
-delete-after: True
-changes: 
-  - tweak: "Cultists can now be summoned if buckled to an object, but not while being dragged + cuffed."
-  - tweak: "Cultists can now use spells that do not require their hands while cuffed (Communicate, EMP, Conceal presense)."
