@@ -1,6 +1,0 @@
-author: "AustationBot"
-delete-after: True
-changes: 
-  - rscadd: "Voting panel upgraded to TGUI."
-  - rscadd: "Users are now shown which option they voted for."
-  - rscadd: "Users can now change their votes."
