@@ -638,8 +638,4 @@
 #undef ENGINES_START_TIME
 #undef ENGINES_STARTED
 #undef IS_DOCKED
-<<<<<<< HEAD
-
-=======
 #undef SHUTTLE_CONSOLE_ACTION_DELAY
->>>>>>> b4971900e3... [PORT] Limit how often you can use the emergency shuttle console (#3175)
