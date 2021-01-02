@@ -5,11 +5,7 @@
 //	You do not need to raise this if you are adding new values that have sane defaults.
 //	Only raise this value when changing the meaning/format/name/layout of an existing value
 //	where you would want the updater procs below to run
-<<<<<<< HEAD
-#define SAVEFILE_VERSION_MAX	33
-=======
-#define SAVEFILE_VERSION_MAX	32
->>>>>>> 49dca61c82... Some beecoin items now actually function. (#3219)
+#define SAVEFILE_VERSION_MAX	34
 
 /*
 SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Carn
@@ -53,7 +49,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 		outline_color = COLOR_BLUE_GRAY
 	if(current_version < 33)
 		auto_fit_viewport = TRUE
-	if(current_version < 32)
+	if(current_version < 34)
 		//Okay this is gonna s u c k
 		var/list/legacy_purchases = purchased_gear.Copy()
 		purchased_gear.Cut()
