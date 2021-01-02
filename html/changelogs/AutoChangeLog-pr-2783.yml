@@ -1,4 +1,0 @@
-author: "AustationBot"
-delete-after: True
-changes: 
-  - bugfix: "Fixed Advanced Health Analyzer working exactly like the normal Health Analyzer."
