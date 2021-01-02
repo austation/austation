@@ -1,5 +1,4 @@
-
-// The base used for calculating speed increase
+// The base used for calculating projectile speed increase
 // lower values make speed increases more diminishing
 #define BASE 0.9975
 
@@ -8,9 +7,10 @@
 
 /obj/structure/disposalpipe/coilgun/charger
 	name = "coilgun charger"
-	desc = "A powered electromagnetic tube used to accelerate magnetive projectiles, requires the use of cooling units to prevent the projectile from overheating. Requires direct power connection to function"
+	desc = "A powered electromagnetic tube used to accelerate magnetive projectiles, requires the use of cooling units to prevent the projectile from overheating.\n
+	Requires direct power connection to function"
 	icon_state = "charger"
-
+	coilgun = TRUE
 	var/enabled = FALSE // is the charger turned on?
 	var/can_charge = FALSE // can we speed up the projectile
 	var/speed_increase = 10 // how much speed the charger will add to the projectile
@@ -26,6 +26,7 @@
 	var/laststep // used in charger chain building, stops infinite loops. did we just run the proc on this pipe?
 	var/power_process = FALSE // are we currently processing power?
 
+// needed for charger chaining
 /obj/structure/disposalpipe/coilgun/charger/New()
 	parent = src
 	members += src
@@ -50,7 +51,7 @@
 		enabled = TRUE
 		to_chat(user, "<span class='notice'>You turn on \the [src].</span>")
 
-	if(members.len <= 1 && parent == src) // if it's not a child or parent of another object, try to connect nearby chargers
+	if(members.len <= 1 && parent == src) // if it's not a child or parent of another object, try to sync with nearvy chargers
 		build_charger(parent)
 	update_chargers(parent) //sync the connected charger's settings
 
@@ -59,15 +60,14 @@
 	for(var/obj/structure/disposalpipe/coilgun/charger/C in P.members)
 		C.target_power_usage = target_power_usage
 		C.enabled = enabled
-		C.attached = attached
+		C.attached = attached // only one cable needs to be attached to a charger
 
-// C for child, P for parent.
-/// Finds all chargers connected to the parent and makes them members
+/// Finds all chargers connected to the caller (parent) and makes them members
 /obj/structure/disposalpipe/coilgun/charger/proc/build_charger(obj/structure/disposalpipe/coilgun/charger/P)
 	var/obj/structure/disposalpipe/coilgun/charger/C
-	for(var/turf/T in range(1, loc)) // for every tile next to the charger
-		C = locate() in T // checks said
-		if(C && C.dpdir == dpdir && (!C.parent || C.parent == C) && C.laststep != laststep)
+	for(var/turf/T in range(1, src)) // for every tile next to the charger
+		C = locate() in T
+		if(C && C.dpdir == P.dpdir && (!C.parent || C.parent == C) && C.laststep != laststep)
 			if(laststep == C)
 				continue
 			laststep = src
@@ -101,7 +101,7 @@
 					attached.add_delayedload(drained) // apply our power use to the connected wire
 					if(attached.newavail() < drained) // are we using more power than we have connected?
 						target_power_usage -= 20
-						if(target_power_usage)
+						if(target_power_usage >= 0)
 							visible_message("<span class='warning'>\The [src]'s has power warning light flickers, lowering throttle to [target_power_usage]!</span>")
 						else
 							visible_message("<span class='warning'>\The [src]'s has power warning light flickers, turning itself off!</span>")
@@ -112,36 +112,34 @@
 						continue
 		else
 			break
-		// if we failed any of the checks, disable the charger
-		enabled = FALSE
+		enabled = FALSE // if we failed any of the other checks, disable the charger
 		break
 	power_process = FALSE // when the loop ends, allow the proc to be called again
 
-/// called every time an object passes through the pipe
 /obj/structure/disposalpipe/coilgun/charger/transfer(obj/structure/disposalholder/H)
 	if(H.contents.len)
 		if(can_charge) // do we have enough power?
 			for(var/atom/movable/AM in H.contents) // run the loop below for every movable that passes through the charger
 				if(istype(AM, /obj/effect/hvp)) // if it's a coilgun projectile, continue
 
-					var/obj/effect/hvp/P = AM
+					var/obj/effect/hvp/PJ = AM
 					var/datum/powernet/PN = attached.powernet
 
 					if(PN && target_power_usage)
 						var/prelim = (current_power_use + POWER_DIVIDER) / POWER_DIVIDER
 						visible_message("<span class='danger'>debug: prelim reads [prelim]!</span>")
 //						current_power_use = min((P.p_speed * 500) * (target_power_usage / 100), max_power_use) //determins power usage
-						speed_increase = prelim * BASE ** P.p_speed
-						P.p_speed += speed_increase // add speed to projectile
-						P.p_heat += heat_increase // add heat to projectile
-						P.on_transfer() // calls the "on_tranfer" proc for the projectile
-						cps = round(P.p_speed * 10)
+						speed_increase = prelim * BASE ** PJ.p_speed
+						PJ.p_speed += speed_increase * members.len // add speed to projectile
+						PJ.p_heat += heat_increase * members.len // add heat to projectile
+						PJ.on_transfer() // calls the "on_tranfer" proc for the projectile
+						cps = round(PJ.p_speed * 10)
 						playsound(get_turf(src), 'sound/weapons/emitter2.ogg', 50, 1)
 						visible_message("<span class='danger'>debug: speed increased by [speed_increase]!</span>")
-						current_power_use += P.p_speed * 5
+						current_power_use += PJ.p_speed * members.len * 5
 						if(!power_process)
 							INVOKE_ASYNC(src, .proc/power_process, 10) // applies our power use for 10 seconds
-						H.count = 1000 // resets the amount of moves the disposalholder has
+						H.count = 1000 // resets the amount of moves the disposalholder has left
 						continue
 
 				else // no non-magnetic items allowed in the coilgun :(
@@ -163,7 +161,7 @@
 	else
 		. += "<span class='info'>No moving projectile detected.</span>"
 	if(current_power_use)
-		. += "<span class='info'>The power indicator reads: [current_power_use / 1000]KW.</span>"
+		. += "<span class='info'>The power indicator reads: [DisplayPower(current_power_use)].</span>"
 
 #undef BASE
 #undef POWER_DIVIDER

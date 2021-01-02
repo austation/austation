@@ -8,6 +8,7 @@
 #include "code\_HELPERS\matrices.dm"
 #include "code\_HELPERS\radiation.dm"
 #include "code\_HELPERS\roundend.dm"
+#include "code\_HELPERS\unsorted.dm"
 
 // Main Includes Section
 #include "code\_globalvars\lists\maintenance_loot.dm"
@@ -117,6 +118,7 @@
 #include "code\modules\clothing\under\costume.dm"
 #include "code\modules\coilgun\_coilgun.dm"
 #include "code\modules\coilgun\charger.dm"
+#include "code\modules\coilgun\modifier.dm"
 #include "code\modules\coilgun\projectile.dm"
 #include "code\modules\coilgun\segments.dm"
 #include "code\modules\events\bruh_moment.dm"

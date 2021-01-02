@@ -19,8 +19,12 @@
 
 		update_icon()
 		var/obj/effect/hvp/boolet
-
+		var/loops = 0
 		for(var/atom/movable/AM in H.contents)
+			loops++
+			if(loops >= 2)
+				AM.forceMove(get_turf(src))
+				visible_message("<span class='warning'>\The [src] can't coat magnetize than one object at a time!</span>")
 			if(AM == boolet)
 				continue
 			else
@@ -31,6 +35,7 @@
 				boolet.icon_state = AM.icon_state
 				boolet.p_speed = 1
 				AM.loc = boolet //put the original inserted objected inside the coilgun projectile
+				boolet.apply_special(AM, TRUE)
 			if(isliving(AM))
 				var/mob/living/L = AM
 				L.adjustBruteLoss(10)
@@ -59,14 +64,23 @@
 
 	return ..()
 
-// passive cooler
 /obj/structure/disposalpipe/coilgun/cooler
 	name = "passive coilgun cooler"
 	desc = "A densely packed array of radiator fins designed to passively remove heat from a magnetic projectile, slightly slows down the projectile"
 	icon_state = "p_cooler"
 	var/heat_removal = 2.5 // how much heat we will remove from the projectile
-	var/speed_penalty = 0.985 // multiplies projectile speed by this
-	var/hugbox = FALSE
+	var/linear_penalty = TRUE // do we multiply or negate speed_penalty from projectile speed?
+	var/speed_penalty = 2 // multiplies/negates projectile speed by this
+	var/hugbox = FALSE // debug and/or admin abuse
+
+/obj/structure/disposalpipe/coilgun/cooler/active
+	name = "active coilgun cooler"
+	desc = "A tube with multiple small, fast fans used for cooling any projectile that passes through it. Much more effective than a passive cooler but slows the projectile down more"
+	icon = 'austation/icons/obj/atmospherics/pipes/disposal.dmi'
+	icon_state = "a_cooler"
+	heat_removal = 3
+	linear_penalty = FALSE
+	speed_penalty = 0.97
 
 /obj/structure/disposalpipe/coilgun/cooler/transfer(obj/structure/disposalholder/H)
 	if(H.contents.len)
@@ -75,7 +89,10 @@
 				var/obj/effect/hvp/projectile = AM
 				projectile.p_heat = max(projectile.p_heat - heat_removal, 0) // projectile can't go below zero
 				if(!hugbox)
-					projectile.p_speed = projectile.p_speed * speed_penalty
+					if(linear_penalty)
+						projectile.p_speed -= speed_penalty
+					else
+						projectile.p_speed *= speed_penalty
 				continue
 			else // eject the item if it's none of the above
 				visible_message("<span class='warning'>\The [src]'s safety mechanism engages, ejecting \the [AM] through the maintenance hatch!</span>")
@@ -83,10 +100,3 @@
 				continue
 	return ..()
 
-/obj/structure/disposalpipe/coilgun/cooler/active
-	name = "active coilgun cooler"
-	desc = "A tube with multiple small, fast fans used for cooling any projectile that passes through it. Much more effective than a passive cooler but slows the projectile down more"
-	icon = 'austation/icons/obj/atmospherics/pipes/disposal.dmi'
-	icon_state = "a_cooler"
-	heat_removal = 5
-	speed_penalty = 0.95
