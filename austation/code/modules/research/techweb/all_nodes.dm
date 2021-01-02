@@ -34,7 +34,6 @@
 
 /datum/techweb_node/exp_surgery
 	austation_design_ids = list("surgery_cortex_imprint", "surgery_cortex_folding")
-	austation_design_ids_remove = list("autodoc")
 
 /////////////////////////robotics tech/////////////////////////
 
