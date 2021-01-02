@@ -13698,7 +13698,7 @@
 	id = "cargounload";
 	name = "supply dock unloading door"
 	},
-/turf/open/space/basic,
+/turf/open/floor/plating,
 /area/quartermaster/storage)
 "aCh" = (
 /obj/effect/turf_decal/stripes/line{
@@ -82882,14 +82882,7 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
 	},
-<<<<<<< HEAD
-/obj/machinery/door/firedoor/border_only,
-/obj/machinery/door/firedoor/border_only{
-	dir = 1
-	},
-=======
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden,
->>>>>>> bc0f5899b4... Fixes pipes until the game stops yelling at me (#3125)
 /turf/open/floor/plasteel,
 /area/crew_quarters/dorms)
 "cJl" = (
