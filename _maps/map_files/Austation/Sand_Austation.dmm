@@ -20856,7 +20856,7 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
 	dir = 8
 	},
-/obj/structure/flora/tree/pine/xmas/presents/unlimited,
+/obj/structure/flora/tree/pine/xmas/presents,
 /turf/open/floor/plasteel{
 	barefootstep = "sand";
 	clawfootstep = "sand";
