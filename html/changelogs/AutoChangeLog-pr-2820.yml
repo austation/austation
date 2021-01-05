@@ -1,0 +1,4 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - rscadd: "Syndicate excommunicates get a note telling them they're an excommunicate, so they don't forget"
