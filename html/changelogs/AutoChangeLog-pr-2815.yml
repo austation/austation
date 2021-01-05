@@ -1,0 +1,4 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - tweak: "Syndicate radio implant can't be bought on incursion gamemode."

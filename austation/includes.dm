@@ -100,6 +100,7 @@
 #include "code\modules\cargo\packs\costumes_toys.dm"
 #include "code\modules\client\preferences_savefile.dm"
 #include "code\modules\client\loadout\loadout_uniform.dm"
+#include "code\modules\client\verbs\ooc.dm"
 #include "code\modules\clothing\glasses\hud.dm"
 #include "code\modules\clothing\head\helmet.dm"
 #include "code\modules\clothing\head\job.dm"

@@ -1,4 +1,4 @@
 author: "AustationBot"
 delete-after: True
 changes: 
-  - admin: "quantum spin inverter is now logged"
+  - code_imp: "inversedir is now a global proc"
