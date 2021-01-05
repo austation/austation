@@ -68,7 +68,7 @@
 	L.visible_message("<span class='danger'>[L] is penetrated by \the [src]!</span>" , "<span class='userdanger'>\The [src] penetrates you!</span>" , "<span class ='danger'>You hear a CLANG!</span>")
 	if(ishuman(L))
 		var/mob/living/carbon/human/H = L
-		var/projdamage = max(15, momentum / 3)
+		var/projdamage = max(10, momentum / 35)
 		if(special & HVP_SHARP)
 			projdamage *= 2
 				var/static/list/zones = list(BODY_ZONE_R_ARM, BODY_ZONE_L_ARM, BODY_ZONE_R_LEG, BODY_ZONE_L_LEG, BODY_ZONE_HEAD)
@@ -77,7 +77,13 @@
 					var/unlucky = clamp(momentum * 0.03, 60)
 					if(prob(unlucky))
 						BP.drop_limb()
-		H.adjustBruteLoss(projdamage)
+		if(special & HVP_BOUNCY)
+			projdamage /= 4 // bouncy things don't hurt as much xd
+			L.adjustStaminaLoss(clamp(projdamage, 5, 120))
+			var/atom/target = get_edge_target_turf(L, dir)
+			L.throw_at(target, 200, 4) // godspeed o7
+		else
+			H.adjustBruteLoss(projdamage)
 
 /obj/effect/hvp/proc/move()
 	if(!step(src,dir))
@@ -167,8 +173,6 @@
 			special |= HVP_BOUNCY
 		if(istype(AM, /obj/item/reagent_containers) && !istype(AM, /obj/item/reagent_containers/food) && list_reagents.len)
 			special |= HVP_REAGENT
-
-//		if(initial) // If this was ran in the magnetizer..
 		if(istype(AM, /obj/item/grenade/chem_grenade))
 			special |= HVP_GRENADE
 
