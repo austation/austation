@@ -1,4 +1,0 @@
-author: "AustationBot"
-delete-after: True
-changes: 
-  - bugfix: "fixed quite a lot of pipes on every map (except Kilo which only had one trivial problem) to improve experience and performance"
