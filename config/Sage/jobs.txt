@@ -30,7 +30,12 @@ Chaplain=1,1
 Station Engineer=6,5
 Atmospheric Technician=4,2
 
+<<<<<<< HEAD
 Medical Doctor=7,4
+=======
+Medical Doctor=8,6
+Paramedic=2,1
+>>>>>>> 14b8ac0722... Adds missing jobs to sages jobs.txt (#3266)
 Chemist=3,2
 Geneticist=3,2
 Virologist=1,1
@@ -40,7 +45,13 @@ Roboticist=2,2
 
 Warden=1,1
 Detective=1,1
+<<<<<<< HEAD
 Security Officer=5,5
+=======
+Security Officer=10,8
+Brig Physician=1,1
+Deputy=0,0
+>>>>>>> 14b8ac0722... Adds missing jobs to sages jobs.txt (#3266)
 
 AI=1,1
 Cyborg=1,1
