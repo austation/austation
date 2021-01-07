@@ -1,0 +1,4 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - bugfix: "Raven Shuttle now doesn't kill everyone with atmos"
