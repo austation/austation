@@ -68,7 +68,7 @@
 	var/heat_removal = 2.5 // how much heat we will remove from the projectile
 	var/linear_penalty = TRUE // do we multiply or negate speed_penalty from projectile speed?
 	var/speed_penalty = 2 // multiplies/negates projectile speed by this
-	var/hugbox = FALSE // debug and/or admin abuse
+	var/hugbox = FALSE // debug/admin abuse
 
 /obj/structure/disposalpipe/coilgun/cooler/active
 	name = "active coilgun cooler"
@@ -84,16 +84,14 @@
 		for(var/atom/movable/AM in H.contents) // run the loop below for every movable that passes through the charger
 			if(istype(AM, /obj/effect/hvp)) // if it's a projectile, continue
 				var/obj/effect/hvp/projectile = AM
-				projectile.p_heat = max(projectile.p_heat - heat_removal, 0) // projectile can't go below zero
+				projectile.p_heat = max(projectile.p_heat - heat_removal, -50) // projectile can't go below -50
 				if(!hugbox)
 					if(linear_penalty)
 						projectile.p_speed -= speed_penalty
 					else
 						projectile.p_speed *= speed_penalty
-				continue
 			else // eject the item if it's none of the above
 				visible_message("<span class='warning'>\The [src]'s safety mechanism engages, ejecting \the [AM] through the maintenance hatch!</span>")
 				AM.forceMove(get_turf(src))
-				continue
 	return ..()
 
