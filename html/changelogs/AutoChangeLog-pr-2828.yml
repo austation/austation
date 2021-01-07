@@ -1,0 +1,4 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - bugfix: "Emergency shuttle console is now indestructible. Xeno queens rejoice."
