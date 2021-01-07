@@ -16,15 +16,13 @@
 
 /obj/structure/disposalpipe/coilgun/magnetizer/transfer(obj/structure/disposalholder/H)
 	if(H.contents.len) // is there an object in here?
-
 		update_icon()
 		var/obj/effect/hvp/boolet
-		var/loops = 0
 		for(var/atom/movable/AM in H.contents)
-			loops++
-			if(loops >= 2)
+			if(H.contents.len > 1)
+				visible_message("<span class='warning'>\The [src] can't magnetize more than one object at a time!</span>")
 				AM.forceMove(get_turf(src))
-				visible_message("<span class='warning'>\The [src] can't coat magnetize than one object at a time!</span>")
+				continue
 			if(AM == boolet)
 				continue
 			else
@@ -57,7 +55,6 @@
 				else
 					qdel(boolet)
 					qdel(I)
-					qdel(H)
 					return
 	else
 		qdel(H)

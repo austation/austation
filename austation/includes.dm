@@ -3,11 +3,13 @@
 // Global Variables Section
 #include "code\_GLOBALS\misc.dm"
 #include "code\_GLOBALS\pool_globals.dm"
+#include "code\_GLOBALS\coilgun.dm"
 
 // Helpers Section
 #include "code\_HELPERS\matrices.dm"
 #include "code\_HELPERS\radiation.dm"
 #include "code\_HELPERS\roundend.dm"
+#include "code\_HELPERS\unsorted.dm"
 
 // Main Includes Section
 #include "code\_globalvars\lists\maintenance_loot.dm"

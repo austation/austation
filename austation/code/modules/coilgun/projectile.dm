@@ -12,7 +12,6 @@
 	desc = "hey! You shouldn't be reading this"
 	icon = 'icons/obj/objects.dmi'
 	icon_state = "immrod"
-	throwforce = 5
 	density = TRUE
 	anchored = TRUE
 	move_force = INFINITY
@@ -27,7 +26,7 @@
 	var/momentum = 0
 
 /obj/effect/hvp/proc/launch()
-	momentum = mass*p_speed
+	momentum = mass * p_speed
 	if(momentum >= 1000)
 		var/turf/open/T = src.loc
 		if(T.air)
@@ -47,7 +46,7 @@
 		x = clong.x
 		y = clong.y
 	if(isturf(clong) || isobj(clong))
-		if(special & HVP_BOUNCY) && prob(50))
+		if(special & HVP_BOUNCY && prob(50))
 			x = invertDir(x)
 			y = invertDir(y)
 		if(momentum >= 100 || istype(clong, /obj/structure/window)) // stops windows from taking a tiny crack instead of a smash
@@ -88,14 +87,13 @@
 /obj/effect/hvp/proc/move()
 	if(!step(src,dir))
 		Move(get_step(src,dir))
-	if(prob(5) && special & HVP_BLUESPACE) // good ol switcharoo
+	if(prob(5) && (special & HVP_BLUESPACE)) // good ol switcharoo
 		var/switch_range = clamp(BASE_SWITCH_RANGE * (momentum / 120), BASE_SWITCH_RANGE, MAX_SWITCH_RANGE)
-		var/target = pick(atom/movable/AM in range(switch_range, src))
+		var/target = pick(var/atom/movable/AM in range(switch_range, src))
 		var/oldloc = loc
 		do_teleport(src, target.loc, asoundin = 'sound/effects/phasein.ogg', channel = TELEPORT_CHANNEL_BLUESPACE)
 		do_teleport(target, oldloc, asoundin = 'sound/effects/phasein.ogg', channel = TELEPORT_CHANNEL_BLUESPACE)
 	p_speed--
-	throwforce = momentum * 0.2
 
 	if(p_speed && mass)
 		momentum = mass*p_speed
@@ -120,7 +118,7 @@
 	for(var/mob/living/M in contents)
 		M.adjustFireLoss(20)
 		forceMove(get_turf(src))
-	var/obj/effect/decal/cleanable/ash/melted = new(loc) // make an ash pile where we die ;-;
+	var/obj/effect/decal/cleanable/ash/melted = new(get_turf(src)) // make an ash pile where we die ;-;
 	playsound(loc, 'sound/items/welder.ogg', 150, 1)
 	melted.name = "slagged [name]"
 	melted.desc = "Ahahah that's hot, that's hot."
@@ -130,10 +128,11 @@
 /obj/effect/hvp/proc/gameover()
 	var/atom/L = drop_location()
 	for(var/atom/movable/AM in src)
-		activate_special(AM)
-		AM.forceMove(L)
-		if(throwing) // you keep some momentum
-			step(AM, dir)
+		other_special(AM)
+		if(AM)
+			AM.forceMove(L)
+			if(throwing) // you keep some momentum
+				step(AM, dir)
 	if(throwing)
 		throwing.finalize(FALSE)
 
@@ -161,31 +160,29 @@
 ///Handles special projectile traits
 /obj/effect/hvp/proc/apply_special(atom/movable/AM, initial = FALSE)
 	if(isitem(AM))
-		var/glowy = AM.GetComponent(/datum/component/radioactive)
+		var/obj/item/I = AM
+		var/glowy = I.GetComponent(/datum/component/radioactive)
 		if(glowy)
 			special |= HVP_RADIOACTIVE
 			AddComponent(/datum/component/radioactive, glowy, src)
-		if(AM.is_sharp())
+		if(I.is_sharp())
 			special |= HVP_SHARP
-		if(AM in GLOB.hvp_bluespace)
+		if(I in GLOB.hvp_bluespace)
 			special |= HVP_BLUESPACE
-		if(AM in GLOB.hvp_bouncy)
+		if(I in GLOB.hvp_bouncy)
 			special |= HVP_BOUNCY
-		if(istype(AM, /obj/item/reagent_containers) && !istype(AM, /obj/item/reagent_containers/food) && list_reagents.len)
-			special |= HVP_REAGENT
-		if(istype(AM, /obj/item/grenade/chem_grenade))
-			special |= HVP_GRENADE
 
-/obj/effect/hvp/proc/activate_special(atom/movable/AM)
-	if(special & HVP_REAGENT && istype(AM, /obj/item/reagent_containers)
-		for(var/datum/reagent/R in list_reagents)
+/obj/effect/hvp/proc/other_special(atom/movable/AM)
+	if(istype(AM, /obj/item/reagent_containers))
+		var/obj/item/reagent_containers/RC = AM
+		for(var/datum/reagent/R in RC.list_reagents)
 			R = R.holder
-			R.expose_temperature(5000)
-			if(R)
-				R.expose_temperature(5000) // abooout 5 lighter hits to a beaker
-				var/datum/effect_system/smoke_spread/chem/S // and if that didn't do anything..
+			R.expose_temperature(5000) // about 5 lighter hits to a beaker
+			if(R) // and if that didn't do anything, smoke
+				var/datum/effect_system/smoke_spread/chem/S
 				S.set_up(R, 5, loc)
 				S.start()
+	if(istype(AM, /obj/item/grenade))
+		var/obj/item/grenade/G = AM
+		G.prime // armour piercing high explosive rod ;)
 
-	if(special & HVP_GRENADE && istype(AM, /obj/item/grenade))
-		AM.prime
