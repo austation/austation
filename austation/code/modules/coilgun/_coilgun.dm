@@ -19,11 +19,11 @@
 		update_icon()
 		var/obj/effect/hvp/boolet
 		for(var/atom/movable/AM in H.contents)
+			if(AM == boolet)
+				continue
 			if(H.contents.len > 1)
 				visible_message("<span class='warning'>\The [src] can't magnetize more than one object at a time!</span>")
 				AM.forceMove(get_turf(src))
-				continue
-			if(AM == boolet)
 				continue
 			else
 				boolet = new(H)
@@ -42,10 +42,9 @@
 					L.emote("scream")
 					boolet.mass = 5
 					sleep(30)
-					continue
 				else
 					boolet.mass = 3
-					continue
+				continue
 			if(isitem(AM))
 				var/obj/item/I = AM
 				if(I.w_class)

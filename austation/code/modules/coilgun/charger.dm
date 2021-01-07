@@ -22,8 +22,7 @@
 	var/list/members = list()
 	var/parent = null // used for linking coilgun chargers, what charger is parent?
 	var/is_child = FALSE // is this linked to a parent?
-	var/laststep // used in charger chain building, stops infinite loops. did we just run the proc on this pipe?
-	var/using_power = FALSE // are we currently processing power?
+	var/laststep // used in charger chain building, stops infinite loops. did we just run build proc on this pipe?
 
 // needed for charger linking
 /obj/structure/disposalpipe/coilgun/charger/New()
@@ -92,13 +91,13 @@
 		var/datum/powernet/PN = attached.powernet
 		if(attached && PN)
 			var/drained = min(current_power_use / (target_power_usage / 100), max_power_use)// set our power use
-			visible_message("<span class='warning'>Drained reads [drained]!</span>")
+			visible_message("<span class='warning'>Drained reads [drained]!</span>") // DEBUG
 			attached.add_delayedload(drained) // apply our power use to the connected wire
 			if(attached.newavail() < drained) // are we using more power than we have connected?
-				target_power_usage -= 20
+				target_power_usage -= 20 // throttle it down
 				if(target_power_usage > 0)
 					visible_message("<span class='warning'>\The [src]'s power warning light flickers, lowering throttle to [target_power_usage]!</span>")
-					return power_process() // check if we the reduced power load is enough
+					return power_process() // check if the reduced power load is enough
 			else
 				current_power_use = drained
 				return TRUE
@@ -117,7 +116,7 @@
 
 					if(PN && target_power_usage)
 						var/prelim = (current_power_use + POWER_DIVIDER) / POWER_DIVIDER
-						visible_message("<span class='danger'>debug: prelim reads [prelim]!</span>")
+						visible_message("<span class='danger'>debug: prelim reads [prelim]!</span>") // DEBUG
 //						current_power_use = min((P.p_speed * 500) * (target_power_usage / 100), max_power_use) //determins power usage
 						speed_increase = prelim * BASE ** PJ.p_speed
 						PJ.p_speed += speed_increase * members.len

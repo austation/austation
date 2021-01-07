@@ -15,7 +15,7 @@
 		qdel(H)
 	return ..()
 
-/obj/structure/disposalpipe/coilgun/modifier/combine(obj/effect/hvp/PJ)
+/obj/structure/disposalpipe/coilgun/modifier/proc/combine(obj/effect/hvp/PJ)
 	if(PJ.special.len <= 2)
 
 	else
