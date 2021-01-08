@@ -1,4 +1,0 @@
-author: "AustationBot"
-delete-after: True
-changes: 
-  - refactor: "world/Topic()'s player list has been moved from \"status\" to \"playerlist\""

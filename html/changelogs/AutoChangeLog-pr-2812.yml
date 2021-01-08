@@ -1,4 +1,0 @@
-author: "AustationBot"
-delete-after: True
-changes: 
-  - bugfix: "chloral hydrate bottle now has 30u instead of 15u."
