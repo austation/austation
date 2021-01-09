@@ -1,4 +1,0 @@
-author: "AustationBot"
-delete-after: True
-changes: 
-  - admin: "logs the shooter and circuit name of the weapon circuit in the attack log of the victim"

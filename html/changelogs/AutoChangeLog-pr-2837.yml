@@ -1,6 +1,0 @@
-author: "AustationBot"
-delete-after: True
-changes: 
-  - balance: "Xenomorph neurotoxin plasma cost: 50 => 30."
-  - balance: "Xenomorph neurotoxin effect: 10 second stun => 40 stamina damage."
-  - balance: "Xenomorph neurotoxin still only effects targets without thick clothing."
