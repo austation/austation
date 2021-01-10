@@ -34,15 +34,11 @@
 
 /datum/techweb_node/exp_surgery
 	austation_design_ids = list("surgery_cortex_imprint", "surgery_cortex_folding")
-	austation_design_ids_remove = list("autodoc")
 
 /////////////////////////robotics tech/////////////////////////
 
 /datum/techweb_node/cyborg_upg_util
 	austation_design_ids = list("borg_upgrade_cooking")
-
-/datum/techweb_node/cyborg_upg_combat
-	austation_design_ids = list("borg_transform_security")
 
 /datum/techweb_node/ai
 	austation_design_ids = list("paternalai_module", "rickroll_module", "dagothur_module", "crewsimov_module")

@@ -8,7 +8,8 @@
 	discordmsg += "Escapees: [escapees]\n"
 	discordmsg += "Integrity: [integrity]\n"
 	discordmsg += "Gamemode: [SSticker.mode.name]\n"
-	send2chat(discordmsg, "roundend")
+	discordmsg = msg2discord(discordmsg)
+	send2chat(discordmsg, "ooc")
 	discordmsg = ""
 	var/list/ded = SSblackbox.first_death
 	if(ded)
@@ -17,17 +18,17 @@
 		discordmsg += "[last_words]\n"
 	else
 		discordmsg += "Nobody died!\n"
-	if(GLOB.antagonists.len)
+	/*if(GLOB.antagonists.len)
 		discordmsg += "Antagonists at round end were...\n"
 	else
-		discordmsg += "There were no antagonists!\n"
-	send2chat(discordmsg, "roundend")
-	if(GLOB.antagonists.len)
+		discordmsg += "There were no antagonists!\n"*/
+	discordmsg = msg2discord(discordmsg)
+	send2chat(discordmsg, "ooc")
+	/*if(GLOB.antagonists.len)
 		for(var/datum/antagonist/A in GLOB.antagonists)
 			if(!A.owner)
 				continue
-
-			discordmsg = ""			
+			discordmsg = ""
 			var/list/antag_info = list()
 			antag_info["key"] = A.owner.key
 			antag_info["name"] = A.owner.name
@@ -55,5 +56,17 @@
 			else
 				discordmsg += "The [antag_info["antagonist_name"]] has succeded!\n"
 
-			send2chat(discordmsg, "roundend")
+			msg2discord(discordmsg)
+			send2chat(discordmsg, "ooc")*/
+	discordmsg = ""
+	discordmsg += "-------------------------------------\n"
+	send2chat(discordmsg, "ooc")
 
+proc/msg2discord(var/msg as text)
+    var/list/conversions = list(
+    	"@" = "\[at]", // no @ abuse
+		"#" = "\[hash]"
+    )
+    for(var/c in conversions)
+        msg = replacetext(msg, c, conversions[c])
+    return msg

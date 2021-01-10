@@ -1,15 +1,19 @@
-
-
+/*
+AUSTATION NOTES
+hsb_safespawn has been removed and replaced with hsbspawn
+*/
 GLOBAL_VAR_INIT(hsboxspawn, TRUE)
 
 /mob
 	var/datum/hSB/sandbox = null
+
 /mob/proc/CanBuild()
 	sandbox = new/datum/hSB
 	sandbox.owner = src.ckey
 	if(src.client.holder)
 		sandbox.admin = 1
 	verbs += new/mob/proc/sandbox_panel
+
 /mob/proc/sandbox_panel()
 	set name = "Sandbox Panel"
 	if(sandbox)
@@ -57,7 +61,7 @@ GLOBAL_VAR_INIT(hsboxspawn, TRUE)
 			"Spawn Hyper Capacity Power Cell"	= "hsbspawn&path=[/obj/item/stock_parts/cell/hyper]",
 			"Spawn Inf. Capacity Power Cell"	= "hsbspawn&path=[/obj/item/stock_parts/cell/infinite]",
 			"Spawn Rapid Construction Device"	= "hsbrcd",
-			"Spawn RCD Ammo"					= "hsb_safespawn&path=[/obj/item/rcd_ammo]",
+			"Spawn RCD Ammo"					= "hsbspawn&path=[/obj/item/rcd_ammo]",
 			"Spawn Airlock"						= "hsbairlock",
 
 			"Miscellaneous",
@@ -243,7 +247,7 @@ GLOBAL_VAR_INIT(hsboxspawn, TRUE)
 					for(var/typekey in spawn_forbidden)
 						all_items -= typesof(typekey)
 					for(var/O in reverseRange(all_items))
-						clothinfo += "<a href='?src=[REF(src)];hsb=hsb_safespawn&path=[O]'>[O]</a><br>"
+						clothinfo += "<a href='?src=[REF(src)];hsb=hsbspawn&path=[O]'>[O]</a><br>"
 
 				usr << browse(clothinfo,"window=sandbox")
 
@@ -257,7 +261,7 @@ GLOBAL_VAR_INIT(hsboxspawn, TRUE)
 					for(var/typekey in spawn_forbidden)
 						all_items -= typesof(typekey)
 					for(var/O in reverseRange(all_items))
-						reaginfo += "<a href='?src=[REF(src)];hsb=hsb_safespawn&path=[O]'>[O]</a><br>"
+						reaginfo += "<a href='?src=[REF(src)];hsb=hsbspawn&path=[O]'>[O]</a><br>"
 
 				usr << browse(reaginfo,"window=sandbox")
 
@@ -272,11 +276,11 @@ GLOBAL_VAR_INIT(hsboxspawn, TRUE)
 						all_items -= typesof(typekey)
 
 					for(var/O in reverseRange(all_items))
-						objinfo += "<a href='?src=[REF(src)];hsb=hsb_safespawn&path=[O]'>[O]</a><br>"
+						objinfo += "<a href='?src=[REF(src)];hsb=hsbspawn&path=[O]'>[O]</a><br>"
 
 				usr << browse(objinfo,"window=sandbox")
 
-			//
+			/* austation code start
 			// Safespawn checks to see if spawning is disabled.
 			//
 			if("hsb_safespawn")
@@ -292,6 +296,7 @@ GLOBAL_VAR_INIT(hsboxspawn, TRUE)
 
 				if(CONFIG_GET(flag/sandbox_autoclose))
 					usr << browse(null,"window=sandbox")
+			*/// austation code end
 			//
 			// For everything else in the href list
 			//

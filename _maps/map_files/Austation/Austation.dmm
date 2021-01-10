@@ -17795,9 +17795,6 @@
 /turf/open/floor/wood,
 /area/lawoffice)
 "bzU" = (
-/obj/structure/chair/comfy/teal{
-	dir = 4
-	},
 /obj/structure/chair/comfy/black{
 	dir = 4
 	},
@@ -54573,13 +54570,6 @@
 	},
 /turf/open/floor/engine,
 /area/engine/engineering/reactor_core)
-"jzi" = (
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
-	dir = 8
-	},
-/obj/machinery/door/airlock/external,
-/turf/open/floor/plating,
-/area/science/shuttledock)
 "jzp" = (
 /obj/machinery/door/airlock/external{
 	name = "Labor Camp Shuttle Airlock";
@@ -57479,13 +57469,6 @@
 	},
 /turf/open/floor/plasteel,
 /area/security/prison)
-"kFX" = (
-/obj/machinery/atmospherics/pipe/simple/supply/hidden{
-	dir = 9
-	},
-/obj/machinery/door/airlock/external,
-/turf/open/floor/plating,
-/area/science/shuttledock)
 "kGe" = (
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -59547,13 +59530,6 @@
 	},
 /turf/open/floor/engine,
 /area/maintenance/disposal/incinerator)
-"lEj" = (
-/obj/structure/grille,
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
-	dir = 8
-	},
-/turf/open/floor/plating,
-/area/maintenance/port)
 "lFt" = (
 /obj/structure/table,
 /obj/item/storage/belt/utility,
@@ -105363,7 +105339,7 @@ yaE
 alC
 aqK
 aqO
-lEj
+alC
 aGN
 lPu
 bTp
@@ -130062,10 +130038,10 @@ mjJ
 dDB
 mjJ
 nfT
-jzi
+bcp
 pqW
 lsq
-jzi
+bcp
 gGe
 mjJ
 mjJ
@@ -130579,7 +130555,7 @@ btQ
 bcp
 nmh
 lsq
-kFX
+bcp
 nmh
 aaa
 lMJ
