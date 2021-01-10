@@ -5,8 +5,11 @@
 	damage_type = TOX
 
 /obj/item/projectile/bullet/neurotoxin/on_hit(atom/target, blocked = FALSE)
+	if(isalien(target))
+		paralyze = 0
+		nodamage = TRUE
 	if(iscarbon(target))
-		var/mob/living/carbon/M = target
-		M.visible_message("<span class='danger'>[M] explodes into a shower of gibs!</span>")
-		M.gib()
+		var/mob/living/carbon/human/H = target
+		if(H.can_inject())
+			H.adjustStaminaLoss(40)
 	return ..()
