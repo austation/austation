@@ -1,4 +1,0 @@
-author: "AustationBot"
-delete-after: True
-changes: 
-  - code_imp: "Improved performance of get_hearers_in_view() by quite a bit."
