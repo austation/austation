@@ -58,7 +58,7 @@
 	for(var/obj/structure/disposalpipe/coilgun/charger/C in P.members)
 		C.target_power_usage = target_power_usage
 		C.enabled = enabled
-		C.attached = attached // only one cable needs to be attached to a charger
+		C.attached = attached // only one charger needs to be attached to a cable
 
 /// Finds all chargers connected to the caller (parent) and makes them members
 /obj/structure/disposalpipe/coilgun/charger/proc/build_charger(obj/structure/disposalpipe/coilgun/charger/P)
@@ -88,9 +88,9 @@
 
 /obj/structure/disposalpipe/coilgun/charger/proc/power_process()
 	if(current_power_use && target_power_usage)
-		var/datum/powernet/PN = attached.powernet
-		if(attached && PN)
-			var/drained = min(current_power_use / (target_power_usage / 100), max_power_use)// set our power use
+		var/datum/powernet/PN = attached?.powernet
+		if(PN)
+			var/drained = min(current_power_use / (target_power_usage / 100), max_power_use) // set our power use
 			visible_message("<span class='warning'>Drained reads [drained]!</span>") // DEBUG
 			attached.add_delayedload(drained) // apply our power use to the connected wire
 			if(attached.newavail() < drained) // are we using more power than we have connected?
@@ -107,7 +107,7 @@
 
 /obj/structure/disposalpipe/coilgun/charger/transfer(obj/structure/disposalholder/H)
 	if(H.contents.len)
-		if(enabled && power_process()) // is this enabled, do we have enough power?
+		if(enabled && power_process() && attached) // is this enabled, do we have enough power?
 			for(var/atom/movable/AM in H.contents) // run the loop below for every movable that passes through the charger
 				if(istype(AM, /obj/effect/hvp)) // if it's a coilgun projectile, continue
 
