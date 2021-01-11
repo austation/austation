@@ -12,8 +12,12 @@ GLOBAL_VAR_INIT(hsboxspawn, TRUE)
 	sandbox.owner = src.ckey
 	if(src.client.holder)
 		sandbox.admin = 1
+<<<<<<< HEAD
 	verbs += new/mob/proc/sandbox_panel
 
+=======
+	add_verb(new/mob/proc/sandbox_panel)
+>>>>>>> c748337901... Tgui stat panel (#2771)
 /mob/proc/sandbox_panel()
 	set name = "Sandbox Panel"
 	if(sandbox)
