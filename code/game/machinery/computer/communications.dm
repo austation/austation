@@ -753,6 +753,7 @@
 	message["message_sender"] = station_name()
 	message["message"] = msg
 	message["source"] = "([CONFIG_GET(string/cross_comms_name)])"
+	message["type"] = "Comms_Console" // small adaption to allow easier comms with goon server(s)
 	message += "Comms_Console"
 
 	var/comms_key = CONFIG_GET(string/comms_key)
