@@ -80,7 +80,7 @@
 				var/obj/effect/hvp/PJ = AM
 
 				if(attached.powernet && target_power_usage)
-					var/prelim = min(attached.newavail() / POWER_DIVIDER, 1)
+					var/prelim = max(attached.newavail() / POWER_DIVIDER, 1)
 					visible_message("<span class='danger'>debug: prelim reads [prelim]!</span>") // DEBUG
 					speed_increase = prelim * BASE ** PJ.p_speed
 					PJ.p_speed += speed_increase
@@ -89,7 +89,7 @@
 					cps = round(PJ.p_speed / 3.6)
 					playsound(get_turf(src), 'sound/weapons/emitter2.ogg', 50, 1)
 					visible_message("<span class='danger'>debug: speed increased by [speed_increase]!</span>")
-					current_power_use = min(PJ.p_speed * 5 * prelim, 1000)
+					current_power_use = max(PJ.p_speed * 25 * prelim, 1000)
 					START_PROCESSING(SSobj, src)
 					H.count = 1000 // resets the amount of moves the disposalholder has left
 					continue

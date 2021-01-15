@@ -37,6 +37,12 @@
 	else
 		gameover()
 
+/obj/effect/hvp/Topic(href, href_list)
+	if(href_list["orbit"])
+		var/mob/dead/observer/ghost = usr
+		if(istype(ghost))
+			ghost.ManualFollow(src)
+
 /obj/effect/hvp/Bump(atom/clong) // lots of rod code in here xd
 	if(prob(80))
 		playsound(src, 'sound/effects/bang.ogg', 50, 1)
