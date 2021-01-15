@@ -1,0 +1,5 @@
+author: "MCHSL, Rohesie, LemonInTheDark"
+delete-after: True
+changes: 
+  - rscadd: "Reference tracking, which can be enabled via compile options; ported frontend from tg"
+  - bugfix: "/datum/thrownthing-related harddels and minor memory leaks"
