@@ -1,0 +1,4 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - bugfix: "Toilet loot spawners don't lag the server on server start with forced hard dels."
