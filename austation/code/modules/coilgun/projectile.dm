@@ -19,7 +19,7 @@
 	pull_force = INFINITY
 	var/heat_capacity = 100 // how hot the object can get before melting
 	var/mass = 0 // how heavy the object is
-	var/special = 0 //special propeties
+	var/special //special propeties
 	var/p_heat = 0 // projectile temp
 	var/p_speed = 0 // how fast the projectile is moving
 	var/charged = FALSE // has the projectile been overcharged
@@ -58,7 +58,8 @@
 			return
 		p_speed -= 10
 	if(prob(15) && special & HVP_RADIOACTIVE)
-		var/pulsepower = AM.GetComponent(/datum/component/radioactive) * clamp((momentum * 0.05), 1, 10)
+		var/datum/component/radioactive/rads = GetComponent(/datum/component/radioactive)
+		var/pulsepower = (rads.strength + 1) * clamp((momentum * 0.05), 1, 10) // faster rods multiply rads.. for some reason
 		radiation_pulse(src, pulsepower)
 	else if(isliving(clong))
 		penetrate(clong)
@@ -70,12 +71,12 @@
 		var/projdamage = max(10, momentum / 35)
 		if(special & HVP_SHARP)
 			projdamage *= 2
-				var/static/list/zones = list(BODY_ZONE_R_ARM, BODY_ZONE_L_ARM, BODY_ZONE_R_LEG, BODY_ZONE_L_LEG, BODY_ZONE_HEAD)
-				for(var/zone in zones)
-					var/obj/item/bodypart/BP = H.get_bodypart(zone)
-					var/unlucky = clamp(momentum * 0.03, 60)
-					if(prob(unlucky))
-						BP.drop_limb()
+			var/static/list/zones = list(BODY_ZONE_R_ARM, BODY_ZONE_L_ARM, BODY_ZONE_R_LEG, BODY_ZONE_L_LEG, BODY_ZONE_HEAD)
+			for(var/zone in zones)
+				var/obj/item/bodypart/BP = H.get_bodypart(zone)
+				var/unlucky = clamp(momentum * 0.03, 15, 100)
+				if(prob(unlucky))
+					BP.drop_limb()
 		if(special & HVP_BOUNCY)
 			projdamage /= 4 // bouncy things don't hurt as much xd
 			L.adjustStaminaLoss(clamp(projdamage, 5, 120))
@@ -87,13 +88,19 @@
 /obj/effect/hvp/proc/move()
 	if(!step(src,dir))
 		Move(get_step(src,dir))
-	if(prob(5) && (special & HVP_BLUESPACE)) // good ol switcharoo
+	if((special & HVP_BLUESPACE) && prob(5)) // good ol switcharoo
 		var/switch_range = clamp(BASE_SWITCH_RANGE * (momentum / 120), BASE_SWITCH_RANGE, MAX_SWITCH_RANGE)
-		var/target = pick(var/atom/movable/AM in range(switch_range, src))
-		var/oldloc = loc
-		do_teleport(src, target.loc, asoundin = 'sound/effects/phasein.ogg', channel = TELEPORT_CHANNEL_BLUESPACE)
-		do_teleport(target, oldloc, asoundin = 'sound/effects/phasein.ogg', channel = TELEPORT_CHANNEL_BLUESPACE)
-	p_speed--
+		var/list/choices = list()
+
+		for(var/mob/living/L in range(switch_range, src))
+			choices += L
+		if(LAZYLEN(choices)) // target acquired!
+			var/oldloc = get_turf(src)
+			var/target = pick(choices)
+			do_teleport(src, get_turf(target), asoundin = 'sound/effects/phasein.ogg', channel = TELEPORT_CHANNEL_BLUESPACE)
+			do_teleport(target, oldloc, asoundin = 'sound/effects/phasein.ogg', channel = TELEPORT_CHANNEL_BLUESPACE)
+
+		p_speed--
 
 	if(p_speed && mass)
 		momentum = mass*p_speed
@@ -161,10 +168,10 @@
 /obj/effect/hvp/proc/apply_special(atom/movable/AM, initial = FALSE)
 	if(isitem(AM))
 		var/obj/item/I = AM
-		var/glowy = I.GetComponent(/datum/component/radioactive)
-		if(glowy)
+		var/datum/component/radioactive/rads = I.GetComponent(/datum/component/radioactive)
+		if(rads)
 			special |= HVP_RADIOACTIVE
-			AddComponent(/datum/component/radioactive, glowy, src)
+			AddComponent(/datum/component/radioactive, rads.strength, src)
 		if(I.is_sharp())
 			special |= HVP_SHARP
 		if(I in GLOB.hvp_bluespace)
@@ -175,14 +182,15 @@
 /obj/effect/hvp/proc/other_special(atom/movable/AM)
 	if(istype(AM, /obj/item/reagent_containers))
 		var/obj/item/reagent_containers/RC = AM
-		for(var/datum/reagent/R in RC.list_reagents)
-			R = R.holder
-			R.expose_temperature(5000) // about 5 lighter hits to a beaker
-			if(R) // and if that didn't do anything, smoke
-				var/datum/effect_system/smoke_spread/chem/S
-				S.set_up(R, 5, loc)
-				S.start()
+		if(!istype(RC, /obj/item/reagent_containers/food))
+			for(var/datum/reagent/R in RC.reagents.reagent_list)
+				var/datum/reagents/H = R.holder
+				H.expose_temperature(5000) // about 5 lighter hits to a beaker
+				if(R) // and if that didn't do anything, smoke
+					var/datum/effect_system/smoke_spread/chem/S
+					S.set_up(R, 5, loc)
+					S.start()
 	if(istype(AM, /obj/item/grenade))
 		var/obj/item/grenade/G = AM
-		G.prime // armour piercing high explosive rod ;)
+		G.prime() // armour piercing high explosive rod ;)
 

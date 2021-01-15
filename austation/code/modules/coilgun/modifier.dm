@@ -1,3 +1,4 @@
+/*
 /obj/structure/disposalpipe/coilgun/modifier
 	name = "coilgun projectile modifier"
 	desc = "A machine made to morph the propeties of inserted items into moving projectiles, warrenty void if exposed to explosives"
@@ -16,7 +17,8 @@
 	return ..()
 
 /obj/structure/disposalpipe/coilgun/modifier/proc/combine(obj/effect/hvp/PJ)
-	if(PJ.special.len <= 2)
+	if(PJ.special.len >= 2)
 
 	else
-		visible_message("<span class='warning'> The [AM] can't be modified any further!")
+		visible_message("<span class='warning'> The [PJ] can't be modified any further!")
+*/
