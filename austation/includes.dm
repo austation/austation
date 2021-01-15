@@ -87,6 +87,7 @@
 #include "code\modules\admin\verbs\fix_air.dm"
 #include "code\modules\admin\verbs\mapping.dm"
 #include "code\modules\antagonists\changeling\changeling.dm"
+#include "code\modules\antagonists\nukeop\equipment\nuclearbomb.dm"
 #include "code\modules\atmospherics\machinery\atmosmachinery.dm"
 #include "code\modules\atmospherics\machinery\components\unary_devices\thermomachine.dm"
 #include "code\modules\cargo\exports\engineering.dm"
