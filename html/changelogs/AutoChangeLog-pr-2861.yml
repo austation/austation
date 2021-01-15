@@ -1,0 +1,4 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - bugfix: "Syndi hardsuit will now automatically engage combat mode when the helmet is lowered."
