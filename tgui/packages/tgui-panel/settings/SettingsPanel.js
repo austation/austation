@@ -110,6 +110,32 @@ export const SettingsGeneral = (props, context) => {
   );
 };
 
+<<<<<<< HEAD
+=======
+export const SettingsStat = (props, context) => {
+  const settings = useSettings(context);
+  const dispatch = useDispatch(context);
+  return (
+    <Section fill>
+      <Flex bold>
+        Stat Panel Settings
+      </Flex>
+      <Divider />
+      <LabeledList>
+        <LabeledList.Item label="Tab Mode">
+          <Dropdown
+            selected={settings.statTabMode}
+            options={["Scroll", "Multiline"]}
+            onSelected={value => dispatch(updateSettings({
+              statTabMode: value,
+            }))} />
+        </LabeledList.Item>
+      </LabeledList>
+    </Section>
+  );
+};
+
+>>>>>>> 481ef81095... TGUI Panel Stat Hotpatch #1 (#3367)
 export const SettingsHighlight = (props, context) => {
   const {
     highlightText,
