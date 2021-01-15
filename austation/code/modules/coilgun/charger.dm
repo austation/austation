@@ -19,15 +19,8 @@
 	var/max_power_use = INFINITY // the maximum amount of power the charger can draw in watts
 	var/obj/structure/cable/attached // attached cable
 	var/cps = 0 // current projectile speed, stored in a var for examining the charger
-	var/list/members = list()
-	var/parent = null // used for linking coilgun chargers, what charger is parent?
-	var/is_child = FALSE // is this linked to a parent?
-	var/laststep // used in charger chain building, stops infinite loops. did we just run build proc on this pipe?
 
 // needed for charger linking
-/obj/structure/disposalpipe/coilgun/charger/New()
-	parent = src
-	members += src
 
 // because I don't want to make a GUI
 /obj/structure/disposalpipe/coilgun/charger/attack_hand(mob/user)
@@ -35,61 +28,22 @@
 	if(.)
 		return
 	if(enabled)
-		if(check_connection(parent))
-			if(target_power_usage >= 100)
-				enabled = FALSE
-				target_power_usage = 0
-				to_chat(user, "<span class='notice'>You turn off \the [src].</span>")
-			else
-				target_power_usage += 20
-				to_chat(user, "<span class='notice'>You increase \the [src]'s power throttle to [target_power_usage]%</span>")
+		if(target_power_usage >= 100)
+			enabled = FALSE
+			target_power_usage = 0
+			to_chat(user, "<span class='notice'>You turn off \the [src].</span>")
 		else
-			to_chat(user, "<span class='warning'>\The [src] has no power!</span>")
+			target_power_usage += 20
+			to_chat(user, "<span class='notice'>You increase \the [src]'s power throttle to [target_power_usage]%</span>")
 	else
 		enabled = TRUE
 		to_chat(user, "<span class='notice'>You turn on \the [src].</span>")
 
-	if(members.len <= 1 && parent == src) // if it's not a child or parent of another object, try to sync with nearvy chargers
-		build_charger(parent)
-	update_chargers(parent) //sync the connected charger's settings
-
-/// updates the chargers connected to the parent
-/obj/structure/disposalpipe/coilgun/charger/proc/update_chargers(obj/structure/disposalpipe/coilgun/charger/P)
-	for(var/obj/structure/disposalpipe/coilgun/charger/C in P.members)
-		C.target_power_usage = target_power_usage
-		C.enabled = enabled
-		C.attached = attached // only one charger needs to be attached to a cable
-
-/// Finds all chargers connected to the caller (parent) and makes them members
-/obj/structure/disposalpipe/coilgun/charger/proc/build_charger(obj/structure/disposalpipe/coilgun/charger/P)
-	var/obj/structure/disposalpipe/coilgun/charger/C
-	for(var/turf/T in range(1, src)) // for every tile next to the charger
-		C = locate() in T
-		if(C && C.dpdir == P.dpdir && (!C.parent || C.parent == C) && C.laststep != laststep)
-			if(laststep == C)
-				continue
-			laststep = src
-			if(!(C in P.members))
-				P.members += C
-				C.parent = P
-			C.visible_message("<span class='warning'>Debug: building charger...</span>")
-			C.build_charger(P)
-			C.visible_message("<span class='warning'>Debug: synced with parent!</span>")
-
-/obj/structure/disposalpipe/coilgun/charger/proc/check_connection(obj/structure/disposalpipe/coilgun/charger/P)
-	for(var/obj/structure/disposalpipe/coilgun/charger/C in P.members)
-		var/turf/T = loc
-		if(isturf(T) && !T.intact)
-			attached = locate() in T
-			if(attached)
-				return TRUE
-
-	return FALSE
 
 /obj/structure/disposalpipe/coilgun/charger/proc/power_process()
-	if(current_power_use && target_power_usage)
-		var/datum/powernet/PN = attached?.powernet
-		if(PN)
+	power_processing = TRUE
+	if(current_power_use && target_power_usage && attached?.powernet)
+		for(var/i in 1 to 50)
 			var/drained = min(current_power_use / (target_power_usage / 100), max_power_use) // set our power use
 			visible_message("<span class='warning'>Drained reads [drained]!</span>") // DEBUG
 			attached.add_delayedload(drained) // apply our power use to the connected wire
@@ -97,27 +51,26 @@
 				target_power_usage -= 20 // throttle it down
 				if(target_power_usage > 0)
 					visible_message("<span class='warning'>\The [src]'s power warning light flickers, lowering throttle to [target_power_usage]!</span>")
-					return power_process() // check if the reduced power load is enough
+					continue
+				else
+					can_charge = FALSE
+					visible_message("<span class='warning'>\The [src]'s power warning fades, shutting the charger down!</span>")
+					break
 			else
 				current_power_use = drained
-				return TRUE
-	enabled = FALSE // if we failed any of the other checks, disable the charger
-	visible_message("<span class='warning'>\The [src]'s power warning light flickers, turning itself off!</span>")
-	return FALSE
+				continue
+	power_processing = FALSE
 
 /obj/structure/disposalpipe/coilgun/charger/transfer(obj/structure/disposalholder/H)
 	if(H.contents.len)
-		if(enabled && power_process() && attached) // is this enabled, do we have enough power?
-			for(var/atom/movable/AM in H.contents) // run the loop below for every movable that passes through the charger
+		if(enabled && can_charge && attached) // is this enabled, do we have enough power?
+			for(var/obj/effect/hvp/PJ in H.contents) // run the loop below for every movable that passes through the charger
 				if(istype(AM, /obj/effect/hvp)) // if it's a coilgun projectile, continue
 
 					var/obj/effect/hvp/PJ = AM
-					var/datum/powernet/PN = attached.powernet
-
-					if(PN && target_power_usage)
+					if(attached.powernet && target_power_usage)
 						var/prelim = (current_power_use + POWER_DIVIDER) / POWER_DIVIDER
 						visible_message("<span class='danger'>debug: prelim reads [prelim]!</span>") // DEBUG
-//						current_power_use = min((P.p_speed * 500) * (target_power_usage / 100), max_power_use) //determins power usage
 						speed_increase = prelim * BASE ** PJ.p_speed
 						PJ.p_speed += speed_increase * members.len
 						PJ.p_heat += heat_increase * members.len
@@ -125,7 +78,9 @@
 						cps = round(PJ.p_speed * 10)
 						playsound(get_turf(src), 'sound/weapons/emitter2.ogg', 50, 1)
 						visible_message("<span class='danger'>debug: speed increased by [speed_increase]!</span>")
-						current_power_use = max(PJ.p_speed * 5 * members.len, 1000)
+						current_power_use = max(PJ.p_speed * 5, 1000)
+						if(!power_processing)
+							INVOKE_ASYNC(src, .proc/power_process)
 						H.count = 1000 // resets the amount of moves the disposalholder has left
 						continue
 
