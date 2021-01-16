@@ -162,7 +162,6 @@
 #include "code\modules\mob\living\simple_animal\hostile\regalrat.dm"
 #include "code\modules\mob\living\simple_animal\hostile\retaliate\kangaroo.dm"
 #include "code\modules\mob\living\simple_animal\slime\slime.dm"
-#include "code\modules\power\cable.dm"
 #include "code\modules\reagents\chemistry\machinery\chem_dispenser.dm"
 #include "code\modules\reagents\chemistry\reagents\alcohol_reagents.dm"
 #include "code\modules\reagents\chemistry\reagents\drink_reagents.dm"
