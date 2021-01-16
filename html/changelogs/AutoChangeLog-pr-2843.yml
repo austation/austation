@@ -1,5 +1,0 @@
-author: "AustationBot"
-delete-after: True
-changes: 
-  - code_imp: "Optimized get_mob_by_ckey()."
-  - code_imp: "Removed get_mob_by_key()."
