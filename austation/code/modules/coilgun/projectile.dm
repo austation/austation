@@ -36,6 +36,8 @@
 		addtimer(CALLBACK(src, .proc/move), 1)
 	else
 		gameover()
+		return
+	SSaugury.register_doom(src, momentum)
 
 /obj/effect/hvp/Topic(href, href_list)
 	if(href_list["orbit"])
@@ -53,8 +55,7 @@
 		y = clong.y
 	if(isturf(clong) || isobj(clong))
 		if(special & HVP_BOUNCY && prob(50))
-			x = invertDir(x)
-			y = invertDir(y)
+			dir = invertDir(dir)
 		if(momentum >= 100 || istype(clong, /obj/structure/window)) // stops windows from taking a tiny crack instead of a smash
 			clong.ex_act(EXPLODE_DEVASTATE)
 		else if(momentum > 10)
@@ -65,9 +66,9 @@
 		p_speed -= 10
 	if(prob(15) && special & HVP_RADIOACTIVE)
 		var/datum/component/radioactive/rads = GetComponent(/datum/component/radioactive)
-		var/pulsepower = (rads.strength + 1) * clamp((momentum * 0.05), 1, 10) // faster rods multiply rads.. for some reason
+		var/pulsepower = (rads.strength + 1) * clamp((momentum * 0.05), 1, 10) // faster rods multiply rads, for some reason
 		radiation_pulse(src, pulsepower)
-	else if(isliving(clong))
+	if(isliving(clong))
 		penetrate(clong)
 
 /obj/effect/hvp/proc/penetrate(mob/living/L)
@@ -77,14 +78,13 @@
 		var/projdamage = max(10, momentum / 35)
 		if(special & HVP_SHARP)
 			projdamage *= 2
-			var/static/list/zones = list(BODY_ZONE_R_ARM, BODY_ZONE_L_ARM, BODY_ZONE_R_LEG, BODY_ZONE_L_LEG, BODY_ZONE_HEAD)
-			for(var/zone in zones)
-				var/obj/item/bodypart/BP = H.get_bodypart(zone)
-				var/unlucky = clamp(momentum * 0.03, 15, 100)
-				if(prob(unlucky))
-					BP.drop_limb()
+			var/Z = pick(BODY_ZONE_R_ARM, BODY_ZONE_L_ARM, BODY_ZONE_R_LEG, BODY_ZONE_L_LEG, BODY_ZONE_HEAD)
+			var/obj/item/bodypart/BP = H.get_bodypart(Z)
+			var/unlucky = clamp(momentum * 0.03, 15, 100)
+			if(prob(unlucky))
+				BP.drop_limb()
 		if(special & HVP_BOUNCY)
-			projdamage /= 4 // bouncy things don't hurt as much xd
+			projdamage /= 4 // bouncy things don't hurt as much
 			L.adjustStaminaLoss(clamp(projdamage, 5, 120))
 			var/atom/target = get_edge_target_turf(L, dir)
 			L.throw_at(target, 200, 4) // godspeed o7
@@ -106,15 +106,13 @@
 			do_teleport(src, get_turf(target), asoundin = 'sound/effects/phasein.ogg', channel = TELEPORT_CHANNEL_BLUESPACE)
 			do_teleport(target, oldloc, asoundin = 'sound/effects/phasein.ogg', channel = TELEPORT_CHANNEL_BLUESPACE)
 
-		p_speed--
-
 	if(p_speed && mass)
 		momentum = mass*p_speed
 	else
 		gameover()
 		return
-	if(istype(loc, /turf/open/floor))
-		p_speed -= 1
+	if(istype(get_turf(src), /turf/open/floor)) // Much less expensive than atmos checks, no drag in space
+		p_speed--
 	if(momentum <= 1)
 		gameover()
 		return
@@ -134,7 +132,7 @@
 	var/obj/effect/decal/cleanable/ash/melted = new(get_turf(src)) // make an ash pile where we die ;-;
 	playsound(loc, 'sound/items/welder.ogg', 150, 1)
 	melted.name = "slagged [name]"
-	melted.desc = "Ahahah that's hot, that's hot."
+	melted.desc = "Aahahah that's hot, that's hot."
 	qdel(src)
 
 /// called when the projectile has expired, replaces hvp projectile with the original magnetized item.
@@ -199,4 +197,3 @@
 	if(istype(AM, /obj/item/grenade))
 		var/obj/item/grenade/G = AM
 		G.prime() // armour piercing high explosive rod ;)
-
