@@ -1,0 +1,4 @@
+author: "ATHATH"
+delete-after: True
+changes: 
+  - bugfix: "Prevented anomalies around mob resizing with growth serum and red queen drink"
