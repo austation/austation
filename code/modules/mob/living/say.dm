@@ -259,8 +259,7 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 		eavesdrop_range = EAVESDROP_EXTRA_RANGE
 	var/list/listening = get_hearers_in_view(message_range+eavesdrop_range, source)
 	var/list/the_dead = list()
-	for(var/_M in GLOB.player_list)
-		var/mob/M = _M
+	for(var/mob/M as() in GLOB.player_list)
 		if(!M)				//yogs
 			continue		//yogs | null in player_list for whatever reason :shrug:
 		if(M.stat != DEAD) //not dead, not important
@@ -282,6 +281,7 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 		eavesrendered = compose_message(src, message_language, eavesdropping, , spans, message_mode)
 
 	var/rendered = compose_message(src, message_language, message, , spans, message_mode)
+<<<<<<< HEAD
 	var/admin_stealth = FALSE
 	if(client?.holder?.fakekey)
 		admin_stealth = TRUE
@@ -289,6 +289,9 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 		var/atom/movable/AM = _AM
 		if(istype(AM, /mob/dead/observer) && admin_stealth)
 			continue
+=======
+	for(var/atom/movable/AM as() in listening)
+>>>>>>> c8d6074a24... Optimizes the game across the board (#3340)
 		if(eavesdrop_range && get_dist(source, AM) > message_range && !(the_dead[AM]))
 			AM.Hear(eavesrendered, src, message_language, eavesdropping, , spans, message_mode)
 		else
@@ -381,7 +384,7 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 
 	if(clockslurring)
 		message = clockslur(message)
-   
+
 	// check for and apply punctuation
 	var/end = copytext(message, length(message))
 	if(!(end in list("!", ".", "?", ":", "\"", "-")))

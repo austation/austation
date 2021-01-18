@@ -173,6 +173,7 @@
 	var/range = 7
 	if(vision_distance)
 		range = vision_distance
+<<<<<<< HEAD
 	var/admin_stealth = FALSE
 	if(istype(src, /mob/living))
 		var/mob/living/L = src
@@ -181,6 +182,9 @@
 	for(var/mob/M in get_hearers_in_view(range, src))
 		if(istype(M, /mob/dead/observer) && admin_stealth)
 			continue
+=======
+	for(var/mob/M as() in hearers(range, T))
+>>>>>>> c8d6074a24... Optimizes the game across the board (#3340)
 		if(!M.client)
 			continue
 		if(M in ignored_mobs)
@@ -220,6 +224,7 @@
 	var/range = 7
 	if(hearing_distance)
 		range = hearing_distance
+<<<<<<< HEAD
 	/* austation begin -- cringe bee runtime fix
 	var/admin_stealth = FALSE
 	if(istype(src, /mob/living))
@@ -228,6 +233,9 @@
 			admin_stealth = TRUE
 	*/
 	for(var/mob/M in get_hearers_in_view(range, src))
+=======
+	for(var/mob/M as() in hearers(range, get_turf(src)))
+>>>>>>> c8d6074a24... Optimizes the game across the board (#3340)
 		var/msg = message
 		if(self_message && M==src)
 			msg = self_message
@@ -247,7 +255,7 @@
 	var/range = 7
 	if(hearing_distance)
 		range = hearing_distance
-	for(var/mob/M in get_hearers_in_view(range, src))
+	for(var/mob/M as() in hearers(range, get_turf(src)))
 		M.show_message( message, 2, deaf_message, 1)
 
 ///Get the item on the mob in the storage slot identified by the id passed in
