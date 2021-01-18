@@ -1,4 +1,4 @@
 author: "AustationBot"
 delete-after: True
 changes: 
-  - code_imp: "inversedir is now a global proc"
+  - tweak: "You can now remove your own shoecuffs."

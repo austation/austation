@@ -149,7 +149,7 @@ obj/structure/disposalpipe/loafer/emag_act(mob/user)
 		else if(looef.bread_density >= 3400 && obj_flags & EMAGGED || supermatter_singulo)
 			var/turf/T = get_turf(src)
 			var/area/A = get_area(src)
-			var/mob/culprit = get_mob_by_key(fingerprintslast)
+			var/mob/culprit = get_mob_by_ckey(fingerprintslast)
 			var/culprit_message
 			priority_announce("We have detected an extremely high concentration of gluten in [A.name], we suggest evacuating the immediate area")
 			visible_message("<span class='userdanger'>[src] collapses into a singularity under its own weight!</span>")
