@@ -211,3 +211,5 @@
 #include "code\modules\vending\autodrobe.dm"
 #include "code\modules\vending\clothesmate.dm"
 #include "code\modules\vending\wardrobes.dm"
+#include "code\modules\mining\minebot.dm"
+#include "code\modules\mining\machine_vending.dm"

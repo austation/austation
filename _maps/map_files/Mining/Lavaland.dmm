@@ -1366,6 +1366,7 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 6
 	},
+/obj/machinery/droneDispenser/minebot,
 /turf/open/floor/plasteel,
 /area/mine/eva)
 "fi" = (
@@ -1375,20 +1376,6 @@
 	},
 /turf/open/floor/engine,
 /area/mine/science)
-"fj" = (
-/obj/structure/extinguisher_cabinet{
-	pixel_x = -5;
-	pixel_y = 30
-	},
-/obj/machinery/shower{
-	dir = 8
-	},
-/obj/effect/turf_decal/tile/purple,
-/obj/machinery/atmospherics/components/unary/vent_pump/high_volume{
-	dir = 8
-	},
-/turf/open/floor/plasteel,
-/area/mine/eva)
 "fm" = (
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden,
@@ -3290,16 +3277,6 @@
 /obj/effect/decal/cleanable/vomit/old,
 /turf/open/floor/carpet/black,
 /area/mine/science)
-"pa" = (
-/obj/effect/turf_decal/tile/brown,
-/obj/effect/turf_decal/tile/brown{
-	dir = 4
-	},
-/obj/machinery/atmospherics/components/unary/vent_pump/high_volume{
-	dir = 8
-	},
-/turf/open/floor/plasteel,
-/area/mine/eva)
 "pd" = (
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
@@ -3319,9 +3296,12 @@
 /turf/open/floor/plasteel,
 /area/mine/science)
 "pi" = (
-/obj/structure/fans/tiny,
-/obj/machinery/door/airlock/mining/glass{
-	name = "Mining Station"
+/obj/effect/turf_decal/tile/brown,
+/obj/effect/turf_decal/tile/brown{
+	dir = 4
+	},
+/obj/machinery/atmospherics/components/unary/vent_pump/high_volume{
+	dir = 8
 	},
 /turf/open/floor/plasteel,
 /area/mine/eva)
@@ -3503,6 +3483,13 @@
 	},
 /turf/open/floor/plasteel/freezer,
 /area/mine/living_quarters)
+"rk" = (
+/obj/structure/fans/tiny,
+/obj/machinery/door/airlock/mining/glass{
+	name = "Mining Station"
+	},
+/turf/open/floor/plasteel,
+/area/mine/eva)
 "rs" = (
 /obj/structure/table,
 /obj/item/storage/firstaid/toxin{
@@ -3908,6 +3895,16 @@
 /obj/effect/spawner/structure/window/reinforced,
 /turf/open/floor/plating,
 /area/mine/production)
+"vR" = (
+/obj/structure/ore_box,
+/obj/effect/turf_decal/tile/purple{
+	dir = 4
+	},
+/obj/machinery/atmospherics/components/unary/vent_pump/high_volume{
+	dir = 8
+	},
+/turf/open/floor/plasteel,
+/area/mine/eva)
 "vY" = (
 /obj/effect/turf_decal/loading_area{
 	dir = 4
@@ -4823,12 +4820,8 @@
 /turf/open/floor/carpet/royalblue,
 /area/mine/science)
 "Ho" = (
-/obj/structure/ore_box,
-/obj/effect/turf_decal/tile/purple{
+/obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 4
-	},
-/obj/machinery/atmospherics/components/unary/vent_pump/high_volume{
-	dir = 8
 	},
 /turf/open/floor/plasteel,
 /area/mine/eva)
@@ -6273,6 +6266,20 @@
 /obj/machinery/light,
 /turf/open/floor/plasteel,
 /area/mine/science)
+"Xo" = (
+/obj/structure/extinguisher_cabinet{
+	pixel_x = -5;
+	pixel_y = 30
+	},
+/obj/machinery/shower{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/purple,
+/obj/machinery/atmospherics/components/unary/vent_pump/high_volume{
+	dir = 8
+	},
+/turf/open/floor/plasteel,
+/area/mine/eva)
 "XE" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /turf/open/floor/plasteel,
@@ -6341,6 +6348,13 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3,
 /turf/open/floor/plasteel,
 /area/mine/living_quarters)
+"Yk" = (
+/obj/machinery/mineral/ore_redemption,
+/obj/effect/turf_decal/tile/brown{
+	dir = 1
+	},
+/turf/open/floor/plasteel,
+/area/mine/production)
 "Yt" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 4
@@ -21114,7 +21128,7 @@ aj
 aj
 aj
 aj
-aj
+eP
 eP
 fY
 yu
@@ -21372,7 +21386,7 @@ aj
 aj
 aj
 OZ
-eP
+Yk
 gc
 yL
 JM
@@ -24199,8 +24213,8 @@ aj
 ab
 ab
 dz
-fj
-pa
+Ho
+Ho
 Ho
 dz
 ai
@@ -24456,9 +24470,9 @@ aj
 aj
 ab
 dz
-dA
+Xo
 pi
-dA
+vR
 dz
 ai
 OZ
@@ -24712,11 +24726,11 @@ ab
 ab
 ab
 ab
-eq
-ab
-ab
-ab
-eq
+dz
+dA
+rk
+dA
+dz
 ai
 ai
 ab
@@ -24969,11 +24983,11 @@ am
 am
 ab
 ab
+eq
 ab
 ab
 ab
-ab
-ab
+eq
 ab
 ab
 ab
