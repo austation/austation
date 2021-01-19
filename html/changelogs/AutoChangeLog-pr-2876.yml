@@ -1,5 +1,0 @@
-author: "AustationBot"
-delete-after: True
-changes: 
-  - tweak: "Names are now coloured in chat."
-  - rscadd: "Added in a TGchat button to disable coloured names."
