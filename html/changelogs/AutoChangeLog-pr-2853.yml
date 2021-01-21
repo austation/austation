@@ -1,4 +1,0 @@
-author: "AustationBot"
-delete-after: True
-changes: 
-  - rscdel: "cbz, fake cbz and changeling test crates are no more"
