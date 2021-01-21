@@ -1,5 +1,0 @@
-author: "AustationBot"
-delete-after: True
-changes: 
-  - rscadd: "\"Search\" and \"Monitor\" SecHUD tags.
-change: Changed the \"Incarcerated\" SecHUD tag."
