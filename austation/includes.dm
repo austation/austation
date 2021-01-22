@@ -10,6 +10,9 @@
 #include "code\_HELPERS\roundend.dm"
 
 // Main Includes Section
+#include "code\datums\keybinding\carbon.dm"
+#include "code\modules\mob\living\carbon\inventory.dm"
+#include "code\_onclick\hud\alert.dm"
 #include "code\_globalvars\lists\maintenance_loot.dm"
 #include "code\controllers\configuration\entries\game_options.dm"
 #include "code\controllers\configuration\entries\general.dm"
