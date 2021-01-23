@@ -1,4 +1,0 @@
-author: "AustationBot"
-delete-after: True
-changes: 
-  - tweak: "Upon multiple requests, the science outpost shuttle is now accessible from roundstart."
