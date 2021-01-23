@@ -1,4 +1,0 @@
-author: "AustationBot"
-delete-after: True
-changes: 
-  - bugfix: "Meta's white ship now shouldn't have three firelocks at one airlock."

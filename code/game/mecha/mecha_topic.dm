@@ -396,6 +396,9 @@
 
 	//Turns on the DNA lock
 	if(href_list["dna_lock"])
+		if(obj_flags & EMAGGED)
+			occupant_message("The control console lights up red, failing to bind to your DNA.")
+			return
 		if(!iscarbon(occupant) || !occupant.dna)
 			occupant_message("You feel a prick as the needle takes your DNA sample.")
 			return

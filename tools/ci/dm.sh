@@ -1,7 +1,7 @@
-    
+
 #!/bin/bash
 
-dmepath=""
+dmepath="austation.dme"
 retval=1
 
 for var
