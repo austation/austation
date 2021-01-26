@@ -1322,6 +1322,13 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/security/execution/education)
+"aeQ" = (
+/obj/effect/turf_decal/tile/purple,
+/obj/machinery/conveyor_switch{
+	id = "SciLoad"
+	},
+/turf/open/floor/plasteel/white,
+/area/science/shuttledock)
 "aeU" = (
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
@@ -16474,9 +16481,13 @@
 /turf/open/floor/plasteel,
 /area/hallway/secondary/entry)
 "btQ" = (
-/obj/effect/spawner/structure/window/reinforced,
 /obj/machinery/atmospherics/pipe/layer_manifold{
 	dir = 4
+	},
+/obj/structure/plasticflaps/opaque,
+/obj/machinery/conveyor{
+	dir = 8;
+	id = "SciLoad"
 	},
 /turf/open/floor/plating,
 /area/science/shuttledock)
@@ -40279,10 +40290,8 @@
 /obj/effect/turf_decal/tile/purple{
 	dir = 4
 	},
-/obj/structure/frame/computer{
-	desc = "Looks like the board never made it to this one.";
-	dir = 8;
-	name = "shuttle console frame"
+/obj/machinery/computer/shuttle/science{
+	dir = 8
 	},
 /turf/open/floor/plasteel/white,
 /area/science/shuttledock)
@@ -47058,6 +47067,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 6
+	},
+/obj/machinery/conveyor{
+	dir = 8;
+	id = "SciLoad"
 	},
 /turf/open/floor/plating,
 /area/science/shuttledock)
@@ -63333,9 +63346,13 @@
 /turf/open/floor/plasteel/dark,
 /area/crew_quarters/fitness/recreation)
 "nfT" = (
-/obj/effect/spawner/structure/window/reinforced,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
 	dir = 4
+	},
+/obj/structure/plasticflaps/opaque,
+/obj/machinery/conveyor{
+	dir = 8;
+	id = "SciLoad"
 	},
 /turf/open/floor/plating,
 /area/science/shuttledock)
@@ -75854,6 +75871,10 @@
 /obj/effect/turf_decal/tile/purple,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
 	dir = 4
+	},
+/obj/machinery/conveyor{
+	dir = 8;
+	id = "SciLoad"
 	},
 /turf/open/floor/plasteel/white,
 /area/science/shuttledock)
@@ -129779,7 +129800,7 @@ nbv
 ovj
 mjJ
 ptD
-dDT
+aeQ
 saf
 dDT
 iTg

@@ -12,10 +12,6 @@
 #define DEBUG
 // END_PREFERENCES
 
-// BEGIN_AUSTATION_DEFINE_INCLUDES
-#include "austation\define_includes.dm"
-// END_AUSTATION_DEFINE_INCLUDES
-
 // BEGIN_INCLUDE
 #include "_maps\_basemap.dm"
 #include "code\_compile_options.dm"
@@ -3189,7 +3185,3 @@
 #include "interface\stylesheet.dm"
 #include "interface\skin.dmf"
 // END_INCLUDE
-
-// BEGIN_AUSTATION_INCLUDES
-#include "austation\includes.dm"
-// END_AUSTATION_INCLUDES

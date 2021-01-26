@@ -1151,10 +1151,6 @@
 
 /// Helper for logging chat messages or other logs with arbitrary inputs (e.g. announcements)
 /atom/proc/log_talk(message, message_type, tag=null, log_globally=TRUE, forced_by=null)
-	if(istype(src, /mob/living))
-		var/mob/living/L = src
-		if(L?.client?.holder?.fakekey)
-			return
 	var/prefix = tag ? "([tag]) " : ""
 	var/suffix = forced_by ? " FORCED by [forced_by]" : ""
 	log_message("[prefix]\"[message]\"[suffix]", message_type, log_globally=log_globally)
