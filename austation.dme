@@ -235,4 +235,6 @@
 #include "austation\code\modules\vending\autodrobe.dm"
 #include "austation\code\modules\vending\clothesmate.dm"
 #include "austation\code\modules\vending\wardrobes.dm"
+#include "code\modules\mining\minebot.dm"
+#include "code\modules\mining\machine_vending.dm"
 // END_INCLUDE
