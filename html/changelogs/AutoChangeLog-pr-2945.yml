@@ -1,0 +1,4 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - bugfix: "fixed lighting overlays decoupling with lighting fixtures when shuttle rotates for real."
