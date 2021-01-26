@@ -68,8 +68,7 @@ SUBSYSTEM_DEF(air)
 	msg += "HP:[high_pressure_delta.len]|"
 	msg += "AS:[active_super_conductivity.len]|"
 	msg += "AT/MS:[round((cost ? active_turfs.len/cost : 0),0.1)]"
-	..(msg)
-
+	. = ..(msg)
 
 /datum/controller/subsystem/air/Initialize(timeofday)
 	extools_update_ssair()
@@ -176,12 +175,13 @@ SUBSYSTEM_DEF(air)
 	//cache for sanic speed (lists are references anyways)
 	var/list/currentrun = src.currentrun
 	while(currentrun.len)
-		var/datum/thing = currentrun[currentrun.len]
+		var/datum/pipeline/P = currentrun[currentrun.len]
 		currentrun.len--
-		if(thing)
-			thing.process()
+		if(P)
+			if(P.update)
+				P.update = P.reconcile_air()
 		else
-			networks.Remove(thing)
+			networks.Remove(P)
 		if(MC_TICK_CHECK)
 			return
 

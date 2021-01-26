@@ -1,0 +1,10 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - rscadd: "TGUI stat panel"
+  - rscdel: "Old stat panel"
+  - rscdel: "Depreciates /datum/verbs"
+  - rscdel: "Depreciates statclick"
+  - refactor: "Refactored how verbs are added to things"
+  - refactor: "Refactors stat code"
+  - bugfix: "Ports fix fix chat from TG station"

@@ -1,6 +1,0 @@
-author: "AustationBot"
-delete-after: True
-changes: 
-  - bugfix: "crate animation at closing
-refractor: decreases crate list size by 1 deleting an unused index"
-  - tweak: "changing crate animation time from 2 to 3"
