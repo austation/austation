@@ -212,7 +212,6 @@
 #include "austation\code\modules\reagents\reagent_containers\bottle.dm"
 #include "austation\code\modules\reagents\reagent_containers\custompen.dm"
 #include "austation\code\modules\reagents\reagent_containers\hypospray.dm"
-#include "austation\code\modules\recycling\disposal\construction.dm"
 #include "austation\code\modules\recycling\disposal\loafer.dm"
 #include "austation\code\modules\research\designs\AI_module_designs.dm"
 #include "austation\code\modules\research\designs\autolathe_designs.dm"
