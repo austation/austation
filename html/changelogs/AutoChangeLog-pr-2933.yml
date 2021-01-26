@@ -1,0 +1,4 @@
+author: "Qwertytoforty, imported by Cenrus"
+delete-after: True
+changes: 
+  - rscadd: "Adds the syndicate teleporter, a mobility item that syndicate agents can buy for 8 TC."
