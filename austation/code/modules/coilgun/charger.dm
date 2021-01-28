@@ -118,7 +118,7 @@
 	if(current_power_use)
 		. += "<span class='info'>The power indicator reads: [DisplayPower(current_power_use)].</span>"
 
-// Coilgun Super Charger
+// Super Charger
 
 /obj/structure/disposalpipe/coilgun/super_charger
 	name = "coilgun super-charger"
@@ -132,7 +132,7 @@
 	for(var/atom/movable/AM in H.contents)
 		if(istype(AM, /obj/effect/hvp))
 			var/obj/effect/hvp/PJ = AM
-			for(var/obj/machinery/power/coilgun/capacitor/C in range(1, src))
+			for(var/obj/machinery/power/capacitor/C in range(1, src))
 				total_charge += C.charge
 				C.charge = 0
 			if(total_charge)
@@ -144,17 +144,17 @@
 				H.count = 1000
 				total_charge = 0
 
-// Coilgun capacitor
+// Capacitor
 
-/obj/machinery/power/coilgun/capacitor
+/obj/machinery/power/capacitor
 	name = "coilgun capacitor"
 	desc = "A high current capacitor capable of discharging sufficient power to adjacent coilgun super-chargers"
 	icon = 'austation/icons/obj/power.dmi'
 	icon_state = "capicitor"
 	var/charge = 0
-	var/capacity = 2e6
+	var/capacity = 1e6
 
-/obj/machinery/power/coilgun/capacitor/interact(mob/user)
+/obj/machinery/power/capacitor/interact(mob/user)
 	. = ..()
 	if(datum_flags & DF_ISPROCESSING)
 		to_chat(user, "<span class='notice'>You disable \the [src].</span>")
@@ -163,7 +163,7 @@
 		to_chat(user, "<span class='notice'>You set \the [src] to charge mode.</span>")
 		START_PROCESSING(SSobj, src)
 
-/obj/machinery/power/coilgun/capacitor/process()
+/obj/machinery/power/capacitor/process()
 	if(charge >= capacity || !powernet || stat & BROKEN || !anchored)
 		return
 	var/input = clamp(surplus(), 0, CAPACITOR_RECHARGE)
@@ -171,7 +171,7 @@
 		charge = min(input+charge, capacity)
 		add_load(input)
 
-/obj/machinery/power/coilgun/capacitor/attackby(obj/item/I, mob/user)
+/obj/machinery/power/capacitor/attackby(obj/item/I, mob/user)
 	if(I.tool_behaviour == TOOL_WRENCH)
 /*		if(active)
 			to_chat(user, "<span class='warning'>You need to deactivate \the [src] first!</span>")
@@ -189,14 +189,14 @@
 	else
 		return ..()
 
-/obj/machinery/power/coilgun/capacitor/can_be_unfasten_wrench(mob/user, silent)
+/obj/machinery/power/capacitor/can_be_unfasten_wrench(mob/user, silent)
 	if(datum_flags & DF_ISPROCESSING)
 		if(!silent)
 			to_chat(user, "<span class='warning'>Turn \the [src] off first!</span>")
 		return FAILED_UNFASTEN
 	return ..()
 
-/obj/machinery/power/coilgun/capacitor/examine(mob/user)
+/obj/machinery/power/capacitor/examine(mob/user)
 	. = ..()
 	. += "<span class='notice'>The charge meter reads: [DisplayPower(charge)].</span>"
 
