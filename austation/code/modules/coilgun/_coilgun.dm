@@ -1,5 +1,4 @@
-
-// TheFakeElon's funni high-velocity-projectile launcher.
+// TheFakeElon's funni high-velocity-projectile coilgun, warrenty void if projectiles supass lightspeed.
 
 /obj/structure/disposalpipe/coilgun
 	name = "coilgun tube"
@@ -11,20 +10,22 @@
 
 /obj/structure/disposalpipe/coilgun/magnetizer
 	name = "magnetizer"
-	desc = "A machine that glazes inserted objects with neodymium, making the object magnetive"
+	desc = "A machine that glazes inserted objects with neodymium, making the object magnetic"
 	icon_state = "magnet"
 
 /obj/structure/disposalpipe/coilgun/magnetizer/transfer(obj/structure/disposalholder/H)
-	if(H.contents.len) // is there an object in here?
+	var/CT = H.contents
+	if(LAZYLEN(CT)) // is there an object in here?
 		update_icon()
-		if(H.contents.len > 1)
+		if(LAZYLEN(CT) > 1)
 			visible_message("<span class='warning'>\The [src] can't magnetize more than one object at a time!</span>")
-			for(var/atom/movable/AM in H.contents)
+			for(var/atom/movable/AM in CT)
 				AM.forceMove(get_turf(src))
+			playsound(src, 'sound/machines/buzz-two.ogg', 40, 1)
 			qdel(H)
 			return
 		var/obj/effect/hvp/boolet
-		for(var/atom/movable/AM in H.contents)
+		for(var/atom/movable/AM in CT)
 			if(AM == boolet)
 				continue
 			else
@@ -45,7 +46,7 @@
 					boolet.mass = 5
 					sleep(30)
 				else
-					boolet.mass = 3
+					boolet.mass = 4
 				continue
 			if(isitem(AM))
 				var/obj/item/I = AM
@@ -81,18 +82,21 @@
 	speed_penalty = 0.97
 
 /obj/structure/disposalpipe/coilgun/cooler/transfer(obj/structure/disposalholder/H)
-	if(H.contents.len)
-		for(var/atom/movable/AM in H.contents) // run the loop below for every movable that passes through the charger
-			if(istype(AM, /obj/effect/hvp)) // if it's a projectile, continue
-				var/obj/effect/hvp/projectile = AM
-				projectile.p_heat = max(projectile.p_heat - heat_removal, -50) // projectile can't go below -50
-				if(!hugbox)
-					if(linear_penalty)
-						projectile.p_speed -= speed_penalty
-					else
-						projectile.p_speed *= speed_penalty
-			else // eject the item if it's none of the above
-				visible_message("<span class='warning'>\The [src]'s safety mechanism engages, ejecting \the [AM] through the maintenance hatch!</span>")
-				AM.forceMove(get_turf(src))
+	var/CT = H.contents
+	if(!LAZYLEN(CT))
+		qdel(H)
+		return
+	for(var/atom/movable/AM in H.contents) // run the loop below for every movable that passes through the charger
+		if(istype(AM, /obj/effect/hvp)) // if it's a projectile, continue
+			var/obj/effect/hvp/projectile = AM
+			projectile.p_heat = max(projectile.p_heat - heat_removal, -50) // projectile's temp can't go below -50
+			if(!hugbox)
+				if(linear_penalty)
+					projectile.p_speed -= speed_penalty
+				else
+					projectile.p_speed *= speed_penalty
+		else // eject the item if it's none of the above
+			visible_message("<span class='warning'>\The [src]'s safety mechanism engages, ejecting \the [AM] through the maintenance hatch!</span>")
+			AM.forceMove(get_turf(src))
 	return ..()
 
