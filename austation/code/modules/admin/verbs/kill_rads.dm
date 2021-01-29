@@ -1,4 +1,4 @@
-// Proc taken from yogstation, credit to nichlas0010 for the original
+//shamelessly copied from fix_air(), well most of it anyways
 /client/proc/kill_rads(var/turf/open/T in world)
 	set name = "Kill Rads"
 	set category = "Admin"
