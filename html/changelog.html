@@ -56,6 +56,104 @@
 		-->
 		<div class="commit sansserif">
 
+			<h2 class="date">29 January 2021</h2>
+			<h3 class="author">AustationBot updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="bugfix">MacSpace should be visitable now without internals required</li>
+				<li class="bugfix">Felinids can no longer play without cat ears or tail.</li>
+				<li class="rscadd">Just a reminder, water in any form is LETHAL to Oozelings, Be careful what you eat.</li>
+				<li class="rscadd">Oozelings are now always clean!</li>
+				<li class="tweak">Adjusted the blood volume gain from eating well, and becoming full (plus a fullness reduce after a certain threshold is met).</li>
+				<li class="balance">Oozelings can no longer be augmented.</li>
+				<li class="bugfix">Fixed Fleshmend damaging Oozelings.</li>
+				<li class="bugfix">Fixed Rust Heretic regen damaging Oozelings.</li>
+				<li class="bugfix">Fixed medibots damaging Oozelings when trying to heal toxin damage</li>
+				<li class="spellcheck">Hyperperspiration's description now reads "extinguishing small fires" instead of "extnguishing small fires"</li>
+			</ul>
+
+			<h2 class="date">27 January 2021</h2>
+			<h3 class="author">AustationBot updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="bugfix">Oozelings now have blood, a heart, and can be defibbed.</li>
+				<li class="bugfix">Fixed a few edge case bugs in case of components with multiple nodes sharing a parent</li>
+				<li class="bugfix">Made connected canisters react properly</li>
+				<li class="bugfix">Improved pipenet code performance a little</li>
+				<li class="rscadd">coffee cart on Box, Delta and Pubby</li>
+				<li class="bugfix">fixed a bug with food vat not dispensing/mixing reagents properly (at all)</li>
+				<li class="balance">The heretic blade now does 24 damage instead of just 17</li>
+				<li class="tweak">Added tiny fans on some space ruins.</li>
+				<li class="code_imp">The point of negative quirks is that you shouldn't be able to bypass them. You're taking a permanent handicap in exchange for other perks. Multiple fixes have been made to reflect this.</li>
+				<li class="bugfix">You can no longer augment a paralyzed limb. No more bypassing being paraplegic.</li>
+				<li class="bugfix">Light drinkers will treat alcohols with negative booze power as positive booze power.</li>
+				<li class="balance">Motorized wheelchair now uses 1/4th of its previous power usage.</li>
+				<li class="balance">Brain Tumor quirk now starts with mannitol.</li>
+				<li class="bugfix">IAA agents are reported on the stat as EAA agents</li>
+				<li class="bugfix">CentCom finally sent the spell checker that was on back order. A large number of typos and punctuation errors have been fixed.</li>
+				<li class="bugfix">Several mutation-related messages should now display correctly.</li>
+				<li class="bugfix">Examine text for cybernetic implants is now formatted in a readable manner.</li>
+				<li class="bugfix">Emotes should no longer contain extra punctuation like this!.</li>
+				<li class="bugfix">Mulebots no longer go insane when shit starts to lag</li>
+				<li class="bugfix">Fixes the emergency shuttles ETA string.</li>
+				<li class="spellcheck">Burn Kits are no longer called Bruise Kit Single Pack</li>
+				<li class="rscadd">Added Oozelings, a new race!</li>
+				<li class="rscadd">Added Slime Ooze (bloodtype for Oozelings)</li>
+				<li class="rscadd">Added Slime Vacuole Organ</li>
+				<li class="rscadd">Added Regenerative Ooze - Restores 0.5 Brute, Burn, Toxin, and clone damage at 0.4u per tick. Created by combining Slime Ooze with Tricordrizine</li>
+				<li class="rscadd">Added Energizing Ooze - Boosts Oozeling's nervous system, but only shocks other lifeforms. OD at 30u for teslium shocks. Created by combining Slime Ooze with Teslium</li>
+				<li class="tweak">adjusted watertouch code to interact with Oozelings</li>
+				<li class="config">Oozelings are now in Roundstart Races!</li>
+				<li class="balance">Buckshot - Reduced raw damage from 12.5 to 9. Decreased spread from 25 to 10 degrees.</li>
+				<li class="balance">Soporific - First shot now applies 8 seconds of confusion. If hitting a confused target, will put them to sleep for 5 seconds (Old effect: 5 seconds sleep).</li>
+				<li class="balance">Meteor Slug - Hard stun reduced from 8 seconds to 2 seconds. Stun is applied if the target hits a wall due to knockback of the shell.</li>
+				<li class="balance">Frag12 - 5 seconds of paralysis reduced to 1 second. Not that it really matters since these are generally going to be a 1 hit kill from the explosion or at least limbs will be lost.</li>
+				<li class="balance">Rubbershot - Reduced stamina damage from 11 to 9. Reduced variance from 25 to 20</li>
+				<li class="balance">Incapacitating Shell - Reduced variance from 25 to 20, stamina damaged reduced from 6 to 5</li>
+				<li class="balance">Laser Slug - Reduced damage from 15 to 10. (This thing was ridiculous before and actually pretty easy to make)</li>
+				<li class="balance">Shotguns - Pump-action shotguns now require the pumping hand to be empty.</li>
+				<li class="balance">Mech Scattershot - Pellet damage reduced from 24 to 18.</li>
+				<li class="balance">Slugs now have an armour penetration of -60, making them very effective against unarmoured targets but not armoured targets.</li>
+				<li class="bugfix">Foam darts can no longer be exploited.</li>
+				<li class="bugfix">Punctuation fixed on IV drip bags.</li>
+				<li class="bugfix">weapon circuit runtime</li>
+				<li class="tweak">adds creator to weapon circuit logging</li>
+				<li class="bugfix">fixed lighting overlays decoupling with lighting fixtures when shuttle rotates for real.</li>
+				<li class="bugfix">BZ creation now properly limits maximum research points per reaction.</li>
+				<li class="bugfix">clown megaphone</li>
+				<li class="rscadd">TGUI stat panel</li>
+				<li class="rscdel">Old stat panel</li>
+				<li class="rscdel">Depreciates /datum/verbs</li>
+				<li class="rscdel">Depreciates statclick</li>
+				<li class="refactor">Refactored how verbs are added to things</li>
+				<li class="refactor">Refactors stat code</li>
+				<li class="bugfix">Ports fix fix chat from TG station</li>
+				<li class="tweak">Makes each blood brother implant colour unique.</li>
+			</ul>
+			<h3 class="author">Qwertytoforty, imported by Cenrus updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="rscadd">Adds the syndicate teleporter, an experimental teleporter that syndicate agents can buy.</li>
+				<li class="rscadd">Adds the syndicate teleporter, a mobility item that syndicate agents can buy for 8 TC.</li>
+			</ul>
+			<h3 class="author">jupyterkat updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="rscadd">You can press G to give people stuff on your hand</li>
+			</ul>
+			<h3 class="author">nemvar updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="bugfix">Scrubbers now stop scrubbing if their internal pressure gets too high.</li>
+			</ul>
+			<h3 class="author">nemvar, Dennok, Azarak, park66665 updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="bugfix">recolored lights now preserve their color on nightshift</li>
+				<li class="bugfix">emergency lighting and vacuum lighting now have lighting overlay</li>
+				<li class="code_imp">light fixture now uses a non-unique mutable appearance for its lighting overlay</li>
+			</ul>
+
+			<h2 class="date">25 January 2021</h2>
+			<h3 class="author">AustationBot updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="bugfix">fixes radios not working in mechs</li>
+			</ul>
+
 			<h2 class="date">24 January 2021</h2>
 			<h3 class="author">AustationBot updated:</h3>
 			<ul class="changes bgimages16">
@@ -627,76 +725,6 @@
 				<li class="rscadd">Angostura bitters, found in the booze locker in the bar backroom.</li>
 				<li class="rscadd">Lemon lime bitters, made with 1 part bitters and 5 parts lemon-lime.</li>
 				<li class="rscadd">Moscow Mule, a drink made with 2 parts ginger beer, 1 part ice, 1 part lime juice and 1 part vodka.</li>
-			</ul>
-
-			<h2 class="date">27 November 2020</h2>
-			<h3 class="author">Nathan_does_voices updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="rscadd">New arrival sound made by Nathan_does_voices (be sure to look him up on instagram or tik tok!)</li>
-			</ul>
-			<h3 class="author">jupyterkat updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="bugfix">fixed roundend newlines</li>
-				<li class="admin">restart votes doesn't ignore deadmins</li>
-			</ul>
-
-			<h2 class="date">26 November 2020</h2>
-			<h3 class="author">AustationBot updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="bugfix">fixed a minor /datum/looping_sound-related memory leak</li>
-				<li class="bugfix">invisible Crates</li>
-				<li class="bugfix">Chat will no longer linkify links unless specified to</li>
-				<li class="tweak">Tweaked Dexlin</li>
-			</ul>
-			<h3 class="author">MCterra10 updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="rscadd">Tail entwining for catgirls</li>
-			</ul>
-			<h3 class="author">Triiodine updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="rscadd">Added 16 new random maintenance rooms, 8 10x10s, and 8 10x5s</li>
-			</ul>
-			<h3 class="author">jupyterkat updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="rscadd">adds antag info to roundend channel</li>
-			</ul>
-			<h3 class="author">toasterroboto updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="rscadd">Ginger beer with accompanying bottle to boozeomats and cola machines.</li>
-				<li class="bugfix">Ginger beer now has a sprite when poured into a drinking glass.</li>
-				<li class="tweak">Ginger beer now has a description that isn't 'mmmm ginger'.</li>
-			</ul>
-
-			<h2 class="date">25 November 2020</h2>
-			<h3 class="author">AustationBot updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="bugfix">revs and engraved messages can't get irradiated anymore</li>
-			</ul>
-			<h3 class="author">TheFakeElon updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="rscdel">Removed tg maintainers from code owner list</li>
-			</ul>
-
-			<h2 class="date">24 November 2020</h2>
-			<h3 class="author">AustationBot updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="bugfix">Autolathe nolonger opens when something is printed.</li>
-				<li class="rscadd">Ratvar now fights Narsie</li>
-				<li class="rscadd">Cult will not end the round on summon if clockcult exists.</li>
-				<li class="tweak">Becoming a clockie counts towards the sacrifice objective.</li>
-				<li class="bugfix">Report of clockcult shows 180 seconds instead of 1800 seconds</li>
-				<li class="bugfix">Removes the delay between clockwork gateway opening and rat'var appearing</li>
-				<li class="tweak">Eminence no longer blocks bullets.</li>
-				<li class="bugfix">Fixes not being able to use syringes on arms and legs whilst wearing an armour vest.</li>
-				<li class="rscadd">Confirmation dialogue on harvesting replica pod seeds without soul</li>
-				<li class="rscadd">You can now scan replica pod seeds with an analyzer (plant/forensic) to read the injected DNA</li>
-				<li class="bugfix">Removed a nonfunctional alert in this process</li>
-				<li class="balance">cult floor is atmosproof</li>
-				<li class="balance">artificer magic missile no longer stuns cultists</li>
-			</ul>
-			<h3 class="author">KreeperHLC updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="tweak">AltClick on things that use AltClick no longer opens the contens of the turf</li>
 			</ul>
 		</div>
 
