@@ -1,7 +1,9 @@
-/*
+#define MIN_SPEED 1000
+
+
 /obj/structure/disposalpipe/coilgun/modifier
-	name = "coilgun projectile modifier"
-	desc = "A machine made to morph the propeties of inserted items into moving projectiles, warrenty void if exposed to explosives"
+	name = "coilgun kinetic infuser"
+	desc = "A heavy duty machine capable of kinetically infusing two different objects together at high speeds"
 	coilgun = TRUE
 
 /obj/structure/disposalpipe/coilgun/modifier/transfer(obj/structure/disposalholder/H)
@@ -17,8 +19,18 @@
 	return ..()
 
 /obj/structure/disposalpipe/coilgun/modifier/proc/combine(obj/effect/hvp/PJ)
-	if(PJ.special.len >= 2)
+	if(!LAZYLEN(contents))
+		return
+	for(var/obj/O in contents)
+		if(contents.len > 1)
+			O.forceMove(get_turf(src))
+			continue
+		var/req_speed = max(100 * PJ.spec_amt * 10, MIN_SPEED)
+		if(PJ.p_speed < req_speed)
+			continue
+		if(PJ.apply_special(O))
+			PJ.p_speed -= req_speed
+			PJ.spec_amt++
+			O.loc = PJ
 
-	else
-		visible_message("<span class='warning'> The [PJ] can't be modified any further!")
-*/
+#undef MIN_SPEED

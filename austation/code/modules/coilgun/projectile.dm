@@ -20,6 +20,7 @@
 	var/heat_capacity = 100 // how hot the object can get before melting
 	var/mass = 0 // how heavy the object is
 	var/special //special propeties
+	var/spec_amt = 0 // how many times has this projectile been modified
 	var/p_heat = 0 // projectile temp
 	var/p_speed = 0 // how fast the projectile is moving
 	var/charged = FALSE // has the projectile been overcharged
@@ -170,18 +171,23 @@
 
 ///Handles special projectile traits
 /obj/effect/hvp/proc/apply_special(atom/movable/AM, initial = FALSE)
+	. = FALSE
 	if(isitem(AM))
 		var/obj/item/I = AM
 		var/datum/component/radioactive/rads = I.GetComponent(/datum/component/radioactive)
 		if(rads)
 			special |= HVP_RADIOACTIVE
 			AddComponent(/datum/component/radioactive, rads.strength, src)
+			. = TRUE
 		if(I.is_sharp())
 			special |= HVP_SHARP
+			. = TRUE
 		if(I in GLOB.hvp_bluespace)
 			special |= HVP_BLUESPACE
+			. = TRUE
 		if(I in GLOB.hvp_bouncy)
 			special |= HVP_BOUNCY
+			. = TRUE
 
 /obj/effect/hvp/proc/other_special(atom/movable/AM)
 	if(istype(AM, /obj/item/reagent_containers))
