@@ -20,7 +20,7 @@
 
 /datum/action/innate/minedrone/marker_beacon/Activate()
 	var/mob/living/simple_animal/hostile/mining_drone/M = owner
-	if((!M.beacons) || (GLOB.total_beacons >= GLOB.max_beacons))
+	if((!M.beacons) || (GLOB.total_beacons >= GLOB.max_beacons)) //check that we have marker beacons left, but also that there are not 100 in the world already
 		to_chat(M, "<span class='warning'>You can not place another beacon!</span>")
 		return
 	M.beacons--
