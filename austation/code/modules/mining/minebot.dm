@@ -1,19 +1,32 @@
 #define MINEDRONE_COLLECT 1
 #define MINEDRONE_ATTACK 2
 
+/mob/living/simple_animal/hostile/mining_drone/
+	var/beacons
+	var/default_hatmask
+
 /mob/living/simple_animal/hostile/mining_drone/Initialize()
 	. = ..()
 	weather_immunities += "ash" // no damage from ash storms
 	stored_gun.overheat_time = 10
+	beacons = 15
+
 	var/datum/action/innate/minedrone/marker_beacon/beacon_action = new()
 	beacon_action.Grant(src)
+
 /datum/action/innate/minedrone/marker_beacon
 	name = "Drop Marker"
 	button_icon_state = "mech_zoom_off"
 
 /datum/action/innate/minedrone/marker_beacon/Activate()
-	var/obj/structure/marker_beacon/M = new(get_turf(owner))
-	to_chat(owner, "<span class='notice'>You place a [M].</span>")
+	var/mob/living/simple_animal/hostile/mining_drone/M = owner
+	if((!M.beacons) || (GLOB.total_beacons >= GLOB.max_beacons))
+		to_chat(M, "<span class='warning'>You can not place another beacon!</span>")
+		return
+	M.beacons--
+	var/obj/structure/marker_beacon/B = new(get_turf(owner))
+	to_chat(M, "<span class='notice'>You place a [B].</span>")
+	to_chat(M, "<span class='notice'>You have [M.beacons] beacons remaining.</span>")
 
 /obj/item/slimepotion/slime/sentience/mining
 	name = "minebot AI upgrade"
@@ -31,16 +44,13 @@
 		CollectOre()
 
 /mob/living/simple_animal/hostile/mining_drone/DropOre(message = 1)
-	. = ..()
-	mode = MINEDRONE_ATTACK // prevents the drone from picking up the ores again as it walks away
+	..()
+	SetOffenseBehavior() // prevents the drone from picking up the ores again as it walks away
 	to_chat(src, "<span class='notice'>You resume combat protocols.</span>")
 
 /obj/item/drone_shell/minebot
-	name = "drone shell"
+	name = "mining drone shell"
 	desc = "A shell of a mining drone, an expendable robot built to mine lavaland."
-	icon = 'icons/mob/drone.dmi'
-	icon_state = "drone_maint_hat"//yes reuse the _hat state.
-	layer = BELOW_MOB_LAYER
 
 	drone_type = /mob/living/simple_animal/hostile/mining_drone //Type of drone that will be spawned
 	seasonal_hats = FALSE //If TRUE, and there are no default hats, different holidays will grant different hats
@@ -73,27 +83,6 @@
 	end_create_message = "dispenses a mining drone shell."
 	starting_amount = 1000
 	circuit = /obj/item/circuitboard/machine/minebot_fab
-
-/obj/item/drone_shell/minebot/attack_ghost(mob/user) // Can't use the drone sentience proc because minebots aren't a child of drone
-	if(is_banned_from(user.ckey, ROLE_DRONE) || QDELETED(src) || QDELETED(user))
-		return
-	if(CONFIG_GET(flag/use_age_restriction_for_jobs))
-		if(!isnum_safe(user.client.player_age)) //apparently what happens when there's no DB connected. just don't let anybody be a drone without admin intervention
-			return
-		if(user.client.player_age < DRONE_MINIMUM_AGE)
-			to_chat(user, "<span class='danger'>You're too new to play as a drone! Please try again in [DRONE_MINIMUM_AGE - user.client.player_age] days.</span>")
-			return
-	if(!SSticker.mode)
-		to_chat(user, "Can't become a drone before the game has started.")
-		return
-	var/be_drone = alert("Become a minebot? (Warning, You can no longer be cloned!)",,"Yes","No")
-	if(be_drone == "No" || QDELETED(src) || !isobserver(user))
-		return
-	var/mob/living/simple_animal/hostile/mining_drone/D = new drone_type(get_turf(loc))
-	D.key = user.key
-	message_admins("[ADMIN_LOOKUPFLW(user)] has taken possession of \a [src] in [AREACOORD(src)].")
-	log_game("[key_name(user)] has taken possession of \a [src] in [AREACOORD(src)].")
-	qdel(src)
 
 #undef MINEDRONE_COLLECT
 #undef MINEDRONE_ATTACK
