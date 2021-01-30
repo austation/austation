@@ -43,6 +43,7 @@
 #include "code\datums\mutations\speech.dm"
 #include "code\datums\mutations\jumpy.dm"
 #include "code\datums\mutations\telekinesis.dm"
+#include "code\datums\decastation.dm"
 #include "code\datums\status_effects\buffs.dm"
 #include "code\datums\wires\apc.dm"
 #include "code\game\atoms.dm"
