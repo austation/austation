@@ -53,6 +53,7 @@ map kilostation
 endmap
 
 map austation
+	default
     votable
 endmap
 
@@ -62,7 +63,6 @@ map orbitalstation
 endmap
 
 map decastation
-	default
 	maxplayers 20
 	votable
 endmap
