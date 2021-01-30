@@ -67,5 +67,4 @@ Beeloot is the number of items in Bees loot table excluding disabled loot
   ..()
 /obj/item/projectile/hook
 	damage = 50
-	armour_penetration = 100
 	damage_type = STAMINA
