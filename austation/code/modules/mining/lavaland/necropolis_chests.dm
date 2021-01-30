@@ -65,3 +65,7 @@ Beeloot is the number of items in Bees loot table excluding disabled loot
 /obj/item/tank/internals/occult/deconstruct(disassembled = TRUE)
   explosion(src, 0, 0, 8)
   ..()
+/obj/item/projectile/hook
+	damage = 50
+	armour_penetration = 100
+	damage_type = STAMINA
