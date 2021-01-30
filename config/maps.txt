@@ -53,7 +53,7 @@ map kilostation
 endmap
 
 map austation
-	default
+    default
     votable
 endmap
 
