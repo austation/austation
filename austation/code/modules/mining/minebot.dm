@@ -4,6 +4,7 @@
 /mob/living/simple_animal/hostile/mining_drone/
 	var/beacons
 	var/default_hatmask
+	var/obj/item/t_scanner/adv_mining_scanner/lesser/scanner //there is no code to turn this scanner off.
 
 /mob/living/simple_animal/hostile/mining_drone/Initialize()
 	. = ..()
@@ -11,6 +12,8 @@
 	stored_gun.overheat_time = 10
 	beacons = 15
 
+	scanner = new(src)
+	scanner.toggle_on()
 	var/datum/action/innate/minedrone/marker_beacon/beacon_action = new()
 	beacon_action.Grant(src)
 
