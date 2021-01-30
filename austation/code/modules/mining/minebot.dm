@@ -87,5 +87,10 @@
 	starting_amount = 1000
 	circuit = /obj/item/circuitboard/machine/minebot_fab
 
+
+/obj/item/drone_shell/minebot/attack_ghost(mob/user)
+	alert(user,"Minebots are mining assistants.  You are subservient to all intelligent life except other minebots.  Gather ores and defend miners.","Do you understand?","Yes")
+	..()
+
 #undef MINEDRONE_COLLECT
 #undef MINEDRONE_ATTACK
