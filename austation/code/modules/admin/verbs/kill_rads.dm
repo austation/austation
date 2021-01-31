@@ -1,3 +1,4 @@
+var/static/list/notradkillable = typesof(things, /obj/item/twohanded/required/fuel_rod) + typesof(things, /obj/machinery/atmospherics/components/trinary/nuclear_reactor)
 //shamelessly copied from fix_air(), well most of it anyways
 /client/proc/kill_rads(var/turf/open/T in world)
 	set name = "Kill Rads"
@@ -12,14 +13,10 @@
 		message_admins("[key_name_admin(usr)] killed rads with range [range] in area [T.loc.name]")
 		log_game("[key_name_admin(usr)] killed rads with range [range] in area [T.loc.name]")
 		for(var/atom/things in range(range,T))
-			if(typesof(things, /obj/item/twohanded/required/fuel_rod))
-				continue
-			if(typesof(things, /obj/machinery/atmospherics/components/trinary/nuclear_reactor))
+			if(things.type in notradkillable)
 				continue
 			if(typesof(things, /mob/living))
 				var/mob/living/L = things
 				L.radiation = 0
 			for(var/datum/component/radioactive/R in things.GetComponents(/datum/component/radioactive))
 				qdel(R)
-
-
