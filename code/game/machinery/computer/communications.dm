@@ -748,31 +748,6 @@
 /obj/machinery/computer/communications/proc/add_message(datum/comm_message/new_message)
 	messages += new_message
 
-<<<<<<< HEAD
-/obj/machinery/computer/communications/proc/cross_server(msg)
-	var/list/message = list()
-	message["message_sender"] = station_name()
-	message["message"] = msg
-	message["source"] = "([CONFIG_GET(string/cross_comms_name)])"
-	message["type"] = "Comms_Console" // small adaption to allow easier comms with goon server(s)
-	message += "Comms_Console"
-
-	var/comms_key = CONFIG_GET(string/comms_key)
-	if(comms_key)
-		message["key"] = comms_key
-		var/list/servers = CONFIG_GET(keyed_list/cross_server)
-		for(var/I in servers)
-			world.Export("[servers[I]]?[list2params(message)]")
-
-	comms_key = CONFIG_GET(string/comms_key_insecure)
-	if(comms_key)
-		message["key"] = comms_key
-		var/list/servers = CONFIG_GET(keyed_list/insecure_cross_server)
-		for(var/I in servers)
-			world.Export("[servers[I]]?[list2params(message)]")
-
-=======
->>>>>>> 3eb755c7da... Insecure Crosscomms newscasters and small QoL (#3456)
 /datum/comm_message
 	var/title
 	var/content

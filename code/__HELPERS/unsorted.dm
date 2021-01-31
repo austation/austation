@@ -1621,6 +1621,7 @@ config_setting should be one of the following:
 	message["message_sender"] = sender
 	message["message"] = msg
 	message["source"] = "([CONFIG_GET(string/cross_comms_name)])"
+	message["type"] = "Comms_Console" // small adaption to allow easier comms with goon server(s)
 	message += type
 
 	var/comms_key = CONFIG_GET(string/comms_key)
