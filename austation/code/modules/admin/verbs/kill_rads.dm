@@ -1,4 +1,4 @@
-var/static/list/notradkillable = typesof(things, /obj/item/twohanded/required/fuel_rod) + typesof(things, /obj/machinery/atmospherics/components/trinary/nuclear_reactor)
+var/static/list/notradkillable = typesof(/obj/item/twohanded/required/fuel_rod) + typesof(/obj/machinery/atmospherics/components/trinary/nuclear_reactor)
 //shamelessly copied from fix_air(), well most of it anyways
 /client/proc/kill_rads(var/turf/open/T in world)
 	set name = "Kill Rads"
