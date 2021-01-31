@@ -1,0 +1,4 @@
+author: "jupyterkat"
+delete-after: True
+changes: 
+  - bugfix: "unimportant discord messaging change that isn't supposed to be in changelogs in the first place"
