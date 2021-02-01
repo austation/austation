@@ -5,6 +5,8 @@ var/static/list/notradkillable = typesof(/obj/item/twohanded/required/fuel_rod) 
 	set category = "Admin"
 	set desc = "Kills all radiation components in specified radius."
 
+	var/static/list/notradkillable = typesof(/obj/item/twohanded/required/fuel_rod) + typesof(/obj/machinery/atmospherics/components/trinary/nuclear_reactor)
+
 	if(!holder)
 		to_chat(src, "Only administrators may use this command.")
 		return
