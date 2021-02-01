@@ -877,8 +877,14 @@
 		if(!check_rights(R_ADMIN|R_SERVER))
 			return
 
+		// austation begin -- keeps default mode switching
 		if (SSticker.HasRoundStarted())
-			alert("The round has already started.")
+			if(check_rights(R_DBRANKS, FALSE) || TRUE) // austation -- removes db ranks permissions in the shittest way possible
+				if(askuser(usr, "The game has already started. Would you like to save this as the default mode effective next round?", "Save mode", "Yes", "Cancel", Timeout = null) == 1)
+					SSticker.save_mode(href_list["c_mode2"])
+			else
+				to_chat(usr, "<span class='warning'>The round has already started!</span>")
+		// austation end
 			HandleCMode()
 			return
 		GLOB.master_mode = href_list["c_mode2"]
@@ -886,6 +892,11 @@
 		message_admins("<span class='adminnotice'>[key_name_admin(usr)] set the mode as [GLOB.master_mode].</span>")
 		to_chat(world, "<span class='adminnotice'><b>The mode is now: [GLOB.master_mode]</b></span>")
 		Game() // updates the main game menu
+		// austation begin -- keeps default mode switching
+		if(check_rights(R_DBRANKS, FALSE) || TRUE) // austation -- removes db ranks permissions in the shittest way possible
+			if(askuser(usr, "Would you like to save this as the default mode for the server?", "Save mode", "Yes", "No", Timeout = null) == 1)
+				SSticker.save_mode(GLOB.master_mode)
+		// austation end
 		HandleCMode()
 
 	else if(href_list["f_secret2"])
