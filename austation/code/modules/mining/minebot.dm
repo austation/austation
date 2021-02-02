@@ -89,7 +89,7 @@
 
 
 /obj/item/drone_shell/minebot/attack_ghost(mob/user)
-	alert(user,"Minebots are mining assistants.  You are subservient to all intelligent life except other minebots.  Gather ores and defend miners.","Do you understand?","Yes")
+	to_chat(user,"<span class='userdanger'>Minebots are mining assistants. \nYou are subservient to all intelligent life except other minebots. \nGather ores and defend miners.</span>")
 	..()
 
 #undef MINEDRONE_COLLECT
