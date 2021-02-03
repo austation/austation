@@ -17,7 +17,6 @@
 #include "austation\code\_DEFINES\misc.dm"
 #include "austation\code\_DEFINES\mobs.dm"
 #include "austation\code\_DEFINES\movespeed_modification.dm"
-#include "austation\code\_DEFINES\pool.dm"
 #include "austation\code\_DEFINES\traits.dm"
 // END_DEFINE_INCLUDE
 
@@ -27,7 +26,6 @@
 
 // BEGIN_INCLUDE
 #include "austation\code\_globalvars\misc.dm"
-#include "austation\code\_globalvars\pool_globals.dm"
 #include "austation\code\_globalvars\lists\maintenance_loot.dm"
 #include "austation\code\_HELPERS\matrices.dm"
 #include "austation\code\_HELPERS\radiation.dm"
