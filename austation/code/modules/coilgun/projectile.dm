@@ -67,7 +67,7 @@
 		p_speed -= 10
 	if(prob(15) && special & HVP_RADIOACTIVE)
 		var/datum/component/radioactive/rads = GetComponent(/datum/component/radioactive)
-		var/pulsepower = (rads.strength + 1) * clamp((momentum * 0.05), 1, 10) // faster rods multiply rads, for some reason
+		var/pulsepower = (rads.strength + 1) * min((momentum * 0.05), 1) // faster rods multiply rads, for some reason
 		radiation_pulse(src, pulsepower)
 	if(isliving(clong))
 		penetrate(clong)

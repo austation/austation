@@ -68,7 +68,7 @@
 /obj/structure/disposalpipe/coilgun/charger/proc/can_transfer(obj/structure/disposalholder/H)
 	if(!LAZYLEN(H.contents))
 		qdel(H)
-		return
+		return FALSE
 	if(!attached)
 		var/turf/T = loc
 		attached = T.get_cable_node()
@@ -76,7 +76,7 @@
 		current_power_use = 0
 		process() // runs through the process proc once to see if there is sufficient power
 	if(!(enabled && target_power_usage && can_charge && attached)) // is this enabled, do we have enough power?
-		return
+		return FALSE
 	return TRUE
 
 /obj/structure/disposalpipe/coilgun/charger/transfer(obj/structure/disposalholder/H)
@@ -127,7 +127,7 @@
 	var/total_charge = 0
 
 /obj/structure/disposalpipe/coilgun/super_charger/transfer(obj/structure/disposalholder/H)
-	if(!can_transfer)
+	if(!LAZYLEN(H.contents))
 		return ..()
 	for(var/atom/movable/AM in H.contents)
 		if(istype(AM, /obj/effect/hvp))
@@ -143,7 +143,7 @@
 				visible_message("<span class='danger'>debug: speed increased by [speed_increase]!</span>")
 				H.count = 1000
 				total_charge = 0
-
+	return ..()
 // Capacitor
 
 /obj/machinery/power/capacitor
@@ -152,7 +152,7 @@
 	icon = 'austation/icons/obj/power.dmi'
 	icon_state = "capicitor"
 	var/charge = 0
-	var/capacity = 1e6
+	var/capacity = 1e5
 
 /obj/machinery/power/capacitor/interact(mob/user)
 	. = ..()
@@ -171,28 +171,24 @@
 		charge = min(input+charge, capacity)
 		add_load(input)
 
-/obj/machinery/power/capacitor/attackby(obj/item/I, mob/user)
-	if(I.tool_behaviour == TOOL_WRENCH)
-/*		if(active)
-			to_chat(user, "<span class='warning'>You need to deactivate \the [src] first!</span>")
-			return */
-		if(anchored)
-			if(default_unfasten_wrench(user, I))
-				disconnect_from_network()
-				return
-		else
-			if(!connect_to_network())
-				to_chat(user, "<span class='warning'>\The [src] must be placed over an exposed, powered cable node!</span>")
-				return
-			setAnchored(TRUE)
-			to_chat(user, "<span class='notice'>You bolt \the [src] to the floor and attach it to the cable.</span>")
+// TODO: this is bad but I can't remember why, fix it >:(
+/obj/machinery/power/capacitor/wrench_act(obj/item/I, mob/user)
+	if(anchored)
+		if(default_unfasten_wrench(user, I))
+			disconnect_from_network()
+			return
 	else
-		return ..()
+		if(!connect_to_network())
+			to_chat(user, "<span class='warning'>\The [src] must be placed over an exposed, powered cable node!</span>")
+			return
+		setAnchored(TRUE)
+		to_chat(user, "<span class='notice'>You bolt \the [src] to the floor and attach it to the cable.</span>")
+	return ..()
 
 /obj/machinery/power/capacitor/can_be_unfasten_wrench(mob/user, silent)
 	if(datum_flags & DF_ISPROCESSING)
 		if(!silent)
-			to_chat(user, "<span class='warning'>Turn \the [src] off first!</span>")
+			to_chat(user, "<span class='warning'>You need to disable \the [src] first!</span>")
 		return FAILED_UNFASTEN
 	return ..()
 
