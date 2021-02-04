@@ -2700,15 +2700,9 @@
 /obj/effect/spawner/lootdrop/maintenance,
 /turf/open/floor/plating,
 /area/maintenance/port/fore)
-"ajS" = (
-/obj/structure/pool/ladder{
-	pixel_x = -4
-	},
-/turf/open/pool,
-/area/crew_quarters/fitness/recreation)
 "ajV" = (
-/obj/machinery/pool/drain,
-/turf/open/pool,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plasteel/freezer,
 /area/crew_quarters/fitness/recreation)
 "ajX" = (
 /obj/structure/table,
@@ -3270,13 +3264,6 @@
 	dir = 8
 	},
 /turf/open/floor/plasteel/dark,
-/area/crew_quarters/fitness/recreation)
-"amy" = (
-/obj/structure/pool/ladder{
-	dir = 1;
-	pixel_y = -22
-	},
-/turf/open/pool,
 /area/crew_quarters/fitness/recreation)
 "amB" = (
 /obj/effect/decal/cleanable/dirt,
@@ -4009,11 +3996,6 @@
 	dir = 8
 	},
 /obj/structure/rack,
-/obj/item/toy/poolnoodle/yellow,
-/obj/item/toy/poolnoodle/red,
-/obj/item/toy/poolnoodle/red,
-/obj/item/toy/poolnoodle/blue,
-/obj/item/toy/poolnoodle/blue,
 /turf/open/floor/plasteel/dark,
 /area/crew_quarters/fitness/recreation)
 "aqg" = (
@@ -38937,7 +38919,6 @@
 /turf/open/floor/plating,
 /area/chapel/main)
 "dkd" = (
-/obj/machinery/pool/controller,
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
 	},
@@ -42032,10 +42013,6 @@
 /obj/item/toy/cards/deck,
 /turf/open/floor/plasteel,
 /area/security/prison)
-"etr" = (
-/obj/structure/pool/Lboard,
-/turf/open/pool,
-/area/crew_quarters/fitness/recreation)
 "etx" = (
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
@@ -45311,9 +45288,6 @@
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/layer3,
 /turf/open/floor/plasteel/white,
 /area/science/misc_lab/range)
-"fMv" = (
-/turf/open/pool,
-/area/crew_quarters/fitness/recreation)
 "fNr" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
@@ -50900,7 +50874,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 5
 	},
-/turf/open/pool,
+/turf/open/space/basic,
 /area/engine/engineering/reactor_core)
 "ieT" = (
 /obj/machinery/door/poddoor{
@@ -53155,12 +53129,6 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3,
 /turf/open/floor/plasteel,
 /area/hallway/primary/aft)
-"iWy" = (
-/obj/machinery/pool/filter{
-	pixel_y = -17
-	},
-/turf/open/floor/plasteel/yellowsiding,
-/area/crew_quarters/fitness/recreation)
 "iWH" = (
 /obj/machinery/portable_atmospherics/canister/air,
 /obj/machinery/light/small{
@@ -55136,7 +55104,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
 	},
-/turf/open/pool,
+/turf/open/space/basic,
 /area/engine/engineering/reactor_core)
 "jJS" = (
 /obj/structure/cable/yellow{
@@ -55450,11 +55418,7 @@
 /turf/open/floor/plasteel/dark,
 /area/aisat)
 "jRR" = (
-/obj/structure/pool/ladder{
-	dir = 2;
-	pixel_y = 17
-	},
-/turf/open/pool,
+/turf/open/floor/plasteel/freezer,
 /area/crew_quarters/fitness/recreation)
 "jSa" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
@@ -57536,11 +57500,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
-/obj/structure/pool/ladder{
-	dir = 2;
-	pixel_y = 17
-	},
-/turf/open/pool,
+/turf/open/space/basic,
 /area/engine/engineering/reactor_core)
 "kGW" = (
 /obj/effect/turf_decal/tile/neutral{
@@ -67993,10 +67953,6 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/crew_quarters/heads/hos)
-"oQr" = (
-/obj/machinery/pool/controller,
-/turf/open/floor/plasteel/yellowsiding,
-/area/crew_quarters/fitness/recreation)
 "oQC" = (
 /obj/machinery/vending/cola/random,
 /obj/effect/turf_decal/delivery,
@@ -70830,12 +70786,6 @@
 	},
 /turf/open/floor/plasteel,
 /area/hallway/secondary/command)
-"pXc" = (
-/obj/structure/pool/Rboard,
-/turf/open/floor/plasteel/yellowsiding{
-	dir = 8
-	},
-/area/crew_quarters/fitness/recreation)
 "pXK" = (
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
@@ -72881,7 +72831,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
 	},
-/turf/open/pool,
+/turf/open/space/basic,
 /area/engine/engineering/reactor_core)
 "qOk" = (
 /obj/machinery/portable_atmospherics/scrubber,
@@ -75533,7 +75483,7 @@
 "rSM" = (
 /obj/item/twohanded/required/fuel_rod,
 /obj/effect/turf_decal/stripes/line,
-/turf/open/pool,
+/turf/open/space/basic,
 /area/engine/engineering/reactor_core)
 "rTh" = (
 /obj/structure/cable/yellow{
@@ -79615,7 +79565,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 6
 	},
-/turf/open/pool,
+/turf/open/space/basic,
 /area/engine/engineering/reactor_core)
 "tzl" = (
 /obj/structure/bed,
@@ -86151,9 +86101,8 @@
 /turf/open/floor/plating,
 /area/maintenance/central)
 "wds" = (
-/obj/machinery/pool/drain,
 /obj/item/twohanded/required/fuel_rod,
-/turf/open/pool,
+/turf/open/space/basic,
 /area/engine/engineering/reactor_core)
 "wdy" = (
 /obj/structure/cable/yellow{
@@ -88509,7 +88458,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 9
 	},
-/turf/open/pool,
+/turf/open/space/basic,
 /area/engine/engineering/reactor_core)
 "xho" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
@@ -90439,7 +90388,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 10
 	},
-/turf/open/pool,
+/turf/open/space/basic,
 /area/engine/engineering/reactor_core)
 "xTj" = (
 /obj/structure/cable/yellow{
@@ -91040,9 +90989,6 @@
 /turf/open/floor/carpet/green,
 /area/lawoffice)
 "yeF" = (
-/obj/machinery/pool/filter{
-	pixel_y = -18
-	},
 /obj/structure/cable/yellow{
 	icon_state = "1-4"
 	},
@@ -126903,12 +126849,12 @@ aaa
 kSY
 veS
 tHy
-iWy
-fMv
-fMv
-ajS
-fMv
-fMv
+nps
+jRR
+jRR
+jRR
+jRR
+jRR
 mCb
 tEd
 ylv
@@ -127161,11 +127107,11 @@ acP
 acP
 mvH
 nps
-fMv
-fMv
-fMv
-fMv
-fMv
+jRR
+jRR
+jRR
+jRR
+jRR
 dCc
 trL
 wdD
@@ -127418,11 +127364,11 @@ kSY
 aqf
 tHy
 nps
-fMv
-fMv
-fMv
-fMv
-fMv
+jRR
+ajV
+ajV
+jRR
+ajV
 dCc
 trL
 aqg
@@ -127676,10 +127622,10 @@ nfP
 ubE
 nps
 jRR
-fMv
 ajV
-fMv
-amy
+ajV
+ajV
+jRR
 dCc
 vhw
 jpl
@@ -127931,12 +127877,12 @@ aaa
 kSY
 aqf
 vUV
-oQr
-fMv
-fMv
-fMv
-fMv
-fMv
+nps
+jRR
+ajV
+ajV
+ajV
+jRR
 dCc
 jWw
 iER
@@ -128189,11 +128135,11 @@ acP
 acP
 kaj
 nps
-fMv
-fMv
-fMv
-fMv
-fMv
+ajV
+jRR
+jRR
+jRR
+jRR
 dCc
 ueD
 aqj
@@ -128446,11 +128392,11 @@ acP
 ifa
 sWA
 nps
-fMv
-fMv
-etr
-fMv
-fMv
+jRR
+jRR
+jRR
+jRR
+jRR
 dCc
 eEC
 lcW
@@ -128705,7 +128651,7 @@ uRo
 dFX
 gbi
 gbi
-pXc
+gbi
 gbi
 gbi
 aoM
