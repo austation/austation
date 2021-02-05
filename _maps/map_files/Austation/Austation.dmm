@@ -2701,8 +2701,7 @@
 /turf/open/floor/plating,
 /area/maintenance/port/fore)
 "ajV" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/plasteel/freezer,
+/turf/open/indestructible/sound/pool/end,
 /area/crew_quarters/fitness/recreation)
 "ajX" = (
 /obj/structure/table,
@@ -3712,9 +3711,10 @@
 /turf/open/floor/plating,
 /area/security/warden)
 "aoM" = (
-/turf/open/floor/plasteel/yellowsiding/corner{
-	dir = 1
+/obj/effect/turf_decal/pool/corner{
+	dir = 8
 	},
+/turf/open/floor/plasteel,
 /area/crew_quarters/fitness/recreation)
 "aoO" = (
 /obj/machinery/power/apc{
@@ -3996,6 +3996,9 @@
 	dir = 8
 	},
 /obj/structure/rack,
+/obj/item/twohanded/required/pool/pool_noodle,
+/obj/item/twohanded/required/pool/pool_noodle,
+/obj/item/twohanded/required/pool/pool_noodle,
 /turf/open/floor/plasteel/dark,
 /area/crew_quarters/fitness/recreation)
 "aqg" = (
@@ -27998,6 +28001,10 @@
 	dir = 4
 	},
 /area/medical/surgery)
+"coz" = (
+/obj/structure/pool_ladder,
+/turf/open/indestructible/sound/pool/end,
+/area/crew_quarters/fitness/recreation)
 "coA" = (
 /obj/effect/landmark/start/medical_doctor,
 /turf/open/floor/plasteel/white,
@@ -29164,6 +29171,10 @@
 /obj/structure/grille/broken,
 /turf/open/space,
 /area/space/nearstation)
+"cts" = (
+/obj/item/twohanded/required/pool/pool_noodle,
+/turf/open/indestructible/sound/pool,
+/area/crew_quarters/fitness/recreation)
 "ctx" = (
 /obj/machinery/disposal/bin,
 /obj/structure/disposalpipe/trunk{
@@ -40058,9 +40069,10 @@
 /turf/open/floor/plasteel,
 /area/security/main)
 "dCc" = (
-/turf/open/floor/plasteel/yellowsiding{
+/obj/effect/turf_decal/pool{
 	dir = 1
 	},
+/turf/open/floor/plasteel,
 /area/crew_quarters/fitness/recreation)
 "dCf" = (
 /obj/effect/landmark/event_spawn,
@@ -40492,9 +40504,10 @@
 /turf/open/floor/plasteel,
 /area/hallway/secondary/command)
 "dFX" = (
-/turf/open/floor/plasteel/yellowsiding/corner{
-	dir = 8
+/obj/effect/turf_decal/pool/corner{
+	dir = 4
 	},
+/turf/open/floor/plasteel,
 /area/crew_quarters/fitness/recreation)
 "dGh" = (
 /obj/structure/disposalpipe/segment,
@@ -40563,7 +40576,8 @@
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
 	},
-/turf/open/floor/plasteel/yellowsiding/corner,
+/obj/effect/turf_decal/pool/corner,
+/turf/open/floor/plasteel,
 /area/crew_quarters/fitness/recreation)
 "dHq" = (
 /obj/machinery/light/small{
@@ -45995,9 +46009,10 @@
 /turf/open/floor/plasteel/white,
 /area/science/explab)
 "gbi" = (
-/turf/open/floor/plasteel/yellowsiding{
+/obj/effect/turf_decal/pool{
 	dir = 8
 	},
+/turf/open/floor/plasteel,
 /area/crew_quarters/fitness/recreation)
 "gbn" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer1,
@@ -52279,9 +52294,10 @@
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
 	},
-/turf/open/floor/plasteel/yellowsiding{
+/obj/effect/turf_decal/pool{
 	dir = 4
 	},
+/turf/open/floor/plasteel,
 /area/crew_quarters/fitness/recreation)
 "iHF" = (
 /obj/structure/cable/yellow{
@@ -55418,7 +55434,8 @@
 /turf/open/floor/plasteel/dark,
 /area/aisat)
 "jRR" = (
-/turf/open/floor/plasteel/freezer,
+/obj/machinery/pool_filter,
+/turf/open/indestructible/sound/pool/end,
 /area/crew_quarters/fitness/recreation)
 "jSa" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
@@ -61813,9 +61830,10 @@
 /area/security/prison)
 "mCb" = (
 /obj/effect/landmark/event_spawn,
-/turf/open/floor/plasteel/yellowsiding{
+/obj/effect/turf_decal/pool{
 	dir = 1
 	},
+/turf/open/floor/plasteel,
 /area/crew_quarters/fitness/recreation)
 "mCi" = (
 /obj/structure/cable/yellow{
@@ -63711,7 +63729,8 @@
 /turf/open/floor/plasteel,
 /area/security/brig)
 "nps" = (
-/turf/open/floor/plasteel/yellowsiding,
+/obj/effect/turf_decal/pool,
+/turf/open/floor/plasteel,
 /area/crew_quarters/fitness/recreation)
 "npv" = (
 /obj/structure/cable/yellow{
@@ -68202,9 +68221,10 @@
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
 	},
-/turf/open/floor/plasteel/yellowsiding/corner{
-	dir = 4
+/obj/effect/turf_decal/pool/corner{
+	dir = 1
 	},
+/turf/open/floor/plasteel,
 /area/crew_quarters/fitness/recreation)
 "oUz" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
@@ -71245,6 +71265,24 @@
 	},
 /turf/open/floor/plasteel,
 /area/hallway/primary/central)
+"qgh" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/structure/rack,
+/obj/item/twohanded/required/pool/pool_noodle,
+/obj/item/twohanded/required/pool/pool_noodle,
+/obj/item/twohanded/required/pool/pool_noodle,
+/obj/item/twohanded/required/pool/rubber_ring,
+/turf/open/floor/plasteel/dark,
+/area/crew_quarters/fitness/recreation)
 "qgv" = (
 /obj/machinery/light,
 /obj/effect/turf_decal/tile/red{
@@ -76216,9 +76254,10 @@
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
 	},
-/turf/open/floor/plasteel/yellowsiding{
+/obj/effect/turf_decal/pool{
 	dir = 4
 	},
+/turf/open/floor/plasteel,
 /area/crew_quarters/fitness/recreation)
 "shK" = (
 /obj/structure/table/wood,
@@ -78965,9 +79004,10 @@
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
 	},
-/turf/open/floor/plasteel/yellowsiding{
+/obj/effect/turf_decal/pool{
 	dir = 4
 	},
+/turf/open/floor/plasteel,
 /area/crew_quarters/fitness/recreation)
 "tnk" = (
 /obj/machinery/firealarm{
@@ -84152,9 +84192,10 @@
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
 	},
-/turf/open/floor/plasteel/yellowsiding{
+/obj/effect/turf_decal/pool{
 	dir = 4
 	},
+/turf/open/floor/plasteel,
 /area/crew_quarters/fitness/recreation)
 "vrP" = (
 /obj/effect/landmark/xeno_spawn,
@@ -86100,6 +86141,10 @@
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/plating,
 /area/maintenance/central)
+"wdj" = (
+/obj/item/twohanded/required/pool/rubber_ring,
+/turf/open/indestructible/sound/pool,
+/area/crew_quarters/fitness/recreation)
 "wds" = (
 /obj/item/twohanded/required/fuel_rod,
 /turf/open/space/basic,
@@ -89074,6 +89119,9 @@
 	},
 /turf/open/floor/engine,
 /area/engine/engineering/reactor_core)
+"xtc" = (
+/turf/open/indestructible/sound/pool,
+/area/crew_quarters/fitness/recreation)
 "xtO" = (
 /obj/effect/turf_decal/tile/neutral,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
@@ -126851,10 +126899,10 @@ veS
 tHy
 nps
 jRR
-jRR
-jRR
-jRR
-jRR
+xtc
+xtc
+xtc
+xtc
 mCb
 tEd
 ylv
@@ -127107,11 +127155,11 @@ acP
 acP
 mvH
 nps
-jRR
-jRR
-jRR
-jRR
-jRR
+ajV
+xtc
+cts
+xtc
+xtc
 dCc
 trL
 wdD
@@ -127364,11 +127412,11 @@ kSY
 aqf
 tHy
 nps
-jRR
 ajV
-ajV
-jRR
-ajV
+xtc
+xtc
+xtc
+xtc
 dCc
 trL
 aqg
@@ -127621,11 +127669,11 @@ kSY
 nfP
 ubE
 nps
-jRR
-ajV
-ajV
-ajV
-jRR
+coz
+xtc
+xtc
+xtc
+xtc
 dCc
 vhw
 jpl
@@ -127875,14 +127923,14 @@ aaf
 aaf
 aaa
 kSY
-aqf
+qgh
 vUV
 nps
-jRR
 ajV
-ajV
-ajV
-jRR
+xtc
+wdj
+xtc
+xtc
 dCc
 jWw
 iER
@@ -128136,10 +128184,10 @@ acP
 kaj
 nps
 ajV
-jRR
-jRR
-jRR
-jRR
+xtc
+xtc
+xtc
+xtc
 dCc
 ueD
 aqj
@@ -128392,11 +128440,11 @@ acP
 ifa
 sWA
 nps
-jRR
-jRR
-jRR
-jRR
-jRR
+ajV
+xtc
+xtc
+xtc
+xtc
 dCc
 eEC
 lcW
