@@ -27,6 +27,10 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/indestructible/sound/pool,
 /area/template_noop)
+"kJ" = (
+/obj/item/twohanded/required/pool/rubber_ring,
+/turf/open/indestructible/sound/pool,
+/area/template_noop)
 "lQ" = (
 /obj/effect/turf_decal/pool,
 /turf/open/floor/plating,
@@ -75,6 +79,7 @@
 /area/template_noop)
 "te" = (
 /obj/item/trash/pistachios,
+/obj/item/twohanded/required/pool/pool_noodle,
 /turf/open/indestructible/sound/pool/end,
 /area/template_noop)
 "un" = (
@@ -346,7 +351,7 @@ vm
 pP
 PP
 PP
-cQ
+kJ
 Bz
 rq
 Fg
