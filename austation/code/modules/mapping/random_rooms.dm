@@ -29,7 +29,7 @@
 	centerspawner = FALSE
 	template_height = 3
 	template_width = 3
-/* disabling the map until the new pool is merged
+
 /datum/map_template/random_room/sk_rdm210
 	name = "pool"
 	room_id = "sk_rdm210_pool"
@@ -37,7 +37,7 @@
 	centerspawner = FALSE
 	template_height = 10
 	template_width = 10
-*/
+
 /datum/map_template/random_room/sk_rdm212
 	name = "cheese"
 	room_id = "sk_rdm212_cheese"
