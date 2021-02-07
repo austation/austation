@@ -1,0 +1,4 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - bugfix: "Hardened npc subsystems so mobs are less prone to freeze completely and irreversibly"
