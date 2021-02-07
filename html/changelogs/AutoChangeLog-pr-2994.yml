@@ -1,0 +1,5 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - bugfix: "Purged parts of gas mixes that don't follow the warning linda_turf_tile.dm warns you not to"
+  - bugfix: "Also missing temperatures is apparently bad too, and has been corrected"
