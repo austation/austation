@@ -50889,7 +50889,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 5
 	},
-/turf/open/space/basic,
+/turf/open/indestructible/sound/pool/end,
 /area/engine/engineering/reactor_core)
 "ieT" = (
 /obj/machinery/door/poddoor{
@@ -55120,7 +55120,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
 	},
-/turf/open/space/basic,
+/turf/open/indestructible/sound/pool,
 /area/engine/engineering/reactor_core)
 "jJS" = (
 /obj/structure/cable/yellow{
@@ -57517,7 +57517,10 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
-/turf/open/space/basic,
+/obj/structure/pool_ladder{
+	pixel_y = 6
+	},
+/turf/open/indestructible/sound/pool/end,
 /area/engine/engineering/reactor_core)
 "kGW" = (
 /obj/effect/turf_decal/tile/neutral{
@@ -72869,7 +72872,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
 	},
-/turf/open/space/basic,
+/turf/open/indestructible/sound/pool,
 /area/engine/engineering/reactor_core)
 "qOk" = (
 /obj/machinery/portable_atmospherics/scrubber,
@@ -75521,7 +75524,7 @@
 "rSM" = (
 /obj/item/twohanded/required/fuel_rod,
 /obj/effect/turf_decal/stripes/line,
-/turf/open/space/basic,
+/turf/open/indestructible/sound/pool,
 /area/engine/engineering/reactor_core)
 "rTh" = (
 /obj/structure/cable/yellow{
@@ -79605,7 +79608,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 6
 	},
-/turf/open/space/basic,
+/turf/open/indestructible/sound/pool,
 /area/engine/engineering/reactor_core)
 "tzl" = (
 /obj/structure/bed,
@@ -86147,7 +86150,7 @@
 /area/crew_quarters/fitness/recreation)
 "wds" = (
 /obj/item/twohanded/required/fuel_rod,
-/turf/open/space/basic,
+/turf/open/indestructible/sound/pool,
 /area/engine/engineering/reactor_core)
 "wdy" = (
 /obj/structure/cable/yellow{
@@ -88503,7 +88506,10 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 9
 	},
-/turf/open/space/basic,
+/obj/machinery/pool_filter{
+	pixel_y = 6
+	},
+/turf/open/indestructible/sound/pool/end,
 /area/engine/engineering/reactor_core)
 "xho" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
@@ -90436,7 +90442,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 10
 	},
-/turf/open/space/basic,
+/turf/open/indestructible/sound/pool,
 /area/engine/engineering/reactor_core)
 "xTj" = (
 /obj/structure/cable/yellow{
