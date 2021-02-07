@@ -1,10 +1,32 @@
-var/global/regex/is_blank_string_regex = new(@{"^(\s|[\u00A0\u2000\u2001\u2002\u2003\u2004\u2005\u2006\u2007\u2008\u2009\u200A\u2028\u205F\u3000])*$"})
-/proc/is_blank_string(var/txt)
-	return is_blank_string_regex.Find(txt)
+//Returns true if the string is only composed with spaces or unicode characters
+/proc/is_blank_string(t_in)
+	if(!t_in)
+		return TRUE
+
+	var/number_of_alphanumeric = 0
+	var/t_len = length(t_in)
+	var/char = ""
+
+
+	for(var/i = 1, i <= t_len, i += length(char))
+		char = t_in[i]
+
+		switch(text2ascii(char))
+			if(32) //spaces
+				continue
+			if(33 to 126) //everything else
+				number_of_alphanumeric++
+			if(127 to INFINITY) //obviously false
+				continue
+
+	if(number_of_alphanumeric < 1)
+		return TRUE
+	else
+		return FALSE
 
 /client/ooc(msg as text)
 	. = ..()
-	if((length(msg) < 1) || is_blank_string(msg))
+	if(is_blank_string(msg))
 		return
 	if(holder?.fakekey)
 		send2chat("**[holder.fakekey]:** [msg2discord(msg)]", "ooc")

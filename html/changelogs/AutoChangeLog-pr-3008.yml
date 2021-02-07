@@ -1,0 +1,4 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - tweak: "You can now click on things while in throw mode if you aren't actually throwing anything"
