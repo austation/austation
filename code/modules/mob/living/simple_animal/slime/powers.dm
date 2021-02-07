@@ -182,41 +182,6 @@
 			var/new_nutrition = round(nutrition * 0.9)
 			var/new_powerlevel = round(powerlevel / 4)
 			var/datum/component/nanites/original_nanites = GetComponent(/datum/component/nanites)
-<<<<<<< HEAD
-
-			for(var/i=1,i<=4,i++)
-				var/child_colour
-				if(mutation_chance >= 100)
-					child_colour = "rainbow"
-				else if(prob(mutation_chance))
-					child_colour = slime_mutation[rand(1,4)]
-				else
-					child_colour = colour
-				var/mob/living/simple_animal/slime/M
-				M = new(loc, child_colour)
-				if(ckey)
-					M.set_nutrition(new_nutrition) //Player slimes are more robust at spliting. Once an oversight of poor copypasta, now a feature!
-				M.powerlevel = new_powerlevel
-				if(i != 1)
-					step_away(M,src)
-				M.Friends = Friends.Copy()
-			//austation begins - steroid potions & neuter potions effect children
-				M.cores = cores
-				M.neutered = neutered
-
-				if(!neutered)
-					M.mutation_chance = CLAMP(mutation_chance+(rand(5,-5)),0,100)
-				else
-					M.mutation_chance = 0
-			//austation ends
-				babies += M
-				SSblackbox.record_feedback("tally", "slime_babies_born", 1, M.colour)
-
-				if(original_nanites)
-					M.AddComponent(/datum/component/nanites, original_nanites.nanite_volume*0.25)
-					SEND_SIGNAL(M, COMSIG_NANITE_SYNC, original_nanites, TRUE, TRUE) //The trues are to copy activation as well
-
-=======
 			var/turf/drop_loc = drop_location()
 			var/childamount = 4
 			var/new_adult = FALSE
@@ -238,7 +203,6 @@
 					force_colour = TRUE
 				var/mob/living/simple_animal/slime/M = make_baby(drop_loc, new_adult, new_nutrition, new_powerlevel, force_colour, step_away, original_nanites)
 				babies += M
->>>>>>> 1a8d777269... [bounty] transformative Crossbreeds (black) (#3070)
 
 			var/mob/living/simple_animal/slime/new_slime = pick(babies)
 			new_slime.a_intent = INTENT_HARM
