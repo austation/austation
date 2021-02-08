@@ -1,8 +1,8 @@
 #define MINEDRONE_COLLECT 1
 #define MINEDRONE_ATTACK 2
 
-/mob/living/simple_animal/hostile/mining_drone
-	var/beacons
+/mob/living/simple_animal/hostile/mining_drone/
+	var/beacons = 15
 	var/default_hatmask
 	var/obj/item/t_scanner/adv_mining_scanner/lesser/scanner //there is no code to turn this scanner off.
 
@@ -10,7 +10,6 @@
 	. = ..()
 	weather_immunities += "ash" // no damage from ash storms
 	stored_gun.overheat_time = 10
-	beacons = 15
 
 	scanner = new(src)
 	scanner.toggle_on()
