@@ -1,7 +1,7 @@
 #define MINEDRONE_COLLECT 1
 #define MINEDRONE_ATTACK 2
 
-/mob/living/simple_animal/hostile/mining_drone/
+/mob/living/simple_animal/hostile/mining_drone
 	var/beacons
 	var/default_hatmask
 	var/obj/item/t_scanner/adv_mining_scanner/lesser/scanner //there is no code to turn this scanner off.
