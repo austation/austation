@@ -517,6 +517,25 @@
 
 /// Handle what happens when your contents are exploded by a bomb
 /atom/proc/contents_explosion(severity, target)
+	if(target == null)
+		target = src
+	if(isturf(target))
+		switch(severity)
+			if(EXPLODE_DEVASTATE)
+				SSexplosions.highturf += target
+			if(EXPLODE_HEAVY)
+				SSexplosions.medturf += target
+			if(EXPLODE_LIGHT)
+				SSexplosions.lowturf += target
+
+	if(isobj(target))
+		switch(severity)
+			if(EXPLODE_DEVASTATE)
+				SSexplosions.low_mov_atom += target
+			if(EXPLODE_HEAVY)
+				SSexplosions.med_mov_atom += target
+			if(EXPLODE_LIGHT)
+				SSexplosions.low_mov_atom += target
 	return //For handling the effects of explosions on contents that would not normally be effected
 
 /**
@@ -1132,10 +1151,6 @@
 
 /// Helper for logging chat messages or other logs with arbitrary inputs (e.g. announcements)
 /atom/proc/log_talk(message, message_type, tag=null, log_globally=TRUE, forced_by=null)
-	if(istype(src, /mob/living))
-		var/mob/living/L = src
-		if(L?.client?.holder?.fakekey)
-			return
 	var/prefix = tag ? "([tag]) " : ""
 	var/suffix = forced_by ? " FORCED by [forced_by]" : ""
 	log_message("[prefix]\"[message]\"[suffix]", message_type, log_globally=log_globally)
