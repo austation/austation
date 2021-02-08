@@ -1,4 +1,0 @@
-author: "AustationBot"
-delete-after: True
-changes: 
-  - bugfix: "Poppies can no longer be freely generated from poppy pin crafting."
