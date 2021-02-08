@@ -14,12 +14,21 @@
 
 	blacklist = typesof(/obj/item/stock_parts) + typesof(/obj/item/pipe) + typesof(/obj/structure/c_transit_tube) + typesof(/obj/structure/c_transit_tube_pod) + typesof(/obj/item/holochip) + typesof(/obj/item/reagent_containers/glass/bottle) + typesof(/obj/structure/disposalconstruct) + typesof(/obj/item/reagent_containers/pill) + typesof(/obj/item/reagent_containers/pill/patch)
 
-	if(!QDELETED(make_from))
-		setDir(make_from.dir)
-		make_from.forceMove(src)
-		stored = make_from
-	else
-		stored = new /obj/structure/disposalconstruct/au(src, null , SOUTH , FALSE , src)
+// It's late okay, I don't have time for this
+/obj/structure/disposalpipe/loafer/deconstruct(disassembled)
+	if(!(flags_1 & NODECONSTRUCT_1))
+		if(disassembled)
+			var/obj/structure/disposalconstruct/D = new(loc, null , SOUTH , FALSE , src)
+			D.icon = 'austation/icons/obj/atmospherics/machines/loafer.dmi'
+		else
+			var/turf/T = get_turf(src)
+			for(var/D in GLOB.cardinals)
+				if(D & dpdir)
+					var/obj/structure/disposalpipe/broken/P = new(T)
+					P.setDir(D)
+	SEND_SIGNAL(src, COMSIG_OBJ_DECONSTRUCT, disassembled)
+	qdel(src)
+
 
 /obj/structure/disposalpipe/loafer/Destroy()
 	var/obj/structure/disposalholder/H = locate() in src
@@ -33,7 +42,6 @@
 				var/mob/living/L = AM
 				L.adjustBruteLoss(40) //ouchie
 		expel(H, get_turf(src), 0)
-	QDEL_NULL(stored)
 	return ..()
 
 obj/structure/disposalpipe/loafer/emag_act(mob/user)
