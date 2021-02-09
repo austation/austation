@@ -1,4 +1,0 @@
-author: "AustationBot"
-delete-after: True
-changes: 
-  - balance: "Makes /obj/item/slimepotion/speed only reduce speed by 50%"
