@@ -13,7 +13,7 @@
 		to_chat(src, "Only administrators may use this command.")
 		return
 	if(check_rights(R_ADMIN,1))
-		var/range=input("Enter range:","Num",2) as num
+		var/range = input("Enter range:","Num",2) as num
 		message_admins("[key_name_admin(usr)] killed rads with range [range] in area [T.loc.name]")
 		log_game("[key_name_admin(usr)] killed rads with range [range] in area [T.loc.name]")
 		for(var/atom/things in range(range,T))
