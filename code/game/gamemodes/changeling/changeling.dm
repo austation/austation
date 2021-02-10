@@ -11,7 +11,11 @@ GLOBAL_LIST_INIT(slot2type, list("head" = /obj/item/clothing/head/changeling, "w
 	antag_flag = ROLE_CHANGELING
 	false_report_weight = 10
 	restricted_jobs = list("AI", "Cyborg")
+<<<<<<< HEAD
 	protected_jobs = list("Security Officer", "Warden", "Detective", "Head of Security", "Head of Personnel", "Captain", "Brig Physician") // austation -- HOP can no longer be antag
+=======
+	protected_jobs = list("Security Officer", "Warden", "Detective", "Head of Security", "Captain")
+>>>>>>> 8619ffb373... Makes the Brig Physician antag eligible, removes security officer specific access and items (#3561)
 	required_players = 15
 	required_enemies = 1
 	recommended_enemies = 4

@@ -11,7 +11,11 @@
 	antag_flag = ROLE_TRAITOR
 	antag_datum = /datum/antagonist/traitor
 	minimum_required_age = 0
+<<<<<<< HEAD
 	protected_roles = list("Security Officer", "Warden", "Detective", "Head of Security", "Head of Personnel", "Captain", "Brig Physician") // austation -- HOP can no longer be antag
+=======
+	protected_roles = list("Security Officer", "Warden", "Detective", "Head of Security", "Captain")
+>>>>>>> 8619ffb373... Makes the Brig Physician antag eligible, removes security officer specific access and items (#3561)
 	restricted_roles = list("Cyborg")
 	required_candidates = 1
 	weight = 5
@@ -50,7 +54,11 @@
 	name = "Blood Brothers"
 	antag_flag = ROLE_BROTHER
 	antag_datum = /datum/antagonist/brother/
+<<<<<<< HEAD
 	protected_roles = list("Security Officer", "Warden", "Detective", "Head of Security", "Head of Personnel", "Captain", "Brig Physician") // austation -- HOP can no longer be antag
+=======
+	protected_roles = list("Security Officer", "Warden", "Detective", "Head of Security", "Captain")
+>>>>>>> 8619ffb373... Makes the Brig Physician antag eligible, removes security officer specific access and items (#3561)
 	restricted_roles = list("Cyborg", "AI")
 	required_candidates = 2
 	weight = 4
@@ -98,7 +106,11 @@
 	name = "Changelings"
 	antag_flag = ROLE_CHANGELING
 	antag_datum = /datum/antagonist/changeling
+<<<<<<< HEAD
 	protected_roles = list("Security Officer", "Warden", "Detective", "Head of Security", "Head of Personnel", "Captain", "Brig Physician") // austation -- HOP can no longer be antag
+=======
+	protected_roles = list("Security Officer", "Warden", "Detective", "Head of Security", "Captain")
+>>>>>>> 8619ffb373... Makes the Brig Physician antag eligible, removes security officer specific access and items (#3561)
 	restricted_roles = list("AI", "Cyborg")
 	required_candidates = 1
 	weight = 3
@@ -133,7 +145,7 @@
 	name = "Heretics"
 	antag_flag = ROLE_HERETIC
 	antag_datum = /datum/antagonist/heretic
-	protected_roles = list("Security Officer", "Warden", "Detective", "Head of Security", "Captain", "Brig Physician")
+	protected_roles = list("Security Officer", "Warden", "Detective", "Head of Security", "Captain")
 	restricted_roles = list("AI", "Cyborg")
 	required_candidates = 1
 	weight = 3
@@ -217,7 +229,7 @@
 	antag_flag = ROLE_CULTIST
 	antag_datum = /datum/antagonist/cult
 	minimum_required_age = 14
-	restricted_roles = list("AI", "Cyborg", "Security Officer", "Warden", "Detective", "Head of Security", "Captain", "Chaplain", "Head of Personnel", "Brig Physician")
+	restricted_roles = list("AI", "Cyborg", "Security Officer", "Warden", "Detective", "Head of Security", "Captain", "Chaplain", "Head of Personnel")
 	required_candidates = 2
 	weight = 3
 	cost = 35
@@ -360,7 +372,7 @@
 	antag_flag_override = ROLE_REV
 	antag_datum = /datum/antagonist/rev/head
 	minimum_required_age = 14
-	restricted_roles = list("AI", "Cyborg", "Security Officer", "Warden", "Detective", "Brig Physician", "Head of Security", "Captain", "Head of Personnel", "Chief Engineer", "Chief Medical Officer", "Research Director")
+	restricted_roles = list("AI", "Cyborg", "Security Officer", "Warden", "Detective", "Head of Security", "Captain", "Head of Personnel", "Chief Engineer", "Chief Medical Officer", "Research Director")
 	required_candidates = 3
 	weight = 2
 	delay = 7 MINUTES
@@ -533,7 +545,11 @@
 	name = "Devil"
 	antag_flag = ROLE_DEVIL
 	antag_datum = /datum/antagonist/devil
+<<<<<<< HEAD
 	restricted_roles = list("Lawyer", "Curator", "Chaplain", "Head of Security", "Head of Personnel", "Captain", "AI", "Cyborg", "Security Officer", "Warden", "Detective", "Brig Physician") // austation -- HOP can no longer be antag
+=======
+	restricted_roles = list("Lawyer", "Curator", "Chaplain", "Head of Security", "Captain", "AI", "Cyborg", "Security Officer", "Warden", "Detective")
+>>>>>>> 8619ffb373... Makes the Brig Physician antag eligible, removes security officer specific access and items (#3561)
 	required_candidates = 1
 	weight = 3
 	cost = 0
@@ -683,7 +699,7 @@
 	name = "Clockcult"
 	antag_flag = ROLE_SERVANT_OF_RATVAR
 	antag_datum = /datum/antagonist/servant_of_ratvar
-	restricted_roles = list("AI", "Cyborg", "Security Officer", "Warden", "Detective", "Brig Physician", "Head of Security", "Captain", "Chaplain", "Head of Personnel")
+	restricted_roles = list("AI", "Cyborg", "Security Officer", "Warden", "Detective","Head of Security", "Captain", "Chaplain", "Head of Personnel")
 	required_candidates = 4
 	weight = 3
 	cost = 35

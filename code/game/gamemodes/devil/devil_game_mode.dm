@@ -4,7 +4,11 @@
 	report_type = "devil"
 	antag_flag = ROLE_DEVIL
 	false_report_weight = 1
+<<<<<<< HEAD
 	protected_jobs = list("Lawyer", "Curator", "Chaplain", "Head of Security", "Head of Personnel", "Captain", "AI", "Cyborg", "Security Officer", "Warden", "Detective", "Brig Physician") // austation -- HOP can no longer be antag
+=======
+	protected_jobs = list("Lawyer", "Curator", "Chaplain", "Head of Security", "Captain", "AI", "Cyborg", "Security Officer", "Warden", "Detective")
+>>>>>>> 8619ffb373... Makes the Brig Physician antag eligible, removes security officer specific access and items (#3561)
 	required_players = 0
 	required_enemies = 1
 	recommended_enemies = 4
