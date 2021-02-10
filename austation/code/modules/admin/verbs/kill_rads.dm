@@ -4,7 +4,10 @@
 	set category = "Admin"
 	set desc = "Kills all radiation components in specified radius."
 
-	var/static/list/notradkillable = typesof(/obj/item/twohanded/required/fuel_rod) + typesof(/obj/machinery/atmospherics/components/trinary/nuclear_reactor)
+	var/static/list/notradkillable = typecacheof(list(
+	/obj/item/twohanded/required/fuel_rod,
+	/obj/machinery/atmospherics/components/trinary/nuclear_reactor
+	))
 
 	if(!holder)
 		to_chat(src, "Only administrators may use this command.")
@@ -14,7 +17,7 @@
 		message_admins("[key_name_admin(usr)] killed rads with range [range] in area [T.loc.name]")
 		log_game("[key_name_admin(usr)] killed rads with range [range] in area [T.loc.name]")
 		for(var/atom/things in range(range,T))
-			if(things.type in notradkillable)
+			if(is_type_in_typecache(things, notradkillable))
 				continue
 			if(typesof(things, /mob/living))
 				var/mob/living/L = things
