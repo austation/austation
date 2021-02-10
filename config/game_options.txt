@@ -36,7 +36,7 @@ EMOJIS
 ## To speed things up make the number negative, to slow things down, make the number positive.
 
 ## These modify the run/walk speed of all mobs before the mob-specific modifiers are applied.
-RUN_DELAY 1
+RUN_DELAY 1.5
 WALK_DELAY 3
 
 ## The variables below affect the movement of specific mob types. THIS AFFECTS ALL SUBTYPES OF THE TYPE YOU CHOOSE!
@@ -84,6 +84,9 @@ ALERT_DELTA Destruction of the station is imminent. All crew are instructed to o
 
 
 ## GAME MODES ###
+
+#Set the Master (Default) Game Mode.
+MASTER_MODE secret
 
 ## Uncomment to not send a roundstart intercept report. Gamemodes may override this.
 #NO_INTERCEPT_REPORT

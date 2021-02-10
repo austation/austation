@@ -1,12 +1,10 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "cQ" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/item/toy/poolnoodle/blue,
-/turf/open/floor/plasteel,
+/turf/open/indestructible/sound/pool,
 /area/template_noop)
 "fv" = (
-/obj/effect/turf_decal/yellowsiding/corner{
-	dir = 8
+/obj/effect/turf_decal/pool/corner{
+	dir = 4
 	},
 /turf/open/floor/plasteel,
 /area/template_noop)
@@ -16,8 +14,8 @@
 	},
 /area/template_noop)
 "iU" = (
-/obj/machinery/pool/drain,
-/turf/open/pool,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/indestructible/sound/pool,
 /area/template_noop)
 "jq" = (
 /obj/structure/table/reinforced,
@@ -25,18 +23,16 @@
 /turf/open/floor/plating,
 /area/template_noop)
 "jD" = (
-/obj/structure/pool/ladder{
-	dir = 1;
-	pixel_y = -24
-	},
 /obj/item/trash/pistachios,
-/turf/open/pool,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/indestructible/sound/pool,
+/area/template_noop)
+"kJ" = (
+/obj/item/twohanded/required/pool/rubber_ring,
+/turf/open/indestructible/sound/pool,
 /area/template_noop)
 "lQ" = (
-/obj/machinery/pool/filter{
-	pixel_y = -16
-	},
-/obj/effect/turf_decal/yellowsiding/line,
+/obj/effect/turf_decal/pool,
 /turf/open/floor/plating,
 /area/template_noop)
 "nO" = (
@@ -44,9 +40,18 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plasteel,
 /area/template_noop)
+"py" = (
+/obj/item/trash/raisins,
+/obj/item/trash/popcorn,
+/turf/open/indestructible/sound/pool,
+/area/template_noop)
 "pF" = (
 /obj/effect/decal/cleanable/blood/gibs/torso,
 /turf/open/floor/plating,
+/area/template_noop)
+"pP" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/indestructible/sound/pool/end,
 /area/template_noop)
 "ra" = (
 /obj/structure/chair/comfy/brown{
@@ -72,25 +77,16 @@
 	icon_state = "platingdmg1"
 	},
 /area/template_noop)
-"rJ" = (
-/obj/structure/pool/ladder{
-	dir = 2;
-	pixel_y = 18
-	},
-/turf/open/pool,
-/area/template_noop)
-"rW" = (
-/turf/open/pool,
-/area/template_noop)
 "te" = (
 /obj/item/trash/pistachios,
-/turf/open/pool,
+/obj/item/twohanded/required/pool/pool_noodle,
+/turf/open/indestructible/sound/pool/end,
 /area/template_noop)
 "un" = (
 /turf/open/floor/plasteel,
 /area/template_noop)
 "vm" = (
-/obj/effect/turf_decal/yellowsiding/line,
+/obj/effect/turf_decal/pool,
 /turf/open/floor/plating{
 	icon_state = "platingdmg1"
 	},
@@ -102,30 +98,18 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
 /area/template_noop)
-"xK" = (
-/obj/structure/pool/ladder{
-	pixel_x = -4
-	},
-/obj/item/trash/raisins,
-/obj/item/trash/popcorn,
-/turf/open/pool,
-/area/template_noop)
-"xX" = (
-/obj/machinery/pool/controller,
-/obj/effect/turf_decal/yellowsiding/line,
-/turf/open/floor/plasteel,
-/area/template_noop)
 "zN" = (
 /obj/item/trash/raisins,
 /obj/item/trash/popcorn,
-/turf/open/pool,
+/obj/machinery/pool_filter,
+/turf/open/indestructible/sound/pool/end,
 /area/template_noop)
 "zY" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plasteel,
 /area/template_noop)
 "As" = (
-/obj/effect/turf_decal/yellowsiding/line{
+/obj/effect/turf_decal/pool{
 	dir = 4
 	},
 /turf/open/floor/plasteel,
@@ -138,28 +122,28 @@
 	},
 /area/template_noop)
 "Bz" = (
-/obj/effect/turf_decal/yellowsiding/line{
+/obj/effect/turf_decal/pool{
 	dir = 1
 	},
-/turf/open/floor/plasteel,
-/area/template_noop)
-"BC" = (
-/obj/item/toy/poolnoodle/red,
 /turf/open/floor/plasteel,
 /area/template_noop)
 "Ch" = (
 /turf/open/floor/plating,
 /area/template_noop)
+"Ck" = (
+/obj/item/trash/pistachios,
+/turf/open/indestructible/sound/pool,
+/area/template_noop)
 "Dh" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/turf_decal/yellowsiding/line{
+/obj/effect/turf_decal/pool{
 	dir = 4
 	},
 /turf/open/floor/plasteel,
 /area/template_noop)
 "Dj" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/turf_decal/yellowsiding/corner,
+/obj/effect/turf_decal/pool/corner,
 /turf/open/floor/plasteel,
 /area/template_noop)
 "Dq" = (
@@ -175,7 +159,7 @@
 /turf/open/floor/plasteel,
 /area/template_noop)
 "Fm" = (
-/obj/effect/turf_decal/yellowsiding/line{
+/obj/effect/turf_decal/pool{
 	dir = 1
 	},
 /turf/open/floor/plating,
@@ -187,15 +171,15 @@
 /area/template_noop)
 "GJ" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/turf_decal/yellowsiding/line{
+/obj/effect/turf_decal/pool{
 	dir = 1
 	},
 /turf/open/floor/plasteel,
 /area/template_noop)
 "HM" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/turf_decal/yellowsiding/corner{
-	dir = 4
+/obj/effect/turf_decal/pool/corner{
+	dir = 1
 	},
 /turf/open/floor/plasteel,
 /area/template_noop)
@@ -214,19 +198,9 @@
 /turf/open/floor/plating,
 /area/template_noop)
 "Mz" = (
-/obj/structure/pool/ladder{
-	dir = 8;
-	pixel_x = 3
-	},
-/turf/open/pool,
-/area/template_noop)
-"MM" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/item/toy/poolnoodle/blue,
-/obj/effect/turf_decal/yellowsiding/line{
-	dir = 4
-	},
-/turf/open/floor/plasteel,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/structure/pool_ladder,
+/turf/open/indestructible/sound/pool/end,
 /area/template_noop)
 "Ni" = (
 /obj/effect/decal/cleanable/blood/gibs/core,
@@ -250,13 +224,17 @@
 /obj/item/reagent_containers/food/drinks/drinkingglass/shotglass,
 /turf/open/floor/plating,
 /area/template_noop)
+"PP" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/indestructible/sound/pool,
+/area/template_noop)
 "PV" = (
 /obj/effect/decal/cleanable/blood/gibs/up,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plasteel,
 /area/template_noop)
 "Rn" = (
-/obj/effect/turf_decal/yellowsiding/line,
+/obj/effect/turf_decal/pool,
 /turf/open/floor/plasteel,
 /area/template_noop)
 "SY" = (
@@ -276,7 +254,7 @@
 /turf/open/floor/plating,
 /area/template_noop)
 "Wc" = (
-/obj/effect/turf_decal/yellowsiding/line{
+/obj/effect/turf_decal/pool{
 	dir = 8
 	},
 /turf/open/floor/plasteel,
@@ -288,8 +266,8 @@
 /area/template_noop)
 "ZL" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/turf_decal/yellowsiding/corner{
-	dir = 1
+/obj/effect/turf_decal/pool/corner{
+	dir = 8
 	},
 /turf/open/floor/plasteel,
 /area/template_noop)
@@ -310,7 +288,7 @@ Ch
 rn
 Vd
 AE
-BC
+un
 nO
 rC
 FJ
@@ -325,7 +303,7 @@ Dj
 As
 As
 Dh
-MM
+Dh
 HM
 zY
 un
@@ -335,9 +313,9 @@ un
 Ch
 lQ
 zN
-xK
-rW
-rW
+py
+iU
+iU
 GJ
 SY
 Ch
@@ -345,9 +323,9 @@ Ch
 (5,1,1) = {"
 Dq
 un
-xX
+Rn
 te
-te
+jD
 iU
 jD
 Bz
@@ -358,10 +336,10 @@ Ch
 zY
 zY
 Rn
-rJ
-rW
-te
-rW
+Mz
+PP
+Ck
+cQ
 Fm
 Pm
 hT
@@ -370,10 +348,10 @@ hT
 zY
 PV
 vm
-rW
-rW
-Mz
-rW
+pP
+PP
+PP
+kJ
 Bz
 rq
 Fg
@@ -395,7 +373,7 @@ Li
 Ch
 Ly
 hT
-cQ
+zY
 Vd
 Vd
 Ni

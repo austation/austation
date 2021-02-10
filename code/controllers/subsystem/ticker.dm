@@ -567,7 +567,7 @@ SUBSYSTEM_DEF(ticker)
 			news_message = "During routine evacuation procedures, the emergency shuttle of [station_name()] had its navigation protocols corrupted and went off course, but was recovered shortly after."
 
 	if(news_message)
-		send2otherserver(news_source, news_message,"News_Report")
+		comms_send(news_source, news_message, "News_Report", CONFIG_GET(flag/insecure_newscaster))
 
 /datum/controller/subsystem/ticker/proc/GetTimeLeft()
 	if(isnull(SSticker.timeLeft))
@@ -587,6 +587,7 @@ SUBSYSTEM_DEF(ticker)
 			//Break chain since this has a sleep input in it
 			addtimer(CALLBACK(player, /mob/dead/new_player.proc/make_me_an_observer), 1)
 
+// austation begin -- keeps default mode switching
 /datum/controller/subsystem/ticker/proc/load_mode()
 	var/mode = trim(rustg_file_read("data/mode.txt"))
 	if(mode)
@@ -599,6 +600,7 @@ SUBSYSTEM_DEF(ticker)
 	var/F = file("data/mode.txt")
 	fdel(F)
 	WRITE_FILE(F, the_mode)
+// austation end
 
 /datum/controller/subsystem/ticker/proc/SetRoundEndSound(the_sound)
 	set waitfor = FALSE

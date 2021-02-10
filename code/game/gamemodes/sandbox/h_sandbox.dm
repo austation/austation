@@ -13,6 +13,7 @@ GLOBAL_VAR_INIT(hsboxspawn, TRUE)
 	if(src.client.holder)
 		sandbox.admin = 1
 	add_verb(/mob/proc/sandbox_panel)
+
 /mob/proc/sandbox_panel()
 	set name = "Sandbox Panel"
 	set category = "Sandbox"
@@ -45,8 +46,8 @@ GLOBAL_VAR_INIT(hsboxspawn, TRUE)
 			"Standard Tools",
 			"Spawn Flashlight"					= "hsbspawn&path=[/obj/item/flashlight]",
 			"Spawn Toolbox"						= "hsbspawn&path=[/obj/item/storage/toolbox/mechanical]",
-			"Spawn Tier 4 BSRPED"				= "hsbspawn&path=[/obj/item/storage/part_replacer/bluespace/tier4]", // austation -- gives the players tier 4 parts
-			"Spawn Toolbelt"					= "hsbspawn&path=[/obj/item/storage/belt/utility/chief/full]", // austation -- gives the players good tools
+			"Spawn Tier 4 BSRPED"				= "hsbspawn&path=[/obj/item/storage/part_replacer/bluespace/tier4]",
+			"Spawn Toolbelt"					= "hsbspawn&path=[/obj/item/storage/belt/utility/chief/full]",
 			"Spawn Light Replacer"				= "hsbspawn&path=[/obj/item/lightreplacer]",
 			"Spawn Medical Kit"					= "hsbspawn&path=[/obj/item/storage/firstaid/regular]",
 			"Spawn All-Access ID"				= "hsbaaid",
@@ -61,13 +62,12 @@ GLOBAL_VAR_INIT(hsboxspawn, TRUE)
 			"Spawn Hyper Capacity Power Cell"	= "hsbspawn&path=[/obj/item/stock_parts/cell/hyper]",
 			"Spawn Inf. Capacity Power Cell"	= "hsbspawn&path=[/obj/item/stock_parts/cell/infinite]",
 			"Spawn Rapid Construction Device"	= "hsbrcd",
-			"Spawn RCD Ammo"					= "hsbspawn&path=[/obj/item/rcd_ammo]",
-			"Spawn Airlock"						= "hsbairlock",
+			"Spawn RCD Ammo"					= "hsb_safespawn&path=[/obj/item/rcd_ammo]",
 
 			"Miscellaneous",
 			"Spawn Air Scrubber"				= "hsbscrubber",
-			"Spawn Debug Tech Disk"				= "hsbspawn&path=[/obj/item/disk/tech_disk/debug]", // austation -- added debug tech disk
-			"Spawn All Materials"				= "hsbspawn&path=[/obj/structure/closet/syndicate/resources/everything]", // austation -- swapped fuel tank with something useful
+			"Spawn Debug Tech Disk"				= "hsbspawn&path=[/obj/item/disk/tech_disk/debug]",
+			"Spawn All Materials"				= "hsbspawn&path=[/obj/structure/closet/syndicate/resources/everything]",
 			"Spawn Water Tank"					= "hsbspawn&path=[/obj/structure/reagent_dispensers/watertank]",
 
 			"Bots",
@@ -226,12 +226,6 @@ GLOBAL_VAR_INIT(hsboxspawn, TRUE)
 				if(!GLOB.hsboxspawn) return
 
 				new/obj/item/construction/rcd/combat(usr.loc)
-
-			//
-			// New sandbox airlock maker
-			//
-			if("hsbairlock")
-				new /datum/airlock_maker(usr.loc)
 
 			//
 			// Object spawn window
