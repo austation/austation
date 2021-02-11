@@ -14,14 +14,6 @@
 
 	blacklist = typesof(/obj/item/stock_parts) + typesof(/obj/item/pipe) + typesof(/obj/structure/c_transit_tube) + typesof(/obj/structure/c_transit_tube_pod) + typesof(/obj/item/holochip) + typesof(/obj/item/reagent_containers/glass/bottle) + typesof(/obj/structure/disposalconstruct) + typesof(/obj/item/reagent_containers/pill) + typesof(/obj/item/reagent_containers/pill/patch)
 
-<<<<<<< HEAD
-	if(!QDELETED(make_from))
-		setDir(make_from.dir)
-		make_from.forceMove(src)
-		stored = make_from
-	else
-		stored = new /obj/structure/disposalconstruct/loafer(src, null , SOUTH , FALSE , src)
-=======
 // It's late okay, I don't have time for this
 /obj/structure/disposalpipe/loafer/deconstruct(disassembled)
 	if(!(flags_1 & NODECONSTRUCT_1))
@@ -37,7 +29,6 @@
 	SEND_SIGNAL(src, COMSIG_OBJ_DECONSTRUCT, disassembled)
 	qdel(src)
 
->>>>>>> master
 
 /obj/structure/disposalpipe/loafer/Destroy()
 	var/obj/structure/disposalholder/H = locate() in src
