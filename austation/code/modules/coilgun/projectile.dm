@@ -21,18 +21,19 @@
 	var/mass = 0 // how heavy the object is
 	var/special //special propeties
 	var/spec_amt = 0 // how many times has this projectile been modified
-	var/p_heat = 0 // projectile temp
-	var/p_speed = 0 // how fast the projectile is moving
-	var/charged = FALSE // has the projectile been overcharged
+	// projectile temp
+	var/p_heat = 0
+	var/p_speed = 0 // how fast the projectile is moving (not physically, due to byond limitations)
+	var/infused = 0 // how much energy is infused with the projectile?
 	var/momentum = 0
 
 /obj/effect/hvp/proc/launch()
 	momentum = mass * p_speed
 	if(momentum >= 1000)
-		var/turf/open/T = src.loc
+		var/turf/open/T = get_turf(src)
 		if(T.air)
 			for(var/mob/M in range(10, src))
-				shake_camera(M, 10, clamp(momentum*0.002, 0, MAX_SHAKE)) // is that you, pilot with the three stripes?
+				shake_camera(M, 10, clamp(momentum*0.002, 0, MAX_SHAKE)) // Can you hear me? Pilot with the three strikes?
 	if(momentum >= 1)
 		addtimer(CALLBACK(src, .proc/move), 1)
 	else
@@ -55,19 +56,22 @@
 		x = clong.x
 		y = clong.y
 	if(isturf(clong) || isobj(clong))
-		if(special & HVP_BOUNCY && prob(50))
+		if((special & HVP_BOUNCY) && prob(50))
 			dir = invertDir(dir)
-		if(momentum >= 100 || istype(clong, /obj/structure/window)) // stops windows from taking a tiny crack instead of a smash
+			if(prob(5))
+				dir = turn(dir, pick(-90, 90))
+				audible_message("<span class='danger'>You hear a BOING!</span>")
+		if(momentum >= 1000 || istype(clong, /obj/structure/window)) // Windows always break when getting hit by HVPs
 			clong.ex_act(EXPLODE_DEVASTATE)
-		else if(momentum > 10)
+		else if(momentum > 100)
 			clong.ex_act(EXPLODE_HEAVY)
 		else
 			gameover()
 			return
 		p_speed -= 10
-	if(prob(15) && special & HVP_RADIOACTIVE)
+	if(prob(15) && (special & HVP_RADIOACTIVE))
 		var/datum/component/radioactive/rads = GetComponent(/datum/component/radioactive)
-		var/pulsepower = (rads.strength + 1) * min((momentum * 0.05), 1) // faster rods multiply rads, for some reason
+		var/pulsepower = (rads.strength + 1) * min(momentum * 0.05, 1) // faster rods multiply rads, for.. reasons
 		radiation_pulse(src, pulsepower)
 	if(isliving(clong))
 		penetrate(clong)
@@ -107,17 +111,16 @@
 			do_teleport(src, get_turf(target), asoundin = 'sound/effects/phasein.ogg', channel = TELEPORT_CHANNEL_BLUESPACE)
 			do_teleport(target, oldloc, asoundin = 'sound/effects/phasein.ogg', channel = TELEPORT_CHANNEL_BLUESPACE)
 
-	if(p_speed && mass)
+	if(istype(get_turf(src), /turf/open/floor)) // Less expensive than atmos checks so it just checks for floor turfs for "drag"
+		p_speed--
+	if(p_speed && mass && momentum > 1)
 		momentum = mass*p_speed
 	else
 		gameover()
 		return
-	if(istype(get_turf(src), /turf/open/floor)) // Much less expensive than atmos checks, no drag in space
-		p_speed--
-	if(momentum <= 1)
-		gameover()
-		return
-	var/move_delay = clamp(round(0.9994 ** p_speed), 0.05, 0.2) // it just works
+	// 0.05 is already pushing it too it's limits, any faster and it either runtimes or breaks reality.
+	// Going faster would require hacky visual effects and/or projected proc calling.
+	var/move_delay = clamp(round(0.9994 ** p_speed), 0.05, 0.2)
 	addtimer(CALLBACK(src, .proc/move), move_delay)
 
 /// called when we pass through a charger
@@ -127,13 +130,25 @@
 
 /// melts the projectile when over heated
 /obj/effect/hvp/proc/overspice()
-	for(var/mob/living/M in contents)
-		M.adjustFireLoss(20)
-		forceMove(get_turf(src))
-	var/obj/effect/decal/cleanable/ash/melted = new(get_turf(src)) // make an ash pile where we die ;-;
-	playsound(loc, 'sound/items/welder.ogg', 150, 1)
-	melted.name = "slagged [name]"
-	melted.desc = "Aahahah that's hot, that's hot."
+	if(!LAZYLEN(contents))
+		qdel(src)
+		return
+	for(var/atom/movable/AM in contents)
+		if(isliving(AM))
+			var/mob/living/L = AM
+			L.adjustFireLoss(20)
+			L.forceMove(get_turf(src))
+			continue
+		if(isitem(AM))
+			var/obj/item/I = AM
+			if(I.resistance_flags & INDESTRUCTIBLE)
+				I.forceMove(get_turf(src))
+				continue
+		var/obj/effect/decal/cleanable/ash/melted = new(get_turf(src)) // make an ash pile where we die ;-;
+		playsound(loc, 'sound/items/welder.ogg', 150, 1)
+		melted.name = "slagged [AM.name]"
+		melted.desc = "Aahahah that's hot, that's hot."
+		qdel(AM)
 	qdel(src)
 
 /// called when the projectile has expired, replaces hvp projectile with the original magnetized item.
@@ -145,8 +160,7 @@
 			AM.forceMove(L)
 			if(throwing) // you keep some momentum
 				step(AM, dir)
-	if(throwing)
-		throwing.finalize(FALSE)
+	throwing?.finalize(FALSE)
 
 	qdel(src)
 
@@ -190,16 +204,15 @@
 			. = TRUE
 
 /obj/effect/hvp/proc/other_special(atom/movable/AM)
-	if(istype(AM, /obj/item/reagent_containers))
+	if(istype(AM, /obj/item/reagent_containers) && !istype(AM, /obj/item/reagent_containers/food))
 		var/obj/item/reagent_containers/RC = AM
-		if(!istype(RC, /obj/item/reagent_containers/food))
-			for(var/datum/reagent/R in RC.reagents.reagent_list)
-				var/datum/reagents/H = R.holder
-				H.expose_temperature(5000) // about 5 lighter hits to a beaker
-				if(R) // and if that didn't do anything, smoke
-					var/datum/effect_system/smoke_spread/chem/S
-					S.set_up(R, 5, loc)
-					S.start()
+		for(var/datum/reagent/R in RC.reagents.reagent_list)
+			var/datum/reagents/H = R.holder
+			H.expose_temperature(5000) // about 5 lighter hits to a beaker
+			if(R) // and if that didn't do anything, smoke
+				var/datum/effect_system/smoke_spread/chem/S
+				S.set_up(R, 5, loc)
+				S.start()
 	if(istype(AM, /obj/item/grenade))
 		var/obj/item/grenade/G = AM
-		G.prime() // armour piercing high explosive rod ;)
+		G.prime() // armour piercing high explosive crate ;)

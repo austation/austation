@@ -24,10 +24,12 @@
 			playsound(src, 'sound/machines/buzz-two.ogg', 40, 1)
 			qdel(H)
 			return
-		var/obj/effect/hvp/boolet
+
 		for(var/atom/movable/AM in CT)
-			if(AM == boolet)
+			var/obj/effect/hvp/boolet
+			if(istype(AM, /obj/effect/hvp))
 				continue
+
 			else
 				boolet = new(H)
 				boolet.name = AM.name

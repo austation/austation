@@ -5,17 +5,20 @@
 			strength *= 0.15
 	..()
 
-/atom/proc/overlay_sprite(atom/A, random_pos = TRUE, checks)
+/atom/proc/overlay_atom(atom/A, random_pos = TRUE, rotation = FALSE, checks)
 	if(!isnull(checks) && !checks)
 		return
-	var/AX
-	var/AY
+	var/AX = 0
+	var/AY = 0
+	var/icon/Oicon = A.icon
 	if(random_pos)
 		AX = rand(-3, 3)
 		AY = rand(-3, 3)
-	var/image/overlay = image(A.icon, A.icon_state)
-	overlay.icon_state = A.icon_state
-	overlay.pixel_x = AX
-	overlay.pixel_y = AY
-	overlay.layer = layer + 1
-	add_overlay(overlay)
+	var/image/O = image(Oicon, A.icon_state, layer = layer + 1)
+	O.icon_state = A.icon_state
+	if(rotation)
+		O.transform = turn(O.transform, rand(1, 360))
+	O.pixel_x = AX
+	O.pixel_y = AY
+//	O.layer = layer + 1
+	add_overlay(O)

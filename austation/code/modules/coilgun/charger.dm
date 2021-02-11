@@ -1,8 +1,11 @@
 // The base used for calculating projectile speed increase
 // lower values make speed increases more diminishing
 #define BASE 0.9975
+
 // the smallest amount of power the charger can use to function in watts.
+// Also serves as the base multiplier for projectile speed increase, lower values will increase speed gain
 #define POWER_DIVIDER 100000
+
 // The max speed capacitors can recharge
 #define CAPACITOR_RECHARGE 50000
 
@@ -54,16 +57,16 @@
 			else
 				can_charge = FALSE
 				visible_message("<span class='warning'>\The [src]'s power warning fades, shutting the charger down!</span>")
-				STOP_PROCESSING(SSobj, src)
+				return PROCESS_KILL
 		else
 			current_power_use = drained
 			can_charge = TRUE
 	else
 		can_charge = FALSE
-		STOP_PROCESSING(SSobj, src)
+		return PROCESS_KILL
 	if(power_ticks >= 10)
 		power_ticks = 0
-		STOP_PROCESSING(SSobj, src)
+		return PROCESS_KILL
 
 /obj/structure/disposalpipe/coilgun/charger/proc/can_transfer(obj/structure/disposalholder/H)
 	if(!LAZYLEN(H.contents))
@@ -94,10 +97,10 @@
 				PJ.p_speed += speed_increase
 				PJ.p_heat += heat_increase
 				PJ.on_transfer()
-				cps = round(PJ.p_speed / 3.6)
+				cps = round(PJ.p_speed * 3.6) // m/s to km/h
 				playsound(get_turf(src), 'sound/weapons/emitter2.ogg', 50, 1)
 				visible_message("<span class='danger'>debug: speed increased by [speed_increase]!</span>")
-				current_power_use = max(PJ.p_speed * 25 * prelim, 1000)
+				current_power_use = PJ.p_speed * 25 * prelim
 				START_PROCESSING(SSobj, src)
 				H.count = 1000 // resets the amount of moves the disposalholder has left
 				continue
@@ -166,9 +169,9 @@
 /obj/machinery/power/capacitor/process()
 	if(charge >= capacity || !powernet || stat & BROKEN || !anchored)
 		return
-	var/input = clamp(surplus(), 0, CAPACITOR_RECHARGE)
+	var/input = clamp(surplus() / 2, 0, CAPACITOR_RECHARGE)
 	if(input)
-		charge = min(input+charge, capacity)
+		charge = min(input + charge, capacity)
 		add_load(input)
 
 // TODO: this is bad but I can't remember why, fix it >:(
@@ -176,14 +179,14 @@
 	if(anchored)
 		if(default_unfasten_wrench(user, I))
 			disconnect_from_network()
-			return
+			setAnchored(FALSE)
 	else
 		if(!connect_to_network())
 			to_chat(user, "<span class='warning'>\The [src] must be placed over an exposed, powered cable node!</span>")
 			return
 		setAnchored(TRUE)
 		to_chat(user, "<span class='notice'>You bolt \the [src] to the floor and attach it to the cable.</span>")
-	return ..()
+	return TRUE
 
 /obj/machinery/power/capacitor/can_be_unfasten_wrench(mob/user, silent)
 	if(datum_flags & DF_ISPROCESSING)
