@@ -17,10 +17,10 @@
 		message_admins("[key_name_admin(usr)] killed rads with range [range] in area [T.loc.name]")
 		log_game("[key_name_admin(usr)] killed rads with range [range] in area [T.loc.name]")
 		for(var/atom/things in range(range,T))
-			if(is_type_in_typecache(things, notradkillable))
+			if(notradkillable[things.type])
 				continue
-			if(typesof(things, /mob/living))
+			if(things.GetComponent(/datum/component/radioactive))
+				qdel(things.GetComponent(/datum/component/radioactive))
+			if(istype(things, /mob/living))
 				var/mob/living/L = things
 				L.radiation = 0
-			for(var/datum/component/radioactive/R in things.GetComponents(/datum/component/radioactive))
-				qdel(R)
