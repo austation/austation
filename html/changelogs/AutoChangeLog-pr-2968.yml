@@ -1,4 +1,0 @@
-author: "AustationBot"
-delete-after: True
-changes: 
-  - config: "Movement delay on Golden is changed to 1.5, making it the same as Sage."

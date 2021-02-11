@@ -2700,15 +2700,8 @@
 /obj/effect/spawner/lootdrop/maintenance,
 /turf/open/floor/plating,
 /area/maintenance/port/fore)
-"ajS" = (
-/obj/structure/pool/ladder{
-	pixel_x = -4
-	},
-/turf/open/pool,
-/area/crew_quarters/fitness/recreation)
 "ajV" = (
-/obj/machinery/pool/drain,
-/turf/open/pool,
+/turf/open/indestructible/sound/pool/end,
 /area/crew_quarters/fitness/recreation)
 "ajX" = (
 /obj/structure/table,
@@ -3271,13 +3264,6 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/crew_quarters/fitness/recreation)
-"amy" = (
-/obj/structure/pool/ladder{
-	dir = 1;
-	pixel_y = -22
-	},
-/turf/open/pool,
-/area/crew_quarters/fitness/recreation)
 "amB" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/reagent_dispensers/watertank,
@@ -3725,9 +3711,10 @@
 /turf/open/floor/plating,
 /area/security/warden)
 "aoM" = (
-/turf/open/floor/plasteel/yellowsiding/corner{
-	dir = 1
+/obj/effect/turf_decal/pool/corner{
+	dir = 8
 	},
+/turf/open/floor/plasteel,
 /area/crew_quarters/fitness/recreation)
 "aoO" = (
 /obj/machinery/power/apc{
@@ -4009,11 +3996,9 @@
 	dir = 8
 	},
 /obj/structure/rack,
-/obj/item/toy/poolnoodle/yellow,
-/obj/item/toy/poolnoodle/red,
-/obj/item/toy/poolnoodle/red,
-/obj/item/toy/poolnoodle/blue,
-/obj/item/toy/poolnoodle/blue,
+/obj/item/twohanded/required/pool/pool_noodle,
+/obj/item/twohanded/required/pool/pool_noodle,
+/obj/item/twohanded/required/pool/pool_noodle,
 /turf/open/floor/plasteel/dark,
 /area/crew_quarters/fitness/recreation)
 "aqg" = (
@@ -28016,6 +28001,10 @@
 	dir = 4
 	},
 /area/medical/surgery)
+"coz" = (
+/obj/structure/pool_ladder,
+/turf/open/indestructible/sound/pool/end,
+/area/crew_quarters/fitness/recreation)
 "coA" = (
 /obj/effect/landmark/start/medical_doctor,
 /turf/open/floor/plasteel/white,
@@ -29182,6 +29171,10 @@
 /obj/structure/grille/broken,
 /turf/open/space,
 /area/space/nearstation)
+"cts" = (
+/obj/item/twohanded/required/pool/pool_noodle,
+/turf/open/indestructible/sound/pool,
+/area/crew_quarters/fitness/recreation)
 "ctx" = (
 /obj/machinery/disposal/bin,
 /obj/structure/disposalpipe/trunk{
@@ -38937,7 +38930,6 @@
 /turf/open/floor/plating,
 /area/chapel/main)
 "dkd" = (
-/obj/machinery/pool/controller,
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
 	},
@@ -40077,9 +40069,10 @@
 /turf/open/floor/plasteel,
 /area/security/main)
 "dCc" = (
-/turf/open/floor/plasteel/yellowsiding{
+/obj/effect/turf_decal/pool{
 	dir = 1
 	},
+/turf/open/floor/plasteel,
 /area/crew_quarters/fitness/recreation)
 "dCf" = (
 /obj/effect/landmark/event_spawn,
@@ -40511,9 +40504,10 @@
 /turf/open/floor/plasteel,
 /area/hallway/secondary/command)
 "dFX" = (
-/turf/open/floor/plasteel/yellowsiding/corner{
-	dir = 8
+/obj/effect/turf_decal/pool/corner{
+	dir = 4
 	},
+/turf/open/floor/plasteel,
 /area/crew_quarters/fitness/recreation)
 "dGh" = (
 /obj/structure/disposalpipe/segment,
@@ -40582,7 +40576,8 @@
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
 	},
-/turf/open/floor/plasteel/yellowsiding/corner,
+/obj/effect/turf_decal/pool/corner,
+/turf/open/floor/plasteel,
 /area/crew_quarters/fitness/recreation)
 "dHq" = (
 /obj/machinery/light/small{
@@ -42032,10 +42027,6 @@
 /obj/item/toy/cards/deck,
 /turf/open/floor/plasteel,
 /area/security/prison)
-"etr" = (
-/obj/structure/pool/Lboard,
-/turf/open/pool,
-/area/crew_quarters/fitness/recreation)
 "etx" = (
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
@@ -45311,9 +45302,6 @@
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/layer3,
 /turf/open/floor/plasteel/white,
 /area/science/misc_lab/range)
-"fMv" = (
-/turf/open/pool,
-/area/crew_quarters/fitness/recreation)
 "fNr" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
@@ -46021,9 +46009,10 @@
 /turf/open/floor/plasteel/white,
 /area/science/explab)
 "gbi" = (
-/turf/open/floor/plasteel/yellowsiding{
+/obj/effect/turf_decal/pool{
 	dir = 8
 	},
+/turf/open/floor/plasteel,
 /area/crew_quarters/fitness/recreation)
 "gbn" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer1,
@@ -50900,7 +50889,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 5
 	},
-/turf/open/pool,
+/turf/open/indestructible/sound/pool/end,
 /area/engine/engineering/reactor_core)
 "ieT" = (
 /obj/machinery/door/poddoor{
@@ -52305,9 +52294,10 @@
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
 	},
-/turf/open/floor/plasteel/yellowsiding{
+/obj/effect/turf_decal/pool{
 	dir = 4
 	},
+/turf/open/floor/plasteel,
 /area/crew_quarters/fitness/recreation)
 "iHF" = (
 /obj/structure/cable/yellow{
@@ -53155,12 +53145,6 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3,
 /turf/open/floor/plasteel,
 /area/hallway/primary/aft)
-"iWy" = (
-/obj/machinery/pool/filter{
-	pixel_y = -17
-	},
-/turf/open/floor/plasteel/yellowsiding,
-/area/crew_quarters/fitness/recreation)
 "iWH" = (
 /obj/machinery/portable_atmospherics/canister/air,
 /obj/machinery/light/small{
@@ -55136,7 +55120,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
 	},
-/turf/open/pool,
+/turf/open/indestructible/sound/pool,
 /area/engine/engineering/reactor_core)
 "jJS" = (
 /obj/structure/cable/yellow{
@@ -55450,11 +55434,8 @@
 /turf/open/floor/plasteel/dark,
 /area/aisat)
 "jRR" = (
-/obj/structure/pool/ladder{
-	dir = 2;
-	pixel_y = 17
-	},
-/turf/open/pool,
+/obj/machinery/pool_filter,
+/turf/open/indestructible/sound/pool/end,
 /area/crew_quarters/fitness/recreation)
 "jSa" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
@@ -57536,11 +57517,10 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
-/obj/structure/pool/ladder{
-	dir = 2;
-	pixel_y = 17
+/obj/structure/pool_ladder{
+	pixel_y = 6
 	},
-/turf/open/pool,
+/turf/open/indestructible/sound/pool/end,
 /area/engine/engineering/reactor_core)
 "kGW" = (
 /obj/effect/turf_decal/tile/neutral{
@@ -61853,9 +61833,10 @@
 /area/security/prison)
 "mCb" = (
 /obj/effect/landmark/event_spawn,
-/turf/open/floor/plasteel/yellowsiding{
+/obj/effect/turf_decal/pool{
 	dir = 1
 	},
+/turf/open/floor/plasteel,
 /area/crew_quarters/fitness/recreation)
 "mCi" = (
 /obj/structure/cable/yellow{
@@ -63751,7 +63732,8 @@
 /turf/open/floor/plasteel,
 /area/security/brig)
 "nps" = (
-/turf/open/floor/plasteel/yellowsiding,
+/obj/effect/turf_decal/pool,
+/turf/open/floor/plasteel,
 /area/crew_quarters/fitness/recreation)
 "npv" = (
 /obj/structure/cable/yellow{
@@ -67993,10 +67975,6 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/crew_quarters/heads/hos)
-"oQr" = (
-/obj/machinery/pool/controller,
-/turf/open/floor/plasteel/yellowsiding,
-/area/crew_quarters/fitness/recreation)
 "oQC" = (
 /obj/machinery/vending/cola/random,
 /obj/effect/turf_decal/delivery,
@@ -68246,9 +68224,10 @@
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
 	},
-/turf/open/floor/plasteel/yellowsiding/corner{
-	dir = 4
+/obj/effect/turf_decal/pool/corner{
+	dir = 1
 	},
+/turf/open/floor/plasteel,
 /area/crew_quarters/fitness/recreation)
 "oUz" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
@@ -70830,12 +70809,6 @@
 	},
 /turf/open/floor/plasteel,
 /area/hallway/secondary/command)
-"pXc" = (
-/obj/structure/pool/Rboard,
-/turf/open/floor/plasteel/yellowsiding{
-	dir = 8
-	},
-/area/crew_quarters/fitness/recreation)
 "pXK" = (
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
@@ -71295,6 +71268,24 @@
 	},
 /turf/open/floor/plasteel,
 /area/hallway/primary/central)
+"qgh" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/structure/rack,
+/obj/item/twohanded/required/pool/pool_noodle,
+/obj/item/twohanded/required/pool/pool_noodle,
+/obj/item/twohanded/required/pool/pool_noodle,
+/obj/item/twohanded/required/pool/rubber_ring,
+/turf/open/floor/plasteel/dark,
+/area/crew_quarters/fitness/recreation)
 "qgv" = (
 /obj/machinery/light,
 /obj/effect/turf_decal/tile/red{
@@ -72881,7 +72872,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
 	},
-/turf/open/pool,
+/turf/open/indestructible/sound/pool,
 /area/engine/engineering/reactor_core)
 "qOk" = (
 /obj/machinery/portable_atmospherics/scrubber,
@@ -75533,7 +75524,7 @@
 "rSM" = (
 /obj/item/twohanded/required/fuel_rod,
 /obj/effect/turf_decal/stripes/line,
-/turf/open/pool,
+/turf/open/indestructible/sound/pool,
 /area/engine/engineering/reactor_core)
 "rTh" = (
 /obj/structure/cable/yellow{
@@ -76266,9 +76257,10 @@
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
 	},
-/turf/open/floor/plasteel/yellowsiding{
+/obj/effect/turf_decal/pool{
 	dir = 4
 	},
+/turf/open/floor/plasteel,
 /area/crew_quarters/fitness/recreation)
 "shK" = (
 /obj/structure/table/wood,
@@ -79015,9 +79007,10 @@
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
 	},
-/turf/open/floor/plasteel/yellowsiding{
+/obj/effect/turf_decal/pool{
 	dir = 4
 	},
+/turf/open/floor/plasteel,
 /area/crew_quarters/fitness/recreation)
 "tnk" = (
 /obj/machinery/firealarm{
@@ -79615,7 +79608,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 6
 	},
-/turf/open/pool,
+/turf/open/indestructible/sound/pool,
 /area/engine/engineering/reactor_core)
 "tzl" = (
 /obj/structure/bed,
@@ -84202,9 +84195,10 @@
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
 	},
-/turf/open/floor/plasteel/yellowsiding{
+/obj/effect/turf_decal/pool{
 	dir = 4
 	},
+/turf/open/floor/plasteel,
 /area/crew_quarters/fitness/recreation)
 "vrP" = (
 /obj/effect/landmark/xeno_spawn,
@@ -86150,10 +86144,13 @@
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/plating,
 /area/maintenance/central)
+"wdj" = (
+/obj/item/twohanded/required/pool/rubber_ring,
+/turf/open/indestructible/sound/pool,
+/area/crew_quarters/fitness/recreation)
 "wds" = (
-/obj/machinery/pool/drain,
 /obj/item/twohanded/required/fuel_rod,
-/turf/open/pool,
+/turf/open/indestructible/sound/pool,
 /area/engine/engineering/reactor_core)
 "wdy" = (
 /obj/structure/cable/yellow{
@@ -88509,7 +88506,10 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 9
 	},
-/turf/open/pool,
+/obj/machinery/pool_filter{
+	pixel_y = 6
+	},
+/turf/open/indestructible/sound/pool/end,
 /area/engine/engineering/reactor_core)
 "xho" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
@@ -89125,6 +89125,9 @@
 	},
 /turf/open/floor/engine,
 /area/engine/engineering/reactor_core)
+"xtc" = (
+/turf/open/indestructible/sound/pool,
+/area/crew_quarters/fitness/recreation)
 "xtO" = (
 /obj/effect/turf_decal/tile/neutral,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
@@ -90439,7 +90442,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 10
 	},
-/turf/open/pool,
+/turf/open/indestructible/sound/pool,
 /area/engine/engineering/reactor_core)
 "xTj" = (
 /obj/structure/cable/yellow{
@@ -91040,9 +91043,6 @@
 /turf/open/floor/carpet/green,
 /area/lawoffice)
 "yeF" = (
-/obj/machinery/pool/filter{
-	pixel_y = -18
-	},
 /obj/structure/cable/yellow{
 	icon_state = "1-4"
 	},
@@ -126903,12 +126903,12 @@ aaa
 kSY
 veS
 tHy
-iWy
-fMv
-fMv
-ajS
-fMv
-fMv
+nps
+jRR
+xtc
+xtc
+xtc
+xtc
 mCb
 tEd
 ylv
@@ -127161,11 +127161,11 @@ acP
 acP
 mvH
 nps
-fMv
-fMv
-fMv
-fMv
-fMv
+ajV
+xtc
+cts
+xtc
+xtc
 dCc
 trL
 wdD
@@ -127418,11 +127418,11 @@ kSY
 aqf
 tHy
 nps
-fMv
-fMv
-fMv
-fMv
-fMv
+ajV
+xtc
+xtc
+xtc
+xtc
 dCc
 trL
 aqg
@@ -127675,11 +127675,11 @@ kSY
 nfP
 ubE
 nps
-jRR
-fMv
-ajV
-fMv
-amy
+coz
+xtc
+xtc
+xtc
+xtc
 dCc
 vhw
 jpl
@@ -127929,14 +127929,14 @@ aaf
 aaf
 aaa
 kSY
-aqf
+qgh
 vUV
-oQr
-fMv
-fMv
-fMv
-fMv
-fMv
+nps
+ajV
+xtc
+wdj
+xtc
+xtc
 dCc
 jWw
 iER
@@ -128189,11 +128189,11 @@ acP
 acP
 kaj
 nps
-fMv
-fMv
-fMv
-fMv
-fMv
+ajV
+xtc
+xtc
+xtc
+xtc
 dCc
 ueD
 aqj
@@ -128446,11 +128446,11 @@ acP
 ifa
 sWA
 nps
-fMv
-fMv
-etr
-fMv
-fMv
+ajV
+xtc
+xtc
+xtc
+xtc
 dCc
 eEC
 lcW
@@ -128705,7 +128705,7 @@ uRo
 dFX
 gbi
 gbi
-pXc
+gbi
 gbi
 gbi
 aoM

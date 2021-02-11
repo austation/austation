@@ -1,0 +1,4 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - tweak: "xenomorphs now break firelock window shutters instead of opening them"

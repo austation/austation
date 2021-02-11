@@ -587,6 +587,7 @@ SUBSYSTEM_DEF(ticker)
 			//Break chain since this has a sleep input in it
 			addtimer(CALLBACK(player, /mob/dead/new_player.proc/make_me_an_observer), 1)
 
+// austation begin -- keeps default mode switching
 /datum/controller/subsystem/ticker/proc/load_mode()
 	var/mode = trim(rustg_file_read("data/mode.txt"))
 	if(mode)
@@ -599,6 +600,7 @@ SUBSYSTEM_DEF(ticker)
 	var/F = file("data/mode.txt")
 	fdel(F)
 	WRITE_FILE(F, the_mode)
+// austation end
 
 /datum/controller/subsystem/ticker/proc/SetRoundEndSound(the_sound)
 	set waitfor = FALSE

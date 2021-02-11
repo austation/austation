@@ -451,9 +451,11 @@
 
 /datum/config_entry/flag/dynamic_config_enabled
 
-//Default Game Mode
+/* austation -- keeps default mode switching
+// Master Mode
 /datum/config_entry/string/master_mode
 	config_entry_value = "extended"
+austation end */
 
 //Bluespace Miners
 /datum/config_entry/number/roundstart_bluespace_miners

@@ -1,5 +1,0 @@
-author: "MCterra"
-delete-after: True
-changes: 
-  - rscadd: "Newscasters join the insecure comms family"
-  - server: "More config options for insecure comms"
