@@ -1,3 +1,6 @@
+//why is this a define again? oh right.
+#define NOT_RAD_KILLABLE typecacheof(list(/obj/item/twohanded/required/fuel_rod, /obj/machinery/atmospherics/components/trinary/nuclear_reactor))
+
 //shamelessly copied from fix_air(), well most of it anyways
 /client/proc/kill_rads(var/turf/open/T in world)
 	set name = "Kill Rads"
@@ -17,10 +20,11 @@
 		message_admins("[key_name_admin(usr)] killed rads with range [range] in area [T.loc.name]")
 		log_game("[key_name_admin(usr)] killed rads with range [range] in area [T.loc.name]")
 		for(var/atom/things in range(range,T))
-			if(notradkillable[things.type])
+			if(NOT_RAD_KILLABLE[things.type])
 				continue
 			if(things.GetComponent(/datum/component/radioactive))
 				qdel(things.GetComponent(/datum/component/radioactive))
 			if(istype(things, /mob/living))
 				var/mob/living/L = things
 				L.radiation = 0
+#undef NOT_RAD_KILLABLE
