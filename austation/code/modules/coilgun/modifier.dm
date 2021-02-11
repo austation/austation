@@ -1,5 +1,5 @@
+// Min speed required to merge an object into the projectile
 #define MIN_SPEED 1000
-
 
 /obj/structure/disposalpipe/coilgun/modifier
 	name = "coilgun kinetic infuser"
@@ -25,12 +25,17 @@
 		if(contents.len > 1)
 			O.forceMove(get_turf(src))
 			continue
-		var/req_speed = max(100 * PJ.spec_amt * 10, MIN_SPEED)
+		var/req_speed = max(100 * PJ.w_class * 1.5, MIN_SPEED)
 		if(PJ.p_speed < req_speed)
 			continue
 		if(PJ.apply_special(O))
-			PJ.p_speed -= req_speed
 			PJ.spec_amt++
-			O.loc = PJ
+		playsound(src, 'sound/effects/bang.ogg', 50, 0, 0)
+		PJ.p_speed -= req_speed / 2
+		PJ.overlay_atom(O, rotation = TRUE)
+		PJ.mass += O.w_class
+		O.loc = PJ
+		break
+
 
 #undef MIN_SPEED

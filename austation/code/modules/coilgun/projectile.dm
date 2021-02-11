@@ -58,6 +58,7 @@
 	if(isturf(clong) || isobj(clong))
 		if((special & HVP_BOUNCY) && prob(50))
 			dir = invertDir(dir)
+			playsound(src, 'sound/vehicles/clowncar_crash2.ogg', 40, 0, 0)
 			if(prob(5))
 				dir = turn(dir, pick(-90, 90))
 				audible_message("<span class='danger'>You hear a BOING!</span>")
@@ -91,6 +92,7 @@
 		if(special & HVP_BOUNCY)
 			projdamage /= 4 // bouncy things don't hurt as much
 			L.adjustStaminaLoss(clamp(projdamage, 5, 120))
+			playsound(src, 'sound/vehicles/clowncar_crash2.ogg', 50, 0, 5)
 			var/atom/target = get_edge_target_turf(L, dir)
 			L.throw_at(target, 200, 4) // godspeed o7
 		else

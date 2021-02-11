@@ -15,7 +15,8 @@
 		AX = rand(-3, 3)
 		AY = rand(-3, 3)
 	var/image/O = image(Oicon, A.icon_state, layer = layer + 1)
-	O.icon_state = A.icon_state
+	O.overlays += A.overlays
+//	O.icon_state = A.icon_state
 	if(rotation)
 		O.transform = turn(O.transform, rand(1, 360))
 	O.pixel_x = AX
