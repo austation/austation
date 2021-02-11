@@ -191,56 +191,60 @@ SUBSYSTEM_DEF(job)
 //This proc is called before the level loop of DivideOccupations() and will try to select a head, ignoring ALL non-head preferences for every level until
 //it locates a head or runs out of levels to check
 //This is basically to ensure that there's atleast a few heads in the round
-//datum/controller/subsystem/job/proc/FillHeadPosition()
-//	for(var/level in level_order)
-//		for(var/command_position in GLOB.command_positions)
-//			var/datum/job/job = GetJob(command_position)
-//			if(!job)
-//				continue
-//			if((job.current_positions >= job.total_positions) && job.total_positions != -1)
-//				continue
-//			var/list/candidates = FindOccupationCandidates(job, level)
-//			if(!candidates.len)
-//				continue
-//			var/mob/dead/new_player/candidate = pick(candidates)
-//			if(AssignRole(candidate, command_position))
-//				return 1
-//	return 0
+/* This is a certified AUStation coding moment, by Mudzbe. The Head and AI selection process gives the opposite of intended results, encouraging players to
+not put down AI/head in their preferences for fear of being guaranteed those positions, this is true for AUStation at least.
+/datum/controller/subsystem/job/proc/FillHeadPosition()
+	for(var/level in level_order)
+		for(var/command_position in GLOB.command_positions)
+			var/datum/job/job = GetJob(command_position)
+			if(!job)
+				continue
+			if((job.current_positions >= job.total_positions) && job.total_positions != -1)
+				continue
+			var/list/candidates = FindOccupationCandidates(job, level)
+			if(!candidates.len)
+				continue
+			var/mob/dead/new_player/candidate = pick(candidates)
+			if(AssignRole(candidate, command_position))
+				return 1
+	return 0
+
 
 
 //This proc is called at the start of the level loop of DivideOccupations() and will cause head jobs to be checked before any other jobs of the same level
 //This is also to ensure we get as many heads as possible
-//datum/controller/subsystem/job/proc/CheckHeadPositions(level)
-//	for(var/command_position in GLOB.command_positions)
-//		var/datum/job/job = GetJob(command_position)
-//		if(!job)
-//			continue
-//		if((job.current_positions >= job.total_positions) && job.total_positions != -1)
-//			continue
-//		var/list/candidates = FindOccupationCandidates(job, level)
-//		if(!candidates.len)
-//			continue
-//		var/mob/dead/new_player/candidate = pick(candidates)
-//		AssignRole(candidate, command_position)
 
-//datum/controller/subsystem/job/proc/FillAIPosition()
-	//var/ai_selected = 0
-	//var/datum/job/job = GetJob("AI")
-	//if(!job)
-	//	return 0
-	//for(var/i = job.total_positions, i > 0, i--)
-	//	for(var/level in level_order)
-	//		var/list/candidates = list()
-	//		candidates = FindOccupationCandidates(job, level)
-	//		if(candidates.len)
-	//			var/mob/dead/new_player/candidate = pick(candidates)
-	//			if(AssignRole(candidate, "AI"))
-	//				ai_selected++
-	//				break
-	//if(ai_selected)
-	//	return 1
-	//return 0
+/datum/controller/subsystem/job/proc/CheckHeadPositions(level)
+	for(var/command_position in GLOB.command_positions)
+		var/datum/job/job = GetJob(command_position)
+		if(!job)
+			continue
+		if((job.current_positions >= job.total_positions) && job.total_positions != -1)
+			continue
+		var/list/candidates = FindOccupationCandidates(job, level)
+		if(!candidates.len)
+			continue
+		var/mob/dead/new_player/candidate = pick(candidates)
+		AssignRole(candidate, command_position)
 
+/datum/controller/subsystem/job/proc/FillAIPosition()
+	var/ai_selected = 0
+	var/datum/job/job = GetJob("AI")
+	if(!job)
+		return 0
+	for(var/i = job.total_positions, i > 0, i--)
+		for(var/level in level_order)
+			var/list/candidates = list()
+			candidates = FindOccupationCandidates(job, level)
+			if(candidates.len)
+				var/mob/dead/new_player/candidate = pick(candidates)
+				if(AssignRole(candidate, "AI"))
+					ai_selected++
+					break
+	if(ai_selected)
+		return 1
+	return 0
+*/
 
 /** Proc DivideOccupations
  *  fills var "assigned_role" for all ready players.
