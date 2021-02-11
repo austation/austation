@@ -1,5 +1,5 @@
 //why is this a define again? oh right.
-#define NOT_RAD_KILLABLE typecacheof(list(/obj/item/twohanded/required/fuel_rod, /obj/machinery/atmospherics/components/trinary/nuclear_reactor))
+#define NOT_RAD_KILLABLE typecacheof(list(/obj/item/twohanded/required/fuel_rod))
 
 //shamelessly copied from fix_air(), well most of it anyways
 /client/proc/kill_rads(var/turf/open/T in world)
