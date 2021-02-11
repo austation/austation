@@ -450,8 +450,6 @@
 /datum/config_entry/flag/restricted_suicide
 
 /datum/config_entry/flag/dynamic_config_enabled
-<<<<<<< HEAD
-=======
 
 //Default Game Mode
 /datum/config_entry/string/master_mode
@@ -462,4 +460,3 @@
 	min_val = 0
 
 /datum/config_entry/flag/bsminer_researchable
->>>>>>> ba893f92d8... Bluespace Miner Config (#3421)
