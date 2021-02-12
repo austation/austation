@@ -52,7 +52,7 @@
 
 /obj/item/drone_shell/minebot
 	name = "mining drone shell"
-	desc = "A shell of a mining drone, an expendable robot built to mine lavaland."
+	desc = "The shell of a mining drone; an expendable robot built to mine on lavaland."
 
 	drone_type = /mob/living/simple_animal/hostile/mining_drone //Type of drone that will be spawned
 	seasonal_hats = FALSE //If TRUE, and there are no default hats, different holidays will grant different hats
