@@ -11,11 +11,7 @@
 	antag_flag = ROLE_TRAITOR
 	antag_datum = /datum/antagonist/traitor
 	minimum_required_age = 0
-<<<<<<< HEAD
-	protected_roles = list("Security Officer", "Warden", "Detective", "Head of Security", "Head of Personnel", "Captain", "Brig Physician") // austation -- HOP can no longer be antag
-=======
-	protected_roles = list("Security Officer", "Warden", "Detective", "Head of Security", "Captain")
->>>>>>> 8619ffb373... Makes the Brig Physician antag eligible, removes security officer specific access and items (#3561)
+	protected_roles = list("Security Officer", "Warden", "Detective", "Head of Security", "Head of Personnel", "Captain") // austation -- HOP can no longer be antag
 	restricted_roles = list("Cyborg")
 	required_candidates = 1
 	weight = 5
@@ -54,11 +50,7 @@
 	name = "Blood Brothers"
 	antag_flag = ROLE_BROTHER
 	antag_datum = /datum/antagonist/brother/
-<<<<<<< HEAD
-	protected_roles = list("Security Officer", "Warden", "Detective", "Head of Security", "Head of Personnel", "Captain", "Brig Physician") // austation -- HOP can no longer be antag
-=======
-	protected_roles = list("Security Officer", "Warden", "Detective", "Head of Security", "Captain")
->>>>>>> 8619ffb373... Makes the Brig Physician antag eligible, removes security officer specific access and items (#3561)
+	protected_roles = list("Security Officer", "Warden", "Detective", "Head of Security", "Head of Personnel", "Captain") // austation -- HOP can no longer be antag
 	restricted_roles = list("Cyborg", "AI")
 	required_candidates = 2
 	weight = 4
@@ -106,11 +98,7 @@
 	name = "Changelings"
 	antag_flag = ROLE_CHANGELING
 	antag_datum = /datum/antagonist/changeling
-<<<<<<< HEAD
-	protected_roles = list("Security Officer", "Warden", "Detective", "Head of Security", "Head of Personnel", "Captain", "Brig Physician") // austation -- HOP can no longer be antag
-=======
-	protected_roles = list("Security Officer", "Warden", "Detective", "Head of Security", "Captain")
->>>>>>> 8619ffb373... Makes the Brig Physician antag eligible, removes security officer specific access and items (#3561)
+	protected_roles = list("Security Officer", "Warden", "Detective", "Head of Security", "Head of Personnel", "Captain") // austation -- HOP can no longer be antag
 	restricted_roles = list("AI", "Cyborg")
 	required_candidates = 1
 	weight = 3
@@ -545,11 +533,7 @@
 	name = "Devil"
 	antag_flag = ROLE_DEVIL
 	antag_datum = /datum/antagonist/devil
-<<<<<<< HEAD
-	restricted_roles = list("Lawyer", "Curator", "Chaplain", "Head of Security", "Head of Personnel", "Captain", "AI", "Cyborg", "Security Officer", "Warden", "Detective", "Brig Physician") // austation -- HOP can no longer be antag
-=======
-	restricted_roles = list("Lawyer", "Curator", "Chaplain", "Head of Security", "Captain", "AI", "Cyborg", "Security Officer", "Warden", "Detective")
->>>>>>> 8619ffb373... Makes the Brig Physician antag eligible, removes security officer specific access and items (#3561)
+	restricted_roles = list("Lawyer", "Curator", "Chaplain", "Head of Security", "Head of Personnel", "Captain", "AI", "Cyborg", "Security Officer", "Warden", "Detective") // austation -- HOP can no longer be antag
 	required_candidates = 1
 	weight = 3
 	cost = 0

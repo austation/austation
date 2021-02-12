@@ -12,11 +12,7 @@
 	antag_flag = ROLE_TRAITOR
 	false_report_weight = 20 //Reports of traitors are pretty common.
 	restricted_jobs = list("Cyborg")//They are part of the AI if he is traitor so are they, they use to get double chances
-<<<<<<< HEAD
-	protected_jobs = list("Security Officer", "Warden", "Detective", "Head of Security", "Head of Personnel", "Captain", "Brig Physician") // austation -- HOP can no longer be antag
-=======
-	protected_jobs = list("Security Officer", "Warden", "Detective", "Head of Security", "Captain")
->>>>>>> 8619ffb373... Makes the Brig Physician antag eligible, removes security officer specific access and items (#3561)
+	protected_jobs = list("Security Officer", "Warden", "Detective", "Head of Security", "Head of Personnel", "Captain") // austation -- HOP can no longer be antag
 	required_players = 0
 	required_enemies = 1
 	recommended_enemies = 4
