@@ -17,13 +17,7 @@
 /////////////////////////Mining tech/////////////////////////
 
 /datum/techweb_node/basic_mining
-	id = "basic_mining"
-	display_name = "Mining Technology"
-	description = "Better than Efficiency V."
-	prereq_ids = list("engineering", "basic_plasma")
-	design_ids = list("drill", "superresonator", "triggermod", "damagemod", "cooldownmod", "rangemod", "ore_redemption", "mining_equipment_vendor", "cargoexpress", "plasmacutter", "minebot_fab") //e a r l y    g a  m e)
-	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2500)
-	export_price = 5000
+	austation_design_ids = list("minebot_fab")
 
 /datum/techweb_node/xpr_mining
 	id = "xpr_mining"
