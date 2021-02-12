@@ -1,5 +1,5 @@
 /obj/machinery/mineral/equipment_vendor/Initialize()
 	..()
 	for(var/datum/data/mining_equipment/R in prize_list)
-		if ((R.name = "Minebot Upgrade: A.I.") || (R.name = "Mining Bot Companion"))
+		if ((R.name == "Minebot Upgrade: A.I.") || (R.name == "Mining Bot Companion"))
 			prize_list.Cut(R)
