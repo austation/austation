@@ -151,7 +151,6 @@
 #include "austation\code\modules\mapping\random_rooms.dm"
 #include "austation\code\modules\mapping\writer.dm"
 #include "austation\code\modules\mining\shelters.dm"
-#include "austation\code\modules\mining\equipment\marker_beacons.dm"
 #include "austation\code\modules\mining\equipment\survival_pod.dm"
 #include "austation\code\modules\mining\lavaland\necropolis_chests.dm"
 #include "austation\code\modules\mob\mob.dm"

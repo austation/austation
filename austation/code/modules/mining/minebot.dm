@@ -2,13 +2,13 @@
 #define MINEDRONE_ATTACK 2
 
 /mob/living/simple_animal/hostile/mining_drone
-	var/beacons = 15
-	var/default_hatmask
+	var/beacons = 15  //maximum beacons that any one drone can drop
+	var/emagged = 0  //lets minebot shoot sentient life
 	var/obj/item/t_scanner/adv_mining_scanner/lesser/scanner //there is no code to turn this scanner off.
+	weather_immunities = list("ash")
 
 /mob/living/simple_animal/hostile/mining_drone/Initialize()
 	. = ..()
-	weather_immunities += "ash" // no damage from ash storms
 	stored_gun.overheat_time = 10
 
 	scanner = new(src)
@@ -16,33 +16,46 @@
 	var/datum/action/innate/minedrone/marker_beacon/beacon_action = new()
 	beacon_action.Grant(src)
 
+	if(emagged)
+		to_chat(src, "<span class='danger'>SYSTEM IRREGULARITIES DETECTED</span>")
+		to_chat(src, "<span class='warning'>Directives offline \nSeek additional instructions from the nearest <b>SYNDICATE</b> personel.</span>")
+
+/mob/living/simple_animal/hostile/mining_drone/emag_act()
+	..()
+	emagged = 1
+	to_chat(src, "<span class='danger'>SYSTEM IRREGULARITIES DETECTED</span>")
+	to_chat(src, "<span class='warning'>Directives offline \nSeek additional instructions from the nearest <b>SYNDICATE</b> personel.</span>")
+
+obj/item/gun/energy/kinetic_accelerator/minebot/afterattack(atom/target, mob/living/user, flag, params)
+	if(istype(target, /mob/living) && istype(user, /mob/living/simple_animal/hostile/mining_drone))  //Are we a minebot, firing at a mob
+		var/mob/living/M = target
+		var/mob/living/simple_animal/hostile/mining_drone/H = user
+		if((M.ckey) && (!H.emagged))  //Are we firing at sentient life without permission
+			to_chat(user, "<span class='warning'>Invalid target. \n Target is sentient. \n engaging weapon lockdown.</span>")
+			H.mode = MINEDRONE_COLLECT  //let's turn off the guns, just to be safe
+			return
+	..()
+
 /datum/action/innate/minedrone/marker_beacon
 	name = "Drop Marker"
 	button_icon_state = "mech_zoom_off"
 
 /datum/action/innate/minedrone/marker_beacon/Activate()
+	if (!istype(owner, /mob/living/simple_animal/hostile/mining_drone))  //Are we a minebot
+		return
 	var/mob/living/simple_animal/hostile/mining_drone/M = owner
-	if((!M.beacons) || (GLOB.total_beacons >= GLOB.max_beacons)) //check that we have marker beacons left, but also that there are not 100 in the world already
-		to_chat(M, "<span class='warning'>You can not place another beacon!</span>")
+	if (!M.beacons)  //Got any beacons
 		return
 	M.beacons--
 	var/obj/structure/marker_beacon/B = new(get_turf(owner))
 	to_chat(M, "<span class='notice'>You place a [B].</span>")
 	to_chat(M, "<span class='notice'>You have [M.beacons] beacons remaining.</span>")
 
-/obj/item/slimepotion/slime/sentience/mining
-	name = "minebot AI upgrade"
-	desc = "Can be used to grant sentience to minebots."
-	icon_state = "door_electronics"
-	icon = 'icons/obj/module.dmi'
-	sentience_type = SENTIENCE_MINEBOT
-
-/obj/item/slimepotion/slime/sentience/mining/after_success(mob/living/user, mob/living/simple_animal/SM)
-	return // Overrides the beecode that prevents player minebots from being upgraded.
+/obj/item/gun/energy/
 
 /mob/living/simple_animal/hostile/mining_drone/Move()
-	. = ..()
-	if(. && mode == MINEDRONE_COLLECT) // if we're collecting ore, we should do it automatically, not by clicking the ores
+	..()
+	if (. && mode == MINEDRONE_COLLECT) // if we're collecting ore, we should do it automatically, not by clicking the ores
 		CollectOre()
 
 /mob/living/simple_animal/hostile/mining_drone/DropOre(message = 1)
@@ -50,24 +63,42 @@
 	SetOffenseBehavior() // prevents the drone from picking up the ores again as it walks away
 	to_chat(src, "<span class='notice'>You resume combat protocols.</span>")
 
-/obj/item/drone_shell/minebot
-	name = "mining drone shell"
-	desc = "The shell of a mining drone; an expendable robot built to mine on lavaland."
+/obj/effect/mob_spawn/minebot  //what comes out of the minebot fab
+	name = "unactivated minebot"
+	desc = "A currently unactivated minebot. After activating, it may assist you in mining ores and fighting wildlife."
+	icon = 'icons/mob/swarmer.dmi'
+	icon_state = "swarmer_unactivated"
+	density = FALSE  //not already set, keep all this boring stuff in
+	anchored = FALSE
 
-	drone_type = /mob/living/simple_animal/hostile/mining_drone //Type of drone that will be spawned
-	seasonal_hats = FALSE //If TRUE, and there are no default hats, different holidays will grant different hats
+	mob_type = /mob/living/simple_animal/hostile/mining_drone  //what we're making
+	mob_name = "a minebot"
+	death = FALSE
+	roundstart = FALSE
+	short_desc = "You are a minebot, an expendable robot that supplies the station with ores."  //Printed in the spawner menu
+	flavour_text = {"
+	<b>You are a minebot, a cheap and expendable mining companion, the station's crew have activated you so that you will assist their mining operation.</b>
+	<b>Clicking while in combat mode will fire the PKA, a rock-breaking tool that will not target sentient creatures.</b>
+	<b>Moving while in collect mode will scoop up ores; release them by pressing the EJECT button.</b>
+	<b>Clicking on a destabilising Gibtonite ore, while in collect mode, will stabilise it.</b>
+	<b>You are immune to ash storms but be wary of lava pools.  Ask a nearby crewmember for upgrades to expand your potential.</b>
+	<b>Directives:</b>
+	1. Do not harm sentient life.  Your weapon is automatically disabled when targeting sentient life.
+	2. Follow instructions issued by Nanotrasen crewmembers, except where that would result in injuries to sentient life.
+	3. Wherever possible, mine ores from the rock walls around you and deposit those ores into an Ore Redemption Machine.
+	"}  //Printed when we spawn
 
-/obj/item/circuitboard/machine/minebot_fab
+/obj/item/circuitboard/machine/minebot_fab  //Circuitboard for the minebot fab
 	name = "Minebot shell dispenser (Machine Board)"
 	icon_state = "supply"
-	build_path = /obj/machinery/droneDispenser/minebot
+	build_path = /obj/machinery/droneDispenser/minebot  //Our dispenser
 	req_components = list(
 		/obj/item/stock_parts/manipulator = 2,
 		/obj/item/stock_parts/matter_bin = 1,
 		/obj/item/stack/sheet/glass = 5,
-		/obj/item/stack/sheet/iron = 5)
+		/obj/item/stack/sheet/iron = 5)  //5 glass and 5 iron is how much the machine starts with
 
-/datum/design/board/minebot_fab
+/datum/design/board/minebot_fab  //Lets us print the circuitboard
 	name = "Machine Design (Minebot Fabricator Board)"
 	desc = "The circuit board for a Minebot Fabricator."
 	id = "minebot_fab"
@@ -75,21 +106,16 @@
 	category = list ("Misc. Machinery")
 	departmental_flags = DEPARTMENTAL_FLAG_SCIENCE | DEPARTMENTAL_FLAG_CARGO
 
-/obj/machinery/droneDispenser/minebot
+/obj/machinery/droneDispenser/minebot  //The fabricator to build our minebots.  Builds up to 3 inert shells
 	name = "minebot shell dispenser"
 	desc = "A machine that will create mining robots when supplied with iron and glass."
-	dispense_type = /obj/item/drone_shell/minebot
-	iron_cost = 500
+	dispense_type = /obj/effect/mob_spawn/minebot
+	iron_cost = 500  //2.5 sheets of iron
 	glass_cost = 500
 	cooldownTime = 600 // 1 minute
 	end_create_message = "dispenses a mining drone shell."
-	starting_amount = 1000
+	starting_amount = 1000  //We can make 2 minebots as soon as the machine is built, but we'll need more material to build more
 	circuit = /obj/item/circuitboard/machine/minebot_fab
-
-
-/obj/item/drone_shell/minebot/attack_ghost(mob/user)
-	to_chat(user,"<span class='userdanger'>Minebots are mining assistants. \nYou are subservient to all intelligent life except other minebots. \nGather ores and defend miners.</span>")
-	..()
 
 #undef MINEDRONE_COLLECT
 #undef MINEDRONE_ATTACK
