@@ -77,14 +77,15 @@ obj/item/gun/energy/kinetic_accelerator/minebot/afterattack(atom/target, mob/liv
 	roundstart = FALSE
 	short_desc = "You are a minebot, an expendable robot that supplies the station with ores."  //Printed in the spawner menu
 	flavour_text = {"
-	<b>You are a minebot, a cheap and expendable mining companion, the station's crew have activated you so that you will assist their mining operation.</b>
-	<b>Clicking while in combat mode will fire the PKA, a rock-breaking tool that will not target sentient creatures.</b>
-	<b>Moving while in collect mode will scoop up ores; release them by pressing the EJECT button.</b>
-	<b>Clicking on a destabilising Gibtonite ore, while in collect mode, will stabilise it.</b>
-	<b>You are immune to ash storms but be wary of lava pools.  Ask a nearby crewmember for upgrades to expand your potential.</b>
-	<b>Directives:</b>
+	You are a minebot, a cheap and expendable mining companion, the station's crew have activated you so that you will assist their mining operation.
+	Clicking while in combat mode will fire the PKA, a rock-breaking tool that will not target sentient creatures.
+	Moving while in collect mode will scoop up ores; release them by pressing the EJECT button.
+	You are immune to ash storms but be wary of lava pools.
+	Ask a nearby crewmember for upgrades to expand your potential.
+
+	Directives:</b>
 	1. Do not harm sentient life.  Your weapon is automatically disabled when targeting sentient life.
-	2. Follow instructions issued by Nanotrasen crewmembers, except where that would result in injuries to sentient life.
+	2. Follow instructions issued by Nanotrasen crewmembers, except where that would be injurious to sentient life.
 	3. Wherever possible, mine ores from the rock walls around you and deposit those ores into an Ore Redemption Machine.
 	"}  //Printed when we spawn
 
