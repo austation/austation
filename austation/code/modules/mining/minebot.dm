@@ -18,7 +18,7 @@
 
 	if(emagged)
 		to_chat(src, "<span class='danger'>SYSTEM IRREGULARITIES DETECTED</span>")
-		to_chat(src, "<span class='warning'>Directives offline \nSeek additional instructions from the nearest <b>SYNDICATE</b> personel.</span>")
+		to_chat(src, "<span class='warning'>Automatic system directives unavailable.\nSeek additional instructions from the nearest <b>SYNDICATE</b> personnel.</span>")
 
 /mob/living/simple_animal/hostile/mining_drone/emag_act()
 	..()
