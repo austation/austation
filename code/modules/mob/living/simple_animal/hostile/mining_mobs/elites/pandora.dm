@@ -24,13 +24,13 @@
 	icon_aggro = "pandora"
 	icon_dead = "pandora_dead"
 	icon_gib = "syndicate_gib"
-	maxHealth = 800
-	health = 800
-	melee_damage = 15
+	maxHealth = 1200
+	health = 1200
+	melee_damage = 40
 	attacktext = "smashes into the side of"
 	attack_sound = 'sound/weapons/sonic_jackhammer.ogg'
 	throw_message = "merely dinks off of the"
-	speed = 4
+	speed = 5
 	move_to_delay = 10
 	mouse_opacity = MOUSE_OPACITY_ICON
 	deathsound = 'sound/magic/repulse.ogg'
@@ -43,7 +43,7 @@
 								/datum/action/innate/elite_attack/aoe_squares)
 
 	var/sing_shot_length = 8
-	var/cooldown_time = 20
+	var/cooldown_time = 15
 
 /datum/action/innate/elite_attack/singular_shot
 	name = "Singular Shot"
