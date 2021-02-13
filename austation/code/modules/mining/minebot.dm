@@ -1,9 +1,10 @@
 #define MINEDRONE_COLLECT 1
 #define MINEDRONE_ATTACK 2
 
+/////////////////////////  INITIAL  STUFF  /////////////////////////
 /mob/living/simple_animal/hostile/mining_drone
 	var/beacons = 15  //maximum beacons that any one drone can drop
-	var/emagged = 0  //lets minebot shoot sentient life
+	var/emagged = FALSE  //lets minebot shoot sentient life
 	var/obj/item/t_scanner/adv_mining_scanner/lesser/scanner //there is no code to turn this scanner off.
 	weather_immunities = list("ash")
 
@@ -22,9 +23,13 @@
 
 /mob/living/simple_animal/hostile/mining_drone/emag_act()
 	..()
-	emagged = 1
+	emagged = TRUE
 	to_chat(src, "<span class='danger'>SYSTEM IRREGULARITIES DETECTED</span>")
 	to_chat(src, "<span class='warning'>Directives offline \nSeek additional instructions from the nearest <b>SYNDICATE</b> personel.</span>")
+
+
+/////////////////////////  EQUIPMENT  /////////////////////////
+
 
 obj/item/gun/energy/kinetic_accelerator/minebot/afterattack(atom/target, mob/living/user, flag, params)
 	if(istype(target, /mob/living) && istype(user, /mob/living/simple_animal/hostile/mining_drone))  //Are we a minebot, firing at a mob
@@ -45,13 +50,36 @@ obj/item/gun/energy/kinetic_accelerator/minebot/afterattack(atom/target, mob/liv
 		return
 	var/mob/living/simple_animal/hostile/mining_drone/M = owner
 	if (!M.beacons)  //Got any beacons
+		to_chat(M, "<span class='warning'>You have no marker beacons remaining.</span>")
+		return
+	if(!isturf(M.loc))  //The turf exists, right?
+		to_chat(M, "<span class='warning'>You need more space to place a marker beacon here.</span>")
+		return
+	if(locate(/obj/structure/marker_beacon) in M.loc)  //Is there room for another beacon
+		to_chat(M, "<span class='warning'>There is already a marker beacon here.</span>")
 		return
 	M.beacons--
 	var/obj/structure/marker_beacon/B = new(get_turf(owner))
 	to_chat(M, "<span class='notice'>You place a [B].</span>")
-	to_chat(M, "<span class='notice'>You have [M.beacons] beacons remaining.</span>")
+	to_chat(M, "<span class='notice'>You have [M.beacons] [B]s remaining.</span>")
 
-/obj/item/gun/energy/
+/obj/structure/marker_beacon/attack_animal(mob/living/simple_animal/M)
+	if (istype(M, /mob/living/simple_animal/hostile/mining_drone))  //Are we a minebot
+		var/mob/living/simple_animal/hostile/mining_drone/user = M
+		if (user.mode == MINEDRONE_COLLECT)	  //Are we in collect mode (in attack mode, we'll just attack it)
+			if (user.beacons < 15)  // Do we have room for more?
+				user.beacons++  //Increase our inventory
+				to_chat(user, "<span class='notice'>You pick up the [src].</span>")
+				to_chat(user, "<span class='notice'>You have a total of [user.beacons] [src]s.</span>")
+				qdel(src)  //Remove the beacon from the floor
+				return
+			else
+				to_chat(user, "<span class='notice'>You already possess 15 [src]s!</span>")
+	..()
+
+
+/////////////////////////  ORES  STUFF  /////////////////////////
+
 
 /mob/living/simple_animal/hostile/mining_drone/Move()
 	..()
@@ -62,6 +90,10 @@ obj/item/gun/energy/kinetic_accelerator/minebot/afterattack(atom/target, mob/liv
 	..()
 	SetOffenseBehavior() // prevents the drone from picking up the ores again as it walks away
 	to_chat(src, "<span class='notice'>You resume combat protocols.</span>")
+
+
+/////////////////////////  TECHWEB  &  SPAWNING  /////////////////////////
+
 
 /obj/effect/mob_spawn/minebot  //what comes out of the minebot fab
 	name = "unactivated minebot"
@@ -80,10 +112,11 @@ obj/item/gun/energy/kinetic_accelerator/minebot/afterattack(atom/target, mob/liv
 	You are a minebot, a cheap and expendable mining companion, the station's crew have activated you so that you will assist their mining operation.
 	Clicking while in combat mode will fire the PKA, a rock-breaking tool that will not target sentient creatures.
 	Moving while in collect mode will scoop up ores; release them by pressing the EJECT button.
+	Clicking marker beacons in collect mode will add them to your inventory
 	You are immune to ash storms but be wary of lava pools.
 	Ask a nearby crewmember for upgrades to expand your potential.
 
-	Directives:</b>
+	Directives:
 	1. Do not harm sentient life.  Your weapon is automatically disabled when targeting sentient life.
 	2. Follow instructions issued by Nanotrasen crewmembers, except where that would be injurious to sentient life.
 	3. Wherever possible, mine ores from the rock walls around you and deposit those ores into an Ore Redemption Machine.
