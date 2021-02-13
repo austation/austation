@@ -1,0 +1,7 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - bugfix: "Null clients are now less likely to completely break roundend."
+  - bugfix: "Fixed some internal affairs objective code just... not working."
+  - bugfix: "Fixed two ambience runtimes."
+  - bugfix: "Radios will no longer runtime when we can't get their turf."
