@@ -1,4 +1,0 @@
-author: "AustationBot"
-delete-after: True
-changes: 
-  - tweak: "Grilles now take damage when a mob bumps into them."
