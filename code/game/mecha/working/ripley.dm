@@ -33,7 +33,7 @@
 		var/obj/structure/ore_box/ore_box = locate(/obj/structure/ore_box) in cargo
 		if(ore_box)
 			for(var/obj/item/stack/ore/ore in range(1, src))
-				if(ore.Adjacent(src) || ore.loc == loc) //austation - Removed the necessity for the ores to be in front of the mech.   This line checks if ores are in range to be picked up (previously they had to be in front as well)
+				if(ore.Adjacent(src) && ((get_dir(src, ore) & dir) || ore.loc == loc)) //we can reach it and it's in front of us? grab it!
 					ore.forceMove(ore_box)
 
 /obj/mecha/working/ripley/Destroy()
