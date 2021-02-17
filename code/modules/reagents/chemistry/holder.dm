@@ -350,7 +350,7 @@
 					R.on_mob_metabolize(C)
 				if(can_overdose)
 					if(R.overdose_threshold)
-						if(R.volume > R.overdose_threshold && !R.overdosed)
+						if(R.volume > R.overdose_threshold && !R.overdosed) //This is a certified AUStation code moment, PR: #3045. Changed from >= to >
 							R.overdosed = 1
 							need_mob_update += R.overdose_start(C)
 					if(R.addiction_threshold)
