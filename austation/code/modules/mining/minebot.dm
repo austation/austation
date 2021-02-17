@@ -52,14 +52,15 @@ obj/item/gun/energy/kinetic_accelerator/minebot/afterattack(atom/target, mob/liv
 	if (!M.beacons)  //Got any beacons
 		to_chat(M, "<span class='warning'>You have no marker beacons remaining.</span>")
 		return
-	if(!isturf(M.loc))  //The turf exists, right?
-		to_chat(M, "<span class='warning'>You need more space to place a marker beacon here.</span>")
+	var/turf/T = get_turf(M)
+	if(!T)  //The turf exists, right?
+		to_chat(M, "<span class='warning'>There's nowhere to place \the [B]!</span>")
 		return
-	if(locate(/obj/structure/marker_beacon) in M.loc)  //Is there room for another beacon
+	if(locate(/obj/structure/marker_beacon) in T)  //Is there room for another beacon
 		to_chat(M, "<span class='warning'>There is already a marker beacon here.</span>")
 		return
 	M.beacons--
-	var/obj/structure/marker_beacon/B = new(get_turf(owner))
+	var/obj/structure/marker_beacon/B = new(T)
 	to_chat(M, "<span class='notice'>You place a [B].</span>")
 	to_chat(M, "<span class='notice'>You have [M.beacons] [B]s remaining.</span>")
 
