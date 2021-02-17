@@ -114,6 +114,8 @@ GLOBAL_LIST_INIT(available_ui_styles, sortList(list(
 	QDEL_LIST(screenoverlays)
 	mymob = null
 
+	QDEL_NULL(screentip_text) //austation -- hover text
+
 	return ..()
 
 /mob

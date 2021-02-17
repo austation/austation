@@ -1,6 +1,7 @@
 /turf/open/floor
 	var/painted = 0
 	var/current_overlay = null
+	flags_1 = CAN_BE_DIRTY_1 | NO_SCREENTIPS_1
 
 /turf/open/floor/update_icon()
 	if(painted)
