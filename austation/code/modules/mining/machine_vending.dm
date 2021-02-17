@@ -1,8 +1,8 @@
 /obj/machinery/mineral/equipment_vendor
-	var/list/ignore_list = list(
+	var/static/list/ignore_list = list(
 		"Minebot Upgrade: A.I.",
 		"Mining Bot Companion"
-	)
+		)
 
 /obj/machinery/mineral/equipment_vendor/Initialize()
 	..()
