@@ -54,7 +54,7 @@ obj/item/gun/energy/kinetic_accelerator/minebot/afterattack(atom/target, mob/liv
 		return
 	var/turf/T = get_turf(M)
 	if(!T)  //The turf exists, right?
-		to_chat(M, "<span class='warning'>There's nowhere to place \the [B]!</span>")
+		to_chat(M, "<span class='warning'>There's nowhere to place the marker beacon!</span>")
 		return
 	if(locate(/obj/structure/marker_beacon) in T)  //Is there room for another beacon
 		to_chat(M, "<span class='warning'>There is already a marker beacon here.</span>")
@@ -109,19 +109,17 @@ obj/item/gun/energy/kinetic_accelerator/minebot/afterattack(atom/target, mob/liv
 	death = FALSE
 	roundstart = FALSE
 	short_desc = "You are a minebot, an expendable robot that supplies the station with ores."  //Printed in the spawner menu
-	flavour_text = {"
-	You are a minebot, a cheap and expendable mining companion, the station's crew have activated you so that you will assist their mining operation.
-	Clicking while in combat mode will fire the PKA, a rock-breaking tool that will not target sentient creatures.
-	Moving while in collect mode will scoop up ores; release them by pressing the EJECT button.
-	Clicking marker beacons in collect mode will add them to your inventory
-	You are immune to ash storms but be wary of lava pools.
-	Ask a nearby crewmember for upgrades to expand your potential.
-
-	Directives:
-	1. Do not harm sentient life.  Your weapon is automatically disabled when targeting sentient life.
-	2. Follow instructions issued by Nanotrasen crewmembers, except where that would be injurious to sentient life.
-	3. Wherever possible, mine ores from the rock walls around you and deposit those ores into an Ore Redemption Machine.
-	"}  //Printed when we spawn
+	flavour_text = "You are a minebot, a cheap and expendable mining companion, the station's crew have activated you so that you will assist their mining operation. \
+	Clicking while in combat mode will fire the PKA, a rock-breaking tool that will not target sentient creatures. \
+	Moving while in collect mode will scoop up ores; release them by pressing the EJECT button. \
+	Clicking marker beacons in collect mode will add them to your inventory. \
+	You are immune to ash storms but be wary of lava pools. \
+	Ask a nearby crewmember for upgrades to expand your potential. \
+	 \
+	Directives: \
+	1. Do not harm sentient life.  Your weapon is automatically disabled when targeting sentient life. \
+	2. Follow instructions issued by Nanotrasen crewmembers, except where that would be injurious to sentient life. \
+	3. Wherever possible, mine ores from the rock walls around you and deposit those ores into an Ore Redemption Machine."  //Printed when we spawn
 
 /obj/item/circuitboard/machine/minebot_fab  //Circuitboard for the minebot fab
 	name = "Minebot shell dispenser (Machine Board)"
