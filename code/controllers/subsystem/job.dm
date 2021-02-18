@@ -191,8 +191,8 @@ SUBSYSTEM_DEF(job)
 //This proc is called before the level loop of DivideOccupations() and will try to select a head, ignoring ALL non-head preferences for every level until
 //it locates a head or runs out of levels to check
 //This is basically to ensure that there's atleast a few heads in the round
-/* This is a certified AUStation coding moment, by Mudzbe. The Head and AI selection process gives the opposite of intended results, encouraging players to
-not put down AI/head in their preferences for fear of being guaranteed those positions, this is true for AUStation at least.
+/* Austation, PR: #3030 -- The Head and AI selection process gives the opposite of intended results, encouraging players to
+not put down AI/head in their preferences, for fear of being guaranteed those positions, this is true for AUStation at least.
 /datum/controller/subsystem/job/proc/FillHeadPosition()
 	for(var/level in level_order)
 		for(var/command_position in GLOB.command_positions)
@@ -244,7 +244,7 @@ not put down AI/head in their preferences for fear of being guaranteed those pos
 	if(ai_selected)
 		return 1
 	return 0
-*/
+AUStation end */
 
 /** Proc DivideOccupations
  *  fills var "assigned_role" for all ready players.
