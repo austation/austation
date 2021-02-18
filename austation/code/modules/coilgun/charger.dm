@@ -6,7 +6,7 @@
 // Also serves as the base multiplier for projectile speed increase, lower values will increase speed gain
 #define POWER_DIVIDER 100000
 
-// The max speed capacitors can recharge
+// The max speed capacitors can recharge in watts
 #define CAPACITOR_RECHARGE 50000
 
 
@@ -69,20 +69,18 @@
 		return PROCESS_KILL
 
 /obj/structure/disposalpipe/coilgun/charger/proc/can_transfer(obj/structure/disposalholder/H)
-	if(!LAZYLEN(H.contents))
-		qdel(H)
-		return FALSE
 	if(!attached)
 		var/turf/T = loc
 		attached = T.get_cable_node()
 	if(!can_charge)
 		current_power_use = 0
 		process() // runs through the process proc once to see if there is sufficient power
-	if(!(enabled && target_power_usage && can_charge && attached)) // is this enabled, do we have enough power?
-		return FALSE
-	return TRUE
+	return enabled && target_power_usage && can_charge && attached // is this enabled, do we have enough power?
 
 /obj/structure/disposalpipe/coilgun/charger/transfer(obj/structure/disposalholder/H)
+	if(!LAZYLEN(H.contents))
+		qdel(H)
+		return
 	if(!can_transfer(H))
 		return ..()
 	for(var/atom/movable/AM in H.contents) // run the loop below for every movable that passes through the charger
@@ -131,7 +129,8 @@
 
 /obj/structure/disposalpipe/coilgun/super_charger/transfer(obj/structure/disposalholder/H)
 	if(!LAZYLEN(H.contents))
-		return ..()
+		qdel(H)
+		return
 	for(var/atom/movable/AM in H.contents)
 		if(istype(AM, /obj/effect/hvp))
 			var/obj/effect/hvp/PJ = AM
