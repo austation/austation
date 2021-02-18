@@ -1,5 +1,0 @@
-author: "AustationBot"
-delete-after: True
-changes: 
-  - bugfix: "border firelocks holding Pressure after destroy"
-  - bugfix: "window doors holding Pressure after destroy"

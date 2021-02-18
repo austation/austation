@@ -1,4 +1,0 @@
-author: "AustationBot"
-delete-after: True
-changes: 
-  - bugfix: "Maybe fixed slimes sporadically no longer eating. Report it on github if this is still an issue."
