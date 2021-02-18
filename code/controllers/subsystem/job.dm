@@ -244,7 +244,7 @@ not put down AI/head in their preferences, for fear of being guaranteed those po
 	if(ai_selected)
 		return 1
 	return 0
-AUStation end */
+*/
 
 /** Proc DivideOccupations
  *  fills var "assigned_role" for all ready players.
@@ -323,7 +323,7 @@ AUStation end */
 	var/list/shuffledoccupations = shuffle(occupations)
 	for(var/level in level_order)
 		//Check the head jobs first each level
-		//CheckHeadPositions(level)
+		//CheckHeadPositions(level) -- Austation job selection change end
 
 		// Loop through all unassigned players
 		for(var/mob/dead/new_player/player in unassigned)
