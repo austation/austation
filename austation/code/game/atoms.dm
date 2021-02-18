@@ -6,7 +6,7 @@
 	..()
 
 /atom/proc/overlay_atom(atom/A, random_pos = TRUE, rotation = FALSE, checks)
-	if(!isnull(checks) && !checks)
+	if(!isnull(checks) && !checks) // todo: make this less bad or remove entirely
 		return
 	var/AX = 0
 	var/AY = 0

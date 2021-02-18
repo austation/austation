@@ -26,7 +26,7 @@
 		if(contents.len > 1) // eject objects inside of us until there's only one, if there were somehow multiple
 			O.forceMove(get_turf(src))
 			continue
-		var/req_speed = max(100 * PJ.w_class * 1.5, MIN_SPEED)
+		var/req_speed = max(100 * PJ.mass * 1.5, MIN_SPEED)
 		if(PJ.p_speed < req_speed)
 			continue
 		if(PJ.apply_special(O))
@@ -35,7 +35,7 @@
 		PJ.p_speed -= req_speed / 2
 		PJ.overlay_atom(O, rotation = TRUE)
 		if(isitem(O))
-			var/item/I = O
+			var/obj/item/I = O
 			PJ.mass += I.w_class
 		else
 			PJ.mass += 1
