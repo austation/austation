@@ -34,7 +34,7 @@
 		"<span class='notice'>something whirrs loudly</span>")  //  first line goes to anyone who can see the minebot,  the 2nd-4th lines got to the minebot itself,  the 5th line goes to blind mobs
 		icon_state = "mining_drone_offense"
 	else
-		visible_message("<span class='notice'>\the [src] shows no further reaction.","","",1)  //  only mobs within 1 tile of the minebot see this message
+		to_chat(usr,"<span class='notice'>\the [src] shows no further reaction</span>")
 
 /mob/living/simple_animal/hostile/mining_drone/SetCollectBehavior()
 	..()
