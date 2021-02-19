@@ -138,6 +138,12 @@ obj/item/gun/energy/kinetic_accelerator/minebot/afterattack(atom/target, mob/liv
 	2. Follow instructions issued by Nanotrasen crewmembers, except where that would be injurious to sentient life.\
 	3. Wherever possible, mine ores from the rock walls around you and deposit those ores into an Ore Redemption Machine."  //  printed when we spawn
 
+/obj/effect/mob_spawn/minebot/attack_hand(mob/living/user)  //  you can't pick up a mob_spawn and at first this confused me;  leaving a warning for others
+	. = ..()
+	if(.)
+		return
+	to_chat(user, "<span class='notice'>it would be best to leave this alone while we wait for it to activate.</span>")
+
 /obj/item/circuitboard/machine/minebot_fab  //  circuitboard for the minebot fab
 	name = "Minebot shell dispenser (Machine Board)"
 	icon_state = "supply"

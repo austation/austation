@@ -190,7 +190,7 @@
 			new /obj/item/storage/firstaid/brute(drop_location)
 			new /obj/item/resonator(drop_location)
 		if("Minebot Kit")
-			new /mob/living/simple_animal/hostile/mining_drone(drop_location)
+			new /obj/effect/mob_spawn/minebot(drop_location)  //  austation change - user gets a minebot shell instead of a near-useless minebot that can't become sentient
 			new /obj/item/weldingtool/hugetank(drop_location)
 			new /obj/item/clothing/head/welding(drop_location)
 			new /obj/item/borg/upgrade/modkit/minebot_passthrough(drop_location)
