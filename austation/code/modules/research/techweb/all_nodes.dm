@@ -17,7 +17,7 @@
 /////////////////////////Mining tech/////////////////////////
 
 /datum/techweb_node/basic_mining
-	austation_design_ids = list("minebot_fab")
+	austation_design_ids = list("minebot_fab")  //  adds the minebot_fab on top of the existing tech at this node
 
 /datum/techweb_node/xpr_mining
 	id = "xpr_mining"
