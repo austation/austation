@@ -51,7 +51,9 @@ obj/item/gun/energy/kinetic_accelerator/minebot/afterattack(atom/target, mob/liv
 		var/mob/living/M = target
 		var/mob/living/simple_animal/hostile/mining_drone/H = user
 		if((M.ckey) && (!H.emagged))  //Are we firing at sentient life without permission
-			to_chat(user, "<span class='warning'>Invalid target.\nTarget is sentient.\nEngaging weapon lockdown.</span>")
+			to_chat(user, "<span class='warning'>Invalid target.\
+			Target is sentient.\
+			Engaging weapon lockdown.</span>")
 			H.mode = MINEDRONE_COLLECT  //let's turn off the guns, just to be safe
 			return
 	..()

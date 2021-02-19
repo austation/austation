@@ -27,7 +27,6 @@
 	design_ids = list("mech_kinetic_accelerator", "hyperaoemod", "repeatermod", "resonatormod", "bountymod")
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 1000)
 	export_price = 5000
-	
 
 /////////////////////////Biotech/////////////////////////
 
