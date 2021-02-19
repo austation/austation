@@ -27,13 +27,14 @@
 	..()
 	if(!emagged)
 		emagged = TRUE
-		to_chat(src, "<span class='danger'>SYSTEM IRREGULARITIES DETECTED</span>\
+		visible_message("<span class='notice'>\the [src] whirrs loudly as critical safety functions are brought offline.</span>",
+		"<span class='danger'>SYSTEM IRREGULARITIES DETECTED</span>\
 		<span class='warning'>Automatic system directives unavailable.\
-		Seek additional instructions from the nearest <b>SYNDICATE</b> personnel.</span>")
-		visible_message("<span class='warning'>\the [src] whirrs loudly as critical safety functions are brought offline.</span>")
+		Seek additional instructions from the nearest <b>SYNDICATE</b> personnel.</span>",
+		"<span class='notice'>something whirrs loudly</span>")  //first line goes to anyone who can see the minebot,  the 2nd-4th lines got to the minebot itself,  the 5th line goes to blind mobs
 		icon_state = "mining_drone_offense"
 	else
-		visible_message("<span class='notice'>\the [src] shows no further reaction.")
+		visible_message("<span class='notice'>\the [src] shows no further reaction.","","",1)  // only mobs within 1 tile of the minebot see this message
 
 /mob/living/simple_animal/hostile/mining_drone/SetCollectBehavior()
 	..()
