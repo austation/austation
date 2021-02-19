@@ -1,7 +1,10 @@
 #define MINEDRONE_COLLECT 1
 #define MINEDRONE_ATTACK 2
 
+
 /////////////////////////  INITIAL  STUFF  /////////////////////////
+
+
 /mob/living/simple_animal/hostile/mining_drone
 	var/beacons = 15  //maximum beacons that any one drone can drop
 	var/emagged = FALSE  //lets minebot shoot sentient life
@@ -9,23 +12,34 @@
 	weather_immunities = list("ash")
 
 /mob/living/simple_animal/hostile/mining_drone/Initialize()
-	. = ..()
+	..()
 	stored_gun.overheat_time = 10
-
 	scanner = new(src)
 	scanner.toggle_on()
 	var/datum/action/innate/minedrone/marker_beacon/beacon_action = new()
 	beacon_action.Grant(src)
 
-	if(emagged)
-		to_chat(src, "<span class='danger'>SYSTEM IRREGULARITIES DETECTED</span>")
-		to_chat(src, "<span class='warning'>Automatic system directives unavailable.\nSeek additional instructions from the nearest <b>SYNDICATE</b> personnel.</span>")
+
+/////////////////////////  EMAG STUFF  /////////////////////////
+
 
 /mob/living/simple_animal/hostile/mining_drone/emag_act()
 	..()
-	emagged = TRUE
-	to_chat(src, "<span class='danger'>SYSTEM IRREGULARITIES DETECTED</span>")
-	to_chat(src, "<span class='warning'>Directives offline \nSeek additional instructions from the nearest <b>SYNDICATE</b> personel.</span>")
+	if(!emagged)
+		emagged = TRUE
+		to_chat(src, "<span class='danger'>SYSTEM IRREGULARITIES DETECTED</span>\
+		<span class='warning'>Automatic system directives unavailable.\
+		Seek additional instructions from the nearest <b>SYNDICATE</b> personnel.</span>")
+		visible_message("<span class='warning'>\the [src] whirrs loudly as critical safety functions are brought offline.</span>")
+		icon_state = "mining_drone_offense"
+	else
+		visible_message("<span class='notice'>\the [src] shows no further reaction.")
+
+/mob/living/simple_animal/hostile/mining_drone/SetCollectBehavior()
+	..()
+	if(emagged)
+		icon_state = "mining_drone_offense"  //  emagged minebots can not disengage their aggressive sprite (but collecting ores works just fine)
+		to_chat("<span class=warning>Your weapons are still visible, but not active</span>")
 
 
 /////////////////////////  EQUIPMENT  /////////////////////////
@@ -145,7 +159,7 @@ obj/item/gun/energy/kinetic_accelerator/minebot/afterattack(atom/target, mob/liv
 	dispense_type = /obj/effect/mob_spawn/minebot
 	iron_cost = 500  //2.5 sheets of iron
 	glass_cost = 500
-	cooldownTime = 600 // 1 minute
+	cooldownTime = 1800 // 3 minutes
 	end_create_message = "dispenses a mining drone shell."
 	starting_amount = 1000  //We can make 2 minebots as soon as the machine is built, but we'll need more material to build more
 	circuit = /obj/item/circuitboard/machine/minebot_fab
