@@ -28,12 +28,12 @@
 	var/momentum = 0
 
 /obj/effect/hvp/proc/launch()
-	momentum = mass * p_speed
-	if(momentum >= 1000)
+	momentum = mass * p_speed // hey google
+	if(momentum >= 1000) // how can I kill
 		var/turf/open/T = get_turf(src)
 		if(T.air)
 			for(var/mob/M in range(10, src))
-				shake_camera(M, 10, clamp(momentum*0.002, 0, MAX_SHAKE)) // Can you hear me? Pilot with the three strikes?
+				shake_camera(M, 10, clamp(momentum*0.002, 0, MAX_SHAKE)) // one million people?
 	if(momentum >= 1)
 		addtimer(CALLBACK(src, .proc/move), 1)
 	else
@@ -198,10 +198,10 @@
 		if(I.is_sharp())
 			special |= HVP_SHARP
 			. = TRUE
-		if(I in GLOB.hvp_bluespace)
+		if(I.type in GLOB.hvp_bluespace)
 			special |= HVP_BLUESPACE
 			. = TRUE
-		if(I in GLOB.hvp_bouncy)
+		if(I.type in GLOB.hvp_bouncy)
 			special |= HVP_BOUNCY
 			. = TRUE
 
