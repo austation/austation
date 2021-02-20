@@ -120,6 +120,8 @@
 					"name" = material_id,
 					"amount" = D.materials[material_id] / MINERAL_MATERIAL_AMOUNT,
 				))
+			var/price = materials.get_material_cost(materials_used) //I am going insane
+			material_cost += list(list("name" = "credits" "amount" = price))
 
 			//Add
 			categories_associative[cat] += list(list(
@@ -455,10 +457,8 @@
 		materials_used[used_material] = amount_needed
 
 	var/datum/bank_account/B //Austation change, PR: -- adds requirement for money
-	
-	var/price = materials.get_material_cost(materials_used) //I am going insane
 
-	if(B.adjust_money(-price)) 
+	if(B.adjust_money(-(materials.("credits"))) 
 		if(materials.has_materials(materials_used))
 			busy = TRUE
 			use_power(power)
