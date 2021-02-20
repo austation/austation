@@ -350,3 +350,13 @@
 	if(!istype(mat))
 		mat = getmaterialref(mat)
 	return(materials[mat])
+
+/// Returns the amount of each mat times it's value on the market - total cost
+/datum/component/material_container/proc/get_material_cost(var/datum/materials/mats)
+	if(!mats)
+		return FALSE
+	var/list/ore_values = list(/datum/material/iron = 1, /datum/material/glass = 1, /datum/material/copper = 5, /datum/material/plasma = 15,  /datum/material/silver = 16, /datum/material/gold = 18, /datum/material/titanium = 30, /datum/material/uranium = 30, /datum/material/diamond = 50, /datum/material/bluespace = 50, /datum/material/bananium = 60)
+	var/price
+	for(var/MAT in materials)
+		price += ore_values[MAT] * mats[MAT]
+	return price

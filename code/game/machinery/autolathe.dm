@@ -18,7 +18,8 @@
 	var/hack_wire
 	var/disable_wire
 	var/shock_wire
-
+	var/material_failure = TRUE //Austation change
+		
 	//Security modes
 	var/security_interface_locked = TRUE
 	var/hacked = FALSE
@@ -453,39 +454,53 @@
 
 		materials_used[used_material] = amount_needed
 
-	if(materials.has_materials(materials_used))
-		busy = TRUE
-		use_power(power)
-		icon_state = "autolathe_n"
-		var/time = is_stack ? 32 : (32 * coeff * multiplier) ** 0.8
-		//===Repeating mode===
-		//Remove from queue
-		if(from_build_queue)
-			build_queue[requested_design_id]["amount"] -= multiplier
-			if(build_queue[requested_design_id]["amount"] <= 0)
-				build_queue -= requested_design_id
+	var/datum/bank_account/B //Austation change, PR: -- adds requirement for money
+	
+	var/price = materials.get_material_cost(materials_used) //I am going insane
+
+	if(B.adjust_money(-price)) 
+		if(materials.has_materials(materials_used))
+			busy = TRUE
+			use_power(power)
+			icon_state = "autolathe_n"
+			var/time = is_stack ? 32 : (32 * coeff * multiplier) ** 0.8
+			//===Repeating mode===
+			//Remove from queue
+			if(from_build_queue)
+				build_queue[requested_design_id]["amount"] -= multiplier
+				if(build_queue[requested_design_id]["amount"] <= 0)
+					build_queue -= requested_design_id
+			else
+				var/list/queue_data = item_queue[requested_design_id]
+				item_queue[requested_design_id]["amount"] -= multiplier
+				var/removed = FALSE
+				if(item_queue[requested_design_id]["amount"] <= 0)
+					item_queue -= requested_design_id
+					removed = TRUE
+				//Requeue if necessary
+				if(queue_repeating || queue_data["repeating"])
+					stored_item_amount ++
+					if(removed)
+						add_to_queue(item_queue, requested_design_id, stored_item_amount, queue_data["build_mat"])
+						stored_item_amount = 0
+			//Create item and restart
+			process_completion_world_tick = world.time + time
+			total_build_time = time
+			addtimer(CALLBACK(src, .proc/make_item, power, materials_used, custom_materials, multiplier, coeff, is_stack), time)
+			addtimer(CALLBACK(src, .proc/restart_process), time + 5)
 		else
-			var/list/queue_data = item_queue[requested_design_id]
-			item_queue[requested_design_id]["amount"] -= multiplier
-			var/removed = FALSE
-			if(item_queue[requested_design_id]["amount"] <= 0)
-				item_queue -= requested_design_id
-				removed = TRUE
-			//Requeue if necessary
-			if(queue_repeating || queue_data["repeating"])
-				stored_item_amount ++
-				if(removed)
-					add_to_queue(item_queue, requested_design_id, stored_item_amount, queue_data["build_mat"])
-					stored_item_amount = 0
-		//Create item and restart
-		process_completion_world_tick = world.time + time
-		total_build_time = time
-		addtimer(CALLBACK(src, .proc/make_item, power, materials_used, custom_materials, multiplier, coeff, is_stack), time)
-		addtimer(CALLBACK(src, .proc/restart_process), time + 5)
-	else
-		say("Insufficient materials, operation will proceed when sufficient materials are available.")
-		operating = FALSE
-		wants_operate = TRUE
+			autolathe_failure(2)
+	else 
+		autolathe_failure(1)
+
+/obj/machinery/autolathe/proc/autolathe_failure(failure) 
+	if(failure == 1)
+		failure = "credits"
+	else if (failure == 2)
+		failure = "materials"
+	say("Insufficient [failure], operation will proceed when sufficient [failure] are available.")
+	operating = FALSE
+	wants_operate = TRUE //austation change end
 
 /obj/machinery/autolathe/proc/restart_process()
 	operating = FALSE
