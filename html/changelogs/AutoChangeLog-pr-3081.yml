@@ -1,0 +1,4 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - bugfix: "Pubby SM won't delam itself"
