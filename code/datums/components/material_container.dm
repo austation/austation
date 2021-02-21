@@ -280,19 +280,20 @@
 		return FALSE
 
 	for(var/x in mats) //Loop through all required materials
-		var/datum/material/req_mat = x
-		if(!istype(req_mat))
-			if(ispath(req_mat)) //Is this an actual material, or is it a category?
-				req_mat = getmaterialref(req_mat) //Get the ref
+		if(!x == "Credits")
+			var/datum/material/req_mat = x
+			if(!istype(req_mat))
+				if(ispath(req_mat)) //Is this an actual material, or is it a category?
+					req_mat = getmaterialref(req_mat) //Get the ref
 
-			else // Its a category. (For example MAT_CATEGORY_RIGID)
-				if(!has_enough_of_category(req_mat, mats[x], multiplier)) //Do we have enough of this category?
-					return FALSE
-				else
-					continue
+				else // Its a category. (For example MAT_CATEGORY_RIGID)
+					if(!has_enough_of_category(req_mat, mats[x], multiplier)) //Do we have enough of this category?
+						return FALSE
+					else
+						continue
 
-		if(!has_enough_of_material(req_mat, mats[x], multiplier))//Not a category, so just check the normal way
-			return FALSE
+			if(!has_enough_of_material(req_mat, mats[x], multiplier))//Not a category, so just check the normal way
+				return FALSE
 
 	return TRUE
 
@@ -350,13 +351,3 @@
 	if(!istype(mat))
 		mat = getmaterialref(mat)
 	return(materials[mat])
-
-/// Returns the amount of each mat times it's value on the market - total cost
-/datum/component/material_container/proc/get_material_cost(var/datum/materials/mats)
-	if(!mats)
-		return FALSE
-	var/list/ore_values = list(/datum/material/iron = 1, /datum/material/glass = 1, /datum/material/copper = 5, /datum/material/plasma = 15,  /datum/material/silver = 16, /datum/material/gold = 18, /datum/material/titanium = 30, /datum/material/uranium = 30, /datum/material/diamond = 50, /datum/material/bluespace = 50, /datum/material/bananium = 60)
-	var/price
-	for(var/MAT in materials)
-		price += ore_values[MAT] * mats[MAT]
-	return price

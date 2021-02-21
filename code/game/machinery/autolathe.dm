@@ -18,8 +18,8 @@
 	var/hack_wire
 	var/disable_wire
 	var/shock_wire
-	var/material_failure = TRUE //Austation change
-		
+	var/material_failure = TRUE
+
 	//Security modes
 	var/security_interface_locked = TRUE
 	var/hacked = FALSE
@@ -48,6 +48,7 @@
 	var/output_direction = 0
 	var/obj/item/disk/design_disk/inserted_disk
 
+	
 	//A list of all the printable items
 
 	//Queue items
@@ -114,14 +115,18 @@
 				categories_associative[cat] = list()
 
 			//Calculate cost
+			var/price = 0
 			var/list/material_cost = list()
 			for(var/material_id in D.materials)
+				price += D.materials[material_id] / 100 // 2000x/y (2000 - 2000 mats per sheet, x - amount of mat, y - factor)
+				if((D.materials[material_id] / 100) < 5) //To ensure the price isnt too low. It doesnt matter if it adds greater than 5 :)
+					price += 5
 				material_cost += list(list(
 					"name" = material_id,
 					"amount" = D.materials[material_id] / MINERAL_MATERIAL_AMOUNT,
 				))
-			var/price = materials.get_material_cost(materials_used) //I am going insane
-			material_cost += list(list("name" = "credits" "amount" = price))
+			
+			material_cost += list(list("name" = "Credits", "amount" = price))
 
 			//Add
 			categories_associative[cat] += list(list(
@@ -129,7 +134,7 @@
 				"design_id" = D.id,
 				"material_cost" = material_cost,
 			))
-
+			
 	//Categories and their items
 	for(var/category in categories_associative)
 		data["items"] += list(list(
@@ -430,6 +435,7 @@
 	var/total_amount = 0
 
 	for(var/MAT in being_built.materials)
+		if(!being_built.materials)
 		total_amount += being_built.materials[MAT]
 
 	var/power = max(AUTOLATHE_MAX_POWER_USE, (total_amount)*multiplier/5) //Change this to use all materials
@@ -440,25 +446,26 @@
 	var/list/custom_materials = list() //These will apply their material effect, This should usually only be one.
 
 	for(var/MAT in being_built.materials)
-		var/datum/material/used_material = MAT
-		var/amount_needed = being_built.materials[MAT] * coeff * multiplier
-		if(istext(used_material)) //This means its a category
-			if(from_build_queue)
-				used_material = build_queue[requested_design_id]["build_mat"]
-			else
-				used_material = item_queue[requested_design_id]["build_mat"]
-			if(!used_material)
-				build_queue -= requested_design_id
-				item_queue -= requested_design_id
-				addtimer(CALLBACK(src, .proc/restart_process), 50)
-				return //Didn't pick any material, so you can't build shit either.
-			custom_materials[used_material] += amount_needed
+		if(!being_built.materials == "Credits")
+			var/datum/material/used_material = MAT
+			var/amount_needed = being_built.materials[MAT] * coeff * multiplier
+			if(istext(used_material)) //This means its a category
+				if(from_build_queue)
+					used_material = build_queue[requested_design_id]["build_mat"]
+				else
+					used_material = item_queue[requested_design_id]["build_mat"]
+				if(!used_material)
+					build_queue -= requested_design_id
+					item_queue -= requested_design_id
+					addtimer(CALLBACK(src, .proc/restart_process), 50)
+					return //Didn't pick any material, so you can't build shit either.
+				custom_materials[used_material] += amount_needed
 
-		materials_used[used_material] = amount_needed
+			materials_used[used_material] = amount_needed
 
-	var/datum/bank_account/B //Austation change, PR: -- adds requirement for money
+	var/datum/bank_account/B //Austation change
 
-	if(B.adjust_money(-(materials.("credits"))) 
+	if(B.adjust_money(-(materials["credits"]))) 
 		if(materials.has_materials(materials_used))
 			busy = TRUE
 			use_power(power)
