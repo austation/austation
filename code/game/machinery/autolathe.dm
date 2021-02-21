@@ -18,7 +18,10 @@
 	var/hack_wire
 	var/disable_wire
 	var/shock_wire
+
+	//Austation vars
 	var/material_failure = TRUE
+	var/price_factor = 50
 
 	//Security modes
 	var/security_interface_locked = TRUE
@@ -99,7 +102,7 @@
 	viewing_mobs -= user
 
 /obj/machinery/autolathe/ui_static_data(mob/user)
-	var/list/data = list()
+	var/list/data = list()	
 	data["acceptsDisk"] = TRUE
 
 	//Items
@@ -115,17 +118,22 @@
 				categories_associative[cat] = list()
 
 			//Calculate cost
-			var/price = 0
-			var/list/material_cost = list()
-			for(var/material_id in D.materials)
-				price += D.materials[material_id] / 100 // 2000x/y (2000 - 2000 mats per sheet, x - amount of mat, y - factor)
-				if((D.materials[material_id] / 100) < 5) //To ensure the price isnt too low. It doesnt matter if it adds greater than 5 :)
-					price += 5
-				material_cost += list(list(
-					"name" = material_id,
-					"amount" = D.materials[material_id] / MINERAL_MATERIAL_AMOUNT,
-				))
 			
+			var/price = 0	
+			
+			var/list/material_cost = list()
+			
+			for(var/material_id in D.materials)
+				if(material_id != "rigid material")
+					price += D.materials[material_id] / price_factor // also multiplied by 2000, since there are 2000 mat units in a sheet
+					material_cost += list(list(
+						"name" = material_id,
+						"amount" = D.materials[material_id] / MINERAL_MATERIAL_AMOUNT,))
+				else
+					price += D.materials[material_id] / price_factor
+
+			if(price < 10) //To ensure the price isnt too low. It doesnt matter if it adds greater than 10 :)
+				price += 10
 			material_cost += list(list("name" = "Credits", "amount" = price))
 
 			//Add
@@ -436,7 +444,7 @@
 
 	for(var/MAT in being_built.materials)
 		if(!being_built.materials)
-		total_amount += being_built.materials[MAT]
+			total_amount += being_built.materials[MAT]
 
 	var/power = max(AUTOLATHE_MAX_POWER_USE, (total_amount)*multiplier/5) //Change this to use all materials
 
@@ -445,59 +453,74 @@
 	var/list/materials_used = list()
 	var/list/custom_materials = list() //These will apply their material effect, This should usually only be one.
 
+	var/price = 0
+
 	for(var/MAT in being_built.materials)
-		if(!being_built.materials == "Credits")
-			var/datum/material/used_material = MAT
-			var/amount_needed = being_built.materials[MAT] * coeff * multiplier
-			if(istext(used_material)) //This means its a category
-				if(from_build_queue)
-					used_material = build_queue[requested_design_id]["build_mat"]
-				else
-					used_material = item_queue[requested_design_id]["build_mat"]
-				if(!used_material)
-					build_queue -= requested_design_id
-					item_queue -= requested_design_id
-					addtimer(CALLBACK(src, .proc/restart_process), 50)
-					return //Didn't pick any material, so you can't build shit either.
-				custom_materials[used_material] += amount_needed
-
-			materials_used[used_material] = amount_needed
-
-	var/datum/bank_account/B //Austation change
-
-	if(B.adjust_money(-(materials["credits"]))) 
-		if(materials.has_materials(materials_used))
-			busy = TRUE
-			use_power(power)
-			icon_state = "autolathe_n"
-			var/time = is_stack ? 32 : (32 * coeff * multiplier) ** 0.8
-			//===Repeating mode===
-			//Remove from queue
+		price += being_built.materials[MAT] / price_factor
+		var/datum/material/used_material = MAT
+		var/amount_needed = being_built.materials[MAT] * coeff * multiplier
+		if(istext(used_material)) //This means its a category
 			if(from_build_queue)
-				build_queue[requested_design_id]["amount"] -= multiplier
-				if(build_queue[requested_design_id]["amount"] <= 0)
-					build_queue -= requested_design_id
+				used_material = build_queue[requested_design_id]["build_mat"]
 			else
-				var/list/queue_data = item_queue[requested_design_id]
-				item_queue[requested_design_id]["amount"] -= multiplier
-				var/removed = FALSE
-				if(item_queue[requested_design_id]["amount"] <= 0)
-					item_queue -= requested_design_id
-					removed = TRUE
-				//Requeue if necessary
-				if(queue_repeating || queue_data["repeating"])
-					stored_item_amount ++
-					if(removed)
-						add_to_queue(item_queue, requested_design_id, stored_item_amount, queue_data["build_mat"])
-						stored_item_amount = 0
-			//Create item and restart
-			process_completion_world_tick = world.time + time
-			total_build_time = time
-			addtimer(CALLBACK(src, .proc/make_item, power, materials_used, custom_materials, multiplier, coeff, is_stack), time)
-			addtimer(CALLBACK(src, .proc/restart_process), time + 5)
+				used_material = item_queue[requested_design_id]["build_mat"]
+			if(!used_material)
+				build_queue -= requested_design_id
+				item_queue -= requested_design_id
+				addtimer(CALLBACK(src, .proc/restart_process), 50)
+				return //Didn't pick any material, so you can't build shit either.
+			custom_materials[used_material] += amount_needed
+		materials_used[used_material] = amount_needed
+
+	if(price < 10) //To ensure the price isnt too low. It doesnt matter if it adds greater than 10 :)
+		price += 10
+
+	var/datum/bank_account/B
+
+	if(ishuman(usr))
+		var/mob/living/carbon/human/H = usr
+		var/obj/item/card/id/C = H.get_idcard(TRUE)
+		B = C.registered_account	
+	else if(issilicon(usr))
+		B = SSeconomy.get_dep_account(ACCOUNT_CIV)
+
+	if(B)
+		if(materials.has_materials(materials_used))
+			if(B.adjust_money(-price)) 
+				busy = TRUE
+				use_power(power)
+				icon_state = "autolathe_n"
+				var/time = is_stack ? 32 : (32 * coeff * multiplier) ** 0.8
+				//===Repeating mode===
+				//Remove from queue
+				if(from_build_queue)
+					build_queue[requested_design_id]["amount"] -= multiplier
+					if(build_queue[requested_design_id]["amount"] <= 0)
+						build_queue -= requested_design_id
+				else
+					var/list/queue_data = item_queue[requested_design_id]
+					item_queue[requested_design_id]["amount"] -= multiplier
+					var/removed = FALSE
+					if(item_queue[requested_design_id]["amount"] <= 0)
+						item_queue -= requested_design_id
+						removed = TRUE
+					//Requeue if necessary
+					if(queue_repeating || queue_data["repeating"])
+						stored_item_amount ++
+						if(removed)
+							add_to_queue(item_queue, requested_design_id, stored_item_amount, queue_data["build_mat"])
+							stored_item_amount = 0
+				//Create item and restart
+				process_completion_world_tick = world.time + time
+				total_build_time = time
+				addtimer(CALLBACK(src, .proc/make_item, power, materials_used, custom_materials, multiplier, coeff, is_stack), time)
+				addtimer(CALLBACK(src, .proc/restart_process), time + 5)
+			else 
+				autolathe_failure(1)
 		else
 			autolathe_failure(2)
-	else 
+	else
+		message_admins("No detected bank account, calling failure proc")
 		autolathe_failure(1)
 
 /obj/machinery/autolathe/proc/autolathe_failure(failure) 
@@ -505,9 +528,9 @@
 		failure = "credits"
 	else if (failure == 2)
 		failure = "materials"
-	say("Insufficient [failure], operation will proceed when sufficient [failure] are available.")
-	operating = FALSE
-	wants_operate = TRUE //austation change end
+		wants_operate = TRUE
+	say("Insufficient [failure], operation will proceed when sufficient [failure] are made available.")
+	operating = FALSE //austation change end
 
 /obj/machinery/autolathe/proc/restart_process()
 	operating = FALSE
