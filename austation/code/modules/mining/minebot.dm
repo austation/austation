@@ -27,7 +27,7 @@
 	..()
 	if(!emagged)
 		emagged = TRUE
-		visible_message("<span class='notice'>\the [src] whirrs loudly as critical safety functions are brought offline.</span>",
+		visible_message("<span class='notice'>\The [src] whirrs loudly as critical safety functions are brought offline.</span>",
 		"<span class='danger'>SYSTEM IRREGULARITIES DETECTED</span>\
 		<span class='warning'>Automatic system directives unavailable.\
 		Seek additional instructions from the nearest <b>SYNDICATE</b> personnel.</span>",
