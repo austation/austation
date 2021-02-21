@@ -51,9 +51,7 @@
 		var/mob/living/M = target
 		var/mob/living/simple_animal/hostile/mining_drone/H = user
 		if(M.ckey && !H.emagged)  //  are we firing at sentient life without permission?
-			to_chat(user, "<span class='warning'>Invalid target.\
-			Target is sentient.\
-			Engaging weapon lockdown.</span>")
+			to_chat(user, "<span class='warning'>Sentienct target detected; Engaging weapon lockdown.</span>")
 			H.mode = MINEDRONE_COLLECT  //  let's turn off the guns, as the warning suggests
 			return
 	..()
@@ -78,8 +76,8 @@
 		return
 	M.beacons--
 	var/obj/structure/marker_beacon/B = new(T)
-	to_chat(M, "<span class='notice'>You place a [B].</span>")
-	to_chat(M, "<span class='notice'>You have [M.beacons] [B]s remaining.</span>")
+	to_chat(M, "<span class='notice'>You place a [B].\
+	You have [M.beacons] [B]s remaining.</span>")
 
 /obj/structure/marker_beacon/attack_animal(mob/living/simple_animal/M)
 	if (istype(M, /mob/living/simple_animal/hostile/mining_drone))  //  are we a minebot?
@@ -87,13 +85,13 @@
 		if (user.mode == MINEDRONE_COLLECT)	  //  are we in collect mode? (in attack mode, we'll just attack it)
 			if (user.beacons < 15)  //  do we have room for more?
 				user.beacons++  //  increase our inventory
-				to_chat(user, "<span class='notice'>You pick up the [src].</span>")
-				to_chat(user, "<span class='notice'>You have a total of [user.beacons] [src]s.</span>")
+				to_chat(user, "<span class='notice'>You pick up the [src].\
+				You have a total of [user.beacons] [src]s.</span>")
 				qdel(src)  //  remove the beacon from the floor
 				return
 			else
 				to_chat(user, "<span class='notice'>You already possess 15 [src]s!</span>")
-	..()
+	return ..()
 
 
 /////////////////////////  ORES  STUFF  /////////////////////////
