@@ -100,7 +100,7 @@
 
 
 /mob/living/simple_animal/hostile/mining_drone/Move()
-	..()
+	. = ..()
 	if (. && mode == MINEDRONE_COLLECT)  //  if we're collecting ore, we should do it automatically, not by clicking the ores
 		CollectOre()
 
