@@ -1,0 +1,18 @@
+author: "Ohagi-Chan"
+delete-after: True
+changes: 
+  - rscadd: "new machine, minebot fabricator.  produces up to 3 minebot shells, 1 minute apart, for 500 metal and glass"
+  - rscadd: "new minebot spawner effect: produces a minebot when possessed by a ghost"
+  - rscadd: "new minebot fabricator researchable with Mining Technology"
+  - rscadd: "each minebot can now deploy up to 15 marker beacons at will"
+  - rscadd: "minebots can now collect marker beacons by clicking them in Collect mode"
+  - rscadd: "minebots now have a mining scanner built into them"
+  - rscdel: "removed minebots from the mining rewards vendor"
+  - rscdel: "removed minebot AI upgrade from the mining rewards vendor"
+  - tweak: "minebots now pick up ores as they walk past them in collect mode"
+  - tweak: "minebots change to combat mode after dumping ores"
+  - balance: "sentient minebots may be upgraded with consumable upgrade boards"
+  - balance: "minebot's internal KPA now fires twice as often"
+  - balance: "minebots are now immune to ash storms"
+  - balance: "minebots may not fire at sentient targets unless emagged"
+  - balance: "minebots may not adopt the Collect spriteset after being emagged.  They will look aggressive even in collect mode"
