@@ -24,7 +24,6 @@
 
 
 /mob/living/simple_animal/hostile/mining_drone/emag_act()
-	..()
 	if(!emagged)
 		emagged = TRUE
 		visible_message("<span class='notice'>\The [src] whirrs loudly as critical safety functions are brought offline.</span>",
