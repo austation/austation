@@ -27,14 +27,14 @@
 	..()
 	if(!emagged)
 		emagged = TRUE
-		visible_message("<span class='notice'>\the [src] whirrs loudly as critical safety functions are brought offline.</span>",
+		visible_message("<span class='notice'>\The [src] whirrs loudly as critical safety functions are brought offline.</span>",
 		"<span class='danger'>SYSTEM IRREGULARITIES DETECTED</span>\
 		<span class='warning'>Automatic system directives unavailable.\
 		Seek additional instructions from the nearest <b>SYNDICATE</b> personnel.</span>",
 		"<span class='notice'>something whirrs loudly</span>")  //  first line goes to anyone who can see the minebot,  the 2nd-4th lines got to the minebot itself,  the 5th line goes to blind mobs
 		icon_state = "mining_drone_offense"
 	else
-		to_chat(usr,"<span class='notice'>\the [src] shows no further reaction</span>")
+		to_chat(usr,"<span class='notice'>\the [src]'s safeties have already been removed.</span>")
 
 /mob/living/simple_animal/hostile/mining_drone/SetCollectBehavior()
 	..()
@@ -98,7 +98,7 @@
 
 
 /mob/living/simple_animal/hostile/mining_drone/Move()
-	..()
+	. = ..()
 	if (. && mode == MINEDRONE_COLLECT)  //  if we're collecting ore, we should do it automatically, not by clicking the ores
 		CollectOre()
 
