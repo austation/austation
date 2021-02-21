@@ -225,3 +225,11 @@
 	body_parts_covered = CHEST|GROIN|ARMS
 	can_adjust = FALSE
 	fitted = FEMALE_UNIFORM_TOP
+
+/obj/item/clothing/under/rank/civilian/janitor/latex
+	name = "Latex Maid Costume"
+	desc = "A maid costume made with latex. Possibly practical?"
+	icon = 'austation/icons/obj/clothing/uniforms.dmi'
+	alternate_worn_icon = 'austation/icons/mob/uniform.dmi'
+	icon_state = "latexmaid"
+	item_state = "latexmaid"

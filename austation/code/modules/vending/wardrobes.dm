@@ -32,6 +32,8 @@
 
 /obj/machinery/vending/wardrobe/jani_wardrobe
 	aus_products = list(/obj/item/clothing/under/rank/civilian/janitor/skirt = 2)
+	aus_contraband = list(/obj/item/clothing/under/rank/civilian/janitor/latex = 1,
+						  /obj/item/clothing/gloves/color/blatex = 1)
 
 /obj/machinery/vending/wardrobe/law_wardrobe
 	aus_products = list(/obj/item/clothing/under/rank/civilian/lawyer/black/skirt = 1,
