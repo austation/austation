@@ -233,3 +233,6 @@
 	alternate_worn_icon = 'austation/icons/mob/uniform.dmi'
 	icon_state = "latexmaid"
 	item_state = "latexmaid"
+	body_parts_covered = CHEST|GROIN
+	fitted = FEMALE_UNIFORM_TOP
+	can_adjust = FALSE
