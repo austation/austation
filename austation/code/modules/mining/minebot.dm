@@ -46,7 +46,7 @@
 /////////////////////////  EQUIPMENT  /////////////////////////
 
 
-obj/item/gun/energy/kinetic_accelerator/minebot/afterattack(atom/target, mob/living/user, flag, params)
+/obj/item/gun/energy/kinetic_accelerator/minebot/afterattack(atom/target, mob/living/user, flag, params)
 	if(istype(target, /mob/living) && istype(user, /mob/living/simple_animal/hostile/mining_drone))  //  are we a minebot, firing at a mob?
 		var/mob/living/M = target
 		var/mob/living/simple_animal/hostile/mining_drone/H = user
