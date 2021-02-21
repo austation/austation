@@ -50,7 +50,7 @@ obj/item/gun/energy/kinetic_accelerator/minebot/afterattack(atom/target, mob/liv
 	if(istype(target, /mob/living) && istype(user, /mob/living/simple_animal/hostile/mining_drone))  //  are we a minebot, firing at a mob?
 		var/mob/living/M = target
 		var/mob/living/simple_animal/hostile/mining_drone/H = user
-		if((M.ckey) && (!H.emagged))  //  are we firing at sentient life without permission?
+		if(M.ckey && !H.emagged)  //  are we firing at sentient life without permission?
 			to_chat(user, "<span class='warning'>Invalid target.\
 			Target is sentient.\
 			Engaging weapon lockdown.</span>")
