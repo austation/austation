@@ -280,20 +280,19 @@
 		return FALSE
 
 	for(var/x in mats) //Loop through all required materials
-		if(!x == "Credits")
-			var/datum/material/req_mat = x
-			if(!istype(req_mat))
-				if(ispath(req_mat)) //Is this an actual material, or is it a category?
-					req_mat = getmaterialref(req_mat) //Get the ref
+		var/datum/material/req_mat = x
+		if(!istype(req_mat))
+			if(ispath(req_mat)) //Is this an actual material, or is it a category?
+				req_mat = getmaterialref(req_mat) //Get the ref
 
-				else // Its a category. (For example MAT_CATEGORY_RIGID)
-					if(!has_enough_of_category(req_mat, mats[x], multiplier)) //Do we have enough of this category?
-						return FALSE
-					else
-						continue
+			else // Its a category. (For example MAT_CATEGORY_RIGID)
+				if(!has_enough_of_category(req_mat, mats[x], multiplier)) //Do we have enough of this category?
+					return FALSE
+				else
+					continue
 
-			if(!has_enough_of_material(req_mat, mats[x], multiplier))//Not a category, so just check the normal way
-				return FALSE
+		if(!has_enough_of_material(req_mat, mats[x], multiplier))//Not a category, so just check the normal way
+			return FALSE
 
 	return TRUE
 
