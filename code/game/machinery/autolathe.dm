@@ -19,10 +19,6 @@
 	var/disable_wire
 	var/shock_wire
 
-	//Austation vars
-	var/material_failure = TRUE
-	var/price_factor = 50
-
 	//Security modes
 	var/security_interface_locked = TRUE
 	var/hacked = FALSE
@@ -51,7 +47,6 @@
 	var/output_direction = 0
 	var/obj/item/disk/design_disk/inserted_disk
 
-	
 	//A list of all the printable items
 
 	//Queue items
@@ -120,21 +115,19 @@
 				categories_associative[cat] = list()
 
 			//Calculate cost
-			
 			var/price = 0	
-			
 			var/list/material_cost = list()
 			
 			for(var/material_id in D.materials)
 				if(material_id != "rigid material")
-					price += ore_values["[material_id]"] * D.materials[material_id] / price_factor // also multiplied by 2000, since there are 2000 mat units in a sheet
+					price += ore_values["[material_id]"] * D.materials[material_id] / 50 // also multiplied by 2000, since there are 2000 mat units in a sheet
 					material_cost += list(list(
 						"name" = material_id,
 						"amount" = D.materials[material_id] / MINERAL_MATERIAL_AMOUNT,))
 				else
-					price += D.materials[material_id] / price_factor
+					price += D.materials[material_id] / 50
 
-			if(price < 10) //To ensure the price isnt too low. It doesnt matter if it adds greater than 10 :)
+			if(price < 10) //To ensure the price isnt too low.
 				price += 10
 			material_cost += list(list("name" = "Credits", "amount" = price))
 
@@ -457,10 +450,9 @@
 
 	var/list/ore_values = list(iron = 1, glass = 1, copper = 5, plasma = 15, silver = 16, gold = 18, titanium = 30, uranium = 30, diamond = 50, bluespace = 50, bananium = 60)
 
-	//Austation change 
 	var/price = 0 
 	for(var/MAT in being_built.materials)
-		price += ore_values["[MAT]"] * being_built.materials[MAT] / price_factor
+		price += ore_values["[MAT]"] * being_built.materials[MAT] / 50
 		var/datum/material/used_material = MAT
 		var/amount_needed = being_built.materials[MAT] * coeff * multiplier
 		if(istext(used_material)) //This means its a category
@@ -535,7 +527,7 @@
 	else if (failure == 3)
 		failure = "credits"
 	say("Insufficient [failure], operation will proceed when sufficient [failure] are made available.")
-	operating = FALSE //austation change end
+	operating = FALSE
 
 /obj/machinery/autolathe/proc/restart_process()
 	operating = FALSE
