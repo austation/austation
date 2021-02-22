@@ -1,5 +1,0 @@
-author: "AustationBot"
-delete-after: True
-changes: 
-  - rscadd: "Added an air alarm to the Morgue on Box Station"
-  - rscadd: "Added vent scrubbers and vent pumps to autopsy rooms"

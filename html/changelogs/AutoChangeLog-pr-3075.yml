@@ -1,4 +1,0 @@
-author: "AustationBot"
-delete-after: True
-changes: 
-  - code_imp: "Improves clockie code to allow for scripture generation if spawned on a non-clockie round."
