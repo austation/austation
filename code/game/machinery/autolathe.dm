@@ -105,6 +105,8 @@
 	var/list/data = list()	
 	data["acceptsDisk"] = TRUE
 
+	var/list/ore_values = list(iron = 1, glass = 1, copper = 5, plasma = 15, silver = 16, gold = 18, titanium = 30, uranium = 30, diamond = 50, bluespace = 50, bananium = 60)
+
 	//Items
 	data["items"] = list()
 	var/list/categories_associative = list()
@@ -125,7 +127,7 @@
 			
 			for(var/material_id in D.materials)
 				if(material_id != "rigid material")
-					price += D.materials[material_id] / price_factor // also multiplied by 2000, since there are 2000 mat units in a sheet
+					price += ore_values["[material_id]"] * D.materials[material_id] / price_factor // also multiplied by 2000, since there are 2000 mat units in a sheet
 					material_cost += list(list(
 						"name" = material_id,
 						"amount" = D.materials[material_id] / MINERAL_MATERIAL_AMOUNT,))
@@ -453,10 +455,12 @@
 	var/list/materials_used = list()
 	var/list/custom_materials = list() //These will apply their material effect, This should usually only be one.
 
-	var/price = 0
+	var/list/ore_values = list(iron = 1, glass = 1, copper = 5, plasma = 15, silver = 16, gold = 18, titanium = 30, uranium = 30, diamond = 50, bluespace = 50, bananium = 60)
 
+	//Austation change 
+	var/price = 0 
 	for(var/MAT in being_built.materials)
-		price += being_built.materials[MAT] / price_factor
+		price += ore_values["[MAT]"] * being_built.materials[MAT] / price_factor
 		var/datum/material/used_material = MAT
 		var/amount_needed = being_built.materials[MAT] * coeff * multiplier
 		if(istext(used_material)) //This means its a category
