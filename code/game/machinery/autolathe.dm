@@ -520,19 +520,20 @@
 				addtimer(CALLBACK(src, .proc/make_item, power, materials_used, custom_materials, multiplier, coeff, is_stack), time)
 				addtimer(CALLBACK(src, .proc/restart_process), time + 5)
 			else 
-				autolathe_failure(1)
+				autolathe_failure(3)
 		else
 			autolathe_failure(2)
 	else
-		message_admins("No detected bank account, calling failure proc")
 		autolathe_failure(1)
 
 /obj/machinery/autolathe/proc/autolathe_failure(failure) 
 	if(failure == 1)
-		failure = "credits"
+		failure = "bank credentials"
 	else if (failure == 2)
 		failure = "materials"
 		wants_operate = TRUE
+	else if (failure == 3)
+		failure = "credits"
 	say("Insufficient [failure], operation will proceed when sufficient [failure] are made available.")
 	operating = FALSE //austation change end
 
