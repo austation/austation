@@ -28,8 +28,7 @@
 	var/list/incompatible = list()  //  this list blacklists new mods from being added (such as gun upgrades for weapons you do not have equipped)
 
 /obj/item/minebot_upgrade/proc/is_minebotgun()
-	if(upgrade_id in GUNTYPES)
-		return TRUE
+	return upgrade_id in GUNTYPES
 
 /obj/item/minebot_upgrade/proc/is_minebotgun_upg()
 	return upgrade_id in GUN_UPGRADES
