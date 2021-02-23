@@ -58,7 +58,9 @@
 /obj/item/minebot_upgrade/proc/uninstall(mob/living/simple_animal/hostile/mining_drone/M, mob/user)
 	if(!get_turf(M))
 		if(is_minebotgun())
-			to_chat(user, "<span class='warning'>there is no room to uninstall [is_minebotgun() ? \the [M]'s previous gun." : \the [src]]</span>")
+			to_chat(user, "<span class='warning'>there is no room to uninstall \the [M]'s previous gun.</span>")
+		else
+			to_chat(user, "<span class='warning'>there is no room to uninstall \the [src]</span>")
 		return
 	var/turf/T = get_turf(M)
 	var/obj/item/gun/energy/E
@@ -244,7 +246,7 @@
 	if(uninstall(M, user))
 		M.minebot_gun = new /obj/item/gun/energy/kinetic_accelerator(src)
 	else
-		to_chat(user, "<span class='notice'the previous weapon was not uninstalled.</span>")
+		to_chat(user, "<span class='notice'>The previous weapon was not uninstalled.</span>")
 
 
 #undef MBU_MELEE

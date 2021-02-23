@@ -44,7 +44,7 @@
 		"<span class='danger'>SYSTEM IRREGULARITIES DETECTED</span>\
 		<span class='warning'>Automatic system directives unavailable.\
 		Seek additional instructions from the nearest <b>SYNDICATE</b> personnel.</span>",
-		"<span class='notice'>something whirrs loudly</span>")  //  first line goes to anyone who can see the minebot,  the 2nd-4th lines got to the minebot itself,  the 5th line goes to blind mobs
+		"<span class='notice'>Something whirrs loudly</span>")  //  first line goes to anyone who can see the minebot,  the 2nd-4th lines got to the minebot itself,  the 5th line goes to blind mobs
 		icon_state = "mining_drone_offense"
 	else
 		to_chat(usr,"<span class='notice'>\the [src]'s safeties have already been removed.</span>")
@@ -86,13 +86,13 @@
 /mob/living/simple_animal/hostile/mining_drone/attackby(obj/item/I, mob/user, params)
 	. = ..()
 	if(istype(I, /obj/item/crowbar))
-		to_chat(user, "<span class='notice'you begin levering out all of [src]'s upgrades...</span>")
+		to_chat(user, "<span class='notice'You begin levering out all of [src]'s upgrades...</span>")
 		if(!src.upgrades_list)
-			to_chat(user, "<span class='notice'but there was nothing to remove.</span>")
+			to_chat(user, "<span class='notice'but there was nothing to remove.</span>")  //  The end of the previous sentence.  no need to capitalise
 			return
 		for(var/obj/item/minebot_upgrade/upgrade in src.upgrades_list)
 			if(upgrade.is_minebotgun())
-				to_chat(user, "<span class='notice'could not remove the [upgrade] weapon from [src]; replace it with another conversion kit.")
+				to_chat(user, "<span class='notice'You could not remove the [upgrade] weapon from [src]; replace it with another conversion kit.")
 				continue
 			upgrade.uninstall(src, user)
 
@@ -180,7 +180,7 @@
 	. = ..()
 	if(.)
 		return
-	to_chat(user, "<span class='notice'>it would be best to leave this alone while we wait for it to activate.</span>")
+	to_chat(user, "<span class='notice'>It would be best to leave this alone while we wait for it to activate.</span>")
 
 /obj/item/circuitboard/machine/minebot_fab  //  circuitboard for the minebot fab
 	name = "Minebot shell dispenser (Machine Board)"
