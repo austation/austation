@@ -21,8 +21,8 @@
 
 /obj/item/minebot_upgrade  //  can't use mine_bot_upgrade because existing definitions conflict with what we want to do
 	name = "minebot upgrade"
-	icon_state = "door_electronics"
 	icon = 'icons/obj/module.dmi'
+	icon_state = "door_electronics"
 	var/weight = 0  //  how many mod slots the upgrade takes up.  each minebot can only install mods until the total weight is 3
 	var/upgrade_id = null  //  populate with the DEFINES above, they point to the class of the upgrade
 	var/list/incompatible = list()  //  this list blacklists new mods from being added (such as gun upgrades for weapons you do not have equipped)
