@@ -58,9 +58,7 @@
 /obj/item/minebot_upgrade/proc/uninstall(mob/living/simple_animal/hostile/mining_drone/M, mob/user)
 	if(!get_turf(M))
 		if(is_minebotgun())
-			to_chat(user, "<span class='warning'there is no room to uninstall the [M]'s previous gun.</span>")
-		else
-			to_chat(user, "<span class='warning'there is no room to uninstall the [src].</span>")
+			to_chat(user, "<span class='warning'>there is no room to uninstall [is_minebotgun() ? \the [M]'s previous gun." : \the [src]]</span>")
 		return
 	var/turf/T = get_turf(M)
 	var/obj/item/gun/energy/E
