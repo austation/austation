@@ -134,7 +134,7 @@
 	if(M.health <= 200)
 		M.health = 1
 	else
-		M.health = M.health - 200
+		M.health -= 200
 	M.maxHealth = 100
 
 /obj/item/minebot_upgrade/tracks_a
