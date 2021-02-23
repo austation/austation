@@ -13,11 +13,11 @@
 // END_PREFERENCES
 
 // BEGIN_DEFINE_INCLUDE
-#include "austation\code\_DEFINES\admin.dm"
-#include "austation\code\_DEFINES\misc.dm"
-#include "austation\code\_DEFINES\mobs.dm"
-#include "austation\code\_DEFINES\movespeed_modification.dm"
-#include "austation\code\_DEFINES\traits.dm"
+#include "austation\code\__DEFINES\admin.dm"
+#include "austation\code\__DEFINES\misc.dm"
+#include "austation\code\__DEFINES\mobs.dm"
+#include "austation\code\__DEFINES\movespeed_modification.dm"
+#include "austation\code\__DEFINES\traits.dm"
 // END_DEFINE_INCLUDE
 
 // BEGIN_BEESTATION_INCLUDE
@@ -25,10 +25,10 @@
 // END_BEESTATION_INCLUDE
 
 // BEGIN_INCLUDE
+#include "austation\code\__HELPERS\matrices.dm"
+#include "austation\code\__HELPERS\roundend.dm"
 #include "austation\code\_globalvars\misc.dm"
 #include "austation\code\_globalvars\lists\maintenance_loot.dm"
-#include "austation\code\_HELPERS\matrices.dm"
-#include "austation\code\_HELPERS\roundend.dm"
 #include "austation\code\_onclick\hud\alert.dm"
 #include "austation\code\controllers\configuration\entries\game_options.dm"
 #include "austation\code\controllers\configuration\entries\general.dm"
@@ -151,11 +151,11 @@
 #include "austation\code\modules\jobs\job_types\medical_doctor.dm"
 #include "austation\code\modules\mapping\random_rooms.dm"
 #include "austation\code\modules\mapping\writer.dm"
-#include "austation\code\modules\mining\equipment\survival_pod.dm"
-#include "austation\code\modules\mining\lavaland\necropolis_chests.dm"
 #include "austation\code\modules\mining\machine_vending.dm"
 #include "austation\code\modules\mining\minebot.dm"
 #include "austation\code\modules\mining\shelters.dm"
+#include "austation\code\modules\mining\equipment\survival_pod.dm"
+#include "austation\code\modules\mining\lavaland\necropolis_chests.dm"
 #include "austation\code\modules\mob\mob.dm"
 #include "austation\code\modules\mob\mob_defines.dm"
 #include "austation\code\modules\mob\dead\new_player\new_player.dm"
