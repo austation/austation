@@ -32,8 +32,7 @@
 		return TRUE
 
 /obj/item/minebot_upgrade/proc/is_minebotgun_upg()
-	if(upgrade_id in GUN_UPGRADES)
-		return TRUE
+	return upgrade_id in GUN_UPGRADES
 
 /obj/item/minebot_upgrade/afterattack(mob/living/simple_animal/hostile/mining_drone/M, mob/user, proximity)
 	. = ..()
