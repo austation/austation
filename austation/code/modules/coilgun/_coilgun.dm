@@ -42,6 +42,7 @@
 			if(isliving(AM))
 				var/mob/living/L = AM
 				L.adjustBruteLoss(10)
+				L.reset_perspective(boolet)
 				if(ishuman(L) && !isdead(L))
 					L.Paralyze(amount = 50, ignore_canstun = TRUE)
 					L.emote("scream")

@@ -1,6 +1,8 @@
-// The base used for calculating projectile speed increase
+// The base used for calculating charger projectile speed increase
 // lower values make speed increases more diminishing
 #define BASE 0.9975
+// above, but for the supercharger
+#define SUPER_BASE 0.999
 
 // the smallest amount of power the charger can use to function in watts.
 // Also serves as the base multiplier for projectile speed increase, lower values will increase speed gain
@@ -139,12 +141,13 @@
 				C.charge = 0
 			if(total_charge)
 				var/prelim = min(total_charge / 10000, 1) // 10KW increases the speed by 1.
-				var/speed_increase = prelim * BASE ** PJ.p_speed
+				var/speed_increase = prelim * SUPER_BASE ** PJ.p_speed
 				PJ.p_speed += speed_increase
 				PJ.p_heat += 10
 				visible_message("<span class='danger'>debug: speed increased by [speed_increase]!</span>")
 				H.count = 1000
 				total_charge = 0
+				playsound(src, 'sound/weapons/emitter2.ogg', 50, 1)
 	return ..()
 // Capacitor
 
@@ -154,7 +157,7 @@
 	icon = 'austation/icons/obj/power.dmi'
 	icon_state = "capicitor"
 	var/charge = 0
-	var/capacity = 1e5
+	var/capacity = 1e6
 
 /obj/machinery/power/capacitor/interact(mob/user)
 	. = ..()

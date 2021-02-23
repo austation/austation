@@ -72,7 +72,7 @@
 		p_speed -= 10
 	if(prob(15) && (special & HVP_RADIOACTIVE))
 		var/datum/component/radioactive/rads = GetComponent(/datum/component/radioactive)
-		var/pulsepower = (rads.strength + 1) * min(momentum * 0.05, 1) // faster rods multiply rads, for.. reasons
+		var/pulsepower = (rads.strength + 1) * max(momentum * 0.05, 1) // faster rods multiply rads, for.. reasons
 		radiation_pulse(src, pulsepower)
 	if(isliving(clong))
 		penetrate(clong)
@@ -113,7 +113,7 @@
 			do_teleport(src, get_turf(target), asoundin = 'sound/effects/phasein.ogg', channel = TELEPORT_CHANNEL_BLUESPACE)
 			do_teleport(target, oldloc, asoundin = 'sound/effects/phasein.ogg', channel = TELEPORT_CHANNEL_BLUESPACE)
 
-	if(istype(get_turf(src), /turf/open/floor)) // Less expensive than atmos checks so it just checks for floor turfs for "drag"
+	if(isfloorturf(get_turf(src))) // Less expensive than atmos checks so it just checks for floor turfs for "drag"
 		p_speed--
 	if(p_speed && mass && momentum > 1)
 		momentum = mass*p_speed

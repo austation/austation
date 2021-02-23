@@ -7,7 +7,7 @@
 	coilgun = TRUE
 
 /obj/structure/disposalpipe/coilgun/modifier/transfer(obj/structure/disposalholder/H)
-	if(H.contents.len)
+	if(LAZYLEN(H.contents))
 		for(var/atom/movable/AM in H.contents)
 			if(istype(AM, /obj/effect/hvp))
 				var/obj/effect/hvp/PJ = AM
@@ -19,6 +19,14 @@
 		qdel(H)
 	return ..()
 
+/obj/structure/disposalpipe/coilgun/modifier/attackby(obj/item/O, mob/user, params)
+	..()
+	if(anchored && O.tool_behaviour == TOOL_WELDER || O.tool_behaviour == TOOL_WRENCH)
+		return
+	if(!user.transferItemToLoc(O, src))
+		to_chat(user, "span class='warning'>You can't seem to safely insert \the [O]!")
+
+/// Handles item merging inside the modifier
 /obj/structure/disposalpipe/coilgun/modifier/proc/combine(obj/effect/hvp/PJ)
 	if(!LAZYLEN(contents)) // If we have no object to combine the projectile with, return
 		return
@@ -33,12 +41,12 @@
 			PJ.spec_amt++
 		playsound(src, 'sound/effects/bang.ogg', 50, 0, 0)
 		PJ.p_speed -= req_speed / 2
-		PJ.overlay_atom(O, rotation = TRUE)
 		if(isitem(O))
 			var/obj/item/I = O
 			PJ.mass += I.w_class
 		else
 			PJ.mass += 1
+		PJ.overlay_atom(O, rotation = TRUE)
 		O.loc = PJ
 		break
 
