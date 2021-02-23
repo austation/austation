@@ -229,7 +229,7 @@
 		M.minebot_gun = P
 		P.cell = M.cell
 	else
-		to_chat(user, "<span class='notice'the previous weapon was not uninstalled.</span>")
+		to_chat(user, "<span class='notice'>the previous weapon was not uninstalled.</span>")
 
 /obj/item/minebot_upgrade/gun_d
 	name = "Kinetic tool conversion"
