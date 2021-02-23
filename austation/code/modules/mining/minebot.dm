@@ -8,16 +8,30 @@
 /mob/living/simple_animal/hostile/mining_drone
 	var/beacons = 15  //  the minebot's personal inventory of marker beacons.  They must attack beacons in COLLECT mode to refill this
 	var/emagged = FALSE  //  lets minebot shoot sentient life when set to TRUE
+	var/obj/item/stock_parts/cell/cell  //  used to power a few systems, most noticeably the plasmacutter upgrade
+	var/obj/item/stock_parts/cell/cell_type = /obj/item/stock_parts/cell  //  type of cell to use
+	var/empty_cell = TRUE  //  TRUE if the cell is empty on spawn
 	var/obj/item/t_scanner/adv_mining_scanner/lesser/scanner  //  always on, the minebot has no way to turn this off
+	var/obj/item/gun/energy/minebot_gun  //  we can't use stored_gun because it is strictly cast as a PKA, but we want the option to install other E guns too
+	var/list/upgrades_list = list()  //  the list of upgrades installed in the minebot.  populate it with the defines in minebot_upgrades.dm; these are type paths that can be used not only to identify but also call class procs like new()
+	var/mod_total = 0
 	weather_immunities = list("ash")
 
 /mob/living/simple_animal/hostile/mining_drone/Initialize()
-	..()
-	stored_gun.overheat_time = 10
+	. = ..()
+	minebot_gun = new /obj/item/gun/energy/kinetic_accelerator/minebot(src)
+	if(cell_type)  //  do we build a cell_type?  if it's not defined, build a normal cell
+		cell = new cell_type(src)
+	else
+		cell = new(src)
+	if(empty_cell)
+		cell.use(cell.maxcharge)  //  empty the cell
 	scanner = new(src)
 	scanner.toggle_on()
 	var/datum/action/innate/minedrone/marker_beacon/beacon_action = new()
 	beacon_action.Grant(src)
+	var/obj/item/minebot_upgrade/U = new /obj/item/minebot_upgrade/gun_d()  //  we have to equip a PKA to the minebot first thing
+	U.afterattack(src,src,TRUE)  //  runs the upgrade sequence, but treating the minebot as the mob who upgraded them
 
 
 /////////////////////////  EMAG STUFF  /////////////////////////
@@ -45,6 +59,20 @@
 /////////////////////////  EQUIPMENT  /////////////////////////
 
 
+/obj/item/gun/energy/kinetic_accelerator/minebot
+	overheat_time = 10
+	ammo_type = /obj/item/ammo_casing/kinetic/light
+
+/obj/item/ammo_casing/kinetic/light
+	projectile_type = /obj/item/projectile/kinetic/light
+/obj/item/projectile/kinetic/light
+	damage = 20
+
+/obj/item/ammo_casing/kinetic/heavy
+	projectile_type = /obj/item/projectile/kinetic/heavy
+/obj/item/projectile/kinetic/heavy
+	damage = 60
+
 /obj/item/gun/energy/kinetic_accelerator/minebot/afterattack(atom/target, mob/living/user, flag, params)
 	if(istype(target, /mob/living) && istype(user, /mob/living/simple_animal/hostile/mining_drone))  //  are we a minebot, firing at a mob?
 		var/mob/living/M = target
@@ -54,6 +82,19 @@
 			H.mode = MINEDRONE_COLLECT  //  let's turn off the guns, as the warning suggests
 			return
 	..()
+
+/mob/living/simple_animal/hostile/mining_drone/attackby(obj/item/I, mob/user, params)
+	. = ..()
+	if(istype(I, /obj/item/crowbar))
+		to_chat(user, "<span class='notice'you begin levering out all of [src]'s upgrades...</span>")
+		if(!src.upgrades_list)
+			to_chat(user, "<span class='notice'but there was nothing to remove.</span>")
+			return
+		for(var/obj/item/minebot_upgrade/upgrade in src.upgrades_list)
+			if(upgrade.is_minebotgun())
+				to_chat(user, "<span class='notice'could not remove the [upgrade] weapon from [src]; replace it with another conversion kit.")
+				continue
+			upgrade.uninstall(src, user)
 
 /datum/action/innate/minedrone/marker_beacon
 	name = "Drop Marker"
