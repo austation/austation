@@ -239,7 +239,7 @@
 /obj/item/minebot_upgrade/gun_d/upgrade_bot(mob/living/simple_animal/hostile/mining_drone/M, mob/user)
 	. = ..()
 	if(istype(M.minebot_gun, /obj/item/gun/energy/kinetic_accelerator))
-		to_chat(user, "<span class='notice'>the [M] already has a kinetic gun.</span>")
+		to_chat(user, "<span class='notice'>\The [M] already has a kinetic gun.</span>")
 		return
 	if(uninstall(M, user))
 		M.minebot_gun = new /obj/item/gun/energy/kinetic_accelerator(src)
