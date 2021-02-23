@@ -52,7 +52,7 @@
 	src.upgrade_bot(M, user)
 
 /obj/item/minebot_upgrade/proc/upgrade_bot(mob/living/simple_animal/hostile/mining_drone/M, mob/user)
-	to_chat(user, "<span class='notice'you install a [src] upgrade into \the [M]</span>")
+	to_chat(user, "<span class='notice'> you install \the [src] upgrade into \the [M]</span>")
 	M.upgrades_list += upgrade_id
 	M.mod_total += src.weight
 	qdel(src)
