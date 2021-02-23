@@ -1,4 +1,0 @@
-author: "AustationBot"
-delete-after: True
-changes: 
-  - bugfix: "[Port[ Fixes a bug that could cause the atmos system to lock up permanently"
