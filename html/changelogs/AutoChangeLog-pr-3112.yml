@@ -1,5 +1,0 @@
-author: "TheFakeElon"
-delete-after: True
-changes: 
-  - bugfix: "fixed file include order"
-  - code_imp: "globalvars can use helpers now"
