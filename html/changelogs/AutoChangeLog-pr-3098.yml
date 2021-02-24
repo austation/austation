@@ -1,0 +1,5 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - rscadd: "Added crucifixes to chaplain's witch hunter set, which wards against curses."
+  - rscadd: "Added rosary beads, which work similarly to crucifixes; available at chaplain vendor and religious supply packs in cargo."
