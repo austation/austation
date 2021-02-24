@@ -1,0 +1,4 @@
+author: "Ohagi-Chan"
+delete-after: True
+changes: 
+  - bugfix: "applying plating to an undug asteroid floor now refunds your tile"

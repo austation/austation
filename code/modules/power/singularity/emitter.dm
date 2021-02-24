@@ -16,7 +16,7 @@
 
 	use_power = NO_POWER_USE
 	idle_power_usage = 10
-	active_power_usage = 300
+	active_power_usage = 600
 
 	var/icon_state_on = "emitter_+a"
 	var/icon_state_underpowered = "emitter_+u"
@@ -353,8 +353,7 @@
 		return
 	locked = FALSE
 	obj_flags |= EMAGGED
-	if(user)
-		user.visible_message("[user.name] emags [src].","<span class='notice'>You short out the lock.</span>")
+	user?.visible_message("[user.name] emags [src].","<span class='notice'>You short out the lock.</span>")
 
 
 /obj/machinery/power/emitter/prototype

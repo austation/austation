@@ -1,0 +1,5 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - imageadd: "Updates herald sprites and animations"
+  - imageadd: "Updates Prophet cloak sprite"
