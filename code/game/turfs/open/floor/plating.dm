@@ -105,6 +105,7 @@
 						PlaceOnTop(/turf/open/floor/plating, flags = CHANGETURF_INHERIT_AIR)
 					else
 						to_chat(user, "<span class='warning'>You need to dig below the foundations first!</span>")
+						W.amount += 1
 						return
 			else
 				to_chat(user, "<span class='warning'>You can't place glass tiles over the platings!</span>")  //  austation end #2156
