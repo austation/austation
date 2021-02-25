@@ -55,11 +55,13 @@
 	item_color = "red"
 	dog_fashion = null
 	name = "firefighter helmet"
+	/* ausation start
 	clothing_flags = STOPSPRESSUREDAMAGE | SNUG_FIT
 	heat_protection = HEAD
 	max_heat_protection_temperature = FIRE_HELM_MAX_TEMP_PROTECT
 	cold_protection = HEAD
 	min_cold_protection_temperature = FIRE_HELM_MIN_TEMP_PROTECT
+	austation end */
 
 /obj/item/clothing/head/hardhat/white
 	icon_state = "hardhat0_white"
@@ -92,7 +94,7 @@
 	cold_protection = HEAD
 	min_cold_protection_temperature = FIRE_HELM_MIN_TEMP_PROTECT
 
-/obj/item/clothing/head/hardhat/weldhat 
+/obj/item/clothing/head/hardhat/weldhat
 	name = "welding hard hat"
 	desc = "A piece of headgear used in dangerous working conditions to protect the head. Comes with a built-in flashlight AND welding shield! The bulb seems a little smaller though."
 	brightness_on = 3 //Needs a little bit of tradeoff
@@ -125,14 +127,18 @@
 /obj/item/clothing/head/hardhat/weldhat/worn_overlays(isinhands)
 	. = ..()
 	if(!isinhands)
-		. += mutable_appearance('icons/mob/head.dmi', "weldhelmet")
+		//austation start
+		//. += mutable_appearance('icons/mob/head.dmi', "weldhelmet")
+		. += mutable_appearance('austation/icons/mob/head.dmi', "weldhelmet")
 		if(!up)
-			. += mutable_appearance('icons/mob/head.dmi', "weldvisor")
+			//. += mutable_appearance('icons/mob/head.dmi', "weldvisor")
+			. += mutable_appearance('austation/icons/mob/head.dmi', "weldvisor")
+			//austation end
 
 /obj/item/clothing/head/hardhat/weldhat/update_icon()
 	cut_overlays()
 	if(!up)
-		add_overlay("weldvisor") 
+		add_overlay("weldvisor")
 	..()
 
 /obj/item/clothing/head/hardhat/weldhat/orange
@@ -140,7 +146,7 @@
 	item_state = "hardhat0_orange"
 	item_color = "orange"
 
-/obj/item/clothing/head/hardhat/weldhat/white 
+/obj/item/clothing/head/hardhat/weldhat/white
 	desc = "A piece of headgear used in dangerous working conditions to protect the head. Comes with a built-in flashlight AND welding shield!" //This bulb is not smaller
 	icon_state = "hardhat0_white"
 	item_state = "hardhat0_white"
@@ -155,4 +161,4 @@
 /obj/item/clothing/head/hardhat/weldhat/dblue
 	icon_state = "hardhat0_dblue"
 	item_state = "hardhat0_dblue"
-	item_color = "dblue" 
+	item_color = "dblue"

@@ -1,3 +1,7 @@
+/obj/item/clothing/under/rank/engineering/chief_engineer
+	icon = 'austation/icons/obj/clothing/uniforms.dmi'
+	alternate_worn_icon = 'austation/icons/mob/uniform.dmi'
+
 /obj/item/clothing/under/rank/engineering/chief_engineer/skirt
 	name = "chief engineer's jumpskirt"
 	desc = "It's a high visibility jumpskirt given to those engineers insane enough to achieve the rank of \"Chief Engineer\". It has minor radiation shielding."
@@ -9,6 +13,10 @@
 	body_parts_covered = CHEST|GROIN|ARMS
 	can_adjust = FALSE
 	fitted = FEMALE_UNIFORM_TOP
+
+/obj/item/clothing/under/rank/engineering/atmospheric_technician
+	icon = 'austation/icons/obj/clothing/uniforms.dmi'
+	alternate_worn_icon = 'austation/icons/mob/uniform.dmi'
 
 /obj/item/clothing/under/rank/engineering/atmospheric_technician/skirt
 	name = "atmospheric technician's jumpskirt"
@@ -22,6 +30,10 @@
 	can_adjust = FALSE
 	fitted = FEMALE_UNIFORM_TOP
 
+/obj/item/clothing/under/rank/engineering/engineer
+	icon = 'austation/icons/obj/clothing/uniforms.dmi'
+	alternate_worn_icon = 'austation/icons/mob/uniform.dmi'
+
 /obj/item/clothing/under/rank/engineering/engineer/skirt
 	name = "engineer's jumpskirt"
 	desc = "It's an orange high visibility jumpskirt worn by engineers."
@@ -33,16 +45,3 @@
 	body_parts_covered = CHEST|GROIN|ARMS
 	can_adjust = FALSE
 	fitted = FEMALE_UNIFORM_TOP
-/* obsolete
-/obj/item/clothing/under/rank/engineering/roboticist/skirt
-	name = "roboticist's jumpskirt"
-	desc = "It's a slimming black with reinforced seams; great for industrial work."
-	icon = 'austation/icons/obj/clothing/uniforms.dmi'
-	alternate_worn_icon = 'austation/icons/mob/uniform.dmi'
-	icon_state = "robotics_skirt"
-	item_state = "robotics"
-	item_color = "robotics_skirt"
-	body_parts_covered = CHEST|GROIN|ARMS
-	can_adjust = FALSE
-	fitted = FEMALE_UNIFORM_TOP
-*/

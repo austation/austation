@@ -19,7 +19,13 @@
 	cut_overlays()
 	if(content_overlays)
 		for(var/obj/item/I in contents)
-			var/mutable_appearance/M = I.get_belt_overlay()
+			//austation code start
+			var/mutable_appearance/M
+			if(overlay_AU)
+				M = I.get_belt_overlay_AU()
+			else
+				M = I.get_belt_overlay()
+			//austation code end
 			add_overlay(M)
 	..()
 
