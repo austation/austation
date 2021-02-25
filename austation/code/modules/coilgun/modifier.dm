@@ -17,6 +17,7 @@
 				AM.forceMove(get_turf(src))
 	else
 		qdel(H)
+		return
 	return ..()
 
 /obj/structure/disposalpipe/coilgun/modifier/attackby(obj/item/O, mob/user, params)
@@ -46,8 +47,10 @@
 			PJ.mass += I.w_class
 		else
 			PJ.mass += 1
-		PJ.overlay_atom(O, rotation = TRUE)
-		O.loc = PJ
+		PJ.vis_contents += O
+		O.transform = turn(O.transform, rand(1, 360))
+//		PJ.overlay_atom(O, rotation = TRUE)
+//		O.loc = PJ
 		break
 
 

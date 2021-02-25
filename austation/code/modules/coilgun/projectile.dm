@@ -8,7 +8,7 @@
 #define MAX_SWITCH_RANGE 11
 
 /obj/effect/hvp
-	name = "coilgun projectile"
+	name = "high velocity projectile"
 	desc = "hey! You shouldn't be reading this"
 	icon = 'icons/obj/objects.dmi'
 	icon_state = "immrod"
@@ -159,8 +159,9 @@
 	for(var/atom/movable/AM in src)
 		other_special(AM)
 		if(AM)
+			AM.transform = matrix() // clears any rotation applied by items combined in the modifier
 			AM.forceMove(L)
-			if(throwing) // you keep some momentum
+			if(throwing) // you keep some momentum, weee
 				step(AM, dir)
 	throwing?.finalize(FALSE)
 
@@ -207,13 +208,13 @@
 
 /obj/effect/hvp/proc/other_special(atom/movable/AM)
 	if(istype(AM, /obj/item/reagent_containers) && !istype(AM, /obj/item/reagent_containers/food))
-		var/obj/item/reagent_containers/RC = AM
-		for(var/datum/reagent/R in RC.reagents.reagent_list)
-			var/datum/reagents/H = R.holder
-			H.expose_temperature(5000) // about 5 lighter hits to a beaker
-			if(R) // and if that didn't do anything, smoke
-				var/datum/effect_system/smoke_spread/chem/S
-				S.set_up(R, 5, loc)
+		var/datum/reagents/RH = locate() in AM
+		if(RH?.total_volume)
+			RH.expose_temperature(5000) // about 5 lighter hits to a beaker
+			var/radius = RH?.total_volume / 10 // this also acts as a check to see if the holder still exists (wasn't blown up)
+			if(radius) // and if that didn't do anything, turn it to smoke
+				var/datum/effect_system/smoke_spread/chem/S = new
+				S.set_up(RH, max(radius, 2), loc)
 				S.start()
 	if(istype(AM, /obj/item/grenade))
 		var/obj/item/grenade/G = AM
