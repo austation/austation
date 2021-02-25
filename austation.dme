@@ -171,6 +171,7 @@
 #include "austation\code\modules\mining\machine_vending.dm"
 #include "austation\code\modules\mining\minebot.dm"
 #include "austation\code\modules\mining\shelters.dm"
+#include "austation\code\modules\mining\equipment\mineral_scanner.dm"
 #include "austation\code\modules\mining\equipment\survival_pod.dm"
 #include "austation\code\modules\mining\lavaland\necropolis_chests.dm"
 #include "austation\code\modules\mob\mob.dm"
