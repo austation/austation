@@ -1,6 +1,0 @@
-author: "Victor239"
-delete-after: True
-changes: 
-  - rscadd: "Adds black bishop suit,mitre and cloak to beecoin shop"
-  - rscadd: "Adds bishop cloak to hacked chaplain vendor"
-  - tweak: "Updates bishop suit and mitre"
