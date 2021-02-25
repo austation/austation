@@ -34,6 +34,9 @@
 	icon = 'austation/icons/obj/clothing/uniforms.dmi'
 	alternate_worn_icon = 'austation/icons/mob/uniform.dmi'
 
+/obj/item/clothing/under/rank/engineering/engineer/hazard
+	icon = 'icons/obj/clothing/uniforms.dmi'
+
 /obj/item/clothing/under/rank/engineering/engineer/skirt
 	name = "engineer's jumpskirt"
 	desc = "It's an orange high visibility jumpskirt worn by engineers."
