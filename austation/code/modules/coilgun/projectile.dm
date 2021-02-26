@@ -21,12 +21,14 @@
 	var/mass = 0 // how heavy the object is
 	var/special //special propeties
 	var/spec_amt = 0 // how many times has this projectile been modified
-	// projectile temp
-	var/p_heat = 0
+	var/p_heat = 0 // projectile temp
 	var/p_speed = 0 // how fast the projectile is moving (not physically, due to byond limitations)
 	var/infused = 0 // how much energy is infused with the projectile?
-	var/momentum = 0
 
+	var/angle = 0
+	var/last_angle = 0
+	var/momentum = 0
+//todo: use getline() for magic delete line at high speeds
 /obj/effect/hvp/proc/launch()
 	momentum = mass * p_speed // hey google
 	if(momentum >= 1000) // how can I kill
@@ -35,6 +37,8 @@
 			for(var/mob/M in range(10, src))
 				shake_camera(M, 10, clamp(momentum*0.002, 0, MAX_SHAKE)) // one million people?
 	if(momentum >= 1)
+		if(!angle)
+			angle = dir2angle(dir)
 		addtimer(CALLBACK(src, .proc/move), 1)
 	else
 		gameover()
@@ -47,20 +51,20 @@
 		if(istype(ghost))
 			ghost.ManualFollow(src)
 
-/obj/effect/hvp/Bump(atom/clong) // lots of rod code in here xd
-	if(prob(80))
+/obj/effect/hvp/Bump(atom/clong)
+	if(prob(35))
 		playsound(src, 'sound/effects/bang.ogg', 50, 1)
 		audible_message("<span class='danger'>You hear a CLANG!</span>")
-	var/change_dir_chance = -max(1, momentum / 100) + 100 // chance to change to collided direction increases as momentum decreases
+	var/change_dir_chance = 100 - max(1, momentum / 25) // chance to change to collided direction increases as momentum decreases
 	if(clong && prob(change_dir_chance))
 		x = clong.x
 		y = clong.y
 	if(isturf(clong) || isobj(clong))
 		if((special & HVP_BOUNCY) && prob(50))
-			dir = invertDir(dir)
+			angle = calc_ricochet(clong)
 			playsound(src, 'sound/vehicles/clowncar_crash2.ogg', 40, 0, 0)
 			if(prob(5))
-				dir = turn(dir, pick(-90, 90))
+				angle += rand(20, -20)
 				audible_message("<span class='danger'>You hear a BOING!</span>")
 		if(momentum >= 1000 || istype(clong, /obj/structure/window)) // Windows always break when getting hit by HVPs
 			clong.ex_act(EXPLODE_DEVASTATE)
@@ -77,11 +81,17 @@
 	if(isliving(clong))
 		penetrate(clong)
 
+// shield.dm and maths.dm for figuring out how the fucking fuck to math this BULLSHIT
+/obj/effect/hvp/proc/calc_ricochet(atom/A) // mostly yoinked from wall ricochet code, made it projectile side
+	var/face_direction = get_dir(A, get_turf(src))
+	var/face_angle = dir2angle(face_direction)
+	var/incidence = GET_ANGLE_OF_INCIDENCE(face_angle, (angle + 180))
+	return SIMPLIFY_DEGREES(face_angle + incidence)
+
 /obj/effect/hvp/proc/penetrate(mob/living/L)
-	L.visible_message("<span class='danger'>[L] is penetrated by \the [src]!</span>" , "<span class='userdanger'>\The [src] penetrates you!</span>" , "<span class ='danger'>You hear a CLANG!</span>")
+	var/projdamage = max(15, momentum / 35)
 	if(ishuman(L))
 		var/mob/living/carbon/human/H = L
-		var/projdamage = max(10, momentum / 35)
 		if(special & HVP_SHARP)
 			projdamage *= 2
 			var/Z = pick(BODY_ZONE_R_ARM, BODY_ZONE_L_ARM, BODY_ZONE_R_LEG, BODY_ZONE_L_LEG, BODY_ZONE_HEAD)
@@ -91,16 +101,17 @@
 				BP.drop_limb()
 		if(special & HVP_BOUNCY)
 			projdamage /= 4 // bouncy things don't hurt as much
-			L.adjustStaminaLoss(clamp(projdamage, 5, 120))
+			H.adjustStaminaLoss(clamp(projdamage, 5, 120))
 			playsound(src, 'sound/vehicles/clowncar_crash2.ogg', 50, 0, 5)
-			var/atom/target = get_edge_target_turf(L, dir)
-			L.throw_at(target, 200, 4) // godspeed o7
-		else
-			H.adjustBruteLoss(projdamage)
+			angle = calc_ricochet(L)
+	L.adjustBruteLoss(projdamage)
+	L.visible_message("<span class='danger'>[L] is penetrated by \the [src]!</span>" , "<span class='userdanger'>\The [src] penetrates you!</span>" , "<span class ='danger'>You hear a CLANG!</span>")
 
 /obj/effect/hvp/proc/move()
-	if(!step(src,dir))
-		Move(get_step(src,dir))
+	Move(get_step(angle), angle)
+	if(angle != last_angle)
+		transform = turn(transform, last_angle - angle)
+		last_angle = angle
 	if((special & HVP_BLUESPACE) && prob(5)) // good ol switcharoo
 		var/switch_range = clamp(BASE_SWITCH_RANGE * (momentum / 120), BASE_SWITCH_RANGE, MAX_SWITCH_RANGE)
 		var/list/choices = list()
@@ -109,9 +120,10 @@
 			choices += L
 		if(LAZYLEN(choices)) // target acquired!
 			var/oldloc = get_turf(src)
-			var/target = pick(choices)
+			var/atom/movable/target = pick(choices)
 			do_teleport(src, get_turf(target), asoundin = 'sound/effects/phasein.ogg', channel = TELEPORT_CHANNEL_BLUESPACE)
 			do_teleport(target, oldloc, asoundin = 'sound/effects/phasein.ogg', channel = TELEPORT_CHANNEL_BLUESPACE)
+			target.throw_at(get_edge_target_turf( target, angle2dir(angle) ), 200, max( round(log(momentum)), 1))
 
 	if(isfloorturf(get_turf(src))) // Less expensive than atmos checks so it just checks for floor turfs for "drag"
 		p_speed--
@@ -210,12 +222,7 @@
 	if(istype(AM, /obj/item/reagent_containers) && !istype(AM, /obj/item/reagent_containers/food))
 		var/datum/reagents/RH = locate() in AM
 		if(RH?.total_volume)
-			RH.expose_temperature(5000) // about 5 lighter hits to a beaker
-			var/radius = RH?.total_volume / 10 // this also acts as a check to see if the holder still exists (wasn't blown up)
-			if(radius) // and if that didn't do anything, turn it to smoke
-				var/datum/effect_system/smoke_spread/chem/S = new
-				S.set_up(RH, max(radius, 2), loc)
-				S.start()
+			RH.expose_temperature(1000 * (p_heat / 10 + 1))
 	if(istype(AM, /obj/item/grenade))
 		var/obj/item/grenade/G = AM
 		G.prime() // armour piercing high explosive crate ;)

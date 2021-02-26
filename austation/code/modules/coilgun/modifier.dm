@@ -2,8 +2,8 @@
 #define MIN_SPEED 1000
 
 /obj/structure/disposalpipe/coilgun/modifier
-	name = "coilgun kinetic infuser"
-	desc = "A heavy duty machine capable of kinetically infusing two different objects together at high speeds"
+	name = "kinetic infuser"
+	desc = "A heavy duty coilgun component capable of kinetically infusing two different objects together at high speeds"
 	coilgun = TRUE
 
 /obj/structure/disposalpipe/coilgun/modifier/transfer(obj/structure/disposalholder/H)
@@ -24,8 +24,10 @@
 	..()
 	if(anchored && O.tool_behaviour == TOOL_WELDER || O.tool_behaviour == TOOL_WRENCH)
 		return
-	if(!user.transferItemToLoc(O, src))
-		to_chat(user, "span class='warning'>You can't seem to safely insert \the [O]!")
+	if(user.transferItemToLoc(O, src))
+		to_chat(user, "<span class='warning'>You insert \the [O] into \the [src]'s object bay")
+	else
+		to_chat(user, "<span class='warning'>You can't seem to safely insert \the [O]!")
 
 /// Handles item merging inside the modifier
 /obj/structure/disposalpipe/coilgun/modifier/proc/combine(obj/effect/hvp/PJ)
