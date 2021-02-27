@@ -35048,7 +35048,7 @@
 /area/science/xenobiology)
 "cRe" = (
 /obj/effect/spawner/structure/window/reinforced,
-/turf/open/floor/plating,
+/turf/open/floor/glass,
 /area/science/xenobiology)
 "cRf" = (
 /obj/structure/cable/yellow{
@@ -62210,6 +62210,11 @@
 	},
 /turf/open/floor/plating,
 /area/maintenance/aft)
+"mED" = (
+/obj/effect/spawner/structure/window/reinforced,
+/obj/machinery/door/firedoor/window,
+/turf/open/floor/glass,
+/area/science/xenobiology)
 "mET" = (
 /obj/structure/closet/emcloset,
 /obj/effect/turf_decal/delivery,
@@ -122404,12 +122409,12 @@ mod
 cQR
 cSd
 cSd
-nqY
-nqY
-nqY
-nqY
-nqY
-nqY
+mED
+mED
+mED
+mED
+mED
+mED
 aaa
 aaa
 aaa
@@ -122666,7 +122671,7 @@ cRg
 cYT
 cYT
 djg
-nqY
+mED
 aaa
 aaa
 aaa
@@ -122917,13 +122922,13 @@ cgo
 pFZ
 cQS
 cRb
-nqY
-nqY
-nqY
-nqY
-nqY
+mED
+mED
+mED
+mED
+mED
 uaC
-nqY
+mED
 aaa
 aaa
 aaa
@@ -123178,9 +123183,9 @@ aaa
 aaf
 aaa
 aaa
-nqY
+mED
 uaC
-nqY
+mED
 aaa
 aaa
 aaa
@@ -123435,9 +123440,9 @@ aaa
 aaf
 aaa
 aaa
-nqY
+mED
 uaC
-nqY
+mED
 aaf
 aaa
 aaa
@@ -123694,7 +123699,7 @@ aaf
 aaa
 cRe
 uaC
-nqY
+mED
 cRu
 cRi
 cRi
@@ -123949,9 +123954,9 @@ aaa
 aaa
 aaf
 aaf
-nqY
+mED
 uaC
-nqY
+mED
 cRi
 uWe
 fVV
@@ -124206,7 +124211,7 @@ dvY
 dvY
 dvY
 dvY
-nqY
+mED
 djh
 cYT
 cRv
@@ -124463,9 +124468,9 @@ auT
 auT
 awI
 dvY
-nqY
-nqY
-nqY
+mED
+mED
+mED
 cRi
 dSH
 lfD
