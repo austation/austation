@@ -46,7 +46,17 @@
 		stack_trace("Invalid type [armor.type] found in .armor during /obj Initialize()")
 	if(obj_integrity == null)
 		obj_integrity = max_integrity
+	if(!very_clear_glass)
+		icon_state = "[((x + y) ^ ~(x * y) + z) % 25]"
+		if(!floor_overlays[glass_state])
+			var/image/floor_overlay = image('austation/icons/turf/overlays.dmi', glass_state)
+			floor_overlay.plane = GAME_PLANE
+			floor_overlay.layer = CATWALK_LAYER
+			floor_overlays[glass_state] = floor_overlay
+		overlays += floor_overlays[glass_state]
+	update_icon()
 
+/*
 /turf/open/floor/glass/New(loc)
 	..(loc)
 	if(!very_clear_glass)
@@ -58,6 +68,7 @@
 			floor_overlays[glass_state] = floor_overlay
 		overlays += floor_overlays[glass_state]
 	update_icon()
+*/
 
 /turf/open/floor/glass/update_icon()
 	if(obj_integrity >= max_integrity)
