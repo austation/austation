@@ -8,7 +8,6 @@ import { createLogger } from 'common/logging.js';
 import fs from 'fs';
 import os from 'os';
 import { basename } from 'path';
-import { promisify } from 'util';
 import { resolveGlob, resolvePath } from './util.js';
 import { regQuery } from './winreg.js';
 import { DreamSeeker } from './dreamseeker.js';
@@ -95,12 +94,12 @@ export const reloadByondCache = async bundleDir => {
     const garbage = await resolveGlob(cacheDir, './*.+(bundle|chunk|hot-update).*');
     try {
       for (let file of garbage) {
-        fs.unlinkSync(file);
+        fs.unlink(file);
       }
       // Copy assets
       for (let asset of assets) {
         const destination = resolvePath(cacheDir, basename(asset));
-        fs.writeFileSync(destination, fs.readFileSync(asset));
+        fs.copyFile(asset, destination);
       }
       logger.log(`copied ${assets.length} files to '${cacheDir}'`);
     }
