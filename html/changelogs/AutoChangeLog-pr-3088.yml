@@ -1,0 +1,4 @@
+author: "Ohagi-Chan"
+delete-after: True
+changes: 
+  - rscadd: "service borgs can use the tray module again"
