@@ -1,0 +1,5 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - rscadd: "Adds movement sounds to IPCs"
+  - rscadd: "Adds movement sounds to riot suits and deathsquad armour"
