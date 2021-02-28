@@ -1,0 +1,4 @@
+author: "mudzbe"
+delete-after: True
+changes: 
+  - tweak: "Overdose and addiction are triggered when reagents are ABOVE threshold as opposed to ABOVE AND EQUAL to the threshold"
