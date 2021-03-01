@@ -1,4 +1,0 @@
-author: "AustationBot"
-delete-after: True
-changes: 
-  - config: "Disables \"Extended\" on Sage (Secret Extended is still enabled)"

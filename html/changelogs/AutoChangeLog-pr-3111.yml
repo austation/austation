@@ -1,4 +1,0 @@
-author: "AustationBot"
-delete-after: True
-changes: 
-  - server: "Added Topic() calls for getting/adjusting metacoins."
