@@ -35,3 +35,8 @@
 		var/mob/living/carbon/human/H = user
 		if(H.w_uniform == src)
 			H.update_suit_sensors()
+
+/obj/item/clothing/under/examine(mob/user)
+	. = ..()
+	if(has_sensor > NO_SENSORS)
+		. += "Ctrl-click on [src] to cycle it's sensors."
