@@ -1,0 +1,4 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - bugfix: "transmutation rune drawing process no longer is incorrectly explained in-game."
