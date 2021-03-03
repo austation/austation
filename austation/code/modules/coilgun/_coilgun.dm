@@ -150,12 +150,11 @@
 
 /obj/structure/disposalpipe/coilgun/barrel/transfer(obj/structure/disposalholder/H)
 	for(var/obj/effect/hvp/PJ in H.contents)
+		var/global_angle = dir2angle(dir) + current_angle
 		PJ.p_speed *= 1.3
-		PJ.dir = dir
-		PJ.angle = dir2angle(dir) + current_angle
 		PJ.forceMove(get_turf(src))
-		PJ.launch()
-	if(LAZYLEN(H.contents))
+		PJ.launch(global_angle, dir)
+	if(LAZYLEN(H.contents)) // if there's anything else left in the barrel, throw it out
 		expel(H, get_step(src, dir))
 	else
 		qdel(H)

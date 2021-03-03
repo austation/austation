@@ -7,6 +7,9 @@
 // the maximum amount of tiles a bluespace hvp can teleport to
 #define MAX_SWITCH_RANGE 11
 
+// max speed multiplier for movement
+#define MAX_SPEED 5
+
 /obj/effect/hvp
 	name = "high velocity projectile"
 	desc = "hey! You shouldn't be reading this"
@@ -26,24 +29,32 @@
 	var/infused = 0 // how much energy is infused with the projectile?
 
 	var/angle = 0
+	var/datum/point/vector/trajectory
 	var/last_angle = 0
 	var/momentum = 0
-//todo: use getline() for magic delete line at high speeds
-/obj/effect/hvp/proc/launch()
+
+/obj/effect/hvp/proc/launch(p_angle, p_dir)
 	momentum = mass * p_speed // hey google
 	if(momentum >= 1000) // how can I kill
 		var/turf/open/T = get_turf(src)
 		if(T.air)
 			for(var/mob/M in range(10, src))
 				shake_camera(M, 10, clamp(momentum*0.002, 0, MAX_SHAKE)) // one million people?
+	forceMove(get_turf(src)) // make sure we're not inside something
 	if(momentum >= 1)
+		dir = p_dir
+		angle = p_angle
 		if(!angle)
 			angle = dir2angle(dir)
-		addtimer(CALLBACK(src, .proc/move), 1)
+		calc_trajectory()
+		addtimer(CALLBACK(src, .proc/t_move), 1)
 	else
 		gameover()
 		return
 	SSaugury.register_doom(src, momentum)
+
+//TODO: use getline() for magic delete line at high speeds. Projectile can only go so fast before it phases through turfs/mobs
+/obj/effect/hvp/proc/get_line_of_death()
 
 /obj/effect/hvp/Topic(href, href_list)
 	if(href_list["orbit"])
@@ -62,6 +73,7 @@
 	if(isturf(clong) || isobj(clong))
 		if((special & HVP_BOUNCY) && prob(50))
 			angle = calc_ricochet(clong)
+			update_trajectory()
 			playsound(src, 'sound/vehicles/clowncar_crash2.ogg', 40, 0, 0)
 			if(prob(5))
 				angle += rand(20, -20)
@@ -82,11 +94,21 @@
 		penetrate(clong)
 
 // shield.dm and maths.dm for figuring out how the fucking fuck to math this BULLSHIT
-/obj/effect/hvp/proc/calc_ricochet(atom/A) // mostly yoinked from wall ricochet code, made it projectile side
+/obj/effect/hvp/proc/calc_ricochet(atom/A) // mostly yoinked from wall ricochet code but made the calculations projectile side
 	var/face_direction = get_dir(A, get_turf(src))
 	var/face_angle = dir2angle(face_direction)
 	var/incidence = GET_ANGLE_OF_INCIDENCE(face_angle, (angle + 180))
 	return SIMPLIFY_DEGREES(face_angle + incidence)
+
+/obj/effect/hvp/proc/calc_trajectory()
+	var/turf/start = get_turf(src)
+	var/speed_multiplier = min(log(p_speed) / 2, MAX_SPEED)
+	trajectory = new(start.x, start.y, start.z, pixel_x, pixel_y, angle)
+
+/obj/effect/hvp/proc/update_trajectory()
+	if(trajectory)
+		trajectory.set_angle(angle)
+		trajectory.set_speed( clamp((log(p_speed) / 2), 0.6, MAX_SPEED) )
 
 /obj/effect/hvp/proc/penetrate(mob/living/L)
 	var/projdamage = max(15, momentum / 35)
@@ -98,7 +120,7 @@
 			var/obj/item/bodypart/BP = H.get_bodypart(Z)
 			var/unlucky = clamp(momentum * 0.03, 15, 100)
 			if(prob(unlucky))
-				BP.drop_limb()
+				BP.dismember()
 		if(special & HVP_BOUNCY)
 			projdamage /= 4 // bouncy things don't hurt as much
 			H.adjustStaminaLoss(clamp(projdamage, 5, 120))
@@ -107,11 +129,15 @@
 	L.adjustBruteLoss(projdamage)
 	L.visible_message("<span class='danger'>[L] is penetrated by \the [src]!</span>" , "<span class='userdanger'>\The [src] penetrates you!</span>" , "<span class ='danger'>You hear a CLANG!</span>")
 
-/obj/effect/hvp/proc/move()
-	Move(get_step(angle), angle)
+
+/obj/effect/hvp/proc/t_move()
+	trajectory.increment()
+	var/turf/T = trajectory.return_turf()
+	Move(T)
 	if(angle != last_angle)
-		transform = turn(transform, last_angle - angle)
-		last_angle = angle
+		var/matrix/M = new
+		M.Turn(angle)
+		transform = M
 	if((special & HVP_BLUESPACE) && prob(5)) // good ol switcharoo
 		var/switch_range = clamp(BASE_SWITCH_RANGE * (momentum / 120), BASE_SWITCH_RANGE, MAX_SWITCH_RANGE)
 		var/list/choices = list()
@@ -135,7 +161,7 @@
 	// 0.05 is already pushing it too it's limits, any faster and it either runtimes or breaks reality.
 	// Going faster would require hacky visual effects and/or projected proc calling.
 	var/move_delay = clamp(round(0.9994 ** p_speed), 0.05, 0.2)
-	addtimer(CALLBACK(src, .proc/move), move_delay)
+	addtimer(CALLBACK(src, .proc/t_move), move_delay)
 
 /// called when we pass through a charger
 /obj/effect/hvp/proc/on_transfer()
@@ -151,7 +177,9 @@
 		if(isliving(AM))
 			var/mob/living/L = AM
 			L.adjustFireLoss(20)
+			INVOKE_ASYNC(L, /mob.proc/emote, "scream")
 			L.forceMove(get_turf(src))
+			L.Stun(40)
 			continue
 		if(isitem(AM))
 			var/obj/item/I = AM
