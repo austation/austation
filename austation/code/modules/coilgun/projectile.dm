@@ -28,6 +28,7 @@
 	var/p_speed = 0 // how fast the projectile is moving (not physically, due to byond limitations)
 	var/infused = 0 // how much energy is infused with the projectile?
 
+	var/t_speed = 0 // used for calculating trajectory, different from p_speed as it does not effect interactions
 	var/angle = 0
 	var/datum/point/vector/trajectory
 	var/last_angle = 0
@@ -66,22 +67,33 @@
 	if(prob(35))
 		playsound(src, 'sound/effects/bang.ogg', 50, 1)
 		audible_message("<span class='danger'>You hear a CLANG!</span>")
-	var/change_dir_chance = 100 - max(1, momentum / 25) // chance to change to collided direction increases as momentum decreases
-	if(clong && prob(change_dir_chance))
-		x = clong.x
-		y = clong.y
+
 	if(isturf(clong) || isobj(clong))
 		if((special & HVP_BOUNCY) && prob(50))
 			angle = calc_ricochet(clong)
-			update_trajectory()
 			playsound(src, 'sound/vehicles/clowncar_crash2.ogg', 40, 0, 0)
 			if(prob(5))
-				angle += rand(20, -20)
+				angle = SIMPLIFY_DEGREES(angle + rand(20, -20))
 				audible_message("<span class='danger'>You hear a BOING!</span>")
+			update_trajectory()
 		if(momentum >= 1000 || istype(clong, /obj/structure/window)) // Windows always break when getting hit by HVPs
 			clong.ex_act(EXPLODE_DEVASTATE)
 		else if(momentum > 100)
 			clong.ex_act(EXPLODE_HEAVY)
+			/*
+			*   The following "chance" var isn't exactly easy to read so here's the broken up version:
+			*   =============================================================================
+			*	var/incidence = calc_ricochet(clong, TRUE)
+			*	var/chance = -((log(0.001 * (momentum - 90))) / 2)
+			*	var/actual_chance = (incidence / 90) * chance		(the actual thing below)
+			*   ==============================================================================
+			*	Works properly if momentum is above 100, returns a decimal between 0-1.
+			*/
+			var/chance = (calc_ricochet(clong, TRUE) / 90) * -((log(0.001 * (momentum - 90))) / 2)
+			if(prob(chance * 100))
+				angle = calc_ricochet(clong)
+				update_trajectory()
+				visible_message("<span class='warning'>\The [src] ricochets off \the [clong]!</span>")
 		else
 			gameover()
 			return
@@ -93,22 +105,23 @@
 	if(isliving(clong))
 		penetrate(clong)
 
-// shield.dm and maths.dm for figuring out how the fucking fuck to math this BULLSHIT
-/obj/effect/hvp/proc/calc_ricochet(atom/A) // mostly yoinked from wall ricochet code but made the calculations projectile side
+// mostly yoinked from wall ricochet code but made the calculations projectile side and adjusted return values
+/obj/effect/hvp/proc/calc_ricochet(atom/A, return_incidence = FALSE)
 	var/face_direction = get_dir(A, get_turf(src))
 	var/face_angle = dir2angle(face_direction)
 	var/incidence = GET_ANGLE_OF_INCIDENCE(face_angle, (angle + 180))
-	return SIMPLIFY_DEGREES(face_angle + incidence)
+	return return_incidence ? incidence : SIMPLIFY_DEGREES(face_angle + incidence)
 
 /obj/effect/hvp/proc/calc_trajectory()
 	var/turf/start = get_turf(src)
-	var/speed_multiplier = min(log(p_speed) / 2, MAX_SPEED)
-	trajectory = new(start.x, start.y, start.z, pixel_x, pixel_y, angle)
+	t_speed = clamp((log(p_speed) / 2), 1, MAX_SPEED)
+	trajectory = new(start.x, start.y, start.z, pixel_x, pixel_y, angle, t_speed)
 
 /obj/effect/hvp/proc/update_trajectory()
 	if(trajectory)
+		t_speed = clamp((log(p_speed) / 2), 1, MAX_SPEED)
 		trajectory.set_angle(angle)
-		trajectory.set_speed( clamp((log(p_speed) / 2), 0.6, MAX_SPEED) )
+		trajectory.set_speed(t_speed)
 
 /obj/effect/hvp/proc/penetrate(mob/living/L)
 	var/projdamage = max(15, momentum / 35)
@@ -121,19 +134,22 @@
 			var/unlucky = clamp(momentum * 0.03, 15, 100)
 			if(prob(unlucky))
 				BP.dismember()
-		if(special & HVP_BOUNCY)
+		if(special & HVP_BOUNCY) // BOING
 			projdamage /= 4 // bouncy things don't hurt as much
 			H.adjustStaminaLoss(clamp(projdamage, 5, 120))
 			playsound(src, 'sound/vehicles/clowncar_crash2.ogg', 50, 0, 5)
 			angle = calc_ricochet(L)
+			var/atom/target = get_edge_target_turf(L, dir)
+			L.throw_at(target, 200, 4) // godspeed o7
 	L.adjustBruteLoss(projdamage)
 	L.visible_message("<span class='danger'>[L] is penetrated by \the [src]!</span>" , "<span class='userdanger'>\The [src] penetrates you!</span>" , "<span class ='danger'>You hear a CLANG!</span>")
 
 
 /obj/effect/hvp/proc/t_move()
-	trajectory.increment()
+	trajectory.increment(t_speed)
 	var/turf/T = trajectory.return_turf()
-	Move(T)
+	if(T != loc)
+		step_towards(src, T)
 	if(angle != last_angle)
 		var/matrix/M = new
 		M.Turn(angle)
@@ -153,9 +169,9 @@
 
 	if(isfloorturf(get_turf(src))) // Less expensive than atmos checks so it just checks for floor turfs for "drag"
 		p_speed--
-	if(p_speed && mass && momentum > 1)
-		momentum = mass*p_speed
-	else
+
+	momentum = mass*p_speed
+	if(momentum < 1)
 		gameover()
 		return
 	// 0.05 is already pushing it too it's limits, any faster and it either runtimes or breaks reality.
@@ -173,20 +189,21 @@
 	if(!LAZYLEN(contents))
 		qdel(src)
 		return
+	var/turf/T = get_turf(src)
 	for(var/atom/movable/AM in contents)
 		if(isliving(AM))
 			var/mob/living/L = AM
 			L.adjustFireLoss(20)
 			INVOKE_ASYNC(L, /mob.proc/emote, "scream")
-			L.forceMove(get_turf(src))
+			L.forceMove(T)
 			L.Stun(40)
 			continue
 		if(isitem(AM))
 			var/obj/item/I = AM
 			if(I.resistance_flags & INDESTRUCTIBLE)
-				I.forceMove(get_turf(src))
+				I.forceMove(T)
 				continue
-		var/obj/effect/decal/cleanable/ash/melted = new(get_turf(src)) // make an ash pile where we die ;-;
+		var/obj/effect/decal/cleanable/ash/melted = new(T) // make an ash pile where we die ;-;
 		playsound(loc, 'sound/items/welder.ogg', 150, 1)
 		melted.name = "slagged [AM.name]"
 		melted.desc = "Aahahah that's hot, that's hot."
