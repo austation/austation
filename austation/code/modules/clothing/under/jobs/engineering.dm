@@ -33,7 +33,7 @@
 	body_parts_covered = CHEST|GROIN|ARMS
 	can_adjust = FALSE
 	fitted = FEMALE_UNIFORM_TOP
-
+/* obsolete
 /obj/item/clothing/under/rank/engineering/roboticist/skirt
 	name = "roboticist's jumpskirt"
 	desc = "It's a slimming black with reinforced seams; great for industrial work."
@@ -45,3 +45,4 @@
 	body_parts_covered = CHEST|GROIN|ARMS
 	can_adjust = FALSE
 	fitted = FEMALE_UNIFORM_TOP
+*/

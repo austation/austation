@@ -23,3 +23,23 @@
 	id = /datum/reagent/consumable/synthetic_cake_batter
 	results = list(/datum/reagent/consumable/synthetic_cake_batter = 10)
 	required_reagents = list(/datum/reagent/consumable/flour = 15, /datum/reagent/consumable/milk = 15, /datum/reagent/consumable/astrotame = 5)
+/datum/chemical_reaction/hydrogen_peroxide
+	results = list(/datum/reagent/hydrogen_peroxide = 3)
+	required_reagents = list(/datum/reagent/water = 1, /datum/reagent/oxygen = 1, /datum/reagent/chlorine = 1)
+
+/datum/chemical_reaction/exotic_stabilizer
+	results = list(/datum/reagent/exotic_stabilizer = 2)
+	required_reagents = list(/datum/reagent/plasma_oxide = 1,/datum/reagent/stabilizing_agent = 1)
+
+/datum/chemical_reaction/acetone_oxide
+	results = list(/datum/reagent/acetone_oxide = 2)
+	required_reagents = list(/datum/reagent/acetone = 2, /datum/reagent/oxygen = 1, /datum/reagent/hydrogen_peroxide = 1)
+
+/datum/chemical_reaction/pentaerythritol
+	results = list(/datum/reagent/pentaerythritol = 2)
+	required_reagents = list(/datum/reagent/acetaldehyde = 1, /datum/reagent/toxin/formaldehyde = 3, /datum/reagent/water = 1 )
+
+/datum/chemical_reaction/acetaldehyde
+	results = list(/datum/reagent/acetaldehyde = 3)
+	required_reagents = list(/datum/reagent/acetone = 1, /datum/reagent/toxin/formaldehyde = 1, /datum/reagent/water = 1)
+	required_temp = 450

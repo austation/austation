@@ -61,9 +61,6 @@
 
 #define INVERSE(x) ( 1/(x) )
 
-/// Used for calculating the radioactive strength falloff
-#define INVERSE_SQUARE(initial_strength,cur_distance,initial_distance) ( (initial_strength)*((initial_distance)**2/(cur_distance)**2) )
-
 #define ISABOUTEQUAL(a, b, deviation) (deviation ? abs((a) - (b)) <= deviation : abs((a) - (b)) <= 0.1)
 
 #define ISEVEN(x) (x % 2 == 0)
@@ -113,7 +110,7 @@
 
 /// Finds the shortest angle that angle A has to change to get to angle B. Aka, whether to move clock or counterclockwise.
 /proc/closer_angle_difference(a, b)
-	if(!isnum(a) || !isnum(b))
+	if(!isnum_safe(a) || !isnum_safe(b))
 		return
 	a = SIMPLIFY_DEGREES(a)
 	b = SIMPLIFY_DEGREES(b)

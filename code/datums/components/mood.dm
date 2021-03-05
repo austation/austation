@@ -10,8 +10,8 @@
 	var/mood_modifier = 1 //Modifier to allow certain mobs to be less affected by moodlets
 	var/list/datum/mood_event/mood_events = list()
 	var/insanity_effect = 0 //is the owner being punished for low mood? If so, how much?
-	var/obj/screen/mood/screen_obj
-	var/obj/screen/sanity/screen_obj_sanity
+	var/atom/movable/screen/mood/screen_obj
+	var/atom/movable/screen/sanity/screen_obj_sanity
 
 /datum/component/mood/Initialize()
 	if(!isliving(parent))
@@ -186,7 +186,7 @@
 		if(6)
 			setSanity(sanity+0.2, maximum=SANITY_GREAT)
 		if(7)
-			setSanity(sanity+0.3, maximum=INFINITY)
+			setSanity(sanity+0.3, maximum=SANITY_GREAT)
 		if(8)
 			setSanity(sanity+0.4, maximum=SANITY_MAXIMUM)
 		if(9)
@@ -278,6 +278,11 @@
 	qdel(event)
 	update_mood()
 
+/datum/component/mood/proc/get_event(category)
+	if(!istext(category))
+		category = REF(category)
+	return mood_events[category]
+
 /datum/component/mood/proc/remove_temp_moods(var/admin) //Removes all temp moods
 	for(var/i in mood_events)
 		var/datum/mood_event/moodlet = mood_events[i]
@@ -338,7 +343,7 @@
 
 /datum/component/mood/proc/HandleCharge(mob/living/carbon/human/H)
 	var/datum/species/ethereal/E = H.dna?.species
-	switch(E.ethereal_charge)
+	switch(E.get_charge(H))
 		if(ETHEREAL_CHARGE_NONE to ETHEREAL_CHARGE_LOWPOWER)
 			add_event(null, "charge", /datum/mood_event/decharged)
 		if(ETHEREAL_CHARGE_LOWPOWER to ETHEREAL_CHARGE_NORMAL)
@@ -370,6 +375,8 @@
 
 /datum/component/mood/proc/check_area_mood(datum/source, var/area/A)
 	if(A.mood_bonus)
+		if(get_event("area"))	//walking between areas that give mood bonus should first clear the bonus from the previous one
+			clear_event(null, "area")
 		add_event(null, "area", /datum/mood_event/area, list(A.mood_bonus, A.mood_message))
 	else
 		clear_event(null, "area")

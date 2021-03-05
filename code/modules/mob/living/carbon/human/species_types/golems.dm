@@ -17,10 +17,12 @@
 	sexes = 1
 	damage_overlay_type = ""
 	meat = /obj/item/reagent_containers/food/snacks/meat/slab/human/mutant/golem
+	species_language_holder = /datum/language_holder/golem
 	// To prevent golem subtypes from overwhelming the odds when random species
 	// changes, only the Random Golem type can be chosen
 	limbs_id = "golem"
 	fixed_mut_color = "aaa"
+	swimming_component = /datum/component/swimming/golem
 	var/info_text = "As an <span class='danger'>Iron Golem</span>, you don't have any special traits."
 	var/random_eligible = TRUE //If false, the golem subtype can't be made through golem mutation toxin
 
@@ -595,7 +597,7 @@
 	special_names = null
 	random_eligible = FALSE //Zesko claims runic golems break the game
 	inherent_factions = list("cult")
-
+	species_language_holder = /datum/language_holder/golem/runic
 	var/obj/effect/proc_holder/spell/targeted/ethereal_jaunt/shift/golem/phase_shift
 	var/obj/effect/proc_holder/spell/targeted/abyssal_gaze/abyssal_gaze
 	var/obj/effect/proc_holder/spell/targeted/dominate/dominate
@@ -610,12 +612,15 @@
 	. = ..()
 	phase_shift = new
 	phase_shift.charge_counter = 0
+	phase_shift.start_recharge()
 	C.AddSpell(phase_shift)
 	abyssal_gaze = new
 	abyssal_gaze.charge_counter = 0
+	abyssal_gaze.start_recharge()
 	C.AddSpell(abyssal_gaze)
 	dominate = new
 	dominate.charge_counter = 0
+	dominate.start_recharge()
 	C.AddSpell(dominate)
 
 /datum/species/golem/runic/on_species_loss(mob/living/carbon/C)
@@ -860,7 +865,7 @@
 
 /datum/species/golem/bronze/proc/gong(mob/living/carbon/human/H)
 	last_gong_time = world.time
-	for(var/mob/living/M in get_hearers_in_view(7,H))
+	for(var/mob/living/M in hearers(7,H))
 		if(M.stat == DEAD)	//F
 			return
 		if(M == H)
@@ -975,6 +980,7 @@
 	sexes = FALSE
 	fixed_mut_color = null
 	inherent_traits = list(TRAIT_RESISTHEAT,TRAIT_NOBREATH,TRAIT_RESISTCOLD,TRAIT_RESISTHIGHPRESSURE,TRAIT_RESISTLOWPRESSURE,TRAIT_NOFIRE,TRAIT_NOGUNS,TRAIT_RADIMMUNE,TRAIT_PIERCEIMMUNE,TRAIT_NODISMEMBER,TRAIT_FAKEDEATH)
+	species_language_holder = /datum/language_holder/golem/bone
 	info_text = "As a <span class='danger'>Bone Golem</span>, You have a powerful spell that lets you chill your enemies with fear, and milk heals you! Just make sure to watch our for bone-hurting juice."
 	var/datum/action/innate/bonechill/bonechill
 
@@ -1016,9 +1022,9 @@
 
 /datum/action/innate/bonechill/Activate()
 	if(world.time < last_use + cooldown)
-		to_chat("<span class='notice'>You aren't ready yet to rattle your bones again</span>")
+		to_chat("<span class='notice'>You aren't ready yet to rattle your bones again.</span>")
 		return
-	owner.visible_message("<span class='warning'>[owner] rattles [owner.p_their()] bones harrowingly.</span>", "<span class='notice'>You rattle your bones</span>")
+	owner.visible_message("<span class='warning'>[owner] rattles [owner.p_their()] bones harrowingly.</span>", "<span class='notice'>You rattle your bones.</span>")
 	last_use = world.time
 	if(prob(snas_chance))
 		playsound(get_turf(owner),'sound/magic/RATTLEMEBONES2.ogg', 100)
@@ -1069,9 +1075,11 @@
 	C.weather_immunities |= "snow"
 	ball = new
 	ball.charge_counter = 0
+	ball.start_recharge()
 	C.AddSpell(ball)
 	cryo = new
 	cryo.charge_counter = 0
+	cryo.start_recharge()
 	C.AddSpell(cryo)
 
 /datum/species/golem/snow/on_species_loss(mob/living/carbon/C)

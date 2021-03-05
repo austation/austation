@@ -62,10 +62,11 @@
 /datum/symptom/blobspores/OnDeath(datum/disease/advance/A)
 	var/mob/living/M = A.affected_mob
 	M.visible_message("<span class='danger'>[M] starts swelling grotesquely!</span>")
-	sleep(10 SECONDS)
-	if(!A && !M)
+	addtimer(CALLBACK(src, .proc/blob_the_mob, A, M), 10 SECONDS)
+
+/datum/symptom/blobspores/proc/blob_the_mob(datum/disease/advance/A, mob/living/M)
+	if(!A || !M)
 		return
-	qdel(A)
 	var/list/blob_options = list(/obj/structure/blob/normal)
 	if(factory_blob)
 		blob_options += /obj/structure/blob/factory/lone
@@ -80,9 +81,9 @@
 			for(var/datum/disease/D in B.disease)//don't let them farm diseases with this and monkeys
 				B.disease -= D
 			B.disease += A//instead, they contain the disease that was in this
-		if(prob(2))
+		if(prob(A.properties["resistance"]))
 			var/atom/blobbernaut = new /mob/living/simple_animal/hostile/blob/blobbernaut/(M.loc)
 			blobbernaut.add_atom_colour(pick(BLOB_STRAIN_COLOR_LIST), FIXED_COLOUR_PRIORITY)
 		var/atom/blob_tile = new pick_blob(M.loc)
-		blob_tile.add_atom_colour(pick(BLOB_STRAIN_COLOR_LIST), FIXED_COLOUR_PRIORITY) //A random colour for the blob, as this blob isnt going to get a overmind colour
+		blob_tile.add_atom_colour(pick(BLOB_STRAIN_COLOR_LIST), FIXED_COLOUR_PRIORITY) //A random colour for the blob, as this blob isn't going to get a overmind colour
 	M.visible_message("<span class='danger'>A huge mass of blob and blob spores burst out of [M]!</span>")

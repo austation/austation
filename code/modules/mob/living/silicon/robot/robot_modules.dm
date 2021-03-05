@@ -13,6 +13,7 @@
 
 	var/list/basic_modules = list() //a list of paths, converted to a list of instances on New()
 	var/list/emag_modules = list() //ditto
+	var/list/ratvar_modules = list() //ditto
 	var/list/modules = list() //holds all the usable modules
 	var/list/added_modules = list() //modules not inherient to the robot module, are kept when the module changes
 	var/list/storages = list()
@@ -46,10 +47,15 @@
 		var/obj/item/I = new i(src)
 		emag_modules += I
 		emag_modules -= i
+	for(var/i in ratvar_modules)
+		var/obj/item/I = new i(src)
+		ratvar_modules += I
+		ratvar_modules -= i
 
 /obj/item/robot_module/Destroy()
 	basic_modules.Cut()
 	emag_modules.Cut()
+	ratvar_modules.Cut()
 	modules.Cut()
 	added_modules.Cut()
 	storages.Cut()
@@ -84,7 +90,7 @@
 	if(istype(I, /obj/item/stack))
 		var/obj/item/stack/S = I
 
-		if(is_type_in_list(S, list(/obj/item/stack/sheet/iron, /obj/item/stack/rods, /obj/item/stack/tile/plasteel)))
+		if(is_type_in_list(S, list(/obj/item/stack/sheet/iron, /obj/item/stack/rods, /obj/item/stack/tile/plasteel, /obj/item/stack/tile/light)))
 			if(S.materials[/datum/material/iron])
 				S.cost = S.materials[/datum/material/iron] * 0.25
 			S.source = get_or_create_estorage(/datum/robot_energy_storage/metal)
@@ -97,6 +103,10 @@
 			var/obj/item/stack/sheet/rglass/cyborg/G = S
 			G.source = get_or_create_estorage(/datum/robot_energy_storage/metal)
 			G.glasource = get_or_create_estorage(/datum/robot_energy_storage/glass)
+
+		else if(istype(S, /obj/item/stack/tile/brass))
+			S.cost = 500
+			S.source = get_or_create_estorage(/datum/robot_energy_storage/brass)
 
 		else if(istype(S, /obj/item/stack/medical))
 			S.cost = 250
@@ -129,6 +139,7 @@
 	basic_modules -= I
 	modules -= I
 	emag_modules -= I
+	ratvar_modules -= I
 	added_modules -= I
 	rebuild_modules()
 	if(delete_after)
@@ -164,6 +175,11 @@
 		add_module(I, FALSE, FALSE)
 	if(R.emagged)
 		for(var/obj/item/I in emag_modules)
+			add_module(I, FALSE, FALSE)
+	if(is_servant_of_ratvar(R) && !R.ratvar)	//It just works :^)
+		R.SetRatvar(TRUE, FALSE)
+	if(R.ratvar)
+		for(var/obj/item/I in ratvar_modules)
 			add_module(I, FALSE, FALSE)
 	for(var/obj/item/I in added_modules)
 		add_module(I, FALSE, FALSE)
@@ -246,6 +262,13 @@
 		/obj/item/borg/cyborghug,
 		/obj/item/instrument/piano_synth)
 	emag_modules = list(/obj/item/melee/transforming/energy/sword/cyborg)
+	ratvar_modules = list(
+		/obj/item/clock_module/abscond,
+		/obj/item/clock_module/kindle,
+		/obj/item/clock_module/abstraction_crystal,
+		/obj/item/clockwork/replica_fabricator,
+		/obj/item/stack/tile/brass/cyborg,
+		/obj/item/twohanded/clockwork/brass_spear)
 	moduleselect_icon = "standard"
 	hat_offset = -3
 
@@ -266,6 +289,7 @@
 		/obj/item/surgicaldrill,
 		/obj/item/scalpel,
 		/obj/item/circular_saw,
+		/obj/item/blood_filter,
 		/obj/item/extinguisher/mini,
 		/obj/item/roller/robo,
 		/obj/item/borg/cyborghug/medical,
@@ -273,6 +297,11 @@
 		/obj/item/organ_storage,
 		/obj/item/borg/lollipop)
 	emag_modules = list(/obj/item/reagent_containers/borghypo/hacked)
+	ratvar_modules = list(
+		/obj/item/clock_module/abscond,
+		/obj/item/clock_module/sentinels_compromise,
+		/obj/item/clock_module/prosperity_prism,
+		/obj/item/clock_module/vanguard)
 	cyborg_base_icon = "medical"
 	moduleselect_icon = "medical"
 	can_be_pushed = FALSE
@@ -287,7 +316,7 @@
 		/obj/item/construction/rcd/borg,
 		/obj/item/pipe_dispenser,
 		/obj/item/extinguisher,
-		/obj/item/holosign_creator/atmos, // austation -- adds holofan
+		/obj/item/floor_painter, //austation -- Floor painter
 		/obj/item/weldingtool/largetank/cyborg,
 		/obj/item/screwdriver/cyborg,
 		/obj/item/wrench/cyborg,
@@ -305,15 +334,24 @@
 		/obj/item/stack/sheet/rglass/cyborg,
 		/obj/item/stack/rods/cyborg,
 		/obj/item/stack/tile/plasteel/cyborg,
-		/obj/item/stack/cable_coil/cyborg)
+		/obj/item/stack/cable_coil/cyborg,
+		/obj/item/holosign_creator/atmos)
 	emag_modules = list(/obj/item/borg/stun)
+	ratvar_modules = list(
+		/obj/item/clock_module/abscond,
+		/obj/item/clock_module/ocular_warden,
+		/obj/item/clock_module/tinkerers_cache,
+		/obj/item/clock_module/stargazer,
+		/obj/item/clock_module/abstraction_crystal,
+		/obj/item/clockwork/replica_fabricator,
+		/obj/item/stack/tile/brass/cyborg)
 	cyborg_base_icon = "engineer"
 	moduleselect_icon = "engineer"
 	magpulsing = TRUE
 	hat_offset = -4
 
 /obj/item/robot_module/deathsquad
-	name = "Centcom"
+	name = "CentCom"
 	basic_modules = list(
 		/obj/item/assembly/flash/cyborg,
 		/obj/item/restraints/handcuffs/cable/zipties,
@@ -325,6 +363,7 @@
 		/obj/item/gun/energy/pulse/carbine/cyborg,
 		/obj/item/clothing/mask/gas/sechailer/cyborg)
 	emag_modules = list(/obj/item/gun/energy/laser/cyborg)
+	ratvar_modules = list(/obj/item/clock_module/abscond)
 	cyborg_base_icon = "centcom"
 	moduleselect_icon = "malf"
 	can_be_pushed = FALSE
@@ -342,6 +381,11 @@
 		/obj/item/clothing/mask/gas/sechailer/cyborg,
 		/obj/item/extinguisher/mini)
 	emag_modules = list(/obj/item/gun/energy/laser/cyborg)
+	ratvar_modules = list(
+		/obj/item/clock_module/abscond,
+		/obj/item/twohanded/clockwork/brass_spear,
+		/obj/item/clock_module/ocular_warden,
+		/obj/item/clock_module/vanguard)
 	cyborg_base_icon = "sec"
 	moduleselect_icon = "security"
 	can_be_pushed = FALSE
@@ -377,6 +421,11 @@
 		/obj/item/reagent_containers/spray/pepper,
 		/obj/item/borg/projectile_dampen)
 	emag_modules = list(/obj/item/reagent_containers/borghypo/peace/hacked)
+	ratvar_modules = list(
+		/obj/item/clock_module/abscond,
+		/obj/item/clock_module/vanguard,
+		/obj/item/clock_module/kindle,
+		/obj/item/clock_module/sigil_submission)
 	cyborg_base_icon = "peace"
 	moduleselect_icon = "standard"
 	can_be_pushed = FALSE
@@ -404,21 +453,20 @@
 		/obj/item/paint/paint_remover,
 		/obj/item/lightreplacer/cyborg,
 		/obj/item/holosign_creator/janibarrier,
-		/obj/item/reagent_containers/spray/cyborg_drying)
-	emag_modules = list(/obj/item/reagent_containers/spray/cyborg_lube)
+		/obj/item/reagent_containers/spray/cyborg/drying_agent,
+		/obj/item/reagent_containers/spray/cyborg/plantbgone)
+	emag_modules = list(
+		/obj/item/reagent_containers/spray/cyborg/lube,
+		/obj/item/reagent_containers/spray/cyborg/acid)
+	ratvar_modules = list(
+		/obj/item/clock_module/abscond,
+		/obj/item/clock_module/sigil_submission,
+		/obj/item/clock_module/kindle,
+		/obj/item/clock_module/vanguard)
 	cyborg_base_icon = "janitor"
 	moduleselect_icon = "janitor"
 	hat_offset = -5
 	clean_on_move = TRUE
-
-/obj/item/reagent_containers/spray/cyborg_drying
-	name = "drying agent spray"
-	color = "#A000A0"
-	list_reagents = list(/datum/reagent/drying_agent = 250)
-
-/obj/item/reagent_containers/spray/cyborg_lube
-	name = "lube spray"
-	list_reagents = list(/datum/reagent/lube = 250)
 
 /obj/item/robot_module/janitor/respawn_consumable(mob/living/silicon/robot/R, coeff = 1)
 	..()
@@ -426,14 +474,6 @@
 	if(LR)
 		for(var/i in 1 to coeff)
 			LR.Charge(R)
-
-	var/obj/item/reagent_containers/spray/cyborg_drying/CD = locate(/obj/item/reagent_containers/spray/cyborg_drying) in basic_modules
-	if(CD)
-		CD.reagents.add_reagent(/datum/reagent/drying_agent, 5 * coeff)
-
-	var/obj/item/reagent_containers/spray/cyborg_lube/CL = locate(/obj/item/reagent_containers/spray/cyborg_lube) in emag_modules
-	if(CL)
-		CL.reagents.add_reagent(/datum/reagent/lube, 2 * coeff)
 
 /obj/item/robot_module/clown
 	name = "Clown"
@@ -459,6 +499,10 @@
 	emag_modules = list(
 		/obj/item/reagent_containers/borghypo/clown/hacked,
 		/obj/item/reagent_containers/spray/waterflower/cyborg/hacked)
+	ratvar_modules = list(
+		/obj/item/clock_module/abscond,
+		/obj/item/clock_module/vanguard,
+		/obj/item/twohanded/clockwork/brass_battlehammer)	//honk
 	moduleselect_icon = "service"
 	cyborg_base_icon = "clown"
 	hat_offset = -2
@@ -468,22 +512,27 @@
 	basic_modules = list(
 		/obj/item/assembly/flash/cyborg,
 		/obj/item/reagent_containers/food/drinks/drinkingglass,
-		/obj/item/reagent_containers/food/condiment/enzyme,
 		/obj/item/pen,
 		/obj/item/toy/crayon/spraycan/borg,
 		/obj/item/extinguisher/mini,
 		/obj/item/hand_labeler/borg,
-		/obj/item/borg/charger,
 		/obj/item/razor,
+		/obj/item/borg/charger,
 		/obj/item/rsf,
+		/obj/item/cookiesynth,
 		/obj/item/instrument/piano_synth,
 		/obj/item/reagent_containers/dropper,
 		/obj/item/lighter,
-		/obj/item/storage/bag/tray,
-		/obj/item/borg/apparatus/beaker,
-		/obj/item/cookiesynth,
+		/obj/item/borg/apparatus/beaker/service,
 		/obj/item/reagent_containers/borghypo/borgshaker)
 	emag_modules = list(/obj/item/reagent_containers/borghypo/borgshaker/hacked)
+	ratvar_modules = list(
+		/obj/item/clock_module/abscond,
+		/obj/item/clock_module/vanguard,
+		/obj/item/clock_module/sigil_submission,
+		/obj/item/clock_module/kindle,
+		/obj/item/clock_module/sentinels_compromise,
+		/obj/item/clockwork/replica_fabricator)
 	moduleselect_icon = "service"
 	special_light_key = "service"
 	hat_offset = 0
@@ -494,9 +543,9 @@
 	if(O)
 		O.reagents.add_reagent(/datum/reagent/consumable/enzyme, 2 * coeff)
 
-/obj/item/robot_module/butler/be_transformed_to(obj/item/robot_module/old_module)
+/*/obj/item/robot_module/butler/be_transformed_to(obj/item/robot_module/old_module) //austation begin -- Using our own sprite selection method
 	var/mob/living/silicon/robot/R = loc
-	var/borg_icon = input(R, "Select an icon!", "Robot Icon", null) as null|anything in sortList(list("Waitress", "Butler", "Tophat", "Kent", "Bro", "Heavy", "Skirt")) // austation -- added 'heavy' and 'Skirt'
+	var/borg_icon = input(R, "Select an icon!", "Robot Icon", null) as null|anything in sortList(list("Waitress", "Butler", "Tophat", "Kent", "Bro"))
 	if(!borg_icon)
 		return FALSE
 	switch(borg_icon)
@@ -514,20 +563,7 @@
 			cyborg_base_icon = "tophat"
 			special_light_key = null
 			hat_offset = INFINITY //He is already wearing a hat
-		// austation begin -- adding choice and defining the light sprite
-		if("Heavy")
-			R.icon = 'austation/icons/mob/robot.dmi'
-			cyborg_base_icon = "heavyserv"
-			special_light_key = "heavyserv"
-		if("Skirt")
-			R.icon = 'austation/icons/mob/robot.dmi'
-			cyborg_base_icon = "banangarang-Service"
-			hat_offset = 0
-	if(R.ckey == "ZombiesVsPlants")
-		borg_icon = "Skirt"
-		return
-		// austation end
-	return ..()
+	return ..() */ //austation end
 
 /obj/item/robot_module/borgi
 	name = "Borgi"
@@ -555,14 +591,19 @@
 		/obj/item/gps/cyborg,
 		/obj/item/stack/marker_beacon)
 	emag_modules = list(/obj/item/borg/stun)
+	ratvar_modules = list(
+		/obj/item/clock_module/abscond,
+		/obj/item/clock_module/vanguard,
+		/obj/item/clock_module/ocular_warden,
+		/obj/item/clock_module/sentinels_compromise)
 	cyborg_base_icon = "miner"
 	moduleselect_icon = "miner"
 	hat_offset = 0
 	var/obj/item/t_scanner/adv_mining_scanner/cyborg/mining_scanner //built in memes.
 
-/obj/item/robot_module/miner/be_transformed_to(obj/item/robot_module/old_module)
+/*/obj/item/robot_module/miner/be_transformed_to(obj/item/robot_module/old_module) //austation begin -- Using our own sprite selection method
 	var/mob/living/silicon/robot/R = loc
-	var/borg_icon = input(R, "Select an icon!", "Robot Icon", null) as null|anything in sortList(list("Lavaland Miner", "Asteroid Miner", "Spider Miner", "Marina", "Heavy", "Can", "Droid", "Sleek", "Skirt"))// austation -- added additonal choices to list
+	var/borg_icon = input(R, "Select an icon!", "Robot Icon", null) as null|anything in sortList(list("Lavaland Miner", "Asteroid Miner", "Spider Miner"))
 	if(!borg_icon)
 		return FALSE
 	switch(borg_icon)
@@ -573,37 +614,7 @@
 			special_light_key = "miner"
 		if("Spider Miner")
 			cyborg_base_icon = "spidermin"
-			hat_offset = -3 // austation -- setting offset
-		// austation begin -- adding choices
-		if("Marina")
-			R.icon = 'austation/icons/mob/robot.dmi'
-			cyborg_base_icon = "marinamin"
-			hat_offset = 2
-		if("Heavy")
-			R.icon = 'austation/icons/mob/robot.dmi'
-			cyborg_base_icon = "heavymin"
-			hat_offset = -3
-		if("Can")
-			R.icon = 'austation/icons/mob/robot.dmi'
-			cyborg_base_icon = "canmin"
-			hat_offset = 3
-		if("Droid")
-			R.icon = 'austation/icons/mob/robot.dmi'
-			cyborg_base_icon = "cminer"
-			hat_offset = 4
-		if("Sleek")
-			R.icon = 'austation/icons/mob/robot.dmi'
-			cyborg_base_icon = "sleekmin"
-			hat_offset = -1
-		if("Skirt")
-			R.icon = 'austation/icons/mob/robot.dmi'
-			cyborg_base_icon = "banangarang-Miner"
-			hat_offset = 0
-	if(R.ckey == "ZombiesVsPlants")
-		borg_icon = "Skirt"
-		return
-		// austation end
-	return ..()
+	return ..() */ //austation end
 
 /obj/item/robot_module/miner/rebuild_modules()
 	. = ..()
@@ -646,7 +657,7 @@
 	basic_modules = list(
 		/obj/item/assembly/flash/cyborg,
 		/obj/item/reagent_containers/borghypo/syndicate,
-		/obj/item/twohanded/shockpaddles/syndicate,
+		/obj/item/twohanded/shockpaddles/syndicate/cyborg,
 		/obj/item/healthanalyzer,
 		/obj/item/surgical_drapes,
 		/obj/item/borg/charger,
@@ -732,6 +743,9 @@
 
 /datum/robot_energy_storage/glass
 	name = "Glass Synthesizer"
+
+/datum/robot_energy_storage/brass
+	name = "Brass Synthesizer"
 
 /datum/robot_energy_storage/wire
 	max_energy = 50

@@ -71,7 +71,11 @@
 		if(0)
 			if(M.health >= 0)
 				if(user.zone_selected == BODY_ZONE_HEAD)
-					user.visible_message("<span class='notice'>[user] playfully boops [M] on the head!</span>", \
+					if(is_species(M, /datum/species/human/felinid))// austation begin -- Borg hugs provide mood
+						SEND_SIGNAL(M, COMSIG_ADD_MOOD_EVENT, "friendly_pat", /datum/mood_event/betterheadpat) // Cant forget the felinid ExClUsIvE content
+					else
+						SEND_SIGNAL(M, COMSIG_ADD_MOOD_EVENT, "pat", /datum/mood_event/headpat)
+						user.visible_message("<span class='notice'>[user] playfully boops [M] on the head!</span>", \
 									"<span class='notice'>You playfully boop [M] on the head!</span>")
 					user.do_attack_animation(M, ATTACK_EFFECT_BOOP)
 					playsound(loc, 'sound/weapons/tap.ogg', 50, 1, -1)
@@ -80,6 +84,7 @@
 						user.visible_message("<span class='notice'>[user] shakes [M] trying to get [M.p_them()] up!</span>", \
 										"<span class='notice'>You shake [M] trying to get [M.p_them()] up!</span>")
 					else
+						SEND_SIGNAL(M, COMSIG_ADD_MOOD_EVENT, "hug", /datum/mood_event/hug) // austation end
 						user.visible_message("<span class='notice'>[user] hugs [M] to make [M.p_them()] feel better!</span>", \
 								"<span class='notice'>You hug [M] to make [M.p_them()] feel better!</span>")
 					if(M.resting)
@@ -325,7 +330,7 @@
 		user.visible_message("<font color='red' size='2'>[user] blares out a near-deafening siren from its speakers!</font>", \
 			"<span class='userdanger'>The siren pierces your hearing and confuses you!</span>", \
 			"<span class='danger'>The siren pierces your hearing!</span>")
-		for(var/mob/living/carbon/M in get_hearers_in_view(9, user))
+		for(var/mob/living/carbon/M in hearers(9, user))
 			if(M.get_ear_protection() == FALSE)
 				M.confused += 6
 		audible_message("<font color='red' size='7'>HUMAN HARM</font>")
@@ -340,7 +345,7 @@
 
 	if(safety == FALSE)
 		user.audible_message("<font color='red' size='7'>BZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZT</font>")
-		for(var/mob/living/carbon/C in get_hearers_in_view(9, user))
+		for(var/mob/living/carbon/C in hearers(9, user))
 			var/bang_effect = C.soundbang_act(2, 0, 0, 5)
 			switch(bang_effect)
 				if(1)
@@ -446,7 +451,7 @@
 		A.BB.nodamage = FALSE
 	A.BB.speed = 0.5
 	playsound(src.loc, 'sound/machines/click.ogg', 50, 1)
-	A.fire_casing(target, user, params, 0, 0, null, 0, src)
+	A.fire_casing(target, user, params, 0, 0, null, 0, 1, src)
 	user.visible_message("<span class='warning'>[user] blasts a flying lollipop at [target]!</span>")
 	check_amount()
 
@@ -462,7 +467,7 @@
 	A.BB.speed = 0.5
 	A.BB.color = rgb(rand(0, 255), rand(0, 255), rand(0, 255))
 	playsound(src.loc, 'sound/weapons/bulletflyby3.ogg', 50, 1)
-	A.fire_casing(target, user, params, 0, 0, null, 0, src)
+	A.fire_casing(target, user, params, 0, 0, null, 0, 1, src)
 	user.visible_message("<span class='warning'>[user] shoots a high-velocity gumball at [target]!</span>")
 	check_amount()
 
@@ -946,3 +951,26 @@
 	. = ..()
 	if(istype(A, /obj/item/aiModule) && !stored) //If an admin wants a borg to upload laws, who am I to stop them? Otherwise, we can hint that it fails
 		to_chat(user, "<span class='warning'>This circuit board doesn't seem to have standard robot apparatus pin holes. You're unable to pick it up.</span>")
+
+////////////////////
+//versatile service holder//
+////////////////////
+
+/obj/item/borg/apparatus/beaker/service
+	name = "versatile service grasper"
+	desc = "Specially designed for carrying glasses, food and seeds. Alt-Z or right-click to drop the stored object."
+	storable = list(/obj/item/reagent_containers/food,
+	/obj/item/seeds,
+	/obj/item/storage/fancy/donut_box,
+	/obj/item/storage/fancy/egg_box,
+	/obj/item/clothing/mask/cigarette,
+	/obj/item/storage/fancy/cigarettes,
+	/obj/item/reagent_containers/glass/beaker,
+	/obj/item/reagent_containers/glass/bottle,
+	/obj/item/reagent_containers/glass/bucket
+	)
+
+/obj/item/borg/apparatus/beaker/service/examine()
+	. = ..()
+	if(stored)
+		. += "You are currently holding [stored]."

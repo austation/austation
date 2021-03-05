@@ -35,9 +35,8 @@
 /datum/action/innate/cult/blood_magic/Activate()
 	var/rune = FALSE
 	var/limit = RUNELESS_MAX_BLOODCHARGE
-	for(var/obj/effect/rune/empower/R in range(1, owner))
+	if(locate(/obj/effect/rune/empower) in range(1, owner))
 		rune = TRUE
-		break
 	if(rune)
 		limit = MAX_BLOODCHARGE
 	if(spells.len >= limit)
@@ -141,14 +140,14 @@
 	name = "Stun"
 	desc = "Empowers your hand to stun and mute a victim on contact."
 	button_icon_state = "hand"
-	magic_path = "/obj/item/melee/blood_magic/stun"
+	magic_path = /obj/item/melee/blood_magic/stun
 	health_cost = 10
 
 /datum/action/innate/cult/blood_spell/teleport
 	name = "Teleport"
 	desc = "Empowers your hand to teleport yourself or another cultist to a teleport rune on contact."
 	button_icon_state = "tele"
-	magic_path = "/obj/item/melee/blood_magic/teleport"
+	magic_path = /obj/item/melee/blood_magic/teleport
 	health_cost = 7
 
 /datum/action/innate/cult/blood_spell/emp
@@ -157,6 +156,7 @@
 	button_icon_state = "emp"
 	health_cost = 10
 	invocation = "Ta'gh fara'qha fel d'amar det!"
+	check_flags = AB_CHECK_CONSCIOUS
 
 /datum/action/innate/cult/blood_spell/emp/Activate()
 	owner.visible_message("<span class='warning'>[owner]'s hand flashes a bright blue!</span>", \
@@ -172,20 +172,20 @@
 	desc = "Empowers your hand to start handcuffing victim on contact, and mute them if successful."
 	button_icon_state = "cuff"
 	charges = 4
-	magic_path = "/obj/item/melee/blood_magic/shackles"
+	magic_path = /obj/item/melee/blood_magic/shackles
 
 /datum/action/innate/cult/blood_spell/construction
 	name = "Twisted Construction"
 	desc = "Empowers your hand to corrupt certain metalic objects.<br><u>Converts:</u><br>Plasteel into runed metal<br>50 iron into a construct shell<br>Living cyborgs into constructs after a delay<br>Cyborg shells into construct shells<br>Airlocks into brittle runed airlocks after a delay (harm intent)"
 	button_icon_state = "transmute"
-	magic_path = "/obj/item/melee/blood_magic/construction"
+	magic_path = /obj/item/melee/blood_magic/construction
 	health_cost = 12
 
 /datum/action/innate/cult/blood_spell/equipment
 	name = "Summon Equipment"
 	desc = "Allows you to summon a ritual dagger, or empowers your hand to summon combat gear onto a cultist you touch, including cult armor, a cult bola, and a cult sword."
 	button_icon_state = "equip"
-	magic_path = "/obj/item/melee/blood_magic/armor"
+	magic_path = /obj/item/melee/blood_magic/armor
 
 /datum/action/innate/cult/blood_spell/equipment/Activate()
 	var/choice = alert(owner,"Choose your equipment type",,"Combat Equipment","Ritual Dagger","Cancel")
@@ -214,6 +214,7 @@
 	button_icon_state = "horror"
 	var/obj/effect/proc_holder/horror/PH
 	charges = 4
+	check_flags = AB_CHECK_CONSCIOUS
 
 /datum/action/innate/cult/blood_spell/horror/New()
 	PH = new()
@@ -256,7 +257,7 @@
 	var/turf/T = get_turf(ranged_ability_user)
 	if(!isturf(T))
 		return FALSE
-	if(target in view(7, get_turf(ranged_ability_user)))
+	if(ranged_ability_user in viewers(7, get_turf(target)))
 		if(!ishuman(target) || iscultist(target))
 			return
 		var/mob/living/carbon/human/H = target
@@ -281,6 +282,7 @@
 	button_icon_state = "gone"
 	charges = 10
 	var/revealing = FALSE //if it reveals or not
+	check_flags = AB_CHECK_CONSCIOUS
 
 /datum/action/innate/cult/blood_spell/veiling/Activate()
 	if(!revealing)
@@ -289,14 +291,14 @@
 		charges--
 		SEND_SOUND(owner, sound('sound/magic/smoke.ogg',0,1,25))
 		owner.whisper(invocation, language = /datum/language/common)
-		for(var/obj/effect/rune/R in range(5,owner))
+		for(var/obj/effect/rune/R in range(5, owner))
 			R.conceal()
-		for(var/obj/structure/destructible/cult/S in range(5,owner))
+		for(var/obj/structure/destructible/cult/S in range(5, owner))
 			S.conceal()
-		for(var/turf/open/floor/engine/cult/T  in range(5,owner))
-			T.realappearance.alpha = 0
 		for(var/obj/machinery/door/airlock/cult/AL in range(5, owner))
 			AL.conceal()
+		for(var/turf/open/floor/engine/cult/T in RANGE_TURFS(5,owner))
+			T.realappearance.alpha = 0
 		revealing = TRUE
 		name = "Reveal Runes"
 		button_icon_state = "back"
@@ -310,10 +312,10 @@
 			R.reveal()
 		for(var/obj/structure/destructible/cult/S in range(6,owner))
 			S.reveal()
-		for(var/turf/open/floor/engine/cult/T  in range(6,owner))
-			T.realappearance.alpha = initial(T.realappearance.alpha)
 		for(var/obj/machinery/door/airlock/cult/AL in range(6, owner))
 			AL.reveal()
+		for(var/turf/open/floor/engine/cult/T in RANGE_TURFS(6,owner))
+			T.realappearance.alpha = initial(T.realappearance.alpha)
 		revealing = FALSE
 		name = "Conceal Runes"
 		button_icon_state = "gone"
@@ -329,7 +331,7 @@
 	invocation = "Fel'th Dol Ab'orod!"
 	button_icon_state = "manip"
 	charges = 5
-	magic_path = "/obj/item/melee/blood_magic/manipulator"
+	magic_path = /obj/item/melee/blood_magic/manipulator
 
 
 // The "magic hand" items
@@ -403,7 +405,7 @@
 //Stun
 /obj/item/melee/blood_magic/stun
 	name = "Forbidden Whispers"
-	desc = "A forgotten word that will drive the target to madness for a short time if their ears are unprotected."
+	desc = "A coil of death wrapped around your hand, anyone inflicted with this will have their mind flooded with the forbidden whispers of Nar'Sie, causing them to collapse in to a frenzy if they lack protection for their mind."
 	color = RUNE_COLOR_RED
 	invocation = "Fuu ma'jin!"
 
@@ -414,7 +416,7 @@
 	if(iscultist(target))
 		return
 	if(iscultist(user))
-		user.visible_message("<span class='warning'>[user] whispers an unintelligable phrase into [L]'s ear.</span>", \
+		user.visible_message("<span class='warning'>[user] floods [L]'s mind with an eldritch energy!</span>", \
 							"<span class='cultitalic'>You attempt to stun [L] with the spell!</span>")
 
 		user.mob_light(_color = LIGHT_COLOR_BLOOD_MAGIC, _range = 3, _duration = 2)
@@ -429,8 +431,8 @@
 
 			if(istype(anti_magic_source, /obj/item))
 				target.visible_message("<span class='warning'>[L] is utterly unphased by your utterance!</span>", \
-									   "<span class='userdanger'>[user] whispers gibberish into your ear. Was that supposed to do something?</span>")
-		else if(L.get_ear_protection() <= 0)
+									   "<span class='userdanger'>[GLOB.deity] protects you from the heresy of [user]!</span>")
+		else if(!HAS_TRAIT(target, TRAIT_MINDSHIELD) && !istype(L.get_item_by_slot(SLOT_HEAD), /obj/item/clothing/head/foilhat))
 			to_chat(user, "<span class='cultitalic'>[L] falls to the ground, gibbering madly!</span>")
 			L.Paralyze(160)
 			L.flash_act(1,1)
@@ -444,8 +446,8 @@
 				C.cultslurring += 15
 				C.Jitter(15)
 		else
-			target.visible_message("<span class='warning'>[L] can't seem to hear you!</span>", \
-									   "<span class='userdanger'>[user] whispers something to you, but you can't quite make it out through your hearing protection.</span>")
+			target.visible_message("<span class='warning'>You fail to corrupt [L]'s mind!</span>", \
+									   "<span class='userdanger'>Your mindshield protects you from the heresy of [user]!</span>")
 		uses--
 	..()
 
@@ -555,12 +557,12 @@
 
 /obj/item/melee/blood_magic/construction/examine(mob/user)
 	. = ..()
-	. += {"<u>A sinister spell used to convert:</u>\n
-	Plasteel into runed metal\n
-	[IRON_TO_CONSTRUCT_SHELL_CONVERSION] metal into a construct shell\n
-	Living cyborgs into constructs after a delay\n
-	Cyborg shells into construct shells\n
-	Airlocks into brittle runed airlocks after a delay (harm intent)"}
+	. += "<u>A sinister spell used to convert:</u>\n"+\
+	"Plasteel into runed metal\n"+\
+	"[IRON_TO_CONSTRUCT_SHELL_CONVERSION] metal into a construct shell\n"+\
+	"Living cyborgs into constructs after a delay\n"+\
+	"Cyborg shells into construct shells\n"+\
+	"Airlocks into brittle runed airlocks after a delay (harm intent)"
 
 /obj/item/melee/blood_magic/construction/afterattack(atom/target, mob/user, proximity_flag, click_parameters)
 	if(proximity_flag && iscultist(user))
@@ -647,7 +649,7 @@
 //Armor: Gives the target a basic cultist combat loadout
 /obj/item/melee/blood_magic/armor
 	name = "Arming Aura"
-	desc = "Will equipt cult combat gear onto a cultist on contact."
+	desc = "On contact, equips a cultist with combat gear."
 	color = "#33cc33" // green
 
 /obj/item/melee/blood_magic/armor/afterattack(atom/target, mob/living/carbon/user, proximity)
@@ -762,7 +764,7 @@
 	var/temp = 0
 	var/turf/T = get_turf(target)
 	if(T)
-		for(var/obj/effect/decal/cleanable/blood/B in view(T, 2))
+		for(var/obj/effect/decal/cleanable/blood/B in view(2, T))
 			if(B.blood_state == BLOOD_STATE_HUMAN)
 				if(B.bloodiness == 100) //Bonus for "pristine" bloodpools, also to prevent cheese with footprint spam
 					temp += 30
@@ -770,7 +772,7 @@
 					temp += max((B.bloodiness**2)/800,1)
 				new /obj/effect/temp_visual/cult/turf/floor(get_turf(B))
 				qdel(B)
-		for(var/obj/effect/decal/cleanable/trail_holder/TH in view(T, 2))
+		for(var/obj/effect/decal/cleanable/trail_holder/TH in view(2, T))
 			qdel(TH)
 		var/obj/item/clothing/shoes/shoecheck = user.shoes
 		if(shoecheck && shoecheck.bloody_shoes[/datum/reagent/blood])
@@ -786,7 +788,7 @@
 /obj/item/melee/blood_magic/manipulator/attack_self(mob/living/user)
 	if(iscultist(user))
 		var/list/options = list("Blood Spear (150)", "Blood Bolt Barrage (300)", "Blood Beam (500)")
-		var/choice = input(user, "Choose a greater blood rite...", "Greater Blood Rites") as null|anything in options
+		var/choice = input(user, "Choose a greater blood rite.", "Greater Blood Rites") as null|anything in options
 		if(!choice)
 			to_chat(user, "<span class='cultitalic'>You decide against conducting a greater blood rite.</span>")
 			return

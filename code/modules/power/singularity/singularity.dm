@@ -136,7 +136,6 @@
 	eat()
 	dissipate()
 	check_energy()
-
 	return
 
 
@@ -268,8 +267,7 @@
 
 
 /obj/singularity/proc/eat()
-	for(var/tile in spiral_range_turfs(grav_pull, src))
-		var/turf/T = tile
+	for(var/turf/T as() in spiral_range_turfs(grav_pull, src))
 		if(!T || !isturf(loc))
 			continue
 		if(get_dist(T, src) > consume_range)
@@ -423,7 +421,7 @@
 			continue
 
 		if(M.stat == CONSCIOUS)
-			if (ishuman(M))
+			if(ishuman(M))
 				var/mob/living/carbon/human/H = M
 				if(istype(H.glasses, /obj/item/clothing/glasses/meson))
 					var/obj/item/clothing/glasses/meson/MS = H.glasses

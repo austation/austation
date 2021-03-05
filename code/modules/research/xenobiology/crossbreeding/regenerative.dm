@@ -43,7 +43,7 @@ Regenerative extracts:
 
 /obj/item/slimecross/regenerative/orange/core_effect_before(mob/living/target, mob/user)
 	target.visible_message("<span class='warning'>The [src] boils over!</span>")
-	for(var/turf/turf in range(1,target))
+	for(var/turf/open/turf in RANGE_TURFS(1,target))
 		if(!locate(/obj/effect/hotspot) in turf)
 			new /obj/effect/hotspot(turf)
 
@@ -199,7 +199,7 @@ Regenerative extracts:
 		var/mob/living/simple_animal/slime/S = target
 		S.random_colour()
 	if(isjellyperson(target))
-		target.reagents.add_reagent(/datum/reagent/slime_toxin,5)
+		target.reagents.add_reagent(/datum/reagent/mutationtoxin/jelly,5)
 
 
 /obj/item/slimecross/regenerative/pink
@@ -226,7 +226,7 @@ Regenerative extracts:
 
 /obj/item/slimecross/regenerative/oil/core_effect(mob/living/target, mob/user)
 	playsound(src, 'sound/weapons/flash.ogg', 100, 1)
-	for(var/mob/living/L in view(user,7))
+	for(var/mob/living/L in viewers(7, user))
 		L.flash_act()
 
 /obj/item/slimecross/regenerative/black
@@ -247,6 +247,8 @@ Regenerative extracts:
 	dummy.adjustFireLoss(target.getFireLoss())
 	dummy.adjustToxLoss(target.getToxLoss())
 	dummy.adjustOxyLoss(200)
+	//Force death just in case
+	dummy.death()
 
 /obj/item/slimecross/regenerative/lightpink
 	colour = "light pink"

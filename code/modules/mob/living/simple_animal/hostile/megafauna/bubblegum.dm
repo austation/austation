@@ -58,7 +58,7 @@ Difficulty: Hard
 	var/enrage_till = 0
 	var/enrage_time = 70
 	var/revving_charge = FALSE
-	gps_name = "Bloody Signal"
+	gps_name = "Bubbly Signal"
 	medal_type = BOSS_MEDAL_BUBBLEGUM
 	score_type = BUBBLEGUM_SCORE
 	deathmessage = "sinks into a pool of blood, fleeing the battle. You've won, for now... "
@@ -350,7 +350,7 @@ Difficulty: Hard
 
 /mob/living/simple_animal/hostile/megafauna/bubblegum/proc/get_pools(turf/T, range)
 	. = list()
-	for(var/obj/effect/decal/cleanable/nearby in view(T, range))
+	for(var/obj/effect/decal/cleanable/nearby in view(range, T))
 		if(nearby.can_bloodcrawl_in())
 			. += nearby
 

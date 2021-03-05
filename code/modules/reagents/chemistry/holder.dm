@@ -350,11 +350,11 @@
 					R.on_mob_metabolize(C)
 				if(can_overdose)
 					if(R.overdose_threshold)
-						if(R.volume >= R.overdose_threshold && !R.overdosed)
+						if(R.volume > R.overdose_threshold && !R.overdosed) // austation -- PR: #3045 Changed from >= to >
 							R.overdosed = 1
 							need_mob_update += R.overdose_start(C)
 					if(R.addiction_threshold)
-						if(R.volume >= R.addiction_threshold && !is_type_in_list(R, cached_addictions))
+						if(R.volume > R.addiction_threshold && !is_type_in_list(R, cached_addictions)) // austation -- PR: #3045 Changed from >= to >
 							var/datum/reagent/new_reagent = new R.type()
 							cached_addictions.Add(new_reagent)
 					if(R.overdosed)
@@ -513,7 +513,7 @@
 				remove_reagent(B, (multiplier * cached_required_reagents[B]), safety = 1)
 
 			for(var/P in selected_reaction.results)
-				multiplier = max(multiplier, 1) //this shouldnt happen ...
+				multiplier = max(multiplier, 1) //this shouldn't happen ...
 				SSblackbox.record_feedback("tally", "chemical_reaction", cached_results[P]*multiplier, P)
 				add_reagent(P, cached_results[P]*multiplier, null, chem_temp)
 
@@ -524,14 +524,14 @@
 					if(selected_reaction.mix_sound)
 						playsound(get_turf(cached_my_atom), selected_reaction.mix_sound, 80, 1)
 
-					for(var/mob/M in seen)
+					for(var/mob/M as() in seen)
 						to_chat(M, "<span class='notice'>[iconhtml] [selected_reaction.mix_message]</span>")
 
 				if(istype(cached_my_atom, /obj/item/slime_extract))
 					var/obj/item/slime_extract/ME2 = my_atom
 					ME2.Uses--
 					if(ME2.Uses <= 0) // give the notification that the slime core is dead
-						for(var/mob/M in seen)
+						for(var/mob/M as() in seen)
 							to_chat(M, "<span class='notice'>[iconhtml] \The [my_atom]'s power is consumed in the reaction.</span>")
 							ME2.name = "used slime extract"
 							ME2.desc = "This extract has been used up."
@@ -656,7 +656,7 @@
 	chem_temp = CLAMP(chem_temp + (J / (S * total_volume)), 2.7, 1000)
 
 /datum/reagents/proc/add_reagent(reagent, amount, list/data=null, reagtemp = 300, no_react = 0)
-	if(!isnum(amount) || !amount)
+	if(!isnum_safe(amount) || !amount)
 		return FALSE
 
 	if(amount <= 0)
@@ -731,7 +731,7 @@
 		amount = 0
 		CRASH("null amount passed to reagent code")
 
-	if(!isnum(amount))
+	if(!isnum_safe(amount))
 		return FALSE
 
 	if(amount < 0)
@@ -793,7 +793,7 @@
 	return jointext(names, ",")
 
 /datum/reagents/proc/remove_all_type(reagent_type, amount, strict = 0, safety = 1) // Removes all reagent of X type. @strict set to 1 determines whether the childs of the type are included.
-	if(!isnum(amount))
+	if(!isnum_safe(amount))
 		return 1
 	var/list/cached_reagents = reagent_list
 	var/has_removed_reagent = 0

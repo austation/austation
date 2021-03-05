@@ -32,6 +32,7 @@
 	faction = list("hostile")
 	move_to_delay = 0
 	obj_damage = 0
+	ventcrawler = VENTCRAWLER_ALWAYS
 	environment_smash = ENVIRONMENT_SMASH_NONE
 	mouse_opacity = MOUSE_OPACITY_OPAQUE
 	pass_flags = PASSTABLE | PASSGRILLE | PASSMOB
@@ -151,6 +152,7 @@
 	if(istype(R))
 		beegent = R
 		name = "[initial(name)] ([R.name])"
+		real_name = name
 		poison_type = null
 		generate_bee_visuals()
 

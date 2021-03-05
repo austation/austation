@@ -5,6 +5,7 @@
 #define SPINNING_COCOON 4
 
 /mob/living/simple_animal/hostile/poison
+	mobchatspan = "researchdirector"
 	var/poison_per_bite = 5
 	var/poison_type = /datum/reagent/toxin
 
@@ -114,6 +115,7 @@
 	var/datum/action/innate/spider/lay_eggs/lay_eggs
 	var/datum/action/innate/spider/set_directive/set_directive
 	var/static/list/consumed_mobs = list() //the tags of mobs that have been consumed by nurse spiders to lay eggs
+	gold_core_spawnable = NO_SPAWN
 
 /mob/living/simple_animal/hostile/poison/giant_spider/nurse/Initialize()
 	. = ..()
@@ -128,6 +130,26 @@
 	RemoveAbility(wrap)
 	QDEL_NULL(lay_eggs)
 	QDEL_NULL(set_directive)
+	return ..()
+
+//midwives are the queen of the spiders, can send messages to all them and web faster. That rare round where you get a queen spider and turn your 'for honor' players into 'r6siege' players will be a fun one.
+/mob/living/simple_animal/hostile/poison/giant_spider/nurse/midwife
+	name = "midwife"
+	desc = "Furry and black, it makes you shudder to look at it. This one has scintillating green eyes."
+	icon_state = "midwife"
+	icon_living = "midwife"
+	icon_dead = "midwife_dead"
+	maxHealth = 40
+	health = 40
+	var/datum/action/innate/spider/comm/letmetalkpls
+
+/mob/living/simple_animal/hostile/poison/giant_spider/nurse/midwife/Initialize()
+	. = ..()
+	letmetalkpls = new
+	letmetalkpls.Grant(src)
+
+/mob/living/simple_animal/hostile/poison/giant_spider/nurse/midwife/Destroy()
+	QDEL_NULL(letmetalkpls)
 	return ..()
 
 //hunters have the most poison and move the fastest, so they can find prey
@@ -183,27 +205,6 @@
 		speed = 7
 	. = ..()
 
-//broodmothers are the queen of the spiders, can send messages to all them and web faster. That rare round where you get a queen spider and turn your 'for honor' players into 'r6siege' players will be a fun one.
-/mob/living/simple_animal/hostile/poison/giant_spider/nurse/midwife
-	name = "broodmother"
-	desc = "Furry and black, it makes you shudder to look at it. This one has scintillating green eyes."
-	icon_state = "midwife"
-	icon_living = "midwife"
-	icon_dead = "midwife_dead"
-	maxHealth = 40
-	health = 40
-	var/datum/action/innate/spider/comm/letmetalkpls
-	gold_core_spawnable = NO_SPAWN
-
-/mob/living/simple_animal/hostile/poison/giant_spider/nurse/midwife/Initialize()
-	. = ..()
-	letmetalkpls = new
-	letmetalkpls.Grant(src)
-
-/mob/living/simple_animal/hostile/poison/giant_spider/nurse/midwife/Destroy()
-	QDEL_NULL(letmetalkpls)
-	return ..()
-
 /mob/living/simple_animal/hostile/poison/giant_spider/ice //spiders dont usually like tempatures of 140 kelvin who knew
 	name = "giant ice spider"
 	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
@@ -220,7 +221,6 @@
 	maxbodytemp = 1500
 	poison_type = /datum/reagent/consumable/frostoil
 	color = rgb(114,228,250)
-	gold_core_spawnable = NO_SPAWN
 
 /mob/living/simple_animal/hostile/poison/giant_spider/hunter/ice
 	name = "giant ice spider"
@@ -255,7 +255,7 @@
 
 /mob/living/simple_animal/hostile/poison/giant_spider/nurse/handle_automated_action()
 	if(..())
-		var/list/can_see = view(src, 10)
+		var/list/can_see = view(10, src)
 		if(!busy && prob(30))	//30% chance to stop wandering and do something
 			//first, check for potential food nearby to cocoon
 			for(var/mob/living/C in can_see)
@@ -341,11 +341,11 @@
 /datum/action/innate/spider
 	icon_icon = 'icons/mob/actions/actions_animal.dmi'
 	background_icon_state = "bg_alien"
+	check_flags = AB_CHECK_CONSCIOUS
 
 /datum/action/innate/spider/lay_web
 	name = "Spin Web"
 	desc = "Spin a web to slow down potential prey."
-	check_flags = AB_CHECK_CONSCIOUS
 	button_icon_state = "lay_web"
 
 /datum/action/innate/spider/lay_web/Activate()
@@ -434,7 +434,6 @@
 /datum/action/innate/spider/lay_eggs
 	name = "Lay Eggs"
 	desc = "Lay a cluster of eggs, which will soon grow into more spiders. You must wrap a living being to do this."
-	check_flags = AB_CHECK_CONSCIOUS
 	button_icon_state = "lay_eggs"
 
 /datum/action/innate/spider/lay_eggs/IsAvailable()
@@ -479,9 +478,8 @@
 /datum/action/innate/spider/set_directive
 	name = "Set Directive"
 	desc = "Set a directive for your children to follow."
-	check_flags = AB_CHECK_CONSCIOUS
 	button_icon_state = "directive"
-	
+
 /datum/action/innate/spider/set_directive/IsAvailable()
 	if(..())
 		if(!istype(owner, /mob/living/simple_animal/hostile/poison/giant_spider))
@@ -514,9 +512,7 @@
 	button_icon_state = "command"
 
 /datum/action/innate/spider/comm/IsAvailable()
-	if(!istype(owner, /mob/living/simple_animal/hostile/poison/giant_spider/nurse/midwife))
-		return FALSE
-	return TRUE
+	return ..() && istype(owner, /mob/living/simple_animal/hostile/poison/giant_spider/nurse/midwife)
 
 /datum/action/innate/spider/comm/Trigger()
 	var/input = stripped_input(owner, "Input a command for your legions to follow.", "Command", "")
@@ -540,10 +536,10 @@
 /mob/living/simple_animal/hostile/poison/giant_spider/handle_temperature_damage()
 	if(bodytemperature < minbodytemp)
 		adjustBruteLoss(20)
-		throw_alert("temp", /obj/screen/alert/cold, 3)
+		throw_alert("temp", /atom/movable/screen/alert/cold, 3)
 	else if(bodytemperature > maxbodytemp)
 		adjustBruteLoss(20)
-		throw_alert("temp", /obj/screen/alert/hot, 3)
+		throw_alert("temp", /atom/movable/screen/alert/hot, 3)
 	else
 		clear_alert("temp")
 

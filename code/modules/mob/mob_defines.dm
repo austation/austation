@@ -41,7 +41,7 @@
 	*/
 
 	/// The zone this mob is currently targeting
-	var/zone_selected = null
+	var/zone_selected = BODY_ZONE_CHEST
 
 	var/computer_id = null
 	var/list/logging = list()
@@ -160,6 +160,7 @@
 	  */
 	var/list/mob_spell_list = list()
 
+
 	/// bitflags defining which status effects can be inflicted (replaces canknockdown, canstun, etc)
 	var/status_flags = CANSTUN|CANKNOCKDOWN|CANUNCONSCIOUS|CANPUSH
 
@@ -206,3 +207,5 @@
 	var/memory_throttle_time = 0
 
 	vis_flags = VIS_INHERIT_PLANE //when this be added to vis_contents of something it inherit something.plane, important for visualisation of mob in openspace.
+
+	var/list/mob_properties

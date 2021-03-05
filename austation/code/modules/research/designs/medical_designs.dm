@@ -16,6 +16,15 @@
 	build_path = /obj/item/reagent_containers/hypospray/medipen/custompen/bluespace
 	category = list("Medical Designs")
 
+/datum/design/meddarter
+	name = "Medical Dartgun"
+	id = "meddarter"
+	build_type = PROTOLATHE
+	departmental_flags = DEPARTMENTAL_FLAG_MEDICAL
+	materials = list(/datum/material/glass = 6000, /datum/material/iron = 10000, /datum/material/titanium = 2000)
+	build_path = /obj/item/gun/chem/medical
+	category = list("Medical Designs")
+
 /datum/design/surgery/cortex_imprint
 	name = "Cortex Imprint"
 	desc = "A surgical procedure which modifies the cerebral cortex into a redundant neural pattern, making the brain able to bypass damage caused by minor brain traumas."

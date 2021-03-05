@@ -76,6 +76,17 @@
 	turf_type = /turf/open/floor/grass
 	resistance_flags = FLAMMABLE
 
+/obj/item/stack/tile/grass/attackby(obj/item/W, mob/user, params)
+	if((W.tool_behaviour == TOOL_SHOVEL) && params)
+		to_chat(user, "<span class='notice'>You start digging up [src].</span>")
+		playsound(src, 'sound/effects/shovel_dig.ogg', 50, 1)
+		if(do_after(user, 2 * get_amount(), target = src))
+			new /obj/item/stack/ore/glass(get_turf(src), 2 * get_amount())
+			user.visible_message("<span class='notice'>[user] digs up [src].</span>", "<span class='notice'>You uproot [src].</span>")
+			playsound(src, 'sound/effects/shovel_dig.ogg', 50, 1)
+			qdel(src)
+	else
+		return ..()
 
 //Wood
 /obj/item/stack/tile/wood
@@ -112,7 +123,7 @@
 	icon_state = "tile-carpet-black"
 	item_state = "tile-carpet-black"
 	turf_type = /turf/open/floor/carpet/black
-	
+
 	tableVariant = /obj/structure/table/wood/fancy/black
 
 /obj/item/stack/tile/carpet/blue
@@ -171,9 +182,16 @@
 	turf_type = /turf/open/floor/carpet/royalblue
 	tableVariant = /obj/structure/table/wood/fancy/royalblue
 
+/obj/item/stack/tile/eighties
+	name = "retro tile"
+	singular_name = "retro floor tile"
+	desc = "A stack of floor tiles that remind you of simpler times.."
+	icon_state = "tile_eighties"
+	turf_type = /turf/open/floor/eighties
+
 /obj/item/stack/tile/carpet/fifty
 	amount = 50
-	
+
 /obj/item/stack/tile/carpet/black/fifty
 	amount = 50
 
@@ -199,6 +217,9 @@
 	amount = 50
 
 /obj/item/stack/tile/carpet/royalblue/fifty
+	amount = 50
+
+/obj/item/stack/tile/eighties/fifty
 	amount = 50
 
 /obj/item/stack/tile/fakespace
@@ -252,7 +273,7 @@
 	icon_state = "tile_noslip_white"
 	turf_type = /turf/open/floor/noslip/white
 	merge_type = /obj/item/stack/tile/noslip
-	
+
 /obj/item/stack/tile/noslip/blue
 	name = "high-traction floor tile"
 	singular_name = "high-traction floor tile"
@@ -268,7 +289,7 @@
 	icon_state = "tile_noslip_darkblue"
 	turf_type = /turf/open/floor/noslip/darkblue
 	merge_type = /obj/item/stack/tile/noslip
-	
+
 /obj/item/stack/tile/noslip/dark
 	name = "high-traction floor tile"
 	singular_name = "high-traction floor tile"

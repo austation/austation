@@ -1,0 +1,42 @@
+name: Update TGS DMAPI
+
+on:
+  schedule:
+    - cron: "0 0 * * *"
+  workflow_dispatch:
+
+jobs:
+  update-dmapi:
+    runs-on: ubuntu-latest
+    name: Update the TGS DMAPI
+    steps:
+    - name: Clone
+      uses: actions/checkout@v2
+
+    - name: Branch
+      run: |
+        git branch -f tgs-dmapi-update
+        git checkout tgs-dmapi-update
+        git reset --hard master
+
+    - name: Apply DMAPI update
+      uses: tgstation/tgs-dmapi-updater@v2
+      with:
+        header-path: 'code/__DEFINES/tgs.dm'
+        library-path: 'code/modules/tgs'
+
+    - name: Commit and Push
+      run: |
+        git config user.name "AustationBot"
+        git config user.email "austation@mcterra.id.au"
+        git add *
+        git commit -m 'Update TGS DMAPI [ci skip]' || true
+        git push -f -u origin tgs-dmapi-update
+
+    - name: Create Pull Request
+      run: |
+        export GITHUB_TOKEN=${{ secrets.BOT_TOKEN }}
+        export GITHUB_USER=AustationBot
+        git remote set-url origin "https://github.com/austation/austation"
+        git fetch origin
+        hub pull-request -b austation:master -h austation:tgs-dmapi-update -m "Automatic TGS DMAPI Update" -m "This pull request updates the TGS DMAPI to the latest version. Please note any breaking or unimplemented changes before merging." || true

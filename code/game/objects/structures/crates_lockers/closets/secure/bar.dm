@@ -4,6 +4,7 @@
 	icon_state = "cabinet"
 	resistance_flags = FLAMMABLE
 	max_integrity = 70
+	door_anim_time = 0 // no animation
 	open_sound = 'sound/machines/wooden_closet_open.ogg'
 	close_sound = 'sound/machines/wooden_closet_close.ogg'
 	open_sound_volume = 25
@@ -14,4 +15,5 @@
 	for(var/i in 1 to 10)
 		new /obj/item/reagent_containers/food/drinks/beer( src )
 		new /obj/item/reagent_containers/food/drinks/soda_cans/space_bitters( src ) // austation -- Adds space bitters beer to the bartender's locker
+		new /obj/item/reagent_containers/food/drinks/bottle/bitters( src ) // austation -- adds (angostura) bitters to the bartender's locker
 	new /obj/item/etherealballdeployer(src)

@@ -160,8 +160,7 @@
 		if(prob(10))
 			target = get_turf(user)
 		else
-			var/list/possible_targets = range(3,src)
-			target = pick(possible_targets)
+			target = pick(RANGE_TURFS(3,src))
 		discharge = 1
 	if(!discharge)
 		user.visible_message("<span class='danger'>[user] fires \the [src]!</span>", \
@@ -316,7 +315,7 @@
 	throw_amount = 1
 	maxWeightClass = 4 //a single magspear or spear
 	spin_item = FALSE
-	var/static/list/magspear_typecache = typecacheof(list(/obj/item/throwing_star/magspear, /obj/item/twohanded/spear, /obj/item/stack/rods/fifty, /obj/item/stack/rods, /obj/item/stack/rods/twentyfive, /obj/item/stack/rods/ten, /obj/item/katana, /obj/item/katana/cursed, /obj/item/toy/katana, /obj/item/twohanded/spear/explosive, /obj/item/clockwork/weapon/ratvarian_spear))
+	var/static/list/magspear_typecache = typecacheof(list(/obj/item/throwing_star/magspear, /obj/item/twohanded/spear, /obj/item/stack/rods/fifty, /obj/item/stack/rods, /obj/item/stack/rods/twentyfive, /obj/item/stack/rods/ten, /obj/item/katana, /obj/item/katana/cursed, /obj/item/toy/katana, /obj/item/twohanded/spear/explosive, /obj/item/twohanded/clockwork/brass_spear))
 
 /obj/item/pneumatic_cannon/speargun/Initialize()
 	. = ..()

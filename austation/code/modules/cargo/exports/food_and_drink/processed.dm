@@ -2,6 +2,7 @@
 //These values are subject to change if it becomes an exploit.
 //Average food price should be around 5cr per step I imagine.
 //UPDATED: 10cr per step
+//recyled bread sells for a lot, gives a use for them outside of murdering people
 
 /datum/export/meatball
 	cost = 20
@@ -52,3 +53,35 @@
 	cost = 20
 	unit_name = "roast parsnip"
 	export_types = list(/obj/item/reagent_containers/food/snacks/roastparsnip)
+
+// tube loafs
+
+/datum/export/fusionloaf
+	cost = 1000
+	unit_name = "fusion loaf"
+	export_types = list(/obj/item/reagent_containers/food/snacks/store/bread/recycled/fusing)
+
+/datum/export/degenloaf
+	cost = 2500
+	unit_name = "degenerate loaf"
+	export_types = list(/obj/item/reagent_containers/food/snacks/store/bread/recycled/degen)
+
+/datum/export/neutronloaf
+	cost = 4000
+	unit_name = "neutron loaf"
+	export_types = list(/obj/item/reagent_containers/food/snacks/store/bread/recycled/neutron)
+
+/datum/export/subloaf
+	cost = 7000
+	unit_name = "subatomic loaf"
+	export_types = list(/obj/item/reagent_containers/food/snacks/store/bread/recycled/subatomic)
+
+/datum/export/strangeloaf
+	cost = 12000
+	unit_name = "strange loaf"
+	export_types = list(/obj/item/reagent_containers/food/snacks/store/bread/recycled/strange)
+
+/datum/export/antiloaf // some people just want to watch the world burn :)
+	cost = 25000
+	unit_name = "anti loaf"
+	export_types = list(/obj/item/reagent_containers/food/snacks/store/bread/recycled/antimatter)

@@ -1,17 +1,22 @@
-
-
+/*
+AUSTATION NOTES
+hsb_safespawn has been removed and replaced with hsbspawn
+*/
 GLOBAL_VAR_INIT(hsboxspawn, TRUE)
 
 /mob
 	var/datum/hSB/sandbox = null
+
 /mob/proc/CanBuild()
 	sandbox = new/datum/hSB
 	sandbox.owner = src.ckey
 	if(src.client.holder)
 		sandbox.admin = 1
-	verbs += new/mob/proc/sandbox_panel
+	add_verb(/mob/proc/sandbox_panel)
+
 /mob/proc/sandbox_panel()
 	set name = "Sandbox Panel"
+	set category = "Sandbox"
 	if(sandbox)
 		sandbox.update()
 
@@ -41,8 +46,8 @@ GLOBAL_VAR_INIT(hsboxspawn, TRUE)
 			"Standard Tools",
 			"Spawn Flashlight"					= "hsbspawn&path=[/obj/item/flashlight]",
 			"Spawn Toolbox"						= "hsbspawn&path=[/obj/item/storage/toolbox/mechanical]",
-			"Spawn Tier 4 BSRPED"				= "hsbspawn&path=[/obj/item/storage/part_replacer/bluespace/tier4]", // austation -- gives the players tier 4 parts
-			"Spawn Toolbelt"					= "hsbspawn&path=[/obj/item/storage/belt/utility/chief/full]", // austation -- gives the players good tools
+			"Spawn Tier 4 BSRPED"				= "hsbspawn&path=[/obj/item/storage/part_replacer/bluespace/tier4]",
+			"Spawn Toolbelt"					= "hsbspawn&path=[/obj/item/storage/belt/utility/chief/full]",
 			"Spawn Light Replacer"				= "hsbspawn&path=[/obj/item/lightreplacer]",
 			"Spawn Medical Kit"					= "hsbspawn&path=[/obj/item/storage/firstaid/regular]",
 			"Spawn All-Access ID"				= "hsbaaid",
@@ -58,12 +63,11 @@ GLOBAL_VAR_INIT(hsboxspawn, TRUE)
 			"Spawn Inf. Capacity Power Cell"	= "hsbspawn&path=[/obj/item/stock_parts/cell/infinite]",
 			"Spawn Rapid Construction Device"	= "hsbrcd",
 			"Spawn RCD Ammo"					= "hsb_safespawn&path=[/obj/item/rcd_ammo]",
-			"Spawn Airlock"						= "hsbairlock",
 
 			"Miscellaneous",
 			"Spawn Air Scrubber"				= "hsbscrubber",
-			"Spawn Debug Tech Disk"				= "hsbspawn&path=[/obj/item/disk/tech_disk/debug]", // austation -- added debug tech disk
-			"Spawn All Materials"				= "hsbspawn&path=[/obj/structure/closet/syndicate/resources/everything]", // austation -- swapped fuel tank with something useful
+			"Spawn Debug Tech Disk"				= "hsbspawn&path=[/obj/item/disk/tech_disk/debug]",
+			"Spawn All Materials"				= "hsbspawn&path=[/obj/structure/closet/syndicate/resources/everything]",
 			"Spawn Water Tank"					= "hsbspawn&path=[/obj/structure/reagent_dispensers/watertank]",
 
 			"Bots",
@@ -224,12 +228,6 @@ GLOBAL_VAR_INIT(hsboxspawn, TRUE)
 				new/obj/item/construction/rcd/combat(usr.loc)
 
 			//
-			// New sandbox airlock maker
-			//
-			if("hsbairlock")
-				new /datum/airlock_maker(usr.loc)
-
-			//
 			// Object spawn window
 			//
 
@@ -243,7 +241,7 @@ GLOBAL_VAR_INIT(hsboxspawn, TRUE)
 					for(var/typekey in spawn_forbidden)
 						all_items -= typesof(typekey)
 					for(var/O in reverseRange(all_items))
-						clothinfo += "<a href='?src=[REF(src)];hsb=hsb_safespawn&path=[O]'>[O]</a><br>"
+						clothinfo += "<a href='?src=[REF(src)];hsb=hsbspawn&path=[O]'>[O]</a><br>"
 
 				usr << browse(clothinfo,"window=sandbox")
 
@@ -257,7 +255,7 @@ GLOBAL_VAR_INIT(hsboxspawn, TRUE)
 					for(var/typekey in spawn_forbidden)
 						all_items -= typesof(typekey)
 					for(var/O in reverseRange(all_items))
-						reaginfo += "<a href='?src=[REF(src)];hsb=hsb_safespawn&path=[O]'>[O]</a><br>"
+						reaginfo += "<a href='?src=[REF(src)];hsb=hsbspawn&path=[O]'>[O]</a><br>"
 
 				usr << browse(reaginfo,"window=sandbox")
 
@@ -272,11 +270,11 @@ GLOBAL_VAR_INIT(hsboxspawn, TRUE)
 						all_items -= typesof(typekey)
 
 					for(var/O in reverseRange(all_items))
-						objinfo += "<a href='?src=[REF(src)];hsb=hsb_safespawn&path=[O]'>[O]</a><br>"
+						objinfo += "<a href='?src=[REF(src)];hsb=hsbspawn&path=[O]'>[O]</a><br>"
 
 				usr << browse(objinfo,"window=sandbox")
 
-			//
+			/* austation code start
 			// Safespawn checks to see if spawning is disabled.
 			//
 			if("hsb_safespawn")
@@ -292,6 +290,7 @@ GLOBAL_VAR_INIT(hsboxspawn, TRUE)
 
 				if(CONFIG_GET(flag/sandbox_autoclose))
 					usr << browse(null,"window=sandbox")
+			*/// austation code end
 			//
 			// For everything else in the href list
 			//

@@ -28,3 +28,8 @@
 		visible_message("<span class='danger'>[src] bounces off the wall!</span>")
 		src.throw_at(get_edge_target_turf(src, get_dir(M, src)), 1, 2)
 		playsound(loc, 'sound/vehicles/clowncar_crash1.ogg', 50, 1)
+
+/obj/vehicle/sealed/car/thanoscar/RunOver(mob/living/carbon/human/H) //override to prevent thanoscar mass murder
+	H.visible_message("<span class='danger'>[src] drives over [H]!</span>", \
+					"<span class='userdanger'>[src] drives over you!</span>")
+	playsound(loc, 'sound/effects/splat.ogg', 50, 1)

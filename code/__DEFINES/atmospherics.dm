@@ -105,7 +105,7 @@
 #define FIRE_HELM_MIN_TEMP_PROTECT			60		//! Cold protection for fire helmets
 #define FIRE_HELM_MAX_TEMP_PROTECT			30000	//! for fire helmet quality items (red and white hardhats)
 
-#define FIRE_IMMUNITY_MAX_TEMP_PROTECT	35000		//! what max_heat_protection_temperature is set to for firesuit quality suits and helmets. MUST NOT BE 0.
+#define FIRE_IMMUNITY_MAX_TEMP_PROTECT		40000	//! what max_heat_protection_temperature is set to for firesuit quality suits and helmets. MUST NOT BE 0. //austation -- fire immune does jackshit against current plasmafires, used to be 35000
 
 //Emergency skinsuits
 #define EMERGENCY_HELM_MIN_TEMP_PROTECT		2.0		//The helmet is pressurized with air from the oxygen tank. If they don't take damage from that they won't take damage here
@@ -164,7 +164,7 @@
 #define AIRLESS_ATMOS				"TEMP=2.7" //space
 #define FROZEN_ATMOS				"o2=22;n2=82;TEMP=180" //-93.15°C snow and ice turfs
 #define KITCHEN_COLDROOM_ATMOS		"o2=25;n2=96;TEMP=253.15" //-20°C kitchen coldroom; higher amount of mol to reach about 101.3 kpA
-#define BURNMIX_ATMOS				"o2=2500;plasma=5000;TEMP=370" //used in the holodeck burn test program
+#define BURNMIX_ATMOS				"o2=100;plasma=200;TEMP=370" //used in the holodeck burn test program
 
 //ATMOSPHERICS DEPARTMENT GAS TANK TURFS
 #define ATMOS_TANK_N2O				"n2o=6000;TEMP=293.15"
@@ -318,6 +318,12 @@ GLOBAL_LIST_INIT(pipe_paint_colors, sortList(list(
 		"yellow" = rgb(255,198,0)
 )))
 
+//ROT MIASMA
 #define MIASMA_CORPSE_MOLES 0.02
 #define MIASMA_GIBS_MOLES 0.005
 #define MIASMA_HYGIENE_MOLES 0.002
+
+//PIPENET UPDATE STATUS
+#define PIPENET_UPDATE_STATUS_DORMANT 0
+#define PIPENET_UPDATE_STATUS_REACT_NEEDED 1
+#define PIPENET_UPDATE_STATUS_RECONCILE_NEEDED 2

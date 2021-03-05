@@ -69,9 +69,11 @@ All ShuttleMove procs go here
 /turf/proc/afterShuttleMove(turf/oldT, rotation)
 	//Dealing with the turf we left behind
 	oldT.TransferComponents(src)
+	SSexplosions.wipe_turf(src)
+	SEND_SIGNAL(oldT, COMSIG_TURF_AFTER_SHUTTLE_MOVE, src) //Mostly for decals
 	var/shuttle_boundary = baseturfs.Find(/turf/baseturf_skipover/shuttle)
 	if(shuttle_boundary)
-		oldT.ScrapeAway(baseturfs.len - shuttle_boundary + 1)
+		oldT.ScrapeAway(baseturfs.len - shuttle_boundary + 1, flags = CHANGETURF_FORCEOP)
 
 	if(rotation)
 		shuttleRotate(rotation) //see shuttle_rotate.dm
@@ -251,7 +253,7 @@ All ShuttleMove procs go here
 			A.atmosinit()
 			if(A.returnPipenet())
 				A.addMember(src)
-		build_network()
+		SSair.add_to_rebuild_queue(src)
 	else
 		// atmosinit() calls update_icon(), so we don't need to call it
 		update_icon()
@@ -318,8 +320,11 @@ All ShuttleMove procs go here
 	. = ..()
 
 	var/knockdown = movement_force["KNOCKDOWN"]
-	if(knockdown)
+	//austation begin -- cat tails prevent shuttle knockdown
+	var/obj/item/organ/tail/O = getorganslot(ORGAN_SLOT_TAIL)
+	if(knockdown && !istype(O))
 		Paralyze(knockdown)
+	//austation end
 
 
 /mob/living/simple_animal/hostile/megafauna/onShuttleMove(turf/newT, turf/oldT, list/movement_force, move_dir, obj/docking_port/stationary/old_dock, obj/docking_port/mobile/moving_dock)

@@ -35,7 +35,7 @@
 		to_chat(user, "<span class='warning'>The [P.name] isn't strong enough!</span>")
 		return
 	if(activated)
-		to_chat(user, "<span class'warning'>The [name] is already active!")
+		to_chat(user, "<span class='warning'>The [name] is already active!")
 		return
 
 	to_chat(user, "<span class='notice'>You start vigorously plunging [src]!")
@@ -44,7 +44,7 @@
 
 /obj/structure/geyser/random
 	erupting_state = null
-	var/list/options = list(/datum/reagent/oil = 2, /datum/reagent/clf3 = 1) //fucking add more
+	var/list/options = list(/datum/reagent/oil = 2, /datum/reagent/clf3 = 1, /datum/reagent/plasma_oxide = 8) //fucking add more //austation -- plasma_oxide for exotic stabilizer
 
 /obj/structure/geyser/random/Initialize()
 	. = ..()
@@ -65,7 +65,7 @@
 
 /obj/item/plunger/reinforced
 	name = "reinforced plunger"
-	desc = " It's an M. 7 Reinforced Plunger© for heavy duty plunging."
+	desc = " It's an M. 7 Reinforced PlungerÂ© for heavy duty plunging."
 	icon_state = "reinforced_plunger"
 
 	reinforced = TRUE

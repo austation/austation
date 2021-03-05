@@ -11,7 +11,7 @@ GLOBAL_LIST_INIT(slot2type, list("head" = /obj/item/clothing/head/changeling, "w
 	antag_flag = ROLE_CHANGELING
 	false_report_weight = 10
 	restricted_jobs = list("AI", "Cyborg")
-	protected_jobs = list("Security Officer", "Warden", "Detective", "Head of Security", "Head of Personnel", "Captain", "Brig Physician") // austation -- HOP can no longer be antag
+	protected_jobs = list("Security Officer", "Warden", "Detective", "Head of Security", "Head of Personnel", "Captain") // austation -- HOP can no longer be antag
 	required_players = 15
 	required_enemies = 1
 	recommended_enemies = 4
@@ -34,6 +34,9 @@ GLOBAL_LIST_INIT(slot2type, list("head" = /obj/item/clothing/head/changeling, "w
 
 	if(CONFIG_GET(flag/protect_assistant_from_antagonist))
 		restricted_jobs += "Assistant"
+
+	if(CONFIG_GET(flag/protect_heads_from_antagonist))
+		restricted_jobs += GLOB.command_positions
 
 	var/num_changelings = 1
 
@@ -95,6 +98,10 @@ GLOBAL_LIST_INIT(slot2type, list("head" = /obj/item/clothing/head/changeling, "w
 	user.underwear = chosen_prof.underwear
 	user.undershirt = chosen_prof.undershirt
 	user.socks = chosen_prof.socks
+
+	// austation -- changelings steal rings
+	user.ring_type = chosen_prof.ring_type
+	user.ring_engraved = chosen_prof.ring_engraved
 
 	chosen_dna.transfer_identity(user, 1)
 	user.updateappearance(mutcolor_update=1)

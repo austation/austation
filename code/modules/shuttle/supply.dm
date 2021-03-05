@@ -124,9 +124,12 @@ GLOBAL_LIST_INIT(blacklisted_cargo_types, typecacheof(list(
 					miscboxes[D.account_holder] = new /obj/structure/closet/crate/secure/owned(pick_n_take(empty_turfs), SO.paying_account)
 					miscboxes[D.account_holder].name = "small items crate - purchased by [D.account_holder]"
 					misc_contents[D.account_holder] = list()
+					miscboxes[D.account_holder].req_access = list()
 				for (var/item in SO.pack.contains)
 					misc_contents[D.account_holder] += item
 				misc_order_num[D.account_holder] = "[misc_order_num[D.account_holder]]#[SO.id]  "
+				if(SO.pack.access)
+					miscboxes[D.account_holder].req_access += SO.pack.access
 			else //No private payment, so we just stuff it all into a generic crate
 				if(!miscboxes.len || !miscboxes["Cargo"])
 					miscboxes["Cargo"] = new /obj/structure/closet/crate/secure(pick_n_take(empty_turfs))
@@ -178,6 +181,9 @@ GLOBAL_LIST_INIT(blacklisted_cargo_types, typecacheof(list(
 				matched_bounty = TRUE
 			if(!AM.anchored || istype(AM, /obj/mecha))
 				export_item_and_contents(AM, export_categories , dry_run = FALSE, external_report = ex)
+			else
+				//Exports the contents of things but not the item itself, so you can have conveyor belt that won't get sold
+				export_contents(AM, export_categories , dry_run = FALSE, external_report = ex)
 
 	if(ex.exported_atoms)
 		ex.exported_atoms += "." //ugh

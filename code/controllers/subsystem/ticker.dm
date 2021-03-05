@@ -101,7 +101,7 @@ SUBSYSTEM_DEF(ticker)
 					continue
 				music += S
 
-	var/old_login_music = trim(file2text("data/last_round_lobby_music.txt"))
+	var/old_login_music = trim(rustg_file_read("data/last_round_lobby_music.txt"))
 	if(music.len > 1)
 		music -= old_login_music
 
@@ -160,9 +160,9 @@ SUBSYSTEM_DEF(ticker)
 				window_flash(C, ignorepref = TRUE) //let them know lobby has opened up.
 			to_chat(world, "<span class='boldnotice'>Welcome to [station_name()]!</span>")
 			if(GLOB.master_mode == "sandbox") // austation start -- TGS bot now pings notification squad role, also hopefully fixes TGS issues
-				world.TgsTargetedChatBroadcast("New sandbox round starting on [SSmapping.config.map_name]!", FALSE)
+				send2chat("New sandbox round starting on [SSmapping.config.map_name]!", "status")
 			else
-				world.TgsTargetedChatBroadcast("<@&586792483892232209> New round starting on [SSmapping.config.map_name]!", FALSE) // austation end
+				send2chat("<@&586792483892232209> New round starting on [SSmapping.config.map_name]!", "status") // austation end
 			current_state = GAME_STATE_PREGAME
 			//Everyone who wants to be an observer is now spawned
 			create_observers()
@@ -218,7 +218,7 @@ SUBSYSTEM_DEF(ticker)
 
 
 /datum/controller/subsystem/ticker/proc/setup()
-	to_chat(world, "<span class='boldannounce'>Starting game...</span>")
+	message_admins("Setting up game.")
 	var/init_start = world.timeofday
 		//Create and announce mode
 	var/list/datum/game_mode/runnable_modes
@@ -256,9 +256,10 @@ SUBSYSTEM_DEF(ticker)
 	var/can_continue = 0
 	can_continue = src.mode.pre_setup()		//Choose antagonists
 	CHECK_TICK
-	can_continue = can_continue && SSjob.DivideOccupations() 				//Distribute jobs
+	can_continue = can_continue && SSjob.DivideOccupations(mode.required_jobs) 				//Distribute jobs
 	CHECK_TICK
 
+	to_chat(world, "<span class='boldannounce'>Starting game...</span>")
 	if(!GLOB.Debug2)
 		if(!can_continue)
 			log_game("[mode.name] failed pre_setup, cause: [mode.setup_error]")
@@ -314,6 +315,7 @@ SUBSYSTEM_DEF(ticker)
 			to_chat(world, "<h4>[holiday.greet()]</h4>")
 
 	PostSetup()
+	SSstat.clear_global_alert()
 
 	return TRUE
 
@@ -352,10 +354,11 @@ SUBSYSTEM_DEF(ticker)
 
 /datum/controller/subsystem/ticker/proc/station_explosion_detonation(atom/bomb)
 	if(bomb)	//BOOM
-		var/turf/epi = bomb.loc
 		qdel(bomb)
-		if(epi)
-			explosion(epi, 0, 256, 512, 0, TRUE, TRUE, 0, TRUE)
+		for(var/mob/M in GLOB.mob_list)
+			var/turf/T = get_turf(M)
+			if(T && is_station_level(T.z) && !istype(M.loc, /obj/structure/closet/secure_closet/freezer)) //protip: freezers protect you from nukes
+				M.gib(TRUE)
 
 /datum/controller/subsystem/ticker/proc/create_characters()
 	for(var/mob/dead/new_player/player in GLOB.player_list)
@@ -399,7 +402,7 @@ SUBSYSTEM_DEF(ticker)
 			qdel(player)
 			living.notransform = TRUE
 			if(living.client)
-				var/obj/screen/splash/S = new(living.client, TRUE)
+				var/atom/movable/screen/splash/S = new(living.client, TRUE)
 				S.Fade(TRUE)
 			livings += living
 	if(livings.len)
@@ -553,7 +556,7 @@ SUBSYSTEM_DEF(ticker)
 		if(WIZARD_KILLED)
 			news_message = "Tensions have flared with the Space Wizard Federation following the death of one of their members aboard [station_name()]."
 		if(STATION_NUKED)
-			news_message = "[station_name()] activated its self destruct device for unknown reasons. Attempts to clone the Captain so he can be arrested and executed are underway."
+			news_message = "[station_name()] activated its self-destruct device for unknown reasons. Attempts to clone the Captain so he can be arrested and executed are underway."
 		if(CLOCK_SUMMON)
 			news_message = "The garbled messages about hailing a mouse and strange energy readings from [station_name()] have been discovered to be an ill-advised, if thorough, prank by a clown."
 		if(CLOCK_SILICONS)
@@ -564,7 +567,7 @@ SUBSYSTEM_DEF(ticker)
 			news_message = "During routine evacuation procedures, the emergency shuttle of [station_name()] had its navigation protocols corrupted and went off course, but was recovered shortly after."
 
 	if(news_message)
-		send2otherserver(news_source, news_message,"News_Report")
+		comms_send(news_source, news_message, "News_Report", CONFIG_GET(flag/insecure_newscaster))
 
 /datum/controller/subsystem/ticker/proc/GetTimeLeft()
 	if(isnull(SSticker.timeLeft))
@@ -584,8 +587,9 @@ SUBSYSTEM_DEF(ticker)
 			//Break chain since this has a sleep input in it
 			addtimer(CALLBACK(player, /mob/dead/new_player.proc/make_me_an_observer), 1)
 
+// austation begin -- keeps default mode switching
 /datum/controller/subsystem/ticker/proc/load_mode()
-	var/mode = trim(file2text("data/mode.txt"))
+	var/mode = trim(rustg_file_read("data/mode.txt"))
 	if(mode)
 		GLOB.master_mode = mode
 	else
@@ -596,6 +600,7 @@ SUBSYSTEM_DEF(ticker)
 	var/F = file("data/mode.txt")
 	fdel(F)
 	WRITE_FILE(F, the_mode)
+// austation end
 
 /datum/controller/subsystem/ticker/proc/SetRoundEndSound(the_sound)
 	set waitfor = FALSE
@@ -654,4 +659,4 @@ SUBSYSTEM_DEF(ticker)
 			round_end_sound = "sound/roundend/[pick(tracks)]"
 
 	SEND_SOUND(world, sound(round_end_sound))
-	text2file(login_music, "data/last_round_lobby_music.txt")
+	rustg_file_append(login_music, "data/last_round_lobby_music.txt")

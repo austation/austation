@@ -12,6 +12,7 @@
 					/obj/item/reagent_containers/food/drinks/soda_cans/starkist = 10,
 					/obj/item/reagent_containers/food/drinks/soda_cans/space_up = 10,
 					/obj/item/reagent_containers/food/drinks/soda_cans/pwr_game = 10,
+					/obj/item/reagent_containers/food/drinks/bottle/gingerbeer = 10, //austation -- adds ginger beer bottles
 					/obj/item/reagent_containers/food/drinks/soda_cans/lemon_lime = 10,
 					/obj/item/reagent_containers/glass/waterbottle = 10)
 	contraband = list(/obj/item/reagent_containers/food/drinks/soda_cans/thirteenloko = 6,

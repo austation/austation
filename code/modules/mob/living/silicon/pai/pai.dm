@@ -13,6 +13,10 @@
 	maxHealth = 500
 	layer = BELOW_MOB_LAYER
 	can_be_held = TRUE
+	worn_slot_flags = ITEM_SLOT_HEAD
+	held_lh = 'icons/mob/pai_item_lh.dmi'
+	held_rh = 'icons/mob/pai_item_rh.dmi'
+	head_icon = 'icons/mob/pai_item_head.dmi'
 	var/network = "ss13"
 	var/obj/machinery/camera/current = null
 
@@ -63,7 +67,7 @@
 	var/can_receive = TRUE
 	var/obj/item/card/id/access_card = null
 	var/chassis = "repairbot"
-	var/list/possible_chassis = list("cat" = TRUE, "mouse" = TRUE, "monkey" = TRUE, "corgi" = FALSE, "fox" = FALSE, "repairbot" = TRUE, "rabbit" = TRUE, "bat" = FALSE, "butterfly" = FALSE, "hawk" = FALSE, "lizard" = FALSE, "duffel" = TRUE)		//assoc value is whether it can be picked up.
+	var/list/possible_chassis = list("cat" = TRUE, "mouse" = TRUE, "monkey" = TRUE, "corgi" = FALSE, "fox" = FALSE, "repairbot" = TRUE, "rabbit" = TRUE, "bat" = FALSE, "butterfly" = FALSE, "hawk" = FALSE, "lizard" = FALSE, "duffel" = TRUE, "snake" = FALSE, "spider" = FALSE, "frog" = FALSE)		//assoc value is whether it can be picked up.
 	var/static/item_head_icon = 'icons/mob/pai_item_head.dmi'
 	var/static/item_lh_icon = 'icons/mob/pai_item_lh.dmi'
 	var/static/item_rh_icon = 'icons/mob/pai_item_rh.dmi'
@@ -158,21 +162,21 @@
 
 /mob/living/silicon/pai/Login()
 	..()
-	usr << browse_rsc('html/paigrid.png')			// Go ahead and cache the interface resources as early as possible
-	if(client)
-		client.perspective = EYE_PERSPECTIVE
-		if(holoform)
-			client.eye = src
-		else
-			client.eye = card
+	var/datum/asset/notes_assets = get_asset_datum(/datum/asset/simple/pAI)
+	notes_assets.send(client)
+	client.perspective = EYE_PERSPECTIVE
+	if(holoform)
+		client.eye = src
+	else
+		client.eye = card
 
-/mob/living/silicon/pai/Stat()
-	..()
-	if(statpanel("Status"))
-		if(!stat)
-			stat(null, text("Emitter Integrity: [emitterhealth * (100/emittermaxhealth)]"))
-		else
-			stat(null, text("Systems nonfunctional"))
+/mob/living/silicon/pai/get_stat_tab_status()
+	var/list/tab_data = ..()
+	if(!stat)
+		tab_data["Emitter Integrity"] = GENERATE_STAT_TEXT("[emitterhealth * (100/emittermaxhealth)]")
+	else
+		tab_data["Systems"] = GENERATE_STAT_TEXT("nonfunctional")
+	return tab_data
 
 /mob/living/silicon/pai/restrained(ignore_grab)
 	. = FALSE
@@ -232,7 +236,7 @@
 
 /datum/action/innate/pai/chassis/Trigger()
 	..()
-	P.choose_chassis()
+	P.choose_chassis_austation() //austation -- replaces choose_chassis() with choose_chassis_austation()
 
 /datum/action/innate/pai/rest
 	name = "Rest"
@@ -289,7 +293,7 @@
 /obj/item/paicard/attackby(obj/item/W, mob/user, params)
 	..()
 	user.set_machine(src)
-	if(pai.encryptmod == TRUE)
+	if(pai?.encryptmod == TRUE)
 		if(W.tool_behaviour == TOOL_SCREWDRIVER)
 			pai.radio.attackby(W, user, params)
 		else if(istype(W, /obj/item/encryptionkey))

@@ -1,5 +1,13 @@
 // CHAPLAIN CUSTOM ARMORS //
 
+/obj/item/clothing/suit/armor/riot/chaplain/Initialize()
+	. = ..()
+	AddComponent(/datum/component/anti_magic, TRUE, TRUE, null, FALSE)
+
+/obj/item/clothing/suit/hooded/chaplain_hoodie/leader/Initialize()
+	. = ..()
+	AddComponent(/datum/component/anti_magic, TRUE, TRUE, null, FALSE) //makes the leader hoodie immune without giving the follower hoodies immunity
+
 /obj/item/clothing/head/helmet/chaplain
 	name = "crusader helmet"
 	desc = "Deus Vult."
@@ -22,7 +30,7 @@
 
 /obj/item/choice_beacon/holy
 	name = "armaments beacon"
-	desc = "Contains a set of armaments for the chaplain."
+	desc = "Contains a set of armaments for the chaplain that have been reinforced with a silver and beryllium-bronze alloy, providing immunity to magic and its influences."
 
 /obj/item/choice_beacon/holy/canUseBeacon(mob/living/user)
 	if(user.mind?.isholy)
@@ -109,6 +117,7 @@
 /obj/item/storage/box/holy/witchhunter/PopulateContents()
 	new /obj/item/clothing/suit/armor/riot/chaplain/witchhunter(src)
 	new /obj/item/clothing/head/helmet/chaplain/witchunter_hat(src)
+	new /obj/item/clothing/neck/crucifix(src)
 
 /obj/item/clothing/suit/armor/riot/chaplain/witchhunter
 	name = "witchunter garb"
@@ -136,7 +145,7 @@
 	desc = "Its only heretical when others do it."
 	icon_state = "crusader"
 	item_state = "crusader"
-	flags_cover = HEADCOVERSEYES
+	flags_inv = HIDEHAIR|HIDEFACE|HIDEEARS
 
 /obj/item/clothing/suit/armor/riot/chaplain/adept
 	name = "adept robes"
@@ -478,7 +487,9 @@
 		S.ckey = C.ckey
 		S.fully_replace_character_name(null, "The spirit of [name]")
 		S.status_flags |= GODMODE
-		S.language_holder = user.language_holder.copy(S)
+		S.copy_languages(user, LANGUAGE_MASTER)	//Make sure the sword can understand and communicate with the user.
+		S.update_atom_languages()
+		grant_all_languages(FALSE, FALSE, TRUE)	//Grants omnitongue
 		var/input = sanitize_name(stripped_input(S,"What are you named?", ,"", MAX_NAME_LEN))
 
 		if(src && input)
