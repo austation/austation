@@ -48,7 +48,7 @@
 			l_arm.dismember()
 		else
 			r_arm.dismember()
-	playsound(user,pick('sound/misc/desceration-01.ogg','sound/misc/desceration-02.ogg','sound/misc/desceration-01.ogg') ,50, TRUE, -1)
+	playsound(user, get_sfx("desecration"), 50, TRUE, -1)
 	return(OXYLOSS|BRUTELOSS)
 
 /obj/item/reagent_containers/food/snacks/store/bread/recycled

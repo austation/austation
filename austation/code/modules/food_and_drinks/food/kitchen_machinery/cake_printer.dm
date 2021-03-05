@@ -124,6 +124,7 @@
 		. += "<span class='notice'>The status display reads: Fuel consumption reduced by <b>[(efficiency*25)-25]</b>%.<br>Machine can hold up to <b>[max_fuel]</b> units of fuel.<br> Speed is increased by <b>[(speed*100)-100]%</b><span>"
 		if(obj_flags & EMAGGED)
 			. += "<span class='warning'>It's status display looks a bit burnt!"
+		. += "<span class='notice'>The machine takes synthetic cake batter as fuel, which is some flour, some milk and a bit of astrotame.<span>"
 
 /obj/machinery/cake_printer/Exited(atom/movable/AM)
 	if(AM == caked_item)
