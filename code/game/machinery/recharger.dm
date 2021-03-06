@@ -127,6 +127,8 @@
 				C.give(C.chargerate * recharge_coeff)
 				use_power(250 * recharge_coeff)
 				using_power = 1
+				if(C.charge == C.maxcharge) //austation change, PR #3171 -- if the cycle fully charges the weapon, it will display instantly
+					using_power = 0			//end
 			update_icon(using_power)
 
 		if(istype(charging, /obj/item/ammo_box/magazine/recharge))
