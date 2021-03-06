@@ -58,31 +58,6 @@ export const Panel = (props, context) => {
         <StatTabs
           direction="column" />
       </Stack>
-      <DraggableControl
-        value={number}
-        height="1%"
-        minValue={0}
-        maxValue={100}
-        dragMatrix={[0, -1]}
-        step={1}
-        stepPixelSize={9}
-        onDrag={(e, value) => resizeFunction(value)}
-        updateRate={5}>
-        {control => (
-          <Box
-            onMouseDown={control.handleDragStart}
-            height="10px">
-            <Box
-              position="relative"
-              height="4px"
-              backgroundColor="grey"
-              top="3px">
-              <Divider />
-              {control.inputElement}
-            </Box>
-          </Box>
-        )}
-      </DraggableControl>
       <Stack fill vertical>
         <Stack.Item>
           <Section fitted>
@@ -194,31 +169,6 @@ const HoboPanel = (props, context) => {
         <HoboStatTabs
           height="100%" />
       </Section>
-      <DraggableControl
-        value={number}
-        height="1%"
-        minValue={0}
-        maxValue={100}
-        dragMatrix={[0, -1]}
-        step={1}
-        stepPixelSize={9}
-        onDrag={(e, value) => resizeFunction(value)}
-        updateRate={5}>
-        {control => (
-          <Box
-            onMouseDown={control.handleDragStart}
-            height="10px">
-            <Box
-              position="relative"
-              height="4px"
-              backgroundColor="grey"
-              top="3px">
-              <Divider />
-              {control.inputElement}
-            </Box>
-          </Box>
-        )}
-      </DraggableControl>
       <Pane.Content scrollable>
         <Button
           style={{
