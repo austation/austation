@@ -37,7 +37,11 @@
 	var/datum/point/vector/trajectory
 	var/trajectory_ignore_forcemove = FALSE	//instructs forceMove to NOT reset our trajectory to the new location!
 
+<<<<<<< HEAD
 	var/speed = 0.8		//Amount of deciseconds it takes for projectile to travel // austation -- keep this as is
+=======
+	var/speed = 0.8			//Amount of deciseconds it takes for projectile to travel
+>>>>>>> e9dee9b3ef... Revert "Increases Projectile Speed (#2430)" (#3531)
 	var/Angle = 0
 	var/original_angle = 0		//Angle at firing
 	var/nondirectional_sprite = FALSE //Set TRUE to prevent projectiles from having their sprites rotated based on firing angle
