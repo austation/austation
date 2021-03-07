@@ -13,8 +13,8 @@
 	density = TRUE
 	desc = "A covered turret that shoots at its enemies."
 	use_power = IDLE_POWER_USE				//this turret uses and requires power
-	idle_power_usage = 50		//when inactive, this turret takes up constant 50 Equipment power
-	active_power_usage = 300	//when active, this turret takes up constant 300 Equipment power
+	idle_power_usage = 100		//when inactive, this turret takes up constant 50 Equipment power
+	active_power_usage = 600	//when active, this turret takes up constant 300 Equipment power
 	req_access = list(ACCESS_SEC_DOORS)
 	power_channel = AREA_USAGE_EQUIP	//drains power from the EQUIPMENT channel
 
@@ -849,8 +849,8 @@
 /obj/machinery/turretid/examine(mob/user)
 	. += ..()
 	if(issilicon(user) && (!stat & BROKEN))
-		. += {"<span class='notice'>Ctrl-click [src] to [ enabled ? "disable" : "enable"] turrets.</span>
-					<span class='notice'>Alt-click [src] to set turrets to [ lethal ? "stun" : "kill"].</span>"}
+		. += "<span class='notice'>Ctrl-click [src] to [ enabled ? "disable" : "enable"] turrets.</span>\n"+\
+				"<span class='notice'>Alt-click [src] to set turrets to [ lethal ? "stun" : "kill"].</span>"
 
 /obj/machinery/turretid/attackby(obj/item/I, mob/user, params)
 	if(stat & BROKEN)

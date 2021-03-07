@@ -5,7 +5,7 @@
 	desc = "A charging dock for energy based weaponry."
 	use_power = IDLE_POWER_USE
 	idle_power_usage = 4
-	active_power_usage = 250
+	active_power_usage = 300
 	circuit = /obj/item/circuitboard/machine/recharger
 	pass_flags = PASSTABLE
 	var/obj/item/charging = null
@@ -28,15 +28,15 @@
 		return
 
 	if(charging)
-		. += {"<span class='notice'>\The [src] contains:</span>
-		<span class='notice'>- \A [charging].</span>"}
+		. += "<span class='notice'>\The [src] contains:</span>\n"+\
+		"<span class='notice'>- \A [charging].</span>"
 
 	if(!(stat & (NOPOWER|BROKEN)))
-		. += "<span class='notice'>The status display reads:<span>"
-		. += "<span class='notice'>- Recharging <b>[recharge_coeff*10]%</b> cell charge per cycle.<span>"
+		. += "<span class='notice'>The status display reads:</span>"
+		. += "<span class='notice'>- Recharging <b>[recharge_coeff*10]%</b> cell charge per cycle.</span>"
 		if(charging)
 			var/obj/item/stock_parts/cell/C = charging.get_cell()
-			. += "<span class='notice'>- \The [charging]'s cell is at <b>[C.percent()]%</b>.<span>"
+			. += "<span class='notice'>- \The [charging]'s cell is at <b>[C.percent()]%</b>.</span>"
 
 
 /obj/machinery/recharger/proc/setCharging(new_charging)

@@ -260,6 +260,10 @@
 			return FALSE
 	return ..()
 
+/obj/item/robot_module/butler/Initialize()
+	..()
+	basic_modules |= /obj/item/storage/bag/tray
+
 /obj/item/robot_module/miner/be_transformed_to(obj/item/robot_module/old_module) //miner
 	var/mob/living/silicon/robot/R = loc
 	var/static/list/robotstyles_mine

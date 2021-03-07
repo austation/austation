@@ -112,7 +112,7 @@
 		. += "Synthflesh consumption at <b>[round(fleshamnt*90/2, 1)]cm<sup>3</sup></b> per clone.</span><br>" //austation -- cloning uses less synthflesh, added /2
 		. += "<span class='notice'>The reagent display reads: [round(reagents.total_volume, 1)] / [reagents.maximum_volume] cm<sup>3</sup></span>"
 		if(efficiency > 5)
-			. += "<span class='notice'>Pod has been upgraded to support autoprocessing and apply beneficial mutations.<span>"
+			. += "<span class='notice'>Pod has been upgraded to support autoprocessing and apply beneficial mutations.</span>"
 
 //The return of data disks?? Just for transferring between genetics machine/cloning machine.
 //TO-DO: Make the genetics machine accept them.
@@ -343,7 +343,7 @@
 					var/obj/item/bodypart/BP = I
 					BP.attach_limb(mob_occupant)
 
-			use_power(7500) //This might need tweaking.
+			use_power(5000 * speed_coeff) //This might need tweaking.
 
 		else if(mob_occupant && (mob_occupant.cloneloss <= (100 - heal_level)))
 			connected_message("Cloning Process Complete.")
