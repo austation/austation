@@ -30,11 +30,10 @@
 /obj/machinery/cake_printer/update_icon()
 	if(panel_open)
 		icon_state = "kek-printer-o"
-	else if(!src.processing)
+	else if(!processing)
 		icon_state = "kek-printer-stand"
 	else
 		icon_state = "kek-printer-work"
-	return
 
 /obj/machinery/cake_printer/Initialize()
 	. = ..()
@@ -65,7 +64,6 @@
 		message_admins("[key_name_admin(user)] emagged [src]")
 	else
 		to_chat(user, "<span class='warning'>The status display on [src] is already too damaged to short it again.</span>")
-		return
 
 /obj/machinery/cake_printer/attackby(obj/item/I, mob/user)
 	if(user.a_intent == INTENT_HARM)
@@ -111,20 +109,19 @@
 		if(WEIGHT_CLASS_GIGANTIC)
 			fuelcost = 200 / efficiency
 	to_chat(user, "<span class='notice'>You scan [item_scanned] on [src].</span>")
-	return
 
 /obj/machinery/cake_printer/examine(mob/user)
 	. = ..()
 	if(in_range(user, src) || isobserver(user))
-		. += "<span class='notice'>It has <b>[fuel]</b> fuel left.<span>"
+		. += "<span class='notice'>It has <b>[fuel]</b> fuel left.</span>"
 		if(!item_scanned)
-			. += "<span class='notice'>Alt-click to reset the scanner, no items are scanned.<span>"
+			. += "<span class='notice'>Alt-click to reset the scanner, no items are scanned.</span>"
 		else
-			. += "<span class='notice'>Alt-click to reset the scanner, current scanned item is [item_scanned].<span>"
-		. += "<span class='notice'>The status display reads: Fuel consumption reduced by <b>[(efficiency*25)-25]</b>%.<br>Machine can hold up to <b>[max_fuel]</b> units of fuel.<br> Speed is increased by <b>[(speed*100)-100]%</b><span>"
+			. += "<span class='notice'>Alt-click to reset the scanner, current scanned item is [item_scanned].</span>"
+		. += "<span class='notice'>The status display reads: Fuel consumption reduced by <b>[(efficiency*25)-25]</b>%.<br>Machine can hold up to <b>[max_fuel]</b> units of fuel.<br> Speed is increased by <b>[(speed*100)-100]%</b></span>"
 		if(obj_flags & EMAGGED)
-			. += "<span class='warning'>It's status display looks a bit burnt!"
-		. += "<span class='notice'>The machine takes synthetic cake batter as fuel, which is some flour, some milk and a bit of astrotame.<span>"
+			. += "<span class='warning'>It's status display looks a bit burnt!</span>"
+		. += "<span class='notice'>The machine takes synthetic cake batter as fuel, which is some flour, some milk and a bit of astrotame.</span>"
 
 /obj/machinery/cake_printer/Exited(atom/movable/AM)
 	if(AM == caked_item)
@@ -149,7 +146,7 @@
 	if(panel_open)
 		to_chat(user, "<span class='warning'>Close the maintenance panel first!</span>")
 		return
-	if(fuel == 0)
+	if(fuel <= 0)
 		to_chat(user, "<span class='warning'>No cake batter in the printer!</span>")
 		return
 	if(fuelcost > fuel)
@@ -170,7 +167,7 @@
 		use_power(300)
 		sleep(40 / speed)
 		processing = FALSE
-		fuel = fuel - fuelcost
+		fuel -= fuelcost
 		update_icon()
 		finish_cake()
 		caked_item.forceMove(drop_location())
