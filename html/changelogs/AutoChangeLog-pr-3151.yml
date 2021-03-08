@@ -1,0 +1,4 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - rscadd: "Mask of madness is available to ash path, replacing curse of blindness!"
