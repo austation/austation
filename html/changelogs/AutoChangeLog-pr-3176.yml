@@ -1,0 +1,5 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - tweak: "Billy club is now only available in sec vendor. Sec officers no longer spawn with it."
+  - balance: "Sec belt slot count decreased by 1."
