@@ -1,0 +1,4 @@
+author: "mudzbe"
+delete-after: True
+changes: 
+  - bugfix: "weapon rechargers display that they have finished charging on the same cycle they finish"
