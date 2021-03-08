@@ -19,3 +19,7 @@
 /obj/structure/disposalpipe/junction/flip/coilgun
 	coilgun = TRUE
 	icon = 'austation/icons/obj/atmospherics/pipes/disposal.dmi'
+
+/obj/structure/disposalpipe/junction/yjunction/coilgun
+	coilgun = TRUE
+	icon = 'austation/icons/obj/atmospherics/pipes/disposal.dmi'

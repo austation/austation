@@ -6,4 +6,4 @@
 		if(istype(AM, /obj/effect/hvp))
 			var/obj/effect/hvp/speedy = AM
 			if(speedy.p_speed >= 1)
-				speedy.launch(dir2angle(dir), dir)
+				speedy.launch(dir2angle(direction))

@@ -153,7 +153,7 @@
 		var/global_angle = dir2angle(dir) + current_angle
 		PJ.p_speed *= 1.3
 		PJ.forceMove(get_turf(src))
-		PJ.launch(global_angle, dir)
+		PJ.launch(global_angle)
 	if(LAZYLEN(H.contents)) // if there's anything else left in the barrel, throw it out
 		expel(H, get_step(src, dir))
 	else

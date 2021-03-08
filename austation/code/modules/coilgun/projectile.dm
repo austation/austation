@@ -5,7 +5,7 @@
 #define BASE_SWITCH_RANGE 4
 
 // the maximum amount of tiles a bluespace hvp can teleport to
-#define MAX_SWITCH_RANGE 11
+#define MAX_SWITCH_RANGE 15
 
 // max speed multiplier for movement
 #define MAX_SPEED 5
@@ -34,28 +34,25 @@
 	var/last_angle = 0
 	var/momentum = 0
 
-/obj/effect/hvp/proc/launch(p_angle, p_dir)
+/obj/effect/hvp/proc/launch(_angle)
 	momentum = mass * p_speed // hey google
+	if(momentum < 1)
+		gameover()
+		return
+	angle = _angle
+	dir = angle2dir(angle)
+	if(!angle)
+		angle = dir2angle(dir)
 	if(momentum >= 1000) // how can I kill
 		var/turf/open/T = get_turf(src)
 		if(T.air)
 			for(var/mob/M in range(10, src))
 				shake_camera(M, 10, clamp(momentum*0.002, 0, MAX_SHAKE)) // one million people?
-	forceMove(get_turf(src)) // make sure we're not inside something
-	if(momentum >= 1)
-		dir = p_dir
-		angle = p_angle
-		if(!angle)
-			angle = dir2angle(dir)
-		calc_trajectory()
-		addtimer(CALLBACK(src, .proc/t_move), 1)
-	else
-		gameover()
-		return
-	SSaugury.register_doom(src, momentum)
 
-//TODO: use getline() for magic delete line at high speeds. Projectile can only go so fast before it phases through turfs/mobs
-/obj/effect/hvp/proc/get_line_of_death()
+	forceMove(get_turf(src)) // make sure we're not inside something
+	calc_trajectory()
+	addtimer(CALLBACK(src, .proc/t_move), 1)
+	SSaugury.register_doom(src, momentum)
 
 /obj/effect/hvp/Topic(href, href_list)
 	if(href_list["orbit"])
@@ -124,7 +121,7 @@
 		trajectory.set_speed(t_speed)
 
 /obj/effect/hvp/proc/penetrate(mob/living/L)
-	var/projdamage = max(15, momentum / 35)
+	var/projdamage = max(momentum / 35, 15)
 	if(ishuman(L))
 		var/mob/living/carbon/human/H = L
 		if(special & HVP_SHARP)
@@ -170,7 +167,7 @@
 	if(isfloorturf(get_turf(src))) // Less expensive than atmos checks so it just checks for floor turfs for "drag"
 		p_speed--
 
-	momentum = mass*p_speed
+	momentum = mass * p_speed
 	if(momentum < 1)
 		gameover()
 		return
@@ -241,7 +238,7 @@
 
 /obj/effect/hvp/debug/New()
 	..()
-	launch()
+	launch(dir2angle(dir))
 
 ///Handles special projectile traits
 /obj/effect/hvp/proc/apply_special(atom/movable/AM, initial = FALSE)
