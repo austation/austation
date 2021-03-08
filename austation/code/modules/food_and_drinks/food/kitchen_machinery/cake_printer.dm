@@ -84,7 +84,7 @@
 			if(fuel >= max_fuel)
 				to_chat(user, "<span class='warning'>The machine's tank is full!</span>")
 				return ..()
-			fuel += (10 * (I.reagents.get_reagent_amount(/datum/reagent/consumable/synthetic_cake_batter))
+			fuel += (10 * (I.reagents.get_reagent_amount(/datum/reagent/consumable/synthetic_cake_batter)))
 			to_chat(user, "<span class='notice'>You pour the cake batter in [src].</span>")
 			I.reagents.remove_reagent(/datum/reagent/consumable/synthetic_cake_batter, I.reagents.get_reagent_amount(/datum/reagent/consumable/synthetic_cake_batter))
 			if(fuel > max_fuel)
