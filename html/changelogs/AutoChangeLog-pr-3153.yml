@@ -1,6 +1,0 @@
-author: "AustationBot"
-delete-after: True
-changes: 
-  - bugfix: "Gimmick positions now have overhead chat colours."
-  - bugfix: "Gimmick positions now have chat colours."
-  - bugfix: "Gimmick positions now have a title in the job selection menu."

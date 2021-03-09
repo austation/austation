@@ -56,6 +56,75 @@
 		-->
 		<div class="commit sansserif">
 
+			<h2 class="date">09 March 2021</h2>
+			<h3 class="author">ArcaneDefence updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="rscadd">Mothmen now get upset when their wings get burned :(</li>
+			</ul>
+			<h3 class="author">AustationBot updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="balance">Berets and Beanies are now 'small' sized</li>
+				<li class="bugfix">fixes some code warnings</li>
+				<li class="tweak">Warping Gold Crossbreeds have temporarily had their loot table neutered</li>
+				<li class="balance">Neat moodlet integrated into standard behavior</li>
+				<li class="balance">To go along with that, the relevant moodlets have been adjusted.</li>
+				<li class="tweak">Hygiene visual effect only happens when you can't get any dirtier</li>
+				<li class="code_imp">Hygiene no longer generates miasma</li>
+				<li class="bugfix">Gimmick highlighting respects no chat colours.</li>
+				<li class="rscadd">Adds Brig Physician permission node (ACCESS_BRIGPHYS = 34)</li>
+				<li class="tweak">Gives Brig Physician somewhat exclusive access to their medical supply locker</li>
+				<li class="rscadd">Brig Physician permission is applied to relevant areas on maps</li>
+				<li class="tweak">Other minor access control changes around Brig/Brig medical areas</li>
+				<li class="tweak">Crystalized cerulean pylon only spawns 3 crystals at the time.</li>
+				<li class="tweak">Each crystal takes twice as long to grow than before.</li>
+				<li class="tweak">Each crystal only drops poly-crystal upon reaching state 4 (only 1 amt) or 5 (randomly chosen between 1 ~ 3 amt).</li>
+				<li class="imageadd">Updated HoS greatcoat.</li>
+				<li class="rscadd">Mask of madness is available to ash path, replacing curse of blindness!</li>
+				<li class="rscadd">Help button is back on paper.</li>
+				<li class="bugfix">Gimmick positions now have overhead chat colours.</li>
+				<li class="bugfix">Gimmick positions now have chat colours.</li>
+				<li class="bugfix">Gimmick positions now have a title in the job selection menu.</li>
+				<li class="bugfix">Cult forcewalls now properly expire</li>
+				<li class="rscadd">INCORPOREAL_MOVE_EMINENCE to mob_movement.dm, eminence.dm and __DEFINES/mobs.dm</li>
+				<li class="admin">New Adminbus button- Ghost Pool Protection! It lets you enable and disable which sources ghosts can rejoin the round, minus their physical bodies getting revived.</li>
+				<li class="rscadd">HoP now has a file cabinet on meta</li>
+				<li class="bugfix">SSgarbage entry now shows up in the TGUI stat panel's MC tab.</li>
+				<li class="bugfix">fixed progress bar not showing up when removing transmutation rune</li>
+				<li class="bugfix">Returned wig and sailor outfit to the autodrobe</li>
+				<li class="bugfix">Virologist PDA starts registered with your account.</li>
+				<li class="bugfix">Necropolis seed stealth 8 threshold actually drops a chest and doesn't just gib you.</li>
+				<li class="tweak">Input bar is now under chat.</li>
+				<li class="bugfix">You can no longer cremate Indestructible items.</li>
+				<li class="code_imp">cleaned up creation arguments of forcefields</li>
+				<li class="tweak">Billy club is now only available in sec vendor. Sec officers no longer spawn with it.</li>
+				<li class="balance">Sec belt slot count decreased by 1.</li>
+				<li class="balance">Mining armour is now weaker in high pressure environments.</li>
+				<li class="bugfix">damage overlays no longer disappear once you deal to much damage</li>
+				<li class="code_imp">Replaces some teleporters forceMoves with do_teleports.</li>
+				<li class="bugfix">Rod subtypes now properly merge</li>
+				<li class="rscadd">Tiny fans to a mining and science shuttles</li>
+				<li class="rscadd">Medical cyborgs can insert organs with the organ storage bag into a smart organ storage</li>
+			</ul>
+			<h3 class="author">LemonInTheDark, spookydonut updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="code_imp">Ports the TGMC timer cooldowns system.</li>
+				<li class="bugfix">Fixed stealth implants not properly boxing the user, and doors not shocking</li>
+				<li class="refactor">Renamed COOLDOWN_CHECK to COOLDOWN_FINISHED</li>
+				<li class="bugfix">Abductor implant now reports the correct remaining time until it can be used again.</li>
+			</ul>
+			<h3 class="author">TiviPlus, BeloneX updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="server">Add maximum recommended version of byond</li>
+			</ul>
+			<h3 class="author">jbox144 updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="rscadd">You can now CTRL+click jumpsuits to cycle their sensor settings.</li>
+			</ul>
+			<h3 class="author">mudzbe updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="bugfix">weapon rechargers display that they have finished charging on the same cycle they finish</li>
+			</ul>
+
 			<h2 class="date">04 March 2021</h2>
 			<h3 class="author">AustationBot updated:</h3>
 			<ul class="changes bgimages16">
@@ -986,20 +1055,6 @@
 				<li class="tweak">Syndicate radio implant can't be bought on incursion gamemode.</li>
 				<li class="code_imp">inversedir is now a global proc</li>
 				<li class="rscadd">Syndicate excommunicates get a note telling them they're an excommunicate, so they don't forget</li>
-			</ul>
-
-			<h2 class="date">05 January 2021</h2>
-			<h3 class="author">AustationBot updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="rscadd">Directional firelocks frames to iron sheet recipe</li>
-				<li class="rscadd">Window firelock frames to reinforced glass sheet recipe</li>
-				<li class="bugfix">a runtime error during firelock construction(only when making them from scratch)</li>
-				<li class="refactor">small changes to the heavy firelock code and var define of firelock_type</li>
-				<li class="balance">Security cyborgs must be researched first.</li>
-				<li class="balance">Mime forcewall duraction from 30 seconds to 10 seconds.</li>
-				<li class="bugfix">Fix firelock windows dropping iron instead of reinforced glass</li>
-				<li class="bugfix">fixed quite a lot of pipes on every map (except Kilo which only had one trivial problem) to improve experience and performance</li>
-				<li class="tweak">You can now only use the emergency shuttle console once per 5 seconds.</li>
 			</ul>
 		</div>
 

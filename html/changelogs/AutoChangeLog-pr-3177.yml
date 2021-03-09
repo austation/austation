@@ -1,4 +1,0 @@
-author: "AustationBot"
-delete-after: True
-changes: 
-  - code_imp: "Replaces some teleporters forceMoves with do_teleports."

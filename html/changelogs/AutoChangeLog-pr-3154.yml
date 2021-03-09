@@ -1,5 +1,0 @@
-author: "AustationBot"
-delete-after: True
-changes: 
-  - bugfix: "Virologist PDA starts registered with your account."
-  - bugfix: "Necropolis seed stealth 8 threshold actually drops a chest and doesn't just gib you."
