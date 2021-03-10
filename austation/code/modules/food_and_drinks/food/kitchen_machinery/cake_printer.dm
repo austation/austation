@@ -57,19 +57,19 @@
 /obj/machinery/cake_printer/emag_act(mob/user)
 	. = ..()
 	if(!(obj_flags & EMAGGED)) //If it is not already emagged, emag it.
-		to_chat(user, "<span class='warning'>You disable the [src]'s safety features, allowing it's cakes to be toxic.</span>")
+		to_chat(user, "<span class='warning'>You disable \the [src]'s safety features, allowing it's cakes to be toxic.</span>")
 		do_sparks(5, TRUE, src)
 		obj_flags |= EMAGGED
 		log_game("[key_name(user)] emagged [src]")
 		message_admins("[key_name_admin(user)] emagged [src]")
 	else
-		to_chat(user, "<span class='warning'>The status display on [src] is already too damaged to short it again.</span>")
+		to_chat(user, "<span class='warning'>The status display on \the [src] is already too damaged to short it again.</span>")
 
 /obj/machinery/cake_printer/attackby(obj/item/I, mob/user)
 	if(user.a_intent == INTENT_HARM)
 		return ..()
 	if(processing)
-		to_chat(user, "<span class='warning'>[src] is printing!</span>")
+		to_chat(user, "<span class='warning'>\The [src] is printing!</span>")
 		return
 	if(default_deconstruction_screwdriver(user, "kek-printer-o", "kek-printer-o" ,I))
 		update_icon()
@@ -137,7 +137,7 @@
 
 /obj/machinery/cake_printer/attack_hand(mob/user)
 	if(processing)
-		to_chat(user, "<span class='warning'>[src] is printing!</span>")
+		to_chat(user, "<span class='warning'>\The [src] is printing!</span>")
 		return
 	if(panel_open)
 		to_chat(user, "<span class='warning'>Close the maintenance panel first!</span>")
@@ -152,12 +152,12 @@
 		to_chat(user, "<span class='warning'>Scan an item first!</span>")
 		return
 	if(!processing)
-		to_chat(user, "<span class='notice'>You start [src]'s printing process.</span>")
+		to_chat(user, "<span class='notice'>You start \the [src]'s printing process.</span>")
 		if(obj_flags & EMAGGED)
 			caked_item = new/obj/item/reagent_containers/food/snacks/synthetic_cake/toxic(src, item_scanned)
 		else
 			caked_item = new/obj/item/reagent_containers/food/snacks/synthetic_cake(src, item_scanned)
-		visible_message("<span class='notice'>[user] starts [src]'s printing process.</span>")
+		visible_message("<span class='notice'>[user] starts \the [src]'s printing process.</span>")
 		processing = TRUE
 		update_icon()
 		use_power(300)
@@ -173,7 +173,7 @@
 /obj/machinery/cake_printer/AltClick(mob/living/user)
 	. = ..()
 	if(processing)
-		to_chat(user, "<span class='warning'>[src] is printing!</span>")
+		to_chat(user, "<span class='warning'>\The [src] is printing!</span>")
 		return
 	visible_message("<span class='notice'>[user] clears [src]'s scanner.</span>")
 	to_chat(user, "<span class='notice'>You clear [src]'s scanner.</span>")
