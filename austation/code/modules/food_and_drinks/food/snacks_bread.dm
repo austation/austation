@@ -1,6 +1,6 @@
 /obj/item/reagent_containers/food/snacks/synthetic_cake
-	name = "Cake Foods Holder Obj"
-	desc = "If you can see this description the code for the cake printer fucked up."
+	name = "Cake Dough"
+	desc = "Looks like an unfinished mess of dough."
 	icon = 'icons/obj/food/food.dmi'
 	icon_state = ""
 	bitesize = 3
@@ -9,8 +9,8 @@
 	foodtype = GRAIN | DAIRY | SUGAR
 
 /obj/item/reagent_containers/food/snacks/synthetic_cake/toxic
-	name = "Toxic Cake Foods Holder Obj"
-	desc = "If you can see this description the code for the cake printer fucked up."
+	name = "Cake Dough"
+	desc = "Looks like an unfinished mess of dough."
 	icon = 'icons/obj/food/food.dmi'
 	icon_state = ""
 	bitesize = 3
@@ -18,8 +18,7 @@
 	tastes = list("sweetness" = 2,"cake" = 5)
 	foodtype = GRAIN | DAIRY | SUGAR
 
-/obj/item/reagent_containers/food/snacks/synthetic_cake/Initialize(mapload, obj/item/caked)
-	. = ..()
+/obj/item/reagent_containers/food/snacks/synthetic_cake/proc/cake_transform(obj/item/caked)
 	name = caked.name
 	appearance = caked.appearance
 	layer = initial(layer)
@@ -27,7 +26,7 @@
 	lefthand_file = caked.lefthand_file
 	righthand_file = caked.righthand_file
 	item_state = caked.item_state
-	desc = caked.desc
+	desc = "Wait, it's a cake?"
 	w_class = caked.w_class
 	slowdown = caked.slowdown
 	equip_delay_self = caked.equip_delay_self
