@@ -1,24 +1,17 @@
 /obj/item/reagent_containers/food/snacks/synthetic_cake
 	name = "Cake Dough"
 	desc = "Looks like an unfinished mess of dough."
-	icon = 'icons/obj/food/food.dmi'
-	icon_state = ""
+	icon = 'icons/obj/food/food_ingredients.dmi'
+	icon_state = "dough"
 	bitesize = 3
 	list_reagents = list(/datum/reagent/consumable/nutriment = 4)
 	tastes = list("sweetness" = 2,"cake" = 5)
-	foodtype = GRAIN | DAIRY | SUGAR
+	foodtype = GRAIN | DAIRY | sound_to_playing_players(soundin, volume, vary, frequency, falloff, channel, pressure_affected, sound/S)
+		. = ..()
 
-/obj/item/reagent_containers/food/snacks/synthetic_cake/toxic
-	name = "Cake Dough"
-	desc = "Looks like an unfinished mess of dough."
-	icon = 'icons/obj/food/food.dmi'
-	icon_state = ""
-	bitesize = 3
-	list_reagents = list(/datum/reagent/toxin/chloralhydrate = 10)
-	tastes = list("sweetness" = 2,"cake" = 5)
-	foodtype = GRAIN | DAIRY | SUGAR
-
-/obj/item/reagent_containers/food/snacks/synthetic_cake/proc/cake_transform(obj/item/caked)
+/obj/item/reagent_containers/food/snacks/synthetic_cake/proc/cake_transform(obj/item/caked, poisoned = FALSE)
+	if(poisoned)
+		reagents.add_reagent(/datum/reagent/toxin/amanitin, 5)
 	name = caked.name
 	appearance = caked.appearance
 	layer = initial(layer)

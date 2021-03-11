@@ -132,8 +132,8 @@
 /obj/machinery/cake_printer/attack_ai(mob/user)
 	return
 
-/obj/machinery/cake_printer/proc/finish_cake(item_scanned)
-	caked_item.cake_transform(item_scanned)
+/obj/machinery/cake_printer/proc/finish_cake(item_scanned, poisoned)
+	caked_item.cake_transform(item_scanned, poisoned)
 
 /obj/machinery/cake_printer/attack_hand(mob/user)
 	if(processing)
@@ -153,10 +153,7 @@
 		return
 	if(!processing)
 		to_chat(user, "<span class='notice'>You start \the [src]'s printing process.</span>")
-		if(obj_flags & EMAGGED)
-			caked_item = new/obj/item/reagent_containers/food/snacks/synthetic_cake/toxic(src)
-		else
-			caked_item = new/obj/item/reagent_containers/food/snacks/synthetic_cake(src)
+		caked_item = new/obj/item/reagent_containers/food/snacks/synthetic_cake(src)
 		visible_message("<span class='notice'>[user] starts \the [src]'s printing process.</span>")
 		processing = TRUE
 		update_icon()
@@ -165,7 +162,10 @@
 		processing = FALSE
 		fuel -= fuelcost
 		update_icon()
-		finish_cake(item_scanned)
+		if(obj_flags & EMAGGED)
+			finish_cake(item_scanned, TRUE)
+		else
+			finish_cake(item_scanned, FALSE)
 		caked_item.forceMove(drop_location())
 		return
 	return ..()
