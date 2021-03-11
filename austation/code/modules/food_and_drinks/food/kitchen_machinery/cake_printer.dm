@@ -119,13 +119,10 @@
 			. += "<span class='warning'>It's status display looks a bit burnt!</span>"
 		. += "<span class='notice'>The machine takes synthetic cake batter as fuel, which is some flour, some milk and a bit of astrotame.</span>"
 
-/obj/machinery/cake_printer/Exited(atom/movable/AM)
-	if(AM == caked_item)
-		finish_cake()
-	..()
-
 /obj/machinery/cake_printer/Destroy()
-	caked_item = null
+	if(caked_item)
+		caked_item.forceMove(drop_location())
+		caked_item = null
 	item_scanned = null
 	. = ..()
 
@@ -153,14 +150,14 @@
 		return
 	if(!processing)
 		to_chat(user, "<span class='notice'>You start \the [src]'s printing process.</span>")
-		caked_item = new/obj/item/reagent_containers/food/snacks/synthetic_cake(src)
 		visible_message("<span class='notice'>[user] starts \the [src]'s printing process.</span>")
+		fuel -= fuelcost
+		caked_item = new/obj/item/reagent_containers/food/snacks/synthetic_cake(src)
 		processing = TRUE
 		update_icon()
 		use_power(300)
 		sleep(40 / speed)
 		processing = FALSE
-		fuel -= fuelcost
 		update_icon()
 		if(obj_flags & EMAGGED)
 			finish_cake(item_scanned, TRUE)
