@@ -14,7 +14,7 @@
 	if(I.tool_behaviour == TOOL_SCREWDRIVER)
 		open_panel = !open_panel
 		to_chat(user, "<span class='notice'>You [open_panel ? "open" : "close"] the wire panel.</span>")
-	else if(is_wire_tool(I))
+	else if(I.tool_behaviour == TOOL_MULTITOOL)
 		wires.interact(user)
 	else if(I.tool_behaviour == TOOL_WIRECUTTER)
 		switch(det_time)
