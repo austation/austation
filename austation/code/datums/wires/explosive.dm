@@ -4,8 +4,7 @@
 
 /datum/wires/explosive/minibomb/interactable(mob/user)
 	var/obj/item/grenade/syndieminibomb/P = holder
-	if(P.open_panel)
-		return TRUE
+	return P.open_panel
 
 /datum/wires/explosive/minibomb/explode()
 	var/obj/item/grenade/syndieminibomb/P = holder
