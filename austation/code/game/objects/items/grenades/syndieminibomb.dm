@@ -1,5 +1,5 @@
 /obj/item/grenade/syndieminibomb
-  var/open_panel = 0
+  var/open_panel = FALSE
 
 /obj/item/grenade/syndieminibomb/Initialize()
 	. = ..()
