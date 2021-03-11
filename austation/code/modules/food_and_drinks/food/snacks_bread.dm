@@ -6,8 +6,7 @@
 	bitesize = 3
 	list_reagents = list(/datum/reagent/consumable/nutriment = 4)
 	tastes = list("sweetness" = 2,"cake" = 5)
-	foodtype = GRAIN | DAIRY | sound_to_playing_players(soundin, volume, vary, frequency, falloff, channel, pressure_affected, sound/S)
-		. = ..()
+	foodtype = GRAIN | DAIRY | SUGAR
 
 /obj/item/reagent_containers/food/snacks/synthetic_cake/proc/cake_transform(obj/item/caked, poisoned = FALSE)
 	if(poisoned)
