@@ -351,3 +351,18 @@
 	fire_rate = 2
 	block_upgrade_walk = 1
 
+	// Fletchette LMG //
+
+/obj/item/gun/ballistic/automatic/proto/fletchette
+	name = "Fletchette Storm"
+	desc = "A prototype machine gun with a high fire rate, used for clearing out enemies."
+	icon_state = "fletchette"
+	mag_type = /obj/item/ammo_box/magazine/fletchettem9mm
+	pin = null
+	fire_rate = 8
+	bolt_type = BOLT_TYPE_LOCKING
+	mag_display = TRUE
+	weapon_weight = WEAPON_HEAVY
+
+
+
