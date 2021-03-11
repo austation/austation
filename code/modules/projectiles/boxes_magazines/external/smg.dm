@@ -74,3 +74,11 @@
 	ammo_type = /obj/item/ammo_casing/c45
 	caliber = ".45"
 	max_ammo = 50
+
+/obj/item/ammo_box/magazine/fletchettem9mm
+	name = "fletchette drum magazine (9mm)"
+	icon_state = "drum45"
+	ammo_type = /obj/item/ammo_casing/c9mm
+	caliber = "f9mm"
+	max_ammo = 50
+
