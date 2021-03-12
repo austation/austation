@@ -110,10 +110,10 @@
 	. = ..()
 	if(in_range(user, src) || isobserver(user))
 		. += "<span class='notice'>It has <b>[fuel]</b> fuel left.</span>"
-		if(!item_scanned)
-			. += "<span class='notice'>Alt-click to reset the scanner, no items are scanned.</span>"
-		else
+		if(item_scanned)
 			. += "<span class='notice'>Alt-click to reset the scanner, current scanned item is [item_scanned].</span>"
+		else
+			. += "<span class='notice'>Alt-click to reset the scanner, no items are scanned.</span>"
 		. += "<span class='notice'>The status display reads: Fuel consumption reduced by <b>[(efficiency*25)-25]</b>%.<br>Machine can hold up to <b>[max_fuel]</b> units of fuel.<br> Speed is increased by <b>[(speed*100)-100]%</b></span>"
 		if(obj_flags & EMAGGED)
 			. += "<span class='warning'>It's status display looks a bit burnt!</span>"
