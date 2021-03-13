@@ -13019,6 +13019,7 @@
 	dir = 1;
 	pixel_y = -24
 	},
+/obj/item/toy/aucode,
 /turf/open/floor/plasteel/dark,
 /area/storage/tech)
 "beb" = (
