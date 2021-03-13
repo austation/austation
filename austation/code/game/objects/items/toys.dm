@@ -1,7 +1,7 @@
 /obj/item/toy/aucode // CTRL + C, CTRL + V of the "gooncode" toy from, well, goon. Heavily modified for beecode, naturally.
 	name = "aucode hard disk drive"
 	desc = "The prized, sought after spaghetti code, and the only known manual for glassing people. Conveniently on a fancy hard drive that connects to PDAs. \
-	Hang on a minute... this is just the gooncode hard disk drive with the name sticky taped over."
+	Just swipe your PDA on it and add whatever you want. \n\nHang on a minute... this is just the gooncode hard disk drive with the name sticky taped over."
 	icon = 'icons/obj/module.dmi'
 	w_class = WEIGHT_CLASS_TINY
 	item_state = "card-id"
