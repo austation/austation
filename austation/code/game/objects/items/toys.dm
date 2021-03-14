@@ -63,5 +63,5 @@
 			return
 	return ..()
 
-/obj/item/toy/gooncode/attack()
+/obj/item/toy/aucode/attack()
 	return
