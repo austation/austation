@@ -4,7 +4,16 @@
 	desc = "A special machine that converts inserted matter into gluten"
 	icon = 'austation/icons/obj/atmospherics/machines/loafer.dmi'
 	icon_state = "loafer"
-	var/list/blacklist
+	var/static/list/blacklist = typecacheof(list(
+		/obj/item/stock_parts,
+		/obj/item/pipe,
+		/obj/structure/disposalconstruct,
+		/obj/structure/c_transit_tube,
+		/obj/structure/c_transit_tube_pod,
+		/obj/item/holochip,
+		/obj/item/reagent_containers/glass/bottle,
+		/obj/item/reagent_containers/pill
+	))
 	var/emag_bonus = 1
 	var/obj/item/reagent_containers/food/snacks/store/bread/recycled/stored_looef
 
@@ -69,7 +78,7 @@ obj/structure/disposalpipe/loafer/emag_act(mob/user)
 			if(AM == looef)
 				continue
 
-			if(AM.type in blacklist) // no matter bin singulo for you
+			if(blacklist[AM.type]) // no matter bin singulo for you
 				qdel(AM)
 				continue
 

@@ -17,3 +17,13 @@
 	O.pixel_y = AY
 //	O.layer = layer + 1
 	add_overlay(O)
+
+
+/atom/proc/hvp_act(momentum, /obj/item/projectile/hvp/H, severe = FALSE)
+	if(momentum > 1000 || severe)
+		ex_act(EXPLODE_DEVASTATE)
+		return TRUE
+	if(momentum > 100)
+		ex_act(EXPLODE_HEAVY)
+		return TRUE
+	return FALSE

@@ -5,3 +5,5 @@
 #define HVP_BLUESPACE 1<<3
 #define HVP_REAGENT 1<<4
 #define HVP_GRENADE 1<<5
+#define HVP_SMILEY_FACE 1<<6
+#define HVP_VOID 1<<7

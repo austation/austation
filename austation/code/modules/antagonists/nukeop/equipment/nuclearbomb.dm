@@ -1,6 +1,6 @@
 /obj/machinery/nuclearbomb/Bumped(atom/A)
-	if(istype(A, /obj/effect/hvp))
-		var/obj/effect/hvp/hvp = A
+	if(istype(A, /obj/item/projectile/hvp))
+		var/obj/item/projectile/hvp/hvp = A
 		if(locate(/obj/item/disk/nuclear) in hvp.contents)
 			if(hvp.momentum >= 10000) // come on and slam, and welcome to the jam
 				safety = FALSE

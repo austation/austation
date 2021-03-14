@@ -9,8 +9,8 @@
 /obj/structure/disposalpipe/coilgun/modifier/transfer(obj/structure/disposalholder/H)
 	if(LAZYLEN(H.contents))
 		for(var/atom/movable/AM in H.contents)
-			if(istype(AM, /obj/effect/hvp))
-				var/obj/effect/hvp/PJ = AM
+			if(istype(AM, /obj/item/projectile/hvp))
+				var/obj/item/projectile/hvp/PJ = AM
 				combine(PJ)
 			else
 				visible_message("<span class='warning'>\The [src]'s safety mechanism engages, ejecting \the [AM] through the maintenance hatch!</span>")
@@ -30,7 +30,7 @@
 		to_chat(user, "<span class='warning'>You can't seem to safely insert \the [O]!")
 
 /// Handles item merging inside the modifier
-/obj/structure/disposalpipe/coilgun/modifier/proc/combine(obj/effect/hvp/PJ)
+/obj/structure/disposalpipe/coilgun/modifier/proc/combine(obj/item/projectile/hvp/PJ)
 	if(!LAZYLEN(contents)) // If we have no object to combine the projectile with, return
 		return
 	for(var/obj/O in contents)
@@ -38,19 +38,20 @@
 			O.forceMove(get_turf(src))
 			continue
 		var/req_speed = max(100 * PJ.mass * 1.5, MIN_SPEED)
-		if(PJ.p_speed < req_speed)
+		if(PJ.velocity < req_speed)
 			continue
 		if(PJ.apply_special(O))
 			PJ.spec_amt++
 		playsound(src, 'sound/effects/bang.ogg', 50, 0, 0)
-		PJ.p_speed -= req_speed / 2
+		PJ.velocity -= req_speed / 2
 		if(isitem(O))
 			var/obj/item/I = O
 			PJ.mass += I.w_class
 		else
 			PJ.mass += 1
-		PJ.vis_contents += O
+		PJ.initial_transforms[O] = O.transform
 		O.transform = turn(O.transform, rand(1, 360))
+		PJ.vis_contents += O
 //		PJ.overlay_atom(O, rotation = TRUE)
 //		O.loc = PJ
 		break

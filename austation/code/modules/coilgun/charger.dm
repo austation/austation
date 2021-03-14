@@ -20,8 +20,7 @@
 	icon_state = "charger"
 	coilgun = TRUE
 	var/enabled = FALSE // is the charger turned on?
-	var/can_charge = TRUE // can we speed up the projectile
-	var/speed_increase = 10 // how much speed the charger will add to the projectile
+	var/modifier = 1 // Speed multiplier
 	var/heat_increase = 10 // how much the charger will heat up the projectile
 	var/target_power_usage = 0 // the set percentage of excess power to be used by the charger
 	var/current_power_use = 0 // how much power it is currently drawing
@@ -45,7 +44,7 @@
 	else
 		enabled = TRUE
 		to_chat(user, "<span class='notice'>You turn on \the [src].</span>")
-
+/*
 /obj/structure/disposalpipe/coilgun/charger/process()
 	power_ticks++
 	if(current_power_use && target_power_usage && attached?.powernet)
@@ -55,7 +54,7 @@
 		if(attached.newavail() < drained) // are we using more power than we have connected?
 			target_power_usage -= 20 // throttle it down
 			if(target_power_usage > 0)
-				visible_message("<span class='warning'>\The [src]'s power warning light flickers, lowering throttle to [target_power_usage]!</span>")
+				visible_message("<span class='warning'>\The [src]'s power warning light flickers, throttling to [target_power_usage]%!</span>")
 			else
 				can_charge = FALSE
 				visible_message("<span class='warning'>\The [src]'s power warning fades, shutting the charger down!</span>")
@@ -66,47 +65,49 @@
 	else
 		can_charge = FALSE
 		return PROCESS_KILL
-	if(power_ticks >= 10)
+	if(power_ticks >= 5)
 		power_ticks = 0
 		return PROCESS_KILL
+*/
 
-/obj/structure/disposalpipe/coilgun/charger/proc/can_transfer(obj/structure/disposalholder/H)
-	if(!attached)
-		var/turf/T = loc
-		attached = T.get_cable_node()
-	if(!can_charge)
-		current_power_use = 0
-		process() // runs through the process proc once to see if there is sufficient power
-	return enabled && target_power_usage && can_charge && attached // is this enabled, do we have enough power?
+/obj/structure/disposalpipe/coilgun/charger/proc/H_power_failure()
+	target_power_usage = min(target_power_usage - 20, 0)
+	if(target_power_usage > 0)
+		visible_message("<span class='warning'>\The [src]'s power warning light flickers, throttling to [target_power_usage]%!</span>")
+	else
+		visible_message("<span class='warning'>\The [src]'s power warning light fades, turning itself off.</span>")
+		enabled = FALSE
 
 /obj/structure/disposalpipe/coilgun/charger/transfer(obj/structure/disposalholder/H)
-	if(!LAZYLEN(H.contents))
-		qdel(H)
-		return
-	if(!can_transfer(H))
+	attached = locate() in get_turf(src)
+	if(!enabled || !(attached))
 		return ..()
-	for(var/atom/movable/AM in H.contents) // run the loop below for every movable that passes through the charger
-		if(istype(AM, /obj/effect/hvp)) // if it's a coilgun projectile, continue
 
-			var/obj/effect/hvp/PJ = AM
+	for(var/atom/movable/AM in H.contents) // run the loop below for every movable that passes through the charger
+		if(istype(AM, /obj/item/projectile/hvp)) // if it's a coilgun projectile, continue
+			var/obj/item/projectile/hvp/PJ = AM
 
 			if(attached.powernet && target_power_usage)
-				var/prelim = max(attached.delayed_surplus() / POWER_DIVIDER, 1)
+				var/prelim = attached.delayed_surplus() / POWER_DIVIDER
+				if(prelim < 1)
+					H_power_failure()
+					return ..()
+				var/power_percent = target_power_usage / 100
 				visible_message("<span class='danger'>debug: prelim reads [prelim]!</span>") // DEBUG
-				speed_increase = prelim * BASE ** PJ.p_speed
-				PJ.p_speed += speed_increase
-				PJ.p_heat += heat_increase
+				var/speed_increase = (prelim * BASE ** PJ.velocity) * power_percent
+				PJ.velocity += (speed_increase / PJ.mass) * modifier
+				PJ.p_heat += heat_increase * power_percent
 				PJ.on_transfer()
-				cps = round(PJ.p_speed * 3.6) // m/s to km/h
+				cps = round(PJ.velocity * 3.6) // m/s to km/h
 				playsound(get_turf(src), 'sound/weapons/emitter2.ogg', 50, 1)
 				visible_message("<span class='danger'>debug: speed increased by [speed_increase]!</span>")
-				current_power_use = PJ.p_speed * 25 * prelim
-				START_PROCESSING(SSobj, src)
-				H.count = 1000 // resets the amount of moves the disposalholder has left
+				current_power_use = PJ.velocity * 25 * prelim
+				attached.add_delayedload(current_power_use * power_percent)
+				H.count = 1000
 				continue
 		else // no non-magnetic items allowed in the coilgun :(
-			playsound(src.loc, 'sound/machines/buzz-two.ogg', 40, 1)
-			visible_message("<span class='warning'>\The [src]'s safety mechanism engages, ejecting [AM] through the maintenance hatch!</span>")
+			playsound(src, 'sound/machines/buzz-two.ogg', 40, 1)
+			visible_message("<span classl='warning'>\The [src]'s safety mechanism engages, ejecting [AM] through the maintenance hatch!</span>")
 			AM.forceMove(get_turf(src))
 			continue
 
@@ -134,16 +135,16 @@
 		qdel(H)
 		return
 	for(var/atom/movable/AM in H.contents)
-		if(istype(AM, /obj/effect/hvp))
-			var/obj/effect/hvp/PJ = AM
+		if(istype(AM, /obj/item/projectile/hvp))
+			var/obj/item/projectile/hvp/PJ = AM
 			for(var/obj/machinery/power/capacitor/C in range(1, src))
 				total_charge += C.charge
 				C.charge = 0
 			if(total_charge)
-				var/prelim = min(total_charge / 10000, 1) // 10KW increases the speed by 1.
-				var/speed_increase = prelim * SUPER_BASE ** PJ.p_speed
-				PJ.p_speed += speed_increase
-				PJ.p_heat += 10
+				var/prelim = round(total_charge / 8000)
+				var/speed_increase = prelim * SUPER_BASE ** PJ.velocity
+				PJ.velocity += speed_increase
+				PJ.p_heat += prelim / 3
 				visible_message("<span class='danger'>debug: speed increased by [speed_increase]!</span>")
 				H.count = 1000
 				total_charge = 0
@@ -162,10 +163,10 @@
 /obj/machinery/power/capacitor/interact(mob/user)
 	. = ..()
 	if(datum_flags & DF_ISPROCESSING)
-		to_chat(user, "<span class='notice'>You disable \the [src].</span>")
+		to_chat(user, "<span class='notice'>\The [src] is no longer charging.</span>")
 		STOP_PROCESSING(SSobj, src)
 	else
-		to_chat(user, "<span class='notice'>You set \the [src] to charge mode.</span>")
+		to_chat(user, "<span class='notice'>You set \the [src]'s power setting to charge.</span>")
 		START_PROCESSING(SSobj, src)
 
 /obj/machinery/power/capacitor/process()

@@ -3,7 +3,7 @@
 
 /obj/structure/disposalpipe/expel(obj/structure/disposalholder/H, turf/T, direction, params)
 	for(var/atom/movable/AM in H.contents)
-		if(istype(AM, /obj/effect/hvp))
-			var/obj/effect/hvp/speedy = AM
-			if(speedy.p_speed >= 1)
+		if(istype(AM, /obj/item/projectile/hvp))
+			var/obj/item/projectile/hvp/speedy = AM
+			if(speedy.velocity >= 1)
 				speedy.launch(dir2angle(direction))
