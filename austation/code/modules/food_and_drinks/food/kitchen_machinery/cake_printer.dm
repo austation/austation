@@ -90,7 +90,7 @@
 			if(fuel > max_fuel)
 				fuel = max_fuel
 			return ..()
-	if(is_type_in_typecache(I, cake_blacklist) || HAS_TRAIT(I, TRAIT_NODROP) || (I.item_flags & (ABSTRACT | DROPDEL)))
+	if(cake_blacklist[I.type] || HAS_TRAIT(I, TRAIT_NODROP) || (I.item_flags & (ABSTRACT | DROPDEL)))
 		return ..()
 	item_scanned = I
 	switch(item_scanned.w_class)
