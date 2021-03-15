@@ -121,15 +121,15 @@
 /obj/mecha/medical
 	voice = /datum/voicebox/medical
 
-/obj/mecha/honk
-	voice = /datum/voicebox/honk
-
 /obj/mecha/combat/Initialize()
 	. = ..()
+	if(istype(src, /obj/mecha/combat/marauder) && !istype(src, /obj/mecha/combat/marauder/seraph))
+		voice = /datum/voicebox/syndie
+		return
 	if(istype(src, /obj/mecha/combat/reticence))
 		voice = /datum/voicebox/reticense
 		return
-	if(istype(src, /obj/mecha/combat/marauder) && !istype(src, /obj/mecha/combat/marauder/seraph))
-		voice = /datum/voicebox/syndie
-	else
-		voice = /datum/voicebox/combat
+	if(!istype(src, /obj/mecha/combat/honker))
+		voice = /datum/voicebox/honk
+		return
+	voice = /datum/voicebox/combat
