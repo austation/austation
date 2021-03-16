@@ -1,0 +1,5 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - rscadd: "Added baguette blade and it's pouch"
+  - rscadd: "Added french baguette which is the heirloom baguette for the mime. Unlimited bitesize"
