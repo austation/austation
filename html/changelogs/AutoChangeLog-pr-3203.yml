@@ -1,0 +1,4 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - rscadd: "Pools have been deployed to Boxstation and Metastation."
