@@ -124,7 +124,7 @@
 		caked_item.forceMove(drop_location())
 		caked_item = null
 	item_scanned = null
-	. = ..()
+	return ..()
 
 /obj/machinery/cake_printer/attack_ai(mob/user)
 	return
