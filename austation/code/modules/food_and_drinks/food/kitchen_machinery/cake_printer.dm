@@ -149,7 +149,7 @@
 		to_chat(user, "<span class='notice'>You start \the [src]'s printing process.</span>")
 		visible_message("<span class='notice'>[user] starts \the [src]'s printing process.</span>")
 		fuel -= fuelcost
-		caked_item = new/obj/item/reagent_containers/food/snacks/synthetic_cake(src)
+		caked_item = new(src)
 		processing = TRUE
 		update_icon()
 		use_power(300)
