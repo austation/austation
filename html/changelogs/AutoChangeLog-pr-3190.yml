@@ -1,4 +1,0 @@
-author: "AustationBot"
-delete-after: True
-changes: 
-  - tweak: "Synthflesh unhusking is more intuitive: if current amount in the body + amount being applied is  >=100, unhusk."

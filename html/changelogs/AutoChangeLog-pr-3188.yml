@@ -1,6 +1,0 @@
-author: "AustationBot"
-delete-after: True
-changes: 
-  - bugfix: "Hateful Manacles sound effect works properly"
-  - tweak: "NOBLUDGEON added to Clockwork Slab"
-  - tweak: "Hateful Manacles now takes 3 seconds to cuff (Previously 5)"
