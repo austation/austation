@@ -11,9 +11,9 @@
   holder.remove_reagent(type, metabolization_rate / M.metabolism_efficiency)
 
 /datum/reagent/medicine/morphine
-  description = "A painkiller that allows the patient to move at full speed even while severely wounded or while encumbered. Overdose will cause a variety of effects, ranging from minor to lethal."
-  metabolization_rate = 0.25 * REAGENTS_METABOLISM
-  overdose_threshold = 15
+	description = "A painkiller that allows the patient to move at full speed even while severely wounded or while encumbered. Overdose will cause a variety of effects, ranging from minor to lethal."
+	metabolization_rate = 0.25 * REAGENTS_METABOLISM
+	overdose_threshold = 15
 	addiction_threshold = 10
 
 /datum/reagent/medicine/morphine/on_mob_metabolize(mob/living/L)
