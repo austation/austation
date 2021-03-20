@@ -20682,6 +20682,14 @@
 /obj/structure/sign/warning/securearea,
 /turf/closed/wall/r_wall,
 /area/bridge)
+"bLV" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3,
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1,
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/turf/open/floor/plasteel/grimy,
+/area/tcommsat/computer)
 "bLW" = (
 /obj/structure/table,
 /obj/item/stock_parts/subspace/analyzer,
@@ -39930,14 +39938,6 @@
 	},
 /turf/open/floor/plasteel,
 /area/science/research)
-"dBo" = (
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3,
-/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1,
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
-/turf/open/floor/plasteel/grimy,
-/area/tcommsat/computer)
 "dBu" = (
 /turf/closed/wall,
 /area/engine/gravity_generator)
@@ -41173,13 +41173,6 @@
 	},
 /turf/closed/wall,
 /area/maintenance/port/aft)
-"dVa" = (
-/obj/structure/chair/office,
-/obj/structure/cable/yellow{
-	icon_state = "1-2"
-	},
-/turf/open/floor/wood,
-/area/library)
 "dVo" = (
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
@@ -41304,6 +41297,13 @@
 	},
 /turf/open/floor/plating,
 /area/maintenance/starboard)
+"dXr" = (
+/obj/structure/chair/office,
+/obj/structure/cable/yellow{
+	icon_state = "1-2"
+	},
+/turf/open/floor/wood,
+/area/library)
 "dXA" = (
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
@@ -44418,6 +44418,15 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3,
 /turf/open/floor/plasteel/grimy,
 /area/chapel/office)
+"fsl" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
+	dir = 5
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
+	dir = 5
+	},
+/turf/open/floor/plating,
+/area/maintenance/port)
 "fsx" = (
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
@@ -51953,6 +51962,9 @@
 /obj/structure/cable{
 	icon_state = "1-8"
 	},
+/obj/structure/cable{
+	icon_state = "1-4"
+	},
 /turf/open/floor/plasteel/dark,
 /area/ai_monitored/storage/satellite)
 "iBo" = (
@@ -58544,6 +58556,12 @@
 /obj/item/clothing/head/festive,
 /turf/open/floor/plating,
 /area/maintenance/fore)
+"lic" = (
+/obj/structure/cable/yellow{
+	icon_state = "2-8"
+	},
+/turf/open/floor/wood,
+/area/vacant_room/office)
 "lid" = (
 /obj/structure/window/reinforced{
 	dir = 8
@@ -70706,6 +70724,12 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1,
 /turf/open/floor/plasteel,
 /area/storage/art)
+"pXU" = (
+/obj/structure/cable/yellow{
+	icon_state = "2-4"
+	},
+/turf/open/space/basic,
+/area/space)
 "pYq" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
 	dir = 9
@@ -73283,6 +73307,15 @@
 	},
 /turf/open/floor/plasteel/white,
 /area/medical/virology)
+"qXO" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/maintenance/port)
 "qYF" = (
 /obj/structure/rack,
 /obj/item/pickaxe{
@@ -74278,7 +74311,6 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/door/airlock/maintenance/glass{
-	name = "MiniSat Maintenance";
 	req_access_txt = "32"
 	},
 /turf/open/floor/plating,
@@ -75783,7 +75815,11 @@
 /area/engine/storage_shared)
 "sav" = (
 /obj/structure/cable{
-	icon_state = "1-8"
+	icon_state = "4-8"
+	},
+/obj/machinery/door/airlock/maintenance/glass{
+	name = "MiniSat Maintenance";
+	req_access_txt = "32"
 	},
 /turf/open/floor/plating,
 /area/tcommsat/computer)
@@ -77560,11 +77596,11 @@
 /turf/open/floor/plasteel/dark,
 /area/chapel/main)
 "sOf" = (
-/obj/structure/cable/yellow{
-	icon_state = "2-4"
+/obj/structure/cable{
+	icon_state = "1-8"
 	},
-/turf/open/space/basic,
-/area/space)
+/turf/open/floor/plating,
+/area/tcommsat/computer)
 "sOm" = (
 /obj/structure/chair{
 	dir = 1
@@ -78682,12 +78718,6 @@
 /obj/machinery/portable_atmospherics/canister/air,
 /turf/open/floor/plating,
 /area/science/xenobiology)
-"tkt" = (
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
-/turf/open/floor/wood,
-/area/vacant_room/office)
 "tku" = (
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
@@ -79066,6 +79096,9 @@
 	},
 /obj/machinery/computer/monitor{
 	dir = 1
+	},
+/obj/structure/cable{
+	icon_state = "0-8"
 	},
 /turf/open/floor/plasteel/dark,
 /area/ai_monitored/storage/satellite)
@@ -85285,15 +85318,6 @@
 	},
 /turf/open/floor/plasteel/white,
 /area/medical/storage)
-"vQG" = (
-/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
-	dir = 8
-	},
-/turf/open/floor/plating,
-/area/maintenance/port)
 "vQI" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -86034,6 +86058,12 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/ai_monitored/turret_protected/aisat/foyer)
+"wdz" = (
+/obj/structure/cable/yellow{
+	icon_state = "4-8"
+	},
+/turf/open/floor/wood,
+/area/vacant_room/office)
 "wdD" = (
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
@@ -89344,12 +89374,6 @@
 /obj/machinery/door/firedoor/border_only,
 /turf/open/floor/plasteel/dark,
 /area/crew_quarters/heads/captain/private)
-"xzR" = (
-/obj/structure/cable/yellow{
-	icon_state = "2-8"
-	},
-/turf/open/floor/wood,
-/area/vacant_room/office)
 "xAd" = (
 /obj/structure/table/wood,
 /obj/item/pen/red,
@@ -89770,15 +89794,6 @@
 	},
 /turf/open/floor/carpet/blue,
 /area/crew_quarters/heads/hop)
-"xIr" = (
-/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
-	dir = 5
-	},
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
-	dir = 5
-	},
-/turf/open/floor/plating,
-/area/maintenance/port)
 "xIx" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
 	dir = 8
@@ -103964,7 +103979,7 @@ aVu
 gdf
 unP
 iWV
-xIr
+fsl
 alK
 aaf
 aaf
@@ -104221,7 +104236,7 @@ wlP
 eUH
 alK
 qRs
-vQG
+qXO
 alK
 aaa
 aaa
@@ -104478,7 +104493,7 @@ mKp
 sgb
 alK
 dhb
-vQG
+qXO
 alK
 bTn
 bTn
@@ -104735,7 +104750,7 @@ alK
 alK
 alK
 alC
-vQG
+qXO
 jwV
 bTn
 odf
@@ -106530,7 +106545,7 @@ bBg
 bBg
 bHL
 bHL
-tkt
+wdz
 bDs
 bOg
 bzx
@@ -106787,7 +106802,7 @@ bBg
 bBg
 bHM
 bJv
-xzR
+lic
 pMQ
 idD
 nda
@@ -111160,7 +111175,7 @@ bwc
 xBm
 eZs
 hIT
-dVa
+dXr
 bSA
 frT
 bue
@@ -146101,7 +146116,7 @@ mQA
 mCi
 mEn
 nhN
-dBo
+bLV
 wdT
 sjy
 kGG
@@ -147126,7 +147141,7 @@ azG
 etx
 omh
 btL
-rsI
+sav
 btL
 btL
 btL
@@ -147383,7 +147398,7 @@ vof
 lPg
 iBh
 mJS
-sav
+sOf
 aRy
 aRy
 aRy
@@ -147898,7 +147913,7 @@ wSJ
 qLb
 aRy
 aaa
-sOf
+pXU
 aTY
 aNw
 aNw
