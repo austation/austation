@@ -139,10 +139,6 @@
 	dir = 5
 	},
 /area/ruin/unpowered/syndicate_lava_base/virology)
-"ao" = (
-/obj/structure/lattice/catwalk,
-/turf/open/lava/super_hot/smooth/lava_land_surface,
-/area/lavaland/surface/outdoors)
 "ap" = (
 /obj/machinery/light/small{
 	dir = 1
@@ -336,6 +332,10 @@
 	dir = 4
 	},
 /area/ruin/unpowered/syndicate_lava_base/chemistry)
+"dG" = (
+/obj/structure/lattice/catwalk,
+/turf/open/lava/super_hot/smooth/lava_land_surface,
+/area/lavaland/surface/outdoors)
 "dI" = (
 /obj/structure/table/glass,
 /obj/machinery/reagentgrinder{
@@ -6978,12 +6978,12 @@ ab
 ab
 ab
 ab
-ao
-ao
-ao
-ao
-ao
-ao
+dG
+dG
+dG
+dG
+dG
+dG
 lS
 mn
 mn
@@ -7027,15 +7027,9 @@ ab
 ab
 ab
 ab
-<<<<<<< HEAD
-ao
-ao
-ig
-=======
 dG
 dG
 SY
->>>>>>> ec4c61b289... makes the Syndicate base a little "safer" while also adding minor QoL (#3819)
 iu
 iu
 iu
@@ -7082,15 +7076,9 @@ ab
 ab
 ab
 ab
-<<<<<<< HEAD
-ao
-ao
-ig
-=======
 dG
 dG
 SY
->>>>>>> ec4c61b289... makes the Syndicate base a little "safer" while also adding minor QoL (#3819)
 je
 iv
 jk
@@ -7137,15 +7125,9 @@ ab
 ab
 ab
 ab
-<<<<<<< HEAD
-ao
-ao
-ig
-=======
 dG
 dG
 SY
->>>>>>> ec4c61b289... makes the Syndicate base a little "safer" while also adding minor QoL (#3819)
 je
 jk
 jx
@@ -7192,15 +7174,9 @@ hH
 ab
 ab
 ab
-<<<<<<< HEAD
-ao
-ao
-ig
-=======
 dG
 dG
 SY
->>>>>>> ec4c61b289... makes the Syndicate base a little "safer" while also adding minor QoL (#3819)
 je
 jk
 jx
@@ -7246,17 +7222,10 @@ eh
 eh
 eh
 hW
-<<<<<<< HEAD
-ao
-ao
-ao
-ig
-=======
 dG
 dG
 dG
 SY
->>>>>>> ec4c61b289... makes the Syndicate base a little "safer" while also adding minor QoL (#3819)
 je
 iv
 jx
