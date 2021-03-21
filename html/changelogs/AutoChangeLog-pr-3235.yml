@@ -1,0 +1,4 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - tweak: "Zombie powder is now a delayed activation stamina toxin that triggers a fake death once the victim is in a deep stamcrit"
