@@ -1,0 +1,6 @@
+author: "Jimmy Brickets"
+delete-after: True
+changes: 
+  - rscadd: "More Dakka to the Lavaland Syndicate base"
+  - rscadd: "Railings to a part of the Lavaland Syndicate base"
+  - rscadd: "an extra Syndicate intercomm to the Lavaland Syndicate base"
