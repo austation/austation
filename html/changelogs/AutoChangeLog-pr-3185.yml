@@ -1,0 +1,5 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - refactor: "Noteleport refactor"
+  - bugfix: "Abductors can teleport again."
