@@ -1,0 +1,4 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - spellcheck: "Fixes a typo in battle royale supply drops"
