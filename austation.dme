@@ -81,6 +81,7 @@
 #include "austation\code\game\objects\items\circuitboards\machine_circuitboards.dm"
 #include "austation\code\game\objects\items\devices\floor_painter.dm"
 #include "austation\code\game\objects\items\devices\traitordevices.dm"
+#include "austation\code\game\objects\items\melee\misc.dm"
 #include "austation\code\game\objects\items\robot\robot_items.dm"
 #include "austation\code\game\objects\items\robot\robot_upgrades.dm"
 #include "austation\code\game\objects\items\stacks\sheets\glass.dm"
