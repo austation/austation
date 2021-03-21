@@ -278,14 +278,12 @@
 	prof.undershirt = H.undershirt
 	prof.socks = H.socks
 
-<<<<<<< HEAD
+	if(H.wear_id?.GetID())
+		prof.id_icon = "hud[ckey(H.wear_id.GetJobName())]"
+
 	// austation -- changelings steal rings
 	prof.ring_type = H.ring_type
 	prof.ring_engraved = H.ring_engraved
-=======
-	if(H.wear_id?.GetID())
-		prof.id_icon = "hud[ckey(H.wear_id.GetJobName())]"
->>>>>>> 3366026b92... i hate sourcetree (#3869)
 
 	var/list/slots = list("head", "wear_mask", "back", "wear_suit", "w_uniform", "shoes", "belt", "gloves", "glasses", "ears", "wear_id", "s_store")
 	for(var/slot in slots)
