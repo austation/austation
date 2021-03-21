@@ -5,11 +5,7 @@
 //	You do not need to raise this if you are adding new values that have sane defaults.
 //	Only raise this value when changing the meaning/format/name/layout of an existing value
 //	where you would want the updater procs below to run
-<<<<<<< HEAD
-#define SAVEFILE_VERSION_MAX	34
-=======
-#define SAVEFILE_VERSION_MAX	33
->>>>>>> c01421cdd4... Ports tgs runechat in replacement to our current overhead chat (#3758)
+#define SAVEFILE_VERSION_MAX	35
 
 /*
 SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Carn
@@ -358,43 +354,6 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 		WRITE_FILE(S["feature_ethcolor"]	, "9c3030")
 
 	//Character
-<<<<<<< HEAD
-	S["real_name"]			>> real_name
-	S["name_is_always_random"] >> be_random_name
-	S["body_is_always_random"] >> be_random_body
-	S["gender"]				>> gender
-	S["age"]				>> age
-	S["hair_color"]			>> hair_color
-	S["facial_hair_color"]	>> facial_hair_color
-	S["eye_color"]			>> eye_color
-	S["skin_tone"]			>> skin_tone
-	S["hair_style_name"]	>> hair_style
-	S["facial_style_name"]	>> facial_hair_style
-	S["underwear"]			>> underwear
-	S["underwear_color"]	>> underwear_color
-	S["undershirt"]			>> undershirt
-	S["socks"]				>> socks
-	S["backbag"]			>> backbag
-	S["ring_engraved"]		>> ring_engraved //austation begin -- rings and skirts
-	S["ring_type"]			>> ring_type
-	S["jumpsuit_style"]		>> jumpsuit_style //austation end
-	S["uplink_loc"]			>> uplink_spawn_loc
-	S["feature_mcolor"]					>> features["mcolor"]
-	S["feature_ethcolor"]					>> features["ethcolor"]
-	S["feature_lizard_tail"]			>> features["tail_lizard"]
-	S["feature_lizard_snout"]			>> features["snout"]
-	S["feature_lizard_horns"]			>> features["horns"]
-	S["feature_lizard_frills"]			>> features["frills"]
-	S["feature_lizard_spines"]			>> features["spines"]
-	S["feature_lizard_body_markings"]	>> features["body_markings"]
-	S["feature_lizard_legs"]			>> features["legs"]
-	S["feature_moth_wings"]				>> features["moth_wings"]
-	S["feature_ipc_screen"]			>> features["ipc_screen"]
-	S["feature_ipc_antenna"]				>> features["ipc_antenna"]
-	S["feature_ipc_chassis"]				>> features["ipc_chassis"]
-	S["feature_insect_type"]				>> features["insect_type"]
-	if(!CONFIG_GET(flag/join_with_mutant_humans)  && !species_id != "felinid") // felinids arent mutant humans anymore i guess
-=======
 	READ_FILE(S["real_name"], real_name)
 	READ_FILE(S["name_is_always_random"], be_random_name)
 	READ_FILE(S["body_is_always_random"], be_random_body)
@@ -411,6 +370,9 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	READ_FILE(S["undershirt"], undershirt)
 	READ_FILE(S["socks"], socks)
 	READ_FILE(S["backbag"], backbag)
+	READ_FILE(S["ring_engraved"], ring_engraved) //austation begin -- rings and skirts
+	READ_FILE(S["ring_type"], ring_type)
+	READ_FILE(S["jumpsuit_style"], jumpsuit_style) //austation end
 	READ_FILE(S["uplink_loc"], uplink_spawn_loc)
 	READ_FILE(S["feature_mcolor"], features["mcolor"])
 	READ_FILE(S["feature_ethcolor"], features["ethcolor"])
@@ -427,7 +389,6 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	READ_FILE(S["feature_ipc_chassis"], features["ipc_chassis"])
 	READ_FILE(S["feature_insect_type"], features["insect_type"])
 	if(!CONFIG_GET(flag/join_with_mutant_humans) && !species_id != "felinid") // felinids arent mutant humans anymore i guess
->>>>>>> c01421cdd4... Ports tgs runechat in replacement to our current overhead chat (#3758)
 		features["tail_human"] = "none"
 		features["ears"] = "none"
 	else
