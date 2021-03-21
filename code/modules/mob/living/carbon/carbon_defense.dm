@@ -282,12 +282,19 @@
 		for(var/datum/brain_trauma/trauma in M.get_traumas())
 			trauma.on_hug(M, src)
 	else if(M.zone_selected == BODY_ZONE_HEAD)
+		//austation begin -- do not question this
+		var/datum/species/S
+		if(ishuman(src))
+			S = dna.species
 		M.visible_message("<span class='notice'>[M] pats [src] on the head.</span>", \
 					"<span class='notice'>You pat [src] on the head.</span>")
-		if(is_species(src, /datum/species/human/felinid)) //austation begin -- do not question this
+		if(S?.can_wag_tail(src) && !dna.species.is_wagging_tail())
+			emote("wag")
+		if(is_species(src, /datum/species/human/felinid))
 			SEND_SIGNAL(src, COMSIG_ADD_MOOD_EVENT, "friendly_pat", /datum/mood_event/betterheadpat)
 		else
-			SEND_SIGNAL(src, COMSIG_ADD_MOOD_EVENT, "pat", /datum/mood_event/headpat) //austation end
+			SEND_SIGNAL(src, COMSIG_ADD_MOOD_EVENT, "pat", /datum/mood_event/headpat)
+		//austation end
 	else if((M.zone_selected == BODY_ZONE_L_ARM) || (M.zone_selected == BODY_ZONE_R_ARM))
 		if(!get_bodypart(check_zone(M.zone_selected)))
 			to_chat(M, "<span class='warning'>[src] does not have a [M.zone_selected == BODY_ZONE_L_ARM ? "left" : "right"] arm!</span>")
