@@ -25975,6 +25975,7 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
 	},
+/obj/item/glove_box,
 /turf/open/floor/plasteel/dark,
 /area/medical/sleeper)
 "cfL" = (
@@ -28014,6 +28015,7 @@
 	},
 /obj/structure/table,
 /obj/item/surgical_drapes,
+/obj/item/glove_box,
 /turf/open/floor/plasteel/white/side{
 	dir = 8
 	},
@@ -88424,6 +88426,13 @@
 	},
 /turf/open/floor/plasteel,
 /area/hallway/secondary/exit/departure_lounge)
+"xfd" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
+	dir = 4
+	},
+/obj/machinery/anesthetic_machine,
+/turf/open/floor/plasteel/white,
+/area/medical/surgery)
 "xfu" = (
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
@@ -109978,7 +109987,7 @@ ivr
 cmk
 jzC
 cpU
-kOX
+xfd
 cpU
 csk
 cia
