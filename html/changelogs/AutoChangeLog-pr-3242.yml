@@ -1,0 +1,4 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - tweak: "AI Eyes jump to shell when it disconnects"
