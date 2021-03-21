@@ -235,5 +235,5 @@
     icon_state = "hilbertshotel"
     requires_power = TRUE
     has_gravity = TRUE
-    noteleport = TRUE
+    teleport_restriction = TELEPORT_ALLOW_NONE
     hidden = TRUE
