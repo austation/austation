@@ -1486,11 +1486,7 @@
 										R.activate_module(I)
 
 		if(pod)
-<<<<<<< HEAD
-			new /obj/effect/DPtarget(target, pod)
-=======
 			new /obj/effect/pod_landingzone(target, pod)
->>>>>>> 22587b15b8... attempts to bring supply pod's code up to date + updates adminbuse pod launcher tgui (#3837)
 
 		var/turf/T = get_turf(usr.loc) // get admin's LOC as a turf
 
