@@ -1,5 +1,0 @@
-author: "AustationBot"
-delete-after: True
-changes: 
-  - bugfix: "clockwork structures no longer function when unanchored from the floor"
-  - bugfix: "fix interdiction lens being invisible when unanchored"

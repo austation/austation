@@ -1,4 +1,0 @@
-author: "AustationBot"
-delete-after: True
-changes: 
-  - bugfix: "Styptic powder and Silver Sulfadiazine now properly only apply via patches and med sprays"
