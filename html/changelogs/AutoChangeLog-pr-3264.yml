@@ -1,0 +1,4 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - rscadd: "Adds the ability to (inaccurately) shoot projectiles by using a screwdriver on bullet casings"
