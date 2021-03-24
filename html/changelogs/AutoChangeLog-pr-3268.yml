@@ -1,0 +1,5 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - tweak: "Energy katana is now indestructible."
+  - tweak: "Energy katana is destroyed when its attached ninja is destroyed."
