@@ -1,0 +1,4 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - tweak: "Decreased the cost of the Special Ops crate to make it more viable"
