@@ -7,6 +7,7 @@ RPD
 #define DISPOSALS_CATEGORY 1
 #define TRANSIT_CATEGORY 2
 #define PLUMBING_CATEGORY 3
+#define COILGUN_CATEGORY 4
 
 #define BUILD_MODE 1
 #define WRENCH_MODE 2
@@ -57,6 +58,27 @@ GLOBAL_LIST_INIT(disposal_pipe_recipes, list(
 		new /datum/pipe_info/disposal("Chute",			/obj/machinery/disposal/deliveryChute),
 	)
 ))
+
+// austation start -- coilguns
+GLOBAL_LIST_INIT(coilgun_pipe_recipes, list(
+	"Coilgun Pipes" = list(
+		new /datum/pipe_info/disposal("Pipe",			/obj/structure/disposalpipe/segment/coilgun, PIPE_BENDABLE),
+		new /datum/pipe_info/disposal("Junction",		/obj/structure/disposalpipe/junction/coilgun, PIPE_TRIN_M),
+	),
+	"Coilgun Devices" = list(
+		new /datum/pipe_info/disposal("Charger",		/obj/structure/disposalpipe/coilgun/charger),
+		new /datum/pipe_info/disposal("Super-Charger",	/obj/structure/disposalpipe/coilgun/super_charger),
+		new /datum/pipe_info/disposal("Magnetizer",		/obj/structure/disposalpipe/coilgun/magnetizer),
+		new /datum/pipe_info/disposal("Passive Cooler",	/obj/structure/disposalpipe/coilgun/cooler),
+		new /datum/pipe_info/disposal("Active Cooler",	/obj/structure/disposalpipe/coilgun/cooler/active),
+		new /datum/pipe_info/disposal("Modifier",		/obj/structure/disposalpipe/coilgun/modifier),
+		new /datum/pipe_info/disposal("Bypass",			/obj/structure/disposalpipe/coilgun/bypass),
+		new /datum/pipe_info/disposal("Barrel",			/obj/structure/disposalpipe/coilgun/barrel),
+
+
+	)
+))
+// austation end -- coilguns
 
 GLOBAL_LIST_INIT(transit_tube_recipes, list(
 	"Transit Tubes" = list(
@@ -222,6 +244,7 @@ GLOBAL_LIST_INIT(fluid_duct_recipes, list(
 	var/datum/pipe_info/recipe
 	var/static/datum/pipe_info/first_atmos
 	var/static/datum/pipe_info/first_disposal
+	var/static/datum/pipe_info/first_coilgun // austation -- coilguns (yes I'm keeping it here for consistency)
 	var/static/datum/pipe_info/first_transit
 	var/static/datum/pipe_info/first_plumbing
 	var/mode = BUILD_MODE | PAINT_MODE | DESTROY_MODE | WRENCH_MODE
@@ -236,6 +259,8 @@ GLOBAL_LIST_INIT(fluid_duct_recipes, list(
 		first_atmos = GLOB.atmos_pipe_recipes[GLOB.atmos_pipe_recipes[1]][1]
 	if(!first_disposal)
 		first_disposal = GLOB.disposal_pipe_recipes[GLOB.disposal_pipe_recipes[1]][1]
+	if(!first_coilgun) // austation -- coilguns
+		first_coilgun = GLOB.coilgun_pipe_recipes[GLOB.coilgun_pipe_recipes[1]][1]
 	if(!first_transit)
 		first_transit = GLOB.transit_tube_recipes[GLOB.transit_tube_recipes[1]][1]
 
@@ -289,6 +314,8 @@ GLOBAL_LIST_INIT(fluid_duct_recipes, list(
 			recipes = GLOB.atmos_pipe_recipes
 		if(DISPOSALS_CATEGORY)
 			recipes = GLOB.disposal_pipe_recipes
+		if(COILGUN_CATEGORY) // austation -- coilguns
+			recipes = GLOB.coilgun_pipe_recipes
 		if(TRANSIT_CATEGORY)
 			recipes = GLOB.transit_tube_recipes
 		if(PLUMBING_CATEGORY)
@@ -317,6 +344,8 @@ GLOBAL_LIST_INIT(fluid_duct_recipes, list(
 			switch(category)
 				if(DISPOSALS_CATEGORY)
 					recipe = first_disposal
+				if(COILGUN_CATEGORY)
+					recipe = first_coilgun
 				if(ATMOS_CATEGORY)
 					recipe = first_atmos
 				if(TRANSIT_CATEGORY)
@@ -454,6 +483,36 @@ GLOBAL_LIST_INIT(fluid_duct_recipes, list(
 						C.wrench_act(user, src)
 					return
 
+
+
+			if(COILGUN_CATEGORY) //austation start -- Coilgun building, almost the same as the above. Leaves more room for future expansion
+				if(!can_make_pipe)
+					return ..()
+				A = get_turf(A)
+				if(isclosedturf(A))
+					to_chat(user, "<span class='warning'>[src]'s error light flickers; there's something in the way!</span>")
+					return
+				to_chat(user, "<span class='notice'>You start building a coilgun part...</span>")
+				playsound(get_turf(src), 'sound/machines/click.ogg', 50, 1)
+				if(do_after(user, disposal_build_speed, target = A))
+					var/obj/structure/disposalconstruct/C = new (A, queued_p_type, queued_p_dir, queued_p_flipped) // TODO: test this
+
+					if(!C.can_place())
+						to_chat(user, "<span class='warning'>There's not enough room to build that here!</span>")
+						qdel(C)
+						return
+
+					activate()
+
+					C.add_fingerprint(usr)
+					C.update_icon()
+					if(mode&WRENCH_MODE)
+						C.wrench_act(user, src)
+					return
+
+
+
+
 			if(TRANSIT_CATEGORY) //Making transit tubes
 				if(!can_make_pipe)
 					return ..()
@@ -529,7 +588,8 @@ GLOBAL_LIST_INIT(fluid_duct_recipes, list(
 	recipe = first_plumbing
 
 #undef ATMOS_CATEGORY
-// #undef DISPOSALS_CATEGORY //austation -- moves the undefine to austation RPD file
+#undef DISPOSALS_CATEGORY
+#undef COILGUN_CATEGORY//austation -- coilguns
 #undef TRANSIT_CATEGORY
 #undef PLUMBING_CATEGORY
 

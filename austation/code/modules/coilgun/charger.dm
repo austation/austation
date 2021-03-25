@@ -44,31 +44,6 @@
 	else
 		enabled = TRUE
 		to_chat(user, "<span class='notice'>You turn on \the [src].</span>")
-/*
-/obj/structure/disposalpipe/coilgun/charger/process()
-	power_ticks++
-	if(current_power_use && target_power_usage && attached?.powernet)
-		var/drained = min(current_power_use / (target_power_usage / 100), max_power_use) // set our power use
-		visible_message("<span class='warning'>Drained reads [drained]!</span>") // DEBUG
-		attached.add_delayedload(drained) // apply our power use to the connected wire
-		if(attached.newavail() < drained) // are we using more power than we have connected?
-			target_power_usage -= 20 // throttle it down
-			if(target_power_usage > 0)
-				visible_message("<span class='warning'>\The [src]'s power warning light flickers, throttling to [target_power_usage]%!</span>")
-			else
-				can_charge = FALSE
-				visible_message("<span class='warning'>\The [src]'s power warning fades, shutting the charger down!</span>")
-				return PROCESS_KILL
-		else
-			current_power_use = drained
-			can_charge = TRUE
-	else
-		can_charge = FALSE
-		return PROCESS_KILL
-	if(power_ticks >= 5)
-		power_ticks = 0
-		return PROCESS_KILL
-*/
 
 /obj/structure/disposalpipe/coilgun/charger/proc/H_power_failure()
 	target_power_usage = min(target_power_usage - 20, 0)
@@ -134,31 +109,30 @@
 	if(!LAZYLEN(H.contents))
 		qdel(H)
 		return
-	for(var/atom/movable/AM in H.contents)
-		if(istype(AM, /obj/item/projectile/hvp))
-			var/obj/item/projectile/hvp/PJ = AM
-			for(var/obj/machinery/power/capacitor/C in range(1, src))
-				total_charge += C.charge
-				C.charge = 0
-			if(total_charge)
-				var/prelim = round(total_charge / 8000)
-				var/speed_increase = prelim * SUPER_BASE ** PJ.velocity
-				PJ.velocity += speed_increase
-				PJ.p_heat += prelim / 3
-				visible_message("<span class='danger'>debug: speed increased by [speed_increase]!</span>")
-				H.count = 1000
-				total_charge = 0
-				playsound(src, 'sound/weapons/emitter2.ogg', 50, 1)
+	for(var/obj/item/projectile/hvp/PJ in H.contents)
+		for(var/obj/machinery/power/capacitor/C in range(1, src))
+			total_charge += C.charge
+			C.charge = 0
+		if(total_charge)
+			var/prelim = round(total_charge / 800)
+			var/speed_increase = prelim * SUPER_BASE ** PJ.velocity
+			PJ.velocity += speed_increase
+			PJ.p_heat += 10
+			visible_message("<span class='danger'>debug: speed increased by [speed_increase]!</span>")
+			H.count = 1000
+			total_charge = 0
+			playsound(src, 'sound/weapons/emitter2.ogg', 50, 1)
 	return ..()
+
 // Capacitor
 
 /obj/machinery/power/capacitor
-	name = "coilgun capacitor"
-	desc = "A high current capacitor capable of discharging sufficient power to adjacent coilgun super-chargers"
+	name = "super-charger capacitor"
+	desc = "A high current capacitor capable of rapidly discharging power to adjacent coilgun super-chargers"
 	icon = 'austation/icons/obj/power.dmi'
 	icon_state = "capicitor"
 	var/charge = 0
-	var/capacity = 1e6
+	var/capacity = 1e5
 
 /obj/machinery/power/capacitor/interact(mob/user)
 	. = ..()
@@ -200,7 +174,8 @@
 
 /obj/machinery/power/capacitor/examine(mob/user)
 	. = ..()
-	. += "<span class='notice'>The charge meter reads: [DisplayPower(charge)].</span>"
+	. += "<span class='notice'>The charge meter reads: <b>[DisplayPower(charge)]/[DisplayPower(capacity)]</b>.</span>"
+	. += "<span class='notice'><i>[charge/capacity*100]% charged.</i></span>"
 
 #undef BASE
 #undef POWER_DIVIDER

@@ -1,18 +1,15 @@
 // screenshake
 #define MAX_SHAKE 2.1
 
-// The base/minimum amount of tiles a bluespace hvp can teleport to
+// The base (and minimum) amount of tiles a bluespace hvp can teleport to
 #define BASE_SWITCH_RANGE 4
 
 // the maximum amount of tiles a bluespace hvp can teleport to
 #define MAX_SWITCH_RANGE 15
 
-// max speed multiplier for movement
-#define MAX_SPEED 5
-
 /obj/item/projectile/hvp
 	name = "high velocity projectile"
-	desc = "hey! You shouldn't be reading this"
+	desc = "Hey! You shouldn't be reading this"
 	icon = 'icons/obj/objects.dmi'
 	icon_state = "immrod"
 	density = TRUE
@@ -20,23 +17,26 @@
 	move_resist = INFINITY
 	pull_force = INFINITY
 	hitsound = null
+	appearance_flags = KEEP_TOGETHER
+	nondirectional_sprite = TRUE // Well, it is directional but the parent way of handling it is messy and slow, overrided here.
 	var/heat_capacity = 100 // how hot the object can get before melting
 	var/mass = 0 // how heavy the object is
 	var/special //special propeties
 	var/spec_amt = 0 // how many times has this projectile been modified
+	var/max_spec = 3 // max amount of special effects we can have
 	var/p_heat = 0 // projectile temp
 	var/velocity = 0 // how fast the projectile is moving (not physically, due to byond limitations)
+	var/lastAngle = 0
+	var/lockAngle = FALSE // set to true to prevent the projectile from changing it's angle
 	var/infused = 0 // how much energy is infused with the projectile?
-	var/list/initial_transforms = list()
-	var/static/list/naughty_list = typecacheof(list(
-		/obj/machinery/door/firedoor,
-		/obj/structure/window
-	))
+	var/list/assoc_overlays = list()
 
 	var/momentum = 0
 
-/obj/item/projectile/hvp/proc/launch(_angle)
-	momentum = mass * velocity // hey google
+/obj/item/projectile/hvp/proc/launch(_angle, _inaccuracy)
+	momentum = mass * velocity
+	if(_inaccuracy)
+		_angle += rand(_inaccuracy, -_inaccuracy)
 	setAngle(_angle)
 
 	switch(momentum)
@@ -45,14 +45,13 @@
 			return
 		if(900 to 1299)
 			var/turf/open/T = get_turf(src)
-			if(T.air)
+			if(T?.air)
 				for(var/mob/M in range(10, src))
-					shake_camera(M, 10, clamp(momentum*0.001, 0, MAX_SHAKE)) // one million people?
-		if(1300 to 10000)
+					shake_camera(M, 10, clamp(momentum*0.001, 0, MAX_SHAKE))
+		if(1300 to 2000)
 			special |= HVP_SMILEY_FACE
-			explosion_block = 1000
-			return
-
+		else
+			special |= HVP_RECKONING
 	SSaugury.register_doom(src, momentum)
 	log_game("Coilgun projectile fired in [get_area_name(src, TRUE)] with [momentum] momentum!")
 	fire(Angle)
@@ -63,46 +62,81 @@
 		if(istype(ghost))
 			ghost.ManualFollow(src)
 
+/obj/item/projectile/hvp/setAngle(new_angle)
+	if(lockAngle)
+		return
+	Angle = new_angle
+	if(Angle != lastAngle)
+		var/matrix/M = new
+		M.Turn(Angle)
+		transform = M
+	if(trajectory)
+		trajectory.set_angle(new_angle)
+	return TRUE
+
 /obj/item/projectile/hvp/Bump(atom/clong)
+
+	if(special & HVP_STICKY)
+		var/chance = 0
+		if(isturf(clong))
+			chance = 10
+		else if(isobj(clong))
+			chance = 35
+		else if(isliving(clong))
+			chance = 55
+		if(prob(chance))
+			add_object(clong, TRUE)
+			return
 
 	if((special & HVP_SMILEY_FACE) && prob(5)) // << This twisted game needs to be reset >>
 		var/E = log(momentum)
-		explosion(loc, E, E+1 ,E+2 ,E+3 , FALSE) // << That's what the V2 is for >>
+		explosion(loc, E, E+1, E+2, E+3, FALSE) // << That's what the V2 is for >>
 		return
-
+	if(momentum < 10)
+		gameover()
+		return
 	if(isturf(clong) || isobj(clong))
-		if(momentum < 10)
-			gameover()
-			return
-		if((special & HVP_BOUNCY) && prob(20))
+		if((special & HVP_BOUNCY) && prob(25))
 			var/n_angle = calc_ricochet(clong)
 			playsound(src, 'sound/vehicles/clowncar_crash2.ogg', 40, 0, 0)
 			if(prob(5))
 				n_angle = SIMPLIFY_DEGREES(Angle + rand(20, -20))
 				audible_message("<span class='danger'>You hear a BOING!</span>")
 			setAngle(n_angle)
+			return
 
-		if(prob(5))
+		if(prob(15))
 			playsound(src, 'sound/effects/bang.ogg', 50, 1)
 			audible_message("<span class='danger'>You hear a CLANG!</span>")
-				if((special & HVP_RADIOACTIVE) && prob(15))
+			if((special & HVP_RADIOACTIVE) && prob(30))
 				var/datum/component/radioactive/rads = GetComponent(/datum/component/radioactive)
-				var/pulsepower = (rads.strength + 1) * (momentum / 250 + 1) // faster rods multiply rads because of.. reasons
+				var/pulsepower = (rads.strength + 1) * (momentum / 100 + 1) // faster rods multiply rads because of.. reasons
 				radiation_pulse(src, pulsepower)
 
-		if(check_ricochet(clong))
+		if(momentum > 100 && check_ricochet(clong))
 			setAngle(calc_ricochet(clong))
-			visible_message("<span class='warning'>\The [src] ricochets off \the [clong]!</span>")
-		if(momentum > 10)
-			if(naughty_list[clong.type])
-				clong.hvp_act(momentum)
+			visible_message("<span class='warning'>\The [src] ricochets off [clong]!</span>")
+		var/hardness = clong.explosion_block
+		switch(hardness)
+			if(0 to 1)
+				clong.hvp_act(src)
+			if(2 to 10)
+				momentum -= clong.explosion_block
+				if(iswallturf(clong))
+					var/turf/closed/wall/W = clong
+					W.dismantle_wall(TRUE)
+				else
+					qdel(clong)
+				return
 			else
-				clong.hvp_act(momentum)
-		else
-			gameover()
+				if(prob(50))
+					visible_message("<span class='warning'>\The [src] ricochets off [clong]!</span>")
+					setAngle(calc_ricochet(clong))
+				else
+					forceMove(get_turf(clong)) // should prevent server dying from a projectile getting stuck near 2 indestructable turfs
+				momentum -= 20
 		momentum -= 10
 		return
-
 	if(isliving(clong))
 		penetrate(clong)
 
@@ -138,19 +172,63 @@
 			var/unlucky = clamp(momentum * 0.03, 15, 100)
 			if(prob(unlucky))
 				BP.dismember()
-		if(special & HVP_BOUNCY) // BOING
+				if(prob(50))
+					add_object(BP, add_special = FALSE)
+		if(special & HVP_BOUNCY) // BOING!
 			projdamage /= 4 // bouncy things don't hurt as much
 			H.adjustStaminaLoss(clamp(projdamage, 5, 120))
+			var/throw_dir = angle2dir(Angle)
 			playsound(src, 'sound/vehicles/clowncar_crash2.ogg', 50, 0, 5)
 			setAngle(calc_ricochet(L))
-			var/atom/target = get_edge_target_turf(L, dir)
-			L.throw_at(target, 200, 4) // godspeed o7
+			var/atom/target = get_edge_target_turf(L, throw_dir)
+			L.throw_at(target, 200, round(2 + log(momentum))) // godspeed o7
 	L.adjustBruteLoss(projdamage)
 	L.visible_message("<span class='danger'>[L] is penetrated by \the [src]!</span>" , "<span class='userdanger'>\The [src] penetrates you!</span>" , "<span class ='danger'>You hear a CLANG!</span>")
 
+/obj/item/projectile/hvp/proc/add_object(atom/movable/AM, rotation = TRUE, pixel_offset = TRUE, add_special = TRUE, add_mass = TRUE)
+	var/n_mass = mass
+	if(isitem(AM))
+		var/obj/item/I = AM
+		n_mass += I.w_class
+	else if(isliving(AM))
+		var/mob/living/L = AM
+		L.reset_perspective(AM)
+		n_mass += (ishuman(L) ? 4 : 2)
+	if(add_mass)
+		mass += n_mass
+		velocity = momentum / mass
+	if(add_special && spec_amt > max_spec && apply_special(AM))
+		spec_amt++
+	if(contents.len)
+		var/mutable_appearance/FA = mutable_appearance(AM.icon, AM.icon_state, layer)
+		var/matrix/M = matrix()
+		if(rotation)
+			M.Turn(rand(1, 360))
+		if(pixel_offset)
+			var/amt = 1 + contents.len * 2
+			M.Translate(amt * cos(Angle), amt * sin(Angle))
+		FA.transform = M
+		add_overlay(FA, TRUE)
+		assoc_overlays[AM] = FA
+	else // if this is the first item added, set it as the base.
+		appearance = AM.appearance
+	if(isturf(AM))
+		return // we can't put turfs inside objects
+	AM.forceMove(src)
+
+/obj/item/projectile/hvp/proc/remove_object(atom/movable/AM, move_loc)
+	cut_overlay(assoc_overlays[AM], TRUE)
+	if(move_loc)
+		AM.forceMove(move_loc)
+
+/obj/item/projectile/hvp/proc/remove_object_type(_type, move_loc)
+	for(var/atom/movable/AM in contents)
+		if(istype(AM, _type))
+			remove_object(AM, move_loc)
 
 /obj/item/projectile/hvp/Range()
-	if(momentum < 1)
+	velocity = momentum / mass
+	if(velocity < 1)
 		gameover()
 		return
 	if((special & HVP_BLUESPACE) && prob(5)) // good ol switcharoo
@@ -167,11 +245,9 @@
 
 	if(isfloorturf(get_turf(src)))
 		momentum--
-
-	velocity = momentum / mass
-	// 0.1 deciseconds is already pushing byond too it's limits, any faster and it either runtimes or breaks reality.
-	// Going faster requires hacky visual effects and projected path deletion.
-	speed = max(-(1.001 ** velocity) + 2.1, 0.1)
+	// 0.1 deciseconds is as fast as we can go without async memes.
+	speed = max(-(1.0008 ** velocity) + 2.1, 0.1)
+	anim_time = speed
 
 /// called when we pass through a charger
 /obj/item/projectile/hvp/proc/on_transfer()
@@ -206,14 +282,13 @@
 
 /// called when the projectile has expired, replaces hvp projectile with the original magnetized item.
 /obj/item/projectile/hvp/proc/gameover()
+	if(QDELETED(src))
+		return
 	for(var/atom/movable/AM in src)
+		AM.forceMove(get_turf(src))
+		if(throwing)
+			step(AM, angle2dir(Angle))
 		other_special(AM)
-		if(AM)
-			if(initial_transforms[AM])
-				AM.transform = initial_transforms[AM]
-			AM.forceMove(get_turf(src))
-			if(throwing)
-				step(AM, angle2dir(Angle))
 	throwing?.finalize(FALSE)
 	qdel(src)
 
@@ -225,45 +300,35 @@
 /obj/item/projectile/hvp/ex_act()
 	return
 
-/obj/item/projectile/hvp/debug
-	velocity = 700
-	mass = 3
-
-/obj/item/projectile/hvp/debug/badmin
-	velocity = 10000
-	mass = 55
-
-/obj/item/projectile/hvp/debug/badmin/chaos
-	special = HVP_SHARP | HVP_BLUESPACE | HVP_BOUNCY
-
-/obj/item/projectile/hvp/debug/New()
-	..()
-	launch(dir2angle(dir))
-
 /// Handles the addition of projectile interaction flags.
 /obj/item/projectile/hvp/proc/apply_special(atom/movable/AM, initial = FALSE)
-	. = FALSE
+	var/original_spec = special
 	if(isitem(AM))
 		var/obj/item/I = AM
 		var/datum/component/radioactive/rads = I.GetComponent(/datum/component/radioactive)
 		if(rads?.can_contaminate)
 			special |= HVP_RADIOACTIVE
 			AddComponent(/datum/component/radioactive, rads.strength, src)
-			. = TRUE
+
 		if(I.is_sharp())
 			special |= HVP_SHARP
-			. = TRUE
+
 		if(GLOB.hvp_bluespace[I.type])
 			special |= HVP_BLUESPACE
-			. = TRUE
+
 		if(GLOB.hvp_bouncy[I.type])
 			special |= HVP_BOUNCY
-			. = TRUE
+
 		if(GLOB.hvp_void[I.type])
 			special |= HVP_VOID
-			. = TRUE
 
-/// Called b
+		if(GLOB.hvp_sticky[I.type])
+			special |= HVP_STICKY
+
+	if(special != original_spec)
+		return TRUE
+
+/// Called when projectile runs out of momentum
 /obj/item/projectile/hvp/proc/other_special(atom/movable/AM)
 	if(istype(AM, /obj/item/reagent_containers) && !istype(AM, /obj/item/reagent_containers/food))
 		var/datum/reagents/RH = locate() in AM
@@ -278,3 +343,34 @@
 
 /obj/item/projectile/hvp/on_hit()
 	return
+
+/obj/item/projectile/hvp/singularity_act()
+	if(momentum) // moving projectiles have their own singulo interactions
+		return
+	..()
+
+/obj/item/projectile/hvp/Exited(atom/movable/AM)
+	if(!contents.len)
+		qdel(src)
+
+
+// --- debugs/adminbuse shots ---
+
+/obj/item/projectile/hvp/debug
+	desc = "You feel like you probably angered one of the gods."
+	velocity = 500
+	mass = 5
+
+/obj/item/projectile/hvp/debug/badmin
+	velocity = 10000
+	mass = 55
+
+/obj/item/projectile/hvp/debug/badmin/chaos
+	special = HVP_SHARP | HVP_BLUESPACE | HVP_BOUNCY
+
+/obj/item/projectile/hvp/debug/sticky
+	special = HVP_STICKY
+
+/obj/item/projectile/hvp/debug/New()
+	..()
+	launch(dir2angle(dir))

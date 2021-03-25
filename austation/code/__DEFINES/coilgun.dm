@@ -7,3 +7,5 @@
 #define HVP_GRENADE 1<<5
 #define HVP_SMILEY_FACE 1<<6
 #define HVP_VOID 1<<7
+#define HVP_STICKY 1<<8
+#define HVP_RECKONING 1<<9

@@ -4,7 +4,6 @@
 /obj/structure/disposalpipe/coilgun/modifier
 	name = "kinetic infuser"
 	desc = "A heavy duty coilgun component capable of kinetically infusing two different objects together at high speeds"
-	coilgun = TRUE
 
 /obj/structure/disposalpipe/coilgun/modifier/transfer(obj/structure/disposalholder/H)
 	if(LAZYLEN(H.contents))
@@ -40,18 +39,9 @@
 		var/req_speed = max(100 * PJ.mass * 1.5, MIN_SPEED)
 		if(PJ.velocity < req_speed)
 			continue
-		if(PJ.apply_special(O))
-			PJ.spec_amt++
 		playsound(src, 'sound/effects/bang.ogg', 50, 0, 0)
 		PJ.velocity -= req_speed / 2
-		if(isitem(O))
-			var/obj/item/I = O
-			PJ.mass += I.w_class
-		else
-			PJ.mass += 1
-		PJ.initial_transforms[O] = O.transform
-		O.transform = turn(O.transform, rand(1, 360))
-		PJ.vis_contents += O
+		PJ.add_object(O)
 //		PJ.overlay_atom(O, rotation = TRUE)
 //		O.loc = PJ
 		break
