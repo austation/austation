@@ -1,5 +1,0 @@
-author: "AustationBot"
-delete-after: True
-changes: 
-  - tweak: "Indestructible items can no longer be destroyed via the analyser."
-  - tweak: "Supermatter causality field will now protect indestructible items from being consumed."
