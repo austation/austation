@@ -49,12 +49,16 @@
 		parent.add_overlay(bpart, TRUE)
 	parent.transform.Translate(po_x, po_y)
 
-/datum/barrel_builder/proc/rotate(_angle)
+/datum/barrel_builder/proc/rotate(_angle, animate = FALSE)
 	if(_angle == angle)
 		return
 	if(parent)
 		var/diff = closer_angle_difference(angle, _angle)
-		parent.transform = turn(master_barrel.transform, diff)
+		var/matrix/M = turn(parent.transform, diff)
+		if(animate)
+			animate(parent, transform = M, time = diff / 40)
+		else
+			parent.transform = M
 		return TRUE
 
 /datum/barrel_builder/proc/remove()

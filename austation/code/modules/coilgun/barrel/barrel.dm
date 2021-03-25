@@ -10,7 +10,7 @@
 	var/barrel_length = 1
 	var/cooldown = 0
 
-/obj/structure/disposalpipe/coilgun/barrel/proc/update_barrel(mob/user, _angle, check_overlap = TRUE)
+/obj/structure/disposalpipe/coilgun/barrel/proc/update_barrel(mob/user, _angle, animate = FALSE, check_overlap = TRUE)
 	var/turf/T = get_turf(src)
 	var/turf/target = get_turf_in_angle(_angle, T, barrel_length)
 	if(target.x == world.maxx || target.y == world.maxy) // barrels shouldn't be able to touch or get clamped to/by border turfs
@@ -25,6 +25,7 @@
 			master_barrel = new(get_turf(src))
 		barrel = new(master_barrel, _angle, barrel_length)
 		barrel.build()
+	barrel.rotate(_angle, animate)
 	return TRUE
 
 /obj/structure/disposalpipe/coilgun/barrel/New()
@@ -40,7 +41,7 @@
 //	if(cooldown > world.time)
 //		return
 	cooldown = world.time + closer_angle_difference(current_angle, new_angle) * 10
-	if(update_barrel(user, new_angle))
+	if(update_barrel(user, new_angle, TRUE))
 		current_angle = new_angle
 	else
 		visible_message("<span class='warning'>Rotation failed: Desired angle is obstructed.</span>")
