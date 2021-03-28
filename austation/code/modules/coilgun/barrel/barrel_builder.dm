@@ -22,10 +22,9 @@
 	if(!parent || !length)
 		return FALSE
 	if(num_barrels > max_barrels)
-		QDEL_LIST(parts)
+		parent.cut_overlays()
 		num_barrels--
 		parts.len = 0
-		parent.cut_overlays()
 
 	for(var/L in 0 to length)
 		var/place_distance = (L+1) * increment
@@ -35,9 +34,9 @@
 		var/matrix/M = matrix()
 		switch(parent.dir)
 			if(NORTH)
-				bpart.pixel_y += place_distance
-			if(SOUTH)
 				bpart.pixel_y -= place_distance
+			if(SOUTH)
+				bpart.pixel_y += place_distance
 				M.Turn(180)
 			if(EAST)
 				bpart.pixel_x += place_distance
@@ -47,20 +46,30 @@
 				M.Turn(270)
 		bpart.transform = M
 		parent.add_overlay(bpart, TRUE)
+		parts += bpart
 	parent.transform.Translate(po_x, po_y)
+	if(angle)
+		rotate(angle, 0, TRUE)
 
-/datum/barrel_builder/proc/rotate(_angle, animate = FALSE)
-	if(_angle == angle)
+// null/0 anim_time will just apply the transform
+/datum/barrel_builder/proc/rotate(_angle, anim_time, initial = FALSE)
+	if(!initial && _angle == angle)
 		return
 	if(parent)
 		var/diff = closer_angle_difference(angle, _angle)
 		var/matrix/M = turn(parent.transform, diff)
-		if(animate)
-			animate(parent, transform = M, time = diff / 40)
+		if(anim_time)
+			animate(parent, transform = M, time = anim_time)
 		else
 			parent.transform = M
+		angle = _angle
 		return TRUE
 
-/datum/barrel_builder/proc/remove()
-	parent.cut_overlay(parts)
-	qdel(src)
+/datum/barrel_builder/proc/reset()
+	parent.cut_overlays()
+	num_barrels--
+	parts.len = 0
+
+/datum/barrel_builder/Destroy()
+	reset()
+	return ..()

@@ -8,7 +8,7 @@
 // Also serves as the base multiplier for projectile speed increase, lower values will increase speed gain
 #define POWER_DIVIDER 100000
 
-// The max speed capacitors can recharge in watts
+// The max speed capacitors can recharge (watts)
 #define CAPACITOR_RECHARGE 50000
 
 
@@ -74,7 +74,8 @@
 				PJ.p_heat += heat_increase * power_percent
 				PJ.on_transfer()
 				cps = round(PJ.velocity * 3.6) // m/s to km/h
-				playsound(get_turf(src), 'sound/weapons/emitter2.ogg', 50, 1)
+				playsound(src, 'sound/effects/bamf.ogg', 20, 1)
+				playsound(src, 'sound/weapons/emitter2.ogg', 50, 1)
 				visible_message("<span class='danger'>debug: speed increased by [speed_increase]!</span>")
 				current_power_use = PJ.velocity * 25 * prelim
 				attached.add_delayedload(current_power_use * power_percent)
@@ -114,37 +115,54 @@
 			total_charge += C.charge
 			C.charge = 0
 		if(total_charge)
-			var/prelim = round(total_charge / 800)
-			var/speed_increase = prelim * SUPER_BASE ** PJ.velocity
+			var/prelim = round(total_charge / 1000)
+			var/speed_increase = prelim * (SUPER_BASE ** PJ.velocity)
 			PJ.velocity += speed_increase
-			PJ.p_heat += 10
+			PJ.p_heat += 10s
 			visible_message("<span class='danger'>debug: speed increased by [speed_increase]!</span>")
 			H.count = 1000
 			total_charge = 0
-			playsound(src, 'sound/weapons/emitter2.ogg', 50, 1)
+			playsound(src, 'sound/effects/bamf.ogg', 100, 1)
+			playsound(src, 'sound/effects/seedling_chargeup.ogg', 70, 1)
 	return ..()
 
 // Capacitor
 
 /obj/machinery/power/capacitor
-	name = "super-charger capacitor"
-	desc = "A high current capacitor capable of rapidly discharging power to adjacent coilgun super-chargers"
+	name = "coilgun capacitor"
+	desc = "A high current capacitor capable of rapidly discharging power to adjacent coilgun <b>super-chargers</b>."
 	icon = 'austation/icons/obj/power.dmi'
-	icon_state = "capicitor"
+	icon_state = "capacitor"
+	density = TRUE
 	var/charge = 0
-	var/capacity = 1e5
+	var/capacity = 1e6
+
+/obj/machinery/power/capacitor/New()
+	..()
+	STOP_PROCESSING(SSmachines, src)
+	connect_to_network()
 
 /obj/machinery/power/capacitor/interact(mob/user)
-	. = ..()
-	if(datum_flags & DF_ISPROCESSING)
+	add_fingerprint(user)
+	if(!powernet)
+		to_chat(user, "<span class='warning'>\The [src] must be placed over an exposed, powered cable node!</span>")
+		return
+	if(!check_use)
+		return
+	var/processing = datum_flags & DF_ISPROCESSING
+	if(processing)
 		to_chat(user, "<span class='notice'>\The [src] is no longer charging.</span>")
-		STOP_PROCESSING(SSobj, src)
+		STOP_PROCESSING(SSmachines, src)
 	else
 		to_chat(user, "<span class='notice'>You set \the [src]'s power setting to charge.</span>")
-		START_PROCESSING(SSobj, src)
+		START_PROCESSING(SSmachines, src)
+	log_game("Capacitor turned [processing ? "OFF" : "ON"] by [key_name(user)] in [AREACOORD(src)]")
+
+/obj/machinery/power/capacitor/proc/check_use()
+	return (!(stat & BROKEN) && anchored)
 
 /obj/machinery/power/capacitor/process()
-	if(charge >= capacity || !powernet || stat & BROKEN || !anchored)
+	if(charge >= capacity || !powenet || !check_use())
 		return
 	var/input = clamp(surplus() / 2, 0, CAPACITOR_RECHARGE)
 	if(input)
@@ -152,11 +170,10 @@
 		add_load(input)
 
 // TODO: this is bad but I can't remember why, fix it >:(
-/obj/machinery/power/capacitor/wrench_act(obj/item/I, mob/user)
+/obj/machinery/power/capacitor/wrench_act(mob/user, obj/item/I)
 	if(anchored)
 		if(default_unfasten_wrench(user, I))
 			disconnect_from_network()
-			setAnchored(FALSE)
 	else
 		if(!connect_to_network())
 			to_chat(user, "<span class='warning'>\The [src] must be placed over an exposed, powered cable node!</span>")

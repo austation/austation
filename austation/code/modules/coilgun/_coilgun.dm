@@ -45,14 +45,18 @@
 			boolet = new(H)
 			boolet.add_object(AM)
 			boolet.velocity = 1
+		playsound(src, 'sound/effects/spray.ogg', 40, 1)
 		if(isliving(AM))
 			var/mob/living/L = AM
 			L.adjustBruteLoss(10)
 			if(ishuman(L) && !isdead(L))
 				L.Paralyze(amount = 50, ignore_canstun = TRUE)
-				L.emote("scream")
-				boolet.mass = 4 // The soul has weight. or something.
-				sleep(20)
+				boolet.mass = 5 // The soul has weight. or something.
+				for(var/i in 1 to rand(1, 3))
+					playsound(src, 'sound/effects/spray.ogg', 40, 1)
+					if(prob(50 - (i * 10)))
+						INVOKE_ASYNC(L, /mob.proc/emote, "scream")
+					sleep(rand(5, 10) - i)
 			else
 				boolet.mass = 4
 			continue

@@ -1,5 +1,5 @@
 // screenshake
-#define MAX_SHAKE 2.1
+#define MAX_SHAKE 1.5
 
 // The base (and minimum) amount of tiles a bluespace hvp can teleport to
 #define BASE_SWITCH_RANGE 4
@@ -33,7 +33,7 @@
 
 	var/momentum = 0
 
-/obj/item/projectile/hvp/proc/launch(_angle, _inaccuracy)
+/obj/item/projectile/hvp/proc/launch(_angle, _inaccuracy, atom/firer, barrel_segments)
 	momentum = mass * velocity
 	if(_inaccuracy)
 		_angle += rand(_inaccuracy, -_inaccuracy)
@@ -47,13 +47,16 @@
 			var/turf/open/T = get_turf(src)
 			if(T?.air)
 				for(var/mob/M in range(10, src))
-					shake_camera(M, 10, clamp(momentum*0.001, 0, MAX_SHAKE))
+					shake_camera(M, 10, clamp(momentum / 1000, 0, MAX_SHAKE))
 		if(1300 to 2000)
 			special |= HVP_SMILEY_FACE
 		else
 			special |= HVP_RECKONING
 	SSaugury.register_doom(src, momentum)
 	log_game("Coilgun projectile fired in [get_area_name(src, TRUE)] with [momentum] momentum!")
+	if(barrel_segments)
+		var/turf/T = get_turf_in_angle(Angle, get_turf(firer), barrel_segments)
+		forceMove(T)
 	fire(Angle)
 
 /obj/item/projectile/hvp/Topic(href, href_list)
@@ -110,7 +113,7 @@
 			audible_message("<span class='danger'>You hear a CLANG!</span>")
 			if((special & HVP_RADIOACTIVE) && prob(30))
 				var/datum/component/radioactive/rads = GetComponent(/datum/component/radioactive)
-				var/pulsepower = (rads.strength + 1) * (momentum / 100 + 1) // faster rods multiply rads because of.. reasons
+				var/pulsepower = (rads.strength + 1) * (momentum / 150 + 1) // faster rods multiply rads because.. reasons
 				radiation_pulse(src, pulsepower)
 
 		if(momentum > 100 && check_ricochet(clong))
@@ -141,7 +144,7 @@
 		penetrate(clong)
 
 
-// mostly yoinked from wall ricochet code but made the calculations projectile side and adjusted return values
+// mostly yoinked from wall ricochet code but made the calculations projectile side and adjusted returns
 /obj/item/projectile/hvp/proc/calc_ricochet(atom/A, return_incidence = FALSE)
 	var/face_direction = get_dir(A, get_turf(src))
 	var/face_angle = dir2angle(face_direction)
@@ -151,18 +154,23 @@
 /*
 	*   The following proc is a bit messy so here's the broken up version:
 	*   =============================================================================
-	*	var/incidence = calc_ricochet(clong, TRUE)
-	*	var/chance = -((log(0.001 * (momentum - 90))) / 2)
-	*	var/actual_chance = (incidence / 90) * chance		(the actual thing below)
+	*	incidence = calc_ricochet(clong, TRUE)
+	*	incidence / 90 = linear value from 0-1
+	*	-----
+	*	var/exponent_decay = -((log(0.001 * (momentum - 90))) / 2)
+	*	var/actual_chance = (incidence / 90) * exponent_decay		(the actual thing below)
 	*   ==============================================================================
 	*	Works properly if momentum is above 100, returns a decimal between 0-1.
 */
 /obj/item/projectile/hvp/check_ricochet(atom/A)
-	var/chance = (calc_ricochet(A, TRUE) / 90) * -((log(0.001 * (momentum - 90))) / 2)
-	return prob(chance * 100)
+	var/lin_incidence = calc_ricochet(A, TRUE) / 90
+	if(momentum > 100)
+		var/chance = lin_incidence * -((log(0.001 * (momentum - 90))) / 2)
+		return prob(chance * 100)
+	return prob(lin_incidence - 0.3) // can't be fucked doing more math, this'll work fine for low speed
 
 /obj/item/projectile/hvp/proc/penetrate(mob/living/L)
-	var/projdamage = max(momentum / 35, 15)
+	var/projdamage = max(momentum / 4, 15)
 	if(ishuman(L))
 		var/mob/living/carbon/human/H = L
 		if(special & HVP_SHARP)
@@ -173,17 +181,19 @@
 			if(prob(unlucky))
 				BP.dismember()
 				if(prob(50))
-					add_object(BP, add_special = FALSE)
+					add_object(BP, add_special = FALSE) // Limb skewer!
 		if(special & HVP_BOUNCY) // BOING!
 			projdamage /= 4 // bouncy things don't hurt as much
 			H.adjustStaminaLoss(clamp(projdamage, 5, 120))
 			var/throw_dir = angle2dir(Angle)
 			playsound(src, 'sound/vehicles/clowncar_crash2.ogg', 50, 0, 5)
-			setAngle(calc_ricochet(L))
-			var/atom/target = get_edge_target_turf(L, throw_dir)
-			L.throw_at(target, 200, round(2 + log(momentum))) // godspeed o7
+			setAngle(calc_ricochet(H))
+			var/atom/target = get_edge_target_turf(H, throw_dir)
+			H.throw_at(target, 200, round(2 + log(momentum))) // godspeed o7
 	L.adjustBruteLoss(projdamage)
 	L.visible_message("<span class='danger'>[L] is penetrated by \the [src]!</span>" , "<span class='userdanger'>\The [src] penetrates you!</span>" , "<span class ='danger'>You hear a CLANG!</span>")
+	if(projdamage > 500)
+		L.gib()
 
 /obj/item/projectile/hvp/proc/add_object(atom/movable/AM, rotation = TRUE, pixel_offset = TRUE, add_special = TRUE, add_mass = TRUE)
 	var/n_mass = mass
@@ -212,8 +222,10 @@
 		assoc_overlays[AM] = FA
 	else // if this is the first item added, set it as the base.
 		appearance = AM.appearance
-	if(isturf(AM))
-		return // we can't put turfs inside objects
+	if(isturf(AM)) // we can't put turfs inside objects ;-;
+		var/turf/T = AM
+		T.ScrapeAway(flags = CHANGETURF_INHERIT_AIR)
+		return
 	AM.forceMove(src)
 
 /obj/item/projectile/hvp/proc/remove_object(atom/movable/AM, move_loc)
@@ -247,7 +259,7 @@
 		momentum--
 	// 0.1 deciseconds is as fast as we can go without async memes.
 	speed = max(-(1.0008 ** velocity) + 2.1, 0.1)
-	anim_time = speed
+//	anim_time = speed
 
 /// called when we pass through a charger
 /obj/item/projectile/hvp/proc/on_transfer()
@@ -324,6 +336,7 @@
 
 		if(GLOB.hvp_sticky[I.type])
 			special |= HVP_STICKY
+			SpinAnimation()
 
 	if(special != original_spec)
 		return TRUE
