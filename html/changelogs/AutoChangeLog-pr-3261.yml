@@ -1,0 +1,4 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - code_imp: "Non-bitflag slot defines gone, slot defines are now bitshifts"

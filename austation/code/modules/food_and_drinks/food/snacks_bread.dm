@@ -1,3 +1,47 @@
+/obj/item/reagent_containers/food/snacks/synthetic_cake
+	name = "Cake Dough"
+	desc = "Looks like an unfinished mess of dough."
+	icon = 'icons/obj/food/food_ingredients.dmi'
+	icon_state = "dough"
+	bitesize = 3
+	list_reagents = list(/datum/reagent/consumable/nutriment = 4)
+	tastes = list("sweetness" = 2,"cake" = 5)
+	foodtype = GRAIN | DAIRY | SUGAR
+
+/obj/item/reagent_containers/food/snacks/synthetic_cake/proc/cake_transform(obj/item/caked, poisoned = FALSE)
+	if(poisoned)
+		reagents.add_reagent(/datum/reagent/toxin/amanitin, 5)
+	name = caked.name
+	appearance = caked.appearance
+	layer = initial(layer)
+	plane = initial(plane)
+	lefthand_file = caked.lefthand_file
+	righthand_file = caked.righthand_file
+	item_state = caked.item_state
+	desc = "Wait, it's a cake?"
+	w_class = caked.w_class
+	slowdown = caked.slowdown
+	equip_delay_self = caked.equip_delay_self
+	equip_delay_other = caked.equip_delay_other
+	strip_delay = caked.strip_delay
+	species_exception = caked.species_exception
+	item_flags = caked.item_flags
+	obj_flags = caked.obj_flags
+
+/obj/item/reagent_containers/food/snacks/synthetic_cake/suicide_act(mob/user)
+	user.visible_message("<span class='suicide'>[user] rips off their own arm in a spray of crumbs and icing. They're made of cake!</span>")
+	if(iscarbon(user))
+		var/mob/living/carbon/C = user
+		var/obj/item/bodypart/l_arm = C.get_bodypart(BODY_ZONE_L_ARM)
+		var/obj/item/bodypart/r_arm = C.get_bodypart(BODY_ZONE_R_ARM)
+		C.blood_volume = 0
+		if(prob(50))
+			l_arm.dismember()
+		else
+			r_arm.dismember()
+	playsound(user, get_sfx("desecration"), 50, TRUE, -1)
+	return(OXYLOSS|BRUTELOSS)
+
 /obj/item/reagent_containers/food/snacks/store/bread/recycled
 	name = "recycled bread"
 	desc = "Some bread made from god knows what trash."
