@@ -41,14 +41,14 @@
 	switch(slot)
 		if(SLOT_HEAD)
 			if(head)
-				return 0
+				return FALSE
 			if(!((I.slot_flags & ITEM_SLOT_HEAD) || (I.slot_flags & ITEM_SLOT_MASK)))
-				return 0
-			return 1
+				return FALSE
+			return TRUE
 		if(SLOT_GENERC_DEXTROUS_STORAGE)
 			if(internal_storage)
-				return 0
-			return 1
+				return FALSE
+			return TRUE
 	..()
 
 
