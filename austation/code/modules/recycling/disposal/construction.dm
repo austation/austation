@@ -10,3 +10,6 @@
 /obj/structure/disposalconstruct/coilgun/update_icon()
 	icon_state = initial(pipe_type.icon_state)
 	transform = transform.Scale(0.9, 0.9) // when you sprite it
+
+/obj/structure/disposalconstruct/coilgun/is_pipe()
+	return ispath(pipe_type, /obj/structure/disposalpipe/coilgun)

@@ -39,7 +39,7 @@
 /obj/structure/disposalpipe/coilgun/barrel/proc/check_overlap(_angle, target)
 	if(!target)
 		target = get_turf_in_angle(_angle, get_turf(src), barrel_length)
-	var/path = getline(src, target)
+	var/path = getline(get_turf(src), target)
 	for(var/atom/A in path)
 		if(A.density)
 			return FALSE

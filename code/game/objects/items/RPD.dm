@@ -7,7 +7,6 @@ RPD
 #define DISPOSALS_CATEGORY 1
 #define TRANSIT_CATEGORY 2
 #define PLUMBING_CATEGORY 3
-#define COILGUN_CATEGORY 4
 
 #define BUILD_MODE 1
 #define WRENCH_MODE 2
@@ -258,8 +257,6 @@ GLOBAL_LIST_INIT(fluid_duct_recipes, list(
 		first_atmos = GLOB.atmos_pipe_recipes[GLOB.atmos_pipe_recipes[1]][1]
 	if(!first_disposal)
 		first_disposal = GLOB.disposal_pipe_recipes[GLOB.disposal_pipe_recipes[1]][1]
-	if(!first_coilgun) // austation -- coilguns
-		first_coilgun = GLOB.coilgun_pipe_recipes[GLOB.coilgun_pipe_recipes[1]][1]
 	if(!first_transit)
 		first_transit = GLOB.transit_tube_recipes[GLOB.transit_tube_recipes[1]][1]
 
@@ -313,8 +310,6 @@ GLOBAL_LIST_INIT(fluid_duct_recipes, list(
 			recipes = GLOB.atmos_pipe_recipes
 		if(DISPOSALS_CATEGORY)
 			recipes = GLOB.disposal_pipe_recipes
-		if(COILGUN_CATEGORY) // austation -- coilguns
-			recipes = GLOB.coilgun_pipe_recipes
 		if(TRANSIT_CATEGORY)
 			recipes = GLOB.transit_tube_recipes
 		if(PLUMBING_CATEGORY)
@@ -505,7 +500,7 @@ GLOBAL_LIST_INIT(fluid_duct_recipes, list(
 
 					C.add_fingerprint(usr)
 					C.update_icon()
-					if(mode&WRENCH_MODE)
+					if(mode & WRENCH_MODE)
 						C.wrench_act(user, src)
 					return // austation end
 
@@ -588,7 +583,6 @@ GLOBAL_LIST_INIT(fluid_duct_recipes, list(
 
 #undef ATMOS_CATEGORY
 #undef DISPOSALS_CATEGORY
-#undef COILGUN_CATEGORY//austation -- coilguns
 #undef TRANSIT_CATEGORY
 #undef PLUMBING_CATEGORY
 
