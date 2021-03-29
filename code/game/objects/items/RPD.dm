@@ -244,7 +244,6 @@ GLOBAL_LIST_INIT(fluid_duct_recipes, list(
 	var/datum/pipe_info/recipe
 	var/static/datum/pipe_info/first_atmos
 	var/static/datum/pipe_info/first_disposal
-	var/static/datum/pipe_info/first_coilgun // austation -- coilguns (yes I'm keeping it here for consistency)
 	var/static/datum/pipe_info/first_transit
 	var/static/datum/pipe_info/first_plumbing
 	var/mode = BUILD_MODE | PAINT_MODE | DESTROY_MODE | WRENCH_MODE
