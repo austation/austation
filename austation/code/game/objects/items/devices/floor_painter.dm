@@ -14,7 +14,7 @@
 
 	w_class = WEIGHT_CLASS_TINY
 	flags_1 = CONDUCT_1
-	slot_flags = SLOT_BELT
+	slot_flags = ITEM_SLOT_BELT
 
 	var/static/list/allowed_states = list("arrival", "arrivalcorner", "bar", "barber", "black", "blackcorner", "blue", "bluecorner",
 		"bluefull", "bluered", "blueyellow", "blueyellowfull", "bot", "brown", "browncorner", "brownfull", "browncornerold", "brownold",
