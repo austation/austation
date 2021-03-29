@@ -5,7 +5,7 @@
 /obj/machinery/pipedispenser/disposal/coilgun/interact(mob/user)
 
 	var/dat = ""
-	var/recipes = GLOB.disposal_pipe_recipes
+	var/recipes = GLOB.coilgun_pipe_recipes
 	for(var/category in recipes)
 		var/list/cat_recipes = recipes[category]
 		dat += "<b>[category]:</b><ul>"

@@ -14,18 +14,15 @@
 /obj/structure/disposalpipe/coilgun/barrel/New()
 	..()
 	current_angle = dir2angle(dir)
-	update_barrel(current_angle, FALSE)
+	update_barrel(current_angle, 0)
 
-/obj/structure/disposalpipe/coilgun/barrel/proc/update_barrel(mob/user, _angle, animate_duration, check_overlap = TRUE)
+/obj/structure/disposalpipe/coilgun/barrel/proc/update_barrel(_angle, animate_duration, check_collision = TRUE, initial = FALSE)
 	var/turf/T = get_turf(src)
 	var/turf/target = get_turf_in_angle(_angle, T, barrel_length)
-	if(target.x == world.maxx || target.y == world.maxy) // barrels shouldn't be able to touch or get clamped to/by border turfs
+	if(target.x == world.maxx || target.y == world.maxy) // barrels shouldn't be able to touch or get clamped by border turfs
 		return FALSE
-	if(check_overlap)
-		var/path = getline(src, target)
-		for(var/atom/A in path)
-			if(A.density)
-				return FALSE
+	if(check_collision && !check_overlap(target))
+		return FALSE
 	if(!barrel)
 		if(!master_barrel)
 			master_barrel = new(get_turf(src))
@@ -35,8 +32,23 @@
 	else
 		moving = TRUE
 		barrel.rotate(_angle, animate_duration)
+		sleep(animate_duration)
 		moving = FALSE
 	return TRUE
+
+/obj/structure/disposalpipe/coilgun/barrel/proc/check_overlap(_angle, target)
+	if(!target)
+		target = get_turf_in_angle(_angle, get_turf(src), barrel_length)
+	var/path = getline(src, target)
+	for(var/atom/A in path)
+		if(A.density)
+			return FALSE
+	return TRUE
+
+/* 	put in disposal construct code!
+/obj/structure/disposalpipe/coilgun/barrel/can_place()
+	return check_overlap(dir2angle(dir))
+*/
 
 /obj/structure/disposalpipe/coilgun/barrel/Destroy()
 	QDEL_NULL(barrel)
@@ -48,7 +60,7 @@
 	if(cooldown > world.time || moving)
 		to_chat(user, "<span class ='warning'>\The [src] can't be rotated right now!</span>")
 		return
-	if(update_barrel(user, new_angle, delay))
+	if(update_barrel(new_angle, delay))
 		current_angle = new_angle
 		cooldown = world.time + delay
 	else
@@ -62,8 +74,8 @@
 		to_chat(user, "<span class ='warning'>\The [src]'s angle controls are locked!.</span>")
 		return
 	var/relative_angle = closer_angle_difference(current_angle - dir2angle(dir))
-	var/n_angle = (input(user, "Enter the desired barrel angle", "Barrel Angle", relative_angle) as null|num)
-	if(abs(n_angle) >= 40)
+	var/n_angle = round(input(user, "Enter the desired barrel angle", "Barrel Angle", relative_angle) as null|num, 0.5)
+	if(abs(n_angle) > max_traverse)
 		to_chat(user, "<span class ='warning'>\The [src] can't pivot more than [max_traverse] degrees!</span>")
 	else
 		ApplyAngle(user, SIMPLIFY_DEGREES(n_angle + dir2angle(dir)))
@@ -73,7 +85,7 @@
 	. += "<span class='notice'>Alt-click to change the current angle.</span>"
 	var/offset = closer_angle_difference(current_angle, dir2angle(dir))
 	if(offset)
-		. += "The barrel is currently angled by [offset] degrees."
+		. += "The barrel is currently offset by [offset] degree\s."
 
 /// Barrel length has diminishing returns. Would not reccomend changing.
 #define BASE_INACCURACY 10
@@ -102,7 +114,7 @@
 #undef BASE_INACCURACY
 #undef DECAY_FACTOR
 
-// ---- Barrel Overlay Visuals ----
+// ---- Barrel Overlay Effect ----
 
 /obj/effect/barrel
 	anchored = TRUE
@@ -118,7 +130,7 @@
 
 /obj/effect/barrel/coilgun_barrel/Destroy()
 	if(parent)
-		qdel(parent)
+		QDEL_NULL(parent)
 	return ..()
 
 /obj/effect/barrel/coilgun_barrel/AltClick(mob/user)

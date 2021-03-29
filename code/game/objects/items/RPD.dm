@@ -495,7 +495,7 @@ GLOBAL_LIST_INIT(fluid_duct_recipes, list(
 				to_chat(user, "<span class='notice'>You start building a coilgun part...</span>")
 				playsound(get_turf(src), 'sound/machines/click.ogg', 50, 1)
 				if(do_after(user, disposal_build_speed, target = A))
-					var/obj/structure/disposalconstruct/C = new (A, queued_p_type, queued_p_dir, queued_p_flipped) // TODO: test this
+					var/obj/structure/disposalconstruct/coilgun/C = new(A, queued_p_type, queued_p_dir, queued_p_flipped) // TODO: test this
 
 					if(!C.can_place())
 						to_chat(user, "<span class='warning'>There's not enough room to build that here!</span>")
@@ -508,7 +508,7 @@ GLOBAL_LIST_INIT(fluid_duct_recipes, list(
 					C.update_icon()
 					if(mode&WRENCH_MODE)
 						C.wrench_act(user, src)
-					return
+					return // austation end
 
 
 

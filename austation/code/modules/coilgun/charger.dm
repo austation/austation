@@ -1,16 +1,10 @@
 // The base used for calculating charger projectile speed increase
 // lower values make speed increases more diminishing
 #define BASE 0.9975
-// above, but for the supercharger
-#define SUPER_BASE 0.999
 
 // the smallest amount of power the charger can use to function in watts.
 // Also serves as the base multiplier for projectile speed increase, lower values will increase speed gain
 #define POWER_DIVIDER 100000
-
-// The max speed capacitors can recharge (watts)
-#define CAPACITOR_RECHARGE 50000
-
 
 // Coilgun Charger
 
@@ -98,7 +92,11 @@
 	if(current_power_use)
 		. += "<span class='info'>The power indicator reads: [DisplayPower(current_power_use)].</span>"
 
-// Super Charger
+
+// ----- Super Charger -----
+
+// like normal base def, but for the supercharger
+#define SUPER_BASE 0.999
 
 /obj/structure/disposalpipe/coilgun/super_charger
 	name = "coilgun super-charger"
@@ -118,7 +116,7 @@
 			var/prelim = round(total_charge / 1000)
 			var/speed_increase = prelim * (SUPER_BASE ** PJ.velocity)
 			PJ.velocity += speed_increase
-			PJ.p_heat += 10s
+			PJ.p_heat += 10
 			visible_message("<span class='danger'>debug: speed increased by [speed_increase]!</span>")
 			H.count = 1000
 			total_charge = 0
@@ -126,7 +124,9 @@
 			playsound(src, 'sound/effects/seedling_chargeup.ogg', 70, 1)
 	return ..()
 
-// Capacitor
+// ----- Capacitor -----
+// The max speed capacitors can recharge (watts)
+#define CAPACITOR_RECHARGE 50000
 
 /obj/machinery/power/capacitor
 	name = "coilgun capacitor"
@@ -147,7 +147,7 @@
 	if(!powernet)
 		to_chat(user, "<span class='warning'>\The [src] must be placed over an exposed, powered cable node!</span>")
 		return
-	if(!check_use)
+	if(!check_use())
 		return
 	var/processing = datum_flags & DF_ISPROCESSING
 	if(processing)
@@ -162,7 +162,7 @@
 	return (!(stat & BROKEN) && anchored)
 
 /obj/machinery/power/capacitor/process()
-	if(charge >= capacity || !powenet || !check_use())
+	if(charge >= capacity || !powernet || !check_use())
 		return
 	var/input = clamp(surplus() / 2, 0, CAPACITOR_RECHARGE)
 	if(input)
@@ -196,3 +196,5 @@
 
 #undef BASE
 #undef POWER_DIVIDER
+#undef SUPER_BASE
+#undef CAPACITOR_RECHARGE
