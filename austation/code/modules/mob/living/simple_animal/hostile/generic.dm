@@ -24,7 +24,7 @@
 //Also admins who want to use this are expected to change the icon to whatever meme they want
 //they need to change "icon" "icon_state" "icon_dead" and "icon_living" with the VV panel.
 
-/mob/living/simple_animal/hostile/generic/doUnEquip(obj/item/I, force) //inventory stuff from drone code
+/mob/living/simple_animal/hostile/generic/doUnEquip(obj/item/I, force, newloc, no_move, invdrop = FALSE, was_thrown = FALSE) //inventory stuff from drone code
 	if(..())
 		update_inv_hands()
 		if(I == head)
@@ -33,8 +33,8 @@
 		if(I == internal_storage)
 			internal_storage = null
 			update_inv_internal_storage()
-		return 1
-	return 0
+		return TRUE
+	return FALSE
 
 
 /mob/living/simple_animal/hostile/generic/can_equip(obj/item/I, slot, disable_warning = FALSE, bypass_equip_delay_self = FALSE)
