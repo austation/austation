@@ -45,11 +45,6 @@
 			return FALSE
 	return TRUE
 
-/* 	put in disposal construct code!
-/obj/structure/disposalpipe/coilgun/barrel/can_place()
-	return check_overlap(dir2angle(dir))
-*/
-
 /obj/structure/disposalpipe/coilgun/barrel/Destroy()
 	QDEL_NULL(barrel)
 	QDEL_NULL(master_barrel)
@@ -110,6 +105,10 @@
 		expel(H, get_turf(src), angle2dir(current_angle))
 	else
 		qdel(H)
+
+/obj/structure/disposalpipe/coilgun/barrel/deconstruct(disassembled = TRUE)
+	..()
+	barrel_length = initial(barrel_length)
 
 #undef BASE_INACCURACY
 #undef DECAY_FACTOR
