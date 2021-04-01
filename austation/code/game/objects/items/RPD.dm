@@ -20,5 +20,6 @@
 /obj/item/pipe_dispenser/coilgun/ui_act(action, params)
 	if(!..())
 		return FALSE
-	if(COILGUN_CATEGORY)
+	if(action == "category" && category == COILGUN_CATEGORY)
 		recipe = first_coilgun
+	return TRUE

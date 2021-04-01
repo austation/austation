@@ -338,8 +338,6 @@ GLOBAL_LIST_INIT(fluid_duct_recipes, list(
 			switch(category)
 				if(DISPOSALS_CATEGORY)
 					recipe = first_disposal
-				if(COILGUN_CATEGORY)
-					recipe = first_coilgun
 				if(ATMOS_CATEGORY)
 					recipe = first_atmos
 				if(TRANSIT_CATEGORY)
