@@ -78,7 +78,6 @@
 	return TRUE
 
 /obj/item/projectile/hvp/Bump(atom/clong)
-
 	if(special & HVP_STICKY)
 		var/chance = 0
 		if(isturf(clong))
@@ -111,38 +110,25 @@
 		if(prob(15))
 			playsound(src, 'sound/effects/bang.ogg', 50, 1)
 			audible_message("<span class='danger'>You hear a CLANG!</span>")
-			if((special & HVP_RADIOACTIVE) && prob(30))
+			if((special & HVP_RADIOACTIVE) && prob(40))
 				var/datum/component/radioactive/rads = GetComponent(/datum/component/radioactive)
 				var/pulsepower = (rads.strength + 1) * (momentum / 150 + 1) // faster rods multiply rads because.. reasons
 				radiation_pulse(src, pulsepower)
 
 		if(momentum > 100 && check_ricochet(clong))
-			setAngle(calc_ricochet(clong))
 			visible_message("<span class='warning'>\The [src] ricochets off [clong]!</span>")
-		var/hardness = clong.explosion_block
-		switch(hardness)
-			if(0 to 1)
-				clong.hvp_act(src)
-			if(2 to 10)
-				momentum -= clong.explosion_block
-				if(iswallturf(clong))
-					var/turf/closed/wall/W = clong
-					W.dismantle_wall(TRUE)
-				else
-					qdel(clong)
-				return
-			else
-				if(prob(50))
-					visible_message("<span class='warning'>\The [src] ricochets off [clong]!</span>")
-					setAngle(calc_ricochet(clong))
-				else
-					forceMove(get_turf(clong)) // should prevent server dying from a projectile getting stuck near 2 indestructable turfs
-				momentum -= 20
+			ricochet(clong)
+		else
+			clong.hvp_act(src)
 		momentum -= 10
 		return
+
 	if(isliving(clong))
 		penetrate(clong)
 
+/obj/item/projectile/hvp/proc/ricochet(atom/target)
+	setAngle(calc_ricochet(target))
+	ricochets++
 
 // mostly yoinked from wall ricochet code but made the calculations projectile side and adjusted returns
 /obj/item/projectile/hvp/proc/calc_ricochet(atom/A, return_incidence = FALSE)
@@ -175,10 +161,8 @@
 		var/mob/living/carbon/human/H = L
 		if(special & HVP_SHARP)
 			projdamage *= 2
-			var/Z = pick(BODY_ZONE_R_ARM, BODY_ZONE_L_ARM, BODY_ZONE_R_LEG, BODY_ZONE_L_LEG, BODY_ZONE_HEAD)
-			var/obj/item/bodypart/BP = H.get_bodypart(Z)
-			var/unlucky = clamp(momentum * 0.03, 15, 100)
-			if(prob(unlucky))
+			var/obj/item/bodypart/BP = pick(H.bodyparts)
+			if(prob(max(momentum * 0.03, 15)))
 				BP.dismember()
 				if(prob(50))
 					add_object(BP, add_special = FALSE) // Limb skewer!
@@ -187,7 +171,7 @@
 			H.adjustStaminaLoss(clamp(projdamage, 5, 120))
 			var/throw_dir = angle2dir(Angle)
 			playsound(src, 'sound/vehicles/clowncar_crash2.ogg', 50, 0, 5)
-			setAngle(calc_ricochet(H))
+			ricochet(H)
 			var/atom/target = get_edge_target_turf(H, throw_dir)
 			H.throw_at(target, 200, round(2 + log(momentum))) // godspeed o7
 	L.adjustBruteLoss(projdamage)
@@ -257,9 +241,8 @@
 
 	if(isfloorturf(get_turf(src)))
 		momentum--
-	// 0.1 deciseconds is as fast as we can go without async memes.
+	// this is basically as fast as we can go without async memes.
 	speed = max(-(1.0008 ** velocity) + 2.1, 0.1)
-//	anim_time = speed
 
 /// called when we pass through a charger
 /obj/item/projectile/hvp/proc/on_transfer()
@@ -347,9 +330,16 @@
 		var/datum/reagents/RH = locate() in AM
 		if(RH?.total_volume)
 			RH.expose_temperature(1000 * (p_heat / 10 + 1))
+		return
+
 	if(istype(AM, /obj/item/grenade))
 		var/obj/item/grenade/G = AM
-		G.prime() // armour piercing high explosive crate ;)
+		G.prime() // Armour piercing high explosives :flushed:
+		return
+
+	if(istype(AM, /obj/item/transfer_valve))
+		var/obj/item/transfer_valve/TV = AM
+		TV.toggle_valve()
 
 /obj/item/projectile/hvp/process_hit()
 	return

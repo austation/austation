@@ -20,7 +20,11 @@
 //	O.layer = layer + 1
 	add_overlay(O)
 
-/// Called when a coilgun projectile collides with a non-living atom.
+/*
+	* Called when a coilgun projectile collides with a non-living atom.
+	* Parent overrides should return TRUE if they were affected.
+	* If they weren't affected (i.e immunity override), returning FALSE will make projectiles bounce off it
+*/
 /atom/proc/hvp_act(obj/item/projectile/hvp/PJ, severe = FALSE)
 	if(PJ.momentum > 1000 || severe)
 		ex_act(EXPLODE_DEVASTATE)
