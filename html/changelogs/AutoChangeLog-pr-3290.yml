@@ -1,0 +1,4 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - tweak: "Changeling last resort ability no longer takes 0.8 seconds after use to actually spawn the headcrab."
