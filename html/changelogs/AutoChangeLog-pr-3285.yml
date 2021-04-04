@@ -1,5 +1,0 @@
-author: "AustationBot"
-delete-after: True
-changes: 
-  - tweak: "Improves stat panel background design."
-  - tweak: "Stat panel will now display adminhelp messages for the bwoinkees."

@@ -1,4 +1,0 @@
-author: "AustationBot"
-delete-after: True
-changes: 
-  - tweak: "RCD simple electronics upgrade no longer locks the APC you are building"
