@@ -245,6 +245,7 @@ GLOBAL_LIST_INIT(fluid_duct_recipes, list(
 	var/static/datum/pipe_info/first_disposal
 	var/static/datum/pipe_info/first_transit
 	var/static/datum/pipe_info/first_plumbing
+	var/static/datum/pipe_info/first_coilgun // austation -- coilguns
 	var/mode = BUILD_MODE | PAINT_MODE | DESTROY_MODE | WRENCH_MODE
 	var/locked = FALSE //wheter we can change categories. Useful for the plumber
 
@@ -314,6 +315,8 @@ GLOBAL_LIST_INIT(fluid_duct_recipes, list(
 			recipes = GLOB.transit_tube_recipes
 		if(PLUMBING_CATEGORY)
 			recipes = GLOB.fluid_duct_recipes
+		if(COILGUN_CATEGORY) // austation -- coilguns
+			recipes = GLOB.coilgun_pipe_recipes
 	for(var/c in recipes)
 		var/list/cat = recipes[c]
 		var/list/r = list()
@@ -344,6 +347,8 @@ GLOBAL_LIST_INIT(fluid_duct_recipes, list(
 					recipe = first_transit
 				if(PLUMBING_CATEGORY)
 					recipe = first_plumbing
+				if(COILGUN_CATEGORY) // austation -- coilguns
+					recipe = first_coilgun
 			p_dir = NORTH
 			playeffect = FALSE
 		if("piping_layer")

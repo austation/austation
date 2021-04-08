@@ -14,6 +14,7 @@
 	icon_state = "immrod"
 	density = TRUE
 	move_force = INFINITY
+	movement_type = FLYING | UNSTOPPABLE
 	move_resist = INFINITY
 	pull_force = INFINITY
 	hitsound = null
@@ -95,7 +96,7 @@
 		explosion(loc, E, E+1, E+2, E+3, FALSE) // << That's what the V2 is for >>
 		return
 	if(momentum < 10)
-		gameover()
+		gameover(TRUE)
 		return
 	if(isturf(clong) || isobj(clong))
 		if((special & HVP_BOUNCY) && prob(25))
@@ -208,6 +209,10 @@
 		appearance = AM.appearance
 	if(isturf(AM)) // we can't put turfs inside objects ;-;
 		var/turf/T = AM
+		if(iswallturf(T))
+			var/turf/closed/wall/W = T
+			if(W.girder_type)
+				AM = new W.girder_type
 		T.ScrapeAway(flags = CHANGETURF_INHERIT_AIR)
 		return
 	AM.forceMove(src)
@@ -276,15 +281,16 @@
 	qdel(src)
 
 /// called when the projectile has expired, replaces hvp projectile with the original magnetized item.
-/obj/item/projectile/hvp/proc/gameover()
+/obj/item/projectile/hvp/proc/gameover(collision = FALSE)
 	if(QDELETED(src))
 		return
-	for(var/atom/movable/AM in src)
-		AM.forceMove(get_turf(src))
-		if(throwing)
-			step(AM, angle2dir(Angle))
+	var/turf/T = get_turf(src)
+	for(var/atom/movable/AM in contents)
+		AM.forceMove(T)
 		other_special(AM)
-	throwing?.finalize(FALSE)
+		if(collision && !QDELETED(AM))
+			var/range = rand(1, 4)
+			AM.throw_at(get_ranged_target_turf(src, pick(GLOB.cardinals), range), range, 1)
 	qdel(src)
 
 /obj/item/projectile/hvp/relaymove(mob/living/user)
@@ -377,3 +383,7 @@
 /obj/item/projectile/hvp/debug/New()
 	..()
 	launch(dir2angle(dir))
+
+/obj/item/projectile/hvp/debug/sticky/New()
+	..()
+	SpinAnimation()
