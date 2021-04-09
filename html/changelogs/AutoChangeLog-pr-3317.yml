@@ -1,4 +1,0 @@
-author: "AustationBot"
-delete-after: True
-changes: 
-  - rscadd: "Brig Physician has access to **Holding** Cells, equal to the Lawyer"

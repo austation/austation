@@ -1,5 +1,0 @@
-author: "AustationBot"
-delete-after: True
-changes: 
-  - rscadd: "You can now grab anyone who has a tail, by said tail"
-  - code_imp: "Minor cleanliness in grab strings"
