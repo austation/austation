@@ -46,3 +46,12 @@
 	template_height = 3
 	template_width = 3
 	stock = 1
+
+/datum/map_template/random_room/sk_rdm251
+	name = "bushrangergear"
+	room_id = "sk_rdm251_bushrangergear"
+	mappath = "_maps/RandomRooms/5x3/sk_rdm251_bushrangergear.dmm"
+	centerspawner = FALSE
+	template_height = 3
+	template_width = 5
+	stock = 1
