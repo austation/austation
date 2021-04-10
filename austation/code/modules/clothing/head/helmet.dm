@@ -18,5 +18,6 @@
 	flags_inv = HIDEEARS|HIDEFACE|HIDEHAIR|HIDEFACIALHAIR
 	flags_cover = HEADCOVERSMOUTH
 	resistance_flags = FIRE_PROOF
-	strip_delay = 60
+	strip_delay = 10 // it's a bucket
 	tint = 2 // blocks vision somewhat
+	dog_fashion = null

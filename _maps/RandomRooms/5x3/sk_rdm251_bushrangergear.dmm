@@ -1,12 +1,11 @@
 "a" = (/obj/structure/flora/rock/pile,/turf/open/floor/plating/asteroid,/area/template_noop)
 "b" = (/turf/open/floor/plating/asteroid,/area/template_noop)
 "d" = (/obj/structure/flora/rock,/turf/open/floor/plating/asteroid,/area/template_noop)
-"y" = (/obj/item/clothing/head/helmet/nedhelmet,/turf/open/floor/plating/asteroid,/area/template_noop)
-"S" = (/obj/item/clothing/suit/armor/bulletproof/nedarmour,/turf/open/floor/plating/asteroid,/area/template_noop)
 "T" = (/obj/structure/flora/ausbushes,/turf/open/floor/plating/asteroid,/area/template_noop)
+"W" = (/obj/effect/mob_spawn/human/bushranger,/turf/open/floor/plating/asteroid,/area/template_noop)
 
 (1,1,1) = {"
 TaTbT
-bybSb
+bbWbb
 aTbad
 "}

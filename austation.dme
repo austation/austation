@@ -25,11 +25,6 @@
 // END_BEESTATION_INCLUDE
 
 // BEGIN_INCLUDE
-#include "austation\code\__DEFINES\admin.dm"
-#include "austation\code\__DEFINES\misc.dm"
-#include "austation\code\__DEFINES\mobs.dm"
-#include "austation\code\__DEFINES\movespeed_modification.dm"
-#include "austation\code\__DEFINES\traits.dm"
 #include "austation\code\__HELPERS\matrices.dm"
 #include "austation\code\__HELPERS\roundend.dm"
 #include "austation\code\_globalvars\misc.dm"
@@ -114,6 +109,7 @@
 #include "austation\code\modules\antagonists\changeling\changeling.dm"
 #include "austation\code\modules\atmospherics\machinery\atmosmachinery.dm"
 #include "austation\code\modules\atmospherics\machinery\components\unary_devices\thermomachine.dm"
+#include "austation\code\modules\awaymissions\corpse.dm"
 #include "austation\code\modules\cargo\exports\engineering.dm"
 #include "austation\code\modules\cargo\exports\organs.dm"
 #include "austation\code\modules\cargo\exports\food_and_drink\bread.dm"
