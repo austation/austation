@@ -19,7 +19,8 @@ GLOBAL_LIST_INIT(medical_positions, list(
 	"Geneticist",
 	"Virologist",
 	"Paramedic",
-	"Chemist"))
+	"Chemist",
+	"Brig Physician"))
 
 
 GLOBAL_LIST_INIT(science_positions, list(
@@ -60,7 +61,6 @@ GLOBAL_LIST_INIT(security_positions, list(
 	"Warden",
 	"Detective",
 	"Security Officer",
-	"Brig Physician",
 	"Deputy"))
 
 
@@ -79,6 +79,7 @@ GLOBAL_LIST_INIT(exp_jobsmap, list(
 	EXP_TYPE_SECURITY = list("titles" = security_positions),
 	EXP_TYPE_SILICON = list("titles" = list("AI","Cyborg")),
 	EXP_TYPE_SERVICE = list("titles" = civilian_positions | gimmick_positions),
+	EXP_TYPE_GIMMICK = list("titles" = gimmick_positions)
 ))
 
 GLOBAL_LIST_INIT(exp_specialmap, list(

@@ -360,7 +360,7 @@ GLOBAL_DATUM(blue_storage, /obj/item/storage/backpack/holding/bluespace)
 /obj/item/storage/backpack/holding/bluespace
 	name = "warped rune"
 	anchored = TRUE
-	armor = list("melee" = 100, "bullet" = 100, "laser" = 100, "energy" = 100, "bomb" = 100, "bio" = 100, "rad" = 100, "fire" = 100, "acid" = 100)
+	armor = list("melee" = 100, "bullet" = 100, "laser" = 100, "energy" = 100, "bomb" = 100, "bio" = 100, "rad" = 100, "fire" = 100, "acid" = 100, "stamina" = 100)
 	invisibility = INVISIBILITY_ABSTRACT
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF
 
@@ -614,25 +614,15 @@ GLOBAL_DATUM(blue_storage, /obj/item/storage/backpack/holding/bluespace)
 		/obj/item/gun/energy/laser/retro/old,
 		/obj/item/storage/toolbox/mechanical/old,
 		/obj/item/storage/toolbox/emergency/old,
-		/obj/effect/mob_spawn/teratomamonkey,
-		/obj/effect/mob_spawn/human/ash_walker,
 		/obj/effect/spawner/lootdrop/three_course_meal,
 		/mob/living/simple_animal/pet/dog/corgi/puppy/void,
 		/obj/structure/closet/crate/necropolis,
-		/obj/item/grenade/gluon,
 		/obj/item/card/emagfake,
-		/obj/item/gun/ballistic/revolver/reverse,
 		/obj/item/flashlight/flashdark,
-		/mob/living/simple_animal/slime/rainbow,
-		/obj/item/storage/belt/sabre,
-		/obj/item/drone_shell,
-		/obj/item/sharpener,
 		/mob/living/simple_animal/hostile/cat_butcherer
 	)
 
 	var/static/list/rare_items = list(
-		/obj/effect/mob_spawn/human/syndicate/battlecruiser/captain,
-		/obj/structure/spawner/skeleton,
 		/obj/effect/spawner/lootdrop/armory_contraband,
 		/obj/effect/spawner/lootdrop/teratoma/major
 	)
@@ -654,7 +644,7 @@ GLOBAL_DATUM(blue_storage, /obj/item/storage/backpack/holding/bluespace)
 		switch(rand(1,100))
 			if(1 to 80)
 				path = pick(common_items)
-			if(80 to 95)
+			if(80 to 99)
 				path = pick(uncommon_items)
 			else
 				path = pick(rare_items)
@@ -799,7 +789,7 @@ GLOBAL_DATUM(warped_room, /datum/map_template/warped_room)
 	dynamic_lighting = DYNAMIC_LIGHTING_FORCED
 	requires_power = FALSE
 	has_gravity = TRUE
-	noteleport = TRUE
+	teleport_restriction = TELEPORT_ALLOW_NONE
 
 ///creates the warped room and place an exit rune to exit the room
 /obj/effect/warped_rune/rainbowspace/Initialize()

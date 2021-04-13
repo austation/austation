@@ -51,3 +51,8 @@
 
 /datum/techweb_node/adv_mecha_tools
 	austation_design_ids = list("mech_ion_thrusters")
+
+////////////////////////bio processing////////////////////////
+
+/datum/techweb_node/bio_process
+	austation_design_ids = list("cake_printer")

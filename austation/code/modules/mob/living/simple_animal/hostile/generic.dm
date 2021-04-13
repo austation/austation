@@ -24,7 +24,7 @@
 //Also admins who want to use this are expected to change the icon to whatever meme they want
 //they need to change "icon" "icon_state" "icon_dead" and "icon_living" with the VV panel.
 
-/mob/living/simple_animal/hostile/generic/doUnEquip(obj/item/I, force) //inventory stuff from drone code
+/mob/living/simple_animal/hostile/generic/doUnEquip(obj/item/I, force, newloc, no_move, invdrop = FALSE, was_thrown = FALSE) //inventory stuff from drone code
 	if(..())
 		update_inv_hands()
 		if(I == head)
@@ -33,30 +33,30 @@
 		if(I == internal_storage)
 			internal_storage = null
 			update_inv_internal_storage()
-		return 1
-	return 0
+		return TRUE
+	return FALSE
 
 
 /mob/living/simple_animal/hostile/generic/can_equip(obj/item/I, slot, disable_warning = FALSE, bypass_equip_delay_self = FALSE)
 	switch(slot)
-		if(SLOT_HEAD)
+		if(ITEM_SLOT_HEAD)
 			if(head)
-				return 0
+				return FALSE
 			if(!((I.slot_flags & ITEM_SLOT_HEAD) || (I.slot_flags & ITEM_SLOT_MASK)))
-				return 0
-			return 1
-		if(SLOT_GENERC_DEXTROUS_STORAGE)
+				return FALSE
+			return TRUE
+		if(ITEM_SLOT_DEX_STORAGE)
 			if(internal_storage)
-				return 0
-			return 1
+				return FALSE
+			return TRUE
 	..()
 
 
 /mob/living/simple_animal/hostile/generic/get_item_by_slot(slot_id)
 	switch(slot_id)
-		if(SLOT_HEAD)
+		if(ITEM_SLOT_HEAD)
 			return head
-		if(SLOT_GENERC_DEXTROUS_STORAGE)
+		if(ITEM_SLOT_DEX_STORAGE)
 			return internal_storage
 	return ..()
 
@@ -81,10 +81,10 @@
 	I.plane = ABOVE_HUD_PLANE
 
 	switch(slot)
-		if(SLOT_HEAD)
+		if(ITEM_SLOT_HEAD)
 			head = I
 			update_inv_head()
-		if(SLOT_GENERC_DEXTROUS_STORAGE)
+		if(ITEM_SLOT_DEX_STORAGE)
 			internal_storage = I
 			update_inv_internal_storage()
 		else
@@ -95,10 +95,10 @@
 	I.equipped(src, slot)
 
 /mob/living/simple_animal/hostile/generic/getBackSlot()
-	return SLOT_GENERC_DEXTROUS_STORAGE
+	return ITEM_SLOT_DEX_STORAGE
 
 /mob/living/simple_animal/hostile/generic/getBeltSlot()
-	return SLOT_GENERC_DEXTROUS_STORAGE
+	return ITEM_SLOT_DEX_STORAGE
 
 /mob/living/simple_animal/hostile/generic/proc/update_inv_internal_storage()
 	if(internal_storage && client && hud_used && hud_used.hud_shown)
