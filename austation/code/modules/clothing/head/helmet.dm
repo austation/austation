@@ -14,7 +14,7 @@
 	icon = 'austation/icons/obj/clothing/hats.dmi'
 	icon_state = "nkhelmet"
 	item_state = "nkhelmet"
-	armor = list("melee" = 15, "bullet" = 50, "laser" = 10, "energy" = 10, "bomb" = 30, "bio" = 0, "rad" = 0, "fire" = 40, "acid" = 50, "stamina" = 30)
+	armor = list("melee" = 15, "bullet" = 50, "laser" = 30, "energy" = 10, "bomb" = 30, "bio" = 0, "rad" = 0, "fire" = 40, "acid" = 50, "stamina" = 30)
 	flags_inv = HIDEMASK|HIDEEARS|HIDEFACE|HIDEHAIR|HIDEFACIALHAIR
 	flags_cover = HEADCOVERSMOUTH
 	dynamic_hair_suffix = ""
