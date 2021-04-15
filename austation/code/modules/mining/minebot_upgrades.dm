@@ -1,19 +1,10 @@
-#define MBU_MELEE /obj/item/minebot_upgrade/melee
-#define MBU_HEALTH_A /obj/item/minebot_upgrade/health_a
-#define MBU_HEALTH_B /obj/item/minebot_upgrade/health_b
-#define MBU_TRACKS_A /obj/item/minebot_upgrade/tracks_a
-#define MBU_TRACKS_B /obj/item/minebot_upgrade/tracks_b
-#define MBU_GUN_A /obj/item/minebot_upgrade/gun_a
-#define MBU_GUN_B /obj/item/minebot_upgrade/gun_b
-#define MBU_GUN_C /obj/item/minebot_upgrade/gun_c
-#define MBU_GUN_D /obj/item/minebot_upgrade/gun_d
 #define MBU_MED /obj/item/minebot_upgrade/
 #define MBU_SIGHT /obj/item/minebot_upgrade/
 #define MBU_LAMP /obj/item/minebot_upgrade/
 #define MBU_NAME /obj/item/minebot_upgrade/
 #define MBU_APC /obj/item/minebot_upgrade/
-#define GUN_UPGRADES list(MBU_GUN_A, MBU_GUN_B)
-#define GUNTYPES list(MBU_GUN_C, MBU_GUN_D)
+#define GUN_UPGRADES list(/obj/item/minebot_upgrade/gun_a, /obj/item/minebot_upgrade/gun_b)
+#define GUNTYPES list(/obj/item/minebot_upgrade/gun_c, /obj/item/minebot_upgrade/gun_d)
 
 
 /////////////////////////  PROCS  /////////////////////////
@@ -86,13 +77,13 @@
 
 	M.upgrades_list -= src.upgrade_id  //  Remove the upgrade from the minebot's list
 	var/obj/item/minebot_upgrade/U = new src.upgrade_id(T)  //  Build a copy of it, for reinstalling
-	visible_message("<span class='notice'A [U] was placed on the ground</span>")  //  Unless you're blind, we'll all see this happen
+	visible_message("<span class='notice'\A [U] was placed on the ground</span>")  //  Unless you're blind, we'll all see this happen
 	return TRUE  //  When installing new weapons, we want to know that the minebot doesn't have an old gun still inside.  This only returns false when there is no room on the floor
 
 /obj/item/minebot_upgrade/melee  //  An imitation of /obj/item/mine_bot_upgrade.  It has the same values
 	name = "gORE"
 	desc = "A drill that may help you face tomorrow; Increases a minebot's drill damage by 50%."
-	upgrade_id = MBU_MELEE
+	upgrade_id = /obj/item/minebot_upgrade/melee
 
 /obj/item/minebot_upgrade/melee/upgrade_bot(mob/living/simple_animal/hostile/mining_drone/M, mob/user)
 	M.melee_damage = 22  //  Up from 15
@@ -100,18 +91,18 @@
 
 /obj/item/minebot_upgrade/melee/uninstall(mob/living/simple_animal/hostile/mining_drone/M, mob/user)
 	. = ..()
-	M.melee_damage = 15
+	M.melee_damage = /mob/living/simple_animal/hostile/mining_drone.melee_damage  //  Who knows what the default will be in the future?
 
 /obj/item/minebot_upgrade/health_a  //  An imitation of /obj/item/mine_bot_upgrade/health.  It increases max_health by the same amount, but doubling the cell is new.
 	name = "Structure+"
 	desc = "A general utility increase to the minebot frame; Increases a minebot's health by 45% and fuel capacity by 100%.\
 	Incompatible with:\
 	B4D-A$$"
-	upgrade_id = MBU_HEALTH_A
-	incompatible = list(MBU_HEALTH_B)  //  Don't stack both health upgrades
+	upgrade_id = /obj/item/minebot_upgrade/health_a
+	incompatible = list(/obj/item/minebot_upgrade/health_b)  //  Don't stack both health upgrades
 
 /obj/item/minebot_upgrade/health_a/upgrade_bot(mob/living/simple_animal/hostile/mining_drone/M, mob/user)
-	M.maxHealth = 145  //  Up from 100
+	M.maxHealth = 170  //  Up from 125
 	M.health += 45
 	M.cell.maxcharge = M.cell_type.maxcharge * 2  //  Currently minebots may not install new cells, but this is for just in case
 	. = ..()
@@ -122,7 +113,7 @@
 		M.health = 1
 	else
 		M.health -= 45
-	M.maxHealth = 100
+	M.maxHealth = /mob/living/simple_animal/hostile/mining_drone.maxHealth
 	M.cell.maxcharge = M.cell_type.maxcharge
 
 /obj/item/minebot_upgrade/health_b
@@ -131,29 +122,29 @@
 	Incompatible with:\
 	Structure+\
 	Boat Boots"
-	upgrade_id = MBU_HEALTH_B
-	incompatible = list(MBU_HEALTH_A, MBU_TRACKS_B)  //  In addition to not stacking with health_a, the Badass upgrade makes you too heavy to float on lava
+	upgrade_id = /obj/item/minebot_upgrade/health_b
+	incompatible = list(/obj/item/minebot_upgrade/health_a, /obj/item/minebot_upgrade/tracks_b)  //  In addition to not stacking with health_a, the Badass upgrade makes you too heavy to float on lava
 
 /obj/item/minebot_upgrade/health_b/upgrade_bot(mob/living/simple_animal/hostile/mining_drone/M, mob/user)
 	M.maxHealth = 300
-	M.health += 200
+	M.health += 175
 	. = ..()
 
 /obj/item/minebot_upgrade/health_b/uninstall(mob/living/simple_animal/hostile/mining_drone/M, mob/user)
 	. = ..()
-	if(M.health <= 200)  //  Again, don't reduce them to below 1
+	if(M.health <= 175)  //  Again, don't reduce them to below 1
 		M.health = 1
 	else
-		M.health -= 200
-	M.maxHealth = 100
+		M.health -= 175
+	M.maxHealth = /mob/living/simple_animal/hostile/mining_drone.maxHealth
 
 /obj/item/minebot_upgrade/tracks_a
 	name = "BIGGA TRUKKZ"
 	desc = "MAKZ YA FOR HUNDRID PICENT FASTA; RED PAINT NOT INKLUDID!\
 	Incompatible with:\
 	Boat Boots"
-	upgrade_id = MBU_TRACKS_A
-	incompatible = list(MBU_TRACKS_B)  //  Don't stack both Tracks upgrades
+	upgrade_id = /obj/item/minebot_upgrade/tracks_a
+	incompatible = list(/obj/item/minebot_upgrade/tracks_b)  //  Don't stack both Tracks upgrades
 
 /obj/item/minebot_upgrade/tracks_a/upgrade_bot(mob/living/simple_animal/hostile/mining_drone/M, mob/user)
 	M.move_to_delay = 2  //  I believe this is 5 steps per second
@@ -161,7 +152,7 @@
 
 /obj/item/minebot_upgrade/tracks_a/uninstall(mob/living/simple_animal/hostile/mining_drone/M, mob/user)
 	. = ..()
-	M.move_to_delay = 10  //  I believe this is 1 step per second
+	M.move_to_delay = /mob/living/simple_animal/hostile/mining_drone.move_to_delay  //  I believe this is 1 step per second
 
 /obj/item/minebot_upgrade/tracks_b
 	name = "Boat Boots"
@@ -169,14 +160,15 @@
 	Incompatible with:\
 	BIGGA TRUKKS\
 	B4D-A$$"
-	upgrade_id = MBU_TRACKS_B
-	incompatible = list(MBU_TRACKS_A, MBU_HEALTH_B)  //  Don't stack Tracks and Badass makes you too heavy
+	upgrade_id = /obj/item/minebot_upgrade/tracks_b
+	incompatible = list(/obj/item/minebot_upgrade/tracks_a, /obj/item/minebot_upgrade/health_b)  //  Don't stack Tracks and Badass makes you too heavy
 
 /obj/item/minebot_upgrade/tracks_b/upgrade_bot(mob/living/simple_animal/hostile/mining_drone/M, mob/user)
 	. = ..()
 	M.weather_immunities += "lava"
 
 /obj/item/minebot_upgrade/tracks_b/uninstall(mob/living/simple_animal/hostile/mining_drone/M, mob/user)
+	. = ..()
 	M.weather_immunities -= "lava"
 
 /obj/item/minebot_upgrade/gun_a  //  An imitation of /obj/item/mine_bot_upgrade/cooldown. Makes your cooldown go down to 0.5s, the same as a miner's fully upgraded PKA  (but your damage is only half)
@@ -184,7 +176,7 @@
 	desc = "Recalibrates the internal PKA faster; reload time is reduced to 2x per second.\
 	Incompatible with:\
 	Barometric Field Generator"
-	upgrade_id = MBU_GUN_A
+	upgrade_id = /obj/item/minebot_upgrade/gun_a
 	incompatible = list(GUN_UPGRADES)  //  Don't stack gun upgrades
 
 /obj/item/minebot_upgrade/gun_a/upgrade_bot(mob/living/simple_animal/hostile/mining_drone/M, mob/user)
@@ -195,15 +187,16 @@
 	. = ..()
 
 /obj/item/minebot_upgrade/gun_a/uninstall(mob/living/simple_animal/hostile/mining_drone/M, mob/user)
+	. = ..()
 	var/obj/item/gun/energy/kinetic_accelerator/K = M.minebot_gun
-	K.overheat_time = 10
+	K.overheat_time = /obj/item/gun/energy/kinetic_accelerator/minebot.overheat_time
 
 /obj/item/minebot_upgrade/gun_b  //  THE DPS is better than auto-loder, but the lowered fire rate makes it poorer for mining
 	name = "Barometric Field Generator"
 	desc = "Maybe it would be useful for slaying demons? Damage is quadrupled in exchange for a lowered firing rate.\
 	Incompatible with:\
 	Auto-LODEr"
-	upgrade_id = MBU_GUN_B
+	upgrade_id = /obj/item/minebot_upgrade/gun_b
 	incompatible = list(GUN_UPGRADES)  //  Again
 
 /obj/item/minebot_upgrade/gun_b/upgrade_bot(mob/living/simple_animal/hostile/mining_drone/M, mob/user)
@@ -215,11 +208,12 @@
 	. = ..()
 
 /obj/item/minebot_upgrade/gun_b/uninstall(mob/living/simple_animal/hostile/mining_drone/M, mob/user)
+	. = ..()
 	if(!istype(M.minebot_gun, /obj/item/gun/energy/kinetic_accelerator))
 		return
 	var/obj/item/gun/energy/kinetic_accelerator/K = M.minebot_gun
-	K.ammo_type = /obj/item/ammo_casing/kinetic/light
-	K.overheat_time = 10
+	K.ammo_type = /obj/item/gun/energy/kinetic_accelerator/minebot.ammo_type
+	K.overheat_time = /obj/item/gun/energy/kinetic_accelerator/minebot.overheat_time
 
 /obj/item/minebot_upgrade/gun_c  //  Plasmacutter refit.  Obviously doesn't accept PKA upgrades
 	name = "Plasma tool conversion"
@@ -227,16 +221,16 @@
 	Incompatible with:\
 	Auto-LODEr\
 	Barometric Field Generator"
-	upgrade_id = MBU_GUN_C
-	incompatible = list(MBU_GUN_A, MBU_GUN_B)
+	upgrade_id = /obj/item/minebot_upgrade/gun_c
+	incompatible = list(/obj/item/minebot_upgrade/gun_a, /obj/item/minebot_upgrade/gun_b)
 
 /obj/item/minebot_upgrade/gun_c/upgrade_bot(mob/living/simple_animal/hostile/mining_drone/M, mob/user)
-	if(istype(M.minebot_gun, /obj/item/gun/energy/plasmacutter))  //  Can't install a gun we already have, should be caught earlir, but CONSISTENCY and VIGILANCE
+	if(istype(M.minebot_gun, /obj/item/gun/energy/plasmacutter))  //  Can't install a gun we already have, should be caught earlier, but CONSISTENCY and VIGILANCE
 		to_chat(user, "<span class='notice'>The [M] already has a plasma gun.</span>")
 		return
-	for(var/obj/item/minebot_upgrade/U in M.upgrades_list)  //  We have to remove the old gun (and its mods) before we can install a plasmacutter
+	for(var/obj/item/minebot_upgrade/U in M.upgrades_list)  //  We have to remove the old gun (and its mods) before we can install a plasmacutter.  Don't move all this to parent.Install because we need to know that we managed to install the new gun before we can give it a new cell.
 		if(U.is_minebotgun())
-			if(!U.uninstall(M, user))
+			if(U.uninstall(M, user))
 				var/obj/item/gun/energy/plasmacutter/P = new /obj/item/gun/energy/plasmacutter(src)
 				M.minebot_gun = P
 				P.cell = M.cell
@@ -247,7 +241,7 @@
 /obj/item/minebot_upgrade/gun_d  //  Minebots equip one of these during initialisation
 	name = "Kinetic tool conversion"
 	desc = "Reverts the minebot's armament to its original PKA."
-	upgrade_id = MBU_GUN_D
+	upgrade_id = /obj/item/minebot_upgrade/gun_d
 
 /obj/item/minebot_upgrade/gun_d/upgrade_bot(mob/living/simple_animal/hostile/mining_drone/M, mob/user)
 	if(istype(M.minebot_gun, /obj/item/gun/energy/kinetic_accelerator))
@@ -255,7 +249,7 @@
 		return
 	for(var/obj/item/minebot_upgrade/U in M.upgrades_list)
 		if(U.is_minebotgun())
-			if(!U.uninstall(M, user))
+			if(U.uninstall(M, user))
 				var/obj/item/gun/energy/plasmacutter/K = new /obj/item/gun/energy/kinetic_accelerator(src)
 				M.minebot_gun = K
 			else
@@ -263,19 +257,5 @@
 	. = ..()
 
 
-#undef MBU_MELEE
-#undef MBU_HEALTH_A
-#undef MBU_HEALTH_B
-#undef MBU_TRACKS_A
-#undef MBU_TRACKS_B
-#undef MBU_GUN_A
-#undef MBU_GUN_B
-#undef MBU_GUN_C
-#undef MBU_GUN_D
-#undef MBU_MED
-#undef MBU_SIGHT
-#undef MBU_LAMP
-#undef MBU_NAME
-#undef MBU_APC
 #undef GUN_UPGRADES
 #undef GUNTYPES
