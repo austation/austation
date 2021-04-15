@@ -390,13 +390,13 @@
 	return FALSE
 
 /obj/structure/lattice/catwalk/swarmer_act(mob/living/simple_animal/hostile/swarmer/S)
-	. = ..()
 	var/turf/here = get_turf(src)
 	for(var/A in here.contents)
 		var/obj/structure/cable/C = A
 		if(istype(C))
 			to_chat(S, "<span class='warning'>Disrupting the power grid would bring no benefit to us. Aborting.</span>")
 			return FALSE
+	return ..()
 
 /obj/item/deactivated_swarmer/IntegrateAmount()
 	return 50
@@ -462,7 +462,7 @@
 	new /obj/effect/temp_visual/swarmer/disintegration(get_turf(target))
 	do_attack_animation(target)
 	changeNext_move(CLICK_CD_MELEE)
-	target.ex_act(EXPLODE_LIGHT)
+	SSexplosions.low_mov_atom += target
 
 /mob/living/simple_animal/hostile/swarmer/proc/DisperseTarget(mob/living/target)
 	if(target == src)
