@@ -20,7 +20,7 @@
 		"purple",
 		"pink"
 	)
-	color = pick(colorslist)
+	coloring = pick(colorslist)
 	icon_state = coloring
 
 /obj/item/balloon/attack_self(mob/living/carbon/user)
