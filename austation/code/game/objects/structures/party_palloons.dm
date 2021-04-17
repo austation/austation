@@ -23,20 +23,20 @@
 	coloring = pick(colorslist)
 	icon_state = coloring
 
-/obj/item/balloon/attack_self(mob/living/carbon/user)
+/obj/item/balloon/attack_self(mob/living/user)
 	. = ..()
 	var/turf/T = get_turf(user)
-	if(!T)
-		user.show_message("<span class='warning'> There is no room to inflate the baloon.</span>")
-		return
-	user.visible_message("<span class='notice'> [user] begins to inflate the balloon.</span>", "<span class='notice'> You begin to inflate the balloon.</span>", "", "<span class='notice'> You can hear someone blowing up a balloon.</span>", 7)
-	if(!do_mob(user, user, inflate_time))
-		return
 	if(!ishuman(user))
 		return
 	var/mob/living/carbon/human/U = user
 	if(HAS_TRAIT(U, TRAIT_NOBREATH) || !U.getorganslot(ORGAN_SLOT_LUNGS))
-		user.show_message("<span class='warning'> You can not blow up the balloon because you do not breathe!</span>")
+		U.show_message("<span class='warning'> You can not blow up the balloon because you do not breathe!</span>")
+		return
+	if(!T)
+		U.show_message("<span class='warning'> There is no room to inflate the baloon.</span>")
+		return
+	U.visible_message("<span class='notice'> [U] begins to inflate the balloon.</span>", "<span class='notice'> You begin to inflate the balloon.</span>", "", "<span class='notice'> You can hear someone blowing up a balloon.</span>", 7)
+	if(!do_mob(U, U, inflate_time))
 		return
 	U.adjustOxyLoss(20)
 	var/obj/structure/balloon/B = new(T)
