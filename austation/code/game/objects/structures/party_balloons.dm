@@ -9,10 +9,7 @@
 	w_class = WEIGHT_CLASS_TINY
 	var/coloring = "red"
 	var/inflate_time = 20
-
-/obj/item/balloon/Initialize()
-	. = ..()
-	var/list/colorslist = list(
+	var/static/list/colorslist = list(
 		"red",
 		"blue",
 		"green",
@@ -20,18 +17,21 @@
 		"purple",
 		"pink"
 	)
+
+/obj/item/balloon/Initialize()
+	. = ..()
 	coloring = pick(colorslist)
 	icon_state = coloring
 
 /obj/item/balloon/attack_self(mob/living/user)
 	. = ..()
-	var/turf/T = get_turf(user)
-	if(!ishuman(user))
-		return
 	var/mob/living/carbon/human/U = user
+	if(!istype(U))
+		return
 	if(HAS_TRAIT(U, TRAIT_NOBREATH) || !U.getorganslot(ORGAN_SLOT_LUNGS))
 		U.show_message("<span class='warning'> You can not blow up the balloon because you do not breathe!</span>")
 		return
+	var/turf/T = get_turf(U)
 	if(!T)
 		U.show_message("<span class='warning'> There is no room to inflate the balloon.</span>")
 		return
@@ -65,21 +65,23 @@
 
 /obj/structure/balloon/Destroy()
 	. = ..()
-	playsound(user, 'sound/effects/bang.ogg', 100, FALSE)
+	playsound(src, 'sound/effects/bang.ogg', 100, FALSE)
 
 
 /////////////////////  BALLOON DISPENSER  /////////////////////
 
 
 /obj/machinery/food_cart/balloons
-	name = "Balloon Cart"
+	name = "balloon cart"
 	desc = "A mobile cart that dispenses balloons"
 
 /obj/machinery/food_cart/balloons/attack_hand(mob/living/carbon/human/user)
 	. = ..()
-	var/obj/item/balloon/B = new
+	var/turf/T = get_turf(src)
+	if(!T)
+		return
+	var/obj/item/balloon/B = new(T)
 	user.put_in_hands(B)
 
 /obj/machinery/food_cart/balloons/ui_interact(mob/user)
 	return //  No UI for this cart
-
