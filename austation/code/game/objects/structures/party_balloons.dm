@@ -61,8 +61,11 @@
 /obj/structure/balloon/attacked_by(obj/item/I, mob/living/user)
 	. = ..()
 	if(I.sharpness)
-		playsound(user, 'sound/effects/bang.ogg', 100, FALSE)
-		qdel(src)
+		Destroy()
+
+/obj/structure/balloon/Destroy()
+	. = ..()
+	playsound(user, 'sound/effects/bang.ogg', 100, FALSE)
 
 
 /////////////////////  BALLOON DISPENSER  /////////////////////
