@@ -30,11 +30,16 @@
 	var/lastAngle = 0
 	var/lockAngle = FALSE // set to true to prevent the projectile from changing it's angle
 	var/infused = 0 // how much energy is infused with the projectile?
+	var/spin = 0 // spin animation speed, if any
 	var/list/assoc_overlays = list()
 
 	var/momentum = 0
 
 /obj/item/projectile/hvp/proc/launch(_angle, _inaccuracy, atom/firer, barrel_segments)
+	if(barrel_segments)
+		var/turf/T = get_turf_in_angle(Angle, get_turf(firer), barrel_segments)
+		forceMove(T)
+		velocity *= barrel_segments ** 0.175
 	momentum = mass * velocity
 	if(_inaccuracy)
 		_angle += rand(_inaccuracy, -_inaccuracy)
@@ -52,12 +57,9 @@
 		if(1300 to 2000)
 			special |= HVP_SMILEY_FACE
 		else
-			special |= HVP_RECKONING
+			special |= HVP_FRAME_DRAG
 	SSaugury.register_doom(src, momentum)
 	log_game("Coilgun projectile fired in [get_area_name(src, TRUE)] with [momentum] momentum!")
-	if(barrel_segments)
-		var/turf/T = get_turf_in_angle(Angle, get_turf(firer), barrel_segments)
-		forceMove(T)
 	fire(Angle)
 
 /obj/item/projectile/hvp/Topic(href, href_list)
@@ -79,15 +81,17 @@
 	return TRUE
 
 /obj/item/projectile/hvp/Bump(atom/clong)
+	if(momentum < 10)
+		gameover(TRUE)
+		return
+
 	if(special & HVP_STICKY)
 		var/chance = 0
 		if(isturf(clong))
 			chance = 10
 		else if(isobj(clong))
 			chance = 35
-		else if(isliving(clong))
-			chance = 55
-		if(prob(chance))
+		if(prob(chance) || isliving(clong))
 			add_object(clong, TRUE)
 			return
 
@@ -95,9 +99,7 @@
 		var/E = log(momentum)
 		explosion(loc, E, E+1, E+2, E+3, FALSE) // << That's what the V2 is for >>
 		return
-	if(momentum < 10)
-		gameover(TRUE)
-		return
+
 	if(isturf(clong) || isobj(clong))
 		if((special & HVP_BOUNCY) && prob(25))
 			var/n_angle = calc_ricochet(clong)
@@ -156,19 +158,19 @@
 		return prob(chance * 100)
 	return prob(lin_incidence - 0.3) // can't be fucked doing more math, this'll work fine for low speed
 
+// mmmm, bitshifting
 /obj/item/projectile/hvp/proc/penetrate(mob/living/L)
-	var/projdamage = max(momentum / 4, 15)
+	var/projdamage = max(momentum >> 2, 15)
 	if(ishuman(L))
 		var/mob/living/carbon/human/H = L
 		if(special & HVP_SHARP)
-			projdamage *= 2
 			var/obj/item/bodypart/BP = pick(H.bodyparts)
 			if(prob(max(momentum * 0.03, 15)))
 				BP.dismember()
 				if(prob(50))
 					add_object(BP, add_special = FALSE) // Limb skewer!
 		if(special & HVP_BOUNCY) // BOING!
-			projdamage /= 4 // bouncy things don't hurt as much
+			projdamage >>= 2 // bouncy things don't hurt as much
 			H.adjustStaminaLoss(clamp(projdamage, 5, 120))
 			var/throw_dir = angle2dir(Angle)
 			playsound(src, 'sound/vehicles/clowncar_crash2.ogg', 50, 0, 5)
@@ -177,7 +179,7 @@
 			H.throw_at(target, 200, round(2 + log(momentum))) // godspeed o7
 	L.adjustBruteLoss(projdamage)
 	L.visible_message("<span class='danger'>[L] is penetrated by \the [src]!</span>" , "<span class='userdanger'>\The [src] penetrates you!</span>" , "<span class ='danger'>You hear a CLANG!</span>")
-	if(projdamage > 500)
+	if(projdamage > 800 && !(special & HVP_STICKY))
 		L.gib()
 
 /obj/item/projectile/hvp/proc/add_object(atom/movable/AM, rotation = TRUE, pixel_offset = TRUE, add_special = TRUE, add_mass = TRUE)
@@ -207,6 +209,7 @@
 		assoc_overlays[AM] = FA
 	else // if this is the first item added, set it as the base.
 		appearance = AM.appearance
+	update_animations()
 	if(isturf(AM)) // we can't put turfs inside objects ;-;
 		var/turf/T = AM
 		if(iswallturf(T))
@@ -216,6 +219,11 @@
 		T.ScrapeAway(flags = CHANGETURF_INHERIT_AIR)
 		return
 	AM.forceMove(src)
+
+/obj/item/projectile/hvp/proc/update_animations()
+	if(spin)
+		animate(src) // clears any active animations
+		SpinAnimation(spin)
 
 /obj/item/projectile/hvp/proc/remove_object(atom/movable/AM, move_loc)
 	cut_overlay(assoc_overlays[AM], TRUE)
@@ -325,7 +333,8 @@
 
 		if(GLOB.hvp_sticky[I.type])
 			special |= HVP_STICKY
-			SpinAnimation()
+			spin = 1
+			update_animations()
 
 	if(special != original_spec)
 		return TRUE
@@ -386,4 +395,5 @@
 
 /obj/item/projectile/hvp/debug/sticky/New()
 	..()
-	SpinAnimation()
+	spin = 1
+	update_animations()

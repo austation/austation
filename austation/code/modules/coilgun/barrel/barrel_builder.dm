@@ -1,4 +1,4 @@
-// Builds a cosmetic overlay chain from a specified parent object
+// Builds a cosmetic overlay chain from a specified parent object. Similar to beam code but designed to be permanent.
 /datum/barrel_builder
 	var/atom/movable/parent // The object we're going to build the barrel from
 	var/angle = 0
@@ -46,12 +46,11 @@
 				M.Turn(270)
 		bpart.transform = M
 		parent.add_overlay(bpart, TRUE)
-		parts += bpart
 	parent.transform.Translate(po_x, po_y)
 	if(angle)
 		rotate(angle, 0, TRUE)
 
-// null/0 anim_time will just apply the transform
+// null or 0 anim_time will just apply the transform
 /datum/barrel_builder/proc/rotate(_angle, anim_time, initial = FALSE)
 	if(!initial && _angle == angle)
 		return
@@ -64,6 +63,9 @@
 			parent.transform = M
 		angle = _angle
 		return TRUE
+
+/datum/barrel_builder/proc/get_end_piece()
+	return parts[parts.len]
 
 /datum/barrel_builder/proc/reset()
 	parent.cut_overlays()

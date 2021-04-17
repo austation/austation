@@ -96,7 +96,10 @@
 			PJ.launch(current_angle, inaccuracy)
 			qdel(src)
 			return
-		PJ.velocity *= 1.33
+		if(!barrel)
+			playsound(src, 'sound/effects/meteorimpact.ogg', 100, 1)
+			PJ.launch(current_angle, inaccuracy)
+			return
 		PJ.launch(current_angle, inaccuracy, src, barrel_length)
 		playsound(src, 'sound/magic/disable_tech.ogg', 100, 1, 5) // imagine using audacity
 		playsound(src, 'sound/magic/wandodeath.ogg', 50, 1, 2)
@@ -118,9 +121,8 @@
 /obj/effect/barrel
 	anchored = TRUE
 	appearance_flags = KEEP_TOGETHER | PIXEL_SCALE
-	// Parent should not be set as other barrel pieces, but the object you're building off from.
-	// Only the first piece should have a parent
-	var/atom/parent
+	var/atom/parent // the object we're connected to
+	var/break_parent_on_death = TRUE // do we destroy the connected object if we're destroyed?
 
 /obj/effect/barrel/coilgun_barrel
 	name = "coilgun barrel"
@@ -128,12 +130,6 @@
 	icon_state = "barrel_ov"
 
 /obj/effect/barrel/coilgun_barrel/Destroy()
-	if(parent)
+	if(parent && break_parent_on_death)
 		QDEL_NULL(parent)
 	return ..()
-
-/obj/effect/barrel/coilgun_barrel/AltClick(mob/user)
-	if(parent)
-		parent.AltClick(user)
-	else
-		to_chat(user, "<span class ='warning'>You are too far away from the barrel's control panel.</span>")

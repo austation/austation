@@ -360,7 +360,7 @@ GLOBAL_LIST_INIT(fluid_duct_recipes, list(
 		if("pipe_type")
 			var/static/list/recipes
 			if(!recipes)
-				recipes = GLOB.disposal_pipe_recipes + GLOB.atmos_pipe_recipes + GLOB.transit_tube_recipes + GLOB.fluid_duct_recipes
+				recipes = GLOB.disposal_pipe_recipes + GLOB.atmos_pipe_recipes + GLOB.transit_tube_recipes + GLOB.fluid_duct_recipes + GLOB.coilgun_pipe_recipes // austation -- coilguns
 			recipe = recipes[params["category"]][text2num(params["pipe_type"])]
 			p_dir = NORTH
 		if("setdir")
@@ -481,8 +481,8 @@ GLOBAL_LIST_INIT(fluid_duct_recipes, list(
 					return
 
 
-
-			if(COILGUN_CATEGORY) //austation start -- Coilgun building, almost the same as the above. Leaves more room for future expansion
+			//austation start -- Coilgun building, almost the same as the above. Leaves more room for future expansion
+			if(COILGUN_CATEGORY)
 				if(!can_make_pipe)
 					return ..()
 				A = get_turf(A)
@@ -505,8 +505,8 @@ GLOBAL_LIST_INIT(fluid_duct_recipes, list(
 					C.update_icon()
 					if(mode & WRENCH_MODE)
 						C.wrench_act(user, src)
-					return // austation end
-
+					return
+			// austation end
 
 
 
