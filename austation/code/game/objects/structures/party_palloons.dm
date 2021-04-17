@@ -41,6 +41,8 @@
 	U.adjustOxyLoss(20)
 	var/obj/structure/balloon/B = new(T)
 	B.coloring = coloring + "_i"
+	B.icon_state = B.coloring
+
 	qdel(src)
 
 
@@ -55,10 +57,6 @@
 	density = FALSE
 	layer = ABOVE_MOB_LAYER
 	var/coloring
-
-/obj/structure/balloon/Initialize()
-	. = ..()
-	icon_state = coloring
 
 /obj/structure/balloon/attacked_by(obj/item/I, mob/living/user)
 	. = ..()
