@@ -35,7 +35,7 @@
 	if(!T)
 		U.show_message("<span class='warning'> There is no room to inflate the balloon.</span>")
 		return
-	U.visible_message("<span class='notice'> [U] begins to inflate the balloon.</span>", "<span class='notice'> You begin to inflate the balloon.</span>", "", "<span class='notice'> You can hear someone blowing up a balloon.</span>", 7)
+	U.visible_message("<span class='notice'> [U] begins to inflate the balloon.</span>", "<span class='notice'> You begin to inflate the balloon.</span>", "<span class='notice'> You can hear someone blowing up a balloon.</span>", 7)
 	if(!do_mob(U, U, inflate_time))
 		return
 	U.adjustOxyLoss(20)
