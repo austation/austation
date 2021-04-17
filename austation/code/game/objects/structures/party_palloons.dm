@@ -71,6 +71,8 @@
 
 
 /obj/machinery/food_cart/balloons
+	name = "Balloon Cart"
+	desc = "A mobile cart that dispenses balloons"
 
 /obj/machinery/food_cart/balloons/attack_hand(mob/living/carbon/human/user)
 	. = ..()
