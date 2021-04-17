@@ -3,7 +3,7 @@
 
 /obj/item/balloon
 	name = "deflated balloon"
-	desc = "A small, deflated balloon.  You can use it in your hand to inflate it."
+	desc = "A small, deflated balloon. You can use it in your hand to inflate it."
 	icon = 'austation/icons/obj/structures/balloons.dmi'
 	icon_state = "red"
 	w_class = WEIGHT_CLASS_TINY
