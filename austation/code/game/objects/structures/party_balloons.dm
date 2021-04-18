@@ -67,6 +67,51 @@
 	playsound(src, 'sound/effects/bang.ogg', 100, FALSE)
 	. = ..()
 
+/obj/effect/spawner/bundle/balloons/ten
+	name = "balloon bundle-10"
+	icon = 'austation/icons/obj/structures/balloons.dmi'
+	icon_state = "red"
+	items = list(
+		/obj/item/balloon,
+		/obj/item/balloon,
+		/obj/item/balloon,
+		/obj/item/balloon,
+		/obj/item/balloon,
+		/obj/item/balloon,
+		/obj/item/balloon,
+		/obj/item/balloon,
+		/obj/item/balloon,
+		/obj/item/balloon
+	)
+
+/obj/effect/spawner/bundle/balloons/twenty
+	name = "balloon bundle-20"
+	icon = 'austation/icons/obj/structures/balloons.dmi'
+	icon_state = "yellow"
+	items = list(
+		/obj/item/balloon,
+		/obj/item/balloon,
+		/obj/item/balloon,
+		/obj/item/balloon,
+		/obj/item/balloon,
+		/obj/item/balloon,
+		/obj/item/balloon,
+		/obj/item/balloon,
+		/obj/item/balloon,
+		/obj/item/balloon,
+		/obj/item/balloon,
+		/obj/item/balloon,
+		/obj/item/balloon,
+		/obj/item/balloon,
+		/obj/item/balloon,
+		/obj/item/balloon,
+		/obj/item/balloon,
+		/obj/item/balloon,
+		/obj/item/balloon,
+		/obj/item/balloon
+	)
+
+
 
 /////////////////////  BALLOON DISPENSER  /////////////////////
 
