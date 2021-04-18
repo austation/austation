@@ -7,7 +7,6 @@
 	icon = 'austation/icons/obj/structures/balloons.dmi'
 	icon_state = "red"
 	w_class = WEIGHT_CLASS_TINY
-	var/coloring = "red"
 	var/inflate_time = 20
 	var/static/list/colorslist = list(
 		"red",
@@ -20,8 +19,7 @@
 
 /obj/item/balloon/Initialize()
 	. = ..()
-	coloring = pick(colorslist)
-	icon_state = coloring
+	icon_state = pick(colorslist)
 
 /obj/item/balloon/attack_self(mob/living/user)
 	. = ..()
@@ -39,8 +37,7 @@
 		return
 	user.adjustOxyLoss(20)
 	var/obj/structure/balloon/B = new(T)
-	B.coloring = coloring + "_i"
-	B.icon_state = B.coloring
+	B.icon_state = icon_state + "_i"
 
 	qdel(src)
 
@@ -55,7 +52,6 @@
 	icon_state = "red_i"
 	density = FALSE
 	layer = ABOVE_MOB_LAYER
-	var/coloring
 
 
 /obj/structure/balloon/attacked_by(obj/item/I, mob/living/user)
