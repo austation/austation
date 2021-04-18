@@ -1,0 +1,11 @@
+{
+    "map_name": "PartyStation",
+    "map_path": "map_files/Austation",
+    "map_file": "PartyStation.dmm",
+    "shuttles": {
+	    "cargo": "cargo_box",
+	    "ferry": "ferry_fancy",
+	    "whiteship": "whiteship_meta",
+	    "emergency": "emergency_meta"
+    }
+}

@@ -12,6 +12,9 @@ Format:
 	disabled (disables the map)
 endmap
 
+map partystation
+	default
+
 map boxstation
 	maxplayers 60
 	votable
@@ -53,7 +56,6 @@ map kilostation
 endmap
 
 map austation
-    default
     votable
 endmap
 
