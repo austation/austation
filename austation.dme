@@ -25,6 +25,7 @@
 // END_BEESTATION_INCLUDE
 
 // BEGIN_INCLUDE
+#include "austation\code\__DEFINES\vv.dm"
 #include "austation\code\__HELPERS\matrices.dm"
 #include "austation\code\__HELPERS\roundend.dm"
 #include "austation\code\_globalvars\misc.dm"
@@ -34,8 +35,10 @@
 #include "austation\code\controllers\configuration\entries\general.dm"
 #include "austation\code\controllers\subsystem\autosandbox.dm"
 #include "austation\code\controllers\subsystem\job.dm"
+#include "austation\code\controllers\subsystem\persistence.dm"
 #include "austation\code\datums\ai_laws.dm"
 #include "austation\code\datums\emotes.dm"
+#include "austation\code\datums\outfit.dm"
 #include "austation\code\datums\brain_damage\imaginary_friend.dm"
 #include "austation\code\datums\components\spikes.dm"
 #include "austation\code\datums\components\crafting\crafting.dm"
@@ -102,6 +105,8 @@
 #include "austation\code\game\turfs\open\space\space.dm"
 #include "austation\code\modules\admin\admin_verbs.dm"
 #include "austation\code\modules\admin\chat_commands.dm"
+#include "austation\code\modules\admin\outfit_editor.dm"
+#include "austation\code\modules\admin\outfit_manager.dm"
 #include "austation\code\modules\admin\topic.dm"
 #include "austation\code\modules\admin\verbs\fix_air.dm"
 #include "austation\code\modules\admin\verbs\kill_rads.dm"
@@ -170,6 +175,7 @@
 #include "austation\code\modules\mob\living\carbon\emote.dm"
 #include "austation\code\modules\mob\living\carbon\examine.dm"
 #include "austation\code\modules\mob\living\carbon\inventory.dm"
+#include "austation\code\modules\mob\living\carbon\human\dummy.dm"
 #include "austation\code\modules\mob\living\carbon\human\emote.dm"
 #include "austation\code\modules\mob\living\carbon\human\examine.dm"
 #include "austation\code\modules\mob\living\carbon\human\human_defines.dm"

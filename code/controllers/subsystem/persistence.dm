@@ -21,6 +21,7 @@ SUBSYSTEM_DEF(persistence)
 	LoadTrophies()
 	LoadRecentModes()
 	LoadPhotoPersistence()
+	load_custom_outfits() //austation -- tgui outfit manager
 	if(CONFIG_GET(flag/use_antag_rep))
 		LoadAntagReputation()
 	return ..()
@@ -144,6 +145,7 @@ SUBSYSTEM_DEF(persistence)
 	CollectTrophies()
 	CollectRoundtype()
 	SavePhotoPersistence()						//THIS IS PERSISTENCE, NOT THE LOGGING PORTION.
+	save_custom_outfits() //austation -- tgui outfit manager
 	if(CONFIG_GET(flag/use_antag_rep))
 		CollectAntagReputation()
 

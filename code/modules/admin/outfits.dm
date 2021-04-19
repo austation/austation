@@ -1,5 +1,6 @@
 GLOBAL_LIST_EMPTY(custom_outfits) //Admin created outfits
 
+/* austation begin -- tgui outfits
 /client/proc/outfit_manager()
 	set category = "Debug"
 	set name = "Outfit Manager"
@@ -20,16 +21,21 @@ GLOBAL_LIST_EMPTY(custom_outfits) //Admin created outfits
 	dat += "<a href='?_src_=holder;[HrefToken()];create_outfit_menu=1'>Create</a><br>"
 	dat += "<a href='?_src_=holder;[HrefToken()];load_outfit=1'>Load from file</a>"
 	admin << browse(dat.Join(),"window=outfitmanager")
+austation end*/
 
 /datum/admins/proc/save_outfit(mob/admin,datum/outfit/O)
 	O.save_to_file(admin)
-	outfit_manager(admin)
+	//outfit_manager(admin) //austation -- tgui outfits
+	SStgui.update_user_uis(admin)
 
 /datum/admins/proc/delete_outfit(mob/admin,datum/outfit/O)
 	GLOB.custom_outfits -= O
 	qdel(O)
+	//austation begin -- tgui outfits
+	//outfit_manager(admin)
 	to_chat(admin,"<span class='notice'>Outfit deleted.</span>")
-	outfit_manager(admin)
+	SStgui.update_user_uis(admin)
+	//austation end
 
 /datum/admins/proc/load_outfit(mob/admin)
 	var/outfit_file = input("Pick outfit json file:", "File") as null|file
@@ -49,8 +55,10 @@ GLOBAL_LIST_EMPTY(custom_outfits) //Admin created outfits
 		to_chat(admin,"<span class='warning'>Malformed/Outdated file.</span>")
 		return
 	GLOB.custom_outfits += O
-	outfit_manager(admin)
-
+//austation begin -- tgui outfits
+	//outfit_manager(admin)
+	SStgui.update_user_uis(admin)
+/*
 /datum/admins/proc/create_outfit(mob/admin)
 	var/list/uniforms = typesof(/obj/item/clothing/under)
 	var/list/suits = typesof(/obj/item/clothing/suit)
@@ -241,3 +249,5 @@ GLOBAL_LIST_EMPTY(custom_outfits) //Admin created outfits
 
 	GLOB.custom_outfits.Add(O)
 	message_admins("[key_name(usr)] created \"[O.name]\" outfit!")
+*/
+//austation end

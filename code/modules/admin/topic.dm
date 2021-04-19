@@ -1775,7 +1775,7 @@
 			log_admin("[key_name(usr)] has kicked [afkonly ? "all AFK" : "all"] clients from the lobby. [length(listkicked)] clients kicked: [strkicked ? strkicked : "--"]")
 		else
 			to_chat(usr, "You may only use this when the game is running.")
-
+	/* austation begin -- tgui outfits
 	else if(href_list["create_outfit_finalize"])
 		if(!check_rights(R_ADMIN))
 			return
@@ -1798,6 +1798,7 @@
 			return
 		var/datum/outfit/O = locate(href_list["chosen_outfit"]) in GLOB.custom_outfits
 		save_outfit(usr,O)
+	austation end*/
 	else if(href_list["set_selfdestruct_code"])
 		if(!check_rights(R_ADMIN))
 			return
