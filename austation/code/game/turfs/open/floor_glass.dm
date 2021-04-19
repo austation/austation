@@ -173,7 +173,7 @@
 		if(O.level == 1)
 			O.hide(FALSE) // ALWAYS show subfloor stuff.
 
-turf/open/floor/glass/bullet_act(obj/item/projectile/P)
+/turf/open/floor/glass/bullet_act(obj/item/projectile/P)
 	. = ..()
 	playsound(src, P.hitsound, 50, 1)
 	visible_message("<span class='danger'>[src] is hit by \a [P]!</span>", null, null, COMBAT_MESSAGE_RANGE)
