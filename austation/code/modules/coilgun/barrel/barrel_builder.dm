@@ -1,6 +1,6 @@
 // Builds a cosmetic overlay chain from a specified parent object. Similar to beam code but designed to be permanent.
 /datum/barrel_builder
-	var/atom/movable/parent // The object we're going to build the barrel from
+	var/atom/parent // The object we're going to build the barrel from
 	var/angle = 0
 	var/length
 	var/increment = 32

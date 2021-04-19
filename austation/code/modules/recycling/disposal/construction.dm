@@ -6,6 +6,7 @@
 	icon = 'austation/icons/obj/atmospherics/pipes/disposal.dmi'
 	var/scale = 1
 
+/// The size deconstructed pipes are scaled to, should always be less than 1
 #define DECON_SCALE 0.9
 /obj/structure/disposalconstruct/coilgun/update_icon()
 	var/old_scale = scale
@@ -14,7 +15,9 @@
 	else
 		scale = DECON_SCALE
 	if(scale != old_scale)
-		transform = transform.Scale(scale, scale) // when you sprite it
+		transform = transform.Scale(scale, scale)
+
+#undef DECON_SCALE
 
 /obj/structure/disposalconstruct/coilgun/is_pipe()
 	return ispath(pipe_type, /obj/structure/disposalpipe/coilgun)
