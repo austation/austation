@@ -16,7 +16,10 @@
 
 /mob/living/silicon/ai/proc/show_camera_list()
 	var/list/cameras = get_camera_list()
-	var/camera = input(src, "Choose which camera you want to view", "Cameras") as null|anything in cameras
+	//austation begin -- tgui lists
+	//var/camera = input(src, "Choose which camera you want to view", "Cameras") as null|anything in cameras
+	var/camera = tgui_input_list(src, "Choose which camera you want to view", "Cameras", cameras)
+	//austation end
 	switchCamera(cameras[camera])
 
 /datum/trackable

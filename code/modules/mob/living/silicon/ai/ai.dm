@@ -647,7 +647,10 @@
 			for(var/i in C.network)
 				cameralist[i] = i
 	var/old_network = network
-	network = input(U, "Which network would you like to view?") as null|anything in sortList(cameralist)
+	//austation begin -- tgui list
+	//network = input(U, "Which network would you like to view?") as null|anything in sortList(cameralist)
+	network = tgui_input_list(U, "Which network would you like to view?", "Jump To Network", sortList(cameralist))
+	//austation end
 
 	if(!U.eyeobj)
 		U.view_core()
@@ -711,7 +714,10 @@
 				personnel_list["[t.fields["name"]]: [t.fields["rank"]]"] = t.fields["image"]//Pull names, rank, and image.
 
 			if(personnel_list.len)
-				input = input("Select a crew member:") as null|anything in sortList(personnel_list)
+				//austation begin -- tgui list
+				//input = input("Select a crew member:") as null|anything in sortList(personnel_list)
+				input = tgui_input_list(usr, "Select a crew member:", "Change Hologram", personnel_list)
+				//austation end
 				var/icon/character_icon = personnel_list[input]
 				if(character_icon)
 					qdel(holo_icon)//Clear old icon so we're not storing it in memory.

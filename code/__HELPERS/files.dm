@@ -10,8 +10,10 @@
 		var/list/choices = flist(path)
 		if(path != root)
 			choices.Insert(1,"/")
-
-		var/choice = input(src,"Choose a file to access:","Download",null) as null|anything in sortList(choices)
+		//austation begin -- tgui lists
+		//var/choice = input(src,"Choose a file to access:","Download",null) as null|anything in sortList(choices)
+		var/choice = tgui_input_list(src,"Choose a file to access:","Download",sortList(choices))
+		//austation end
 		switch(choice)
 			if(null)
 				return

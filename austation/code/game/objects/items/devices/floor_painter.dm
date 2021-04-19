@@ -82,7 +82,7 @@
 		return
 
 	if(href_list["choose_state"])
-		var/state = input("Please select a style", "[src]") as null|anything in allowed_states
+		var/state = tgui_input_list(usr, "Please select a style", "[src]", allowed_states)
 		if(state)
 			floor_state = state
 			floor_dir = SOUTH // Reset dir, because some icon_states might not have that dir.

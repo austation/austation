@@ -1175,7 +1175,10 @@ proc/pick_closest_path(value, list/matches = get_fancy_list_of_atom_types())
 	if(matches.len==1)
 		chosen = matches[1]
 	else
-		chosen = input("Select a type", "Pick Type", matches[1]) as null|anything in sortList(matches)
+		//austation begin -- tgui lists
+		//chosen = input("Select a type", "Pick Type", matches[1]) as null|anything in sortList(matches)
+		chosen = tgui_input_list(usr, "Select a type", "Pick Type", sortList(matches))
+		//austation end
 		if(!chosen)
 			return
 	chosen = matches[chosen]
