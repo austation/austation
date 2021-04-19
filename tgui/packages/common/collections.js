@@ -171,6 +171,8 @@ export const sortBy = (...iterateeFns) => array => {
   return mappedArray;
 };
 
+export const sort = sortBy();
+
 /**
  * A fast implementation of reduce.
  */
@@ -235,6 +237,7 @@ export const uniqBy = iterateeFn => array => {
   return result;
 };
 
+export const uniq = uniqBy();
 /**
  * Creates an array of grouped elements, the first of which contains
  * the first elements of the given arrays, the second of which contains

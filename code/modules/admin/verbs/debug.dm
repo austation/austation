@@ -486,7 +486,7 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 	set category = "Mapping"
 	set name = "Test Areas (ALL)"
 	cmd_admin_areatest(FALSE)
-
+/* austation begin -- tgui outfits
 /client/proc/cmd_admin_dress(mob/M in GLOB.mob_list)
 	set category = "Fun"
 	set name = "Select equipment"
@@ -519,7 +519,7 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 
 	log_admin("[key_name(usr)] changed the equipment of [key_name(H)] to [dresscode].")
 	message_admins("<span class='adminnotice'>[key_name_admin(usr)] changed the equipment of [ADMIN_LOOKUPFLW(H)] to [dresscode].</span>")
-
+austation end*/
 /client/proc/robust_dress_shop()
 	var/list/outfits = list("Naked","Custom","As Job...")
 	var/list/paths = subtypesof(/datum/outfit) - typesof(/datum/outfit/job)
