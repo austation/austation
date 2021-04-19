@@ -10,7 +10,7 @@
 	item_chair = null
 	buildstacktype = /obj/item/stack/sheet/animalhide/human
 
-obj/structure/table/human
+/obj/structure/table/human
 	name = "Human leather table"
 	desc = "Now you can hold up your war crimes on this war crime."
 	icon = 'austation/icons/obj/tables.dmi'
