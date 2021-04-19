@@ -53,7 +53,7 @@
 		expel(H, get_turf(src), 0)
 	return ..()
 
-obj/structure/disposalpipe/loafer/emag_act(mob/user)
+/obj/structure/disposalpipe/loafer/emag_act(mob/user)
 	if(obj_flags & EMAGGED)
 		return
 	obj_flags |= EMAGGED

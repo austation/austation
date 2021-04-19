@@ -163,7 +163,7 @@
 	new /obj/item/stack/rods(get_turf(src))
 	..()
 
-obj/item/projectile/rod/proc/Impale(mob/living/carbon/human/H)
+/obj/item/projectile/rod/proc/Impale(mob/living/carbon/human/H)
 	if (H)
 		var/hit_zone = H.check_limb_hit(def_zone)
 		var/obj/item/bodypart/BP = H.get_bodypart(hit_zone)

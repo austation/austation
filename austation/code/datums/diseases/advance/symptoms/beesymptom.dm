@@ -1,4 +1,4 @@
-datum/symptom/beesease
+/datum/symptom/beesease
 	transmittable = 2
 	level = 9
 	severity = 3
