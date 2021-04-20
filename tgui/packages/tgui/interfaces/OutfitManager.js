@@ -34,7 +34,7 @@ export const OutfitManager = (props, context) => {
                 onClick={() => act("new")} />
             </>
           }>
-          <Flex vertical>
+          <Flex wrap="wrap" spacing={1} align="end" direction="column">
             {outfits?.map(outfit => (
               <Flex.Item key={outfit.ref}>
                 <Flex>

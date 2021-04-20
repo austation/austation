@@ -67,12 +67,12 @@ export const SelectEquipment = (props, context) => {
       width={650}
       height={415}>
       <Window.Content>
-        <Flex fill>
+        <Flex fill={1}>
           <Flex.Item>
-            <Flex fill vertical>
+            <Flex fill={1} direction="column">
               <Flex.Item>
                 <Input
-                  fluid
+                  fluid={1}
                   autoFocus
                   placeholder="Search"
                   value={searchText}
@@ -89,7 +89,7 @@ export const SelectEquipment = (props, context) => {
             </Flex>
           </Flex.Item>
           <Flex.Item grow={1} basis={0}>
-            <Flex fill vertical>
+            <Flex fill={1} direction="column">
               <Flex.Item>
                 <Section>
                   <CurrentlySelectedDisplay entry={currentOutfitEntry} />
@@ -97,7 +97,7 @@ export const SelectEquipment = (props, context) => {
               </Flex.Item>
               <Flex.Item grow={1}>
                 <Section
-                  fill
+                  fill={1}
                   title={name}
                   textAlign="center">
                   <Box
