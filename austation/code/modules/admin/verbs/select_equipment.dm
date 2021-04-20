@@ -61,6 +61,7 @@
 	qdel(src)
 
 /datum/select_equipment/proc/init_dummy()
+	dummy_key = "selectequipmentUI_[target_mob]"
 	generate_dummy_lookalike(dummy_key, target_mob)
 	unset_busy_human_dummy(dummy_key)
 	return

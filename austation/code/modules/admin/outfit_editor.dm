@@ -36,6 +36,7 @@
 	qdel(src)
 
 /datum/outfit_editor/proc/init_dummy()
+	dummy_key = "outfit_editor_[owner]"
 	generate_dummy_lookalike(dummy_key, owner.mob)
 	unset_busy_human_dummy(dummy_key)
 

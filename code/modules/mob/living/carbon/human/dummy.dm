@@ -37,6 +37,10 @@ GLOBAL_LIST_EMPTY(dummy_mob_list)
 		D = new
 		GLOB.human_dummy_list[slotkey] = D
 		GLOB.dummy_mob_list += D
+	//austation begin -- tgui clothes
+	else
+		D.regenerate_icons()
+	//austation end
 	D.in_use = TRUE
 	return D
 
