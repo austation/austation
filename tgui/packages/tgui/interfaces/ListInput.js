@@ -62,8 +62,6 @@ export const ListInput = (props, context) => {
                 e.preventDefault();
                 acquireHotKey(KEY_DOWN);
                 acquireHotKey(KEY_UP);
-                acquireHotKey(KEY_ENTER);
-                acquireHotKey(KEY_SPACE);
                 if (lastScrollTime > performance.now()) {
                   return;
                 }
