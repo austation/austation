@@ -157,6 +157,7 @@
 		to_chat(user, "<span class='notice'>You set \the [src]'s power setting to charge.</span>")
 		START_PROCESSING(SSmachines, src)
 	log_game("Capacitor turned [processing ? "OFF" : "ON"] by [key_name(user)] in [AREACOORD(src)]")
+	playsound(src, 'sound/machines/click.ogg', 20, TRUE)
 
 /obj/machinery/power/capacitor/proc/check_use()
 	return (!(stat & BROKEN) && anchored)
@@ -164,7 +165,7 @@
 /obj/machinery/power/capacitor/process()
 	if(charge >= capacity || !powernet || !check_use())
 		return
-	var/input = clamp(surplus() / 2, 0, CAPACITOR_RECHARGE)
+	var/input = clamp(surplus() / 10, 0, CAPACITOR_RECHARGE)
 	if(input)
 		charge = min(input + charge, capacity)
 		add_load(input)
