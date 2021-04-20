@@ -1,4 +1,0 @@
-author: "AustationBot"
-delete-after: True
-changes: 
-  - bugfix: "The quick control buttons were removed from the insides of all cryopods as per SpaceOSHA request."
