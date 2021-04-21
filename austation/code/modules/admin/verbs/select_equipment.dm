@@ -109,7 +109,7 @@
 	if(!dummy_key)
 		init_dummy()
 
-	var/icon/dummysprite = get_flat_human_icon(null,
+	var/icon/dummysprite = get_flat_and_still_human_icon(null,
 		dummy_key = dummy_key,
 		outfit_override = selected_outfit)
 	data["icon64"] = icon2base64(dummysprite)

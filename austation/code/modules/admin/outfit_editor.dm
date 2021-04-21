@@ -55,7 +55,7 @@
 			"name" = initial(item.name),
 			"desc" = initial(item.desc),
 			// at this point initializing the item is probably faster tbh
-			"sprite" = icon2base64(icon(initial(item.icon), initial(item.icon_state))),
+			"sprite" = icon2base64(icon = icon(initial(item.icon), icon_state = initial(item.icon_state), frame = 1, moving = FALSE)),
 		)
 
 	return data
@@ -75,7 +75,7 @@
 
 	if(!dummy_key)
 		init_dummy()
-	var/icon/dummysprite = get_flat_human_icon(null,
+	var/icon/dummysprite = get_flat_and_still_human_icon(null,
 		dummy_key = dummy_key,
 		showDirs = list(SOUTH),
 		outfit_override = drip)
@@ -83,6 +83,31 @@
 
 	return data
 
+//For creating consistent icons for human looking simple animals, also removes animations, tsk tsk shameless copy
+/proc/get_flat_and_still_human_icon(icon_id, datum/job/J, datum/preferences/prefs, dummy_key, showDirs = GLOB.cardinals, outfit_override = null)
+	var/static/list/humanoid_icon_cache = list()
+	if(!icon_id || !humanoid_icon_cache[icon_id])
+		var/mob/living/carbon/human/dummy/body = generate_or_wait_for_human_dummy(dummy_key)
+
+		if(prefs)
+			prefs.copy_to(body,TRUE,FALSE)
+		if(J)
+			J.equip(body, TRUE, FALSE, outfit_override = outfit_override)
+		else if (outfit_override)
+			body.equipOutfit(outfit_override,visualsOnly = TRUE)
+
+
+		var/icon/out_icon = icon('icons/effects/effects.dmi', "nothing")
+		COMPILE_OVERLAYS(body)
+		for(var/D in showDirs)
+			var/icon/partial = getFlatIcon(body, defdir=D)
+			out_icon.Insert(partial,dir=D, frame = 1, moving = FALSE)
+
+		humanoid_icon_cache[icon_id] = out_icon
+		dummy_key? unset_busy_human_dummy(dummy_key) : qdel(body)
+		return out_icon
+	else
+		return humanoid_icon_cache[icon_id]
 
 /datum/outfit_editor/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	if(..())
@@ -190,7 +215,7 @@
 			choose_any_item(slot)
 
 	if(length(options))
-		set_item(slot, tgui_input_list(owner, "Choose an item", OUTFIT_EDITOR_NAME, options))
+		set_item(slot, input(owner, "Choose an item", OUTFIT_EDITOR_NAME)as null|anything in options)
 
 
 #undef OUTFIT_EDITOR_NAME

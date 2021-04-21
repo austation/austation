@@ -65,7 +65,7 @@ export const SelectEquipment = (props, context) => {
   return (
     <Window
       width={650}
-      height={415}>
+      height={420}>
       <Window.Content>
         <Flex fill={1}>
           <Flex.Item>
@@ -81,21 +81,21 @@ export const SelectEquipment = (props, context) => {
               <Flex.Item>
                 <DisplayTabs categories={categories} />
               </Flex.Item>
-              <Flex.Item mt={0} grow={1} basis={0}>
+              <Flex.Item mt={0} grow={1} basis="27em">
                 <OutfitDisplay
                   entries={visibleOutfits}
                   currentTab={tab} />
               </Flex.Item>
             </Flex>
           </Flex.Item>
-          <Flex.Item grow={1} basis={0}>
+          <Flex.Item grow={1}>
             <Flex fill={1} direction="column">
               <Flex.Item>
                 <Section>
                   <CurrentlySelectedDisplay entry={currentOutfitEntry} />
                 </Section>
               </Flex.Item>
-              <Flex.Item grow={1}>
+              <Flex.Item grow={1} basis={0}>
                 <Section
                   fill={1}
                   title={name}
@@ -104,7 +104,8 @@ export const SelectEquipment = (props, context) => {
                     as="img"
                     m={0}
                     src={`data:image/jpeg;base64,${icon64}`}
-                    height="100%"
+                    height="23em"
+                    width="23em"
                     style={{
                       '-ms-interpolation-mode': 'nearest-neighbor',
                     }} />
@@ -184,7 +185,7 @@ const CurrentlySelectedDisplay = (props, context) => {
             })} />
         </Flex.Item>
       )}
-      <Flex.Item grow={1} basis={0}>
+      <Flex.Item grow={1}>
         <Box color="label">
           Currently selected:
         </Box>
