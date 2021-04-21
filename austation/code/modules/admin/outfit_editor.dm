@@ -215,7 +215,7 @@
 			choose_any_item(slot)
 
 	if(length(options))
-		set_item(slot, input(owner, "Choose an item", OUTFIT_EDITOR_NAME)as null|anything in options)
+		set_item(slot, tgui_input_list(owner, "Choose an item", OUTFIT_EDITOR_NAME, options))
 
 
 #undef OUTFIT_EDITOR_NAME
