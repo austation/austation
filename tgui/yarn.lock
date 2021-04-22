@@ -1978,16 +1978,16 @@ __metadata:
   linkType: hard
 
 "chalk@npm:^4.0.0, chalk@npm:^4.1.0":
-  version: 4.1.0
-  resolution: "chalk@npm:4.1.0"
+  version: 4.1.1
+  resolution: "chalk@npm:4.1.1"
   dependencies:
     ansi-styles: ^4.1.0
     supports-color: ^7.1.0
-  checksum: f860285b419f9e925c2db0f45ffa88aa8794c14b80cc5d01ff30930bcfc384996606362706f0829cf557f6d36152a5fb2d227ad63c4bc90e2ec9e9dbed4a3c07
+  checksum: 445c12db7aeed0046500a1e4184d31209a77d165654c885a789c41c8598a6a95bd2392180987cac572c967b93a2a730dda778bb7f87fa06ca63fd8592f8cc59f
   languageName: node
   linkType: hard
 
-"chokidar@npm:>=3.0.0 <4.0.0":
+"chokidar@npm:>=2.0.0 <4.0.0":
   version: 3.5.1
   resolution: "chokidar@npm:3.5.1"
   dependencies:
@@ -2519,9 +2519,9 @@ __metadata:
   linkType: hard
 
 "electron-to-chromium@npm:^1.3.712":
-  version: 1.3.717
-  resolution: "electron-to-chromium@npm:1.3.717"
-  checksum: 4ca745fa475cf2aef6877d31ad97a3adada13f04723a84f5954971052921dea5819c0cf0df9f2b7114521b8740ebfbe9b4e6ec86f995b056645f6267a8a4d42a
+  version: 1.3.719
+  resolution: "electron-to-chromium@npm:1.3.719"
+  checksum: bde0bd8a91c98830454f3c6715e109c1d2e3eca5eff93aa5eaa26d8efd9d674b207f39a269130a48e7bcb2c66fc732d8b46182bbd6286d35e4c3c8bc404b68f0
   languageName: node
   linkType: hard
 
@@ -5154,20 +5154,17 @@ resolve@^2.0.0-next.3:
   languageName: node
   linkType: hard
 
-"sass-loader@npm:^10.1.1":
-  version: 10.1.1
-  resolution: "sass-loader@npm:10.1.1"
+"sass-loader@npm:^11.0.1":
+  version: 11.0.1
+  resolution: "sass-loader@npm:11.0.1"
   dependencies:
     klona: ^2.0.4
-    loader-utils: ^2.0.0
     neo-async: ^2.6.2
-    schema-utils: ^3.0.0
-    semver: ^7.3.2
   peerDependencies:
     fibers: ">= 3.1.0"
     node-sass: ^4.0.0 || ^5.0.0
     sass: ^1.3.0
-    webpack: ^4.36.0 || ^5.0.0
+    webpack: ^5.0.0
   peerDependenciesMeta:
     fibers:
       optional: true
@@ -5175,18 +5172,18 @@ resolve@^2.0.0-next.3:
       optional: true
     sass:
       optional: true
-  checksum: 725245f0259453fcc51c4a1012c484dda1340ebb10b9c461e2b3b4408105f5426ad5613282ad0861c1f32744533d8a584450b11daf42aa1237b04287f01223d4
+  checksum: fdd50c6c65b4c912564e799a1a21a235ece179531ddf705ebd4b2671990118ee768da73b60ac7fe5089e9e2d1d0a2ede9b87da2c153a8d1147c2144e605093de
   languageName: node
   linkType: hard
 
-"sass@npm:^1.32.4":
-  version: 1.32.11
-  resolution: "sass@npm:1.32.11"
+"sass@npm:^1.32.8":
+  version: 1.32.8
+  resolution: "sass@npm:1.32.8"
   dependencies:
-    chokidar: ">=3.0.0 <4.0.0"
+    chokidar: ">=2.0.0 <4.0.0"
   bin:
     sass: sass.js
-  checksum: a56ca780febc1f4c5c015f2fbd5dacd780297371456197424bce7e48d54cef8ae564fb8927076ef61e6fcd34f69556d0a3dd8e157ff06081729066ad595e97bf
+  checksum: d319b3d7459451b6532b492984e3cbb37381e6c6379622f668900b196c0d545f5a2c32819cf02b5405fb2ef79720fe1f8f16b7614a2fef3fb7af8dfec83a6597
   languageName: node
   linkType: hard
 
@@ -5237,7 +5234,7 @@ resolve@^2.0.0-next.3:
   languageName: node
   linkType: hard
 
-"semver@npm:^7.2.1, semver@npm:^7.3.2, semver@npm:^7.3.5":
+"semver@npm:^7.2.1, semver@npm:^7.3.5":
   version: 7.3.5
   resolution: "semver@npm:7.3.5"
   dependencies:
@@ -5755,8 +5752,8 @@ resolve@^2.0.0-next.3:
     file-loader: ^6.2.0
     inferno: ^7.4.7
     mini-css-extract-plugin: ^1.3.4
-    sass: ^1.32.4
-    sass-loader: ^10.1.1
+    sass: ^1.32.8
+    sass-loader: ^11.0.1
     style-loader: ^2.0.0
     terser-webpack-plugin: ^5.1.1
     url-loader: ^4.1.1
@@ -6076,8 +6073,8 @@ resolve@^2.0.0-next.3:
   linkType: hard
 
 "webpack@npm:^5.15.0":
-  version: 5.34.0
-  resolution: "webpack@npm:5.34.0"
+  version: 5.35.0
+  resolution: "webpack@npm:5.35.0"
   dependencies:
     "@types/eslint-scope": ^3.7.0
     "@types/estree": ^0.0.47
@@ -6107,7 +6104,7 @@ resolve@^2.0.0-next.3:
       optional: true
   bin:
     webpack: bin/webpack.js
-  checksum: ce93de995d8d348a7a6f97fa2fabfd7d14718bc6163c4b17b758e92aba9fb908fc4e1d7a290c2482a7aa1445d68376bc51c58bc002e5daf4fc122b76dd5d2145
+  checksum: 4a86e3435e51846d80a552e64596b7cb6c8f316841fa1a0224071250562fc965f333571334222b00b1f7d7c0c48dc4559e39e146a51d842bab88185b72de09b2
   languageName: node
   linkType: hard
 

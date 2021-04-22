@@ -154,12 +154,6 @@ module.exports = (env = {}, argv) => {
 
   // Development server specific options
   if (argv.devServer) {
-    config.plugins = [
-      ...config.plugins,
-      new BuildNotifierPlugin({
-        suppressSuccess: true,
-      }),
-    ];
     config.devServer = {
       progress: false,
       quiet: false,
