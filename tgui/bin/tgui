@@ -150,7 +150,7 @@ fi
 if [[ ${1} == "--ci" ]]; then
   task-clean
   task-install
-  task-eslint
+  task-lint "${@}"
   task-webpack --mode=production
   task-validate-build
   exit 0
@@ -159,7 +159,7 @@ fi
 if [[ ${1} == "--action" ]]; then
   task-clean
   task-install
-  task-eslint
+  task-lint "${@}"
   task-webpack --mode=production
   exit 0
 fi
