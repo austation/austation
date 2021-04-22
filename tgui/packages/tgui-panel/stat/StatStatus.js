@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'common/redux';
-import { Button, Flex, Box, Section } from 'tgui/components';
+import { Button, Stack, Box, Section } from 'tgui/components';
 import { selectStatPanel } from './selectors';
 import { StatText } from './StatText';
 
@@ -15,13 +15,13 @@ export const StatStatus = (props, context) => {
     }
   }
   return (
-    <Flex direction="column">
+    <Stack fill vertical>
       {stat.dead_popup
         ?(
-          <Flex.Item mt={1} mb={1}>
-            <Flex direction="column">
+          <Stack.Item mt={1} mb={1}>
+            <Stack vertical>
               <div className="StatBorder_observer">
-                <Flex.Item>
+                <Stack.Item>
                   <Box
                     className="deadsay">
                     <Button
@@ -32,28 +32,28 @@ export const StatStatus = (props, context) => {
                       })} />
                     You are <b>dead</b>!
                   </Box>
-                </Flex.Item>
-                <Flex.Item mt={2}>
+                </Stack.Item>
+                <Stack.Item mt={2}>
                   <Box
                     className="deadsay">
                     Don&#39;t worry, you can still get back into the game
                     if your body is revived or through ghost roles.
                   </Box>
-                </Flex.Item>
+                </Stack.Item>
               </div>
-            </Flex>
-          </Flex.Item>
+            </Stack>
+          </Stack.Item>
         )
         :null}
       {stat.alert_popup
         ?(
-          <Flex.Item mt={1} mb={1}>
+          <Stack.Item mt={1} mb={1}>
             <div className="StatBorder_infomation">
               <Box>
-                <Flex
-                  direction="column"
+                <Stack
+                  vertical
                   className="stat_infomation">
-                  <Flex.Item bold>
+                  <Stack.Item bold>
                     <Button
                       color="transparent"
                       icon="times"
@@ -63,25 +63,25 @@ export const StatStatus = (props, context) => {
                     <Box inline>
                       {stat.alert_popup.title}
                     </Box>
-                  </Flex.Item>
-                  <Flex.Item mt={2}>
+                  </Stack.Item>
+                  <Stack.Item mt={2}>
                     {stat.alert_popup.text}
-                  </Flex.Item>
-                </Flex>
+                  </Stack.Item>
+                </Stack>
               </Box>
             </div>
-          </Flex.Item>
+          </Stack.Item>
         )
         :null}
       {stat.antagonist_popup
         ?(
-          <Flex.Item mt={1} mb={1}>
+          <Stack.Item mt={1} mb={1}>
             <div className="StatBorder_antagonist">
               <Box>
-                <Flex
-                  direction="column"
+                <Stack
+                  vertical
                   className="stat_antagonist">
-                  <Flex.Item bold>
+                  <Stack.Item bold>
                     <Button
                       color="transparent"
                       icon="times"
@@ -91,18 +91,18 @@ export const StatStatus = (props, context) => {
                     <Box inline>
                       {stat.antagonist_popup.title}
                     </Box>
-                  </Flex.Item>
-                  <Flex.Item mt={2}>
+                  </Stack.Item>
+                  <Stack.Item mt={2}>
                     {stat.antagonist_popup.text}
-                  </Flex.Item>
-                </Flex>
+                  </Stack.Item>
+                </Stack>
               </Box>
             </div>
-          </Flex.Item>
+          </Stack.Item>
         )
         :null}
       <StatText />
-    </Flex>
+    </Stack>
   );
 };
 

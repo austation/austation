@@ -44,6 +44,12 @@ export const SettingsPanel = (props, context) => {
         {activeTab === 'chatPage' && (
           <ChatPageSettings />
         )}
+        {activeTab === 'highlightPage' && (
+          <SettingsHighlight />
+        )}
+        {activeTab === 'statPanelpage' && (
+          <SettingsStat />
+        )}
       </Stack.Item>
     </Stack>
   );
@@ -61,6 +67,10 @@ export const SettingsGeneral = (props, context) => {
   const [freeFont, setFreeFont] = useLocalState(context, "freeFont", false);
   return (
     <Section>
+      <Flex bold>
+        General Settings
+      </Flex>
+      <Divider />
       <LabeledList>
         <LabeledList.Item label="Theme">
           <Dropdown

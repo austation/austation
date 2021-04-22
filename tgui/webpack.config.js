@@ -25,8 +25,9 @@ const createStats = verbose => ({
 });
 
 module.exports = (env = {}, argv) => {
+  const mode = argv.mode === 'production' ? 'production' : 'development';
   const config = {
-    mode: argv.mode === 'production' ? 'production' : 'development',
+    mode,
     context: path.resolve(__dirname),
     target: ['web', 'es3', 'browserslist:ie 8'],
     entry: {
@@ -48,19 +49,17 @@ module.exports = (env = {}, argv) => {
       chunkLoadTimeout: 15000,
     },
     resolve: {
-      extensions: ['.js', '.jsx'],
+      extensions: ['.tsx', '.ts', '.js'],
       alias: {},
     },
     module: {
       rules: [
         {
-          test: /\.m?jsx?$/,
+          test: /\.(js|cjs|ts|tsx)$/,
           use: [
             {
               loader: 'babel-loader',
-              options: createBabelConfig({
-                mode: argv.mode,
-              }),
+              options: createBabelConfig({ mode }),
             },
           ],
         },
@@ -87,7 +86,12 @@ module.exports = (env = {}, argv) => {
         {
           test: /\.(png|jpg|svg)$/,
           use: [
-            'url-loader',
+            {
+              loader: require.resolve('url-loader'),
+              options: {
+                esModule: false,
+              },
+            },
           ],
         },
       ],
@@ -105,7 +109,7 @@ module.exports = (env = {}, argv) => {
     devtool: false,
     cache: {
       type: 'filesystem',
-      cacheLocation: path.resolve(__dirname, '.yarn/webpack'),
+      cacheLocation: path.resolve(__dirname, `.yarn/webpack/${mode}`),
     },
     stats: createStats(true),
     plugins: [
