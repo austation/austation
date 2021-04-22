@@ -35,7 +35,7 @@ export const StatTabs = (props, context) => {
       </Stack.Item>
       <ScrollableBox overflowY="scroll" height="100%">
         <div className="StatBackground">
-          <Stack.Item mt={1}>
+          <Stack.Item mx={1}>
             {statSection}
           </Stack.Item>
         </div>
