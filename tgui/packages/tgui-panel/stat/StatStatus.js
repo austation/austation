@@ -18,7 +18,7 @@ export const StatStatus = (props, context) => {
     <Stack fill vertical>
       {stat.dead_popup
         ?(
-          <Stack.Item mt={1} mb={1}>
+          <Stack.Item mb={1}>
             <Stack vertical>
               <div className="StatBorder_observer">
                 <Stack.Item>
@@ -47,7 +47,7 @@ export const StatStatus = (props, context) => {
         :null}
       {stat.alert_popup
         ?(
-          <Stack.Item mt={1} mb={1}>
+          <Stack.Item mb={1}>
             <div className="StatBorder_infomation">
               <Box>
                 <Stack
@@ -75,7 +75,7 @@ export const StatStatus = (props, context) => {
         :null}
       {stat.antagonist_popup
         ?(
-          <Stack.Item mt={1} mb={1}>
+          <Stack.Item mb={1}>
             <div className="StatBorder_antagonist">
               <Box>
                 <Stack

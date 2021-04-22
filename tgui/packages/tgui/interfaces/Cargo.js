@@ -6,18 +6,6 @@ import { formatMoney } from '../format';
 import { Window } from '../layouts';
 
 export const Cargo = (props, context) => {
-  return (
-    <Window
-      width={780}
-      height={750}>
-      <Window.Content scrollable>
-        <CargoContent />
-      </Window.Content>
-    </Window>
-  );
-};
-
-export const CargoContent = (props, context) => {
   const { act, data } = useBackend(context);
   const [tab, setTab] = useSharedState(context, 'tab', 'catalog');
   const {

@@ -9,7 +9,7 @@ export const Apc = (props, context) => {
     <Window
       resizable
       width={450}
-      height={445}>
+      height={460}>
       <Window.Content scrollable>
         <ApcContent />
       </Window.Content>
