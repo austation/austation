@@ -1,4 +1,0 @@
-author: "AustationBot"
-delete-after: True
-changes: 
-  - code_imp: "prevent explosions flag is actually used now"
