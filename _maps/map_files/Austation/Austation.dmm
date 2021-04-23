@@ -60722,12 +60722,6 @@
 	},
 /turf/open/floor/plasteel,
 /area/security/main)
-"mgF" = (
-/obj/structure/lattice,
-/obj/structure/lattice,
-/obj/structure/grille,
-/turf/open/space,
-/area/space/nearstation)
 "mgN" = (
 /obj/machinery/door/airlock/medical/glass{
 	name = "Medbay Desk";
@@ -88083,7 +88077,7 @@
 	},
 /obj/effect/turf_decal/tile/yellow,
 /obj/machinery/requests_console{
-	department = "Plumbing";
+	department = "Chemistry";
 	departmentType = 2;
 	pixel_x = 30;
 	receive_ore_updates = 1
@@ -107415,7 +107409,7 @@ cBR
 cBR
 cBR
 aqB
-mgF
+anT
 aaa
 aaa
 aaa
