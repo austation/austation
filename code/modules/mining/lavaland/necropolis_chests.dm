@@ -1,6 +1,6 @@
 //The chests dropped by mob spawner tendrils. Also contains associated loot.
 
-#define HIEROPHANT_CLUB_CARDINAL_DAMAGE 15
+//#define HIEROPHANT_CLUB_CARDINAL_DAMAGE 15 austation -- lavaland rework revert
 
 
 /obj/structure/closet/crate/necropolis
@@ -13,43 +13,6 @@
 /obj/structure/closet/crate/necropolis/tendril
 	desc = "It's watching you suspiciously."
 
-<<<<<<< HEAD
-/obj/structure/closet/crate/necropolis/tendril/PopulateContents(var/reroll = FALSE) //AUStation modification to reroll disabled loot
-	var/loot = rand(1,30)
-
-	// AUStation Code Start -- Beeloot is the number of non disabled bee tendril loot items
-	// not updating bee loot amount will cause au tendril loot to have a higher spawn chance
-	var/Beeloot_Amount = 28
-	if(!reroll)
-		if(AU_PopulateContents(Beeloot_Amount))
-			return
-	// AUStation Code End
-
-	switch(loot)
-		if(1)
-			new /obj/item/shared_storage/red(src)
-		if(2)
-			new /obj/item/clothing/suit/space/hardsuit/cult(src)
-		if(3)
-			new /obj/item/soulstone/anybody(src)
-		if(4)
-			new /obj/item/katana/cursed(src)
-		if(5)
-			new /obj/item/clothing/glasses/godeye(src)
-		if(6)
-			new /obj/item/reagent_containers/glass/bottle/potion/flight(src)
-		if(7)
-			new /obj/item/pickaxe/diamond(src)
-		if(8)
-			// AUStation Code Start -- flab loot removal
-			PopulateContents(TRUE)
-			/*
-			if(prob(50))
-				new /obj/item/disk/design_disk/modkit_disc/resonator_blast(src)
-			else
-				new /obj/item/disk/design_disk/modkit_disc/rapid_repeater(src)
-			*/// AUStation Code End
-=======
 /obj/structure/closet/crate/necropolis/tendril/PopulateContents()
 	var/loot = rand(1,25)
 	switch(loot)
@@ -57,11 +20,10 @@
 			new /obj/item/disk/design_disk/modkit_disc/resonator_blast(src)  //Doubled chance to receive upgrade disk that is directly relevant to mining
 		if(3 to 4)
 			new /obj/item/disk/design_disk/modkit_disc/rapid_repeater(src)
-		if(5 to 6)	
+		if(5 to 6)
 			new /obj/item/disk/design_disk/modkit_disc/mob_and_turf_aoe(src)
 		if(7 to 8)
 			new /obj/item/disk/design_disk/modkit_disc/bounty(src)
->>>>>>> 76a4ee67f3... Lavaland loot overhaul (#4002)
 		if(9)
 			new /obj/item/borg/upgrade/modkit/lifesteal(src)
 		if(10)
@@ -79,18 +41,7 @@
 		if(16)
 			new /obj/item/ship_in_a_bottle(src)
 		if(17)
-<<<<<<< HEAD
-			// AUStation Code Start -- flab loot removal
-			PopulateContents(TRUE)
-			/*
-			if(prob(50))
-				new /obj/item/disk/design_disk/modkit_disc/mob_and_turf_aoe(src)
-			else
-				new /obj/item/disk/design_disk/modkit_disc/bounty(src)
-			*/// AUStation Code End
-=======
 			new /obj/item/jacobs_ladder(src)
->>>>>>> 76a4ee67f3... Lavaland loot overhaul (#4002)
 		if(18)
 			new /obj/item/warp_cube/red(src)
 		if(19)
@@ -725,7 +676,7 @@
 
 /obj/structure/closet/crate/necropolis/legion
 	name = "legion chest"
-	
+
 /obj/structure/closet/crate/necropolis/legion/PopulateContents()
 	var/list/choices = subtypesof(/obj/machinery/anomalous_crystal)
 	var/random_crystal = pick(choices)
@@ -736,7 +687,7 @@
 
 /obj/structure/closet/crate/necropolis/bdm
 	name = "blood-drunk miner chest"
-	
+
 /obj/structure/closet/crate/necropolis/bdm/PopulateContents()
 	new /obj/item/melee/transforming/cleaving_saw(src)
 	new /obj/effect/spawner/lootdrop/megafaunaore(src)
@@ -1141,11 +1092,11 @@
 
 /obj/structure/closet/crate/necropolis/hierophant
 	name = "hierophant chest"
-	
+
 /obj/structure/closet/crate/necropolis/hierophant/PopulateContents()
 	new /obj/item/hierophant_club(src)
 	new /obj/effect/spawner/lootdrop/megafaunaore(src)
-	
+
 /obj/item/hierophant_club
 	name = "hierophant club"
 	desc = "The strange technology of this large club allows various nigh-magical feats. It used to beat you, but now you can set the beat."
@@ -1210,7 +1161,7 @@
 			if(isliving(target) && chaser_timer <= world.time) //living and chasers off cooldown? fire one!
 				chaser_timer = world.time + chaser_cooldown
 				var/obj/effect/temp_visual/hierophant/chaser/C = new(get_turf(user), user, target, chaser_speed, friendly_fire_check)
-				C.damage = 15
+				C.damage = 30 // austation -- revert mining nerfs
 				C.monster_damage_boost = FALSE
 				log_combat(user, target, "fired a chaser at", src)
 			else
