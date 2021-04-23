@@ -175,7 +175,6 @@ Beeloot is the number of items in Bees loot table excluding disabled loot
 /obj/structure/closet/crate/necropolis/bubblegum/PopulateContents()
 	new /obj/item/clothing/suit/space/hostile_environment(src)
 	new /obj/item/clothing/head/helmet/space/hostile_environment(src)
-	new /obj/effect/spawner/lootdrop/megafaunaore(src)
 	var/loot = rand(1,3)
 	switch(loot)
 		if(1)
