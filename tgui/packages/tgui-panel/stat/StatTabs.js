@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'common/redux';
-import { Button, Stack, Tabs, Section, Input } from 'tgui/components';
+import { Button, Flex, Tabs, Section, Input } from 'tgui/components';
 import { Box, ScrollableBox, Fragment, Divider } from '../../tgui/components';
 import { useSettings } from '../settings';
 import { selectStatPanel } from './selectors';
@@ -26,18 +26,18 @@ export const StatTabs = (props, context) => {
   }
   return (
     <Fragment>
-      <Stack.Item shrink={0}>
+      <Flex.Item shrink={0}>
         <div className="StatTabBackground">
           {settings.statTabMode === "Scroll"
             ? <StatTabScroll />
             : <StatTabWrap />}
         </div>
-      </Stack.Item>
+      </Flex.Item>
       <ScrollableBox overflowY="scroll" height="100%">
         <div className="StatBackground">
-          <Stack.Item mx={1}>
+          <Flex.Item mt={1}>
             {statSection}
-          </Stack.Item>
+          </Flex.Item>
         </div>
       </ScrollableBox>
       {stat.selectedTab === '(!) Admin PM' && (
@@ -70,8 +70,8 @@ export const StatTabScroll = (props, context) => {
     <Section
       fitted
       overflowX="auto">
-      <Stack align="center">
-        <Stack.Item>
+      <Flex align="center">
+        <Flex.Item>
           <Tabs textAlign="center">
             {statTabs.map(tab => (
               <Tabs.Tab
@@ -85,8 +85,8 @@ export const StatTabScroll = (props, context) => {
               </Tabs.Tab>
             ))}
           </Tabs>
-        </Stack.Item>
-      </Stack>
+        </Flex.Item>
+      </Flex>
     </Section>
   );
 };
