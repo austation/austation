@@ -1353,7 +1353,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	surplus = 0
 	include_modes = list(/datum/game_mode/nuclear/clown_ops)
 
-datum/uplink_item/stealthy_tools/taeclowndo_shoes
+/datum/uplink_item/stealthy_tools/taeclowndo_shoes
 	name = "Tae-clown-do Shoes"
 	desc = "A pair of shoes for the most elite agents of the honkmotherland. They grant the mastery of taeclowndo with some honk-fu moves as long as they're worn."
 	cost = 12
@@ -2023,7 +2023,7 @@ datum/uplink_item/stealthy_tools/taeclowndo_shoes
 	item = /obj/item/clothing/shoes/clown_shoes/taeclowndo
 	restricted_roles = list("Clown")
 
-datum/uplink_item/role_restricted/superior_honkrender
+/datum/uplink_item/role_restricted/superior_honkrender
 	name = "Superior Honkrender"
 	desc = "An ancient artifact recovered from an ancient cave. Opens the way to the Dark Carnival"
 	item = /obj/item/veilrender/honkrender
@@ -2031,7 +2031,7 @@ datum/uplink_item/role_restricted/superior_honkrender
 	restricted = TRUE
 	restricted_roles = list("Clown", "Chaplain")
 
-datum/uplink_item/role_restricted/superior_honkrender
+/datum/uplink_item/role_restricted/superior_honkrender
 	name = "Superior Honkrender"
 	desc = "An ancient artifact recovered from -. Opens the way to TRANSMISSION OFFLINE\
 			All praise be to the honkmother"
@@ -2057,6 +2057,20 @@ datum/uplink_item/role_restricted/superior_honkrender
 	cost = 2
 	restricted_roles = list("Curator")
 	limited_stock = 1 //please don't spam deadchat
+
+/datum/uplink_item/role_restricted/voodoo
+	name = "Wicker Doll"
+	desc = "A wicker voodoo doll with a cavity for storing a small item. Once an item has been stored within it, the doll may be used to manipulate the actions of another person that has previously been in contact with the stored item."
+	item = /obj/item/voodoo
+	cost = 12
+	restricted_roles = list("Curator", "Stage Magician")
+
+/datum/uplink_item/role_restricted/prison_cube
+	name = "Prison Cube"
+	desc = "A very strange artifact recovered from a volcanic planet that is useful for keeping people locked away, but not very useful for keeping their disappearance unknown"
+	item = /obj/item/prisoncube
+	cost = 6
+	restricted_roles = list("Curator")
 
 /datum/uplink_item/role_restricted/his_grace
 	name = "His Grace"

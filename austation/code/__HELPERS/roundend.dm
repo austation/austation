@@ -62,7 +62,7 @@
 	discordmsg += "-------------------------------------\n"
 	send2chat(discordmsg, "ooc")
 
-proc/msg2discord(var/msg as text)
+/proc/msg2discord(var/msg as text)
     var/list/conversions = list(
     	"@" = "\[at]", // no @ abuse
 		"#" = "\[hash]"

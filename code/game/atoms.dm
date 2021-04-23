@@ -518,10 +518,6 @@
 		to_chat(user, "<span class='warning'>You can't move while buckled to [src]!</span>")
 	return
 
-/// Return true if this atoms contents should not have ex_act called on ex_act
-/atom/proc/prevent_content_explosion()
-	return FALSE
-
 /// Handle what happens when your contents are exploded by a bomb
 /atom/proc/contents_explosion(severity, target)
 	return //For handling the effects of explosions on contents that would not normally be effected
@@ -938,7 +934,7 @@
 						if(!valid_id)
 							to_chat(usr, "<span class='warning'>A reagent with that ID doesn't exist!</span>")
 				if("Choose from a list")
-					chosen_id = tgui_input_list(usr, "Choose a reagent to add.", "Choose a reagent.", subtypesof(/datum/reagent))
+					chosen_id = input(usr, "Choose a reagent to add.", "Choose a reagent.") as null|anything in subtypesof(/datum/reagent)
 				if("I'm feeling lucky")
 					chosen_id = pick(subtypesof(/datum/reagent))
 			if(chosen_id)

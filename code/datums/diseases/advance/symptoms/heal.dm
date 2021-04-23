@@ -132,7 +132,7 @@
 
 /datum/symptom/heal/coma/proc/coma(mob/living/M)
 	if(deathgasp)
-		M.fakedeath("regenerative coma")
+		M.fakedeath(TRAIT_REGEN_COMA)
 	else
 		M.Unconscious(300, TRUE, TRUE)
 	M.update_stat()
@@ -144,7 +144,7 @@
 		return
 	active_coma = FALSE
 	if(deathgasp)
-		M.cure_fakedeath("regenerative_coma")
+		M.cure_fakedeath(TRAIT_REGEN_COMA)
 	else
 		M.SetUnconscious(0)
 	M.update_stat()
@@ -381,7 +381,7 @@ im not even gonna bother with these for the following symptoms. typed em out, co
 	create_reagents(1000)
 	reagents.add_reagent(/datum/reagent/water, 10)
 
-obj/effect/sweatsplash/proc/splash()
+/obj/effect/sweatsplash/proc/splash()
 	chem_splash(loc, 2, list(reagents))
 	qdel(src)
 
