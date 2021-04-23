@@ -12,6 +12,10 @@ indent_size = 2
 [*.py]
 indent_style = space
 
+# AuStation changes for good README file formatting (in .md files double space at end of line means a linebreak)
+[*.md]
+trim_trailing_whitespace = false
+
 [/tgui/**/*.{js,styl,ract,json,html}]
 indent_style = space
 indent_size = 2
