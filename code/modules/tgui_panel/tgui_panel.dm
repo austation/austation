@@ -37,9 +37,11 @@
  * Initializes tgui panel.
  */
 /datum/tgui_panel/proc/initialize(force = FALSE)
+	/*austation begin -- tgui update (these lines seems to fuck up statpanel and I don't wanna know why so it's disabled for now)
 	set waitfor = FALSE
 	// Minimal sleep to defer initialization to after client constructor
 	sleep(1)
+	austation end */
 	initialized_at = world.time
 	// Perform a clean initialization
 	window.initialize(inline_assets = list(
