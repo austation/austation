@@ -4935,6 +4935,23 @@
 "avk" = (
 /turf/open/floor/plasteel/dark,
 /area/security/brig)
+"avp" = (
+/obj/structure/cable/yellow{
+	icon_state = "4-8"
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
+	dir = 8
+	},
+/turf/open/floor/plasteel/white/side{
+	dir = 4
+	},
+/area/medical/medbay/aft)
 "avr" = (
 /turf/open/floor/plating,
 /area/maintenance/aft)
@@ -33746,6 +33763,7 @@
 /obj/machinery/light_switch{
 	pixel_y = 26
 	},
+/obj/item/extrapolator,
 /turf/open/floor/plasteel/dark,
 /area/medical/virology)
 "cLS" = (
@@ -55564,6 +55582,11 @@
 	},
 /turf/open/floor/plasteel,
 /area/crew_quarters/fitness/recreation)
+"kaA" = (
+/obj/structure/table/wood,
+/obj/item/storage/book/bible,
+/turf/open/floor/plasteel/dark,
+/area/chapel/main)
 "kaH" = (
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
@@ -60943,7 +60966,9 @@
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/layer3{
 	dir = 4
 	},
-/turf/open/floor/plasteel/white,
+/turf/open/floor/plasteel/white/side{
+	dir = 8
+	},
 /area/medical/medbay/aft)
 "mnT" = (
 /obj/structure/window/reinforced,
@@ -83330,6 +83355,17 @@
 	},
 /turf/open/floor/plasteel,
 /area/security/brig)
+"uXS" = (
+/obj/structure/cable/yellow{
+	icon_state = "4-8"
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/plasteel/white/side{
+	dir = 4
+	},
+/area/medical/medbay/aft)
 "uYg" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/cable/yellow{
@@ -83818,12 +83854,11 @@
 /turf/open/floor/engine/cult,
 /area/library)
 "vgk" = (
-/obj/item/storage/book/bible,
-/obj/structure/table/wood,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
 	dir = 1
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1,
+/obj/structure/altar_of_gods,
 /turf/open/floor/plasteel/dark,
 /area/chapel/main)
 "vgv" = (
@@ -91103,6 +91138,9 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3,
+/obj/machinery/light/small{
+	dir = 8
+	},
 /turf/open/floor/plasteel/white,
 /area/medical/virology)
 "ycW" = (
@@ -113046,7 +113084,7 @@ cxU
 gjo
 dux
 cFO
-vVY
+avp
 cHz
 bTs
 gEO
@@ -113817,7 +113855,7 @@ cxU
 ufi
 cxU
 cFQ
-cGM
+uXS
 cHB
 cxU
 inX
@@ -114859,7 +114897,7 @@ cOR
 cPq
 cOR
 hwG
-cQF
+kaA
 lHu
 cRp
 cRL
