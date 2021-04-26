@@ -1,0 +1,4 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - tweak: "tweaks poison nanite program so oozelings and slimepeople dont vomit their guts out using it."

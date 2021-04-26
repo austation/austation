@@ -1,0 +1,5 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - tweak: "Removed the ability to unlock illegal tech using common items, see #3988 for full list
+mapping: Armory starts with official NT brand Grenade Launchers instead of stolen Syndicate ones"

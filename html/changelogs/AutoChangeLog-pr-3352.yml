@@ -1,0 +1,4 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - rscadd: "electroadaptive pseudocircuit now functions as airlock electronics"

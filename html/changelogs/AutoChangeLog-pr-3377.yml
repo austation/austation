@@ -1,0 +1,4 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - bugfix: "fixed alt-click rotation on TEG circulators and drink/booze dispensers"
