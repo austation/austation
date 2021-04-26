@@ -1,0 +1,4 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - rscadd: "Monkeys now can mutate into humans, gorillas or lose limbs when affected by radiation."
