@@ -16936,9 +16936,7 @@
 /turf/open/floor/wood,
 /area/crew_quarters/heads/hop)
 "bwm" = (
-/obj/machinery/computer/secure_data{
-	dir = 1
-	},
+/obj/structure/filingcabinet/chestdrawer/wheeled,
 /turf/open/floor/wood,
 /area/crew_quarters/heads/hop)
 "bwn" = (
@@ -21910,13 +21908,13 @@
 /turf/open/floor/wood,
 /area/library)
 "bPV" = (
-/obj/structure/destructible/cult/tome,
 /obj/machinery/newscaster{
 	pixel_x = -30
 	},
 /obj/item/stack/cable_coil/cut/red,
 /obj/effect/decal/cleanable/cobweb,
 /obj/item/book/codex_gigas,
+/obj/structure/destructible/cult/tome/library,
 /turf/open/floor/engine/cult,
 /area/library)
 "bPW" = (
@@ -39237,7 +39235,7 @@
 	},
 /obj/machinery/door/airlock/security/glass{
 	name = "Prison Wing";
-	req_access_txt = "1"
+	req_access_txt = "1;34"
 	},
 /obj/effect/mapping_helpers/airlock/cyclelink_helper,
 /obj/effect/turf_decal/stripes/line,
@@ -61751,7 +61749,7 @@
 "mBV" = (
 /obj/machinery/door/airlock/security/glass{
 	name = "Prison Wing";
-	req_access_txt = "1"
+	req_access_txt = "1;34"
 	},
 /obj/effect/mapping_helpers/airlock/cyclelink_helper,
 /obj/effect/turf_decal/stripes/line,
@@ -71427,7 +71425,7 @@
 "qle" = (
 /obj/machinery/door/airlock/security/glass{
 	name = "Prison Wing";
-	req_access_txt = "1"
+	req_access_txt = "1;34"
 	},
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
 	dir = 1
@@ -78044,7 +78042,7 @@
 "sTG" = (
 /obj/machinery/door/airlock/security/glass{
 	name = "Prison Sanitarium";
-	req_access_txt = "2"
+	req_access_txt = "1;34"
 	},
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
@@ -83047,7 +83045,7 @@
 "uRJ" = (
 /obj/machinery/door/airlock/security/glass{
 	name = "Prison Wing";
-	req_access_txt = "1"
+	req_access_txt = "1;34"
 	},
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
