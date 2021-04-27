@@ -1,4 +1,0 @@
-author: "AustationBot"
-delete-after: True
-changes: 
-  - balance: "Increased nanite cloud resync timer from 30 seconds to 90 seconds"
