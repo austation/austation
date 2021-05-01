@@ -15,6 +15,7 @@
 // BEGIN_DEFINE_INCLUDE
 #include "austation\code\__DEFINES\admin.dm"
 #include "austation\code\__DEFINES\coilgun.dm"
+#include "austation\code\__DEFINES\lavaland.dm"
 #include "austation\code\__DEFINES\maths.dm"
 #include "austation\code\__DEFINES\misc.dm"
 #include "austation\code\__DEFINES\mobs.dm"
