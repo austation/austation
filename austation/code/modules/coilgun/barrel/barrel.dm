@@ -129,6 +129,10 @@
 	icon = 'austation/icons/obj/atmospherics/pipes/disposal.dmi'
 	icon_state = "barrel_ov"
 
+// so you don't need to click the tiny pixels inbetween the overlay and the base connection
+/obj/effect/barrel/coilgun_barrel/AltClick(mob/user)
+	parent?.AltClick(user)
+
 /obj/effect/barrel/coilgun_barrel/Destroy()
 	if(parent && break_parent_on_death)
 		QDEL_NULL(parent)
