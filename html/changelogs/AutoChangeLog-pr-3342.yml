@@ -1,0 +1,7 @@
+author: "Ohagi-Chan"
+delete-after: True
+changes: 
+  - rscadd: "Balloons"
+  - rscadd: "Inflated balloons"
+  - rscadd: "Balloon cart"
+  - imageadd: "Balloons.dmi"
