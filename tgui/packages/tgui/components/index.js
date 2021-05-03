@@ -6,6 +6,7 @@
 
 export { AnimatedNumber } from './AnimatedNumber';
 export { BlockQuote } from './BlockQuote';
+export { Blink } from './Blink';
 export { Box } from './Box';
 export { Button } from './Button';
 export { ByondUi } from './ByondUi';
