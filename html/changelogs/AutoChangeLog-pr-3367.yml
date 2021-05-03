@@ -1,0 +1,5 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - rscadd: "Added bottles for Tricordrazine and Spaceacillin"
+  - tweak: "Both varieties of NanoMed now stock primarily emergency and basic supplies instead of overabundant healing supplies"
