@@ -95,6 +95,7 @@
 #include "austation\code\game\objects\structures\femur_breaker.dm"
 #include "austation\code\game\objects\structures\humanfurniture.dm"
 #include "austation\code\game\objects\structures\mirror.dm"
+#include "austation\code\game\objects\structures\party_balloons.dm"
 #include "austation\code\game\objects\structures\tables_racks.dm"
 #include "austation\code\game\objects\structures\closets\secure.dm"
 #include "austation\code\game\turfs\open\floor.dm"
