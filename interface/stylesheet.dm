@@ -30,8 +30,8 @@ em						{font-style: normal;	font-weight: bold;}
 .adminobserverooc		{color: #0099cc;	font-weight: bold;}
 .adminooc				{color: #700038;	font-weight: bold;}
 
-.adminsay				{color:	#FF4500;	font-weight: bold;}
-.admin					{color: #386aff;	font-weight: bold;}
+.adminsay				{color: #ff4500;	font-weight: bold;}
+.admin					{color: #4473ff;	font-weight: bold;}
 
 .name					{					font-weight: bold;}
 
