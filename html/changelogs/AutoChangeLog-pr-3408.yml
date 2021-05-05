@@ -1,0 +1,4 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - tweak: "gas miners on maps are no longer in space ruin mode and actively consume power"
