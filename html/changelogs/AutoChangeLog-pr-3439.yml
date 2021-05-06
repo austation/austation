@@ -1,0 +1,5 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - bugfix: "Fixed glass shard harddels."
+  - bugfix: "Fixed beaker harddels."
