@@ -1,4 +1,0 @@
-author: "AustationBot"
-delete-after: True
-changes: 
-  - server: "The discord webhook handler's URL can be configured now"

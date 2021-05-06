@@ -1,5 +1,0 @@
-author: "AustationBot"
-delete-after: True
-changes: 
-  - rscadd: "Recipe for Liquid Electricity."
-  - tweak: "Lowered Liquid electricity shock damage and probability"
