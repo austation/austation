@@ -38285,6 +38285,7 @@
 /obj/structure/sign/poster/random{
 	pixel_y = 32
 	},
+/obj/machinery/food_cart/balloons,
 /turf/open/floor/carpet,
 /area/crew_quarters/theatre)
 "dhW" = (
