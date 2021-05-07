@@ -1,0 +1,5 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - rscdel: "Removed keycard authentication access from Security"
+  - rscdel: "Removed keycard authentication device from Warden's office"
