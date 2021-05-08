@@ -64,13 +64,14 @@
 /obj/item/tank/internals/combat/advanced  //  Admin spawn, contains the incredibly powerful stimulum.  Do not give this to players through normal means.
 	desc = "A full tank of stimulum and pluoxium. The real deal, feel blessed."
 	distribute_pressure = 13
+	icon_state = "combat_adv"
 
 /obj/item/tank/internals/combat/populate_gas()
 	air_contents.set_moles(/datum/gas/oxygen, (ONE_ATMOSPHERE)*volume/(R_IDEAL_GAS_EQUATION*T20C)*0.63)
 	air_contents.set_moles(/datum/gas/nitryl, (ONE_ATMOSPHERE)*volume/(R_IDEAL_GAS_EQUATION*T20C)*0.37)
 
 /obj/item/tank/internals/combat/advanced/populate_gas()
-	air_contents.set_moles(/datum/gas/oxygen, (6*ONE_ATMOSPHERE)*volume/(R_IDEAL_GAS_EQUATION*T20C)*0.17)
+	air_contents.set_moles(/datum/gas/pluoxium, (6*ONE_ATMOSPHERE)*volume/(R_IDEAL_GAS_EQUATION*T20C)*0.17)
 	air_contents.set_moles(/datum/gas/stimulum, (6*ONE_ATMOSPHERE)*volume/(R_IDEAL_GAS_EQUATION*T20C)*0.83)
 
 /obj/item/tank/internals/combat/AltClick(mob/user)
