@@ -57,7 +57,7 @@
 	desc = "A partial tank of nitryl and pluoxium. Alt-click to quickly shift modes."
 	icon = 'austation/icons/obj/tank.dmi'
 	icon_state = "combat"
-	distribute_pressure = 29
+	distribute_pressure = 26
 	force = 10
 	dog_fashion = /datum/dog_fashion/back
 
@@ -68,21 +68,21 @@
 	icon_state = "combat_adv"
 
 /obj/item/tank/internals/combat/populate_gas()
-	air_contents.set_moles(/datum/gas/oxygen, (ONE_ATMOSPHERE)*volume/(R_IDEAL_GAS_EQUATION*T20C)*0.63)
-	air_contents.set_moles(/datum/gas/nitryl, (ONE_ATMOSPHERE)*volume/(R_IDEAL_GAS_EQUATION*T20C)*0.37)
+	air_contents.set_moles(/datum/gas/oxygen, (0.7*ONE_ATMOSPHERE)*volume/(R_IDEAL_GAS_EQUATION*T20C)*0.63)
+	air_contents.set_moles(/datum/gas/nitryl, (0.7*ONE_ATMOSPHERE)*volume/(R_IDEAL_GAS_EQUATION*T20C)*0.37)  //  should give up to a maximum of 5 minutes and 15 seconds of meth speed
 
 /obj/item/tank/internals/combat/advanced/populate_gas()
-	air_contents.set_moles(/datum/gas/pluoxium, (6*ONE_ATMOSPHERE)*volume/(R_IDEAL_GAS_EQUATION*T20C)*0.17)
-	air_contents.set_moles(/datum/gas/stimulum, (6*ONE_ATMOSPHERE)*volume/(R_IDEAL_GAS_EQUATION*T20C)*0.83)
+	air_contents.set_moles(/datum/gas/pluoxium, (10*ONE_ATMOSPHERE)*volume/(R_IDEAL_GAS_EQUATION*T20C)*0.17)
+	air_contents.set_moles(/datum/gas/stimulum, (10*ONE_ATMOSPHERE)*volume/(R_IDEAL_GAS_EQUATION*T20C)*0.83)
 
 /obj/item/tank/internals/combat/AltClick(mob/user)
 	. = ..()
 	if(istype(src, /obj/item/tank/internals/combat/advanced))  //  Advanced tanks use stimulum and don't need to switch pressures
 		return
-	if(distribute_pressure == 29)
-		distribute_pressure = 58
-		to_chat(user, "<span class='notice' You quickly adjust \the [src] to HIGH PRESSURE mode</span>")
-		visible_message("", "", "<span class='notice'> \the [src] hisses loudly as more gas begins to release</span>")
+	if(distribute_pressure == 26)
+		distribute_pressure = 55
+		to_chat(user, "<span class='notice' You quickly adjust \the [src] to HIGH PRESSURE mode.</span>")
+		visible_message("", "", "<span class='notice'> \the [src] hisses loudly as more gas begins to release.</span>")
 	else
-		distribute_pressure = 29
-		to_chat(user, "<span class='notice' You quickly adjust \the [src] to LOW PRESSURE mode</span>")
+		distribute_pressure = 26
+		to_chat(user, "<span class='notice' You quickly adjust \the [src] to LOW PRESSURE mode.</span>")
