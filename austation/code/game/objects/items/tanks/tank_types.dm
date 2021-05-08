@@ -52,28 +52,35 @@
 
 
 /////////////////////  COMBAT TANK  /////////////////////
-/obj/item/tank/internals/combat
+/obj/item/tank/internals/combat  //  Contains a small measure of nitryl and oxygen, you can alt-click it to activate the nitryl secondary effects.
 	name = "combat mix tank"
-	desc = "A full tank of stimulum and pluoxium. This can't possibly be a trap."
+	desc = "A partial tank of nitryl and pluoxium. Alt-click to quickly shift modes."
 	icon = 'austation/icons/obj/tank.dmi'
 	icon_state = "combat"
-	distribute_pressure = 13
+	distribute_pressure = 29
 	force = 10
 	dog_fashion = /datum/dog_fashion/back
-	var/dangerous = TRUE
 
-/obj/item/tank/internals/combat/admin
+/obj/item/tank/internals/combat/advanced  //  Admin spawn, contains the incredibly powerful stimulum.  Do not give this to players through normal means.
 	desc = "A full tank of stimulum and pluoxium. The real deal, feel blessed."
-	dangerous = FALSE
-
-/obj/item/tank/internals/combat/attack_self(mob/living/carbon/user)
-	if(dangerous)
-		if(alert(user, "", "Equip the suspicious combat tank?", "Yes", "No") == "No")  //  give them one last warning before taking their brain away
-			return
-		user.adjustOrganLoss(ORGAN_SLOT_BRAIN, 199, 199)
-		to_chat(user, "<span class='warning'>Durrrr?</span>")
-	. = ..()
+	distribute_pressure = 13
 
 /obj/item/tank/internals/combat/populate_gas()
-	air_contents.set_moles(/datum/gas/pluoxium, (6*ONE_ATMOSPHERE)*volume/(R_IDEAL_GAS_EQUATION*T20C)*0.17)
+	air_contents.set_moles(/datum/gas/oxygen, (ONE_ATMOSPHERE)*volume/(R_IDEAL_GAS_EQUATION*T20C)*0.63)
+	air_contents.set_moles(/datum/gas/nitryl, (ONE_ATMOSPHERE)*volume/(R_IDEAL_GAS_EQUATION*T20C)*0.37)
+
+/obj/item/tank/internals/combat/advanced/populate_gas()
+	air_contents.set_moles(/datum/gas/oxygen, (6*ONE_ATMOSPHERE)*volume/(R_IDEAL_GAS_EQUATION*T20C)*0.17)
 	air_contents.set_moles(/datum/gas/stimulum, (6*ONE_ATMOSPHERE)*volume/(R_IDEAL_GAS_EQUATION*T20C)*0.83)
+
+/obj/item/tank/internals/combat/AltClick(mob/user)
+	. = ..()
+	if(istype(src, /obj/item/tank/internals/combat/advanced))  //  Advanced tanks use stimulum and don't need to switch pressures
+		return
+	if(distribute_pressure == 29)
+		distribute_pressure = 78
+		to_chat(user, "<span class='notice' You quickly adjust \the [src] to HIGH PRESSURE mode</span>")
+		visible_message("", "", "<span class='notice'> \the [src] hisses loudly as more gas begins to release</span>")
+	else
+		distribute_pressure = 29
+		to_chat(user, "<span class='notice' You quickly adjust \the [src] to LOW PRESSURE mode</span>")
