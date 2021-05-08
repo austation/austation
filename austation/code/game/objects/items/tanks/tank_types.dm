@@ -62,6 +62,7 @@
 	dog_fashion = /datum/dog_fashion/back
 
 /obj/item/tank/internals/combat/advanced  //  Admin spawn, contains the incredibly powerful stimulum.  Do not give this to players through normal means.
+	name = "advanced combat mix tank"
 	desc = "A full tank of stimulum and pluoxium. The real deal, feel blessed."
 	distribute_pressure = 13
 	icon_state = "combat_adv"
@@ -79,7 +80,7 @@
 	if(istype(src, /obj/item/tank/internals/combat/advanced))  //  Advanced tanks use stimulum and don't need to switch pressures
 		return
 	if(distribute_pressure == 29)
-		distribute_pressure = 78
+		distribute_pressure = 58
 		to_chat(user, "<span class='notice' You quickly adjust \the [src] to HIGH PRESSURE mode</span>")
 		visible_message("", "", "<span class='notice'> \the [src] hisses loudly as more gas begins to release</span>")
 	else
