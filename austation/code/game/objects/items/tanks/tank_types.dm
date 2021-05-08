@@ -54,12 +54,25 @@
 /////////////////////  COMBAT TANK  /////////////////////
 /obj/item/tank/internals/combat
 	name = "combat mix tank"
-	desc = "A tank of stimulum and pluoxium."
+	desc = "A full tank of stimulum and pluoxium. This can't possibly be a trap."
 	icon = 'austation/icons/obj/tank.dmi'
 	icon_state = "combat"
 	distribute_pressure = 13
 	force = 10
 	dog_fashion = /datum/dog_fashion/back
+	var/dangerous = TRUE
+
+/obj/item/tank/internals/combat/admin
+	desc = "A full tank of stimulum and pluoxium. The real deal, feel blessed."
+	dangerous = FALSE
+
+/obj/item/tank/internals/combat/attack_self(mob/user)
+	if(dangerous)
+		if(alert(user, "", "Equip the suspicious combat tank?", "Yes", "No") == "No")  //  give them one last warning before taking their brain away
+			return
+		user.adjustOrganLoss(ORGAN_SLOT_BRAIN, 199, 199)
+		to_chat(user, "<span class='warning'>Durrrr?</span>")
+	. = ..()
 
 /obj/item/tank/internals/combat/populate_gas()
 	air_contents.set_moles(/datum/gas/pluoxium, (6*ONE_ATMOSPHERE)*volume/(R_IDEAL_GAS_EQUATION*T20C)*0.17)
