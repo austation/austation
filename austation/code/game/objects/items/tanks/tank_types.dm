@@ -66,7 +66,7 @@
 	desc = "A full tank of stimulum and pluoxium. The real deal, feel blessed."
 	dangerous = FALSE
 
-/obj/item/tank/internals/combat/attack_self(mob/user)
+/obj/item/tank/internals/combat/attack_self(mob/living/carbon/user)
 	if(dangerous)
 		if(alert(user, "", "Equip the suspicious combat tank?", "Yes", "No") == "No")  //  give them one last warning before taking their brain away
 			return
