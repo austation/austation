@@ -864,7 +864,7 @@
 	if(stored)
 		var/obj/item/reagent_containers/C = stored
 		C.SplashReagents(get_turf(src))
-		qdel(stored)
+		QDEL_NULL(stored)
 	. = ..()
 
 /obj/item/borg/apparatus/beaker/examine()
