@@ -1,0 +1,4 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - refactor: "Cryopods no longer lag the server when people despawn."
