@@ -1,4 +1,12 @@
+/////////////////////  BASIC TANK  /////////////////////
+
+/obj/item/tank/internals/AltClick(mob/user)  //  New Feature, Alt-Clicking a tank resets it to the original 17KPa pressure, not that you'll probably ever use this often
+	. = ..()
+	distribute_pressure = 17
+
+
 /////////////////////  OCCULT TANK  /////////////////////
+
 /obj/item/tank/internals/occult
   name = "occult tank"
   desc = "An un-natural experiment. Hyms with a musical tune, god knows what happens if it ruptures..."
@@ -52,7 +60,8 @@
 
 
 /////////////////////  COMBAT TANK  /////////////////////
-/obj/item/tank/internals/combat  //  Contains a small measure of nitryl and oxygen, you can alt-click it to activate the nitryl secondary effects.
+
+/obj/item/tank/internals/combat/loot  //  Contains a small measure of nitryl and oxygen, you can alt-click it to activate the nitryl secondary effects.
 	name = "combat mix tank"
 	desc = "A partial tank of nitryl and pluoxium. Alt-click to quickly shift modes."
 	icon = 'austation/icons/obj/tank.dmi'
@@ -60,12 +69,14 @@
 	distribute_pressure = 26
 	force = 10
 	dog_fashion = /datum/dog_fashion/back
+	var/toggles = TRUE
 
 /obj/item/tank/internals/combat/advanced  //  Admin spawn, contains the incredibly powerful stimulum.  Do not give this to players through normal means.
 	name = "advanced combat mix tank"
 	desc = "A full tank of stimulum and pluoxium. The real deal, feel blessed."
 	distribute_pressure = 13
 	icon_state = "combat_adv"
+	toggles = FALSE
 
 /obj/item/tank/internals/combat/populate_gas()
 	air_contents.set_moles(/datum/gas/oxygen, (0.7*ONE_ATMOSPHERE)*volume/(R_IDEAL_GAS_EQUATION*T20C)*0.63)
@@ -77,12 +88,16 @@
 
 /obj/item/tank/internals/combat/AltClick(mob/user)
 	. = ..()
-	if(istype(src, /obj/item/tank/internals/combat/advanced))  //  Advanced tanks use stimulum and don't need to switch pressures
+	if(!toggles)  //  Advanced tanks use stimulum and don't need to switch pressures
+		distribute_pressure = 13  //  Pressure was set to 17 during the .=..() step
 		return
-	if(distribute_pressure == 26)
+	if(distribute_pressure <= 41)  //  Pressure is considered to be low so make it higher, otherwise it's high so make it lower
 		distribute_pressure = 55
 		to_chat(user, "<span class='notice'> You quickly adjust \the [src] to HIGH PRESSURE mode.</span>")
-		visible_message("", "", "<span class='notice'> \The [src] hisses loudly as more gas begins to release.</span>")
+		if(air_contents.return_pressure < 55)  //  We can set it to 55, but if there isn't enough gas it will just drop during the next breath
+			to_chat(user, "<span class='warning'> But the pressure can not be raised high enough!</span>")
+		else
+			audible_message("<span class='notice'> \The [src] hisses loudly as more gas begins to escape!</span>")
 	else
 		distribute_pressure = 26
 		to_chat(user, "<span class='notice'> You quickly adjust \the [src] to LOW PRESSURE mode.</span>")
