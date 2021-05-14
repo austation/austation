@@ -81,8 +81,8 @@
 		return
 	if(distribute_pressure == 26)
 		distribute_pressure = 55
-		to_chat(user, "<span class='notice' You quickly adjust \the [src] to HIGH PRESSURE mode.</span>")
-		visible_message("", "", "<span class='notice'> \the [src] hisses loudly as more gas begins to release.</span>")
+		to_chat(user, "<span class='notice'> You quickly adjust \the [src] to HIGH PRESSURE mode.</span>")
+		visible_message("", "", "<span class='notice'> \The [src] hisses loudly as more gas begins to release.</span>")
 	else
 		distribute_pressure = 26
-		to_chat(user, "<span class='notice' You quickly adjust \the [src] to LOW PRESSURE mode.</span>")
+		to_chat(user, "<span class='notice'> You quickly adjust \the [src] to LOW PRESSURE mode.</span>")
