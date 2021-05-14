@@ -13,8 +13,8 @@
 		distribute_pressure = TANK_DEFAULT_RELEASE_PRESSURE  //  Probably for the best?
 		return
 	if(length(modes) == 1)
-		to_chat(user, "<span class='notice'> You quickly adjust \the [src] to the default pressure.</span>")
 		distribute_pressure = modes[1]
+		to_chat(user, "<span class='notice'> You quickly adjust \the [src] to release [distribute_pressure]KPa.</span>")
 		return
 
 	var/new_mode = 1
@@ -24,17 +24,17 @@
 			if(pressure == modes[length(modes)])  //  If the current mode is the highest, wrap around back to the first by leaving new_mode as 1.
 				new_mode = 1
 	distribute_pressure = modes[new_mode]  //  If the previous pressure was below the lowest mode, or >= to the highest mode, then new_mode will be 1 and we choose the lowest pressure mode.
-	to_chat(user, "<span class='notice'> You quickly adjust \the [src] to release [distribute_pressure]KPa.</span>")
+	to_chat(user, "<span class='notice'>You quickly adjust \the [src] to release [distribute_pressure]KPa.</span>")
 
 /obj/item/tank/internals/examine(mob/user)
 	. = ..()
 	if(length(modes) >= 2)
-		to_chat(user, "span class='notice'>Alt-click to quickly shift through \the [src]'s pressure modes.</spawn>")
+		. += "<span class='notice'>Alt-click to quickly shift through \the [src]'s pressure modes.</span>"
+		. += "<span class='notice'>\The [src] can be set to:</span>"
+		for(var/pressure in modes)
+			. += "<span class='notice'>	[pressure]KPa</span>"
 	else
-		to_chat(user, "span class='notice'>Alt-click to quickly set \the [src] to default pressure.</spawn>")
-	to_chat(user, "<span class='notice'>This [src] can be set to:</span>")
-	for(var/i in modes)
-		to_chat(user, "<span class='notice'>[modes[i]]KPa</span>")
+		. += "<span class='notice'>Alt-click to quickly set \the [src] to [modes[1]]KPa.</span>"
 
 
 /////////////////////  OCCULT TANK  /////////////////////
@@ -97,10 +97,10 @@
 	desc = "A partial tank of nitryl and oxygen."
 	icon = 'austation/icons/obj/tank.dmi'
 	icon_state = "combat"
-	distribute_pressure = 26
+	distribute_pressure = 27
 	force = 10
 	dog_fashion = /datum/dog_fashion/back
-	modes = list(26, 55)
+	modes = list(27, 55)
 
 /obj/item/tank/internals/combat/advanced  //  Admin spawn, contains the incredibly powerful stimulum.  Do not give this to players through normal means.
 	name = "advanced combat mix tank"
