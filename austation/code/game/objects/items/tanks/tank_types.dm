@@ -94,7 +94,7 @@
 
 /obj/item/tank/internals/combat  //  Contains a small measure of nitryl and oxygen, you can alt-click it to activate the nitryl secondary effects.
 	name = "combat mix tank"
-	desc = "A partial tank of nitryl and pluoxium."
+	desc = "A partial tank of nitryl and oxygen."
 	icon = 'austation/icons/obj/tank.dmi'
 	icon_state = "combat"
 	distribute_pressure = 26
