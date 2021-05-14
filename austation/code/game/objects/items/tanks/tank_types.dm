@@ -61,7 +61,7 @@
 
 /////////////////////  COMBAT TANK  /////////////////////
 
-/obj/item/tank/internals/combat/loot  //  Contains a small measure of nitryl and oxygen, you can alt-click it to activate the nitryl secondary effects.
+/obj/item/tank/internals/combat  //  Contains a small measure of nitryl and oxygen, you can alt-click it to activate the nitryl secondary effects.
 	name = "combat mix tank"
 	desc = "A partial tank of nitryl and pluoxium. Alt-click to quickly shift modes."
 	icon = 'austation/icons/obj/tank.dmi'
@@ -94,10 +94,6 @@
 	if(distribute_pressure <= 41)  //  Pressure is considered to be low so make it higher, otherwise it's high so make it lower
 		distribute_pressure = 55
 		to_chat(user, "<span class='notice'> You quickly adjust \the [src] to HIGH PRESSURE mode.</span>")
-		if(air_contents.return_pressure < 55)  //  We can set it to 55, but if there isn't enough gas it will just drop during the next breath
-			to_chat(user, "<span class='warning'> But the pressure can not be raised high enough!</span>")
-		else
-			audible_message("<span class='notice'> \The [src] hisses loudly as more gas begins to escape!</span>")
 	else
 		distribute_pressure = 26
 		to_chat(user, "<span class='notice'> You quickly adjust \the [src] to LOW PRESSURE mode.</span>")
