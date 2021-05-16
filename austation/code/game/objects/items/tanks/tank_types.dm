@@ -1,7 +1,7 @@
 /////////////////////  BASIC TANK  /////////////////////
 
 
-//  New Feature, Alt-Clicking a tank resets it to the original 17KPa pressure, not that you'll probably ever use this often.
+//  New Feature, Alt-Clicking a tank resets it to the original 17kPa pressure, not that you'll probably ever use this often.
 //  Also supports swapping between multiple modes from a list.
 //  If by any chance somebody adds another tank with multiple modes, it can use this system by just plugging in a new list into var/list/modes()
 /obj/item/tank/internals
@@ -14,7 +14,7 @@
 		return
 	if(length(modes) == 1)
 		distribute_pressure = modes[1]
-		to_chat(user, "<span class='notice'> You quickly adjust \the [src] to release [distribute_pressure]KPa.</span>")
+		to_chat(user, "<span class='notice'> You quickly adjust \the [src] to release [distribute_pressure]kPa.</span>")
 		return
 
 	var/new_mode = 1
@@ -24,7 +24,7 @@
 			if(pressure == modes[length(modes)])  //  If the current mode is the highest, wrap around back to the first by leaving new_mode as 1.
 				new_mode = 1
 	distribute_pressure = modes[new_mode]  //  If the previous pressure was below the lowest mode, or >= to the highest mode, then new_mode will be 1 and we choose the lowest pressure mode.
-	to_chat(user, "<span class='notice'>You quickly adjust \the [src] to release [distribute_pressure]KPa.</span>")
+	to_chat(user, "<span class='notice'>You quickly adjust \the [src] to release [distribute_pressure]kPa.</span>")
 
 /obj/item/tank/internals/examine(mob/user)
 	. = ..()
@@ -32,9 +32,9 @@
 		. += "<span class='notice'>Alt-click to quickly shift through \the [src]'s pressure modes.</span>"
 		. += "<span class='notice'>\The [src] can be set to:</span>"
 		for(var/pressure in modes)
-			. += "<span class='notice'>	[pressure]KPa</span>"
+			. += "<span class='notice'>	[pressure]kPa</span>"
 	else
-		. += "<span class='notice'>Alt-click to quickly set \the [src] to [modes[1]]KPa.</span>"
+		. += "<span class='notice'>Alt-click to quickly set \the [src] to [modes[1]]kPa.</span>"
 
 
 /////////////////////  OCCULT TANK  /////////////////////
