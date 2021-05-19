@@ -35,11 +35,12 @@
 		else
 			target_power_usage += 20
 			to_chat(user, "<span class='notice'>You increase \the [src]'s power throttle to [target_power_usage]%</span>")
+
 	else
 		enabled = TRUE
 		to_chat(user, "<span class='notice'>You turn on \the [src].</span>")
 
-/obj/structure/disposalpipe/coilgun/charger/proc/H_power_failure()
+/obj/structure/disposalpipe/coilgun/charger/proc/H_power_failure(force = FALSE)
 	target_power_usage = min(target_power_usage - 20, 0)
 	if(target_power_usage > 0)
 		visible_message("<span class='warning'>\The [src]'s power warning light flickers, throttling to [target_power_usage]%!</span>")
@@ -48,21 +49,22 @@
 		enabled = FALSE
 
 /obj/structure/disposalpipe/coilgun/charger/transfer(obj/structure/disposalholder/H)
-	attached = locate() in get_turf(src)
-	if(!enabled || !(attached))
+	if(!enabled)
 		return ..()
-
+	var/turf/T = get_turf(src)
+	attached = T.get_cable_node()
+	if(!attached)
+		H_power_failure(TRUE)
+		return ..()
 	for(var/atom/movable/AM in H.contents) // run the loop below for every movable that passes through the charger
 		if(istype(AM, /obj/item/projectile/hvp)) // if it's a coilgun projectile, continue
 			var/obj/item/projectile/hvp/PJ = AM
-
 			if(attached.powernet && target_power_usage)
 				var/prelim = attached.delayed_surplus() / POWER_DIVIDER
 				if(prelim < 1)
 					H_power_failure()
 					return ..()
 				var/power_percent = target_power_usage / 100
-				visible_message("<span class='danger'>debug: prelim reads [prelim]!</span>") // DEBUG
 				var/speed_increase = (prelim * BASE ** PJ.velocity) * power_percent
 				PJ.velocity += (speed_increase / PJ.mass) * modifier
 				PJ.p_heat += heat_increase * power_percent
@@ -70,7 +72,6 @@
 				cps = round(PJ.velocity * 3.6) // m/s to km/h
 				playsound(src, 'sound/effects/bamf.ogg', 20, 1)
 				playsound(src, 'sound/weapons/emitter2.ogg', 50, 1)
-				visible_message("<span class='danger'>debug: speed increased by [speed_increase]!</span>")
 				current_power_use = PJ.velocity * 25 * prelim
 				attached.add_delayedload(current_power_use * power_percent)
 				H.count = 1000
@@ -113,11 +114,8 @@
 			total_charge += C.charge
 			C.charge = 0
 		if(total_charge)
-			var/prelim = round(total_charge / 1000)
-			var/speed_increase = prelim * (SUPER_BASE ** PJ.velocity)
-			PJ.velocity += speed_increase
+			PJ.velocity += (round(total_charge / 1000)) * (SUPER_BASE ** PJ.velocity)
 			PJ.p_heat += 10
-			visible_message("<span class='danger'>debug: speed increased by [speed_increase]!</span>")
 			H.count = 1000
 			total_charge = 0
 			playsound(src, 'sound/effects/bamf.ogg', 100, 1)

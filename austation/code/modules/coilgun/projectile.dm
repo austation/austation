@@ -31,6 +31,7 @@
 	var/lockAngle = FALSE // set to true to prevent the projectile from changing it's angle
 	var/infused = 0 // how much energy is infused with the projectile?
 	var/spin = 0 // spin animation speed, if any
+	var/cangib = TRUE // can the projectile gib at high speeds
 	var/list/assoc_overlays = list()
 
 	var/momentum = 0
@@ -39,7 +40,7 @@
 	if(barrel_segments)
 		var/turf/T = get_turf_in_angle(Angle, get_turf(firer), barrel_segments)
 		forceMove(T)
-		velocity *= barrel_segments ** 0.175
+		velocity *= barrel_segments ** 0.175 // Velocity benefits from barrels have diminishing results
 	momentum = mass * velocity
 	if(_inaccuracy)
 		_angle += rand(_inaccuracy, -_inaccuracy)
@@ -73,7 +74,7 @@
 		return
 	Angle = new_angle
 	if(Angle != lastAngle)
-		var/matrix/M = new
+		var/matrix/M = matrix()
 		M.Turn(Angle)
 		transform = M
 	if(trajectory)
@@ -91,7 +92,9 @@
 			chance = 10
 		else if(isobj(clong))
 			chance = 35
-		if(prob(chance) || isliving(clong))
+		else // mob
+			chance = 100
+		if(prob(chance))
 			add_object(clong, TRUE)
 			return
 
@@ -156,7 +159,7 @@
 	if(momentum > 100)
 		var/chance = lin_incidence * -((log(0.001 * (momentum - 90))) / 2)
 		return prob(chance * 100)
-	return prob(lin_incidence - 0.3) // can't be fucked doing more math, this'll work fine for low speed
+	return prob(lin_incidence - 0.3)
 
 // mmmm, bitshifting
 /obj/item/projectile/hvp/proc/penetrate(mob/living/L)
@@ -179,7 +182,7 @@
 			H.throw_at(target, 200, round(2 + log(momentum))) // godspeed o7
 	L.adjustBruteLoss(projdamage)
 	L.visible_message("<span class='danger'>[L] is penetrated by \the [src]!</span>" , "<span class='userdanger'>\The [src] penetrates you!</span>" , "<span class ='danger'>You hear a CLANG!</span>")
-	if(projdamage > 800 && !(special & HVP_STICKY))
+	if(cangib && projdamage > 800 && !(special & HVP_STICKY))
 		L.gib()
 
 /obj/item/projectile/hvp/proc/add_object(atom/movable/AM, rotation = TRUE, pixel_offset = TRUE, add_special = TRUE, add_mass = TRUE)
@@ -284,7 +287,7 @@
 		var/obj/effect/decal/cleanable/ash/melted = new(T) // make an ash pile where we die ;-;
 		playsound(loc, 'sound/items/welder.ogg', 150, 1)
 		melted.name = "slagged [AM.name]"
-		melted.desc = "Aahahah that's hot, that's hot."
+		melted.desc = "AH that's hot, that's hot."
 		qdel(AM)
 	qdel(src)
 
@@ -371,23 +374,25 @@
 	if(!contents.len)
 		qdel(src)
 
-
 // --- debugs/adminbuse shots ---
 
 /obj/item/projectile/hvp/debug
 	desc = "You feel like you probably angered one of the gods."
 	velocity = 500
 	mass = 5
+	cangib = FALSE
 
 /obj/item/projectile/hvp/debug/badmin
 	velocity = 10000
 	mass = 55
+	cangib = TRUE
 
 /obj/item/projectile/hvp/debug/badmin/chaos
 	special = HVP_SHARP | HVP_BLUESPACE | HVP_BOUNCY
 
 /obj/item/projectile/hvp/debug/sticky
 	special = HVP_STICKY
+	spin = 1
 
 /obj/item/projectile/hvp/debug/New()
 	..()
@@ -395,5 +400,4 @@
 
 /obj/item/projectile/hvp/debug/sticky/New()
 	..()
-	spin = 1
 	update_animations()

@@ -33,7 +33,7 @@
 	if(!LAZYLEN(contents)) // If we have no object to combine the projectile with, return
 		return
 	for(var/obj/O in contents)
-		if(contents.len > 1) // eject objects inside of us until there's only one, if there were somehow multiple
+		if(LAZYLEN(contents) > 1) // eject objects inside of us until there's only one, if there were somehow multiple
 			O.forceMove(get_turf(src))
 			continue
 		var/req_speed = max(100 * PJ.mass * 1.5, MIN_SPEED)
