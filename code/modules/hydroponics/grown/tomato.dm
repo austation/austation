@@ -44,7 +44,7 @@
 	name = "blood-tomato"
 	desc = "So bloody...so...very...bloody....AHHHH!!!!"
 	icon_state = "bloodtomato"
-	splat_type = /obj/effect/gibspawner/generic/bloodtomato
+	splat_type = /obj/effect/gibspawner/generic // austation -- don't nerf blood tomatos (sussy)
 	filling_color = "#FF0000"
 	foodtype = FRUIT | GROSS
 	grind_results = list(/datum/reagent/consumable/ketchup = 0, /datum/reagent/blood = 0)
