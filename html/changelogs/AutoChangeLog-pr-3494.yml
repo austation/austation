@@ -1,0 +1,4 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - bugfix: "The entire game can no longer be destroyed by an admin attempting to un-possess something when they haven't actually possessed anything first"
