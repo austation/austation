@@ -1,0 +1,5 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - config: "Disables security borgs"
+  - config: "Security borg transformation modules are handled via a techweb, and gated via config"
