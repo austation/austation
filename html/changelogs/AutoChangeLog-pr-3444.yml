@@ -1,0 +1,6 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - rscadd: "[Corg] Added vents/scrubbers to various places"
+  - bugfix: "[Corg] The kill chamber freezer now actually works"
+  - bugfix: "[Corg] Toxins cycle properly now"
