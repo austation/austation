@@ -560,15 +560,7 @@
 	if(O)
 		O.reagents.add_reagent(/datum/reagent/consumable/enzyme, 2 * coeff)
 
-<<<<<<< HEAD
-/*/obj/item/robot_module/butler/be_transformed_to(obj/item/robot_module/old_module) //austation begin -- Using our own sprite selection method
-	var/mob/living/silicon/robot/R = loc
-	var/borg_icon = input(R, "Select an icon!", "Robot Icon", null) as null|anything in sortList(list("Waitress", "Butler", "Tophat", "Kent", "Bro"))
-	if(!borg_icon)
-		return FALSE
-	switch(borg_icon)
-=======
-/obj/item/robot_module/butler/be_transformed_to(obj/item/robot_module/old_module)
+/*/obj/item/robot_module/butler/be_transformed_to(obj/item/robot_module/old_module) austation begin -- Using our own sprite selection method
 	var/mob/living/silicon/robot/cyborg = loc
 	var/list/service_icons = list(
 		"Waitress" = image(icon = 'icons/mob/robots.dmi', icon_state = "service_f"),
@@ -579,7 +571,6 @@
 	)
 	var/service_robot_icon = show_radial_menu(cyborg, cyborg, service_icons, custom_check = CALLBACK(src, .proc/check_menu, cyborg, old_module), radius = 42, require_near = TRUE)
 	switch(service_robot_icon)
->>>>>>> 022f31e209... Borg Radial Menus  (#4057)
 		if("Waitress")
 			cyborg_base_icon = "service_f"
 		if("Butler")
@@ -593,15 +584,10 @@
 		if("Tophat")
 			cyborg_base_icon = "tophat"
 			special_light_key = null
-<<<<<<< HEAD
-			hat_offset = INFINITY //He is already wearing a hat
-	return ..() */ //austation end
-=======
 			hat_offset = INFINITY //He's already wearing a hat
 		else
 			return FALSE
-	return ..()
->>>>>>> 022f31e209... Borg Radial Menus  (#4057)
+	return ..() austation end */
 
 /obj/item/robot_module/borgi
 	name = "Borgi"
@@ -639,15 +625,7 @@
 	hat_offset = 0
 	var/obj/item/t_scanner/adv_mining_scanner/cyborg/mining_scanner //built in memes.
 
-<<<<<<< HEAD
-/*/obj/item/robot_module/miner/be_transformed_to(obj/item/robot_module/old_module) //austation begin -- Using our own sprite selection method
-	var/mob/living/silicon/robot/R = loc
-	var/borg_icon = input(R, "Select an icon!", "Robot Icon", null) as null|anything in sortList(list("Lavaland Miner", "Asteroid Miner", "Spider Miner"))
-	if(!borg_icon)
-		return FALSE
-	switch(borg_icon)
-=======
-/obj/item/robot_module/miner/be_transformed_to(obj/item/robot_module/old_module)
+/*/obj/item/robot_module/miner/be_transformed_to(obj/item/robot_module/old_module) austation begin -- Using our own sprite selection method
 	var/mob/living/silicon/robot/cyborg = loc
 	var/list/miner_icons = list(
 		"Lavaland Miner" = image(icon = 'icons/mob/robots.dmi', icon_state = "miner"),
@@ -656,7 +634,6 @@
 	)
 	var/miner_robot_icon = show_radial_menu(cyborg, cyborg, miner_icons, custom_check = CALLBACK(src, .proc/check_menu, cyborg, old_module), radius = 42, require_near = TRUE)
 	switch(miner_robot_icon)
->>>>>>> 022f31e209... Borg Radial Menus  (#4057)
 		if("Lavaland Miner")
 			cyborg_base_icon = "miner"
 		if("Asteroid Miner")
@@ -664,13 +641,9 @@
 			special_light_key = "miner"
 		if("Spider Miner")
 			cyborg_base_icon = "spidermin"
-<<<<<<< HEAD
-	return ..() */ //austation end
-=======
 		else
 			return FALSE
-	return ..()
->>>>>>> 022f31e209... Borg Radial Menus  (#4057)
+	return ..() austation end */
 
 /obj/item/robot_module/miner/rebuild_modules()
 	. = ..()
