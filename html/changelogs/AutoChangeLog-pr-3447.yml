@@ -1,4 +1,0 @@
-author: "AustationBot"
-delete-after: True
-changes: 
-  - config: "The map blacklist config is used to disable the Wishgranter ruin instead of removing the template"

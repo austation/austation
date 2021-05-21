@@ -1,4 +1,0 @@
-author: "AustationBot"
-delete-after: True
-changes: 
-  - tweak: "The BS Miners cost has been altered to be buildable round start without needing to mine"

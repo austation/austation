@@ -1,5 +1,0 @@
-author: "AustationBot"
-delete-after: True
-changes: 
-  - rscadd: "Adds a new softcrit system, you can now interact and walk around slowly while in crit."
-  - bugfix: "IPC crit damage code actually works properly now."
