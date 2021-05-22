@@ -1,0 +1,5 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - bugfix: "Swarmer beacon and maintenance sec officer's corpses now get properly deleted upon death"
+  - code_imp: "True/False consistency"
