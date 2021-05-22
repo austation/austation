@@ -14,7 +14,7 @@
 						ANNOUNCER_POWEROFF = 'sound/ai/default/poweroff.ogg',
 						ANNOUNCER_POWERON = 'sound/ai/default/poweron.ogg',
 						ANNOUNCER_RADIATION = 'sound/ai/default/radiation.ogg',
-						ANNOUNCER_SHUTTLECALLED = 'sound/ai/default/shuttlecalled.ogg',
-						ANNOUNCER_SHUTTLEDOCK = 'sound/ai/default/shuttledock.ogg',
-						ANNOUNCER_SHUTTLERECALLED = 'sound/ai/default/shuttlerecalled.ogg',
-						ANNOUNCER_SPANOMALIES = 'sound/ai/default/spanomalies.ogg')
+						ANNOUNCER_SHUTTLECALLED = 'goon/sound/misc/shuttle_enroute.ogg',
+						ANNOUNCER_SHUTTLEDOCK = 'goon/sound/misc/shuttle_arrive1.ogg',
+						ANNOUNCER_SHUTTLERECALLED = 'goon/sound/misc/shuttle_recalled.ogg',
+						ANNOUNCER_SPANOMALIES = 'sound/ai/default/spanomalies.ogg') // austation -- shuttle sounds modified to goon sounds (used with permission)
