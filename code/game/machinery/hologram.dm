@@ -269,8 +269,10 @@ Possible to do for anyone motivated enough:
 				if(A)
 					LAZYADD(callnames[A], I)
 			callnames -= get_area(src)
-
-			var/result = input(usr, "Choose an area to call", "Holocall") as null|anything in sortNames(callnames)
+			//austation begin -- tgui input list
+			//var/result = input(usr, "Choose an area to call", "Holocall") as null|anything in sortNames(callnames)
+			var/result = tgui_input_list(usr, "Choose an area to call", "Holocall", sortNames(callnames))
+			//austation end
 			if(QDELETED(usr) || !result || outgoing_call)
 				return
 
