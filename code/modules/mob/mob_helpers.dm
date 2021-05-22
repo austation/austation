@@ -534,6 +534,9 @@
 		stack_trace("Empty message")
 		return
 
+	if(SSticker.current_state == GAME_STATE_FINISHED && message_type == LOG_ATTACK)
+		return
+
 	// Cannot use the list as a map if the key is a number, so we stringify it (thank you BYOND)
 	var/smessage_type = num2text(message_type)
 
@@ -586,6 +589,12 @@
 /mob/proc/common_trait_examine()
 	if(HAS_TRAIT(src, TRAIT_DISSECTED))
 		. += "<span class='notice'>This body has been dissected and analyzed. It is no longer worth experimenting on.</span><br>"
+
+
+//Is the mob aware of their surroundings?
+/// Should be used in place of non-dead stat checks for mobs
+/mob/proc/is_conscious()
+	return stat <= SOFT_CRIT
 
 // https://github.com/tgstation/tgstation/pull/44056
 // Used to make sure that a player has a valid job preference setup, used to knock players out of eligibility for anything if their prefs don't make sense.
