@@ -33,7 +33,10 @@
 	if(..())
 		return
 	var/mob/living/silicon/ai/AI = usr
-	var/target_name = input(AI, "Choose who you want to track", "Tracking") as null|anything in AI.trackable_mobs()
+	//austation begin -- tgui lists
+	//var/target_name = input(AI, "Choose who you want to track", "Tracking") as null|anything in AI.trackable_mobs()
+	var/target_name = tgui_input_list(AI, "Choose who you want to track", "Tracking", AI.trackable_mobs())
+	//austation end
 	AI.ai_camera_track(target_name)
 
 /atom/movable/screen/ai/camera_light

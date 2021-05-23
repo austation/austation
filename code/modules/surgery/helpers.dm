@@ -43,8 +43,10 @@
 
 		if(!available_surgeries.len)
 			return
-
-		var/P = input("Begin which procedure?", "Surgery", null, null) as null|anything in sortList(available_surgeries)
+		//austation begin -- tgui list
+		//var/P = input("Begin which procedure?", "Surgery", null, null) as null|anything in sortList(available_surgeries)
+		var/P = tgui_input_list(user, "Begin which procedure?", "Surgery", sortList(available_surgeries))
+		//austation end
 		if(P && user && user.Adjacent(M) && (I in user))
 			var/datum/surgery/S = available_surgeries[P]
 

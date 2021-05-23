@@ -115,6 +115,13 @@
 
 /obj/effect/spawner/lootdrop/maintenance/Initialize(mapload)
 	loot = GLOB.maintenance_loot
+
+	if(HAS_TRAIT(SSstation, STATION_TRAIT_FILLED_MAINT))
+		lootcount = FLOOR(lootcount * 1.5, 1)
+
+	else if(HAS_TRAIT(SSstation, STATION_TRAIT_EMPTY_MAINT))
+		lootcount = FLOOR(lootcount * 0.5, 1)
+
 	. = ..()
 
 /obj/effect/spawner/lootdrop/maintenance/two
@@ -242,6 +249,12 @@
 	if(prob(40) && SSevents.holidays && SSevents.holidays[APRIL_FOOLS])
 		loot = list(/obj/effect/spawner/xeno_egg_delivery_troll = 1)
 	. = ..()
+
+/obj/effect/spawner/lootdrop/ten_percent_girlfriend_spawner
+	name = "10% chance girlfriend spawner"
+	loot = list(
+		/mob/living/simple_animal/pet/dog/corgi = 9,
+		/mob/living/simple_animal/pet/dog/corgi/Lisa = 1)
 
 /obj/effect/spawner/lootdrop/sanitarium
 	name = "patient spawner"
