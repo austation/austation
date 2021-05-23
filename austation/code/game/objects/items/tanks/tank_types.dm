@@ -17,13 +17,11 @@
 		to_chat(user, "<span class='notice'> You quickly adjust \the [src] to release [distribute_pressure]kPa.</span>")
 		return
 
-	var/new_mode = 1
-	for(var/pressure in modes)
-		if(distribute_pressure >= pressure)  //  We need to find the current mode, or at least the mode that came before the current custom setting.
-			new_mode ++  //  Choose the next mode up from there.
-			if(pressure == modes[length(modes)])  //  If the current mode is the highest, wrap around back to the first by leaving new_mode as 1.
-				new_mode = 1
-	distribute_pressure = modes[new_mode]  //  If the previous pressure was below the lowest mode, or >= to the highest mode, then new_mode will be 1 and we choose the lowest pressure mode.
+	var/index = modes.Find(distribute_pressure)
+	if(!index)
+		distribute_pressure = modes[1]
+	else
+		distribute_pressure = modes[(index == length(modes)) ? 1 : (index + 1)] // wrap around
 	to_chat(user, "<span class='notice'>You quickly adjust \the [src] to release [distribute_pressure]kPa.</span>")
 
 /obj/item/tank/internals/examine(mob/user)
@@ -31,8 +29,7 @@
 	if(length(modes) >= 2)
 		. += "<span class='notice'>Alt-click to quickly shift through \the [src]'s pressure modes.</span>"
 		. += "<span class='notice'>\The [src] can be set to:</span>"
-		for(var/pressure in modes)
-			. += "<span class='notice'>	[pressure]kPa</span>"
+		. += "<span class='notice'>[english_list(input = modes, and_text = "kPa or ", comma_text = "kPa, ")]kPa</span>"
 	else
 		. += "<span class='notice'>Alt-click to quickly set \the [src] to [modes[1]]kPa.</span>"
 
