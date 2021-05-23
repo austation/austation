@@ -14,7 +14,7 @@
 		return
 	if(length(modes) == 1)
 		distribute_pressure = modes[1]
-		to_chat(user, "<span class='notice'> You quickly adjust \the [src] to release [distribute_pressure]kPa.</span>")
+		to_chat(user, "<span class='notice'>You quickly adjust \the [src] to release [distribute_pressure]kPa.</span>")
 		return
 
 	var/index = modes.Find(distribute_pressure)
