@@ -1,0 +1,8 @@
+author: "Ohagi-Chan"
+delete-after: True
+changes: 
+  - rscadd: "combat internals tank"
+  - rscadd: "advanced combat internals tank"
+  - rscadd: "examine an internals tank to see its default release pressure"
+  - rscadd: "Alt-Click an internals tank to reset or cycle to its default release pressure"
+  - tweak: "moved occult tanks to a different file"
