@@ -1,0 +1,4 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - tweak: "Death pop up will only appear when your mob dies, not on ghosting"
