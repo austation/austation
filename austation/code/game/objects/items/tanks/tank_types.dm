@@ -18,10 +18,11 @@
 		return
 
 	var/index = modes.Find(distribute_pressure)
-	if(!index)
-		distribute_pressure = modes[1]
+	if(!index || index == length(modes))
+		index = 1
 	else
-		distribute_pressure = modes[(index == length(modes)) ? 1 : (index + 1)] // wrap around
+		index++
+	distribute_pressure = modes[index]
 	to_chat(user, "<span class='notice'>You quickly adjust \the [src] to release [distribute_pressure]kPa.</span>")
 
 /obj/item/tank/internals/examine(mob/user)
@@ -38,7 +39,7 @@
 
 /obj/item/tank/internals/occult
   name = "occult tank"
-  desc = "An un-natural experiment. Hyms with a musical tune, god knows what happens if it ruptures..."
+  desc = "An unnatural experiment. Hyms with a musical tune, god knows what happens if it ruptures..."
   icon = 'austation/icons/obj/tank.dmi'
   icon_state = "occult"
   max_integrity = 10
