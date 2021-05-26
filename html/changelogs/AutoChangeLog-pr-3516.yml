@@ -1,0 +1,4 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - bugfix: "Synths now properly inherit mutant bodyparts"
