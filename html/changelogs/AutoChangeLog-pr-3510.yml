@@ -1,0 +1,4 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - rscdel: "For performance reasons, lavaland atmos is static again. The randomization system still exists but sits unused."
