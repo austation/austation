@@ -21,6 +21,7 @@
 	. = ..()
 	RegisterSignal(src, COMSIG_PARENT_ATTACKBY, .proc/try_spawn_loot)
 
+/* austation begin -- modularize lavaland loot
 /obj/structure/closet/crate/necropolis/tendril/proc/try_spawn_loot(datum/source, obj/item/item, mob/user, params) ///proc that handles key checking and generating loot
 	SIGNAL_HANDLER
 
@@ -74,6 +75,7 @@
 	qdel(item)
 	to_chat(user, "<span class='notice'>You disable the magic lock, revealing the loot.</span>")
 	return TRUE
+austation end */
 
 /obj/structure/closet/crate/necropolis/tendril/can_open(mob/living/user, force = FALSE)
 	if(!spawned_loot)
