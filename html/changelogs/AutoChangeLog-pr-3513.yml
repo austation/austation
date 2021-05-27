@@ -1,4 +1,0 @@
-author: "AustationBot"
-delete-after: True
-changes: 
-  - rscdel: "Removes the filter from the corg filter to space setup"

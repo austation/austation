@@ -1,4 +1,0 @@
-author: "AustationBot"
-delete-after: True
-changes: 
-  - rscdel: "The BS miner cost changes have been reverted. They should've have been changed in the first place, sorry."

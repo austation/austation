@@ -56,6 +56,80 @@
 		-->
 		<div class="commit sansserif">
 
+			<h2 class="date">27 May 2021</h2>
+			<h3 class="author">AustationBot updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="rscdel">For performance reasons, lavaland atmos is static again. The randomization system still exists but sits unused.</li>
+				<li class="tweak">Death pop up will only appear when your mob dies, not on ghosting</li>
+				<li class="rscdel">The BS miner cost changes have been reverted. They should've have been changed in the first place, sorry.</li>
+				<li class="refactor">Entering softcrit knocks the player down for 4 seconds.</li>
+				<li class="refactor">Items cannot be used during softcrit. (Attacking, healing, suicide bombing can no longer be performed)</li>
+				<li class="refactor">Hardcrit threshold changed from -50 to -40.</li>
+				<li class="refactor">Random oxy damage during softcrit removed. (Oxygen damage is already handled by the lungs)</li>
+				<li class="refactor">Random sleeping during softcrit replaced with knockdown.</li>
+				<li class="refactor">Reduced the probability of being knocked down / gasping / coughing during softcrit.</li>
+				<li class="refactor">Damage effect overlay now kicks in at -0 health rather than -10 health.</li>
+				<li class="bugfix">runtime when throwing petholders</li>
+				<li class="rscadd">[Corgstation]</li>
+				<li class="rscadd">Announcement system, Beepsky, boxes of bodybags, Intellicard in RD's office, cleanbot in AI sat, mirror in theatre, extra toolbox in sci's main lab</li>
+				<li class="bugfix">Bar backroom piping is connected to pipenet, Kitchen APC and Turbine SMES are now actually wired into the power grid, Bot navigation issue near arrivals fixed</li>
+				<li class="tweak">Armory and Secure tech storage doors are now reinforced, roboticists can now open the anesthetic closet in robotics</li>
+				<li class="rscdel">Removed donutstation.</li>
+				<li class="refactor">whip isnt shitcode anymore</li>
+				<li class="bugfix">made some generic healing sources handle toxinlovers properly</li>
+				<li class="bugfix">made the easy dismemberment trait on several species actually function</li>
+				<li class="bugfix">made the beelover trait actually function</li>
+				<li class="code_imp">some related code cleanup</li>
+				<li class="bugfix">Fixed runtime when qdeleting proximity monitor</li>
+				<li class="bugfix">Fixed a material dupe exploit with stacking machines.</li>
+				<li class="bugfix">Hardsuits protect against space again.</li>
+				<li class="bugfix">Synths now properly inherit mutant bodyparts</li>
+				<li class="bugfix">Fixed runtime in cmp.dm</li>
+				<li class="admin">circuit's log when a battery is put in</li>
+				<li class="rscadd">Changed the memory allocation for space ruin generation</li>
+				<li class="rscadd">Added new ruins</li>
+				<li class="bugfix">Synths process chems as intended, and have the proper bitflags and traits</li>
+				<li class="balance">All synths revive on healing like IPCs, and military synths have additional traits.</li>
+				<li class="admin">Admins will now get a pop up asking them if they want to start Battle Royale if the round was delayed.</li>
+				<li class="bugfix">Ethereal Disco Grenades no longer crash the server</li>
+				<li class="tweak">Riot shields, Roman shields, Goliath shields no longer block bullets.</li>
+				<li class="bugfix">modfabs no longer teleport disks</li>
+				<li class="rscdel">Removes the filter from the corg filter to space setup</li>
+				<li class="bugfix">Synth infinite brute stacking</li>
+				<li class="rscadd">Gangs Rework</li>
+				<li class="tweak">necroseed tendril range halved. if an admin bwoinks you for this they should be ridiculed and kicked in a corner</li>
+				<li class="tweak">self respiration can now counteract autophageocytosis bleeding</li>
+				<li class="tweak">pituitary disruption is less disruptive to a round overall</li>
+				<li class="tweak">biometallic replication numbers and thresholds have been tweaked</li>
+				<li class="tweak">wizarditis transmission threshold is significantly easier</li>
+				<li class="bugfix">wizarditis now works</li>
+			</ul>
+			<h3 class="author">Mothblocks and tgstation updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="refactor">Optimized TGUI_CREATE_MESSAGE() significantly.</li>
+				<li class="tweak">Updated the unit test code.</li>
+			</ul>
+			<h3 class="author">Ohagi-Chan updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="rscadd">combat internals tank</li>
+				<li class="rscadd">advanced combat internals tank</li>
+				<li class="rscadd">examine an internals tank to see its default release pressure</li>
+				<li class="rscadd">Alt-Click an internals tank to reset or cycle to its default release pressure</li>
+				<li class="tweak">moved occult tanks to a different file</li>
+			</ul>
+			<h3 class="author">Ryll-Ryll updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="rscadd">Added stickytapes</li>
+				<li class="rscadd">Added pellet cloud grenades</li>
+				<li class="refactor">Refactored embeds, there can now be harmless embeds</li>
+				<li class="rscadd">Added back the pellet cloud option to admin podlaunchers</li>
+			</ul>
+			<h3 class="author">Tlaltecuhtli updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="balance">tendril crates need keys to open which you can spend mining points to get</li>
+				<li class="balance">ashwalkers can craft em with bones cause they got no points</li>
+			</ul>
+
 			<h2 class="date">24 May 2021</h2>
 			<h3 class="author">AustationBot updated:</h3>
 			<ul class="changes bgimages16">
@@ -608,36 +682,6 @@
 			<h3 class="author">AustationBot updated:</h3>
 			<ul class="changes bgimages16">
 				<li class="admin">Adds sec cell logs to player logs</li>
-			</ul>
-
-			<h2 class="date">25 March 2021</h2>
-			<h3 class="author">AustationBot updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="tweak">Decreased the cost of the Special Ops crate to make it more viable</li>
-				<li class="tweak">ports new animation sprite for wag</li>
-				<li class="rscadd">Adds the geisha suit to the beecoin shop.</li>
-				<li class="tweak">Meteors now spawn 10 minutes after being announced.</li>
-				<li class="tweak">Meteor wave event now unlocks meteor shields.</li>
-				<li class="tweak">Meteor wave start time reduced from 50 minutes to 30 minutes.</li>
-				<li class="tweak">Automatic shotguns need 2 hands to be fired, fixing a bug that would break automatic shotguns if you had an item in your inactive hand.</li>
-				<li class="bugfix">RCD simple circuits upgrade now works</li>
-				<li class="admin">Create Antag now allows for a maximum amount of antags to be selected for some options.</li>
-				<li class="rscadd">You can now buy games of yatzy at toy vendors.</li>
-				<li class="rscadd">Adds the ability to (inaccurately) shoot projectiles by using a screwdriver on bullet casings</li>
-				<li class="tweak">Energy katana is now indestructible.</li>
-				<li class="tweak">Energy katana is destroyed when its attached ninja is destroyed.</li>
-				<li class="rscadd">Standardized space chess, added space chess cargo crates</li>
-				<li class="tweak">Indestructible items can no longer be destroyed via the analyser.</li>
-				<li class="tweak">Supermatter causality field will now protect indestructible items from being consumed.</li>
-				<li class="imageadd">Buffs anime (updates schoolgirl outfits)</li>
-				<li class="tweak">The spectre inspector goggles now point towards ghosts instead of revealing them.</li>
-				<li class="rscadd">Deltastation: Third brig cell.</li>
-				<li class="rscdel">Deltastation: Security transfer room (to make space for 3rd cell).</li>
-				<li class="tweak">Deltastation: Moved warden office, interrogation and evidence higher, making security office one row shorter and gear room longer.</li>
-				<li class="bugfix">Deltastation: No more basic brig access on doors to gulag shuttle room, security office and evidence.</li>
-				<li class="tweak">Oozeling limbs now recede at an earlier threshold, making it far more likely for them to survive when exposed to adverse conditions that result in blood loss.</li>
-				<li class="bugfix">Oozeling regeneration now costs the same as the refund from limb recession.</li>
-				<li class="bugfix">Fixes suit movement sounds not playing if you remove the suit.</li>
 			</ul>
 		</div>
 

@@ -1,5 +1,0 @@
-author: "AustationBot"
-delete-after: True
-changes: 
-  - rscadd: "Changed the memory allocation for space ruin generation"
-  - rscadd: "Added new ruins"
