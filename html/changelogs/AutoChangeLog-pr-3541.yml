@@ -1,4 +1,0 @@
-author: "Cyberboss, MCterra"
-delete-after: True
-changes: 
-  - server: "port TGS event handler from /tg/"

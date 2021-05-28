@@ -1,4 +1,0 @@
-author: "MCterra"
-delete-after: True
-changes: 
-  - bugfix: "fixes tendril chests and borg module selection"
