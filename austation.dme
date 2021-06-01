@@ -151,8 +151,6 @@
 #include "austation\code\modules\hydroponics\grown.dm"
 #include "austation\code\modules\hydroponics\plant_genes.dm"
 #include "austation\code\modules\hydroponics\grown\towercap.dm"
-#include "austation\code\modules\integrated_electronics\subtypes\manipulation.dm"
-#include "austation\code\modules\integrated_electronics\subtypes\reagents.dm"
 #include "austation\code\modules\jobs\job_types\assistant.dm"
 #include "austation\code\modules\jobs\job_types\chief_medical_officer.dm"
 #include "austation\code\modules\jobs\job_types\emt.dm"
