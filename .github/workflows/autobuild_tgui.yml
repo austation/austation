@@ -51,7 +51,7 @@ jobs:
       - name: Commit and Push Build
         if: steps.check.outputs.triggered == 'true'
         run: |
-          git config --local user.email "actions@github.com"
-          git config --local user.name "TGUI Rebuild"
+          git config --local user.email "austation@mcterra.id.au"
+          git config --local user.name "AustationBot"
           git commit -m "TGUI Rebuild" -a || true
           git push
