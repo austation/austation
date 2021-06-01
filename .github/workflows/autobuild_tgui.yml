@@ -20,21 +20,21 @@ jobs:
       #  env:
       #    GITHUB_TOKEN: '${{ secrets.GITHUB_TOKEN }}' # make sure this is correct depending on branch protection setup
       - name: Checkout
-        if: steps.check.outputs.triggered == 'true'
+        #if: steps.check.outputs.triggered == 'true'
         uses: actions/checkout@v2
         with:
           fetch-depth: 25
       - name: Setup Node
-        if: steps.check.outputs.triggered == 'true'
+        #if: steps.check.outputs.triggered == 'true'
         uses: actions/setup-node@v1
         with:
           node-version: '>=12.13'
       - name: Build TGUI
-        if: steps.check.outputs.triggered == 'true'
+        #if: steps.check.outputs.triggered == 'true'
         run: bin/tgui
         working-directory: ./tgui
       - name: Commit and Push Build
-        if: steps.check.outputs.triggered == 'true'
+        #if: steps.check.outputs.triggered == 'true'
         run: |
           git config --local user.email "actions@github.com"
           git config --local user.name "TGUI Rebuild"
