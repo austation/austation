@@ -1,4 +1,0 @@
-author: "AustationBot"
-delete-after: True
-changes: 
-  - bugfix: "fixed shooting yourself in the mouth with a gun while pacified to create 1 hit kill projectiles."
