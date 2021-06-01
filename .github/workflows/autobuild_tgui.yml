@@ -1,36 +1,57 @@
-name: Autobuild TGUI
+name: Rebuild TGUI
 
 on:
-  push:
-    branches:
-      - 'master'
-    paths:
-      - 'tgui/**.js'
-      - 'tgui/**.scss'
+  issue_comment:
+    types: [created]
+
+env:
+  GITHUB_TOKEN: '${{ secrets.BOT_TOKEN }}'
+  GITHUB_USER: AustationBot
+  REPO_PATH: austation/austation
 
 jobs:
   build:
-    name: Rebuild TGUI
+    name: TGUI Rebuild
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v1
+      - name: Check Comment
+        # Org members and repo collaborators can request tgui rebuild, as well as the PR author.
+        if: ${{ github.event.issue.pull_request && github.event.comment.author_association == 'OWNER' || github.event.comment.author_association == 'MEMBER' || github.event.comment.author_association == 'COLLABORATOR' || github.event.comment.user.login == github.event.issue.user.login }}
+        uses: khan/pull-request-comment-trigger@bb03972cc9f423111f3b5a23fcc9fd32741acabb
+        id: check
         with:
+          trigger: '?rebuild'
+          reaction: rocket
+
+      - name: Identify PR
+        if: steps.check.outputs.triggered == 'true'
+        id: prid
+        run: |
+          echo "::set-output name=json::$(hub api repos/${{ env.REPO_PATH }}/pulls/${{ github.event.issue.number }})"
+
+      - name: Checkout
+        if: steps.check.outputs.triggered == 'true'
+        uses: actions/checkout@v2
+        with:
+          repository: ${{ fromJson(steps.prid.outputs.json).head.repo.full_name }}
+          ref: ${{ fromJson(steps.prid.outputs.json).head.ref }}
           fetch-depth: 25
+
       - name: Setup Node
+        if: steps.check.outputs.triggered == 'true'
         uses: actions/setup-node@v1
         with:
           node-version: '>=12.13'
+
       - name: Build TGUI
-        run: bin/tgui --action
+        if: steps.check.outputs.triggered == 'true'
+        run: bin/tgui
         working-directory: ./tgui
-      - name: Commit Artifacts
+
+      - name: Commit and Push Build
+        if: steps.check.outputs.triggered == 'true'
         run: |
-          git config --local user.email "austation@mcterra.id.au"
-          git config --local user.name "AustationBot"
-          git pull origin master
-          git commit -m "Automatic TGUI Rebuild [ci skip]" -a || true
-      - name: Push Artifacts
-        uses: ad-m/github-push-action@master
-        with:
-          github_token: ${{ secrets.BOT_TOKEN }}
+          git config --local user.email "actions@github.com"
+          git config --local user.name "TGUI Rebuild"
+          git commit -m "TGUI Rebuild" -a || true
+          git push
