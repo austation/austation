@@ -11,14 +11,14 @@ jobs:
     name: TGUI Rebuild
     runs-on: ubuntu-latest
     steps:
-      - name: Check Comment
-        uses: khan/pull-request-comment-trigger@bb03972cc9f423111f3b5a23fcc9fd32741acabb
-        id: check
-        with:
-          trigger: '?rebuild'
-          reaction: rocket
-        env:
-          GITHUB_TOKEN: '${{ secrets.GITHUB_TOKEN }}' # make sure this is correct depending on branch protection setup
+      #- name: Check Comment
+      #  uses: khan/pull-request-comment-trigger@bb03972cc9f423111f3b5a23fcc9fd32741acabb
+      #  id: check
+      #  with:
+      #    trigger: '?rebuild'
+      #    reaction: rocket
+      #  env:
+      #    GITHUB_TOKEN: '${{ secrets.GITHUB_TOKEN }}' # make sure this is correct depending on branch protection setup
       - name: Checkout
         if: steps.check.outputs.triggered == 'true'
         uses: actions/checkout@v2
