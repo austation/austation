@@ -11,8 +11,8 @@ on:
       - 'tgui/**.scss'
 
 env:
-  GITHUB_TOKEN: '${{ secrets.BOT_TOKEN }}'
-  GITHUB_USER: 'AustationBot'
+  #GITHUB_TOKEN: '${{ secrets.BOT_TOKEN }}'
+  #GITHUB_USER: 'AustationBot'
   REPO_PATH: 'austation/austation'
   COMMIT_NAME: 'AustationBot'
   COMMIT_EMAIL: 'austation@mcterra.id.au'
