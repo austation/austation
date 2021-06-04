@@ -102,4 +102,4 @@ jobs:
       - name: Push Artifacts
         uses: ad-m/github-push-action@65392840bda2e774394d5cd38ca33e5918aec2d3
         with:
-          github_token: ${{ env.GITHUB_TOKEN }}
+          github_token: ${{ secrets.BOT_TOKEN }}
