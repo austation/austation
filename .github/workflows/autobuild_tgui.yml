@@ -8,8 +8,9 @@ env:
   GITHUB_TOKEN: '${{ secrets.BOT_TOKEN }}'
   GITHUB_USER: AustationBot
   REPO_PATH: austation/austation
-  COMMIT_NAME: "AustationBot"
-  COMMIT_EMAIL: "austation@mcterra.id.au"
+  COMMIT_NAME: 'AustationBot'
+  COMMIT_EMAIL: 'austation@mcterra.id.au'
+  DEFAULT_BRANCH: 'master'
 
 jobs:
   build:
@@ -53,8 +54,8 @@ jobs:
         if: ${{ fromJson(steps.prid.outputs.json).mergeable == false }}
         run: |
           git remote add base https://github.com/${{ env.REPO_PATH }}.git
-          git fetch base --depth=25
-          git checkout base/master tgui/public
+          git fetch base --depth=25 ${{ env.DEFAULT_BRANCH }}
+          git checkout base/${{ env.DEFAULT_BRANCH }} tgui/public
           git commit -m "TGUI Reset" -a || true
 
       - name: Build TGUI
