@@ -29,8 +29,8 @@ jobs:
         if: steps.check.outputs.triggered == 'true'
         id: prid
         run: |
-          git config --local user.email "${{ env.COMMIT_EMAIL }}"
-          git config --local user.name "${{ env.COMMIT_NAME }}"
+          git config --global user.email "${{ env.COMMIT_EMAIL }}"
+          git config --global user.name "${{ env.COMMIT_NAME }}"
           echo "::set-output name=json::$(hub api repos/${{ env.REPO_PATH }}/pulls/${{ github.event.issue.number }})"
 
       - name: Checkout
