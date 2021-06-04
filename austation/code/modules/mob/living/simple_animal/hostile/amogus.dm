@@ -100,7 +100,7 @@ var/datum/team/imposters/sus  //  The imposters team. There is only one.
 	icon_state = pick(available_colours)
 	available_colours &= ~icon_state
 
-	if(!is_sus && sus && rand() <= 0.7)  //  Don't create a new antag if all three are true:
+	if(!is_sus && sus && prob(70))  //  Don't create a new antag if all three are true:
 									     //  1) Admin has not forced a new imposter
 									     //  2) There is an existing imposter
 									     //  3) The 70% chance fails
