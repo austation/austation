@@ -50,11 +50,13 @@ jobs:
           node-version: '>=12.13'
 
       # This only runs if the PR has a merge conflict. Serves to attempt resolving merge conflicts rather than just rebuilding.
+      # Uses a smart little git hack to make a merge commit for just a limited set of files.
       - name: Conflict Resolution
         if: ${{ fromJson(steps.prid.outputs.json).mergeable == false }}
         run: |
           git remote add base https://github.com/${{ env.REPO_PATH }}.git
           git fetch base --depth=25 ${{ env.DEFAULT_BRANCH }}
+          git merge -s ours --no-commit base/${{ env.DEFAULT_BRANCH }}
           git checkout base/${{ env.DEFAULT_BRANCH }} tgui/public
           git commit -m "TGUI Reset" -a || true
 
