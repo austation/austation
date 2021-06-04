@@ -10,7 +10,7 @@ env:
   REPO_PATH: austation/austation
   COMMIT_NAME: 'AustationBot'
   COMMIT_EMAIL: 'austation@mcterra.id.au'
-  DEFAULT_BRANCH: 'master'
+  DEFAULT_BRANCH: 'tgui-test'
 
 jobs:
   build:
