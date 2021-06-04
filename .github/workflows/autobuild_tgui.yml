@@ -53,7 +53,7 @@ jobs:
         if: ${{ fromJson(steps.prid.outputs.json).mergeable == false }}
         run: |
           git remote add base https://github.com/${{ env.REPO_PATH }}.git
-          git fetch base
+          git fetch base --depth=25
           git checkout base/master tgui/public
           git commit -m "TGUI Reset" -a || true
 
