@@ -32,6 +32,8 @@ jobs:
           git config --global user.email "${{ env.COMMIT_EMAIL }}"
           git config --global user.name "${{ env.COMMIT_NAME }}"
           echo "::set-output name=json::$(hub api repos/${{ env.REPO_PATH }}/pulls/${{ github.event.issue.number }})"
+          echo "${{ fromJson(steps.prid.outputs.json).mergeable }}"
+          echo "${{ steps.prid.outputs.json }}"
 
       - name: Checkout
         if: steps.check.outputs.triggered == 'true'
@@ -49,7 +51,7 @@ jobs:
 
       # This only runs if the PR has a merge conflict. Serves to attempt resolving merge conflicts rather than just rebuilding.
       - name: Conflict Resolution
-        if: ${{ fromJson(steps.prid.outputs.json).mergeable == 'false' }}
+        if: ${{ fromJson(steps.prid.outputs.json).mergeable == false }}
         run: |
           git remote add base https://github.com/${{ env.REPO_PATH }}.git
           git fetch base
