@@ -99,7 +99,6 @@ jobs:
           git config --local user.name "${{ env.COMMIT_NAME }}"
           git pull origin ${{ env.DEFAULT_BRANCH }}
           git commit -m "Automatic TGUI Rebuild [ci skip]" -a || true
-      - name: Push Artifacts
-        uses: ad-m/github-push-action@master
-        with:
-          github_token: ${{ secrets.BOT_TOKEN }}
+      - name: Push
+        run: |
+          git push "https://${{ env.GITHUB_USER }}:${{ env.GITHUB_TOKEN }}@github.com/${{ env.REPO_PATH }}.git"
