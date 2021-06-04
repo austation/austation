@@ -11,8 +11,8 @@ on:
       - 'tgui/**.scss'
 
 env:
-  #GITHUB_TOKEN: '${{ secrets.BOT_TOKEN }}'
-  #GITHUB_USER: 'AustationBot'
+  GITHUB_TOKEN: '${{ secrets.BOT_TOKEN }}'
+  GITHUB_USER: 'AustationBot'
   REPO_PATH: 'austation/austation'
   COMMIT_NAME: 'AustationBot'
   COMMIT_EMAIL: 'austation@mcterra.id.au'
@@ -100,6 +100,6 @@ jobs:
           git pull origin ${{ env.DEFAULT_BRANCH }}
           git commit -m "Automatic TGUI Rebuild [ci skip]" -a || true
       - name: Push Artifacts
-        uses: ad-m/github-push-action@65392840bda2e774394d5cd38ca33e5918aec2d3
+        uses: ad-m/github-push-action@master
         with:
           github_token: ${{ secrets.BOT_TOKEN }}
