@@ -1,0 +1,4 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - imageadd: "adds an inhand sprite for the hos gun set to stun (tazer) mode"
