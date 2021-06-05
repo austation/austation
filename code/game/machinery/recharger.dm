@@ -125,37 +125,24 @@
 		var/obj/item/stock_parts/cell/C = charging.get_cell()
 		if(C)
 			if(C.charge < C.maxcharge)
-<<<<<<< HEAD
-				C.give(C.chargerate * recharge_coeff)
-				use_power(300 * recharge_coeff)
-				if(C.charge == C.maxcharge) //austation change, PR #3171 -- if the cycle fully charges the weapon, it will display instantly
-					using_power = 0	
-				else 
-					using_power = 1		//end
-			update_icon(using_power)
-=======
 				C.give(C.chargerate * recharge_coeff * delta_time / 2)
 				use_power(125 * recharge_coeff * delta_time)
-				using_power = TRUE
+				if(C.charge == C.maxcharge) // austation begin -- PR #3171 -- if the cycle fully charges the weapon, it will display instantly
+					using_power = FALSE
+				else
+					using_power = TRUE // austation end
 			update_icon()
->>>>>>> 52ab9d030e... Ports Delta_time (#3731)
 
 		if(istype(charging, /obj/item/ammo_box/magazine/recharge))
 			var/obj/item/ammo_box/magazine/recharge/R = charging
 			if(R.stored_ammo.len < R.max_ammo)
 				R.stored_ammo += new R.ammo_type(R)
-<<<<<<< HEAD
-				use_power(250 * recharge_coeff)
-				if(R.stored_ammo.len == R.max_ammo) //austation change -- same as above
-					using_power = 0
-				else
-					using_power = 1 //end
-			update_icon(using_power)
-=======
 				use_power(100 * recharge_coeff * delta_time)
-				using_power = TRUE
+				if(R.stored_ammo.len == R.max_ammo) // austation begin -- same as above
+					using_power = FALSE
+				else
+					using_power = TRUE // austation end
 			update_icon()
->>>>>>> 52ab9d030e... Ports Delta_time (#3731)
 			return
 	else
 		return PROCESS_KILL
