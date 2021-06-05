@@ -1,0 +1,4 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - rscadd: "Preference to switch the walk hotkey between held down and a toggle inside the stats menu's preference tab."
