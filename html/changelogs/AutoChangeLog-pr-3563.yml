@@ -1,5 +1,0 @@
-author: "AustationBot"
-delete-after: True
-changes: 
-  - tweak: "Head revs now use a normal flash"
-  - tweak: "When a head rev uses a flash it will gain charges."

@@ -1,4 +1,0 @@
-author: "Mothblocks, froststahr port"
-delete-after: True
-changes: 
-  - admin: "Added the \"Check Timer Sources\" debug command to help isolate problematic cases of addtimer."

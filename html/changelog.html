@@ -56,6 +56,47 @@
 		-->
 		<div class="commit sansserif">
 
+			<h2 class="date">06 June 2021</h2>
+			<h3 class="author">AustationBot updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="rscadd">Preference to switch the walk hotkey between held down and a toggle inside the stats menu's preference tab.</li>
+				<li class="rscadd">Makes multi-z pipe adaptors compatible with piping layers.</li>
+				<li class="bugfix">makes machines work as intended again</li>
+				<li class="code_imp">Updates various machines, which currently use SSfastprocess, so that they only start processing when it's necessary. Some of these updated machines have been changed so that they don't ever need to process.</li>
+				<li class="refactor">Replaces the speed_process var with two new variables. The processing_flags variable stores bitflags with information about a machine's preferences on when it should start processing. The subsystem_type var holds the path to which type of subsystem that machine should use.</li>
+				<li class="bugfix">Fixed rare runtime when you die without client</li>
+				<li class="tweak">blind people can now feel around themselves to examine stuff</li>
+				<li class="bugfix">ethereals can charge via borg chargers again</li>
+				<li class="rscadd">Being on staff grants you access to donor items</li>
+				<li class="tweak">Head revs now use a normal flash</li>
+				<li class="tweak">When a head rev uses a flash it will gain charges.</li>
+				<li class="bugfix">fixes equipment not spawning</li>
+				<li class="bugfix">fixes robo jumpsuit error</li>
+				<li class="tweak">Updated the Freezer/Heater board, now named Thermomachine board.</li>
+				<li class="refactor">Minor optimizations to powernet propagation.</li>
+				<li class="imageadd">adds an inhand sprite for the hos gun set to stun (tazer) mode</li>
+			</ul>
+			<h3 class="author">Mothblocks updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="code_imp">Process procs now properly utilize deltatime when implementing rates, timers and probabilities, which paves way for easier subsystem tickrate adjustments.</li>
+			</ul>
+			<h3 class="author">Mothblocks, froststahr port updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="admin">Added the "Check Timer Sources" debug command to help isolate problematic cases of addtimer.</li>
+			</ul>
+			<h3 class="author">Naevi, ivanmixo updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="imageadd">New roboticist enviro and jump suits</li>
+			</ul>
+			<h3 class="author">Thatguythere03, Jimmy Brickets updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="rscadd">a new clown mask based of Madness Combat's Tricky! (Improbability drive not included)</li>
+			</ul>
+			<h3 class="author">r1ks-iwnl updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="bugfix">Autolathes can't create items for cheaper than what they recycle for.</li>
+			</ul>
+
 			<h2 class="date">04 June 2021</h2>
 			<h3 class="author">AustationBot updated:</h3>
 			<ul class="changes bgimages16">
@@ -656,37 +697,6 @@
 			<h3 class="author">Mothblocks, r1ks-iwnl updated:</h3>
 			<ul class="changes bgimages16">
 				<li class="rscadd">Updates view tracked playtime menu to TGUI.</li>
-			</ul>
-
-			<h2 class="date">04 April 2021</h2>
-			<h3 class="author">AustationBot updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="rscadd">Added the old animation for felinid tails</li>
-				<li class="rscdel">Removed the new tail animation</li>
-				<li class="tweak">Changeling last resort ability no longer takes 0.8 seconds after use to actually spawn the headcrab.</li>
-				<li class="tweak">Improves stat panel background design.</li>
-				<li class="tweak">Stat panel will now display adminhelp messages for the bwoinkees.</li>
-				<li class="rscadd">Boxstation: Two pairs of sunglasses to Law Office.</li>
-				<li class="rscdel">Boxstation: Remove a lot of useless wires around maintenance.</li>
-				<li class="rscdel">Boxstation: Remove three AI cams placed in maintenance.</li>
-				<li class="tweak">Boxstation: Bridge status displays are now placed on reinforced walls instead on windows.</li>
-				<li class="bugfix">Boxstation: No more CMO office area in maintenance.</li>
-				<li class="tweak">RCD simple electronics upgrade no longer locks the APC you are building</li>
-				<li class="tweak">sleeping carp no longer deflects harmless projectiles.</li>
-				<li class="tweak">Align powercell sprites with overlay</li>
-			</ul>
-
-			<h2 class="date">03 April 2021</h2>
-			<h3 class="author">AustationBot updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="rscdel">Most of the away missions have been outmoded.</li>
-				<li class="tweak">Replaced tiles in metastation freezer room with less cold ones.</li>
-				<li class="rscdel">Removed roundstart cold tiles and replaced them with /freezer tiles.</li>
-				<li class="bugfix">fixed ex_act being called until the item is destroyed</li>
-				<li class="tweak">Fancy new UI for folders</li>
-				<li class="bugfix">fixes donator backpack inhands and scarf sprites</li>
-				<li class="code_imp">cleaner donator item handling</li>
-				<li class="rscadd">Adds donator items in the beecoin shop, for real this time.</li>
 			</ul>
 		</div>
 
