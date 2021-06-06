@@ -65,18 +65,21 @@ GLOBAL_LIST_INIT(coilgun_pipe_recipes, list(
 		new /datum/pipe_info/coilgun("Junction",		/obj/structure/disposalpipe/junction/coilgun, PIPE_TRIN_M),
 	),
 	"Coilgun Devices" = list(
-		new /datum/pipe_info/coilgun("Charger",		/obj/structure/disposalpipe/coilgun/charger),
+		new /datum/pipe_info/coilgun("Charger",			/obj/structure/disposalpipe/coilgun/charger),
 		new /datum/pipe_info/coilgun("Super-Charger",	/obj/structure/disposalpipe/coilgun/super_charger),
 		new /datum/pipe_info/coilgun("Magnetizer",		/obj/structure/disposalpipe/coilgun/magnetizer),
 		new /datum/pipe_info/coilgun("Passive Cooler",	/obj/structure/disposalpipe/coilgun/cooler),
 		new /datum/pipe_info/coilgun("Active Cooler",	/obj/structure/disposalpipe/coilgun/cooler/active),
-		new /datum/pipe_info/coilgun("Modifier",		/obj/structure/disposalpipe/coilgun/modifier),
-		new /datum/pipe_info/coilgun("Bypass",			/obj/structure/disposalpipe/coilgun/bypass, PIPE_TRIN_M),
 		new /datum/pipe_info/coilgun("Barrel",			/obj/structure/disposalpipe/coilgun/barrel),
 
 
 	)
 ))
+/*
+ * To be added:
+ * 		new /datum/pipe_info/coilgun("Modifier",		/obj/structure/disposalpipe/coilgun/modifier),
+ *		new /datum/pipe_info/coilgun("Bypass",			/obj/structure/disposalpipe/coilgun/bypass, PIPE_TRIN_M),
+ */
 // austation end -- coilguns
 
 GLOBAL_LIST_INIT(transit_tube_recipes, list(
