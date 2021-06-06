@@ -19,9 +19,10 @@ jobs:
           python -m pip install --upgrade pip
           python -m pip install pyyaml
       - name: "Checkout"
-        uses: actions/checkout@v1
+        uses: actions/checkout@v2
         with:
           fetch-depth: 25
+          token: ${{ secrets.BOT_TOKEN }}
       - name: "Compile"
         run: |
           python tools/ss13_genchangelog.py html/changelog.html html/changelogs
@@ -32,6 +33,5 @@ jobs:
           git pull origin master
           git commit -m "Automatic changelog compile [ci skip]" -a || true
       - name: "Push"
-        uses: ad-m/github-push-action@master
-        with:
-          github_token: ${{ secrets.BOT_TOKEN }}
+        run: |
+          git push origin

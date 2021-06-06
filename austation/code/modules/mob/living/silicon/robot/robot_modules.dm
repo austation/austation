@@ -13,7 +13,7 @@
 		"Droid" = image(icon = 'austation/icons/mob/robot.dmi', icon_state = "cmedical"),
 		"Skirt" = image(icon = 'austation/icons/mob/robot.dmi', icon_state = "banangarang-Medical"))
 
-	var/med_borg_icon = show_radial_menu(R, R , robotstyles_med, custom_check = CALLBACK(src, .proc/check_menu, R), radius = 42, require_near = TRUE)
+	var/med_borg_icon = show_radial_menu(R, R , robotstyles_med, custom_check = CALLBACK(src, .proc/check_menu, R, old_module), radius = 42, require_near = TRUE)
 
 	switch(med_borg_icon)
 		if("Default")
@@ -61,7 +61,7 @@
 		"Handy" = image(icon = 'austation/icons/mob/robot.dmi', icon_state = "handyeng"),
 		"Skirt" = image(icon = 'austation/icons/mob/robot.dmi', icon_state = "banangarang-Engineering"))
 
-	var/engi_borg_icon = show_radial_menu(R, R , robotstyles_eng, custom_check = CALLBACK(src, .proc/check_menu, R), radius = 42, require_near = TRUE)
+	var/engi_borg_icon = show_radial_menu(R, R , robotstyles_eng, custom_check = CALLBACK(src, .proc/check_menu, R, old_module), radius = 42, require_near = TRUE)
 
 	switch(engi_borg_icon)
 		if("Default")
@@ -112,7 +112,7 @@
 		"Spider" = image(icon = 'austation/icons/mob/robot.dmi', icon_state = "spidersec"),
 		"Skirt" = image(icon = 'austation/icons/mob/robot.dmi', icon_state = "banangarang-Security"))
 
-	var/sec_borg_icon = show_radial_menu(R, R , robotstyles_sec, custom_check = CALLBACK(src, .proc/check_menu, R), radius = 42, require_near = TRUE)
+	var/sec_borg_icon = show_radial_menu(R, R , robotstyles_sec, custom_check = CALLBACK(src, .proc/check_menu, R, old_module), radius = 42, require_near = TRUE)
 
 	switch(sec_borg_icon)
 		if("Default")
@@ -157,7 +157,7 @@
 		"Skirt" = image(icon = 'austation/icons/mob/robot.dmi', icon_state = "banangarang-Peacekeeper"),
 		"Marina" = image(icon = 'austation/icons/mob/robot.dmi', icon_state = "marinapeace"))
 
-	var/peace_borg_icon = show_radial_menu(R, R , robotstyles_peace, custom_check = CALLBACK(src, .proc/check_menu, R), radius = 42, require_near = TRUE)
+	var/peace_borg_icon = show_radial_menu(R, R , robotstyles_peace, custom_check = CALLBACK(src, .proc/check_menu, R, old_module), radius = 42, require_near = TRUE)
 
 	switch(peace_borg_icon)
 		if("Default")
@@ -178,7 +178,7 @@
 			return FALSE
 	return ..()
 
-/obj/item/robot_module/janitor/be_transformed_to() //janitor
+/obj/item/robot_module/janitor/be_transformed_to(obj/item/robot_module/old_module) //janitor
 	var/mob/living/silicon/robot/R = loc
 	var/static/list/robotstyles_jan
 
@@ -190,7 +190,7 @@
 		"Marina" = image(icon = 'austation/icons/mob/robot.dmi', icon_state = "marinajan"),
 		"Skirt" = image(icon = 'austation/icons/mob/robot.dmi', icon_state = "banangarang-Janitor"))
 
-	var/jan_borg_icon = show_radial_menu(R, R , robotstyles_jan, custom_check = CALLBACK(src, .proc/check_menu, R), radius = 42, require_near = TRUE)
+	var/jan_borg_icon = show_radial_menu(R, R , robotstyles_jan, custom_check = CALLBACK(src, .proc/check_menu, R, old_module), radius = 42, require_near = TRUE)
 
 	switch(jan_borg_icon)
 		if("Default")
@@ -230,7 +230,7 @@
 		"Tophat" = image(icon = 'icons/mob/robots.dmi', icon_state = "tophat"),
 		"Skirt" = image(icon = 'austation/icons/mob/robot.dmi', icon_state = "banangarang-Service"))
 
-	var/serv_borg_icon = show_radial_menu(R, R , robotstyles_serv, custom_check = CALLBACK(src, .proc/check_menu, R), radius = 42, require_near = TRUE)
+	var/serv_borg_icon = show_radial_menu(R, R , robotstyles_serv, custom_check = CALLBACK(src, .proc/check_menu, R, old_module), radius = 42, require_near = TRUE)
 
 	switch(serv_borg_icon)
 		if("Waiter")
@@ -280,7 +280,7 @@
 		"Droid" = image(icon = 'austation/icons/mob/robot.dmi', icon_state = "cminer"),
 		"Skirt" = image(icon = 'austation/icons/mob/robot.dmi', icon_state = "banangarang-Miner"))
 
-	var/mine_borg_icon = show_radial_menu(R, R , robotstyles_mine, custom_check = CALLBACK(src, .proc/check_menu, R), radius = 42, require_near = TRUE)
+	var/mine_borg_icon = show_radial_menu(R, R , robotstyles_mine, custom_check = CALLBACK(src, .proc/check_menu, R, old_module), radius = 42, require_near = TRUE)
 
 	switch(mine_borg_icon)
 		if("Default")
@@ -331,7 +331,7 @@
 		"Heavy" = image(icon = 'austation/icons/mob/robot.dmi', icon_state = "heavysd"),
 		"Skirt" = image(icon = 'austation/icons/mob/robot.dmi', icon_state = "banangarang-skirtsd"))
 
-	var/standard_borg_icon = show_radial_menu(R, R , robotstyles_standard, custom_check = CALLBACK(src, .proc/check_menu, R), radius = 42, require_near = TRUE)
+	var/standard_borg_icon = show_radial_menu(R, R , robotstyles_standard, custom_check = CALLBACK(src, .proc/check_menu, R, old_module), radius = 42, require_near = TRUE)
 
 	switch(standard_borg_icon)
 		if("Default")
@@ -352,7 +352,7 @@
 			return FALSE
 	return ..()
 
-/obj/item/robot_module/syndicate/do_transform_animation() //asks the player to pick a sprite AFTER they spawn in and transform
+/obj/item/robot_module/syndicate/do_transform_animation(obj/item/robot_module/old_module) //asks the player to pick a sprite AFTER they spawn in and transform
 	..()
 	var/mob/living/silicon/robot/R = loc
 	var/static/list/robotstyles_syndicate
@@ -364,7 +364,7 @@
 		"Heavy" = image(icon = 'austation/icons/mob/robot.dmi', icon_state = "syndieheavy"),
 		"Skirt" = image(icon = 'austation/icons/mob/robot.dmi', icon_state = "banangarang-synd"))
 
-	var/syndicate_borg_icon = show_radial_menu(R, R , robotstyles_syndicate, custom_check = CALLBACK(src, .proc/check_menu, R), radius = 42, require_near = TRUE)
+	var/syndicate_borg_icon = show_radial_menu(R, R , robotstyles_syndicate, custom_check = CALLBACK(src, .proc/check_menu, R, old_module), radius = 42, require_near = TRUE)
 
 	switch(syndicate_borg_icon)
 		if("Default")
@@ -384,10 +384,3 @@
 		else
 			return FALSE
 	return ..()
-
-/obj/item/robot_module/proc/check_menu(mob/living/user)
-	if(!istype(user))
-		return FALSE
-	if(user.incapacitated() || !user.Adjacent(src))
-		return FALSE
-	return TRUE

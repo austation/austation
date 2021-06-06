@@ -1,6 +1,7 @@
 /obj/item/reagent_containers/hypospray/medipen/custompen
 	name = "Disposable Autopen"
 	desc = "A medipen designed to be filled with chemicals, single use item. Can be loaded directly with a beaker."
+	icon = 'austation/icons/obj/syringe.dmi'
 	icon_state = "custompen"
 	item_state = "morphen"
 	var/apply_type = INJECT

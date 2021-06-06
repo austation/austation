@@ -15,7 +15,7 @@
 	var/mob/living/carbon/human/H = quirk_holder
 	if(H)
 		var/datum/species/species = H.dna.species
-		if(!initial(species.liked_food) & SUGAR)
+		if(!(initial(species.liked_food) & SUGAR))
 			species.liked_food &= ~SUGAR
 		if(initial(species.disliked_food) & SUGAR)
 			species.disliked_food |= SUGAR
@@ -37,8 +37,7 @@
 	var/mob/living/carbon/human/H = quirk_holder
 	if(H)
 		var/datum/species/species = H.dna.species
-		if(!initial(species.liked_food) & MEAT)
+		if(!(initial(species.liked_food) & MEAT))
 			species.liked_food &= ~MEAT
 		if(initial(species.disliked_food) & MEAT)
 			species.disliked_food |= MEAT
-

@@ -104,9 +104,6 @@ AuStation currently comes equipped with these maps.
 * [MetaStation](https://wiki.beestation13.com/view/MetaStation)
 * [DeltaStation](https://wiki.beestation13.com/view/DeltaStation)
 * [PubbyStation](https://wiki.beestation13.com/view/PubbyStation)
-* [DonutStation](https://wiki.beestation13.com/view/Donutstation)
-* [KiloStation](https://wiki.beestation13.com/view/KiloStation)
-
 
 All maps have their own code file that is in the base of the _maps directory. Maps are loaded dynamically when the game starts. Follow this guideline when adding your own map, to your fork, for easy compatibility.
 

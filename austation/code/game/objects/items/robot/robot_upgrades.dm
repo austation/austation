@@ -3,7 +3,7 @@
 	desc = "Allows a service borg to be upgraded with cooking utensils."
 	icon_state = "cyborg_upgrade3"
 	require_module = TRUE
-	module_type = /obj/item/robot_module/butler
+	module_type = list(/obj/item/robot_module/butler)
 
 /obj/item/borg/upgrade/kitchen/action(mob/living/silicon/robot/R, user = usr)
 	. = ..()

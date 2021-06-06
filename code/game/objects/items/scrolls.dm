@@ -30,7 +30,7 @@
 
 /obj/item/teleportation_scroll/Topic(href, href_list)
 	..()
-	if (usr.stat || usr.restrained() || src.loc != usr)
+	if (!usr.is_conscious() || usr.restrained() || src.loc != usr)
 		return
 	if (!ishuman(usr))
 		return 1
@@ -47,8 +47,10 @@
 /obj/item/teleportation_scroll/proc/teleportscroll(mob/user)
 
 	var/A
-
-	A = input(user, "Area to jump to", "BOOYEA", A) as null|anything in GLOB.teleportlocs
+	//austation begin -- tgui lists
+	//A = input(user, "Area to jump to", "BOOYEA", A) as null|anything in GLOB.teleportlocs
+	A = tgui_input_list(user, "Area to jump to", "BOOYEA", GLOB.teleportlocs)
+	//austation end
 	if(!src || QDELETED(src) || !user || !user.is_holding(src) || user.incapacitated() || !A || !uses)
 		return
 	var/area/thearea = GLOB.teleportlocs[A]

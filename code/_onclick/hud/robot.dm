@@ -16,7 +16,7 @@
 	if(R.module.type != /obj/item/robot_module)
 		R.hud_used.toggle_show_robot_modules()
 		return 1
-	R.pick_module_austation() //austation begin -- Replaces R.pick_module() with R.pick_module_austation()
+	R.pick_module()
 
 /atom/movable/screen/robot/module1
 	name = "module1"
