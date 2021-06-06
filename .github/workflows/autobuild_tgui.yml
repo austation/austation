@@ -58,7 +58,7 @@ jobs:
       # This only runs if the PR has a merge conflict. Serves to attempt resolving merge conflicts rather than just rebuilding.
       # Uses a smart little git hack to make a merge commit for just a limited set of files.
       - name: Conflict Resolution
-        if: ${{ fromJson(steps.prid.outputs.json).mergeable == false }}
+        if: ${{ steps.check.outputs.triggered == 'true' && fromJson(steps.prid.outputs.json).mergeable == false }}
         run: |
           git remote add base https://github.com/${{ env.REPO_PATH }}.git
           git fetch base --depth=25 ${{ env.DEFAULT_BRANCH }}
