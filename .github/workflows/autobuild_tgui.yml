@@ -48,6 +48,7 @@ jobs:
           repository: ${{ fromJson(steps.prid.outputs.json).head.repo.full_name }}
           ref: ${{ fromJson(steps.prid.outputs.json).head.ref }}
           fetch-depth: 25
+          token: ${{ env.GITHUB_TOKEN }}
 
       - name: Setup Node
         if: steps.check.outputs.triggered == 'true'
@@ -101,4 +102,4 @@ jobs:
           git commit -m "Automatic TGUI Rebuild [ci skip]" -a || true
       - name: Push
         run: |
-          git push "https://${{ env.GITHUB_USER }}:${{ env.GITHUB_TOKEN }}@github.com/${{ env.REPO_PATH }}.git"
+          git push origin

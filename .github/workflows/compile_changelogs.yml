@@ -22,6 +22,7 @@ jobs:
         uses: actions/checkout@v2
         with:
           fetch-depth: 25
+          token: ${{ secrets.BOT_TOKEN }}
       - name: "Compile"
         run: |
           python tools/ss13_genchangelog.py html/changelog.html html/changelogs
@@ -33,4 +34,4 @@ jobs:
           git commit -m "Automatic changelog compile [ci skip]" -a || true
       - name: "Push"
         run: |
-          git push "https://AustationBot:${{ secrets.BOT_TOKEN }}@github.com/austation/austation.git"
+          git push origin
