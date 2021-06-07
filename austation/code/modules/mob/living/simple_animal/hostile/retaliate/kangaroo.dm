@@ -1,3 +1,8 @@
+// PORTED FROM PARADISE STATION
+
+// all credits go to Kyet for the code and FullofSkittles (FoS) for the sprites
+// original paradise PR: #10488
+
 /mob/living/simple_animal/hostile/retaliate/kangaroo
 	name = "kangaroo"
 	desc = "A large marsupial herbivore. It has powerful hind legs, with nails that resemble long claws."

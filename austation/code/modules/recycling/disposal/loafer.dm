@@ -4,7 +4,16 @@
 	desc = "A special machine that converts inserted matter into gluten"
 	icon = 'austation/icons/obj/atmospherics/machines/loafer.dmi'
 	icon_state = "loafer"
-	var/list/blacklist
+	var/static/list/blacklist = typecacheof(list(
+		/obj/item/stock_parts,
+		/obj/item/pipe,
+		/obj/structure/disposalconstruct,
+		/obj/structure/c_transit_tube,
+		/obj/structure/c_transit_tube_pod,
+		/obj/item/holochip,
+		/obj/item/reagent_containers/glass/bottle,
+		/obj/item/reagent_containers/pill
+	))
 	var/emag_bonus = 1
 	var/obj/item/reagent_containers/food/snacks/store/bread/recycled/stored_looef
 
@@ -51,7 +60,7 @@
 	emag_bonus = 1.5
 	playsound(src, "sparks", 75, 1, -1)
 	to_chat(user, "<span class='notice'>You use the cryptographic sequencer on [src], allowing it to compress faster and enabling much more dangerous densities!</span>")
-	visible_message("<span class='danger'>\the [src] humms ominously!</span>")
+	visible_message("<span class='danger'>\The [src] humms ominously!</span>")
 
 // This proc runs when something moves through the pipe
 /obj/structure/disposalpipe/loafer/transfer(obj/structure/disposalholder/H)
@@ -69,7 +78,7 @@
 			if(AM == looef)
 				continue
 
-			if(AM.type in blacklist) // no matter bin singulo for you
+			if(blacklist[AM.type]) // no matter bin singulo for you
 				qdel(AM)
 				continue
 
@@ -149,7 +158,7 @@
 			stored_looef = null // reset the variable if our loaf is still there after 3.6 seconds. Ignore this if another loaf was stored.
 		if(!looef.bread_density)
 			qdel(looef)
-			if(!H.contents) // no point having an empty disposal object
+			if(!LAZYLEN(H.contents)) // no point having an empty disposal object
 				qdel(H)
 				return
 			visible_message("<span class='warning'>\The [src] buzzes grumpily!</span>")
@@ -173,6 +182,5 @@
 			message_admins("Bread singularity released in [ADMIN_VERBOSEJMP(T)][culprit_message]")
 		else
 			looef.check_evolve()
-
 
 	return ..()

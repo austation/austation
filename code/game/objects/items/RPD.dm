@@ -58,6 +58,30 @@ GLOBAL_LIST_INIT(disposal_pipe_recipes, list(
 	)
 ))
 
+// austation start -- coilguns
+GLOBAL_LIST_INIT(coilgun_pipe_recipes, list(
+	"Coilgun Pipes" = list(
+		new /datum/pipe_info/coilgun("Pipe",			/obj/structure/disposalpipe/segment/coilgun, PIPE_BENDABLE),
+		new /datum/pipe_info/coilgun("Junction",		/obj/structure/disposalpipe/junction/coilgun, PIPE_TRIN_M),
+	),
+	"Coilgun Devices" = list(
+		new /datum/pipe_info/coilgun("Charger",			/obj/structure/disposalpipe/coilgun/charger),
+		new /datum/pipe_info/coilgun("Super-Charger",	/obj/structure/disposalpipe/coilgun/super_charger),
+		new /datum/pipe_info/coilgun("Magnetizer",		/obj/structure/disposalpipe/coilgun/magnetizer),
+		new /datum/pipe_info/coilgun("Passive Cooler",	/obj/structure/disposalpipe/coilgun/cooler),
+		new /datum/pipe_info/coilgun("Active Cooler",	/obj/structure/disposalpipe/coilgun/cooler/active),
+		new /datum/pipe_info/coilgun("Barrel",			/obj/structure/disposalpipe/coilgun/barrel),
+
+
+	)
+))
+/*
+ * To be added:
+ * 		new /datum/pipe_info/coilgun("Modifier",		/obj/structure/disposalpipe/coilgun/modifier),
+ *		new /datum/pipe_info/coilgun("Bypass",			/obj/structure/disposalpipe/coilgun/bypass, PIPE_TRIN_M),
+ */
+// austation end -- coilguns
+
 GLOBAL_LIST_INIT(transit_tube_recipes, list(
 	"Transit Tubes" = list(
 		new /datum/pipe_info/transit("Straight Tube",				/obj/structure/c_transit_tube, PIPE_STRAIGHT),
@@ -224,6 +248,7 @@ GLOBAL_LIST_INIT(fluid_duct_recipes, list(
 	var/static/datum/pipe_info/first_disposal
 	var/static/datum/pipe_info/first_transit
 	var/static/datum/pipe_info/first_plumbing
+	var/static/datum/pipe_info/first_coilgun // austation -- coilguns
 	var/mode = BUILD_MODE | PAINT_MODE | DESTROY_MODE | WRENCH_MODE
 	var/locked = FALSE //wheter we can change categories. Useful for the plumber
 
@@ -293,6 +318,8 @@ GLOBAL_LIST_INIT(fluid_duct_recipes, list(
 			recipes = GLOB.transit_tube_recipes
 		if(PLUMBING_CATEGORY)
 			recipes = GLOB.fluid_duct_recipes
+		if(COILGUN_CATEGORY) // austation -- coilguns
+			recipes = GLOB.coilgun_pipe_recipes
 	for(var/c in recipes)
 		var/list/cat = recipes[c]
 		var/list/r = list()
@@ -323,6 +350,8 @@ GLOBAL_LIST_INIT(fluid_duct_recipes, list(
 					recipe = first_transit
 				if(PLUMBING_CATEGORY)
 					recipe = first_plumbing
+				if(COILGUN_CATEGORY) // austation -- coilguns
+					recipe = first_coilgun
 			p_dir = NORTH
 			playeffect = FALSE
 		if("piping_layer")
@@ -334,7 +363,7 @@ GLOBAL_LIST_INIT(fluid_duct_recipes, list(
 		if("pipe_type")
 			var/static/list/recipes
 			if(!recipes)
-				recipes = GLOB.disposal_pipe_recipes + GLOB.atmos_pipe_recipes + GLOB.transit_tube_recipes + GLOB.fluid_duct_recipes
+				recipes = GLOB.disposal_pipe_recipes + GLOB.atmos_pipe_recipes + GLOB.transit_tube_recipes + GLOB.fluid_duct_recipes + GLOB.coilgun_pipe_recipes // austation -- coilguns
 			recipe = recipes[params["category"]][text2num(params["pipe_type"])]
 			p_dir = NORTH
 		if("setdir")
@@ -453,6 +482,36 @@ GLOBAL_LIST_INIT(fluid_duct_recipes, list(
 					if(mode&WRENCH_MODE)
 						C.wrench_act(user, src)
 					return
+
+
+			//austation start -- Coilgun building, almost the same as the above. Leaves more room for future expansion
+			if(COILGUN_CATEGORY)
+				if(!can_make_pipe)
+					return ..()
+				A = get_turf(A)
+				if(isclosedturf(A))
+					to_chat(user, "<span class='warning'>[src]'s error light flickers; there's something in the way!</span>")
+					return
+				to_chat(user, "<span class='notice'>You start building a coilgun part...</span>")
+				playsound(get_turf(src), 'sound/machines/click.ogg', 50, 1)
+				if(do_after(user, disposal_build_speed, target = A))
+					var/obj/structure/disposalconstruct/coilgun/C = new(A, queued_p_type, queued_p_dir, queued_p_flipped) // TODO: test this
+
+					if(!C.can_place())
+						to_chat(user, "<span class='warning'>There's not enough room to build that here!</span>")
+						qdel(C)
+						return
+
+					activate()
+
+					C.add_fingerprint(usr)
+					C.update_icon()
+					if(mode & WRENCH_MODE)
+						C.wrench_act(user, src)
+					return
+			// austation end
+
+
 
 			if(TRANSIT_CATEGORY) //Making transit tubes
 				if(!can_make_pipe)
