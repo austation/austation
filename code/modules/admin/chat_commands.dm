@@ -30,7 +30,6 @@
 	var/server = CONFIG_GET(string/server)
 	return "[GLOB.round_id ? "Round #[GLOB.round_id]: " : ""][GLOB.clients.len] players on [SSmapping.config.map_name], Mode: [GLOB.master_mode]; Round [SSticker.HasRoundStarted() ? (SSticker.IsRoundInProgress() ? "Active" : "Finishing") : "Starting"] -- [server ? server : "[world.internet_address]:[world.port]"]" 
 
-/** -- Not for use within BeeStation
 /datum/tgs_chat_command/ahelp
 	name = "ahelp"
 	help_text = "<ckey|ticket #> <message|ticket <close|resolve|icissue|reject|reopen <ticket #>|list>>"
@@ -52,7 +51,6 @@
 	var/res = IrcPm(target, all_params.Join(" "), sender.friendly_name)
 	if(res != "Message Successful")
 		return res
-**/
 
 /datum/tgs_chat_command/namecheck
 	name = "namecheck"
