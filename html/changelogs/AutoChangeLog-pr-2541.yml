@@ -1,6 +1,0 @@
-author: "TheFakeElon, JupyterKat, Christain/Laketrash"
-delete-after: True
-changes: 
-  - rscadd: "Adds the Disposal Coilgun and it's components. An extremely power hungry and destructive weapons system"
-  - rscadd: "Adds capacitors, like a battery but more dangerous. Currently only used for the coilgun"
-  - bugfix: "Fixes a length check in loafer code"
