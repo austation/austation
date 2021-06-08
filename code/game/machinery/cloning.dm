@@ -319,22 +319,13 @@
 			mob_occupant.Unconscious(80)
 			var/dmg_mult = CONFIG_GET(number/damage_multiplier)
 			 //Slowly get that clone healed and finished.
-<<<<<<< HEAD
-			mob_occupant.adjustCloneLoss(-((speed_coeff / 2) * dmg_mult))
+			mob_occupant.adjustCloneLoss(-((speed_coeff / 2) * dmg_mult), TRUE, TRUE)
 			//austation start -- cloning uses less synthflesh, added /2
 			if(reagents.has_reagent(/datum/reagent/medicine/synthflesh, fleshamnt/2))
 				reagents.remove_reagent(/datum/reagent/medicine/synthflesh, fleshamnt/2)
 			else if(reagents.has_reagent(/datum/reagent/blood, fleshamnt*3/2))
 				reagents.remove_reagent(/datum/reagent/blood, fleshamnt*3/2)
 			//austation end
-=======
-			mob_occupant.adjustCloneLoss(-((speed_coeff / 2) * dmg_mult), TRUE, TRUE)
-			if(reagents.has_reagent(/datum/reagent/medicine/synthflesh, fleshamnt))
-				reagents.remove_reagent(/datum/reagent/medicine/synthflesh, fleshamnt)
-			else if(reagents.has_reagent(/datum/reagent/blood, fleshamnt*3))
-				reagents.remove_reagent(/datum/reagent/blood, fleshamnt*3)
->>>>>>> c414f1f733... Fixes issues with skeleton and zombie cloning (#4448)
-			var/progress = CLONE_INITIAL_DAMAGE - mob_occupant.getCloneLoss()
 			// To avoid the default cloner making incomplete clones
 			progress += (100 - MINIMUM_HEAL_LEVEL)
 			var/milestone = CLONE_INITIAL_DAMAGE / flesh_number
