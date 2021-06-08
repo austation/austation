@@ -326,6 +326,7 @@
 			else if(reagents.has_reagent(/datum/reagent/blood, fleshamnt*3/2))
 				reagents.remove_reagent(/datum/reagent/blood, fleshamnt*3/2)
 			//austation end
+			var/progress = CLONE_INITIAL_DAMAGE - mob_occupant.getCloneLoss()
 			// To avoid the default cloner making incomplete clones
 			progress += (100 - MINIMUM_HEAL_LEVEL)
 			var/milestone = CLONE_INITIAL_DAMAGE / flesh_number
