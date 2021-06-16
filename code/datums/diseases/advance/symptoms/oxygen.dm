@@ -18,7 +18,7 @@ Bonus
 	stealth = 1
 	resistance = -3
 	stage_speed = -3
-	transmittable = -4
+	transmission = -4
 	severity = -1
 	level = 6
 	base_message_chance = 5
@@ -33,7 +33,7 @@ Bonus
 /datum/symptom/oxygen/Start(datum/disease/advance/A)
 	if(!..())
 		return
-	if(A.properties["resistance"] >= 8) //blood regeneration
+	if(A.resistance >= 8) //blood regeneration
 		regenerate_blood = TRUE
 
 /datum/symptom/oxygen/Activate(datum/disease/advance/A)
