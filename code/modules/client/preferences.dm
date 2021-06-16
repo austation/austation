@@ -78,8 +78,12 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	var/undershirt = "Nude"				//undershirt type
 	var/socks = "Nude"					//socks type
 	var/backbag = DBACKPACK				//backpack type
+<<<<<<< HEAD
 	var/ring_type = RING_DISABLED		//AUSTATION -- rings
 	var/ring_engraved = null			//AUSTATION -- rings
+=======
+	var/jumpsuit_style = PREF_SUIT		//suit/skirt
+>>>>>>> 7e475aa7e2... Departmental Skirts : Service/Civilian (#4436)
 	var/hair_style = "Bald"				//Hair type
 	var/hair_color = "000"				//Hair color
 	var/facial_hair_style = "Shaved"	//Face hair type
@@ -255,6 +259,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 			dat += "<b>Undershirt:</b><BR><a href ='?_src_=prefs;preference=undershirt;task=input'>[undershirt]</a><BR>"
 			dat += "<b>Socks:</b><BR><a href ='?_src_=prefs;preference=socks;task=input'>[socks]</a><BR>"
 			dat += "<b>Backpack:</b><BR><a href ='?_src_=prefs;preference=bag;task=input'>[backbag]</a><BR>"
+			dat += "<b>Jumpsuit:</b><BR><a href ='?_src_=prefs;preference=suit;task=input'>[jumpsuit_style]</a><BR>"
 			dat += "<b>Uplink Spawn Location:</b><BR><a href ='?_src_=prefs;preference=uplink_loc;task=input'>[uplink_spawn_loc]</a><BR></td>"
 
 			var/button_name = "If you see this something went wrong." // austation begin -- rings
@@ -1628,6 +1633,12 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					var/new_backbag = input(user, "Choose your character's style of bag:", "Character Preference")  as null|anything in GLOB.backbaglist
 					if(new_backbag)
 						backbag = new_backbag
+				
+				if("suit")
+					if(jumpsuit_style == PREF_SUIT)
+						jumpsuit_style = PREF_SKIRT
+					else
+						jumpsuit_style = PREF_SUIT
 
 				if("ring_type") //austation begin -- rings
 					var/result = input(user, "Select a ring type:", "Character Preference") as null|anything in GLOB.ringlist
@@ -2009,6 +2020,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	character.socks = socks
 
 	character.backbag = backbag
+	character.jumpsuit_style = jumpsuit_style
 
 	character.ring_type = ring_type // austation -- rings
 	character.ring_engraved = ring_engraved // austation -- rings
