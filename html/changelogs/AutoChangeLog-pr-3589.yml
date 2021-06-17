@@ -1,0 +1,5 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - bugfix: "\"Target Cyborgs\" for Turret Control Panels is working. Additionally adds it to the interface of turrets"
+  - bugfix: "Syndicate turrets have lost their cover and can fire once again"
