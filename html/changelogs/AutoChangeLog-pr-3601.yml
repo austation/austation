@@ -1,0 +1,4 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - tweak: "Moves Adrenaline Nanites back to Augmentation tab. (Doesn't change unlock requirement)"
