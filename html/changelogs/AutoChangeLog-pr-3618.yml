@@ -1,0 +1,6 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - code_imp: "Uses more TRUE/FALSE defines in silicon.dm"
+  - admin: "Adds logging for impacted cyborgs during law changes"
+  - admin: "Adds additional cyborg logging"
