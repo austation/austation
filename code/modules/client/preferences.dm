@@ -78,12 +78,9 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	var/undershirt = "Nude"				//undershirt type
 	var/socks = "Nude"					//socks type
 	var/backbag = DBACKPACK				//backpack type
-<<<<<<< HEAD
 	var/ring_type = RING_DISABLED		//AUSTATION -- rings
 	var/ring_engraved = null			//AUSTATION -- rings
-=======
 	var/jumpsuit_style = PREF_SUIT		//suit/skirt
->>>>>>> 7e475aa7e2... Departmental Skirts : Service/Civilian (#4436)
 	var/hair_style = "Bald"				//Hair type
 	var/hair_color = "000"				//Hair color
 	var/facial_hair_style = "Shaved"	//Face hair type
@@ -1633,7 +1630,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					var/new_backbag = input(user, "Choose your character's style of bag:", "Character Preference")  as null|anything in GLOB.backbaglist
 					if(new_backbag)
 						backbag = new_backbag
-				
+
 				if("suit")
 					if(jumpsuit_style == PREF_SUIT)
 						jumpsuit_style = PREF_SKIRT
