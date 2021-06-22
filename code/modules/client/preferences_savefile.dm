@@ -373,8 +373,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	READ_FILE(S["socks"], socks)
 	READ_FILE(S["backbag"], backbag)
 	READ_FILE(S["ring_engraved"], ring_engraved) //austation begin -- rings and skirts
-	READ_FILE(S["ring_type"], ring_type)
-	READ_FILE(S["jumpsuit_style"], jumpsuit_style) //austation end
+	READ_FILE(S["ring_type"], ring_type) //austation end
 	READ_FILE(S["uplink_loc"], uplink_spawn_loc)
 	READ_FILE(S["feature_mcolor"], features["mcolor"])
 	READ_FILE(S["feature_ethcolor"], features["ethcolor"])
@@ -522,8 +521,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	WRITE_FILE(S["socks"]				, socks)
 	WRITE_FILE(S["backbag"]			, backbag)
 	WRITE_FILE(S["ring_engraved"]		, ring_engraved) // austation begin -- rings and skirts
-	WRITE_FILE(S["ring_type"]			, ring_type)
-	WRITE_FILE(S["jumpsuit_style"]		, jumpsuit_style) // austation end
+	WRITE_FILE(S["ring_type"]			, ring_type) // austation end
 	WRITE_FILE(S["uplink_loc"]			, uplink_spawn_loc)
 	WRITE_FILE(S["species"]			, pref_species.id)
 	WRITE_FILE(S["feature_mcolor"]					, features["mcolor"])

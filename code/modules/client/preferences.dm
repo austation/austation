@@ -78,7 +78,6 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	var/undershirt = "Nude"				//undershirt type
 	var/socks = "Nude"					//socks type
 	var/backbag = DBACKPACK				//backpack type
-	var/jumpsuit_style = PREF_SUIT		//AUSTATION -- suit/skirt                                     <<<AUSTATION>>>
 	var/ring_type = RING_DISABLED		//AUSTATION -- rings
 	var/ring_engraved = null			//AUSTATION -- rings
 	var/hair_style = "Bald"				//Hair type
@@ -257,7 +256,6 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 			dat += "<b>Socks:</b><BR><a href ='?_src_=prefs;preference=socks;task=input'>[socks]</a><BR>"
 			dat += "<b>Backpack:</b><BR><a href ='?_src_=prefs;preference=bag;task=input'>[backbag]</a><BR>"
 			dat += "<b>Uplink Spawn Location:</b><BR><a href ='?_src_=prefs;preference=uplink_loc;task=input'>[uplink_spawn_loc]</a><BR></td>"
-			dat += "<b>Jumpsuit:</b><BR><a href ='?_src_=prefs;preference=suit;task=input'>[jumpsuit_style]</a><BR>" //austation -- jumpskirts
 
 			var/button_name = "If you see this something went wrong." // austation begin -- rings
 			if(ring_engraved)
@@ -1325,9 +1323,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					backbag = pick(GLOB.backbaglist)
 				if("ring_type") // austation begin -- rings and jumpskirts
 					ring_type = RING_DISABLED // no rings for random loadouts
-					ring_engraved = null
-				if("suit")
-					jumpsuit_style = pick(GLOB.jumpsuitlist) // austation end
+					ring_engraved = null // austation end
 				if("all")
 					random_character()
 
@@ -1651,12 +1647,6 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 						ring_engraved = chosen_ring_engraved
 					else
 						ring_engraved = null // austation end
-
-				if("suit") //austation begin -- skirts
-					if(jumpsuit_style == PREF_SUIT)
-						jumpsuit_style = PREF_SKIRT
-					else
-						jumpsuit_style = PREF_SUIT // austation end
 
 				if("uplink_loc")
 					var/new_loc = input(user, "Choose your character's traitor uplink spawn location:", "Character Preference") as null|anything in GLOB.uplink_spawn_loc_list
@@ -2020,7 +2010,6 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 	character.backbag = backbag
 
-	character.jumpsuit_style = jumpsuit_style //austation -- skirts
 	character.ring_type = ring_type // austation -- rings
 	character.ring_engraved = ring_engraved // austation -- rings
 
