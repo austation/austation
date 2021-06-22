@@ -1,0 +1,6 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - rscadd: "Civilian Skirts!"
+  - rscadd: "base for skirts"
+  - imageadd: "sprites for the civilian skirts"
