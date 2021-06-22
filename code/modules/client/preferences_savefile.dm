@@ -5,7 +5,7 @@
 //	You do not need to raise this if you are adding new values that have sane defaults.
 //	Only raise this value when changing the meaning/format/name/layout of an existing value
 //	where you would want the updater procs below to run
-#define SAVEFILE_VERSION_MAX	35
+#define SAVEFILE_VERSION_MAX	36
 
 /*
 SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Carn
@@ -61,12 +61,14 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 					break
 			if(n_gear)
 				purchased_gear += n_gear
-	if(current_version < 33)
+	if(current_version < 35)
 		chat_on_map = TRUE
-		max_chat_length = 110		//same as CHAT_MESSAGE_MAX_LENGTH
+		max_chat_length = CHAT_MESSAGE_MAX_LENGTH
 		see_chat_non_mob = TRUE
 		see_rc_emotes = TRUE
 		S.dir.Remove("overhead_chat")
+	if(current_version < 36)
+		see_balloon_alerts = BALLOON_ALERT_ALWAYS
 	return
 
 /datum/preferences/proc/update_character(current_version, savefile/S)
