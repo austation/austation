@@ -1,0 +1,5 @@
+author: "ArchieBeepBoop"
+delete-after: True
+changes: 
+  - bugfix: "Cargo reactor not functioning"
+  - bugfix: "Cargo reactor computers not linking to their respective reactors after being multitooled"
