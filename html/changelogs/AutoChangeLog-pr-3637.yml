@@ -1,5 +1,0 @@
-author: "AustationBot"
-delete-after: True
-changes: 
-  - rscadd: "keybind for resting"
-  - rscadd: "keybind for suit storage quickdraw"
