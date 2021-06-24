@@ -887,7 +887,7 @@
 	},
 /area/science/research/abandoned)
 "aIR" = (
-/obj/machinery/autolathe/hacked,
+/obj/machinery/modular_fabricator/autolathe/hacked,
 /obj/machinery/light/small{
 	dir = 1
 	},
@@ -14490,7 +14490,7 @@
 	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/machinery/mecha_part_fabricator/maint{
+/obj/machinery/modular_fabricator/exosuit_fab/maint{
 	name = "forgotten exosuit fabricator"
 	},
 /obj/structure/sign/poster/official/safety_eye_protection{
@@ -17715,7 +17715,7 @@
 /area/hallway/secondary/exit)
 "moe" = (
 /obj/effect/turf_decal/bot,
-/obj/machinery/mecha_part_fabricator,
+/obj/machinery/modular_fabricator/exosuit_fab,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plasteel,
 /area/science/lab)
@@ -19506,7 +19506,7 @@
 /turf/open/floor/plasteel/dark/airless,
 /area/ruin/space/derelict/singularity_engine)
 "nDz" = (
-/obj/machinery/mecha_part_fabricator/maint{
+/obj/machinery/modular_fabricator/exosuit_fab/maint{
 	name = "forgotten exosuit fabricator"
 	},
 /turf/open/floor/plating{
