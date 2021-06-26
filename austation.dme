@@ -21,6 +21,7 @@
 #include "austation\code\__DEFINES\mobs.dm"
 #include "austation\code\__DEFINES\movespeed_modification.dm"
 #include "austation\code\__DEFINES\RPD.dm"
+#include "austation\code\__DEFINES\sound.dm"
 #include "austation\code\__DEFINES\traits.dm"
 // END_DEFINE_INCLUDE
 
