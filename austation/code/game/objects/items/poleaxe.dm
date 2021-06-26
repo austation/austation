@@ -23,7 +23,7 @@
 /obj/item/poleaxe/Initialize()
 	. = ..()
 	AddComponent(/datum/component/butchering, 100, 70) //decent in a pinch, but pretty bad.
-	AddComponent(/datum/component/two_handed, require_twohands=TRUE, force_unwielded=5, force_wielded=24, block_power_wielded=25, icon_wielded="poleaxe\[wielded]")
+	AddComponent(/datum/component/two_handed, require_twohands=TRUE, force_unwielded=5, force_wielded=24, block_power_wielded=25, icon_wielded="poleaxe1")
 
 /obj/item/poleaxe/suicide_act(mob/living/carbon/user)
 	user.visible_message("<span class='suicide'>[user] begins to sword-swallow \the [src]! It looks like [user.p_theyre()] trying to commit suicide!</span>")
