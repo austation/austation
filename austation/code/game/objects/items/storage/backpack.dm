@@ -1,7 +1,3 @@
-/obj/item/storage/backpack/medic
-	icon = 'austation/icons/obj/storage.dmi'
-	alternate_worn_icon = 'austation/icons/mob/back.dmi'
-
 /obj/item/storage/backpack/industrial
 	icon = 'austation/icons/obj/storage.dmi'
 	alternate_worn_icon = 'austation/icons/mob/back.dmi'
@@ -52,10 +48,6 @@
 	alternate_worn_icon = 'austation/icons/mob/back.dmi'
 
 /obj/item/storage/backpack/satchel/tox
-	icon = 'austation/icons/obj/storage.dmi'
-	alternate_worn_icon = 'austation/icons/mob/back.dmi'
-
-/obj/item/storage/backpack/satchel/hyd
 	icon = 'austation/icons/obj/storage.dmi'
 	alternate_worn_icon = 'austation/icons/mob/back.dmi'
 
