@@ -4,7 +4,7 @@
 	set category = "Admin"
 	set desc = "Kills all radiation components in specified radius."
 
-	var/static/list/notradkillable = typecacheof(list(/obj/item/twohanded/required/fuel_rod))
+	var/static/list/notradkillable = typecacheof(list(/obj/item/fuel_rod))
 
 	if(!holder)
 		to_chat(src, "Only administrators may use this command.")

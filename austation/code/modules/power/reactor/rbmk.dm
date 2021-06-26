@@ -140,7 +140,7 @@ The reactor CHEWS through moderator. It does not do this slowly. Be very careful
 			. += msg
 
 /obj/machinery/atmospherics/components/trinary/nuclear_reactor/attackby(obj/item/W, mob/user, params)
-	if(istype(W, /obj/item/twohanded/required/fuel_rod))
+	if(istype(W, /obj/item/fuel_rod))
 		if(power >= 20)
 			to_chat(user, "<span class='notice'>You cannot insert fuel into [src] when it has been raised above 20% power.</span>")
 			return FALSE
@@ -199,12 +199,12 @@ The reactor CHEWS through moderator. It does not do this slowly. Be very careful
 
 /obj/machinery/atmospherics/components/trinary/nuclear_reactor/proc/lazy_startup()
 	for(var/I=0;I<5;I++)
-		fuel_rods += new /obj/item/twohanded/required/fuel_rod(src)
+		fuel_rods += new /obj/item/fuel_rod(src)
 	message_admins("Reactor started up by admins in [ADMIN_VERBOSEJMP(src)]")
 	start_up()
 
 /obj/machinery/atmospherics/components/trinary/nuclear_reactor/proc/deplete()
-	for(var/obj/item/twohanded/required/fuel_rod/FR in fuel_rods)
+	for(var/obj/item/fuel_rod/FR in fuel_rods)
 		FR.depletion = 100
 
 /obj/machinery/atmospherics/components/trinary/nuclear_reactor/Initialize()
@@ -303,7 +303,7 @@ The reactor CHEWS through moderator. It does not do this slowly. Be very careful
 	if(!has_fuel())  //Reactor must be fuelled and ready to go before we can heat it up boys.
 		K = 0
 	else
-		for(var/obj/item/twohanded/required/fuel_rod/FR in fuel_rods)
+		for(var/obj/item/fuel_rod/FR in fuel_rods)
 			K += FR.fuel_power
 			fuel_power += FR.fuel_power
 			FR.deplete(depletion_modifier)
@@ -525,7 +525,7 @@ The reactor CHEWS through moderator. It does not do this slowly. Be very careful
 	temperature = 0
 	update_icon()
 
-/obj/item/twohanded/required/fuel_rod
+/obj/item/fuel_rod
 	name = "Uranium-235 Fuel Rod"
 	desc = "A titanium sheathed rod containing a measure of enriched uranium-dioxide powder inside, and a breeding blanket of uranium-238 around it, used to kick off a fission reaction and breed plutonium fuel respectivly."
 	icon = 'austation/icons/obj/control_rod.dmi'
@@ -534,7 +534,7 @@ The reactor CHEWS through moderator. It does not do this slowly. Be very careful
 	var/depletion = 0 //Each fuel rod will deplete in around 30 minutes.
 	var/fuel_power = 0.10
 
-/obj/item/twohanded/required/fuel_rod/proc/deplete(amount=0.035)
+/obj/item/fuel_rod/proc/deplete(amount=0.035)
 	depletion += amount
 	if(depletion >= 100)
 		fuel_power = 0.20
@@ -545,7 +545,7 @@ The reactor CHEWS through moderator. It does not do this slowly. Be very careful
 	else
 		fuel_power = 0.10
 
-/obj/item/twohanded/required/fuel_rod/Initialize()
+/obj/item/fuel_rod/Initialize()
 	.=..()
 	AddComponent(/datum/component/radioactive, 350 , src)
 

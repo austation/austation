@@ -47,6 +47,8 @@
 	used = 1
 	update_icon()
 
+	return TRUE // austation -- allow for checking if the sharpening was successful
+
 /obj/item/sharpener/super
 	name = "super whetstone"
 	desc = "A block that will make your weapon sharper than Einstein on adderall."
