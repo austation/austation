@@ -205,6 +205,7 @@
 #include "austation\code\modules\power\reactor\fuel_rods.dm"
 #include "austation\code\modules\power\reactor\rbmk.dm"
 #include "austation\code\modules\power\reactor\reactor_cargo.dm"
+#include "austation\code\modules\projectiles\gun.dm"
 #include "austation\code\modules\projectiles\projectile.dm"
 #include "austation\code\modules\projectiles\ammunition\ballistic\shotgun.dm"
 #include "austation\code\modules\projectiles\boxes_magazine\internal\makeshift_mags.dm"
