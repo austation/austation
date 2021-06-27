@@ -7,9 +7,9 @@
 /datum/symptom/heal/surface/AU_Start(datum/disease/advance/A)
 	if(!..())
 		return
-	if(A.properties["stage_rate"] >= 8)
+	if(A.stage_rate >= 8)
 		power = 2
-	if(A.properties["resistance"] >= 10)
+	if(A.resistance >= 10)
 		threshhold = 50
 
 /datum/symptom/heal/surface/Heal(mob/living/carbon/M, datum/disease/advance/A, actual_power)
@@ -38,13 +38,13 @@
 /datum/symptom/growth/AU_Start(datum/disease/advance/A)
 	if(!..())
 		return
-	if(A.properties["stage_rate"] >= 6)
+	if(A.stage_rate >= 6)
 		bruteheal = TRUE
-	if(A.properties["stage_rate"] >= 12)
+	if(A.stage_rate >= 12)
 		tetsuo = TRUE
 	var/mob/living/carbon/M = A.affected_mob
 	ownermind = M.mind
-	sizemult = CLAMP((A.properties["stage_rate"] / 10), 1, 2.5)
+	sizemult = CLAMP((A.stage_rate / 10), 1, 2.5)
 
 /datum/symptom/growth/Activate(datum/disease/advance/A)
 	AU_Activate(A)
