@@ -7,10 +7,6 @@
 /obj/item/projectile/bullet/shotgun_meteorslug
 	paralyze = 80
 
-/obj/item/projectile/bullet/pellet
-	tile_dropoff = 0.75
-	tile_dropoff_s = 1.25
-
 /obj/item/projectile/bullet/pellet/shotgun_buckshot
 	damage = 12.5
 	tile_dropoff = 0
