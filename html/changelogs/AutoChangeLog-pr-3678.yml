@@ -1,0 +1,4 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - rscadd: "Tend wounds estimates remaining time, even better with an analyzer in hand"
