@@ -1,5 +1,0 @@
-author: "AustationBot"
-delete-after: True
-changes: 
-  - code_imp: "Added two_handed component"
-  - refactor: "Updated all existing two handed items to use the new component"

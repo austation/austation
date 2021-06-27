@@ -1,4 +1,0 @@
-author: "AustationBot"
-delete-after: True
-changes: 
-  - bugfix: "Some sources of hallucination should no longer cause infinite hallucinations."
