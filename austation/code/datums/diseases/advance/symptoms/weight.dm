@@ -4,7 +4,7 @@
     stealth = -2
     resistance = 2
     stage_speed = -2
-    transmittable = -1
+    transmission = -1
     level = 3
     severity = 2
     base_message_chance = 100
@@ -19,7 +19,7 @@
 
 /datum/symptom/weight_loss/AU_Severity_Set(datum/disease/advance/A)
 	. = ..()
-	if(A.properties["resistance"] >= 8)
+	if(A.resistance >= 8)
 		severity -= 3
 		symptom_delay_min = 1
 		symptom_delay_max = 1
@@ -30,9 +30,9 @@
 /datum/symptom/weight_loss/AU_Start(datum/disease/advance/A)
     if(!..())
         return
-    if(A.properties["resistance"] >= 8)
+    if(A.resistance >= 8)
         no_fat = TRUE
-    if(A.properties["stealth"] >= 2) //warn less often
+    if(A.stealth >= 2)
         base_message_chance = 25
 
 /datum/symptom/weight_loss/Activate(datum/disease/advance/A)

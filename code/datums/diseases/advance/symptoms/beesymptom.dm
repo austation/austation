@@ -24,11 +24,7 @@
 /datum/symptom/beesease/Start(datum/disease/advance/A)
 	if(!..())
 		return
-<<<<<<< HEAD
-	if(A.properties["resistance"] >= 14)
-=======
 	if(A.resistance >= 12)
->>>>>>> 861ca270bb... Refactors disease properties (#4338)
 		honey = TRUE
 	if(A.transmission >= 10)
 		toxic_bees = TRUE
