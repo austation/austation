@@ -209,6 +209,7 @@
 #include "austation\code\modules\projectiles\boxes_magazine\internal\makeshift_mags.dm"
 #include "austation\code\modules\projectiles\guns\ballistic\crossbow.dm"
 #include "austation\code\modules\projectiles\guns\ballistic\makeshift_pistol.dm"
+#include "austation\code\modules\projectiles\guns\energy\energy_gun.dm"
 #include "austation\code\modules\projectiles\guns\misc\chem_gun.dm"
 #include "austation\code\modules\reagents\chemistry\reagents.dm"
 #include "austation\code\modules\reagents\chemistry\recipes.dm"
