@@ -1,0 +1,6 @@
+author: "Effectism"
+delete-after: True
+changes: 
+  - rscadd: "external airlock cycling to orbital"
+  - rscadd: "atmos piping to most detached structures on orbital"
+  - rscadd: "unique emergency shuttle for orbital"
