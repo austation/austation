@@ -41,6 +41,7 @@
 #include "austation\code\controllers\subsystem\job.dm"
 #include "austation\code\datums\ai_laws.dm"
 #include "austation\code\datums\emotes.dm"
+#include "austation\code\datums\shuttles.dm"
 #include "austation\code\datums\brain_damage\imaginary_friend.dm"
 #include "austation\code\datums\components\spikes.dm"
 #include "austation\code\datums\components\crafting\crafting.dm"
