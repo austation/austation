@@ -47,3 +47,10 @@
 	crate_name = "Build Your Own Reactor Kit"
 	crate_type = /obj/structure/closet/crate/secure/engineering
 	dangerous = TRUE
+
+/datum/supply_pack/security/armory/cling_test
+	name = "Changeling Testing Kit"
+	desc = "Contains a single bottle of concentrated BZ, used for detecting and incapacitating changelings. Due to the rarity of this chemical, the cost is extortionate, and security personnel are recommended to visit their local chemistry department instead if possible. Requires Armory access to open."
+	cost = 10000
+	contains = list(/obj/item/reagent_containers/glass/bottle/concentrated_bz)
+	crate_name = "Changeling testing kit crate"
