@@ -265,7 +265,7 @@
 				L.emote("gasp")
 				to_chat(L, "<font size=3 color=red><b>You can't breathe!</b></font>")
 
-		L.adjustOrganLoss(ORGAN_SLOT_BRAIN, 2, 50)
+		L.adjustOrganLoss(ORGAN_SLOT_BRAIN, 50, 90)
 	return ..()
 
 /datum/reagent/fake_cbz
@@ -276,6 +276,6 @@
 	random_unrestricted = FALSE
 
 /datum/reagent/fake_cbz/on_mob_life(mob/living/L)
-	L.adjustOrganLoss(ORGAN_SLOT_BRAIN, 2, 50)
+	L.adjustOrganLoss(ORGAN_SLOT_BRAIN, 25, 90)
 	if(prob(15))
 		to_chat(L, "You don't feel much of anything")
