@@ -18,7 +18,6 @@
 
 /datum/reagent/medicine/morphine/on_mob_metabolize(mob/living/L)
   ADD_TRAIT(L, TRAIT_IGNOREDAMAGESLOWDOWN, type)
-  ADD_TRAIT(L, TRAIT_IGNORESLOWDOWN, type)
 
 /datum/reagent/medicine/morphine/on_mob_life(mob/living/carbon/M)
   current_cycle++
@@ -26,4 +25,3 @@
 
 /datum/reagent/medicine/morphine/on_mob_end_metabolize(mob/living/L)
   REMOVE_TRAIT(L, TRAIT_IGNOREDAMAGESLOWDOWN, type)
-  REMOVE_TRAIT(L, TRAIT_IGNORESLOWDOWN, type)
