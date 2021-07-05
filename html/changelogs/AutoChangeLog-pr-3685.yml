@@ -1,0 +1,4 @@
+author: "MrLostman"
+delete-after: True
+changes: 
+  - imageadd: "added old hardsuit and spacesuit sprites"
