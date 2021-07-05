@@ -121,7 +121,7 @@ GLOBAL_VAR(command_name)
 	var/name = ""
 
 	// Prefix
-	name += pick("Clandestine", "Prima", "Blue", "Zero-G", "Max", "Blasto", "Waffle", "North", "Omni", "Newton", "Cyber", "Bonk", "Gene", "Gib", "Solo-Nobre", "Volta", "Gravesend", "Luddite", "Tri-Tach") // austation -- PR: #3688 Added prefix "Solo-Nobre", PR: # Added prefixes "Volta", "Gravesend", "Luddite", "Tri-Tach"
+	name += pick("Clandestine", "Prima", "Blue", "Zero-G", "Max", "Blasto", "Waffle", "North", "Omni", "Newton", "Cyber", "Bonk", "Gene", "Gib", "Solo-Nobre", "Volta", "Gravesend", "Luddite", "Tri-Tach") // austation -- PR: #3688 Added prefix "Solo-Nobre", PR: #3742 Added prefixes "Volta", "Gravesend", "Luddite", "Tri-Tach"
 
 	// Suffix
 	if (prob(80))
