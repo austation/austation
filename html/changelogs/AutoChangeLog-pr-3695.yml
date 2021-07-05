@@ -1,0 +1,6 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - balance: "M-90Gl Carbine 18TC to 14TC"
+  - balance: "5.56mm Toploader Magazine 4TC to 3TC"
+  - balance: "Grenades for the M-90Gl are now sold in boxes of 4 at a 6TC cost"
