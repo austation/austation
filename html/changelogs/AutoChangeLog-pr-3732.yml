@@ -1,0 +1,4 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - code_imp: "Nuked /client/MouseMove() for a massive amount of free performance."
