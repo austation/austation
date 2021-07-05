@@ -1,0 +1,4 @@
+author: "Beer nuke operatives"
+delete-after: True
+changes: 
+  - bugfix: "Beer stained paper now has the beer nuke code written on it"
