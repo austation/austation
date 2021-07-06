@@ -1,3 +1,11 @@
+/obj/item/clothing/gloves/color/yellow
+	icon = 'austation/icons/obj/clothing/gloves.dmi'
+	alternate_worn_icon = 'austation/icons/mob/clothing/gloves.dmi'
+
+/obj/item/clothing/gloves/color/fyellow
+	icon = 'austation/icons/obj/clothing/gloves.dmi'
+	alternate_worn_icon = 'austation/icons/mob/clothing/gloves.dmi'
+
 /obj/item/clothing/gloves/color/blatex
 	name = "black latex gloves"
 	desc = "Long gloves made from latex."
