@@ -1,0 +1,5 @@
+author: "MrLostman"
+delete-after: True
+changes: 
+  - imageadd: "added old tools and parts"
+  - bugfix: "fixes AI multitool detection"
