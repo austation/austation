@@ -1,4 +1,0 @@
-author: "AustationBot"
-delete-after: True
-changes: 
-  - rscdel: "Alt-click no longer provides an icon preview for performance reasons."
