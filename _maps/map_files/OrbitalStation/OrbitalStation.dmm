@@ -947,7 +947,7 @@
 /area/science/mixing)
 "aHP" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/twohanded/required/kirbyplants/dead{
+/obj/item/kirbyplants/dead{
 	desc = "A dead plant.";
 	name = "dead plant";
 	pixel_y = 8
@@ -1953,7 +1953,7 @@
 "bko" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/turf_decal/stripes/line,
-/obj/item/twohanded/required/kirbyplants/dead{
+/obj/item/kirbyplants/dead{
 	desc = "A dead plant.";
 	name = "dead plant";
 	pixel_y = 8
@@ -2200,7 +2200,7 @@
 /area/engine/engineering)
 "bqD" = (
 /obj/effect/turf_decal/delivery,
-/obj/item/twohanded/required/kirbyplants{
+/obj/item/kirbyplants{
 	icon_state = "plant-21"
 	},
 /obj/effect/decal/cleanable/dirt,
@@ -4990,7 +4990,7 @@
 /obj/effect/turf_decal/tile/yellow{
 	dir = 8
 	},
-/obj/item/twohanded/required/kirbyplants/dead{
+/obj/item/kirbyplants/dead{
 	desc = "A dead plant.";
 	name = "dead plant";
 	pixel_y = 8
@@ -5858,7 +5858,7 @@
 	},
 /obj/effect/turf_decal/tile/neutral,
 /obj/effect/decal/cleanable/dirt,
-/obj/item/twohanded/required/kirbyplants/dead{
+/obj/item/kirbyplants/dead{
 	desc = "A dead plant.";
 	name = "dead plant"
 	},
@@ -6375,7 +6375,7 @@
 /area/ai_monitored/turret_protected/ai_upload_foyer)
 "dVT" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/twohanded/required/kirbyplants/dead{
+/obj/item/kirbyplants/dead{
 	desc = "A dead plant.";
 	name = "dead plant";
 	pixel_y = 8
@@ -8031,7 +8031,7 @@
 /obj/effect/turf_decal/tile/yellow{
 	dir = 8
 	},
-/obj/item/twohanded/required/kirbyplants/random,
+/obj/item/kirbyplants/random,
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/light/small,
 /turf/open/floor/plasteel/dark,
@@ -9334,7 +9334,7 @@
 /obj/effect/turf_decal/tile/bar{
 	dir = 4
 	},
-/obj/item/twohanded/required/kirbyplants,
+/obj/item/kirbyplants,
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/light/small{
 	dir = 1
@@ -10180,7 +10180,7 @@
 /obj/effect/turf_decal/tile/red{
 	dir = 4
 	},
-/obj/item/twohanded/required/kirbyplants{
+/obj/item/kirbyplants{
 	icon_state = "plant-21"
 	},
 /obj/machinery/light/small{
@@ -10893,7 +10893,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
-/obj/item/twohanded/required/kirbyplants/dead{
+/obj/item/kirbyplants/dead{
 	desc = "A dead plant.";
 	name = "dead plant";
 	pixel_y = 8
@@ -11647,7 +11647,7 @@
 	})
 "gVK" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/twohanded/required/kirbyplants/dead{
+/obj/item/kirbyplants/dead{
 	desc = "A dead plant.";
 	name = "dead plant";
 	pixel_y = 8
@@ -13627,7 +13627,7 @@
 /obj/effect/turf_decal/tile/bar{
 	dir = 1
 	},
-/obj/item/twohanded/required/kirbyplants{
+/obj/item/kirbyplants{
 	icon_state = "plant-21"
 	},
 /obj/machinery/light/small,
@@ -13901,7 +13901,7 @@
 /turf/open/floor/plasteel/dark/airless,
 /area/ruin/space/abandoned_tele)
 "irI" = (
-/obj/item/twohanded/required/kirbyplants/random,
+/obj/item/kirbyplants/random,
 /obj/effect/turf_decal/tile/brown,
 /obj/effect/turf_decal/tile/brown{
 	dir = 4
@@ -15474,7 +15474,7 @@
 /area/medical/abandoned)
 "jkM" = (
 /obj/effect/turf_decal/delivery,
-/obj/item/twohanded/required/kirbyplants{
+/obj/item/kirbyplants{
 	icon_state = "plant-21"
 	},
 /turf/open/floor/plasteel,
@@ -16593,7 +16593,7 @@
 	dir = 4
 	},
 /obj/effect/turf_decal/tile/brown,
-/obj/item/twohanded/required/kirbyplants/dead{
+/obj/item/kirbyplants/dead{
 	desc = "A dead plant.";
 	name = "dead plant";
 	pixel_y = 8
@@ -18136,7 +18136,7 @@
 /area/ruin/space/derelict/hallway/primary/port)
 "kYM" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/twohanded/required/kirbyplants/dead{
+/obj/item/kirbyplants/dead{
 	desc = "A dead plant.";
 	name = "dead plant";
 	pixel_y = 8
@@ -18415,7 +18415,7 @@
 	pixel_x = -32
 	},
 /obj/effect/turf_decal/stripes/line,
-/obj/item/twohanded/required/kirbyplants/dead{
+/obj/item/kirbyplants/dead{
 	desc = "A dead plant.";
 	name = "dead plant";
 	pixel_y = 8
@@ -19115,7 +19115,7 @@
 	dir = 1
 	},
 /obj/effect/turf_decal/tile/red,
-/obj/item/twohanded/required/kirbyplants/dead{
+/obj/item/kirbyplants/dead{
 	desc = "A dead plant.";
 	name = "dead plant";
 	pixel_y = 8
@@ -19133,7 +19133,7 @@
 /obj/effect/turf_decal/tile/purple{
 	dir = 4
 	},
-/obj/item/twohanded/required/kirbyplants{
+/obj/item/kirbyplants{
 	icon_state = "plant-21"
 	},
 /obj/effect/decal/cleanable/dirt,
@@ -23184,7 +23184,7 @@
 "omI" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/turf_decal/stripes/line,
-/obj/item/twohanded/required/kirbyplants/dead{
+/obj/item/kirbyplants/dead{
 	desc = "A dead plant.";
 	name = "dead plant";
 	pixel_y = 8
@@ -24332,7 +24332,7 @@
 /obj/effect/turf_decal/tile/brown{
 	dir = 1
 	},
-/obj/item/twohanded/required/kirbyplants/random,
+/obj/item/kirbyplants/random,
 /obj/machinery/light/small{
 	dir = 1
 	},
@@ -24567,7 +24567,7 @@
 	dir = 1;
 	name = "Command blue corner"
 	},
-/obj/item/twohanded/required/kirbyplants/dead{
+/obj/item/kirbyplants/dead{
 	desc = "A dead plant.";
 	name = "dead plant";
 	pixel_y = 8
@@ -25266,7 +25266,7 @@
 /obj/effect/turf_decal/tile/yellow{
 	dir = 1
 	},
-/obj/item/twohanded/required/kirbyplants/random,
+/obj/item/kirbyplants/random,
 /obj/machinery/firealarm{
 	dir = 1;
 	pixel_y = -26
@@ -26668,7 +26668,7 @@
 /area/ruin/space/derelict/bridge)
 "qrr" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/twohanded/required/kirbyplants/random,
+/obj/item/kirbyplants/random,
 /turf/open/floor/plasteel/dark,
 /area/security/prison)
 "qsg" = (
@@ -27106,7 +27106,7 @@
 	name = "Command EVA"
 	})
 "qFc" = (
-/obj/item/twohanded/required/kirbyplants/random,
+/obj/item/kirbyplants/random,
 /obj/effect/turf_decal/tile/neutral,
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
@@ -31669,7 +31669,7 @@
 /area/engine/engineering)
 "tBg" = (
 /obj/effect/turf_decal/delivery,
-/obj/item/twohanded/required/kirbyplants{
+/obj/item/kirbyplants{
 	icon_state = "plant-21"
 	},
 /obj/effect/decal/cleanable/dirt,
@@ -32069,7 +32069,7 @@
 	start_charge = 0
 	},
 /obj/effect/turf_decal/stripes/line,
-/obj/item/twohanded/required/kirbyplants/dead{
+/obj/item/kirbyplants/dead{
 	desc = "A dead plant.";
 	name = "dead plant";
 	pixel_y = 8
@@ -33002,7 +33002,7 @@
 /obj/effect/turf_decal/tile/blue{
 	dir = 8
 	},
-/obj/item/twohanded/required/kirbyplants/random,
+/obj/item/kirbyplants/random,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plasteel/dark,
 /area/crew_quarters/heads/hop)
@@ -33384,7 +33384,7 @@
 /obj/structure/cable/yellow{
 	icon_state = "1-4"
 	},
-/obj/item/twohanded/required/kirbyplants/dead{
+/obj/item/kirbyplants/dead{
 	desc = "A dead plant.";
 	name = "dead plant";
 	pixel_y = 8
@@ -36535,7 +36535,7 @@
 /area/engine/supermatter)
 "wGw" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/twohanded/required/kirbyplants/random,
+/obj/item/kirbyplants/random,
 /obj/effect/turf_decal/stripes/line,
 /turf/open/floor/plasteel,
 /area/science/xenobiology)
@@ -37526,7 +37526,7 @@
 /area/science/research/abandoned)
 "xgP" = (
 /obj/machinery/light/small,
-/obj/item/twohanded/required/kirbyplants/random,
+/obj/item/kirbyplants/random,
 /turf/open/floor/wood,
 /area/crew_quarters/heads/captain)
 "xgQ" = (
@@ -39038,7 +39038,7 @@
 /obj/effect/turf_decal/tile/red{
 	dir = 8
 	},
-/obj/item/twohanded/required/kirbyplants/random,
+/obj/item/kirbyplants/random,
 /obj/effect/turf_decal/tile/blue{
 	dir = 4
 	},
