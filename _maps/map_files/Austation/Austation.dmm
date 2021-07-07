@@ -10678,7 +10678,7 @@
 /area/storage/primary)
 "aWd" = (
 /turf/closed/wall/r_wall,
-/area/storage/primary)
+/area/hallway/primary/central)
 "aWf" = (
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
@@ -113339,7 +113339,7 @@ qwd
 vNC
 vNC
 aaa
-bSS
+aWd
 xhK
 vxK
 xKh
@@ -114110,7 +114110,7 @@ aQx
 tkD
 vNC
 aaf
-bSS
+aWd
 lMP
 wCm
 pow
@@ -114881,7 +114881,7 @@ qyJ
 vNC
 vNC
 aaa
-bSS
+aWd
 iIR
 wRs
 vfT
@@ -115138,7 +115138,7 @@ vNC
 vNC
 aaa
 aaa
-bSS
+aWd
 nGN
 wGm
 kDr
@@ -115395,7 +115395,7 @@ aaa
 aaf
 aaa
 aaa
-bSS
+aWd
 nGN
 xNc
 qbO
@@ -117194,7 +117194,7 @@ aQD
 ttB
 uUk
 vFm
-aWd
+aUv
 nGN
 iop
 fuR
@@ -117956,16 +117956,16 @@ hSk
 oaa
 aHx
 aIH
-aWd
-aWd
-aWd
+aUv
+aUv
+aUv
 ouf
-aWd
-aWd
+aUv
+aUv
 tRh
 tRh
-aWd
-aWd
+aUv
+aUv
 dDh
 aZh
 kRq
