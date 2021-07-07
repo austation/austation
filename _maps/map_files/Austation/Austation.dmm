@@ -8171,7 +8171,7 @@
 	dir = 1
 	},
 /turf/open/floor/plasteel/dark,
-/area/ai_monitored/turret_protected/ai_upload_foyer)
+/area/ai_monitored/turret_protected/ai_upload)
 "aLv" = (
 /obj/machinery/door/airlock/maintenance{
 	name = "Bar Maintenance";
@@ -8438,14 +8438,10 @@
 /area/maintenance/port/fore)
 "aMB" = (
 /obj/structure/table,
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
 /obj/item/aiModule/supplied/quarantine,
 /obj/machinery/flasher{
 	id = "AI";
-	pixel_x = -26;
-	pixel_y = 3
+	pixel_y = 26
 	},
 /turf/open/floor/plasteel/dark,
 /area/ai_monitored/turret_protected/ai_upload)
@@ -9201,8 +9197,17 @@
 /turf/open/floor/plasteel/white,
 /area/security/prison)
 "aQw" = (
+/obj/machinery/camera/motion{
+	c_tag = "AI Upload Chamber - Fore";
+	network = list("aiupload")
+	},
+/obj/machinery/power/apc{
+	areastring = "/area/ai_monitored/turret_protected/ai_upload";
+	name = "AI Upload Access APC";
+	pixel_y = 28
+	},
 /obj/structure/cable/yellow{
-	icon_state = "1-2"
+	icon_state = "0-8"
 	},
 /turf/open/floor/circuit,
 /area/ai_monitored/turret_protected/ai_upload)
@@ -9487,12 +9492,9 @@
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer1{
 	dir = 4
 	},
-/obj/machinery/power/apc{
-	areastring = "/area/ai_monitored/turret_protected/ai_upload";
-	name = "AI Upload Access APC";
-	pixel_y = -24
+/obj/machinery/airalarm{
+	pixel_y = -32
 	},
-/obj/structure/cable/yellow,
 /turf/open/floor/plasteel/dark,
 /area/ai_monitored/turret_protected/ai_upload)
 "aRT" = (
@@ -18246,15 +18248,6 @@
 /obj/item/clothing/mask/cigarette/cigar,
 /turf/open/floor/wood,
 /area/crew_quarters/bar)
-"bDO" = (
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
-/obj/structure/cable/yellow{
-	icon_state = "2-4"
-	},
-/turf/open/floor/plasteel/dark,
-/area/ai_monitored/turret_protected/ai_upload)
 "bDS" = (
 /obj/effect/turf_decal/tile/yellow{
 	dir = 8
@@ -25909,6 +25902,9 @@
 "cgR" = (
 /obj/machinery/porta_turret/ai{
 	dir = 4
+	},
+/obj/structure/cable/yellow{
+	icon_state = "4-8"
 	},
 /turf/open/floor/plasteel/dark,
 /area/ai_monitored/turret_protected/ai_upload)
@@ -37785,7 +37781,7 @@
 	dir = 1
 	},
 /turf/open/floor/plasteel/dark,
-/area/ai_monitored/turret_protected/ai_upload_foyer)
+/area/ai_monitored/turret_protected/ai_upload)
 "dhK" = (
 /obj/structure/closet,
 /obj/item/poster/random_contraband,
@@ -44655,6 +44651,9 @@
 	},
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
+	},
+/obj/structure/cable/yellow{
+	icon_state = "1-4"
 	},
 /turf/open/floor/circuit,
 /area/ai_monitored/turret_protected/ai_upload)
@@ -60698,7 +60697,7 @@
 	dir = 1
 	},
 /turf/open/floor/plasteel/dark,
-/area/ai_monitored/turret_protected/ai_upload_foyer)
+/area/ai_monitored/turret_protected/ai_upload)
 "mtH" = (
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
@@ -63812,10 +63811,11 @@
 /area/medical/medbay/central)
 "nCj" = (
 /obj/structure/table,
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
 /obj/item/aiModule/supplied/freeform,
+/obj/machinery/flasher{
+	id = "AI";
+	pixel_y = 26
+	},
 /turf/open/floor/plasteel/dark,
 /area/ai_monitored/turret_protected/ai_upload)
 "nCn" = (
@@ -67620,6 +67620,9 @@
 /obj/machinery/porta_turret/ai{
 	dir = 8
 	},
+/obj/structure/cable/yellow{
+	icon_state = "4-8"
+	},
 /turf/open/floor/plasteel/dark,
 /area/ai_monitored/turret_protected/ai_upload)
 "oVx" = (
@@ -68620,6 +68623,16 @@
 	},
 /turf/open/floor/plating,
 /area/maintenance/aft/secondary)
+"pmW" = (
+/obj/machinery/porta_turret/ai{
+	dir = 1
+	},
+/obj/machinery/flasher{
+	id = "AI";
+	pixel_y = 26
+	},
+/turf/open/floor/plasteel/dark,
+/area/ai_monitored/turret_protected/ai_upload)
 "pna" = (
 /obj/structure/cable/yellow{
 	icon_state = "2-8"
@@ -71412,6 +71425,10 @@
 /obj/structure/window/reinforced{
 	dir = 1
 	},
+/obj/machinery/flasher{
+	id = "AI";
+	pixel_y = -26
+	},
 /turf/open/floor/plasteel/dark,
 /area/ai_monitored/turret_protected/ai_upload)
 "qwe" = (
@@ -71596,6 +71613,10 @@
 /obj/item/aiModule/reset/purge,
 /obj/structure/window/reinforced{
 	dir = 1
+	},
+/obj/machinery/flasher{
+	id = "AI";
+	pixel_y = -26
 	},
 /turf/open/floor/plasteel/dark,
 /area/ai_monitored/turret_protected/ai_upload)
@@ -78514,6 +78535,10 @@
 "tlM" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer3{
 	dir = 8
+	},
+/obj/machinery/flasher{
+	id = "AI";
+	pixel_y = -26
 	},
 /turf/open/floor/plasteel/dark,
 /area/ai_monitored/turret_protected/ai_upload)
@@ -113074,8 +113099,8 @@ aFT
 dne
 aaa
 aaa
-wec
-wec
+vNC
+vNC
 sRl
 xGj
 vNC
@@ -113330,8 +113355,8 @@ llb
 shS
 awW
 aaa
-wec
-wec
+vNC
+vNC
 aMB
 nVV
 cgR
@@ -113587,8 +113612,8 @@ lyM
 aFN
 wec
 wec
-wec
-wec
+vNC
+vNC
 cjs
 qNd
 ukt
@@ -113844,12 +113869,12 @@ lyM
 lYT
 wec
 pPl
-wec
+vNC
 aLl
 qNd
 obi
-bDO
-aQw
+xck
+qNd
 aRR
 vNC
 aaa
@@ -114358,9 +114383,9 @@ lCC
 aFW
 wec
 qXm
-wec
-aLl
-qNd
+vNC
+pmW
+ukt
 oiU
 xck
 qNd
@@ -114615,9 +114640,9 @@ lHz
 mco
 wec
 wec
-wec
-wec
-cjs
+vNC
+vNC
+aQw
 qNd
 ukt
 aQy
@@ -114872,8 +114897,8 @@ lIe
 lYT
 awW
 aaa
-wec
-wec
+vNC
+vNC
 nCj
 onN
 oVw
@@ -115130,8 +115155,8 @@ oDj
 awW
 aaa
 aaa
-wec
-wec
+vNC
+vNC
 sRl
 oVI
 vNC
