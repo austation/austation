@@ -85,6 +85,11 @@
 #define VV_HK_TRIGGER_EMP "empulse"
 #define VV_HK_TRIGGER_EXPLOSION "explode"
 #define VV_HK_AUTO_RENAME "auto_rename"
+<<<<<<< HEAD
+=======
+#define VV_HK_EDIT_FILTERS "edit_filters"
+#define VV_HK_ADD_AI "add_ai"
+>>>>>>> 203156d3e2... ports tg's filter debug menu & minor filter refactor (#4434)
 
 // /obj
 #define VV_HK_OSAY "osay"
