@@ -37835,6 +37835,7 @@
 	},
 /obj/effect/turf_decal/tile/red,
 /obj/structure/window/reinforced,
+/obj/machinery/door/firedoor/border_only,
 /turf/open/floor/plasteel/white,
 /area/security/brig)
 "dhM" = (
@@ -72048,6 +72049,7 @@
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
 	},
+/obj/machinery/door/firedoor/border_only,
 /turf/open/floor/plasteel/white,
 /area/security/brig)
 "qFK" = (
