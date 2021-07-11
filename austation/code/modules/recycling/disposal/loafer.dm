@@ -168,7 +168,7 @@
 			var/area/A = get_area(src)
 			var/mob/culprit = get_mob_by_ckey(fingerprintslast)
 			var/culprit_message
-			priority_announce("We have detected an extremely high concentration of gluten in [A.name], we suggest evacuating the immediate area")
+			priority_announce("We have detected an extremely high concentration of gluten in [A.name], we suggest evacuating the immediate area", sound = SSstation.announcer.get_rand_alert_sound())
 			visible_message("<span class='userdanger'>[src] collapses into a singularity under its own weight!</span>")
 			var/obj/singularity/oof = new(get_turf(src))
 			if(supermatter_singulo)
