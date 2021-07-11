@@ -44,7 +44,7 @@ jobs:
         uses: actions/cache@v2
         with:
           path: $HOME/BYOND
-          key: ${{ runner.os }}-byond
+          key: ${{ runner.os }}-byond-${{ hashFiles('Dockerfile') }}
       - name: Install BYOND
         if: steps.cache-byond.outputs.cache-hit != 'true'
         run: bash tools/ci/install_byond.sh
@@ -70,7 +70,7 @@ jobs:
         uses: actions/cache@v2
         with:
           path: $HOME/BYOND
-          key: ${{ runner.os }}-byond
+          key: ${{ runner.os }}-byond-${{ hashFiles('Dockerfile') }}
       - name: Install BYOND
         if: steps.cache-byond.outputs.cache-hit != 'true'
         run: bash tools/ci/install_byond.sh
