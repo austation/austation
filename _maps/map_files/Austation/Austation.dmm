@@ -4452,9 +4452,6 @@
 /area/security/main)
 "asG" = (
 /obj/machinery/light,
-/obj/machinery/computer/security/telescreen/entertainment{
-	pixel_y = -32
-	},
 /obj/structure/disposalpipe/segment{
 	dir = 9
 	},
@@ -4512,6 +4509,9 @@
 	},
 /obj/effect/turf_decal/tile/red{
 	dir = 8
+	},
+/obj/machinery/computer/security/telescreen/entertainment{
+	pixel_y = -32
 	},
 /turf/open/floor/plasteel,
 /area/security/main)
@@ -66213,10 +66213,6 @@
 	},
 /turf/open/floor/plasteel/white,
 /area/medical/virology)
-"ouf" = (
-/obj/effect/spawner/structure/window,
-/turf/open/space/basic,
-/area/storage/primary)
 "ouG" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
 	dir = 9
@@ -115757,8 +115753,8 @@ aaa
 aUv
 aUv
 aUv
-aUv
-aUv
+muz
+muz
 aUv
 aUv
 aUv
@@ -118070,7 +118066,7 @@ aIH
 aUv
 aUv
 aUv
-ouf
+tRh
 aUv
 aUv
 tRh
