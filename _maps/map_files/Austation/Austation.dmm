@@ -1217,9 +1217,6 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/ai_monitored/security/armory)
-"aey" = (
-/turf/closed/wall,
-/area/security/range)
 "aez" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 9
@@ -2307,9 +2304,6 @@
 	},
 /turf/open/floor/plating,
 /area/crew_quarters/heads/hos)
-"aiJ" = (
-/turf/closed/wall/r_wall,
-/area/security/range)
 "aiK" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 10
@@ -2925,10 +2919,6 @@
 /turf/open/floor/plasteel,
 /area/security/main)
 "akZ" = (
-/obj/machinery/airalarm{
-	dir = 8;
-	pixel_x = 24
-	},
 /obj/machinery/camera{
 	c_tag = "Firing Range";
 	dir = 8
@@ -2936,8 +2926,11 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
 	},
+/obj/structure/chair{
+	dir = 8
+	},
 /turf/open/floor/plasteel,
-/area/security/range)
+/area/security/main)
 "ale" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/cable/yellow{
@@ -3178,8 +3171,11 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
 	},
+/obj/structure/chair{
+	dir = 8
+	},
 /turf/open/floor/plasteel,
-/area/security/range)
+/area/security/main)
 "amv" = (
 /obj/structure/closet/emcloset,
 /obj/effect/turf_decal/tile/neutral{
@@ -3323,7 +3319,7 @@
 	dir = 4
 	},
 /turf/open/floor/plasteel/white,
-/area/security/prison)
+/area/security/brig)
 "ani" = (
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/plasteel/white,
@@ -9209,7 +9205,7 @@
 	pixel_x = -28
 	},
 /turf/open/floor/plasteel/white,
-/area/security/prison)
+/area/security/brig)
 "aQw" = (
 /obj/machinery/camera/motion{
 	c_tag = "AI Upload Chamber - Fore";
@@ -43433,7 +43429,7 @@
 	dir = 8
 	},
 /turf/open/floor/plasteel,
-/area/security/range)
+/area/security/main)
 "fkq" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -45893,14 +45889,14 @@
 /obj/machinery/light/small{
 	dir = 8
 	},
-/obj/effect/turf_decal/stripes/line{
-	dir = 6
-	},
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer1{
 	dir = 4
 	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
 /turf/open/floor/plasteel,
-/area/security/range)
+/area/security/main)
 "goh" = (
 /obj/structure/disposalpipe/segment{
 	dir = 10
@@ -48087,7 +48083,7 @@
 	dir = 1
 	},
 /turf/open/floor/plasteel,
-/area/security/range)
+/area/security/main)
 "hhH" = (
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
@@ -59076,7 +59072,7 @@
 	dir = 8
 	},
 /turf/open/floor/plasteel,
-/area/security/range)
+/area/security/main)
 "lJa" = (
 /obj/effect/landmark/event_spawn,
 /obj/effect/turf_decal/tile/neutral{
@@ -61015,7 +61011,7 @@
 	dir = 10
 	},
 /turf/open/floor/plasteel,
-/area/security/range)
+/area/security/main)
 "mwy" = (
 /obj/machinery/power/apc/highcap/ten_k{
 	areastring = "/area/hallway/primary/central";
@@ -65192,11 +65188,11 @@
 /area/ai_monitored/turret_protected/ai_upload)
 "obm" = (
 /obj/effect/landmark/start/security_officer,
-/obj/effect/turf_decal/tile/red{
-	dir = 8
+/obj/effect/turf_decal/stripes/line{
+	dir = 6
 	},
 /turf/open/floor/plasteel,
-/area/security/range)
+/area/security/main)
 "obv" = (
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
@@ -69906,7 +69902,7 @@
 	dir = 8
 	},
 /turf/open/floor/plasteel,
-/area/security/range)
+/area/security/main)
 "pNd" = (
 /obj/effect/turf_decal/tile/neutral{
 	dir = 4
@@ -79105,13 +79101,6 @@
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer1,
 /turf/open/floor/plasteel/freezer,
 /area/crew_quarters/toilet/restrooms)
-"ttU" = (
-/obj/effect/spawner/structure/window/reinforced,
-/obj/structure/cable/yellow{
-	icon_state = "0-8"
-	},
-/turf/open/floor/plating,
-/area/security/range)
 "ttX" = (
 /obj/structure/cable/white{
 	icon_state = "4-8"
@@ -81114,9 +81103,6 @@
 /obj/structure/disposalpipe/segment{
 	dir = 10
 	},
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
 /obj/effect/turf_decal/tile/red{
 	dir = 8
 	},
@@ -81127,7 +81113,7 @@
 	dir = 1
 	},
 /turf/open/floor/plasteel,
-/area/security/range)
+/area/security/main)
 "uiV" = (
 /obj/effect/spawner/lootdrop/maintenance,
 /obj/effect/turf_decal/bot,
@@ -115757,8 +115743,8 @@ aaa
 aUv
 aUv
 aUv
-muz
-muz
+aUv
+aUv
 aUv
 aUv
 aUv
@@ -123185,11 +123171,11 @@ aaa
 aaa
 aaa
 aaa
-aiJ
-aiJ
-ttU
+aqa
+aqa
+atX
 pNc
-aiJ
+aqa
 oZt
 aqa
 ewi
@@ -123446,7 +123432,7 @@ wOY
 god
 obm
 lIZ
-aiJ
+aqa
 qnE
 aqa
 lej
@@ -123960,7 +123946,7 @@ wOY
 fko
 akZ
 ams
-aey
+ajD
 sxF
 ajD
 heA
@@ -124213,11 +124199,11 @@ agq
 agq
 agq
 agq
-aey
-aey
-aey
-aey
-aey
+ajD
+ajD
+ajD
+ajD
+ajD
 lzs
 ajD
 xUj
