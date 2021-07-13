@@ -9,21 +9,28 @@ on:
   pull_request:
     branches:
     - master
+<<<<<<< HEAD:.github/workflows/test.yml
+=======
+
+>>>>>>> ce7f0ec5f8... fix caching (#4785):.github/workflows/continuous_integration.yml
 jobs:
   run_linters:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - name: Setup cache
+        id: cache-spacemandmm
         uses: actions/cache@v2
         with:
-          path: $HOME/SpacemanDMM
-          key: ${{ runner.os }}-spacemandmm
+          path: ~/dreamchecker
+          key: ${{ runner.os }}-spacemandmm-cache-${{ hashFiles('dependencies.sh') }}
+      - name: Install SpacemanDMM
+        if: steps.cache-spacemandmm.outputs.cache-hit != 'true'
+        run: bash tools/ci/install_spaceman_dmm.sh dreamchecker
       - name: Install Tools
         run: |
           pip3 install setuptools
           bash tools/ci/install_build_tools.sh
-          bash tools/ci/install_spaceman_dmm.sh dreamchecker
           pip3 install -r tools/mapmerge2/requirements.txt
       - name: Run Linters
         run: |
