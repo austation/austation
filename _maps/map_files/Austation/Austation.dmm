@@ -6783,6 +6783,9 @@
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
 	},
+/obj/structure/cable/yellow{
+	icon_state = "2-4"
+	},
 /turf/open/floor/plasteel,
 /area/hallway/primary/fore)
 "aES" = (
@@ -41038,6 +41041,15 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/security/nuke_storage)
+"ehr" = (
+/obj/effect/turf_decal/tile/red{
+	dir = 8
+	},
+/obj/structure/cable/yellow{
+	icon_state = "1-2"
+	},
+/turf/open/floor/plasteel,
+/area/hallway/primary/fore)
 "ehO" = (
 /obj/machinery/light/small{
 	dir = 8
@@ -50577,16 +50589,16 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/machinery/door/airlock/mining{
-	name = "Cargo Bay";
-	req_one_access_txt = "31;48"
-	},
 /obj/effect/turf_decal/delivery,
 /obj/machinery/door/firedoor/border_only{
 	dir = 4
 	},
 /obj/machinery/door/firedoor/border_only{
 	dir = 8
+	},
+/obj/machinery/door/airlock/maintenance{
+	name = "Cargo Bay Maintenance";
+	req_one_access_txt = "31;48"
 	},
 /turf/open/floor/plating,
 /area/maintenance/port/fore)
@@ -116271,7 +116283,7 @@ azE
 aCl
 aDx
 aEK
-ltb
+ehr
 aHy
 aaa
 muz
