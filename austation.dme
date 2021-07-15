@@ -62,6 +62,7 @@
 #include "austation\code\datums\diseases\advance\symptoms\vomit.dm"
 #include "austation\code\datums\diseases\advance\symptoms\weight.dm"
 #include "austation\code\datums\mood_event\generic_positive_events.dm"
+#include "austation\code\datums\mutations\_combined.dm"
 #include "austation\code\datums\mutations\body.dm"
 #include "austation\code\datums\mutations\jumpy.dm"
 #include "austation\code\datums\mutations\speech.dm"
