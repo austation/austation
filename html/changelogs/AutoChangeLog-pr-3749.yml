@@ -1,0 +1,4 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - config: "Default map ideal pop bounds adjusted."
