@@ -50,10 +50,8 @@
 		playsound(src, 'sound/effects/bang.ogg', 50, 1)
 		to_chat(M, "<span class='warning'>This wall is far too strong for you to destroy.</span>")
 
-/* austation -- sonic jackhammer can no longer crush walls
 /turf/closed/wall/r_wall/try_destroy(obj/item/I, mob/user, turf/T)
 	return FALSE
-*/
 
 /turf/closed/wall/r_wall/try_decon(obj/item/W, mob/user, turf/T)
 	//DECONSTRUCTION
@@ -260,5 +258,3 @@
 /turf/closed/wall/r_wall/syndicate/overspace
 	icon_state = "map-overspace"
 	fixed_underlay = list("space"=1)
-
-
