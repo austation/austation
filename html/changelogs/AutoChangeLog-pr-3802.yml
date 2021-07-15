@@ -1,0 +1,4 @@
+author: "MCterra10"
+delete-after: True
+changes: 
+  - rscadd: "Added syndi mask to metacoin shop"
