@@ -1,0 +1,4 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - rscadd: "Clock cultists can now summon their basic loudout using summon armaments"
