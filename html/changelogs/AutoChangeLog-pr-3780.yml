@@ -1,0 +1,4 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - balance: "Sonic jackhammer can no longer break reinforced, cult and plastitanium walls."
