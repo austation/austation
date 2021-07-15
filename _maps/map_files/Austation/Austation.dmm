@@ -49902,7 +49902,9 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 6
 	},
-/obj/machinery/atmospherics/components/unary/outlet_injector,
+/obj/machinery/atmospherics/components/unary/outlet_injector{
+	on = 1
+	},
 /turf/open/floor/plasteel/dark,
 /area/security/execution/education)
 "hTA" = (
