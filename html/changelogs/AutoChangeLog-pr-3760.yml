@@ -1,0 +1,5 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - bugfix: "fixed syntax"
+  - code_imp: "changed ^ to ** in lighting.dm and ghost_role.dm"
