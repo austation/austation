@@ -42,15 +42,9 @@
 
 # exlude maps from contribution count
 *.dmm linguist-generated=true
-<<<<<<< HEAD
-=======
 
 ## Force tab indents on dm files
 *.dm whitespace=indent-with-non-tab
->>>>>>> f2a0f51180... Modernizes TGUI (#4219)
 
 # force changelog merging to use union
 html/changelog.html merge=union
-
-# force built tgui to overwrite on merge
-tgui/public/* merge=ours
