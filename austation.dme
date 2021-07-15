@@ -147,6 +147,7 @@
 #include "austation\code\modules\cargo\packs\costumes_toys.dm"
 #include "austation\code\modules\cargo\packs\packs.dm"
 #include "austation\code\modules\client\preferences_savefile.dm"
+#include "austation\code\modules\client\loadout\loadout_hat.dm"
 #include "austation\code\modules\client\loadout\loadout_uniform.dm"
 #include "austation\code\modules\client\verbs\ooc.dm"
 #include "austation\code\modules\clothing\clothing.dm"
