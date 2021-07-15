@@ -1,0 +1,5 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - rscadd: "Added shuttle console to the arena"
+  - bugfix: "fixed arena shuttle"
