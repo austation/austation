@@ -15,4 +15,4 @@
 		sleep(0.2)
 
 /datum/round_event/bruh_moment/announce()
-	priority_announce("NanoTrasen is issuing a Bruh Moment warning. Please stand by.", "Bruhspace Anomaly")
+	priority_announce("NanoTrasen is issuing a Bruh Moment warning. Please stand by.", "Bruhspace Anomaly", sound = SSstation.announcer.get_rand_alert_sound())

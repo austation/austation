@@ -40,13 +40,16 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Setup cache
+        id: cache-byond
         uses: actions/cache@v2
         with:
-          path: $HOME/BYOND
-          key: ${{ runner.os }}-byond
+          path: ~/BYOND
+          key: ${{ runner.os }}-byond-cache-${{ hashFiles('Dockerfile') }}
+      - name: Install BYOND
+        if: steps.cache-byond.outputs.cache-hit != 'true'
+        run: bash tools/ci/install_byond.sh
       - name: Compile All Maps
         run: |
-          bash tools/ci/install_byond.sh
           source $HOME/BYOND/byond/bin/byondsetup
           python3 tools/ci/template_dm_generator.py
           bash tools/ci/dm.sh -DCIBUILDING -DCITESTING -DALL_MAPS austation.dme
@@ -63,10 +66,14 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Setup cache
+        id: cache-byond
         uses: actions/cache@v2
         with:
-          path: $HOME/BYOND
-          key: ${{ runner.os }}-byond
+          path: ~/BYOND
+          key: ${{ runner.os }}-byond-cache-${{ hashFiles('Dockerfile') }}
+      - name: Install BYOND
+        if: steps.cache-byond.outputs.cache-hit != 'true'
+        run: bash tools/ci/install_byond.sh
       - name: Setup database
         run: |
           sudo systemctl start mysql
@@ -80,7 +87,6 @@ jobs:
           bash tools/ci/install_rust_g.sh
       - name: Compile and run tests
         run: |
-          bash tools/ci/install_byond.sh
           source $HOME/BYOND/byond/bin/byondsetup
           bash tools/ci/dm.sh -DCIBUILDING austation.dme
           bash tools/ci/run_server.sh

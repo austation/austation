@@ -1,7 +1,7 @@
 // Fuck
 /obj/structure/disposalpipe/loafer
 	name = "loaf compactor"
-	desc = "A special machine that converts inserted matter into gluten"
+	desc = "A highly sophisticated machine capable of transforming almost all forms of inserted matter into gluten."
 	icon = 'austation/icons/obj/atmospherics/machines/loafer.dmi'
 	icon_state = "loafer"
 	var/static/list/blacklist = typecacheof(list(
@@ -17,14 +17,8 @@
 	var/emag_bonus = 1
 	var/obj/item/reagent_containers/food/snacks/store/bread/recycled/stored_looef
 
-// Shittery to get deconstruction icons working
-/obj/structure/disposalpipe/loafer/Initialize(mapload, obj/structure/disposalconstruct/make_from)
-	. = ..()
-
-	blacklist = typesof(/obj/item/stock_parts) + typesof(/obj/item/pipe) + typesof(/obj/structure/c_transit_tube) + typesof(/obj/structure/c_transit_tube_pod) + typesof(/obj/item/holochip) + typesof(/obj/item/reagent_containers/glass/bottle) + typesof(/obj/structure/disposalconstruct) + typesof(/obj/item/reagent_containers/pill) + typesof(/obj/item/reagent_containers/pill/patch)
-
 // It's late okay, I don't have time for this
-/obj/structure/disposalpipe/loafer/deconstruct(disassembled)
+/obj/structure/disposalpipe/loafer/deconstruct(disassembled = TRUE)
 	if(!(flags_1 & NODECONSTRUCT_1))
 		if(disassembled)
 			var/obj/structure/disposalconstruct/D = new(loc, null , SOUTH , FALSE , src)
@@ -42,15 +36,17 @@
 /obj/structure/disposalpipe/loafer/Destroy()
 	var/obj/structure/disposalholder/H = locate() in src
 	if(H)
-		for(var/atom/movable/AM in H.contents)
-			if(istype(AM, /obj/item/reagent_containers/food/snacks/store/bread/recycled))
-				var/obj/item/reagent_containers/food/snacks/store/bread/recycled/looef = AM
-				if(looef.bread_density < 10)
-					qdel(AM)
-			if(isliving(AM))
-				var/mob/living/L = AM
-				L.adjustBruteLoss(40) //ouchie
-		expel(H, get_turf(src), 0)
+		return ..()
+	for(var/atom/movable/AM in H.contents)
+		if(istype(AM, /obj/item/reagent_containers/food/snacks/store/bread/recycled))
+			var/obj/item/reagent_containers/food/snacks/store/bread/recycled/looef = AM
+			if(looef.bread_density < 10)
+				qdel(AM)
+		if(isliving(AM))
+			var/mob/living/L = AM
+			L.adjustBruteLoss(40) //ouchie
+	expel(H, get_turf(src), 0)
+
 	return ..()
 
 /obj/structure/disposalpipe/loafer/emag_act(mob/user)
@@ -64,9 +60,7 @@
 
 // This proc runs when something moves through the pipe
 /obj/structure/disposalpipe/loafer/transfer(obj/structure/disposalholder/H)
-
-	if(H.contents.len)
-
+	if(length(H.contents))
 		icon_state = "aloafer"
 		update_icon()
 
@@ -101,7 +95,7 @@
 						looef.bread_density += 25 * emag_bonus
 
 					if(ishuman(L) && !isdead(L))
-						L.emote("scream")
+						INVOKE_ASYNC(L, /mob.proc/emote, "scream")
 
 					playsound(src.loc, 'sound/machines/juicer.ogg', 40, 1)
 					sleep(50)
@@ -117,7 +111,7 @@
 					visible_message("<span class='warning'>\The [src]'s safety mechanism engages, stopping the processing blades, but not before seriously injuring [L]!</span>")
 
 					if(ishuman(L) && !isdead(L))
-						L.emote("scream")
+						INVOKE_ASYNC(L, /mob.proc/emote, "scream")
 
 					L.adjustBruteLoss(70)
 
@@ -168,7 +162,7 @@
 			var/area/A = get_area(src)
 			var/mob/culprit = get_mob_by_ckey(fingerprintslast)
 			var/culprit_message
-			priority_announce("We have detected an extremely high concentration of gluten in [A.name], we suggest evacuating the immediate area")
+			priority_announce("We have detected an extremely high concentration of gluten in [A.name], we suggest evacuating the immediate area", sound = SSstation.announcer.get_rand_alert_sound())
 			visible_message("<span class='userdanger'>[src] collapses into a singularity under its own weight!</span>")
 			var/obj/singularity/oof = new(get_turf(src))
 			if(supermatter_singulo)
