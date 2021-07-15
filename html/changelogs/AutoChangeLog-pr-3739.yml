@@ -1,0 +1,4 @@
+author: "MNarath1, MrMelbert"
+delete-after: True
+changes: 
+  - bugfix: "fixes contractor tablets breaking when targets cryo"
