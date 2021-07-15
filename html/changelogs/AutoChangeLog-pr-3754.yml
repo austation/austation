@@ -1,0 +1,5 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - bugfix: "Some TGUI mistakes have been corrected, panel, air alarm, and contractor uplink should look good again."
+  - tweak: "Uplink interface has been modified in looks, and will auto-focus"
