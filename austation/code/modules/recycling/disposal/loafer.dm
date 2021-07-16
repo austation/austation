@@ -78,7 +78,7 @@
 			if(istype(AM, /obj/item/reagent_containers/food/snacks/store/bread/recycled))
 				var/obj/item/reagent_containers/food/snacks/store/bread/recycled/recursive_looef = AM
 				looef.bread_density += recursive_looef.bread_density
-				qdel(AM)
+				qdel(recursive_looef)
 				continue
 
 			if(istype(AM, /obj/item/reagent_containers/food/snacks/store/bread/supermatter))
@@ -117,7 +117,7 @@
 					sleep(30)
 
 					visible_message("<span class='notice'>The hatch on the side of \the [src] opens, ejecting [L].")
-					playsound(src.loc, 'sound/machines/hiss.ogg', 40, 1)
+					playsound(src, 'sound/machines/hiss.ogg', 40, 1)
 					L.forceMove(get_turf(src))
 
 					continue
@@ -143,19 +143,15 @@
 			qdel(stored_looef) // and delete it
 			stored_looef = null
 		stored_looef = looef // after merging any currently stored loaf, store our loaf for 36 deciseconds (3.6 seconds) in case another loaf comes along in that time
-		sleep(3)
 		playsound(src, pick('sound/machines/blender.ogg', 'sound/machines/juicer.ogg', 'sound/machines/buzz-sigh.ogg', 'sound/machines/warning-buzzer.ogg', 'sound/machines/ping.ogg'), 25, 1)
-		sleep(33)
 		icon_state = "loafer"
-		if(stored_looef == looef)
-			stored_looef = null // reset the variable if our loaf is still there after 3.6 seconds. Ignore this if another loaf was stored.
 		if(!looef.bread_density)
 			qdel(looef)
 			if(!LAZYLEN(H.contents)) // no point having an empty disposal object
 				qdel(H)
 				return
 			visible_message("<span class='warning'>\The [src] buzzes grumpily!</span>")
-			playsound(src.loc, 'sound/machines/buzz-two.ogg', 40, 1)
+			playsound(src, 'sound/machines/buzz-two.ogg', 40, 1)
 		else if(looef.bread_density >= 3400 && obj_flags & EMAGGED || supermatter_singulo)
 			var/turf/T = get_turf(src)
 			var/area/A = get_area(src)
