@@ -41,7 +41,7 @@
 
 /obj/structure/disposalpipe/loafer/Destroy()
 	var/obj/structure/disposalholder/H = locate() in src
-	if(H)
+	if(!QDELETED(H))
 		for(var/atom/movable/AM in H.contents)
 			if(istype(AM, /obj/item/reagent_containers/food/snacks/store/bread/recycled))
 				var/obj/item/reagent_containers/food/snacks/store/bread/recycled/looef = AM
@@ -151,7 +151,7 @@
 			stored_looef = null
 		stored_looef = looef // after merging any currently stored loaf, store our loaf for 36 deciseconds (3.6 seconds) in case another loaf comes along in that time
 		sleep(3)
-		playsound(src.loc, pick('sound/machines/blender.ogg', 'sound/machines/juicer.ogg', 'sound/machines/buzz-sigh.ogg', 'sound/machines/warning-buzzer.ogg', 'sound/machines/ping.ogg'), 25, 1)
+		playsound(src, pick('sound/machines/blender.ogg', 'sound/machines/juicer.ogg', 'sound/machines/buzz-sigh.ogg', 'sound/machines/warning-buzzer.ogg', 'sound/machines/ping.ogg'), 25, 1)
 		sleep(33)
 		icon_state = "loafer"
 		if(stored_looef == looef)
