@@ -1,7 +1,0 @@
-author: "AustationBot"
-delete-after: True
-changes: 
-  - tweak: "the holodeck beach and photobooth modules have been updated"
-  - tweak: "photobooth has been given the correct photoboot tiles instead of snow"
-  - tweak: "photoboot holodeck module has been given a razor and infinite photos camera"
-  - tweak: "beach holodeck module can now be swam in"

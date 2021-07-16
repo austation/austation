@@ -1,4 +1,0 @@
-author: "Froststahr port"
-delete-after: True
-changes: 
-  - code_imp: "Asset URL mappings are now cached to improve performance"

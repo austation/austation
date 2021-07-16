@@ -1,5 +1,0 @@
-author: "AustationBot"
-delete-after: True
-changes: 
-  - rscadd: "Captain skirt"
-  - bugfix: "Cargo skirt now works properly with digitigrade legs"

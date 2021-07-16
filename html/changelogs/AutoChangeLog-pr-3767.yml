@@ -1,5 +1,0 @@
-author: "AnCopper"
-delete-after: True
-changes: 
-  - rscadd: "Added commando magboots, given to Deathsquads"
-  - tweak: "Moved Deathsquad, Deathsquad Officer, and Juggernaut outfits to the ERT outfit file."

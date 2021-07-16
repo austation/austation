@@ -1,5 +1,0 @@
-author: "Effectism"
-delete-after: True
-changes: 
-  - rscadd: "Added a disposals network to Orbital."
-  - rscadd: "Added job-specific rooms and/or lockers for any roles that were missing them."
