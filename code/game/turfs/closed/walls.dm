@@ -232,8 +232,6 @@
 
 	return FALSE
 
-
-/* austation begin -- sonic jackhammer can no longer crush walls
 /turf/closed/wall/proc/try_destroy(obj/item/I, mob/user, turf/T)
 	if(istype(I, /obj/item/pickaxe/drill/jackhammer))
 		if(!iswallturf(src))
@@ -246,7 +244,6 @@
 								"<span class='italics'>You hear the grinding of metal.</span>")
 			return TRUE
 	return FALSE
-*/
 
 /turf/closed/wall/singularity_pull(S, current_size)
 	..()

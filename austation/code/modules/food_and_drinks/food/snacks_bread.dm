@@ -290,9 +290,10 @@
 		return
 	visible_message("<span class='danger'>\The [src] collides with \the [hit_atom], annihilating it in a blinding flash of pure energy and flour!</span>")
 	playsound(src, 'sound/effects/supermatter.ogg', 50, 1)
+	var/mob/thrower = thrownby.resolve()
 	if(thrownby) // wheeze no cheesing this
-		to_chat(thrownby, "<span class='userdanger'>You realize too late that \the [src] was quantumly entangled with your body, as your atoms dissociate into pure energy, taking the bread with them!</span>")
-		thrownby.dust(force = TRUE)
+		to_chat(thrower, "<span class='userdanger'>You realize too late that \the [src] was quantum-entangled with your body, as your atoms dissociate into pure energy, taking the bread with them!</span>")
+		thrower.dust(force = TRUE)
 		qdel(src)
 	if(isliving(hit_atom))
 		var/mob/living/L = hit_atom
