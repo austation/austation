@@ -10,7 +10,7 @@ Beeloot is the number of items in Bees loot table excluding disabled loot
 	if(!istype(item, /obj/item/skeleton_key) || spawned_loot)
 		return FALSE
 
-	var/loot = rand(1,32)
+	var/loot = rand(1,30)
 
 	switch(loot)
 		if(1)
