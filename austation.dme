@@ -160,6 +160,7 @@
 #include "austation\code\modules\clothing\shoes\magboots.dm"
 #include "austation\code\modules\clothing\spacesuit\hardsuit.dm"
 #include "austation\code\modules\clothing\spacesuit\miscellaneous.dm"
+#include "austation\code\modules\clothing\spacesuit\syndi.dm"
 #include "austation\code\modules\clothing\suits\armor.dm"
 #include "austation\code\modules\clothing\suits\miscellaneous.dm"
 #include "austation\code\modules\clothing\suits\jobs\engineering.dm"
