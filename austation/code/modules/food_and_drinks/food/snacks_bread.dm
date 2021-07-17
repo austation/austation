@@ -239,10 +239,13 @@
 	playsound(src, 'sound/magic/charge.ogg', 50, 1)
 
 /obj/item/reagent_containers/food/snacks/store/bread/recycled/antimatter/process() // holding anti bread has a chance to delete your arm
-	if(isturf(loc) && prob(45))
-		throw_at(get_edge_target_turf(src, pick(GLOB.alldirs)), 2, 5)
-		visible_message("<span class='danger'>[src] flickers violently!</span>")
-		playsound(src, 'sound/magic/charge.ogg', 10, 1)
+	if(isturf(loc))
+		if(prob(45))
+			throw_at(get_edge_target_turf(src, pick(GLOB.alldirs)), 2, 5)
+			visible_message("<span class='danger'>[src] flickers violently!</span>")
+			playsound(src, 'sound/magic/charge.ogg', 10, 1)
+	return
+
 	if(ishuman(loc))
 		var/mob/living/carbon/human/H = loc
 		var/obj/item/bodypart/B = H.get_holding_bodypart_of_item(src)
@@ -253,13 +256,13 @@
 			playsound(src, 'sound/effects/supermatter.ogg', 50, 1)
 			B.drop_limb()
 			qdel(B)
-	else
-		if(prob(10) && !istype(loc, /obj/structure/disposalholder)) // goodbye lockers/crates, but not diposal pipes
-			visible_message("<span class='warning'>\The [src] melts through \the [loc] in a flash of light!</span>")
-			playsound(src, 'sound/effects/supermatter.ogg', 50, 1)
-			var/atom/A = loc
-			forceMove(get_turf(src))
-			qdel(A)
+			return
+	else if(prob(10) && !istype(loc, /obj/structure/disposalholder)) // goodbye lockers/crates, but not diposal pipes
+		visible_message("<span class='warning'>\The [src] melts through \the [loc] in a flash of light!</span>")
+		playsound(src, 'sound/effects/supermatter.ogg', 50, 1)
+		var/atom/A = loc
+		forceMove(get_turf(src))
+		qdel(A)
 
 /obj/item/reagent_containers/food/snacks/store/bread/recycled/antimatter/attack(mob/living/M, mob/living/user, def_zone)
 	if(user.a_intent == INTENT_HARM)
@@ -275,7 +278,7 @@
 
 /obj/item/reagent_containers/food/snacks/store/bread/recycled/antimatter/attack_obj(obj/O, mob/living/user)
 	if(user.a_intent == INTENT_HARM)
-		O.visible_message("<span class='danger'>\the [user] slams \the [src] into \the [O], vaporizing themselves, \the [O] and \the [src] in a brilliant flash of light and flour!</span>")
+		O.visible_message("<span class='danger'>\The [user] slams [src] into [O], vaporizing themselves, [O] and [src] in a brilliant flash of light and flour!</span>")
 		playsound(src, 'sound/effects/supermatter.ogg', 50, 1)
 		user.dust(force = TRUE)
 		qdel(O)
