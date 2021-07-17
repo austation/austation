@@ -100,13 +100,13 @@
 					sleep(50)
 
 					if(L.loc != H)
-						return // don't murder if not in the bread machine. this is a final fallback to stop potential immersion breaking stuff.
+						return // don't murder if not in the bread machine. In case they somehow broke out
 					L.death()
 					qdel(L)
-					playsound(src.loc, 'sound/effects/splat.ogg', 50, 1)
+					playsound(src, 'sound/effects/splat.ogg', 50, 1)
 					continue
 				else // ided
-					playsound(src.loc, 'sound/machines/buzz-two.ogg', 40, 1)
+					playsound(src, 'sound/machines/buzz-two.ogg', 40, 1)
 					visible_message("<span class='warning'>\The [src]'s safety mechanism engages, stopping the processing blades, but not before seriously injuring [L]!</span>")
 
 					if(ishuman(L) && !isdead(L))
@@ -143,8 +143,12 @@
 			qdel(stored_looef) // and delete it
 			stored_looef = null
 		stored_looef = looef // after merging any currently stored loaf, store our loaf for 36 deciseconds (3.6 seconds) in case another loaf comes along in that time
+		sleep(3)
 		playsound(src, pick('sound/machines/blender.ogg', 'sound/machines/juicer.ogg', 'sound/machines/buzz-sigh.ogg', 'sound/machines/warning-buzzer.ogg', 'sound/machines/ping.ogg'), 25, 1)
+		sleep(33)
 		icon_state = "loafer"
+		if(stored_looef == looef)
+			stored_looef = null
 		if(!looef.bread_density)
 			qdel(looef)
 			if(!LAZYLEN(H.contents)) // no point having an empty disposal object
@@ -152,7 +156,7 @@
 				return
 			visible_message("<span class='warning'>\The [src] buzzes grumpily!</span>")
 			playsound(src, 'sound/machines/buzz-two.ogg', 40, 1)
-		else if(looef.bread_density >= 3400 && obj_flags & EMAGGED || supermatter_singulo)
+		else if((looef.bread_density >= 3400 && (obj_flags & EMAGGED)) || supermatter_singulo)
 			var/turf/T = get_turf(src)
 			var/area/A = get_area(src)
 			var/mob/culprit = get_mob_by_ckey(fingerprintslast)
@@ -163,6 +167,8 @@
 			if(supermatter_singulo)
 				oof.consumedSupermatter = supermatter_singulo
 				oof.energy = 800
+			else
+				oof.energy = 180 // just below stage two
 			oof.name = "[supermatter_singulo ? "supercharged" : ""] gravitational breadularity"
 			oof.desc = "I have done nothing but compress bread for 3 days."
 			qdel(src)
