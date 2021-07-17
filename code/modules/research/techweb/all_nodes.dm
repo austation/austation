@@ -286,6 +286,35 @@
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 12500)
 	export_price = 5000
 
+<<<<<<< HEAD
+=======
+/////////////////////////integrated circuits tech/////////////////////////
+
+/datum/techweb_node/adv_shells
+	id = "adv_shells"
+	display_name = "Advanced Shell Research"
+	description = "Grants access to more complicated shell designs."
+	prereq_ids = list("basic_circuitry", "engineering")
+	design_ids = list("controller_shell", "scanner_shell", "bot_shell", "door_shell", "money_bot_shell")
+	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2500)
+
+/datum/techweb_node/movable_shells_tech
+	id = "movable_shells"
+	display_name = "Movable Shell Research"
+	description = "Grants access to movable shells."
+	prereq_ids = list("adv_shells", "robotics")
+	design_ids = list("comp_pull", "drone_shell")
+	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 3000)
+
+/datum/techweb_node/server_shell_tech
+	id = "server_shell"
+	display_name = "Server Technology Research"
+	description = "Grants access to a server shell that has a very high capacity for components."
+	prereq_ids = list("adv_shells", "computer_hardware_basic")
+	design_ids = list("server_shell")
+	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 3000)
+
+>>>>>>> 4101513561... More circuit entity outputs (#4736)
 /////////////////////////robotics tech/////////////////////////
 /datum/techweb_node/robotics
 	id = "robotics"
