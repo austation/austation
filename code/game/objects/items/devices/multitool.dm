@@ -30,6 +30,17 @@
 	usesound = 'sound/weapons/empty.ogg'
 	var/mode = 0
 
+<<<<<<< HEAD
+=======
+/obj/item/multitool/Initialize()
+	RegisterSignal(src, COMSIG_PARENT_EXAMINE, .proc/on_examine)
+	return ..()
+
+/obj/item/multitool/Destroy()
+	UnregisterSignal(src, COMSIG_PARENT_EXAMINE)
+	return ..()
+
+>>>>>>> 16cbed3538... Fixes multitool (#4748)
 /obj/item/multitool/suicide_act(mob/living/carbon/user)
 	user.visible_message("<span class='suicide'>[user] puts the [src] to [user.p_their()] chest. It looks like [user.p_theyre()] trying to pulse [user.p_their()] heart off!</span>")
 	return OXYLOSS//theres a reason it wasn't recommended by doctors
