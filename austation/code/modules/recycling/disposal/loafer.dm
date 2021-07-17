@@ -143,8 +143,12 @@
 			qdel(stored_looef) // and delete it
 			stored_looef = null
 		stored_looef = looef // after merging any currently stored loaf, store our loaf for 36 deciseconds (3.6 seconds) in case another loaf comes along in that time
+		sleep(3)
 		playsound(src, pick('sound/machines/blender.ogg', 'sound/machines/juicer.ogg', 'sound/machines/buzz-sigh.ogg', 'sound/machines/warning-buzzer.ogg', 'sound/machines/ping.ogg'), 25, 1)
+		sleep(33)
 		icon_state = "loafer"
+		if(stored_looef == looef)
+			stored_looef = null
 		if(!looef.bread_density)
 			qdel(looef)
 			if(!LAZYLEN(H.contents)) // no point having an empty disposal object
