@@ -249,7 +249,7 @@
 	if(ishuman(loc))
 		var/mob/living/carbon/human/H = loc
 		var/obj/item/bodypart/B = H.get_holding_bodypart_of_item(src)
-		if(prob(3))
+		if(prob(10))
 			H.visible_message("<span class='warning'>\The [src] suddenly vaporizes \the [H]'s [B] in a flash of light!</span>", "<span class='userdanger'>\The [src] suddenly completely vaporizes your [B] in a blinding flash of light!</span>")
 			H.emote("scream")
 			H.flash_act(2) // sunnies won't save you from this
