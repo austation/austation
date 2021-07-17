@@ -244,7 +244,7 @@
 			throw_at(get_edge_target_turf(src, pick(GLOB.alldirs)), 2, 5)
 			visible_message("<span class='danger'>[src] flickers violently!</span>")
 			playsound(src, 'sound/magic/charge.ogg', 10, 1)
-	return
+		return
 
 	if(ishuman(loc))
 		var/mob/living/carbon/human/H = loc
@@ -289,7 +289,10 @@
 
 /obj/item/reagent_containers/food/snacks/store/bread/recycled/antimatter/throw_impact(atom/hit_atom, datum/thrownthing/throwingdatum) // throwing doesn't game the bread
 	. = ..()
-	if(isturf(hit_atom))
+	if(isopenturf(hit_atom))
+		if(isclosedturf(hit_atom))
+			var/turf/closed/T = hit_atom
+			T.ScrapeAway()
 		return
 	visible_message("<span class='danger'>\The [src] collides with \the [hit_atom], annihilating it in a blinding flash of pure energy and flour!</span>")
 	playsound(src, 'sound/effects/supermatter.ogg', 50, 1)
