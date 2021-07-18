@@ -1,4 +1,0 @@
-author: "YakiAttaki"
-delete-after: True
-changes: 
-  - bugfix: "necro chest lookup table isn't looking for nothing anymore"
