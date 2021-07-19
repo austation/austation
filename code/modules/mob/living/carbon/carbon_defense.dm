@@ -291,6 +291,7 @@
 			S = dna.species
 		M.visible_message("<span class='notice'>[M] pats [src] on the head.</span>", \
 					"<span class='notice'>You pat [src] on the head.</span>")
+<<<<<<< HEAD
 		if(S?.can_wag_tail(src) && !dna.species.is_wagging_tail())
 			emote("wag")
 		if(is_species(src, /datum/species/human/felinid))
@@ -298,6 +299,9 @@
 		else
 			SEND_SIGNAL(src, COMSIG_ADD_MOOD_EVENT, "pat", /datum/mood_event/headpat)
 		//austation end
+=======
+		SEND_SIGNAL(src, COMSIG_ADD_MOOD_EVENT, "headpat", /datum/mood_event/headpat, M)
+>>>>>>> 10186fd81d... e (#4854)
 	else if((M.zone_selected == BODY_ZONE_L_ARM) || (M.zone_selected == BODY_ZONE_R_ARM))
 		if(!get_bodypart(check_zone(M.zone_selected)))
 			to_chat(M, "<span class='warning'>[src] does not have a [M.zone_selected == BODY_ZONE_L_ARM ? "left" : "right"] arm!</span>")
