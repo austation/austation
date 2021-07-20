@@ -1,0 +1,4 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - balance: "scatter laser shotgun damage down to 8 from 15"
