@@ -48,7 +48,7 @@ jobs:
         run: |
           git remote add base https://github.com/${{ github.repository }}.git
           git fetch base --depth=25 ${{ env.DEFAULT_BRANCH }}
-          git merge -s ours --no-commit base/${{ env.DEFAULT_BRANCH }}
+          git merge --squash -s ours --no-commit base/${{ env.DEFAULT_BRANCH }}
           git checkout HEAD .
           git clean -fxd
           git checkout base/${{ env.DEFAULT_BRANCH }} tgui/public
