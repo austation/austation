@@ -27412,19 +27412,10 @@
 /turf/open/floor/plasteel/white,
 /area/medical/chemistry)
 "clz" = (
-/obj/item/stack/sheet/glass/fifty{
-	pixel_x = 3;
-	pixel_y = 3
-	},
-/obj/item/stack/sheet/iron/fifty,
-/obj/item/clothing/glasses/welding,
-/obj/structure/table,
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
 	},
-/obj/item/stack/sheet/mineral/copper{
-	amount = 5
-	},
+/obj/machinery/component_printer,
 /turf/open/floor/plasteel,
 /area/science/lab)
 "clA" = (
@@ -27697,6 +27688,15 @@
 /obj/item/disk/tech_disk,
 /obj/item/disk/design_disk,
 /obj/item/disk/design_disk,
+/obj/item/stack/sheet/mineral/copper{
+	amount = 5
+	},
+/obj/item/clothing/glasses/welding,
+/obj/item/stack/sheet/iron/fifty,
+/obj/item/stack/sheet/glass/fifty{
+	pixel_x = 3;
+	pixel_y = 3
+	},
 /turf/open/floor/plasteel/white,
 /area/science/lab)
 "cmL" = (

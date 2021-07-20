@@ -46,6 +46,7 @@
 	return BULLET_ACT_HIT
 
 /mob/living/bullet_act(obj/item/projectile/P, def_zone)
+	SEND_SIGNAL(src, COMSIG_ATOM_BULLET_ACT, P, def_zone)
 	var/armor = run_armor_check(def_zone, P.flag, "","",P.armour_penetration)
 	if(!P.nodamage)
 		apply_damage(P.damage, P.damage_type, def_zone, armor)
@@ -94,8 +95,9 @@
 							"<span class='userdanger'>You're hit by [I]!</span>")
 			var/armor = run_armor_check(zone, "melee", "Your armor has protected your [parse_zone(zone)].", "Your armor has softened hit to your [parse_zone(zone)].",I.armour_penetration)
 			apply_damage(I.throwforce, dtype, zone, armor)
-			if(I.thrownby)
-				log_combat(I.thrownby, src, "threw and hit", I)
+			var/mob/thrown_by = I.thrownby?.resolve()
+			if(thrown_by)
+				log_combat(thrown_by, src, "threw and hit", I)
 		else
 			return 1
 	else

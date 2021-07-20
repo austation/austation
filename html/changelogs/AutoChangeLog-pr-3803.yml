@@ -1,0 +1,4 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - rscadd: "being tableported now gives the mood (de)buff as if you had been tabled"
