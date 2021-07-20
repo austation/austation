@@ -20,7 +20,7 @@ env:
 jobs:
   ondemand_rebuild:
     if: ${{ github.event_name == 'repository_dispatch' }}
-    name: OnDemand Rebuild
+    name: On-Demand Rebuild
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -42,7 +42,6 @@ jobs:
 
       # This only runs if the PR has a merge conflict. Serves to attempt resolving merge conflicts rather than just rebuilding.
       # Uses a smart little git hack to make a merge commit for just a limited set of files.
-      # Changed tgui/public to browserassets/tgui for goonstation.
       - name: Conflict Resolution
         if: ${{ github.event.client_payload.mergeable == false }}
         run: |
@@ -65,7 +64,7 @@ jobs:
 
   auto_rebuild:
     if: ${{ github.event_name == 'push' }}
-    name: TGUI Automatic Rebuild
+    name: Automatic Rebuild
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -83,13 +82,10 @@ jobs:
         run: bin/tgui
         working-directory: ./tgui
 
-      - name: Commit Artifacts
+      - name: Commit and Push Build
         run: |
           git config --local user.email "${{ env.COMMIT_EMAIL }}"
           git config --local user.name "${{ env.COMMIT_NAME }}"
           git pull origin master
           git commit -m "Automatic TGUI Rebuild [ci skip]" -a || true
-
-      - name: Push
-        run: |
           git push
