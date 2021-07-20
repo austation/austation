@@ -153,11 +153,11 @@ The reactor CHEWS through moderator. It does not do this slowly. Be very careful
 			if(!fuel_rods.len)
 				start_up() //That was the first fuel rod. Let's heat it up.
 				message_admins("Reactor first started up by [ADMIN_LOOKUPFLW(user)] in [ADMIN_VERBOSEJMP(src)]")
-				investigate_log("Reactor first started by [key_name(user)] at [AREACOORD(src)]", INVESTIGATE_SINGULO)
+				investigate_log("Reactor first started by [key_name(user)] at [AREACOORD(src)]", INVESTIGATE_ENGINES)
 			fuel_rods += W
 			W.forceMove(src)
 			radiation_pulse(src, temperature) //Wear protective equipment when even breathing near a reactor!
-			investigate_log("Rod added to reactor by [key_name(user)] at [AREACOORD(src)]", INVESTIGATE_SINGULO)
+			investigate_log("Rod added to reactor by [key_name(user)] at [AREACOORD(src)]", INVESTIGATE_ENGINES)
 		return TRUE
 	if(istype(W, /obj/item/sealant))
 		if(power >= 20)
@@ -255,7 +255,7 @@ The reactor CHEWS through moderator. It does not do this slowly. Be very careful
 				vessel_integrity -= temperature / 200 //Think fast chucklenuts!
 				take_damage(10) //Just for the sound effect, to let you know you've fucked up.
 				color = "[COLOR_RED]"
-				investigate_log("Reactor taking damage from the lack of coolant", INVESTIGATE_SINGULO)
+				investigate_log("Reactor taking damage from the lack of coolant", INVESTIGATE_ENGINES)
 	//Now, heat up the output and set our pressure.
 	coolant_output.set_temperature(CELSIUS_TO_KELVIN(temperature)) //Heat the coolant output gas that we just had pass through us.
 	last_output_temperature = KELVIN_TO_CELSIUS(coolant_output.return_temperature())
@@ -313,7 +313,7 @@ The reactor CHEWS through moderator. It does not do this slowly. Be very careful
 	difference = CLAMP(difference, 0, control_rod_effectiveness) //And we can't instantly zap the K to what we want, so let's zap as much of it as we can manage....
 	if(difference > fuel_power && desired_k > K)
 		message_admins("Not enough fuel to get [difference]. We have fuel [fuel_power]")
-		investigate_log("Reactor has not enough fuel to get [difference]. We have fuel [fuel_power]", INVESTIGATE_SINGULO)
+		investigate_log("Reactor has not enough fuel to get [difference]. We have fuel [fuel_power]", INVESTIGATE_ENGINES)
 		difference = fuel_power //Again, to stop you being able to run off of 1 fuel rod.
 	if(K != desired_k)
 		if(desired_k > K)
@@ -323,7 +323,7 @@ The reactor CHEWS through moderator. It does not do this slowly. Be very careful
 	if(K == desired_k && last_user && current_desired_k != desired_k)
 		current_desired_k = desired_k
 		message_admins("Reactor desired criticality set to [desired_k] by [ADMIN_LOOKUPFLW(last_user)] in [ADMIN_VERBOSEJMP(src)]")
-		investigate_log("reactor desired criticality set to [desired_k] by [key_name(last_user)] at [AREACOORD(src)]", INVESTIGATE_SINGULO)
+		investigate_log("reactor desired criticality set to [desired_k] by [key_name(last_user)] at [AREACOORD(src)]", INVESTIGATE_ENGINES)
 
 	K = CLAMP(K, 0, RBMK_MAX_CRITICALITY)
 	if(has_fuel())
@@ -338,7 +338,7 @@ The reactor CHEWS through moderator. It does not do this slowly. Be very careful
 		for(var/obj/machinery/light/L in GLOB.machines)
 			if(prob(25) && L.z == z) //If youre running the reactor cold though, no need to flicker the lights.
 				L.flicker()
-		investigate_log("Reactor overloading at [power]% power", INVESTIGATE_SINGULO)
+		investigate_log("Reactor overloading at [power]% power", INVESTIGATE_ENGINES)
 	for(var/atom/movable/I in get_turf(src))
 		if(isliving(I))
 			var/mob/living/L = I
@@ -396,13 +396,13 @@ The reactor CHEWS through moderator. It does not do this slowly. Be very careful
 	//First alert condition: Overheat
 	if(temperature >= RBMK_TEMPERATURE_CRITICAL)
 		alert = TRUE
-		investigate_log("Reactor reaching critical temperature at [temperature] C with desired criticality at [desired_k]", INVESTIGATE_SINGULO)
+		investigate_log("Reactor reaching critical temperature at [temperature] C with desired criticality at [desired_k]", INVESTIGATE_ENGINES)
 		message_admins("Reactor reaching critical temperature at [ADMIN_VERBOSEJMP(src)]")
 		if(temperature >= RBMK_TEMPERATURE_MELTDOWN)
 			var/temp_damage = min(temperature/100, initial(vessel_integrity)/40)	//40 seconds to meltdown from full integrity, worst-case. Bit less than blowout since it's harder to spike heat that much.
 			vessel_integrity -= temp_damage
 			if(vessel_integrity <= temp_damage)
-				investigate_log("Reactor melted down at [temperature] C with desired criticality at [desired_k]", INVESTIGATE_SINGULO)
+				investigate_log("Reactor melted down at [temperature] C with desired criticality at [desired_k]", INVESTIGATE_ENGINES)
 				meltdown() //Oops! All meltdown
 				return
 	else
@@ -415,7 +415,7 @@ The reactor CHEWS through moderator. It does not do this slowly. Be very careful
 	//Second alert condition: Overpressurized (the more lethal one)
 	if(pressure >= RBMK_PRESSURE_CRITICAL)
 		alert = TRUE
-		investigate_log("Reactor reaching critical pressure at [pressure] PSI with desired criticality at [desired_k]", INVESTIGATE_SINGULO)
+		investigate_log("Reactor reaching critical pressure at [pressure] PSI with desired criticality at [desired_k]", INVESTIGATE_ENGINES)
 		message_admins("Reactor reaching critical pressure at [ADMIN_VERBOSEJMP(src)]")
 		shake_animation(0.5)
 		playsound(loc, 'sound/machines/clockcult/steam_whoosh.ogg', 100, TRUE)
@@ -424,7 +424,7 @@ The reactor CHEWS through moderator. It does not do this slowly. Be very careful
 		var/pressure_damage = min(pressure/100, initial(vessel_integrity)/45)	//You get 45 seconds (if you had full integrity), worst-case. But hey, at least it can't be instantly nuked with a pipe-fire.. though it's still very difficult to save.
 		vessel_integrity -= pressure_damage
 		if(vessel_integrity <= pressure_damage) //It wouldn't
-			investigate_log("Reactor blowout at [pressure] PSI with desired criticality at [desired_k]", INVESTIGATE_SINGULO)
+			investigate_log("Reactor blowout at [pressure] PSI with desired criticality at [desired_k]", INVESTIGATE_ENGINES)
 			blowout()
 			return
 	if(warning)
