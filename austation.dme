@@ -273,4 +273,5 @@
 #include "austation\code\modules\vehicles\cars\thanoscar.dm"
 #include "austation\code\modules\vending\_vending.dm"
 #include "austation\code\modules\vending\clothesmate.dm"
+#include "austation\code\modules\wiremod\marker.dm"
 // END_INCLUDE
