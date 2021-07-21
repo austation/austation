@@ -83511,6 +83511,7 @@
 /area/engine/engineering/reactor_core)
 "vfy" = (
 /obj/machinery/door/airlock/maintenance{
+	name = "Storage Room";
 	req_access_txt = "12"
 	},
 /obj/machinery/door/firedoor/border_only{
@@ -88187,7 +88188,6 @@
 /obj/structure/cable/yellow{
 	icon_state = "1-4"
 	},
-/obj/effect/landmark/blobstart,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
 	dir = 5
 	},
@@ -113777,7 +113777,7 @@ aNT
 dnk
 dnk
 aRG
-aRG
+pTb
 dne
 aaf
 awW
