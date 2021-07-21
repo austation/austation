@@ -187,11 +187,19 @@
 	},
 /area/security/prison)
 "aaD" = (
-/obj/effect/spawner/structure/window/reinforced,
-/obj/machinery/door/firedoor/window,
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
+/obj/machinery/door/airlock/maintenance{
+	name = "Storage Room";
+	req_access_txt = "12"
+	},
+/obj/effect/mapping_helpers/airlock/abandoned,
+/obj/machinery/door/firedoor/border_only{
+	dir = 4
+	},
+/obj/machinery/door/firedoor/border_only{
+	dir = 8
+	},
 /turf/open/floor/plating,
-/area/security/prison)
+/area/maintenance/port/fore)
 "aaE" = (
 /obj/machinery/biogenerator,
 /obj/machinery/light/small{
@@ -3197,6 +3205,9 @@
 /obj/structure/chair{
 	dir = 8
 	},
+/obj/structure/sign/poster/official/random{
+	pixel_x = 32
+	},
 /turf/open/floor/plasteel,
 /area/security/main)
 "amv" = (
@@ -4805,11 +4816,12 @@
 /turf/open/floor/plating,
 /area/maintenance/port/fore)
 "auN" = (
-/obj/effect/spawner/structure/window/reinforced,
-/obj/machinery/door/firedoor/window,
-/obj/machinery/atmospherics/pipe/layer_manifold,
-/turf/open/floor/plating,
-/area/security/prison)
+/obj/structure/chair/comfy/beige,
+/obj/machinery/airalarm{
+	pixel_y = 23
+	},
+/turf/open/floor/wood,
+/area/ai_monitored/turret_protected/ai_upload_foyer)
 "auO" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
 	dir = 5
@@ -6258,6 +6270,7 @@
 /obj/structure/cable/yellow{
 	icon_state = "2-4"
 	},
+/obj/structure/barricade/wooden,
 /turf/open/floor/plating,
 /area/maintenance/port/fore)
 "aCk" = (
@@ -6486,10 +6499,7 @@
 /turf/open/floor/plating,
 /area/maintenance/port/fore)
 "aDu" = (
-/obj/structure/table/wood,
-/obj/machinery/airalarm{
-	pixel_y = 23
-	},
+/obj/structure/fireplace,
 /turf/open/floor/wood,
 /area/ai_monitored/turret_protected/ai_upload_foyer)
 "aDw" = (
@@ -8952,13 +8962,14 @@
 /turf/open/space,
 /area/space/nearstation)
 "aPs" = (
-/obj/machinery/door/airlock/maintenance{
-	req_one_access_txt = "12;27;37"
-	},
 /obj/effect/mapping_helpers/airlock/abandoned,
 /obj/machinery/door/firedoor/border_only,
 /obj/machinery/door/firedoor/border_only{
 	dir = 1
+	},
+/obj/machinery/door/airlock/maintenance{
+	name = "Storage Room";
+	req_access_txt = "12"
 	},
 /turf/open/floor/plating,
 /area/maintenance/port/fore)
@@ -10313,9 +10324,6 @@
 /turf/open/floor/plating,
 /area/maintenance/port/fore)
 "aUp" = (
-/obj/machinery/door/airlock/maintenance{
-	req_one_access_txt = "12;27;37"
-	},
 /obj/machinery/door/firedoor/border_only{
 	dir = 8
 	},
@@ -10323,6 +10331,10 @@
 	dir = 4
 	},
 /obj/effect/mapping_helpers/airlock/abandoned,
+/obj/machinery/door/airlock/maintenance{
+	name = "Storage Room";
+	req_access_txt = "12"
+	},
 /turf/open/floor/plating,
 /area/maintenance/port/fore)
 "aUq" = (
@@ -49234,7 +49246,8 @@
 /area/hallway/primary/port)
 "hFp" = (
 /obj/machinery/door/airlock/maintenance{
-	req_one_access_txt = "12;27;37"
+	name = "Storage Room";
+	req_access_txt = "12"
 	},
 /obj/machinery/door/firedoor/border_only{
 	dir = 4
@@ -49243,7 +49256,9 @@
 	dir = 8
 	},
 /obj/effect/mapping_helpers/airlock/abandoned,
-/turf/closed/wall,
+/turf/open/floor/plating{
+	icon_state = "panelscorched"
+	},
 /area/maintenance/port/fore)
 "hFN" = (
 /obj/structure/disposalpipe/segment,
@@ -50405,10 +50420,8 @@
 	icon_state = "1-2"
 	},
 /obj/structure/disposalpipe/segment,
-/obj/machinery/atmospherics/pipe/manifold/supply/hidden/layer1{
-	dir = 8
-	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3,
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1,
 /turf/open/floor/plating,
 /area/maintenance/port/fore)
 "ifE" = (
@@ -55891,10 +55904,11 @@
 /turf/open/floor/plating,
 /area/maintenance/starboard/secondary)
 "kov" = (
-/obj/machinery/door/airlock/maintenance{
-	req_one_access_txt = "12;27;37"
-	},
 /obj/structure/barricade/wooden,
+/obj/machinery/door/airlock/maintenance{
+	name = "Storage Room";
+	req_access_txt = "12"
+	},
 /turf/open/floor/plating,
 /area/maintenance/port/fore)
 "koC" = (
@@ -58223,7 +58237,6 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
 	dir = 4
 	},
-/obj/structure/barricade/wooden,
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
 	},
@@ -70211,16 +70224,7 @@
 /turf/open/floor/plasteel/dark,
 /area/crew_quarters/dorms)
 "pTb" = (
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
 /obj/effect/landmark/blobstart,
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
-	dir = 8
-	},
-/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
-	dir = 4
-	},
 /turf/open/floor/plating,
 /area/maintenance/port/fore)
 "pTG" = (
@@ -75361,10 +75365,18 @@
 /turf/open/floor/plating,
 /area/maintenance/starboard)
 "rVt" = (
-/obj/effect/spawner/structure/window/reinforced,
-/obj/machinery/door/firedoor/window,
+/obj/structure/cable/yellow{
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1,
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
+	dir = 1
+	},
+/obj/structure/sign/warning/explosives/alt{
+	pixel_x = 32
+	},
 /turf/open/floor/plating,
-/area/security/prison)
+/area/maintenance/port/fore)
 "rVz" = (
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
@@ -87894,9 +87906,6 @@
 /area/ai_monitored/storage/eva)
 "wTn" = (
 /obj/effect/turf_decal/stripes/line{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
 	dir = 4
 	},
 /turf/open/floor/plating,
@@ -110682,7 +110691,7 @@ dne
 dne
 dne
 dne
-kjS
+aaD
 dne
 dne
 vew
@@ -111470,7 +111479,7 @@ dnk
 aRG
 dnZ
 dne
-pTb
+sUo
 dne
 imW
 oNd
@@ -111724,7 +111733,7 @@ dne
 dne
 aRG
 aRG
-aRG
+pTb
 aRG
 dne
 sUo
@@ -111950,13 +111959,13 @@ lMJ
 aaf
 aaf
 aaf
-rVt
+aax
 mQT
-aaD
 abX
-aaD
+abX
+abX
 alL
-auN
+aeJ
 aQy
 peZ
 aax
@@ -112495,7 +112504,7 @@ aRG
 dne
 aRG
 fiJ
-ola
+rVt
 ola
 arH
 ukd
@@ -113777,7 +113786,7 @@ awW
 awW
 awW
 awW
-jKa
+auN
 lyM
 aFN
 wec
