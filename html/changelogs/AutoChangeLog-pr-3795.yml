@@ -1,5 +1,0 @@
-author: "AustationBot"
-delete-after: True
-changes: 
-  - admin: "added logging for antimatter"
-  - admin: "grouped singulo, antimatter and supermatter logs into one"

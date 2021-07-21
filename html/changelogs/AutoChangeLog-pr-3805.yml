@@ -1,4 +1,0 @@
-author: "AustationBot"
-delete-after: True
-changes: 
-  - bugfix: "fixes logging of xenomorph neurotoxin spit not showing shooter"
