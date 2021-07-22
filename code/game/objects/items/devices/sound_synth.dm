@@ -46,7 +46,7 @@
     "Awwing" = "selected_sound=sound/effects/audience-aww.ogg&shiftpitch=0&volume=80",
     "Gasping" = "selected_sound=sound/effects/audience-gasp.ogg&shiftpitch=0&volume=80",
     "Oohing" = "selected_sound=sound/effects/audience-ooh.ogg&shiftpitch=0&volume=80", //austation PR #3848 - Adds haram sound effect
-	"Haram" = "selected_sound=sound/effects/haram_alarm.ogg&shiftpitch=0&volume=80"	//change end
+	"Haram" = "selected_sound=austation/sound/effects/haram_alarm.ogg&shiftpitch=0&volume=80"	//change end
     )
 
 /obj/item/soundsynth/verb/pick_sound()
