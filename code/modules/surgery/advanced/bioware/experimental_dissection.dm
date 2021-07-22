@@ -14,12 +14,11 @@
 	. = ..()
 	if(HAS_TRAIT(target, TRAIT_DISSECTED))
 		return FALSE
- //	if(iscyborg(user)) 
-	//	return FALSE robots cannot be creative (Austation note, commented code to stop racism)
-						//(also this surgery shouldn't be consistently successful, and cyborgs have a 100% success rate on surgery)
+ 	if(target.stat != DEAD)
+		return FALSE					//	if(iscyborg(user)) 
+										//	return FALSE robots cannot be creative (Austation note, commented code to stop racism)
+										//(also this surgery shouldn't be consistently successful, and cyborgs have a 100% success rate on surgery)
 
-	if(target.stat != DEAD)
-		return FALSE
 
 /datum/surgery_step/dissection
 	name = "dissection"
