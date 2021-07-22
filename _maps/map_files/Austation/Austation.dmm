@@ -51884,9 +51884,6 @@
 /obj/machinery/door/firedoor/border_only{
 	dir = 8
 	},
-/obj/machinery/status_display/ai{
-	pixel_y = 32
-	},
 /turf/open/floor/plasteel,
 /area/hallway/primary/central)
 "iJt" = (
@@ -82164,6 +82161,12 @@
 	},
 /turf/open/floor/plasteel/freezer,
 /area/crew_quarters/kitchen)
+"uEl" = (
+/obj/structure/sign/nanotrasen{
+	pixel_y = 32
+	},
+/turf/open/space/basic,
+/area/space)
 "uEC" = (
 /turf/open/floor/carpet/red,
 /area/security/detectives_office)
@@ -87209,6 +87212,13 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/chapel/main)
+"wFY" = (
+/obj/structure/lattice,
+/obj/machinery/status_display/ai{
+	pixel_y = 32
+	},
+/turf/open/space,
+/area/space/nearstation)
 "wGm" = (
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
@@ -113799,7 +113809,7 @@ qNd
 qNd
 lvd
 vNC
-aaa
+uEl
 bci
 mYX
 fYU
@@ -114313,7 +114323,7 @@ oCc
 aQx
 tkD
 vNC
-aaf
+wFY
 aWd
 lMP
 wCm
@@ -114827,7 +114837,7 @@ qNd
 qNd
 lvd
 vNC
-aaa
+uEl
 bci
 nGN
 wGm
