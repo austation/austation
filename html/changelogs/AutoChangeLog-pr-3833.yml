@@ -1,0 +1,4 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - bugfix: "orion trail no longer drops station bounced radios upon monitor deconstruction"
