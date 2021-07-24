@@ -17,6 +17,14 @@
 	sound = 'austation/sound/misc/cheese.ogg' //CHEESE
 	cooldown = (5 SECONDS)
 
+/datum/emote/living/carbon/human/gnue
+	key = "gnue"
+	key_third_person = "gnues"
+	message = "gnues"
+	emote_type = EMOTE_AUDIBLE
+	sound = 'austation/sound/misc/gnue.ogg' //GNUEEEE
+	cooldown = (5 SECONDS)
+
 /datum/emote/living/carbon/human/beans
 	key = "beans"
 	key_third_person = "beanss"
