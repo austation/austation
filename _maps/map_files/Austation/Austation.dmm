@@ -9254,9 +9254,9 @@
 	network = list("aiupload")
 	},
 /obj/machinery/power/apc{
-	areastring = "/area/ai_monitored/turret_protected/ai_upload_foyer";
+	areastring = "/area/ai_monitored/turret_protected/ai_upload";
 	dir = 1;
-	name = "AI Upload Access APC";
+	name = "AI Upload APC";
 	pixel_y = 26
 	},
 /obj/structure/cable/yellow{
