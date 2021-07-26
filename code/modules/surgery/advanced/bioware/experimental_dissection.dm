@@ -14,7 +14,7 @@
 	. = ..()
 	if(HAS_TRAIT(target, TRAIT_DISSECTED))
 		return FALSE
- 	if(target.stat != DEAD)
+	if(target.stat != DEAD)
 		return FALSE					
 //if(iscyborg(user)) 
 //return FALSE robots cannot be creative (Austation note, commented code to stop racism)
