@@ -245,18 +245,7 @@
 			H.hallucination += 5
 			H.reagents.add_reagent(/datum/reagent/bz_metabolites,1)
 
-<<<<<<< HEAD
-
-	// Tritium
-		var/trit_pp = breath.get_breath_partial_pressure(breath.get_moles(/datum/gas/tritium))
-		if (trit_pp > 50)
-			H.radiation += trit_pp/2 //If you're breathing in half an atmosphere of radioactive gas, you fucked up.
-		else
-			H.radiation += trit_pp/10
-
-		/*removed beestation code begin -- removed in pull #1953
-=======
->>>>>>> 6b5d452b2f... The Great Auxtools Switch (#3767)
+	/* austation begin -- removed in pull #1953
 	// Nitryl
 		var/nitryl_pp = PP(breath,GAS_NITRYL)
 		if (prob(nitryl_pp))
@@ -272,14 +261,12 @@
 		gas_breathed = breath.get_moles(GAS_NITRYL)
 		if (gas_breathed > gas_stimulation_min)
 			H.reagents.add_reagent(/datum/reagent/nitryl,1)
+		breath.adjust_moles(GAS_NITRYL, -gas_breathed)
+	austation end */
 
-<<<<<<< HEAD
-		breath.adjust_moles(/datum/gas/nitryl, -gas_breathed)
-		removed beestation code end*/
-
-			//austation begin -- added in pull #1953
-  // Nitryl
-			var/nitryl_pp = breath.get_breath_partial_pressure(breath.get_moles(/datum/gas/nitryl))
+	// austation begin -- added in pull #1953
+	// Nitryl
+			var/nitryl_pp = PP(breath, GAS_NITRYL)
 
 			if (nitryl_pp > 40)
 				H.emote("gasp")
@@ -288,7 +275,7 @@
 					to_chat(H, "<span class='alert'>Your throat closes up!</span>")
 					H.silent = max(H.silent, 3)
 
-			gas_breathed = breath.get_moles(/datum/gas/nitryl)
+			gas_breathed = breath.get_moles(GAS_NITRYL)
 			var/existingnitryl = H.reagents.get_reagent_amount(/datum/reagent/nitryl)
 			var/nitryllevel = 0
 
@@ -303,11 +290,8 @@
 			else if(existingnitryl > 0)
 				H.reagents.remove_reagent(/datum/reagent/nitryl, existingnitryl)
 
-			breath.adjust_moles(/datum/gas/nitryl, -gas_breathed)
-			//austation end
-=======
-		breath.adjust_moles(GAS_NITRYL, -gas_breathed)
->>>>>>> 6b5d452b2f... The Great Auxtools Switch (#3767)
+			breath.adjust_moles(GAS_NITRYL, -gas_breathed)
+	// austation end
 
 	// Stimulum
 		gas_breathed = PP(breath,GAS_STIMULUM)
@@ -490,11 +474,7 @@
 	name = "apid lungs"
 	desc = "Lungs from an apid, or beeperson. Thanks to the many spiracles an apid has, these lungs are capable of gathering more oxygen from low-pressure environments."
 	icon_state = "lungs"
-<<<<<<< HEAD
-	safe_oxygen_min = 8
-=======
 	safe_breath_min = 8
 
 #undef PP
 #undef PP_MOLES
->>>>>>> 6b5d452b2f... The Great Auxtools Switch (#3767)
