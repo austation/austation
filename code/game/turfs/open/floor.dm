@@ -13,13 +13,8 @@
 
 	var/icon_regular_floor = "floor" //used to remember what icon the tile should have by default
 	var/icon_plating = "plating"
-<<<<<<< HEAD
-	thermal_conductivity = 0.040
-	heat_capacity = 50000 // austation -- <normal floors gets destroyed too quickly in fires>
-=======
 	thermal_conductivity = 0.04
 	heat_capacity = 10000
->>>>>>> 6b5d452b2f... The Great Auxtools Switch (#3767)
 	intact = 1
 	var/broken = 0
 	var/burnt = 0
