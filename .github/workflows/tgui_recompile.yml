@@ -12,14 +12,10 @@ on:
 
 # Config
 env:
-  COMMIT_NAME: 'ss13-beebot'
-  COMMIT_EMAIL: '56381746+ss13-beebot@users.noreply.github.com'
+  COMMIT_NAME: 'Actions (TGUI Rebuild)'
+  COMMIT_EMAIL: 'action@github.com'
   DEFAULT_BRANCH: 'master'
-<<<<<<< HEAD
   TOKEN: '${{ secrets.BOT_TOKEN }}'
-=======
-  TOKEN: '${{ secrets.CL_TOKEN }}'
->>>>>>> 766c9b1423... Fixes the TGUI Rebuild Action Again (#4876)
 
 jobs:
   ondemand_rebuild:
