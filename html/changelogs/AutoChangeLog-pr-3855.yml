@@ -1,0 +1,5 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - bugfix: "Squids and snails will no longer set the CPU on fire when they stand on salt."
+  - tweak: "Squids and snails receive a flat 10 burn damage for stepping on salt, rather than continuously taking damage."
