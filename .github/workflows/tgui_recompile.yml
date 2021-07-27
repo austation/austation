@@ -42,10 +42,10 @@ jobs:
       # This only runs if the PR has a merge conflict. Serves to attempt resolving merge conflicts rather than just rebuilding.
       # Uses a smart little git hack to make a merge commit for just a limited set of files.
       - name: Conflict Resolution
-        if: ${{ github.event.client_payload.mergeable == false }}
+        if: ${{ github.event.client_payload.mergable == false }}
         run: |
           git remote add base https://github.com/${{ github.repository }}.git
-          git fetch base --depth=25 ${{ env.DEFAULT_BRANCH }}
+          git fetch base ${{ env.DEFAULT_BRANCH }}
           git merge --squash -s ours --no-commit base/${{ env.DEFAULT_BRANCH }}
           git checkout HEAD .
           git clean -fxd
