@@ -358,11 +358,6 @@
 					/obj/item/clothing/suit/toggle/lawyer/purple = 1,
 					/obj/item/clothing/under/lawyer/civilian/lawyer/purpsuit/skirt = 1,
 					/obj/item/clothing/under/suit/black = 1,
-<<<<<<< HEAD
-					/obj/item/clothing/under/rank/civilian/lawyer/black/skirt = 1,
-=======
-					/obj/item/clothing/under/suit/black/skirt = 1,
->>>>>>> 9f565d442e... Resprites the lawyer suits and skirts (#4888)
 					/obj/item/clothing/suit/toggle/lawyer/black = 1,
 					/obj/item/clothing/under/rank/civilian/lawyer/female = 1,
 					/obj/item/clothing/under/lawyer/civilian/lawyer/female/skirt = 1,
