@@ -1,0 +1,4 @@
+author: "mudzbe"
+delete-after: True
+changes: 
+  - soundadd: "Adds alarm sound effect for clown synthesier"
