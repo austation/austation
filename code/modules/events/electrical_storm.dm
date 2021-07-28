@@ -5,6 +5,7 @@
 	min_players = 5
 	weight = 20
 	alert_observers = 0
+	can_malf_fake_alert = TRUE
 
 /datum/round_event/electrical_storm
 	var/lightsoutAmount	= 1
