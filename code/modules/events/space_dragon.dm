@@ -7,7 +7,7 @@
 	min_players = 20
 	dynamic_should_hijack = TRUE
 	cannot_spawn_after_shuttlecall = TRUE
-	can_malf_fake_alert = TRUE
+	can_malf_fake_alert = TRUE //Austation addition
 
 /datum/round_event/ghost_role/space_dragon
 	minimum_required = 1
