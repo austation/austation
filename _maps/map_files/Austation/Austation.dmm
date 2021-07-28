@@ -147,10 +147,6 @@
 "aax" = (
 /turf/closed/wall/r_wall,
 /area/security/prison)
-"aay" = (
-/obj/machinery/door/firedoor,
-/turf/closed/wall/r_wall,
-/area/bridge/showroom/corporate)
 "aaz" = (
 /obj/effect/landmark/xeno_spawn,
 /obj/structure/lattice/catwalk,
@@ -117145,7 +117141,7 @@ bTZ
 dDf
 bQi
 jpP
-aay
+bLw
 hWV
 bVf
 tfv
