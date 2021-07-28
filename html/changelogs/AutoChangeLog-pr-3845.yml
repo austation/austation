@@ -1,4 +1,0 @@
-author: "AustationBot"
-delete-after: True
-changes: 
-  - spellcheck: "removed a spurious space from a moth default name"

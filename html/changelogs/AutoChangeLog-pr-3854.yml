@@ -1,4 +1,0 @@
-author: "AustationBot"
-delete-after: True
-changes: 
-  - bugfix: "Fixed a small chance for bloodcult to runtime and ruin gamemode setup."
