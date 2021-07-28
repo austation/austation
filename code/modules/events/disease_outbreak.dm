@@ -5,7 +5,7 @@
 	min_players = 10
 	weight = 5
 	earliest_start = 10 MINUTES
-	can_malf_fake_alert = TRUE
+	can_malf_fake_alert = TRUE //Austation addition
 
 /datum/round_event/disease_outbreak
 	announceWhen	= 15
