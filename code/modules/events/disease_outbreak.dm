@@ -5,6 +5,7 @@
 	min_players = 10
 	weight = 5
 	earliest_start = 10 MINUTES
+	can_malf_fake_alert = TRUE
 
 /datum/round_event/disease_outbreak
 	announceWhen	= 15
