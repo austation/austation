@@ -384,3 +384,12 @@
 		else
 			return FALSE
 	return ..()
+
+
+
+
+####### Borg Inventory Changes #######
+/obj/item/robot_module/medical
+	emag_modules = list(
+		/obj/item/reagent_containers/borghypo/hacked,
+		/obj/item/assembly/igniter)
