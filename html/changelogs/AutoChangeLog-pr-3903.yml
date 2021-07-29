@@ -1,4 +1,0 @@
-author: "Mick1299"
-delete-after: True
-changes: 
-  - bugfix: "Austation airlocks now all cycle properly round start"
