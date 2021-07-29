@@ -388,7 +388,7 @@
 
 
 
-####### Borg Inventory Changes #######
+ //Borg Inventory Changes 
 /obj/item/robot_module/medical
 	basic_modules = list(
 		/obj/item/assembly/flash/cyborg,
