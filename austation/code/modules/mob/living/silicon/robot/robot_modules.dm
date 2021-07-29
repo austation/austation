@@ -390,6 +390,26 @@
 
 ####### Borg Inventory Changes #######
 /obj/item/robot_module/medical
-	emag_modules = list(
-		/obj/item/reagent_containers/borghypo/hacked,
+	basic_modules = list(
+		/obj/item/assembly/flash/cyborg,
+		/obj/item/healthanalyzer,
+		/obj/item/borg/charger,
+		/obj/item/reagent_containers/borghypo,
+		/obj/item/borg/apparatus/beaker,
+		/obj/item/reagent_containers/dropper,
+		/obj/item/reagent_containers/syringe,
+		/obj/item/surgical_drapes,
+		/obj/item/retractor,
+		/obj/item/hemostat,
+		/obj/item/cautery,
+		/obj/item/surgicaldrill,
+		/obj/item/scalpel,
+		/obj/item/circular_saw,
+		/obj/item/blood_filter,
+		/obj/item/extinguisher/mini,
+		/obj/item/roller/robo,
+		/obj/item/borg/cyborghug/medical,
+		/obj/item/stack/medical/gauze/cyborg,
+		/obj/item/organ_storage,
+		/obj/item/borg/lollipop,
 		/obj/item/assembly/igniter)
