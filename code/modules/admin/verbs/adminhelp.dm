@@ -337,7 +337,7 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 		message_admins("<font color='blue'>Ticket [TicketHref("#[id]")] created</font>")
 		Claim()	//Auto claim bwoinks
 	else
-		MessageNoRecipient(msg)
+		MessageNoRecipient(msg, TRUE) // austation -- ticket db storage, set new ticket flag
 
 		//send it to irc if nobody is on and tell us how many were on
 		var/admin_number_present = send2irc_adminless_only(initiator_ckey, "Ticket #[id]: [name]")
@@ -509,7 +509,7 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 	if(claim_ticket == CLAIM_OVERRIDE || (claim_ticket == CLAIM_CLAIMIFNONE && !claimed_admin))
 		Claim()
 
-/datum/admin_help/proc/MessageNoRecipient(msg)
+/datum/admin_help/proc/MessageNoRecipient(msg, is_new = FALSE) // austation -- ticket db storage, better formatting
 	var/ref_src = "[REF(src)]"
 
 	//Message to be sent to all admins
@@ -531,7 +531,10 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 	to_chat(initiator,
 		type = MESSAGE_TYPE_ADMINPM,
 		html = "<span class='adminnotice'>PM to-<b>Admins</b>: <span class='linkify'>[msg]</span></span>")
-	SSblackbox.LogAhelp(id, "Ticket Opened", msg, null, initiator.ckey) // austation -- ticket db storage
+	if(is_new) // austation begin -- ticket db storage
+		SSblackbox.LogAhelp(id, "Ticket Opened", msg, null, initiator.ckey)
+	else
+		SSblackbox.LogAhelp(id, "Reply", msg, null, initiator.ckey) // austation end
 
 //Reopen a closed ticket
 /datum/admin_help/proc/Reopen()
