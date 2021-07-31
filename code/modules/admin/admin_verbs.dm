@@ -797,8 +797,6 @@ GLOBAL_PROTECT(admin_verbs_hideable)
 	for(var/obj/machinery/portable_atmospherics/canister/can in view())
 		can.valve_open = FALSE
 		can.update_icon()
-<<<<<<< HEAD
-=======
 
 #ifdef SENDMAPS_PROFILE
 /client/proc/display_sendmaps()
@@ -807,4 +805,3 @@ GLOBAL_PROTECT(admin_verbs_hideable)
 
 	src << link("?debug=profile&type=sendmaps&window=test")
 #endif
->>>>>>> 5b9a5510a7... Ports profiling improvements from TG (#4856)
