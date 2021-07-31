@@ -1,0 +1,4 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - imagedel: "duplicate old default envirohelm sprite"
