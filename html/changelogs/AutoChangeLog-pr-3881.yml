@@ -1,5 +1,0 @@
-author: "AustationBot"
-delete-after: True
-changes: 
-  - rscadd: "Captain and sec/brigphys plasmamen start with sechailer on"
-  - bugfix: "Sensors start maxed on cap and sec/brigphys envirosuits"

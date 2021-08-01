@@ -1,4 +1,0 @@
-author: "AustationBot"
-delete-after: True
-changes: 
-  - tweak: "Standardizes deputy passes and mining access cards to derive from the same subclass."

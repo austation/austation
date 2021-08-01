@@ -1,4 +1,0 @@
-author: "nfreader, SpaceManiac, MCterra10"
-delete-after: True
-changes: 
-  - admin: "Store admin tickets in the database"
