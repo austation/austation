@@ -13,3 +13,7 @@
 /obj/item/aiModule/core/full/crewsimov
 	name = "'Crewsimov' Core AI Module"
 	law_id = "crewsimov"
+
+/obj/item/aiModule/core/full/disboard
+	name = "'Disboard' Core AI Module"
+	law_id = "disboard"
