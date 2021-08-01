@@ -44,6 +44,5 @@
 					"The challenged party has the right to decide the rules of the game.",
 					"Any bets made in accordance with the laws must be upheld.",
 					"Being caught cheating during a game is grounds for an instant loss.",
-					"In the name of god, the previous rules may never be changed.",
-					"Let's all have fun and play together!")
+					"In the name of god, the previous rules may never be changed.")
 
