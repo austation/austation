@@ -1,0 +1,5 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - rscadd: "New pai holoform, Corgi puppy!"
+  - bugfix: "fixed a lack of Crow Pai holoform \"on head\" sprite"
