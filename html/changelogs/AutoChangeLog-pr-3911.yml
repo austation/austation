@@ -1,0 +1,4 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - bugfix: "Prevents xenos evolving and getting stuck in ventilation ducts"
