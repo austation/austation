@@ -1,4 +1,0 @@
-author: "AustationBot"
-delete-after: True
-changes: 
-  - refactor: "Refactors stat panel verbs to cache the verbs."
