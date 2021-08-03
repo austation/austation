@@ -1,0 +1,4 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - bugfix: "Boxstation detective disposals works again. Chainsmokers rejoice."
