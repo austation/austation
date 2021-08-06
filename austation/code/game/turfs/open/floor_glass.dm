@@ -201,6 +201,7 @@
 			return
 */
 /turf/open/floor/glass/Entered(var/atom/movable/mover)
+	. = ..()
 	if(!reinforced  && istype(mover,/obj/mecha)) //OSHA spec glass flooring, woohoo
 		var/obj/mecha/M = mover
 		M.visible_message("<span class='warning'>\The [M] damages \the [src] with its sheer weight!</span>",

@@ -49,6 +49,7 @@
 	return ..()
 
 /obj/item/bluespace_jar/Exited(atom/movable/occupant)
+	. = ..()
 	if(occupant in occupants && isliving(occupant))
 		var/mob/living/L = occupant
 		occupants -= occupant
