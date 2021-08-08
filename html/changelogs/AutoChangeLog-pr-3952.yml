@@ -1,0 +1,4 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - tweak: "Round start timer in the stat-panel now tracks time accurately from actual start of round."
