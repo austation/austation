@@ -1,0 +1,4 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - bugfix: "Defibrillator paddles now behave more consistently in regards to overextending and dropping"
