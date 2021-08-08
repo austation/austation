@@ -1,0 +1,4 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - tweak: "entertainment monitors now need to be examine to toggle the UI instead of clicked"
