@@ -371,6 +371,7 @@
 	..()
 
 /obj/item/projectile/hvp/Exited(atom/movable/AM)
+	. = ..()
 	if(!contents.len)
 		qdel(src)
 

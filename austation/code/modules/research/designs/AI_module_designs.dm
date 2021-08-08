@@ -24,3 +24,12 @@
 	build_path = /obj/item/aiModule/core/full/crewsimov
 	category = list("AI Modules")
 	departmental_flags = DEPARTMENTAL_FLAG_SCIENCE
+
+/datum/design/board/disboard_module
+	name = "Core Module Design (Disboard)"
+	desc = "Allows for the construction of a Disboard AI Core Module."
+	id = "disboard_module"
+	materials = list(/datum/material/glass = 1000, /datum/material/diamond = 2000)
+	build_path = /obj/item/aiModule/core/full/disboard
+	category = list("AI Modules")
+	departmental_flags = DEPARTMENTAL_FLAG_SCIENCE
