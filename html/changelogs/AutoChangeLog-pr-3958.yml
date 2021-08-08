@@ -1,0 +1,5 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - bugfix: "Animals can move after being tabled"
+  - bugfix: "Cats look like they're resting when changed outside of Life"
