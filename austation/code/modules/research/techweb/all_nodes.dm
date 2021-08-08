@@ -44,7 +44,7 @@
 	austation_design_ids = list("borg_upgrade_cooking")
 
 /datum/techweb_node/ai
-	austation_design_ids = list("paternalai_module", "rickroll_module", "dagothur_module", "crewsimov_module")
+	austation_design_ids = list("dadbot_module", "rickroll_module", "dagothur_module", "crewsimov_module")
 	austation_design_ids_remove = list("aiupload")
 
 ////////////////////////mech technology////////////////////////
