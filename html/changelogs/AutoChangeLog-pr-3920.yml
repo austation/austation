@@ -1,0 +1,4 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - refactor: "Chat messages are now shared between people that see the message the same, reducing the amount of lag caused due to chat messages on high pop."
