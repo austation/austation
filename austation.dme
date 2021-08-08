@@ -102,7 +102,6 @@
 #include "austation\code\game\objects\items\melee\misc.dm"
 #include "austation\code\game\objects\items\robot\robot_items.dm"
 #include "austation\code\game\objects\items\robot\robot_upgrades.dm"
-#include "austation\code\game\objects\items\stacks\sheets\glass.dm"
 #include "austation\code\game\objects\items\storage\backpack.dm"
 #include "austation\code\game\objects\items\storage\belt.dm"
 #include "austation\code\game\objects\items\storage\fancy.dm"
