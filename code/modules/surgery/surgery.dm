@@ -115,35 +115,6 @@
 	SSblackbox.record_feedback("tally", "surgeries_completed", 1, type)
 	qdel(src)
 
-<<<<<<< HEAD
-/datum/surgery/proc/get_propability_multiplier(mob/user)
-	var/propability = 0.3
-	var/turf/T = get_turf(target)
-	var/selfpenalty = 0
-	var/sleepbonus = 0
-	if(target == user)
-		if(HAS_TRAIT(user, TRAIT_SELF_AWARE) || locate(/obj/structure/mirror) in view(1, user))
-			selfpenalty = 0.4
-		else
-			selfpenalty = 0.6
-	if(target.stat != CONSCIOUS)
-		sleepbonus = 0.5
-	if(locate(/obj/structure/table/optable/abductor, T))
-		propability = 1.2
-	if(locate(/obj/machinery/stasis, T))
-		propability = 0.8
-	if(locate(/obj/structure/table/optable, T))
-		// austation -- operating table now has 100% success chance again
-		propability = 1.0
-	else if(locate(/obj/structure/table, T))
-		propability = 0.6
-	else if(locate(/obj/structure/bed, T))
-		propability = 0.5
-
-	return propability + success_multiplier + sleepbonus - selfpenalty
-
-=======
->>>>>>> 5309891037... Ports "Surgery now goes slower before failing" from /tg/ and operating table buff (#4439)
 /datum/surgery/advanced
 	name = "advanced surgery"
 	requires_tech = TRUE
