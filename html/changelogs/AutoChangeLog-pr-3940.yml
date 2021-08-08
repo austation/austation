@@ -1,0 +1,5 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - bugfix: "Fix floating light on the lavaland sci post and a missing wire in Box maint"
+  - tweak: "SciDrobe instead of a blank computer on the lavaland sci post"
