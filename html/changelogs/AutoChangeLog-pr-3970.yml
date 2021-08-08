@@ -1,0 +1,4 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - bugfix: "blue shirt and tie security uniform in beeshop now has armor"
