@@ -1,0 +1,4 @@
+author: "ReneAngel (Sprite), ImSynthex (Github)"
+delete-after: True
+changes: 
+  - imageadd: "Replaced station bounced radio sprite"
