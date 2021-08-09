@@ -10,7 +10,7 @@ import { useBackend, useLocalState } from '../backend';
 import { Box, Button, Flex, Section, Input } from '../components';
 import { Window } from '../layouts';
 
-import { KEY_DOWN, KEY_UP, KEY_ENTER, KEY_SPACE, KEY_ESCAPE } from 'common/keycodes';
+import { KEY_DOWN, KEY_UP, KEY_ENTER, KEY_SPACE } from 'common/keycodes';
 import { acquireHotKey } from '../hotkeys';
 
 let lastScrollTime = 0;
