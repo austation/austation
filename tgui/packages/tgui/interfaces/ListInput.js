@@ -10,7 +10,7 @@ import { useBackend, useLocalState } from '../backend';
 import { Box, Button, Flex, Section, Input } from '../components';
 import { Window } from '../layouts';
 
-import { KEY_DOWN, KEY_UP, KEY_ENTER, KEY_SPACE } from 'common/keycodes';
+import { KEY_DOWN, KEY_UP, KEY_ENTER, KEY_SPACE, KEY_ESCAPE } from 'common/keycodes';
 import { acquireHotKey } from '../hotkeys';
 
 let lastScrollTime = 0;
@@ -62,6 +62,14 @@ export const ListInput = (props, context) => {
                 e.preventDefault();
                 acquireHotKey(KEY_DOWN);
                 acquireHotKey(KEY_UP);
+
+                for (let i = 65; i <= 90; i++) {
+                  acquireHotKey(i);
+                }
+                for (let i = 48; i <= 57; i++) {
+                  acquireHotKey(i);
+                }
+
                 if (lastScrollTime > performance.now()) {
                   return;
                 }
