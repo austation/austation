@@ -1,4 +1,0 @@
-author: "AustationBot"
-delete-after: True
-changes: 
-  - rscadd: "pAI PDA messages now show up as actually from a person, and can be replied to"

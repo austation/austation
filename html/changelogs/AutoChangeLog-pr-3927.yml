@@ -1,4 +1,0 @@
-author: "AustationBot"
-delete-after: True
-changes: 
-  - code_imp: "Removes a pointless loop from get_all_open_uis()"
