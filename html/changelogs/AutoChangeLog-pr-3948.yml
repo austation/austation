@@ -1,0 +1,4 @@
+author: "Effectism"
+delete-after: True
+changes: 
+  - rscadd: "Added 2 default squid names"
