@@ -74,3 +74,18 @@
 	if(user.put_in_hands(N))
 		to_chat(user, "<span class='notice'>You make a circle with your hand.</span>")
 
+/datum/emote/living/carbon/human/impressive
+	key = "impressive"
+	key_third_person = "impressives"
+	message = "is impressed!"
+	emote_type = EMOTE_AUDIBLE
+	sound = 'austation/sound/misc/impressiveverynice.ogg'
+	cooldown = (5 SECONDS)
+
+/datum/emote/living/carbon/human/surprise
+	key = "surprised"
+	key_third_person = "surpriseds"
+	message = "is surprised!"
+	emote_type = EMOTE_AUDIBLE
+	sound = 'austation/sound/misc/whatinthegoddamn.ogg'
+	cooldown = (5 SECONDS)
