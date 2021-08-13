@@ -1609,6 +1609,7 @@ config_setting should be one of the following:
 		if(-INFINITY to 0, 11 to INFINITY)
 			CRASH("Can't turn invalid directions!")
 	return turn(input_dir, 180)
+<<<<<<< HEAD
 
 /**
  * Sends a topic call to crosscomms servers.
@@ -1640,3 +1641,5 @@ config_setting should be one of the following:
 		var/list/servers = CONFIG_GET(keyed_list/insecure_cross_server)
 		for(var/I in servers)
 			world.Export("[servers[I]]?[list2params(message)]")
+=======
+>>>>>>> aeca8a4f2b... Topic System Overhaul (#3801)
