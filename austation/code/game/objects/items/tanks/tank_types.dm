@@ -66,14 +66,14 @@
 
 	switch(rand(1, 100))
 		if(1 to 10)  //  Better luck next time.
-			gas_list = list(/datum/gas/nitrogen, /datum/gas/carbon_dioxide, /datum/gas/nitrous_oxide, /datum/gas/water_vapor)
+			gas_list = list(GAS_N2, GAS_CO2, GAS_NITROUS, GAS_H2O)
 		if(11 to 50)  //  Usefull but boring.
-			gas_list = list(/datum/gas/oxygen)
+			gas_list = list(GAS_O2)
 			gas_temp = 293.15
 		if(50 to 90)  //  We are getting somewhere.
-			gas_list = list(/datum/gas/plasma, /datum/gas/nitryl, /datum/gas/bz, /datum/gas/miasma, /datum/gas/pluoxium)
+			gas_list = list(GAS_PLASMA, GAS_NITRYL, GAS_BZ, GAS_MIASMA, GAS_PLUOXIUM)
 		if(91 to 100)  //  Are you winning son?
-			gas_list = list(/datum/gas/tritium, /datum/gas/stimulum, /datum/gas/hypernoblium)
+			gas_list = list(GAS_TRITIUM, GAS_STIMULUM, GAS_HYPERNOB)
 
 	gas_type = pick(gas_list)
 
@@ -108,9 +108,9 @@
 	modes = list(13)
 
 /obj/item/tank/internals/combat/populate_gas()
-	air_contents.set_moles(/datum/gas/oxygen, (0.7*ONE_ATMOSPHERE)*volume/(R_IDEAL_GAS_EQUATION*T20C)*(17/27))  //  17 parts Oxygen, releases at 17pp.
-	air_contents.set_moles(/datum/gas/nitryl, (0.7*ONE_ATMOSPHERE)*volume/(R_IDEAL_GAS_EQUATION*T20C)*(10/27))  //  Should give up to a maximum of 5 minutes and 15 seconds of meth speed.
+	air_contents.set_moles(GAS_O2, (0.7*ONE_ATMOSPHERE)*volume/(R_IDEAL_GAS_EQUATION*T20C)*(17/27))  //  17 parts Oxygen, releases at 17pp.
+	air_contents.set_moles(GAS_NITRYL, (0.7*ONE_ATMOSPHERE)*volume/(R_IDEAL_GAS_EQUATION*T20C)*(10/27))  //  Should give up to a maximum of 5 minutes and 15 seconds of meth speed.
 
 /obj/item/tank/internals/combat/advanced/populate_gas()
-	air_contents.set_moles(/datum/gas/pluoxium, (10*ONE_ATMOSPHERE)*volume/(R_IDEAL_GAS_EQUATION*T20C)*(1/6))  //  1 parts Pluoxium, releases at 2pp.
-	air_contents.set_moles(/datum/gas/stimulum, (10*ONE_ATMOSPHERE)*volume/(R_IDEAL_GAS_EQUATION*T20C)*(5/6))
+	air_contents.set_moles(GAS_PLUOXIUM, (10*ONE_ATMOSPHERE)*volume/(R_IDEAL_GAS_EQUATION*T20C)*(1/6))  //  1 parts Pluoxium, releases at 2pp.
+	air_contents.set_moles(GAS_STIMULUM, (10*ONE_ATMOSPHERE)*volume/(R_IDEAL_GAS_EQUATION*T20C)*(5/6))
