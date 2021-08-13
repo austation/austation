@@ -647,7 +647,7 @@
 	name = "Unisex Restroom"
 	},
 /turf/open/floor/plasteel/freezer,
-/area/security/prison)
+/area/maintenance/port/fore)
 "abZ" = (
 /obj/structure/table,
 /obj/item/book/manual/chef_recipes{
@@ -698,7 +698,7 @@
 	dir = 4
 	},
 /turf/open/floor/plasteel/freezer,
-/area/security/prison)
+/area/maintenance/port/fore)
 "acq" = (
 /obj/structure/table,
 /obj/item/storage/box/donkpockets{
@@ -2156,7 +2156,7 @@
 "ahT" = (
 /obj/effect/landmark/xeno_spawn,
 /obj/effect/decal/cleanable/dirt,
-/obj/machinery/atmospherics/pipe/manifold{
+/obj/machinery/atmospherics/pipe/manifold/general/visible{
 	dir = 8
 	},
 /turf/open/floor/plasteel,
@@ -42924,9 +42924,6 @@
 "fcl" = (
 /obj/structure/closet/crate,
 /obj/effect/spawner/lootdrop/maintenance/three,
-/obj/machinery/light/small{
-	dir = 8
-	},
 /obj/effect/turf_decal/tile/purple{
 	dir = 1
 	},
@@ -53022,12 +53019,12 @@
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/layer1{
 	dir = 8
 	},
-/obj/machinery/light/broken{
-	dir = 8
-	},
 /obj/structure/closet/crate/radiation,
 /obj/effect/turf_decal/tile/purple{
 	dir = 1
+	},
+/obj/machinery/light{
+	dir = 8
 	},
 /turf/open/floor/plasteel/white,
 /area/science/shuttledock)
@@ -57161,6 +57158,9 @@
 	},
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
+	},
+/obj/machinery/light/small{
+	dir = 8
 	},
 /turf/open/floor/plasteel,
 /area/engine/gravity_generator)
@@ -63588,9 +63588,6 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
-/obj/machinery/light/small{
-	dir = 4
-	},
 /turf/open/floor/plating,
 /area/maintenance/starboard/fore)
 "nEf" = (
@@ -68637,11 +68634,12 @@
 /turf/open/floor/plasteel,
 /area/crew_quarters/locker)
 "ptD" = (
-/obj/machinery/light/small{
-	dir = 1
-	},
 /obj/effect/turf_decal/tile/purple{
 	dir = 4
+	},
+/obj/machinery/camera{
+	c_tag = "Research Division Shuttle Dock";
+	network = list("ss13","rd")
 	},
 /turf/open/floor/plasteel/white,
 /area/science/shuttledock)
@@ -76611,6 +76609,9 @@
 	},
 /obj/structure/table,
 /obj/item/kitchen/rollingpin,
+/obj/machinery/camera/autoname{
+	dir = 4
+	},
 /turf/open/floor/plasteel,
 /area/hallway/secondary/service)
 "sMO" = (
@@ -77107,6 +77108,7 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
 	dir = 5
 	},
+/obj/machinery/light/small,
 /turf/open/floor/plating,
 /area/maintenance/solars/starboard/aft)
 "sWP" = (
@@ -87419,6 +87421,9 @@
 	dir = 1
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1,
+/obj/machinery/light{
+	dir = 8
+	},
 /turf/open/floor/plasteel/white,
 /area/science/shuttledock)
 "xht" = (
