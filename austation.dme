@@ -254,6 +254,7 @@
 #include "austation\code\modules\reagents\reagent_containers\bottle.dm"
 #include "austation\code\modules\reagents\reagent_containers\custompen.dm"
 #include "austation\code\modules\reagents\reagent_containers\hypospray.dm"
+#include "austation\code\modules\recycling\disposal\bin.dm"
 #include "austation\code\modules\recycling\disposal\construction.dm"
 #include "austation\code\modules\recycling\disposal\holder.dm"
 #include "austation\code\modules\recycling\disposal\loafer.dm"
