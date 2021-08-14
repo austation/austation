@@ -1,4 +1,0 @@
-author: "jupyterkat"
-delete-after: True
-changes: 
-  - bugfix: "fixed combat tanks and occult tanks doesn't contain any gases"
