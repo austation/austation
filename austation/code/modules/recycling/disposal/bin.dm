@@ -1,15 +1,19 @@
-//  Lets us dump items straight into the bin from bags (botany bags were the main inspiration for this), saving the user a lot of time.
+//  Lets us dump items straight into the bin from bags and other storage items.  If the storage item is empty then we'll just pass it to the normal bin behaviour.
 /obj/machinery/disposal/bin/attackby(obj/item/I, mob/user, params)
 	var/obj/item/storage/B
-	if(istype(I, /obj/item/storage/bag) || istype(I, /obj/item/storage/backpack))
-		B = I
-	if(!B)
+	var/static/list/obj/item/storage/store_list = list(
+		/obj/item/storage/part_replacer,  //  RPEDs
+		/obj/item/storage/bag,			  //  Botany bags and serving trays etc
+		/obj/item/storage/backpack		  //  Backpacks
+	)
+	for(var/T in store_list)  //  T for Type, searching for types of storage item to whitelist, some like cardboard boxes are ignored.
+		if(istype(I, T))
+			B = I
+	if(!B || !length(B.contents))  //  It's not whitelisted or perhaps simply empty, so dispose of it like normal
 		return ..()
+
 	var/datum/component/storage/STR = B.GetComponent(/datum/component/storage)
-	if(!length(B.contents))
-		return ..()  //  Bins usually return like this if the item is not a trash bag.  We would still like to be able to throw out our bags if they are empty.
-	else
-		user.visible_message("<span class='notice'>[user] empties \the [I] into \the [src].</span>", "<span class='warning'>You empty \the [I].</span>")
-		for(var/obj/item/O in B.contents)
-			STR.remove_from_storage(O,src)
-		B.update_icon()  //  We are overriding trash bags with this code, so we have to make sure they follow their routine.
+	user.visible_message("<span class='notice'>[user] empties \the [I] into \the [src].</span>", "<span class='warning'>You empty \the [I].</span>")
+	for(var/obj/item/O in B.contents)  //  O for Object(s)
+		STR.remove_from_storage(O,src)
+	B.update_icon()  //  We are overriding trash bags with this code, so we have to make sure they follow their routine.
