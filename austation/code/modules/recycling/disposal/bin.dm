@@ -11,9 +11,11 @@
 			B = I
 	if(!B || !length(B.contents))  //  It's not whitelisted or perhaps simply empty, so dispose of it like normal
 		return ..()
-
-	var/datum/component/storage/STR = B.GetComponent(/datum/component/storage)
-	user.visible_message("<span class='notice'>[user] empties \the [I] into \the [src].</span>", "<span class='warning'>You empty \the [I].</span>")
-	for(var/obj/item/O in B.contents)  //  O for Object(s)
-		STR.remove_from_storage(O,src)
-	B.update_icon()  //  We are overriding trash bags with this code, so we have to make sure they follow their routine.
+	user.visible_message("<span class='notice'>[user] empties \the [I] into \the [src].</span>", "<span class='warning'>You begin to empty \the [I] into \the [src].</span>")
+	if(!do_after(user, 10, src))
+		to_chat(user, "<span class='warning'>You stop emptying \the [I].</span>")
+	else
+		var/datum/component/storage/STR = B.GetComponent(/datum/component/storage)
+		for(var/obj/item/O in B.contents)  //  O for Object(s)
+			STR.remove_from_storage(O,src)
+		B.update_icon()  //  We are overriding trash bags with this code, so we have to make sure they follow their routine.
