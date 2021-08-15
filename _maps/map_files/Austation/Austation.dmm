@@ -41403,6 +41403,18 @@
 	},
 /turf/open/floor/plasteel,
 /area/quartermaster/storage)
+"eun" = (
+/obj/structure/cable/yellow{
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/maintenance/department/cargo)
 "evA" = (
 /obj/effect/turf_decal/stripes/line,
 /obj/effect/landmark/nuclear_waste_spawner,
@@ -52082,18 +52094,6 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/security/execution/education)
-"iRZ" = (
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
-	dir = 8
-	},
-/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
-	dir = 4
-	},
-/turf/open/floor/plating,
-/area/maintenance/department/cargo)
 "iSb" = (
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
@@ -54086,6 +54086,13 @@
 /obj/machinery/door/firedoor,
 /turf/open/floor/plasteel,
 /area/hallway/primary/port)
+"jFn" = (
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/structure/reagent_dispensers/watertank,
+/turf/open/floor/plating,
+/area/maintenance/department/engine)
 "jFX" = (
 /obj/structure/cable/yellow{
 	icon_state = "2-4"
@@ -54297,6 +54304,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
 	dir = 1
+	},
+/obj/machinery/power/apc/auto_name/west,
+/obj/structure/cable/yellow{
+	icon_state = "0-2"
 	},
 /turf/open/floor/plating{
 	icon_state = "panelscorched"
@@ -69063,20 +69074,6 @@
 	},
 /turf/open/floor/plasteel,
 /area/hallway/primary/port)
-"pAu" = (
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
-/obj/effect/turf_decal/tile/red,
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3,
-/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
-	dir = 1
-	},
-/obj/structure/cable/yellow{
-	icon_state = "1-8"
-	},
-/turf/open/floor/plasteel,
-/area/security/prison)
 "pAS" = (
 /obj/effect/spawner/structure/window/reinforced,
 /turf/open/floor/plating,
@@ -72812,6 +72809,20 @@
 /obj/effect/turf_decal/stripes/line,
 /turf/open/floor/engine,
 /area/engine/engineering/reactor_core)
+"reW" = (
+/obj/structure/cable/yellow{
+	icon_state = "4-8"
+	},
+/obj/effect/turf_decal/tile/red,
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3,
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
+	dir = 1
+	},
+/obj/structure/cable/yellow{
+	icon_state = "1-8"
+	},
+/turf/open/floor/plasteel,
+/area/security/prison)
 "rfc" = (
 /obj/machinery/firealarm{
 	dir = 4;
@@ -77598,9 +77609,6 @@
 	},
 /turf/open/floor/plating,
 /area/maintenance/starboard)
-"tff" = (
-/turf/closed/wall/r_wall,
-/area/maintenance/department/engine)
 "tfi" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
 	dir = 4
@@ -78986,13 +78994,6 @@
 	},
 /turf/open/floor/engine,
 /area/engine/engineering/reactor_core)
-"tGL" = (
-/obj/structure/window/reinforced{
-	dir = 8
-	},
-/obj/structure/reagent_dispensers/watertank,
-/turf/open/floor/plating,
-/area/maintenance/department/engine)
 "tGM" = (
 /obj/effect/turf_decal/tile/blue,
 /obj/effect/turf_decal/tile/blue{
@@ -80782,6 +80783,9 @@
 	dir = 5
 	},
 /area/crew_quarters/kitchen)
+"upT" = (
+/turf/closed/wall/r_wall,
+/area/maintenance/department/engine)
 "upW" = (
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
@@ -87263,8 +87267,6 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
 	dir = 5
 	},
-/obj/machinery/power/apc/auto_name/west,
-/obj/structure/cable/yellow,
 /turf/open/floor/plating{
 	icon_state = "panelscorched"
 	},
@@ -110776,7 +110778,7 @@ aFN
 nIb
 nIb
 aFN
-iRZ
+eun
 aQp
 aNQ
 tIt
@@ -111290,7 +111292,7 @@ aFP
 oVI
 lYT
 aFN
-iRZ
+eun
 aQp
 aQp
 aQp
@@ -115375,7 +115377,7 @@ sIs
 noJ
 dIA
 hqf
-pAu
+reW
 dzP
 agL
 ahz
@@ -133400,12 +133402,12 @@ djt
 dfG
 roT
 vsR
-tGL
+jFn
 bif
 dgo
 bif
 cXZ
-tff
+upT
 bfZ
 bif
 bfY
@@ -133657,12 +133659,12 @@ djx
 dfG
 cXz
 vsR
-tff
+upT
 bie
 dgp
 cXI
 cYj
-tff
+upT
 wOY
 adF
 wOY
@@ -133918,8 +133920,8 @@ dgd
 dgj
 dgp
 bie
-tff
-tff
+upT
+upT
 aaa
 aaa
 aaa
