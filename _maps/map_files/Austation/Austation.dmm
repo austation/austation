@@ -40216,6 +40216,20 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1,
 /turf/open/floor/plasteel/white,
 /area/medical/surgery)
+"dOP" = (
+/obj/structure/cable/yellow{
+	icon_state = "4-8"
+	},
+/obj/effect/turf_decal/tile/red,
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3,
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
+	dir = 1
+	},
+/obj/structure/cable/yellow{
+	icon_state = "1-8"
+	},
+/turf/open/floor/plasteel,
+/area/security/prison)
 "dPg" = (
 /obj/machinery/light{
 	dir = 8
@@ -40760,6 +40774,9 @@
 	},
 /turf/open/floor/plasteel,
 /area/hallway/primary/port)
+"ebP" = (
+/turf/closed/wall/r_wall,
+/area/maintenance/department/engine)
 "eca" = (
 /obj/effect/turf_decal/tile/blue{
 	dir = 1
@@ -41403,18 +41420,6 @@
 	},
 /turf/open/floor/plasteel,
 /area/quartermaster/storage)
-"eun" = (
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
-	dir = 8
-	},
-/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
-	dir = 4
-	},
-/turf/open/floor/plating,
-/area/maintenance/department/cargo)
 "evA" = (
 /obj/effect/turf_decal/stripes/line,
 /obj/effect/landmark/nuclear_waste_spawner,
@@ -46306,6 +46311,9 @@
 /obj/machinery/conveyor{
 	dir = 8;
 	id = "SciLoad"
+	},
+/obj/machinery/light/small{
+	dir = 1
 	},
 /turf/open/floor/plating,
 /area/science/shuttledock)
@@ -52368,6 +52376,18 @@
 	},
 /turf/open/floor/plating,
 /area/maintenance/aft/secondary)
+"iYe" = (
+/obj/structure/cable/yellow{
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/maintenance/department/cargo)
 "iYB" = (
 /obj/item/beacon,
 /obj/effect/turf_decal/stripes/line{
@@ -54086,13 +54106,6 @@
 /obj/machinery/door/firedoor,
 /turf/open/floor/plasteel,
 /area/hallway/primary/port)
-"jFn" = (
-/obj/structure/window/reinforced{
-	dir = 8
-	},
-/obj/structure/reagent_dispensers/watertank,
-/turf/open/floor/plating,
-/area/maintenance/department/engine)
 "jFX" = (
 /obj/structure/cable/yellow{
 	icon_state = "2-4"
@@ -71152,6 +71165,13 @@
 	},
 /turf/open/floor/plasteel,
 /area/security/brig)
+"qyu" = (
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/structure/reagent_dispensers/watertank,
+/turf/open/floor/plating,
+/area/maintenance/department/engine)
 "qyF" = (
 /obj/machinery/door/airlock/security/glass{
 	name = "Long-Term Cell 2";
@@ -72809,20 +72829,6 @@
 /obj/effect/turf_decal/stripes/line,
 /turf/open/floor/engine,
 /area/engine/engineering/reactor_core)
-"reW" = (
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
-/obj/effect/turf_decal/tile/red,
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3,
-/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
-	dir = 1
-	},
-/obj/structure/cable/yellow{
-	icon_state = "1-8"
-	},
-/turf/open/floor/plasteel,
-/area/security/prison)
 "rfc" = (
 /obj/machinery/firealarm{
 	dir = 4;
@@ -80783,9 +80789,6 @@
 	dir = 5
 	},
 /area/crew_quarters/kitchen)
-"upT" = (
-/turf/closed/wall/r_wall,
-/area/maintenance/department/engine)
 "upW" = (
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
@@ -110778,7 +110781,7 @@ aFN
 nIb
 nIb
 aFN
-eun
+iYe
 aQp
 aNQ
 tIt
@@ -111292,7 +111295,7 @@ aFP
 oVI
 lYT
 aFN
-eun
+iYe
 aQp
 aQp
 aQp
@@ -115377,7 +115380,7 @@ sIs
 noJ
 dIA
 hqf
-reW
+dOP
 dzP
 agL
 ahz
@@ -133402,12 +133405,12 @@ djt
 dfG
 roT
 vsR
-jFn
+qyu
 bif
 dgo
 bif
 cXZ
-upT
+ebP
 bfZ
 bif
 bfY
@@ -133659,12 +133662,12 @@ djx
 dfG
 cXz
 vsR
-upT
+ebP
 bie
 dgp
 cXI
 cYj
-upT
+ebP
 wOY
 adF
 wOY
@@ -133920,8 +133923,8 @@ dgd
 dgj
 dgp
 bie
-upT
-upT
+ebP
+ebP
 aaa
 aaa
 aaa
