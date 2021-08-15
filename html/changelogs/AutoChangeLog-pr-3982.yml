@@ -1,4 +1,0 @@
-author: "AustationBot"
-delete-after: True
-changes: 
-  - rscdel: "Removed non static typecacheof uses in storage component"
