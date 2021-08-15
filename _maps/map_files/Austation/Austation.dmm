@@ -2156,7 +2156,7 @@
 "ahT" = (
 /obj/effect/landmark/xeno_spawn,
 /obj/effect/decal/cleanable/dirt,
-/obj/machinery/atmospherics/pipe/manifold{
+/obj/machinery/atmospherics/pipe/manifold/general/visible{
 	dir = 8
 	},
 /turf/open/floor/plasteel,
@@ -42924,9 +42924,6 @@
 "fcl" = (
 /obj/structure/closet/crate,
 /obj/effect/spawner/lootdrop/maintenance/three,
-/obj/machinery/light/small{
-	dir = 8
-	},
 /obj/effect/turf_decal/tile/purple{
 	dir = 1
 	},
@@ -46281,6 +46278,9 @@
 /obj/machinery/conveyor{
 	dir = 8;
 	id = "SciLoad"
+	},
+/obj/machinery/light/small{
+	dir = 1
 	},
 /turf/open/floor/plating,
 /area/science/shuttledock)
@@ -53022,12 +53022,12 @@
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/layer1{
 	dir = 8
 	},
-/obj/machinery/light/broken{
-	dir = 8
-	},
 /obj/structure/closet/crate/radiation,
 /obj/effect/turf_decal/tile/purple{
 	dir = 1
+	},
+/obj/machinery/light{
+	dir = 8
 	},
 /turf/open/floor/plasteel/white,
 /area/science/shuttledock)
@@ -57161,6 +57161,9 @@
 	},
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
+	},
+/obj/machinery/light/small{
+	dir = 8
 	},
 /turf/open/floor/plasteel,
 /area/engine/gravity_generator)
@@ -68637,11 +68640,12 @@
 /turf/open/floor/plasteel,
 /area/crew_quarters/locker)
 "ptD" = (
-/obj/machinery/light/small{
-	dir = 1
-	},
 /obj/effect/turf_decal/tile/purple{
 	dir = 4
+	},
+/obj/machinery/camera{
+	c_tag = "Toxins - Lab";
+	network = list("ss13","rd")
 	},
 /turf/open/floor/plasteel/white,
 /area/science/shuttledock)
@@ -76611,6 +76615,10 @@
 	},
 /obj/structure/table,
 /obj/item/kitchen/rollingpin,
+/obj/machinery/camera{
+	c_tag = "Service Lathe";
+	dir = 4
+	},
 /turf/open/floor/plasteel,
 /area/hallway/secondary/service)
 "sMO" = (
@@ -77107,6 +77115,7 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
 	dir = 5
 	},
+/obj/machinery/light/small,
 /turf/open/floor/plating,
 /area/maintenance/solars/starboard/aft)
 "sWP" = (
@@ -77987,6 +77996,9 @@
 /area/maintenance/starboard/fore)
 "toE" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
+/obj/machinery/light/small{
+	dir = 1
+	},
 /turf/open/floor/plating,
 /area/science/shuttledock)
 "toJ" = (
@@ -87419,6 +87431,9 @@
 	dir = 1
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1,
+/obj/machinery/light{
+	dir = 8
+	},
 /turf/open/floor/plasteel/white,
 /area/science/shuttledock)
 "xht" = (
