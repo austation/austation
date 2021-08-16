@@ -30,3 +30,14 @@ GLOBAL_VAR_INIT(total_slimes, 0)
 
 ///Global var for insecure comms key rate limiting
 GLOBAL_VAR_INIT(topic_cooldown, 0)
+<<<<<<< HEAD
+=======
+
+// Topic stuff
+GLOBAL_LIST_EMPTY(topic_commands)
+GLOBAL_PROTECT(topic_commands)
+GLOBAL_LIST_EMPTY(topic_tokens)
+GLOBAL_PROTECT(topic_tokens)
+GLOBAL_LIST_EMPTY(topic_servers)
+GLOBAL_PROTECT(topic_servers)
+>>>>>>> 54fc26b633... Revert "EORG Arena Prototype [MDB IGNORE] (#5000)" (#5135)
