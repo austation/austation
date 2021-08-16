@@ -1,4 +1,0 @@
-author: "MCterra"
-delete-after: True
-changes: 
-  - bugfix: "fix roundstart cultists not getting objectives"
