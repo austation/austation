@@ -140,27 +140,6 @@ if [[ ${1} == "--install-git-hooks" ]]; then
   exit 0
 fi
 
-<<<<<<< HEAD
-## Continuous integration scenario
-if [[ ${1} == "--ci" ]]; then
-  task-clean
-  task-install
-  task-lint
-  task-webpack --mode=production
-  task-validate-build
-  exit 0
-fi
-
-if [[ ${1} == "--action" ]]; then
-  task-clean
-  task-install
-  task-eslint
-  task-webpack --mode=production
-  exit 0
-fi
-
-=======
->>>>>>> 261160d855... Juke Build Reforged (#4861)
 if [[ ${1} == "--clean" ]]; then
   task-clean
   exit 0

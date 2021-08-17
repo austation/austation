@@ -60,11 +60,7 @@ jobs:
         run: |
           source $HOME/BYOND/byond/bin/byondsetup
           python3 tools/ci/template_dm_generator.py
-<<<<<<< HEAD
-          bash tools/ci/dm.sh -DCIBUILDING -DCITESTING -DALL_MAPS austation.dme
-=======
           tools/build/build dm -DCIBUILDING -DCITESTING -DALL_MAPS
->>>>>>> 261160d855... Juke Build Reforged (#4861)
   run_all_tests:
     runs-on: ubuntu-latest
     services:
@@ -103,12 +99,7 @@ jobs:
       - name: Compile and run tests
         run: |
           source $HOME/BYOND/byond/bin/byondsetup
-<<<<<<< HEAD
-          bash tools/ci/dm.sh -DCIBUILDING austation.dme
-          bash tools/ci/run_server.sh
-=======
           tools/build/build -DCIBUILDING
->>>>>>> 261160d855... Juke Build Reforged (#4861)
   test_windows:
     runs-on: windows-latest
     steps:

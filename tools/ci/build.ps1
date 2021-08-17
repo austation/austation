@@ -4,11 +4,7 @@ if(!(Test-Path -Path "C:/byond")){
     Remove-Item C:/byond.zip
 }
 
-<<<<<<< HEAD
-&"C:/byond/bin/dm.exe" -max_errors 0 austation.dme
-=======
 bash tools/ci/install_node.sh
 bash tools/build/build
 
->>>>>>> 261160d855... Juke Build Reforged (#4861)
 exit $LASTEXITCODE
