@@ -1,6 +1,0 @@
-author: "Various /tg/ Coders, Froststahr port"
-delete-after: True
-changes: 
-  - code_imp: "TGFont is now working again"
-  - code_imp: "Juke build is now used when compiling the server, the BUILD.bat must be used"
-  - server: "TGS instances will require the precompile scripts to be added"
