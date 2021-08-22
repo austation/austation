@@ -48,6 +48,7 @@ GLOBAL_LIST_INIT(arcade_prize_pool, list(
 		/obj/item/clothing/shoes/kindleKicks = 2,
 		/mob/living/simple_animal/bot/secbot/deathsky/toy = 2, //austation -- deathsky
 		/obj/item/toy/plush/moth = 2,
+		/obj/item/toy/plush/rouny = 2,
 		/obj/item/storage/box/heretic_asshole = 1,
 		/obj/item/toy/eldrich_book = 1,
 		/obj/item/storage/belt/military/snack = 2,
