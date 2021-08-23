@@ -1,0 +1,4 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - balance: "Disabler beams reduced from 35 damage to 28.(-7)"
