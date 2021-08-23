@@ -193,6 +193,7 @@
 #include "austation\code\modules\jobs\job_types\medical_doctor.dm"
 #include "austation\code\modules\mapping\random_rooms.dm"
 #include "austation\code\modules\mapping\writer.dm"
+#include "austation\code\modules\mining\machine_bluespaceminer.dm"
 #include "austation\code\modules\mining\machine_vending.dm"
 #include "austation\code\modules\mining\minebot.dm"
 #include "austation\code\modules\mining\shelters.dm"
