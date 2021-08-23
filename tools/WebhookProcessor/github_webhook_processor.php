@@ -536,11 +536,7 @@ function game_announce($action, $payload, $pr_flags) {
 
 	$game_servers = filter_announce_targets($servers, $payload['pull_request']['base']['repo']['owner']['login'], $payload['pull_request']['base']['repo']['name'], $action, $pr_flags);
 
-<<<<<<< HEAD
-	$msg = '?announce='.urlencode($msg).'&payload='.urlencode(json_encode($payload));
-=======
 	$data = ["announce" => urlencode($msg), "id" => $payload['pull_request']['id']];
->>>>>>> aeca8a4f2b... Topic System Overhaul (#3801)
 
 	foreach ($game_servers as $serverid => $server) {
 		if (isset($server['comskey']))
