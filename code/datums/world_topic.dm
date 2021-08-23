@@ -173,29 +173,8 @@
 /datum/world_topic/news_report/Run(list/input)
 	. = ..()
 	minor_announce(input["message"], "Breaking Update From [input["message_sender"]]")
-<<<<<<< HEAD
-
-/datum/world_topic/server_hop
-	keyword = "server_hop"
-
-/datum/world_topic/server_hop/Run(list/input, addr)
-	var/expected_key = input[keyword]
-	for(var/mob/dead/observer/O in GLOB.player_list)
-		if(O.key == expected_key)
-			if(O.client?.address == addr)
-				new /atom/movable/screen/splash(O.client, TRUE)
-			break
-
-/datum/world_topic/adminmsg
-	keyword = "adminmsg"
-	require_comms_key = TRUE
-
-/datum/world_topic/adminmsg/Run(list/input, addr)
-	return IrcPm(input[keyword], input["msg"], input["sender"])
-=======
 	statuscode = 200
 	response = "Message received"
->>>>>>> aeca8a4f2b... Topic System Overhaul (#3801)
 
 /datum/world_topic/namecheck
 	key = "namecheck"
@@ -236,23 +215,6 @@
 	response = "Player list fetched"
 
 /datum/world_topic/status
-<<<<<<< HEAD
-	keyword = "status"
-
-/datum/world_topic/status/Run(list/input, addr)
-	. = list()
-	.["version"] = GLOB.game_version
-	.["mode"] = GLOB.master_mode
-	.["respawn"] = config ? !CONFIG_GET(flag/norespawn) : FALSE
-	.["enter"] = GLOB.enter_allowed
-	.["vote"] = CONFIG_GET(flag/allow_vote_mode)
-	.["ai"] = CONFIG_GET(flag/allow_ai)
-	.["host"] = world.host ? world.host : null
-	.["round_id"] = GLOB.round_id
-	.["players"] = GLOB.clients.len
-	.["revision"] = GLOB.revdata.commit
-	.["revision_date"] = GLOB.revdata.date
-=======
 	key = "status"
 	anonymous = TRUE
 
@@ -271,7 +233,6 @@
 	data["revision"] = GLOB.revdata.commit
 	data["revision_date"] = GLOB.revdata.date
 	data["hub"] = GLOB.hub_visibility
->>>>>>> aeca8a4f2b... Topic System Overhaul (#3801)
 
 	var/list/adm = get_admin_counts()
 	var/list/presentmins = adm["present"]
