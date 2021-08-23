@@ -9,3 +9,11 @@ AUTOSANDBOX_MAX 10
 
 ## Server tagline: This will appear right below the server's title.
 # SERVERTAGLINE A generic TG-based server
+
+## Bluespace Miners.
+
+## Amount of miner boards in the RD's locker at roundstart.
+ROUNDSTART_BLUESPACE_MINERS 0
+
+## Enable the bluespace miner research node?
+#BSMINER_RESEARCHABLE

@@ -13,3 +13,9 @@
 /datum/config_entry/number/ratcap
 	config_entry_value = 64
 	min_val = 0
+
+//Bluespace Miners
+/datum/config_entry/number/roundstart_bluespace_miners
+	min_val = 0
+
+/datum/config_entry/flag/bsminer_researchable
