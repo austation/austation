@@ -1,0 +1,4 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - spellcheck: "fixed a typo in \"oozeling vacuole\""
