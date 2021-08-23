@@ -1,0 +1,4 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - rscadd: "handheld pinpointer now shows the name of the person it's tracking"
