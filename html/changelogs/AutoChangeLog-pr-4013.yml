@@ -1,0 +1,7 @@
+author: "Mick1299"
+delete-after: True
+changes: 
+  - rscadd: "Remapped the prison wing maintenance to be a true maintenance, giving it radiation storm protection. Also included the perma toilet for prisoner protection."
+  - rscadd: "a few lights and cameras for quality of life"
+  - tweak: "Seperated cargo maints from port bow maints, and engineering maints from starboard maints"
+  - bugfix: "incinerator manifold under tile"
