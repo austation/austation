@@ -1,4 +1,0 @@
-author: "AustationBot"
-delete-after: True
-changes: 
-  - tweak: "IPCs are no longer an exception from from foreigner quirk."

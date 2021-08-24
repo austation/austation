@@ -1,4 +1,0 @@
-author: "AustationBot"
-delete-after: True
-changes: 
-  - refactor: "Heretics can now only spawn on dynamic."

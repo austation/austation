@@ -36,8 +36,8 @@
 		<td valign='top'>
 			<font size='2'><b>Current Project Maintainers:</b> <a href='https://github.com/orgs/BeeStation/people'>-Click Here-</a><br></font>
 			<font size='2'><b>Currently Active GitHub contributor list:</b> <a href='https://github.com/BeeStation/BeeStation-Hornet/graphs/contributors'>-Click Here-</a><br></font>
-			<font size='2'><b>Coders:</b> Qwertyquerty, CthulhuOnIce, ike709, ShadowH4nD, Mark Suckerberg, Crossedfall, AzlanonPC, Cenrus, St0rmC4st3r, TLE, NEO, Errorage, muskets, veryinky, Skie, Noise, Numbers, Agouri, Noka, Urist McDorf, Uhangi, Darem, Mport, rastaf0, Doohl, Superxpdude, Rockdtben, ConstantA, Petethegoat, Kor, Polymorph, Carn, Nodrak, Donkie, Sieve, Giacom, Ikarrus, trubble_bass, Aranclanos, Cael_Aislinn, Cheridan, Intigracy, Malkevin, SuperSayu, DumpDavidson, Tastyfish, Yvar, Elo001, Fleure, ManeaterMildred, Miauw, MrPerson<br></font> 
-			<font size='2'><b>Spriters:</b> Agouri, AzlanonPC, Cheridan, Cruazy Guest, Deeaych, Deuryn, Matty406, Microwave, ShiftyEyesShady, Skie, Uhangi, Veyveyr, Petethegoat, Kor, Ricotez, Ausops, TankNut, Thatguythere03, Pewtershmitz, Firecage, Nienhaus2<br></font>
+			<font size='2'><b>Coders:</b> Agouri, Aranclanos, AzlanonPC, Cael_Aislinn, Carn, Cenrus, Cheridan, ConstantA, Crossedfall, CthulhuOnIce, Darem, Donkie, Doohl, DumpDavidson, Elo001, Errorage, Francinum, Fleure, Giacom, Ikarrus, Intigracy, Kor, MCterra, Malkevin, ManeaterMildred, Mark Suckerberg, Miauw, Mport, MrPerson, NEO, Nodrak, Noise, Noka, Numbers, Petethegoat, Polymorph, PowerfulBacon, Qwertyquerty, Rockdtben, ShadowH4nD, Sieve, Skie, St0rmC4st3r, SuperSayu, Superxpdude, TLE, Tastyfish, Uhangi, Urist McDorf, Yvar, ike709, muskets, rastaf0, trubble_bass, veryinky<br></font> 
+			<font size='2'><b>Spriters:</b> Agouri, Ausops, AzlanonPC, Cheridan, CruazyGuest, Deeaych, Deuryn, Firecage, Kor, Matty406, Microwave, Naevi, Nienhaus2, Petethegoat, Pewtershmitz, Ricotez, ShiftyEyesShady, Skie, TankNut, Thatguythere03, Uhangi, Veyveyr<br></font>
 			<font size='2'><b>Mappers:</b> Prophed<br></font>
 			<font size='2'><b>Sounds:</b> Skie, Lasty/Vinyl<br></td></font>
 			<font size='2'><b>Thanks to:</b> /tg/Station 13, Baystation 12, /vg/station, NTstation, CDK Station devs, FacepunchStation, GoonStation devs, the original SpaceStation developers and Invisty for the title image.<br> Also a thanks to anybody who has contributed who is not listed here :( Ask to be added here on the forums/Discord.</font>
@@ -55,6 +55,60 @@
 		
 		-->
 		<div class="commit sansserif">
+
+			<h2 class="date">24 August 2021</h2>
+			<h3 class="author">AustationBot updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="tweak">juggernauts cant be pulled.</li>
+				<li class="balance">Frank has had their health returned, and their damage further nerfed along with a slowdown</li>
+				<li class="rscdel">Removed bluespace miners from config and game</li>
+				<li class="tweak">IPCs are no longer an exception from from foreigner quirk.</li>
+				<li class="bugfix">The naming component at the pill press(the plumbing machine) is now a button instead of a text input, to prevent you to get a blank named pill(i.e. " pill").</li>
+				<li class="refactor">Bitfields now use tg's macro, separated more cleanly.</li>
+				<li class="refactor">area_flags from tgcl</li>
+				<li class="tweak">Random mineral turfs no longer cause large amounts of turf changes on initialization.</li>
+				<li class="rscdel">Old lavaland cave generation based on straight lines</li>
+				<li class="rscadd">Beautiful new lavaland cave generation from tg, with organic and complex cave systems</li>
+				<li class="tweak">Reproductive spiders may no longer accidentally clear their directives, and may not reproduce without one set.</li>
+				<li class="bugfix">Fixes midround antags not existing</li>
+				<li class="rscadd">/obj/structure/holosign/emp_act()</li>
+				<li class="rscadd">layer manifolds have a 280L volume</li>
+				<li class="tweak">Updated the changelog header to include McTerra, PowerfulBacon, & Francinum as major code contributors and Naevi as a spriter.</li>
+				<li class="bugfix">turrets should work correctly again</li>
+				<li class="balance">Nerfed Frank the turtle's damage from 18 to 5 and the health from 2500 (Same as Hierophant) to 100. It can still attack, unlike most other station pets, and won't die in 2 hits, unlike most other station pets.</li>
+				<li class="bugfix">Muscled Veins surgery now actually works.</li>
+				<li class="rscadd">Prescription Medical HUD</li>
+				<li class="rscadd">handheld pinpointer now shows the name of the person it's tracking</li>
+				<li class="refactor">Heretics can now only spawn on dynamic.</li>
+				<li class="bugfix">Plumbing port visuals are now more reliable, fixing a bug with boxstation's roundstart bottlers and presses</li>
+				<li class="bugfix">Unwrenching ducts no longer doubles them</li>
+				<li class="tweak">Medical, Engineering and Science jobs now require two hours played</li>
+				<li class="tweak">Brig Physician now only requires two hours as normal crew</li>
+				<li class="tweak">AI now requires 10 hours as a cyborg</li>
+				<li class="tweak">HoP now requires 10 hours as a different Head of Staff</li>
+				<li class="rscadd">Bulk Discount is now an option that can be rolled for low-value items in the uplink.</li>
+				<li class="tweak">intercomms are above windows.</li>
+				<li class="balance">Disabler beams reduced from 35 damage to 28.(-7)</li>
+				<li class="soundadd">New Station Announcer trait voice pack</li>
+				<li class="tweak">Admins will only show their admin badge, the mentor badge will be dropped to reduce clutter.</li>
+				<li class="bugfix">another important recursive contents fix</li>
+				<li class="spellcheck">fixed a typo in "oozeling vacuole"</li>
+			</ul>
+			<h3 class="author">EOBGames AnCopper updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="rscadd">rouny plush</li>
+			</ul>
+			<h3 class="author">Mick1299 updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="rscadd">Remapped the prison wing maintenance to be a true maintenance, giving it radiation storm protection. Also included the perma toilet for prisoner protection.</li>
+				<li class="rscadd">a few lights and cameras for quality of life</li>
+				<li class="tweak">Seperated cargo maints from port bow maints, and engineering maints from starboard maints</li>
+				<li class="bugfix">incinerator manifold under tile</li>
+			</ul>
+			<h3 class="author">Phil Smith updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="imageadd">Ports TG's stasis bed sprite</li>
+			</ul>
 
 			<h2 class="date">23 August 2021</h2>
 			<h3 class="author">AustationBot updated:</h3>
