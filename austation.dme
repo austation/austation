@@ -283,6 +283,4 @@
 #include "austation\code\modules\events\disease_outbreak.dm"
 #include "austation\code\modules\events\electrical_storm.dm"
 #include "austation\code\modules\events\space_dragon.dm"
-#include "code\modules\mob\living\carbon\human\species.dm"
-#include "code\modules\mob\living\carbon\human\species_types\IPC.dm"
 // END_INCLUDE
