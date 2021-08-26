@@ -1180,7 +1180,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 			H.emote("collapse")
 		H.Paralyze(RAD_MOB_KNOCKDOWN_AMOUNT)
 		to_chat(H, "<span class='danger'>You feel weak.</span>")
-	// austation start -- dunno how to modularise this
+	// austation start -- dunno how to modularise this so I'm sticking it here. my apologies
 	if(radiation > RAD_MOB_VOMIT && prob(RAD_MOB_VOMIT_PROB))
 		var/obj/item/organ/stomach/S = H.getorganslot(ORGAN_SLOT_STOMACH)
 		if(S && istype(S, !(S.organ_flags & ORGAN_SYNTHETIC)))
