@@ -1,4 +1,0 @@
-author: "AustationBot"
-delete-after: True
-changes: 
-  - tweak: "Blocking now works on harm intent and no longer works on help intent."
