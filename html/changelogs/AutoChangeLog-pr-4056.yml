@@ -1,4 +1,0 @@
-author: "AustationBot"
-delete-after: True
-changes: 
-  - admin: "Removed an admin privilege elevation exploit and other potential avenues for abuse"
