@@ -50,8 +50,8 @@ SUBSYSTEM_DEF(air)
 	var/log_explosive_decompression = TRUE // If things get spammy, admemes can turn this off.
 
 	// Max number of turfs equalization will grab.
-	// austation -- really fast fastmos 10->200
-	var/equalize_turf_limit = 200
+	// austation -- really fast fastmos 10->100
+	var/equalize_turf_limit = 100
 	// Max number of turfs to look for a space turf, and max number of turfs that will be decompressed.
 	var/equalize_hard_turf_limit = 2000
 	// Whether equalization should be enabled at all
