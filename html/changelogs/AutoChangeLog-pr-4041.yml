@@ -1,4 +1,0 @@
-author: "AustationBot"
-delete-after: True
-changes: 
-  - rscadd: "Examining the Blob Overmind (ghosts only) will now show how many nodes it has."

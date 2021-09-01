@@ -1,4 +1,0 @@
-author: "AustationBot"
-delete-after: True
-changes: 
-  - rscadd: "The round report in #ooc on Discord now includes a summary for Dynamic Mode."
