@@ -22751,7 +22751,7 @@
 /turf/open/floor/plasteel,
 /area/science/lab)
 "blK" = (
-/obj/machinery/component_printer,
+/obj/machinery/modular_fabricator/component_printer,
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
@@ -42503,14 +42503,6 @@
 /obj/effect/landmark/start/lawyer,
 /turf/open/floor/wood,
 /area/lawoffice)
-<<<<<<< HEAD
-"cxn" = (
-/obj/structure/closet/emcloset,
-/turf/open/floor/plasteel/white/side{
-	dir = 9
-	},
-/area/science/shuttledock)
-=======
 "cxr" = (
 /obj/effect/turf_decal/bot,
 /obj/structure/closet/crate,
@@ -42518,7 +42510,6 @@
 /obj/item/mining_scanner,
 /turf/open/floor/plasteel,
 /area/quartermaster/exploration_dock)
->>>>>>> 88ddb511e9... [MDB IGNORE] Supercruise Part 2 (part 2 - deconflict edition) - Randomly generated ruins, Infinite shuttle Zs, Economy changes, Partial science refactor, Exploration job. (#4543)
 "cxA" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 8

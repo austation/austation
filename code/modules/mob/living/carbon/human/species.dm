@@ -1180,17 +1180,41 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 			H.emote("collapse")
 		H.Paralyze(RAD_MOB_KNOCKDOWN_AMOUNT)
 		to_chat(H, "<span class='danger'>You feel weak.</span>")
-
+	// austation start -- dunno how to modularise this so I'm sticking it here. my apologies
 	if(radiation > RAD_MOB_VOMIT && prob(RAD_MOB_VOMIT_PROB))
-		H.vomit(10, TRUE)
-
-	if(radiation > RAD_MOB_MUTATE)
+		var/obj/item/organ/stomach/S = H.getorganslot(ORGAN_SLOT_STOMACH)
+		if(!istype(S, /obj/item/organ/stomach/cell))
+			H.vomit(10, TRUE)
+	if(!HAS_TRAIT(H, TRAIT_MUTATEIMMUNE) && radiation > RAD_MOB_MUTATE)
 		if(prob(1))
 			to_chat(H, "<span class='danger'>You mutate!</span>")
 			H.easy_randmut(NEGATIVE+MINOR_NEGATIVE)
 			H.emote("gasp")
 			H.domutcheck()
-
+	if(isipc(H) && radiation > RAD_MOB_SAFE)
+		H.adjustOrganLoss(ORGAN_SLOT_BRAIN,0.24,200)
+	if(isipc(H) && radiation > RAD_MOB_MUTATE)
+		if(prob(1))
+			to_chat(H, "<span class='danger'>Your system produces an error!</span>")
+			var/trauma_type = pickweight(list(
+				BRAIN_TRAUMA_MILD = 65,
+				BRAIN_TRAUMA_SEVERE = 30,
+				BRAIN_TRAUMA_SPECIAL = 5
+			))
+			var/resistance = pick(
+				50;TRAUMA_RESILIENCE_BASIC,
+				30;TRAUMA_RESILIENCE_SURGERY,
+				10;TRAUMA_RESILIENCE_LOBOTOMY,
+				1;TRAUMA_RESILIENCE_MAGIC
+			)
+			H.gain_trauma_type(trauma_type,resistance)
+			var/emote_type = pickweight(list(
+				"beep" = 34,
+				"buzz" = 34,
+				"buzz2" = 34,
+			))
+			INVOKE_ASYNC(H, /mob.proc/emote, emote_type)
+	// austation end
 	if(radiation > RAD_MOB_HAIRLOSS)
 		if(prob(15) && !(H.hair_style == "Bald") && (HAIR in species_traits))
 			to_chat(H, "<span class='danger'>Your hair starts to fall out in clumps.</span>")
