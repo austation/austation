@@ -31394,22 +31394,6 @@
 /obj/effect/turf_decal/tile/purple{
 	dir = 1
 	},
-<<<<<<< HEAD
-/obj/effect/turf_decal/tile/purple,
-/obj/machinery/requests_console{
-	pixel_x = 32
-	},
-/obj/machinery/component_printer,
-/turf/open/floor/plasteel,
-/area/science/lab)
-"iIy" = (
-/obj/effect/turf_decal/tile/yellow,
-/turf/open/floor/plasteel,
-/area/medical/chemistry)
-"iIE" = (
-/obj/structure/grille,
-=======
->>>>>>> 88ddb511e9... [MDB IGNORE] Supercruise Part 2 (part 2 - deconflict edition) - Randomly generated ruins, Infinite shuttle Zs, Economy changes, Partial science refactor, Exploration job. (#4543)
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
 	},

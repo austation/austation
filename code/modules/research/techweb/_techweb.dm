@@ -270,7 +270,7 @@
 	. = ..()
 	if(.)
 		node.on_research()
-	
+
 /datum/techweb/proc/unresearch_node_id(id)
 	return unresearch_node(SSresearch.techweb_node_by_id(id))
 
@@ -422,3 +422,7 @@
 
 /datum/techweb/specialized/autounlocking/exofab
 	allowed_buildtypes = MECHFAB
+
+/datum/techweb/specialized/autounlocking/component_printer
+	design_autounlock_buildtypes = COMPONENT_PRINTER
+	allowed_buildtypes = COMPONENT_PRINTER

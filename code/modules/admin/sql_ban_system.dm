@@ -592,7 +592,7 @@
 	if(applies_to_admins)
 		send2irc("BAN ALERT","[kn] [msg]")
 	if(player_ckey)
-		create_message("note", player_ckey, admin_ckey, note_reason, null, null, 0, 0, null, 0, severity)
+		create_message("note", player_ckey, admin_ckey, note_reason, null, null, 0, 0, null, -1, severity)
 		austation_on_jobban(get_mob_by_ckey(player_ckey), roles_to_ban) // austation -- ports catbans
 	var/client/C = GLOB.directory[player_ckey]
 	var/datum/admin_help/AH = admin_ticket_log(player_ckey, msg)
