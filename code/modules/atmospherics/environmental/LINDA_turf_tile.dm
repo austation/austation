@@ -193,6 +193,13 @@
 /turf/open/proc/equalize_pressure_in_zone(cyclenum)
 /turf/open/proc/consider_firelocks(turf/T2)
 	var/reconsider_adj = FALSE
+	//austation begin -- vents will automatically shut off if it detects decompression, to prevent this use injectors instead nerdo
+	for(var/obj/machinery/atmospherics/components/unary/vent_pump/vent in T2)
+		if(vent.on)
+			vent.on = FALSE
+			vent.broadcast_status()
+			vent.update_icon()
+	//austation end
 	for(var/obj/machinery/door/firedoor/FD in T2)
 		if((FD.flags_1 & ON_BORDER_1) && get_dir(T2, src) != FD.dir)
 			continue
@@ -268,6 +275,15 @@
 	if (pressure_resistance > 0)
 		move_prob = (pressure_difference/pressure_resistance*PROBABILITY_BASE_PRECENT)-PROBABILITY_OFFSET
 	move_prob += pressure_resistance_prob_delta
+	//austation begin -- magboots are incrediby useful
+	if(ishuman(src))
+		var/mob/living/carbon/human/bootloader = src
+		var/item = bootloader.get_item_by_slot(ITEM_SLOT_FEET)
+		if(item && istype(item, /obj/item/clothing/shoes/magboots))
+			var/obj/item/clothing/shoes/magboots/booties = item
+			if(booties.magpulse)
+				return
+	//austation end
 	if (move_prob > PROBABILITY_OFFSET && prob(move_prob) && (move_resist != INFINITY) && (!anchored && (max_force >= (move_resist * MOVE_FORCE_PUSH_RATIO))) || (anchored && (max_force >= (move_resist * MOVE_FORCE_FORCEPUSH_RATIO))))
 		var/move_force = max_force * CLAMP(move_prob, 0, 100) / 100
 		if(move_force > 6000)
