@@ -1,0 +1,5 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - rscadd: "Seed Extractor and Plant DNA Manipulator now use tgui"
+  - rscadd: "Plant DNA Manipulator has a checkbox that skips confirmation prompt for rapid botanying"
