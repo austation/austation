@@ -9,3 +9,16 @@
   M.jitteriness = min(max(0, M.jitteriness + 3), 30)
   current_cycle++
   holder.remove_reagent(type, metabolization_rate / M.metabolism_efficiency)
+
+/datum/reagent/medicine/radioactive_disinfectant
+	name = "Radioactive Disinfectant"
+	description = "Removes irradiation in synthetics."
+	color = "#806F42"
+	taste_description = "metallic"
+	process_flags = SYNTHETIC
+
+/datum/reagent/medicine/radioactive_disinfectant/on_mob_life(mob/living/carbon/M)
+	. = ..()
+	if(M.radiation > 0)
+		M.radiation -= min(M.radiation, 8)
+	..()
