@@ -76,6 +76,7 @@
 #include "austation\code\game\area\Space_Station_13_areas.dm"
 #include "austation\code\game\machinery\cell_charger.dm"
 #include "austation\code\game\machinery\syndicatebeacon.dm"
+#include "austation\code\game\machinery\doors\firedoor.dm"
 #include "austation\code\game\machinery\porta_turret\portable_turret.dm"
 #include "austation\code\game\mecha\equipment\tools\other_tools.dm"
 #include "austation\code\game\mecha\equipment\tools\work_tools.dm"
