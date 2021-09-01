@@ -117,7 +117,7 @@
 /obj/item/encryptionkey/headset_mining
 	name = "mining radio encryption key"
 	icon_state = "cargo_cypherkey"
-	channels = list(RADIO_CHANNEL_SUPPLY = 1) //Austation removes Science Access
+	channels = list(RADIO_CHANNEL_SUPPLY = 1) // austation -- removes Science Access
 
 /obj/item/encryptionkey/headset_service
 	name = "service radio encryption key"
