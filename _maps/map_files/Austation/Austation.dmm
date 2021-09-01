@@ -72039,11 +72039,12 @@
 "qPd" = (
 /obj/docking_port/stationary{
 	dir = 4;
-	dwidth = 6;
-	height = 6;
-	id = "science_station";
-	name = "science shuttle dock";
-	width = 9
+	dwidth = 5;
+	height = 7;
+	id = "exploration_home";
+	name = "Exploration Dock";
+	roundstart_template = /datum/map_template/shuttle/exploration;
+	width = 13
 	},
 /turf/open/space/basic,
 /area/space)
