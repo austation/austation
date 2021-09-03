@@ -1,4 +1,0 @@
-author: "AustationBot"
-delete-after: True
-changes: 
-  - balance: "IPCs are no longer deaf when EMP'd, and are now forced to speak spanish for 2 minutes."
