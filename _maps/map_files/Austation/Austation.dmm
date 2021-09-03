@@ -30841,7 +30841,7 @@
 	},
 /obj/machinery/door/airlock/research{
 	name = "Toxins Lab";
-	req_access_txt = "8"
+	req_one_access_txt = "8; 49"
 	},
 /obj/machinery/door/poddoor/shutters/preopen{
 	id = "toxins_blastdoor";
@@ -46428,7 +46428,7 @@
 	},
 /obj/machinery/door/firedoor,
 /turf/open/floor/plasteel,
-/area/science/misc_lab/range)
+/area/maintenance/department/science)
 "gEK" = (
 /obj/effect/spawner/structure/window/reinforced,
 /obj/machinery/atmospherics/pipe/simple/green/visible{
@@ -74566,7 +74566,7 @@
 	},
 /obj/machinery/door/firedoor,
 /turf/open/floor/plasteel,
-/area/science/mixing)
+/area/maintenance/department/science)
 "rSL" = (
 /obj/machinery/vending/snack/random,
 /turf/open/floor/plasteel,
@@ -81452,7 +81452,7 @@
 "uIN" = (
 /obj/machinery/door/airlock/research{
 	name = "Toxins Launch Room Access";
-	req_access_txt = "8"
+	req_one_access_txt = "8; 49"
 	},
 /obj/machinery/door/poddoor/shutters/preopen{
 	id = "toxins_blastdoor";
