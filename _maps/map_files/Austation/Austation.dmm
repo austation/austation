@@ -57120,7 +57120,7 @@
 	},
 /obj/machinery/door/airlock/research{
 	name = "Experimentation Lab";
-	req_access_txt = "8"
+	req_access_txt = "47"
 	},
 /obj/effect/turf_decal/tile/purple{
 	dir = 1
@@ -68183,7 +68183,7 @@
 "pjR" = (
 /obj/machinery/door/airlock/maintenance{
 	name = "Experimentation Lab Maintenance";
-	req_access_txt = "8"
+	req_access_txt = "47"
 	},
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
@@ -76315,7 +76315,9 @@
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
 	},
-/obj/machinery/door/airlock/maintenance,
+/obj/machinery/door/airlock/maintenance{
+	req_one_access_txt = "12;47"
+	},
 /obj/structure/disposalpipe/segment,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
 	dir = 1
