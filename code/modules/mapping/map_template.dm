@@ -85,24 +85,24 @@
 	SSmachines.setup_template_powernets(cables)
 	SSair.setup_template_machinery(atmos_machines)
 
-	//calculate all turfs inside the border
-	var/list/template_and_bordering_turfs = block(
-		locate(
-			max(bounds[MAP_MINX]-1, 1),
-			max(bounds[MAP_MINY]-1, 1),
-			bounds[MAP_MINZ]
-			),
-		locate(
-			min(bounds[MAP_MAXX]+1, world.maxx),
-			min(bounds[MAP_MAXY]+1, world.maxy),
-			bounds[MAP_MAXZ]
-			)
-		)
 	//austation begin -- delay air init added if(init_atmos)
 	if(init_atmos)
-		for(var/turf/affected_turf as anything in template_and_bordering_turfs)
-			affected_turf.air_update_turf(TRUE)
-			affected_turf.levelupdate()
+		//calculate all turfs inside the border
+		var/list/template_and_bordering_turfs = block(
+			locate(
+				max(bounds[MAP_MINX]-1, 1),
+				max(bounds[MAP_MINY]-1, 1),
+				bounds[MAP_MINZ]
+				),
+			locate(
+				min(bounds[MAP_MAXX]+1, world.maxx),
+				min(bounds[MAP_MAXY]+1, world.maxy),
+				bounds[MAP_MAXZ]
+				)
+			)
+			for(var/turf/affected_turf as anything in template_and_bordering_turfs)
+				affected_turf.air_update_turf(TRUE)
+				affected_turf.levelupdate()
 	//austation end
 
 /datum/map_template/proc/load_new_z(orbital_body_type, list/level_traits = list(ZTRAIT_AWAY = TRUE))
