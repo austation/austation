@@ -34,8 +34,8 @@
 		if(cache)
 			cached_map = parsed
 	return bounds
-
-/datum/map_template/proc/initTemplateBounds(list/bounds)
+//austation -- delay air init added init_atmos arg
+/datum/map_template/proc/initTemplateBounds(list/bounds, init_atmos = TRUE)
 	if (!bounds) //something went wrong
 		stack_trace("[name] template failed to initialize correctly!")
 		return
@@ -98,9 +98,12 @@
 			bounds[MAP_MAXZ]
 			)
 		)
-	for(var/turf/affected_turf as anything in template_and_bordering_turfs)
-		affected_turf.air_update_turf(TRUE)
-		affected_turf.levelupdate()
+	//austation begin -- delay air init added if(init_atmos)
+	if(init_atmos)
+		for(var/turf/affected_turf as anything in template_and_bordering_turfs)
+			affected_turf.air_update_turf(TRUE)
+			affected_turf.levelupdate()
+	//austation end
 
 /datum/map_template/proc/load_new_z(orbital_body_type, list/level_traits = list(ZTRAIT_AWAY = TRUE))
 	var/x = round((world.maxx - width)/2)
@@ -121,7 +124,8 @@
 
 	return level
 
-/datum/map_template/proc/load(turf/T, centered = FALSE)
+//austation -- delay air init added init_atmos arg
+/datum/map_template/proc/load(turf/T, centered = FALSE, init_atmos = TRUE)
 	if(centered)
 		T = locate(T.x - round(width/2) , T.y - round(height/2) , T.z)
 	if(!T)
@@ -158,7 +162,8 @@
 		repopulate_sorted_areas()
 
 	//initialize things that are normally initialized after map load
-	initTemplateBounds(bounds)
+	//austation -- delay air init added init_atmos arg
+	initTemplateBounds(bounds, init_atmos)
 
 	log_game("[name] loaded at [T.x],[T.y],[T.z]")
 	return bounds
