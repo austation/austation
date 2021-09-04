@@ -193,13 +193,6 @@
 /turf/open/proc/equalize_pressure_in_zone(cyclenum)
 /turf/open/proc/consider_firelocks(turf/T2)
 	var/reconsider_adj = FALSE
-	//austation begin -- vents will automatically shut off if it detects decompression, to prevent this use injectors instead nerdo
-	for(var/obj/machinery/atmospherics/components/unary/vent_pump/vent in T2)
-		if(vent.on)
-			vent.on = FALSE
-			vent.broadcast_status()
-			vent.update_icon()
-	//austation end
 	for(var/obj/machinery/door/firedoor/FD in T2)
 		if((FD.flags_1 & ON_BORDER_1) && get_dir(T2, src) != FD.dir)
 			continue
