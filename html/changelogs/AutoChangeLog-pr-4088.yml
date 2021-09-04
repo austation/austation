@@ -1,5 +1,0 @@
-author: "AustationBot"
-delete-after: True
-changes: 
-  - tweak: "Botany now has a disposal chute connected to kitchen on corgstation."
-  - bugfix: "Fixed corg disposals again."
