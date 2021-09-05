@@ -31,7 +31,7 @@ jobs:
           pip3 install setuptools
           bash tools/ci/install_node.sh
           bash tools/ci/install_auxmos.sh
-          pip3 install -r tools/mapmerge2/requirements.txt
+          pip3 install -r tools/requirements.txt
       - name: Run Linters
         run: |
           bash tools/ci/check_filedirs.sh austation.dme
@@ -41,8 +41,14 @@ jobs:
           tgui/bin/tgui --lint
           tgui/bin/tgui --test
           bash tools/ci/check_grep.sh
+<<<<<<< HEAD
           python3 tools/mapmerge2/dmi.py --test
           ~/dreamchecker -e austation.dme
+=======
+          tools/bootstrap/python -m dmi.test
+          tools/bootstrap/python -m mapmerge2.dmm_test
+          ~/dreamchecker
+>>>>>>> 345e471a4e... Updates mapmerge2 folder to tg's latest, along with python bootstrapping (#4920)
   compile_all_maps:
     runs-on: ubuntu-latest
     steps:
