@@ -274,7 +274,7 @@
 		var/item = bootloader.get_item_by_slot(ITEM_SLOT_FEET)
 		if(item && istype(item, /obj/item/clothing/shoes/magboots))
 			var/obj/item/clothing/shoes/magboots/booties = item
-			if(booties.magpulse)
+			if(booties.magpulse && bootloader.has_gravity())
 				return
 	//austation end
 	if (move_prob > PROBABILITY_OFFSET && prob(move_prob) && (move_resist != INFINITY) && (!anchored && (max_force >= (move_resist * MOVE_FORCE_PUSH_RATIO))) || (anchored && (max_force >= (move_resist * MOVE_FORCE_FORCEPUSH_RATIO))))
