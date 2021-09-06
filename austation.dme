@@ -234,6 +234,7 @@
 #include "austation\code\modules\power\reactor\reactor_cargo.dm"
 #include "austation\code\modules\projectiles\gun.dm"
 #include "austation\code\modules\projectiles\projectile.dm"
+#include "austation\code\modules\projectiles\ammunition\ballistic\revolver.dm"
 #include "austation\code\modules\projectiles\ammunition\ballistic\shotgun.dm"
 #include "austation\code\modules\projectiles\boxes_magazine\internal\makeshift_mags.dm"
 #include "austation\code\modules\projectiles\guns\ballistic\ballistic.dm"
