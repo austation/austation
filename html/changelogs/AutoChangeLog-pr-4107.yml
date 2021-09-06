@@ -1,4 +1,0 @@
-author: "AustationBot"
-delete-after: True
-changes: 
-  - tweak: "Updated asteroid spawning to include tendrils, flora, lighting and gravity."

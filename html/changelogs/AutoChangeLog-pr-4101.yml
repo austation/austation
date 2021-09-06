@@ -1,4 +1,0 @@
-author: "AustationBot"
-delete-after: True
-changes: 
-  - bugfix: "Clockwork cultists and Cogscarabs will no longer be stuck in an infinite teleport loop."
