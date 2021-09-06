@@ -33,10 +33,8 @@ GLOBAL_VAR_INIT(hsboxspawn, TRUE)
 	var/owner = null
 	var/admin = 0
 
-	var/last_spawn_time = 0
+	var/spawn_timer = 0
 
-	var/static/list/clothitems
-	var/static/list/reagentitems
 	var/static/list/otheritems
 
 	//items that shouldn't spawn on the floor because they would bug or act weird
@@ -48,16 +46,8 @@ GLOBAL_VAR_INIT(hsboxspawn, TRUE)
 
 /datum/hSB/New()
 	..()
-	if(!clothitems)
-		clothitems = subtypesof(/obj/item/clothing)
-		for(var/typekey in spawn_forbidden)
-			clothitems -= typesof(typekey)
-	if(!reagentitems)
-		reagentitems = subtypesof(/obj/item/reagent_containers)
-		for(var/typekey in spawn_forbidden)
-			reagentitems -= typesof(typekey)
 	if(!otheritems)
-		otheritems = subtypesof(/obj/item/) - typesof(/obj/item/clothing) - typesof(/obj/item/reagent_containers)
+		otheritems = subtypesof(/obj/item/)
 		for(var/typekey in spawn_forbidden)
 			otheritems -= typesof(typekey)
 
@@ -113,8 +103,6 @@ GLOBAL_VAR_INIT(hsboxspawn, TRUE)
 		)
 
 	data["Categories"]["Other"] = list(
-		list("Spawn Clothings", "hsbcloth"),
-		list("Spawn Reagent Container", "hsbreag"),
 		list("Spawn Other Items", "hsbobj")
 	)
 
@@ -271,39 +259,34 @@ GLOBAL_VAR_INIT(hsboxspawn, TRUE)
 
 			new/obj/item/construction/rcd/combat(usr.loc)
 
-		//
-		// Object spawn window
-		//
-
-		// Clothing
-		if("hsbcloth")
-			. = TRUE
-			if(!GLOB.hsboxspawn) return
-			var/spawning_item = tgui_input_list(usr, "Pick a clothing item to spawn", "Clothing", clothitems)
-			if(spawning_item)
-				if(ispath(spawning_item))
-					new spawning_item(usr.loc)
-				else
-					to_chat(usr, "Bad path: \"[spawning_item]\"")
-
-		// Reagent containers
-		if("hsbreag")
-			. = TRUE
-			if(!GLOB.hsboxspawn) return
-			var/spawning_item = tgui_input_list(usr, "Pick a Reagent container to spawn", "Reagent Containers", reagentitems)
-			if(spawning_item)
-				if(ispath(spawning_item))
-					new spawning_item(usr.loc)
-				else
-					to_chat(usr, "Bad path: \"[spawning_item]\"")
-
 		// Other items
 		if("hsbobj")
 			. = TRUE
 			if(!GLOB.hsboxspawn) return
-			var/spawning_item = tgui_input_list(usr, "Pick an item to spawn", "Items", otheritems)
+			var/spawning_item = pick_closest_path_hsb(otheritems)
 			if(spawning_item)
 				if(ispath(spawning_item))
 					new spawning_item(usr.loc)
 				else
 					to_chat(usr, "Bad path: \"[spawning_item]\"")
+
+/proc/pick_closest_path_hsb(list/matches)
+	var/value = input("Enter type to find (blank for all, cancel to cancel)", "Search for type") as null|text
+	if (isnull(value))
+		return
+	value = trim(value)
+	if(!isnull(value) && value != "")
+		matches = filter_fancy_list(matches, value)
+
+	if(matches.len==0)
+		return
+
+	var/chosen
+	if(matches.len==1)
+		chosen = matches[1]
+	else
+		chosen = tgui_input_list(usr, "Select a type", "Pick Type", sortList(matches))
+		if(!chosen)
+			return
+	chosen = matches[chosen]
+	return chosen

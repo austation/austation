@@ -1,6 +1,6 @@
 import { createSearch } from 'common/string';
 import { useBackend, useLocalState } from '../backend';
-import { Button, Flex, Input, Section, Table, Collapsible } from '../components';
+import { Button, Stack, Input, Section, Table, Collapsible } from '../components';
 import { Window } from '../layouts';
 import { isFalsy } from 'common/react';
 
@@ -27,35 +27,27 @@ export const Snasboxpanel = (props, context) => {
   const Header = (
     <Section
       title={
-        <Table>
-          <Table.Row>
-            <Table.Cell>
-              {"Snasbox Panel"}
-            </Table.Cell>
-            <Table.Cell
-              textAlign="right">
-              <Input
-                placeholder="Search"
-                value={searchText}
-                onInput={(e, value) => setSearchText(value)}
-                mx={1}
-              />
-            </Table.Cell>
-          </Table.Row>
-        </Table>
+        <Stack fill vertical>
+          <Stack.Item>
+            <Input
+              autoFocus
+              placeholder="Search"
+              value={searchText}
+              onInput={(e, value) => setSearchText(value)}
+            />
+          </Stack.Item>
+        </Stack>
       } />
   );
 
   const makeButton = command => {
     return (
-      <Flex.Item grow={1} basis="49%">
+      <Stack.Item fill grow>
         <Button
           fluid
-          ellipsis
-          my={0.5}
           onClick={() => act(command[1])}
           content={command[0]} />
-      </Flex.Item>
+      </Stack.Item>
     );
   };
 
@@ -65,20 +57,19 @@ export const Snasboxpanel = (props, context) => {
       .map(makeButton);
     if (Commands.length) {
       return (
-        <Collapsible
+        <Section
           title={`${Category[0]} (${Commands.length})`}
-          bold
-          key>
+          bold>
           <Section>
-            <Flex
-              spacing={1}
-              wrap="wrap"
+            <Stack
+              vertical
+              wrap
               textAlign="center"
               justify="center">
               {Commands}
-            </Flex>
+            </Stack>
           </Section>
-        </Collapsible>
+        </Section>
       );
     }
   };
@@ -88,14 +79,12 @@ export const Snasboxpanel = (props, context) => {
 
   return (
     <Window
-      width={720}
-      height={480}>
+      width={380}
+      height={580}>
       <Window.Content scrollable>
         {Header}
-        <Section>
-          {Items}
-          {(Items && Items.length === 0) && "No results found."}
-        </Section>
+        {Items}
+        {(Items && Items.length === 0) && "No results found."}
       </Window.Content>
     </Window>
   );

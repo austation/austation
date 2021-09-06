@@ -63,13 +63,6 @@ export const ListInput = (props, context) => {
                 acquireHotKey(KEY_DOWN);
                 acquireHotKey(KEY_UP);
 
-                for (let i = 65; i <= 90; i++) {
-                  acquireHotKey(i);
-                }
-                for (let i = 48; i <= 57; i++) {
-                  acquireHotKey(i);
-                }
-
                 if (lastScrollTime > performance.now()) {
                   return;
                 }
