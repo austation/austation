@@ -53,25 +53,3 @@
 					G.health = G.maxHealth
 					G.visible_message("<span class='notice'>The Gympie Gympie violently shakes its leafs at you!</span>")
 					qdel(src)
-/*
-/obj/item/reagent_containers/food/snacks/grown/gympie_gympie/attack_self(mob/user)
-	if(awakening || isspaceturf(user.loc))
-		return
-	to_chat(user, "<span class='notice'>You begin to awaken the Gympie Gympie...</span>")
-	awakening = TRUE
-	log_game("[key_name(user)] awakened a gympie gympie at [AREACOORD(user)].")
-
-	spawn(30)
-		if(!QDELETED(src))
-			var/mob/living/simple_animal/hostile/gympie_gympie/G = new /mob/living/simple_animal/hostile/gympie_gympie(get_turf(src.loc))
-			G.maxHealth += round(seed.endurance / 3)
-			G.melee_damage = 1+round(seed.potency / 11)//Minimum 1 maximum 10. Minimum 1 damage due to weird bug with simple mob attacks (This is also probably broken)
-			G.move_to_delay -= round(seed.production / 50)
-			G.gympie_poison_per_bite = 2+round(seed.potency/14)//Minimum 2 units maximum of 8 (This probably doesn't work well)
-			for(var/reagent_id in seed.reagents_add)
-				G.gympie_poison = GLOB.chemical_reagents_list[reagent_id]
-				G.type_count++
-			G.health = G.maxHealth
-			G.visible_message("<span class='notice'>The Gympie Gympie violently shakes its leafs at you!</span>")
-			qdel(src)
-		*/
