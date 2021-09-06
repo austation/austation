@@ -74,6 +74,7 @@
 #include "austation\code\game\atoms.dm"
 #include "austation\code\game\turf.dm"
 #include "austation\code\game\area\Space_Station_13_areas.dm"
+#include "austation\code\game\gamemodes\sandbox\h_sandbox.dm"
 #include "austation\code\game\machinery\cell_charger.dm"
 #include "austation\code\game\machinery\syndicatebeacon.dm"
 #include "austation\code\game\machinery\porta_turret\portable_turret.dm"

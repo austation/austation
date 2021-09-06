@@ -1,3 +1,4 @@
+/* austation begin -- tgui sadbox
 /*
 AUSTATION NOTES
 hsb_safespawn has been removed and replaced with hsbspawn
@@ -303,3 +304,5 @@ GLOBAL_VAR_INIT(hsboxspawn, TRUE)
 
 				if(CONFIG_GET(flag/sandbox_autoclose))
 					usr << browse(null,"window=sandbox")
+
+austation end*/
