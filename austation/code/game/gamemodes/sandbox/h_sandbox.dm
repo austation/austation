@@ -35,21 +35,12 @@ GLOBAL_VAR_INIT(hsboxspawn, TRUE)
 
 	var/spawn_timer = 0
 
-	var/static/list/otheritems
-
 	//items that shouldn't spawn on the floor because they would bug or act weird
 	var/static/list/spawn_forbidden = list(
 		/obj/item/tk_grab, /obj/item/implant, // not implanter, the actual thing that is inside you
 		/obj/item/assembly, /obj/item/onetankbomb, /obj/item/pda/ai,
 		/obj/item/smallDelivery, /obj/item/projectile,
 		/obj/item/borg/sight, /obj/item/borg/stun, /obj/item/robot_module)
-
-/datum/hSB/New()
-	..()
-	if(!otheritems)
-		otheritems = subtypesof(/obj/item/)
-		for(var/typekey in spawn_forbidden)
-			otheritems -= typesof(typekey)
 
 /datum/hSB/ui_static_data(mob/user)
 	var/list/data = list()
@@ -263,30 +254,16 @@ GLOBAL_VAR_INIT(hsboxspawn, TRUE)
 		if("hsbobj")
 			. = TRUE
 			if(!GLOB.hsboxspawn) return
-			var/spawning_item = pick_closest_path_hsb(otheritems)
+			var/thin =
+			var/spawning_item = pick_closest_path(FALSE, matches = get_fancy_list_of_playerspawn_item_types())
 			if(spawning_item)
-				if(ispath(spawning_item))
-					new spawning_item(usr.loc)
-				else
-					to_chat(usr, "Bad path: \"[spawning_item]\"")
+				new spawning_item(usr.loc)
 
-/proc/pick_closest_path_hsb(list/matches)
-	var/value = input("Enter type to find (blank for all, cancel to cancel)", "Search for type") as null|text
-	if (isnull(value))
-		return
-	value = trim(value)
-	if(!isnull(value) && value != "")
-		matches = filter_fancy_list(matches, value)
-
-	if(matches.len==0)
-		return
-
-	var/chosen
-	if(matches.len==1)
-		chosen = matches[1]
-	else
-		chosen = tgui_input_list(usr, "Select a type", "Pick Type", sortList(matches))
-		if(!chosen)
-			return
-	chosen = matches[chosen]
-	return chosen
+/datum/hSB/proc/get_fancy_list_of_playerspawn_item_types()
+	var/static/list/pre_generated_list
+	if (!pre_generated_list) //init
+		var/list/typelist = subtypesof(/obj/item)
+		for(var/typekey in spawn_forbidden)
+			typelist -= typesof(typekey)
+		pre_generated_list = make_types_fancy(typelist)
+	return pre_generated_list
