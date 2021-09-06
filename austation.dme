@@ -294,4 +294,8 @@
 #include "austation\code\modules\vending\_vending.dm"
 #include "austation\code\modules\vending\clothesmate.dm"
 #include "austation\code\modules\wiremod\marker.dm"
+#include "austation\code\modules\events\communications_blackout.dm"
+#include "austation\code\modules\events\disease_outbreak.dm"
+#include "austation\code\modules\events\electrical_storm.dm"
+#include "austation\code\modules\events\space_dragon.dm"
 // END_INCLUDE
