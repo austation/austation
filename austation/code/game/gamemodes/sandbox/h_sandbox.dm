@@ -254,7 +254,6 @@ GLOBAL_VAR_INIT(hsboxspawn, TRUE)
 		if("hsbobj")
 			. = TRUE
 			if(!GLOB.hsboxspawn) return
-			var/thin =
 			var/spawning_item = pick_closest_path(FALSE, matches = get_fancy_list_of_playerspawn_item_types())
 			if(spawning_item)
 				new spawning_item(usr.loc)
