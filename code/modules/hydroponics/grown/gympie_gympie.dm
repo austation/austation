@@ -7,8 +7,8 @@
 	plantname = "Gympie Gympie Plants"
 	product = /obj/item/reagent_containers/food/snacks/grown/gympie_gympie
 	yield = 5
-	genes = list(/datum/plant_gene/trait/stinging)
-	growthstages = 3
+	genes = list(/datum/plant_gene/trait/stinging,/datum/plant_gene/trait/smoke)
+	growthstages = 2
 	icon_grow = "gympiegympie-grow"
 	icon_harvest = "gympiegympie-harvest"
 	icon_dead = "gympiegympie-dead"
