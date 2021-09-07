@@ -41,14 +41,9 @@ jobs:
           tgui/bin/tgui --lint
           tgui/bin/tgui --test
           bash tools/ci/check_grep.sh
-<<<<<<< HEAD
-          python3 tools/mapmerge2/dmi.py --test
-          ~/dreamchecker -e austation.dme
-=======
           tools/bootstrap/python -m dmi.test
           tools/bootstrap/python -m mapmerge2.dmm_test
-          ~/dreamchecker
->>>>>>> 345e471a4e... Updates mapmerge2 folder to tg's latest, along with python bootstrapping (#4920)
+          ~/dreamchecker -e austation.dme
   compile_all_maps:
     runs-on: ubuntu-latest
     steps:
