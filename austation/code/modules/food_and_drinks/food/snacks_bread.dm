@@ -351,6 +351,6 @@
 	if(prob(20) && !(locate(/datum/reagent/stabilizing_agent) in reagents.reagent_list))
 		radiation_pulse(src, bread_power + energy_power / 50 + damage_power, 3)
 
-/obj/item/reagent_containers/food/snacks/store/bread/supermatter/initialize_slice(/obj/machinery/power/supermatter_crystal/SM, reagents_per_slice)
+/obj/item/reagent_containers/food/snacks/store/bread/supermatter/initialize_slice(obj/machinery/power/supermatter_crystal/SM, reagents_per_slice)
 	SM.damage = damage_power
 	SM.power = energy_power
