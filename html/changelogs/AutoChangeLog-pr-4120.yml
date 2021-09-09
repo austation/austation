@@ -1,0 +1,4 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - refactor: "all syndicate boxes now look like syndicate boxes"
