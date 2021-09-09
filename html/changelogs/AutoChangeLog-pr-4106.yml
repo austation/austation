@@ -1,0 +1,4 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - tweak: "Changes exploration mainframes to proper exploration communication setups on pubby and metastation."
