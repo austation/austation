@@ -536,7 +536,7 @@
 /obj/structure/table/optable/proc/patient_deleted(datum/source)
 	SIGNAL_HANDLER
 	set_patient(null)
-	
+
 /obj/structure/table/optable/proc/check_eligible_patient()
 	get_patient()
 	if(!patient)

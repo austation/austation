@@ -32,6 +32,7 @@
 // BEGIN_INCLUDE
 #include "austation\code\__HELPERS\matrices.dm"
 #include "austation\code\__HELPERS\roundend.dm"
+#include "austation\code\__HELPERS\type_processing.dm"
 #include "austation\code\_globalvars\coilgun.dm"
 #include "austation\code\_globalvars\misc.dm"
 #include "austation\code\_globalvars\lists\maintenance_loot.dm"
@@ -72,6 +73,7 @@
 #include "austation\code\datums\traits\neutral.dm"
 #include "austation\code\datums\wires\apc.dm"
 #include "austation\code\game\atoms.dm"
+#include "austation\code\game\materialization.dm"
 #include "austation\code\game\turf.dm"
 #include "austation\code\game\area\Space_Station_13_areas.dm"
 #include "austation\code\game\machinery\cell_charger.dm"
