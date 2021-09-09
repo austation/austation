@@ -48,7 +48,7 @@
 			target = AH.initiator_ckey
 		else
 			return "Ticket #[id] not found!"
-	var/res = IrcPm(target, all_params.Join(" "), sender.friendly_name)
+	var/res = TgsPm(target, all_params.Join(" "), sender.friendly_name)
 	if(res != "Message Successful")
 		return res
 
