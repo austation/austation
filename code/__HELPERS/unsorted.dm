@@ -1490,7 +1490,7 @@ If it ever becomes necesary to get a more performant REF(), this lies here in wa
 		/obj/item/reagent_containers/food/snacks/store/bread,
 		/obj/item/reagent_containers/food/snacks/grown/nettle
 		)
-	blocked |= typesof(/obj/item/reagent_containers/food/snacks/customizable)
+	blocked |= typesof(/obj/item/reagent_containers/food/snacks/customizable) + typesof(/obj/item/reagent_containers/food/snacks/store/bread/recycled) // austation -- adds recycled bread to food spawn blacklist
 
 	return pick(subtypesof(/obj/item/reagent_containers/food/snacks) - blocked)
 

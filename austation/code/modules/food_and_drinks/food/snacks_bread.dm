@@ -212,7 +212,7 @@
 	tastes = list("gluons" = 10)
 	bread_slowdown = 3.5
 	process = TRUE
-	evolve_level = 3000
+	evolve_level = 3000 // make sure to change the anti matter explosion scaling var if you change this
 	evolveto = /obj/item/reagent_containers/food/snacks/store/bread/recycled/antimatter
 
 /obj/item/reagent_containers/food/snacks/store/bread/recycled/strange/process()
@@ -290,22 +290,29 @@
 /obj/item/reagent_containers/food/snacks/store/bread/recycled/antimatter/throw_impact(atom/hit_atom, datum/thrownthing/throwingdatum) // throwing doesn't game the bread
 	. = ..()
 	if(isopenturf(hit_atom))
-		if(isclosedturf(hit_atom))
-			var/turf/closed/T = hit_atom
-			T.ScrapeAway()
 		return
 	visible_message("<span class='danger'>\The [src] collides with \the [hit_atom], annihilating it in a blinding flash of pure energy and flour!</span>")
 	playsound(src, 'sound/effects/supermatter.ogg', 50, 1)
 	var/mob/thrower = thrownby.resolve()
-	if(thrownby) // wheeze no cheesing this
-		to_chat(thrower, "<span class='userdanger'>You realize too late that \the [src] was quantum-entangled with your body, as your atoms dissociate into pure energy, taking the bread with them!</span>")
-		thrower.dust(force = TRUE)
-		qdel(src)
-	if(isliving(hit_atom))
+	var/force_delete = TRUE
+	if(isclosedturf(hit_atom))
+		var/turf/closed/T = hit_atom
+		T.ScrapeAway()
+		force_delete = FALSE
+	else if(isliving(hit_atom))
 		var/mob/living/L = hit_atom
 		L.dust(force = TRUE)
-		return
-	qdel(hit_atom)
+		force_delete = FALSE
+	var/static/stabilizer = pick(/datum/reagent/stable_plasma, /datum/reagent/stabilizing_agent, /datum/reagent/consumable/milk)
+	if(!(locate(stabilizer) in reagents.reagent_list))
+		if(thrownby)
+			to_chat(thrower, "<span class='userdanger'>You realize too late that \the [src] was quantum-entangled with your body, as your atoms dissociate into pure energy, taking the bread with them!</span>")
+			thrower.dust(force = TRUE)
+			qdel(src)
+		var/modif = bread_density / 3000 + 1
+		explosion(hit_atom.loc, 5*modif, 7*modif, 10*modif, ignorecap = TRUE)
+	if(force_delete)
+		qdel(hit_atom)
 
 // damage inheritance for mutant bread
 /obj/item/reagent_containers/food/snacks/store/bread/recycled/teleport_act()
@@ -327,17 +334,23 @@
 	w_class = WEIGHT_CLASS_HUGE
 	slice_path = /obj/machinery/power/supermatter_crystal // yes, you can use this to transport the supermatter crystal
 	slices_num = 1
-	var/power = 0
+	var/bread_power = 50 // power to add on top of supermatter stats
+	var/energy_power = 0 // power from SM energy
+	var/damage_power = 0 // power from SM damage
 
 /obj/item/reagent_containers/food/snacks/store/bread/supermatter/New(loc, ...)
+	..()
 	START_PROCESSING(SSobj, src)
-	. = ..()
 
 /obj/item/reagent_containers/food/snacks/store/bread/supermatter/Destroy()
 	explosion(get_turf(src),2,4,6)
 	STOP_PROCESSING(SSobj, src)
-	. = ..()
+	return ..()
 
 /obj/item/reagent_containers/food/snacks/store/bread/supermatter/process()
-	if(prob(20))
-		radiation_pulse(src, power/2, 3)
+	if(prob(20) && !(locate(/datum/reagent/stabilizing_agent) in reagents.reagent_list))
+		radiation_pulse(src, bread_power + energy_power / 50 + damage_power, 3)
+
+/obj/item/reagent_containers/food/snacks/store/bread/supermatter/initialize_slice(/obj/machinery/power/supermatter_crystal/SM, reagents_per_slice)
+	SM.damage = damage_power
+	SM.energy = energy_power

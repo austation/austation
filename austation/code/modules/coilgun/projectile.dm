@@ -23,6 +23,7 @@
 	var/heat_capacity = 100 // how hot the object can get before melting
 	var/mass = 0 // how heavy the object is
 	var/special //special propeties
+	var/rad_max = 0 // Highest rad strength from rad contents
 	var/spec_amt = 0 // how many times has this projectile been modified
 	var/max_spec = 3 // max amount of special effects we can have
 	var/p_heat = 0 // projectile temp
@@ -298,7 +299,7 @@
 	var/turf/T = get_turf(src)
 	for(var/atom/movable/AM in contents)
 		AM.forceMove(T)
-		other_special(AM)
+		death_special(AM)
 		if(collision && !QDELETED(AM))
 			var/range = rand(1, 4)
 			AM.throw_at(get_ranged_target_turf(src, pick(GLOB.cardinals), range), range, 1)
@@ -318,7 +319,7 @@
 	if(isitem(AM))
 		var/obj/item/I = AM
 		var/datum/component/radioactive/rads = I.GetComponent(/datum/component/radioactive)
-		if(rads?.can_contaminate)
+		if(rads && rads.can_contaminate && rads.strength > max_rads)
 			special |= HVP_RADIOACTIVE
 			AddComponent(/datum/component/radioactive, rads.strength, src)
 
@@ -343,7 +344,7 @@
 		return TRUE
 
 /// Called when projectile runs out of momentum
-/obj/item/projectile/hvp/proc/other_special(atom/movable/AM)
+/obj/item/projectile/hvp/proc/death_special(atom/movable/AM)
 	if(istype(AM, /obj/item/reagent_containers) && !istype(AM, /obj/item/reagent_containers/food))
 		var/datum/reagents/RH = locate() in AM
 		if(RH?.total_volume)
@@ -374,10 +375,14 @@
 	if(!contents.len)
 		qdel(src)
 
+/obj/item/projectile/hvp/pipe_eject()
+	if(velocity >= 1)
+		launch(dir2angle(direction), 15) // not accurate
+
 // --- debugs/adminbuse shots ---
 
 /obj/item/projectile/hvp/debug
-	desc = "You feel like you probably angered one of the gods."
+	desc = "Someone has probably angered the gods."
 	velocity = 500
 	mass = 5
 	cangib = FALSE
