@@ -1,0 +1,4 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - bugfix: "IPC hands are now properly visible over jumpsuits on side states"
