@@ -309,8 +309,8 @@
 			to_chat(thrower, "<span class='userdanger'>You realize too late that \the [src] was quantum-entangled with your body, as your atoms dissociate into pure energy, taking the bread with them!</span>")
 			thrower.dust(force = TRUE)
 			qdel(src)
-		var/modif = bread_density / 3000 + 1
-		explosion(hit_atom.loc, 5*modif, 7*modif, 10*modif, ignorecap = TRUE)
+		var/modif = bread_density / 3000
+		explosion(hit_atom.loc, 5*modif, 8*modif, 12*modif, ignorecap = TRUE)
 	if(force_delete)
 		qdel(hit_atom)
 
