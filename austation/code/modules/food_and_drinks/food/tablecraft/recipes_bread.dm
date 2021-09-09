@@ -22,7 +22,7 @@
 		return
 	if(cyrsteel)
 		S.damage_power = cyrsteel.damage
-		S.energy_power = crysteel.energy
+		S.energy_power = cyrsteel.power
 		qdel(cyrsteel)
 		return
 	message_admins("Somebody got supermatter bread without deleting the supermatter crystal, somehow, at [ADMIN_JMP(A)]")

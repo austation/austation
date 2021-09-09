@@ -319,7 +319,7 @@
 	if(isitem(AM))
 		var/obj/item/I = AM
 		var/datum/component/radioactive/rads = I.GetComponent(/datum/component/radioactive)
-		if(rads && rads.can_contaminate && rads.strength > max_rads)
+		if(rads && rads.can_contaminate && rads.strength > rad_max)
 			special |= HVP_RADIOACTIVE
 			AddComponent(/datum/component/radioactive, rads.strength, src)
 
@@ -375,7 +375,7 @@
 	if(!contents.len)
 		qdel(src)
 
-/obj/item/projectile/hvp/pipe_eject()
+/obj/item/projectile/hvp/pipe_eject(direction)
 	if(velocity >= 1)
 		launch(dir2angle(direction), 15) // not accurate
 
@@ -406,3 +406,7 @@
 /obj/item/projectile/hvp/debug/sticky/New()
 	..()
 	update_animations()
+
+#undef MAX_SHAKE
+#undef BASE_SWITCH_RANGE
+#undef MAX_SWITCH_RANGE

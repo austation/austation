@@ -1,5 +1,5 @@
 /obj/item/reagent_containers/food/snacks/synthetic_cake
-	name = "Cake Dough"
+	name = "cake dough"
 	desc = "Looks like an unfinished mess of dough."
 	icon = 'icons/obj/food/food_ingredients.dmi'
 	icon_state = "dough"
@@ -64,12 +64,12 @@
 
 	if(process)
 		START_PROCESSING(SSobj, src)
-	. = ..()
+	return ..()
 
 /obj/item/reagent_containers/food/snacks/store/bread/recycled/Destroy()
 	if(process)
 		STOP_PROCESSING(SSobj, src)
-	. = ..()
+	return ..()
 
 /obj/item/reagent_containers/food/snacks/store/bread/recycled/pickup(mob/user)
 	. = ..()
@@ -88,7 +88,7 @@
 			playsound(src, 'sound/effects/meteorimpact.ogg', 100, 1)
 			W.dismantle_wall(1)
 	else
-		. = ..()
+		return ..()
 
 /obj/item/reagent_containers/food/snacks/store/bread/recycled/proc/check_evolve()
 	if(evolveto && bread_density >= evolve_level)
@@ -353,4 +353,4 @@
 
 /obj/item/reagent_containers/food/snacks/store/bread/supermatter/initialize_slice(/obj/machinery/power/supermatter_crystal/SM, reagents_per_slice)
 	SM.damage = damage_power
-	SM.energy = energy_power
+	SM.power = energy_power
