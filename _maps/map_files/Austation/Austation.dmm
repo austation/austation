@@ -85929,6 +85929,7 @@
 /area/science/mixing)
 "wux" = (
 /obj/item/rack_parts,
+/mob/living/simple_animal/hostile/retaliate/goose/vomit,
 /turf/open/floor/plating,
 /area/maintenance/starboard/fore)
 "wuV" = (
