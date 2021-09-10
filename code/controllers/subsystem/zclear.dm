@@ -152,6 +152,8 @@ SUBSYSTEM_DEF(zclear)
 /datum/controller/subsystem/zclear/proc/wipe_z_level(z_level, tracking = FALSE, datum/callback/completion_callback)
 	if(!z_level)
 		return
+	//austation -- pause air
+	SSair.pause_z(z_level)
 
 	var/list/turfs = block(locate(1, 1, z_level), locate(world.maxx, world.maxy, z_level))
 	var/list/divided_turfs = list()
@@ -203,6 +205,8 @@ SUBSYSTEM_DEF(zclear)
 			//Done
 			LAZYREMOVE(processing_levels, cleardata)
 			//Finalize area
+			//austation -- unpause air
+			SSair.unpause_z(cleardata.zvalue)
 			var/area/spaceA = GLOB.areas_by_type[/area/space]
 			spaceA.reg_in_areas_in_z()	//<< Potentially slow proc
 			if(cleardata.completion_callback)
