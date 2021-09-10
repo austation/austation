@@ -1,4 +1,0 @@
-author: "AustationBot"
-delete-after: True
-changes: 
-  - balance: "Bag of holding's can no longer teleport their contents through walls when dumped."

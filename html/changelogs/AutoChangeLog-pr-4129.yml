@@ -1,4 +1,0 @@
-author: "AustationBot"
-delete-after: True
-changes: 
-  - refactor: "replaced some of the more egregious spawn()s with timers"
