@@ -316,7 +316,11 @@
 	M.visible_message("<span class='warning'>[M] is thrown clear of [AM]!</span>", \
 					"<span class='warning'>You're thrown clear of [AM]!</span>")
 	M.throw_at(target, 14, 5, AM)
+<<<<<<< HEAD
 	M.Knockdown(40) // austation -- changes borg Paralyze(60) to Knockdown(40)
+=======
+	M.Knockdown(60)
+>>>>>>> 7c3512d6bc... cyborg spin knockdown (#5297)
 
 /datum/component/riding/proc/equip_buckle_inhands(mob/living/carbon/human/user, amount_required = 1, riding_target_override = null)
 	var/atom/movable/AM = parent
