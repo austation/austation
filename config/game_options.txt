@@ -409,11 +409,7 @@ RANDOM_LAWS asimov
 RANDOM_LAWS asimovpp
 RANDOM_LAWS crewsimov
 RANDOM_LAWS corporate
-<<<<<<< HEAD
-RANDOM_LAWS crewsimov
-=======
 RANDOM_LAWS maintain
->>>>>>> 019e1836e6... beep boop (#4956)
 
 ## Quirky laws. Shouldn't cause too much harm
 #RANDOM_LAWS hippocratic
