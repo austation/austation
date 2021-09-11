@@ -1,0 +1,10 @@
+author: "TheFakeElon"
+delete-after: True
+changes: 
+  - tweak: "Antimatter bread can be stabilized"
+  - tweak: "Antimatter bread has a chance to undergo complete annihilation"
+  - bugfix: "Jagerbomb actually works now"
+  - bugfix: "Coilgun rad handling works properly now"
+  - balance: "Silver extract can no longer spawn recycled bread"
+  - balance: "Botany can no longer obtain bread chemicals or sarin"
+  - code_imp: "disposals, bread and chem optimizations"
