@@ -100,12 +100,14 @@
 	nutriment_factor = 30 * REAGENTS_METABOLISM
 	metabolization_rate = 2 * REAGENTS_METABOLISM
 	taste_description = "sweetness"
+
 /datum/reagent/neutron_fluid
 	name = "Neutron Fluid"
 	description = "A dense fluid like substance composed of pure neutrons, extremely dense"
 	taste_description = "nothing" // neutrons, get it?
 	color = "#97FFFF"
 	metabolization_rate = 4 // same as clf3
+	can_synth = FALSE
 
 /datum/reagent/neutron_fluid/on_mob_life(mob/living/carbon/M)
 	M.adjustBruteLoss(3)
