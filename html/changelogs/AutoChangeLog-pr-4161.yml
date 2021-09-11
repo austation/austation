@@ -1,0 +1,4 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - bugfix: "Ghosts no longer get spammed with It's Loose notifications when there's no singulo or tesla."
