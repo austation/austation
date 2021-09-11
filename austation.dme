@@ -187,6 +187,7 @@
 #include "austation\code\modules\food_and_drinks\recipes\recipes_misc.dm"
 #include "austation\code\modules\hydroponics\grown.dm"
 #include "austation\code\modules\hydroponics\plant_genes.dm"
+#include "austation\code\modules\hydroponics\grown\berries.dm"
 #include "austation\code\modules\hydroponics\grown\towercap.dm"
 #include "austation\code\modules\jobs\job_types\chief_medical_officer.dm"
 #include "austation\code\modules\jobs\job_types\emt.dm"
