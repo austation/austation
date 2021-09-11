@@ -1,0 +1,4 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - balance: "Removes the bolt of death and bolt of adminheal from xenobiology space carps (Chaos + Regular)"
