@@ -1,0 +1,4 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - balance: "chaplain's soulstone can no longer shard bodies with souls"
