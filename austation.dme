@@ -177,6 +177,7 @@
 #include "austation\code\modules\coilgun\barrel\barrel.dm"
 #include "austation\code\modules\coilgun\barrel\barrel_builder.dm"
 #include "austation\code\modules\events\bruh_moment.dm"
+#include "austation\code\modules\events\wizard\magicarp.dm"
 #include "austation\code\modules\food_and_drinks\drinks\drinks.dm"
 #include "austation\code\modules\food_and_drinks\food\snacks_bread.dm"
 #include "austation\code\modules\food_and_drinks\food\snacks_other.dm"
