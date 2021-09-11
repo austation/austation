@@ -1,0 +1,4 @@
+author: "Port By Froststahr."
+delete-after: True
+changes: 
+  - admin: "The panic bunker allows for a minimum time to be set, blocking players who lack the required amount of living played time from accessing the game."
