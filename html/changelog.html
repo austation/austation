@@ -56,6 +56,78 @@
 		-->
 		<div class="commit sansserif">
 
+			<h2 class="date">12 September 2021</h2>
+			<h3 class="author">AustationBot updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="rscdel">The exploration nuke no longer plays alarm.ogg</li>
+				<li class="config">The AI will have a random lawset at the start of each shift from the following list: Asimov, asimov++, crewsimov, corporate, maintain.</li>
+				<li class="rscadd">Bounty console now uses a tgui interface</li>
+				<li class="rscadd">There is a new "Bounty Hunter" program available for modular computers and tablets</li>
+				<li class="admin">Admins can now force people to stub their toes.</li>
+				<li class="balance">Cryo syringes no long have the no react flag.</li>
+				<li class="balance">Reagents inside cryo syringes will be at 20 kelvin.</li>
+				<li class="bugfix">Geysers no longer generate in ruins. In fact, nothing should generate in ruins, as ruins now generate before other things.</li>
+				<li class="tweak">Due to changes in the way the map is setup, floors that are parts of ruins on lavaland loaded at roundstart will now deconstruct into lava instead of basalt floors.</li>
+				<li class="code_imp">When a template is loaded with a passthrough turf, non-passthrough area on it, onto a genturf, the genturf is now forced to generate with the old area. This allows ruins to have objects in a powered area on a passthrough turf on lavaland.</li>
+				<li class="code_imp">Passthrough turfs can now hint towards if the turf below should be closed/open (wall/floor). This can be useful in ruins, as it can influence map generation without overriding the exact turf placed underneath.</li>
+				<li class="imageadd">Sprites for passthrough turfs with closed/open preferrence (visible in editor only)</li>
+				<li class="balance">Removes the bolt of death and bolt of adminheal from xenobiology space carps (Chaos + Regular)</li>
+				<li class="bugfix">Fixes gamemode presetup being called late.</li>
+				<li class="bugfix">Fixes cult having a random chance to fail to setup between 24-28 players.</li>
+				<li class="admin">Updated some logging, added some logging.</li>
+				<li class="balance">chaplain's soulstone can no longer shard bodies with souls</li>
+				<li class="rscadd">Added the AI lab room as a possible ruin room.</li>
+				<li class="bugfix">Button.Input no longer breaks tgui interfaces. Fixes advanced injector creation interface, as well as NTOS file manager, chat, ID card modification and Revelation.</li>
+				<li class="bugfix">Silicons can once again interact with intercoms</li>
+				<li class="rscadd">Bitwise operations and Trigonometry related circuit components, unlocked in a new techweb node.</li>
+				<li class="rscadd">Rounding circuit component.</li>
+				<li class="tweak">Arithmetic circuit now has a modulus option.</li>
+				<li class="tweak">New abstract circuit to base components that initialize with an arbitrary amount of inputs.</li>
+				<li class="bugfix">fixed mech radios</li>
+				<li class="bugfix">Ghosts no longer get spammed with It's Loose notifications when there's no singulo or tesla.</li>
+				<li class="rscadd">Adds Corporate Sofas, an alternative, sleeker style of sofa.</li>
+				<li class="code_imp">TGUI interfaces updating from ui_act will not update again due to ui_update</li>
+				<li class="rscadd">Abandoned crate tamper-proofing now detects EMPs.</li>
+				<li class="refactor">Refactors meteors, they are now orbital map components and will fly towards the station, colliding with orbital bodies and flying shuttles.</li>
+				<li class="bugfix">Custom emotes work again.</li>
+				<li class="rscadd">Added new space ambient music</li>
+				<li class="bugfix">fixed ambient music and buzz</li>
+				<li class="code_imp">Improves the supercruise collision detection by optimising it and making it so passing something triggers a collision event.</li>
+				<li class="code_imp">SSorbits now supports multiple orbital maps.</li>
+				<li class="rscdel">removed the separated chemicals trait from botany</li>
+			</ul>
+			<h3 class="author">Bluezorua updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="balance">walking while holding a stunbaton no longer causes it to start blocking</li>
+			</ul>
+			<h3 class="author">Fox-McCloud AnCopper updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="tweak">ashwalkers malf AI module has been moved to the syndicate lavaland base vault.</li>
+				<li class="tweak">Heavily beefed up the security of the Syndie vault, added two more turrets and 3 layer walls.</li>
+			</ul>
+			<h3 class="author">Port By Froststahr. updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="admin">The panic bunker allows for a minimum time to be set, blocking players who lack the required amount of living played time from accessing the game.</li>
+			</ul>
+			<h3 class="author">TheFakeElon updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="tweak">Antimatter bread can be stabilized</li>
+				<li class="tweak">Antimatter bread has a chance to undergo complete annihilation</li>
+				<li class="bugfix">Jagerbomb actually works now</li>
+				<li class="bugfix">Coilgun rad handling works properly now</li>
+				<li class="balance">Silver extract can no longer spawn recycled bread</li>
+				<li class="balance">Botany can no longer obtain bread chemicals or sarin</li>
+				<li class="code_imp">disposals, bread and chem optimizations</li>
+			</ul>
+			<h3 class="author">YakiAttaki updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="bugfix">fixed recipie for radioactive disinfectant</li>
+			</ul>
+			<h3 class="author">fighterslam updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="bugfix">Fixed the syndicate lavaland base to have the proper frequencies to be compatible with Supercruise.</li>
+			</ul>
+
 			<h2 class="date">10 September 2021</h2>
 			<h3 class="author">AustationBot updated:</h3>
 			<ul class="changes bgimages16">
