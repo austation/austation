@@ -19,20 +19,6 @@
 	. = ..()
 	update_registration()
 
-/obj/machinery/door/firedoor/power_change()
-	. = ..()
-	update_registration()
-
-/obj/machinery/door/firedoor/obj_break(damage_flag)
-	. = ..()
-	update_registration()
-
-/obj/machinery/door/firedoor/emag_act()
-	if(obj_flags & EMAGGED)
-		return
-	playsound(src.loc, "sparks", 100, 1)
-	update_registration()
-	. = ..()
 //these are hooked by auxtools
 /turf/proc/register_firelocks()
 /turf/proc/unregister_firelocks()
@@ -44,9 +30,8 @@
 	if(!istype(terf, /turf/open))
 		return
 	for(var/obj/machinery/door/firedoor/FD in terf)
-		if(!((FD.stat & BROKEN) || (FD.stat & EMAGGED)))
-			unregister = FALSE
-			break
+		unregister = FALSE
+		break
 	if(unregister)
 		terf.unregister_firelocks()
 	else
