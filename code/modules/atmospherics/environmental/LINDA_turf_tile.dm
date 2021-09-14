@@ -209,10 +209,9 @@
 /turf/proc/handle_decompression_floor_rip()
 /turf/open/floor/handle_decompression_floor_rip(sum)
 //austation begin -- reduced floor rip
-	if(sum > 20 && prob(CLAMP(sum / 20, 0, 5)))
-		if(floor_tile)
-			new floor_tile(src)
-		make_plating()
+	if(floor_tile)
+		new floor_tile(src)
+	make_plating()
 /*
 	if(sum > 20 && prob(CLAMP(sum / 20, 0, 15)))
 		if(floor_tile)

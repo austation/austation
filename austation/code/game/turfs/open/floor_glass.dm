@@ -444,9 +444,8 @@
 					"<span class='danger'>You crush \the [pushed_mob] into \the [src]!</span>")
 			log_combat(user, pushed_mob, "floor slammed", null, "against [src]")
 
-/turf/open/floor/glass/handle_decompression_floor_rip(sum)
-	if(sum > 20 && prob(CLAMP(sum / 10, 0, 30)) && !reinforced)
-		take_damage(25, BRUTE, "melee", 0)
+/turf/open/floor/glass/handle_decompression_floor_rip()
+	take_damage(25, BRUTE, "melee", 0)
 
 /turf/open/floor/glass/remove_tile(mob/user, silent = FALSE, make_tile = TRUE)
 	to_chat(user, "<span class='notice'>You can't remove the glass tile, use an RCD!</span>")
