@@ -18,8 +18,8 @@
 	attacktext = "Stings"
 	attack_sound = 'sound/weapons/slash.ogg'
 	faction = list("plants")
-	var/gas_boy = FALSE
-	var/sting_boy = FALSE
+	var/gas_boy = 0
+	var/sting_boy = 0
 	var/type_count = 3
 	var/gympie_poison_per_bite = 5
 	var/list/gympie_poison = list(/datum/reagent/toxin/mindbreaker,/datum/reagent/water,/datum/reagent/potassium)
@@ -35,15 +35,18 @@
 	if(. && isliving(target))
 		var/mob/living/L = target
 		if(L.reagents)
-			for(var/i = 1, i != type_count+1, i++)//Dirty water code - fuck dm for loops
-				L.reagents.add_reagent(gympie_poison[i], gympie_poison_per_bite*sting_boy)//Better than an if statement, I hope
+			for(var/i = 1, i != type_count+1, i++)
+				L.reagents.add_reagent(gympie_poison[i], gympie_poison_per_bite*sting_boy)
 
 /mob/living/simple_animal/hostile/gympie_gympie/death()
 	if(gas_boy)
 		var/datum/effect_system/smoke_spread/chem/S = new
-		var/splat_location = get_turf(target)
-		var/smoke_amount = 0.2
+		var/splat_location = get_turf(src)
+		create_reagents(10)
+		var/smoke_amount = 0.3
 		S.attach(splat_location)
-		S.set_up(gympie_poison, smoke_amount, splat_location, 0)
+		for(var/j = 1, j != type_count+1, j++)
+			S.set_up(gympie_poison[j], smoke_amount, splat_location, 0)
 		S.start()
-	. = ..()
+
+	..()

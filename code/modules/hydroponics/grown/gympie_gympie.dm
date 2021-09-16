@@ -7,7 +7,7 @@
 	plantname = "Gympie Gympie Plants"
 	product = /obj/item/reagent_containers/food/snacks/grown/gympie_gympie
 	yield = 5
-	genes = list(/datum/plant_gene/trait/stinging,/datum/plant_gene/trait/smoke)
+	genes = list(/datum/plant_gene/trait/stinging)
 	growthstages = 2
 	icon_grow = "gympiegympie-grow"
 	icon_harvest = "gympiegympie-harvest"
@@ -16,10 +16,11 @@
 	reagents_add = list(/datum/reagent/toxin/mindbreaker = 0.10)
 	rarity = 50
 	var/volume = 5
+	var/awaken_reagent = /datum/reagent/medicine/strange_reagent //Muh' debug purposes
 
 /obj/item/reagent_containers/food/snacks/grown/gympie_gympie
 	seed = /obj/item/seeds/gympie_gympie
-	name = "gympie gympie"
+	name = "Gympie Gympie"
 	desc = "Touching it wouldn't be wise."
 	icon_state = "gympiegympie"
 	var/awakening = 0
@@ -38,7 +39,7 @@
 
 /obj/item/seeds/gympie_gympie/on_reagent_change(changetype)
 	if(changetype == ADD_REAGENT)
-		var/datum/reagent/medicine/strange_reagent/S = reagents.has_reagent(/datum/reagent/medicine/strange_reagent)
+		var/datum/reagent/medicine/strange_reagent/S = reagents.has_reagent(awaken_reagent)
 		if(S)
 			spawn(30)
 				if(!QDELETED(src))
@@ -48,13 +49,15 @@
 					G.move_to_delay -= round(production / 50)
 					G.gympie_poison_per_bite = 2+round(potency/14)//Minimum 2 units maximum of 8 (This probably doesn't work well)
 					G.type_count = 0
+					G.gympie_poison = list()
+					G.health = G.maxHealth
 					for(var/datum/plant_gene/reagent/R in genes)
 						G.gympie_poison += R.reagent_id
 						G.type_count++
-					G.health = G.maxHealth
-					if(/datum/plant_gene/trait/smoke in genes)
-						G.gas_boy = TRUE
-					if(/datum/plant_gene/trait/stinging in genes)
-						G.sting_boy = TRUE
+					for(var/datum/plant_gene/trait/T in genes)
+						if(istype(T, /datum/plant_gene/trait/smoke))
+							G.gas_boy = 1
+						if(istype(T, /datum/plant_gene/trait/stinging))
+							G.sting_boy = 1
 					G.visible_message("<span class='notice'>The Gympie Gympie violently shakes its leafs at you!</span>")
 					qdel(src)
