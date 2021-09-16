@@ -14,11 +14,11 @@
 	item_state = "reimu"
 	gender = FEMALE
 
-/obj/item/toy/plush/neco-arc
+/obj/item/toy/plush/neco_arc
 	name = "strange doll"
 	desc = "Gnue..."
 	icon = 'austation/icons/obj/plushes.dmi'
-	icon_state = "neco-arc"
-	item_state = "neco-arc"
+	icon_state = "neco_arc"
+	item_state = "neco_arc"
 	gender = FEMALE
 	squeak_override = list('austation/sound/misc/gnue.ogg'=1)
