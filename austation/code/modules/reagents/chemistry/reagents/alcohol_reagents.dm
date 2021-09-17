@@ -14,6 +14,7 @@
 	glass_name = "jägermeister"
 	glass_desc = "56 different herbs and spices!"
 
+// Maybe this should be in pyrotechnics
 /datum/reagent/consumable/ethanol/jagerbomb
 	name = "jägerbomb"
 	description = "herbal energy drink?"
@@ -26,35 +27,27 @@
 	glass_icon_state = "jagerbomb"
 	glass_name = "jägerbomb"
 	glass_desc = "energy drinks and alcohol, uh oh"
+	var/ex_multiplier = 1
 
 /datum/reagent/consumable/ethanol/jagerbomb/on_mob_life(mob/living/carbon/M)
 	if(current_cycle >= 12 && prob(5))
-		var/warning_message = pick("You feel your chest clench.", "Your stomach rumbles.","You feel you need to catch your breath.","You feel a prickle of pain in your chest.")
-		to_chat(M, "<span class='notice'>[warning_message]</span>")
+		var/warning_message = pick("You feel your chest clench.", "Your stomach rumbles.","You feel you need to catch your breath.","You feel a painful prickle in your chest.")
+		to_chat(M, "<span class='warning'>[warning_message]</span>")
 	return ..()
 
 /datum/reagent/consumable/ethanol/jagerbomb/on_mob_end_metabolize(mob/living/M)
-	var/explosion_power = round(current_cycle / 55 * REM,0.1) // to stop monkey nuclear bombs
-	var/turf/T = get_turf(M)
+	// var/explosion_power = round(current_cycle ** 0.95 / 40) * ex_multiplier // custom scaling in case dyn_explosion changes for whatever reason
+	var/explosion_power = round(current_cycle / 2, 0.1)
 	M.log_message("has detonated with [explosion_power] explosion power from jagerbomb", LOG_ATTACK)
-	if(explosion_power >= 1)
-		explosion(T,explosion_power,explosion_power*2,explosion_power*4)
-
-	else if(explosion_power >= 0.75)
-		explosion(T,0,1,2,3)
-
-	else if(explosion_power >= 0.5)
-		explosion(T,0,0,2,3)
-
-	else if(explosion_power >= 0.25)
-		explosion(T,0,0,1,2)
-	else
-		explosion(T,0,0,0,1)
+	if(explosion_power > 0.4)
+		dyn_explosion(M, explosion_power)
 	..()
+
 /datum/reagent/consumable/ethanol/jagerbomb/stabilized
 	name = "stabilized jägerbomb"
 	description = "almost completely ethanol free!"
 	boozepwr = 1
+	ex_multiplier = 0.75
 
 /datum/reagent/consumable/ethanol/bushranger
 	name = "Bushranger"
@@ -63,6 +56,7 @@
 	aus = TRUE
 	boozepwr = 50
 	quality = DRINK_FANTASTIC
+	metabolization_rate = REAGENTS_METABOLISM
 	taste_description = "the bush"
 	glass_icon_state = "bushranger"
 	glass_name = "Bushranger"
@@ -93,7 +87,6 @@
 	color = "#ffd666" // rgb: 255, 214, 102
 	aus = TRUE
 	boozepwr = 50
-	metabolization_rate = REAGENTS_METABOLISM
 	quality = DRINK_FANTASTIC
 	taste_description = "ginger and lime"
 	glass_icon_state = "moscowmule"
@@ -106,7 +99,6 @@
 	color = "#ff704d" // rgb: 255, 112, 77
 	aus = TRUE
 	boozepwr = 5
-	metabolization_rate = REAGENTS_METABOLISM
 	quality = DRINK_FANTASTIC
 	taste_description = "Lemonade, lime cordial and bitters."
 	glass_icon_state = "llbitters"
@@ -119,7 +111,6 @@
 	color = "#4d0f00" // rgb: 77, 15, 0
 	aus = TRUE
 	boozepwr = 50
-	metabolization_rate = REAGENTS_METABOLISM
 	quality = DRINK_NICE
 	taste_description = "sharp herbal liqour"
 	glass_icon_state = "llbitters"

@@ -56,6 +56,143 @@
 		-->
 		<div class="commit sansserif">
 
+			<h2 class="date">17 September 2021</h2>
+			<h3 class="author">mudzbe updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="rscadd">Added Neco-Arc plushie, with sound!</li>
+			</ul>
+
+			<h2 class="date">12 September 2021</h2>
+			<h3 class="author">AustationBot updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="rscdel">The exploration nuke no longer plays alarm.ogg</li>
+				<li class="config">The AI will have a random lawset at the start of each shift from the following list: Asimov, asimov++, crewsimov, corporate, maintain.</li>
+				<li class="rscadd">Bounty console now uses a tgui interface</li>
+				<li class="rscadd">There is a new "Bounty Hunter" program available for modular computers and tablets</li>
+				<li class="admin">Admins can now force people to stub their toes.</li>
+				<li class="balance">Cryo syringes no long have the no react flag.</li>
+				<li class="balance">Reagents inside cryo syringes will be at 20 kelvin.</li>
+				<li class="bugfix">Geysers no longer generate in ruins. In fact, nothing should generate in ruins, as ruins now generate before other things.</li>
+				<li class="tweak">Due to changes in the way the map is setup, floors that are parts of ruins on lavaland loaded at roundstart will now deconstruct into lava instead of basalt floors.</li>
+				<li class="code_imp">When a template is loaded with a passthrough turf, non-passthrough area on it, onto a genturf, the genturf is now forced to generate with the old area. This allows ruins to have objects in a powered area on a passthrough turf on lavaland.</li>
+				<li class="code_imp">Passthrough turfs can now hint towards if the turf below should be closed/open (wall/floor). This can be useful in ruins, as it can influence map generation without overriding the exact turf placed underneath.</li>
+				<li class="imageadd">Sprites for passthrough turfs with closed/open preferrence (visible in editor only)</li>
+				<li class="balance">Removes the bolt of death and bolt of adminheal from xenobiology space carps (Chaos + Regular)</li>
+				<li class="bugfix">Fixes gamemode presetup being called late.</li>
+				<li class="bugfix">Fixes cult having a random chance to fail to setup between 24-28 players.</li>
+				<li class="admin">Updated some logging, added some logging.</li>
+				<li class="balance">chaplain's soulstone can no longer shard bodies with souls</li>
+				<li class="rscadd">Added the AI lab room as a possible ruin room.</li>
+				<li class="bugfix">Button.Input no longer breaks tgui interfaces. Fixes advanced injector creation interface, as well as NTOS file manager, chat, ID card modification and Revelation.</li>
+				<li class="bugfix">Silicons can once again interact with intercoms</li>
+				<li class="rscadd">Bitwise operations and Trigonometry related circuit components, unlocked in a new techweb node.</li>
+				<li class="rscadd">Rounding circuit component.</li>
+				<li class="tweak">Arithmetic circuit now has a modulus option.</li>
+				<li class="tweak">New abstract circuit to base components that initialize with an arbitrary amount of inputs.</li>
+				<li class="bugfix">fixed mech radios</li>
+				<li class="bugfix">Ghosts no longer get spammed with It's Loose notifications when there's no singulo or tesla.</li>
+				<li class="rscadd">Adds Corporate Sofas, an alternative, sleeker style of sofa.</li>
+				<li class="code_imp">TGUI interfaces updating from ui_act will not update again due to ui_update</li>
+				<li class="rscadd">Abandoned crate tamper-proofing now detects EMPs.</li>
+				<li class="refactor">Refactors meteors, they are now orbital map components and will fly towards the station, colliding with orbital bodies and flying shuttles.</li>
+				<li class="bugfix">Custom emotes work again.</li>
+				<li class="rscadd">Added new space ambient music</li>
+				<li class="bugfix">fixed ambient music and buzz</li>
+				<li class="code_imp">Improves the supercruise collision detection by optimising it and making it so passing something triggers a collision event.</li>
+				<li class="code_imp">SSorbits now supports multiple orbital maps.</li>
+				<li class="rscdel">removed the separated chemicals trait from botany</li>
+			</ul>
+			<h3 class="author">Bluezorua updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="balance">walking while holding a stunbaton no longer causes it to start blocking</li>
+			</ul>
+			<h3 class="author">Fox-McCloud AnCopper updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="tweak">ashwalkers malf AI module has been moved to the syndicate lavaland base vault.</li>
+				<li class="tweak">Heavily beefed up the security of the Syndie vault, added two more turrets and 3 layer walls.</li>
+			</ul>
+			<h3 class="author">Port By Froststahr. updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="admin">The panic bunker allows for a minimum time to be set, blocking players who lack the required amount of living played time from accessing the game.</li>
+			</ul>
+			<h3 class="author">TheFakeElon updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="tweak">Antimatter bread can be stabilized</li>
+				<li class="tweak">Antimatter bread has a chance to undergo complete annihilation</li>
+				<li class="bugfix">Jagerbomb actually works now</li>
+				<li class="bugfix">Coilgun rad handling works properly now</li>
+				<li class="balance">Silver extract can no longer spawn recycled bread</li>
+				<li class="balance">Botany can no longer obtain bread chemicals or sarin</li>
+				<li class="code_imp">disposals, bread and chem optimizations</li>
+			</ul>
+			<h3 class="author">YakiAttaki updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="bugfix">fixed recipie for radioactive disinfectant</li>
+			</ul>
+			<h3 class="author">fighterslam updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="bugfix">Fixed the syndicate lavaland base to have the proper frequencies to be compatible with Supercruise.</li>
+			</ul>
+
+			<h2 class="date">10 September 2021</h2>
+			<h3 class="author">AustationBot updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="balance">Ore Silo connections can no longer cross z-level boundaries, and will break if the object changes z-lvels.</li>
+				<li class="bugfix">TGUI interfaces have been manually tweaked across the board to update more consistently</li>
+				<li class="bugfix">Some potential exploits related to TGUI input validation/sanitisation have been fixed</li>
+				<li class="bugfix">Nanite cloud control now shows rules even when you don't have a disk with valid rules inserted</li>
+				<li class="bugfix">Extra settings for numbers in nanites now treat 0 as a valid number.</li>
+				<li class="bugfix">Cargo express console now doesn't add a second order to the cargo console cart. As a side-effect, it also doesn't print a requisition form.</li>
+				<li class="bugfix">The holodeck computer will no longer break when reenabling safety</li>
+				<li class="tweak">Chemistry heater no longer stays on when removing beaker with alt-click</li>
+				<li class="code_imp">Added signals for machine_open and machine_close</li>
+				<li class="refactor">all syndicate boxes now look like syndicate boxes</li>
+				<li class="bugfix">Fixes meta comms, will proper fix it tomorrow.</li>
+				<li class="refactor">replaced some of the more egregious spawn()s with timers</li>
+				<li class="rscadd">Nuclear countdown music</li>
+				<li class="balance">Bag of holding's can no longer teleport their contents through walls when dumped.</li>
+				<li class="bugfix">IPC hands are now properly visible over jumpsuits on side states</li>
+				<li class="rscadd">Coffee the Crab is now present in BoxStation Science</li>
+				<li class="rscadd">Birdboat the Goose is now present in DeltaStation, MetaStation, CorgStation, and PubbyStation maints</li>
+				<li class="rscadd">Lia the Carp is now present in the CorgStation HoS office</li>
+				<li class="rscadd">Cayenne the Carp is now present in the traitor deployable capsule shuttle</li>
+				<li class="rscadd">Tom the Turkey is the mascot of the Exploration Crew, and appears on the three exploration shuttles.</li>
+				<li class="admin">SDQL2 now supports all subsystems.</li>
+				<li class="bugfix">Alarm Monitoring program changed to avoid always-on unclearable fire alarms</li>
+				<li class="tweak">Hacking a firing pin out of a gun is no longer done via a crafting menu - you can now do it by simply holding the gun in your hand and clicking it with a welder/screwdriver/wirecutters</li>
+				<li class="bugfix">You are no longer prevented from selecting more neutral/negative quirks once you have reached the limit of 6 positive ones.</li>
+				<li class="bugfix">Fixed a scenario that allowed infinite resource generation via ore machines.</li>
+				<li class="bugfix">Radios and intercoms can no longer be toggled from a distance by non-silicons using hotkeys</li>
+				<li class="bugfix">Monkeys can now interact with wall-mounted intercoms</li>
+				<li class="bugfix">Radio and intercom UIs now update when toggled via hotkey</li>
+				<li class="balance">having x-ray makes you ignore flash protection and tint</li>
+				<li class="balance">flashbangs can flash people with x-ray through walls</li>
+				<li class="rscadd">syndicate autosurgeons get a special variant of eyes that allow flash protection</li>
+				<li class="tweak">Changes exploration mainframes to proper exploration communication setups on pubby and metastation.</li>
+				<li class="refactor">References to IRC now better describe TGS' and Discord's existence.</li>
+				<li class="admin">Players will now be better informed that messages are sent through TGS to IRC/Discord/etc when attempting to adminhelp with no available admins/use adminwho verb.</li>
+				<li class="admin">Initial ahelps are now multiline too.</li>
+			</ul>
+			<h3 class="author">Ivniinvi, TheChosenEvilOne updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="rscadd">Birdboat now has a chance to be controllable by dead chat, think twitch plays pokemon but goose and deadchat.</li>
+				<li class="rscadd">Deadchat controlled singularity variant.</li>
+			</ul>
+			<h3 class="author">Ivniinvi, bobbahbrown updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="admin">Add Requests Manager to view all prayers/centcom and syndicate requests/and nuke code requests within a round.</li>
+			</ul>
+			<h3 class="author">lordScrubling, Mothblocks, Rohesie updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="rscadd">placing fireman carried people onto things</li>
+			</ul>
+
+			<h2 class="date">08 September 2021</h2>
+			<h3 class="author">AustationBot updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="code_imp">Mapmerge2 has been updated along with an experimental .dmm merge driver being included for conflict resolution.</li>
+			</ul>
+
 			<h2 class="date">06 September 2021</h2>
 			<h3 class="author">AustationBot updated:</h3>
 			<ul class="changes bgimages16">
@@ -749,213 +886,6 @@
 			<h3 class="author">YakiAttaki updated:</h3>
 			<ul class="changes bgimages16">
 				<li class="bugfix">necro chest lookup table isn't looking for nothing anymore</li>
-			</ul>
-
-			<h2 class="date">16 July 2021</h2>
-			<h3 class="author">AnCopper updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="rscadd">Added commando magboots, given to Deathsquads</li>
-				<li class="tweak">Moved Deathsquad, Deathsquad Officer, and Juggernaut outfits to the ERT outfit file.</li>
-			</ul>
-			<h3 class="author">AustationBot updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="bugfix">fixed holodeck harddels</li>
-				<li class="rscadd">brass sword emp works on mechs</li>
-				<li class="rscadd">clockwork armaments envirosuit compatibility for plasmamen</li>
-				<li class="rscadd">visual effect on brass sword emp</li>
-				<li class="bugfix">brass sword emp not working</li>
-				<li class="bugfix">fixes ai multicamera mode turn static</li>
-				<li class="admin">Custom map template uploads should now work properly.</li>
-				<li class="tweak">Cargo and service now have techfabs instead of protolathes on corg</li>
-				<li class="bugfix">Fixed game hanging itself in lobby</li>
-				<li class="bugfix">fixed black pill not working</li>
-				<li class="bugfix">Tinea Luxor now actually makes you glow</li>
-				<li class="tweak">the holodeck beach and photobooth modules have been updated</li>
-				<li class="tweak">photobooth has been given the correct photoboot tiles instead of snow</li>
-				<li class="tweak">photoboot holodeck module has been given a razor and infinite photos camera</li>
-				<li class="tweak">beach holodeck module can now be swam in</li>
-				<li class="config">Default map ideal pop bounds adjusted.</li>
-				<li class="bugfix">fixed syntax</li>
-				<li class="code_imp">changed ^ to ** in lighting.dm and ghost_role.dm</li>
-				<li class="refactor">Refactors gamemode loading to select and setup maps for gamemodes 30 seconds before roundstart.</li>
-				<li class="bugfix">Reebe loading</li>
-				<li class="bugfix">Items being too big on clockcult</li>
-				<li class="bugfix">Clockcult camera runtime</li>
-				<li class="balance">Clockwork weapons are stronger when fighting near the ark.</li>
-				<li class="config">Raises clockcult probability to 2</li>
-				<li class="refactor">sword and spear are no longer two-handed weapons.</li>
-				<li class="tweak">Diagonal movement is now faster, by correcting the delay from an arbitrary 2x to the correct sqrt(2).</li>
-				<li class="admin">The diconnected typo is gone</li>
-				<li class="rscadd">Clock cultists can now summon their basic loudout using summon armaments</li>
-				<li class="bugfix">Replaces the pipe painter with a hand labeler in corg's experimentation lab</li>
-				<li class="balance">You can't speak on radion while in crit.</li>
-				<li class="bugfix">Messages will no longer appear twice for ghosts if the target is speaking on radio,</li>
-				<li class="bugfix">Some TGUI mistakes have been corrected, panel, air alarm, and contractor uplink should look good again.</li>
-				<li class="tweak">Uplink interface has been modified in looks, and will auto-focus</li>
-				<li class="tweak">there is now a delay to the application of the gender change potion</li>
-				<li class="bugfix">nanite program hub and programmer to be deconstructed can now be deconstructed</li>
-				<li class="tweak">Brain trauma lines now reference Beestation servers.</li>
-				<li class="rscadd">Captain skirt</li>
-				<li class="bugfix">Cargo skirt now works properly with digitigrade legs</li>
-				<li class="balance">firefighters are now radproof</li>
-				<li class="bugfix">Voice Sensor Nanites</li>
-				<li class="bugfix">Traitor codewords (thanks bosnia)</li>
-				<li class="refactor">Alot of on_hear() changed to signals</li>
-				<li class="tweak">DNA saboteur can no longer give positive mutations</li>
-				<li class="bugfix">updated pubbystation's holodeck</li>
-				<li class="rscadd">Added shuttle console to the arena</li>
-				<li class="bugfix">fixed arena shuttle</li>
-				<li class="bugfix">Minor runtime patch</li>
-				<li class="bugfix">You can now properly load shuttle templates via the template upload system</li>
-				<li class="tweak">Operation computers only recognize humans or monkeys as patients.</li>
-				<li class="bugfix">BOH Interfering with blade teleport</li>
-				<li class="balance">Sonic jackhammer can no longer break reinforced, cult and plastitanium walls.</li>
-			</ul>
-			<h3 class="author">DatBoiTim updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="tweak">Cryostatic Shells now at sec lathe instead of medlathe</li>
-			</ul>
-			<h3 class="author">Effectism updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="rscadd">Added a disposals network to Orbital.</li>
-				<li class="rscadd">Added job-specific rooms and/or lockers for any roles that were missing them.</li>
-			</ul>
-			<h3 class="author">Froststahr port updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="code_imp">Asset URL mappings are now cached to improve performance</li>
-			</ul>
-			<h3 class="author">MCterra10 updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="rscadd">Added syndi mask to metacoin shop</li>
-			</ul>
-			<h3 class="author">MNarath1, MrMelbert updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="bugfix">fixes contractor tablets breaking when targets cryo</li>
-			</ul>
-			<h3 class="author">Naevii, ivanmixo updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="rscadd">Skirts for medical</li>
-				<li class="imageadd">Sprites for the medical skirts</li>
-				<li class="tweak">Gives the paramedic uniform a more descriptive name</li>
-			</ul>
-			<h3 class="author">Phil Smith updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="imageadd">Gives the circuit multitool its own sprite instead of it having the same sprite as the normal multitool.</li>
-			</ul>
-			<h3 class="author">Qustinnus, 4Dplanner, Mat05usz updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="rscadd">Adds map_generator datums, which will handle terrain generation for a specific area.</li>
-				<li class="rscadd">Adds a jungle generator datum, which uses rust-g noise to generate 3 layers of perlin noise to make a somewhat cohesive and seamless jungle based on height, humidity and heat.</li>
-			</ul>
-			<h3 class="author">Stylemistake, Cyberboss, SpaceManiac, other TG coders, Froststahr port. updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="code_imp">TGUI has been upgraded to 4.3 and now includes typescript.</li>
-				<li class="code_imp">Custom SVG icons are now easy to do as well.</li>
-				<li class="bugfix">All tgui windows will resize automatically, and can now be resized as will.</li>
-				<li class="server">TGS will require adaptation.</li>
-			</ul>
-			<h3 class="author">mudzbe updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="rscadd">Added more prefixes for syndicate name generation</li>
-			</ul>
-
-			<h2 class="date">14 July 2021</h2>
-			<h3 class="author">TheFakeElon updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="bugfix">fixes loafer deconstruction</li>
-				<li class="code_imp">loafer code improvements</li>
-			</ul>
-
-			<h2 class="date">12 July 2021</h2>
-			<h3 class="author">AustationBot updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="bugfix">explorer mask being larger when adjusted down than while adjusted up when it should be the other way around</li>
-				<li class="bugfix">adjusting a mask thats not on your face turning off your internals</li>
-				<li class="rscadd">Hangover, random spawn and late join station traits now have announcements.</li>
-				<li class="bugfix">Almost empty beer bottles</li>
-				<li class="refactor">Not providing any sound to priority_announce will make it silent.</li>
-				<li class="bugfix">Fixed ORM runtime.</li>
-			</ul>
-
-			<h2 class="date">07 July 2021</h2>
-			<h3 class="author">AustationBot updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="rscadd">Station traits are config option.</li>
-				<li class="tweak">Solder now stops hallucinations as well</li>
-				<li class="bugfix">Fixed runtime related to removing item from shells</li>
-				<li class="bugfix">paramedic envirohelm appearing invisible with light on</li>
-				<li class="imageadd">paramedic envirohelm light state</li>
-				<li class="imageadd">basic envirohelm inhand sprite from tg</li>
-				<li class="imagedel">old basic envirohelm inhand sprite</li>
-			</ul>
-			<h3 class="author">MrLostman updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="imageadd">added old tools and parts</li>
-				<li class="bugfix">fixes AI multitool detection</li>
-			</ul>
-			<h3 class="author">actioninja, lordScrubling updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="imageadd">overlay sprites from tg</li>
-				<li class="imagedel">old impaired sight overlays</li>
-			</ul>
-
-			<h2 class="date">06 July 2021</h2>
-			<h3 class="author">AustationBot updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="balance">Stabilized light pink extract speed reduced from 2x increase to 1.5x increase.</li>
-				<li class="balance">Stabilized light pink extract now applies pacifism to its user.</li>
-				<li class="bugfix">buckling not working when fireman carrying or piggy backing</li>
-				<li class="bugfix">Prevented shuttles from colliding with incorporal mobs</li>
-				<li class="balance">The Mosin and WT rifles are now bulky</li>
-				<li class="balance">The mosin now requires a free hand to fire</li>
-				<li class="bugfix">You can no longer eat thru the miner gas mask</li>
-				<li class="balance">M-90Gl Carbine 18TC to 14TC</li>
-				<li class="balance">5.56mm Toploader Magazine 4TC to 3TC</li>
-				<li class="balance">Grenades for the M-90Gl are now sold in boxes of 4 at a 6TC cost</li>
-				<li class="bugfix">The Crematorium now actually requires access to trigger.</li>
-				<li class="server">Notices are more clear.</li>
-				<li class="bugfix">fixed statpanel being empty during init</li>
-				<li class="bugfix">Corg cameras in ai sat are now on the ai sat network.</li>
-				<li class="tweak">Changed the ion rifle on the syndicate base to an ion carbine</li>
-				<li class="bugfix">Fixes entertainment monitors.</li>
-				<li class="rscdel">Alt-click no longer provides an icon preview for performance reasons.</li>
-				<li class="spellcheck">fixed a typo in the hos' trenchcoat</li>
-				<li class="rscadd">Nitrile gloves for MDs and brig phys in the starting loadout</li>
-				<li class="tweak">Corgstation changes around medical</li>
-				<li class="rscadd">SIGNAL_HANDLER to all procs meant to handle signals</li>
-				<li class="rscdel">Removed SIGNAL_HANDLER_DOES_SLEEP</li>
-				<li class="rscdel">Some sleeps</li>
-				<li class="bugfix">explorer mask toggle</li>
-				<li class="tweak">The (strongly) recommended client version for 514 users is now 1557. Previous versions have severe potential UI bugs.</li>
-				<li class="rscdel">Removes a now completly unused define</li>
-				<li class="code_imp">Nuked /client/MouseMove() for a massive amount of free performance.</li>
-				<li class="balance">Heretics can no longer get free charges by making new heretic books</li>
-				<li class="spellcheck">fixes a typo on Safety Moth poster</li>
-			</ul>
-			<h3 class="author">Beer nuke operatives updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="bugfix">Beer stained paper now has the beer nuke code written on it</li>
-			</ul>
-			<h3 class="author">Cenrus, MrDoomBringer updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="balance">Reduced recharge time of the syndicate teleporter to 15 seconds (previously 20)</li>
-				<li class="rscadd">Added a recharge timer to the syndicate teleporter that is shown on examine</li>
-				<li class="rscadd">Added a sound to indicate that the teleporter has recharged</li>
-			</ul>
-			<h3 class="author">MrLostman updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="imageadd">added old hardsuit and spacesuit sprites</li>
-				<li class="tweak">reverted bee shotgun changes</li>
-			</ul>
-			<h3 class="author">Naevii, ivanmixo updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="rscadd">Science skirts</li>
-				<li class="bugfix">Adds missing hop skirt to hop locker</li>
-				<li class="code_imp">Removed leftover skirts with no sprites and moved robotics suits to the appropriate file</li>
-			</ul>
-			<h3 class="author">mudzbe updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="soundadd">new roundend sound</li>
 			</ul>
 		</div>
 
