@@ -86,7 +86,6 @@
 #include "austation\code\game\objects\items\bluespace_jar.dm"
 #include "austation\code\game\objects\items\deepbagofholding.dm"
 #include "austation\code\game\objects\items\inducer.dm"
-#include "austation\code\game\objects\items\plushes.dm"
 #include "austation\code\game\objects\items\poleaxe.dm"
 #include "austation\code\game\objects\items\RPD.dm"
 #include "austation\code\game\objects\items\sharpener.dm"
