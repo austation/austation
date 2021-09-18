@@ -23,16 +23,26 @@
 	var/active = 0
 	var/locked = FALSE
 	var/drainratio = 0.5
-	var/powerproduction_drain = 0.001
+	// var/powerproduction_drain = 0.01 austation - fuck this change tbh
 
 	var/bitcoinproduction_drain = 0.15
 	var/bitcoinmining = FALSE
+	var/obj/item/radio/radio
 
+/obj/machinery/power/rad_collector/Initialize()
+	. = ..()
+
+	radio = new(src)
+	radio.keyslot = new /obj/item/encryptionkey/headset_eng
+	radio.subspace_transmission = TRUE
+	radio.canhear_range = 0
+	radio.recalculateChannels()
 
 /obj/machinery/power/rad_collector/anchored
 	anchored = TRUE
 
 /obj/machinery/power/rad_collector/Destroy()
+	QDEL_NULL(radio)
 	return ..()
 
 /obj/machinery/power/rad_collector/process(delta_time)
@@ -42,6 +52,8 @@
 		if(loaded_tank.air_contents.get_moles(GAS_PLASMA) < 0.0001)
 			investigate_log("<font color='red'>out of fuel</font>.", INVESTIGATE_ENGINES)
 			playsound(src, 'sound/machines/ding.ogg', 50, 1)
+			var/msg = "Plasma depleted, recommend replacing tank."
+			radio.talk_into(src, msg, RADIO_CHANNEL_ENGINEERING)
 			eject()
 		else
 			var/gasdrained = min(powerproduction_drain*drainratio*delta_time,loaded_tank.air_contents.get_moles(GAS_PLASMA))
