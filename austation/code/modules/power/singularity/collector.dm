@@ -1,2 +1,2 @@
 /obj/machinery/power/rad_collector
-	var/powerproduction_drain = 0.001
+	powerproduction_drain = 0.001
