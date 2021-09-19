@@ -1,0 +1,4 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - refactor: "removed static usage of typecache in get_area()"
