@@ -1,0 +1,4 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - rscadd: "Insulated boxing gloves and their crafting recipe. Needs insulated gloves and boxing gloves. Clothing tab."
