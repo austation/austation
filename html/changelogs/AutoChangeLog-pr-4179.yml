@@ -1,0 +1,4 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - balance: "cyborg *spinning someone now knocks down instead of paralyzing"
