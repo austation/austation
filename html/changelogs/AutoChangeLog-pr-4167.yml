@@ -1,0 +1,4 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - config: "decreased the font size cap from 32 to 24 to prevent chat bugs."
