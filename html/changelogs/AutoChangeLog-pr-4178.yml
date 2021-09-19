@@ -1,0 +1,5 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - tweak: "You can now throw stuff at movables with no density, such as mobs on the floor, mice, APCs etc etc"
+  - refactor: "Refactored thrownthing datum"
