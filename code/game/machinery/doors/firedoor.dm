@@ -73,12 +73,29 @@
 	return ..()
 
 /obj/machinery/door/firedoor/Bumped(atom/movable/AM)
+	//austation begin -- fastmos
+	if(panel_open || operating || welded || (stat & NOPOWER))
+		return
+	if(ismob(AM))
+		var/mob/user = AM
+		if(allow_hand_open(user))
+			add_fingerprint(user)
+			open()
+			return TRUE
+	if(ismecha(AM))
+		var/obj/mecha/M = AM
+		if(M.occupant && allow_hand_open(M.occupant))
+			open()
+			return TRUE
+	return FALSE
+	/*
 	if(panel_open || operating)
 		return
 	if(!density)
 		return ..()
 	return FALSE
-
+	*/
+	//austation end
 
 /obj/machinery/door/firedoor/power_change()
 	if(powered(power_channel))
