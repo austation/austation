@@ -8,7 +8,7 @@
 	armor = list("melee" = 15, "bullet" = 50, "laser" = 30, "energy" = 10, "bomb" = 30, "bio" = 0, "rad" = 0, "fire" = 40, "acid" = 50, "stamina" = 30) // same as bulletproof helmet
 	slowdown = 0.5 // heavy!
 
-/obj/item/clothing/suit/toggle/lawyer/extravagent
+/obj/item/clothing/suit/toggle/lawyer/extravagant
 	name = "extravagant suit"
 	desc = "Only for special occasions. Offers zero protection."
 	icon = 'icons/obj/clothing/suits.dmi'

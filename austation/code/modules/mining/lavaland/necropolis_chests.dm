@@ -10,7 +10,7 @@ Beeloot is the number of items in Bees loot table excluding disabled loot
 	if(!istype(item, /obj/item/skeleton_key) || spawned_loot)
 		return FALSE
 
-	var/loot = rand(1,30)
+	var/loot = rand(1,31)
 
 	switch(loot)
 		if(1)
@@ -75,6 +75,8 @@ Beeloot is the number of items in Bees loot table excluding disabled loot
 			new /obj/item/tank/internals/combat(src)
 		if(30)
 			new /obj/item/tank/internals/occult(src)
+		if(31)
+			new /obj/item/clothing/suit/toggle/lawyer/extravagant
 	spawned_loot = TRUE
 	qdel(item)
 	to_chat(user, "<span class='notice'>You disable the magic lock, revealing the loot.</span>")
