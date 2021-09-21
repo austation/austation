@@ -7,3 +7,11 @@
 	item_state = "nkarmour"
 	armor = list("melee" = 15, "bullet" = 50, "laser" = 30, "energy" = 10, "bomb" = 30, "bio" = 0, "rad" = 0, "fire" = 40, "acid" = 50, "stamina" = 30) // same as bulletproof helmet
 	slowdown = 0.5 // heavy!
+
+/obj/item/clothing/suit/toggle/lawyer/extravagent
+	name = "extravagant suit"
+	desc = "Only for special occasions. Offers zero protection."
+	icon = 'icons/obj/clothing/suits.dmi'
+	icon_state = "suitjacket_blue"
+	item_state = "suitjacket_blue"
+	armor = list("melee" = -9999, "bullet" = -9999, "laser" = -9999, "energy" = -9999, "bomb" = -9999, "bio" = -9999, "rad" = -9999, "fire" = -9999, "acid" = -9999, "stamina" = -9999)

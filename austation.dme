@@ -30,6 +30,16 @@
 // END_BEESTATION_INCLUDE
 
 // BEGIN_INCLUDE
+#include "austation\code\__DEFINES\admin.dm"
+#include "austation\code\__DEFINES\coilgun.dm"
+#include "austation\code\__DEFINES\lavaland.dm"
+#include "austation\code\__DEFINES\maths.dm"
+#include "austation\code\__DEFINES\misc.dm"
+#include "austation\code\__DEFINES\mobs.dm"
+#include "austation\code\__DEFINES\movespeed_modification.dm"
+#include "austation\code\__DEFINES\RPD.dm"
+#include "austation\code\__DEFINES\sound.dm"
+#include "austation\code\__DEFINES\traits.dm"
 #include "austation\code\__HELPERS\matrices.dm"
 #include "austation\code\__HELPERS\roundend.dm"
 #include "austation\code\_globalvars\coilgun.dm"
@@ -177,6 +187,10 @@
 #include "austation\code\modules\coilgun\barrel\barrel.dm"
 #include "austation\code\modules\coilgun\barrel\barrel_builder.dm"
 #include "austation\code\modules\events\bruh_moment.dm"
+#include "austation\code\modules\events\communications_blackout.dm"
+#include "austation\code\modules\events\disease_outbreak.dm"
+#include "austation\code\modules\events\electrical_storm.dm"
+#include "austation\code\modules\events\space_dragon.dm"
 #include "austation\code\modules\events\wizard\magicarp.dm"
 #include "austation\code\modules\food_and_drinks\drinks\drinks.dm"
 #include "austation\code\modules\food_and_drinks\food\snacks_bread.dm"
@@ -282,8 +296,4 @@
 #include "austation\code\modules\vending\_vending.dm"
 #include "austation\code\modules\vending\clothesmate.dm"
 #include "austation\code\modules\wiremod\marker.dm"
-#include "austation\code\modules\events\communications_blackout.dm"
-#include "austation\code\modules\events\disease_outbreak.dm"
-#include "austation\code\modules\events\electrical_storm.dm"
-#include "austation\code\modules\events\space_dragon.dm"
 // END_INCLUDE
