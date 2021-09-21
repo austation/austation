@@ -15,3 +15,7 @@
 	icon_state = "suitjacket_blue"
 	item_state = "suitjacket_blue"
 	armor = list("melee" = -9999, "bullet" = -9999, "laser" = -9999, "energy" = -9999, "bomb" = -9999, "bio" = -9999, "rad" = -9999, "fire" = -9999, "acid" = -9999, "stamina" = -9999)
+
+/obj/item/clothing/suit/toggle/lawyer/extravagant/hit_reaction(mob/living/carbon/human/owner, atom/movable/hitby, attack_text = "the attack", final_block_chance = 0, damage = 0, attack_type)
+	var/mob/living/carbon/human/H = owner
+	H.gib()
