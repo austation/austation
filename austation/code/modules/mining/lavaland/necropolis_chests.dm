@@ -76,7 +76,7 @@ Beeloot is the number of items in Bees loot table excluding disabled loot
 		if(30)
 			new /obj/item/tank/internals/occult(src)
 		if(31)
-			new /obj/item/clothing/suit/toggle/lawyer/extravagant
+			new /obj/item/clothing/suit/toggle/lawyer/extravagant(src)
 	spawned_loot = TRUE
 	qdel(item)
 	to_chat(user, "<span class='notice'>You disable the magic lock, revealing the loot.</span>")
