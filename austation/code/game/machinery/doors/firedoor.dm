@@ -15,9 +15,26 @@
 	. = ..()
 	update_registration()
 
-/obj/machinery/door/firedoor/Destroy()
-	. = ..()
+/obj/machinery/door/firedoor/afterShuttleMove(turf/oldT)
+	if(!locate(/obj/machinery/door/firedoor) in oldT)
+		oldT.unregister_firelocks()
 	update_registration()
+	. = ..()
+
+/obj/machinery/door/firedoor/Moved(atom/OldLoc, Dir)
+	. = ..()
+	if(isopenturf(OldLoc))
+		var/turf/open/terf = OldLoc
+		if(locate(/obj/machinery/door/firedoor) in terf)
+			terf.register_firelocks()
+		else
+			terf.unregister_firelocks()
+	update_registration()
+
+
+/obj/machinery/door/firedoor/Destroy()
+	update_registration()
+	. = ..()
 
 //these are hooked by auxtools
 /turf/proc/register_firelocks()
@@ -26,13 +43,7 @@
 //updates registration status for firelocks in auxtools
 /obj/machinery/door/firedoor/proc/update_registration()
 	var/turf/open/terf = get_turf(src)
-	var/unregister = TRUE
-	if(!istype(terf, /turf/open))
-		return
-	for(var/obj/machinery/door/firedoor/FD in terf)
-		unregister = FALSE
-		break
-	if(unregister)
-		terf.unregister_firelocks()
-	else
+	if(locate(/obj/machinery/door/firedoor) in terf)
 		terf.register_firelocks()
+	else
+		terf.unregister_firelocks()
