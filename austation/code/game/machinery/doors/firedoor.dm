@@ -13,27 +13,27 @@
 
 /obj/machinery/door/firedoor/Initialize()
 	. = ..()
-	update_registration()
+	var/turf/terf = get_turf(src)
+	terf.update_firelock_registration()
 
 /obj/machinery/door/firedoor/afterShuttleMove(turf/oldT)
-	if(!locate(/obj/machinery/door/firedoor) in oldT)
-		oldT.unregister_firelocks()
-	update_registration()
+	var/turf/terf = get_turf(src)
+	oldT.update_firelock_registration()
+	terf.update_firelock_registration()
 	. = ..()
 
 /obj/machinery/door/firedoor/Moved(atom/OldLoc, Dir)
 	. = ..()
 	if(isopenturf(OldLoc))
 		var/turf/open/terf = OldLoc
-		if(locate(/obj/machinery/door/firedoor) in terf)
-			terf.register_firelocks()
-		else
-			terf.unregister_firelocks()
-	update_registration()
+		terf.update_firelock_registration()
+	var/turf/tarf = get_turf(src)
+	tarf.update_firelock_registration()
 
 
 /obj/machinery/door/firedoor/Destroy()
-	update_registration()
+	var/turf/terf = get_turf(src)
+	terf.update_firelock_registration()
 	. = ..()
 
 //these are hooked by auxtools
@@ -41,9 +41,11 @@
 /turf/proc/unregister_firelocks()
 
 //updates registration status for firelocks in auxtools
-/obj/machinery/door/firedoor/proc/update_registration()
-	var/turf/open/terf = get_turf(src)
-	if(locate(/obj/machinery/door/firedoor) in terf)
-		terf.register_firelocks()
+/turf/proc/update_firelock_registration()
+	if(SSair.thread_running())
+		SSadjacent_air.firelock_queue[src] = 1
+		return
+	if(locate(/obj/machinery/door/firedoor) in src)
+		register_firelocks()
 	else
-		terf.unregister_firelocks()
+		unregister_firelocks()

@@ -6,6 +6,9 @@ SUBSYSTEM_DEF(adjacent_air)
 	priority = FIRE_PRIORITY_ATMOS_ADJACENCY
 	var/list/queue = list()
 
+	//austation -- firelock extras
+	var/list/firelock_queue = list()
+
 /datum/controller/subsystem/adjacent_air/stat_entry()
 #ifdef TESTING
 	. = ..("P:[length(queue)], S:[GLOB.atmos_adjacent_savings[1]], T:[GLOB.atmos_adjacent_savings[2]]")
@@ -33,6 +36,23 @@ SUBSYSTEM_DEF(adjacent_air)
 
 		if(mc_check)
 			if(MC_TICK_CHECK)
+				//austation -- replaced break with return
+				return
+		else
+			CHECK_TICK
+
+	//austation begin -- firelock extras
+	var/list/firelock_queue = src.firelock_queue
+
+	while (length(firelock_queue))
+		var/turf/currT = firelock_queue[1]
+		firelock_queue.Cut(1,2)
+
+		currT.update_firelock_registration()
+
+		if(mc_check)
+			if(MC_TICK_CHECK)
 				break
 		else
 			CHECK_TICK
+	//austation end
