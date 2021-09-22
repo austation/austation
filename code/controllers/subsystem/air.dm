@@ -436,7 +436,7 @@ SUBSYSTEM_DEF(air)
 	var/list/turfs_to_disable = block(locate(1, 1, z_level), locate(world.maxx, world.maxy, z_level))
 	for(var/thin in turfs_to_disable)
 		var/turf/T = thin
-		T.atmos_adjacent_turfs?.Cut()
+		T.ImmediateDisableAdjacency(FALSE)
 		CHECK_TICK
 	//austation end
 

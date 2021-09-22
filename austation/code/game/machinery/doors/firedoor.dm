@@ -49,3 +49,19 @@
 		register_firelocks()
 	else
 		unregister_firelocks()
+
+/turf/proc/ImmediateDisableAdjacency(disable_adjacent = TRUE)
+	if(SSair.thread_running())
+		SSadjacent_air.disable_queue[src] = 1
+		return
+	if(disable_adjacent)
+		for(var/direction in GLOB.cardinals_multiz)
+			var/turf/T = get_step_multiz(src, direction)
+			if(!istype(T))
+				continue
+			if (T.atmos_adjacent_turfs)
+				T.atmos_adjacent_turfs -= src
+			UNSETEMPTY(T.atmos_adjacent_turfs)
+			T.__update_auxtools_turf_adjacency_info(isspaceturf(T.get_z_base_turf()), -1)
+	LAZYCLEARLIST(atmos_adjacent_turfs)
+	__update_auxtools_turf_adjacency_info(isspaceturf(get_z_base_turf()))
