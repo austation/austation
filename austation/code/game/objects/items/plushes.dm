@@ -1,19 +1,3 @@
-/obj/item/toy/plush/cirno
-	name = "strange doll"
-	desc = "This doll exudes a threatening aura."
-	icon = 'austation/icons/obj/plushes.dmi'
-	icon_state = "cirno"
-	item_state = "cirno"
-	gender = FEMALE
-
-/obj/item/toy/plush/reimu
-	name = "strange doll"
-	desc = "A forgotten sin from an older time."
-	icon = 'austation/icons/obj/plushes.dmi'
-	icon_state = "reimu"
-	item_state = "reimu"
-	gender = FEMALE
-
 /obj/item/toy/plush/lizardplushie
 	desc = "An adorable stuffed toy that resembles a lizardperson. Can you guess its favourite colour?"
 
