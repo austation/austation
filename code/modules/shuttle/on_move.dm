@@ -55,8 +55,32 @@ All ShuttleMove procs go here
 	if(!shuttle_boundary)
 		CRASH("A turf queued to move via shuttle somehow had no skipover in baseturfs. [src]([type]):[loc]")
 	var/depth = baseturfs.len - shuttle_boundary + 1
-	newT.ImmediateDisableAdjacency()
-	ImmediateDisableAdjacency()
+
+	//austation begin -- shuttle move rework
+	if((isopenturf(newT) || isclosedturf(newT)) && isopenturf(src))
+		var/turf/open/src_terf = src
+		newT.CopyOnTop(src, 1, depth, TRUE)
+		var/turf/open/new_terf = newT
+		new_terf.update_visuals()
+		newT.update_air_ref(src_terf.planetary_atmos ? 1 : 2)
+	else if(isclosedturf(src) && isopenturf(newT))
+		newT.update_air_ref(-1)
+		newT.CopyOnTop(src, 1, depth, TRUE)
+	else
+		newT.CopyOnTop(src, 1, depth, TRUE)
+
+	if(isopenturf(src))
+		var/turf/open/after_src_terf = src
+		after_src_terf.update_visuals()
+		update_air_ref(isspaceturf(src) ? 0 : (after_src_terf.planetary_atmos ? 1 : 2))
+	else
+		update_air_ref(-1)
+
+	//Air stuff
+	newT.air_update_turf(TRUE)
+	air_update_turf(TRUE)
+
+	/*
 	newT.CopyOnTop(src, 1, depth, TRUE)
 	//Air stuff
 	newT.blocks_air = TRUE
@@ -66,7 +90,8 @@ All ShuttleMove procs go here
 	if(isopenturf(newT))
 		var/turf/open/new_open = newT
 		new_open.copy_air_with_tile(src)
-
+	*/
+	//austation end
 	return TRUE
 
 // Called on the new turf after everything has been moved
