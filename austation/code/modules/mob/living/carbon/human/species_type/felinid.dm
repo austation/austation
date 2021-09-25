@@ -3,4 +3,4 @@
 
 /datum/species/human/felinid/New()
 	inherent_traits.Add(TRAIT_STRONG_STOMACH)
-	. = ..()
+	return ..()
