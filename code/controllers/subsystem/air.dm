@@ -434,9 +434,8 @@ SUBSYSTEM_DEF(air)
 	LAZYADD(paused_z_levels, z_level)
 	//austation begin -- delay air init
 	var/list/turfs_to_disable = block(locate(1, 1, z_level), locate(world.maxx, world.maxy, z_level))
-	for(var/thin in turfs_to_disable)
-		var/turf/T = thin
-		T.ImmediateDisableAdjacency(FALSE)
+	for(var/turf/T as anything in turfs_to_disable)
+		T.update_air_ref(-1)
 		CHECK_TICK
 	//austation end
 
@@ -444,12 +443,17 @@ SUBSYSTEM_DEF(air)
 	//austation begin -- delay air init
 	//resets all air because fuck you
 	var/list/turfs_to_reinit = block(locate(1, 1, z_level), locate(world.maxx, world.maxy, z_level))
-	for(var/thin in turfs_to_reinit)
-		var/turf/T = thin
-		if(T.blocks_air)
-			continue
+	for(var/turf/T as anything in turfs_to_reinit)
+		if(isspaceturf(T))
+			T.update_air_ref(0)
+		else if(isopenturf(T))
+			var/turf/open/terf = T
+			terf.update_air_ref(terf.planetary_atmos ? 1 : 2)
+		else if(isclosedturf(T))
+			T.update_air_ref(-1)
 		T.Initalize_Atmos()
 		CHECK_TICK
+
 	//austation end
 	LAZYREMOVE(paused_z_levels, z_level)
 
