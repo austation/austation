@@ -1,0 +1,4 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - admin: "Battle Royale requires +ADMIN instead of +FUN after the round ends."
