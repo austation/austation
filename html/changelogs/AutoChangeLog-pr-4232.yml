@@ -1,0 +1,4 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - bugfix: "The metastation external airlock in holodeck maintenance now sets up correctly roundstart"
