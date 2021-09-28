@@ -20,7 +20,11 @@
   *
   * make sure you add an update to the schema_version stable in the db changelog
   */
+<<<<<<< HEAD
 #define DB_MINOR_VERSION 8 // austation -- updating database version due to downstream changes
+=======
+#define DB_MINOR_VERSION 8
+>>>>>>> 144c37e52a... Updates the DB schema version to 5.8 (#5464)
 
 
 //! ## Timing subsystem
