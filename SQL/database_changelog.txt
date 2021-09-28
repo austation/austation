@@ -10,6 +10,7 @@ In any query remember to add a prefix to the table names if you use one.
 
 -----------------------------------------------------
 
+<<<<<<< HEAD
 Version 5.8 30 July 2021, by MCterra10
 Adds ahelp ticket table to the DB for storing and retrieving past tickets
 
@@ -27,6 +28,13 @@ CREATE TABLE `ticket` (
   `sender` varchar(32) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+=======
+Version 5.8 28 September 2021, by Raven-Industries and MCterra
+Updates the maximum length for book titles in the library.
+
+ALTER TABLE `SS13_library`
+	CHANGE COLUMN `title` `title` VARCHAR(50) NOT NULL AFTER `author`;
+>>>>>>> 56a82d3a48... Update Database Schema for Book Title Length PR (#5463)
 
 -----------------------------------------------------
 
