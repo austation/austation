@@ -441,13 +441,10 @@
 		countdown.start()
 		set_security_level(SEC_LEVEL_DELTA)
 
-<<<<<<< HEAD
-		//if (proper_bomb) // Why does this exist
-			//countdown_music = play_soundtrack_music('sound/soundtrack/countdown.ogg', only_station = TRUE) austation -- disable jarring music
-=======
-		if (proper_bomb) // Why does this exist
+		/* austation begin -- remove bomb countdown song
+		if (proper_bomb) // Why does this exist austation
 			countdown_music = play_soundtrack_music(/datum/soundtrack_song/bee/countdown, only_station = TRUE)
->>>>>>> b927d6ef0f... mind crawler and music in credits (#5394)
+		austation end */
 
 	else
 		detonation_timer = null
