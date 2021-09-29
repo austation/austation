@@ -1,5 +1,0 @@
-author: "AustationBot"
-delete-after: True
-changes: 
-  - rscadd: "Added hotkey to toggle walking/running"
-  - rscadd: "Ability to rebind locking movement hotkey"

@@ -1,5 +1,0 @@
-author: "AustationBot"
-delete-after: True
-changes: 
-  - admin: "+SUPPRESS can now be granted to allow access to issue hidden bans."
-  - server: "You should NOT be granting this lightly."

@@ -1,6 +1,0 @@
-author: "AustationBot"
-delete-after: True
-changes: 
-  - rscadd: "Sleep and Drowsyness Immunity To Meth"
-  - balance: "Decreased Speed Buff from Meth"
-  - balance: "Increased Stamina Damage Reduction"
