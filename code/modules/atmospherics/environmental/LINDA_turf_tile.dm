@@ -284,8 +284,7 @@
 			if(throw_target && (get_dir(src, throw_target) & direction))
 				throw_turf = get_turf(throw_target)
 			var/throw_speed = CLAMP(round(move_force / 3000), 1, 10)
-			//austation -- added quickstart = FALSE to throw
-			throw_at(throw_turf, move_force / 3000, throw_speed, quickstart = FALSE)
+			throw_at(throw_turf, move_force / 3000, throw_speed)
 		else
 			step(src, direction)
 		last_high_pressure_movement_air_cycle = SSair.times_fired
