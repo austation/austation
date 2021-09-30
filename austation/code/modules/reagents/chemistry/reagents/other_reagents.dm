@@ -243,6 +243,6 @@
 
 /datum/reagent/colorful_reagent/powder/on_mob_life(mob/living/carbon/M)
 	if((ishuman(M) && M.job == "Clown"))
-		M.heal_bodypart_damage(0.2,0.2, 0)
+		M.heal_bodypart_damage(0.1, 0.1, 0)
 		. = 1
 	..()
