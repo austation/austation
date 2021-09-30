@@ -424,6 +424,9 @@
 
 /obj/item/toy/crayon/attack(mob/M, mob/user)
 	if(edible && (M == user))
+		if(M.job == "Clown" && istype(src, /obj/item/toy/crayon/rainbow)) // austation PR: 4240 -- Prevents clowns from eating rainbow crayons, so they cant heal from it
+			to_chat(user, "That's my favourite crayon! Rainbow crayons are friends, not food...")
+			return
 		to_chat(user, "You take a bite of the [src.name]. Delicious!")
 		var/eaten = use_charges(user, 5, FALSE)
 		if(check_empty(user)) //Prevents divsion by zero
