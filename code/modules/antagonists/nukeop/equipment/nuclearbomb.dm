@@ -441,8 +441,10 @@
 		countdown.start()
 		set_security_level(SEC_LEVEL_DELTA)
 
-		//if (proper_bomb) // Why does this exist
-			//countdown_music = play_soundtrack_music('sound/soundtrack/countdown.ogg', only_station = TRUE) austation -- disable jarring music
+		/* austation begin -- remove bomb countdown song
+		if (proper_bomb) // Why does this exist austation
+			countdown_music = play_soundtrack_music(/datum/soundtrack_song/bee/countdown, only_station = TRUE)
+		austation end */
 
 	else
 		detonation_timer = null
@@ -482,7 +484,8 @@
 	yes_code = FALSE
 	safety = TRUE
 	update_icon()
-	sound_to_playing_players('sound/machines/alarm.ogg')
+	if(proper_bomb)
+		sound_to_playing_players('sound/machines/alarm.ogg')
 	if(SSticker?.mode)
 		SSticker.roundend_check_paused = TRUE
 	addtimer(CALLBACK(src, .proc/actually_explode), 100)
