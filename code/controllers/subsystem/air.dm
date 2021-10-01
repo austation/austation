@@ -66,6 +66,9 @@ SUBSYSTEM_DEF(air)
 
 	var/list/paused_z_levels	//Paused z-levels will not add turfs to active
 
+	//austation begin -- firelocks list, don't recommend putting anything but firelocks here
+	var/list/firelocks = list()
+
 /datum/controller/subsystem/air/stat_entry(msg)
 	msg += "C:{"
 	msg += "HP:[round(cost_highpressure,1)]|"

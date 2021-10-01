@@ -57,19 +57,3 @@ SUBSYSTEM_DEF(adjacent_air)
 				return
 		else
 			CHECK_TICK
-
-	//austation begin -- firelock extras
-	var/list/firelock_queue = src.firelock_queue
-
-	while (length(firelock_queue))
-		var/turf/tarf = firelock_queue[1]
-		firelock_queue.Cut(1,2)
-
-		tarf.update_firelock_registration()
-
-		if(mc_check)
-			if(MC_TICK_CHECK)
-				break
-		else
-			CHECK_TICK
-	//austation end
