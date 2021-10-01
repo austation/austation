@@ -9,6 +9,7 @@ SUBSYSTEM_DEF(adjacent_air)
 	//austation begin -- extras
 	var/list/firelock_queue = list()
 	var/list/disable_queue = list()
+	var/list/sleep_queue = list()
 	//austation end
 
 /datum/controller/subsystem/adjacent_air/stat_entry()
@@ -28,6 +29,21 @@ SUBSYSTEM_DEF(adjacent_air)
 		pause()
 		return
 	//austation begin -- stuffe
+
+	var/list/sleep_queue = src.sleep_queue
+
+	while (length(sleep_queue))
+		var/turf/terf = sleep_queue[1]
+		sleep_queue.Cut(1,2)
+
+		terf.ImmediateSetSleep()
+
+		if(mc_check)
+			if(MC_TICK_CHECK)
+				return
+		else
+			CHECK_TICK
+
 	var/list/disable_queue = src.disable_queue
 
 	while (length(disable_queue))

@@ -439,6 +439,7 @@ SUBSYSTEM_DEF(air)
 	var/list/turfs_to_disable = block(locate(1, 1, z_level), locate(world.maxx, world.maxy, z_level))
 	for(var/turf/T as anything in turfs_to_disable)
 		T.update_air_ref(-1)
+		T.ImmediateSetSleep()
 		CHECK_TICK
 	//austation end
 

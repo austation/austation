@@ -19,6 +19,12 @@
 	SSair.firelocks -= src
 	. = ..()
 
+/turf/proc/ImmediateSetSleep(disable_adjacent = TRUE)
+	if(SSair.thread_running())
+		SSadjacent_air.sleep_queue[src] = 1
+		return
+	set_sleeping(TRUE)
+
 /turf/proc/ImmediateDisableAdjacency(disable_adjacent = TRUE)
 	if(SSair.thread_running())
 		SSadjacent_air.disable_queue[src] = 1
