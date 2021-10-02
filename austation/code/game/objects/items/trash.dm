@@ -1,4 +1,5 @@
 /obj/item/trash/cup
 	name = "crushed cup"
-	icon_state = "cola" //placeholder
+	icon = 'austation/icons/obj/janitor.dmi'
+	icon_state = "crushed_cup"
 	grind_results = list(/datum/reagent/polystyrene = 2)
