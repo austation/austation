@@ -91,6 +91,7 @@
 #include "austation\code\game\objects\items\RPD.dm"
 #include "austation\code\game\objects\items\sharpener.dm"
 #include "austation\code\game\objects\items\spear.dm"
+#include "austation\code\game\objects\items\trash.dm"
 #include "austation\code\game\objects\items\weaponry.dm"
 #include "austation\code\game\objects\items\circuitboards\machine_circuitboards.dm"
 #include "austation\code\game\objects\items\devices\floor_painter.dm"

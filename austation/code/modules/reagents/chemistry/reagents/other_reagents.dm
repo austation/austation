@@ -240,3 +240,10 @@
 	if(methods & TOUCH)
 		M.adjustFireLoss(2, 0) // burns
 	..()
+
+/datum/reagent/polystyrene
+	name = "Polystyrene"
+	description = "A synthetic hydrocarbon polymer."
+	color = "#ffffff"
+	taste_description = "foam"
+

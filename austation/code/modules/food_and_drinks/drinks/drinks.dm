@@ -25,3 +25,18 @@
 	icon_state = "bitters"
 	list_reagents = list(/datum/reagent/consumable/ethanol/bitters = 50)
 	foodtype = GRAIN | ALCOHOL
+
+/obj/item/reagent_containers/food/drinks/styrofoam_cup
+	name = "styrofoam cup"
+	desc = "A cup made from styrofoam."
+	icon_state = "water_cup_e" //placeholder
+	volume = 10
+	spillable = TRUE
+	isGlass = FALSE
+
+/obj/item/reagent_containers/food/drinks/styrofoam_cup/proc/crush(mob/M, mob/user)
+	if(M == user && !src.reagents.total_volume && user.a_intent == INTENT_HARM)
+		user.visible_message("<span class='warning'>[user] crushes the styrofoam cup!</span>", "<span class='notice'>You crush the styrofoam cup.</span>")
+		var/obj/item/trash/cup/crushed_cup = new /obj/item/trash/cup(user.loc)
+		crushed_cup.icon_state = icon_state
+		qdel(src)
