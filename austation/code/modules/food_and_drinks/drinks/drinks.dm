@@ -39,7 +39,7 @@
 	if(M == user && !src.reagents.total_volume && user.a_intent == INTENT_HARM && user.zone_selected == BODY_ZONE_HEAD)
 		user.visible_message("<span class='warning'>[user] crushes the styrofoam cup on [user.p_their()] forehead!</span>", "<span class='notice'>You crush the styrofoam cup on your forehead.</span>")
 		playsound(user.loc,'sound/weapons/pierce.ogg', rand(10,50), 1)
-		var/obj/item/trash/can/crushed_cup = new /obj/item/trash/cup(user.loc)
+		var/obj/item/trash/cup/crushed_cup = new /obj/item/trash/cup(user.loc)
 		//crushed_cup.icon_state = icon_state
 		qdel(src)
 

@@ -105,6 +105,7 @@
 #include "austation\code\game\objects\items\robot\robot_upgrades.dm"
 #include "austation\code\game\objects\items\storage\backpack.dm"
 #include "austation\code\game\objects\items\storage\belt.dm"
+#include "austation\code\game\objects\items\storage\boxes.dm"
 #include "austation\code\game\objects\items\storage\fancy.dm"
 #include "austation\code\game\objects\items\storage\firstaid.dm"
 #include "austation\code\game\objects\items\storage\uplink_kits.dm"
