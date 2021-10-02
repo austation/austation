@@ -28,8 +28,6 @@
 
 /obj/item/reagent_containers/food/drinks/styrofoam_cup
 	name = "styrofoam cup"
-	lefthand_file = 'icons/mob/inhands/misc/food_lefthand.dmi'
-	righthand_file = 'icons/mob/inhands/misc/food_righthand.dmi'
 	desc = "A cup made from styrofoam."
 	icon = 'austation/icons/obj/drinks.dmi'
 	icon_state = "styrofoam_cup_e"
@@ -42,9 +40,8 @@
 		user.visible_message("<span class='warning'>[user] crushes the styrofoam cup on [user.p_their()] forehead!</span>", "<span class='notice'>You crush the styrofoam cup on your forehead.</span>")
 		playsound(user.loc,'sound/weapons/pierce.ogg', rand(10,50), 1)
 		var/obj/item/trash/can/crushed_cup = new /obj/item/trash/cup(user.loc)
-		crushed_cup.icon_state = icon_state
+		//crushed_cup.icon_state = icon_state
 		qdel(src)
-	..()
 
 /obj/item/reagent_containers/food/drinks/styrofoam_cup/on_reagent_change(changetype)
 	if(reagents.total_volume)
