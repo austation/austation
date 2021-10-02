@@ -57,17 +57,8 @@ All ShuttleMove procs go here
 	var/depth = baseturfs.len - shuttle_boundary + 1
 
 	//austation begin -- shuttle move rework
-	if((isopenturf(newT) || isclosedturf(newT)) && isopenturf(src))
-		var/turf/open/src_terf = src
-		newT.CopyOnTop(src, 1, depth, TRUE)
-		var/turf/open/new_terf = newT
-		new_terf.update_visuals()
-		newT.update_air_ref(src_terf.planetary_atmos ? 1 : 2)
-	else if(isclosedturf(src) && isopenturf(newT))
-		newT.update_air_ref(-1)
-		newT.CopyOnTop(src, 1, depth, TRUE)
-	else
-		newT.CopyOnTop(src, 1, depth, TRUE)
+
+	newT.CopyOnTop(src, 1, depth, TRUE)
 
 	if(isopenturf(src))
 		var/turf/open/after_src_terf = src
