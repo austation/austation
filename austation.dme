@@ -258,6 +258,7 @@
 #include "austation\code\modules\reagents\chemistry\recipes\toxins.dm"
 #include "austation\code\modules\reagents\reagent_containers\bottle.dm"
 #include "austation\code\modules\reagents\reagent_containers\custompen.dm"
+#include "austation\code\modules\reagents\reagent_containers\glass.dm"
 #include "austation\code\modules\reagents\reagent_containers\hypospray.dm"
 #include "austation\code\modules\recycling\disposal\construction.dm"
 #include "austation\code\modules\recycling\disposal\holder.dm"
