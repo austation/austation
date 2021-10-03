@@ -1,4 +1,3 @@
-// Gympie Gympie
 /obj/item/seeds/gympie_gympie
 	name = "pack of gympie gympie seeds"
 	desc = "These seeds grow into a gympie gympie plant"
