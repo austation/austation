@@ -227,7 +227,8 @@
 	data["enter"] = GLOB.enter_allowed
 	data["vote"] = CONFIG_GET(flag/allow_vote_mode)
 	data["ai"] = CONFIG_GET(flag/allow_ai)
-	data["host"] = world.host ? world.host : null
+	var/hostedby = CONFIG_GET(string/hostedby) // austation -- fix host's name
+	data["host"] = hostedby ? hostedby : (world.host ? world.host : null)
 	data["round_id"] = GLOB.round_id
 	data["players"] = GLOB.clients.len
 	data["revision"] = GLOB.revdata.commit

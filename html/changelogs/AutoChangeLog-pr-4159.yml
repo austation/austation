@@ -1,5 +1,0 @@
-author: "AustationBot"
-delete-after: True
-changes: 
-  - rscadd: "Added new space ambient music"
-  - bugfix: "fixed ambient music and buzz"
