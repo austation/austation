@@ -36,7 +36,7 @@
 	isGlass = FALSE
 
 /obj/item/reagent_containers/food/drinks/styrofoam_cup/attack(mob/M, mob/user)
-	if(M == user && !src.reagents.total_volume && user.a_intent == INTENT_HARM && user.zone_selected == BODY_ZONE_HEAD)
+	if(M == user && !reagents.total_volume && user.a_intent == INTENT_HARM && user.zone_selected == BODY_ZONE_HEAD)
 		user.visible_message("<span class='warning'>[user] crushes the styrofoam cup on [user.p_their()] forehead!</span>", "<span class='notice'>You crush the styrofoam cup on your forehead.</span>")
 		playsound(user.loc,'sound/weapons/pierce.ogg', rand(10,50), 1)
 		var/obj/item/trash/cup/crushed_cup = new(user.loc)
