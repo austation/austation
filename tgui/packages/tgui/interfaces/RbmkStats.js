@@ -13,6 +13,7 @@ export const RbmkStats = (props, context) => {
   const psiData = data.psiData.map((value, i) => [i, value]);
   const tempInputData = data.tempInputData.map((value, i) => [i, value]);
   const tempOutputdata = data.tempOutputdata.map((value, i) => [i, value]);
+  const tempInternalData = data.tempInternalData.map((value, i) => [i, value]);
   return (
     <Window
       resizable
@@ -52,36 +53,55 @@ export const RbmkStats = (props, context) => {
             color="bad">
             {data.coolantOutput} °C
           </ProgressBar>
+          Internal temperature (°C):
+          <ProgressBar
+            value={data.reactorInternalTemp}
+            minValue={20}
+            maxValue={1227}
+            color="bad">
+            {data.reactorInternalTemp} °C
+          </ProgressBar>
         </Section>
-        <Section title="Reactor Statistics:" height="200px">
-          <Chart.Line
-            fillPositionedParent
-            data={powerData}
-            rangeX={[0, powerData.length - 1]}
-            rangeY={[0, 1500]}
-            strokeColor="rgba(255, 215,0, 1)"
-            fillColor="rgba(255, 215, 0, 0.1)" />
-          <Chart.Line
-            fillPositionedParent
-            data={psiData}
-            rangeX={[0, psiData.length - 1]}
-            rangeY={[0, 1500]}
-            strokeColor="rgba(255,250,250, 1)"
-            fillColor="rgba(255,250,250, 0.1)" />
-          <Chart.Line
-            fillPositionedParent
-            data={tempInputData}
-            rangeX={[0, tempInputData.length - 1]}
-            rangeY={[-273.15, 1227]}
-            strokeColor="rgba(127, 179, 255 , 1)"
-            fillColor="rgba(127, 179, 255 , 0.1)" />
-          <Chart.Line
-            fillPositionedParent
-            data={tempOutputdata}
-            rangeX={[0, tempOutputdata.length - 1]}
-            rangeY={[-273.15, 1227]}
-            strokeColor="rgba(255, 0, 0 , 1)"
-            fillColor="rgba(255, 0, 0 , 0.1)" />
+        <Section title="Reactor Statistics:" height="200px" position="relative" >
+          <Flex>
+            <Flex.Item grow={1}>
+              <Chart.Line
+                fillPositionedParent
+                data={powerData}
+                rangeX={[0, powerData.length - 1]}
+                rangeY={[0, 1500]}
+                strokeColor="rgba(255, 215,0, 1)"
+                fillColor="rgba(255, 215, 0, 0.1)" />
+              <Chart.Line
+                fillPositionedParent
+                data={psiData}
+                rangeX={[0, psiData.length - 1]}
+                rangeY={[0, 1500]}
+                strokeColor="rgba(255,250,250, 1)"
+                fillColor="rgba(255,250,250, 0.1)" />
+              <Chart.Line
+                fillPositionedParent
+                data={tempInputData}
+                rangeX={[0, tempInputData.length - 1]}
+                rangeY={[-273.15, 1227]}
+                strokeColor="rgba(127, 179, 255 , 1)"
+                fillColor="rgba(127, 179, 255 , 0.1)" />
+              <Chart.Line
+                fillPositionedParent
+                data={tempOutputdata}
+                rangeX={[0, tempOutputdata.length - 1]}
+                rangeY={[-273.15, 1227]}
+                strokeColor="rgba(255, 0, 0 , 1)"
+                fillColor="rgba(255, 0, 0 , 0.1)" />
+              <Chart.Line
+                fillPositionedParent
+                data={tempInternalData}
+                rangeX={[0, tempInternalData.length - 1]}
+                rangeY={[21, 1000]}
+                strokeColor="rgba(255, 0, 0 , 1)"
+                fillColor="rgba(255, 0, 0 , 0.1)" />
+            </Flex.Item>
+          </Flex>
         </Section>
       </Window.Content>
     </Window>

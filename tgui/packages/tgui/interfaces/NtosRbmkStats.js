@@ -13,6 +13,7 @@ export const NtosRbmkStats = (props, context) => {
   const psiData = data.psiData.map((value, i) => [i, value]);
   const tempInputData = data.tempInputData.map((value, i) => [i, value]);
   const tempOutputdata = data.tempOutputdata.map((value, i) => [i, value]);
+  const tempInternalData = data.tempInternalData.map((value, i) => [i, value]);
   return (
     <NtosWindow
       resizable
@@ -57,6 +58,14 @@ export const NtosRbmkStats = (props, context) => {
             color="bad">
             {data.coolantOutput} °C
           </ProgressBar>
+          Internal temperature (°C):
+          <ProgressBar
+            value={data.reactorInternalTemp}
+            minValue={20}
+            maxValue={1227}
+            color="bad">
+            {data.reactorInternalTemp} °C
+          </ProgressBar>
         </Section>
         <Section title="Reactor Statistics:" height="200px">
           <Chart.Line
@@ -85,6 +94,13 @@ export const NtosRbmkStats = (props, context) => {
             data={tempOutputdata}
             rangeX={[0, tempOutputdata.length - 1]}
             rangeY={[-273.15, 1227]}
+            strokeColor="rgba(255, 0, 0 , 1)"
+            fillColor="rgba(255, 0, 0 , 0.1)" />
+          <Chart.Line
+            fillPositionedParent
+            data={tempInternalData}
+            rangeX={[0, tempInternalData.length - 1]}
+            rangeY={[21, 1227]}
             strokeColor="rgba(255, 0, 0 , 1)"
             fillColor="rgba(255, 0, 0 , 0.1)" />
         </Section>

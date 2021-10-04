@@ -68,6 +68,7 @@ SUBSYSTEM_DEF(air)
 
 	//austation begin -- firelocks list, don't recommend putting anything but firelocks here
 	var/list/firelocks = list()
+	var/slow_decomp_threshold = 100
 
 /datum/controller/subsystem/air/stat_entry(msg)
 	msg += "C:{"

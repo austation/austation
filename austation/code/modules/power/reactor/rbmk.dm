@@ -84,7 +84,7 @@ The reactor CHEWS through moderator. It does not do this slowly. Be very careful
 	dir = 8 //Less headache inducing :))
 	var/id = null //Change me mappers
 	//Variables essential to operation
-	var/temperature = 0 //Lose control of this -> Meltdown
+	var/temperature = T20C //Lose control of this -> Meltdown
 	var/vessel_integrity = 400 //How long can the reactor withstand overpressure / meltdown? This gives you a fair chance to react to even a massive pipe fire
 	var/pressure = 0 //Lose control of this -> Blowout
 	var/K = 0 //Rate of reaction.
@@ -113,6 +113,7 @@ The reactor CHEWS through moderator. It does not do this slowly. Be very careful
 
 	var/last_user = null
 	var/current_desired_k = null
+	var/alert = FALSE
 
 //Use this in your maps if you want everything to be preset.
 /obj/machinery/atmospherics/components/trinary/nuclear_reactor/preset
@@ -371,6 +372,85 @@ The reactor CHEWS through moderator. It does not do this slowly. Be very careful
 					if(!(grilled_item.foodtype & FRIED))
 						grilled_item.foodtype |= FRIED
 
+/obj/machinery/atmospherics/components/trinary/nuclear_reactor/proc/handle_blowout_effects(temp, press)
+	shake_animation(0.5)
+	playsound(loc, 'sound/machines/clockcult/steam_whoosh.ogg', 100, TRUE)
+	var/turf/T = get_turf(src)
+	T.atmos_spawn_air("water_vapor=[press/100];TEMP=[CELSIUS_TO_KELVIN(temp)]")
+
+/obj/machinery/atmospherics/components/trinary/nuclear_reactor/proc/play_degradation_sounds()
+	playsound(src, pick('sound/machines/sm/accent/normal/1.ogg','sound/machines/sm/accent/normal/2.ogg','sound/machines/sm/accent/normal/3.ogg','sound/machines/sm/accent/normal/4.ogg','sound/machines/sm/accent/normal/5.ogg'), 100, TRUE)
+
+/obj/machinery/atmospherics/components/trinary/nuclear_reactor/proc/handle_power(pow)
+	var/turf/T = get_turf(src)
+	var/obj/structure/cable/C = T.get_cable_node()
+	if(!C?.powernet)
+		return
+	else
+		if(pow > 0)
+			C.powernet.newavail += pow
+
+/obj/machinery/atmospherics/components/trinary/nuclear_reactor/proc/handle_warnings()
+	if(warning)
+		if(!alert) //Congrats! You stopped the meltdown / blowout.
+			stop_relay(CHANNEL_REACTOR_ALERT)
+			warning = FALSE
+			set_light(0)
+			light_color = LIGHT_COLOR_CYAN
+			set_light(10)
+	else
+		if(!alert)
+			return
+		if(world.time < next_warning)
+			return
+		next_warning = world.time + 30 SECONDS //To avoid engis pissing people off when reaaaally trying to stop the meltdown or whatever.
+		warning = TRUE //Start warning the crew of the imminent danger.
+		relay('austation/sound/effects/rbmk/alarm.ogg', null, loop=TRUE, channel = CHANNEL_REACTOR_ALERT)
+		set_light(0)
+		light_color = LIGHT_COLOR_RED
+		set_light(10)
+
+/obj/machinery/atmospherics/components/trinary/nuclear_reactor/proc/flicker_lights()
+	if(world.time >= next_flicker) //You're overloading the reactor. Give a more subtle warning that power is getting out of control.
+		next_flicker = world.time + 1.5 MINUTES
+		for(var/obj/machinery/light/L in GLOB.machines)
+			if(prob(25) && L.z == z) //If youre running the reactor cold though, no need to flicker the lights.
+				L.flicker()
+		investigate_log("Reactor overloading at [power]% power", INVESTIGATE_ENGINES)
+
+/obj/machinery/atmospherics/components/trinary/nuclear_reactor/proc/fry_stuff(temp, poweur)
+	for(var/atom/movable/I in get_turf(src))
+		if(isliving(I))
+			var/mob/living/L = I
+			if(temp > 0)
+				L.adjust_bodytemperature(CLAMP(temp, BODYTEMP_COOLING_MAX, BODYTEMP_HEATING_MAX)) //If you're on fire, you heat up!
+		if(istype(I, /obj/item/reagent_containers/food) && !istype(I, /obj/item/reagent_containers/food/drinks))
+			playsound(src, pick('sound/machines/fryer/deep_fryer_1.ogg', 'sound/machines/fryer/deep_fryer_2.ogg'), 100, TRUE)
+			var/obj/item/reagent_containers/food/grilled_item = I
+			if(prob(80))
+				return //To give the illusion that it's actually cooking omegalul.
+			switch(poweur)
+				if(20 to 39)
+					grilled_item.name = "grilled [initial(grilled_item.name)]"
+					grilled_item.desc = "[initial(I.desc)] It's been grilled over a nuclear reactor."
+					if(!(grilled_item.foodtype & FRIED))
+						grilled_item.foodtype |= FRIED
+				if(40 to 70)
+					grilled_item.name = "heavily grilled [initial(grilled_item.name)]"
+					grilled_item.desc = "[initial(I.desc)] It's been heavily grilled through the magic of nuclear fission."
+					if(!(grilled_item.foodtype & FRIED))
+						grilled_item.foodtype |= FRIED
+				if(70 to 95)
+					grilled_item.name = "Three-Mile Nuclear-Grilled [initial(grilled_item.name)]"
+					grilled_item.desc = "A [initial(grilled_item.name)]. It's been put on top of a nuclear reactor running at extreme power by some badass engineer."
+					if(!(grilled_item.foodtype & FRIED))
+						grilled_item.foodtype |= FRIED
+				if(95 to INFINITY)
+					grilled_item.name = "Ultimate Meltdown Grilled [initial(grilled_item.name)]"
+					grilled_item.desc = "A [initial(grilled_item.name)]. A grill this perfect is a rare technique only known by a few engineers who know how to perform a 'controlled' meltdown whilst also having the time to throw food on a reactor. I'll bet it tastes amazing."
+					if(!(grilled_item.foodtype & FRIED))
+						grilled_item.foodtype |= FRIED
+
 /obj/machinery/atmospherics/components/trinary/nuclear_reactor/proc/relay(var/sound, var/message=null, loop = FALSE, channel = null) //Sends a sound + text message to the crew of a ship
 	for(var/mob/M in GLOB.player_list)
 		if(M.z == z)
@@ -491,7 +571,7 @@ The reactor CHEWS through moderator. It does not do this slowly. Be very careful
 /obj/machinery/atmospherics/components/trinary/nuclear_reactor/update_icon()
 	icon_state = "reactor_off"
 	switch(temperature)
-		if(0 to 200)
+		if(T0C to 200)
 			icon_state = "reactor_on"
 		if(200 to RBMK_TEMPERATURE_OPERATING)
 			icon_state = "reactor_hot"
@@ -522,7 +602,7 @@ The reactor CHEWS through moderator. It does not do this slowly. Be very careful
 	set_light(0)
 	K = 0
 	desired_k = 0
-	temperature = 0
+	temperature = T0C
 	update_icon()
 
 /obj/item/fuel_rod
@@ -626,6 +706,7 @@ The reactor CHEWS through moderator. It does not do this slowly. Be very careful
 	var/list/powerData = list()
 	var/list/tempInputData = list()
 	var/list/tempOutputdata = list()
+	var/list/tempInternalData = list()
 
 /obj/machinery/computer/reactor/stats/attack_hand(mob/living/user)
 	. = ..()
@@ -656,6 +737,9 @@ The reactor CHEWS through moderator. It does not do this slowly. Be very careful
 		tempOutputdata += (reactor) ? reactor.last_output_temperature : 0 //We scale up the figure for a consistent:tm: scale
 		if(tempOutputdata.len > 100) //Only lets you track over a certain timeframe.
 			tempOutputdata.Cut(1, 2)
+		tempInternalData += (reactor) ? KELVIN_TO_CELSIUS(reactor.temperature) : 0 //We scale up the figure for a consistent:tm: scale
+		if(tempInternalData.len > 100) //Only lets you track over a certain timeframe.
+			tempInternalData.Cut(1, 2)
 
 /obj/machinery/computer/reactor/stats/ui_data(mob/user)
 	var/list/data = list()
@@ -663,8 +747,10 @@ The reactor CHEWS through moderator. It does not do this slowly. Be very careful
 	data["psiData"] = psiData
 	data["tempInputData"] = tempInputData
 	data["tempOutputdata"] = tempOutputdata
+	data["tempInternalData"] = tempInternalData
 	data["coolantInput"] = reactor ? reactor.last_coolant_temperature : 0
 	data["coolantOutput"] = reactor ? reactor.last_output_temperature : 0
+	data["reactorInternalTemp"] = reactor ? KELVIN_TO_CELSIUS(reactor.temperature) : 0
 	data["power"] = reactor ? reactor.power : 0
 	data ["psi"] = reactor ? reactor.pressure : 0
 	return data
@@ -797,6 +883,7 @@ The reactor CHEWS through moderator. It does not do this slowly. Be very careful
 	var/list/powerData = list()
 	var/list/tempInputData = list()
 	var/list/tempOutputdata = list()
+	var/list/tempInternalData = list()
 	var/obj/machinery/atmospherics/components/trinary/nuclear_reactor/reactor //Our reactor.
 
 /datum/computer_file/program/nuclear_monitor/process_tick()
@@ -835,6 +922,9 @@ The reactor CHEWS through moderator. It does not do this slowly. Be very careful
 		tempOutputdata += (reactor) ? reactor.last_output_temperature : 0 //We scale up the figure for a consistent:tm: scale
 		if(tempOutputdata.len > 100) //Only lets you track over a certain timeframe.
 			tempOutputdata.Cut(1, 2)
+		tempInternalData += (reactor) ? KELVIN_TO_CELSIUS(reactor.temperature) : 0 //We scale up the figure for a consistent:tm: scale
+		if(tempInternalData.len > 100) //Only lets you track over a certain timeframe.
+			tempInternalData.Cut(1, 2)
 
 /datum/computer_file/program/nuclear_monitor/run_program(mob/living/user)
 	. = ..(user)
@@ -856,8 +946,10 @@ The reactor CHEWS through moderator. It does not do this slowly. Be very careful
 	data["psiData"] = psiData
 	data["tempInputData"] = tempInputData
 	data["tempOutputdata"] = tempOutputdata
+	data["tempInternalData"] = tempInternalData
 	data["coolantInput"] = reactor ? reactor.last_coolant_temperature : 0
 	data["coolantOutput"] = reactor ? reactor.last_output_temperature : 0
+	data["reactorInternalTemp"] = reactor ? KELVIN_TO_CELSIUS(reactor.temperature) : 0
 	data["power"] = reactor ? reactor.power : 0
 	data ["psi"] = reactor ? reactor.pressure : 0
 	return data
@@ -878,6 +970,7 @@ The reactor CHEWS through moderator. It does not do this slowly. Be very careful
 			psiData = list()
 			tempInputData = list()
 			tempOutputdata = list()
+			tempInternalData = list()
 			return TRUE
 
 /obj/effect/decal/nuclear_waste
