@@ -40,7 +40,6 @@
 		user.visible_message("<span class='warning'>[user] crushes the styrofoam cup on [user.p_their()] forehead!</span>", "<span class='notice'>You crush the styrofoam cup on your forehead.</span>")
 		playsound(user.loc,'sound/weapons/pierce.ogg', rand(10,50), 1)
 		var/obj/item/trash/cup/crushed_cup = new(user.loc)
-		//crushed_cup.icon_state = icon_state
 		qdel(src)
 
 /obj/item/reagent_containers/food/drinks/styrofoam_cup/on_reagent_change(changetype)
