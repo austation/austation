@@ -13,7 +13,7 @@
 	taste_description = "death"
 
 /datum/reagent/gasoline
-	name = "Gasoline"
+	name = "Petrol"
 	description = "Petroleum derived fuel. Highly flammable."
 	reagent_state = LIQUID
 	color = "#FFBF00e9"
