@@ -3,7 +3,7 @@ import { flow } from 'common/fp';
 import { toFixed } from 'common/math';
 import { pureComponentHooks } from 'common/react';
 import { Component, Fragment } from 'inferno';
-import { Box, Button, Chart, ColorBox, Flex, Icon, LabeledList, ProgressBar, Section, Table } from '../components';
+import { Box, Button, Chart, ColorBox, Stack, Icon, LabeledList, ProgressBar, Section, Table } from '../components';
 import { Window } from '../layouts';
 import { useBackend, useLocalState } from '../backend';
 
@@ -62,47 +62,48 @@ export const RbmkStats = (props, context) => {
             {data.reactorInternalTemp} °C
           </ProgressBar>
         </Section>
-        <Section title="Reactor Statistics:" height="200px" position="relative" >
-          <Flex>
-            <Flex.Item grow={1}>
+
+        <Stack fill grow vertical>
+          <Stack.Item>
+            <Section title="Reactor Statistics:" position="relative">
               <Chart.Line
                 fillPositionedParent
                 data={powerData}
                 rangeX={[0, powerData.length - 1]}
-                rangeY={[0, 1500]}
+                rangeY={[0, 1000]}
                 strokeColor="rgba(255, 215,0, 1)"
                 fillColor="rgba(255, 215, 0, 0.1)" />
               <Chart.Line
                 fillPositionedParent
                 data={psiData}
                 rangeX={[0, psiData.length - 1]}
-                rangeY={[0, 1500]}
+                rangeY={[0, 1000]}
                 strokeColor="rgba(255,250,250, 1)"
                 fillColor="rgba(255,250,250, 0.1)" />
               <Chart.Line
                 fillPositionedParent
                 data={tempInputData}
                 rangeX={[0, tempInputData.length - 1]}
-                rangeY={[-273.15, 1227]}
+                rangeY={[-273.15, 800]}
                 strokeColor="rgba(127, 179, 255 , 1)"
                 fillColor="rgba(127, 179, 255 , 0.1)" />
               <Chart.Line
                 fillPositionedParent
                 data={tempOutputdata}
                 rangeX={[0, tempOutputdata.length - 1]}
-                rangeY={[-273.15, 1227]}
+                rangeY={[-273.15, 800]}
                 strokeColor="rgba(255, 0, 0 , 1)"
                 fillColor="rgba(255, 0, 0 , 0.1)" />
               <Chart.Line
                 fillPositionedParent
                 data={tempInternalData}
                 rangeX={[0, tempInternalData.length - 1]}
-                rangeY={[21, 1000]}
+                rangeY={[21, 800]}
                 strokeColor="rgba(255, 0, 0 , 1)"
                 fillColor="rgba(255, 0, 0 , 0.1)" />
-            </Flex.Item>
-          </Flex>
-        </Section>
+            </Section>
+          </Stack.Item>
+        </Stack>
       </Window.Content>
     </Window>
   );

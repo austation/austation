@@ -571,7 +571,7 @@ The reactor CHEWS through moderator. It does not do this slowly. Be very careful
 /obj/machinery/atmospherics/components/trinary/nuclear_reactor/update_icon()
 	icon_state = "reactor_off"
 	switch(temperature)
-		if(T0C to 200)
+		if((T20C + 1)  to 200)
 			icon_state = "reactor_on"
 		if(200 to RBMK_TEMPERATURE_OPERATING)
 			icon_state = "reactor_hot"
@@ -602,7 +602,7 @@ The reactor CHEWS through moderator. It does not do this slowly. Be very careful
 	set_light(0)
 	K = 0
 	desired_k = 0
-	temperature = T0C
+	temperature = T20C
 	update_icon()
 
 /obj/item/fuel_rod
