@@ -737,7 +737,7 @@ The reactor CHEWS through moderator. It does not do this slowly. Be very careful
 		tempOutputdata += (reactor) ? reactor.last_output_temperature : 0 //We scale up the figure for a consistent:tm: scale
 		if(tempOutputdata.len > 100) //Only lets you track over a certain timeframe.
 			tempOutputdata.Cut(1, 2)
-		tempInternalData += (reactor) ? KELVIN_TO_CELSIUS(reactor.temperature) : 0 //We scale up the figure for a consistent:tm: scale
+		tempInternalData += (reactor) ? (KELVIN_TO_CELSIUS(reactor.temperature)) : 0 //We scale up the figure for a consistent:tm: scale
 		if(tempInternalData.len > 100) //Only lets you track over a certain timeframe.
 			tempInternalData.Cut(1, 2)
 
@@ -750,7 +750,7 @@ The reactor CHEWS through moderator. It does not do this slowly. Be very careful
 	data["tempInternalData"] = tempInternalData
 	data["coolantInput"] = reactor ? reactor.last_coolant_temperature : 0
 	data["coolantOutput"] = reactor ? reactor.last_output_temperature : 0
-	data["reactorInternalTemp"] = reactor ? KELVIN_TO_CELSIUS(reactor.temperature) : 0
+	data["reactorInternalTemp"] = reactor ? (KELVIN_TO_CELSIUS(reactor.temperature)) : 0
 	data["power"] = reactor ? reactor.power : 0
 	data ["psi"] = reactor ? reactor.pressure : 0
 	return data
@@ -922,7 +922,7 @@ The reactor CHEWS through moderator. It does not do this slowly. Be very careful
 		tempOutputdata += (reactor) ? reactor.last_output_temperature : 0 //We scale up the figure for a consistent:tm: scale
 		if(tempOutputdata.len > 100) //Only lets you track over a certain timeframe.
 			tempOutputdata.Cut(1, 2)
-		tempInternalData += (reactor) ? KELVIN_TO_CELSIUS(reactor.temperature) : 0 //We scale up the figure for a consistent:tm: scale
+		tempInternalData += (reactor) ? (KELVIN_TO_CELSIUS(reactor.temperature)) : 0 //We scale up the figure for a consistent:tm: scale
 		if(tempInternalData.len > 100) //Only lets you track over a certain timeframe.
 			tempInternalData.Cut(1, 2)
 
@@ -949,7 +949,7 @@ The reactor CHEWS through moderator. It does not do this slowly. Be very careful
 	data["tempInternalData"] = tempInternalData
 	data["coolantInput"] = reactor ? reactor.last_coolant_temperature : 0
 	data["coolantOutput"] = reactor ? reactor.last_output_temperature : 0
-	data["reactorInternalTemp"] = reactor ? KELVIN_TO_CELSIUS(reactor.temperature) : 0
+	data["reactorInternalTemp"] = reactor ? (KELVIN_TO_CELSIUS(reactor.temperature)) : 0
 	data["power"] = reactor ? reactor.power : 0
 	data ["psi"] = reactor ? reactor.pressure : 0
 	return data
