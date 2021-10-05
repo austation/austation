@@ -18,7 +18,7 @@ export const NtosRbmkStats = (props, context) => {
     <NtosWindow
       resizable
       width={440}
-      height={650}>
+      height={450}>
       <NtosWindow.Content>
 
         <Section title="Legend:" buttons={
@@ -67,42 +67,49 @@ export const NtosRbmkStats = (props, context) => {
             {data.reactorInternalTemp} °C
           </ProgressBar>
         </Section>
-        <Section title="Reactor Statistics:" height="200px">
-          <Chart.Line
-            fillPositionedParent
-            data={powerData}
-            rangeX={[0, powerData.length - 1]}
-            rangeY={[0, 1500]}
-            strokeColor="rgba(255, 215,0, 1)"
-            fillColor="rgba(255, 215, 0, 0.1)" />
-          <Chart.Line
-            fillPositionedParent
-            data={psiData}
-            rangeX={[0, psiData.length - 1]}
-            rangeY={[0, 1500]}
-            strokeColor="rgba(255,250,250, 1)"
-            fillColor="rgba(255,250,250, 0.1)" />
-          <Chart.Line
-            fillPositionedParent
-            data={tempInputData}
-            rangeX={[0, tempInputData.length - 1]}
-            rangeY={[-273.15, 1227]}
-            strokeColor="rgba(127, 179, 255 , 1)"
-            fillColor="rgba(127, 179, 255 , 0.1)" />
-          <Chart.Line
-            fillPositionedParent
-            data={tempOutputdata}
-            rangeX={[0, tempOutputdata.length - 1]}
-            rangeY={[-273.15, 1227]}
-            strokeColor="rgba(255, 0, 0 , 1)"
-            fillColor="rgba(255, 0, 0 , 0.1)" />
-          <Chart.Line
-            fillPositionedParent
-            data={tempInternalData}
-            rangeX={[0, tempInternalData.length - 1]}
-            rangeY={[21, 1227]}
-            strokeColor="rgba(255, 0, 0 , 1)"
-            fillColor="rgba(255, 0, 0 , 0.1)" />
+        <Section title="Reactor Statistics:" position="relative" height="125px">
+          <Box
+            height="70px"
+            position="relative"
+            style={{
+              'background-color': 'black',
+            }}>
+            <Chart.Line
+              fillPositionedParent
+              data={powerData}
+              rangeX={[0, powerData.length - 1]}
+              rangeY={[0, 1000]}
+              strokeColor="rgba(255, 215,0, 1)"
+              fillColor="rgba(255, 215, 0, 0.1)" />
+            <Chart.Line
+              fillPositionedParent
+              data={psiData}
+              rangeX={[0, psiData.length - 1]}
+              rangeY={[0, 1500]}
+              strokeColor="rgba(255,250,250, 1)"
+              fillColor="rgba(255,250,250, 0.1)" />
+            <Chart.Line
+              fillPositionedParent
+              data={tempInputData}
+              rangeX={[0, tempInputData.length - 1]}
+              rangeY={[-273.15, 800]}
+              strokeColor="rgba(127, 179, 255 , 1)"
+              fillColor="rgba(127, 179, 255 , 0.1)" />
+            <Chart.Line
+              fillPositionedParent
+              data={tempOutputdata}
+              rangeX={[0, tempOutputdata.length - 1]}
+              rangeY={[-273.15, 800]}
+              strokeColor="rgba(255, 0, 0 , 1)"
+              fillColor="rgba(255, 0, 0 , 0.1)" />
+            <Chart.Line
+              fillPositionedParent
+              data={tempInternalData}
+              rangeX={[0, tempInternalData.length - 1]}
+              rangeY={[21, 800]}
+              strokeColor="rgba(255, 0, 0 , 1)"
+              fillColor="rgba(255, 0, 0 , 0.1)" />
+          </Box>
         </Section>
       </NtosWindow.Content>
     </NtosWindow>

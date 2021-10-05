@@ -19,7 +19,7 @@ export const RbmkStats = (props, context) => {
       resizable
       theme="ntos"
       width={350}
-      height={500}>
+      height={380}>
       <Window.Content>
         <Section title="Legend:">
           Reactor Power (%):
@@ -63,47 +63,50 @@ export const RbmkStats = (props, context) => {
           </ProgressBar>
         </Section>
 
-        <Stack fill grow vertical>
-          <Stack.Item>
-            <Section title="Reactor Statistics:" position="relative">
-              <Chart.Line
-                fillPositionedParent
-                data={powerData}
-                rangeX={[0, powerData.length - 1]}
-                rangeY={[0, 1000]}
-                strokeColor="rgba(255, 215,0, 1)"
-                fillColor="rgba(255, 215, 0, 0.1)" />
-              <Chart.Line
-                fillPositionedParent
-                data={psiData}
-                rangeX={[0, psiData.length - 1]}
-                rangeY={[0, 1000]}
-                strokeColor="rgba(255,250,250, 1)"
-                fillColor="rgba(255,250,250, 0.1)" />
-              <Chart.Line
-                fillPositionedParent
-                data={tempInputData}
-                rangeX={[0, tempInputData.length - 1]}
-                rangeY={[-273.15, 800]}
-                strokeColor="rgba(127, 179, 255 , 1)"
-                fillColor="rgba(127, 179, 255 , 0.1)" />
-              <Chart.Line
-                fillPositionedParent
-                data={tempOutputdata}
-                rangeX={[0, tempOutputdata.length - 1]}
-                rangeY={[-273.15, 800]}
-                strokeColor="rgba(255, 0, 0 , 1)"
-                fillColor="rgba(255, 0, 0 , 0.1)" />
-              <Chart.Line
-                fillPositionedParent
-                data={tempInternalData}
-                rangeX={[0, tempInternalData.length - 1]}
-                rangeY={[21, 800]}
-                strokeColor="rgba(255, 0, 0 , 1)"
-                fillColor="rgba(255, 0, 0 , 0.1)" />
-            </Section>
-          </Stack.Item>
-        </Stack>
+        <Section title="Reactor Statistics:" position="relative" height="115px">
+          <Box
+            height="70px"
+            position="relative"
+            style={{
+              'background-color': 'black',
+            }}>
+            <Chart.Line
+              fillPositionedParent
+              data={powerData}
+              rangeX={[0, powerData.length - 1]}
+              rangeY={[0, 1000]}
+              strokeColor="rgba(255, 215,0, 1)"
+              fillColor="rgba(255, 215, 0, 0.1)" />
+            <Chart.Line
+              fillPositionedParent
+              data={psiData}
+              rangeX={[0, psiData.length - 1]}
+              rangeY={[0, 1500]}
+              strokeColor="rgba(255,250,250, 1)"
+              fillColor="rgba(255,250,250, 0.1)" />
+            <Chart.Line
+              fillPositionedParent
+              data={tempInputData}
+              rangeX={[0, tempInputData.length - 1]}
+              rangeY={[-273.15, 800]}
+              strokeColor="rgba(127, 179, 255 , 1)"
+              fillColor="rgba(127, 179, 255 , 0.1)" />
+            <Chart.Line
+              fillPositionedParent
+              data={tempOutputdata}
+              rangeX={[0, tempOutputdata.length - 1]}
+              rangeY={[-273.15, 800]}
+              strokeColor="rgba(255, 0, 0 , 1)"
+              fillColor="rgba(255, 0, 0 , 0.1)" />
+            <Chart.Line
+              fillPositionedParent
+              data={tempInternalData}
+              rangeX={[0, tempInternalData.length - 1]}
+              rangeY={[21, 800]}
+              strokeColor="rgba(255, 0, 0 , 1)"
+              fillColor="rgba(255, 0, 0 , 0.1)" />
+          </Box>
+        </Section>
       </Window.Content>
     </Window>
   );
