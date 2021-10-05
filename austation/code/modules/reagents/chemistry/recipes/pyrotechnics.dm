@@ -73,7 +73,7 @@
 	required_temp = 550 + rand(-49,49)
 
 /datum/chemical_reaction/gasoline
-	name = "Gasoline"
+	name = "Petrol"
 	id = /datum/reagent/gasoline
 	results = list(/datum/reagent/gasoline = 3)
 	required_reagents = list(/datum/reagent/oil = 1, /datum/reagent/fuel = 1)
