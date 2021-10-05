@@ -41,7 +41,8 @@
 		playsound(user.loc,'sound/weapons/pierce.ogg', rand(10,50), 1)
 		var/obj/item/trash/cup/crushed_cup = new(user.loc)
 		qdel(src)
-
+	else
+		return ..()
 /obj/item/reagent_containers/food/drinks/styrofoam_cup/on_reagent_change(changetype)
 	if(reagents.total_volume)
 		icon_state = "styrofoam_cup"
