@@ -95,6 +95,7 @@
 #include "austation\code\game\objects\items\weaponry.dm"
 #include "austation\code\game\objects\items\circuitboards\machine_circuitboards.dm"
 #include "austation\code\game\objects\items\devices\floor_painter.dm"
+#include "austation\code\game\objects\items\crayons.dm"
 #include "austation\code\game\objects\items\devices\geiger_counter.dm"
 #include "austation\code\game\objects\items\devices\multitool.dm"
 #include "austation\code\game\objects\items\devices\scanners.dm"
