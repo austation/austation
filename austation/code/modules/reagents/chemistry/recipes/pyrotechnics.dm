@@ -77,4 +77,4 @@
 	id = /datum/reagent/gasoline
 	results = list(/datum/reagent/gasoline = 3)
 	required_reagents = list(/datum/reagent/oil = 1, /datum/reagent/fuel = 1)
-	required_temp = 613
+	required_temp = 450
