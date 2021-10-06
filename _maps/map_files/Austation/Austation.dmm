@@ -43970,6 +43970,9 @@
 /obj/machinery/atmospherics/components/binary/pump{
 	name = "Coolent to Reactor"
 	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
 /turf/open/floor/engine,
 /area/engine/engineering/reactor_core)
 "fTD" = (
@@ -46903,6 +46906,12 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/hallway/primary/fore)
+"gXg" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/turf/open/floor/engine,
+/area/engine/engineering/reactor_core)
 "gXI" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer1,
 /turf/open/floor/plasteel/white,
@@ -49055,6 +49064,9 @@
 /obj/machinery/atmospherics/pipe/simple/cyan/visible{
 	dir = 9
 	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
 /turf/open/floor/engine,
 /area/engine/engineering/reactor_core)
 "hPB" = (
@@ -49773,7 +49785,7 @@
 /obj/machinery/door/poddoor{
 	id = "au_nuclear_vent"
 	},
-/turf/open/space/basic,
+/turf/open/floor/engine,
 /area/engine/engineering/reactor_core)
 "ifa" = (
 /obj/structure/closet/emcloset,
@@ -62678,6 +62690,9 @@
 "mYp" = (
 /obj/machinery/atmospherics/components/unary/portables_connector,
 /obj/machinery/portable_atmospherics/canister/nitrogen,
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
 /turf/open/floor/engine,
 /area/engine/engineering/reactor_core)
 "mYJ" = (
@@ -62781,6 +62796,12 @@
 "nbv" = (
 /turf/open/floor/plating,
 /area/maintenance/starboard/secondary)
+"nce" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 6
+	},
+/turf/open/floor/engine,
+/area/engine/engineering/reactor_core)
 "ncg" = (
 /obj/structure/rack,
 /obj/effect/spawner/lootdrop/costume,
@@ -76772,6 +76793,9 @@
 "skg" = (
 /obj/machinery/atmospherics/pipe/simple/brown/visible{
 	dir = 8
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
 	},
 /turf/open/floor/engine,
 /area/engine/engineering/reactor_core)
@@ -142456,9 +142480,9 @@ skg
 mYp
 fSQ
 hPu
-nVz
-nVz
-qMQ
+gXg
+gXg
+nce
 juP
 lMJ
 skU
