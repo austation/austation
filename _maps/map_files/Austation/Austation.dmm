@@ -7151,6 +7151,12 @@
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
 	},
+/obj/machinery/door/firedoor/border_only{
+	dir = 4
+	},
+/obj/machinery/door/firedoor/border_only{
+	dir = 8
+	},
 /turf/open/floor/plasteel/white,
 /area/science/shuttledock)
 "aHh" = (
@@ -41797,6 +41803,9 @@
 	dir = 8
 	},
 /obj/machinery/door/airlock/external,
+/obj/effect/mapping_helpers/airlock/cyclelink_helper{
+	dir = 4
+	},
 /turf/open/floor/plating,
 /area/science/shuttledock)
 "fba" = (
@@ -51450,6 +51459,9 @@
 	dir = 9
 	},
 /obj/machinery/door/airlock/external,
+/obj/effect/mapping_helpers/airlock/cyclelink_helper{
+	dir = 8
+	},
 /turf/open/floor/plating,
 /area/science/shuttledock)
 "iNo" = (
@@ -61482,6 +61494,12 @@
 /obj/machinery/door/airlock/research{
 	name = "Shuttle dock";
 	req_access_txt = "47"
+	},
+/obj/machinery/door/firedoor/border_only{
+	dir = 4
+	},
+/obj/machinery/door/firedoor/border_only{
+	dir = 8
 	},
 /turf/open/floor/plasteel/white,
 /area/science/shuttledock)
