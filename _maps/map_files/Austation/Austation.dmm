@@ -46413,7 +46413,7 @@
 "gEs" = (
 /obj/machinery/door/airlock{
 	name = "Theatre Stage";
-	req_one_access_txt = "12;46"
+	req_one_access_txt = "12"
 	},
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
