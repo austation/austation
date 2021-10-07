@@ -1,0 +1,4 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - spellcheck: "Fixed artifact supercruise message."
