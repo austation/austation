@@ -95,6 +95,7 @@ GLOBAL_LIST_INIT(maintenance_loot, list(
 	/obj/item/grenade/smokebomb = 2,
 	/obj/item/geiger_counter = 3,
 	/obj/item/reagent_containers/food/snacks/grown/citrus/orange = 1,
+	/obj/item/reagent_containers/glass/beaker/jerry = 1, //austation - again, don't know how to modularise this, please don't yell at me
 	/obj/item/radio/headset = 1,
 	/obj/item/assembly/infra = 1,
 	/obj/item/assembly/igniter = 2,
