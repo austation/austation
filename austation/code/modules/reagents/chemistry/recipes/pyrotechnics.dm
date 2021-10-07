@@ -78,3 +78,10 @@
 	results = list(/datum/reagent/gasoline = 3)
 	required_reagents = list(/datum/reagent/oil = 1, /datum/reagent/fuel = 1)
 	required_temp = 450
+
+/datum/chemical_reaction/napalm_alt
+    name = "Napalm"
+    id = /datum/reagent/napalm
+    results = list(/datum/reagent/napalm = 3)
+    required_reagents = list(/datum/reagent/polystyrene = 2, /datum/reagent/gasoline = 6)
+    mix_message = "<span class='danger'>The mixture thickens, becoming a gel-like substance.</span>"
