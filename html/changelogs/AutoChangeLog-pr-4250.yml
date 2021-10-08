@@ -1,4 +1,0 @@
-author: "AustationBot"
-delete-after: True
-changes: 
-  - bugfix: "Resolves a bad index runtime caused by the stat panel's verb caching"
