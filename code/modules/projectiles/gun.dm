@@ -97,6 +97,7 @@
 	build_zooming()
 	if(!spread_unwielded)
 		spread_unwielded = weapon_weight * 20 + 20
+/* austation begin -- remove two-handed gun requirements
 	RegisterSignal(src, COMSIG_TWOHANDED_WIELD, .proc/wield)
 	RegisterSignal(src, COMSIG_TWOHANDED_UNWIELD, .proc/unwield)
 
@@ -110,6 +111,7 @@
 
 /obj/item/gun/proc/unwield()
 	is_wielded = FALSE
+austation end */
 
 /obj/item/gun/Destroy()
 	if(isobj(pin)) //Can still be the initial path, then we skip
@@ -251,7 +253,7 @@
 				return
 
 	var/obj/item/bodypart/other_hand = user.has_hand_for_held_index(user.get_inactive_hand_index()) //returns non-disabled inactive hands
-	if(weapon_weight == WEAPON_HEAVY && (!istype(user.get_inactive_held_item(), /obj/item/offhand) || !other_hand))
+	if(weapon_weight == WEAPON_HEAVY && (user.get_inactive_held_item() || !other_hand)) // austation -- remove two-handed gun requirements
 		balloon_alert(user, "You need both hands free to fire")
 		return
 
@@ -344,8 +346,10 @@
 		randomized_gun_spread =	rand(0,spread)
 	if(HAS_TRAIT(user, TRAIT_POOR_AIM)) //nice shootin' tex
 		bonus_spread += 25
+	/* austation begin -- remove two-handed gun requirements
 	if(!is_wielded)
 		bonus_spread += spread_unwielded
+	austation end */
 	var/randomized_bonus_spread = rand(0, bonus_spread)
 
 	if(burst_size > 1)
