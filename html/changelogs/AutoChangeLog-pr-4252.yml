@@ -1,0 +1,4 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - spellcheck: "Changed flavor text to text in Notes for VIPs from the VIP extraction exploration mission."
