@@ -83,5 +83,5 @@
     name = "Napalm"
     id = /datum/reagent/napalm
     results = list(/datum/reagent/napalm = 3)
-    required_reagents = list(/datum/reagent/polystyrene = 2, /datum/reagent/gasoline = 6)
+    required_reagents = list(/datum/reagent/polystyrene = 1, /datum/reagent/gasoline = 3)
     mix_message = "<span class='danger'>The mixture thickens, becoming a gel-like substance.</span>"
