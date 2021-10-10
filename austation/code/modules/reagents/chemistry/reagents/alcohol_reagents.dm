@@ -81,6 +81,7 @@
 		QDEL_NULL(rage)
 	..()
 
+
 /datum/reagent/consumable/ethanol/moscowmule
 	name = "Moscow Mule"
 	description = "Made of neither Muscovites or Mules, unfortunately."
@@ -117,3 +118,23 @@
 	glass_name = "Bitters"
 	glass_desc = "You get the feeling this is more than a dash."
 
+/datum/reagent/consumable/ethanol/vampirekiss
+	name = "Vampire's Kiss"
+	description = "An alchoholic cocktail, with something wrong..."
+	color = "#da5841"
+	aus = TRUE
+	boozepwr = 50
+	quality = DRINK_FANTASTIC
+	taste_description = "Tart and creamy, with a bitter aftertaste"
+	glass_icon_state = "vampirekiss"
+	glass_name = "glass of vampire's kiss"
+	glass_desc = "A blood-red glass of vampire's kiss, it makes you want to skulk in the shadows."
+
+/datum/reagent/consumable/ethanol/vampirekiss/on_mob_life(mob/living/carbon/M)
+	var/turf/T = M.loc
+	if(istype(T))
+		var/light_amount = T.get_lumcount()
+		if(ishuman(M) && light_amount < 0.2) //The light amount freshold is the same as a shadowperson's
+			M.heal_bodypart_damage(1, 1, 0)
+			. = 1
+	..()
