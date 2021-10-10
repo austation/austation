@@ -81,7 +81,6 @@
 		QDEL_NULL(rage)
 	..()
 
-
 /datum/reagent/consumable/ethanol/moscowmule
 	name = "Moscow Mule"
 	description = "Made of neither Muscovites or Mules, unfortunately."
