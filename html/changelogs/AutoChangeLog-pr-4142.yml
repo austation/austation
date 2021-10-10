@@ -1,5 +1,0 @@
-author: "AustationBot"
-delete-after: True
-changes: 
-  - balance: "Heavy weapons require two hands to hold."
-  - balance: "Light/medium weapons will be less accurate when fired with 1 hand."
