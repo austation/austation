@@ -1,4 +1,0 @@
-author: "AustationBot"
-delete-after: True
-changes: 
-  - bugfix: "Artifacts from supercruise often didn't work, they should be much more interesting now."
