@@ -77,6 +77,7 @@ GLOBAL_LIST_INIT(maintenance_loot, list(
 	/obj/item/storage/belt/utility = 2,
 	/obj/item/storage/box = 2,
 	/obj/item/storage/box/cups = 1,
+	/obj/item/storage/box/stycups = 2, //austation - i have no idea how to add a var to this i.e. modularisation, please yell at me if there's a better way
 	/obj/item/storage/box/donkpockets = 1,
 	/obj/item/storage/box/lights/mixed = 3,
 	/obj/item/storage/box/hug/medical = 1,
@@ -94,6 +95,7 @@ GLOBAL_LIST_INIT(maintenance_loot, list(
 	/obj/item/grenade/smokebomb = 2,
 	/obj/item/geiger_counter = 3,
 	/obj/item/reagent_containers/food/snacks/grown/citrus/orange = 1,
+	/obj/item/reagent_containers/glass/beaker/jerry = 1, //austation - again, don't know how to modularise this, please don't yell at me
 	/obj/item/radio/headset = 1,
 	/obj/item/assembly/infra = 1,
 	/obj/item/assembly/igniter = 2,
