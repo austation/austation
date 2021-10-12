@@ -68,7 +68,6 @@ SUBSYSTEM_DEF(air)
 
 	//austation begin -- firelocks list, don't recommend putting anything but firelocks here
 	var/list/firelocks = list()
-	var/firelocks_changed = TRUE
 	var/slow_decomp_threshold = 200
 	//austation end
 

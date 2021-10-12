@@ -14,11 +14,9 @@
 /obj/machinery/door/firedoor/Initialize()
 	. = ..()
 	SSair.firelocks += src
-	SSair.firelocks_changed = TRUE
 
 /obj/machinery/door/firedoor/Destroy()
 	SSair.firelocks -= src
-	SSair.firelocks_changed = TRUE
 	. = ..()
 
 /turf/proc/ImmediateDisableAdjacency(disable_adjacent = TRUE)
