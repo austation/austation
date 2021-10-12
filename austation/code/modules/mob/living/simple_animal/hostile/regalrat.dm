@@ -289,6 +289,7 @@
 
 /mob/living/simple_animal/hostile/rat/death(gibbed)
 	visible_message("<span class='warning'>[src] dies...</span>")
+	var/list/data = list("viruses" = ratdisease)
 	if(!ckey)
 		if(!gibbed)
 			var/obj/item/reagent_containers/food/snacks/deadmouse/M = new(loc)
