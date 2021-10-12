@@ -95,7 +95,7 @@
 	.=..()
 	if(!.)
 		return
-		
+
 	for(var/mob/living/M in oview(owner,1))
 		M.faction += list("rat")
 		owner.visible_message("<span class='notice'>[M] was made an ally to the rats!</span>")
@@ -290,4 +290,4 @@
 
 /mob/living/simple_animal/hostile/rat/death()
 	visible_message("<span class='warning'>[src] dies...</span>")
-	qdel(src)
+	// qdel(src)  austation "rats die right" (#4285)
