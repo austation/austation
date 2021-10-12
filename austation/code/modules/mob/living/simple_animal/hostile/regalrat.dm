@@ -229,10 +229,15 @@
 	mob_size = MOB_SIZE_TINY
 	mob_biotypes = list(MOB_ORGANIC,MOB_BEAST)
 	faction = list("rat")
+	var/list/ratdisease = list()
 
 /mob/living/simple_animal/hostile/rat/Initialize()
 	. = ..()
 	SSmobs.cheeserats += src
+	if(prob(75))
+		var/datum/disease/advance/R = new /datum/disease/advance/random(rand(3, 6), 9, rand(3,4))
+		R.spread_flags |= DISEASE_SPREAD_CHECK_STRONG_STOMACH // austation -- make catgirls and lizards immune to diseases from rats
+		ratdisease += R
 
 /mob/living/simple_animal/hostile/rat/Destroy()
 	SSmobs.cheeserats -= src
