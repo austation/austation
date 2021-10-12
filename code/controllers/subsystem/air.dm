@@ -68,7 +68,9 @@ SUBSYSTEM_DEF(air)
 
 	//austation begin -- firelocks list, don't recommend putting anything but firelocks here
 	var/list/firelocks = list()
-	var/slow_decomp_threshold = 100
+	var/firelocks_changed = TRUE
+	var/slow_decomp_threshold = 200
+	//austation end
 
 /datum/controller/subsystem/air/stat_entry(msg)
 	msg += "C:{"
@@ -440,7 +442,7 @@ SUBSYSTEM_DEF(air)
 	var/list/turfs_to_disable = block(locate(1, 1, z_level), locate(world.maxx, world.maxy, z_level))
 	for(var/turf/T as anything in turfs_to_disable)
 		T.update_air_ref(-1)
-		T.ImmediateSetSleep()
+		T.set_sleeping(TRUE)
 		CHECK_TICK
 	//austation end
 

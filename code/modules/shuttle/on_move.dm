@@ -62,7 +62,6 @@ All ShuttleMove procs go here
 
 	if(isopenturf(src))
 		var/turf/open/after_src_terf = src
-		after_src_terf.update_visuals()
 		update_air_ref(isspaceturf(src) ? 0 : (after_src_terf.planetary_atmos ? 1 : 2))
 	else
 		update_air_ref(-1)

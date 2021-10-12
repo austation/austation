@@ -140,6 +140,7 @@
 #include "austation\code\modules\admin\verbs\mapping.dm"
 #include "austation\code\modules\antagonists\changeling\changeling.dm"
 #include "austation\code\modules\antagonists\nukeop\equipment\nuclearbomb.dm"
+#include "austation\code\modules\atmospherics\environmental\LINDA_turf_tile.dm"
 #include "austation\code\modules\atmospherics\machinery\atmosmachinery.dm"
 #include "austation\code\modules\atmospherics\machinery\components\unary_devices\thermomachine.dm"
 #include "austation\code\modules\awaymissions\corpse.dm"

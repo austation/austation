@@ -14,21 +14,14 @@
 /obj/machinery/door/firedoor/Initialize()
 	. = ..()
 	SSair.firelocks += src
+	SSair.firelocks_changed = TRUE
 
 /obj/machinery/door/firedoor/Destroy()
 	SSair.firelocks -= src
+	SSair.firelocks_changed = TRUE
 	. = ..()
 
-/turf/proc/ImmediateSetSleep(disable_adjacent = TRUE)
-	if(SSair.thread_running())
-		SSadjacent_air.sleep_queue[src] = 1
-		return
-	set_sleeping(TRUE)
-
 /turf/proc/ImmediateDisableAdjacency(disable_adjacent = TRUE)
-	if(SSair.thread_running())
-		SSadjacent_air.disable_queue[src] = 1
-		return
 	if(disable_adjacent)
 		for(var/direction in GLOB.cardinals_multiz)
 			var/turf/T = get_step_multiz(src, direction)

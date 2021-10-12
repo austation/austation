@@ -40,9 +40,11 @@
 	return FALSE
 
 /turf/proc/ImmediateCalculateAdjacentTurfs()
+	/*
 	if(SSair.thread_running())
 		CALCULATE_ADJACENT_TURFS(src)
 		return
+	*/
 	var/canpass = CANATMOSPASS(src, src)
 	var/canvpass = CANVERTICALATMOSPASS(src, src)
 	for(var/direction in GLOB.cardinals_multiz)
