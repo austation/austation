@@ -95,7 +95,6 @@
 	.=..()
 	if(!.)
 		return
-
 	for(var/mob/living/M in oview(owner,1))
 		M.faction += list("rat")
 		owner.visible_message("<span class='notice'>[M] was made an ally to the rats!</span>")
@@ -288,6 +287,14 @@
 				playsound(src, 'sound/effects/sparks2.ogg', 100, TRUE)
 				C.deconstruct()
 
-/mob/living/simple_animal/hostile/rat/death()
+/mob/living/simple_animal/hostile/rat/death(gibbed)
 	visible_message("<span class='warning'>[src] dies...</span>")
-	// qdel(src)  austation "rats die right" (#4285)
+	if(!ckey)
+		if(!gibbed)
+			var/obj/item/reagent_containers/food/snacks/deadmouse/M = new(loc)
+			M.icon_state = icon_dead
+			M.name = name
+			M.reagents.add_reagent(/datum/reagent/blood, 2, data)
+			qdel(src)
+	else
+		..(gibbed)
