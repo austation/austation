@@ -1,3 +1,6 @@
+
+/atom/var/__auxtools_weakref_id
+
 /obj/machinery/door/firedoor
 	icon = 'austation/icons/obj/doors/doorfireglass.dmi'
 	open_speed = 1
@@ -14,9 +17,11 @@
 /obj/machinery/door/firedoor/Initialize()
 	. = ..()
 	SSair.firelocks += src
+	SSair.firelocks_requires_updates = TRUE
 
 /obj/machinery/door/firedoor/Destroy()
 	SSair.firelocks -= src
+	SSair.firelocks_requires_updates = TRUE
 	. = ..()
 
 /turf/proc/ImmediateDisableAdjacency(disable_adjacent = TRUE)

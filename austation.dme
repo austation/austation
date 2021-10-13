@@ -143,6 +143,7 @@
 #include "austation\code\modules\atmospherics\environmental\LINDA_turf_tile.dm"
 #include "austation\code\modules\atmospherics\machinery\atmosmachinery.dm"
 #include "austation\code\modules\atmospherics\machinery\components\unary_devices\thermomachine.dm"
+#include "austation\code\modules\atmospherics\machinery\pipes\layermanifold.dm"
 #include "austation\code\modules\awaymissions\corpse.dm"
 #include "austation\code\modules\cargo\exports\engineering.dm"
 #include "austation\code\modules\cargo\exports\organs.dm"
