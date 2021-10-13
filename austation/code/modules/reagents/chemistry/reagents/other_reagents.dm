@@ -246,3 +246,10 @@
 		M.heal_bodypart_damage(0.2, 0.2, 0)
 		. = 1
 	..()
+
+/datum/reagent/polystyrene
+	name = "Polystyrene"
+	description = "A synthetic hydrocarbon polymer."
+	color = "#ffffff"
+	taste_description = "foam"
+
