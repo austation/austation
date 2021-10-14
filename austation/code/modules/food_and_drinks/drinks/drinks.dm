@@ -25,3 +25,26 @@
 	icon_state = "bitters"
 	list_reagents = list(/datum/reagent/consumable/ethanol/bitters = 50)
 	foodtype = GRAIN | ALCOHOL
+
+/obj/item/reagent_containers/food/drinks/styrofoam_cup
+	name = "styrofoam cup"
+	desc = "A cup made from styrofoam."
+	icon = 'austation/icons/obj/drinks.dmi'
+	icon_state = "styrofoam_cup_e"
+	volume = 10
+	spillable = TRUE
+	isGlass = FALSE
+
+/obj/item/reagent_containers/food/drinks/styrofoam_cup/attack(mob/M, mob/user)
+	if(M == user && !reagents.total_volume && user.a_intent == INTENT_HARM && user.zone_selected == BODY_ZONE_HEAD)
+		user.visible_message("<span class='warning'>[user] crushes the styrofoam cup on [user.p_their()] forehead!</span>", "<span class='notice'>You crush the styrofoam cup on your forehead.</span>")
+		playsound(user.loc,'sound/weapons/pierce.ogg', rand(10,50), 1)
+		new /obj/item/trash/cup(user.loc)
+		qdel(src)
+	else
+		return ..()
+/obj/item/reagent_containers/food/drinks/styrofoam_cup/on_reagent_change(changetype)
+	if(reagents.total_volume)
+		icon_state = "styrofoam_cup"
+	else
+		icon_state = "styrofoam_cup_e"

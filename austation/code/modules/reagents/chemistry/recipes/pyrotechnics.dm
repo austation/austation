@@ -71,3 +71,17 @@
 
 /datum/chemical_reaction/reagent_explosion/tatp_explosion/update_info()
 	required_temp = 550 + rand(-49,49)
+
+/datum/chemical_reaction/gasoline
+	name = "Petrol"
+	id = /datum/reagent/gasoline
+	results = list(/datum/reagent/gasoline = 3)
+	required_reagents = list(/datum/reagent/oil = 1, /datum/reagent/fuel = 1)
+	required_temp = 450
+
+/datum/chemical_reaction/napalm_alt
+    name = "Napalm"
+    id = /datum/reagent/napalm
+    results = list(/datum/reagent/napalm = 3)
+    required_reagents = list(/datum/reagent/polystyrene = 1, /datum/reagent/gasoline = 3)
+    mix_message = "<span class='danger'>The mixture thickens, becoming a gel-like substance.</span>"
