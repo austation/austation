@@ -16,7 +16,7 @@
 	name = "Pilk"
 	description = "An odd combination of milk and lemonade"
 	color = "#776533"
-	quality = DRINK_EXCELLENT
+	quality = DRINK_FANTASTIC
 	taste_description = "milk and lemonade"
 	glass_icon_state = "glass_brown"
 	glass_name = "glass of pilk"
@@ -32,7 +32,7 @@
 	name = "Peggnog"
 	description = "An odd combination of eggnog and lemonade"
 	color = "#ceb266"
-	quality = DRINK_EXCELLENT
+	quality = DRINK_FANTASTIC
 	taste_description = "eggnog and lemonade"
 	glass_icon_state = "glass_yellow"
 	glass_name = "glass of peggnog"
