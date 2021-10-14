@@ -31,17 +31,6 @@
 // END_BEESTATION_INCLUDE
 
 // BEGIN_INCLUDE
-#include "austation\code\__DEFINES\admin.dm"
-#include "austation\code\__DEFINES\coilgun.dm"
-#include "austation\code\__DEFINES\diseases.dm"
-#include "austation\code\__DEFINES\lavaland.dm"
-#include "austation\code\__DEFINES\maths.dm"
-#include "austation\code\__DEFINES\misc.dm"
-#include "austation\code\__DEFINES\mobs.dm"
-#include "austation\code\__DEFINES\movespeed_modification.dm"
-#include "austation\code\__DEFINES\RPD.dm"
-#include "austation\code\__DEFINES\sound.dm"
-#include "austation\code\__DEFINES\traits.dm"
 #include "austation\code\__HELPERS\matrices.dm"
 #include "austation\code\__HELPERS\roundend.dm"
 #include "austation\code\_globalvars\coilgun.dm"
