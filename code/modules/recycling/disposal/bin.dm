@@ -419,7 +419,7 @@
 		//Actually transfer the gas
 		var/datum/gas_mixture/removed = env.remove(transfer_moles)
 		air_contents.merge(removed)
-		//air_update_turf()
+		air_update_turf()
 
 
 	//if full enough, switch to ready mode

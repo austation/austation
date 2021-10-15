@@ -194,7 +194,7 @@
 	if(!T)
 		return
 	T.assume_air(air_contents)
-	//air_update_turf()
+	air_update_turf()
 
 /obj/item/onetankbomb/return_analyzable_air()
 	if(bombtank)

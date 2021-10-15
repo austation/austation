@@ -36,4 +36,4 @@
 		env.set_temperature(env_temp + delta_temp)
 
 		// No idea what this does, but the space heater has it so I presume it's important.
-		//air_update_turf()
+		air_update_turf()
