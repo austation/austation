@@ -1,0 +1,6 @@
+author: "mudzbe"
+delete-after: True
+changes: 
+  - rscadd: "Added Vampire's Kiss which heals whilst in darkness at a rate of 1 brute and burn."
+  - rscadd: "Added Peggnog which heals females at a rate of 0.5 brute and burn."
+  - rscadd: "Added Pilk which heals felinids at a rate of 0.5 brute and burn."
