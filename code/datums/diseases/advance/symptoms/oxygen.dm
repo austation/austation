@@ -53,7 +53,7 @@ Bonus
 					return
 				var/datum/gas_mixture/air = T.return_air()
 				air.set_moles(gas_type, air.get_moles(gas_type) + base_moles)
-				T.air_update_turf()
+				//T.air_update_turf()
 				M.emote(emote)
 		else
 			if(prob(base_message_chance))

@@ -120,7 +120,7 @@
 				var/transfer_moles = pressure_delta*environment.return_volume()/(air_contents.return_temperature() * R_IDEAL_GAS_EQUATION)
 
 				loc.assume_air_moles(air_contents, transfer_moles)
-				air_update_turf()
+				//air_update_turf()
 
 	else // external -> internal
 		if(environment.return_pressure() > 0)
@@ -133,7 +133,7 @@
 
 			if(moles_delta > 0)
 				loc.transfer_air(air_contents, moles_delta)
-				air_update_turf()
+				//air_update_turf()
 	update_parents()
 
 //Radio remote control

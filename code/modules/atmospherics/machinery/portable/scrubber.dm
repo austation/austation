@@ -44,7 +44,7 @@
 
 	mixture.scrub_into(air_contents, volume_rate / mixture.return_volume(), scrubbing)
 	if(!holding)
-		air_update_turf()
+		//air_update_turf()
 
 /obj/machinery/portable_atmospherics/scrubber/emp_act(severity)
 	. = ..()

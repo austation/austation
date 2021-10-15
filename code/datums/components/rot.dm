@@ -25,7 +25,7 @@
 	stank.set_moles(GAS_MIASMA, amount * delta_time)
 	stank.set_temperature(BODYTEMP_NORMAL) // otherwise we have gas below 2.7K which will break our lag generator
 	T.assume_air(stank)
-	T.air_update_turf()
+	//T.air_update_turf()
 
 /datum/component/rot/corpse
 	amount = MIASMA_CORPSE_MOLES

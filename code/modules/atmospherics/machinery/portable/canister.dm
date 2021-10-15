@@ -346,7 +346,7 @@
 		var/datum/gas_mixture/target_air = holding ? holding.air_contents : T.return_air()
 
 		if(air_contents.release_gas_to(target_air, release_pressure) && !holding)
-			air_update_turf()
+			//air_update_turf()
 	update_icon()
 
 /obj/machinery/portable_atmospherics/canister/ui_status(mob/user)

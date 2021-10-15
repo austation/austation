@@ -58,7 +58,7 @@
 
 	pump.process_atmos() // Pump gas.
 	if(!holding)
-		air_update_turf() // Update the environment if needed.
+		//air_update_turf() // Update the environment if needed.
 
 /obj/machinery/portable_atmospherics/pump/emp_act(severity)
 	. = ..()

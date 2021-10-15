@@ -53,7 +53,7 @@
 		SSair.deferred_airs += list(list(giver, air, moles / giver.total_moles()))
 	else
 		giver.transfer_to(air, moles)
-		update_visuals()
+		//update_visuals()
 	return TRUE
 
 /turf/open/assume_air_ratio(datum/gas_mixture/giver, ratio)
@@ -63,7 +63,7 @@
 		SSair.deferred_airs += list(list(giver, air, ratio))
 	else
 		giver.transfer_ratio_to(air, ratio)
-		update_visuals()
+		//update_visuals()
 	return TRUE
 
 /turf/open/transfer_air(datum/gas_mixture/taker, moles)
@@ -73,7 +73,7 @@
 		SSair.deferred_airs += list(list(air, taker, moles / air.total_moles()))
 	else
 		air.transfer_to(taker, moles)
-		update_visuals()
+		//update_visuals()
 	return TRUE
 
 /turf/open/transfer_air_ratio(datum/gas_mixture/taker, ratio)
@@ -83,7 +83,7 @@
 		SSair.deferred_airs += list(list(air, taker, ratio))
 	else
 		air.transfer_ratio_to(taker, ratio)
-		update_visuals()
+		//update_visuals()
 	return TRUE
 
 /turf/open/remove_air(amount)
