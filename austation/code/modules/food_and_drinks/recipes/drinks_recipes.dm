@@ -35,3 +35,21 @@
 	id = /datum/reagent/consumable/ethanol/lemomlimebitters
 	results = list(/datum/reagent/consumable/ethanol/lemomlimebitters = 2)
 	required_reagents = list(/datum/reagent/consumable/ethanol/bitters = 1, /datum/reagent/consumable/lemon_lime = 5)
+
+/datum/chemical_reaction/vampirekiss
+	name = "Vampire's Kiss"
+	id = /datum/reagent/consumable/ethanol/vampirekiss
+	results = list(/datum/reagent/consumable/ethanol/vampirekiss = 2)
+	required_reagents = list(/datum/reagent/blood = 2, /datum/reagent/consumable/ethanol/vodka = 1, /datum/reagent/consumable/ethanol/champagne = 1)
+
+/datum/chemical_reaction/peggnog
+	name = "Peggnog"
+	id = /datum/reagent/consumable/peggnog
+	results = list(/datum/reagent/consumable/peggnog = 2)
+	required_reagents = list(/datum/reagent/consumable/ethanol/eggnog = 1, /datum/reagent/consumable/lemonade = 3)
+
+/datum/chemical_reaction/pilk
+	name = "Pilk"
+	id = /datum/reagent/consumable/pilk
+	results = list(/datum/reagent/consumable/pilk = 3)
+	required_reagents = list(/datum/reagent/consumable/milk = 2, /datum/reagent/consumable/lemonade = 2)
