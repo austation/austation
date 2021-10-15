@@ -75,6 +75,7 @@
 #include "austation\code\datums\wires\apc.dm"
 #include "austation\code\game\atoms.dm"
 #include "austation\code\game\turf.dm"
+#include "austation\code\game\area\areas.dm"
 #include "austation\code\game\area\Space_Station_13_areas.dm"
 #include "austation\code\game\machinery\cell_charger.dm"
 #include "austation\code\game\machinery\syndicatebeacon.dm"

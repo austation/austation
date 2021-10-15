@@ -24,6 +24,44 @@
 	SSair.firelocks_requires_updates = TRUE
 	. = ..()
 
+/obj/machinery/door/firedoor/emergency_pressure_stop(consider_timer = TRUE)
+	set waitfor = 0
+	if(density || operating || welded)
+		return
+	if(world.time >= emergency_close_timer || !consider_timer)
+		emergency_pressure_close()
+
+/obj/machinery/door/firedoor/proc/emergency_pressure_close()
+	if(HAS_TRAIT(loc, TRAIT_FIREDOOR_STOP))
+		return
+	if(density)
+		return
+	if(operating || welded)
+		return
+
+	density = TRUE
+	air_update_turf(1)
+
+	operating = TRUE
+
+	do_animate("closing")
+	layer = closingLayer
+
+	sleep(open_speed * 2)
+
+	update_icon()
+	if(visible && !glass)
+		set_opacity(1)
+
+	operating = FALSE
+
+	update_freelook_sight()
+	if(safe)
+		CheckForMobs()
+	else if(!(flags_1 & ON_BORDER_1))
+		crush()
+	latetoggle()
+
 /turf/proc/ImmediateDisableAdjacency(disable_adjacent = TRUE)
 	if(disable_adjacent)
 		for(var/direction in GLOB.cardinals_multiz)
