@@ -30,7 +30,6 @@ jobs:
         run: |
           pip3 install setuptools
           bash tools/ci/install_node.sh
-          bash tools/ci/install_auxmos.sh
           pip3 install -r tools/requirements.txt
       - name: Run Linters
         run: |
@@ -94,9 +93,6 @@ jobs:
           sudo apt update || true
           sudo apt install libssl1.1:i386
           bash tools/ci/install_rust_g.sh
-      - name: Install auxmos
-        run: |
-          bash tools/ci/install_auxmos.sh
       - name: Compile and run tests
         run: |
           source $HOME/BYOND/byond/bin/byondsetup
