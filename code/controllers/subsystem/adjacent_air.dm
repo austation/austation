@@ -6,6 +6,10 @@ SUBSYSTEM_DEF(adjacent_air)
 	priority = FIRE_PRIORITY_ATMOS_ADJACENCY
 	var/list/queue = list()
 
+	//austation begin -- extras
+	var/list/disable_queue = list()
+	//austation end
+
 /datum/controller/subsystem/adjacent_air/stat_entry()
 #ifdef TESTING
 	. = ..("P:[length(queue)], S:[GLOB.atmos_adjacent_savings[1]], T:[GLOB.atmos_adjacent_savings[2]]")
@@ -22,6 +26,23 @@ SUBSYSTEM_DEF(adjacent_air)
 	if(SSair.thread_running())
 		pause()
 		return
+
+	//austation begin -- stuffe
+	var/list/disable_queue = src.disable_queue
+
+	while (length(disable_queue))
+		var/turf/terf = disable_queue[1]
+		var/arg = disable_queue[terf]
+		disable_queue.Cut(1,2)
+
+		terf.ImmediateDisableAdjacency(arg)
+
+		if(mc_check)
+			if(MC_TICK_CHECK)
+				return
+		else
+			CHECK_TICK
+	//austation end
 
 	var/list/queue = src.queue
 
