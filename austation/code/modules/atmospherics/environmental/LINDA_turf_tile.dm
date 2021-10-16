@@ -28,7 +28,6 @@
 			var/obj/item/clothing/shoes/magboots/booties = item
 			if(booties.magpulse && bootloader.has_gravity())
 				return
-		bootloader.adjustStaminaLoss(5)
 	if (move_prob > PROBABILITY_OFFSET && prob(move_prob) && (move_resist != INFINITY) && (!anchored && (max_force >= (move_resist * MOVE_FORCE_PUSH_RATIO))) || (anchored && (max_force >= (move_resist * MOVE_FORCE_FORCEPUSH_RATIO))))
 		var/move_force = max_force * CLAMP(move_prob, 0, 100) / 100
 		if(move_force > 6000)
