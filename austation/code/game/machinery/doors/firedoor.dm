@@ -24,6 +24,14 @@
 	SSair.firelocks_requires_updates = TRUE
 	. = ..()
 
+/obj/machinery/door/firedoor/Moved(atom/OldLoc, Dir)
+	. = ..()
+	SSair.firelocks_requires_updates = TRUE
+
+/obj/machinery/door/firedoor/afterShuttleMove(turf/oldT, list/movement_force, shuttle_dir, shuttle_preferred_direction, move_dir, rotation)
+	. = ..()
+	SSair.firelocks_requires_updates = TRUE
+
 /obj/machinery/door/firedoor/emergency_pressure_stop(consider_timer = TRUE)
 	set waitfor = 0
 	if(density || operating || welded)
