@@ -32,7 +32,7 @@
 	restricted_roles = list("Station Engineer", "Chief Engineer")
 
 /datum/uplink_item/role_restricted/gympie_gympie_seeds
-	name = "DGympie Gympie Seeds"
+	name = "Gympie Gympie Seeds"
 	desc = "A packet of troublesome gympie seeds! Be careful, you only get one."
 	item = /obj/item/seeds/gympie_gympie
 	cost = 4

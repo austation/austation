@@ -33,7 +33,6 @@
 
 /obj/item/seeds/gympie_gympie/Initialize()
 	. = ..()
-
 	create_reagents(volume, INJECTABLE|DRAWABLE)
 
 /obj/item/seeds/gympie_gympie/on_reagent_change(changetype)
