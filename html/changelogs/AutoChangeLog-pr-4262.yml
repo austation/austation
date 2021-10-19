@@ -1,0 +1,4 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - bugfix: "Fixes an issue that would sometimes lead to increased view range while not ghosted"
