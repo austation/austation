@@ -1,0 +1,5 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - rscadd: "There is now a brain trauma that allows ghosts to issue a movement command once every 12 seconds."
+  - admin: "Deadchat_control is now a smite option."
