@@ -1,0 +1,4 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - rscadd: "There is now a Station Goal to create a Custom Shuttle."
