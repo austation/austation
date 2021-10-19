@@ -227,14 +227,9 @@
 	data["enter"] = GLOB.enter_allowed
 	data["vote"] = CONFIG_GET(flag/allow_vote_mode)
 	data["ai"] = CONFIG_GET(flag/allow_ai)
-<<<<<<< HEAD
 	var/hostedby = CONFIG_GET(string/hostedby) // austation -- fix host's name
 	data["host"] = hostedby ? hostedby : (world.host ? world.host : null)
-	data["round_id"] = GLOB.round_id
-=======
-	data["host"] = world.host ? world.host : null
 	data["round_id"] = text2num(GLOB.round_id) // I don't know who's fault it is that round id is loaded as a string but screw you
->>>>>>> 24e8930f44... report round id as int in ?status (#5480)
 	data["players"] = GLOB.clients.len
 	data["revision"] = GLOB.revdata.commit
 	data["revision_date"] = GLOB.revdata.date
