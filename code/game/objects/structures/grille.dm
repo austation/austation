@@ -84,8 +84,8 @@
 		return
 	var/mob/M = AM
 	shock(M, 70)
-	//if(prob(50)) austation PR: #4293 -- Disables grilles taking damage from bumps
-	//	take_damage(1, BRUTE, "melee", FALSE)
+	if(prob(20)) //austation PR: #4293 -- Grilles on average take more bumps to break
+		take_damage(1, BRUTE, "melee", FALSE)
 
 /obj/structure/grille/attack_animal(mob/user)
 	. = ..()
