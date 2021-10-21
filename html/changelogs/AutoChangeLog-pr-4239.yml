@@ -1,0 +1,8 @@
+author: "DrDuckedGoose"
+delete-after: True
+changes: 
+  - rscadd: "Adds Gympie Gympie seed."
+  - rscadd: "Adds Gympie Gympie plant."
+  - rscadd: "Adds Gympie Gympie simple/hostile mob."
+  - rscadd: "Adds Gympie Gympie sprites for seed, plant, and mob."
+  - tweak: "Adds Gympie Gympie seeds to traitor uplink, botanist specific."
