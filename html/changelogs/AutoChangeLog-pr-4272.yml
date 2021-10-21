@@ -1,0 +1,4 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - bugfix: "fixes Nightmare's lighteater so they can destroy light sources again."
