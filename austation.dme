@@ -295,4 +295,6 @@
 #include "austation\code\modules\events\disease_outbreak.dm"
 #include "austation\code\modules\events\electrical_storm.dm"
 #include "austation\code\modules\events\space_dragon.dm"
+#include "code\modules\hydroponics\grown\gympie_gympie.dm"
+#include "code\modules\mob\living\simple_animal\hostile\gympie_gympie.dm"
 // END_INCLUDE

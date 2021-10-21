@@ -30,3 +30,10 @@
 	item = /obj/item/storage/toolbox/emergency/turret
 	cost = 11
 	restricted_roles = list("Station Engineer", "Chief Engineer")
+
+/datum/uplink_item/role_restricted/gympie_gympie_seeds
+	name = "Gympie Gympie Seeds"
+	desc = "A packet of troublesome gympie seeds! Be careful, you only get one."
+	item = /obj/item/seeds/gympie_gympie
+	cost = 4
+	restricted_roles = list("Botanist")
