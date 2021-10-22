@@ -33,7 +33,6 @@
 	SSair.firelocks_requires_updates = TRUE
 
 /obj/machinery/door/firedoor/emergency_pressure_stop(consider_timer = TRUE)
-	set waitfor = 0
 	if(density || operating || welded)
 		return
 	if(world.time >= emergency_close_timer || !consider_timer)
@@ -48,7 +47,7 @@
 		return
 
 	density = TRUE
-	rebuild_adjacency_NOW()
+	air_update_turf(1)
 
 	operating = TRUE
 
@@ -86,38 +85,4 @@
 	LAZYCLEARLIST(atmos_adjacent_turfs)
 	__update_auxtools_turf_adjacency_info(isspaceturf(get_z_base_turf()))
 
-/turf/proc/set_sleeping_NOW(should_sleep)
-
-/atom/proc/rebuild_adjacency_NOW()
-	if(!isturf(loc))
-		return
-	var/turf/T = get_turf(loc)
-	T.rebuild_adjacency_NOW()
-
-/turf/rebuild_adjacency_NOW()
-	var/canpass = CANATMOSPASS(src, src)
-	var/canvpass = CANVERTICALATMOSPASS(src, src)
-	for(var/direction in GLOB.cardinals_multiz)
-		var/turf/T = get_step_multiz(src, direction)
-		if(!istype(T))
-			continue
-		var/opp_dir = REVERSE_DIR(direction)
-		if(isopenturf(T) && !(blocks_air || T.blocks_air) && ((direction & (UP|DOWN))? (canvpass && CANVERTICALATMOSPASS(T, src)) : (canpass && CANATMOSPASS(T, src))) )
-			LAZYINITLIST(atmos_adjacent_turfs)
-			LAZYINITLIST(T.atmos_adjacent_turfs)
-			atmos_adjacent_turfs[T] = direction
-			T.atmos_adjacent_turfs[src] = opp_dir
-		else
-			if (atmos_adjacent_turfs)
-				atmos_adjacent_turfs -= T
-			if (T.atmos_adjacent_turfs)
-				T.atmos_adjacent_turfs -= src
-			UNSETEMPTY(T.atmos_adjacent_turfs)
-			T.set_sleeping(T.blocks_air)
-		T.__immmediately_update_auxtools_turf_adjacency_info(isspaceturf(T.get_z_base_turf()), -1)
-	UNSETEMPTY(atmos_adjacent_turfs)
-	src.atmos_adjacent_turfs = atmos_adjacent_turfs
-	set_sleeping(blocks_air)
-	__immmediately_update_auxtools_turf_adjacency_info(isspaceturf(get_z_base_turf()))
-
-/turf/proc/__immmediately_update_auxtools_turf_adjacency_info()
+/proc/disable_airs_in_list(list/turfs)
