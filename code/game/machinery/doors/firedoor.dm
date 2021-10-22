@@ -302,7 +302,7 @@
 				T.ImmediateCalculateAdjacentTurfs()
 
 /obj/machinery/door/firedoor/proc/emergency_pressure_stop(consider_timer = TRUE)
-	//set waitfor = 0 //austation -- don't
+	set waitfor = 0
 	if(density || operating || welded)
 		return
 	if(world.time >= emergency_close_timer || !consider_timer)
