@@ -1,0 +1,4 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - admin: "Traitor panel will now show if the person in question is banned from a specific antagonist."
