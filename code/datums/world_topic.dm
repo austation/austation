@@ -229,7 +229,7 @@
 	data["ai"] = CONFIG_GET(flag/allow_ai)
 	var/hostedby = CONFIG_GET(string/hostedby) // austation -- fix host's name
 	data["host"] = hostedby ? hostedby : (world.host ? world.host : null)
-	data["round_id"] = GLOB.round_id
+	data["round_id"] = text2num(GLOB.round_id) // I don't know who's fault it is that round id is loaded as a string but screw you
 	data["players"] = GLOB.clients.len
 	data["revision"] = GLOB.revdata.commit
 	data["revision_date"] = GLOB.revdata.date
