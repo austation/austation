@@ -1,4 +1,0 @@
-author: "AustationBot"
-delete-after: True
-changes: 
-  - bugfix: "Fixed camera name and network in Incenerator on Meta and Box"
