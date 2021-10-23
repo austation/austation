@@ -1198,7 +1198,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 	// austation start -- dunno how to modularise this so I'm sticking it here. my apologies
 	if(radiation > RAD_MOB_VOMIT && prob(RAD_MOB_VOMIT_PROB))
 		var/obj/item/organ/stomach/S = H.getorganslot(ORGAN_SLOT_STOMACH)
-		if(!istype(S, /obj/item/organ/stomach/cell))
+		if(!istype(S, /obj/item/organ/stomach/battery))
 			H.vomit(10, TRUE)
 	if(!HAS_TRAIT(H, TRAIT_MUTATEIMMUNE) && radiation > RAD_MOB_MUTATE)
 		if(prob(1))
