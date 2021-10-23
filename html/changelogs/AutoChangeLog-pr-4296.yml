@@ -1,0 +1,4 @@
+author: "Hardly"
+delete-after: True
+changes: 
+  - rscadd: "Shuttle seat is now craftable using two sheets of iron"

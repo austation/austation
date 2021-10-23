@@ -1,0 +1,4 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - admin: "Added ratvarsmall and narsiesmaller span classes."
