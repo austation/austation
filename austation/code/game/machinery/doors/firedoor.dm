@@ -1,5 +1,5 @@
 
-/atom/var/__auxtools_weakref_id
+/datum/var/__auxtools_weakref_id
 
 /obj/machinery/door/firedoor
 	icon = 'austation/icons/obj/doors/doorfireglass.dmi'
