@@ -24,6 +24,7 @@
 #include "austation\code\__DEFINES\RPD.dm"
 #include "austation\code\__DEFINES\sound.dm"
 #include "austation\code\__DEFINES\traits.dm"
+#include "austation\code\__DEFINES\preferences.dm"
 // END_DEFINE_INCLUDE
 
 // BEGIN_BEESTATION_INCLUDE
@@ -209,6 +210,7 @@
 #include "austation\code\modules\mining\lavaland\necropolis_chests.dm"
 #include "austation\code\modules\mob\mob.dm"
 #include "austation\code\modules\mob\mob_defines.dm"
+#include "austation\code\modules\mob\typing_indicator.dm"
 #include "austation\code\modules\mob\dead\new_player\new_player.dm"
 #include "austation\code\modules\mob\living\emote.dm"
 #include "austation\code\modules\mob\living\pseudo_z_axis.dm"
