@@ -1,10 +1,23 @@
+# This file controls basic or highly important, but not strictly gameplay related options.
+
+
 # You can use the "$include" directive to split your configs however you want
 
+# Core gameplay options
 $include game_options.txt
+<<<<<<< HEAD
 $include austation.txt
+=======
+# More opinionated gameplay tweaks
+$include gameplay_tweaks.txt
+# Database (SQL), Sensitive stuff
+>>>>>>> 740054988e... Minor Config reorganization, Brig Door Timer Config (#5631)
 $include dbconfig.txt
+# Cross-Server Communications
 $include comms.txt
+# Antag Reputation (Alternative weighting)
 $include antag_rep.txt
+# Asset Transport (TGUI)
 $include resources.txt
 
 # You can use the @ character at the beginning of a config option to lock it from being edited in-game
