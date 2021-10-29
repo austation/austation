@@ -5,6 +5,7 @@ SUBSYSTEM_DEF(adjacent_air)
 	wait = 10
 	priority = FIRE_PRIORITY_ATMOS_ADJACENCY
 	var/list/queue = list()
+	var/list/disable_queue = list()
 
 	//austation begin -- extras
 	var/list/disable_queue = list()
@@ -27,7 +28,6 @@ SUBSYSTEM_DEF(adjacent_air)
 		pause()
 		return
 
-	//austation begin -- stuffe
 	var/list/disable_queue = src.disable_queue
 
 	while (length(disable_queue))
@@ -42,7 +42,6 @@ SUBSYSTEM_DEF(adjacent_air)
 				return
 		else
 			CHECK_TICK
-	//austation end
 
 	var/list/queue = src.queue
 

@@ -34,7 +34,6 @@
 		if(cache)
 			cached_map = parsed
 	return bounds
-//austation -- delay air init added init_atmos arg
 /datum/map_template/proc/initTemplateBounds(list/bounds, init_atmos = TRUE)
 	if (!bounds) //something went wrong
 		stack_trace("[name] template failed to initialize correctly!")
@@ -85,7 +84,6 @@
 	SSmachines.setup_template_powernets(cables)
 	SSair.setup_template_machinery(atmos_machines)
 
-	//austation begin -- delay air init added if(init_atmos)
 	if(init_atmos)
 		//calculate all turfs inside the border
 		var/list/template_and_bordering_turfs = block(
@@ -103,7 +101,6 @@
 		for(var/turf/affected_turf as anything in template_and_bordering_turfs)
 			affected_turf.air_update_turf(TRUE)
 			affected_turf.levelupdate()
-	//austation end
 
 /datum/map_template/proc/load_new_z(orbital_body_type, list/level_traits = list(ZTRAIT_AWAY = TRUE))
 	var/x = round((world.maxx - width)/2)
@@ -124,7 +121,6 @@
 
 	return level
 
-//austation -- delay air init added init_atmos arg
 /datum/map_template/proc/load(turf/T, centered = FALSE, init_atmos = TRUE)
 	if(centered)
 		T = locate(T.x - round(width/2) , T.y - round(height/2) , T.z)
@@ -135,17 +131,11 @@
 	if(T.y+height > world.maxy)
 		return
 
-	//austation begin -- adjacency runtime fix
 	var/list/border = block(locate(max(T.x, 1), max(T.y, 1),  T.z),
 							locate(min(T.x+width, world.maxx), min(T.y+height, world.maxy), T.z))
 	for(var/L in border)
 		var/turf/turf_to_disable = L
 		turf_to_disable.ImmediateDisableAdjacency()
-	//austation end
-
-	// Accept cached maps, but don't save them automatically - we don't want
-	// ruins clogging up memory for the whole round.
-	var/datum/parsed_map/parsed = cached_map || new(file(mappath))
 	cached_map = keep_cached_map ? parsed : null
 
 	var/list/turf_blacklist = list()
@@ -162,15 +152,10 @@
 		repopulate_sorted_areas()
 
 	//initialize things that are normally initialized after map load
-	//austation -- delay air init added init_atmos arg
 	initTemplateBounds(bounds, init_atmos)
 
 	log_game("[name] loaded at [T.x],[T.y],[T.z]")
 	return bounds
-
-/datum/map_template/proc/update_blacklist(turf/T, list/input_blacklist)
-	return
-
 /datum/map_template/proc/get_affected_turfs(turf/T, centered = FALSE)
 	var/turf/placement = T
 	if(centered)

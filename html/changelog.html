@@ -56,6 +56,37 @@
 		-->
 		<div class="commit sansserif">
 
+			<h2 class="date">29 October 2021</h2>
+			<h3 class="author">AustationBot updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="bugfix">fixed ruin turfs get vented sometimes</li>
+				<li class="refactor">action speed modifier refactored into modifier system, similar to movespeed.</li>
+			</ul>
+			<h3 class="author">Ryll-Ryll, jupyterkat, ninjanomnom updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="rscadd">Dogs now have all-new AI! Go throw a grenade at Ian and see what happens!</li>
+				<li class="rscadd">Added AI datum support for complex JPS pathing</li>
+				<li class="refactor">Implements JPS Pathfinding</li>
+				<li class="bugfix">janky monkey ais</li>
+				<li class="bugfix">Monkeys are once again capable of using guns, take back your freedom!</li>
+				<li class="rscadd">Monkey ai is now actually able to make use of guns instead of just player controlled monkeys.</li>
+				<li class="rscadd">Monkey ai will prioritize guns once they learn of what guns can do.</li>
+				<li class="rscadd">Monkey ai now understands the ancient art of throwing.</li>
+				<li class="rscadd">Monkey ai will use random objects on each other in their surroundings and in their hands.</li>
+				<li class="rscadd">Monkey ai will occasionally "gift" people things.</li>
+				<li class="rscadd">Monkey ai consumes food once in a while according to their desire.</li>
+			</ul>
+
+			<h2 class="date">24 October 2021</h2>
+			<h3 class="author">TheFakeElon updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="rscadd">Added new roundend sound</li>
+			</ul>
+			<h3 class="author">jupyterkat updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="bugfix">you can turn off typing indicators now</li>
+			</ul>
+
 			<h2 class="date">23 October 2021</h2>
 			<h3 class="author">AustationBot updated:</h3>
 			<ul class="changes bgimages16">
@@ -79,6 +110,35 @@
 				<li class="rscadd">There is now a Station Goal to create a Custom Shuttle.</li>
 				<li class="spellcheck">Fixed a few typos related to exploration, wall building, wraith spectacles and Battle Royale</li>
 				<li class="bugfix">View range is now actually fixed, sorry for the trouble.</li>
+				<li class="code_imp">A few unused globals were cleaned up.</li>
+				<li class="bugfix">Exosuit fabricators no longer automatically link to the default silo network on build.</li>
+				<li class="code_imp">Cleaned up IPC code in general. feature: IPCs now show "dents" and "leaking" instead of "bruises" and "bleeding"</li>
+				<li class="bugfix">VV health adjustment works on synthetics</li>
+				<li class="bugfix">IPCs now actually have blood, oil, and it leaves decals when they are hurt</li>
+				<li class="bugfix">IPCs are now actually immune to toxin damage.</li>
+				<li class="bugfix">IPCs wont process reagents they weren't supposed to process.</li>
+				<li class="refactor">Mild refactor to species metabolisms.</li>
+				<li class="balance">nuclear particles no longer deal direct toxin damage, but do more regular irradiating</li>
+				<li class="rscadd">Clipboards and notice boards are now updated to TGUI, with clipboards having much better functionality.</li>
+				<li class="bugfix">IPCs use charge at the same rate they used to</li>
+				<li class="bugfix">Ethereals can't queue up multiple chargings</li>
+				<li class="tweak">Ethereals don't need to wait if they can't charge</li>
+				<li class="tweak">APCs can be drained to a quarter charge</li>
+				<li class="imageadd">Adds printed toolbox right handed in-hand sprites</li>
+				<li class="admin">Added ratvarsmall and narsiesmaller span classes.</li>
+				<li class="rscadd">Electrical species use power stored in their stomachs rather than normal nutrition</li>
+				<li class="rscadd">Ethereals recharge continuously and lose nutrition in the same ways as other species</li>
+				<li class="rscadd">EMPing electrical species will drain their charge</li>
+				<li class="rscadd">IPC powercords and batteries work in ethereals</li>
+				<li class="tweak">Replaced old ethereal charge system</li>
+				<li class="rscdel">Removed the ability to insert brains without surgery</li>
+				<li class="tweak">IPCs use a battery icon instead of hunger</li>
+				<li class="bugfix">Fixed ethereals not gaining charge from shocks</li>
+				<li class="bugfix">Fixed some problems with the biometallic replication symptom</li>
+				<li class="bugfix">Lots of other small things</li>
+				<li class="rscadd">Adds 18 new hairstyles/beards requested by the community.</li>
+				<li class="bugfix">fixes disease names</li>
+				<li class="rscadd">random diseases now have better random names</li>
 			</ul>
 			<h3 class="author">DrDuckedGoose updated:</h3>
 			<ul class="changes bgimages16">
@@ -88,6 +148,10 @@
 				<li class="rscadd">Adds Gympie Gympie sprites for seed, plant, and mob.</li>
 				<li class="tweak">Adds Gympie Gympie seeds to traitor uplink, botanist specific.</li>
 			</ul>
+			<h3 class="author">Hardly updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="rscadd">Shuttle seat is now craftable using two sheets of iron</li>
+			</ul>
 			<h3 class="author">KubeRoot, EdgeLordExe updated:</h3>
 			<ul class="changes bgimages16">
 				<li class="rscadd">Radios now have code support for anonymization</li>
@@ -96,6 +160,13 @@
 			<h3 class="author">YakiAttaki updated:</h3>
 			<ul class="changes bgimages16">
 				<li class="rscadd">Added a new recipe for napalm: 2 parts polystyrene to 6 parts petrol, produces 3 napalm.</li>
+			</ul>
+			<h3 class="author">lordScrubling, Ghilker, TetraK1, Dennok, Donkie updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="rscadd">Temperature pump atmos device from tg</li>
+				<li class="rscadd">Pressure valve from atmos device tg</li>
+				<li class="rscadd">Temperature gate atmos device from tg</li>
+				<li class="tweak">Passive gate pressure limit upped to 100 atmospheres</li>
 			</ul>
 			<h3 class="author">mudzbe updated:</h3>
 			<ul class="changes bgimages16">
@@ -625,73 +696,6 @@
 			<h3 class="author">AustationBot updated:</h3>
 			<ul class="changes bgimages16">
 				<li class="rscadd">The Captain now starts with a tablet in their backpack.</li>
-			</ul>
-
-			<h2 class="date">25 August 2021</h2>
-			<h3 class="author">McCloud, Buggy123 updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="bugfix">Tendrils no longer spawn inside ruins</li>
-				<li class="bugfix">Gibtonite will now spawn properly, as well as any other potential full turf replacements for random ores</li>
-			</ul>
-
-			<h2 class="date">24 August 2021</h2>
-			<h3 class="author">AustationBot updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="tweak">juggernauts cant be pulled.</li>
-				<li class="balance">Frank has had their health returned, and their damage further nerfed along with a slowdown</li>
-				<li class="rscdel">Removed bluespace miners from config and game</li>
-				<li class="tweak">IPCs are no longer an exception from from foreigner quirk.</li>
-				<li class="bugfix">The naming component at the pill press(the plumbing machine) is now a button instead of a text input, to prevent you to get a blank named pill(i.e. " pill").</li>
-				<li class="refactor">Bitfields now use tg's macro, separated more cleanly.</li>
-				<li class="refactor">area_flags from tgcl</li>
-				<li class="tweak">Random mineral turfs no longer cause large amounts of turf changes on initialization.</li>
-				<li class="rscdel">Old lavaland cave generation based on straight lines</li>
-				<li class="rscadd">Beautiful new lavaland cave generation from tg, with organic and complex cave systems</li>
-				<li class="tweak">Reproductive spiders may no longer accidentally clear their directives, and may not reproduce without one set.</li>
-				<li class="bugfix">Fixes midround antags not existing</li>
-				<li class="rscadd">/obj/structure/holosign/emp_act()</li>
-				<li class="rscadd">layer manifolds have a 280L volume</li>
-				<li class="tweak">Updated the changelog header to include McTerra, PowerfulBacon, & Francinum as major code contributors and Naevi as a spriter.</li>
-				<li class="bugfix">turrets should work correctly again</li>
-				<li class="balance">Nerfed Frank the turtle's damage from 18 to 5 and the health from 2500 (Same as Hierophant) to 100. It can still attack, unlike most other station pets, and won't die in 2 hits, unlike most other station pets.</li>
-				<li class="bugfix">Muscled Veins surgery now actually works.</li>
-				<li class="rscadd">Prescription Medical HUD</li>
-				<li class="rscadd">handheld pinpointer now shows the name of the person it's tracking</li>
-				<li class="refactor">Heretics can now only spawn on dynamic.</li>
-				<li class="bugfix">Plumbing port visuals are now more reliable, fixing a bug with boxstation's roundstart bottlers and presses</li>
-				<li class="bugfix">Unwrenching ducts no longer doubles them</li>
-				<li class="tweak">Medical, Engineering and Science jobs now require two hours played</li>
-				<li class="tweak">Brig Physician now only requires two hours as normal crew</li>
-				<li class="tweak">AI now requires 10 hours as a cyborg</li>
-				<li class="tweak">HoP now requires 10 hours as a different Head of Staff</li>
-				<li class="rscadd">Bulk Discount is now an option that can be rolled for low-value items in the uplink.</li>
-				<li class="tweak">intercomms are above windows.</li>
-				<li class="balance">Disabler beams reduced from 35 damage to 28.(-7)</li>
-				<li class="soundadd">New Station Announcer trait voice pack</li>
-				<li class="tweak">Admins will only show their admin badge, the mentor badge will be dropped to reduce clutter.</li>
-				<li class="bugfix">another important recursive contents fix</li>
-				<li class="spellcheck">fixed a typo in "oozeling vacuole"</li>
-			</ul>
-			<h3 class="author">EOBGames AnCopper updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="rscadd">rouny plush</li>
-			</ul>
-			<h3 class="author">Mick1299 updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="rscadd">Remapped the prison wing maintenance to be a true maintenance, giving it radiation storm protection. Also included the perma toilet for prisoner protection.</li>
-				<li class="rscadd">a few lights and cameras for quality of life</li>
-				<li class="tweak">Seperated cargo maints from port bow maints, and engineering maints from starboard maints</li>
-				<li class="bugfix">incinerator manifold under tile</li>
-			</ul>
-			<h3 class="author">Phil Smith updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="imageadd">Ports TG's stasis bed sprite</li>
-			</ul>
-
-			<h2 class="date">23 August 2021</h2>
-			<h3 class="author">AustationBot updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="rscadd">Auxmos has been updated to the latest version.</li>
 			</ul>
 		</div>
 

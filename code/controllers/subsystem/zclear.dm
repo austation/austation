@@ -155,6 +155,8 @@ SUBSYSTEM_DEF(zclear)
 	//austation -- pause air
 	SSair.pause_z(z_level)
 
+	SSair.pause_z(z_level)
+
 	var/list/turfs = block(locate(1, 1, z_level), locate(world.maxx, world.maxy, z_level))
 	var/list/divided_turfs = list()
 	var/section_process_time = CLEAR_TURF_PROCESSING_TIME * 0.5 //There are 3 processes, cleaing atoms, cleaing turfs and then reseting atmos
@@ -205,7 +207,6 @@ SUBSYSTEM_DEF(zclear)
 			//Done
 			LAZYREMOVE(processing_levels, cleardata)
 			//Finalize area
-			//austation -- unpause air
 			SSair.unpause_z(cleardata.zvalue)
 			var/area/spaceA = GLOB.areas_by_type[/area/space]
 			spaceA.reg_in_areas_in_z()	//<< Potentially slow proc

@@ -444,14 +444,10 @@ SUBSYSTEM_DEF(air)
 	//austation end
 
 /datum/controller/subsystem/air/proc/unpause_z(z_level)
-	//austation begin -- delay air init
-	//resets all air because fuck you
 	var/list/turfs_to_reinit = block(locate(1, 1, z_level), locate(world.maxx, world.maxy, z_level))
 	for(var/turf/T as anything in turfs_to_reinit)
 		T.Initalize_Atmos()
 		CHECK_TICK
-
-	//austation end
 	LAZYREMOVE(paused_z_levels, z_level)
 
 /datum/controller/subsystem/air/proc/setup_allturfs()

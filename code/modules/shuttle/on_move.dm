@@ -56,8 +56,6 @@ All ShuttleMove procs go here
 		CRASH("A turf queued to move via shuttle somehow had no skipover in baseturfs. [src]([type]):[loc]")
 	var/depth = baseturfs.len - shuttle_boundary + 1
 
-	//austation begin -- shuttle move rework
-
 	newT.CopyOnTop(src, 1, depth, TRUE)
 
 	if(isopenturf(src))
@@ -69,19 +67,6 @@ All ShuttleMove procs go here
 	//Air stuff
 	newT.air_update_turf(TRUE)
 	air_update_turf(TRUE)
-
-	/*
-	newT.CopyOnTop(src, 1, depth, TRUE)
-	//Air stuff
-	newT.blocks_air = TRUE
-	newT.air_update_turf(TRUE)
-	blocks_air = TRUE
-	air_update_turf(TRUE)
-	if(isopenturf(newT))
-		var/turf/open/new_open = newT
-		new_open.copy_air_with_tile(src)
-	*/
-	//austation end
 	return TRUE
 
 // Called on the new turf after everything has been moved

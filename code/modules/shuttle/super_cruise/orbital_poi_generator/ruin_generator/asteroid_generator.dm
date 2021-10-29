@@ -13,7 +13,6 @@
 	space_level.generating = FALSE
 
 /proc/_generate_asteroids(center_x, center_y, center_z, max_radius, weight_offset = 0, scale = 65)
-	//austation -- pause air
 	SSair.pause_z(center_z)
 
 	var/perlin_noise_scale = scale
@@ -67,7 +66,6 @@
 			/obj/structure/spawner/lavaland/goliath, /obj/structure/spawner/lavaland/legion)
 		new type_to_spawn(T)
 
-	//austation -- unpause air
 	SSair.unpause_z(center_z)
 
 //Spawner types

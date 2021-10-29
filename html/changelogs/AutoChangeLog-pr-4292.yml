@@ -1,4 +1,0 @@
-author: "AustationBot"
-delete-after: True
-changes: 
-  - balance: "nuclear particles no longer deal direct toxin damage, but do more regular irradiating"
