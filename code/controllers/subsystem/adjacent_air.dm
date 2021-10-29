@@ -7,10 +7,6 @@ SUBSYSTEM_DEF(adjacent_air)
 	var/list/queue = list()
 	var/list/disable_queue = list()
 
-	//austation begin -- extras
-	var/list/disable_queue = list()
-	//austation end
-
 /datum/controller/subsystem/adjacent_air/stat_entry()
 #ifdef TESTING
 	. = ..("P:[length(queue)], S:[GLOB.atmos_adjacent_savings[1]], T:[GLOB.atmos_adjacent_savings[2]]")
