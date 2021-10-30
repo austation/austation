@@ -61,3 +61,4 @@
 							G.sting_boy = 1
 					G.visible_message("<span class='notice'>The Gympie Gympie violently shakes its leafs at you!</span>")
 					qdel(src)
+
