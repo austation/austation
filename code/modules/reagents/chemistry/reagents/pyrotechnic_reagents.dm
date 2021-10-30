@@ -178,6 +178,7 @@
 	taste_description = "bitterness"
 	self_consuming = TRUE
 	process_flags = ORGANIC | SYNTHETIC
+	random_unrestricted = FALSE
 
 
 /datum/reagent/cryostylane/on_mob_life(mob/living/carbon/M) //TODO: code freezing into an ice cube
@@ -199,6 +200,7 @@
 	taste_description = "bitterness"
 	self_consuming = TRUE
 	process_flags = ORGANIC | SYNTHETIC
+	random_unrestricted = FALSE
 
 /datum/reagent/pyrosium/on_mob_life(mob/living/carbon/M)
 	if(M.reagents.has_reagent(/datum/reagent/oxygen))
