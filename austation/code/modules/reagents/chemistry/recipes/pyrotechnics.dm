@@ -1,3 +1,6 @@
+/datum/chemical_reaction/reagent_explosion/nitroglycerin
+	required_temp = 374 //Stops nitroglycerin from exploding on formation : done as part of limiting explosive plants
+
 /datum/chemical_reaction/reagent_explosion/rdx
 	results = list(/datum/reagent/rdx= 2)
 	required_reagents = list(/datum/reagent/phenol = 2, /datum/reagent/toxin/acid/nitracid = 1, /datum/reagent/acetone_oxide = 1 )
