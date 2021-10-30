@@ -1,8 +1,6 @@
 /mob/living/simple_animal/hostile/gympie_gympie
 	name = "Awakened Gympie Gympie"
 	desc = "An awakened suicide-plant!"
-	icon_state = "gympiegympie"
-	icon_living = "gympiegympie"
 	icon = 'icons/obj/hydroponics/popes_selection.dmi'
 	icon_state = "gympiegympie_mob"
 	icon_living = "gympiegympie_mob"
