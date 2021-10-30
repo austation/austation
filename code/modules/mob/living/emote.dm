@@ -345,16 +345,13 @@
 
 /datum/emote/living/surrender
 	key = "surrender"
-	key_third_person = "surrenders"
-	message = "puts their hands on their head and falls to the ground, surrendering"
-	emote_type = EMOTE_AUDIBLE
+	cooldown = (10 SECONDS) //austation PR: 4356 -- Reworks the surrender emote
 
 /datum/emote/living/surrender/run_emote(mob/user, params, type_override, intentional)
 	. = ..()
 	if(. && isliving(user))
 		var/mob/living/L = user
-		L.Paralyze(200)
-
+		L.surrendered = !L.surrendered //austation PR: 4356 -- changes end
 /datum/emote/living/sway
 	key = "sway"
 	key_third_person = "sways"
