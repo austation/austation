@@ -352,6 +352,7 @@
 	if(. && isliving(user))
 		var/mob/living/L = user
 		L.surrendered = !L.surrendered //austation PR: 4356 -- changes end
+
 /datum/emote/living/sway
 	key = "sway"
 	key_third_person = "sways"
