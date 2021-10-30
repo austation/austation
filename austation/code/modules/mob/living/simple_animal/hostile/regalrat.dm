@@ -303,4 +303,4 @@
 			M.reagents.add_reagent(/datum/reagent/blood, 2, data)
 			qdel(src)
 	else
-		..(gibbed)
+		qdel(src)
