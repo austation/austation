@@ -1,6 +1,7 @@
 /obj/item/seeds/gympie_gympie
 	name = "pack of gympie gympie seeds"
 	desc = "These seeds grow into a gympie gympie plant"
+	icon = 'icons/obj/hydroponics/popes_selection.dmi'
 	icon_state = "seed-gympie_gympie"
 	species = "gympie"
 	plantname = "Gympie Gympie Plants"
@@ -21,6 +22,7 @@
 	seed = /obj/item/seeds/gympie_gympie
 	name = "Gympie Gympie"
 	desc = "Touching it wouldn't be wise."
+	icon = 'icons/obj/hydroponics/popes_selection.dmi'
 	icon_state = "gympiegympie"
 	var/awakening = 0
 	filling_color = "#B1FF15"
