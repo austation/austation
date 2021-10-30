@@ -24,6 +24,9 @@
 
 	var/minetype = "lavaland"
 
+	//austation -- check for fastmos compat
+	var/fastmos_compatible = FALSE
+
 	var/allow_custom_shuttles = TRUE
 	var/allow_night_lighting = TRUE
 	var/shuttles = list(
@@ -126,6 +129,10 @@
 
 	if ("minetype" in json)
 		minetype = json["minetype"]
+
+	//austation -- fastmos compatability
+	if("fastmos" in json)
+		fastmos_compatible = TRUE
 
 	allow_custom_shuttles = json["allow_custom_shuttles"] != FALSE
 
