@@ -1,5 +1,9 @@
-/datum/chemical_reaction/reagent_explosion/nitroglycerin
-	required_temp = 374 //Stops nitroglycerin from exploding on formation : done as part of limiting explosive plants
+/datum/chemical_reaction/reagent_explosion/nitroglycerin/on_reaction(datum/reagents/holder, created_volume)
+	holder.chem_temp += created_volume*5
+	return
+
+/datum/chemical_reaction/reagent_explosion/nitroglycerin_explosion
+	required_temp = 385
 
 /datum/chemical_reaction/reagent_explosion/rdx
 	results = list(/datum/reagent/rdx= 2)
