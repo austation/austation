@@ -299,4 +299,5 @@
 #include "austation\code\modules\events\space_dragon.dm"
 #include "austation/code/modules/hydroponics/grown/gympie_gympie.dm"
 #include "austation/code/modules/mob/living/simple_animal/hostile/gympie_gympie.dm"
+#include "austation/icons/obj/hydroponics/popes_selection.dmi"
 // END_INCLUDE
