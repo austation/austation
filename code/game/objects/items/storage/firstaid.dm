@@ -164,9 +164,11 @@
 	user.visible_message("<span class='suicide'>[user] begins licking the lead paint off \the [src]! It looks like [user.p_theyre()] trying to commit suicide!</span>")
 	return TOXLOSS
 
+/* austation begin -- /tg/ firstaid kit icons
 /obj/item/storage/firstaid/toxin/Initialize(mapload)
 	. = ..()
 	icon_state = pick("antitoxin","antitoxin2")
+austation end */
 
 /obj/item/storage/firstaid/toxin/PopulateContents()
 	if(empty)
@@ -268,9 +270,11 @@
 	desc = "I hope you've got insurance."
 	item_state = "firstaid-combat"
 
+/* austation begin -- /tg/ firstaid kit icons
 /obj/item/storage/firstaid/tactical/Initialize(mapload)
 	. = ..()
 	icon_state = pick("combatfirstaid","combatfirstaid2")
+austation end */
 
 /obj/item/storage/firstaid/tactical/ComponentInitialize()
 	. = ..()
