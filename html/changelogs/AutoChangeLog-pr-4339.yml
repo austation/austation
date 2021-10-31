@@ -1,0 +1,4 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - tweak: "Ash heretics immune to being set on fire"
