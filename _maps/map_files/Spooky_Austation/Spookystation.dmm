@@ -18708,10 +18708,6 @@
 	},
 /area/hallway/secondary/command)
 "bGL" = (
-/obj/machinery/camera{
-	c_tag = "Command Hallway - Central";
-	dir = 8
-	},
 /turf/open/floor/plating/rust,
 /area/hallway/secondary/command)
 "bGM" = (
@@ -20170,10 +20166,6 @@
 /obj/machinery/vending/autodrobe,
 /turf/open/floor/wood,
 /area/crew_quarters/theatre)
-"bLT" = (
-/obj/structure/sign/warning/securearea,
-/turf/closed/wall/mineral/cult,
-/area/bridge)
 "bLW" = (
 /obj/structure/table,
 /obj/item/stock_parts/subspace/analyzer,
@@ -20934,15 +20926,6 @@
 "bOw" = (
 /turf/closed/wall,
 /area/teleporter)
-"bOx" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/machinery/light/small{
-	dir = 8
-	},
-/turf/open/floor/plating/dirt/dark{
-	planetary_atmos = 0
-	},
-/area/bridge/showroom/corporate)
 "bOy" = (
 /obj/effect/decal/cleanable/oil,
 /turf/open/floor/plating/dirt/dark{
@@ -20958,16 +20941,7 @@
 	},
 /area/bridge/showroom/corporate)
 "bOF" = (
-/obj/machinery/power/apc/highcap/five_k{
-	areastring = "/area/bridge/showroom/corporate";
-	dir = 4;
-	name = "Nanotrasen Corporate Showroom APC";
-	pixel_x = 24
-	},
 /obj/item/cigbutt,
-/obj/machinery/light/small{
-	dir = 4
-	},
 /turf/open/floor/plating/dirt/dark{
 	planetary_atmos = 0
 	},
@@ -21674,9 +21648,6 @@
 /obj/structure/extinguisher_cabinet{
 	pixel_x = -27
 	},
-/obj/machinery/light/small{
-	dir = 8
-	},
 /turf/open/floor/plating/dirt/dark{
 	planetary_atmos = 0
 	},
@@ -21695,9 +21666,6 @@
 /obj/machinery/firealarm{
 	dir = 8;
 	pixel_x = 24
-	},
-/obj/machinery/light/small{
-	dir = 4
 	},
 /turf/open/floor/plating/dirt/dark{
 	planetary_atmos = 0
@@ -44424,15 +44392,6 @@
 	},
 /turf/open/floor/plasteel,
 /area/security/checkpoint/medical)
-"fVK" = (
-/obj/machinery/light,
-/obj/effect/turf_decal/tile/neutral{
-	dir = 8
-	},
-/turf/open/floor/plating/dirt/dark{
-	planetary_atmos = 0
-	},
-/area/hallway/secondary/command)
 "fVU" = (
 /obj/machinery/door/airlock/maintenance{
 	req_access_txt = "12"
@@ -48206,13 +48165,6 @@
 	},
 /turf/open/floor/plating,
 /area/maintenance/port)
-"hzS" = (
-/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
-	dir = 1
-	},
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3,
-/turf/closed/wall/mineral/cult,
-/area/bridge/showroom/corporate)
 "hAo" = (
 /mob/living/simple_animal/bot/medbot{
 	auto_patrol = 1;
@@ -57892,16 +57844,7 @@
 /turf/closed/wall/r_wall,
 /area/engine/atmos)
 "lBx" = (
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
 /obj/effect/turf_decal/tile/neutral,
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
-	dir = 8
-	},
-/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
-	dir = 8
-	},
 /turf/closed/wall/r_wall,
 /area/hallway/secondary/command)
 "lCC" = (
@@ -71260,9 +71203,6 @@
 /turf/open/floor/plating,
 /area/maintenance/department/science/central)
 "qTL" = (
-/obj/machinery/status_display/ai{
-	pixel_y = 32
-	},
 /obj/effect/turf_decal/tile/neutral{
 	dir = 4
 	},
@@ -75228,14 +75168,6 @@
 /obj/machinery/atmospherics/pipe/manifold4w/scrubbers/hidden/layer3,
 /turf/open/floor/plasteel,
 /area/hallway/primary/central)
-"sFn" = (
-/obj/effect/turf_decal/tile/neutral{
-	dir = 1
-	},
-/turf/open/floor/plating/dirt/dark{
-	planetary_atmos = 0
-	},
-/area/hallway/secondary/command)
 "sFA" = (
 /obj/structure/chair{
 	dir = 8;
@@ -79036,9 +78968,6 @@
 /turf/open/floor/plasteel,
 /area/hallway/primary/aft)
 "udh" = (
-/obj/machinery/status_display/evac{
-	pixel_y = 32
-	},
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
 	},
@@ -81446,15 +81375,6 @@
 	icon_state = "platingdmg3"
 	},
 /area/maintenance/starboard/fore)
-"vcm" = (
-/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
-	dir = 1
-	},
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
-	dir = 1
-	},
-/turf/closed/wall/mineral/cult,
-/area/bridge/showroom/corporate)
 "vcq" = (
 /obj/machinery/door/poddoor/preopen{
 	id = "Biohazard";
@@ -115347,7 +115267,7 @@ cde
 gHF
 qCf
 qCf
-bOx
+lZj
 bQf
 bRw
 chw
@@ -115598,7 +115518,7 @@ qya
 jWy
 gks
 udh
-fVK
+uNv
 rjN
 rjN
 rjN
@@ -115853,7 +115773,7 @@ bsU
 bwt
 dFo
 xJp
-bLT
+gks
 vjM
 uNv
 bGG
@@ -115864,7 +115784,7 @@ qCf
 bOz
 lZj
 qCf
-hzS
+chw
 qDP
 qgb
 kAQ
@@ -117395,8 +117315,8 @@ bsU
 bww
 dFo
 xJp
-bLT
-sFn
+gks
+udh
 idx
 bGL
 idx
@@ -117406,7 +117326,7 @@ bNi
 qCf
 qFl
 lZj
-vcm
+chw
 qDP
 bVk
 eSs
