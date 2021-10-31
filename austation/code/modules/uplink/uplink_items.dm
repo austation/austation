@@ -27,13 +27,13 @@
 /datum/uplink_item/role_restricted/turretbox
 	name = "Disposable Sentry Gun"
 	desc = "A disposable sentry gun deployment system cleverly disguised as a toolbox, apply wrench for functionality."
-	item = /obj/item/seeds/gympie_gympie
+	item = /obj/item/storage/toolbox/emergency/turret
 	cost = 11
 	restricted_roles = list("Station Engineer", "Chief Engineer")
 
 /datum/uplink_item/role_restricted/gympie_gympie_seeds
 	name = "Gympie Gympie Seeds"
 	desc = "A packet of highly adaptable Gympie seeds.\nAdd Left 4 Zed for results!"
-	item = /obj/item/storage/toolbox/emergency/turret
+	item = /obj/item/seeds/gympie_gympie
 	cost = 4
 	restricted_roles = list("Botanist")
