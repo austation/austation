@@ -1,0 +1,11 @@
+{
+    "map_name": "spooky_station",
+    "map_path": "map_files/Spooky_Austation",
+    "map_file": "Spookystation.dmm",
+    "shuttles": {
+	    "cargo": "cargo_box",
+	    "ferry": "ferry_fancy",
+	    "whiteship": "whiteship_meta",
+	    "emergency": "emergency_meta"
+    }
+}
