@@ -1,0 +1,5 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - rscadd: "Added exploration envirosuit+helmet."
+  - rscadd: "Plasmamen on the exploration crew now spawn in said clothes."
