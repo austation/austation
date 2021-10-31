@@ -17,10 +17,6 @@
 	lighting_colour_tube = "#ff0000"
 	lighting_colour_bulb = "#ff0000"
 
-/area/medical
-	lighting_colour_tube = "#7ec953"
-	lighting_colour_bulb = "#7ec953"
-
 /area/medical/morgue
 	lighting_colour_tube = "#404733"
 	lighting_colour_bulb = "#404733"
