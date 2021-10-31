@@ -1,0 +1,5 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - rscadd: "Syndicate implants are now hidden from health scans"
+  - imageadd: "Added inhand icons for the energy saw"
