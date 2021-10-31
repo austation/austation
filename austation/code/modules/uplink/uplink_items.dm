@@ -35,5 +35,5 @@
 	name = "Gympie Gympie Seeds"
 	desc = "A packet of highly adaptable Gympie seeds.\nAdd Left 4 Zed for results!"
 	item = /obj/item/storage/toolbox/emergency/turret
-	cost = 11
+	cost = 4
 	restricted_roles = list("Botanist")
