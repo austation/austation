@@ -1,0 +1,4 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - bugfix: "The chameleon projector now projects objects with overlays, such as computers and holosigns, correctly."
