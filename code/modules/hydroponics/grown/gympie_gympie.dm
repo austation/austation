@@ -16,7 +16,7 @@
 	reagents_add = list(/datum/reagent/toxin/mindbreaker = 0.10)
 	rarity = 50
 	var/volume = 5
-	var/awaken_reagent = /datum/reagent/medicine/strange_reagent //Muh' debug purposes
+	var/awaken_reagent = /datum/reagent/plantnutriment/left4zednutriment //Muh' debug purposes, leave this for gimmicks
 
 /obj/item/reagent_containers/food/snacks/grown/gympie_gympie
 	seed = /obj/item/seeds/gympie_gympie
