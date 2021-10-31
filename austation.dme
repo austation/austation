@@ -284,6 +284,7 @@
 #include "austation\code\modules\research\designs\medical_designs.dm"
 #include "austation\code\modules\research\techweb\_techweb_node.dm"
 #include "austation\code\modules\research\techweb\all_nodes.dm"
+#include "austation\code\modules\surgery\limb_augmentation.dm"
 #include "austation\code\modules\surgery\advanced\bioware\cortex_folding.dm"
 #include "austation\code\modules\surgery\advanced\bioware\cortex_imprint.dm"
 #include "austation\code\modules\surgery\organs\eyes.dm"
