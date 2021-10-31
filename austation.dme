@@ -242,7 +242,6 @@
 #include "austation\code\modules\mob\living\simple_animal\hostile\regalrat.dm"
 #include "austation\code\modules\mob\living\simple_animal\hostile\retaliate\kangaroo.dm"
 #include "austation\code\modules\power\cell.dm"
-#include "austation\code\modules\power\lighting.dm"
 #include "austation\code\modules\power\singularity.dm"
 #include "austation\code\modules\power\reactor\fuel_rods.dm"
 #include "austation\code\modules\power\reactor\rbmk.dm"
@@ -299,5 +298,4 @@
 #include "austation\code\modules\vending\_vending.dm"
 #include "austation\code\modules\vending\clothesmate.dm"
 #include "austation\code\modules\wiremod\marker.dm"
-#include "code\modules\power\lighting.dm"
 // END_INCLUDE
