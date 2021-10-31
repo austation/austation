@@ -1,0 +1,5 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - tweak: "body only records are now clearer"
+  - bugfix: "body only records persist after cloning"

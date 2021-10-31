@@ -1,0 +1,4 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - bugfix: "Boxstation's turbine and toxins burn chamber airlocks will now pressurise and depressurise correctly, no longer softlocking you."
