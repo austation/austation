@@ -16,6 +16,12 @@ endmap
 
 #Active Rotation
 
+map Spookystation
+	minplayers 1
+	votable
+	default
+endmap
+
 map corgstation
 	minplayers 15
 	votable
@@ -27,7 +33,6 @@ map boxstation
 endmap
 
 map metastation
-	default
 	votable
 endmap
 
