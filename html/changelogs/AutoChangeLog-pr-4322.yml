@@ -1,0 +1,4 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - rscadd: "The *spin and *flip emotes now cause a small amount of confusion."
