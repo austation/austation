@@ -2,6 +2,7 @@
 	icon = 'austation/icons/obj/halloween.dmi'
 	density = FALSE
 	layer = BELOW_MOB_LAYER
+	anchored = TRUE
 
 /obj/structure/halloween/grave1
 	name = "grave"
