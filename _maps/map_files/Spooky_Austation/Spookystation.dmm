@@ -18696,12 +18696,16 @@
 /area/hallway/secondary/command)
 "bGG" = (
 /obj/structure/halloween/cross3,
-/turf/open/floor/plating/dirt,
+/turf/open/floor/plating/dirt/dark{
+	planetary_atmos = 0
+	},
 /area/hallway/secondary/command)
 "bGI" = (
 /obj/item/kitchen/knife/ritual,
 /obj/structure/table/wood/fancy/orange,
-/turf/open/floor/plating/dirt/dark,
+/turf/open/floor/plating/dirt/dark{
+	planetary_atmos = 0
+	},
 /area/hallway/secondary/command)
 "bGL" = (
 /obj/machinery/camera{
@@ -19078,7 +19082,9 @@
 /area/engine/engineering)
 "bIk" = (
 /obj/effect/turf_decal/tile/neutral,
-/turf/open/floor/plating/dirt/dark,
+/turf/open/floor/plating/dirt/dark{
+	planetary_atmos = 0
+	},
 /area/hallway/secondary/command)
 "bIm" = (
 /obj/structure/closet/secure_closet/exile,
@@ -19430,25 +19436,30 @@
 	},
 /obj/structure/halloween/cross3,
 /obj/effect/decal/cleanable/blood,
-/turf/open/floor/plating/dirt/dark,
+/turf/open/floor/plating/dirt/dark{
+	planetary_atmos = 0
+	},
 /area/hallway/secondary/command)
 "bJO" = (
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
 	},
-/turf/open/floor/plating/dirt/dark,
-/area/hallway/secondary/command)
-"bJP" = (
-/turf/open/floor/plating/dirt/dark,
+/turf/open/floor/plating/dirt/dark{
+	planetary_atmos = 0
+	},
 /area/hallway/secondary/command)
 "bJQ" = (
 /obj/effect/decal/cleanable/blood/tracks,
-/turf/open/floor/plating/dirt/dark,
+/turf/open/floor/plating/dirt/dark{
+	planetary_atmos = 0
+	},
 /area/hallway/secondary/command)
 "bJR" = (
 /obj/effect/turf_decal/tile/neutral,
 /obj/structure/halloween/cross1,
-/turf/open/floor/plating/dirt/dark,
+/turf/open/floor/plating/dirt/dark{
+	planetary_atmos = 0
+	},
 /area/hallway/secondary/command)
 "bJS" = (
 /obj/effect/spawner/structure/window/reinforced,
@@ -20001,7 +20012,9 @@
 /obj/effect/decal/cleanable/blood/gibs/torso,
 /obj/effect/decal/cleanable/blood/tracks,
 /obj/effect/rune/narsie,
-/turf/open/floor/plating/dirt,
+/turf/open/floor/plating/dirt/dark{
+	planetary_atmos = 0
+	},
 /area/bridge/showroom/corporate)
 "bLy" = (
 /obj/structure/closet/secure_closet/medical1,
@@ -20536,20 +20549,18 @@
 /area/teleporter)
 "bNb" = (
 /obj/structure/halloween/grave1,
-/turf/open/floor/plating/dirt/dark,
+/turf/open/floor/plating/dirt/dark{
+	planetary_atmos = 0
+	},
 /area/bridge/showroom/corporate)
 "bNf" = (
 /obj/effect/decal/cleanable/blood/tracks,
 /obj/effect/decal/cleanable/blood/tracks{
 	dir = 10
 	},
-/turf/open/floor/plating/dirt,
-/area/bridge/showroom/corporate)
-"bNg" = (
-/obj/effect/decal/cleanable/blood/tracks{
-	dir = 4
+/turf/open/floor/plating/dirt/dark{
+	planetary_atmos = 0
 	},
-/turf/open/floor/plating/dirt,
 /area/bridge/showroom/corporate)
 "bNh" = (
 /obj/structure/table/wood,
@@ -20565,7 +20576,9 @@
 /obj/effect/decal/cleanable/blood/tracks{
 	dir = 4
 	},
-/turf/open/floor/plating/dirt/dark,
+/turf/open/floor/plating/dirt/dark{
+	planetary_atmos = 0
+	},
 /area/bridge/showroom/corporate)
 "bNj" = (
 /obj/structure/halloween/cross1,
@@ -20573,7 +20586,9 @@
 	dir = 8
 	},
 /obj/effect/decal/cleanable/blood,
-/turf/open/floor/plating/dirt/dark,
+/turf/open/floor/plating/dirt/dark{
+	planetary_atmos = 0
+	},
 /area/bridge/showroom/corporate)
 "bNl" = (
 /turf/closed/wall,
@@ -20938,24 +20953,23 @@
 /obj/machinery/light/small{
 	dir = 8
 	},
-/turf/open/floor/plating/dirt/dark,
+/turf/open/floor/plating/dirt/dark{
+	planetary_atmos = 0
+	},
 /area/bridge/showroom/corporate)
 "bOy" = (
 /obj/effect/decal/cleanable/oil,
-/turf/open/floor/plating/dirt/dark,
+/turf/open/floor/plating/dirt/dark{
+	planetary_atmos = 0
+	},
 /area/bridge/showroom/corporate)
 "bOz" = (
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
 	},
-/turf/open/floor/plating/dirt/dark,
-/area/bridge/showroom/corporate)
-"bOB" = (
-/turf/open/floor/plating/dirt,
-/area/bridge/showroom/corporate)
-"bOE" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/plating/dirt/dark,
+/turf/open/floor/plating/dirt/dark{
+	planetary_atmos = 0
+	},
 /area/bridge/showroom/corporate)
 "bOF" = (
 /obj/machinery/power/apc/highcap/five_k{
@@ -20968,7 +20982,9 @@
 /obj/machinery/light/small{
 	dir = 4
 	},
-/turf/open/floor/plating/dirt/dark,
+/turf/open/floor/plating/dirt/dark{
+	planetary_atmos = 0
+	},
 /area/bridge/showroom/corporate)
 "bOG" = (
 /obj/structure/rack,
@@ -21397,24 +21413,32 @@
 	dir = 4;
 	pixel_x = -23
 	},
-/turf/open/floor/plating/dirt/dark,
+/turf/open/floor/plating/dirt/dark{
+	planetary_atmos = 0
+	},
 /area/bridge/showroom/corporate)
 "bQg" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/halloween/cross1,
-/turf/open/floor/plating/dirt/dark,
+/turf/open/floor/plating/dirt/dark{
+	planetary_atmos = 0
+	},
 /area/bridge/showroom/corporate)
 "bQi" = (
 /obj/structure/halloween/grave1,
 /obj/effect/decal/cleanable/blood/bubblegum,
-/turf/open/floor/plating/dirt/dark,
+/turf/open/floor/plating/dirt/dark{
+	planetary_atmos = 0
+	},
 /area/bridge/showroom/corporate)
 "bQk" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/holopad,
 /obj/effect/decal/cleanable/blood/old,
 /obj/effect/decal/cleanable/blood/tracks,
-/turf/open/floor/plating/dirt/dark,
+/turf/open/floor/plating/dirt/dark{
+	planetary_atmos = 0
+	},
 /area/bridge/showroom/corporate)
 "bQp" = (
 /obj/structure/rack,
@@ -21667,7 +21691,9 @@
 /obj/machinery/light/small{
 	dir = 8
 	},
-/turf/open/floor/plating/dirt/dark,
+/turf/open/floor/plating/dirt/dark{
+	planetary_atmos = 0
+	},
 /area/bridge/showroom/corporate)
 "bRA" = (
 /turf/open/floor/plating/rust,
@@ -21687,7 +21713,9 @@
 /obj/machinery/light/small{
 	dir = 4
 	},
-/turf/open/floor/plating/dirt/dark,
+/turf/open/floor/plating/dirt/dark{
+	planetary_atmos = 0
+	},
 /area/bridge/showroom/corporate)
 "bRH" = (
 /obj/structure/table,
@@ -22210,7 +22238,9 @@
 /area/security/warden)
 "bTZ" = (
 /obj/structure/halloween/cross3,
-/turf/open/floor/plating/dirt,
+/turf/open/floor/plating/dirt/dark{
+	planetary_atmos = 0
+	},
 /area/bridge/showroom/corporate)
 "bUd" = (
 /obj/structure/table,
@@ -39077,10 +39107,14 @@
 /area/crew_quarters/kitchen)
 "dDf" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/plating/dirt,
+/turf/open/floor/plating/dirt/dark{
+	planetary_atmos = 0
+	},
 /area/bridge/showroom/corporate)
 "dDg" = (
-/turf/open/floor/plating/dirt/dark,
+/turf/open/floor/plating/dirt/dark{
+	planetary_atmos = 0
+	},
 /area/bridge/showroom/corporate)
 "dDh" = (
 /obj/effect/turf_decal/plaque{
@@ -41538,7 +41572,9 @@
 /area/crew_quarters/bar)
 "eGj" = (
 /obj/effect/decal/cleanable/cobweb/cobweb2,
-/turf/open/floor/plating/dirt/dark,
+/turf/open/floor/plating/dirt/dark{
+	planetary_atmos = 0
+	},
 /area/space/nearstation)
 "eGp" = (
 /obj/effect/turf_decal/delivery,
@@ -43811,7 +43847,9 @@
 /area/construction/storage_wing)
 "fIg" = (
 /obj/item/reagent_containers/glass/bottle/necropolis_seed,
-/turf/open/floor/plating/dirt,
+/turf/open/floor/plating/dirt/dark{
+	planetary_atmos = 0
+	},
 /area/bridge/showroom/corporate)
 "fIl" = (
 /obj/structure/cable/yellow{
@@ -44434,7 +44472,9 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
 	dir = 4
 	},
-/turf/open/floor/plating/dirt/dark,
+/turf/open/floor/plating/dirt/dark{
+	planetary_atmos = 0
+	},
 /area/hallway/secondary/command)
 "fVU" = (
 /obj/machinery/door/airlock/maintenance{
@@ -44729,7 +44769,9 @@
 "gbF" = (
 /obj/effect/decal/cleanable/blood/tracks,
 /obj/item/toy/plush/narplush/hugbox,
-/turf/open/floor/plating/dirt,
+/turf/open/floor/plating/dirt/dark{
+	planetary_atmos = 0
+	},
 /area/hallway/secondary/command)
 "gbM" = (
 /obj/structure/table/wood,
@@ -44752,7 +44794,9 @@
 /obj/structure/table/wood/fancy/orange,
 /obj/item/clothing/head/helmet/skull,
 /obj/effect/decal/cleanable/blood/splatter,
-/turf/open/floor/plating/dirt,
+/turf/open/floor/plating/dirt/dark{
+	planetary_atmos = 0
+	},
 /area/hallway/secondary/command)
 "gca" = (
 /obj/effect/turf_decal/tile/purple{
@@ -46021,7 +46065,9 @@
 /turf/open/floor/carpet/royalblue,
 /area/crew_quarters/heads/captain/private)
 "gHF" = (
-/turf/open/floor/plating/dirt/dark,
+/turf/open/floor/plating/dirt/dark{
+	planetary_atmos = 0
+	},
 /area/space/nearstation)
 "gIb" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer1{
@@ -47559,7 +47605,9 @@
 /obj/effect/decal/cleanable/blood/tracks{
 	dir = 4
 	},
-/turf/open/floor/plating/dirt/dark,
+/turf/open/floor/plating/dirt/dark{
+	planetary_atmos = 0
+	},
 /area/bridge/showroom/corporate)
 "hlY" = (
 /obj/structure/disposalpipe/segment{
@@ -47872,7 +47920,9 @@
 /turf/open/floor/plating,
 /area/maintenance/starboard/fore)
 "hqJ" = (
-/turf/open/floor/plating/dirt,
+/turf/open/floor/plating/dirt/dark{
+	planetary_atmos = 0
+	},
 /area/hallway/secondary/command)
 "hqM" = (
 /obj/structure/disposalpipe/segment{
@@ -48239,7 +48289,9 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
 	dir = 8
 	},
-/turf/open/floor/plating/dirt/dark,
+/turf/open/floor/plating/dirt/dark{
+	planetary_atmos = 0
+	},
 /area/hallway/secondary/command)
 "hCd" = (
 /obj/structure/cable/yellow{
@@ -49190,7 +49242,9 @@
 "hWU" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/halloween/grave1,
-/turf/open/floor/plating/dirt/dark,
+/turf/open/floor/plating/dirt/dark{
+	planetary_atmos = 0
+	},
 /area/bridge/showroom/corporate)
 "hWV" = (
 /obj/structure/cable/yellow{
@@ -49487,7 +49541,9 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
 	dir = 8
 	},
-/turf/open/floor/plating/dirt/dark,
+/turf/open/floor/plating/dirt/dark{
+	planetary_atmos = 0
+	},
 /area/hallway/secondary/command)
 "idD" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3,
@@ -50239,7 +50295,9 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
 	},
-/turf/open/floor/plating/dirt,
+/turf/open/floor/plating/dirt/dark{
+	planetary_atmos = 0
+	},
 /area/hallway/secondary/command)
 "isd" = (
 /obj/machinery/light/small,
@@ -52500,7 +52558,9 @@
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer3{
 	dir = 8
 	},
-/turf/open/floor/plating/dirt/dark,
+/turf/open/floor/plating/dirt/dark{
+	planetary_atmos = 0
+	},
 /area/bridge/showroom/corporate)
 "jqb" = (
 /obj/structure/cable/yellow{
@@ -52974,7 +53034,9 @@
 /area/medical/sleeper)
 "jwR" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1,
-/turf/open/floor/plating/dirt/dark,
+/turf/open/floor/plating/dirt/dark{
+	planetary_atmos = 0
+	},
 /area/hallway/secondary/command)
 "jwV" = (
 /obj/structure/rack,
@@ -56951,7 +57013,9 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
 	dir = 6
 	},
-/turf/open/floor/plating/dirt/dark,
+/turf/open/floor/plating/dirt/dark{
+	planetary_atmos = 0
+	},
 /area/bridge/showroom/corporate)
 "lfz" = (
 /obj/structure/table/glass,
@@ -57265,7 +57329,7 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
 	dir = 8
 	},
-/turf/open/floor/plating/dirt/dark,
+/turf/open/floor/plasteel,
 /area/hallway/secondary/command)
 "lnk" = (
 /obj/machinery/power/apc{
@@ -59043,7 +59107,9 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
 	dir = 6
 	},
-/turf/open/floor/plating/dirt/dark,
+/turf/open/floor/plating/dirt/dark{
+	planetary_atmos = 0
+	},
 /area/bridge/showroom/corporate)
 "lZp" = (
 /obj/structure/table,
@@ -59809,7 +59875,9 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
 	dir = 8
 	},
-/turf/open/floor/plating/dirt,
+/turf/open/floor/plating/dirt/dark{
+	planetary_atmos = 0
+	},
 /area/hallway/secondary/command)
 "mtW" = (
 /obj/structure/cable/yellow{
@@ -60125,7 +60193,7 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 4
 	},
-/turf/open/floor/plating/dirt/dark,
+/turf/open/floor/plasteel,
 /area/hallway/secondary/command)
 "myP" = (
 /obj/structure/cable/yellow{
@@ -61666,7 +61734,9 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
 	},
-/turf/open/floor/plating/dirt,
+/turf/open/floor/plating/dirt/dark{
+	planetary_atmos = 0
+	},
 /area/hallway/secondary/command)
 "nfG" = (
 /obj/effect/turf_decal/stripes/corner{
@@ -63716,7 +63786,9 @@
 /area/quartermaster/sorting)
 "nSI" = (
 /obj/structure/halloween/cross1,
-/turf/open/floor/plating/dirt/dark,
+/turf/open/floor/plating/dirt/dark{
+	planetary_atmos = 0
+	},
 /area/hallway/secondary/command)
 "nSQ" = (
 /obj/structure/cable/yellow{
@@ -66795,18 +66867,6 @@
 	},
 /turf/open/floor/plasteel,
 /area/security/main)
-"oZF" = (
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
-/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
-	dir = 8
-	},
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
-	dir = 8
-	},
-/turf/open/floor/plating/dirt,
-/area/hallway/secondary/command)
 "oZM" = (
 /obj/machinery/holopad,
 /turf/open/floor/plasteel/white,
@@ -67445,7 +67505,9 @@
 	dir = 8
 	},
 /obj/effect/decal/cleanable/blood/tracks,
-/turf/open/floor/plating/dirt,
+/turf/open/floor/plating/dirt/dark{
+	planetary_atmos = 0
+	},
 /area/bridge/showroom/corporate)
 "pln" = (
 /obj/effect/turf_decal/stripes/line{
@@ -69449,7 +69511,9 @@
 	dir = 8
 	},
 /obj/structure/halloween/cross2,
-/turf/open/floor/plating/dirt,
+/turf/open/floor/plating/dirt/dark{
+	planetary_atmos = 0
+	},
 /area/hallway/secondary/command)
 "qeY" = (
 /obj/structure/table,
@@ -70442,7 +70506,9 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
 	},
-/turf/open/floor/plating/dirt/dark,
+/turf/open/floor/plating/dirt/dark{
+	planetary_atmos = 0
+	},
 /area/hallway/secondary/command)
 "qAp" = (
 /obj/machinery/light{
@@ -70493,7 +70559,9 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
 	dir = 8
 	},
-/turf/open/floor/plating/dirt/dark,
+/turf/open/floor/plating/dirt/dark{
+	planetary_atmos = 0
+	},
 /area/hallway/secondary/command)
 "qCb" = (
 /obj/machinery/photocopier,
@@ -70510,7 +70578,9 @@
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer1{
 	dir = 4
 	},
-/turf/open/floor/plating/dirt/dark,
+/turf/open/floor/plating/dirt/dark{
+	planetary_atmos = 0
+	},
 /area/bridge/showroom/corporate)
 "qCJ" = (
 /obj/machinery/atmospherics/components/binary/pump{
@@ -70621,7 +70691,9 @@
 "qFl" = (
 /obj/structure/halloween/cross3,
 /obj/effect/decal/cleanable/blood/splatter,
-/turf/open/floor/plating/dirt/dark,
+/turf/open/floor/plating/dirt/dark{
+	planetary_atmos = 0
+	},
 /area/bridge/showroom/corporate)
 "qFm" = (
 /obj/structure/cable/yellow{
@@ -72102,7 +72174,9 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 4
 	},
-/turf/open/floor/plating/dirt/dark,
+/turf/open/floor/plating/dirt/dark{
+	planetary_atmos = 0
+	},
 /area/hallway/secondary/command)
 "rjn" = (
 /obj/structure/cable/yellow{
@@ -72133,7 +72207,9 @@
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer1{
 	dir = 1
 	},
-/turf/open/floor/plating/dirt/dark,
+/turf/open/floor/plating/dirt/dark{
+	planetary_atmos = 0
+	},
 /area/hallway/secondary/command)
 "rka" = (
 /obj/structure/cable/yellow{
@@ -75324,7 +75400,9 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
 	},
-/turf/open/floor/plating/dirt/dark,
+/turf/open/floor/plating/dirt/dark{
+	planetary_atmos = 0
+	},
 /area/hallway/secondary/command)
 "sFA" = (
 /obj/structure/chair{
@@ -79132,7 +79210,9 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
 	},
-/turf/open/floor/plating/dirt/dark,
+/turf/open/floor/plating/dirt/dark{
+	planetary_atmos = 0
+	},
 /area/hallway/secondary/command)
 "udx" = (
 /obj/machinery/firealarm{
@@ -79674,7 +79754,9 @@
 /obj/item/reagent_containers/food/snacks/soup/blood{
 	pixel_y = 8
 	},
-/turf/open/floor/plating/dirt,
+/turf/open/floor/plating/dirt/dark{
+	planetary_atmos = 0
+	},
 /area/hallway/secondary/command)
 "unx" = (
 /obj/structure/cable/yellow{
@@ -80712,7 +80794,9 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
 	dir = 4
 	},
-/turf/open/floor/plating/dirt/dark,
+/turf/open/floor/plating/dirt/dark{
+	planetary_atmos = 0
+	},
 /area/hallway/secondary/command)
 "uNT" = (
 /obj/machinery/door/airlock/grunge{
@@ -81899,7 +81983,9 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 4
 	},
-/turf/open/floor/plating/dirt/dark,
+/turf/open/floor/plating/dirt/dark{
+	planetary_atmos = 0
+	},
 /area/hallway/secondary/command)
 "vjS" = (
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden,
@@ -89076,7 +89162,9 @@
 "yhw" = (
 /obj/structure/necropolis_gate,
 /obj/effect/decal/cleanable/blood/tracks,
-/turf/open/floor/plating/dirt/dark,
+/turf/open/floor/plating/dirt/dark{
+	planetary_atmos = 0
+	},
 /area/bridge/showroom/corporate)
 "yhR" = (
 /obj/structure/cable/yellow{
@@ -115692,8 +115780,8 @@ gks
 udh
 fVK
 hqJ
-bJP
-bJP
+hqJ
+hqJ
 dDg
 bNb
 bOy
@@ -115954,7 +116042,7 @@ bJN
 fIg
 dDg
 bOz
-bOE
+dDf
 lfv
 hzS
 qDP
@@ -116463,11 +116551,11 @@ bfv
 qAl
 qBv
 bGI
-bJP
-bJP
-bOB
+hqJ
+hqJ
+dDg
 bRA
-bOB
+dDg
 dDg
 bRA
 chw
@@ -116975,12 +117063,12 @@ iaW
 gGd
 bBK
 rjc
-oZF
+qBv
 gbT
 hqJ
 bJO
-bOB
-bNg
+dDg
+bNi
 dDf
 dDg
 dDg
@@ -117748,11 +117836,11 @@ bfv
 qTL
 lBx
 bGF
-bJP
+hqJ
 nSI
 bRA
 bNj
-bOE
+dDf
 dDg
 jpP
 chw
