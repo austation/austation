@@ -3,49 +3,76 @@
 /turf/template_noop,
 /area/template_noop)
 "b" = (
-/turf/closed/wall/mineral/titanium,
+/turf/closed/wall/mineral/cult,
 /area/shuttle/arrival)
 "c" = (
-/obj/machinery/door/airlock/titanium{
-	name = "Arrivals Shuttle Airlock"
-	},
 /obj/structure/fans/tiny,
-/turf/open/floor/plating,
+/obj/machinery/door/airlock/cult/friendly,
+/turf/open/floor/plating/rust,
 /area/shuttle/arrival)
 "d" = (
-/obj/effect/spawner/structure/window/shuttle,
+/obj/effect/spawner/structure/window/hollow/survival_pod/end{
+	dir = 8
+	},
 /turf/open/floor/plating,
 /area/shuttle/arrival)
-"e" = (
-/obj/structure/table,
-/obj/item/storage/firstaid/regular,
-/turf/open/floor/mineral/titanium/blue,
-/area/shuttle/arrival)
 "f" = (
-/turf/open/floor/mineral/titanium/blue,
+/obj/structure/stone_tile/block/cracked,
+/obj/effect/decal/cleanable/blood/tracks{
+	dir = 9
+	},
+/obj/effect/decal/cleanable/blood/drip,
+/obj/effect/decal/cleanable/blood/footprints{
+	dir = 8
+	},
+/turf/open/floor/plasteel/cult,
 /area/shuttle/arrival)
 "g" = (
-/obj/machinery/computer/arcade,
 /obj/machinery/light{
+	bulb_colour = "#990000";
 	dir = 1
 	},
-/turf/open/floor/mineral/titanium/blue,
-/area/shuttle/arrival)
-"h" = (
-/obj/structure/closet/wardrobe/green,
-/turf/open/floor/mineral/titanium/blue,
+/obj/effect/decal/cleanable/blood/tracks{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/blood/drip,
+/obj/effect/decal/cleanable/blood/footprints{
+	dir = 8
+	},
+/turf/open/floor/plating/rust,
 /area/shuttle/arrival)
 "i" = (
-/obj/structure/closet/wardrobe/black,
-/turf/open/floor/mineral/titanium/blue,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/structure/stone_tile/block/cracked,
+/obj/effect/decal/cleanable/blood/tracks{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/blood/drip,
+/obj/effect/decal/cleanable/blood/footprints{
+	dir = 8
+	},
+/turf/open/floor/plasteel/cult,
 /area/shuttle/arrival)
 "j" = (
-/obj/structure/closet/wardrobe/mixed,
-/turf/open/floor/mineral/titanium/blue,
+/obj/structure/stone_tile/block/cracked,
+/obj/effect/decal/cleanable/blood/tracks{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/blood/drip,
+/obj/effect/decal/cleanable/blood/footprints{
+	dir = 8
+	},
+/turf/open/floor/plasteel/cult,
 /area/shuttle/arrival)
 "k" = (
-/obj/structure/closet/wardrobe/grey,
-/turf/open/floor/mineral/titanium/blue,
+/obj/effect/decal/cleanable/blood/tracks{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/blood/drip,
+/obj/effect/decal/cleanable/blood/footprints{
+	dir = 8
+	},
+/turf/open/floor/plating/rust,
 /area/shuttle/arrival)
 "l" = (
 /obj/machinery/requests_console{
@@ -54,9 +81,18 @@
 	pixel_y = 30
 	},
 /obj/machinery/light{
+	bulb_colour = "#990000";
 	dir = 1
 	},
-/turf/open/floor/mineral/titanium/blue,
+/obj/effect/decal/cleanable/blood/tracks{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/blood/drip,
+/obj/effect/decal/cleanable/blood/drip,
+/obj/effect/decal/cleanable/blood/footprints{
+	dir = 8
+	},
+/turf/open/floor/plating/rust,
 /area/shuttle/arrival)
 "m" = (
 /obj/structure/shuttle/engine/heater{
@@ -74,26 +110,29 @@
 /turf/open/floor/plating/airless,
 /area/shuttle/arrival)
 "o" = (
-/obj/structure/window/shuttle,
-/obj/structure/grille,
+/obj/effect/spawner/structure/window/hollow/survival_pod/end{
+	dir = 1
+	},
 /turf/open/floor/plating,
 /area/shuttle/arrival)
 "p" = (
-/obj/structure/chair/comfy/shuttle,
-/turf/open/floor/mineral/titanium/blue,
+/obj/structure/stone_tile/surrounding/cracked,
+/obj/structure/stone_tile/surrounding/cracked{
+	dir = 1
+	},
+/obj/structure/stone_tile/center/cracked,
+/turf/open/floor/plasteel/cult,
 /area/shuttle/arrival)
 "q" = (
-/obj/structure/chair/comfy/shuttle,
-/obj/machinery/light/small{
-	dir = 4
-	},
-/turf/open/floor/mineral/titanium/blue,
+/obj/effect/decal/cleanable/blood/gibs/body,
+/turf/open/floor/plating/rust,
 /area/shuttle/arrival)
 "r" = (
-/obj/structure/chair/comfy/shuttle{
-	dir = 8
+/obj/effect/decal/cleanable/blood/tracks{
+	dir = 1
 	},
-/turf/open/floor/mineral/titanium,
+/obj/effect/decal/cleanable/blood/drip,
+/turf/open/floor/plasteel/cult,
 /area/shuttle/arrival)
 "s" = (
 /obj/structure/shuttle/engine/propulsion{
@@ -102,10 +141,11 @@
 /turf/open/floor/plating/airless,
 /area/shuttle/arrival)
 "t" = (
-/obj/machinery/door/airlock/titanium{
-	name = "Arrivals Shuttle Airlock"
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/structure/stone_tile/block/cracked{
+	dir = 8
 	},
-/turf/open/floor/mineral/titanium,
+/turf/open/floor/plasteel/cult,
 /area/shuttle/arrival)
 "u" = (
 /obj/structure/shuttle/engine/propulsion{
@@ -115,35 +155,43 @@
 /turf/open/floor/plating/airless,
 /area/shuttle/arrival)
 "v" = (
-/obj/structure/chair/comfy/shuttle{
-	dir = 1
-	},
-/turf/open/floor/mineral/titanium/blue,
+/obj/effect/decal/cleanable/blood/splatter,
+/obj/effect/decal/cleanable/blood/drip,
+/turf/open/floor/plating/rust,
 /area/shuttle/arrival)
 "w" = (
-/obj/structure/chair/comfy/shuttle{
-	dir = 1
-	},
-/obj/machinery/light/small{
-	dir = 4
-	},
-/turf/open/floor/mineral/titanium/blue,
+/obj/effect/decal/cleanable/blood/gibs,
+/obj/effect/decal/cleanable/blood/gibs/limb,
+/turf/open/floor/plating/rust,
 /area/shuttle/arrival)
 "x" = (
-/obj/structure/closet/emcloset,
-/turf/open/floor/mineral/titanium/blue,
+/obj/structure/destructible/cult/pylon,
+/obj/structure/stone_tile/surrounding/cracked{
+	dir = 1
+	},
+/obj/structure/stone_tile/surrounding/cracked,
+/obj/structure/stone_tile/center/cracked,
+/turf/open/floor/plasteel/cult,
 /area/shuttle/arrival)
 "y" = (
-/obj/machinery/light,
-/turf/open/floor/mineral/titanium/blue,
+/obj/machinery/light{
+	bulb_colour = "#990000"
+	},
+/obj/effect/decal/cleanable/blood/gibs,
+/turf/open/floor/plating/rust,
 /area/shuttle/arrival)
 "z" = (
 /obj/item/radio/intercom{
 	name = "Station Intercom (General)";
 	pixel_y = -29
 	},
-/obj/machinery/light,
-/turf/open/floor/mineral/titanium/blue,
+/obj/machinery/light{
+	bulb_colour = "#990000"
+	},
+/obj/structure/stone_tile/block/cracked{
+	dir = 1
+	},
+/turf/open/floor/plasteel/cult,
 /area/shuttle/arrival)
 "A" = (
 /obj/structure/shuttle/engine/propulsion/burst/left{
@@ -151,125 +199,265 @@
 	},
 /turf/open/floor/plating/airless,
 /area/shuttle/arrival)
+"B" = (
+/obj/effect/decal/cleanable/blood/gibs/up,
+/turf/open/floor/plating/rust,
+/area/shuttle/arrival)
+"C" = (
+/obj/structure/stone_tile/block/cracked{
+	dir = 8
+	},
+/turf/open/floor/plasteel/cult,
+/area/shuttle/arrival)
+"D" = (
+/obj/structure/chair/comfy/shuttle{
+	dir = 8
+	},
+/turf/open/floor/plating/rust,
+/area/shuttle/arrival)
+"E" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/structure/table/wood/fancy/orange,
+/obj/item/toy/toy_dagger,
+/turf/open/floor/plasteel/cult,
+/area/shuttle/arrival)
+"F" = (
+/obj/effect/rune/narsie,
+/obj/item/toy/plush/narplush/hugbox,
+/turf/open/floor/plasteel/cult,
+/area/shuttle/arrival)
+"G" = (
+/obj/effect/spawner/structure/window/hollow/survival_pod/middle,
+/turf/open/floor/plating,
+/area/shuttle/arrival)
+"H" = (
+/obj/effect/spawner/structure/window/hollow/survival_pod/end,
+/turf/open/floor/plating,
+/area/shuttle/arrival)
+"I" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/structure/table/wood/fancy/orange,
+/obj/item/reagent_containers/food/snacks/soup/blood{
+	name = "Bowl of Blood";
+	pixel_x = 1;
+	pixel_y = 9
+	},
+/turf/open/floor/plasteel/cult,
+/area/shuttle/arrival)
+"J" = (
+/obj/structure/chair/comfy/shuttle{
+	dir = 8
+	},
+/turf/open/floor/plasteel/cult,
+/area/shuttle/arrival)
+"K" = (
+/obj/structure/chair/comfy/shuttle{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/plasteel/cult,
+/area/shuttle/arrival)
+"L" = (
+/obj/effect/spawner/structure/window/hollow/survival_pod/middle{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/shuttle/arrival)
+"M" = (
+/obj/structure/fans/tiny,
+/obj/effect/decal/cleanable/blood/tracks{
+	dir = 1
+	},
+/obj/machinery/door/airlock/cult/friendly,
+/obj/effect/decal/cleanable/blood/drip,
+/turf/open/floor/plating/rust,
+/area/shuttle/arrival)
+"N" = (
+/obj/effect/decal/cleanable/blood/gibs,
+/turf/open/floor/plasteel/cult,
+/area/shuttle/arrival)
+"O" = (
+/turf/open/floor/plating/rust,
+/area/shuttle/arrival)
+"P" = (
+/obj/effect/decal/cleanable/blood/gibs,
+/obj/effect/decal/cleanable/blood/tracks{
+	dir = 5
+	},
+/turf/open/floor/plating/rust,
+/area/shuttle/arrival)
+"Q" = (
+/obj/structure/stone_tile/surrounding_tile/cracked{
+	dir = 4
+	},
+/obj/effect/clockwork/overlay/floor/bloodcult,
+/turf/open/floor/plasteel/cult,
+/area/shuttle/arrival)
+"R" = (
+/obj/structure/stone_tile/block/cracked{
+	dir = 4
+	},
+/turf/open/floor/plasteel/cult,
+/area/shuttle/arrival)
 "S" = (
-/turf/open/floor/mineral/titanium,
+/obj/structure/table/wood/fancy/orange,
+/obj/item/clothing/head/helmet/skull,
+/turf/open/floor/plasteel/cult,
+/area/shuttle/arrival)
+"T" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/plasteel/cult,
+/area/shuttle/arrival)
+"U" = (
+/obj/structure/stone_tile/center/cracked,
+/obj/structure/stone_tile/surrounding/cracked{
+	dir = 1
+	},
+/obj/structure/stone_tile/surrounding/cracked,
+/obj/effect/decal/cleanable/blood/splatter,
+/turf/open/floor/plasteel/cult,
+/area/shuttle/arrival)
+"V" = (
+/obj/effect/decal/cleanable/blood/tracks{
+	dir = 6
+	},
+/obj/effect/decal/cleanable/blood/drip,
+/turf/open/floor/plating/rust,
+/area/shuttle/arrival)
+"W" = (
+/turf/open/floor/plasteel/cult,
+/area/shuttle/arrival)
+"X" = (
+/obj/structure/stone_tile/block/cracked{
+	dir = 1
+	},
+/turf/open/floor/plasteel/cult,
+/area/shuttle/arrival)
+"Y" = (
+/turf/closed/wall/rust,
+/area/shuttle/arrival)
+"Z" = (
+/obj/effect/spawner/structure/window/hollow/survival_pod/end{
+	dir = 4
+	},
+/turf/open/floor/plating,
 /area/shuttle/arrival)
 
 (1,1,1) = {"
 a
 b
 o
-d
-d
-b
+L
+H
+Y
 a
 "}
 (2,1,1) = {"
 a
 b
 p
-S
+R
 v
-b
+Y
 a
 "}
 (3,1,1) = {"
 a
 b
 q
-S
+F
 w
-b
+Y
 a
 "}
 (4,1,1) = {"
 b
 b
-b
+p
 t
-b
-b
-b
+U
+Y
+Y
 "}
 (5,1,1) = {"
 b
-e
-S
-S
-S
 x
-b
+S
+I
+E
+x
+Y
 "}
 (6,1,1) = {"
 c
 f
 r
-r
-r
-f
+B
+W
+O
 c
 "}
 (7,1,1) = {"
-b
+Y
 g
-f
-f
-f
+W
+W
+q
 y
 b
 "}
 (8,1,1) = {"
 d
-h
-r
-r
-r
-f
+k
+J
+N
+D
+Q
 d
 "}
 (9,1,1) = {"
-d
+G
 i
-f
-f
-f
-f
-d
+O
+O
+T
+X
+G
 "}
 (10,1,1) = {"
-d
+G
 j
-r
-r
-r
-f
-d
+K
+O
+K
+X
+G
 "}
 (11,1,1) = {"
-d
+Z
 k
-f
-f
-f
-f
-d
+O
+W
+W
+X
+Z
 "}
 (12,1,1) = {"
-b
+Y
 l
-r
-r
-r
+J
+O
+J
 z
 b
 "}
 (13,1,1) = {"
-c
-f
-S
-S
-S
-f
+M
+V
+C
+C
+O
+P
 c
 "}
 (14,1,1) = {"
@@ -279,7 +467,7 @@ m
 m
 m
 m
-b
+Y
 "}
 (15,1,1) = {"
 b
@@ -288,5 +476,5 @@ s
 u
 s
 A
-b
+Y
 "}
