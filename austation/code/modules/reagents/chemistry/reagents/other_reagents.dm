@@ -64,6 +64,9 @@
 	max_brightness = 6
 	power = 1.8
 
+/datum/reagent/stimulum
+	can_synth = FALSE
+
 /datum/reagent/stimulum/on_mob_metabolize(mob/living/L)
 	..()
 	L.add_movespeed_modifier(type, update=TRUE, priority=100, multiplicative_slowdown=-1, blacklisted_movetypes=(FLYING|FLOATING))
