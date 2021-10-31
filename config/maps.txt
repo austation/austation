@@ -16,7 +16,7 @@ endmap
 
 #Active Rotation
 
-map Spookystation
+map spookystation
 	minplayers 1
 	votable
 	default
