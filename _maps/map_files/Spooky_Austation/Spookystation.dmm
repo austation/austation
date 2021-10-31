@@ -19993,7 +19993,7 @@
 "bLx" = (
 /obj/effect/decal/cleanable/blood/gibs/torso,
 /obj/effect/decal/cleanable/blood/tracks,
-/obj/effect/rune/narsie,
+/obj/effect/rune/apocalypse,
 /turf/open/floor/plating/dirt/dark{
 	planetary_atmos = 0
 	},
