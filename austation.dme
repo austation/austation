@@ -216,6 +216,7 @@
 #include "austation\code\modules\mob\living\pseudo_z_axis.dm"
 #include "austation\code\modules\mob\living\carbon\emote.dm"
 #include "austation\code\modules\mob\living\carbon\examine.dm"
+#include "austation\code\modules\mob\living\carbon\human\human.dm"
 #include "austation\code\modules\mob\living\carbon\human\emote.dm"
 #include "austation\code\modules\mob\living\carbon\human\examine.dm"
 #include "austation\code\modules\mob\living\carbon\human\human_defines.dm"

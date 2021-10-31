@@ -1,7 +1,11 @@
 /obj/item/reagent_containers/food/snacks/grown/attack(mob/living/carbon/M, mob/user)
 	if(seed)
-		for(var/datum/plant_gene/trait/T in seed.genes)
-			T.on_throw_impact(src, M)
+		if(seed.get_gene(/datum/plant_gene/trait/stinging))
+			var/datum/plant_gene/trait/stinging/needles = seed.get_gene(/datum/plant_gene/trait/stinging)
+			if(needles.prick(src, M, user))
+				var/turf/T = get_turf(M)
+				log_combat(user, "hit", M, "at [AREACOORD(T)] injecting them with [src.reagents.log_list()]")
+				M.investigate_log("[M] has been prickled by a plant at [AREACOORD(T)] injecting them with [src.reagents.log_list()].", INVESTIGATE_BOTANY)
 	..()
 
 /obj/item/reagent_containers/food/snacks/grown/squash(atom/target)
