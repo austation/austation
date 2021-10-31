@@ -1,0 +1,4 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - bugfix: "slime pylons no longer kill toxinlovers/slimepeople"
