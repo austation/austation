@@ -266,7 +266,7 @@
 				split_list[1] = replacetext(split_list[1],"))","")
 				T = replacetext(T,"/s","")
 				split_list[1] = replacetext(split_list[1],"/s","")
-				split_list[1] = replacetext(split_list[1],"/s","")
+				split_list[2] = replacetext(split_list[2],"/s","")
 
 				var/datum/comm_filter_entry/filter = new
 				filter.filter_text = newfilter
