@@ -1,6 +1,5 @@
 
 /obj/machinery/computer/telecomms/server/ui_interact(mob/user)
-	. = ..()
 	var/dat = "<TITLE>Telecommunication Server Monitor</TITLE><center><b>Telecommunications Server Monitor</b></center>"
 
 	switch(screen)
@@ -138,8 +137,6 @@
 
 
 /obj/machinery/computer/telecomms/server/Topic(href, href_list)
-	if(..())
-		return
 
 	add_fingerprint(usr)
 	usr.set_machine(src)
