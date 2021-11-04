@@ -51,28 +51,24 @@
 					var/mobtype = C.parameters["mobtype"]
 					var/race			   // The actual race of the mob
 
-					if(ispath(mobtype, /mob/living/carbon/human) || ispath(mobtype, /mob/living/brain))
-						race = "Humanoid"
-
-					// NT knows a lot about slimes, but not aliens. Can identify slimes
-					else if(ispath(mobtype, /mob/living/simple_animal/slime))
-						race = "Slime"
-
-					else if(ispath(mobtype, /mob/living/carbon/monkey))
-						race = "Monkey"
-
-					// sometimes M gets deleted prematurely for AIs... just check the job
-					else if(ispath(mobtype, /mob/living/silicon) || C.parameters["job"] == "AI")
-						race = "Artificial Life"
-
-					else if(isobj(mobtype))
-						race = "Machinery"
-
-					else if(ispath(mobtype, /mob/living/simple_animal))
-						race = "Domestic Animal"
-
-					else
-						race = "<i>Unidentifiable</i>"
+					// austation begin -- switching boys
+					switch(mobtype)
+						if((/mob/living/carbon/human) || (/mob/living/brain))
+							race = "Humanoid"
+						if(/mob/living/simple_animal/slime)		// NT knows a lot about slimes, but not aliens. Can identify slimes
+							race = "Slime"
+						if(/mob/living/carbon/monkey)
+							race = "Monkey"
+						if((/mob/living/silicon) || (C.parameters["job"] == "AI"))		// sometimes M gets deleted prematurely for AIs... just check the job
+							race = "Artificial Life"
+						if(/mob/living/simple_animal)
+							race = "Domestic Animal"
+						else
+							if(isobj(mobtype))
+								race = "Machinery"
+							else
+								race = "<i>Unidentifiable</i>"
+					// austation end
 
 					dat += "<u><font color = #18743E>Data type</font></u>: [C.input_type]<br>"
 					dat += "<u><font color = #18743E>Source</font></u>: [C.parameters["name"]] (Job: [C.parameters["job"]])<br>"
@@ -163,7 +159,7 @@
 					temp = "<font color = #D70B00>- FAILED: CANNOT PROBE WHEN BUFFER FULL -</font color>"
 
 				else
-					for(var/obj/machinery/telecomms/server/T in GLOB.machines))
+					for(var/obj/machinery/telecomms/server/T in GLOB.machines)
 						if(get_dist(src, T) > 25)
 							continue
 						if(T.network == network)
@@ -201,8 +197,6 @@
 				SelectedServer.filter_entries.Remove(D)
 				qdel(D)
 
-				updateUsrDialog()
-				return
 			else
 			// austation end
 				var/datum/comm_log_entry/D = SelectedServer.log_entries[text2num(href_list["delete"])]
