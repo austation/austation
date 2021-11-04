@@ -166,7 +166,9 @@
 					temp = "<font color = #D70B00>- FAILED: CANNOT PROBE WHEN BUFFER FULL -</font color>"
 
 				else
-					for(var/obj/machinery/telecomms/server/T in urange(25, src))
+					for(var/obj/machinery/telecomms/server/T in GLOB.machines))
+						if(get_dist(src, T) > 25)
+							continue
 						if(T.network == network)
 							servers.Add(T)
 
