@@ -357,12 +357,9 @@
 /turf/open/floor/plasteel/freezer,
 /area/security/prison)
 "abj" = (
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
 /obj/structure/easel,
-/obj/item/canvas/twentythreeXtwentythree,
-/obj/item/canvas/twentythreeXtwentythree,
+/obj/item/canvas/twentythree_twentythree,
+/obj/item/canvas/twentythree_twentythree,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plasteel,
 /area/security/prison)
@@ -4017,7 +4014,7 @@
 /turf/open/floor/plasteel,
 /area/crew_quarters/fitness/recreation)
 "aqm" = (
-/obj/structure/chair/stool,
+/obj/structure/easel,
 /turf/open/floor/plasteel,
 /area/crew_quarters/fitness/recreation)
 "aqq" = (
@@ -11197,6 +11194,9 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
 	dir = 8
 	},
+/obj/structure/sign/painting/library{
+	pixel_y = -32
+	},
 /turf/open/floor/wood,
 /area/library)
 "aYd" = (
@@ -15398,8 +15398,8 @@
 	dir = 4
 	},
 /obj/structure/easel,
-/obj/item/canvas/twentythreeXtwentythree,
-/obj/item/canvas/twentythreeXtwentythree,
+/obj/item/canvas/twentythree_twentythree,
+/obj/item/canvas/twentythree_twentythree,
 /turf/open/floor/plasteel,
 /area/storage/art)
 "boP" = (
@@ -21590,6 +21590,9 @@
 	},
 /obj/item/pen,
 /obj/effect/decal/cleanable/cobweb,
+/obj/structure/sign/painting/library{
+	pixel_x = -32
+	},
 /turf/open/floor/wood,
 /area/library)
 "bPT" = (
@@ -21924,6 +21927,9 @@
 	pixel_y = 7
 	},
 /obj/item/pen/invisible,
+/obj/structure/sign/painting/library_private{
+	pixel_y = -32
+	},
 /turf/open/floor/engine/cult,
 /area/library)
 "bRn" = (
@@ -37509,6 +37515,12 @@
 /obj/structure/lattice/catwalk,
 /turf/open/space,
 /area/space/nearstation)
+"dgC" = (
+/obj/structure/sign/painting/library{
+	pixel_y = 32
+	},
+/turf/open/floor/wood,
+/area/library)
 "dgI" = (
 /obj/machinery/atmospherics/pipe/simple/orange/visible{
 	dir = 5
@@ -43052,6 +43064,13 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/ai_monitored/turret_protected/aisat/foyer)
+"fgz" = (
+/obj/item/canvas/twentythree_twentythree,
+/obj/item/canvas/twentythree_nineteen,
+/obj/item/canvas/nineteen_nineteen,
+/obj/structure/easel,
+/turf/open/floor/wood,
+/area/library)
 "fgN" = (
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
@@ -57526,6 +57545,9 @@
 "ljq" = (
 /obj/structure/cable/yellow{
 	icon_state = "2-8"
+	},
+/obj/structure/sign/painting/library{
+	pixel_y = 32
 	},
 /turf/open/floor/wood,
 /area/library)
@@ -109122,7 +109144,7 @@ ezd
 bLi
 bMI
 bue
-bzE
+dgC
 bzE
 sjX
 tVa
@@ -110150,7 +110172,7 @@ bzE
 bLk
 bML
 bue
-bzE
+fgz
 hZP
 sOf
 hgU
