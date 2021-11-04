@@ -3,15 +3,13 @@
 
 # You can use the "$include" directive to split your configs however you want
 
+# Modular AuStation Config
+$include austation.txt
 # Core gameplay options
 $include game_options.txt
-<<<<<<< HEAD
-$include austation.txt
-=======
 # More opinionated gameplay tweaks
 $include gameplay_tweaks.txt
 # Database (SQL), Sensitive stuff
->>>>>>> 740054988e... Minor Config reorganization, Brig Door Timer Config (#5631)
 $include dbconfig.txt
 # Cross-Server Communications
 $include comms.txt
