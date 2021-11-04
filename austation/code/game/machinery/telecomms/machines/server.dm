@@ -52,7 +52,7 @@
 				F.output = replacetext(F.output,"/d","")
 				var/regex/R2 = new("[F.target]","ig")	// if the target ends with .* the full stop at the end of the message will be eaten
 				message = capitalize(R2.Replace(message,F.output))
-				if(findlasttext(message,".") == 0)
+				if(findlasttext(message,".") == 0 || findlasttext(message,".") != length(message))
 					message = addtext(message,".")
 				signal.data["message"] = message
 	// austation end

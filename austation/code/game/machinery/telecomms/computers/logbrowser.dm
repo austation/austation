@@ -53,18 +53,20 @@
 
 					// austation begin -- switching boys
 					switch(mobtype)
-						if((/mob/living/carbon/human) || (/mob/living/brain))
+						if(/mob/living/carbon/human || /mob/living/brain)
 							race = "Humanoid"
 						if(/mob/living/simple_animal/slime)		// NT knows a lot about slimes, but not aliens. Can identify slimes
 							race = "Slime"
 						if(/mob/living/carbon/monkey)
 							race = "Monkey"
-						if((/mob/living/silicon) || (C.parameters["job"] == "AI"))		// sometimes M gets deleted prematurely for AIs... just check the job
+						if(/mob/living/silicon)
 							race = "Artificial Life"
 						if(/mob/living/simple_animal)
 							race = "Domestic Animal"
 						else
-							if(isobj(mobtype))
+							if(C.parameters["job"] == "AI")		// sometimes M gets deleted prematurely for AIs... just check the job
+								race = "Artificial Life"
+							else if(isobj(mobtype))
 								race = "Machinery"
 							else
 								race = "<i>Unidentifiable</i>"
