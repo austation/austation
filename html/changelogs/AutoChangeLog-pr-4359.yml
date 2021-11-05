@@ -1,5 +1,0 @@
-author: "MrLostman"
-delete-after: True
-changes: 
-  - balance: "removed RDX & TATP from strange seeds"
-  - tweak: "nitro is now an exothermic reaction that explodes at 385"
