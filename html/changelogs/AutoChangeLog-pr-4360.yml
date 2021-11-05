@@ -1,0 +1,4 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - bugfix: "The burn chamber vent on PubbyStation is no longer mapped into the wrong area and can be configured using the Supermatter Engine Air Alarm."
