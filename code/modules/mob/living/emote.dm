@@ -345,13 +345,13 @@
 
 /datum/emote/living/surrender
 	key = "surrender"
-	cooldown = (10 SECONDS) //austation PR: 4356 -- Reworks the surrender emote
+	cooldown = (10 SECONDS) //austation start -- Reworks the surrender emote
 
 /datum/emote/living/surrender/run_emote(mob/user, params, type_override, intentional)
 	. = ..()
 	if(. && isliving(user))
 		var/mob/living/L = user
-		L.surrendered = !L.surrendered //austation PR: 4356 -- changes end
+		L.surrender() //austation end
 
 /datum/emote/living/sway
 	key = "sway"
