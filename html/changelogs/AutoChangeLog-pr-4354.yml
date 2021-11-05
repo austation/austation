@@ -1,0 +1,5 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - bugfix: "Backup objectives shouldn't disappear anymore"
+  - code_imp: "Cleaned up cryopod objective handling"
