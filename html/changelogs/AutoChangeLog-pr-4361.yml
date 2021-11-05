@@ -1,0 +1,4 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - code_imp: "adds a dna check to human/move() to prevent 531168 runtimes"
