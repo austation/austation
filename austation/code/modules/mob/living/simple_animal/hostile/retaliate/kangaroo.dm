@@ -21,7 +21,6 @@
 	health = 150
 	gold_core_spawnable = HOSTILE_SPAWN
 	blood_volume = BLOOD_VOLUME_NORMAL
-	harm_intent_damage = 3
 	butcher_results = list(/obj/item/reagent_containers/food/snacks/meat/slab = 6)
 	melee_damage = 10
 	response_help  = "pets"
