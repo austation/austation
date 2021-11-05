@@ -344,8 +344,7 @@
 	message = "sulks down sadly"
 
 /datum/emote/living/surrender
-	key = "surrender"
-	cooldown = (10 SECONDS) //austation start -- Reworks the surrender emote
+	key = "surrender"//austation start -- Reworks the surrender emote
 
 /datum/emote/living/surrender/run_emote(mob/user, params, type_override, intentional)
 	. = ..()
