@@ -345,6 +345,7 @@
 
 /datum/emote/living/surrender
 	key = "surrender"//austation start -- Reworks the surrender emote
+	key_third_person = "surrenders"
 
 /datum/emote/living/surrender/run_emote(mob/user, params, type_override, intentional)
 	. = ..()
