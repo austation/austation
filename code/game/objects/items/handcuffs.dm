@@ -41,7 +41,6 @@
 	var/trashtype = null //for disposable cuffs
 
 /obj/item/restraints/handcuffs/attack(mob/living/carbon/C, mob/living/user)
-	var/t = 40 - (user.surrendered*20) //austation PR: 4356 -- Makes handcuffing someone faster if they've surrendered
 	if(!istype(C))
 		return
 
@@ -58,7 +57,7 @@
 								"<span class='userdanger'>[user] is trying to put [src.name] on you!</span>")
 
 			playsound(loc, cuffsound, 30, 1, -2)
-			if(do_mob(user, C, t) && (C.get_num_arms(FALSE) >= 2 || C.get_arm_ignore())) //austation PR: 4356 -- Makes handcuffing someone faster if they've surrendered
+			if(do_mob(user, C, (40 - (user.surrendered*20))) && (C.get_num_arms(FALSE) >= 2 || C.get_arm_ignore())) //austation -- Makes handcuffing someone faster if they've surrendered
 				if(iscyborg(user))
 					apply_cuffs(C, user, TRUE)
 				else
