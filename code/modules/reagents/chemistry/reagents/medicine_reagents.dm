@@ -1603,3 +1603,84 @@
 		M.Jitter(5)
 	M.losebreath = 0
 	..()
+
+//The developer has poor eyesight and needs me to show him where to look :)
+
+/datum/reagent/reparing_plant_enzyme//Tier 3
+	name = "Repairing plant enzyme"
+	description = "A plant-synthesized general medicine."
+	color = "#7dc025"
+	reagent_state = LIQUID
+	metabolization_rate = 0.25 * REAGENTS_METABOLISM
+	taste_description = "flowers & bandages"
+	taste_mult = 1
+
+/datum/reagent/medicine/reparing_plant_enzyme/on_mob_life(mob/living/carbon/M)
+	M.adjustToxLoss(-0.8*REM, 0)
+	M.adjustOxyLoss(-0.8*REM, 0)
+	M.adjustBruteLoss(-0.8*REM, 0)
+	M.adjustFireLoss(-0.8*REM, 0)
+	..()
+	. = 1
+
+/datum/reagent/medicine/calcined_plant_enzyme//Tier 4
+	name = "Calcined plant enzyme"
+	description = "A plant-synthesized burn medicine."
+	reagent_state = LIQUID
+	color = "#7dc025"
+	metabolization_rate = 0.4 * REAGENTS_METABOLISM
+
+/datum/reagent/medicine/calcined_plant_enzyme/on_mob_life(mob/living/carbon/M)
+	M.adjustFireLoss(-7*REM, 0)
+	..()
+	. = 1
+
+/datum/reagent/medicine/oxidized_plant_enzyme
+	name = "Oxidized plant enzyme"
+	description = "A plant-synthesized asphyxiation medicine."
+	reagent_state = LIQUID
+	color = "#7dc025"
+	metabolization_rate = 0.4 * REAGENTS_METABOLISM
+
+/datum/reagent/medicine/oxidized_plant_enzyme/on_mob_life(mob/living/carbon/M)
+	M.adjustOxyLoss(-7*REM, 0)
+	..()
+	. = 1
+
+/datum/reagent/medicine/calloused_plant_enzyme
+	name = "Calloused plant enzyme"
+	description = "A plant-synthesized trauma medicine."
+	reagent_state = LIQUID
+	color = "#7dc025"
+	metabolization_rate = 0.4 * REAGENTS_METABOLISM
+
+/datum/reagent/medicine/calloused_plant_enzyme/on_mob_life(mob/living/carbon/M)
+	M.adjustBruteLoss(-7*REM, 0)
+	..()
+	. = 1
+
+/datum/reagent/medicine/antibiotic_plant_enzyme
+	name = "Antibiotic plant enzyme"
+	description = "A plant-synthesized toxin medicine."
+	reagent_state = LIQUID
+	color = "#7dc025"
+	metabolization_rate = 0.4 * REAGENTS_METABOLISM
+
+/datum/reagent/medicine/antibiotic_plant_enzyme/on_mob_life(mob/living/carbon/M)
+	M.adjustBruteLoss(-7*REM, 0)
+	..()
+	. = 1
+
+/datum/reagent/medicine/stimulating_plant_enzyme
+	name = "Stimulating plant enzyme"
+	description = "A plant-synthezised stimulant."
+	color = "#7dc025"
+	metabolization_rate = 0.8
+
+/datum/reagent/medicine/stimulating_plant_enzyme/on_mob_metabolize(mob/living/L)
+	..()
+	L.add_movespeed_modifier(type, update=TRUE, priority=100, multiplicative_slowdown=-1.5, blacklisted_movetypes=(FLYING|FLOATING))
+
+/datum/reagent/medicine/stimulating_plant_enzyme/on_mob_end_metabolize(mob/living/L)
+	L.remove_movespeed_modifier(type)
+	..()

@@ -905,3 +905,25 @@
 		to_chat(M, "<span class='notice'>[tox_message]</span>")
 	. = 1
 	..()
+
+/datum/reagent/toxin/caustic_plant_enzyme
+	name = "Caustic plant enzyme"
+	description = "A toxic plant-synthesized poison that affects the lungs"
+	silent_toxin = TRUE
+	color = "#7dc025"
+	metabolization_rate = 0.3 * REAGENTS_METABOLISM
+	toxpwr = 2
+	taste_description = "Soap and milk"
+
+/datum/reagent/toxin/caustic_plant_enzyme/on_mob_life(mob/living/carbon/M)
+	. = TRUE
+
+	if(HAS_TRAIT(M, TRAIT_NOBREATH))
+		. = FALSE
+
+	if(.)
+		M.adjustOxyLoss(3, 0)
+		M.losebreath += 2
+		if(prob(20))
+			M.emote("gasp")
+	..()

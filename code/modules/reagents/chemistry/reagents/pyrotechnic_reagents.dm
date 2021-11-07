@@ -302,3 +302,39 @@
 		M.adjust_fire_stacks(-reac_volume)
 		M.ExtinguishMob()
 	..()
+
+/datum/reagent/combusting_plant_enzyme // Like most of these, just adjusted clf3, sue me. I did, however, make is less destructive.
+	name = "Combusting plant enzyme"
+	description = "A highly combustible plant-synthesized pyrotechnic that typically reacts by getting crushed under its own weight."
+	reagent_state = LIQUID
+	color = "#7dc025"
+	metabolization_rate = 4
+	taste_description = "Peppars and..."
+	process_flags = ORGANIC | SYNTHETIC
+
+/datum/reagent/combusting_plant_enzyme/on_mob_life(mob/living/carbon/M)
+	M.adjust_fire_stacks(2)
+	var/burndmg = max(0.3*M.fire_stacks, 0.3)
+	M.adjustFireLoss(burndmg, 0)
+	..()
+	return TRUE
+
+/datum/reagent/combusting_plant_enzyme/reaction_turf(turf/T, reac_volume)
+	if(isfloorturf(T))
+		var/turf/open/floor/F = T
+		if(prob(reac_volume))
+			F.make_plating()
+		else if(prob(reac_volume))
+			F.burn_tile()
+		if(isfloorturf(F))
+			for(var/turf/open/turf in RANGE_TURFS(1,F))
+				if(!locate(/obj/effect/hotspot) in turf)
+					new /obj/effect/hotspot(F)
+
+/datum/reagent/combusting_plant_enzyme/reaction_mob(mob/living/M, method=TOUCH, reac_volume)
+	if(istype(M))
+		if(method != INGEST && method != INJECT)
+			M.adjust_fire_stacks(min(reac_volume/5, 10))
+			M.IgniteMob()
+			if(!locate(/obj/effect/hotspot) in M.loc)
+				new /obj/effect/hotspot(M.loc)

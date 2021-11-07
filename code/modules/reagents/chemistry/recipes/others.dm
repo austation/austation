@@ -740,7 +740,7 @@
 	id = /datum/reagent/mutationtoxin/ipc
 	results = list(/datum/reagent/mutationtoxin/ipc = 5)
 	required_reagents  = list(/datum/reagent/mutationtoxin/unstable = 5, /datum/reagent/teslium = 20)
-	
+
 /datum/chemical_reaction/mutationtoxin/ethereal
 	name = /datum/reagent/mutationtoxin/ethereal
 	id = /datum/reagent/mutationtoxin/ethereal
@@ -790,3 +790,34 @@
 	id = /datum/reagent/mutationtoxin/plasma
 	results = list(/datum/reagent/mutationtoxin/plasma = 5)
 	required_reagents  = list(/datum/reagent/aslimetoxin = 5, /datum/reagent/toxin/plasma = 60, /datum/reagent/uranium = 20)
+
+//
+/datum/chemical_reaction/consumable_plant_enzyme
+	name = "Consumable plant enzyme"
+	id = "consumable plant enzyme"
+	results = list(/datum/reagent/consumable_plant_enzyme = 2)
+	required_reagents  = list(/datum/reagent/soluable_plant_enzyme = 1, /datum/reagent/entropic_plant_enzyme = 1)
+
+/datum/chemical_reaction/adaptive_plant_enzyme
+	name = "Adaptive plant enzyme"
+	id = "adaptive plant enzyme"
+	results = list(/datum/reagent/adaptive_plant_enzyme = 2)
+	required_reagents  = list(/datum/reagent/bonding_plant_enzyme = 1, /datum/reagent/entropic_plant_enzyme = 1)
+
+/datum/chemical_reaction/volatile_plant_enzyme
+	name = "Volatile plant enzyme"
+	id = "volatile plant enzyme"
+	results = list(/datum/reagent/volatile_plant_enzyme = 2)
+	required_reagents  = list(/datum/reagent/reactive_plant_enzyme = 1, /datum/reagent/entropic_plant_enzyme = 1)
+
+/datum/chemical_reaction/unstable_plant_enzyme
+	name = "Unstable plant enzyme"
+	id = "unstable plant enzyme"
+	results = list(/datum/reagent/unstable_plant_enzyme = 2)
+	required_reagents  = list(/datum/reagent/reactive_plant_enzyme = 1, /datum/reagent/volatile_plant_enzyme = 1)
+
+/datum/chemical_reaction/decaying_plant_enzyme
+	name = "Decaying plant enzyme"
+	id = "decaying plant enzyme"
+	results = list(/datum/reagent/decaying_plant_enzyme = 2)
+	required_reagents  = list(/datum/reagent/unstable_plant_enzyme = 1, /datum/reagent/uranium/radium = 1)

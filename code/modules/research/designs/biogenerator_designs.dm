@@ -210,3 +210,37 @@
 	materials = list(/datum/material/biomass = 100)
 	build_path = /obj/item/reagent_containers/food/condiment/soymilk
 	category = list("initial","Food")
+
+//Plant Enzyme stuff >
+/datum/design/entropic_plant_enzyme
+	name = "Entropic Plant Enzyme"
+	id = "entropic_plant_enzyme"
+	build_type = BIOGENERATOR
+	materials = list(/datum/material/biomass = 0)
+	build_path = /obj/item/reagent_containers/glass/bottle/nutrient/entropic_plant_enzyme
+	category = list("initial","Plant Enzymes")
+
+/datum/design/soluable_plant_enzyme
+	name = "Soluable Plant Enzyme"
+	id = "soluable_plant_enzyme"
+	build_type = BIOGENERATOR
+	materials = list(/datum/material/biomass = 0)
+	build_path = /obj/item/reagent_containers/glass/bottle/nutrient/soluable_plant_enzyme
+	category = list("initial","Plant Enzymes")
+
+/datum/design/reactive_plant_enzyme
+	name = "Reactive Plant Enzyme"
+	id = "reactive_plant_enzyme"
+	build_type = BIOGENERATOR
+	materials = list(/datum/material/biomass = 0)
+	build_path = /obj/item/reagent_containers/glass/bottle/nutrient/reactive_plant_enzyme
+	category = list("initial","Plant Enzymes")
+
+/datum/design/bonding_plant_enzyme
+	name = "Bonding Plant Enzyme"
+	id = "bonding_plant_enzyme"
+	build_type = BIOGENERATOR
+	materials = list(/datum/material/biomass = 0)
+	build_path = /obj/item/reagent_containers/glass/bottle/nutrient/bonding_plant_enzyme
+	category = list("initial","Plant Enzymes")
+

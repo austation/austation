@@ -1,3 +1,66 @@
+/datum/reagent/reactive_plant_enzyme // Tier 1
+	name = "Reactive plant enzyme"
+	color = "#7dc025"
+	metabolization_rate = 5
+	taste_description = "flowers & spice"
+	taste_mult = 1
+
+/datum/reagent/soluable_plant_enzyme
+	name = "Soluable plant enzyme"
+	color = "#7dc025"
+	metabolization_rate = 5
+	taste_description = "flowers & sugar"
+	taste_mult = 1
+
+/datum/reagent/entropic_plant_enzyme
+	name = "Entropic plant enzyme"
+	color = "#7dc025"
+	metabolization_rate = 5
+	taste_description = "flowers & paper"
+	taste_mult = 1
+
+/datum/reagent/bonding_plant_enzyme
+	name = "bonding plant enzyme"
+	color = "#7dc025"
+	metabolization_rate = 5
+	taste_description = "flowers & glue"
+	taste_mult = 1
+
+/datum/reagent/consumable_plant_enzyme // Tier 2
+	name = "Consumable plant enzyme"
+	color = "#7dc025"
+	metabolization_rate = 5
+	taste_description = "flowers & water"
+	taste_mult = 1
+
+/datum/reagent/adaptive_plant_enzyme
+	name = "Adaptive plant enzyme"
+	color = "#7dc025"
+	metabolization_rate = 5
+	taste_description = "flowers & hair"
+	taste_mult = 1
+
+/datum/reagent/volatile_plant_enzyme
+	name = "Volatile plant enzyme"
+	color = "#7dc025"
+	metabolization_rate = 5
+	taste_description = "flowers & rust"
+	taste_mult = 1
+
+/datum/reagent/unstable_plant_enzyme // tier 3
+	name = "unstable plant enzyme"
+	color = "#7dc025"
+	metabolization_rate = 5
+	taste_description = "flowers & salt"
+	taste_mult = 1
+
+/datum/reagent/decaying_plant_enzyme // tier 4
+	name = "decaying plant enzyme"
+	color = "#7dc025"
+	metabolization_rate = 5
+	taste_description = "flowers & warp"
+	taste_mult = 1
+
 /datum/reagent/blood
 	data = list("viruses"=null,"blood_DNA"=null,"blood_type"=null,"resistances"=null,"trace_chem"=null,"mind"=null,"ckey"=null,"gender"=null,"real_name"=null,"cloneable"=null,"factions"=null,"quirks"=null)
 	name = "Blood"

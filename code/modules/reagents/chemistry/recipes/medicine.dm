@@ -318,3 +318,10 @@
 	results = list(/datum/reagent/consumable/liquidelectricity = 3)
 	required_reagents = list(/datum/reagent/consumable/ethanol = 3, /datum/reagent/consumable/liquidelectricity = 1, /datum/reagent/toxin/plasma = 1)
 	mix_message = "The mixture sparks and then subsides."
+
+//
+/datum/chemical_reaction/repairing_plant_enzymes
+	name = "Repairing plant enzymes"
+	id = "repairing plant enzyme"
+	results = list(/datum/reagent/reparing_plant_enzyme = 2)
+	required_reagents = list(/datum/reagent/consumable_plant_enzyme = 1, /datum/reagent/adaptive_plant_enzyme = 1)

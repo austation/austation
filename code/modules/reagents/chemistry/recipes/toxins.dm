@@ -119,3 +119,9 @@
 	results = list(/datum/reagent/toxin/bonehurtingjuice = 5)
 	required_reagents = list(/datum/reagent/toxin/mutagen = 1, /datum/reagent/toxin/itching_powder = 3, /datum/reagent/consumable/milk = 1)
 	mix_message = "<span class='danger'>The mixture suddenly becomes clear and looks a lot like water. You feel a strong urge to drink it.</span>"
+
+/datum/chemical_reaction/caustic_plant_enzyme
+	name = "caustic_plant_enzyme"
+	id = "caustic_plant_enzyme"
+	results = list(/datum/reagent/toxin/caustic_plant_enzyme = 2)
+	required_reagents = list(/datum/reagent/consumable_plant_enzyme = 1, /datum/reagent/volatile_plant_enzyme = 1)

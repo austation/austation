@@ -157,6 +157,28 @@
 	pixel_y = rand(-5, 5)
 
 
+//>:(
+/obj/item/reagent_containers/glass/bottle/nutrient/entropic_plant_enzyme
+	name = "bottle of Entropic Plant Enzyme"
+	desc = "Diabeetus"
+	list_reagents = list(/datum/reagent/entropic_plant_enzyme = 50)
+
+/obj/item/reagent_containers/glass/bottle/nutrient/soluable_plant_enzyme
+	name = "bottle of Soluable Plant Enzyme"
+	desc = "Diabeetus"
+	list_reagents = list(/datum/reagent/soluable_plant_enzyme = 50)
+
+/obj/item/reagent_containers/glass/bottle/nutrient/reactive_plant_enzyme
+	name = "bottle of Reactive Plant Enzyme"
+	desc = "Diabeetus"
+	list_reagents = list(/datum/reagent/reactive_plant_enzyme = 50)
+
+/obj/item/reagent_containers/glass/bottle/nutrient/bonding_plant_enzyme
+	name = "bottle of Bonding Plant Enzyme"
+	desc = "Diabeetus"
+	list_reagents = list(/datum/reagent/bonding_plant_enzyme = 50)
+//>:(
+
 /obj/item/reagent_containers/glass/bottle/nutrient/ez
 	name = "bottle of E-Z-Nutrient"
 	desc = "Contains a fertilizer that causes mild mutations with each harvest."
