@@ -796,7 +796,7 @@
 	name = "Consumable plant enzyme"
 	id = "consumable plant enzyme"
 	results = list(/datum/reagent/consumable_plant_enzyme = 2)
-	required_reagents  = list(/datum/reagent/soluable_plant_enzyme = 1, /datum/reagent/entropic_plant_enzyme = 1)
+	required_reagents  = list(/datum/reagent/soluble_plant_enzyme = 1, /datum/reagent/entropic_plant_enzyme = 1)
 
 /datum/chemical_reaction/adaptive_plant_enzyme
 	name = "Adaptive plant enzyme"

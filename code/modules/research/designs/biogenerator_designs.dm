@@ -220,12 +220,12 @@
 	build_path = /obj/item/reagent_containers/glass/bottle/nutrient/entropic_plant_enzyme
 	category = list("initial","Plant Enzymes")
 
-/datum/design/soluable_plant_enzyme
-	name = "Soluable Plant Enzyme"
-	id = "soluable_plant_enzyme"
+/datum/design/soluble_plant_enzyme
+	name = "Soluble Plant Enzyme"
+	id = "soluble_plant_enzyme"
 	build_type = BIOGENERATOR
 	materials = list(/datum/material/biomass = 0)
-	build_path = /obj/item/reagent_containers/glass/bottle/nutrient/soluable_plant_enzyme
+	build_path = /obj/item/reagent_containers/glass/bottle/nutrient/soluble_plant_enzyme
 	category = list("initial","Plant Enzymes")
 
 /datum/design/reactive_plant_enzyme

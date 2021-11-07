@@ -163,10 +163,10 @@
 	desc = "Diabeetus"
 	list_reagents = list(/datum/reagent/entropic_plant_enzyme = 50)
 
-/obj/item/reagent_containers/glass/bottle/nutrient/soluable_plant_enzyme
-	name = "bottle of Soluable Plant Enzyme"
+/obj/item/reagent_containers/glass/bottle/nutrient/soluble_plant_enzyme
+	name = "bottle of Soluble Plant Enzyme"
 	desc = "Diabeetus"
-	list_reagents = list(/datum/reagent/soluable_plant_enzyme = 50)
+	list_reagents = list(/datum/reagent/soluble_plant_enzyme = 50)
 
 /obj/item/reagent_containers/glass/bottle/nutrient/reactive_plant_enzyme
 	name = "bottle of Reactive Plant Enzyme"

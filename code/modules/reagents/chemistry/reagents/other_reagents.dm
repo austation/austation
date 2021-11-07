@@ -5,8 +5,8 @@
 	taste_description = "flowers & spice"
 	taste_mult = 1
 
-/datum/reagent/soluable_plant_enzyme
-	name = "Soluable plant enzyme"
+/datum/reagent/soluble_plant_enzyme
+	name = "Soluble plant enzyme"
 	color = "#7dc025"
 	metabolization_rate = 5
 	taste_description = "flowers & sugar"
