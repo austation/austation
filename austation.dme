@@ -25,6 +25,7 @@
 #include "austation\code\__DEFINES\sound.dm"
 #include "austation\code\__DEFINES\traits.dm"
 #include "austation\code\__DEFINES\preferences.dm"
+#include "austation\code\__DEFINES\atmospherics.dm"
 // END_DEFINE_INCLUDE
 
 // BEGIN_BEESTATION_INCLUDE
@@ -41,6 +42,7 @@
 #include "austation\code\controllers\configuration\entries\general.dm"
 #include "austation\code\controllers\subsystem\autosandbox.dm"
 #include "austation\code\controllers\subsystem\blackbox.dm"
+#include "austation\code\controllers\subsystem\fire_burning.dm"
 #include "austation\code\controllers\subsystem\job.dm"
 #include "austation\code\datums\ai_laws.dm"
 #include "austation\code\datums\emotes.dm"
@@ -142,6 +144,9 @@
 #include "austation\code\modules\admin\verbs\mapping.dm"
 #include "austation\code\modules\antagonists\changeling\changeling.dm"
 #include "austation\code\modules\antagonists\nukeop\equipment\nuclearbomb.dm"
+#include "austation\code\modules\atmospherics\auxgm\gas_types.dm"
+#include "austation\code\modules\atmospherics\gasmixtures\auxgm.dm"
+#include "austation\code\modules\atmospherics\gasmixtures\reactions.dm"
 #include "austation\code\modules\atmospherics\machinery\atmosmachinery.dm"
 #include "austation\code\modules\atmospherics\machinery\components\unary_devices\thermomachine.dm"
 #include "austation\code\modules\awaymissions\corpse.dm"

@@ -259,12 +259,31 @@
 		var/tritium_partialpressure = (breath.get_moles(GAS_TRITIUM)/breath.total_moles())*breath_pressure
 		radiation += tritium_partialpressure/10
 
-	/*removed beestation code begin -- removed in pull #1953
+	/*austation begin -- removed in pull #1953
 	//NITRYL
 	if(breath.get_moles(GAS_NITRYL))
 		var/nitryl_partialpressure = (breath.get_moles(GAS_NITRYL)/breath.total_moles())*breath_pressure
 		adjustFireLoss(nitryl_partialpressure/4)
-	removed beestation code end*/
+	austation end*/
+
+	//austation begin -- smokestuff
+	if(breath.get_moles(GAS_SMOKE))
+		var/smoke_partialpressure = (breath.get_moles(GAS_SMOKE)/breath.total_moles())*breath_pressure
+		switch(smoke_partialpressure)
+			if(0.25 to 5)
+				if(prob(5))
+					emote("cough")
+			if(5 to 20)
+				if(prob(5))
+					to_chat(src, "<span class='warning'>You cough as smoke particles fill your lungs.</span>")
+				if(prob(15))
+					emote("cough")
+			if(15 to 30)
+				if(prob(5))
+					to_chat(src, "<span class='warning'>The smoke is unbearable, you can't stop coughing!</span>")
+				if(prob(35))
+					emote("cough")
+	//austation end
 
 	//MIASMA
 	if(breath.get_moles(GAS_MIASMA))
