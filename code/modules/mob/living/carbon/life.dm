@@ -271,7 +271,7 @@
 		var/smoke_partialpressure = (breath.get_moles(GAS_SMOKE)/breath.total_moles())*breath_pressure
 		switch(smoke_partialpressure)
 			if(0.25 to 5)
-				if(prob(5))
+				if(prob(7))
 					emote("cough")
 			if(5 to 20)
 				if(prob(5))
