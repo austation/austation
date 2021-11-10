@@ -526,6 +526,11 @@
 		mutmod = 0
 		adjustNutri(round(S.get_reagent_amount(/datum/reagent/plantnutriment/robustharvestnutriment) *1 ))
 
+	if(S.has_reagent(/datum/reagent/plantnutriment/generic_fertilizer, 1))//Look here dummy
+		yieldmod = 1.3
+		mutmod = 0
+		adjustNutri(round(S.get_reagent_amount(/datum/reagent/plantnutriment/generic_fertilizer) *1 ))
+
 	// Ambrosia Gaia produces earthsblood.
 	if(S.has_reagent(/datum/reagent/medicine/earthsblood))
 		self_sufficiency_progress += S.get_reagent_amount(/datum/reagent/medicine/earthsblood)
