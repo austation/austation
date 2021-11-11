@@ -42,10 +42,8 @@
 	var/dual_wield_spread = 24			//additional spread when dual wielding
 	var/spread = 0						//Spread induced by the gun itself.
 	var/spread_multiplier = 1			//Multiplier for shotgun spread
-	var/spread_unwielded				//Spread induced by holding the gun with 1 hand. (40 for light weapons, 60 for medium by default)
+	var/spread_unwielded				//Spread induced by holding the gun with 1 hand. Can be set to 0 to disable autocalc. (40 for light weapons, 60 for medium by default)
 	var/randomspread = 1				//Set to 0 for shotguns. This is used for weapons that don't fire all their bullets at once.
-
-	var/is_wielded = FALSE
 
 	lefthand_file = 'icons/mob/inhands/weapons/guns_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/weapons/guns_righthand.dmi'
@@ -95,6 +93,7 @@
 	if(!canMouseDown) //Some things like beam rifles override this.
 		canMouseDown = automatic //Nsv13 / Bee change.
 	build_zooming()
+<<<<<<< HEAD
 	if(!spread_unwielded)
 		spread_unwielded = weapon_weight * 20 + 20
 /* austation begin -- remove two-handed gun requirements
@@ -112,6 +111,10 @@
 /obj/item/gun/proc/unwield()
 	is_wielded = FALSE
 austation end */
+=======
+	if(isnull(spread_unwielded))
+		spread_unwielded = weapon_weight * 20 + 20 //{40, 60, 80}
+>>>>>>> 63304d4797... Gun Wielding Refactor (#5762)
 
 /obj/item/gun/Destroy()
 	if(isobj(pin)) //Can still be the initial path, then we skip
@@ -124,7 +127,6 @@ austation end */
 		QDEL_NULL(chambered)
 	if(azoom)
 		QDEL_NULL(azoom)
-	UnregisterSignal(list(COMSIG_TWOHANDED_WIELD, COMSIG_TWOHANDED_UNWIELD))
 	return ..()
 
 /obj/item/gun/handle_atom_del(atom/A)
@@ -141,14 +143,13 @@ austation end */
 
 /obj/item/gun/examine(mob/user)
 	. = ..()
-	if(no_pin_required)
-		return
 
-	if(pin)
-		. += "It has \a [pin] installed."
-		. += "<span class='info'>[pin] looks like it could be removed with some <b>tools</b>.</span>"
-	else
-		. += "It doesn't have a <b>firing pin</b> installed, and won't fire."
+	if(!no_pin_required)
+		if(pin)
+			. += "It has \a [pin] installed."
+			. += "<span class='info'>[pin] looks like it could be removed with some <b>tools</b>.</span>"
+		else
+			. += "It doesn't have a <b>firing pin</b> installed, and won't fire."
 
 	if(gun_light)
 		. += "It has \a [gun_light] [can_flashlight ? "" : "permanently "]mounted on it."
@@ -164,6 +165,19 @@ austation end */
 	else if(can_bayonet)
 		. += "It has a <b>bayonet</b> lug on it."
 
+	if(weapon_weight == WEAPON_HEAVY)
+		. += "You need both hands free to fire."
+	else
+		switch(spread_unwielded)
+			if(1 to 20)
+				. += "You could probably keep this reasonably on-target with one hand."
+			if(21 to 40)
+				. += "You can't aim this very accurately with one hand."
+			if(41 to 60)
+				. += "You are unlikely to hit anything if you fire this with one hand."
+			if(61 to INFINITY)
+				. += "You can't hit shit firing this one handed."
+
 /obj/item/gun/equipped(mob/living/user, slot)
 	. = ..()
 	if(zoomed && user.get_active_held_item() != src)
@@ -177,6 +191,10 @@ austation end */
 //i.e if clicking would make it shoot
 /obj/item/gun/proc/can_shoot()
 	return TRUE
+
+/obj/item/gun/proc/check_wielded(mob/living/user)
+	var/obj/item/bodypart/other_hand = user.has_hand_for_held_index(user.get_inactive_hand_index()) //returns non-disabled inactive hands
+	return !(user.get_inactive_held_item() || !other_hand)
 
 /obj/item/gun/proc/shoot_with_empty_chamber(mob/living/user as mob|obj)
 	balloon_alert(user, "Gun clicks")
@@ -252,8 +270,12 @@ austation end */
 				user.dropItemToGround(src, TRUE)
 				return
 
+<<<<<<< HEAD
 	var/obj/item/bodypart/other_hand = user.has_hand_for_held_index(user.get_inactive_hand_index()) //returns non-disabled inactive hands
 	if(weapon_weight == WEAPON_HEAVY && (user.get_inactive_held_item() || !other_hand)) // austation -- remove two-handed gun requirements
+=======
+	if(weapon_weight == WEAPON_HEAVY && !check_wielded(user))
+>>>>>>> 63304d4797... Gun Wielding Refactor (#5762)
 		balloon_alert(user, "You need both hands free to fire")
 		return
 
@@ -346,8 +368,12 @@ austation end */
 		randomized_gun_spread =	rand(0,spread)
 	if(HAS_TRAIT(user, TRAIT_POOR_AIM)) //nice shootin' tex
 		bonus_spread += 25
+<<<<<<< HEAD
 	/* austation begin -- remove two-handed gun requirements
 	if(!is_wielded)
+=======
+	if(!check_wielded(user))
+>>>>>>> 63304d4797... Gun Wielding Refactor (#5762)
 		bonus_spread += spread_unwielded
 	austation end */
 	var/randomized_bonus_spread = rand(0, bonus_spread)
