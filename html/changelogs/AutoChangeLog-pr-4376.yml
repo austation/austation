@@ -1,0 +1,5 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - rscadd: "RD now has exploration coms"
+  - tweak: "RD now can now edit exploration dock access"
