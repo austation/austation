@@ -18,4 +18,4 @@
 						ANNOUNCER_SHUTTLECALLED = 'sound/ai/ancestor/shuttlecall.ogg',
 						ANNOUNCER_SHUTTLEDOCK = 'sound/ai/ancestor/shuttledock.ogg',
 						ANNOUNCER_SHUTTLERECALLED = 'sound/ai/ancestor/shuttlerecalled.ogg',
-						ANNOUNCER_SPANOMALIES = 'sound/ai/ancestor/spanomalies.ogg') // austation -- shuttle sounds modified to goon sounds (used with permission)
+						ANNOUNCER_SPANOMALIES = 'sound/ai/ancestor/spanomalies.ogg') 
