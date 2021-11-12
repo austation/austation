@@ -4453,9 +4453,6 @@
 /obj/structure/cable/yellow{
 	icon_state = "0-8"
 	},
-/obj/structure/cable/yellow{
-	icon_state = "0-8"
-	},
 /turf/open/floor/plating,
 /area/security/warden)
 "asB" = (
@@ -14156,9 +14153,6 @@
 	},
 /obj/machinery/light{
 	dir = 8
-	},
-/obj/structure/cable/yellow{
-	icon_state = "1-2"
 	},
 /obj/structure/table/glass,
 /obj/effect/turf_decal/tile/green{
