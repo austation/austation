@@ -43,7 +43,7 @@
 	show_in_report = TRUE
 	report_message = "Please be nice to him."
 	blacklist = list(/datum/station_trait/announcement_medbot,
-	/datum/station_trait/announcement_baystation
+	/datum/station_trait/announcement_baystation,/datum/station_trait/announcement_ancestor
 	)
 
 /datum/station_trait/announcement_intern/New()
@@ -58,7 +58,8 @@
 	report_message = "Our announcement system is under scheduled maintanance at the moment. Thankfully, we have a backup."
 	blacklist = list(
 		/datum/station_trait/announcement_intern,
-		/datum/station_trait/announcement_baystation
+		/datum/station_trait/announcement_baystation,
+		/datum/station_trait/announcement_ancestor
 		)
 
 /datum/station_trait/announcement_medbot/New()
@@ -71,10 +72,25 @@
 	weight = 5
 	show_in_report = TRUE
 	report_message = "We lost the primary datatape that holds the announcement system's voice responses. We did however find an older backup."
-	blacklist = list(/datum/station_trait/announcement_intern,
+	blacklist = list(/datum/station_trait/announcement_intern, /datum/station_trait/announcement_ancestor,
 	/datum/station_trait/announcement_medbot
 	)
 
 /datum/station_trait/announcement_baystation/New()
 	. = ..()
 	SSstation.announcer = /datum/centcom_announcer/baystation
+
+
+/datum/station_trait/announcement_ancestor
+	name = "Announcer: Ancestor"
+	trait_type = STATION_TRAIT_NEUTRAL
+	weight = 1
+	show_in_report = TRUE
+	report_message = "Wayne June has generously donated his time to provide some spooky announcement lines for the season"
+	blacklist = list(/datum/station_trait/announcement_medbot,
+	/datum/station_trait/announcement_baystation, /datum/station_trait/announcement_intern
+	)
+
+/datum/station_trait/announcement_ancestor/New()
+	. = ..()
+	SSstation.announcer = /datum/centcom_announcer/ancestor
