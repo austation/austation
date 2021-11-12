@@ -1,4 +1,0 @@
-author: "Benbot16"
-delete-after: True
-changes: 
-  - bugfix: "clientless mobs should no longer cause TGUI runtimes"
