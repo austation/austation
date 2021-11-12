@@ -1,0 +1,4 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - rscadd: "Explorers now require 3-days on the server and 5-hours of Crew experience before they can be selected"
