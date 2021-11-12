@@ -1,0 +1,6 @@
+author: "MrLostman"
+delete-after: True
+changes: 
+  - tweak: "sets the discovery research cost of all nodes to zero."
+  - tweak: "adds back bag_of_holding, quantum_spin, combat_cyber_implants, adv_combat_cyber_implants, phazon, exotic_ammo, beam_weapons, adv_beam_weapons and radioactive_weapons techs."
+  - tweak: "exploration tech disks now completely unlock the corresponding tech."
