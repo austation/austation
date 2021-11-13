@@ -527,7 +527,7 @@
 		adjustNutri(round(S.get_reagent_amount(/datum/reagent/plantnutriment/robustharvestnutriment) *1 ))
 
 	if(S.has_reagent(/datum/reagent/plantnutriment/generic_fertilizer, 1))//Look here dummy
-		yieldmod = 1.3
+		yieldmod = 1 //I suppose it should be worse
 		mutmod = 0
 		adjustNutri(round(S.get_reagent_amount(/datum/reagent/plantnutriment/generic_fertilizer) *1 ))
 
