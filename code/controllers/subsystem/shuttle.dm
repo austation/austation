@@ -377,7 +377,7 @@ SUBSYSTEM_DEF(shuttle)
 			conflict resolution.", null, 'sound/misc/notice1.ogg', "Priority")
 		for(var/i in hostileEnvironments)
 			if(istype(i, /mob/living/carbon/alien/humanoid/royal/queen) && !hostileEnvTrackPlayed)
-				play_soundtrack_music(/datum/soundtrack_song/bee/mind_crawler, only_station = TRUE)
+				//play_soundtrack_music(/datum/soundtrack_song/bee/mind_crawler, only_station = TRUE) austation -- remove mind crawler song
 				hostileEnvTrackPlayed = TRUE
 	if(!emergencyNoEscape && (emergency.mode == SHUTTLE_STRANDED))
 		emergency.mode = SHUTTLE_DOCKED
