@@ -14,40 +14,49 @@
 	var/apply_strength = 0
 
 	//all the stat catergories effects - TRUE/FALSE
-	var/mutate_all/ = 0
-	var/mutate_pot/ = 0//potency
-	var/mutate_yld/ = 0//yield
-	var/mutate_prd_spd/ = 0//production_speed
-	var/mutate_mat_spd/ = 0//maturation_speed
-	var/mutate_lif/ = 0//lifespan
-	var/mutate_end/ = 0//endurance
-	var/mutate_prd/ = 0//production
-	//Doesn't affect weeds
+	var/mutate_pot = 0//potency -
+	var/mutate_yld = 0//yield -
+	var/mutate_prd_spd = 0//production_speed -
+	var/mutate_mat_spd = 0//maturation_speed -
+	var/mutate_lif = 0//lifespan -
+	var/mutate_end = 0//endurance -
+	var/mutate_prd = 0//production
 
 /obj/item/reagent_containers/fertilizer_bag/Initialize()
 	. = ..()
 	create_reagents(bag_capacity, INJECTABLE|DRAWABLE)
 
 /obj/item/reagent_containers/fertilizer_bag/proc/update_effects(var/test)
-	if(reagents.has_reagent(/datum/reagent/uranium/radium/, 1))
-		if(!check_contents(/datum/reagent/uranium/radium/))
-			apply_chance += 0.25
-			apply_strength += 0.15
-			mutate_all = TRUE
-			mix += list(/datum/reagent/uranium/radium/)
+	if(reagents.has_reagent(/datum/reagent/uranium/radium, 1))
+		if(!check_contents(/datum/reagent/uranium/radium))
+			apply_chance += 0.20
+			apply_strength += 0.10
+			mutate_end = TRUE
+			mutate_lif = TRUE
+			mix += list(/datum/reagent/uranium/radium)
 
 	else if(reagents.has_reagent(/datum/reagent/uranium, 1))
-		if(!check_contents(/datum/reagent/uranium/radium/))
+		if(!check_contents(/datum/reagent/uranium/radium))
 			apply_chance += 0.50
 			apply_strength += 0.25
-			mutate_end = TRUE
-			mix += list(/datum/reagent/uranium/)
+			mutate_yld = TRUE
+			mutate_pot = TRUE
+			mutate_prd = TRUE
+			mix += list(/datum/reagent/uranium)
+
+	else if(reagents.has_reagent(/datum/reagent/toxin/mutagen, 1))
+		if(!check_contents(/datum/reagent/toxin/mutagen))
+			apply_chance += 0.25
+			apply_strength += 0.15
+			mutate_mat_spd = TRUE
+			mutate_prd_spd = TRUE
+			mix += list(/datum/reagent/toxin/mutagen)
 
 	else if(reagents.has_reagent(/datum/reagent/water, 1))
-		if(!check_contents(	/datum/reagent/water/))
+		if(!check_contents(	/datum/reagent/water))
 			apply_chance -= 0.15
-			mutate_all = FALSE
-			mix += list(/datum/reagent/water/)
+			apply_strength -= 0.5
+			mix += list(/datum/reagent/water)
 
 /obj/item/reagent_containers/fertilizer_bag/attack_self(mob/user)
 	update_effects(user)
@@ -56,3 +65,14 @@
 /obj/item/reagent_containers/fertilizer_bag/proc/check_contents(var/C)
 	if(C in mix)
 		return TRUE
+
+/obj/item/reagent_containers/fertilizer_bag/proc/remove_random_trait(var/C)//Removes random fertilizer trait, not plant. Possibly gross code
+	var/rem_list = list(mutate_pot,
+						mutate_yld,
+						mutate_prd_spd,
+						mutate_mat_spd,
+						mutate_lif,
+						mutate_end,
+						mutate_prd)
+	var/A = rand(0, 6)
+	rem_list[A] = FALSE
