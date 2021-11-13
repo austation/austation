@@ -4,6 +4,7 @@
 	reagent_state = SOLID
 	color = "#FFFFFF"
 	taste_description = "salt"
+	random_unrestricted = FALSE
 
 /datum/reagent/tatp
 	name = "TaTP"
@@ -11,6 +12,7 @@
 	reagent_state = SOLID
 	color = "#FFFFFF"
 	taste_description = "death"
+	random_unrestricted = FALSE
 
 /datum/reagent/gasoline
 	name = "Petrol"
