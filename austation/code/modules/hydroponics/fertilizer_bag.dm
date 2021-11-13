@@ -56,6 +56,7 @@
 		if(!check_contents(	/datum/reagent/water))
 			apply_chance -= 0.15
 			apply_strength -= 0.5
+			remove_random_trait()
 			mix += list(/datum/reagent/water)
 
 /obj/item/reagent_containers/fertilizer_bag/attack_self(mob/user)
@@ -66,7 +67,7 @@
 	if(C in mix)
 		return TRUE
 
-/obj/item/reagent_containers/fertilizer_bag/proc/remove_random_trait(var/C)//Removes random fertilizer trait, not plant. Possibly gross code
+/obj/item/reagent_containers/fertilizer_bag/proc/remove_random_trait()//Removes random fertilizer trait, not plant. Possibly gross code
 	var/rem_list = list(mutate_pot,
 						mutate_yld,
 						mutate_prd_spd,
