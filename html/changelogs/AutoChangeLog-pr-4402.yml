@@ -1,4 +1,0 @@
-author: "AustationBot"
-delete-after: True
-changes: 
-  - bugfix: "People no longer get stuck on walls of an empty z-level."
