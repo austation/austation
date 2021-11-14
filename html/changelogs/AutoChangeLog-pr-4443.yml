@@ -1,4 +1,0 @@
-author: "AustationBot"
-delete-after: True
-changes: 
-  - bugfix: "The latejoin menu no longer mislabels Cargo as Command"
