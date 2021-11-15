@@ -1,12 +1,12 @@
 /obj/structure/table/mat_shiritori
 	name = "\improper Materialization Shiritori"
 	desc = "A magical Shiritori table capable of temporarily materializing any object that exists in this reality."
-	icon = 'austation/icons/obj/structures.dmi'
-	icon_state = "shiritori"
+	icon = 'austation/icons/obj/structures/magic_table.dmi'
+	icon_state = "magic_table"
 	max_integrity = 300
-	canSmoothWith = list()
+	canSmoothWith = null
 	flags_1 = NODECONSTRUCT_1
-	var/current_letter
+	var/current_letter = ""
 	var/time_left = 30
 	var/next_tick
 	var/active = FALSE
@@ -23,11 +23,6 @@
 	var/list/knockouts = list()
 	var/static/list/blacklist // handled in get_blacklist(). Contains root paths that aren't supposed to be spawned (Yes, a bit of a pain to maintain, but it's not the end of the world if someone forgets to update it. The alternative is having a variable on every damn datum)
 
-/obj/structure/table/mat_shiritori/New()
-	..()
-	instances++
-	atom_list = generate_name_list(typesof(/atom/movable))
-
 /obj/structure/table/mat_shiritori/Destroy()
 	if(active)
 		end_game()
@@ -37,13 +32,13 @@
 	current_player = null
 	players = null
 	knockouts = null
-	instances--
 	return ..()
 
 /obj/structure/table/mat_shiritori/proc/ready_up()
 	if(active || game_starting)
 		return
-	if(!atom_list) // somehow
+	instances++
+	if(!atom_list)
 		atom_list = generate_name_list(typesof(/atom/movable))
 	players.Cut()
 	knockouts.Cut()
@@ -133,7 +128,7 @@
 		remove_player(current_player)
 		return
 	if(Opath in get_blacklist())
-		visible_message("<span class='warning'>Entity too vague.</span>")
+		visible_message("<span class='warning'>Entity too vague or dangerous to summon.</span>")
 		return
 	var/obj/item/shiritori_ball/ball = new(loc)
 	ball.start_spawn(src, Opath, current_player)
@@ -204,7 +199,7 @@
 
 /obj/structure/table/mat_shiritori/examine()
 	. = ..()
-	if(current_letter)
+	if(length(current_letter)) // because "" is not falsy
 		. += "<span class='info'>The next word must start with <b>[uppertext(current_letter)]</b></span>"
 	else if(!active)
 		. += "<span class='info'>It doesn't look like anyone is playing it right now.</span>"
@@ -243,9 +238,10 @@
 	table.entities += M
 	qdel(src)
 
+// Saves memory, dynamic list initialization
 /obj/structure/table/mat_shiritori/proc/get_blacklist()
 	if(!blacklist)
-		// !! This is not typesof, each path blacklists that atom only !!
+		// !! This is not typesof, each path blacklists that atom only, good for "root" datums that have no functionality !!
 		blacklist = list(
 			/obj/effect/decal/cleanable,
 			/obj/item/radio/headset,
@@ -273,4 +269,10 @@
 			/mob/living,
 			/mob
 			)
+		// !! This one IS typesof, this should contain game breaking items that can circumvent the game's rules (or make it really unfun) or break the server !!
+		blacklist += typesof(
+			/obj/singularity,
+			/obj/item/projectile/hvp,
+
+		)
 	return blacklist
