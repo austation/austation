@@ -3561,13 +3561,6 @@
 /obj/effect/turf_decal/bot,
 /turf/open/floor/plasteel/showroomfloor,
 /area/security/warden)
-"aoA" = (
-/obj/effect/spawner/structure/window/reinforced,
-/obj/structure/cable/yellow{
-	icon_state = "0-8"
-	},
-/turf/open/floor/plating,
-/area/security/warden)
 "aoM" = (
 /obj/effect/turf_decal/pool/corner{
 	dir = 8
@@ -4303,9 +4296,6 @@
 /area/security/warden)
 "asA" = (
 /obj/effect/spawner/structure/window/reinforced,
-/obj/structure/cable/yellow{
-	icon_state = "0-8"
-	},
 /obj/structure/cable/yellow{
 	icon_state = "0-8"
 	},
@@ -13547,9 +13537,6 @@
 	},
 /obj/machinery/light{
 	dir = 8
-	},
-/obj/structure/cable/yellow{
-	icon_state = "1-2"
 	},
 /obj/structure/table/glass,
 /obj/effect/turf_decal/tile/green{
@@ -119372,7 +119359,7 @@ tph
 epm
 ttm
 upx
-aoA
+asA
 aoy
 arg
 asw
@@ -120657,7 +120644,7 @@ adY
 ajx
 rWO
 ahB
-aoA
+asA
 ahB
 ark
 asA
