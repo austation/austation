@@ -40,9 +40,10 @@
 	instances++
 	if(!atom_list)
 		atom_list = generate_name_list(typesof(/atom/movable))
+	if(!blacklist)
+		get_blacklist()
 	players.Cut()
 	knockouts.Cut()
-	QDEL_LIST(entities)
 	time_left = initial(time_left)
 	say("Game starting in [start_time] seconds. Place your hand on the table to play.")
 	INVOKE_ASYNC(src, .proc/start_game)
@@ -88,7 +89,7 @@
 /obj/structure/table/mat_shiritori/attack_hand(mob/user)
 	if(!ishuman(user))
 		return ..()
-	if(user.alert("Would you like to [game_starting ? "join" : "start"] a game of Materialization Shiritori?", "The gods", "Yes", "No") == "Yes")
+	if(alert(user, "Would you like to [game_starting ? "join" : "start"] a game of Materialization Shiritori?", "The gods", "Yes", "No") == "Yes")
 		var/mob/living/carbon/human/H = user
 		if(H.stat == DEAD || !H.mind?.hasSoul)
 			return
@@ -127,7 +128,7 @@
 		to_chat(current_player, "<span class='danger'>This has been said before, you've been eliminated!</span>")
 		remove_player(current_player)
 		return
-	if(Opath in get_blacklist())
+	if(Opath in blacklist)
 		visible_message("<span class='warning'>Entity too vague or dangerous to summon.</span>")
 		return
 	var/obj/item/shiritori_ball/ball = new(loc)
@@ -144,12 +145,12 @@
 	if((H in players) || (H in knockouts))
 		return
 	players += H
-	to_chat(H, "<span class='notice'>Welcome to <b>Materialization Shiritori!</b> \n
-				Similar to traditional Shiritori, but any valid word submitted by the player will materialize infront of them, as long as it exists in this world.</span> \n
-				<span class='info'>The last player standing is declared as the winner, players can be eliminated in 3 different ways: \n
-				<b>1:/b> Failing to name a valid entity within 30 seconds of the last player's turn. \n
-				<b>2:/b> Attempting to summon an entity that has already been mentioned. \n
-				<b>3:</b> Death. \n
+	to_chat(H, "<span class='notice'>Welcome to <b>Materialization Shiritori!</b> \
+				Similar to traditional Shiritori, but any valid word submitted by the player will materialize infront of them, as long as it exists in this world.</span> \
+				<span class='info'>The last player standing is declared as the winner, players can be eliminated in 3 different ways: \
+				<b>1:/b> Failing to name a valid entity within 30 seconds of the last player's turn. \
+				<b>2:/b> Attempting to summon an entity that has already been mentioned. \
+				<b>3:</b> Death. \
 				You cannot harm your opponents through <b>direct</b> means. Any and all summoned entities will be destroyed once the game has concluded.")
 	ADD_TRAIT(H, TRAIT_PACIFISM, "shiritori")
 
@@ -162,7 +163,7 @@
 		REMOVE_TRAIT(H, TRAIT_PACIFISM, "shiritori")
 	if(length(players) == 1)
 		visible_message("<span class='boldannounce'>[current_player] has won the game!</span>")
-		playsound(src, 'sound/effects/gong.ogg', 250, 0, 5)
+		playsound(src, 'sound/effects/gong.ogg', 100, 0, 5)
 		playsound(src, 'sound/effects/bamf.ogg', 100, 0, 5)
 		end_game()
 
@@ -170,11 +171,12 @@
 /obj/structure/table/mat_shiritori/proc/switch_player()
 	var/index = players.Find(current_player)
 	if(length(players) == index)
-		index = 1
+		index = 1 // move back to the bottom of the list
 	time_left = initial(time_left)
 	current_player = players[index]
 	if(QDELETED(current_player))
 		remove_player(current_player)
+		return
 	if(turns)
 		to_chat(current_player, "<span class='notice'>It is now your turn.</span>")
 		turns++
@@ -223,9 +225,6 @@
 	src.entity_path = entity_path
 	src.table = table
 	src.owner = owner
-	if(!entity_path)
-		qdel(src)
-		return
 	INVOKE_ASYNC(src, .proc/spawnit)
 
 /obj/item/shiritori_ball/proc/spawnit()
@@ -243,6 +242,8 @@
 	if(!blacklist)
 		// !! This is not typesof, each path blacklists that atom only, good for "root" datums that have no functionality !!
 		blacklist = list(
+			/obj/structure/table/mat_shiritori,
+			/obj/item/shiritori_ball,
 			/obj/effect/decal/cleanable,
 			/obj/item/radio/headset,
 			/obj/item/clothing/head/helmet/space,
@@ -273,6 +274,6 @@
 		blacklist += typesof(
 			/obj/singularity,
 			/obj/item/projectile/hvp,
-
+			/obj/item/reagent_containers/food/snacks/store/bread/recycled,
+			/obj/machinery/portable_atmospherics
 		)
-	return blacklist
