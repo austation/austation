@@ -45,6 +45,7 @@
 	var/holy = FALSE
 	chat_color = "#FF6262"
 	mobchatspan = "cultmobsay"
+	discovery_points = 1000
 
 /mob/living/simple_animal/hostile/construct/Initialize()
 	. = ..()
@@ -70,7 +71,7 @@
 /mob/living/simple_animal/hostile/construct/Destroy()
 	QDEL_NULL(our_rune)
 	return ..()
-	
+
 /mob/living/simple_animal/hostile/construct/Login()
 	..()
 	to_chat(src, playstyle_string)
@@ -130,8 +131,8 @@
 	icon_living = "behemoth"
 	maxHealth = 150
 	health = 150
-	response_harm = "harmlessly punches"
-	harm_intent_damage = 0
+	response_harm = "punches"
+
 	obj_damage = 90
 	melee_damage = 25
 	attacktext = "smashes their armored gauntlet into"
@@ -139,6 +140,7 @@
 	environment_smash = ENVIRONMENT_SMASH_WALLS
 	attack_sound = 'sound/weapons/punch3.ogg'
 	status_flags = 0
+	move_resist = MOVE_FORCE_STRONG
 	mob_size = MOB_SIZE_LARGE
 	force_threshold = 10
 	construct_spells = list(/obj/effect/proc_holder/spell/targeted/forcewall/cult,

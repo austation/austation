@@ -18,6 +18,9 @@
 			if((D.spread_flags & DISEASE_SPREAD_SPECIAL) || (D.spread_flags & DISEASE_SPREAD_NON_CONTAGIOUS))
 				continue
 
+			if((method == INGEST) && (D.spread_flags & DISEASE_SPREAD_CHECK_STRONG_STOMACH) && (HAS_TRAIT(L, TRAIT_STRONG_STOMACH))) // austation begin -- make catgirls and lizards immune to diseases from rats
+				continue // austation end
+
 			if((method == TOUCH || method == VAPOR) && (D.spread_flags & DISEASE_SPREAD_CONTACT_FLUIDS))
 				L.ContactContractDisease(D)
 			else //ingest, patch or inject
@@ -233,7 +236,7 @@
 	if(!istype(M))
 		return
 	if(isoozeling(M))
-		M.blood_volume -= 30
+		M.blood_volume = max(M.blood_volume - 30, 0)
 		to_chat(M, "<span class='warning'>The water causes you to melt away!</span>")
 		return
 	if(method == TOUCH)
@@ -957,8 +960,8 @@
 	if(method in list(TOUCH, VAPOR, PATCH))
 		for(var/s in C.surgeries)
 			var/datum/surgery/S = s
-			S.success_multiplier = max(0.2, S.success_multiplier)
-			// +20% success propability on each step, useful while operating in less-than-perfect conditions
+			S.speed_modifier = max(0.2, S.speed_modifier)
+			// +20% surgery speed on each step, useful while operating in less-than-perfect conditions
 	..()
 
 /datum/reagent/iron

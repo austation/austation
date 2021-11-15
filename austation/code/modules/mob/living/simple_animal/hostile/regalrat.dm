@@ -95,7 +95,6 @@
 	.=..()
 	if(!.)
 		return
-		
 	for(var/mob/living/M in oview(owner,1))
 		M.faction += list("rat")
 		owner.visible_message("<span class='notice'>[M] was made an ally to the rats!</span>")
@@ -230,10 +229,15 @@
 	mob_size = MOB_SIZE_TINY
 	mob_biotypes = list(MOB_ORGANIC,MOB_BEAST)
 	faction = list("rat")
+	var/list/ratdisease = list()
 
 /mob/living/simple_animal/hostile/rat/Initialize()
 	. = ..()
 	SSmobs.cheeserats += src
+	if(prob(75))
+		var/datum/disease/advance/R = new /datum/disease/advance/random(rand(3, 6), 9, rand(3,4))
+		R.spread_flags |= DISEASE_SPREAD_CHECK_STRONG_STOMACH
+		ratdisease += R
 
 /mob/living/simple_animal/hostile/rat/Destroy()
 	SSmobs.cheeserats -= src
@@ -288,6 +292,15 @@
 				playsound(src, 'sound/effects/sparks2.ogg', 100, TRUE)
 				C.deconstruct()
 
-/mob/living/simple_animal/hostile/rat/death()
+/mob/living/simple_animal/hostile/rat/death(gibbed)
 	visible_message("<span class='warning'>[src] dies...</span>")
-	qdel(src)
+	var/list/data = list("viruses" = ratdisease)
+	if(!ckey)
+		if(!gibbed)
+			var/obj/item/reagent_containers/food/snacks/deadmouse/M = new(loc)
+			M.icon_state = icon_dead
+			M.name = name
+			M.reagents.add_reagent(/datum/reagent/blood, 2, data)
+			qdel(src)
+	else
+		..()

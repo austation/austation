@@ -1,3 +1,5 @@
+environment = "austation.dme"
+
 [langserver]
 dreamchecker = true
 

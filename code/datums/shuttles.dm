@@ -552,9 +552,23 @@
 
 /datum/map_template/shuttle/science
 	port_id = "science"
-	suffix = "outpost_aus" //  because Bee shuttle is poorly designed
+	suffix = "outpost"
 	name = "science outpost shuttle"
 	can_be_bought = FALSE
+
+/datum/map_template/shuttle/exploration
+	port_id = "exploration"
+	suffix = "shuttle"
+	name = "exploration shuttle"
+	can_be_bought = FALSE
+
+/datum/map_template/shuttle/exploration/corg
+	suffix = "corg"
+	name = "corg exploration shuttle"
+
+/datum/map_template/shuttle/exploration/delta
+	suffix = "delta"
+	name = "delta exploration shuttle"
 
 /datum/map_template/shuttle/labour/delta
 	suffix = "delta"

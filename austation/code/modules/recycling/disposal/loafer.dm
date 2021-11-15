@@ -35,7 +35,7 @@
 
 /obj/structure/disposalpipe/loafer/Destroy()
 	var/obj/structure/disposalholder/H = locate() in src
-	if(QDELETED(H))
+	if(QDELETED(H)) // QDELETED checks if it exists too
 		return ..()
 	for(var/atom/movable/AM in H.contents)
 		if(istype(AM, /obj/item/reagent_containers/food/snacks/store/bread/recycled))

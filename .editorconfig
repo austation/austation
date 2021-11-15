@@ -19,3 +19,6 @@ trim_trailing_whitespace = false
 [/tgui/**/*.{js,styl,ract,json,html}]
 indent_style = space
 indent_size = 2
+
+[Dockerfile]
+indent_style = space

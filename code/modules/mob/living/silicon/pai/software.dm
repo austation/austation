@@ -219,6 +219,9 @@
 
 			if("pdamessage")
 				if(!isnull(aiPDA))
+					if(!aiPDA.owner)
+						aiPDA.owner = src.real_name
+						aiPDA.ownjob = "pAI"
 					if(href_list["toggler"])
 						aiPDA.toff = !aiPDA.toff
 					else if(href_list["ringer"])
@@ -296,8 +299,6 @@
 			if("loudness")
 				if(subscreen == 1) // Open Instrument
 					internal_instrument.interact(src)
-				if(subscreen == 2) // Change Instrument type
-					internal_instrument.selectInstrument()
 
 		paiInterface()
 
