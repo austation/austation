@@ -73,7 +73,8 @@
 	weight = 5
 	show_in_report = TRUE
 	report_message = "We lost the primary datatape that holds the announcement system's voice responses. We did however find an older backup."
-	blacklist = list(/datum/station_trait/announcement_intern, /datum/station_trait/announcement_ancestor,
+	blacklist = list(/datum/station_trait/announcement_intern, 
+	/datum/station_trait/announcement_ancestor,
 	/datum/station_trait/announcement_medbot
 	)
 
