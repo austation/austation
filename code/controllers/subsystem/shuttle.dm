@@ -737,7 +737,7 @@ SUBSYSTEM_DEF(shuttle)
 				var/turf/explorin = get_step(terf, dir)
 				if(!explorin)
 					continue
-				if((!locate(/obj/machinery/door/firedoor) in explorin) && (!locate(/obj/effect/spawner/structure/window/) in explorin) && (!locate(/obj/structure/window/) in explorin))
+				if((!locate(/obj/machinery/door/firedoor) in explorin) && (!locate(/obj/effect/spawner/structure/window/) in explorin) && (!locate(/obj/structure/window/) in explorin) && (!locate(/obj/machinery/door/airlock) in explorin))
 					if(isopenturf(explorin))
 						eligible_dirs |= dir
 			if (!eligible_dirs.len)
@@ -771,7 +771,7 @@ SUBSYSTEM_DEF(shuttle)
 					var/turf/explorin = get_step(terf, dir)
 					if(!explorin)
 						continue
-					if((!locate(/obj/machinery/door/firedoor) in explorin) && (!locate(/obj/effect/spawner/structure/window/) in explorin) && (!locate(/obj/structure/window/) in explorin))
+					if((!locate(/obj/machinery/door/firedoor) in explorin) && (!locate(/obj/effect/spawner/structure/window/) in explorin) && (!locate(/obj/structure/window/) in explorin) && (!locate(/obj/machinery/door/airlock) in explorin))
 						if(isopenturf(explorin))
 							eligible_dirs |= dir
 				if (!eligible_dirs.len)
