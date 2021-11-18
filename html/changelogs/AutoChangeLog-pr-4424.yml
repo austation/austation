@@ -1,4 +1,0 @@
-author: "AustationBot"
-delete-after: True
-changes: 
-  - rscadd: "Adds eleven more possible Ethereal colours and renames the existing ones to match"
