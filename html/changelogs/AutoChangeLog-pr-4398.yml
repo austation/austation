@@ -1,0 +1,4 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - config: "Squid & fly have been removed as selectable species"
