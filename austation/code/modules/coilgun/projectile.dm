@@ -14,7 +14,7 @@
 	icon_state = "immrod"
 	density = TRUE
 	move_force = INFINITY
-	movement_type = FLYING | UNSTOPPABLE
+	movement_type = FLYING | PHASING
 	move_resist = INFINITY
 	pull_force = INFINITY
 	hitsound = null
