@@ -1,4 +1,0 @@
-author: "AustationBot"
-delete-after: True
-changes: 
-  - code_imp: "Fixes modular consoles teleporting intellicards/IDs to cyborgs and AIs who try to eject them"
