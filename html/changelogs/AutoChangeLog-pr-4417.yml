@@ -1,0 +1,5 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - bugfix: "Discovery Scanner is no longer able to scan holographic pets."
+  - bugfix: "DNA Probe no longer gets animal DNA from holographic pets."
