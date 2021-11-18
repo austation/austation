@@ -651,19 +651,20 @@
 	AddComponent(/datum/component/simple_rotation, ROTATION_ALTCLICK | ROTATION_CLOCKWISE | ROTATION_COUNTERCLOCKWISE | ROTATION_VERBS, null, CALLBACK(src, .proc/can_be_rotated))
 
 //austation begin -- Adds directional windows collision to firelock frames
-/obj/structure/firelock_frame/border/CanPass(atom/movable/mover, turf/target)
+/obj/structure/firelock_frame/border/CanAllowThrough(atom/movable/mover, turf/target)
+	. = ..()
 	if(istype(mover) && (mover.pass_flags & PASSGLASS))
-		return TRUE
-	if(get_dir(loc, target) == dir)
-		return !density
+		. = TRUE
+	else if(get_dir(loc, target) == dir)
+		. = !density
 	else
-		return TRUE
+		. = TRUE
 
 /obj/structure/firelock_frame/border/CheckExit(atom/movable/O, turf/target)
 	if(istype(O) && (O.pass_flags & PASSGLASS))
 		return TRUE
 	if(get_dir(O.loc, target) == dir)
-		return FALSE
+		return !density
 	return TRUE
 //austation end
 
