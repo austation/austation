@@ -1,0 +1,5 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - tweak: "Changed the layout of the Deltastation exploration shuttle."
+  - bugfix: "Added lights to Deltastation exploration office."
