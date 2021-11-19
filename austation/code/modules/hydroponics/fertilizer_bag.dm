@@ -31,26 +31,26 @@
 		if(!check_contents(/datum/reagent/uranium/radium))
 			apply_chance += 0.20
 			apply_strength += 0.10
-			mutate_end = TRUE
-			mutate_lif = TRUE
 			mix += list(/datum/reagent/uranium/radium)
+		mutate_end = TRUE
+		mutate_lif = TRUE
 
 	else if(reagents.has_reagent(/datum/reagent/uranium, 1))
 		if(!check_contents(/datum/reagent/uranium/radium))
 			apply_chance += 0.50
 			apply_strength += 0.25
-			mutate_yld = TRUE
-			mutate_pot = TRUE
-			mutate_prd = TRUE
 			mix += list(/datum/reagent/uranium)
+		mutate_yld = TRUE
+		mutate_pot = TRUE
+		mutate_prd = TRUE
 
 	else if(reagents.has_reagent(/datum/reagent/toxin/mutagen, 1))
 		if(!check_contents(/datum/reagent/toxin/mutagen))
 			apply_chance += 0.25
 			apply_strength += 0.15
-			mutate_mat_spd = TRUE
-			mutate_prd_spd = TRUE
 			mix += list(/datum/reagent/toxin/mutagen)
+		mutate_mat_spd = TRUE
+		mutate_prd_spd = TRUE
 
 	else if(reagents.has_reagent(/datum/reagent/water, 1))
 		if(!check_contents(	/datum/reagent/water))
