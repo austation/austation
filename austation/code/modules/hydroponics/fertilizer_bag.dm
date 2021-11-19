@@ -37,7 +37,7 @@
 
 	else if(reagents.has_reagent(/datum/reagent/uranium, 1))
 		if(!check_contents(/datum/reagent/uranium/radium))
-			apply_chance += 0.50
+			apply_chance += 0.25
 			apply_strength += 0.25
 			mix += list(/datum/reagent/uranium)
 		mutate_yld = TRUE
@@ -46,7 +46,7 @@
 
 	else if(reagents.has_reagent(/datum/reagent/toxin/mutagen, 1))
 		if(!check_contents(/datum/reagent/toxin/mutagen))
-			apply_chance += 0.25
+			apply_chance += 0.20
 			apply_strength += 0.15
 			mix += list(/datum/reagent/toxin/mutagen)
 		mutate_mat_spd = TRUE
@@ -55,13 +55,13 @@
 	else if(reagents.has_reagent(/datum/reagent/water, 1))
 		if(!check_contents(	/datum/reagent/water))
 			apply_chance -= 0.15
-			apply_strength -= 0.5
+			apply_strength -= 0.10
 			mix += list(/datum/reagent/water)
 		remove_random_trait()
 	else if(reagents.has_reagent(/datum/reagent/medicine/earthsblood, 1))
 		if(!check_contents(	/datum/reagent/water))
 			apply_chance += 0.25
-			apply_strength += 0.15
+			apply_strength += 0.25
 			mix += list(/datum/reagent/medicine/earthsblood)
 
 /obj/item/reagent_containers/fertilizer_bag/attack_self(mob/user)
