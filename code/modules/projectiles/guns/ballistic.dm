@@ -139,11 +139,7 @@
 				return
 			bolt_locked = FALSE
 		if(BOLT_TYPE_PUMP)
-<<<<<<< HEAD
-			if(user?.get_inactive_held_item()) // remove two-handed gun requirements
-=======
 			if(user?.get_inactive_held_item())
->>>>>>> 63304d4797... Gun Wielding Refactor (#5762)
 				to_chat(user, "<span class='warning'>You require your other hand to be free to rack the [bolt_wording] of \the [src]!</span>")
 				return
 	if(user)

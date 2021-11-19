@@ -93,28 +93,8 @@
 	if(!canMouseDown) //Some things like beam rifles override this.
 		canMouseDown = automatic //Nsv13 / Bee change.
 	build_zooming()
-<<<<<<< HEAD
-	if(!spread_unwielded)
-		spread_unwielded = weapon_weight * 20 + 20
-/* austation begin -- remove two-handed gun requirements
-	RegisterSignal(src, COMSIG_TWOHANDED_WIELD, .proc/wield)
-	RegisterSignal(src, COMSIG_TWOHANDED_UNWIELD, .proc/unwield)
-
-/obj/item/gun/ComponentInitialize()
-	. = ..()
-	//Smaller weapons are better when used in a single hand.
-	AddComponent(/datum/component/two_handed, unwield_on_swap = TRUE, auto_wield = TRUE, ignore_attack_self = TRUE, force_wielded = force, force_unwielded = force, block_power_wielded = block_power, block_power_unwielded = block_power, wieldsound = 'sound/effects/suitstep1.ogg', unwieldsound = 'sound/effects/suitstep2.ogg')
-
-/obj/item/gun/proc/wield()
-	is_wielded = TRUE
-
-/obj/item/gun/proc/unwield()
-	is_wielded = FALSE
-austation end */
-=======
 	if(isnull(spread_unwielded))
 		spread_unwielded = weapon_weight * 20 + 20 //{40, 60, 80}
->>>>>>> 63304d4797... Gun Wielding Refactor (#5762)
 
 /obj/item/gun/Destroy()
 	if(isobj(pin)) //Can still be the initial path, then we skip
@@ -270,12 +250,7 @@ austation end */
 				user.dropItemToGround(src, TRUE)
 				return
 
-<<<<<<< HEAD
-	var/obj/item/bodypart/other_hand = user.has_hand_for_held_index(user.get_inactive_hand_index()) //returns non-disabled inactive hands
-	if(weapon_weight == WEAPON_HEAVY && (user.get_inactive_held_item() || !other_hand)) // austation -- remove two-handed gun requirements
-=======
 	if(weapon_weight == WEAPON_HEAVY && !check_wielded(user))
->>>>>>> 63304d4797... Gun Wielding Refactor (#5762)
 		balloon_alert(user, "You need both hands free to fire")
 		return
 
@@ -368,14 +343,8 @@ austation end */
 		randomized_gun_spread =	rand(0,spread)
 	if(HAS_TRAIT(user, TRAIT_POOR_AIM)) //nice shootin' tex
 		bonus_spread += 25
-<<<<<<< HEAD
-	/* austation begin -- remove two-handed gun requirements
-	if(!is_wielded)
-=======
 	if(!check_wielded(user))
->>>>>>> 63304d4797... Gun Wielding Refactor (#5762)
 		bonus_spread += spread_unwielded
-	austation end */
 	var/randomized_bonus_spread = rand(0, bonus_spread)
 
 	if(burst_size > 1)
