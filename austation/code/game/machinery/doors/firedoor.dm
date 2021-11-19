@@ -69,4 +69,49 @@
 		crush()
 	latetoggle()
 
+/obj/machinery/door/firedoor/proc/allow_hand_open(mob/user)
+	var/area/A = get_area(src)
+	if(A && A.fire)
+		return FALSE
+	return !is_holding_pressure()
+
+/obj/machinery/door/firedoor/try_to_activate_door(obj/item/I, mob/user)
+	return
+
+/obj/machinery/door/firedoor/try_to_crowbar(obj/item/I, mob/user)
+	if(welded || operating)
+		return
+	if(density)
+		if(is_holding_pressure())
+			// tell the user that this is a bad idea, and have a do_after as well
+			to_chat(user, "<span class='warning'>As you begin crowbarring \the [src] a gush of air blows in your face... maybe you should reconsider?</span>")
+			if(!do_after(user, 10, TRUE, src)) // give them a few seconds to reconsider their decision.
+				return
+			log_game("[key_name(user)] has opened a firelock with a pressure difference at [AREACOORD(loc)]")
+			user.log_message("has opened a firelock with a pressure difference at [AREACOORD(loc)]", LOG_ATTACK)
+			// since we have high-pressure-ness, close all other firedoors on the tile
+			whack_a_mole()
+		if(welded || operating || !density)
+			return // in case things changed during our do_after
+		emergency_close_timer = world.time + RECLOSE_DELAY // prevent it from instaclosing again if in space
+		open()
+	else
+		close()
+
+/obj/machinery/door/firedoor/border_only/allow_hand_open(mob/user)
+	var/area/A = get_area(src)
+	if((!A || !A.fire) && !is_holding_pressure())
+		return TRUE
+	whack_a_mole(TRUE) // WOOP WOOP SIDE EFFECTS
+	var/turf/T = loc
+	var/turf/T2 = get_step(T, dir)
+	if(!T || !T2)
+		return
+	var/status1 = check_door_side(T)
+	var/status2 = check_door_side(T2)
+	if((status1 == 1 && status2 == -1) || (status1 == -1 && status2 == 1))
+		to_chat(user, "<span class='warning'>Access denied. Try closing another firedoor to minimize decompression, or using a crowbar.</span>")
+		return FALSE
+	return TRUE
+
 /proc/disable_airs_in_list(list/turfs)

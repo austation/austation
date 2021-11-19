@@ -261,12 +261,13 @@
 		return FIRE_ALARM
 	return !is_holding_pressure()
 
+/* austation begin -- fuck you francis
 /obj/machinery/door/firedoor/allowed(mob/M)
 	if(check_safety(M))//Passing the mob here is cargo cult programming, I can't see what wants it.
 		return TRUE
 	update_icon()
 	return ..()
-
+austation end*/
 
 /obj/machinery/door/firedoor/attack_ai(mob/user)
 	add_fingerprint(user)
