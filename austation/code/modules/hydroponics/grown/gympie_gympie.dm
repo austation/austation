@@ -39,7 +39,7 @@
 
 /obj/item/seeds/gympie_gympie/on_reagent_change(changetype)
 	if(changetype == ADD_REAGENT)
-		var/datum/reagent/medicine/strange_reagent/S = reagents.has_reagent(awaken_reagent)
+		var/S = reagents.has_reagent(awaken_reagent)
 		if(S)
 			spawn(30)
 				if(!QDELETED(src))
@@ -51,6 +51,7 @@
 					G.type_count = 0
 					G.gympie_poison = list()
 					G.health = G.maxHealth
+					G.name = name
 					for(var/datum/plant_gene/reagent/R in genes)
 						G.gympie_poison += R.reagent_id
 						G.type_count++
