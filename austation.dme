@@ -42,7 +42,6 @@
 #include "austation\code\controllers\configuration\entries\general.dm"
 #include "austation\code\controllers\subsystem\autosandbox.dm"
 #include "austation\code\controllers\subsystem\blackbox.dm"
-#include "austation\code\controllers\subsystem\fire_burning.dm"
 #include "austation\code\controllers\subsystem\job.dm"
 #include "austation\code\datums\ai_laws.dm"
 #include "austation\code\datums\emotes.dm"
