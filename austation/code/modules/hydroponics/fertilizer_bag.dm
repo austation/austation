@@ -56,8 +56,13 @@
 		if(!check_contents(	/datum/reagent/water))
 			apply_chance -= 0.15
 			apply_strength -= 0.5
-			remove_random_trait()
 			mix += list(/datum/reagent/water)
+		remove_random_trait()
+	else if(reagents.has_reagent(/datum/reagent/medicine/earthsblood, 1))
+		if(!check_contents(	/datum/reagent/water))
+			apply_chance += 0.25
+			apply_strength += 0.15
+			mix += list(/datum/reagent/medicine/earthsblood)
 
 /obj/item/reagent_containers/fertilizer_bag/attack_self(mob/user)
 	update_effects(user)
