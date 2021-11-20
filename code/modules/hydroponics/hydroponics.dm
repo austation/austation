@@ -814,6 +814,15 @@
 		to_chat(user, "- Water level: <span class='notice'>[waterlevel] / [maxwater]</span>")
 		to_chat(user, "- Nutrition level: <span class='notice'>[nutrilevel] / [maxnutri]</span>")
 		to_chat(user, "")
+	else if(istype(O, /obj/item/reagent_containers/fertilizer_bag))
+		if(myseed)
+			to_chat(user, "You begin to fertilize the plant." )
+			var/list/text_string = myseed.get_analyzer_text()
+			if(text_string)
+				to_chat(user, text_string)
+		else
+			to_chat(user, "<B>There is no plant in this tray.</B>")
+		to_chat(user, "")
 
 	else if(istype(O, /obj/item/cultivator))
 		if(weedlevel > 0)

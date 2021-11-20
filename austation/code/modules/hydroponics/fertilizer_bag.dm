@@ -1,6 +1,6 @@
 /obj/item/reagent_containers/fertilizer_bag
 	name = "Fertilizer Bag"
-	desc = "A sack o' shit, literally."
+	desc = "A plant's meal sack."
 	icon = 'icons/obj/device.dmi'
 	icon_state = "hydro"
 	lefthand_file = 'icons/mob/inhands/equipment/tools_lefthand.dmi'
