@@ -786,6 +786,29 @@
 
 	return has_removed_reagent
 
+/datum/reagents/proc/remove_all_except_type(reagent_type, amount, strict = 0, safety = 1) // Removes all reagent of X type. @strict set to 1 determines whether the childs of the type are included.
+	if(!isnum_safe(amount))
+		return 1
+	var/list/cached_reagents = reagent_list
+	var/has_removed_reagent = 0
+
+	for(var/reagent in cached_reagents)
+		var/datum/reagent/R = reagent
+		var/matches = 0
+		// Switch between how we check the reagent type
+		if(strict)
+			if(!R.type == reagent_type)
+				matches = 1
+		else
+			if(!istype(R, reagent_type))
+				matches = 1
+		// We found a match, proceed to remove the reagent.	Keep looping, we might find other reagents of the same type.
+		if(!matches)
+			// Have our other proc handle removement
+			has_removed_reagent = remove_reagent(R.type, amount, safety)
+
+	return has_removed_reagent
+
 //two helper functions to preserve data across reactions (needed for xenoarch)
 /datum/reagents/proc/get_data(reagent_id)
 	var/list/cached_reagents = reagent_list

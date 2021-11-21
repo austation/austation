@@ -484,3 +484,9 @@
 	id = "cults_explosion"
 	required_reagents = list(/datum/reagent/consumable/ethanol/ratvander = 1, /datum/reagent/consumable/ethanol/narsour = 1)
 	strengthdiv = 10
+
+/datum/chemical_reaction/combusting_plant_enzyme
+	name = "Combusting Plant Enzyme"
+	id = "combusting plant enzyme"
+	results = list(/datum/chemical_reaction/combusting_plant_enzyme = 1)
+	required_reagents = list(/datum/reagent/unstable_plant_enzyme = 1, /datum/reagent/consumable/ethanol/moonshine = 1)

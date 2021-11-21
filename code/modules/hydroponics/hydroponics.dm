@@ -709,13 +709,13 @@
 
 /obj/machinery/hydroponics/attackby(obj/item/O, mob/user, params)
 	//Called when mob user "attacks" it with object O
-	if(istype(O, /obj/item/reagent_containers) )  // Syringe stuff (and other reagent containers now too)
+	if(istype(O, /obj/item/reagent_containers) && !istype(O, /obj/item/reagent_containers/fertilizer_bag))  // Syringe stuff (and other reagent containers now too)
 		var/obj/item/reagent_containers/reagent_source = O
 
 		if(istype(reagent_source, /obj/item/reagent_containers/syringe))
 			var/obj/item/reagent_containers/syringe/syr = reagent_source
 			if(syr.mode != 1)
-				to_chat(user, "<span class='warning'>You can't get any extract out of this plant.</span>"		)
+				to_chat(user, "<span class='warning'>You can't get any extract out of this plant.</span>")
 				return
 
 		if(!reagent_source.reagents.total_volume)
@@ -799,6 +799,26 @@
 		else
 			to_chat(user, "<span class='warning'>[src] already has seeds in it!</span>")
 
+	else if(istype(O, /obj/item/reagent_containers/fertilizer_bag))
+		var/obj/item/reagent_containers/fertilizer_bag/P = O
+		var/obj/item/seeds/S = myseed
+		var/chancey = P.apply_chance*100
+		var/strength = P.apply_strength*100
+
+		if(!P.reagents.total_volume||!P.reagents.has_reagent(/datum/reagent/plantnutriment/generic_fertilizer, 1))
+			to_chat(user, "<span class='notice'>[P] is empty.</span>")
+		else
+			if(myseed)
+				to_chat(user, "<span class='notice'>You fertilize the [myseed.plantname]</span>")
+				if(prob(chancey))
+					S.lifespan = CLAMP(P.mutate_lif*(S.lifespan+strength), 10, 100)//Lifespan
+					S.potency = CLAMP(P.mutate_pot*(S.potency+strength), 10, 100)//Potency
+					S.endurance = CLAMP(P.mutate_end*(S.endurance+strength), 10, 100)//Endurance
+					S.production = CLAMP(P.mutate_prd*(S.production+strength), 1, 10)//Production
+					S.yield = CLAMP(P.mutate_yld*(S.yield+strength), 0, 10)//Yield
+			else
+				to_chat(user, "<span class='warning'>There is no plant to fertilize</span>")
+
 	else if(istype(O, /obj/item/plant_analyzer))
 		if(myseed)
 			to_chat(user, "*** <B>[myseed.plantname]</B> ***" )
@@ -813,15 +833,6 @@
 		to_chat(user, "- Toxicity level: <span class='notice'>[toxic] / 100</span>")
 		to_chat(user, "- Water level: <span class='notice'>[waterlevel] / [maxwater]</span>")
 		to_chat(user, "- Nutrition level: <span class='notice'>[nutrilevel] / [maxnutri]</span>")
-		to_chat(user, "")
-	else if(istype(O, /obj/item/reagent_containers/fertilizer_bag))
-		if(myseed)
-			to_chat(user, "You begin to fertilize the plant." )
-			var/list/text_string = myseed.get_analyzer_text()
-			if(text_string)
-				to_chat(user, text_string)
-		else
-			to_chat(user, "<B>There is no plant in this tray.</B>")
 		to_chat(user, "")
 
 	else if(istype(O, /obj/item/cultivator))

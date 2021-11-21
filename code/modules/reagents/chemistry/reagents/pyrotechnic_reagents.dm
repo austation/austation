@@ -309,8 +309,7 @@
 	reagent_state = LIQUID
 	color = "#7dc025"
 	metabolization_rate = 4
-	taste_description = "Peppars and..."
-	process_flags = ORGANIC | SYNTHETIC
+	taste_description = "Peppars and pain!"
 
 /datum/reagent/combusting_plant_enzyme/on_mob_life(mob/living/carbon/M)
 	M.adjust_fire_stacks(2)

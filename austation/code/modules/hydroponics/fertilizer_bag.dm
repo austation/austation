@@ -24,9 +24,9 @@
 
 /obj/item/reagent_containers/fertilizer_bag/Initialize()
 	. = ..()
-	create_reagents(bag_capacity, INJECTABLE|DRAWABLE)
+	create_reagents(bag_capacity, OPENCONTAINER)
 
-/obj/item/reagent_containers/fertilizer_bag/proc/update_effects(var/test)
+/obj/item/reagent_containers/fertilizer_bag/proc/update_effects()
 	if(reagents.has_reagent(/datum/reagent/uranium/radium, 1))
 		if(!check_contents(/datum/reagent/uranium/radium))
 			apply_chance += 0.20
@@ -64,9 +64,10 @@
 			apply_strength += 0.15
 			mix += list(/datum/reagent/medicine/earthsblood)
 
-/obj/item/reagent_containers/fertilizer_bag/attack_self(mob/user)
-	update_effects(user)
-
+/obj/item/reagent_containers/fertilizer_bag/attackby(obj/item/I, mob/living/user, params)
+	update_effects()
+	to_chat(user, "check mixed by")
+	reagents.remove_all_except_type(/datum/reagent/plantnutriment/generic_fertilizer, bag_capacity, 0, 0)
 
 /obj/item/reagent_containers/fertilizer_bag/proc/check_contents(var/C)
 	if(C in mix)
@@ -82,3 +83,5 @@
 						mutate_prd)
 	var/A = rand(0, 6)
 	rem_list[A] = FALSE
+
+

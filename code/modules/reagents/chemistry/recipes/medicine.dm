@@ -323,5 +323,11 @@
 /datum/chemical_reaction/repairing_plant_enzymes
 	name = "Repairing plant enzymes"
 	id = "repairing plant enzyme"
-	results = list(/datum/reagent/reparing_plant_enzyme = 2)
+	results = list(/datum/reagent/medicine/reparing_plant_enzyme = 2)
 	required_reagents = list(/datum/reagent/consumable_plant_enzyme = 1, /datum/reagent/adaptive_plant_enzyme = 1)
+
+/datum/chemical_reaction/stimulating_plant_enzyme
+	name = "Stimulating plant enzyme"
+	id = "stimulating plant enzyme"
+	results = list(/datum/reagent/medicine/stimulating_plant_enzyme = 2)
+	required_reagents = list(/datum/reagent/unstable_plant_enzyme = 1, /datum/reagent/toxin/coffeepowder = 1)
