@@ -56,13 +56,13 @@
 	if(filter_entries)
 		for(var/datum/comm_filter_entry/F in filter_entries)
 			var/message = signal.data["message"]
-			var/regex/R1 = new("[F.trigger]","i")
+			var/regex/R1 = regex("[F.trigger]","i")
 			R1.Find(message)
 			if(R1.match)
 				if(F.output == "/d")
 					return
 				F.output = replacetext(F.output,"/d","")
-				var/regex/R2 = new("[F.target]","ig")	// if the target ends with .* the full stop at the end of the message will be eaten
+				var/regex/R2 = regex("[F.target]","ig")		// if the target ends with .* the full stop at the end of the message will be eaten
 				message = R2.Replace(message,F.output)
 				while(findtext(message," ") == 1)	// removes spaces at start of text
 					message = replacetext(message," ","",1,2)
