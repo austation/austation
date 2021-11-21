@@ -220,14 +220,13 @@
 				qdel(D)
 
 			else
-			// austation end -- PR #4379
 				var/datum/comm_log_entry/D = SelectedServer.log_entries[text2num(href_list["delete"])]
 
 				temp = "<font color = #336699>- DELETED ENTRY: [D.name] -</font color>"
 
 				SelectedServer.log_entries.Remove(D)
 				qdel(D)
-
+			// austation end -- PR #4379
 		else
 			temp = "<font color = #D70B00>- FAILED: NO SELECTED MACHINE -</font color>"
 
