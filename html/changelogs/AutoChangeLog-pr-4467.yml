@@ -1,0 +1,4 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - rscdel: "removes deepfrying items to destroy them. you can now eat them out of the crust, or just clean them off"
