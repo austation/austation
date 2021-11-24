@@ -111,10 +111,12 @@
 	if(operating)
 		return
 
+	/* austation begin -- remove the restriction on PDA use to open firelocks
 	if(istype(C, /obj/item/pda))
 		var/attack_verb = pick("smushes","rubs","smashes","presses","taps")
 		visible_message("<span class='warning'>[user] [attack_verb] \the [C] against [src]\s card reader.</span>", "<span class='warning'>You [attack_verb] \the [C] against [src]\s card reader. It doesn't do anything.</span>", "You hear plastic click against metal.")
 		return
+	austation end */
 
 	if(welded)
 		if(C.tool_behaviour == TOOL_WRENCH)
