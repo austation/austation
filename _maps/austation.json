@@ -1,5 +1,6 @@
 {
     "map_name": "Austation",
+	"map_link": "AuStation/Austation",
     "map_path": "map_files/Austation",
     "map_file": "Austation.dmm",
     "shuttles": {

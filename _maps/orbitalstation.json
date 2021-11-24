@@ -1,5 +1,6 @@
 {
     "map_name": "Orbital Station",
+	"map_link": "None",
     "map_path": "map_files/OrbitalStation",
     "map_file": "OrbitalStation.dmm",
     "shuttles": {
