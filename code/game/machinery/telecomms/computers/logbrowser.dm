@@ -214,7 +214,7 @@
 			if(screen == 2)
 				var/datum/comm_filter_entry/D = SelectedServer.filter_entries[text2num(href_list["delete"])]
 
-				temp = "<font color = #336699>- DELETED FILTER: \[[D.filter_text]\] -</font color>"
+				temp = "<font color = #336699>- DELETED FILTER: [D.filter_text] -</font color>"
 
 				SelectedServer.filter_entries.Remove(D)
 				qdel(D)
