@@ -1,5 +1,0 @@
-author: "AustationBot"
-delete-after: True
-changes: 
-  - rscadd: "You can now sort Mentor PMs in tgchat"
-  - bugfix: "Fixed tgchat sorting for radio channels"

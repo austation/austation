@@ -1,4 +1,0 @@
-author: "Hardly"
-delete-after: True
-changes: 
-  - rscdel: "Removed mindread mutation."
