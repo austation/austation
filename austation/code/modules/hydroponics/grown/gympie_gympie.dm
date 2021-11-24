@@ -73,6 +73,5 @@
 			babys_first_name = new_name
 			name = new_name
 		return
-	else
-		return ..()
+	return ..()
 
