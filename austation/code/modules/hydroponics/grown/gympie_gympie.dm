@@ -72,6 +72,5 @@
 		if(new_name)
 			babys_first_name = new_name
 			name = "pack of [new_name] seeds"
-		return
 	return ..()
 
