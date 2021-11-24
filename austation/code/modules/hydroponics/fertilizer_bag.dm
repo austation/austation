@@ -63,7 +63,6 @@
 			apply_chance += 0.25
 			apply_strength += 0.15
 			mix += list(/datum/reagent/medicine/earthsblood)
-	remove_specific(/datum/reagent/plantnutriment/generic_fertilizer)
 
 /obj/item/reagent_containers/fertilizer_bag/attackby(obj/item/I, mob/living/user, params)
 	update_effects()
@@ -83,8 +82,3 @@
 						mutate_prd)
 	var/A = rand(0, 6)
 	rem_list[A] = FALSE
-
-/obj/item/reagent_containers/fertilizer_bag/proc/remove_specific(var/S)
-	for(var/R in reagent_list)
-		if(!istype(reagent_list[R], S))
-			reagents.remove_reagent(reagent_list[R], bag_capacity, 0)
