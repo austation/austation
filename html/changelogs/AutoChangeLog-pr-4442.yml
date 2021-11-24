@@ -1,5 +1,0 @@
-author: "AustationBot"
-delete-after: True
-changes: 
-  - tweak: "A bunch of BoxStation disposals pipes have been repiped."
-  - bugfix: "RnD, Toxins, Genetics, CMO Office, and Testing Range pipes now actually work on BoxStation."

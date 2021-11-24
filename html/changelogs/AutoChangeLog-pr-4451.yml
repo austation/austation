@@ -1,4 +1,0 @@
-author: "AustationBot"
-delete-after: True
-changes: 
-  - bugfix: "IPC hearts will now automatically restart after being EMP'd."

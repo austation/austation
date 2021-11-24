@@ -1,5 +1,0 @@
-author: "AustationBot"
-delete-after: True
-changes: 
-  - bugfix: "fixed stealthmin nicknames loading"
-  - refactor: "defines most loaded files"
