@@ -1,0 +1,4 @@
+author: "KubeRoot, stylemistake"
+delete-after: True
+changes: 
+  - bugfix: "Sections in TGUI should now behave more consistently, especially when nested"
