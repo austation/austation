@@ -926,3 +926,16 @@
 		M.losebreath += 2
 		if(prob(20))
 			M.emote("gasp")
+			
+//This reagent is intentionally not designed to give much fighting chance. Its only ever used when morph manages to trick somebody into interacting with its disguised form
+/datum/reagent/toxin/morphvenom
+	name = "Morph venom"
+	description = "Deadly venom of shapeshifting creature."
+	color = "#3cff00"
+
+/datum/reagent/toxin/morphvenom/on_mob_life(mob/living/carbon/M)
+	M.set_drugginess(5)
+	M.adjustStaminaLoss(30)
+	M.silent = max(M.silent, 3)
+	M.confused = max(M.confused, 3)
+	..()
