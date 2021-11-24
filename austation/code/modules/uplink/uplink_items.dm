@@ -6,7 +6,7 @@
 			Will attack anyone, including operatives, STAY AWAY ONCE DEPLOYED!"
 	item = /obj/item/sbeacondrop/deathsky
 	cost = 18
-	include_modes = list(/datum/game_mode/nuclear, /datum/game_mode/nuclear/clown_ops)
+	purchasable_from = UPLINK_NUKE_OPS | UPLINK_CLOWN_OPS
 
 /datum/uplink_item/role_restricted/bluespace_sharpener
 	name = "Bluespace Whetstone"

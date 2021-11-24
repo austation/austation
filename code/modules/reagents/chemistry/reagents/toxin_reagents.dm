@@ -926,4 +926,3 @@
 		M.losebreath += 2
 		if(prob(20))
 			M.emote("gasp")
-	..()

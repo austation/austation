@@ -729,12 +729,6 @@
 	results = list(/datum/reagent/mutationtoxin/abductor = 5)
 	required_reagents  = list(/datum/reagent/mutationtoxin/unstable = 5, /datum/reagent/medicine/morphine = 10, /datum/reagent/toxin/mutetoxin = 10)
 
-/datum/chemical_reaction/mutationtoxin/squid
-	name = /datum/reagent/mutationtoxin/squid
-	id = /datum/reagent/mutationtoxin/squid
-	results = list(/datum/reagent/mutationtoxin/squid = 5)
-	required_reagents  = list(/datum/reagent/mutationtoxin/unstable = 5, /datum/reagent/consumable/sodiumchloride = 10, /datum/reagent/water = 20)
-
 /datum/chemical_reaction/mutationtoxin/ipc
 	name = /datum/reagent/mutationtoxin/ipc
 	id = /datum/reagent/mutationtoxin/ipc
