@@ -932,6 +932,10 @@
 	name = "Morph venom"
 	description = "Deadly venom of shapeshifting creature."
 	color = "#3cff00"
+	toxpwr = 2
+	taste_description = "salt"
+	can_synth = FALSE
+	metabolization_rate = 0.5 * REAGENTS_METABOLISM
 
 /datum/reagent/toxin/morphvenom/on_mob_life(mob/living/carbon/M)
 	M.set_drugginess(5)
