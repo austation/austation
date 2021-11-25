@@ -1,0 +1,4 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - balance: "Heretics no longer gib their sacrifice targets, instead spilling out their internal organs."
