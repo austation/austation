@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
     "map_name": "Delta Station",
     "map_link": "BeeStation/DeltaStation",
     "map_path": "map_files/Deltastation",
@@ -9,4 +10,16 @@
 	    "cargo": "cargo_delta",
 	    "whiteship": "whiteship_delta"
     }
+=======
+	"map_name": "Delta Station",
+	"map_link": "DeltaStation",
+	"map_path": "map_files/Deltastation",
+	"map_file": "DeltaStation2.dmm",
+	"shuttles": {
+		"emergency": "emergency_delta",
+		"ferry": "ferry_fancy",
+		"cargo": "cargo_delta",
+		"whiteship": "whiteship_delta"
+	}
+>>>>>>> b1178c83c7... standardize all the indents in map json files (#5852)
 }
