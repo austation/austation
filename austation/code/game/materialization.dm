@@ -7,12 +7,10 @@
 	canSmoothWith = null
 	flags_1 = NODECONSTRUCT_1
 	var/current_letter = ""
-	var/time_left = 30
-	var/next_tick
+	var/time_left = 300 // in deciseconds
 	var/active = FALSE
 	var/game_starting = FALSE // prep period
 	var/start_time = 10 // how many seconds people get to opt in
-	var/freedom_dist = 10 // How far are players allowed from the table
 	var/turns = 0 // how many turns have passed
 	var/static/list/atom_list // starts off as empty, we only want to make this if we have a table, otherwise we're just wasting memory
 	var/static/instances = 0 // amount of tables that currently exist. Used for clearing atom list
@@ -21,7 +19,7 @@
 	var/list/players = list()
 	var/mob/living/carbon/human/current_player
 	var/list/knockouts = list()
-	var/static/list/blacklist // handled in get_blacklist(). Contains root paths that aren't supposed to be spawned (Yes, a bit of a pain to maintain, but it's not the end of the world if someone forgets to update it. The alternative is having a variable on every damn datum)
+	var/static/list/blacklist // handled in setup_blacklist(). Contains root paths that aren't supposed to be spawned (Yes, a bit of a pain to maintain, but it's not the end of the world if someone forgets to update it. The alternative is having a variable on every damn datum)
 
 /obj/structure/table/mat_shiritori/Destroy()
 	if(active)
@@ -40,15 +38,14 @@
 	instances++
 	if(!atom_list)
 		atom_list = generate_name_list(typesof(/atom/movable))
-	if(!blacklist)
-		get_blacklist()
+	setup_blacklist()
 	players.Cut()
 	knockouts.Cut()
 	time_left = initial(time_left)
 	say("Game starting in [start_time] seconds. Place your hand on the table to play.")
 	INVOKE_ASYNC(src, .proc/start_game)
 
-// call ready up, do not call this
+//  Called after everything is ready
 /obj/structure/table/mat_shiritori/proc/start_game()
 	game_starting = TRUE
 	for(var/i in 1 to start_time)
@@ -58,11 +55,16 @@
 			if(1 to 4)
 				say("[start_time]...")
 		sleep(10)
+	if(QDELETED(src))
+		return
+	for(var/mob/living/L as() in players)
+		if(QDELETED(L) || L.stat == DEAD)
+			remove_player(L)
+			continue
 	if(length(players) > 1)
 		active = TRUE
 		current_player = pick(players)
 		START_PROCESSING(SSobj, src)
-		return TRUE
 	else
 		say("Insufficient players")
 	game_starting = FALSE
@@ -132,7 +134,7 @@
 		visible_message("<span class='warning'>Entity too vague or dangerous to summon.</span>")
 		return
 	var/obj/item/shiritori_ball/ball = new(loc)
-	ball.start_spawn(src, Opath, current_player)
+	ball.prime_spawn(src, Opath, current_player)
 	current_player.put_in_hands(ball)
 	spent_objs[phrase] = Opath
 	current_letter = phrase[length(phrase)]
@@ -157,9 +159,9 @@
 /obj/structure/table/mat_shiritori/proc/remove_player(mob/living/carbon/human/H)
 	players -= H
 	knockouts += H
-	if(current_player == H)
+	if(H == current_player)
 		switch_player()
-	if(!QDELETED(H) && istype(H)) // in case they got gibbed or some other weird thing happened
+	if(!QDELETED(H)) // in case they got gibbed or some other weird thing happened
 		REMOVE_TRAIT(H, TRAIT_PACIFISM, "shiritori")
 	if(length(players) == 1)
 		visible_message("<span class='boldannounce'>[current_player] has won the game!</span>")
@@ -174,7 +176,7 @@
 		index = 1 // move back to the bottom of the list
 	time_left = initial(time_left)
 	current_player = players[index]
-	if(QDELETED(current_player))
+	if(QDELETED(current_player) || current_player.stat == DEAD)
 		remove_player(current_player)
 		return
 	if(turns)
@@ -184,20 +186,18 @@
 		say("[current_player] is starting.")
 		to_chat(current_player, "<span class='notice'>You're going first, you get to pick the first word.")
 
-/obj/structure/table/mat_shiritori/process()
+/obj/structure/table/mat_shiritori/process(delta_time)
 	if(!active)
 		return PROCESS_KILL
 	for(var/mob/living/L as() in players)
 		if(QDELETED(L) || L.stat == DEAD)
 			remove_player(L)
 			continue
-	if(world.time > next_tick)
-		time_left--
-		next_tick = world.time + 10
-		if(time_left <= 0)
-			visible_message("<span class='warning'>[current_player] has ran out of time!</span>")
-			playsound(src, 'sound/effects/clock_tick.ogg', 120, FALSE, 2)
-			remove_player(current_player)
+	time_left -= delta_time
+	if(time_left <= 0)
+		visible_message("<span class='warning'>[current_player] has ran out of time!</span>")
+		playsound(src, 'sound/effects/clock_tick.ogg', 120, FALSE, 2)
+		remove_player(current_player)
 
 /obj/structure/table/mat_shiritori/examine()
 	. = ..()
@@ -217,28 +217,30 @@
 	icon_state = "shiri_ball"
 	var/entity_path
 	var/countdown = 5
-	var/next_tick
 	var/obj/structure/table/mat_shiritori/table
 	var/mob/living/carbon/human/owner
 
-/obj/item/shiritori_ball/proc/start_spawn(obj/structure/table/mat_shiritori/table, mob/living/carbon/human/owner, entity_path)
+/obj/item/shiritori_ball/proc/prime_spawn(obj/structure/table/mat_shiritori/table, mob/living/carbon/human/owner, entity_path)
 	src.entity_path = entity_path
 	src.table = table
 	src.owner = owner
-	INVOKE_ASYNC(src, .proc/spawnit)
+	spawnit()
 
+// Not using process because that only ticks every 2 seconds and we want to send a message every second
 /obj/item/shiritori_ball/proc/spawnit()
 	set waitfor = FALSE
 	for(var/i in 1 to countdown)
+		if(QDELETED(src))
+			return
 		if(owner)
 			to_chat(owner, "<span class='warning'>[countdown - (i - 1)]...</span>")
 		sleep(10)
 	var/atom/movable/M = new entity_path(loc)
-	table.entities += M
+	table?.entities += M
 	qdel(src)
 
 // Saves memory, dynamic list initialization
-/obj/structure/table/mat_shiritori/proc/get_blacklist()
+/obj/structure/table/mat_shiritori/proc/setup_blacklist()
 	if(!blacklist)
 		// !! This is not typesof, each path blacklists that atom only, good for "root" datums that have no functionality !!
 		blacklist = list(
@@ -270,10 +272,11 @@
 			/mob/living,
 			/mob
 			)
-		// !! This one IS typesof, this should contain game breaking items that can circumvent the game's rules (or make it really unfun) or break the server !!
+		// This one IS typesof, this should contain game breaking items that can circumvent the game's rules, make it really unfun or break the server
 		blacklist += typesof(
 			/obj/singularity,
 			/obj/item/projectile/hvp,
 			/obj/item/reagent_containers/food/snacks/store/bread/recycled,
-			/obj/machinery/portable_atmospherics
+			/obj/machinery/portable_atmospherics,
+			/obj/item/uplink
 		)
