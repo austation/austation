@@ -153,7 +153,7 @@
 	if(!density)
 		return
 
-	if(isidcard(I))
+	if(isidcard(I) || istype(I, /obj/item/pda))
 		if((check_safety(user) == TRUE) || check_access(I))
 			log_opening(I, user, check_safety(user))
 			playsound(src, 'sound/machines/beep.ogg', 50, 1)
