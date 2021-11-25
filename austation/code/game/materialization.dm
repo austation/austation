@@ -114,6 +114,11 @@
 	phrase = lowertext(phrase)
 	if(phrase[1] != current_letter)
 		visible_message("<span class='warning'>Invalid word, entity must begin with \an <b>[current_letter]</b></span>")
+		return
+	var/regex/valid_end_letter = regex(@"[a-z]")
+	if(!findtext(phrase, valid_end_letter, -1))
+		visible_message("<span class='warning'>Word must end with a letter.</span>")
+		return
 	var/Opath = atom_list[phrase]
 	if(!Opath)
 		visible_message("<span class='warning'>Invalid entity.</span>")
