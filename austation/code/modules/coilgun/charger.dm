@@ -41,7 +41,7 @@
 		to_chat(user, "<span class='notice'>You turn on \the [src].</span>")
 
 /obj/structure/disposalpipe/coilgun/charger/proc/H_power_failure(force = FALSE)
-	target_power_usage = min(target_power_usage - 20, 0)
+	target_power_usage = max(target_power_usage - 20, 0)
 	if(target_power_usage > 0)
 		visible_message("<span class='warning'>\The [src]'s power warning light flickers, throttling to [target_power_usage]%!</span>")
 	else
@@ -114,7 +114,7 @@
 			total_charge += C.charge
 			C.charge = 0
 		if(total_charge)
-			PJ.velocity += (round(total_charge / 1000)) * (SUPER_BASE ** PJ.velocity)
+			PJ.velocity += round(total_charge / 1000) * (SUPER_BASE ** PJ.velocity)
 			PJ.p_heat += 10
 			H.count = 1000
 			total_charge = 0
@@ -158,7 +158,7 @@
 	playsound(src, 'sound/machines/click.ogg', 20, TRUE)
 
 /obj/machinery/power/capacitor/proc/check_use()
-	return (!(stat & BROKEN) && anchored)
+	return !(stat & BROKEN) && anchored
 
 /obj/machinery/power/capacitor/process()
 	if(charge >= capacity || !powernet || !check_use())

@@ -16,11 +16,15 @@
 		first_coilgun = GLOB.coilgun_pipe_recipes[GLOB.coilgun_pipe_recipes[1]][1]
 	recipe = first_coilgun
 
-/datum/pipe_info/coilgun/New(label, obj/path, dt=PIPE_UNARY)
+/datum/pipe_info/coilgun
+	var/list/build_cost
+
+/datum/pipe_info/coilgun/New(label, obj/path, build_cost, dt=PIPE_UNARY)
 	name = label
 	id = path
 	icon_state = initial(path.icon_state)
 	dirtype = dt
+	src.build_cost = build_cost
 
 /datum/pipe_info/coilgun/Params()
-	return "dmake=[id]&type=[dirtype]"
+	return "cgmake=[id]&type=[dirtype]&matcost=[build_cost]"

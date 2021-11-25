@@ -64,16 +64,16 @@ GLOBAL_LIST_INIT(disposal_pipe_recipes, list(
 // austation start -- coilguns
 GLOBAL_LIST_INIT(coilgun_pipe_recipes, list(
 	"Coilgun Pipes" = list(
-		new /datum/pipe_info/coilgun("Pipe",			/obj/structure/disposalpipe/segment/coilgun, PIPE_BENDABLE),
-		new /datum/pipe_info/coilgun("Junction",		/obj/structure/disposalpipe/junction/coilgun, PIPE_TRIN_M),
+		new /datum/pipe_info/coilgun("Pipe",			/obj/structure/disposalpipe/segment/coilgun, 		list(/datum/material/iron = 1000, /datum/material/copper = 1000), PIPE_BENDABLE),
+		new /datum/pipe_info/coilgun("Junction",		/obj/structure/disposalpipe/junction/coilgun, 		list(/datum/material/iron = 1000, /datum/material/copper = 1000), PIPE_TRIN_M),
 	),
 	"Coilgun Devices" = list(
-		new /datum/pipe_info/coilgun("Charger",			/obj/structure/disposalpipe/coilgun/charger),
-		new /datum/pipe_info/coilgun("Super-Charger",	/obj/structure/disposalpipe/coilgun/super_charger),
-		new /datum/pipe_info/coilgun("Magnetizer",		/obj/structure/disposalpipe/coilgun/magnetizer),
-		new /datum/pipe_info/coilgun("Passive Cooler",	/obj/structure/disposalpipe/coilgun/cooler),
-		new /datum/pipe_info/coilgun("Active Cooler",	/obj/structure/disposalpipe/coilgun/cooler/active),
-		new /datum/pipe_info/coilgun("Barrel",			/obj/structure/disposalpipe/coilgun/barrel),
+		new /datum/pipe_info/coilgun("Charger",			/obj/structure/disposalpipe/coilgun/charger, 		list(/datum/material/iron = 2000, /datum/material/copper = 6000)),
+		new /datum/pipe_info/coilgun("Super-Charger",	/obj/structure/disposalpipe/coilgun/super_charger, 	list(/datum/material/iron = 2000, /datum/material/copper = 6000, /datum/material/gold = 4000)),
+		new /datum/pipe_info/coilgun("Magnetizer",		/obj/structure/disposalpipe/coilgun/magnetizer, 	list(/datum/material/iron = 6000, /datum/material/copper = 4000)),
+		new /datum/pipe_info/coilgun("Passive Cooler",	/obj/structure/disposalpipe/coilgun/cooler, 		list(/datum/material/iron = 2000, /datum/material/copper = 6000, /datum/material/gold = 2000)),
+		new /datum/pipe_info/coilgun("Active Cooler",	/obj/structure/disposalpipe/coilgun/cooler/active, 	list(/datum/material/iron = 1000, /datum/material/copper = 10000)),
+		new /datum/pipe_info/coilgun("Barrel",			/obj/structure/disposalpipe/coilgun/barrel, 		list(/datum/material/iron = 30000, /datum/material/copper = 8000)),
 
 
 	)
@@ -491,7 +491,7 @@ GLOBAL_LIST_INIT(fluid_duct_recipes, list(
 					return
 
 
-			//austation start -- Coilgun building, almost the same as the above. Leaves more room for future expansion
+			// austation start -- Coilgun building, almost the same as the above. Leaves more room for future expansion
 			if(COILGUN_CATEGORY)
 				if(!can_make_pipe)
 					return ..()

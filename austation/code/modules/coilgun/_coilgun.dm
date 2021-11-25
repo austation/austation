@@ -49,7 +49,7 @@
 		if(isliving(AM))
 			var/mob/living/L = AM
 			L.adjustBruteLoss(10)
-			if(ishuman(L) && !isdead(L))
+			if(ishuman(L) && L.stat != DEAD)
 				L.Paralyze(amount = 50, ignore_canstun = TRUE)
 				boolet.mass = 5 // The soul has weight. or something.
 				for(var/i in 1 to rand(1, 3))
@@ -121,10 +121,7 @@
 	var/flipdir = turn(H.dir, 180)
 	if(dir == flipdir)
 		return pick(turn(flipdir, 90), turn(flipdir, -90))
-	for(var/atom/movable/AM in H)
-		var/obj/item/projectile/hvp/PJ = AM
-		if(!istype(PJ))
-			continue
+	for(var/obj/item/projectile/hvp/PJ in H)
 		if(speed_limit > PJ.velocity)
 			break
 		var/mask = dpdir & (~dir) // see disposal junctions for documentation (or lack there-of ;_;)

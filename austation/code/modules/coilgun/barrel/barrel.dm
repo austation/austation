@@ -40,7 +40,7 @@
 	if(!target)
 		target = get_turf_in_angle(_angle, get_turf(src), barrel_length)
 	var/path = getline(get_turf(src), target)
-	for(var/atom/A in path)
+	for(var/atom/A as() in path)
 		if(A.density)
 			return FALSE
 	return TRUE

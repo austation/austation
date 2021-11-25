@@ -201,13 +201,13 @@
 		velocity = momentum / mass
 	if(add_special && spec_amt > max_spec && apply_special(AM))
 		spec_amt++
-	if(contents.len)
+	if(length(contents))
 		var/mutable_appearance/FA = mutable_appearance(AM.icon, AM.icon_state, layer)
 		var/matrix/M = matrix()
 		if(rotation)
 			M.Turn(rand(1, 360))
 		if(pixel_offset)
-			var/amt = 1 + contents.len * 2
+			var/amt = 1 + length(contents) * 2
 			M.Translate(amt * cos(Angle), amt * sin(Angle))
 		FA.transform = M
 		add_overlay(FA, TRUE)
@@ -221,7 +221,7 @@
 			var/turf/closed/wall/W = T
 			if(W.girder_type)
 				AM = new W.girder_type
-		T.ScrapeAway(flags = CHANGETURF_INHERIT_AIR)
+		T.ScrapeAway(1, CHANGETURF_INHERIT_AIR)
 		return
 	AM.forceMove(src)
 
@@ -241,7 +241,7 @@
 			remove_object(AM, move_loc)
 
 /obj/item/projectile/hvp/Range()
-	velocity = momentum / mass
+	velocity = round(momentum / mass, 1)
 	if(velocity < 1)
 		gameover()
 		return
@@ -250,14 +250,14 @@
 		var/list/choices = list()
 		for(var/mob/living/L in range(switch_range, src))
 			choices += L
-		if(LAZYLEN(choices)) // target acquired!
+		if(length(choices)) // target acquired!
 			var/atom/movable/target = pick(choices)
 			var/oldloc = loc
 			do_teleport(src, get_turf(target), asoundin = 'sound/effects/phasein.ogg', channel = TELEPORT_CHANNEL_BLUESPACE)
 			do_teleport(target, oldloc, asoundin = 'sound/effects/phasein.ogg', channel = TELEPORT_CHANNEL_BLUESPACE)
 			target.throw_at(get_edge_target_turf( target, angle2dir(Angle) ), 200, max( round(log(momentum)), 1))
 
-	if(isfloorturf(get_turf(src)))
+	if(isfloorturf(loc))
 		momentum--
 	// this is basically as fast as we can go without async memes.
 	speed = max(-(1.0008 ** velocity) + 2.1, 0.1)
@@ -269,7 +269,7 @@
 
 /// melts the projectile when overheated
 /obj/item/projectile/hvp/proc/overspice()
-	if(!LAZYLEN(contents))
+	if(!length(contents))
 		qdel(src)
 		return
 	var/turf/T = get_turf(src)
@@ -374,7 +374,7 @@
 
 /obj/item/projectile/hvp/Exited(atom/movable/AM)
 	. = ..()
-	if(!contents.len)
+	if(!length(contents))
 		qdel(src)
 
 /obj/item/projectile/hvp/pipe_eject(direction)
