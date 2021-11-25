@@ -36,8 +36,6 @@
 	if(active || game_starting)
 		return
 	instances++
-	if(!atom_list)
-		atom_list = generate_name_list(typesof(/atom/movable))
 	setup_blacklist()
 	players.Cut()
 	knockouts.Cut()
@@ -63,6 +61,8 @@
 			remove_player(L)
 			continue
 	if(length(players) > 1)
+		if(!atom_list)
+			atom_list = generate_name_list(typesof(/atom/movable))
 		active = TRUE
 		current_player = pick(players)
 		START_PROCESSING(SSobj, src)
@@ -284,5 +284,6 @@
 			/obj/item/projectile/hvp,
 			/obj/item/reagent_containers/food/snacks/store/bread/recycled,
 			/obj/machinery/portable_atmospherics,
-			/obj/item/uplink
+			/obj/item/uplink,
+			/obj/machinery/nuclearbomb
 		)
