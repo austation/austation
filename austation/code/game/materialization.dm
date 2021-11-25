@@ -49,11 +49,12 @@
 /obj/structure/table/mat_shiritori/proc/start_game()
 	game_starting = TRUE
 	for(var/i in 1 to start_time)
-		switch(start_time - (i - 1))
+		var/countdown = start_time - (i - 1)
+		switch(countdown)
 			if(5)
 				say("Game starting in 5...")
 			if(1 to 4)
-				say("[start_time]...")
+				say("[countdown]...")
 		sleep(10)
 	if(QDELETED(src))
 		return
@@ -147,12 +148,12 @@
 	if((H in players) || (H in knockouts))
 		return
 	players += H
-	to_chat(H, "<span class='notice'>Welcome to <b>Materialization Shiritori!</b> \
-				Similar to traditional Shiritori, but any valid word submitted by the player will materialize infront of them, as long as it exists in this world.</span> \
-				<span class='info'>The last player standing is declared as the winner, players can be eliminated in 3 different ways: \
-				<b>1:/b> Failing to name a valid entity within 30 seconds of the last player's turn. \
-				<b>2:/b> Attempting to summon an entity that has already been mentioned. \
-				<b>3:</b> Death. \
+	to_chat(H, "<span class='notice'>Welcome to <b>Materialization Shiritori!</b>\n \
+				Similar to traditional Shiritori, but any valid word submitted by the player will materialize infront of them, as long as it exists in this world.</span>\n \
+				<span class='info'>The last player standing is declared as the winner, players can be eliminated in 3 different ways:\n \
+				<b>1:</b> Failing to name a valid entity within 30 seconds of the last player's turn.\n \
+				<b>2:</b> Attempting to summon an entity that has already been mentioned.\n \
+				<b>3:</b> Death.\n \
 				You cannot harm your opponents through <b>direct</b> means. Any and all summoned entities will be destroyed once the game has concluded.")
 	ADD_TRAIT(H, TRAIT_PACIFISM, "shiritori")
 
