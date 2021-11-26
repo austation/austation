@@ -1,0 +1,5 @@
+author: "DrDuckedGoose"
+delete-after: True
+changes: 
+  - rscadd: "Gympies inherit edited seed-names"
+  - tweak: "Changes some weird code"
