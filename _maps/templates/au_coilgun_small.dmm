@@ -4,7 +4,8 @@
 /area/space)
 "b" = (
 /obj/structure/disposalpipe/segment/coilgun{
-	dir = 9
+	dir = 9;
+	max_corner_velocity = 500000000
 	},
 /turf/open/floor/plating,
 /area/space)
@@ -34,6 +35,7 @@
 "y" = (
 /obj/structure/disposalpipe/coilgun/cooler/active{
 	dir = 1;
+	heat_removal = 50;
 	hugbox = 1
 	},
 /turf/open/floor/plating,
@@ -58,7 +60,8 @@
 /area/space)
 "I" = (
 /obj/structure/disposalpipe/segment/coilgun{
-	dir = 5
+	dir = 5;
+	max_corner_velocity = 500000000
 	},
 /turf/open/floor/plating,
 /area/space)
@@ -68,7 +71,8 @@
 /area/space)
 "M" = (
 /obj/structure/disposalpipe/segment/coilgun{
-	dir = 10
+	dir = 10;
+	max_corner_velocity = 500000000
 	},
 /turf/open/floor/plating,
 /area/space)
