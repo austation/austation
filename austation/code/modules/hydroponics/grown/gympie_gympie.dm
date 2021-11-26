@@ -40,8 +40,7 @@
 
 /obj/item/seeds/gympie_gympie/on_reagent_change(changetype)
 	if(changetype == ADD_REAGENT)
-		var/S = reagents.has_reagent(awaken_reagent)
-		if(S)
+		if(reagents.has_reagent(awaken_reagent))
 			spawn(30)
 				if(!QDELETED(src))
 					var/mob/living/simple_animal/hostile/gympie_gympie/G = new /mob/living/simple_animal/hostile/gympie_gympie(get_turf(src.loc))
