@@ -68,10 +68,9 @@
 				var/speed_increase = (prelim * BASE ** PJ.velocity) * power_percent
 				PJ.velocity += round(speed_increase / PJ.mass * modifier, 1)
 				PJ.p_heat += heat_increase * power_percent
-				PJ.on_transfer()
+				PJ.coil_act()
 				cps = round(PJ.velocity * 3.6, 1) // m/s to km/h
-				playsound(src, 'sound/effects/bamf.ogg', 20, 1)
-				playsound(src, 'sound/weapons/emitter2.ogg', 50, 1)
+				playsound(src, 'sound/effects/bamf.ogg', 50, 1)
 				current_power_use = PJ.velocity * 25 * prelim
 				attached.add_delayedload(current_power_use * power_percent)
 				H.count = 1000
@@ -117,6 +116,7 @@
 			PJ.velocity += round((total_charge / 1000) * (SUPER_BASE ** PJ.velocity), 1)
 			PJ.p_heat += 10
 			H.count = 1000
+			PJ.coil_act()
 			total_charge = 0
 			playsound(src, 'austation/sound/effects/coilgun_super.ogg', 100, 1)
 			playsound(src, 'sound/effects/bamf.ogg', 50, 1)

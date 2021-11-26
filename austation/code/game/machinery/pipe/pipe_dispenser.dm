@@ -15,12 +15,7 @@
 
 /obj/machinery/pipedispenser/disposal/coilgun/interact(mob/user)
 
-	var/dat = "Materials:<ul>"
-	var/datum/component/material_container/MC = GetComponent(/datum/component/material_container)
-	for(var/i in MC.materials)
-		var/datum/material/M = i
-		dat += "[M.name] - [MC.materials[i]] \[<a href='?src=[REF(src)];mateject=[REF(M)]'>Eject</a>\]"
-	dat += "</ul>"
+	var/dat = ""
 	var/recipes = GLOB.coilgun_pipe_recipes
 	for(var/category in recipes)
 		dat += "<b>[category]:</b><ul>"
@@ -28,8 +23,13 @@
 			dat += I.Render(src)
 
 		dat += "</ul>"
+	dat += "Materials (sheets):<ul>"
+	var/datum/component/material_container/MC = GetComponent(/datum/component/material_container)
+	for(var/datum/material/M in MC.materials)
+		dat += "<li>[M.name] - [MC.materials[M]] \[<a href='?src=[REF(src)];mateject=[REF(M)]'>Eject</a>\]</li>"
+	dat += "</ul>"
 
-	user << browse("<HEAD><TITLE>[src]</TITLE></HEAD><TT>[dat]</TT>", "window=pipedispenser")
+	user << browse("<HEAD><TITLE>[src]</TITLE></HEAD><TT>[dat]</TT>", "window=coildispenser")
 
 /obj/machinery/pipedispenser/disposal/coilgun/Topic(href, href_list)
 	if(..())
@@ -41,12 +41,9 @@
 			var/p_type = text2path(href_list["cgmake"])
 			if (!verify_recipe(GLOB.coilgun_pipe_recipes, p_type))
 				return
-			var/datum/component/material_container/MC = GetComponent(/datum/component/material_container)
-			var/list/buildcost = href_list["matcost"]
-			for(var/datum/material/M in buildcost)
-				if(!MC.has_enough_of_material(M, buildcost[M]))
-					to_chat(usr, "<span class='warning'>Insufficient resources.</span>")
-					return
+			if(!handle_resources(p_type))
+				to_chat(usr, "<span class='warning'>Insufficient resources.</span>")
+				return
 			var/obj/structure/disposalconstruct/coilgun/C = new (loc, p_type)
 
 			if(!C.can_place())
@@ -63,3 +60,10 @@
 		var/datum/component/material_container/MC = GetComponent(/datum/component/material_container)
 		MC.retrieve_sheets(MC.materials[M], M, loc)
 
+/obj/machinery/pipedispenser/disposal/coilgun/proc/handle_resources(cgtype, check_only = FALSE)
+	for(var/cat in GLOB.coilgun_pipe_recipes)
+		for(var/datum/pipe_info/coilgun/CGI as() in GLOB.coilgun_pipe_recipes[cat])
+			if(CGI.id != cgtype)
+				continue
+			var/datum/component/material_container/MC = GetComponent(/datum/component/material_container)
+			return check_only ? MC.has_materials(CGI.build_cost) : MC.use_materials(CGI.build_cost)

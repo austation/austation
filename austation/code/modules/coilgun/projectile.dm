@@ -263,7 +263,7 @@
 	speed = max(-(1.0008 ** velocity) + 2.1, 0.1)
 
 /// called when we pass through a charger
-/obj/item/projectile/hvp/proc/on_transfer()
+/obj/item/projectile/hvp/proc/coil_act()
 	if(p_heat >= heat_capacity)
 		overspice()
 
@@ -301,7 +301,7 @@
 	for(var/atom/movable/AM in contents)
 		AM.forceMove(T)
 		death_special(AM)
-		if(collision && !QDELETED(AM))
+		if(collision && !QDELETED(AM)) // In case death_special() deleted our item
 			var/range = rand(1, 4)
 			AM.throw_at(get_ranged_target_turf(src, pick(GLOB.cardinals), range), range, 1)
 	qdel(src)
@@ -344,6 +344,7 @@
 	if(special != original_spec)
 		return TRUE
 
+// If this gets too big it'll be better to take the hit and make an hvp_death proc on /atom/movable
 /// Called when projectile runs out of momentum
 /obj/item/projectile/hvp/proc/death_special(atom/movable/AM)
 	if(istype(AM, /obj/item/reagent_containers) && !istype(AM, /obj/item/reagent_containers/food))

@@ -27,4 +27,22 @@
 	src.build_cost = build_cost
 
 /datum/pipe_info/coilgun/Params()
-	return "cgmake=[id]&type=[dirtype]&matcost=[build_cost]"
+	return "cgmake=[id]&type=[dirtype]"
+
+/datum/pipe_info/coilgun/Render(dispenser)
+	var/dat = "<li><a href='?src=[REF(dispenser)]&[Params()]'>[name]</a></li>"
+
+	// Stationary pipe dispensers don't allow you to pre-select pipe directions.
+	// This makes it impossble to spawn bent versions of bendable pipes.
+	// We add a "Bent" pipe type with a preset diagonal direction to work around it.
+	// Stationary pipe dispensers also have a build cost for their pipes
+	if(istype(dispenser, /obj/machinery/pipedispenser) && (dirtype == PIPE_BENDABLE || dirtype == /obj/item/pipe/binary/bendable))
+		var/cost_data
+		for(var/datum/material/M in build_cost)
+			if(cost_data)
+				cost_data += ", "
+			cost_data += "[M.name] - [build_cost[M] / MINERAL_MATERIAL_AMOUNT]"
+		dat = "<li><a href='?src=[REF(dispenser)]&[Params()]'>[name]</a>[cost_data ? " | [cost_data]" : ""]</li>"
+		dat += "<li><a href='?src=[REF(dispenser)]&[Params()]&dir=[NORTHEAST]'>Bent [name]</a>[cost_data ? " | [cost_data]" : ""]</li>"
+
+	return dat

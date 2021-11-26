@@ -119,8 +119,8 @@
 	if(dir == flipdir)
 		return pick(turn(flipdir, 90), turn(flipdir, -90))
 	for(var/obj/item/projectile/hvp/PJ in H)
-		if(speed_limit > PJ.velocity)
-			break
+		if(speed_limit >= PJ.velocity)
+			continue
 		var/mask = dpdir & (~dir) // see disposal junctions for documentation (or lack there-of ;_;)
 		for(var/D in GLOB.cardinals)
 			if(D & mask)
