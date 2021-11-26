@@ -118,7 +118,8 @@
 			PJ.p_heat += 10
 			H.count = 1000
 			total_charge = 0
-			playsound(src, 'sound/effects/bamf.ogg', 100, 1)
+			playsound(src, 'austation/sound/effects/coilgun_super.ogg', 100, 1)
+			playsound(src, 'sound/effects/bamf.ogg', 50, 1)
 	return ..()
 
 // ----- Capacitor -----
