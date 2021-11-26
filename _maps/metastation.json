@@ -1,18 +1,6 @@
 {
-<<<<<<< HEAD
-    "map_name": "MetaStation",
-    "map_link": "BeeStation/MetaStation",
-    "map_path": "map_files/MetaStation",
-    "map_file": "MetaStation.dmm",
-    "shuttles": {
-	    "cargo": "cargo_box",
-	    "ferry": "ferry_fancy",
-	    "whiteship": "whiteship_meta",
-	    "emergency": "emergency_meta"
-    }
-=======
 	"map_name": "MetaStation",
-	"map_link": "MetaStation",
+	"map_link": "BeeStation/MetaStation",
 	"map_path": "map_files/MetaStation",
 	"map_file": "MetaStation.dmm",
 	"shuttles": {
@@ -21,5 +9,4 @@
 		"whiteship": "whiteship_meta",
 		"emergency": "emergency_meta"
 	}
->>>>>>> b1178c83c7... standardize all the indents in map json files (#5852)
 }
