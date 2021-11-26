@@ -23,10 +23,8 @@
 	dat += "</ul>"
 	var/recipes = GLOB.coilgun_pipe_recipes
 	for(var/category in recipes)
-		var/list/cat_recipes = recipes[category]
 		dat += "<b>[category]:</b><ul>"
-
-		for(var/datum/pipe_info/I in cat_recipes)
+		for(var/datum/pipe_info/I as() in recipes[category])
 			dat += I.Render(src)
 
 		dat += "</ul>"

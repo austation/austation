@@ -7750,7 +7750,7 @@
 /turf/open/floor/plating,
 /area/engine/engineering)
 "aJm" = (
-/obj/machinery/shieldgen,
+/obj/machinery/pipedispenser/disposal/coilgun,
 /turf/open/floor/plating,
 /area/engine/engineering)
 "aJp" = (
@@ -42881,7 +42881,7 @@
 /turf/closed/wall,
 /area/hallway/secondary/entry)
 "fdr" = (
-/obj/structure/closet/firecloset,
+/obj/machinery/shieldgen,
 /turf/open/floor/plating,
 /area/engine/engineering)
 "fdv" = (

@@ -15,7 +15,7 @@
 	)
 
 /obj/structure/disposalpipe/coilgun/transfer(obj/structure/disposalholder/H)
-	if(LAZYLEN(H.contents))
+	if(length(H.contents))
 		return ..()
 	qdel(H)
 
@@ -27,7 +27,7 @@
 	icon_state = "magnet"
 
 /obj/structure/disposalpipe/coilgun/magnetizer/transfer(obj/structure/disposalholder/H)
-	if(LAZYLEN(H.contents) > 1)
+	if(length(H.contents) > 1)
 		visible_message("<span class='warning'>\The [src] can't magnetize more than one object at a time!</span>")
 		for(var/atom/movable/AM in H.contents)
 			AM.forceMove(get_turf(src))
@@ -37,14 +37,11 @@
 		return
 
 	for(var/atom/movable/AM in H.contents)
-		var/obj/item/projectile/hvp/boolet
 		if(istype(AM, /obj/item/projectile/hvp))
 			continue
-
-		else
-			boolet = new(H)
-			boolet.add_object(AM)
-			boolet.velocity = 1
+		var/obj/item/projectile/hvp/boolet = new(H)
+		boolet.add_object(AM)
+		boolet.velocity = 1
 		playsound(src, 'sound/effects/spray.ogg', 40, 1)
 		if(isliving(AM))
 			var/mob/living/L = AM

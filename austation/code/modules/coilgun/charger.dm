@@ -56,7 +56,7 @@
 	if(!attached)
 		H_power_failure(TRUE)
 		return ..()
-	for(var/atom/movable/AM in H.contents) // run the loop below for every movable that passes through the charger
+	for(var/atom/movable/AM as() in H.contents) // run the loop below for every movable that passes through the charger
 		if(istype(AM, /obj/item/projectile/hvp)) // if it's a coilgun projectile, continue
 			var/obj/item/projectile/hvp/PJ = AM
 			if(attached.powernet && target_power_usage)
@@ -64,12 +64,12 @@
 				if(prelim < 1)
 					H_power_failure()
 					return ..()
-				var/power_percent = target_power_usage / 100
+				var/power_percent = target_power_usage * 0.01
 				var/speed_increase = (prelim * BASE ** PJ.velocity) * power_percent
-				PJ.velocity += (speed_increase / PJ.mass) * modifier
+				PJ.velocity += round(speed_increase / PJ.mass * modifier, 1)
 				PJ.p_heat += heat_increase * power_percent
 				PJ.on_transfer()
-				cps = round(PJ.velocity * 3.6) // m/s to km/h
+				cps = round(PJ.velocity * 3.6, 1) // m/s to km/h
 				playsound(src, 'sound/effects/bamf.ogg', 20, 1)
 				playsound(src, 'sound/weapons/emitter2.ogg', 50, 1)
 				current_power_use = PJ.velocity * 25 * prelim
@@ -106,7 +106,7 @@
 	var/total_charge = 0
 
 /obj/structure/disposalpipe/coilgun/super_charger/transfer(obj/structure/disposalholder/H)
-	if(!LAZYLEN(H.contents))
+	if(!length(H.contents))
 		qdel(H)
 		return
 	for(var/obj/item/projectile/hvp/PJ in H.contents)
@@ -114,16 +114,15 @@
 			total_charge += C.charge
 			C.charge = 0
 		if(total_charge)
-			PJ.velocity += round(total_charge / 1000) * (SUPER_BASE ** PJ.velocity)
+			PJ.velocity += round((total_charge / 1000) * (SUPER_BASE ** PJ.velocity), 1)
 			PJ.p_heat += 10
 			H.count = 1000
 			total_charge = 0
 			playsound(src, 'sound/effects/bamf.ogg', 100, 1)
-			playsound(src, 'sound/effects/seedling_chargeup.ogg', 70, 1)
 	return ..()
 
 // ----- Capacitor -----
-// The max speed capacitors can recharge (watts)
+// The max speed capacitors can recharge (watts) per second
 #define CAPACITOR_RECHARGE 50000
 
 /obj/machinery/power/capacitor
@@ -134,15 +133,21 @@
 	density = TRUE
 	var/charge = 0
 	var/capacity = 1e6
+	var/obj/structure/cable/attached
 
-/obj/machinery/power/capacitor/New()
-	..()
+/obj/machinery/power/capacitor/Initialize()
+	. = ..()
 	STOP_PROCESSING(SSmachines, src)
 	connect_to_network()
 
+/obj/machinery/power/capacitor/connect_to_network()
+	var/turf/T = get_turf(src)
+	attached = T.get_cable_node()
+	return attached
+
 /obj/machinery/power/capacitor/interact(mob/user)
 	add_fingerprint(user)
-	if(!powernet)
+	if(!attached.powernet)
 		to_chat(user, "<span class='warning'>\The [src] must be placed over an exposed, powered cable node!</span>")
 		return
 	if(!check_use())
@@ -152,7 +157,7 @@
 		to_chat(user, "<span class='notice'>\The [src] is no longer charging.</span>")
 		STOP_PROCESSING(SSmachines, src)
 	else
-		to_chat(user, "<span class='notice'>You set \the [src]'s power setting to charge.</span>")
+		to_chat(user, "<span class='notice'>You set [src]'s power setting to charge.</span>")
 		START_PROCESSING(SSmachines, src)
 	log_game("Capacitor turned [processing ? "OFF" : "ON"] by [key_name(user)] in [AREACOORD(src)]")
 	playsound(src, 'sound/machines/click.ogg', 20, TRUE)
@@ -160,13 +165,17 @@
 /obj/machinery/power/capacitor/proc/check_use()
 	return !(stat & BROKEN) && anchored
 
-/obj/machinery/power/capacitor/process()
-	if(charge >= capacity || !powernet || !check_use())
+/obj/machinery/power/capacitor/process(delta_time)
+	if(charge >= capacity || !check_use())
 		return
-	var/input = clamp(surplus() / 10, 0, CAPACITOR_RECHARGE)
+	if(!attached || attached.loc != loc)
+		connect_to_network()
+		if(!attached)
+			return
+	var/input = clamp(attached.surplus() * 0.1, 0, CAPACITOR_RECHARGE * delta_time)
 	if(input)
 		charge = min(input + charge, capacity)
-		add_load(input)
+		attached.add_load(input)
 
 // TODO: this is bad but I can't remember why, fix it >:(
 /obj/machinery/power/capacitor/wrench_act(mob/user, obj/item/I)
@@ -178,7 +187,7 @@
 			to_chat(user, "<span class='warning'>\The [src] must be placed over an exposed, powered cable node!</span>")
 			return
 		setAnchored(TRUE)
-		to_chat(user, "<span class='notice'>You bolt \the [src] to the floor and attach it to the cable.</span>")
+		to_chat(user, "<span class='notice'>You bolt [src] to the floor and attach it to the cable.</span>")
 	return TRUE
 
 /obj/machinery/power/capacitor/can_be_unfasten_wrench(mob/user, silent)
@@ -191,7 +200,7 @@
 /obj/machinery/power/capacitor/examine(mob/user)
 	. = ..()
 	. += "<span class='notice'>The charge meter reads: <b>[DisplayPower(charge)]/[DisplayPower(capacity)]</b>.</span>"
-	. += "<span class='notice'><i>[charge/capacity*100]% charged.</i></span>"
+	. += "<span class='notice'><i>[round(charge/capacity*100, 0.5)]% charged.</i></span>"
 
 #undef BASE
 #undef POWER_DIVIDER

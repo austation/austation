@@ -29,7 +29,7 @@
 
 /// Handles item merging inside the modifier
 /obj/structure/disposalpipe/coilgun/modifier/proc/combine(obj/item/projectile/hvp/PJ)
-	if(!length(contents)) // If we have no object to combine the projectile with, return
+	if(!length(contents)) // We have no object to merge
 		return
 	for(var/obj/O in contents)
 		if(length(contents) > 1) // eject objects inside of us until there's only one, if there were somehow multiple
@@ -41,8 +41,6 @@
 		playsound(src, 'sound/effects/bang.ogg', 50, 0, 0)
 		PJ.velocity -= req_speed * 0.5
 		PJ.add_object(O)
-//		PJ.overlay_atom(O, rotation = TRUE)
-//		O.loc = PJ
 		break
 
 
