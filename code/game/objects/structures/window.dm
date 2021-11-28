@@ -136,9 +136,19 @@
 
 /obj/structure/window/proc/on_exit(datum/source, atom/movable/leaving, direction)
 	SIGNAL_HANDLER
-
-	if (istype(leaving) && (leaving.pass_flags & PASSGLASS))
+	//austation begin -- uncomment if some poor sud actually went ahead and fix this, looking at you, kube
+	if(leaving.movement_type & PHASING)
 		return
+
+	if(leaving == src)
+		return // Let's not block ourselves.
+
+	if (leaving.pass_flags & pass_flags_self)
+		return
+
+	//if (istype(leaving) && (leaving.pass_flags & PASSGLASS))
+		//return
+	//austation end
 
 	if (fulltile)
 		return
