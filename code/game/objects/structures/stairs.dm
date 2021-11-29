@@ -52,6 +52,11 @@
 /obj/structure/stairs/proc/on_exit(datum/source, atom/movable/leaving, direction)
 	SIGNAL_HANDLER
 
+	//austation begin -- uncomment if some poor sud actually went ahead and fix this, looking at you, kube
+	if(leaving == src)
+		return // Let's not block ourselves.
+	//austation end
+
 	if(!isobserver(leaving) && isTerminator() && direction == dir)
 		INVOKE_ASYNC(src, .proc/stair_ascend, leaving)
 		leaving.Bump(src)

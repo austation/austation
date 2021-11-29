@@ -84,6 +84,10 @@
 
 /obj/structure/railing/proc/on_exit(datum/source, atom/movable/leaving, direction)
 	SIGNAL_HANDLER
+	//austation begin -- uncomment if some poor sud actually went ahead and fix this, looking at you, kube
+	if(leaving == src)
+		return // Let's not block ourselves.
+	//austation end
 
 	if(!(direction & dir))
 		return
