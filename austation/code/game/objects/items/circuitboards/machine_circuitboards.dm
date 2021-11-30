@@ -1,5 +1,5 @@
 /obj/item/circuitboard/machine/cake_printer
-	name = "circuit board (cake printer)"
+	name = "cake printer (Machine Board)"
 	build_path = /obj/machinery/cake_printer
 	req_components = list(/obj/item/stock_parts/manipulator = 1, /obj/item/reagent_containers/glass/beaker/large = 1, /obj/item/stock_parts/matter_bin = 1)
 	needs_anchored = FALSE
@@ -15,4 +15,13 @@
 		/obj/item/stock_parts/manipulator/femto = 3,
 		/obj/item/stock_parts/scanning_module = 1,
 		/obj/item/stack/ore/bluespace_crystal = 11)
+	needs_anchored = FALSE
+
+/obj/item/circuitboard/machine/coilgun_capacitor
+	name = "coilgun capacitor (Machine Board)"
+	icon_state = "engineering"
+	build_path = /obj/machinery/power/capacitor
+	req_components = list(
+		/obj/item/stock_parts/capacitor = 4
+	)
 	needs_anchored = FALSE

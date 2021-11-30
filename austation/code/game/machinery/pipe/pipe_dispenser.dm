@@ -65,5 +65,13 @@
 		for(var/datum/pipe_info/coilgun/CGI as() in GLOB.coilgun_pipe_recipes[cat])
 			if(CGI.id != cgtype)
 				continue
+			if(!length(CGI.build_cost))
+				return TRUE
 			var/datum/component/material_container/MC = GetComponent(/datum/component/material_container)
 			return check_only ? MC.has_materials(CGI.build_cost) : MC.use_materials(CGI.build_cost)
+
+/obj/machinery/pipedispenser/disposal/coilgun/debug
+	name = "debug coilgun pipe dispenser"
+
+/obj/machinery/pipedispenser/disposal/coilgun/debug/handle_resources(cgtype, check_only = FALSE))
+	return ..() || TRUE

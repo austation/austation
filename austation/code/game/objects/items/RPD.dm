@@ -19,13 +19,14 @@
 /datum/pipe_info/coilgun
 	var/list/build_cost
 
-/datum/pipe_info/coilgun/New(label, obj/path, list/build_cost, dt=PIPE_UNARY)
+/datum/pipe_info/coilgun/New(label, obj/path, build_cost, dt=PIPE_UNARY)
 	name = label
 	id = path
 	icon_state = initial(path.icon_state)
 	dirtype = dt
-	for(var/m_path in build_cost)
-		src.build_cost[getmaterialref(m_path)] = build_cost[m_path] // looks confusing but all this does is convert (material_path = amount) to (material_datum = amount)
+	for(var/m_path in build_cost) // looks confusing but all this does is convert (material_path = amount) to (material_datum = amount)
+		var/datum/material/M = getmaterialref(m_path) || m_path // with a failsafe in case we somehow were already assigned the datum
+		src.build_cost[M] = build_cost[m_path]
 
 /datum/pipe_info/coilgun/Params()
 	return "cgmake=[id]&type=[dirtype]"

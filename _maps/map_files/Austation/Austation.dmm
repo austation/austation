@@ -8655,6 +8655,8 @@
 	amount = 30
 	},
 /obj/item/gps,
+/obj/item/circuitboard/machine/coilgun_capacitor,
+/obj/item/circuitboard/machine/coilgun_capacitor,
 /turf/open/floor/plating,
 /area/engine/engineering)
 "aNt" = (
