@@ -131,7 +131,7 @@
 	desc = "A high current capacitor capable of rapidly discharging power to adjacent coilgun <b>super-chargers</b>."
 	icon = 'austation/icons/obj/power.dmi'
 	icon_state = "capacitor"
-	circuit = /obj/item/circuitboard/machine/capacitor
+	circuit = /obj/item/circuitboard/machine/coilgun_capacitor
 	density = TRUE
 	var/charge = 0
 	var/capacity = 1e6
