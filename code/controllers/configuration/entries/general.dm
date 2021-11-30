@@ -292,6 +292,8 @@
 	min_val = 0
 	integer = FALSE
 
+/datum/config_entry/flag/manual_note_expiry //Notes can only have expiration times added after creation, not during. Will also prevent automatic notes from expiring.
+
 /datum/config_entry/flag/maprotation
 
 /datum/config_entry/flag/automapvote
