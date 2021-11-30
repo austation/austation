@@ -73,5 +73,5 @@
 /obj/machinery/pipedispenser/disposal/coilgun/debug
 	name = "debug coilgun pipe dispenser"
 
-/obj/machinery/pipedispenser/disposal/coilgun/debug/handle_resources(cgtype, check_only = FALSE))
+/obj/machinery/pipedispenser/disposal/coilgun/debug/handle_resources(cgtype, check_only = FALSE)
 	return ..() || TRUE

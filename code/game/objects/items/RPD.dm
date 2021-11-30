@@ -64,7 +64,7 @@ GLOBAL_LIST_INIT(disposal_pipe_recipes, list(
 // austation start -- coilguns
 GLOBAL_LIST_INIT(coilgun_pipe_recipes, list(
 	"Coilgun Pipes" = list(
-		new /datum/pipe_info/coilgun("Pipe",			/obj/structure/disposalpipe/segment/coilgun, 		list(/datum/material/iron = 1000, /datum/material/copper = 1000), PIPE_BENDABLE)
+		new /datum/pipe_info/coilgun("Pipe",			/obj/structure/disposalpipe/segment/coilgun, 		list(/datum/material/iron = 1000, /datum/material/copper = 1000), PIPE_BENDABLE),
 	),
 	"Coilgun Devices" = list(
 		new /datum/pipe_info/coilgun("Charger",			/obj/structure/disposalpipe/coilgun/charger, 		list(/datum/material/iron = 2000, /datum/material/copper = 6000)),

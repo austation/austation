@@ -55,3 +55,12 @@
 	template_height = 3
 	template_width = 5
 	stock = 1
+
+/datum/map_template/random_room/sk_rdm214
+	name = "coilgun"
+	room_id = "sk_rdm214_coilgun"
+	mappath = "_maps/RandomRooms/3x3/sk_rdm214_coilgun.dmm"
+	centerspawner = FALSE
+	template_height = 3
+	template_width = 3
+	stock = 1

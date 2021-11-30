@@ -1,0 +1,32 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/turf/open/floor/plating,
+/area/template_noop)
+"g" = (
+/obj/structure/closet/crate,
+/obj/item/circuitboard/machine/coilgun_capacitor,
+/obj/item/circuitboard/machine/coilgun_capacitor,
+/obj/item/circuitboard/machine/coilgun_capacitor,
+/obj/item/circuitboard/machine/coilgun_capacitor,
+/turf/open/floor/plating,
+/area/template_noop)
+"A" = (
+/obj/machinery/pipedispenser/disposal/coilgun,
+/turf/open/floor/plating,
+/area/template_noop)
+
+(1,1,1) = {"
+g
+a
+a
+"}
+(2,1,1) = {"
+a
+A
+a
+"}
+(3,1,1) = {"
+a
+a
+a
+"}
