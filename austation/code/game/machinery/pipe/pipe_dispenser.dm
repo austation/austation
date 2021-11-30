@@ -17,14 +17,14 @@
 
 	var/dat = ""
 	var/recipes = GLOB.coilgun_pipe_recipes
+	var/datum/component/material_container/MC = GetComponent(/datum/component/material_container)
 	for(var/category in recipes)
 		dat += "<b>[category]:</b><ul>"
-		for(var/datum/pipe_info/I as() in recipes[category])
-			dat += I.Render(src)
+		for(var/datum/pipe_info/coilgun/I as() in recipes[category])
+			dat += I.Render(src, MC.has_materials(I.build_cost))
 
 		dat += "</ul>"
 	dat += "Materials:<ul>"
-	var/datum/component/material_container/MC = GetComponent(/datum/component/material_container)
 	for(var/datum/material/M in MC.materials)
 		dat += "<li>[M.name] - [MC.materials[M]] \[<a href='?src=[REF(src)];mateject=[REF(M)]'>Eject</a>\]</li>"
 	dat += "</ul>"
@@ -67,6 +67,8 @@
 				continue
 			if(!length(CGI.build_cost))
 				return TRUE
+			if(!CGI.material_init)
+				CGI.initialize_materials()
 			var/datum/component/material_container/MC = GetComponent(/datum/component/material_container)
 			return check_only ? MC.has_materials(CGI.build_cost) : MC.use_materials(CGI.build_cost)
 

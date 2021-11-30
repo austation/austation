@@ -6,6 +6,11 @@
 	icon = 'austation/icons/obj/atmospherics/pipes/disposal.dmi'
 	var/scale = 1
 
+/obj/structure/disposalconstruct/coilgun/Initialize()
+	. = ..()
+	name = "[initial(pipe_type.name)] segment"
+	desc = initial(pipe_type.desc)
+
 /// The size deconstructed pipes are scaled to, should always be less than 1
 #define DECON_SCALE 0.9
 /obj/structure/disposalconstruct/coilgun/update_icon()
