@@ -24,8 +24,8 @@
 	id = path
 	icon_state = initial(path.icon_state)
 	dirtype = dt
-	for(var/path in build_cost)
-		src.build_cost[getmaterialref(path)] = build_cost[path] // looks confusing but all this does is convert (material_path = amount) to (material_datum = amount)
+	for(var/m_path in build_cost)
+		src.build_cost[getmaterialref(m_path)] = build_cost[m_path] // looks confusing but all this does is convert (material_path = amount) to (material_datum = amount)
 
 /datum/pipe_info/coilgun/Params()
 	return "cgmake=[id]&type=[dirtype]"
