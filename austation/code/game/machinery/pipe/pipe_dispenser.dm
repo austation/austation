@@ -23,7 +23,7 @@
 			dat += I.Render(src)
 
 		dat += "</ul>"
-	dat += "Materials (sheets):<ul>"
+	dat += "Materials:<ul>"
 	var/datum/component/material_container/MC = GetComponent(/datum/component/material_container)
 	for(var/datum/material/M in MC.materials)
 		dat += "<li>[M.name] - [MC.materials[M]] \[<a href='?src=[REF(src)];mateject=[REF(M)]'>Eject</a>\]</li>"
