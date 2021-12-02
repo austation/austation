@@ -71,7 +71,7 @@
 				var/speed_increase = (prelim * BASE ** PJ.velocity) * power_percent
 				PJ.velocity += round(speed_increase / PJ.mass * modifier, 1)
 				PJ.p_heat += heat_increase * power_percent
-				PJ.coil_act()
+				PJ.charger_act()
 				cps = round(PJ.velocity * 3.6, 1) // m/s to km/h
 				playsound(src, 'sound/effects/bamf.ogg', 50, 1)
 				current_power_use = PJ.velocity * 25 * prelim
@@ -120,10 +120,9 @@
 			PJ.velocity += round(((total_charge / SUPER_POWER_DIVIDER) * (SUPER_BASE ** PJ.velocity)) / PJ.mass, 1)
 			PJ.p_heat += 40
 			H.count = 1000
-			PJ.coil_act()
+			PJ.charger_act()
 			total_charge = 0
-			playsound(src, 'austation/sound/effects/coilgun_super.ogg', 100, 1)
-			playsound(src, 'sound/effects/bamf.ogg', 50, 1)
+			playsound(src, 'austation/sound/machines/coilgun_super.ogg', 100, 1)
 	return ..()
 
 // ----- Capacitor -----
@@ -164,6 +163,7 @@
 		STOP_PROCESSING(SSmachines, src)
 	else
 		to_chat(user, "<span class='notice'>You set [src]'s power setting to charge.</span>")
+		playsound(src, 'austation/sound/machines/AC_hum.ogg', 100, TRUE)
 		START_PROCESSING(SSmachines, src)
 	log_game("Capacitor turned [processing ? "OFF" : "ON"] by [key_name(user)] in [AREACOORD(src)]")
 	playsound(src, 'sound/machines/click.ogg', 100, TRUE)

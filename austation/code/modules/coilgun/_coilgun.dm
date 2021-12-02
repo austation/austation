@@ -1,4 +1,4 @@
-// TheFakeElon's funni high-velocity-projectile coilgun. Keep away from master controller.
+// Funny high-velocity-projectile coilgun. Keep away from master controller.
 
 /obj/structure/disposalpipe/coilgun
 	name = "coilgun tube"

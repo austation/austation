@@ -7,6 +7,9 @@
 // the maximum amount of tiles a bluespace hvp can teleport to
 #define MAX_SWITCH_RANGE 15
 
+GLOBAL_LIST_INIT(hvp_special, json_decode(file("config/coilgun/bouncy.json")))
+
+
 /obj/item/projectile/hvp
 	name = "high velocity projectile"
 	desc = "Hey! You shouldn't be reading this"
@@ -265,7 +268,7 @@
 	speed = max(-(1.0008 ** velocity) + 2.1, 0.1)
 
 /// called when we pass through a charger
-/obj/item/projectile/hvp/proc/coil_act()
+/obj/item/projectile/hvp/proc/charger_act()
 	if(p_heat >= heat_capacity)
 		overspice()
 
