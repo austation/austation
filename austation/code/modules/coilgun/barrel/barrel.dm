@@ -3,10 +3,10 @@
 	desc = "A sturdy pivotable barrel used to \"safely\" aim coilgun projectiles."
 	icon_state = "barrel_base"
 	var/current_angle = 0
-	var/max_traverse = 40 // maxinum deviation from original direction
+	var/max_traverse = 40 // maxinum deviation from original direction in degrees
 	var/locked = FALSE // is this barrel free to move?
 	var/moving = FALSE
-	var/obj/effect/barrel/coilgun_barrel/master_barrel // the barrel piece the barrel effect it cast from
+	var/obj/effect/barrel/coilgun_barrel/master_barrel // the barrel piece the barrel effect is cast from
 	var/datum/barrel_builder/barrel
 	var/barrel_length = 1
 	var/cooldown = 0
@@ -101,10 +101,9 @@
 			PJ.launch(current_angle, inaccuracy)
 			return
 		PJ.launch(current_angle, inaccuracy, src, barrel_length)
-		playsound(src, 'sound/magic/disable_tech.ogg', 100, 1, 5) // imagine using audacity
-		playsound(src, 'sound/magic/wandodeath.ogg', 50, 1, 2)
-		playsound(src, 'sound/effects/seedling_chargeup.ogg', 50, 1)
-	if(LAZYLEN(H.contents)) // if there's anything else left in the barrel, throw it out
+		playsound(src, 'austation/sound/effects/resonant_clang.ogg', 110, 1)
+		playsound(src, 'sound/magic/wandodeath.ogg', 70, 1, 2) // Sure we COULD splice the sounds together in audacity... or
+	if(length(H.contents)) // if there's anything else left in the barrel, throw it out
 		expel(H, get_turf(src), angle2dir(current_angle))
 	else
 		qdel(H)
@@ -131,7 +130,7 @@
 
 // so you don't need to click the tiny pixels inbetween the overlay and the base connection
 /obj/effect/barrel/coilgun_barrel/AltClick(mob/user)
-	parent?.AltClick(user)
+	return parent?.AltClick(user)
 
 /obj/effect/barrel/coilgun_barrel/Destroy()
 	if(parent && break_parent_on_death)

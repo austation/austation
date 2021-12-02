@@ -67,11 +67,10 @@ GLOBAL_LIST_INIT(coilgun_pipe_recipes, list(
 		new /datum/pipe_info/coilgun("Pipe",			/obj/structure/disposalpipe/segment/coilgun, 		list(/datum/material/iron = 1000, /datum/material/copper = 1000), PIPE_BENDABLE),
 	),
 	"Coilgun Devices" = list(
-		new /datum/pipe_info/coilgun("Charger",			/obj/structure/disposalpipe/coilgun/charger, 		list(/datum/material/iron = 2000, /datum/material/copper = 6000)),
+		new /datum/pipe_info/coilgun("Charger",			/obj/structure/disposalpipe/coilgun/charger, 		list(/datum/material/iron = 2000, /datum/material/copper = 2000)),
 		new /datum/pipe_info/coilgun("Super-Charger",	/obj/structure/disposalpipe/coilgun/super_charger, 	list(/datum/material/iron = 2000, /datum/material/copper = 6000, /datum/material/gold = 4000)),
 		new /datum/pipe_info/coilgun("Magnetizer",		/obj/structure/disposalpipe/coilgun/magnetizer, 	list(/datum/material/iron = 6000, /datum/material/copper = 4000)),
-		new /datum/pipe_info/coilgun("Passive Cooler",	/obj/structure/disposalpipe/coilgun/cooler, 		list(/datum/material/iron = 2000, /datum/material/copper = 6000, /datum/material/gold = 2000)),
-		new /datum/pipe_info/coilgun("Active Cooler",	/obj/structure/disposalpipe/coilgun/cooler/active, 	list(/datum/material/iron = 1000, /datum/material/copper = 10000)),
+		new /datum/pipe_info/coilgun("Passive Cooler",	/obj/structure/disposalpipe/coilgun/cooler, 		list(/datum/material/iron = 2000, /datum/material/copper = 2000)),
 		new /datum/pipe_info/coilgun("Barrel",			/obj/structure/disposalpipe/coilgun/barrel, 		list(/datum/material/iron = 30000, /datum/material/copper = 8000)),
 
 
@@ -80,8 +79,7 @@ GLOBAL_LIST_INIT(coilgun_pipe_recipes, list(
 /*
  * To be added:
  * 		new /datum/pipe_info/coilgun("Modifier",		/obj/structure/disposalpipe/coilgun/modifier),
- *		new /datum/pipe_info/coilgun("Bypass",			/obj/structure/disposalpipe/coilgun/bypass, PIPE_TRIN_M),
- */
+*/
 // austation end -- coilguns
 
 GLOBAL_LIST_INIT(transit_tube_recipes, list(

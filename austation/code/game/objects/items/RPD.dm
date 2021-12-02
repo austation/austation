@@ -18,7 +18,7 @@
 
 /datum/pipe_info/coilgun
 	var/list/build_cost = list()
-	var/material_init = FALSE // Have we fully initialized our material list yet? We can't just do this in new as we have to wait for the subsystem
+	var/material_init = FALSE // Have we fully initialized our material list yet?
 
 /datum/pipe_info/coilgun/New(label, obj/path, build_cost, dt=PIPE_UNARY)
 	name = label
@@ -52,9 +52,9 @@
 
 	return dat
 
-// All this does is convert (material_path = amount) to (material_datum = amount)
+// All this does is convert (material_path = amount) to (material_datum = amount). We can't do it on New() because SSmaterials isn't initialized.
 /datum/pipe_info/coilgun/proc/initialize_materials()
-	if(matierial_init)
+	if(material_init)
 		return
 	var/list/NBC = list() // new build cost
 	for(var/m_path in build_cost)

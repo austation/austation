@@ -14,14 +14,13 @@
 	return ..()
 
 /obj/machinery/pipedispenser/disposal/coilgun/interact(mob/user)
-
 	var/dat = ""
-	var/recipes = GLOB.coilgun_pipe_recipes
+	var/list/recipes = GLOB.coilgun_pipe_recipes
 	var/datum/component/material_container/MC = GetComponent(/datum/component/material_container)
 	for(var/category in recipes)
 		dat += "<b>[category]:</b><ul>"
 		for(var/datum/pipe_info/coilgun/I as() in recipes[category])
-			I.material_init()
+			I.initialize_materials()
 			dat += I.Render(src, MC.has_materials(I.build_cost))
 
 		dat += "</ul>"

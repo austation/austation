@@ -48,7 +48,7 @@ GLOBAL_LIST_EMPTY(hvp_special)
 		var/turf/T = get_turf_in_angle(Angle, get_turf(firer), barrel_segments)
 		forceMove(T)
 		velocity *= barrel_segments ** 0.175 // Velocity benefits from barrels have diminishing results
-	momentum = mass * velocity
+	momentum = mass * velocity // Sorry physics majors, apparently vector space tensors are "too expensive" and "make no fucking sense"
 	if(_inaccuracy)
 		_angle += rand(_inaccuracy, -_inaccuracy)
 	setAngle(_angle)
@@ -104,7 +104,7 @@ GLOBAL_LIST_EMPTY(hvp_special)
 			return
 
 	if((special & HVP_SMILEY_FACE) && prob(5)) // << This twisted game needs to be reset >>
-		var/E = log(momentum)
+		var/E = log(momentum) / 2
 		explosion(loc, E, E+1, E+2, E+3, FALSE) // << That's what the V2 is for >>
 		return
 
@@ -123,7 +123,7 @@ GLOBAL_LIST_EMPTY(hvp_special)
 			audible_message("<span class='danger'>You hear a CLANG!</span>")
 			if((special & HVP_RADIOACTIVE) && prob(40))
 				var/datum/component/radioactive/rads = GetComponent(/datum/component/radioactive)
-				var/pulsepower = (rads.strength + 1) * (momentum / 150 + 1) // faster rods multiply rads because.. reasons
+				var/pulsepower = (rads.strength + 1) * (momentum / 150 + 1)
 				radiation_pulse(src, pulsepower)
 
 		if(momentum > 100 && check_ricochet(clong))
@@ -226,12 +226,18 @@ GLOBAL_LIST_EMPTY(hvp_special)
 				AM = new W.girder_type
 		T.ScrapeAway(1, CHANGETURF_INHERIT_AIR)
 		return
+	RegisterSignal(AM, COMSIG_PARENT_QDELETING, .proc/handle_deleted_object)
 	AM.forceMove(src)
 
 /obj/item/projectile/hvp/proc/update_animations()
 	if(spin)
 		animate(src) // clears any active animations
 		SpinAnimation(spin)
+
+/obj/item/projectile/hvp/proc/handle_deleted_object(datum/source, force)
+	SIGNAL_HANDLER
+	remove_object(source)
+	UnregisterSignal(source, COMSIG_PARENT_QDELETING)
 
 /obj/item/projectile/hvp/proc/remove_object(atom/movable/AM, move_loc)
 	cut_overlay(assoc_overlays[AM], TRUE)
@@ -304,7 +310,7 @@ GLOBAL_LIST_EMPTY(hvp_special)
 		return
 	var/turf/T = get_turf(src)
 	for(var/mob/living/L in contents)
-		L.stun(20)
+		L.Stun(20)
 	for(var/atom/movable/AM as() in contents)
 		AM.forceMove(T)
 		death_special(AM)
@@ -336,7 +342,7 @@ GLOBAL_LIST_EMPTY(hvp_special)
 		if(I.is_sharp())
 			special |= HVP_SHARP
 	var/type_special = GLOB.hvp_special[AM.type]
-	if(type_special & HVP_STICKY)
+	if(type_special & HVP_STICKY && !spin)
 		spin = 1
 		update_animations()
 	special |= type_special
@@ -363,7 +369,7 @@ GLOBAL_LIST_EMPTY(hvp_special)
 		TV.toggle_valve()
 
 /obj/item/projectile/hvp/proc/initialize_special()
-	var/list/json_data = json_decode(rustg_file_read(file("config/coilgun.json"))
+	var/list/json_data = json_decode(rustg_file_read(file("config/coilgun.json")))
 	for(var/cat in json_data)
 		var/special_type
 		switch(cat)
