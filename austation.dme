@@ -34,7 +34,6 @@
 // BEGIN_INCLUDE
 #include "austation\code\__HELPERS\matrices.dm"
 #include "austation\code\__HELPERS\roundend.dm"
-#include "austation\code\_globalvars\coilgun.dm"
 #include "austation\code\_globalvars\misc.dm"
 #include "austation\code\_globalvars\lists\maintenance_loot.dm"
 #include "austation\code\controllers\configuration\entries\game_options.dm"

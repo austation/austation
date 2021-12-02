@@ -6,4 +6,3 @@
 #define HVP_SMILEY_FACE 1<<4
 #define HVP_VOID 1<<5
 #define HVP_STICKY 1<<6
-#define HVP_FRAME_DRAG 1<<7

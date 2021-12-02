@@ -1,0 +1,16 @@
+{
+	"bouncy": [
+		"/obj/item/toy/beach_ball",
+		"/obj/item/bikehorn/rubberducky"
+	],
+	"bluespace": [
+		"/obj/item/stack/ore/bluespace_crystal"
+	],
+	"sticky": [
+		"/obj/item/syndie_glue"
+	],
+	"void": [
+		"/obj/singularity"
+	]
+	
+}

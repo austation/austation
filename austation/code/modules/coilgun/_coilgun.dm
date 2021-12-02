@@ -83,7 +83,7 @@
 
 /obj/structure/disposalpipe/coilgun/cooler/transfer(obj/structure/disposalholder/H)
 	for(var/obj/item/projectile/hvp/PJ in H.contents)
-		PJ.p_heat = min(PJ.p_heat - heat_removal), -50)
+		PJ.p_heat = min(PJ.p_heat - heat_removal, -50)
 		if(hugbox)
 			continue
 		PJ.velocity -= (base ** PJ.velocity) - 0.5

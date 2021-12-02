@@ -1,13 +1,15 @@
-// screenshake
+// Screenshake for very high speed launches
 #define MAX_SHAKE 1.5
 
-// The base (and minimum) amount of tiles a bluespace hvp can teleport to
+// The base teleport distance of a bluespace hvp
 #define BASE_SWITCH_RANGE 4
 
 // the maximum amount of tiles a bluespace hvp can teleport to
 #define MAX_SWITCH_RANGE 15
 
-GLOBAL_LIST_INIT(hvp_special, json_decode(file("config/coilgun/bouncy.json")))
+// Initalized before the first special check
+/// Contains all special objects and their associated effect
+GLOBAL_LIST_EMPTY(hvp_special)
 
 
 /obj/item/projectile/hvp
@@ -60,10 +62,8 @@ GLOBAL_LIST_INIT(hvp_special, json_decode(file("config/coilgun/bouncy.json")))
 			if(T?.air)
 				for(var/mob/M in range(10, src))
 					shake_camera(M, 10, clamp(momentum / 1000, 0, MAX_SHAKE))
-		if(1400 to 2000)
-			special |= HVP_SMILEY_FACE
 		else
-			special |= HVP_FRAME_DRAG
+			special |= HVP_SMILEY_FACE
 	SSaugury.register_doom(src, momentum)
 	log_game("Coilgun projectile fired in [get_area_name(src, TRUE)] with [momentum] momentum!")
 	fire(Angle)
@@ -303,48 +303,43 @@ GLOBAL_LIST_INIT(hvp_special, json_decode(file("config/coilgun/bouncy.json")))
 	if(QDELETED(src))
 		return
 	var/turf/T = get_turf(src)
-	for(var/atom/movable/AM in contents)
+	for(var/mob/living/L in contents)
+		L.stun(20)
+	for(var/atom/movable/AM as() in contents)
 		AM.forceMove(T)
 		death_special(AM)
 		if(collision && !QDELETED(AM)) // In case death_special() deleted our item
-			var/range = rand(1, 4)
+			var/range = rand(2, 4)
 			AM.throw_at(get_ranged_target_turf(src, pick(GLOB.cardinals), range), range, 1)
 	qdel(src)
 
 /obj/item/projectile/hvp/relaymove(mob/living/user)
-	var/obj/structure/disposalholder/DH = loc
-	if(istype(DH))
-		DH.relaymove()
+	if(istype(loc, /obj/structure/disposalholder))
+		loc.relaymove()
 
 /obj/item/projectile/hvp/ex_act()
 	return
 
 /// Handles the addition of projectile interaction flags.
 /obj/item/projectile/hvp/proc/apply_special(atom/movable/AM, initial = FALSE)
+	if(!length(GLOB.hvp_special))
+		initialize_special()
+
 	var/original_spec = special
 	if(isitem(AM))
 		var/obj/item/I = AM
 		var/datum/component/radioactive/rads = I.GetComponent(/datum/component/radioactive)
 		if(rads && rads.can_contaminate && rads.strength > rad_max)
 			special |= HVP_RADIOACTIVE
-			AddComponent(/datum/component/radioactive, rads.strength, src)
+			AddComponent(/datum/component/radioactive, rads.strength, src, 0)
 
 		if(I.is_sharp())
 			special |= HVP_SHARP
-
-		if(GLOB.hvp_bluespace[I.type])
-			special |= HVP_BLUESPACE
-
-		if(GLOB.hvp_bouncy[I.type])
-			special |= HVP_BOUNCY
-
-		if(GLOB.hvp_void[I.type])
-			special |= HVP_VOID
-
-		if(GLOB.hvp_sticky[I.type])
-			special |= HVP_STICKY
-			spin = 1
-			update_animations()
+	var/type_special = GLOB.hvp_special[AM.type]
+	if(type_special & HVP_STICKY)
+		spin = 1
+		update_animations()
+	special |= type_special
 
 	if(special != original_spec)
 		return TRUE
@@ -366,6 +361,26 @@ GLOBAL_LIST_INIT(hvp_special, json_decode(file("config/coilgun/bouncy.json")))
 	if(istype(AM, /obj/item/transfer_valve))
 		var/obj/item/transfer_valve/TV = AM
 		TV.toggle_valve()
+
+/obj/item/projectile/hvp/proc/initialize_special()
+	var/list/json_data = json_decode(rustg_file_read(file("config/coilgun.json"))
+	for(var/cat in json_data)
+		var/special_type
+		switch(cat)
+			if("bouncy")
+				special_type = HVP_BOUNCY
+			if("bluespace")
+				special_type = HVP_BLUESPACE
+			if("sticky")
+				special_type = HVP_STICKY
+			if("void")
+				special_type = HVP_VOID
+			else
+				WARNING("Unrecognized projectile effect \"[cat]\"")
+		for(var/rpath in json_data[cat])
+			for(var/spath in typesof(rpath)) // All of it's subtypes are counted too
+				GLOB.hvp_special[spath] = special_type
+
 
 /obj/item/projectile/hvp/process_hit()
 	return
