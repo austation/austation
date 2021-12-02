@@ -1,6 +1,6 @@
 /obj/structure/disposalpipe/coilgun/barrel
 	name = "coilgun barrel"
-	desc = "A sturdy pivotable barrel used to \"safely\" aim magnetic projectiles."
+	desc = "A sturdy pivotable barrel used to \"safely\" aim coilgun projectiles."
 	icon_state = "barrel_base"
 	var/current_angle = 0
 	var/max_traverse = 40 // maxinum deviation from original direction
@@ -21,7 +21,7 @@
 	var/turf/target = get_turf_in_angle(_angle, T, barrel_length)
 	if(target.x == world.maxx || target.y == world.maxy) // barrels shouldn't be able to touch or get clamped by border turfs
 		return FALSE
-	if(check_collision && !check_overlap(target))
+	if(check_collision && !check_overlap(_angle, target))
 		return FALSE
 	if(!barrel)
 		if(!master_barrel)
@@ -36,7 +36,7 @@
 		moving = FALSE
 	return TRUE
 
-/obj/structure/disposalpipe/coilgun/barrel/proc/check_overlap(_angle, target)
+/obj/structure/disposalpipe/coilgun/barrel/proc/check_overlap(_angle, atom/target)
 	if(!target)
 		target = get_turf_in_angle(_angle, get_turf(src), barrel_length)
 	var/path = getline(get_turf(src), target)

@@ -3,8 +3,11 @@
 #define BASE 0.9975
 
 // the smallest amount of power the charger can use to function in watts.
-// Also serves as the base multiplier for projectile speed increase, lower values will increase speed gain
-#define POWER_DIVIDER 100000
+// Also serves as the base divider for projectile speed increase, lower values will increase speed gain
+#define POWER_DIVIDER 10000
+
+// divider for super chargers
+#define SUPER_POWER_DIVIDER 1000
 
 // Coilgun Charger
 
@@ -76,7 +79,7 @@
 				H.count = 1000
 				continue
 		else // no non-magnetic items allowed in the coilgun :(
-			playsound(src, 'sound/machines/buzz-two.ogg', 40, 1)
+			playsound(src, 'sound/machines/buzz-two.ogg', 100, 1)
 			visible_message("<span classl='warning'>\The [src]'s safety mechanism engages, ejecting [AM] through the maintenance hatch!</span>")
 			AM.forceMove(get_turf(src))
 			continue
@@ -109,12 +112,13 @@
 		qdel(H)
 		return
 	for(var/obj/item/projectile/hvp/PJ in H.contents)
-		for(var/obj/machinery/power/capacitor/C in range(1, src))
-			total_charge += C.charge
+		for(var/D in GLOB.cardinals)
+			var/obj/machinery/power/capacitor/C = locate() in get_step(src, D)
+			total_charge += C.charge / GLOB.CELLRATE
 			C.charge = 0
 		if(total_charge)
-			PJ.velocity += round((total_charge / 1000) * (SUPER_BASE ** PJ.velocity), 1)
-			PJ.p_heat += 10
+			PJ.velocity += round(((total_charge / SUPER_POWER_DIVIDER) * (SUPER_BASE ** PJ.velocity)) / PJ.mass, 1)
+			PJ.p_heat += 40
 			H.count = 1000
 			PJ.coil_act()
 			total_charge = 0
@@ -133,7 +137,7 @@
 	icon_state = "capacitor"
 	circuit = /obj/item/circuitboard/machine/coilgun_capacitor
 	density = TRUE
-	var/charge = 0
+	var/charge = 0 // joules
 	var/capacity = 1e6
 	var/obj/structure/cable/attached
 
@@ -162,7 +166,7 @@
 		to_chat(user, "<span class='notice'>You set [src]'s power setting to charge.</span>")
 		START_PROCESSING(SSmachines, src)
 	log_game("Capacitor turned [processing ? "OFF" : "ON"] by [key_name(user)] in [AREACOORD(src)]")
-	playsound(src, 'sound/machines/click.ogg', 20, TRUE)
+	playsound(src, 'sound/machines/click.ogg', 100, TRUE)
 
 /obj/machinery/power/capacitor/proc/check_use()
 	return !(stat & BROKEN) && anchored
@@ -174,9 +178,9 @@
 		connect_to_network()
 		if(!attached)
 			return
-	var/input = clamp(attached.surplus() * 0.1, 0, CAPACITOR_RECHARGE * delta_time)
+	var/input = clamp(attached.surplus() * 0.05, 0, CAPACITOR_RECHARGE * delta_time)
 	if(input)
-		charge = min(input + charge, capacity)
+		charge = min(input * GLOB.CELLRATE + charge, capacity)
 		attached.add_load(input)
 
 // TODO: this is bad but I can't remember why, fix it >:(
@@ -201,10 +205,11 @@
 
 /obj/machinery/power/capacitor/examine(mob/user)
 	. = ..()
-	. += "<span class='notice'>The charge meter reads: <b>[DisplayPower(charge)]/[DisplayPower(capacity)]</b>.</span>"
+	. += "<span class='notice'>The charge meter reads: <b>[DisplayJoules(charge)]/[DisplayJoules(capacity)]</b>.</span>"
 	. += "<span class='notice'><i>[round(charge/capacity*100, 0.5)]% charged.</i></span>"
 
 #undef BASE
 #undef POWER_DIVIDER
+#undef SUPER_POWER_DIVIDER
 #undef SUPER_BASE
 #undef CAPACITOR_RECHARGE

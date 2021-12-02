@@ -32,8 +32,6 @@
 
 // sufficient_resources set to false will make the resource display text red
 /datum/pipe_info/coilgun/Render(dispenser, sufficient_resources = TRUE)
-	if(!material_init)
-		initialize_materials()
 	var/dat = "<li><a href='?src=[REF(dispenser)]&[Params()]'>[name]</a></li>"
 
 	// Stationary pipe dispensers don't allow you to pre-select pipe directions.
@@ -46,7 +44,7 @@
 			if(cost_data)
 				cost_data += ", "
 			cost_data += "[M.name]-[build_cost[M]]"
-		if(!sufficient_resources)
+		if(!sufficient_resources && cost_data)
 			cost_data = "<font color='red>[cost_data]</font>"
 		dat = "<li><a href='?src=[REF(dispenser)]&[Params()]'>[name]</a>[cost_data ? " | [cost_data]" : ""]</li>"
 		if(dirtype == PIPE_BENDABLE)
@@ -56,6 +54,8 @@
 
 // All this does is convert (material_path = amount) to (material_datum = amount)
 /datum/pipe_info/coilgun/proc/initialize_materials()
+	if(matierial_init)
+		return
 	var/list/NBC = list() // new build cost
 	for(var/m_path in build_cost)
 		var/datum/material/M = getmaterialref(m_path)

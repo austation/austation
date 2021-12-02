@@ -42,6 +42,7 @@
 		var/obj/item/projectile/hvp/boolet = new(H)
 		boolet.add_object(AM)
 		boolet.velocity = 1
+		boolet.mass = 3 // default
 		playsound(src, 'sound/effects/spray.ogg', 40, 1)
 		if(isliving(AM))
 			var/mob/living/L = AM
@@ -74,28 +75,18 @@
 
 /obj/structure/disposalpipe/coilgun/cooler
 	name = "passive coilgun cooler"
-	desc = "A densely packed array of radiator fins designed to passively remove heat from a magnetic projectile, slightly slows down the projectile"
-	icon_state = "p_cooler"
-	var/heat_removal = 2.5 // how much heat we will remove from the projectile
-	var/base = 1.003
-	var/hugbox = FALSE // enabling will disable the velocity loss
-	var/list/heatsinks = list()
-
-/obj/structure/disposalpipe/coilgun/cooler/active
-	name = "active coilgun cooler"
-	desc = "Contains multiple small, high performance fans used for cooling anything that passes through it. Much more effective than a passive cooler but slows the projectile down more"
+	desc = "A densely packed array of heat sinks designed to passively remove heat from a magnetic projectile, slightly slows down the projectile"
 	icon_state = "a_cooler"
-	base = 1.005
-	heat_removal = 5
+	var/heat_removal = 25 // how much heat we will remove from the projectile
+	var/base = 1.004 // higher values = more speed loss
+	var/hugbox = FALSE // enabling will disable the velocity loss
 
 /obj/structure/disposalpipe/coilgun/cooler/transfer(obj/structure/disposalholder/H)
-	for(var/atom/movable/AM in H.contents) // run the loop below for every movable that passes through the charger
-		if(istype(AM, /obj/item/projectile/hvp)) // if it's a projectile, continue
-			var/obj/item/projectile/hvp/PJ = AM
-			PJ.p_heat = min(PJ.p_heat - (heat_removal * (heatsinks.len / 3)), -50)
-			if(hugbox)
-				continue
-			PJ.velocity -= (base ** PJ.velocity) - 0.5
+	for(var/obj/item/projectile/hvp/PJ in H.contents)
+		PJ.p_heat = min(PJ.p_heat - heat_removal), -50)
+		if(hugbox)
+			continue
+		PJ.velocity -= (base ** PJ.velocity) - 0.5
 	return ..()
 
 

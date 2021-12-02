@@ -21,6 +21,7 @@
 	for(var/category in recipes)
 		dat += "<b>[category]:</b><ul>"
 		for(var/datum/pipe_info/coilgun/I as() in recipes[category])
+			I.material_init()
 			dat += I.Render(src, MC.has_materials(I.build_cost))
 
 		dat += "</ul>"

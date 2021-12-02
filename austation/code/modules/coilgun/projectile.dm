@@ -57,7 +57,7 @@
 			if(T?.air)
 				for(var/mob/M in range(10, src))
 					shake_camera(M, 10, clamp(momentum / 1000, 0, MAX_SHAKE))
-		if(1300 to 2000)
+		if(1400 to 2000)
 			special |= HVP_SMILEY_FACE
 		else
 			special |= HVP_FRAME_DRAG
@@ -258,6 +258,8 @@
 			target.throw_at(get_edge_target_turf( target, angle2dir(Angle) ), 200, max( round(log(momentum)), 1))
 
 	if(isfloorturf(loc))
+		momentum -= 2
+	else
 		momentum--
 	// this is basically as fast as we can go without async memes.
 	speed = max(-(1.0008 ** velocity) + 2.1, 0.1)
