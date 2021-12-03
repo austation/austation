@@ -23,7 +23,7 @@
 	desc = "A quad bike for traversing uneven terrain effortlessly."
 	id = "print_atv"
 	build_type = MECHFAB
-	build_path = /obj/vehicle/ridden/atv
+	build_path = list(/obj/vehicle/ridden/atv, /obj/item/key)
 	materials = list(/datum/material/titanium=3000,/datum/material/plastic=1000,/datum/material/iron=2000)
 	construction_time = 500
 	category = list("Misc")
