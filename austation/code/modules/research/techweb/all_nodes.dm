@@ -93,9 +93,9 @@
 	tech_tier = 3
 	display_name = "All Terain Vehicles"
 	description = "Technology that allows the printing of quad bikes"
-	prereq_ids = list("adv_engi")
+	prereq_ids = list("movable_shells", "basic_shuttle")
 	hidden = FALSE
-	research_costs = list(TECHWEB_POINT_TYPE_DISCOVERY = 10000)
+	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 10000)
 	austation_design_ids = list("print_atv")
 	export_price = 10000
 
