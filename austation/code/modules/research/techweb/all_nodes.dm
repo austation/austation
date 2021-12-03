@@ -88,6 +88,17 @@
 /datum/techweb_node/adv_mecha_tools
 	austation_design_ids = list("mech_ion_thrusters")
 
+/datum/techweb_node/atv
+	id = "print_atv"
+	tech_tier = 3
+	display_name = "All Terain Vehicles"
+	description = "Technology that allows the printing of quad bikes"
+	prereq_ids = list("adv_engi")
+	hidden = FALSE
+	research_costs = list(TECHWEB_POINT_TYPE_DISCOVERY = 10000)
+	austation_design_ids = list("print_atv")
+	export_price = 10000
+
 ////////////////////////bio processing////////////////////////
 
 /datum/techweb_node/bio_process

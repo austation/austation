@@ -17,3 +17,13 @@
 	materials = list(/datum/material/iron=25000,/datum/material/titanium=10000,/datum/material/gold=5000,/datum/material/plasma=10000)
 	construction_time = 500
 	category = list("Exosuit Equipment")
+
+/datum/design/atv_bike
+	name = "All Terrain Vehicle"
+	desc = "A quad bike for traversing uneven terrain effortlessly."
+	id = "print_atv"
+	build_type = MECHFAB
+	build_path = /obj/vehicle/ridden/atv
+	materials = list(/datum/material/titanium=3000,/datum/material/plastic/=1000,/datum/material/iron=2000)
+	construction_time = 500
+	category = list("Misc")
