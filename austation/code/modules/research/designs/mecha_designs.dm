@@ -24,6 +24,6 @@
 	id = "print_atv"
 	build_type = MECHFAB
 	build_path = /obj/vehicle/ridden/atv
-	materials = list(/datum/material/titanium=3000,/datum/material/plastic/=1000,/datum/material/iron=2000)
+	materials = list(/datum/material/titanium=3000,/datum/material/plastic=1000,/datum/material/iron=2000)
 	construction_time = 500
 	category = list("Misc")
