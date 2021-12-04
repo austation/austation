@@ -1,13 +1,13 @@
 // The base used for calculating charger projectile speed increase
 // lower values make speed increases more diminishing
-#define BASE 0.9975
+#define BASE 0.999
 
 // the smallest amount of power the charger can use to function in watts.
 // Also serves as the base divider for projectile speed increase, lower values will increase speed gain
 #define POWER_DIVIDER 10000
 
 // divider for super chargers
-#define SUPER_POWER_DIVIDER 1000
+#define SUPER_POWER_DIVIDER 5000
 
 // Coilgun Charger
 
@@ -98,8 +98,8 @@
 
 // ----- Super Charger -----
 
-// like normal base def, but for the supercharger
-#define SUPER_BASE 0.999
+// Less efficient than the normal charger, velocity gains taper off faster
+#define SUPER_BASE 0.998
 
 /obj/structure/disposalpipe/coilgun/super_charger
 	name = "coilgun super-charger"
