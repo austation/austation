@@ -809,15 +809,16 @@
 			to_chat(user, "<span class='notice'>[P] is empty.</span>")
 		else
 			if(myseed)
-				to_chat(user, "<span class='notice'>You fertilize the [myseed.plantname]</span>")
+				to_chat(user, "<span class='notice'>You fertilize the [myseed.plantname].</span>")
 				if(prob(chancey))
 					S.lifespan = CLAMP(P.mutate_lif*(S.lifespan+strength), 10, 100)//Lifespan
 					S.potency = CLAMP(P.mutate_pot*(S.potency+strength), 10, 100)//Potency
 					S.endurance = CLAMP(P.mutate_end*(S.endurance+strength), 10, 100)//Endurance
-					S.production = CLAMP(P.mutate_prd*(S.production+strength), 1, 10)//Production
-					S.yield = CLAMP(P.mutate_yld*(S.yield+strength), 0, 10)//Yield
+					S.yield = CLAMP(P.mutate_yld*(S.yield+strength), 1, 10)//Yield
+					S.production = CLAMP(P.mutate_prd_spd*(S.production-strength), 1, 10)//Production speed
+					S.maturation = CLAMP(P.mutate_mat_spd*(S.maturation-strength), 1, 10)//Maturation speed
 			else
-				to_chat(user, "<span class='warning'>There is no plant to fertilize</span>")
+				to_chat(user, "<span class='warning'>There is no plant to fertilize!</span>")
 
 	else if(istype(O, /obj/item/plant_analyzer))
 		if(myseed)

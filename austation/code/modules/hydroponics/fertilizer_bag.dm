@@ -60,7 +60,7 @@
 		remove_random_trait()
 	else if(reagents.has_reagent(/datum/reagent/medicine/earthsblood, 1))
 		if(!check_contents(/datum/reagent/medicine/earthsblood))
-			apply_chance += 0.25
+			apply_chance += apply_chance*0.3
 			apply_strength += 0.15
 			mix += list(/datum/reagent/medicine/earthsblood)
 
