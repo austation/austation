@@ -1,0 +1,4 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - config: "the Patreon donators list can now be used as a whitelist."
