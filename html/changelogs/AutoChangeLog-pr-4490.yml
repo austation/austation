@@ -1,0 +1,4 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - config: "A new config has been added to make setting notes to expire a more intentional action."
