@@ -20,7 +20,11 @@
   *
   * make sure you add an update to the schema_version stable in the db changelog
   */
+<<<<<<< HEAD
 #define DB_MINOR_VERSION 9 // austation -- updating database version due to downstream changes
+=======
+#define DB_MINOR_VERSION 9
+>>>>>>> 12292ab043... [PORT] DB Achievements (#5482)
 
 
 //! ## Timing subsystem
@@ -113,6 +117,7 @@
 #define INIT_ORDER_SOUNDS			82
 #define INIT_ORDER_INSTRUMENTS		81
 #define INIT_ORDER_VIS				80
+#define INIT_ORDER_ACHIEVEMENTS 77
 #define INIT_ORDER_MATERIALS		76
 #define INIT_ORDER_RESEARCH			75
 #define INIT_ORDER_ORBITS			74 //Other things use the orbital map, so it needs to be made early on.
