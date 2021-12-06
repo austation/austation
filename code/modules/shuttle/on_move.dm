@@ -56,8 +56,10 @@ All ShuttleMove procs go here
 		CRASH("A turf queued to move via shuttle somehow had no skipover in baseturfs. [src]([type]):[loc]")
 	var/depth = baseturfs.len - shuttle_boundary + 1
 
-	newT.CopyOnTop(src, 1, depth, TRUE)
+	//austation -- added defer change flag
+	newT.CopyOnTop(src, 1, depth, TRUE, CHANGETURF_DEFER_CHANGE)
 
+	/* austation begin -- shuttlemove shit
 	if(isopenturf(src))
 		var/turf/open/after_src_terf = src
 		update_air_ref(isspaceturf(src) ? 0 : (after_src_terf.planetary_atmos ? 1 : 2))
@@ -67,6 +69,8 @@ All ShuttleMove procs go here
 	//Air stuff
 	newT.air_update_turf(TRUE)
 	air_update_turf(TRUE)
+	austation end
+	*/
 
 	return TRUE
 
@@ -86,11 +90,16 @@ All ShuttleMove procs go here
 	return TRUE
 
 /turf/proc/lateShuttleMove(turf/oldT)
+	//austation begin -- shuttlemove shit
+	/*
 	blocks_air = initial(blocks_air)
 	air_update_turf(TRUE)
 	oldT.blocks_air = initial(oldT.blocks_air)
 	oldT.air_update_turf(TRUE)
-
+	*/
+	AfterChange(CHANGETURF_RECALC_ADJACENT)
+	oldT.AfterChange(CHANGETURF_RECALC_ADJACENT)
+	//austation end
 
 /////////////////////////////////////////////////////////////////////////////////////
 

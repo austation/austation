@@ -37,6 +37,7 @@
 #include "austation\code\_globalvars\coilgun.dm"
 #include "austation\code\_globalvars\misc.dm"
 #include "austation\code\_globalvars\lists\maintenance_loot.dm"
+#include "austation\code\controllers\configuration\atoms.dm"
 #include "austation\code\controllers\configuration\entries\game_options.dm"
 #include "austation\code\controllers\configuration\entries\general.dm"
 #include "austation\code\controllers\subsystem\blackbox.dm"

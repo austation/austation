@@ -433,7 +433,8 @@ SUBSYSTEM_DEF(air)
 	LAZYADD(paused_z_levels, z_level)
 	var/list/turfs_to_disable = block(locate(1, 1, z_level), locate(world.maxx, world.maxy, z_level))
 	for(var/turf/T as anything in turfs_to_disable)
-		T.ImmediateDisableAdjacency(FALSE)
+		//austation -- lmao
+		T.set_sleeping(TRUE)
 		CHECK_TICK
 
 /datum/controller/subsystem/air/proc/unpause_z(z_level)

@@ -438,6 +438,9 @@
 		radiation_pulse(location, max(2000 * 3 ** (log(10,standard_energy) - FUSION_RAD_MIDPOINT), 0))
 */
 
+#define FUSION_RAD_MAX						2000
+#define FUSION_RAD_COEFFICIENT				(-1000)
+
 /proc/fusion_ball(datum/holder, reaction_energy, instability)
 	var/turf/open/location
 	if (istype(holder,/datum/pipeline)) //Find the tile the reaction is occuring on, or a random part of the network if it's a pipenet.
@@ -452,6 +455,8 @@
 		var/rad_power = max((FUSION_RAD_COEFFICIENT/instability) + FUSION_RAD_MAX,0)
 		radiation_pulse(location,rad_power)
 
+#undef FUSION_RAD_MAX
+#undef FUSION_RAD_COEFFICIENT
 // austation end
 
 /datum/gas_reaction/nitrylformation //The formation of nitryl. Endothermic. Requires N2O as a catalyst.
