@@ -1,5 +1,6 @@
 /obj/item/seeds/gympie_gympie
 	name = "pack of gympie gympie seeds"
+	var/babys_first_name = "Gympie Gympie"
 	desc = "These seeds grow into a gympie gympie plant"
 	icon = 'austation/icons/obj/hydroponics/popes_selection.dmi'
 	icon_state = "seed-gympie_gympie"
@@ -16,7 +17,7 @@
 	reagents_add = list(/datum/reagent/toxin/mindbreaker = 0.10)
 	rarity = 50
 	var/volume = 5
-	var/awaken_reagent = /datum/reagent/plantnutriment/left4zednutriment //Muh' debug purposes, leave this for gimmicks
+	var/awaken_reagent = /datum/reagent/plantnutriment/left4zednutriment //Muh' debug purposes, leave this for gimmicks.
 
 /obj/item/reagent_containers/food/snacks/grown/gympie_gympie
 	seed = /obj/item/seeds/gympie_gympie
@@ -39,8 +40,7 @@
 
 /obj/item/seeds/gympie_gympie/on_reagent_change(changetype)
 	if(changetype == ADD_REAGENT)
-		var/datum/reagent/medicine/strange_reagent/S = reagents.has_reagent(awaken_reagent)
-		if(S)
+		if(reagents.has_reagent(awaken_reagent))
 			spawn(30)
 				if(!QDELETED(src))
 					var/mob/living/simple_animal/hostile/gympie_gympie/G = new /mob/living/simple_animal/hostile/gympie_gympie(get_turf(src.loc))
@@ -51,6 +51,7 @@
 					G.type_count = 0
 					G.gympie_poison = list()
 					G.health = G.maxHealth
+					G.name = babys_first_name
 					for(var/datum/plant_gene/reagent/R in genes)
 						G.gympie_poison += R.reagent_id
 						G.type_count++
@@ -61,4 +62,14 @@
 							G.sting_boy = 1
 					G.visible_message("<span class='notice'>The Gympie Gympie violently shakes its leafs at you!</span>")
 					qdel(src)
+
+/obj/item/seeds/gympie_gympie/attackby(obj/item/W, mob/user)//Name the child
+	if(istype(W, /obj/item/pen))
+		var/new_name = stripped_input(user, "What would you like the name to be?")
+		if(!user.canUseTopic(src, BE_CLOSE))
+			return
+		if(new_name)
+			babys_first_name = new_name
+			name = "pack of [new_name] seeds"
+	return ..()
 

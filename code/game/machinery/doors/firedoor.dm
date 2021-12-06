@@ -27,7 +27,7 @@
 	interaction_flags_machine = INTERACT_MACHINE_WIRES_IF_OPEN | INTERACT_MACHINE_ALLOW_SILICON | INTERACT_MACHINE_OPEN_SILICON | INTERACT_MACHINE_REQUIRES_SILICON | INTERACT_MACHINE_OPEN
 	air_tight = TRUE
 	open_speed = 2
-	req_access = list(ACCESS_ENGINE)
+	req_one_access = list(ACCESS_ENGINE, ACCESS_ATMOSPHERICS)
 	processing_flags = START_PROCESSING_MANUALLY
 	var/emergency_close_timer = 0
 	var/nextstate = null
@@ -146,10 +146,12 @@
 	if(operating)
 		return
 
+	/* austation begin -- remove the restriction on PDA use to open firelocks
 	if(istype(C, /obj/item/pda))
 		var/attack_verb = pick("smushes","rubs","smashes","presses","taps")
 		visible_message("<span class='warning'>[user] [attack_verb] \the [C] against [src]\s card reader.</span>", "<span class='warning'>You [attack_verb] \the [C] against [src]\s card reader. It doesn't do anything.</span>", "You hear plastic click against metal.")
 		return
+	austation end */
 
 	if(welded)
 		if(C.tool_behaviour == TOOL_WRENCH)
@@ -186,7 +188,7 @@
 	if(!density)
 		return
 
-	if(isidcard(I))
+	if(isidcard(I) || istype(I, /obj/item/pda))
 		if((check_safety(user) == TRUE) || check_access(I))
 			log_opening(I, user, check_safety(user))
 			playsound(src, 'sound/machines/beep.ogg', 50, 1)
