@@ -167,13 +167,6 @@ SUBSYSTEM_DEF(ticker)
 			for(var/client/C in GLOB.clients)
 				window_flash(C, ignorepref = TRUE) //let them know lobby has opened up.
 			to_chat(world, "<span class='boldnotice'>Welcome to [station_name()]!</span>")
-			// austation start -- TGS bot now pings notification squad role, also hopefully fixes TGS issues, and handle autosandbox
-			autosandbox()
-			if(GLOB.master_mode == "sandbox")
-				send2chat("New sandbox round starting on [SSmapping.config.map_name]!", "status")
-			else
-				send2chat("<@&586792483892232209> New round starting on [SSmapping.config.map_name]!", "status")
-			// austation end
 			current_state = GAME_STATE_PREGAME
 			//Everyone who wants to be an observer is now spawned
 			create_observers()
@@ -196,6 +189,16 @@ SUBSYSTEM_DEF(ticker)
 			if(timeLeft < 0)
 				return
 			timeLeft -= wait
+
+			// austation start -- TGS bot now pings notification squad role, also hopefully fixes TGS issues, and handle autosandbox
+			if(timeLeft <= 600 && !pregame_checked)
+				autosandbox()
+				if(GLOB.master_mode == "sandbox")
+					send2chat("New sandbox round starting on [SSmapping.config.map_name]!", "status")
+				else
+					send2chat("<@&586792483892232209> New round starting on [SSmapping.config.map_name]!", "status")
+				pregame_checked = TRUE
+			// austation end
 
 			if(timeLeft <= 300 && !tipped)
 				send_tip_of_the_round()
