@@ -1,6 +1,4 @@
 
-/datum/var/__auxtools_weakref_id
-
 /obj/machinery/door/firedoor
 	icon = 'austation/icons/obj/doors/doorfireglass.dmi'
 	open_speed = 1
@@ -13,24 +11,6 @@
 
 /obj/machinery/door/firedoor/window
 	icon = 'austation/icons/obj/doors/doorfirewindow.dmi'
-
-/obj/machinery/door/firedoor/Initialize()
-	. = ..()
-	SSair.firelocks += src
-	SSair.firelocks_requires_updates = TRUE
-
-/obj/machinery/door/firedoor/Destroy()
-	SSair.firelocks -= src
-	SSair.firelocks_requires_updates = TRUE
-	. = ..()
-
-/obj/machinery/door/firedoor/Moved(atom/OldLoc, Dir)
-	. = ..()
-	SSair.firelocks_requires_updates = TRUE
-
-/obj/machinery/door/firedoor/afterShuttleMove(turf/oldT, list/movement_force, shuttle_dir, shuttle_preferred_direction, move_dir, rotation)
-	. = ..()
-	SSair.firelocks_requires_updates = TRUE
 
 /obj/machinery/door/firedoor/emergency_pressure_stop(consider_timer = TRUE)
 	if(density || operating || welded)
@@ -113,5 +93,3 @@
 		to_chat(user, "<span class='warning'>Access denied. Try closing another firedoor to minimize decompression, or using a crowbar.</span>")
 		return FALSE
 	return TRUE
-
-/proc/disable_airs_in_list(list/turfs)

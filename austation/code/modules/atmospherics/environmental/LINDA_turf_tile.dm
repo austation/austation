@@ -40,7 +40,3 @@
 		else
 			step(src, direction)
 		last_high_pressure_movement_air_cycle = SSair.times_fired
-
-/turf/open/consider_firelocks()
-	for(var/obj/machinery/door/firedoor/FD in src)
-		FD.emergency_pressure_stop()

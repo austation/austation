@@ -34,6 +34,7 @@
 		if(cache)
 			cached_map = parsed
 	return bounds
+
 /datum/map_template/proc/initTemplateBounds(list/bounds, init_atmos = TRUE)
 	if (!bounds) //something went wrong
 		stack_trace("[name] template failed to initialize correctly!")
@@ -88,13 +89,13 @@
 		//calculate all turfs inside the border
 		var/list/template_and_bordering_turfs = block(
 			locate(
-				max(bounds[MAP_MINX]-2, 1),
-				max(bounds[MAP_MINY]-2, 1),
+				max(bounds[MAP_MINX]-1, 1),
+				max(bounds[MAP_MINY]-1, 1),
 				bounds[MAP_MINZ]
 				),
 			locate(
-				min(bounds[MAP_MAXX]+2, world.maxx),
-				min(bounds[MAP_MAXY]+2, world.maxy),
+				min(bounds[MAP_MAXX]+1, world.maxx),
+				min(bounds[MAP_MAXY]+1, world.maxy),
 				bounds[MAP_MAXZ]
 				)
 		)

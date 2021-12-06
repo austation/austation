@@ -67,6 +67,7 @@ All ShuttleMove procs go here
 	//Air stuff
 	newT.air_update_turf(TRUE)
 	air_update_turf(TRUE)
+
 	return TRUE
 
 // Called on the new turf after everything has been moved

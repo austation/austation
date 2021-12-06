@@ -50,12 +50,12 @@ SUBSYSTEM_DEF(air)
 	var/log_explosive_decompression = TRUE // If things get spammy, admemes can turn this off.
 
 	// Max number of turfs equalization will grab.
-	// austation -- really fast fastmos 10->30
+	//austation -- set to 30 from 10
 	var/equalize_turf_limit = 30
 	// Max number of turfs to look for a space turf, and max number of turfs that will be decompressed.
 	var/equalize_hard_turf_limit = 2000
-	// Whether equalization should be enabled at all
-	// austation -- demodularize if bee ever fucking switches to fastmos again, used to be FALSE
+	// Whether equalization should be enabled at all.
+	//austation -- set to TRUE from FALSE
 	var/equalize_enabled = TRUE
 	// Whether turf-to-turf heat exchanging should be enabled.
 	var/heat_enabled = FALSE
@@ -65,12 +65,6 @@ SUBSYSTEM_DEF(air)
 	var/excited_group_pressure_goal = 1
 
 	var/list/paused_z_levels	//Paused z-levels will not add turfs to active
-
-	//austation begin -- firelocks list, don't recommend putting anything but firelocks here
-	var/list/firelocks = list()
-	var/firelocks_requires_updates = TRUE
-	var/slow_decomp_threshold = 200
-	//austation end
 
 /datum/controller/subsystem/air/stat_entry(msg)
 	msg += "C:{"
@@ -364,7 +358,6 @@ SUBSYSTEM_DEF(air)
 		high_pressure_delta.len--
 		T.high_pressure_movements()
 		T.pressure_difference = 0
-		T.pressure_direction = 0 //autation -- remove dir
 		T.pressure_specific_target = null
 		if(MC_TICK_CHECK)
 			return
@@ -438,10 +431,10 @@ SUBSYSTEM_DEF(air)
 
 /datum/controller/subsystem/air/proc/pause_z(z_level)
 	LAZYADD(paused_z_levels, z_level)
-	//austation begin -- delay air init
 	var/list/turfs_to_disable = block(locate(1, 1, z_level), locate(world.maxx, world.maxy, z_level))
-	disable_airs_in_list(turfs_to_disable)
-	//austation end
+	for(var/turf/T as anything in turfs_to_disable)
+		T.ImmediateDisableAdjacency(FALSE)
+		CHECK_TICK
 
 /datum/controller/subsystem/air/proc/unpause_z(z_level)
 	var/list/turfs_to_reinit = block(locate(1, 1, z_level), locate(world.maxx, world.maxy, z_level))

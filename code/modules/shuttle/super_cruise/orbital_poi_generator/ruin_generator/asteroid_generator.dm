@@ -13,6 +13,7 @@
 	space_level.generating = FALSE
 
 /proc/_generate_asteroids(center_x, center_y, center_z, max_radius, weight_offset = 0, scale = 65)
+
 	SSair.pause_z(center_z)
 
 	var/perlin_noise_scale = scale

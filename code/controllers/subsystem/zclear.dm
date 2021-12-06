@@ -152,8 +152,6 @@ SUBSYSTEM_DEF(zclear)
 /datum/controller/subsystem/zclear/proc/wipe_z_level(z_level, tracking = FALSE, datum/callback/completion_callback)
 	if(!z_level)
 		return
-	//austation -- pause air
-	SSair.pause_z(z_level)
 
 	SSair.pause_z(z_level)
 

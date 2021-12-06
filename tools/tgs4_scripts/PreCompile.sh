@@ -73,7 +73,7 @@ apt-get install -y cmake build-essential gcc-multilib g++-multilib cmake wget
 # update auxmos
 if [ ! -d "auxmos" ]; then
 	echo "Cloning Auxmos..."
-	git clone https://github.com/austation/auxmos
+	git clone https://github.com/BeeStation/auxmos
 	cd auxmos
 else
 	echo "Fetching Auxmos..."
@@ -81,15 +81,15 @@ else
 	git fetch
 fi
 
-#echo "Deploying Auxmos..."
-#git checkout "$AUXMOS_VERSION"
-#if [ -d "build" ]; then
-#	rm -R build
-#fi
+echo "Deploying Auxmos..."
+git checkout "$AUXMOS_VERSION"
+if [ -d "build" ]; then
+	rm -R build
+fi
 #note, if FUSION is ever fixed this needs changed to "all_reaction_hooks"
-#cargo rustc --target=i686-unknown-linux-gnu --release --features au_features -- -C target-cpu=native
-#mv -f target/i686-unknown-linux-gnu/release/libauxmos.so "$1/libauxmos.so"
-#cd ../../..
+cargo rustc --target=i686-unknown-linux-gnu --release --features trit_fire_hook,plasma_fire_hook,generic_fire_hook -- -C target-cpu=native
+mv -f target/i686-unknown-linux-gnu/release/libauxmos.so "$1/libauxmos.so"
+cd ../../..
 
 # install or update youtube-dl when not present, or if it is present with pip3,
 # which we assume was used to install it

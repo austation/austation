@@ -49,6 +49,6 @@ SUBSYSTEM_DEF(adjacent_air)
 
 		if(mc_check)
 			if(MC_TICK_CHECK)
-				return
+				break
 		else
 			CHECK_TICK

@@ -208,17 +208,10 @@
 
 /turf/proc/handle_decompression_floor_rip()
 /turf/open/floor/handle_decompression_floor_rip(sum)
-//austation begin -- reduced floor rip
-	if(floor_tile)
-		new floor_tile(src)
-	make_plating()
-/*
 	if(sum > 20 && prob(CLAMP(sum / 20, 0, 15)))
 		if(floor_tile)
 			new floor_tile(src)
 		make_plating()
-*/
-//austation end
 
 /turf/open/floor/plating/handle_decompression_floor_rip()
 	return
@@ -250,10 +243,6 @@
 		M = thing
 		if (!M.anchored && !M.pulledby && M.last_high_pressure_movement_air_cycle < SSair.times_fired)
 			M.experience_pressure_difference(pressure_difference * multiplier, pressure_direction, 0, pressure_specific_target)
-	//austation begin -- fastmos
-	if(pressure_difference > 100)
-		new /obj/effect/temp_visual/dir_setting/space_wind(src, pressure_direction, CLAMP(round(sqrt(pressure_difference) * 2), 10, 255))
-	//austation end
 
 /atom/movable/var/pressure_resistance = 10
 /atom/movable/var/last_high_pressure_movement_air_cycle = 0
@@ -267,15 +256,6 @@
 	if (pressure_resistance > 0)
 		move_prob = (pressure_difference/pressure_resistance*PROBABILITY_BASE_PRECENT)-PROBABILITY_OFFSET
 	move_prob += pressure_resistance_prob_delta
-	//austation begin -- magboots are incrediby useful
-	if(ishuman(src))
-		var/mob/living/carbon/human/bootloader = src
-		var/item = bootloader.get_item_by_slot(ITEM_SLOT_FEET)
-		if(item && istype(item, /obj/item/clothing/shoes/magboots))
-			var/obj/item/clothing/shoes/magboots/booties = item
-			if(booties.magpulse && bootloader.has_gravity())
-				return
-	//austation end
 	if (move_prob > PROBABILITY_OFFSET && prob(move_prob) && (move_resist != INFINITY) && (!anchored && (max_force >= (move_resist * MOVE_FORCE_PUSH_RATIO))) || (anchored && (max_force >= (move_resist * MOVE_FORCE_FORCEPUSH_RATIO))))
 		var/move_force = max_force * CLAMP(move_prob, 0, 100) / 100
 		if(move_force > 6000)
