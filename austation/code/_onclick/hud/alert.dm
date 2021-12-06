@@ -5,7 +5,7 @@
 	icon_state = "surrender"
 
 /atom/movable/screen/alert/restrained/surrendered/Click()
-	var/mob/living/L = usr
+	var/mob/living/carbon/human/L = usr
 	if(!istype(L) || L != owner)
 		return
 	L.surrender()

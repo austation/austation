@@ -349,8 +349,8 @@
 
 /datum/emote/living/surrender/run_emote(mob/user, params, type_override, intentional)
 	. = ..()
-	if(. && isliving(user))
-		var/mob/living/L = user
+	if(. && ishuman(user))
+		var/mob/living/carbon/human/L = user
 		L.surrender() //austation end
 
 /datum/emote/living/sway

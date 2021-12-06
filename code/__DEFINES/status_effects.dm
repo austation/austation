@@ -133,3 +133,6 @@
 #define STASIS_ASCENSION_EFFECT "heretic_ascension"
 
 #define IS_IN_STASIS(mob) (mob.has_status_effect(STATUS_EFFECT_STASIS))
+
+//Austation defines
+#define STATUS_EFFECT_SURRENDERED /datum/status_effect/incapacitating/surrendered
