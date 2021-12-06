@@ -36,7 +36,6 @@
 	desc = "It's better than bad, it's good!"
 	icon_state = "logs"
 	force = 5
-	block_upgrade_walk = 1
 	throwforce = 5
 	w_class = WEIGHT_CLASS_NORMAL
 	throw_speed = 2
@@ -110,7 +109,7 @@
 	production = 2
 	yield = 5
 	potency = 50
-	growthstages = 2
+	growthstages = 3
 	growing_icon = 'icons/obj/hydroponics/growing.dmi'
 	icon_dead = "bamboo-dead"
 	genes = list(/datum/plant_gene/trait/repeated_harvest)
@@ -151,6 +150,7 @@
 	density = FALSE
 	anchored = TRUE
 	buckle_lying = 0
+	pass_flags_self = PASSTABLE | LETPASSTHROW
 	var/burning = 0
 	var/burn_icon = "bonfire_on_fire" //for a softer more burning embers icon, use "bonfire_warm"
 	var/grill = FALSE
@@ -169,13 +169,6 @@
 /obj/structure/bonfire/prelit/Initialize()
 	. = ..()
 	StartBurning()
-
-/obj/structure/bonfire/CanPass(atom/movable/mover, turf/target)
-	if(istype(mover) && (mover.pass_flags & PASSTABLE))
-		return TRUE
-	if(mover.throwing)
-		return TRUE
-	return ..()
 
 /obj/structure/bonfire/attackby(obj/item/W, mob/user, params)
 	if(istype(W, /obj/item/stack/rods) && !can_buckle && !grill)

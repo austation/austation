@@ -1,3 +1,10 @@
+/datum/chemical_reaction/reagent_explosion/nitroglycerin/on_reaction(datum/reagents/holder, created_volume)
+	holder.chem_temp += created_volume*5
+	return
+
+/datum/chemical_reaction/reagent_explosion/nitroglycerin_explosion
+	required_temp = 385
+
 /datum/chemical_reaction/reagent_explosion/rdx
 	results = list(/datum/reagent/rdx= 2)
 	required_reagents = list(/datum/reagent/phenol = 2, /datum/reagent/toxin/acid/nitracid = 1, /datum/reagent/acetone_oxide = 1 )

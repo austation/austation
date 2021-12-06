@@ -6,7 +6,7 @@
 			Will attack anyone, including operatives, STAY AWAY ONCE DEPLOYED!"
 	item = /obj/item/sbeacondrop/deathsky
 	cost = 18
-	include_modes = list(/datum/game_mode/nuclear, /datum/game_mode/nuclear/clown_ops)
+	purchasable_from = UPLINK_NUKE_OPS | UPLINK_CLOWN_OPS
 
 /datum/uplink_item/role_restricted/bluespace_sharpener
 	name = "Bluespace Whetstone"
@@ -30,3 +30,10 @@
 	item = /obj/item/storage/toolbox/emergency/turret
 	cost = 11
 	restricted_roles = list("Station Engineer", "Chief Engineer")
+
+/datum/uplink_item/role_restricted/gympie_gympie_seeds
+	name = "Gympie Gympie Seeds"
+	desc = "A packet of highly adaptable Gympie seeds.\nAdd Left 4 Zed for results!"
+	item = /obj/item/seeds/gympie_gympie
+	cost = 4
+	restricted_roles = list("Botanist")

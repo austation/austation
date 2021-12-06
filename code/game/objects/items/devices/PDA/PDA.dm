@@ -19,7 +19,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 	item_state = "electronic"
 	lefthand_file = 'icons/mob/inhands/misc/devices_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/misc/devices_righthand.dmi'
-	item_flags = NOBLUDGEON
+	//item_flags = NOBLUDGEON -- austation -- I don't know why this is set lmao
 	w_class = WEIGHT_CLASS_TINY
 	slot_flags = ITEM_SLOT_ID | ITEM_SLOT_BELT
 	actions_types = list(/datum/action/item_action/toggle_light)

@@ -1,5 +1,0 @@
-author: "kit-katz"
-delete-after: True
-changes: 
-  - rscadd: "Adds three new pAI holochassis: carp, bee and phantom!"
-  - imageadd: "Adds inhands and head-worn sprites for all other pAI chassis that were missing them"
