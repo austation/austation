@@ -1,3 +1,6 @@
+/datum/controller/subsystem/ticker
+	var/pregame_checked = FALSE
+
 /datum/controller/subsystem/ticker/proc/autosandbox()
 	if(!CONFIG_GET(flag/autosandbox_enabled))
 		return

@@ -191,12 +191,13 @@ SUBSYSTEM_DEF(ticker)
 			timeLeft -= wait
 
 			// austation start -- TGS bot now pings notification squad role, also hopefully fixes TGS issues, and handle autosandbox
-			if(timeLeft <= 600 && !tipped)
+			if(timeLeft <= 600 && !pregame_checked)
 				autosandbox()
 				if(GLOB.master_mode == "sandbox")
 					send2chat("New sandbox round starting on [SSmapping.config.map_name]!", "status")
 				else
 					send2chat("<@&586792483892232209> New round starting on [SSmapping.config.map_name]!", "status")
+				pregame_checked = TRUE
 			// austation end
 
 			if(timeLeft <= 300 && !tipped)
