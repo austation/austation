@@ -1,0 +1,4 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - tweak: "The pod recovery ship has been replaced with one that supports up to 6 pods."
