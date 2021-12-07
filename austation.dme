@@ -25,6 +25,7 @@
 #include "austation\code\__DEFINES\sound.dm"
 #include "austation\code\__DEFINES\traits.dm"
 #include "austation\code\__DEFINES\preferences.dm"
+#include "austation\code\__DEFINES\dcs\signals.dm"
 // END_DEFINE_INCLUDE
 
 // BEGIN_BEESTATION_INCLUDE
@@ -50,6 +51,7 @@
 #include "austation\code\datums\components\spikes.dm"
 #include "austation\code\datums\components\crafting\crafting.dm"
 #include "austation\code\datums\components\crafting\recipes.dm"
+#include "austation\code\datums\components\storage\storage.dm"
 #include "austation\code\datums\diseases\advance\symptoms\beesymptom.dm"
 #include "austation\code\datums\diseases\advance\symptoms\deafness.dm"
 #include "austation\code\datums\diseases\advance\symptoms\fever.dm"
@@ -128,6 +130,8 @@
 #include "austation\code\game\objects\structures\mirror.dm"
 #include "austation\code\game\objects\structures\party_balloons.dm"
 #include "austation\code\game\objects\structures\tables_racks.dm"
+#include "austation\code\game\objects\structures\toilet_bong.dm"
+#include "austation\code\game\objects\structures\watercloset.dm"
 #include "austation\code\game\objects\structures\window.dm"
 #include "austation\code\game\objects\structures\closets\secure.dm"
 #include "austation\code\game\turfs\closed\_closed.dm"
