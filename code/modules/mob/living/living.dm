@@ -225,6 +225,7 @@
 		return
 	now_pushing = TRUE
 	var/t = get_dir(src, AM)
+	t = t ? t : dir // austation -- we will fall back to using the mob's dir if on same tile as obj
 	var/push_anchored = FALSE
 	if((AM.move_resist * MOVE_FORCE_CRUSH_RATIO) <= force)
 		if(move_crush(AM, move_force, t))
