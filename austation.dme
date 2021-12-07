@@ -32,6 +32,7 @@
 // END_BEESTATION_INCLUDE
 
 // BEGIN_INCLUDE
+#include "austation\code\__DEFINES\status_effects.dm"
 #include "austation\code\__HELPERS\matrices.dm"
 #include "austation\code\__HELPERS\roundend.dm"
 #include "austation\code\_globalvars\coilgun.dm"
