@@ -43,7 +43,7 @@
 /obj/item/restraints/handcuffs/attack(mob/living/carbon/C, mob/living/user)
 	if(!istype(C))
 		return
-	var/t = 40 - ((user.has_status_effect(STATUS_EFFECT_SURRENDERED)) * 20) //austation PR: 4356 -- Makes handcuffing someone faster if they've surrendered
+	var/t = 40 - ((C.has_status_effect(STATUS_EFFECT_PARALYZED)) * 20) //austation -- Makes handcuffing paralzyed people faster
 
 	SEND_SIGNAL(C, COMSIG_CARBON_CUFF_ATTEMPTED, user)
 
@@ -58,7 +58,7 @@
 								"<span class='userdanger'>[user] is trying to put [src.name] on you!</span>")
 
 			playsound(loc, cuffsound, 30, 1, -2)
-			if(do_mob(user, C, t) && (C.get_num_arms(FALSE) >= 2 || C.get_arm_ignore())) //austation -- Makes handcuffing someone faster if they've surrendered
+			if(do_mob(user, C, t) && (C.get_num_arms(FALSE) >= 2 || C.get_arm_ignore())) //austation -- Makes handcuffing paralzyed people faster
 				if(iscyborg(user))
 					apply_cuffs(C, user, TRUE)
 				else
