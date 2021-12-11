@@ -214,12 +214,6 @@ The reactor CHEWS through moderator. It does not do this slowly. Be very careful
 	gas_absorption_constant = gas_absorption_effectiveness //And set this up for the rest of the round.
 	STOP_PROCESSING(SSmachines, src) //We'll handle this one ourselves.
 
-/obj/machinery/atmospherics/components/trinary/nuclear_reactor/Crossed(atom/movable/AM, oldloc)
-	. = ..()
-	if(isliving(AM) && temperature > 0)
-		var/mob/living/L = AM
-		L.adjust_bodytemperature(CLAMP(temperature, BODYTEMP_COOLING_MAX, BODYTEMP_HEATING_MAX)) //If you're on fire, you heat up!
-
 /obj/machinery/atmospherics/components/trinary/nuclear_reactor/process()
 	update_parents() //Update the pipenet to register new gas mixes
 	if(next_slowprocess < world.time)
@@ -342,8 +336,10 @@ The reactor CHEWS through moderator. It does not do this slowly. Be very careful
 	for(var/atom/movable/I in get_turf(src))
 		if(isliving(I))
 			var/mob/living/L = I
-			if(temperature > 0)
-				L.adjust_bodytemperature(CLAMP(temperature, BODYTEMP_COOLING_MAX, BODYTEMP_HEATING_MAX)) //If you're on fire, you heat up!
+			var/temp_diff = CELSIUS_TO_KELVIN(temperature) - L.bodytemperature
+			if(temp_diff <= 0)
+				continue
+			L.adjust_bodytemperature(CLAMP(temp_diff / 2, 1, BODYTEMP_HEATING_MAX)) //If you're on fire, you heat up!
 		if(istype(I, /obj/item/reagent_containers/food) && !istype(I, /obj/item/reagent_containers/food/drinks))
 			playsound(src, pick('sound/machines/fryer/deep_fryer_1.ogg', 'sound/machines/fryer/deep_fryer_2.ogg'), 100, TRUE)
 			var/obj/item/reagent_containers/food/grilled_item = I
@@ -911,12 +907,19 @@ The reactor CHEWS through moderator. It does not do this slowly. Be very careful
 			new /obj/effect/decal/nuclear_waste (floor)
 	qdel(src)
 
-/obj/effect/decal/nuclear_waste/epicenter/Initialize()
+/obj/effect/decal/nuclear_waste/Initialize()
 	. = ..()
+	var/static/list/loc_connections = list(
+		COMSIG_ATOM_ENTERED = .proc/on_entered,
+	)
+	AddElement(/datum/element/connect_loc, loc_connections)
+
+/obj/effect/decal/nuclear_waste/epicenter/ComponentInitialize()
 	AddComponent(/datum/component/radioactive, 1500, src, 0)
 
-/obj/effect/decal/nuclear_waste/Crossed(atom/movable/AM)
-	. = ..()
+/obj/effect/decal/nuclear_waste/proc/on_entered(datum/source, atom/movable/AM)
+	SIGNAL_HANDLER
+
 	if(isliving(AM))
 		var/mob/living/L = AM
 		playsound(loc, 'sound/effects/gib_step.ogg', HAS_TRAIT(L, TRAIT_LIGHT_STEP) ? 20 : 50, 1)
@@ -927,7 +930,7 @@ The reactor CHEWS through moderator. It does not do this slowly. Be very careful
 		radiation_pulse(src, 1000, 5) //MORE RADS
 		to_chat(user, "<span class='notice'>You start to clear [src]...</span>")
 		if(tool.use_tool(src, user, 50, volume=100))
-			to_chat(user, "<span class='notice'>You clear [src]. </span>")
+			to_chat(user, "<span class='notice'>You clear [src].</span>")
 			qdel(src)
 			return
 	. = ..()

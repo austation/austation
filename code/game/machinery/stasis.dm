@@ -55,12 +55,12 @@
 		play_power_sound()
 		update_icon()
 
-/obj/machinery/stasis/Exited(atom/movable/AM, atom/newloc)
-	if(AM == occupant)
-		var/mob/living/L = AM
+/obj/machinery/stasis/Exited(atom/movable/gone, direction)
+	if(gone == occupant)
+		var/mob/living/L = gone
 		if(L.IsInStasis())
 			thaw_them(L)
-	. = ..()
+	return ..()
 
 /obj/machinery/stasis/proc/stasis_running()
 	return stasis_enabled && is_operational()
@@ -82,9 +82,6 @@
 		overlays_to_remove = managed_vis_overlays - mattress_on
 
 	SSvis_overlays.remove_vis_overlay(src, overlays_to_remove)
-
-	if(occupant)
-		SSvis_overlays.add_vis_overlay(src, 'icons/obj/machines/stasis.dmi', "tubes", LYING_MOB_LAYER + 0.1, plane, dir) //using vis_overlays instead of normal overlays for mouse_opacity here
 
 	if(stat & BROKEN)
 		icon_state = "stasis_broken"
