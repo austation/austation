@@ -1,0 +1,5 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - rscadd: "Abductor ship now has a recharger."
+  - rscadd: "Abductor gun can now fire ion shots and freeze shots."
