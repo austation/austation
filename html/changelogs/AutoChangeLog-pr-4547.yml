@@ -1,4 +1,0 @@
-author: "AustationBot"
-delete-after: True
-changes: 
-  - bugfix: "You can walk over chasms again. The way this works is honestly super nasty but it's good enough."
