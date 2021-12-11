@@ -1,0 +1,4 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - rscadd: "Magboots keep you from being flung by high pressure pipes when unwrenching"
