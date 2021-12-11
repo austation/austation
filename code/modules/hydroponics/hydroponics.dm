@@ -380,7 +380,8 @@
 			myseed = new /obj/item/seeds/plump(src)
 		else
 			myseed = new /obj/item/seeds/starthistle(src)
-	age = 0
+	age = 1
+	lastproduce = 1
 	plant_health = myseed.endurance
 	lastcycle = world.time
 	harvest = 0
@@ -788,6 +789,7 @@
 			myseed = O
 			update_name()
 			age = 1
+			lastproduce = 1
 			plant_health = myseed.endurance
 			lastcycle = world.time
 			update_icon()
@@ -908,6 +910,8 @@
 		myseed = null
 		update_name()
 		dead = 0
+		age = 0
+		lastproduce = 0
 	update_icon()
 
 /// Tray Setters - The following procs adjust the tray or plants variables, and make sure that the stat doesn't go out of bounds.///
