@@ -29,7 +29,7 @@
 
 /obj/item/drone_shell
 	name = "hand-held drone shell"
-	desc = "a drone shell yet to be activated. use it in your hand to activate the drone shell."
+	desc = "A drone shell yet to be activated. use it in your hand to activate the drone shell."
 	w_class = WEIGHT_CLASS_NORMAL
 	icon = 'icons/mob/drone.dmi'
 	icon_state = "drone_maint_grey"
@@ -41,6 +41,5 @@
 		user.show_message("<span class='warning'> There is no room to build \the [src].</span>")
 		return
 	user.visible_message("<span class='notice'> [user] begins to build \a [src].</span>", "<span class='notice'> You begin to build \the [src].</span>", "<span class='notice'> You can hear someone building \a [src].</span>", 7)
-	var/obj/effect/mob_spawn/drone/new_drone
-	new_drone = new(T)
+	var/obj/effect/mob_spawn/drone/new_drone = new(T)
 	qdel(src)
