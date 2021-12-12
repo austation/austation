@@ -63,5 +63,5 @@
 /obj/item/borg/stun/attack(mob/living/M, mob/living/user)
 	M.dust()
 
-	M.visible_message("<span class='danger'>[user] has prodded [M] with [src] they turn to dust!</span>", \
-					"<span class='userdanger'>[user] has prodded you with [src] oh shit!</span>")
+	M.visible_message("<span class='danger'>[user] has prodded [M] with [src]! They turn to dust!</span>", \
+					"<span class='userdanger'>[user] has prodded you with [src]! Oh shit!</span>")
