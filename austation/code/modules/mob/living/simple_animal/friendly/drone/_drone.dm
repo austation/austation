@@ -40,6 +40,8 @@
 	if(!T)
 		user.show_message("<span class='warning'> There is no room to build \the [src].</span>")
 		return
-	user.visible_message("<span class='notice'> [user] begins to build \a [src].</span>", "<span class='notice'> You begin to build \the [src].</span>", "<span class='notice'> You can hear someone building \a [src].</span>", 7)
-	var/obj/effect/mob_spawn/drone/new_drone = new(T)
+
+	user.visible_message("<span class='notice'> [user] builds \a [src].</span>", "<span class='notice'> You build \the [src].</span>", "<span class='notice'> You can hear someone building \a [src].</span>", 7)
+	var/obj/effect/mob_spawn/drone/new_drone
+	new_drone = new(T)
 	qdel(src)
