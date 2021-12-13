@@ -43,4 +43,6 @@
 
 	user.visible_message("<span class='notice'> [user] builds \a [src].</span>", "<span class='notice'> You build \the [src].</span>", "<span class='notice'> You can hear someone building \a [src].</span>", 7)
 	var/obj/effect/mob_spawn/drone/new_drone = new(T)
+	for(var/i in 1 to 4)  //  The same playsound behaviour used when borgs choose a module
+		playsound(R, pick('sound/items/drill_use.ogg', 'sound/items/jaws_cut.ogg', 'sound/items/jaws_pry.ogg', 'sound/items/welder.ogg', 'sound/items/ratchet.ogg'), 80, 1, -1)
 	qdel(src)
