@@ -122,6 +122,8 @@
 	if(length(current_letter) && phrase[1] != current_letter)
 		visible_message("<span class='warning'>Invalid word, entity must begin with \an <b>[current_letter]</b></span>")
 		return
+	if(findtext(phrase, ".", -1))
+		phrase = copytext(phrase, 1, -1) // trims off the last character if it's a period
 	var/regex/valid_end_letter = regex(@"[a-z]")
 	if(!findtext(phrase, valid_end_letter, -1))
 		visible_message("<span class='warning'>Word must end with a letter.</span>")
