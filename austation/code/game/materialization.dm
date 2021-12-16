@@ -178,7 +178,7 @@
 		switch_player()
 	if(!QDELETED(H)) // in case they got gibbed or some other weird thing happened
 		REMOVE_TRAIT(H, TRAIT_PACIFISM, "shiritori")
-	if(length(players) == 1)
+	if(length(players) == 1) // squid game
 		visible_message("<span class='boldannounce'>[current_player] has won the game!</span>")
 		playsound(src, 'sound/effects/gong.ogg', 100, 0, 5)
 		playsound(src, 'sound/effects/bamf.ogg', 100, 0, 5)
