@@ -65,6 +65,9 @@
 			atom_list = generate_name_list(typesof(/atom/movable))
 		active = TRUE
 		current_player = pick(players)
+		say("[current_player] will start.")
+		to_chat(current_player, "<span class='notice'>It is now your turn.</span>")
+		playsound(src, 'sound/effects/gong.ogg', 100, 0, 5)
 		START_PROCESSING(SSobj, src)
 	else
 		say("Insufficient players")
@@ -92,7 +95,9 @@
 /obj/structure/table/mat_shiritori/attack_hand(mob/user)
 	if(!ishuman(user))
 		return ..()
-	if(alert(user, "Would you like to [game_starting ? "join" : "start"] a game of Materialization Shiritori?", "The gods", "Yes", "No") == "Yes")
+	if(active)
+		to_chat(user, "<span class='info'>You can't join an active game.</span>")
+	if(alert(user, "Would you like to [game_starting ? "join the" : "start a"] game of Materialization Shiritori?", "The gods", "Yes", "No") == "Yes")
 		var/mob/living/carbon/human/H = user
 		if(H.stat == DEAD || !H.mind?.hasSoul)
 			return
@@ -101,6 +106,8 @@
 			return
 		if(!game_starting)
 			ready_up()
+		else
+			say("[H] has joined.")
 		add_player(H)
 
 /obj/structure/table/mat_shiritori/Hear(message, atom/movable/speaker, message_language, raw_message, radio_freq, list/spans, list/message_mods = list())
@@ -110,9 +117,9 @@
 	if(active && speaker == current_player)
 		find_object(raw_message)
 
-/obj/structure/table/mat_shiritori/proc/find_object(phrase as text)
+/obj/structure/table/mat_shiritori/proc/find_object(phrase)
 	phrase = lowertext(phrase)
-	if(phrase[1] != current_letter)
+	if(length(current_letter) && phrase[1] != current_letter)
 		visible_message("<span class='warning'>Invalid word, entity must begin with \an <b>[current_letter]</b></span>")
 		return
 	var/regex/valid_end_letter = regex(@"[a-z]")
@@ -143,7 +150,7 @@
 	ball.prime_spawn(src, Opath, current_player)
 	current_player.put_in_hands(ball)
 	spent_objs[phrase] = Opath
-	current_letter = phrase[length(phrase)]
+	current_letter = lowertext(phrase[length(phrase)])
 	playsound(src, 'sound/magic/clockwork/invoke_general.ogg', 100, TRUE)
 	switch_player()
 
@@ -199,7 +206,7 @@
 		if(QDELETED(L) || L.stat == DEAD)
 			remove_player(L)
 			continue
-	time_left -= delta_time
+	time_left -= delta_time SECONDS
 	if(time_left <= 0)
 		visible_message("<span class='warning'>[current_player] has ran out of time!</span>")
 		playsound(src, 'sound/effects/clock_tick.ogg', 120, FALSE, 2)
