@@ -1,0 +1,4 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - tweak: "Toxins Bombs now grant 50% of General Research Points as Discovery Research Points"
