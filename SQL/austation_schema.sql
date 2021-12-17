@@ -551,7 +551,7 @@ CREATE TABLE `ticket` (
 -- Table structure for table `achievements`
 --
 DROP TABLE IF EXISTS `achievements`;
-CREATE TABLE `achievements` (
+CREATE TABLE IF NOT EXISTS `achievements` (
 	`ckey` VARCHAR(32) NOT NULL,
 	`achievement_key` VARCHAR(32) NOT NULL,
 	`value` INT NULL,
@@ -574,7 +574,7 @@ $$
 DELIMITER ;
 
 DROP TABLE IF EXISTS `achievement_metadata`;
-CREATE TABLE `achievement_metadata` (
+CREATE TABLE IF NOT EXISTS `achievement_metadata` (
 	`achievement_key` VARCHAR(32) NOT NULL,
 	`achievement_version` SMALLINT UNSIGNED NOT NULL DEFAULT 0,
 	`achievement_type` enum('achievement','score','award') NULL DEFAULT NULL,
