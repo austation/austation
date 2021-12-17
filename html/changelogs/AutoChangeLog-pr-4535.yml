@@ -1,0 +1,5 @@
+author: "Ohagi-Chan"
+delete-after: True
+changes: 
+  - rscadd: "printable hand-held drone shells, that can be carried around with you until you want to activate them."
+  - tweak: "drone shells no longer stick to the floor immediately after you print them."
