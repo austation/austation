@@ -86,6 +86,7 @@
 #include "austation\code\game\machinery\doors\airlock_types.dm"
 #include "austation\code\game\machinery\doors\firedoor.dm"
 #include "austation\code\game\machinery\porta_turret\portable_turret.dm"
+#include "austation\code\game\machinery\telecomms\machines\server.dm"
 #include "austation\code\game\mecha\equipment\tools\other_tools.dm"
 #include "austation\code\game\mecha\equipment\tools\work_tools.dm"
 #include "austation\code\game\mecha\equipment\weapons\weapons.dm"
