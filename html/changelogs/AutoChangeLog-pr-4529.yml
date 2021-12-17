@@ -1,0 +1,5 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - rscdel: "Medals Verb is gone, use the Check Achievements one in the OOC tab instead"
+  - bugfix: "HubMigrator script will now migrate your achievements even if you had never killed a lavaland boss."
