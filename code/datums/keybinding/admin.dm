@@ -28,13 +28,9 @@
 	keybind_signal = COMSIG_KB_ADMIN_MSAY_DOWN
 
 /datum/keybinding/admin/mentor_say/down(client/user)
-<<<<<<< HEAD
-	if (!user.holder && !user.is_mentor()) return // austation -- mentorsay keybind now actually works for mentors
-=======
 	. = ..()
 	if(.)
 		return
->>>>>>> 4dab0dddcb... Port keybind improvements from tg, use them to fix arm augment issues (#5672)
 	user.get_mentor_say()
 	return TRUE
 
