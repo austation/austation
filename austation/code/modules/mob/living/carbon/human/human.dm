@@ -4,7 +4,7 @@
 	var/mob/living/L = src
 	var/t = 8
 	var/image/I
-	if(surrender_time > world.time)
+	if(surrender_time > world.time || (!has_status_effect(STATUS_EFFECT_SURRENDERED) && has_status_effect(STATUS_EFFECT_PARALYZED)))
 		return
 	if(has_status_effect(STATUS_EFFECT_SURRENDERED))
 		I = image('icons/obj/closet.dmi', L, "cardboard_special", L.layer+1)
