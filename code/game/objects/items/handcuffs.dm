@@ -43,7 +43,6 @@
 /obj/item/restraints/handcuffs/attack(mob/living/carbon/C, mob/living/user)
 	if(!istype(C))
 		return
-	var/t = 40 - ((C.has_status_effect(STATUS_EFFECT_PARALYZED)) * 20) //austation -- Makes handcuffing paralzyed people faster
 
 	SEND_SIGNAL(C, COMSIG_CARBON_CUFF_ATTEMPTED, user)
 
