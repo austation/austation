@@ -1,0 +1,12 @@
+{
+	"map_name": "Dronestation",
+	"map_link": "DroneStation/Dronestation",
+	"map_path": "map_files/Dronestation",
+	"map_file": "Dronestation.dmm",
+	"shuttles": {
+		"cargo": "cargo_box",
+		"ferry": "ferry_fancy",
+		"whiteship": "whiteship_meta",
+		"emergency": "emergency_meta"
+	}
+}
