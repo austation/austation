@@ -60,12 +60,11 @@ map multiz_debug
 endmap
 
 map austation
+	default
     votable
 endmap
 
 map dronestation
-	default
-	votable
 endmap
 
 map orbitalstation
