@@ -332,12 +332,17 @@ GLOBAL_VAR(restart_counter)
 		hostedby = CONFIG_GET(string/hostedby)
 
 	s += "<b>[station_name()]</b>";
+<<<<<<< HEAD
 	s += " ("
 	s += "<a href=\"https://austation.net/\">" //Change this to wherever you want the hub to link to. links to austation's website on the hub
 	s += "AuStation"  //Replace this with something else. Or ever better, delete it and uncomment the game version. modifies the hub entry link
 	s += "</a>"
 	s += ")\]" //encloses the server title in brackets to make the hub entry fancier
 	s += "<br>[CONFIG_GET(string/servertagline)]<br>" //adds a tagline!
+=======
+	var/discordurl = CONFIG_GET(string/discordurl)
+	s += "(<a href='[discordurl]'>Discord</a>|<a href='http://beestation13.com'>Website</a>))"
+>>>>>>> 7e10aa834e... UnHardcoded Discord (#5971)
 
 	var/n = 0
 	for (var/mob/M in GLOB.player_list)
