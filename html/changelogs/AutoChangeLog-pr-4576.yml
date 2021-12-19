@@ -1,0 +1,4 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - rscdel: "PRs will no longer auto-stale."
