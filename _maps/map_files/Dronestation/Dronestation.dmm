@@ -3,17 +3,24 @@
 /obj/effect/turf_decal/stripes{
 	dir = 8
 	},
-/obj/structure/extinguisher_cabinet{
-	pixel_y = -32
+/obj/effect/turf_decal/caution/stand_clear/white{
+	dir = 4
 	},
 /turf/open/floor/mineral/plastitanium/red,
 /area/wizard_station)
-"ae" = (
+"ax" = (
+/obj/machinery/light/floor{
+	nightshift_light_power = 1;
+	use_power = 0
+	},
+/turf/open/floor/carpet/purple,
+/area/space)
+"aJ" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
 /obj/machinery/atmospherics/components/binary/dp_vent_pump{
-	dir = 8
+	dir = 4
 	},
 /obj/machinery/advanced_airlock_controller{
 	dir = 8;
@@ -21,17 +28,10 @@
 	},
 /turf/open/floor/plating,
 /area/wizard_station)
-"bA" = (
-/obj/effect/mapping_helpers/airlock/cyclelink_helper{
+"ca" = (
+/obj/machinery/computer/rdconsole/core{
 	dir = 1
 	},
-/obj/machinery/door/airlock/arrivals_external{
-	name = "Arrivals Airlock"
-	},
-/turf/open/floor/plating,
-/area/wizard_station)
-"ca" = (
-/obj/machinery/rnd/production/circuit_imprinter,
 /turf/open/floor/mineral/plastitanium/red,
 /area/wizard_station)
 "cd" = (
@@ -41,6 +41,10 @@
 	},
 /turf/open/space/basic,
 /area/space)
+"cG" = (
+/obj/structure/ore_box,
+/turf/open/floor/circuit/telecomms,
+/area/wizard_station)
 "dk" = (
 /obj/effect/turf_decal/delivery,
 /turf/open/floor/plating,
@@ -52,7 +56,7 @@
 /area/space)
 "em" = (
 /obj/item/card/id/job/miner,
-/turf/open/floor/plating,
+/turf/open/floor/pod,
 /area/space)
 "eS" = (
 /obj/structure/plasticflaps,
@@ -65,6 +69,11 @@
 "fF" = (
 /obj/effect/turf_decal/delivery,
 /obj/item/card/id/job/qm,
+/obj/item/holochip{
+	credits = 10000;
+	icon_state = "spacecash1000";
+	name = "10,000 bucks"
+	},
 /turf/open/floor/plating,
 /area/wizard_station)
 "fY" = (
@@ -74,23 +83,16 @@
 /turf/open/floor/mineral/plastitanium/red,
 /area/wizard_station)
 "gn" = (
-/obj/machinery/door/unpowered/shuttle,
 /obj/structure/fans/tiny,
+/obj/machinery/door/airlock/hatch,
 /turf/open/floor/mineral/plastitanium/red,
-/area/space)
+/area/wizard_station)
 "gv" = (
 /turf/closed/wall/mineral/titanium,
 /area/space)
-"gC" = (
-/obj/effect/spawner/structure/window/reinforced,
-/obj/machinery/atmospherics/pipe/simple/general{
-	dir = 4
-	},
-/turf/open/floor/plasteel,
-/area/space)
 "hd" = (
-/obj/structure/sign/warning/docking,
-/turf/closed/wall/mineral/titanium,
+/obj/structure/marker_beacon,
+/turf/open/floor/plating/airless,
 /area/space)
 "hm" = (
 /turf/closed/mineral/random{
@@ -102,6 +104,10 @@
 /obj/structure/grille,
 /turf/closed/wall/r_wall,
 /area/space)
+"ic" = (
+/obj/machinery/ore_silo,
+/turf/open/floor/circuit/telecomms,
+/area/wizard_station)
 "is" = (
 /obj/machinery/light/small{
 	dir = 1
@@ -120,8 +126,14 @@
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
 	dir = 8
 	},
-/turf/open/floor/plating,
+/turf/open/floor/pod,
 /area/wizard_station)
+"kh" = (
+/obj/machinery/atmospherics/pipe/simple/supplymain/visible{
+	dir = 10
+	},
+/turf/closed/wall/mineral/titanium,
+/area/space)
 "kx" = (
 /obj/structure/lattice,
 /turf/open/space/basic,
@@ -149,13 +161,26 @@
 /area/wizard_station)
 "mH" = (
 /obj/structure/lattice,
-/obj/structure/sign/warning/vacuum/external,
-/turf/closed/wall/mineral/titanium,
+/obj/structure/grille,
+/turf/closed/wall/r_wall,
+/area/space)
+"nc" = (
+/obj/structure/window/plastitanium,
+/turf/open/floor/plating/airless,
 /area/space)
 "ne" = (
 /obj/structure/closet/firecloset,
 /obj/effect/turf_decal/bot,
-/turf/open/floor/plating,
+/turf/open/floor/pod,
+/area/space)
+"nN" = (
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/obj/machinery/atmospherics/components/unary/shuttle/heater{
+	dir = 1
+	},
+/turf/open/floor/plating/airless,
 /area/space)
 "ow" = (
 /obj/machinery/door/poddoor{
@@ -176,7 +201,13 @@
 /area/wizard_station)
 "qc" = (
 /obj/structure/lattice,
-/turf/closed/wall/mineral/titanium,
+/turf/closed/wall/mineral/titanium/survival,
+/area/space)
+"qg" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
+	dir = 10
+	},
+/turf/closed/wall/r_wall,
 /area/space)
 "qG" = (
 /obj/structure/rack,
@@ -186,13 +217,17 @@
 /obj/item/shovel{
 	pixel_x = -5
 	},
-/turf/open/floor/plating,
+/turf/open/floor/pod,
 /area/space)
 "qT" = (
 /turf/closed/mineral/random/high_chance{
 	baseturfs = /turf/open/floor/plating/asteroid/basalt/airless;
 	turf_type = /turf/open/floor/plating/asteroid/basalt/airless
 	},
+/area/space)
+"qY" = (
+/obj/structure/window/plastitanium,
+/turf/open/space/basic,
 /area/space)
 "rd" = (
 /obj/effect/turf_decal/stripes{
@@ -202,36 +237,17 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+/obj/effect/turf_decal/caution{
+	dir = 4
+	},
 /turf/open/space/basic,
 /area/space)
-"ro" = (
-/obj/machinery/door/airlock/arrivals_external{
-	name = "Arrivals Airlock"
-	},
-/obj/structure/sign/warning/vacuum/external{
-	pixel_y = 32
-	},
-/turf/open/floor/plating,
-/area/space)
 "rF" = (
-/obj/machinery/power/apc/unlocked,
-/obj/machinery/disposal/bin,
-/obj/structure/disposalpipe/trunk{
-	dir = 1
-	},
+/obj/machinery/modular_fabricator/autolathe,
 /turf/open/floor/mineral/plastitanium/red,
 /area/wizard_station)
 "rI" = (
-/obj/docking_port/stationary{
-	dir = 8;
-	dwidth = 3;
-	height = 15;
-	id = "arrivals_stationary";
-	name = "arrivals";
-	roundstart_template = /datum/map_template/shuttle/arrival/box;
-	width = 7
-	},
-/turf/open/space/basic,
+/turf/open/floor/plating/airless,
 /area/space)
 "rL" = (
 /obj/structure/disposalpipe/segment{
@@ -251,6 +267,12 @@
 	},
 /turf/closed/wall,
 /area/space)
+"sr" = (
+/obj/machinery/atmospherics/pipe/simple/supplymain/visible{
+	dir = 5
+	},
+/turf/closed/wall/mineral/titanium,
+/area/space)
 "sW" = (
 /obj/machinery/computer/cargo{
 	dir = 4
@@ -265,6 +287,33 @@
 	dir = 8
 	},
 /turf/open/floor/plating,
+/area/wizard_station)
+"uE" = (
+/obj/machinery/portable_atmospherics/canister/air,
+/turf/open/floor/circuit/telecomms,
+/area/wizard_station)
+"uR" = (
+/obj/structure/closet/emcloset,
+/obj/effect/turf_decal/bot,
+/turf/open/floor/carpet/purple,
+/area/space)
+"uX" = (
+/obj/structure/lattice,
+/turf/closed/wall/mineral/titanium,
+/area/space)
+"vd" = (
+/obj/structure/rack,
+/obj/item/clothing/head/ushanka,
+/obj/item/clothing/head/ushanka,
+/obj/item/clothing/head/ushanka,
+/obj/item/clothing/head/ushanka,
+/obj/item/clothing/head/ushanka,
+/obj/item/clothing/head/ushanka,
+/obj/item/clothing/head/ushanka,
+/obj/item/clothing/head/ushanka,
+/obj/item/clothing/head/ushanka,
+/obj/item/clothing/head/ushanka,
+/turf/open/floor/circuit/telecomms,
 /area/wizard_station)
 "vz" = (
 /obj/effect/turf_decal/stripes/line{
@@ -290,7 +339,6 @@
 /turf/open/floor/plating,
 /area/wizard_station)
 "wr" = (
-/obj/machinery/door/unpowered/shuttle,
 /obj/structure/fans/tiny,
 /obj/structure/fans/tiny,
 /obj/structure/disposalpipe/segment{
@@ -299,10 +347,11 @@
 /obj/structure/sign/warning/vacuum/external{
 	pixel_y = 32
 	},
+/obj/machinery/door/airlock/shuttle/glass,
 /turf/open/floor/mineral/plastitanium/red,
-/area/space)
+/area/wizard_station)
 "wE" = (
-/obj/machinery/modular_fabricator/autolathe,
+/obj/machinery/rnd/production/techfab,
 /turf/open/floor/mineral/plastitanium/red,
 /area/wizard_station)
 "wO" = (
@@ -324,12 +373,24 @@
 /obj/effect/turf_decal/stripes,
 /turf/open/floor/mineral/plastitanium/red,
 /area/wizard_station)
+"xm" = (
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/turf/closed/wall/mineral/titanium/survival,
+/area/space)
 "xG" = (
 /obj/machinery/mineral/ore_redemption{
 	input_dir = 4
 	},
 /turf/open/floor/plating/asteroid/basalt/airless,
 /area/wizard_station)
+"xZ" = (
+/obj/machinery/shuttle/engine/plasma{
+	dir = 1
+	},
+/turf/open/floor/plating/airless,
+/area/space)
 "yD" = (
 /obj/machinery/light/small,
 /turf/open/floor/plating,
@@ -345,28 +406,24 @@
 /turf/open/floor/mineral/plastitanium/red,
 /area/wizard_station)
 "zo" = (
-/obj/effect/turf_decal/stripes/line{
-	dir = 1
-	},
-/obj/machinery/atmospherics/components/binary/dp_vent_pump{
-	dir = 4
-	},
-/obj/machinery/advanced_airlock_controller{
-	dir = 8;
-	pixel_x = 24
-	},
-/turf/open/floor/plating,
-/area/wizard_station)
+/obj/machinery/atmospherics/pipe/layer_manifold,
+/obj/structure/window/plastitanium,
+/turf/open/floor/plating/airless,
+/area/space)
 "zH" = (
-/obj/effect/landmark/observer_start,
 /obj/effect/decal/hammerandsickle,
-/obj/effect/landmark/start,
+/obj/machinery/droneDispenser/preloaded{
+	cooldownTime = 30;
+	glass_cost = 0;
+	iron_cost = 0;
+	production_time = 10;
+	use_power = 0
+	},
 /turf/open/floor/mineral/plastitanium/red,
 /area/wizard_station)
 "zM" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
+/obj/effect/landmark/start,
+/obj/effect/landmark/observer_start,
 /turf/open/floor/mineral/plastitanium/red,
 /area/wizard_station)
 "Aj" = (
@@ -377,26 +434,46 @@
 	},
 /turf/open/floor/plating,
 /area/wizard_station)
-"AB" = (
-/obj/machinery/portable_atmospherics/canister/air,
-/obj/machinery/atmospherics/components/unary/portables_connector{
-	dir = 4
+"An" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
+	dir = 6
 	},
-/obj/structure/disposalpipe/segment,
+/obj/structure/window/plastitanium,
+/turf/open/floor/plating,
+/area/space)
+"Au" = (
+/obj/machinery/atmospherics/components/unary/portables_connector/visible{
+	dir = 8
+	},
+/obj/machinery/portable_atmospherics/canister/toxins,
+/turf/open/floor/circuit/telecomms,
+/area/wizard_station)
+"AB" = (
+/obj/machinery/disposal/bin,
+/obj/structure/disposalpipe/trunk{
+	dir = 1
+	},
+/obj/item/stack/ore/titanium{
+	amount = 75
+	},
+/obj/item/stack/ore/glass{
+	amount = 00100
+	},
+/obj/item/stack/ore/iron{
+	amount = 0100
+	},
 /turf/open/floor/mineral/plastitanium/red,
 /area/wizard_station)
 "AH" = (
-/obj/machinery/modular_fabricator/component_printer,
+/obj/effect/turf_decal/loading_area{
+	dir = 4
+	},
 /turf/open/floor/mineral/plastitanium/red,
 /area/wizard_station)
-"Bf" = (
-/obj/effect/spawner/structure/window/reinforced,
-/obj/machinery/atmospherics/pipe/layer_manifold,
-/turf/open/floor/plating,
-/area/space)
-"Bt" = (
-/turf/closed/wall/r_wall,
-/area/space)
+"Ch" = (
+/obj/machinery/rnd/server,
+/turf/open/floor/circuit/telecomms,
+/area/wizard_station)
 "Cx" = (
 /obj/effect/turf_decal/box/corners,
 /turf/open/floor/mineral/plastitanium/red,
@@ -437,67 +514,76 @@
 /obj/effect/turf_decal/loading_area{
 	dir = 8
 	},
-/turf/open/floor/plating,
+/turf/open/floor/pod,
 /area/space)
 "Ew" = (
-/obj/machinery/rnd/production/protolathe,
+/obj/machinery/modular_fabricator/component_printer,
 /turf/open/floor/mineral/plastitanium/red,
 /area/wizard_station)
+"Ez" = (
+/obj/structure/sign/warning/docking,
+/turf/closed/wall/mineral/titanium/survival,
+/area/space)
 "EC" = (
 /obj/machinery/recycler,
 /turf/open/floor/plating/asteroid/basalt/airless,
 /area/wizard_station)
 "Fi" = (
-/obj/structure/lattice,
-/obj/machinery/atmospherics/pipe/simple/general{
-	dir = 4
-	},
-/turf/open/space/basic,
+/turf/open/floor/plating,
 /area/space)
 "Fr" = (
 /obj/effect/spawner/structure/window/reinforced,
 /obj/machinery/atmospherics/pipe/layer_manifold{
 	dir = 4
 	},
-/turf/open/floor/plating,
+/turf/open/floor/pod,
 /area/space)
-"FV" = (
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
+"FE" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/machinery/atmospherics/components/binary/dp_vent_pump{
+	dir = 8
+	},
+/obj/machinery/advanced_airlock_controller{
+	dir = 8;
+	pixel_x = 24
+	},
+/turf/open/floor/plating,
+/area/wizard_station)
+"FJ" = (
+/obj/machinery/atmospherics/components/unary/thermomachine/freezer/on{
+	dir = 1
+	},
+/turf/open/floor/circuit/telecomms,
+/area/wizard_station)
+"Gm" = (
+/turf/closed/wall/r_wall,
+/area/space)
+"Gw" = (
+/obj/machinery/power/apc/unlocked,
+/turf/open/floor/mineral/plastitanium/red,
+/area/wizard_station)
+"GC" = (
+/obj/effect/mapping_helpers/airlock/cyclelink_helper,
+/obj/machinery/door/airlock/arrivals_external{
+	name = "Arrivals Airlock"
+	},
+/turf/open/floor/plating,
+/area/wizard_station)
+"GX" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 10
 	},
 /turf/closed/wall/r_wall,
 /area/space)
-"Gc" = (
-/obj/effect/spawner/structure/window/reinforced,
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
-	dir = 6
-	},
-/turf/open/floor/plating,
-/area/space)
-"Gm" = (
-/obj/effect/spawner/structure/window/reinforced,
-/obj/machinery/atmospherics/pipe/simple/supply/hidden{
-	dir = 6
-	},
-/turf/open/floor/plating,
-/area/space)
-"Gw" = (
-/obj/machinery/light/floor{
-	nightshift_light_power = 1;
-	use_power = 0
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/turf/open/floor/mineral/plastitanium/red,
-/area/wizard_station)
 "GY" = (
 /obj/structure/lattice/catwalk,
 /obj/structure/lattice/catwalk,
 /turf/open/space/basic,
 /area/space)
 "He" = (
-/obj/effect/spawner/structure/window/reinforced,
+/obj/structure/window/plastitanium,
 /turf/open/floor/plasteel,
 /area/space)
 "Hf" = (
@@ -505,7 +591,7 @@
 	nightshift_light_power = 1;
 	use_power = 0
 	},
-/turf/open/floor/plating,
+/turf/open/floor/pod,
 /area/space)
 "HU" = (
 /obj/effect/turf_decal/stripes{
@@ -519,6 +605,10 @@
 	},
 /turf/open/floor/mineral/plastitanium/red,
 /area/wizard_station)
+"Il" = (
+/obj/structure/shuttle/engine/huge,
+/turf/open/floor/plating/airless,
+/area/space)
 "ID" = (
 /obj/structure/disposaloutlet{
 	dir = 4
@@ -529,12 +619,16 @@
 /turf/open/floor/plating/asteroid/basalt/airless,
 /area/space)
 "IF" = (
-/obj/effect/mapping_helpers/airlock/cyclelink_helper,
-/obj/machinery/door/airlock/arrivals_external{
-	name = "Arrivals Airlock"
+/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+	dir = 6
 	},
+/obj/structure/window/plastitanium,
 /turf/open/floor/plating,
-/area/wizard_station)
+/area/space)
+"IK" = (
+/obj/structure/sign/warning/docking,
+/turf/closed/indestructible/opshuttle,
+/area/space)
 "IO" = (
 /obj/structure/lattice/catwalk,
 /turf/open/space/basic,
@@ -544,8 +638,7 @@
 /turf/open/floor/plating/airless,
 /area/space)
 "Jj" = (
-/obj/structure/sign/warning/docking,
-/turf/closed/indestructible/opshuttle,
+/turf/open/floor/carpet/purple,
 /area/space)
 "Jz" = (
 /obj/effect/turf_decal/box/corners{
@@ -554,14 +647,20 @@
 /turf/open/floor/mineral/plastitanium/red,
 /area/wizard_station)
 "JF" = (
-/obj/machinery/computer/rdconsole/core{
-	dir = 8
+/obj/docking_port/stationary{
+	dir = 8;
+	dwidth = 3;
+	height = 15;
+	id = "arrivals_stationary";
+	name = "arrivals";
+	roundstart_template = /datum/map_template/shuttle/arrival/box;
+	width = 7
 	},
-/turf/open/floor/mineral/plastitanium/red,
-/area/wizard_station)
+/turf/open/floor/plating/airless,
+/area/space)
 "JZ" = (
 /obj/structure/closet/secure_closet/miner,
-/turf/open/floor/plating,
+/turf/open/floor/pod,
 /area/space)
 "Ku" = (
 /obj/docking_port/stationary{
@@ -573,15 +672,23 @@
 	roundstart_template = /datum/map_template/shuttle/mining/box;
 	width = 7
 	},
-/turf/open/space/basic,
-/area/space)
-"Lr" = (
-/turf/closed/indestructible/opshuttle,
-/area/space)
-"Mg" = (
-/obj/structure/lattice,
+/obj/structure/marker_beacon,
 /turf/open/floor/plating/airless,
 /area/space)
+"Lr" = (
+/obj/structure/shuttle/engine/heater{
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/space)
+"LX" = (
+/obj/machinery/atmospherics/components/unary/passive_vent,
+/turf/open/floor/circuit/telecomms,
+/area/wizard_station)
+"Mg" = (
+/obj/machinery/door/unpowered/shuttle,
+/turf/open/floor/circuit/telecomms,
+/area/wizard_station)
 "Mv" = (
 /obj/docking_port/stationary{
 	dir = 8;
@@ -591,31 +698,25 @@
 	name = "Cargo Bay";
 	width = 12
 	},
-/turf/open/space/basic,
+/turf/open/floor/plating/airless,
 /area/space)
 "MR" = (
 /obj/structure/closet/emcloset,
 /obj/effect/turf_decal/bot,
-/turf/open/floor/plating,
+/turf/open/floor/pod,
 /area/space)
 "Ou" = (
-/obj/structure/disposalpipe/segment{
-	dir = 6
+/obj/structure/window/plastitanium,
+/turf/open/floor/circuit/telecomms,
+/area/space)
+"OW" = (
+/obj/machinery/atmospherics/pipe/manifold/purple/visible{
+	dir = 8
 	},
-/obj/item/stack/ore/iron{
-	amount = 0100
-	},
-/obj/item/stack/ore/glass{
-	amount = 00100
-	},
-/obj/item/stack/ore/titanium{
-	amount = 75
-	},
-/obj/effect/turf_decal/loading_area,
-/turf/open/floor/mineral/plastitanium/red,
-/area/wizard_station)
+/turf/closed/wall/mineral/titanium,
+/area/space)
 "Qd" = (
-/turf/open/floor/plating,
+/turf/open/floor/pod,
 /area/space)
 "Rp" = (
 /obj/machinery/door/airlock/external{
@@ -627,29 +728,40 @@
 /turf/open/floor/mineral/plastitanium/red,
 /area/wizard_station)
 "Sa" = (
-/obj/machinery/droneDispenser/preloaded{
-	cooldownTime = 30;
-	glass_cost = 0;
-	iron_cost = 0;
-	production_time = 10;
-	use_power = 0
+/obj/structure/shuttle/engine/huge{
+	dir = 8
 	},
-/turf/open/floor/mineral/plastitanium/red,
-/area/wizard_station)
+/turf/open/floor/plating,
+/area/space)
 "Sg" = (
-/obj/machinery/ore_silo,
-/turf/open/floor/plating/asteroid/basalt/airless,
+/obj/machinery/atmospherics/components/unary/plasma_refiner,
+/turf/open/floor/circuit/telecomms,
 /area/wizard_station)
 "Sq" = (
 /obj/machinery/computer/shuttle_flight/mining,
-/turf/open/floor/plating,
+/turf/open/floor/pod,
 /area/wizard_station)
-"TH" = (
-/obj/machinery/atmospherics/pipe/simple/supply/hidden{
-	dir = 10
+"Tr" = (
+/obj/structure/sign/warning/vacuum/external{
+	pixel_y = 32
 	},
-/turf/closed/wall/r_wall,
+/obj/machinery/door/airlock/arrivals_external{
+	name = "Arrivals Airlock"
+	},
+/obj/structure/sign/warning/vacuum/external{
+	pixel_y = -32
+	},
+/turf/open/floor/plating,
 /area/space)
+"TH" = (
+/obj/effect/mapping_helpers/airlock/cyclelink_helper{
+	dir = 1
+	},
+/obj/machinery/door/airlock/arrivals_external{
+	name = "Arrivals Airlock"
+	},
+/turf/open/floor/carpet/purple,
+/area/wizard_station)
 "TJ" = (
 /obj/effect/spawner/structure/window/reinforced,
 /turf/open/floor/plating,
@@ -657,19 +769,16 @@
 "TR" = (
 /turf/open/floor/plating/asteroid/basalt/airless,
 /area/space)
+"TU" = (
+/obj/machinery/atmospherics/pipe/simple/supplymain/visible,
+/obj/machinery/portable_atmospherics/canister/air,
+/turf/open/floor/circuit/telecomms,
+/area/wizard_station)
 "TW" = (
-/obj/structure/rack,
-/obj/item/clothing/head/ushanka,
-/obj/item/clothing/head/ushanka,
-/obj/item/clothing/head/ushanka,
-/obj/item/clothing/head/ushanka,
-/obj/item/clothing/head/ushanka,
-/obj/item/clothing/head/ushanka,
-/obj/item/clothing/head/ushanka,
-/obj/item/clothing/head/ushanka,
-/obj/item/clothing/head/ushanka,
-/obj/item/clothing/head/ushanka,
-/turf/open/floor/mineral/plastitanium/red,
+/obj/structure/sign/warning/vacuum/external{
+	pixel_x = -32
+	},
+/turf/open/floor/plating,
 /area/wizard_station)
 "Us" = (
 /obj/machinery/mineral/bluespace_miner{
@@ -682,34 +791,59 @@
 /obj/structure/sign/warning{
 	pixel_y = 32
 	},
-/turf/open/floor/mineral/plastitanium/red,
+/obj/structure/extinguisher_cabinet{
+	pixel_x = 32
+	},
+/turf/open/floor/plating,
 /area/wizard_station)
+"US" = (
+/obj/structure/closet/firecloset,
+/obj/effect/turf_decal/bot,
+/turf/open/floor/carpet/purple,
+/area/space)
 "UU" = (
-/obj/machinery/portable_atmospherics/canister/air,
-/obj/machinery/atmospherics/components/unary/portables_connector{
-	dir = 4
+/obj/structure/rack,
+/obj/item/shovel{
+	pixel_x = -5
 	},
-/obj/structure/disposalpipe/segment{
-	dir = 9
+/obj/item/pickaxe{
+	pixel_x = 5
 	},
-/turf/open/floor/mineral/plastitanium/red,
+/turf/open/floor/circuit/telecomms,
 /area/wizard_station)
 "Vb" = (
 /obj/effect/turf_decal/stripes{
 	dir = 1
 	},
 /obj/effect/turf_decal/caution,
-/turf/open/floor/mineral/plastitanium/red,
+/turf/open/floor/plating,
+/area/wizard_station)
+"Vc" = (
+/obj/structure/closet,
+/obj/item/floor_painter,
+/obj/item/construction/rld,
+/obj/item/construction/rcd/loaded,
+/obj/item/pipe_dispenser,
+/obj/item/airlock_painter/decal,
+/obj/item/airlock_painter,
+/obj/item/airlock_painter,
+/obj/item/airlock_painter/decal,
+/obj/item/pipe_dispenser,
+/obj/item/construction/rcd/loaded,
+/obj/item/construction/rld,
+/obj/item/floor_painter,
+/turf/open/floor/circuit/telecomms,
 /area/wizard_station)
 "VH" = (
 /obj/structure/lattice/catwalk,
 /obj/effect/turf_decal/stripes,
+/obj/effect/turf_decal/caution{
+	dir = 1
+	},
 /turf/open/space/basic,
 /area/space)
 "VS" = (
-/obj/structure/sign/warning/vacuum/external{
-	pixel_y = -32
-	},
+/obj/structure/window/plastitanium,
 /turf/open/floor/plating,
 /area/space)
 "WK" = (
@@ -732,12 +866,8 @@
 /turf/open/floor/plating/airless,
 /area/space)
 "WS" = (
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/obj/structure/shuttle/engine/heater,
-/turf/open/floor/plating/airless,
-/area/space)
+/turf/open/floor/circuit/telecomms,
+/area/wizard_station)
 "Xj" = (
 /obj/structure/shuttle/engine/propulsion{
 	dir = 8
@@ -751,20 +881,20 @@
 	},
 /turf/open/space/basic,
 /area/space)
+"Yn" = (
+/obj/machinery/atmospherics/pipe/simple/supplymain/visible{
+	dir = 8
+	},
+/turf/closed/wall/mineral/titanium,
+/area/space)
 "YE" = (
 /obj/machinery/mineral/ore_redemption{
 	input_dir = 4
 	},
-/turf/open/floor/plating,
+/turf/open/floor/pod,
 /area/wizard_station)
 "YH" = (
-/obj/machinery/door/airlock/arrivals_external{
-	name = "Arrivals Airlock"
-	},
-/obj/structure/sign/warning/vacuum/external{
-	pixel_y = 32
-	},
-/turf/open/space/basic,
+/turf/closed/wall/mineral/titanium/survival,
 /area/space)
 "Zb" = (
 /obj/machinery/conveyor{
@@ -787,21 +917,14 @@
 /turf/closed/mineral/random,
 /area/space)
 "Zl" = (
-/obj/structure/closet,
-/obj/item/floor_painter,
-/obj/item/construction/rld,
-/obj/item/construction/rcd/loaded,
-/obj/item/pipe_dispenser,
-/obj/item/airlock_painter/decal,
-/obj/item/airlock_painter,
-/obj/item/airlock_painter,
-/obj/item/airlock_painter/decal,
-/obj/item/pipe_dispenser,
-/obj/item/construction/rcd/loaded,
-/obj/item/construction/rld,
-/obj/item/floor_painter,
-/turf/open/floor/mineral/plastitanium/red,
+/turf/open/floor/plating,
 /area/wizard_station)
+"ZM" = (
+/obj/machinery/atmospherics/pipe/manifold/purple/visible{
+	dir = 1
+	},
+/turf/closed/wall/mineral/titanium,
+/area/space)
 
 (1,1,1) = {"
 WL
@@ -23125,15 +23248,15 @@ WL
 WL
 WL
 WL
-kx
+Fi
+Fi
+Sa
+YH
 WL
-WL
-WL
-WL
-WL
-WL
-WL
-WL
+YH
+Fi
+Fi
+Sa
 WL
 WL
 WL
@@ -23381,18 +23504,18 @@ WL
 WL
 WL
 WL
-kx
-kx
-gv
-Xj
-Xj
-gv
 WL
-gv
-Xj
-Xj
-qc
-kx
+YH
+Fi
+Fi
+Fi
+YH
+hQ
+YH
+Fi
+Fi
+Fi
+YH
 WL
 WL
 WL
@@ -23640,20 +23763,20 @@ WL
 WL
 kx
 kx
-kx
-gv
-CH
-CH
-gv
-gv
-gv
-CH
-CH
-qc
-kx
-kx
+YH
+Fi
+Fi
+Fi
+YH
 WL
-kx
+YH
+Fi
+Fi
+Fi
+YH
+WL
+WL
+WL
 WL
 WL
 WL
@@ -23896,23 +24019,23 @@ WL
 WL
 WL
 WL
-gv
-Bt
-Bt
-Bt
-Bt
-Bt
-Bt
-Bt
-Bt
-Bt
-Bt
+kx
+kx
+YH
+CH
+CH
+CH
+YH
+YH
+xm
+CH
 Lr
-ro
-TJ
-TJ
+Lr
+YH
+WL
 kx
-kx
+WL
+WL
 WL
 WL
 WL
@@ -24154,21 +24277,21 @@ WL
 WL
 WL
 WL
-gv
-Bt
-WL
-WL
-WL
-WL
-WL
-WL
-WL
+YH
+YH
+YH
+YH
+YH
+YH
+YH
+YH
+YH
+YH
+YH
+YH
+YH
+YH
 kx
-kx
-TJ
-Qd
-Qd
-TJ
 kx
 WL
 WL
@@ -24412,23 +24535,23 @@ WL
 WL
 WL
 WL
-gv
-Bt
-WL
-WL
-WL
-WL
-WL
-WL
-WL
+YH
+hd
+rI
+rI
+rI
+rI
+rI
+hd
 kx
-WL
+kx
+VS
 Jj
-Qd
-Qd
-gv
+Jj
+VS
 kx
-kx
+WL
+WL
 WL
 WL
 WL
@@ -24660,31 +24783,31 @@ WL
 WL
 WL
 WL
-gv
+YH
 Xj
 Xj
 Xj
-gv
+YH
 kx
 kx
 WL
 WL
 WL
-gv
-Bt
+YH
+rI
 WL
 WL
 WL
 WL
 WL
-WL
-WL
+rI
 kx
+WL
+IK
+Jj
+Jj
+YH
 kx
-TJ
-Qd
-Qd
-TJ
 kx
 WL
 WL
@@ -24918,32 +25041,32 @@ WL
 WL
 WL
 WL
-gv
+YH
 CH
 CH
 CH
-gv
+YH
 kx
 kx
 kx
 kx
 WL
-gv
-Bt
+YH
+rI
 WL
 WL
 WL
 WL
 WL
-WL
-WL
-WL
-WL
-Bt
-Qd
-Qd
-hd
+rI
 kx
+kx
+VS
+Jj
+Jj
+VS
+kx
+WL
 WL
 WL
 WL
@@ -25174,35 +25297,35 @@ WL
 WL
 WL
 WL
-Bt
-Bt
-Bt
-Bt
-Bt
-Bt
-Bt
-Bt
-Bt
+YH
+YH
+YH
+YH
+YH
+YH
+YH
+YH
+YH
 kx
 kx
 WL
-gv
-Bt
+YH
+rI
 WL
 WL
 WL
 WL
 WL
+rI
 WL
 WL
-TJ
 Gm
-Bf
-Qd
-Qd
-He
+Jj
+Jj
+Ez
 kx
-kx
+WL
+WL
 WL
 WL
 WL
@@ -25433,32 +25556,32 @@ WL
 WL
 kx
 TJ
-WL
-WL
-WL
-WL
-WL
-WL
-WL
-Bt
+hd
+rI
+rI
+hd
+rI
+rI
+hd
+YH
 kx
 WL
 WL
-gv
-Bt
+YH
+rI
 WL
 WL
 WL
 WL
 WL
-WL
-WL
+rI
+VS
 IF
 zo
-bA
-Hf
-Qd
-He
+Jj
+Jj
+VS
+kx
 kx
 WL
 WL
@@ -25691,33 +25814,33 @@ WL
 WL
 kx
 TJ
+rI
 WL
 WL
 WL
 WL
 WL
+rI
+YH
 WL
 WL
-Bt
 WL
-WL
-WL
-gv
-Bt
-WL
-WL
+YH
+rI
 WL
 WL
 WL
 WL
 WL
-TJ
-FV
-Bf
-Qd
-Qd
-He
+rI
+GC
+aJ
+TH
+ax
+Jj
+VS
 kx
+WL
 WL
 WL
 WL
@@ -25949,34 +26072,34 @@ WL
 kx
 kx
 TJ
+rI
 WL
 WL
 WL
 WL
 WL
-WL
-WL
-Bt
+rI
+YH
 hQ
 hQ
 hQ
-gv
-Bt
+YH
+rI
 WL
 WL
 WL
 WL
 WL
-WL
-WL
-TJ
-Qd
-Qd
-Qd
-Qd
-He
+rI
+nc
+qg
+zo
+Jj
+Jj
+VS
 kx
-kx
+WL
+WL
 WL
 WL
 WL
@@ -26206,33 +26329,33 @@ WL
 WL
 kx
 kx
-Bt
+YH
+rI
 WL
 WL
 WL
 WL
 WL
-WL
-WL
-Bt
+rI
+YH
 kx
 hQ
 WL
-gv
-Bt
+YH
+hd
 WL
 WL
 WL
 WL
 WL
-WL
-WL
-TJ
-Qd
-Qd
-Qd
-Qd
-He
+hd
+nc
+Jj
+Jj
+Jj
+Jj
+VS
+kx
 kx
 WL
 WL
@@ -26465,34 +26588,34 @@ WL
 kx
 WL
 TJ
-WL
-WL
-WL
+hd
+rI
+rI
 Ku
-WL
-WL
-WL
-Bt
+rI
+rI
+hd
+YH
 kx
 hQ
 WL
-gv
-Bt
+YH
+rI
 WL
 WL
 WL
 WL
 WL
-WL
-WL
-TJ
-MR
-Qd
-Qd
+rI
+nc
+Jj
+Jj
+Jj
+Jj
 VS
-kY
 kx
-kx
+WL
+WL
 WL
 WL
 WL
@@ -26722,7 +26845,7 @@ WL
 WL
 kx
 kx
-Bt
+YH
 WL
 WL
 TJ
@@ -26730,26 +26853,26 @@ wm
 TJ
 WL
 WL
-Bt
+YH
 hQ
 hQ
 hQ
-gv
-Bt
+YH
+rI
 WL
 WL
 WL
 WL
 WL
-WL
-WL
-TJ
-ne
-Qd
-Qd
-Qd
-He
-WL
+rI
+nc
+uR
+Jj
+Jj
+Jj
+YH
+kx
+kx
 WL
 WL
 WL
@@ -26980,7 +27103,7 @@ WL
 WL
 WL
 kx
-Bt
+YH
 kY
 kY
 Zc
@@ -26988,25 +27111,25 @@ vz
 sj
 kY
 kY
-Bt
+YH
 kx
 WL
 WL
-gv
-Bt
+YH
+rI
 WL
 WL
 WL
 WL
 WL
+rI
+nc
+US
+Jj
+Jj
+Jj
+VS
 WL
-WL
-TJ
-Gc
-Bf
-Qd
-Qd
-He
 WL
 WL
 WL
@@ -27246,26 +27369,26 @@ jR
 Fr
 Qd
 ne
-gv
+YH
 WL
 WL
 WL
-gv
-Bt
-WL
-WL
-WL
+YH
+rI
 WL
 WL
 WL
 WL
-IF
-ae
-bA
-Hf
-Qd
-He
-kx
+WL
+rI
+nc
+An
+zo
+Jj
+Jj
+VS
+WL
+WL
 WL
 WL
 WL
@@ -27504,26 +27627,26 @@ Hf
 Qd
 Qd
 JZ
-gv
+YH
 WL
 WL
 WL
-gv
-Bt
-WL
-WL
-WL
+YH
+rI
 WL
 WL
 WL
 WL
-TJ
+WL
+rI
+GC
+FE
 TH
-Bf
-Qd
-Qd
-He
+ax
+Jj
+VS
 kx
+WL
 WL
 WL
 WL
@@ -27754,36 +27877,36 @@ WL
 WL
 WL
 WL
-gv
-gv
+YH
+YH
 Sq
 Qd
 Qd
 Qd
 qG
-gv
-gv
+YH
+YH
 kx
 WL
 WL
-gv
-Bt
-WL
-WL
-WL
+YH
 rI
 WL
 WL
 WL
 WL
-TJ
-Qd
-Qd
-Qd
-gv
+WL
+rI
+VS
+GX
+zo
+Jj
+Jj
+VS
 kx
-kx
-kx
+WL
+WL
+WL
 WL
 WL
 WL
@@ -28013,34 +28136,34 @@ WL
 WL
 WL
 WL
-gv
-gv
-gv
+YH
+YH
+YH
 Rp
-gv
-gv
+YH
+YH
 qc
 WL
 kx
 kx
 WL
-gv
-Bt
-Bt
-Bt
-Bt
-Bt
-Bt
-Bt
-Bt
-Bt
-Bt
-Qd
-Qd
-Qd
-gv
-kx
+YH
+hd
+rI
+rI
+JF
+rI
+rI
+hd
+qY
 WL
+nc
+Jj
+Jj
+YH
+kx
+kx
+kx
 WL
 WL
 WL
@@ -28282,21 +28405,21 @@ WL
 kx
 WL
 WL
-gv
-gv
-gv
-gv
-gv
-gv
-gv
-gv
-gv
-gv
-gv
-gv
 YH
-gv
-gv
+YH
+YH
+YH
+YH
+YH
+YH
+YH
+YH
+YH
+YH
+Tr
+YH
+YH
+kx
 WL
 WL
 WL
@@ -28551,9 +28674,9 @@ hQ
 kx
 kx
 kx
-kx
 IO
 kx
+WL
 WL
 WL
 WL
@@ -28808,10 +28931,10 @@ hQ
 hQ
 WL
 kx
-WL
 kx
 IO
 kx
+WL
 WL
 WL
 WL
@@ -29048,13 +29171,13 @@ WL
 WL
 kx
 kx
-gv
-qc
-qc
-qc
-qc
-qc
-qc
+WL
+kx
+kx
+kx
+kx
+kx
+kx
 kx
 kx
 kx
@@ -29066,10 +29189,10 @@ kx
 hQ
 WL
 kx
-WL
 kx
 IO
 kx
+WL
 WL
 WL
 WL
@@ -29306,28 +29429,28 @@ WL
 WL
 kx
 kx
-qc
-Bt
-Bt
-Bt
-Bt
-Bt
-Bt
-Bt
-Bt
-Bt
-Bt
-Bt
-Bt
-Bt
-Bt
-Bt
-gv
 kx
-WL
+YH
+YH
+YH
+YH
+YH
+YH
+YH
+YH
+YH
+YH
+YH
+YH
+YH
+YH
+YH
+YH
+kx
 WL
 IO
 kx
+WL
 WL
 WL
 WL
@@ -29564,8 +29687,8 @@ WL
 WL
 WL
 WL
-qc
-Bt
+kx
+YH
 kx
 kx
 kx
@@ -29579,13 +29702,13 @@ kx
 kx
 kx
 kx
-Bt
+YH
 WN
 IU
 kx
 WL
-IO
-kx
+WL
+WL
 WL
 WL
 WL
@@ -29822,22 +29945,22 @@ WL
 WL
 WL
 WL
-qc
-Bt
-WL
-WL
-WL
-WL
-WL
-WL
-WL
-WL
-WL
-WL
-WL
-WL
-WL
-Bt
+kx
+YH
+hd
+rI
+rI
+rI
+rI
+rI
+hd
+rI
+rI
+rI
+rI
+rI
+hd
+YH
 WN
 IU
 kx
@@ -30080,25 +30203,25 @@ WL
 WL
 WL
 WL
-qc
-Bt
-WL
-WL
-WL
-WL
-WL
-WL
-WL
-WL
-WL
-WL
-WL
-WL
-WL
-Bt
-qc
-gv
 kx
+YH
+rI
+WL
+WL
+WL
+WL
+WL
+WL
+WL
+WL
+WL
+WL
+WL
+rI
+YH
+qc
+YH
+YH
 WL
 WL
 WL
@@ -30338,8 +30461,9 @@ WL
 WL
 WL
 kx
-qc
-Bt
+kx
+YH
+rI
 WL
 WL
 WL
@@ -30351,13 +30475,12 @@ WL
 WL
 WL
 WL
-WL
-WL
-Bt
+rI
+YH
 wO
-IU
-kx
-kx
+rI
+rI
+Il
 WL
 WL
 WL
@@ -30596,8 +30719,9 @@ WL
 WL
 kx
 kx
-qc
-Bt
+kx
+YH
+rI
 WL
 WL
 WL
@@ -30609,13 +30733,12 @@ WL
 WL
 WL
 WL
-WL
-WL
-Bt
+rI
+YH
 wO
-IU
-kx
-kx
+rI
+rI
+rI
 WL
 WL
 WL
@@ -30854,8 +30977,9 @@ WL
 WL
 WL
 kx
-gv
-Bt
+WL
+YH
+rI
 WL
 WL
 WL
@@ -30867,13 +30991,12 @@ WL
 WL
 WL
 WL
-WL
-WL
-Bt
+rI
+YH
 wO
-IU
-kx
-kx
+rI
+rI
+rI
 WL
 WL
 WL
@@ -31112,26 +31235,26 @@ kx
 kx
 kx
 kx
-qc
-Bt
-WL
-WL
-WL
-WL
-WL
-WL
-WL
-WL
-WL
-WL
-WL
-WL
-WL
-Bt
-qc
-gv
 kx
-kx
+YH
+rI
+WL
+WL
+WL
+WL
+WL
+WL
+WL
+WL
+WL
+WL
+WL
+rI
+YH
+qc
+YH
+YH
+WL
 WL
 WL
 WL
@@ -31370,22 +31493,22 @@ WL
 WL
 kx
 kx
-qc
-Bt
-WL
-WL
-WL
-WL
-WL
-WL
-WL
+kx
+YH
+hd
+rI
+rI
+rI
+rI
+rI
+hd
 Mv
-WL
-WL
-WL
-WL
-WL
-Bt
+rI
+rI
+rI
+rI
+hd
+YH
 WN
 IU
 kx
@@ -31628,22 +31751,22 @@ WL
 WL
 WL
 WL
-qc
-Bt
+kx
+YH
 kx
 kx
 kx
-Bt
+kY
 lA
 DX
 dH
 DX
 ow
-Bt
-Mg
-Mg
-Mg
-Bt
+kY
+kx
+kx
+kx
+YH
 WN
 IU
 kx
@@ -31886,23 +32009,23 @@ WL
 WL
 WL
 WL
-gv
-Bt
-Bt
-Bt
-Bt
-Bt
+WL
+YH
+YH
+YH
+YH
+YH
 Aj
 yD
 kY
 is
 eS
-Bt
-Bt
-Bt
-Bt
-Bt
-gv
+YH
+YH
+YH
+YH
+YH
+YH
 kx
 WL
 WL
@@ -32144,18 +32267,18 @@ WL
 WL
 WL
 WL
-gv
-qc
-gv
-gv
-gv
-Bt
+WL
+kx
+WL
+WL
+WL
+hQ
 lA
 WK
 TJ
 uf
 ow
-Bt
+hQ
 WL
 WL
 WL
@@ -32414,10 +32537,10 @@ sW
 fF
 wT
 hQ
-kx
-kx
-WL
-kx
+mH
+gv
+gv
+uX
 WL
 WL
 WL
@@ -32666,17 +32789,17 @@ WL
 WL
 gv
 hQ
-pN
+ac
 zj
 pN
 pN
 ac
-hQ
+RV
 gv
-WL
-WL
-WL
-WL
+Sg
+TU
+OW
+sr
 WL
 WL
 WL
@@ -32921,7 +33044,7 @@ WL
 WL
 WL
 WL
-gv
+hQ
 gv
 Zl
 CP
@@ -32931,13 +33054,13 @@ RV
 CP
 ca
 gv
+WS
+uE
+Au
+Yn
 gv
 gv
 kx
-WL
-WL
-WL
-WL
 WL
 WL
 WL
@@ -33181,21 +33304,21 @@ WL
 WL
 mH
 TW
-RV
+Zl
 RV
 CZ
 RV
 fY
 RV
-AH
-gv
+RV
+Mg
 WS
-IU
+WS
+cG
+ZM
+nN
+xZ
 kx
-WL
-WL
-WL
-WL
 WL
 WL
 WL
@@ -33439,20 +33562,20 @@ IO
 VH
 gn
 Vb
+Zl
 RV
-RV
-RV
+zM
 zH
 RV
-Ou
+RV
 rF
-gv
+Ou
+UU
 WS
-IU
-WL
-WL
-WL
-WL
+ic
+ZM
+nN
+xZ
 WL
 WL
 WL
@@ -33695,23 +33818,23 @@ WL
 WL
 WL
 iF
-qc
+mH
 UG
-RV
+Zl
 RV
 Jz
 RV
 Cx
-zM
+RV
 Ew
-gv
+Ou
+vd
 WS
-IU
+Ch
+kh
+nN
+xZ
 kx
-WL
-WL
-WL
-WL
 WL
 WL
 WL
@@ -33953,24 +34076,24 @@ WL
 WL
 kx
 kx
-gv
+hQ
 gv
 Zl
 CP
 RV
 RV
-RV
-Gw
+AH
+CP
 wE
+Ou
+WS
+LX
+FJ
 gv
 gv
 gv
 kx
 kx
-WL
-WL
-WL
-WL
 WL
 WL
 WL
@@ -34214,20 +34337,20 @@ WL
 kx
 gv
 gv
-JF
-Sa
+RV
+RV
 HU
 AB
-UU
+RV
+Gw
+gv
+Vc
+Vc
 gv
 gv
 kx
 kx
 kx
-WL
-WL
-WL
-WL
 WL
 WL
 WL
@@ -34475,17 +34598,17 @@ gv
 He
 gv
 wr
-gC
-gC
+He
+He
+gv
+gv
+gv
+gv
 gv
 kx
 kx
 WL
 kx
-WL
-WL
-WL
-WL
 WL
 WL
 WL
@@ -34733,8 +34856,8 @@ kx
 kx
 kx
 rd
-Fi
-Fi
+kx
+kx
 kx
 kx
 WL
@@ -38861,7 +38984,7 @@ WL
 hm
 ID
 TR
-Sg
+TR
 xG
 hm
 hm
