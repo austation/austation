@@ -32423,7 +32423,7 @@
 "cHZ" = (
 /obj/machinery/door/airlock/command{
 	name = "Research Division Server Room";
-	req_access_txt = "30"
+	req_one_access_txt = "30;70"
 	},
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
@@ -32709,7 +32709,7 @@
 "cIX" = (
 /obj/machinery/door/airlock/command/glass{
 	name = "Server Access";
-	req_access_txt = "30"
+	req_one_access_txt = "30;70"
 	},
 /obj/machinery/atmospherics/pipe/simple{
 	dir = 4
