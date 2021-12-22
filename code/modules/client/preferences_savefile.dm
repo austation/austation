@@ -5,11 +5,7 @@
 //	You do not need to raise this if you are adding new values that have sane defaults.
 //	Only raise this value when changing the meaning/format/name/layout of an existing value
 //	where you would want the updater procs below to run
-<<<<<<< HEAD
 #define SAVEFILE_VERSION_MAX	36
-=======
-#define SAVEFILE_VERSION_MAX	35
->>>>>>> 98801f5201... fix (#4545)
 
 /*
 SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Carn
@@ -67,15 +63,11 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 				purchased_gear += n_gear
 	if(current_version < 35)
 		chat_on_map = TRUE
-		max_chat_length = CHAT_MESSAGE_MAX_LENGTH
+//		max_chat_length = CHAT_MESSAGE_MAX_LENGTH			> Depreciated as of 31/07/2021
 		see_chat_non_mob = TRUE
 		see_rc_emotes = TRUE
 		S.dir.Remove("overhead_chat")
-<<<<<<< HEAD
 	if(current_version < 36)
-=======
-	if(current_version < 35)
->>>>>>> 98801f5201... fix (#4545)
 		see_balloon_alerts = BALLOON_ALERT_ALWAYS
 	return
 
@@ -179,9 +171,9 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	READ_FILE(S["outline_enabled"], outline_enabled)
 	READ_FILE(S["hotkeys"], hotkeys)
 	READ_FILE(S["chat_on_map"], chat_on_map)
-	READ_FILE(S["max_chat_length"], max_chat_length)
 	READ_FILE(S["see_chat_non_mob"] , see_chat_non_mob)
 	READ_FILE(S["see_rc_emotes"] , see_rc_emotes)
+	READ_FILE(S["see_balloon_alerts"], see_balloon_alerts)
 	READ_FILE(S["tgui_fancy"], tgui_fancy)
 	READ_FILE(S["tgui_lock"], tgui_lock)
 	READ_FILE(S["buttons_locked"], buttons_locked)
@@ -232,7 +224,6 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	UI_style		= sanitize_inlist(UI_style, GLOB.available_ui_styles, GLOB.available_ui_styles[1])
 	hotkeys			= sanitize_integer(hotkeys, FALSE, TRUE, initial(hotkeys))
 	chat_on_map		= sanitize_integer(chat_on_map, FALSE, TRUE, initial(chat_on_map))
-	max_chat_length = sanitize_integer(max_chat_length, TRUE, CHAT_MESSAGE_MAX_LENGTH, initial(max_chat_length))
 	see_chat_non_mob	= sanitize_integer(see_chat_non_mob, FALSE, TRUE, initial(see_chat_non_mob))
 	tgui_fancy		= sanitize_integer(tgui_fancy, FALSE, TRUE, initial(tgui_fancy))
 	tgui_lock		= sanitize_integer(tgui_lock, FALSE, TRUE, initial(tgui_lock))
@@ -287,9 +278,9 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	WRITE_FILE(S["outline_color"], outline_color)
 	WRITE_FILE(S["hotkeys"], hotkeys)
 	WRITE_FILE(S["chat_on_map"], chat_on_map)
-	WRITE_FILE(S["max_chat_length"], max_chat_length)
 	WRITE_FILE(S["see_chat_non_mob"], see_chat_non_mob)
 	WRITE_FILE(S["see_rc_emotes"], see_rc_emotes)
+	WRITE_FILE(S["see_balloon_alerts"], see_balloon_alerts)
 	WRITE_FILE(S["tgui_fancy"], tgui_fancy)
 	WRITE_FILE(S["tgui_lock"], tgui_lock)
 	WRITE_FILE(S["buttons_locked"], buttons_locked)
@@ -381,8 +372,8 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	READ_FILE(S["socks"], socks)
 	READ_FILE(S["backbag"], backbag)
 	READ_FILE(S["ring_engraved"], ring_engraved) //austation begin -- rings and skirts
-	READ_FILE(S["ring_type"], ring_type)
-	READ_FILE(S["jumpsuit_style"], jumpsuit_style) //austation end
+	READ_FILE(S["ring_type"], ring_type) //austation end
+	READ_FILE(S["jumpsuit_style"], jumpsuit_style)
 	READ_FILE(S["uplink_loc"], uplink_spawn_loc)
 	READ_FILE(S["feature_mcolor"], features["mcolor"])
 	READ_FILE(S["feature_ethcolor"], features["ethcolor"])
@@ -465,7 +456,8 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	eye_color		= sanitize_hexcolor(eye_color, 3, 0)
 	skin_tone		= sanitize_inlist(skin_tone, GLOB.skin_tones)
 	backbag			= sanitize_inlist(backbag, GLOB.backbaglist, initial(backbag))
-	uplink_spawn_loc = sanitize_inlist(uplink_spawn_loc, GLOB.uplink_spawn_loc_list, initial(uplink_spawn_loc))
+	jumpsuit_style = sanitize_inlist(jumpsuit_style, GLOB.jumpsuitlist, initial(jumpsuit_style))
+	uplink_spawn_loc = sanitize_inlist(uplink_spawn_loc, GLOB.uplink_spawn_loc_list_save, initial(uplink_spawn_loc))
 	features["mcolor"]	= sanitize_hexcolor(features["mcolor"], 3, 0)
 	features["ethcolor"]	= copytext_char(features["ethcolor"], 1, 7)
 	features["tail_lizard"]	= sanitize_inlist(features["tail_lizard"], GLOB.tails_list_lizard)
@@ -530,8 +522,8 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	WRITE_FILE(S["socks"]				, socks)
 	WRITE_FILE(S["backbag"]			, backbag)
 	WRITE_FILE(S["ring_engraved"]		, ring_engraved) // austation begin -- rings and skirts
-	WRITE_FILE(S["ring_type"]			, ring_type)
-	WRITE_FILE(S["jumpsuit_style"]		, jumpsuit_style) // austation end
+	WRITE_FILE(S["ring_type"]			, ring_type) // austation end
+	WRITE_FILE(S["jumpsuit_style"]		, jumpsuit_style)
 	WRITE_FILE(S["uplink_loc"]			, uplink_spawn_loc)
 	WRITE_FILE(S["species"]			, pref_species.id)
 	WRITE_FILE(S["feature_mcolor"]					, features["mcolor"])
