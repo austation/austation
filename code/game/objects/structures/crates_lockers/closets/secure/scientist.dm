@@ -32,11 +32,8 @@
 	new /obj/item/circuitboard/machine/techfab/department/science(src)
 	new /obj/item/storage/photo_album/RD(src)
 	new /obj/item/card/id/departmental_budget/sci(src)
-<<<<<<< HEAD
 	// austation begin -- keep bluespace miners
 	if(CONFIG_GET(number/roundstart_bluespace_miners))
 		for(var/i in 1 to CONFIG_GET(number/roundstart_bluespace_miners))
 			new /obj/item/circuitboard/machine/bluespace_miner(src)
 	// austation end
-=======
->>>>>>> 4735b96ee4... Adds trailing newlines to all DM files and linting for it (#5639)
