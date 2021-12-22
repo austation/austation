@@ -40,7 +40,7 @@
 		var/old_eye_blind = eye_blind
 		eye_blind += amount
 		if(!old_eye_blind)
-			if(is_conscious())
+			if(stat == CONSCIOUS || stat == SOFT_CRIT)
 				throw_alert("blind", /atom/movable/screen/alert/blind)
 			overlay_fullscreen("blind", /atom/movable/screen/fullscreen/blind)
 	else if(eye_blind)
@@ -68,7 +68,7 @@
 			overlay_fullscreen("blind", /atom/movable/screen/fullscreen/blind)
 	else if(eye_blind)
 		var/blind_minimum = 0
-		if(stat > SOFT_CRIT)
+		if(stat != CONSCIOUS && stat != SOFT_CRIT)
 			blind_minimum = 1
 		if(isliving(src))
 			var/mob/living/L = src
@@ -103,10 +103,11 @@
 /mob/proc/update_eye_blur()
 	if(!client)
 		return
-	var/atom/movable/screen/plane_master/floor/OT = locate(/atom/movable/screen/plane_master/floor) in client.screen
-	var/atom/movable/screen/plane_master/game_world/GW = locate(/atom/movable/screen/plane_master/game_world) in client.screen
-	GW.backdrop(src)
-	OT.backdrop(src)
+	var/atom/movable/plane_master_controller/game_plane_master_controller = hud_used.plane_master_controllers[PLANE_MASTERS_GAME]
+	if(eye_blurry)
+		game_plane_master_controller.add_filter("eye_blur", 1, gauss_blur_filter(clamp(eye_blurry * 0.1, 0.6, 3)))
+	else
+		game_plane_master_controller.remove_filter("eye_blur")
 
 ///Adjust the drugginess of a mob
 /mob/proc/adjust_drugginess(amount)

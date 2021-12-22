@@ -64,6 +64,9 @@
 	max_brightness = 6
 	power = 1.8
 
+/datum/reagent/stimulum
+	can_synth = FALSE
+
 /datum/reagent/stimulum/on_mob_metabolize(mob/living/L)
 	..()
 	L.add_movespeed_modifier(type, update=TRUE, priority=100, multiplicative_slowdown=-1, blacklisted_movetypes=(FLYING|FLOATING))
@@ -100,12 +103,14 @@
 	nutriment_factor = 30 * REAGENTS_METABOLISM
 	metabolization_rate = 2 * REAGENTS_METABOLISM
 	taste_description = "sweetness"
+
 /datum/reagent/neutron_fluid
 	name = "Neutron Fluid"
 	description = "A dense fluid like substance composed of pure neutrons, extremely dense"
 	taste_description = "nothing" // neutrons, get it?
 	color = "#97FFFF"
 	metabolization_rate = 4 // same as clf3
+	can_synth = FALSE
 
 /datum/reagent/neutron_fluid/on_mob_life(mob/living/carbon/M)
 	M.adjustBruteLoss(3)
@@ -238,3 +243,16 @@
 	if(methods & TOUCH)
 		M.adjustFireLoss(2, 0) // burns
 	..()
+
+/datum/reagent/colorful_reagent/powder/on_mob_life(mob/living/carbon/M)
+	if((ishuman(M) && M.job == "Clown"))
+		M.heal_bodypart_damage(0.2, 0.2, 0)
+		. = 1
+	..()
+
+/datum/reagent/polystyrene
+	name = "Polystyrene"
+	description = "A synthetic hydrocarbon polymer."
+	color = "#ffffff"
+	taste_description = "foam"
+

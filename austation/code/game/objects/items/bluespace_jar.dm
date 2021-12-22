@@ -49,6 +49,7 @@
 	return ..()
 
 /obj/item/bluespace_jar/Exited(atom/movable/occupant)
+	. = ..()
 	if(occupant in occupants && isliving(occupant))
 		var/mob/living/L = occupant
 		occupants -= occupant
@@ -300,4 +301,3 @@
 	escape_time = 10000
 	load_time = 1
 	max_occupants = 100
-

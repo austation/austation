@@ -23,6 +23,10 @@
 /obj/item/grenade/plastic/Initialize()
 	. = ..()
 	plastic_overlay = mutable_appearance(icon, "[item_state]2", HIGH_OBJ_LAYER)
+	var/static/list/loc_connections = list(
+		COMSIG_ATOM_ENTERED = .proc/on_entered,
+	)
+	AddElement(/datum/element/connect_loc, loc_connections)
 
 /obj/item/grenade/plastic/ComponentInitialize()
 	. = ..()
@@ -58,16 +62,18 @@
 /obj/item/grenade/plastic/prime(mob/living/lanced_by)
 	. = ..()
 	var/turf/location
+	var/density_check = FALSE
 	if(target)
 		if(!QDELETED(target))
 			location = get_turf(target)
+			density_check = target.density //since turfs getting exploded makes this a bit fucky wucky we need to assert whether we should go directional before that part
 			target.cut_overlay(plastic_overlay, TRUE)
 			if(!ismob(target) || full_damage_on_mobs)
 				target.ex_act(EXPLODE_HEAVY, target)
 	else
 		location = get_turf(src)
 	if(location)
-		if(directional && target && target.density)
+		if(directional && target && density_check)
 			var/turf/T = get_step(location, aim_dir)
 			explosion(get_step(T, aim_dir), boom_sizes[1], boom_sizes[2], boom_sizes[3])
 		else
@@ -81,9 +87,11 @@
 /obj/item/grenade/plastic/receive_signal()
 	prime()
 
-/obj/item/grenade/plastic/Crossed(atom/movable/AM)
+/obj/item/grenade/plastic/proc/on_entered(datum/source, atom/movable/AM)
+	SIGNAL_HANDLER
+
 	if(nadeassembly)
-		nadeassembly.Crossed(AM)
+		nadeassembly.on_entered(source, AM)
 
 /obj/item/grenade/plastic/on_found(mob/finder)
 	if(nadeassembly)

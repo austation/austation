@@ -20,6 +20,13 @@
 	var/next_battle_screech = 0
 	var/battle_screech_cooldown = 50
 
+/mob/living/carbon/monkey/Initialize(mapload, cubespawned, mob/spawner)
+	. = ..()
+	var/static/list/loc_connections = list(
+		COMSIG_ATOM_ENTERED = .proc/on_entered,
+	)
+	AddElement(/datum/element/connect_loc, loc_connections)
+
 /mob/living/carbon/monkey/proc/IsStandingStill()
 	return resisting || pickpocketing || disposing_body
 
@@ -58,7 +65,7 @@
 		return 1
 	if(IsStun() || IsParalyzed())
 		return 1
-	if(stat >= SOFT_CRIT)
+	if(stat)
 		return 1
 	return 0
 
@@ -161,7 +168,7 @@
 				var/list/around = view(MONKEY_ENEMY_VISION, src) // scan for enemies
 				for(var/mob/living/L in around)
 					if( should_target(L) )
-						if(L.is_conscious())
+						if(L.stat == CONSCIOUS)
 							battle_screech()
 							retaliate(L)
 							return TRUE
@@ -208,7 +215,7 @@
 
 			// switch targets
 			for(var/mob/living/L in around)
-				if(L != target && should_target(L) && L.is_conscious() && prob(MONKEY_SWITCH_TARGET_PROB))
+				if(L != target && should_target(L) && L.stat == CONSCIOUS && prob(MONKEY_SWITCH_TARGET_PROB))
 					target = L
 					return TRUE
 
@@ -217,7 +224,7 @@
 				back_to_idle()
 				return TRUE
 
-			if(target && target.is_conscious())		// make sure target exists
+			if(target && target.stat == CONSCIOUS)		// make sure target exists
 				if(Adjacent(target) && isturf(target.loc) && !IsDeadOrIncap())	// if right next to perp
 
 					// check if target has a weapon
@@ -253,7 +260,7 @@
 
 			// flee from anyone who attacked us and we didn't beat down
 			for(var/mob/living/L in view(MONKEY_FLEE_VISION, src))
-				if( enemies[L] && L.is_conscious())
+				if( enemies[L] && L.stat == CONSCIOUS )
 					target = L
 
 			if(target != null)
@@ -427,14 +434,15 @@
 			retaliate(H)
 	..()
 
-/mob/living/carbon/monkey/Crossed(atom/movable/AM)
+/mob/living/carbon/monkey/proc/on_entered(datum/source, atom/movable/AM)
+	SIGNAL_HANDLER
+
 	if(!IsDeadOrIncap() && ismob(AM) && target)
 		var/mob/living/carbon/monkey/M = AM
 		if(!istype(M) || !M)
 			return
 		knockOver(M)
 		return
-	..()
 
 /mob/living/carbon/monkey/proc/monkeyDrop(var/obj/item/A)
 	if(A)

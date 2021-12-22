@@ -27,6 +27,7 @@
 	var/aggressive = FALSE
 	var/datum/disease/basedisease = null
 	var/list/infections = list()
+	discovery_points = 2000
 
 /mob/living/simple_animal/hostile/macrophage/CanAttack(atom/the_target)
 	. = ..()
@@ -92,9 +93,9 @@
 /mob/living/simple_animal/hostile/macrophage/aggro/vector/Initialize()
 	.=..()
 	var/datum/disease/advance/random/macrophage/D = new
-	health += D.properties["resistance"]
-	maxHealth += D.properties["resistance"]
-	melee_damage += max(0, D.properties["resistance"])
+	health += D.resistance
+	maxHealth += D.resistance
+	melee_damage += max(0, D.resistance)
 	infections += D
 	basedisease = D
 

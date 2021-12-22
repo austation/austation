@@ -7,3 +7,6 @@
 	design_ids -= austation_design_ids_remove
 	design_ids += austation_design_ids
 	..()
+
+/datum/techweb_node/calculate_discovery_cost(their_tier)
+	return 0

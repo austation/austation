@@ -171,3 +171,11 @@
 
 /turf/open/floor/holofloor/dark
 	icon_state = "darkfull"
+
+/turf/open/floor/holofloor/clown
+	icon_state = "bananium"
+
+/turf/open/floor/holofloor/white
+	name = "white floor"
+	desc = "A tile in a pure white color."
+	icon_state = "pure_white"

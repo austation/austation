@@ -166,9 +166,10 @@
 			A.setDir(turn(A.dir, 90))
 			var/turf/T = get_step(A, A.dir)
 			var/turf/S = D.loc
-			if ((S && isturf(S) && S.Exit(D)) && (T && isturf(T) && T.Enter(A)))
+			var/direction = get_dir(D, A)
+			if ((S && isturf(S) && S.Exit(D, direction)) && (T && isturf(T) && T.Enter(A)))
 				D.forceMove(T)
-				D.setDir(get_dir(D, A))
+				D.setDir(direction)
 		else
 			return 0
 
@@ -192,7 +193,7 @@
 		playsound(A.loc, "swing_hit", 50, 1)
 		var/turf/T = get_edge_target_turf(A, A.dir)
 		if (T && isturf(T))
-			if (D.is_conscious())
+			if (!D.stat)
 				D.emote("scream")
 			D.throw_at(T, 10, 4, A, TRUE, TRUE, callback = CALLBACK(D, /mob/living/carbon/human.proc/Paralyze, 20))
 	log_combat(A, D, "has thrown with wrestling")
@@ -290,7 +291,7 @@
 		D.visible_message("<span class='danger'><B>[A] [fluff] [D]!</B></span>", \
 						"<span class='userdanger'>[A] [fluff] you!</span>", null, COMBAT_MESSAGE_RANGE)
 		playsound(A.loc, "swing_hit", 50, 1)
-		if (D.is_conscious())
+		if (!D.stat)
 			D.emote("scream")
 			D.Paralyze(40)
 
@@ -414,7 +415,7 @@
 		A.emote("scream")
 
 		if (falling == 1)
-			if (prob(33) || !D.is_conscious())
+			if (prob(33) || D.stat)
 				D.ex_act(EXPLODE_LIGHT)
 			else
 				D.adjustBruteLoss(rand(20,30))

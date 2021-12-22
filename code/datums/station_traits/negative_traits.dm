@@ -23,6 +23,8 @@
 	report_message = "Sorry for that, we didn't expect to fly into that vomiting goose while bringing you to your new station."
 	trait_to_give = STATION_TRAIT_LATE_ARRIVALS
 	blacklist = list(/datum/station_trait/random_spawns, /datum/station_trait/hangover)
+	possible_announcements = list("You are getting late, again. Get your stuff together or you are all fired.",
+								"Our calculations were off by a bit. Shuttle will be there in a few seconds.")
 
 /datum/station_trait/random_spawns
 	name = "Drive-by landing"
@@ -32,6 +34,8 @@
 	report_message = "Sorry for that, we missed your station by a few miles, so we just launched you towards your station in pods. Hope you don't mind!"
 	trait_to_give = STATION_TRAIT_RANDOM_ARRIVALS
 	blacklist = list(/datum/station_trait/late_arrivals, /datum/station_trait/hangover)
+	possible_announcements = list("We overshot your station by a few miles. Prepare to be pod launched onto it.",
+								"We've missed your station, sorry for that. You will be launched onto it shortly.")
 
 /datum/station_trait/hangover
 	name = "Hangover"
@@ -41,20 +45,55 @@
 	report_message = "Ohh.... Man.... That mandatory office party from last shift... God that was awesome... I woke up in some random toilet 3 sectors away..."
 	trait_to_give = STATION_TRAIT_HANGOVER
 	blacklist = list(/datum/station_trait/late_arrivals, /datum/station_trait/random_spawns)
+	possible_announcements = list("That was one hell of a night. Now, get back to work.",
+								"Party's over. Get back to work.")
 
 /datum/station_trait/hangover/New()
 	. = ..()
 	RegisterSignal(SSdcs, COMSIG_GLOB_JOB_AFTER_SPAWN, .proc/on_job_after_spawn)
+	RegisterSignal(SSmapping, COMSIG_SUBSYSTEM_POST_INITIALIZE, .proc/create_spawners)
+
+/datum/station_trait/hangover/proc/create_spawners()
+	var/list/turf/turfs = get_safe_random_station_turfs(typesof(/area/hallway), rand(200, 300))
+	for(var/turf/T as() in turfs)
+		new /obj/effect/spawner/hangover_spawn(T)
+	UnregisterSignal(SSmapping, COMSIG_SUBSYSTEM_POST_INITIALIZE)
+
 
 /datum/station_trait/hangover/proc/on_job_after_spawn(datum/source, datum/job/job, mob/living/living_mob, mob/spawned_mob, joined_late)
 	SIGNAL_HANDLER
 
 	if(joined_late)
 		return
-	if(prob(35))
+	if(!iscarbon(living_mob))
+		return
+
+	var/mob/living/carbon/spawned_carbon = living_mob
+	spawned_carbon.set_resting(TRUE, silent = TRUE)
+	if(prob(50))
+		spawned_carbon.adjust_drugginess(rand(15, 20))
+	else
+		spawned_carbon.drunkenness += rand(15, 25)
+	spawned_carbon.adjust_disgust(rand(5, 55)) //How hungover are you?
+
+	if(prob(35) && !spawned_carbon.head)
 		var/obj/item/hat = pick(list(/obj/item/clothing/head/sombrero, /obj/item/clothing/head/fedora, /obj/item/clothing/mask/balaclava, /obj/item/clothing/head/ushanka, /obj/item/clothing/head/cardborg, /obj/item/clothing/head/pirate, /obj/item/clothing/head/cone))
 		hat = new hat(spawned_mob)
 		spawned_mob.equip_to_slot(hat, ITEM_SLOT_HEAD)
+
+/obj/effect/spawner/hangover_spawn
+	name = "hangover spawner"
+
+/obj/effect/spawner/hangover_spawn/Initialize()
+	if(prob(60))
+		new /obj/effect/decal/cleanable/vomit(get_turf(src))
+	if(prob(70))
+		var/bottle_count = pick(10;1, 5;2, 2;3)
+		for(var/index in 1 to bottle_count)
+			var/obj/item/reagent_containers/food/drinks/beer/almost_empty/B = new(get_turf(src))
+			B.pixel_x += rand(-6, 6)
+			B.pixel_y += rand(-6, 6)
+	return INITIALIZE_HINT_QDEL
 
 /datum/station_trait/blackout
 	name = "Blackout"
@@ -98,6 +137,7 @@
 
 /datum/station_trait/overflow_job_bureacracy/proc/set_overflow_job_override(datum/source, new_overflow_role)
 	SIGNAL_HANDLER
+
 	SSjob.set_overflow_role(chosen_job)
 
 /datum/station_trait/slow_shuttle

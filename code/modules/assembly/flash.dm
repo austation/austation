@@ -156,6 +156,7 @@
 	return TRUE
 
 /obj/item/assembly/flash/proc/burn_out() //Made so you can override it if you want to have an invincible flash from R&D or something.
+	bulb.charges_left = 0
 	if(!burnt_out)
 		burnt_out = TRUE
 		update_icon()
@@ -169,6 +170,9 @@
 /obj/item/assembly/flash/wirecutter_act(mob/living/user, obj/item/I)
 	if(!bulb)
 		to_chat(user, "<span class='notice'>There is no bulb in \the [src].</span>")
+		return FALSE
+	if(flags_1 & NODECONSTRUCT_1)
+		to_chat(user, "<span class='notice'>You cannot remove the bulb from \the [src].</span>")
 		return FALSE
 	bulb.forceMove(drop_location())
 	user.put_in_hands(bulb)
@@ -336,19 +340,22 @@
 	desc = "A high-powered photon projector implant normally used for lighting purposes, but also doubles as a flashbulb weapon. Self-repair protocols fix the flashbulb if it ever burns out."
 	var/flashcd = 20
 	var/overheat = 0
-	var/obj/item/organ/cyberimp/arm/flash/I = null
+	//Wearef to our arm
+	var/datum/weakref/arm
 
 /obj/item/assembly/flash/armimplant/burn_out()
-	if(I?.owner)
-		to_chat(I.owner, "<span class='warning'>Your photon projector implant overheats and deactivates!</span>")
-		I.Retract()
+	var/obj/item/organ/cyberimp/arm/flash/real_arm = arm.resolve()
+	if(real_arm?.owner)
+		to_chat(real_arm.owner, "<span class='warning'>Your photon projector implant overheats and deactivates!</span>")
+		real_arm.Retract()
 	overheat = TRUE
 	addtimer(CALLBACK(src, .proc/cooldown), flashcd * 2)
 
 /obj/item/assembly/flash/armimplant/try_use_flash(mob/user = null)
 	if(overheat)
-		if(I?.owner)
-			to_chat(I.owner, "<span class='warning'>Your photon projector is running too hot to be used again so quickly!</span>")
+		var/obj/item/organ/cyberimp/arm/flash/real_arm = arm.resolve()
+		if(real_arm?.owner)
+			to_chat(real_arm.owner, "<span class='warning'>Your photon projector is running too hot to be used again so quickly!</span>")
 		return FALSE
 	overheat = TRUE
 	addtimer(CALLBACK(src, .proc/cooldown), flashcd)

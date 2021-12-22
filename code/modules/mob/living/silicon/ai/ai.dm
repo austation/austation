@@ -132,7 +132,8 @@
 	if(client)
 		apply_pref_name("ai",client)
 
-	set_core_display_icon()
+	INVOKE_ASYNC(src, .proc/set_core_display_icon)
+
 
 	holo_icon = getHologramIcon(icon('icons/mob/ai.dmi',"default"))
 
@@ -212,10 +213,16 @@
 	set name = "Set AI Core Display"
 	if(incapacitated())
 		return
+	icon = initial(icon)
+	icon_state = "ai"
+	cut_overlays()
 	var/list/iconstates = GLOB.ai_core_display_screens
 	for(var/option in iconstates)
 		if(option == "Random")
 			iconstates[option] = image(icon = src.icon, icon_state = "ai-random")
+			continue
+		if(option == "Portrait")
+			iconstates[option] = image(icon = src.icon, icon_state = "ai-portrait")
 			continue
 		iconstates[option] = image(icon = src.icon, icon_state = resolve_ai_icon(option))
 
@@ -318,6 +325,9 @@
 		return
 
 	if ((ai.get_virtual_z_level() != target.get_virtual_z_level()) && !is_station_level(ai.z))
+		return FALSE
+
+	if(A.is_jammed())
 		return FALSE
 
 	if (istype(loc, /obj/item/aicard))
@@ -440,9 +450,11 @@
 		trackeable += track.humans + track.others
 		var/list/target = list()
 		for(var/I in trackeable)
-			var/mob/M = trackeable[I]
-			if(M.name == string)
-				target += M
+			var/datum/weakref/to_resolve = trackeable[I]
+			var/mob/to_track = to_resolve.resolve()
+			if(!to_track || to_track.name != string)
+				continue
+			target += to_track
 		if(name == string)
 			target += src
 		if(target.len)
@@ -928,11 +940,6 @@
 
 	var/rendered = "<i><span class='game say'>[start]<span class='name'>[hrefpart][namepart] ([jobpart])</a> </span><span class='message'>[treated_message]</span></span></i>"
 
-	var/flags = message_mods.Find(MODE_RADIO_MESSAGE) ? RADIO_MESSAGE : NONE
-
-	if (client?.prefs.chat_on_map && (client.prefs.see_chat_non_mob || ismob(speaker)))
-		create_chat_message(speaker, message_language, raw_message, spans, runechat_flags = flags)
-
 	show_message(rendered, 2)
 
 /mob/living/silicon/ai/fully_replace_character_name(oldname,newname)
@@ -1042,6 +1049,10 @@
 		target = input(src, "Which body to control?") as null|anything in sortNames(possible)
 
 	if (!target || target.stat || target.deployed || !(!target.connected_ai ||(target.connected_ai == src)) || (target.ratvar && !is_servant_of_ratvar(src)))
+		return
+
+	if(target.is_jammed())
+		to_chat(src, "<span class='warning robot'>Unable to establish communication link with target.</span>")
 		return
 
 	else if(mind)

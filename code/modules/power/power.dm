@@ -104,9 +104,12 @@
 /obj/machinery/proc/removeStaticPower(value, powerchannel)
 	addStaticPower(-value, powerchannel)
 
-/obj/machinery/proc/power_change()		// called whenever the power settings of the containing area change
-										// by default, check equipment channel & set flag
-										// can override if needed
+// called whenever the power settings of the containing area change
+// by default, check equipment channel & set flag
+// can override if needed
+/obj/machinery/proc/power_change()
+	SIGNAL_HANDLER
+
 	if(powered(power_channel))
 		stat &= ~NOPOWER
 	else
@@ -200,6 +203,11 @@
 		if(C.d1 == 0) // the cable is a node cable
 			. += C
 	return .
+
+/obj/machinery/power/lateShuttleMove(turf/oldT, list/movement_force, move_dir)
+	. = ..()
+	disconnect_from_network()
+	connect_to_network()
 
 ///////////////////////////////////////////
 // GLOBAL PROCS for powernets handling

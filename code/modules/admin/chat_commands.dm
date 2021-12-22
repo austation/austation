@@ -48,7 +48,7 @@
 			target = AH.initiator_ckey
 		else
 			return "Ticket #[id] not found!"
-	var/res = IrcPm(target, all_params.Join(" "), sender.friendly_name)
+	var/res = TgsPm(target, all_params.Join(" "), sender.friendly_name)
 	if(res != "Message Successful")
 		return res
 
@@ -71,7 +71,7 @@
 	admin_only = TRUE
 
 /datum/tgs_chat_command/adminwho/Run(datum/tgs_chat_user/sender, params)
-	return ircadminwho()
+	return tgsadminwho()
 
 GLOBAL_LIST(round_end_notifiees)
 

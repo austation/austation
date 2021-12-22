@@ -27,6 +27,9 @@
 	START_PROCESSING(SSobj, src)
 
 /obj/item/clothing/head/helmet/space/hardsuit/Destroy()
+	if(!QDELETED(suit))
+		qdel(suit)
+	suit = null
 	QDEL_NULL(soundloop)
 	STOP_PROCESSING(SSobj, src)
 	return ..()
@@ -109,7 +112,6 @@
 	var/helmettype = /obj/item/clothing/head/helmet/space/hardsuit
 	var/obj/item/tank/jetpack/suit/jetpack = null
 	pocket_storage_component_path = null
-
 
 /obj/item/clothing/suit/space/hardsuit/Initialize()
 	if(jetpack && ispath(jetpack))
@@ -267,6 +269,29 @@
 	. = ..()
 	AddComponent(/datum/component/armor_plate)
 
+	//Exploration hardsuit
+/obj/item/clothing/head/helmet/space/hardsuit/exploration
+	name = "exploration hardsuit helmet"
+	desc = "An advanced space-proof hardsuit designed to protect against off-station threats."
+	icon_state = "hardsuit0-exploration"
+	item_state = "death_commando_mask"
+	item_color = "exploration"
+	heat_protection = HEAD
+	armor = list("melee" = 35, "bullet" = 15, "laser" = 20, "energy" = 10, "bomb" = 50, "bio" = 100, "rad" = 50, "fire" = 50, "acid" = 75, "stamina" = 20)
+	light_range = 6
+	allowed = list(/obj/item/flashlight, /obj/item/tank/internals, /obj/item/resonator, /obj/item/mining_scanner, /obj/item/t_scanner/adv_mining_scanner, /obj/item/gun/energy/kinetic_accelerator)
+
+/obj/item/clothing/suit/space/hardsuit/exploration
+	icon_state = "hardsuit-exploration"
+	name = "exploration hardsuit"
+	desc = "An advanced space-proof hardsuit designed to protect against off-station threats. Despite looking remarkably similar to the mining hardsuit \
+		Nanotrasen officials note that it is unique in every way and the design has not been copied in any way."
+	item_state = "exploration_hardsuit"
+	armor = list("melee" = 35, "bullet" = 15, "laser" = 20, "energy" = 10, "bomb" = 50, "bio" = 100, "rad" = 50, "fire" = 50, "acid" = 75, "stamina" = 20)
+	allowed = list(/obj/item/flashlight, /obj/item/tank/internals, /obj/item/storage/bag/ore, /obj/item/pickaxe)
+	helmettype = /obj/item/clothing/head/helmet/space/hardsuit/exploration
+	heat_protection = CHEST|GROIN|LEGS|FEET|ARMS|HANDS
+
 	//Syndicate hardsuit
 /obj/item/clothing/head/helmet/space/hardsuit/syndi
 	name = "blood-red hardsuit helmet"
@@ -380,6 +405,7 @@
 	allowed = list(/obj/item/gun, /obj/item/ammo_box,/obj/item/ammo_casing, /obj/item/melee/baton, /obj/item/melee/transforming/energy/sword/saber, /obj/item/restraints/handcuffs, /obj/item/tank/internals)
 	helmettype = /obj/item/clothing/head/helmet/space/hardsuit/syndi
 	jetpack = /obj/item/tank/jetpack/suit
+	item_flags = ILLEGAL	//Syndicate only and difficult to obtain outside of uplink anyway. Nukie hardsuits on the ship are illegal.
 	actions_types = list(
 		/datum/action/item_action/toggle_helmet,
 		/datum/action/item_action/toggle_beacon,
@@ -417,6 +443,8 @@
 	. = ..()
 	//Update helmet to non combat mode
 	var/obj/item/clothing/head/helmet/space/hardsuit/syndi/syndieHelmet = helmet
+	if(!syndieHelmet)
+		return
 	syndieHelmet.activate_combat_mode()
 	syndieHelmet.update_icon()
 	for(var/X in syndieHelmet.actions)
@@ -878,6 +906,7 @@
 		/datum/action/item_action/toggle_beacon,
 		/datum/action/item_action/toggle_beacon_frequency
 	)
+	jetpack = /obj/item/tank/jetpack/suit
 
 /obj/item/clothing/suit/space/hardsuit/shielded/syndi/multitool_act(mob/living/user, obj/item/I)
 	. = ..()
@@ -895,10 +924,6 @@
 		shield_on = "shield-red"
 		to_chat(user, "<span class='warning'>You update the hardsuit's hardware, changing back the shield's color to red.</span>")
 	user.update_inv_wear_suit()
-
-/obj/item/clothing/suit/space/hardsuit/shielded/syndi/Initialize()
-	jetpack = new /obj/item/tank/jetpack/suit(src)
-	. = ..()
 
 /obj/item/clothing/suit/space/hardsuit/shielded/syndi/ui_action_click(mob/user, datum/actiontype)
 	switch(actiontype.type)

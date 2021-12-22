@@ -158,11 +158,17 @@ austation end */
 	icon = 'icons/obj/lavaland/artefacts.dmi'
 	icon_state = "asclepius_dormant"
 	block_upgrade_walk = 1
-	block_level = 2
+	block_level = 1
 	block_power = 40 //blocks very well to encourage using it. Just because you're a pacifist doesn't mean you can't defend yourself
 	block_flags = null //not active, so it's null
 	var/activated = FALSE
 	var/usedHand
+
+/obj/item/rod_of_asclepius/hit_reaction(mob/living/carbon/human/owner, atom/movable/hitby, attack_text, damage, attack_type)
+	if(!activated)
+		return FALSE 
+	return ..()
+	
 
 /obj/item/rod_of_asclepius/attack_self(mob/user)
 	if(activated)
@@ -333,6 +339,8 @@ austation end */
 		to_chat(orbits.parent, "<span class='notice'>Your vision returns to normal.</span>")
 
 /obj/effect/wisp/proc/update_user_sight(mob/user)
+	SIGNAL_HANDLER
+
 	user.sight |= sight_flags
 	if(!isnull(lighting_alpha))
 		user.lighting_alpha = min(user.lighting_alpha, lighting_alpha)
@@ -360,6 +368,12 @@ austation end */
 	var/teleport_color = "#3FBAFD"
 	var/obj/item/warp_cube/linked
 	var/teleporting = FALSE
+
+/obj/item/warp_cube/Destroy()
+	if(!QDELETED(linked))
+		qdel(linked)
+	linked =  null
+	return ..()
 
 /obj/item/warp_cube/attack_self(mob/user)
 	if(!linked)
@@ -740,7 +754,6 @@ austation end */
 	attack_verb_on = list("cleaved", "swiped", "slashed", "chopped")
 	hitsound = 'sound/weapons/bladeslice.ogg'
 	hitsound_on = 'sound/weapons/bladeslice.ogg'
-	block_upgrade_walk = 1
 	w_class = WEIGHT_CLASS_BULKY
 	sharpness = IS_SHARP
 	faction_bonus_force = 45
@@ -957,7 +970,7 @@ austation end */
 	agent = "dragon's blood"
 	desc = "What do dragons have to do with Space Station 13?"
 	stage_prob = 20
-	severity = DISEASE_SEVERITY_BIOHAZARD
+	danger = DISEASE_BIOHAZARD
 	visibility_flags = 0
 	stage1	= list("Your bones ache.")
 	stage2	= list("Your skin feels scaly.")

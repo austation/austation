@@ -164,18 +164,20 @@
 	user.visible_message("<span class='suicide'>[user] begins licking the lead paint off \the [src]! It looks like [user.p_theyre()] trying to commit suicide!</span>")
 	return TOXLOSS
 
+/* austation begin -- /tg/ firstaid kit icons
 /obj/item/storage/firstaid/toxin/Initialize(mapload)
 	. = ..()
-	icon_state = pick("antitoxin","antitoxfirstaid","antitoxfirstaid2","antitoxfirstaid3")
+	icon_state = pick("antitoxin","antitoxin2")
+austation end */
 
 /obj/item/storage/firstaid/toxin/PopulateContents()
 	if(empty)
 		return
 	var/static/items_inside = list(
-		/obj/item/reagent_containers/syringe/antitoxin = 2,
+		/obj/item/reagent_containers/syringe/antitoxin = 3,
 		/obj/item/reagent_containers/syringe/calomel = 1,
 		/obj/item/reagent_containers/syringe/diphenhydramine = 1,
-		/obj/item/storage/pill_bottle/charcoal = 2,
+		/obj/item/storage/pill_bottle/charcoal = 1,
 		/obj/item/healthanalyzer = 1)
 	generate_items_inside(items_inside,src)
 
@@ -207,7 +209,7 @@
 /obj/item/storage/firstaid/o2
 	name = "oxygen deprivation treatment kit"
 	desc = "A box full of oxygen goodies."
-	icon_state = "o2"
+	icon_state = "o2firstaid"
 	item_state = "firstaid-o2"
 	damagetype_healed = OXY
 
@@ -249,8 +251,8 @@
 /obj/item/storage/firstaid/advanced
 	name = "advanced first aid kit"
 	desc = "An advanced kit to help deal with advanced wounds."
-	icon_state = "radfirstaid"
-	item_state = "firstaid-rad"
+	icon_state = "advfirstaid"
+	item_state = "firstaid-adv"
 	custom_premium_price = 600
 
 /obj/item/storage/firstaid/advanced/PopulateContents()
@@ -266,7 +268,13 @@
 /obj/item/storage/firstaid/tactical
 	name = "combat medical kit"
 	desc = "I hope you've got insurance."
-	icon_state = "bezerk"
+	item_state = "firstaid-combat"
+
+/* austation begin -- /tg/ firstaid kit icons
+/obj/item/storage/firstaid/tactical/Initialize(mapload)
+	. = ..()
+	icon_state = pick("combatfirstaid","combatfirstaid2")
+austation end */
 
 /obj/item/storage/firstaid/tactical/ComponentInitialize()
 	. = ..()

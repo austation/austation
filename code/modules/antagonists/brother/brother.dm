@@ -71,7 +71,7 @@
 		var/obj/item/implant/bloodbrother/T = locate() in M.current.implants
 		I.link_implant(T)
 	SSticker.mode.update_brother_icons_added(owner)
-	owner.current.playsound_local(get_turf(owner.current), 'sound/ambience/antag/tatoralert.ogg', 100, FALSE, pressure_affected = FALSE)
+	owner.current.playsound_local(get_turf(owner.current), 'sound/ambience/antag/tatoralert.ogg', 100, FALSE, pressure_affected = FALSE, use_reverb = FALSE)
 
 /datum/antagonist/brother/admin_add(datum/mind/new_owner,mob/admin)
 	//show list of possible brothers
@@ -84,7 +84,7 @@
 	var/choice = input(admin,"Choose the blood brother.", "Brother") as null|anything in sortNames(candidates)
 	if(!choice)
 		return
-	var/datum/mind/bro = candidates[choice]
+	var/datum/mind/bro = choice
 	var/datum/team/brother_team/T = new
 	T.add_member(new_owner)
 	T.add_member(bro)

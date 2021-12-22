@@ -25,9 +25,8 @@
 	response_help  = "shoos"
 	response_disarm = "swats away"
 	response_harm   = "squashes"
-	harm_intent_damage = 10 //you can swat bees in one hit
-	maxHealth = 10
-	health = 10
+	maxHealth = 6
+	health = 6
 	spacewalk = TRUE
 	faction = list("hostile")
 	move_to_delay = 0
@@ -89,7 +88,8 @@
 		return ..()
 	else
 		. = list() // The following code is only very slightly slower than just returning oview(vision_range, targets_from), but it saves us much more work down the line
-		var/list/searched_for = oview(vision_range, targets_from)
+		var/atom/target_from = GET_TARGETS_FROM(src)
+		var/list/searched_for = oview(vision_range, target_from)
 		for(var/obj/A in searched_for)
 			. += A
 		for(var/mob/A in searched_for)

@@ -1,6 +1,21 @@
 /obj/item/storage/firstaid
 	icon = 'austation/icons/obj/storage.dmi'
 
+/obj/item/storage/firstaid/o2
+	icon_state = "o2"
+
+/obj/item/storage/firstaid/toxin
+	icon_state = "antitoxin"
+
+/obj/item/storage/firstaid/advanced
+	icon_state = "radfirstaid"
+
+/obj/item/storage/firstaid/radbgone
+	icon_state = "purplefirstaid"
+
+/obj/item/storage/firstaid/tactical
+	icon_state = "bezerk"
+
 /obj/item/storage/firstaid/medical
 	name = "medical aid kit"
 	icon_state = "firstaid_surgery"

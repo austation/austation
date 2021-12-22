@@ -95,6 +95,10 @@
 	suit_type = /obj/item/clothing/suit/space/hardsuit/mining
 	mask_type = /obj/item/clothing/mask/breath
 
+/obj/machinery/suit_storage_unit/exploration
+	suit_type = /obj/item/clothing/suit/space/hardsuit/exploration
+	mask_type = /obj/item/clothing/mask/breath
+
 /obj/machinery/suit_storage_unit/cmo
 	suit_type = /obj/item/clothing/suit/space/hardsuit/medical/cmo
 	mask_type = /obj/item/clothing/mask/breath
@@ -197,6 +201,8 @@
 /obj/machinery/suit_storage_unit/emp_act()
 	. = ..()
 	uv_super = !uv_super
+	wires.ui_update()
+	ui_update()
 
 /obj/machinery/suit_storage_unit/emag_act(mob/user)
 	if(obj_flags & EMAGGED)
@@ -212,7 +218,7 @@
 	qdel(src)
 
 /obj/machinery/suit_storage_unit/MouseDrop_T(atom/A, mob/living/user)
-	if(!istype(user) || !user.is_conscious() || !Adjacent(user) || !Adjacent(A) || !isliving(A))
+	if(!istype(user) || user.stat || !Adjacent(user) || !Adjacent(A) || !isliving(A))
 		return
 	if(isliving(user))
 		var/mob/living/L = user
@@ -402,6 +408,7 @@
 
 		visible_message("<span class='notice'>[user] inserts [I] into [src]</span>", "<span class='notice'>You load [I] into [src].</span>")
 		update_icon()
+		ui_update()
 		return
 
 	if(panel_open && is_wire_tool(I))
@@ -409,6 +416,7 @@
 		return
 	if(!state_open)
 		if(default_deconstruction_screwdriver(user, "panel", "close", I))
+			ui_update() // Wires might've changed availability of decontaminate button
 			return
 	if(default_pry_open(I))
 		dump_contents()
@@ -498,7 +506,7 @@
 			else
 				if(occupant)
 					var/mob/living/mob_occupant = occupant
-					to_chat(mob_occupant, "<span class='userdanger'>[src]'s confines grow warm, then hot, then scorching. You're being burned [mob_occupant.is_conscious() ? "alive" : "away"]!</span>")
+					to_chat(mob_occupant, "<span class='userdanger'>[src]'s confines grow warm, then hot, then scorching. You're being burned [!mob_occupant.stat ? "alive" : "away"]!</span>")
 				cook()
 				. = TRUE
 		if("dispense")
@@ -513,4 +521,6 @@
 				if(I)
 					I.forceMove(loc)
 			. = TRUE
-	update_icon()
+
+	if(.)
+		update_icon()

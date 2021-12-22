@@ -11,6 +11,9 @@
 	appearance_flags = TILE_BOUND
 	var/level = 2
 
+	/// pass_flags that we are. If any of this matches a pass_flag on a moving thing, by default, we let them through.
+	var/pass_flags_self = NONE
+
 	///If non-null, overrides a/an/some in all cases
 	var/article
 
@@ -91,6 +94,12 @@
 
 	///Mobs that are currently do_after'ing this atom, to be cleared from on Destroy()
 	var/list/targeted_by
+
+	///AI controller that controls this atom. type on init, then turned into an instance during runtime
+	var/datum/ai_controller/ai_controller
+
+	/// Lazylist of all messages currently on this atom
+	var/list/chat_messages
 
 /**
   * Called when an atom is created in byond (built in engine proc)
@@ -184,6 +193,7 @@
 		set_custom_materials(temp_list)
 
 	ComponentInitialize()
+	InitializeAIController()
 
 	return INITIALIZE_HINT_NORMAL
 
@@ -238,6 +248,7 @@
 	targeted_by = null
 
 	QDEL_NULL(light)
+	QDEL_NULL(ai_controller)
 
 	return ..()
 
@@ -251,13 +262,30 @@
 		return FALSE
 	if((P.flag in list("bullet", "bomb")) && P.ricochet_incidence_leeway)
 		if((a_incidence_s < 90 && a_incidence_s < 90 - P.ricochet_incidence_leeway) || (a_incidence_s > 270 && a_incidence_s -270 > P.ricochet_incidence_leeway))
-			return
+			return FALSE
 	var/new_angle_s = SIMPLIFY_DEGREES(face_angle + incidence_s)
 	P.setAngle(new_angle_s)
 	return TRUE
 
 ///Can the mover object pass this atom, while heading for the target turf
 /atom/proc/CanPass(atom/movable/mover, turf/target)
+	SHOULD_CALL_PARENT(TRUE)
+	SHOULD_BE_PURE(TRUE)
+	if(mover.movement_type & PHASING)
+		return TRUE
+	. = CanAllowThrough(mover, target)
+	// This is cheaper than calling the proc every time since most things dont override CanPassThrough
+	if(!mover.generic_canpass)
+		return mover.CanPassThrough(src, target, .)
+
+/// Returns true or false to allow the mover to move through src
+/atom/proc/CanAllowThrough(atom/movable/mover, turf/target)
+	SHOULD_CALL_PARENT(TRUE)
+	//SHOULD_BE_PURE(TRUE)
+	if(mover.pass_flags & pass_flags_self)
+		return TRUE
+	if(mover.throwing && (pass_flags_self & LETPASSTHROW))
+		return TRUE
 	return !density
 
 /**
@@ -354,6 +382,7 @@
 				L.transferItemToLoc(M, src)
 			else
 				M.forceMove(src)
+	parts_list.Cut()
 
 ///Hook for multiz???
 /atom/proc/update_multiz(prune_on_fail = FALSE)
@@ -361,11 +390,25 @@
 
 ///Take air from the passed in gas mixture datum
 /atom/proc/assume_air(datum/gas_mixture/giver)
-	qdel(giver)
+	return null
+
+/atom/proc/assume_air_moles(datum/gas_mixture/giver, moles)
+	return null
+
+/atom/proc/assume_air_ratio(datum/gas_mixture/giver, ratio)
 	return null
 
 ///Remove air from this atom
 /atom/proc/remove_air(amount)
+	return null
+
+/atom/proc/remove_air_ratio(ratio)
+	return null
+
+/atom/proc/transfer_air(datum/gas_mixture/taker, amount)
+	return null
+
+/atom/proc/transfer_air_ratio(datum/gas_mixture/taker, ratio)
 	return null
 
 ///Return the current air environment in this atom
@@ -411,9 +454,6 @@
 /atom/proc/AllowDrop()
 	return FALSE
 
-/atom/proc/CheckExit()
-	return 1
-
 ///Is this atom within 1 tile of another atom
 /atom/proc/HasProximity(atom/movable/AM as mob|obj)
 	return
@@ -435,13 +475,18 @@
 	return protection // Pass the protection value collected here upwards
 
 /**
-  * React to a hit by a projectile object
-  *
-  * Default behaviour is to send the COMSIG_ATOM_BULLET_ACT and then call on_hit() on the projectile
-  */
-/atom/proc/bullet_act(obj/item/projectile/P, def_zone)
+ * React to a hit by a projectile object
+ *
+ * Default behaviour is to send the [COMSIG_ATOM_BULLET_ACT] and then call [on_hit][/obj/projectile/proc/on_hit] on the projectile
+ *
+ * @params
+ * P - projectile
+ * def_zone - zone hit
+ * piercing_hit - is this hit piercing or normal?
+ */
+/atom/proc/bullet_act(obj/item/projectile/P, def_zone, piercing_hit = FALSE)
 	SEND_SIGNAL(src, COMSIG_ATOM_BULLET_ACT, P, def_zone)
-	. = P.on_hit(src, 0, def_zone)
+	. = P.on_hit(src, 0, def_zone, piercing_hit)
 
 ///Return true if we're inside the passed in atom
 /atom/proc/in_contents_of(container)//can take class or object instance as argument
@@ -513,6 +558,8 @@
 
 /// Updates the icon of the atom
 /atom/proc/update_icon()
+	SIGNAL_HANDLER
+
 	// I expect we're going to need more return flags and options in this proc
 	var/signalOut = SEND_SIGNAL(src, COMSIG_ATOM_UPDATE_ICON)
 	if(!(signalOut & COMSIG_ATOM_NO_UPDATE_ICON_STATE))
@@ -585,6 +632,7 @@
   * throw lots of items around - singularity being a notable example)
   */
 /atom/proc/hitby(atom/movable/AM, skipcatch, hitpush, blocked, datum/thrownthing/throwingdatum)
+	SEND_SIGNAL(src, COMSIG_ATOM_HITBY, AM, skipcatch, hitpush, blocked, throwingdatum)
 	if(density && !has_gravity(AM)) //thrown stuff bounces off dense stuff in no grav, unless the thrown stuff ends up inside what it hit(embedding, bola, etc...).
 		addtimer(CALLBACK(src, .proc/hitby_react, AM), 2)
 
@@ -712,6 +760,12 @@
   */
 /atom/proc/ratvar_act()
 	SEND_SIGNAL(src, COMSIG_ATOM_RATVAR_ACT)
+
+/**
+  * Called when lighteater is called on this.
+  */
+/atom/proc/lighteater_act(obj/item/light_eater/light_eater)
+	return
 
 /**
   * Respond to the eminence clicking on our atom
@@ -917,7 +971,7 @@
 		flags_1 |= ADMIN_SPAWNED_1
 	. = ..()
 	switch(var_name)
-		if("color")
+		if(NAMEOF(src, color))
 			add_atom_colour(color, ADMIN_COLOUR_PRIORITY)
 
 /**
@@ -936,6 +990,8 @@
 	VV_DROPDOWN_OPTION(VV_HK_ADD_REAGENT, "Add Reagent")
 	VV_DROPDOWN_OPTION(VV_HK_TRIGGER_EMP, "EMP Pulse")
 	VV_DROPDOWN_OPTION(VV_HK_TRIGGER_EXPLOSION, "Explosion")
+	VV_DROPDOWN_OPTION(VV_HK_EDIT_FILTERS, "Edit Filters")
+	VV_DROPDOWN_OPTION(VV_HK_ADD_AI, "Add AI controller")
 
 /atom/vv_do_topic(list/href_list)
 	. = ..()
@@ -998,6 +1054,17 @@
 		var/newname = input(usr, "What do you want to rename this to?", "Automatic Rename") as null|text
 		if(newname)
 			vv_auto_rename(newname)
+	if(href_list[VV_HK_ADD_AI])
+		if(!check_rights(R_VAREDIT))
+			return
+		var/result = input(usr, "Choose the AI controller to apply to this atom WARNING: Not all AI works on all atoms.", "AI controller") as null|anything in subtypesof(/datum/ai_controller)
+		if(!result)
+			return
+		ai_controller = new result(src)
+
+	if(href_list[VV_HK_EDIT_FILTERS] && check_rights(R_VAREDIT))
+		var/client/C = usr.client
+		C?.open_filter_editor(src)
 
 /atom/vv_get_header()
 	. = ..()
@@ -1016,33 +1083,34 @@
 	name = newname
 
 /**
-  * An atom has entered this atom's contents
-  *
-  * Default behaviour is to send the COMSIG_ATOM_ENTERED
-  */
-/atom/Entered(atom/movable/AM, atom/oldLoc)
-	SEND_SIGNAL(src, COMSIG_ATOM_ENTERED, AM, oldLoc)
+ * An atom has entered this atom's contents
+ *
+ * Default behaviour is to send the [COMSIG_ATOM_ENTERED]
+ */
+/atom/Entered(atom/movable/arrived, atom/old_loc, list/atom/old_locs)
+	SEND_SIGNAL(src, COMSIG_ATOM_ENTERED, arrived, old_loc, old_locs)
 
 /**
-  * An atom is attempting to exit this atom's contents
-  *
-  * Default behaviour is to send the COMSIG_ATOM_EXIT
-  *
-  * Return value should be set to FALSE if the moving atom is unable to leave,
-  * otherwise leave value the result of the parent call
-  */
-/atom/Exit(atom/movable/AM, atom/newLoc)
-	. = ..()
-	if(SEND_SIGNAL(src, COMSIG_ATOM_EXIT, AM, newLoc) & COMPONENT_ATOM_BLOCK_EXIT)
+ * An atom is attempting to exit this atom's contents
+ *
+ * Default behaviour is to send the [COMSIG_ATOM_EXIT]
+ */
+/atom/Exit(atom/movable/leaving, direction)
+	// Don't call `..()` here, otherwise `Uncross()` gets called.
+	// See the doc comment on `Uncross()` to learn why this is bad.
+
+	if(SEND_SIGNAL(src, COMSIG_ATOM_EXIT, leaving, direction) & COMPONENT_ATOM_BLOCK_EXIT)
 		return FALSE
 
+	return TRUE
+
 /**
-  * An atom has exited this atom's contents
-  *
-  * Default behaviour is to send the COMSIG_ATOM_EXITED
-  */
-/atom/Exited(atom/movable/AM, atom/newLoc)
-	SEND_SIGNAL(src, COMSIG_ATOM_EXITED, AM, newLoc)
+ * An atom has exited this atom's contents
+ *
+ * Default behaviour is to send the [COMSIG_ATOM_EXITED]
+ */
+/atom/Exited(atom/movable/gone, direction)
+	SEND_SIGNAL(src, COMSIG_ATOM_EXITED, gone, direction)
 
 ///Return atom temperature
 /atom/proc/return_temperature()
@@ -1056,6 +1124,10 @@
   * Must return  parent proc ..() in the end if overridden
   */
 /atom/proc/tool_act(mob/living/user, obj/item/I, tool_type)
+	var/signal_result
+	signal_result = SEND_SIGNAL(src, COMSIG_ATOM_TOOL_ACT(tool_type), user, I)
+	if(signal_result & COMPONENT_BLOCK_TOOL_ATTACK) // The COMSIG_ATOM_TOOL_ACT signal is blocking the act
+		return TOOL_ACT_SIGNAL_BLOCKING
 	switch(tool_type)
 		if(TOOL_CROWBAR)
 			return crowbar_act(user, I)
@@ -1093,7 +1165,7 @@
 
 ///Screwdriver act
 /atom/proc/screwdriver_act(mob/living/user, obj/item/I)
-	SEND_SIGNAL(src, COMSIG_ATOM_SCREWDRIVER_ACT, user, I)
+	return
 
 ///Wrench act
 /atom/proc/wrench_act(mob/living/user, obj/item/I)
@@ -1210,14 +1282,14 @@
 		var/reverse_message = "has been [what_done] by [ssource][postfix]"
 		target.log_message(reverse_message, LOG_ATTACK, color="orange", log_globally=FALSE)
 
-/atom/movable/proc/add_filter(name,priority,list/params)
+/atom/proc/add_filter(name,priority,list/params)
 	LAZYINITLIST(filter_data)
 	var/list/p = params.Copy()
 	p["priority"] = priority
 	filter_data[name] = p
 	update_filters()
 
-/atom/movable/proc/update_filters()
+/atom/proc/update_filters()
 	filters = null
 	filter_data = sortTim(filter_data, /proc/cmp_filter_data_priority, TRUE)
 	for(var/f in filter_data)
@@ -1225,15 +1297,48 @@
 		var/list/arguments = data.Copy()
 		arguments -= "priority"
 		filters += filter(arglist(arguments))
+	UNSETEMPTY(filter_data)
 
-/atom/movable/proc/get_filter(name)
+/atom/proc/transition_filter(name, time, list/new_params, easing, loop)
+	var/filter = get_filter(name)
+	if(!filter)
+		return
+
+	var/list/old_filter_data = filter_data[name]
+
+	var/list/params = old_filter_data.Copy()
+	for(var/thing in new_params)
+		params[thing] = new_params[thing]
+
+	animate(filter, new_params, time = time, easing = easing, loop = loop)
+	for(var/param in params)
+		filter_data[name][param] = params[param]
+
+/atom/proc/change_filter_priority(name, new_priority)
+	if(!filter_data || !filter_data[name])
+		return
+
+	filter_data[name]["priority"] = new_priority
+	update_filters()
+
+/atom/proc/get_filter(name)
 	if(filter_data && filter_data[name])
 		return filters[filter_data.Find(name)]
 
-/atom/movable/proc/remove_filter(name)
-	if(filter_data && filter_data[name])
-		filter_data -= name
-		update_filters()
+/atom/proc/remove_filter(name_or_names)
+	if(!filter_data)
+		return
+
+	var/list/names = islist(name_or_names) ? name_or_names : list(name_or_names)
+
+	for(var/name in names)
+		if(filter_data[name])
+			filter_data -= name
+	update_filters()
+
+/atom/proc/clear_filters()
+	filter_data = null
+	filters = null
 
 /atom/proc/intercept_zImpact(atom/movable/AM, levels = 1)
 	. |= SEND_SIGNAL(src, COMSIG_ATOM_INTERCEPT_Z_FALL, AM, levels)
@@ -1279,3 +1384,12 @@
   */
 /atom/proc/setClosed()
 	return
+
+/**
+* Instantiates the AI controller of this atom. Override this if you want to assign variables first.
+*
+* This will work fine without manually passing arguments.
++*/
+/atom/proc/InitializeAIController()
+	if(ai_controller)
+		ai_controller = new ai_controller(src)

@@ -15,7 +15,7 @@ GLOBAL_DATUM_INIT(admin_secrets, /datum/admin_secrets, new)
 		ui = new(user, src, "AdminSecretsPanel", "Secrets Panel")
 		ui.open()
 
-/datum/admin_secrets/ui_data(mob/user)
+/datum/admin_secrets/ui_static_data(mob/user)
 	/*
 	Each command is a list that will be read like [Name, Action(see ui_act)]
 	"omg but you could have done it like X"
@@ -145,7 +145,7 @@ GLOBAL_DATUM_INIT(admin_secrets, /datum/admin_secrets, new)
 				for(var/mob/living/mob in thunderdome)
 					qdel(mob) //Clear mobs
 			for(var/obj/obj in thunderdome)
-				if(!istype(obj, /obj/machinery/camera) && !istype(obj, /obj/effect/abstract/proximity_checker))
+				if(!istype(obj, /obj/machinery/camera) && !istype(obj, /obj/effect/abstract/proximity_checker) && !istype(obj, /obj/effect/landmark/arena))
 					qdel(obj) //Clear objects
 
 			var/area/template = GLOB.areas_by_type[/area/tdome/arena_source]
@@ -175,7 +175,7 @@ GLOBAL_DATUM_INIT(admin_secrets, /datum/admin_secrets, new)
 			set_station_name(new_name)
 			log_admin("[key_name(usr)] renamed the station to \"[new_name]\".")
 			message_admins("<span class='adminnotice'>[key_name_admin(usr)] renamed the station to: [new_name].</span>")
-			priority_announce("[command_name()] has renamed the station to \"[new_name]\".")
+			priority_announce("[command_name()] has renamed the station to \"[new_name]\".", sound = SSstation.announcer.get_rand_alert_sound())
 		if("night_shift_set")
 			if(!check_rights(R_ADMIN))
 				return
@@ -201,7 +201,7 @@ GLOBAL_DATUM_INIT(admin_secrets, /datum/admin_secrets, new)
 			set_station_name(new_name)
 			log_admin("[key_name(usr)] reset the station name.")
 			message_admins("<span class='adminnotice'>[key_name_admin(usr)] reset the station name.</span>")
-			priority_announce("[command_name()] has renamed the station to \"[new_name]\".")
+			priority_announce("[command_name()] has renamed the station to \"[new_name]\".", sound = SSstation.announcer.get_rand_alert_sound())
 
 		if("list_bombers")
 			if(!check_rights(R_ADMIN))
@@ -833,7 +833,7 @@ GLOBAL_DATUM_INIT(admin_secrets, /datum/admin_secrets, new)
 	if (playlightning)
 		sound_to_playing_players('sound/magic/lightning_chargeup.ogg')
 		sleep(80)
-	priority_announce(replacetext(announcement, "%STATION%", station_name()))
+	priority_announce(replacetext(announcement, "%STATION%", station_name()), sound = SSstation.announcer.get_rand_alert_sound())
 	if (playlightning)
 		sleep(20)
 		sound_to_playing_players('sound/magic/lightningbolt.ogg')

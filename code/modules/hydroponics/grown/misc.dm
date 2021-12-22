@@ -56,7 +56,7 @@
 		return
 
 	var/datum/gas_mixture/stank = new
-	stank.set_moles(/datum/gas/miasma, (yield + 6)*3.5*MIASMA_CORPSE_MOLES*delta_time) // this process is only being called about 2/7 as much as corpses so this is 12-32 times a corpses
+	stank.set_moles(GAS_MIASMA, (yield + 6)*3.5*MIASMA_CORPSE_MOLES*delta_time) // this process is only being called about 2/7 as much as corpses so this is 12-32 times a corpses
 	stank.set_temperature(T20C) // without this the room would eventually freeze and miasma mining would be easier
 	T.assume_air(stank)
 	T.air_update_turf()
@@ -206,6 +206,7 @@
 	volume = 125 //Gives enough room for the black powder at max potency
 	max_integrity = 40
 	wine_power = 80
+	discovery_points = 300
 
 /obj/item/reagent_containers/food/snacks/grown/cherry_bomb/attack_self(mob/living/user)
 	user.visible_message("<span class='warning'>[user] plucks the stem from [src]!</span>", "<span class='userdanger'>You pluck the stem from [src], which begins to hiss loudly!</span>")

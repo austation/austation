@@ -70,6 +70,8 @@
 	ghouls += humie
 
 /datum/eldritch_knowledge/flesh_ghoul/proc/remove_ghoul(datum/source)
+	SIGNAL_HANDLER
+
 	var/mob/living/carbon/human/humie = source
 	ghouls -= humie
 	humie.setMaxHealth(ORIGINAL_MAX_HEALTH)
@@ -114,7 +116,7 @@
 	log_game("[key_name_admin(human_target)] has become a ghoul, their master is [user.real_name]")
 	//we change it to true only after we know they passed all the checks
 	. = TRUE
-	RegisterSignal(human_target,COMSIG_MOB_DEATH,.proc/remove_ghoul)
+	RegisterSignal(human_target,COMSIG_MOB_DEATH, .proc/remove_ghoul)
 	human_target.revive(full_heal = TRUE, admin_revive = TRUE)
 	ADD_TRAIT(human_target, TRAIT_NOSTAMCRIT, MAGIC_TRAIT)
 	ADD_TRAIT(human_target, TRAIT_NOLIMBDISABLE, MAGIC_TRAIT)
@@ -128,6 +130,8 @@
 	heretic_monster.set_owner(master)
 
 /datum/eldritch_knowledge/flesh_grasp/proc/remove_ghoul(datum/source)
+	SIGNAL_HANDLER
+
 	var/mob/living/carbon/human/humie = source
 	spooky_scaries -= humie
 	humie.setMaxHealth(ORIGINAL_MAX_HEALTH)
@@ -181,7 +185,7 @@
 	cost = 1
 	required_atoms = list(/obj/item/organ/eyes,/obj/item/bodypart/l_arm,/obj/item/bodypart/r_arm,/obj/effect/decal/cleanable/blood)
 	mob_to_summon = /mob/living/simple_animal/hostile/eldritch/raw_prophet
-	next_knowledge = list(/datum/eldritch_knowledge/flesh_blade_upgrade,/datum/eldritch_knowledge/spell/blood_siphon,/datum/eldritch_knowledge/curse/paralysis)
+	next_knowledge = list(/datum/eldritch_knowledge/flesh_blade_upgrade,/datum/eldritch_knowledge/spell/blood_siphon,/datum/eldritch_knowledge/curse/alteration)
 	route = PATH_FLESH
 
 /datum/eldritch_knowledge/summon/stalker

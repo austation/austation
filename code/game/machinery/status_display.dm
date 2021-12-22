@@ -24,6 +24,7 @@
 	density = FALSE
 	use_power = IDLE_POWER_USE
 	idle_power_usage = 10
+	layer = ABOVE_WINDOW_LAYER
 
 	maptext_height = 26
 	maptext_width = 32
@@ -289,7 +290,7 @@
 	if(!.)
 		return
 	switch(var_name)
-		if("shuttle_id")
+		if(NAMEOF(src, shuttle_id))
 			update()
 
 /obj/machinery/status_display/shuttle/connect_to_shuttle(obj/docking_port/mobile/port, obj/docking_port/stationary/dock, idnum, override)

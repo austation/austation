@@ -54,7 +54,7 @@
 /obj/effect/anomaly/Destroy()
 	GLOB.poi_list.Remove(src)
 	STOP_PROCESSING(SSobj, src)
-	qdel(countdown)
+	QDEL_NULL(countdown)
 	return ..()
 
 /obj/effect/anomaly/proc/anomalyEffect(delta_time)
@@ -89,6 +89,13 @@
 	density = FALSE
 	var/boing = 0
 
+/obj/effect/anomaly/grav/Initialize(mapload, new_lifespan, drops_core)
+	. = ..()
+	var/static/list/loc_connections = list(
+		COMSIG_ATOM_ENTERED = .proc/on_entered,
+	)
+	AddElement(/datum/element/connect_loc, loc_connections)
+
 /obj/effect/anomaly/grav/anomalyEffect()
 	..()
 	boing = 1
@@ -103,11 +110,13 @@
 	for(var/obj/O in get_turf(src))
 		if(!O.anchored)
 			var/mob/living/target = locate() in hearers(4,src)
-			if(target && target.is_conscious())
+			if(target && !target.stat)
 				O.throw_at(target, 5, 10)
 
-/obj/effect/anomaly/grav/Crossed(mob/A)
-	gravShock(A)
+/obj/effect/anomaly/grav/proc/on_entered(datum/source, atom/movable/AM)
+	SIGNAL_HANDLER
+
+	gravShock(AM)
 
 /obj/effect/anomaly/grav/Bump(mob/A)
 	gravShock(A)
@@ -116,7 +125,7 @@
 	gravShock(AM)
 
 /obj/effect/anomaly/grav/proc/gravShock(mob/living/A)
-	if(boing && isliving(A) && A.is_conscious())
+	if(boing && isliving(A) && !A.stat)
 		A.Paralyze(40)
 		var/atom/target = get_edge_target_turf(A, get_dir(src, get_step_away(A, src)))
 		A.throw_at(target, 5, 1)
@@ -146,14 +155,24 @@
 	var/shockdamage = 20
 	var/explosive = TRUE
 
+/obj/effect/anomaly/flux/Initialize(mapload, new_lifespan, drops_core = TRUE, _explosive = TRUE)
+	. = ..()
+	explosive = _explosive
+	var/static/list/loc_connections = list(
+		COMSIG_ATOM_ENTERED = .proc/on_entered,
+	)
+	AddElement(/datum/element/connect_loc, loc_connections)
+
 /obj/effect/anomaly/flux/anomalyEffect()
 	..()
 	canshock = 1
 	for(var/mob/living/M in get_turf(src))
 		mobShock(M)
 
-/obj/effect/anomaly/flux/Crossed(mob/living/M)
-	mobShock(M)
+/obj/effect/anomaly/flux/proc/on_entered(datum/source, atom/movable/AM)
+	SIGNAL_HANDLER
+
+	mobShock(AM)
 
 /obj/effect/anomaly/flux/Bump(mob/living/M)
 	mobShock(M)
@@ -221,7 +240,7 @@
 			var/turf/TO = get_turf(chosen) // the turf of origin we're travelling TO
 
 			playsound(TO, 'sound/effects/phasein.ogg', 100, 1)
-			priority_announce("Massive bluespace translocation detected.", "Anomaly Alert")
+			priority_announce("Massive bluespace translocation detected.", "Anomaly Alert", SSstation.announcer.get_rand_alert_sound())
 
 			var/list/flashers = list()
 			for(var/mob/living/carbon/C in viewers(TO))
@@ -313,7 +332,7 @@
 	for(var/obj/O in orange(2,src))
 		if(!O.anchored)
 			var/mob/living/target = locate() in hearers(4,src)
-			if(target && target.is_conscious())
+			if(target && !target.stat)
 				O.throw_at(target, 7, 5)
 		else
 			SSexplosions.med_mov_atom += O

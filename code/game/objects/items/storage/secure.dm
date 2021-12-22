@@ -82,7 +82,7 @@
 
 /obj/item/storage/secure/Topic(href, href_list)
 	..()
-	if ((!usr.is_conscious() || usr.restrained()) || (get_dist(src, usr) > 1))
+	if ((usr.stat || usr.restrained()) || (get_dist(src, usr) > 1))
 		return
 	if (href_list["type"])
 		if (href_list["type"] == "E")
@@ -131,7 +131,6 @@
 	throw_range = 4
 	w_class = WEIGHT_CLASS_BULKY
 	attack_verb = list("bashed", "battered", "bludgeoned", "thrashed", "whacked")
-	block_upgrade_walk = 1
 
 /obj/item/storage/secure/briefcase/PopulateContents()
 	new /obj/item/paper(src)
@@ -167,6 +166,7 @@
 	icon_sparking = "safespark"
 	desc = "Excellent for securing things away from grubby hands."
 	force = 8
+	layer = ABOVE_WINDOW_LAYER
 	w_class = WEIGHT_CLASS_GIGANTIC
 	anchored = TRUE
 	density = FALSE

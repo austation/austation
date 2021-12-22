@@ -55,16 +55,14 @@
 	var/turf/T = get_turf(src)
 	for(var/obj/item/I in contents)
 		I.on_mob_death(src, gibbed)
-	for(var/datum/disease/advance/D in diseases)
-		for(var/symptom in D.symptoms)
-			var/datum/symptom/S = symptom
-			S.OnDeath(D)
 	if(mind)
 		if(mind.name && mind.active && !istype(T.loc, /area/ctf))
 			var/rendered = "<span class='deadsay'><b>[mind.name]</b> has died at <b>[get_area_name(T)]</b>.</span>"
 			deadchat_broadcast(rendered, follow_target = src, turf_target = T, message_type=DEADCHAT_DEATHRATTLE)
 		mind.store_memory("Time of death: [tod]", 0)
 	remove_from_alive_mob_list()
+	if(playable)
+		remove_from_spawner_menu()
 	if(!gibbed && !was_dead_before)
 		add_to_dead_mob_list()
 
@@ -90,7 +88,7 @@
 		//This first death of the game will not incur a ghost role cooldown
 		client.next_ghost_role_tick = client.next_ghost_role_tick || suiciding ? world.time + CONFIG_GET(number/ghost_role_cooldown) : world.time
 
-		SSmedals.UnlockMedal(MEDAL_GHOSTS,client)
+		INVOKE_ASYNC(client, /client.proc/give_award, /datum/award/achievement/misc/ghosts, client.mob)
 
 	for(var/s in ownedSoullinks)
 		var/datum/soullink/S = s

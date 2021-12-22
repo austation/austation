@@ -244,8 +244,6 @@
 	w_class = WEIGHT_CLASS_SMALL
 	attack_verb = list("attacked", "struck", "hit")
 	var/hacked = FALSE
-	block_upgrade_walk = 1
-	block_power = -200
 
 /obj/item/toy/sword/attack_self(mob/user)
 	active = !( active )
@@ -275,7 +273,7 @@
 			return
 		else
 			to_chat(user, "<span class='notice'>You attach the ends of the two plastic swords, making a single double-bladed toy! You're fake-cool.</span>")
-			var/obj/item/twohanded/dualsaber/toy/newSaber = new /obj/item/twohanded/dualsaber/toy(user.loc)
+			var/obj/item/dualsaber/toy/newSaber = new /obj/item/dualsaber/toy(user.loc)
 			if(hacked) // That's right, we'll only check the "original" "sword".
 				newSaber.hacked = TRUE
 				newSaber.item_color = "rainbow"
@@ -309,9 +307,6 @@
 	attack_verb = list("pricked", "absorbed", "gored")
 	w_class = WEIGHT_CLASS_SMALL
 	resistance_flags = FLAMMABLE
-	block_upgrade_walk = 1
-	block_power = -200
-
 
 /obj/item/toy/windupToolbox
 	name = "windup toolbox"
@@ -361,26 +356,25 @@
 /*
  * Subtype of Double-Bladed Energy Swords
  */
-/obj/item/twohanded/dualsaber/toy
+/obj/item/dualsaber/toy
 	name = "double-bladed toy sword"
 	desc = "A cheap, plastic replica of TWO energy swords.  Double the fun!"
 	force = 0
 	throwforce = 0
 	throw_speed = 3
 	throw_range = 5
-	force_unwielded = 0
-	force_wielded = 0
+	twohand_force = 0
 	attack_verb = list("attacked", "struck", "hit")
-	block_upgrade_walk = 1
-	block_power = -100
+	block_upgrade_walk = 0
+	block_level = 0
 
-/obj/item/twohanded/dualsaber/toy/hit_reaction(mob/living/carbon/human/owner, atom/movable/hitby, attack_text = "the attack", final_block_chance = 0, damage = 0, attack_type = MELEE_ATTACK)
+/obj/item/dualsaber/toy/hit_reaction(mob/living/carbon/human/owner, atom/movable/hitby, attack_text = "the attack", final_block_chance = 0, damage = 0, attack_type = MELEE_ATTACK)
 	return 0
 
-/obj/item/twohanded/dualsaber/toy/IsReflect()//Stops Toy Dualsabers from reflecting energy projectiles
+/obj/item/dualsaber/toy/IsReflect() //Stops Toy Dualsabers from reflecting energy projectiles
 	return 0
 
-/obj/item/twohanded/dualsaber/toy/impale(mob/living/user)//Stops Toy Dualsabers from injuring clowns
+/obj/item/dualsaber/toy/impale(mob/living/user)//Stops Toy Dualsabers from injuring clowns
 	to_chat(user, "<span class='warning'>You twirl around a bit before losing your balance and impaling yourself on [src].</span>")
 	user.adjustStaminaLoss(25)
 
@@ -399,10 +393,7 @@
 	w_class = WEIGHT_CLASS_NORMAL
 	attack_verb = list("attacked", "slashed", "stabbed", "sliced")
 	hitsound = 'sound/weapons/bladeslice.ogg'
-	block_upgrade_walk = 1
-	block_level = 1
-	block_flags = BLOCKING_ACTIVE | BLOCKING_PROJECTILE
-	block_power = -500 //not to be used on anything more effective than nerf darts
+	block_flags = BLOCKING_ACTIVE | BLOCKING_PROJECTILE //if it some how gets block level, katanas block projectiles for the meme
 
 /*
  * Snap pops
@@ -433,7 +424,15 @@
 	if(!..())
 		pop_burst()
 
-/obj/item/toy/snappop/Crossed(H as mob|obj)
+/obj/item/toy/snappop/Initialize()
+	. = ..()
+	var/static/list/loc_connections = list(
+		COMSIG_ATOM_ENTERED = .proc/on_entered,
+	)
+	AddElement(/datum/element/connect_loc, loc_connections)
+
+/obj/item/toy/snappop/proc/on_entered(datum/source, H as mob|obj)
+	SIGNAL_HANDLER
 	if(ishuman(H) || issilicon(H)) //i guess carp and shit shouldn't set them off
 		var/mob/living/carbon/M = H
 		if(issilicon(H) || M.m_intent == MOVE_INTENT_RUN)
@@ -832,7 +831,7 @@
 /obj/item/toy/cards/cardhand/Topic(href, href_list)
 	if(..())
 		return
-	if(!usr.is_conscious()|| !ishuman(usr))
+	if(usr.stat || !ishuman(usr))
 		return
 	var/mob/living/carbon/human/cardUser = usr
 	if(!(cardUser.mobility_flags & MOBILITY_USE))
@@ -841,6 +840,9 @@
 	if(href_list["pick"])
 		if (cardUser.is_holding(src))
 			var/choice = href_list["pick"]
+			if(!(choice in src.currenthand))
+				log_href_exploit(usr)
+				return
 			var/obj/item/toy/cards/singlecard/C = new/obj/item/toy/cards/singlecard(cardUser.loc)
 			src.currenthand -= choice
 			C.parentdeck = src.parentdeck
@@ -1012,7 +1014,7 @@
 	card_force = 5
 	card_throwforce = 12
 	card_throw_speed = 6
-	embedding = list("pain_mult" = 1, "embed_chance" = 80, "fall_chance" = 0, "embed_chance_turf_mod" = 15) //less painful than throwing stars
+	embedding = list("pain_mult" = 1, "embed_chance" = 80, "max_damage_mult" = 8, "fall_chance" = 0, "embed_chance_turf_mod" = 15, "armour_block" = 60) //less painful than throwing stars
 	card_sharpness = IS_SHARP
 	card_throw_range = 7
 	card_attack_verb = list("attacked", "sliced", "diced", "slashed", "cut")
@@ -1060,7 +1062,7 @@
 	if(!..())
 		playsound(src, 'sound/effects/meteorimpact.ogg', 40, 1)
 		for(var/mob/M in urange(10, src))
-			if(M.is_conscious() && !isAI(M))
+			if(!M.stat && !isAI(M))
 				shake_camera(M, 3, 1)
 		qdel(src)
 
@@ -1081,7 +1083,7 @@
 		user.visible_message("<span class='warning'>[user] presses the big red button.</span>", "<span class='notice'>You press the button, it plays a loud noise!</span>", "<span class='italics'>The button clicks loudly.</span>")
 		playsound(src, 'sound/effects/explosionfar.ogg', 50, 0)
 		for(var/mob/M in urange(10, src)) // Checks range
-			if(M.is_conscious() && !isAI(M)) // Checks to make sure whoever's getting shaken is alive/not the AI
+			if(!M.stat && !isAI(M)) // Checks to make sure whoever's getting shaken is alive/not the AI
 				sleep(8) // Short delay to match up with the explosion sound
 				shake_camera(M, 2, 1) // Shakes player camera 2 squares for 1 second.
 
@@ -1180,9 +1182,7 @@
 		var/list/possible_sounds = list('sound/voice/hiss1.ogg', 'sound/voice/hiss2.ogg', 'sound/voice/hiss3.ogg', 'sound/voice/hiss4.ogg')
 		var/chosen_sound = pick(possible_sounds)
 		playsound(get_turf(src), chosen_sound, 50, 1)
-		spawn(45)
-			if(src)
-				icon_state = "[initial(icon_state)]"
+		addtimer(VARSET_CALLBACK(src, icon_state, initial(icon_state)), 45)
 	else
 		to_chat(user, "<span class='warning'>The string on [src] hasn't rewound all the way!</span>")
 		return

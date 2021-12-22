@@ -30,6 +30,7 @@
 	pass_flags = PASSTABLE
 	loot = list(/obj/item/organ/regenerative_core)
 	var/brood_type = /mob/living/simple_animal/hostile/asteroid/hivelordbrood
+	discovery_points = 3000
 
 /mob/living/simple_animal/hostile/asteroid/hivelord/OpenFire(the_target)
 	if(world.time >= ranged_cooldown)
@@ -298,7 +299,7 @@
 				suit = /obj/item/clothing/suit/armor/bone
 				gloves = /obj/item/clothing/gloves/bracer
 			if(prob(5))
-				back = pickweight(list(/obj/item/twohanded/bonespear = 3, /obj/item/twohanded/fireaxe/boneaxe = 2))
+				back = pickweight(list(/obj/item/spear/bonespear = 3, /obj/item/fireaxe/boneaxe = 2))
 			if(prob(10))
 				belt = /obj/item/storage/belt/mining/primitive
 			if(prob(30))
@@ -362,7 +363,3 @@
 			glasses =  /obj/item/clothing/glasses/hud/health/night/cultblind
 			backpack_contents = list(/obj/item/reagent_containers/glass/beaker/unholywater = 1, /obj/item/cult_shift = 1, /obj/item/flashlight/flare/culttorch = 1, /obj/item/stack/sheet/runed_metal = 15)
 	. = ..()
-
-
-
-

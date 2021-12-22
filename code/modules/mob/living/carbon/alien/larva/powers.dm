@@ -6,7 +6,7 @@
 	action_icon_state = "alien_hide"
 
 /obj/effect/proc_holder/alien/hide/fire(mob/living/carbon/alien/user)
-	if(!user.is_conscious())
+	if(user.stat != CONSCIOUS)
 		return
 
 	if (user.layer != ABOVE_NORMAL_TURF_LAYER)
@@ -34,6 +34,10 @@
 
 	if(L.handcuffed || L.legcuffed) // Cuffing larvas ? Eh ?
 		to_chat(user, "<span class='danger'>You cannot evolve when you are cuffed.</span>")
+		return
+
+	if(L.movement_type & VENTCRAWLING)
+		to_chat(user, "<span class='danger'>You cannot evolve while in a vent.</span>")
 		return
 
 	if(L.amount_grown >= L.max_grown)	//TODO ~Carn

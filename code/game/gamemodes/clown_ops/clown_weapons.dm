@@ -79,11 +79,18 @@
 	light_color = "#ffff00"
 	var/next_trombone_allowed = 0
 
-/obj/item/melee/transforming/energy/sword/bananium/ComponentInitialize()
+/obj/item/melee/transforming/energy/sword/bananium/Initialize()
 	. = ..()
-	AddComponent(/datum/component/slippery, 60, GALOSHES_DONT_HELP)
-	var/datum/component/slippery/slipper = GetComponent(/datum/component/slippery)
-	slipper.signal_enabled = active
+	adjust_slipperiness()
+
+/* Adds or removes a slippery component, depending on whether the sword
+ * is active or not.
+ */
+/obj/item/melee/transforming/energy/sword/proc/adjust_slipperiness()
+	if(active)
+		AddComponent(/datum/component/slippery, 60, GALOSHES_DONT_HELP)
+	else
+		qdel(GetComponent(/datum/component/slippery))
 
 /obj/item/melee/transforming/energy/sword/bananium/attack(mob/living/M, mob/living/user)
 	..()
@@ -106,9 +113,8 @@
 	return ..()
 
 /obj/item/melee/transforming/energy/sword/bananium/transform_weapon(mob/living/user, supress_message_text)
-	..()
-	var/datum/component/slippery/slipper = GetComponent(/datum/component/slippery)
-	slipper.signal_enabled = active
+	. = ..()
+	adjust_slipperiness()
 
 /obj/item/melee/transforming/energy/sword/bananium/ignition_effect(atom/A, mob/user)
 	return ""
@@ -136,16 +142,22 @@
 	on_throwforce = 0
 	on_throw_speed = 1
 
-/obj/item/shield/energy/bananium/ComponentInitialize()
+/obj/item/shield/energy/bananium/Initialize()
 	. = ..()
-	AddComponent(/datum/component/slippery, 60, GALOSHES_DONT_HELP)
-	var/datum/component/slippery/slipper = GetComponent(/datum/component/slippery)
-	slipper.signal_enabled = active
+	adjust_slipperiness()
+
+/* Adds or removes a slippery component, depending on whether the shield
+ * is active or not.
+ */
+/obj/item/shield/energy/bananium/proc/adjust_slipperiness()
+	if(active)
+		AddComponent(/datum/component/slippery, 60, GALOSHES_DONT_HELP)
+	else
+		qdel(GetComponent(/datum/component/slippery))
 
 /obj/item/shield/energy/bananium/attack_self(mob/living/carbon/human/user)
-	..()
-	var/datum/component/slippery/slipper = GetComponent(/datum/component/slippery)
-	slipper.signal_enabled = active
+	. = ..()
+	adjust_slipperiness()
 
 /obj/item/shield/energy/bananium/throw_at(atom/target, range, speed, mob/thrower, spin=1, diagonals_first = 0, datum/callback/callback, force, quickstart = TRUE)
 	if(active)
@@ -160,8 +172,9 @@
 		if(iscarbon(hit_atom) && !caught)//if they are a carbon and they didn't catch it
 			var/datum/component/slippery/slipper = GetComponent(/datum/component/slippery)
 			slipper.Slip(src, hit_atom)
-		if(thrownby && !caught)
-			addtimer(CALLBACK(src, /atom/movable.proc/throw_at, thrownby, throw_range+2, throw_speed, null, TRUE), 1)
+		var/mob/thrown_by = thrownby?.resolve()
+		if(thrown_by && !caught)
+			addtimer(CALLBACK(src, /atom/movable.proc/throw_at, thrown_by, throw_range+2, throw_speed, null, TRUE), 1)
 	else
 		return ..()
 

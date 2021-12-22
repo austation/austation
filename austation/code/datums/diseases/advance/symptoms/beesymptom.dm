@@ -1,5 +1,5 @@
 /datum/symptom/beesease
-	transmittable = 2
+	transmission = 2
 	level = 9
 	severity = 3
 	threshold_desc = "<b>Resistance 6:</b> The bees become symbiotic with the host and no longer attack the host.<br>\
@@ -18,11 +18,11 @@
 
 /datum/symptom/beesease/AU_Severity_Set(datum/disease/advance/A)
 	. = ..()
-	if(A.properties["resistance"] >= 8)
+	if(A.resistance >= 8)
 		severity -= 2
-	if(A.properties["resistance"] >= 14)
+	if(A.resistance >= 14)
 		severity -= 2
-	if(A.properties["transmittable"] >= 10)
+	if(A.transmission >= 10)
 		severity += 2
 
 /datum/symptom/beesease/Start(datum/disease/advance/A)
@@ -31,13 +31,13 @@
 /datum/symptom/beesease/AU_Start(datum/disease/advance/A)
 	if(!..())
 		return
-	if(A.properties["resistance"] >= 6)
+	if(resistance >= 6)
 		bee_friend = TRUE
-	if(A.properties["resistance"] >= 8)
+	if(A.resistance >= 8)
 		honey = TRUE
-	if(A.properties["resistance"] >= 14)
+	if(A.resistance >= 14)
 		no_bee = TRUE
-	if(A.properties["transmittable"] >= 10)
+	if(A.transmission >= 10)
 		toxic_bees = TRUE
 
 /datum/symptom/beesease/Activate(datum/disease/advance/A)
@@ -83,7 +83,7 @@
 					M.reagents.add_reagent(/datum/reagent/consumable/honey/special,max(0, 5 - existing_royaljelly))
 					M.reagents.add_reagent(/datum/reagent/medicine/insulin,max(0, 5 - existing_insulin))
 
-			if(prob(25 + clamp(A.properties["stage_rate"] * 5, -25, 70)) && !no_bee)
+			if(prob(25 + clamp(A.stage_rate * 5, -25, 70)) && !no_bee)
 				M.visible_message("<span class='danger'>[M] coughs up a bee!</span>", \
 				"<span class='userdanger'>You cough up a bee!</span>")
 

@@ -211,7 +211,7 @@
 	var/turf/open/floor/T = holder.loc
 	if(istype(T))
 		var/datum/gas_mixture/GM = T.air
-		GM.set_moles(/datum/gas/oxygen, max(GM.get_moles(/datum/gas/oxygen) - severity * holder.energy, 0))
+		GM.set_moles(GAS_O2, max(GM.get_moles(GAS_O2) - severity * holder.energy, 0))
 
 /datum/spacevine_mutation/nitro_eater
 	name = "nitrogen consuming"
@@ -223,7 +223,7 @@
 	var/turf/open/floor/T = holder.loc
 	if(istype(T))
 		var/datum/gas_mixture/GM = T.air
-		GM.set_moles(/datum/gas/nitrogen, max(GM.get_moles(/datum/gas/nitrogen) - severity * holder.energy, 0))
+		GM.set_moles(GAS_N2, max(GM.get_moles(GAS_N2) - severity * holder.energy, 0))
 
 /datum/spacevine_mutation/carbondioxide_eater
 	name = "CO2 consuming"
@@ -235,7 +235,7 @@
 	var/turf/open/floor/T = holder.loc
 	if(istype(T))
 		var/datum/gas_mixture/GM = T.air
-		GM.set_moles(/datum/gas/carbon_dioxide, max(GM.get_moles(/datum/gas/carbon_dioxide) - severity * holder.energy, 0))
+		GM.set_moles(GAS_CO2, max(GM.get_moles(GAS_CO2) - severity * holder.energy, 0))
 
 /datum/spacevine_mutation/plasma_eater
 	name = "toxins consuming"
@@ -247,7 +247,7 @@
 	var/turf/open/floor/T = holder.loc
 	if(istype(T))
 		var/datum/gas_mixture/GM = T.air
-		GM.set_moles(/datum/gas/plasma, max(GM.get_moles(/datum/gas/plasma) - severity * holder.energy, 0))
+		GM.set_moles(GAS_PLASMA, max(GM.get_moles(GAS_PLASMA) - severity * holder.energy, 0))
 
 /datum/spacevine_mutation/thorns
 	name = "thorny"
@@ -319,6 +319,10 @@
 /obj/structure/spacevine/Initialize()
 	. = ..()
 	add_atom_colour("#ffffff", FIXED_COLOUR_PRIORITY)
+	var/static/list/loc_connections = list(
+		COMSIG_ATOM_ENTERED = .proc/on_entered,
+	)
+	AddElement(/datum/element/connect_loc, loc_connections)
 
 /obj/structure/spacevine/examine(mob/user)
 	. = ..()
@@ -379,10 +383,12 @@
 		if(BURN)
 			playsound(src.loc, 'sound/items/welder.ogg', 100, 1)
 
-/obj/structure/spacevine/Crossed(mob/crosser)
-	if(isliving(crosser))
+/obj/structure/spacevine/proc/on_entered(datum/source, atom/movable/AM)
+	SIGNAL_HANDLER
+
+	if(isliving(AM))
 		for(var/datum/spacevine_mutation/SM in mutations)
-			SM.on_cross(src, crosser)
+			SM.on_cross(src, AM)
 
 //ATTACK HAND IGNORING PARENT RETURN VALUE
 /obj/structure/spacevine/attack_hand(mob/user)
@@ -458,7 +464,7 @@
 
 	for(var/datum/spacevine_mutation/SM in SV.mutations)
 		SM.on_birth(SV)
-	location.Entered(SV)
+	location.Entered(SV, null)
 	return SV
 
 /datum/spacevine_controller/proc/VineDestroyed(obj/structure/spacevine/S)
@@ -569,11 +575,10 @@
 	if(!override)
 		qdel(src)
 
-/obj/structure/spacevine/CanPass(atom/movable/mover, turf/target)
+/obj/structure/spacevine/CanAllowThrough(atom/movable/mover, turf/target)
+	. = ..()
 	if(isvineimmune(mover))
-		. = TRUE
-	else
-		. = ..()
+		return TRUE
 
 /proc/isvineimmune(atom/A)
 	. = FALSE

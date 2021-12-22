@@ -30,7 +30,7 @@
 
 /obj/item/teleportation_scroll/Topic(href, href_list)
 	..()
-	if (!usr.is_conscious() || usr.restrained() || src.loc != usr)
+	if (usr.stat || usr.restrained() || src.loc != usr)
 		return
 	if (!ishuman(usr))
 		return 1
@@ -68,7 +68,7 @@
 		to_chat(user, "The spell matrix was unable to locate a suitable teleport destination for an unknown reason. Sorry.")
 		return
 
-	if(do_teleport(user, pick(L), forceMove = TRUE, channel = TELEPORT_CHANNEL_MAGIC, forced = TRUE))
+	if(do_teleport(user, pick(L), channel = TELEPORT_CHANNEL_MAGIC, forced = TRUE))
 		smoke.start()
 		uses--
 	else

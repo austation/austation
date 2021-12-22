@@ -308,7 +308,9 @@ or shoot a gun to move around via Newton's 3rd Law of Motion."
 	RegisterSignal(taker, COMSIG_MOVABLE_MOVED, .proc/check_in_range)
 
 /atom/movable/screen/alert/give/proc/check_in_range()
-	SIGNAL_HANDLER_DOES_SLEEP // doesn't actually sleep since the only thing below which can sleep is CheckToolReach() which returns FALSE before coming that far.
+	SIGNAL_HANDLER // doesn't actually sleep since the only thing below which can sleep is CheckToolReach() which returns FALSE before coming that far.
+
+
 	if (!usr.CanReach(giver))
 		to_chat(giver, "<span class='warning'>[taker] moved out of range of you!</span>")
 		to_chat(taker, "<span class='warning'>You moved out of range of [giver]!</span>")
@@ -615,18 +617,18 @@ so as to remain in compliance with the most up-to-date laws."
 		return
 	if(!target)
 		return
-	var/mob/dead/observer/G = usr
-	if(!istype(G))
+	var/mob/dead/observer/ghost_owner = usr
+	if(!istype(ghost_owner))
 		return
 	switch(action)
 		if(NOTIFY_ATTACK)
-			target.attack_ghost(G)
+			target.attack_ghost(ghost_owner)
 		if(NOTIFY_JUMP)
 			var/turf/T = get_turf(target)
 			if(T && isturf(T))
-				G.forceMove(T)
+				ghost_owner.abstract_move(T)
 		if(NOTIFY_ORBIT)
-			G.ManualFollow(target)
+			ghost_owner.ManualFollow(target)
 
 //OBJECT-BASED
 

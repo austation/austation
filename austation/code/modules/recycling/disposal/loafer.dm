@@ -1,7 +1,7 @@
 // Fuck
 /obj/structure/disposalpipe/loafer
 	name = "loaf compactor"
-	desc = "A special machine that converts inserted matter into gluten"
+	desc = "A highly sophisticated machine capable of transforming almost all forms of inserted matter into gluten."
 	icon = 'austation/icons/obj/atmospherics/machines/loafer.dmi'
 	icon_state = "loafer"
 	var/static/list/blacklist = typecacheof(list(
@@ -17,14 +17,8 @@
 	var/emag_bonus = 1
 	var/obj/item/reagent_containers/food/snacks/store/bread/recycled/stored_looef
 
-// Shittery to get deconstruction icons working
-/obj/structure/disposalpipe/loafer/Initialize(mapload, obj/structure/disposalconstruct/make_from)
-	. = ..()
-
-	blacklist = typesof(/obj/item/stock_parts) + typesof(/obj/item/pipe) + typesof(/obj/structure/c_transit_tube) + typesof(/obj/structure/c_transit_tube_pod) + typesof(/obj/item/holochip) + typesof(/obj/item/reagent_containers/glass/bottle) + typesof(/obj/structure/disposalconstruct) + typesof(/obj/item/reagent_containers/pill) + typesof(/obj/item/reagent_containers/pill/patch)
-
 // It's late okay, I don't have time for this
-/obj/structure/disposalpipe/loafer/deconstruct(disassembled)
+/obj/structure/disposalpipe/loafer/deconstruct(disassembled = TRUE)
 	if(!(flags_1 & NODECONSTRUCT_1))
 		if(disassembled)
 			var/obj/structure/disposalconstruct/D = new(loc, null , SOUTH , FALSE , src)
@@ -41,16 +35,17 @@
 
 /obj/structure/disposalpipe/loafer/Destroy()
 	var/obj/structure/disposalholder/H = locate() in src
-	if(H)
-		for(var/atom/movable/AM in H.contents)
-			if(istype(AM, /obj/item/reagent_containers/food/snacks/store/bread/recycled))
-				var/obj/item/reagent_containers/food/snacks/store/bread/recycled/looef = AM
-				if(looef.bread_density < 10)
-					qdel(AM)
-			if(isliving(AM))
-				var/mob/living/L = AM
-				L.adjustBruteLoss(40) //ouchie
-		expel(H, get_turf(src), 0)
+	if(QDELETED(H)) // QDELETED checks if it exists too
+		return ..()
+	for(var/atom/movable/AM in H.contents)
+		if(istype(AM, /obj/item/reagent_containers/food/snacks/store/bread/recycled))
+			var/obj/item/reagent_containers/food/snacks/store/bread/recycled/looef = AM
+			if(looef.bread_density < 10)
+				qdel(AM)
+		if(isliving(AM))
+			var/mob/living/L = AM
+			L.adjustBruteLoss(40) //ouchie
+	expel(H, get_turf(src), 0)
 	return ..()
 
 /obj/structure/disposalpipe/loafer/emag_act(mob/user)
@@ -64,9 +59,7 @@
 
 // This proc runs when something moves through the pipe
 /obj/structure/disposalpipe/loafer/transfer(obj/structure/disposalholder/H)
-
-	if(H.contents.len)
-
+	if(length(H.contents))
 		icon_state = "aloafer"
 		update_icon()
 
@@ -85,7 +78,7 @@
 			if(istype(AM, /obj/item/reagent_containers/food/snacks/store/bread/recycled))
 				var/obj/item/reagent_containers/food/snacks/store/bread/recycled/recursive_looef = AM
 				looef.bread_density += recursive_looef.bread_density
-				qdel(AM)
+				qdel(recursive_looef)
 				continue
 
 			if(istype(AM, /obj/item/reagent_containers/food/snacks/store/bread/supermatter))
@@ -101,30 +94,30 @@
 						looef.bread_density += 25 * emag_bonus
 
 					if(ishuman(L) && !isdead(L))
-						L.emote("scream")
+						INVOKE_ASYNC(L, /mob.proc/emote, "scream")
 
 					playsound(src.loc, 'sound/machines/juicer.ogg', 40, 1)
 					sleep(50)
 
 					if(L.loc != H)
-						return // don't murder if not in the bread machine. this is a final fallback to stop potential immersion breaking stuff.
+						return // don't murder if not in the bread machine. In case they somehow broke out
 					L.death()
 					qdel(L)
-					playsound(src.loc, 'sound/effects/splat.ogg', 50, 1)
+					playsound(src, 'sound/effects/splat.ogg', 50, 1)
 					continue
 				else // ided
-					playsound(src.loc, 'sound/machines/buzz-two.ogg', 40, 1)
+					playsound(src, 'sound/machines/buzz-two.ogg', 40, 1)
 					visible_message("<span class='warning'>\The [src]'s safety mechanism engages, stopping the processing blades, but not before seriously injuring [L]!</span>")
 
 					if(ishuman(L) && !isdead(L))
-						L.emote("scream")
+						INVOKE_ASYNC(L, /mob.proc/emote, "scream")
 
 					L.adjustBruteLoss(70)
 
 					sleep(30)
 
 					visible_message("<span class='notice'>The hatch on the side of \the [src] opens, ejecting [L].")
-					playsound(src.loc, 'sound/machines/hiss.ogg', 40, 1)
+					playsound(src, 'sound/machines/hiss.ogg', 40, 1)
 					L.forceMove(get_turf(src))
 
 					continue
@@ -151,29 +144,31 @@
 			stored_looef = null
 		stored_looef = looef // after merging any currently stored loaf, store our loaf for 36 deciseconds (3.6 seconds) in case another loaf comes along in that time
 		sleep(3)
-		playsound(src.loc, pick('sound/machines/blender.ogg', 'sound/machines/juicer.ogg', 'sound/machines/buzz-sigh.ogg', 'sound/machines/warning-buzzer.ogg', 'sound/machines/ping.ogg'), 25, 1)
+		playsound(src, pick('sound/machines/blender.ogg', 'sound/machines/juicer.ogg', 'sound/machines/buzz-sigh.ogg', 'sound/machines/warning-buzzer.ogg', 'sound/machines/ping.ogg'), 25, 1)
 		sleep(33)
 		icon_state = "loafer"
 		if(stored_looef == looef)
-			stored_looef = null // reset the variable if our loaf is still there after 3.6 seconds. Ignore this if another loaf was stored.
+			stored_looef = null
 		if(!looef.bread_density)
 			qdel(looef)
 			if(!LAZYLEN(H.contents)) // no point having an empty disposal object
 				qdel(H)
 				return
 			visible_message("<span class='warning'>\The [src] buzzes grumpily!</span>")
-			playsound(src.loc, 'sound/machines/buzz-two.ogg', 40, 1)
-		else if(looef.bread_density >= 3400 && obj_flags & EMAGGED || supermatter_singulo)
+			playsound(src, 'sound/machines/buzz-two.ogg', 40, 1)
+		else if((looef.bread_density >= 3400 && (obj_flags & EMAGGED)) || supermatter_singulo)
 			var/turf/T = get_turf(src)
 			var/area/A = get_area(src)
 			var/mob/culprit = get_mob_by_ckey(fingerprintslast)
 			var/culprit_message
-			priority_announce("We have detected an extremely high concentration of gluten in [A.name], we suggest evacuating the immediate area")
+			priority_announce("We have detected an extremely high concentration of gluten in [A.name], we suggest evacuating the immediate area", sound = SSstation.announcer.get_rand_alert_sound())
 			visible_message("<span class='userdanger'>[src] collapses into a singularity under its own weight!</span>")
 			var/obj/singularity/oof = new(get_turf(src))
 			if(supermatter_singulo)
 				oof.consumedSupermatter = supermatter_singulo
 				oof.energy = 800
+			else
+				oof.energy = 180 // just below stage two
 			oof.name = "[supermatter_singulo ? "supercharged" : ""] gravitational breadularity"
 			oof.desc = "I have done nothing but compress bread for 3 days."
 			qdel(src)

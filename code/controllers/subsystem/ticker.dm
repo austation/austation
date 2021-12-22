@@ -45,6 +45,8 @@ SUBSYSTEM_DEF(ticker)
 
 	var/maprotatechecked = 0
 
+	var/list/datum/game_mode/runnable_modes //list of runnable gamemodes
+
 	var/news_report
 
 	var/late_join_disabled
@@ -56,6 +58,12 @@ SUBSYSTEM_DEF(ticker)
 	var/list/round_end_events
 	var/mode_result = "undefined"
 	var/end_state = "undefined"
+
+	//Gamemode setup
+	var/gamemode_hotswap_disabled = FALSE
+	var/pre_setup_completed = FALSE
+	var/fail_counter
+	var/emergency_start = FALSE
 
 	//Crew Objective stuff
 	var/list/crewobjlist = list()
@@ -159,10 +167,6 @@ SUBSYSTEM_DEF(ticker)
 			for(var/client/C in GLOB.clients)
 				window_flash(C, ignorepref = TRUE) //let them know lobby has opened up.
 			to_chat(world, "<span class='boldnotice'>Welcome to [station_name()]!</span>")
-			if(GLOB.master_mode == "sandbox") // austation start -- TGS bot now pings notification squad role, also hopefully fixes TGS issues
-				send2chat("New sandbox round starting on [SSmapping.config.map_name]!", "status")
-			else
-				send2chat("<@&586792483892232209> New round starting on [SSmapping.config.map_name]!", "status") // austation end
 			current_state = GAME_STATE_PREGAME
 			//Everyone who wants to be an observer is now spawned
 			create_observers()
@@ -186,9 +190,26 @@ SUBSYSTEM_DEF(ticker)
 				return
 			timeLeft -= wait
 
+			// austation start -- TGS bot now pings notification squad role, also hopefully fixes TGS issues, and handle autosandbox
+			if(timeLeft <= 600 && !pregame_checked)
+				autosandbox()
+				if(GLOB.master_mode == "sandbox")
+					send2chat("New sandbox round starting on [SSmapping.config.map_name]!", "status")
+				else
+					send2chat("<@&586792483892232209> New round starting on [SSmapping.config.map_name]!", "status")
+				pregame_checked = TRUE
+			// austation end
+
 			if(timeLeft <= 300 && !tipped)
 				send_tip_of_the_round()
 				tipped = TRUE
+
+			if(timeLeft <= 300 && !pre_setup_completed)
+				//Setup gamemode maps 30 seconds before roundstart.
+				if(!pre_setup())
+					fail_setup()
+					return
+				pre_setup_completed = TRUE
 
 			if(timeLeft <= 0)
 				current_state = GAME_STATE_SETTING_UP
@@ -197,12 +218,19 @@ SUBSYSTEM_DEF(ticker)
 					fire()
 
 		if(GAME_STATE_SETTING_UP)
+			if(!pre_setup_completed)
+				if(!pre_setup())
+					fail_setup()
+					return
+				else
+					message_admins("Pre-setup completed successfully, however was run late. Likely due to start-now or a bug.")
+					log_game("Pre-setup completed successfully, however was run late. Likely due to start-now or a bug.")
+					pre_setup_completed = TRUE
+			//Attempt normal setup
 			if(!setup())
-				//setup failed
-				current_state = GAME_STATE_STARTUP
-				start_at = world.time + (CONFIG_GET(number/lobby_countdown) * 10)
-				timeLeft = null
-				Master.SetRunLevel(RUNLEVEL_LOBBY)
+				fail_setup()
+			else
+				fail_counter = null
 
 		if(GAME_STATE_PLAYING)
 			mode.process(wait * 0.1)
@@ -216,12 +244,35 @@ SUBSYSTEM_DEF(ticker)
 				declare_completion(force_ending)
 				Master.SetRunLevel(RUNLEVEL_POSTGAME)
 
+//Reverts the game to the lobby
+/datum/controller/subsystem/ticker/proc/fail_setup()
+	if(fail_counter >= 2)
+		log_game("Failed setting up [GLOB.master_mode] [fail_counter + 1] times, defaulting to extended.")
+		message_admins("Failed setting up [GLOB.master_mode] [fail_counter + 1] times, defaulting to extended.")
+		//This has failed enough, lets just get on with extended.
+		failsafe_pre_setup()
+		return
+	//Let's try this again.
+	fail_counter++
+	current_state = GAME_STATE_STARTUP
+	start_at = world.time + (CONFIG_GET(number/lobby_countdown) * 5)
+	timeLeft = null
+	Master.SetRunLevel(RUNLEVEL_LOBBY)
+	pre_setup_completed = FALSE
+	//Return to default mode
+	load_mode()
+	message_admins("Failed to setup. Failures: ([fail_counter] / 3).")
+	log_game("Setup failed.")
 
-/datum/controller/subsystem/ticker/proc/setup()
-	message_admins("Setting up game.")
-	var/init_start = world.timeofday
-		//Create and announce mode
-	var/list/datum/game_mode/runnable_modes
+//Fallback presetup that sets up extended.
+/datum/controller/subsystem/ticker/proc/failsafe_pre_setup()
+	//Emergerncy start extended.
+	emergency_start = TRUE
+	pre_setup_completed = TRUE
+	mode = config.pick_mode("extended")
+
+//Select gamemode and load any maps associated with it
+/datum/controller/subsystem/ticker/proc/pre_setup()
 	if(GLOB.master_mode == "random" || GLOB.master_mode == "secret")
 		runnable_modes = config.get_runnable_modes()
 
@@ -237,7 +288,7 @@ SUBSYSTEM_DEF(ticker)
 		if(!mode)
 			if(!runnable_modes.len)
 				to_chat(world, "<B>Unable to choose playable game mode.</B> Reverting to pre-game lobby.")
-				return 0
+				return FALSE
 			mode = pickweight(runnable_modes)
 			if(!mode)	//too few roundtypes all run too recently
 				mode = pick(runnable_modes)
@@ -249,7 +300,13 @@ SUBSYSTEM_DEF(ticker)
 			qdel(mode)
 			mode = null
 			SSjob.ResetOccupations()
-			return 0
+			return FALSE
+
+	return mode.setup_maps()
+
+/datum/controller/subsystem/ticker/proc/setup()
+	message_admins("Setting up game.")
+	var/init_start = world.timeofday
 
 	CHECK_TICK
 	//Configure mode and assign player to special mode stuff
@@ -260,13 +317,13 @@ SUBSYSTEM_DEF(ticker)
 	CHECK_TICK
 
 	to_chat(world, "<span class='boldannounce'>Starting game...</span>")
-	if(!GLOB.Debug2)
+	if(!GLOB.Debug2 && !emergency_start)
 		if(!can_continue)
 			log_game("[mode.name] failed pre_setup, cause: [mode.setup_error]")
 			QDEL_NULL(mode)
 			to_chat(world, "<B>Error setting up [GLOB.master_mode].</B> Reverting to pre-game lobby.")
 			SSjob.ResetOccupations()
-			return 0
+			return FALSE
 	else
 		message_admins("<span class='notice'>DEBUG: Bypassing prestart checks...</span>")
 
@@ -314,6 +371,9 @@ SUBSYSTEM_DEF(ticker)
 			var/datum/holiday/holiday = SSevents.holidays[holidayname]
 			to_chat(world, "<h4>[holiday.greet()]</h4>")
 
+	//Setup orbits.
+	SSorbits.post_load_init()
+
 	PostSetup()
 	SSstat.clear_global_alert()
 
@@ -327,7 +387,7 @@ SUBSYSTEM_DEF(ticker)
 
 	var/list/adm = get_admin_counts()
 	var/list/allmins = adm["present"]
-	send2irc("Server", "Round [GLOB.round_id ? "#[GLOB.round_id]:" : "of"] [hide_mode ? "secret":"[mode.name]"] has started[allmins.len ? ".":" with no active admins online!"]")
+	send2tgs("Server", "Round [GLOB.round_id ? "#[GLOB.round_id]:" : "of"] [hide_mode ? "secret":"[mode.name]"] has started[allmins.len ? ".":" with no active admins online!"]")
 	setup_done = TRUE
 
 	for(var/i in GLOB.start_landmarks_list)
@@ -588,7 +648,7 @@ SUBSYSTEM_DEF(ticker)
 			news_message = "During routine evacuation procedures, the emergency shuttle of [station_name()] had its navigation protocols corrupted and went off course, but was recovered shortly after."
 
 	if(news_message)
-		comms_send(news_source, news_message, "News_Report", CONFIG_GET(flag/insecure_newscaster))
+		SStopic.crosscomms_send("news_report", news_message, news_source)
 
 /datum/controller/subsystem/ticker/proc/GetTimeLeft()
 	if(isnull(SSticker.timeLeft))

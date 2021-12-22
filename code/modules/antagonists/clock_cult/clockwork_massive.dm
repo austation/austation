@@ -46,6 +46,9 @@ GLOBAL_LIST_INIT(clockwork_portals, list())
 		M.forceMove(safe_place)
 	STOP_PROCESSING(SSobj, src)
 	. = ..()
+	INVOKE_ASYNC(src, .proc/explode_reebe)
+
+/obj/structure/destructible/clockwork/massive/celestial_gateway/proc/explode_reebe()
 	for(var/i in 1 to 30)
 		explosion(pick(get_area_turfs(/area/reebe/city_of_cogs)), 0, 2, 4, 4, FALSE)
 		sleep(5)
@@ -214,6 +217,7 @@ GLOBAL_VAR(cult_ratvar)
 	desc = "Oh, that's ratvar!"
 	icon = 'icons/effects/512x512.dmi'
 	icon_state = "ratvar"
+	is_real = FALSE
 	density = FALSE
 	current_size = STAGE_SIX
 	allowed_size = STAGE_SIX

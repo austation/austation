@@ -42,7 +42,10 @@
 	weight = 3
 	show_in_report = TRUE
 	report_message = "Please be nice to him."
-	blacklist = list(/datum/station_trait/announcement_medbot)
+	blacklist = list(/datum/station_trait/announcement_medbot,
+	/datum/station_trait/announcement_baystation,
+	/datum/station_trait/announcement_ancestor // austation -- Needed to keep all other announcer traits mutually exclusive with the ancestor.
+	)
 
 /datum/station_trait/announcement_intern/New()
 	. = ..()
@@ -54,8 +57,27 @@
 	weight = 5
 	show_in_report = TRUE
 	report_message = "Our announcement system is under scheduled maintanance at the moment. Thankfully, we have a backup."
-	blacklist = list(/datum/station_trait/announcement_intern)
+	blacklist = list(
+		/datum/station_trait/announcement_intern,
+		/datum/station_trait/announcement_baystation,
+		/datum/station_trait/announcement_ancestor // austation -- Needed to keep all other announcer traits mutually exclusive with the ancestor.
+		)
 
 /datum/station_trait/announcement_medbot/New()
 	. = ..()
 	SSstation.announcer = /datum/centcom_announcer/medbot
+
+/datum/station_trait/announcement_baystation
+	name = "Announcer: Archival Tape"
+	trait_type = STATION_TRAIT_NEUTRAL
+	weight = 5
+	show_in_report = TRUE
+	report_message = "We lost the primary datatape that holds the announcement system's voice responses. We did however find an older backup."
+	blacklist = list(/datum/station_trait/announcement_intern,
+	/datum/station_trait/announcement_medbot,
+	/datum/station_trait/announcement_ancestor // austation -- Needed to keep all other announcer traits mutually exclusive with the ancestor.
+	)
+
+/datum/station_trait/announcement_baystation/New()
+	. = ..()
+	SSstation.announcer = /datum/centcom_announcer/baystation

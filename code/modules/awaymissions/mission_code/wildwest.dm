@@ -126,7 +126,16 @@
 	icon_state = "blobpod"
 	var/triggered = 0
 
-/obj/effect/meatgrinder/Crossed(atom/movable/AM)
+/obj/effect/meatgrinder/Initialize(mapload)
+	. = ..()
+	var/static/list/loc_connections = list(
+		COMSIG_ATOM_ENTERED = .proc/on_entered,
+	)
+	AddElement(/datum/element/connect_loc, loc_connections)
+
+/obj/effect/meatgrinder/proc/on_entered(datum/source, atom/movable/AM)
+	SIGNAL_HANDLER
+
 	Bumped(AM)
 
 /obj/effect/meatgrinder/Bumped(atom/movable/AM)
@@ -155,7 +164,7 @@
 	set name = "Resurrection"
 
 	var/mob/living/carbon/C = usr
-	if(C.is_conscious())
+	if(!C.stat)
 		to_chat(C, "<span class='notice'>You're not dead yet!</span>")
 		return
 	if(C.has_status_effect(STATUS_EFFECT_WISH_GRANTERS_GIFT))

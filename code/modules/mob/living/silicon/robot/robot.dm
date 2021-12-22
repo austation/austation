@@ -124,6 +124,7 @@
 		make_laws()
 		if(!TryConnectToAI())
 			lawupdate = FALSE
+			wires.ui_update()
 
 	radio = new /obj/item/radio/borg(src)
 	if(!scrambledcodes && !builtInCamera)
@@ -190,12 +191,12 @@
 		if(T && istype(radio) && istype(radio.keyslot))
 			radio.keyslot.forceMove(T)
 			radio.keyslot = null
-	qdel(wires)
-	qdel(module)
-	qdel(eye_lights)
-	wires = null
-	module = null
-	eye_lights = null
+	QDEL_NULL(wires)
+	QDEL_NULL(eye_lights)
+	QDEL_NULL(inv1)
+	QDEL_NULL(inv2)
+	QDEL_NULL(inv3)
+	QDEL_NULL(spark_system)
 	cell = null
 	return ..()
 
@@ -394,6 +395,8 @@
 	var/turf/T0 = get_turf(src)
 	var/turf/T1 = get_turf(A)
 	if (!T0 || ! T1)
+		return FALSE
+	if(A.is_jammed())
 		return FALSE
 	return ISINRANGE(T1.x, T0.x - interaction_range, T0.x + interaction_range) && ISINRANGE(T1.y, T0.y - interaction_range, T0.y + interaction_range)
 
@@ -680,7 +683,7 @@
 	lawupdate = FALSE
 	lockcharge = FALSE
 	mobility_flags |= MOBILITY_FLAGS_DEFAULT
-	scrambledcodes = TRUE
+	scrambledcodes = TRUE_DEVIL
 	//Disconnect it's camera so it's not so easily tracked.
 	if(!QDELETED(builtInCamera))
 		QDEL_NULL(builtInCamera)
@@ -688,6 +691,7 @@
 		// Instead of being listed as "deactivated". The downside is that I'm going
 		// to have to check if every camera is null or not before doing anything, to prevent runtime errors.
 		// I could change the network to null but I don't know what would happen, and it seems too hacky for me.
+	wires.ui_update()
 
 /mob/living/silicon/robot/mode()
 	set name = "Activate Held Object"
@@ -969,7 +973,7 @@
 
 	if(sight_mode & BORGMESON)
 		sight |= SEE_TURFS
-		lighting_alpha = LIGHTING_PLANE_ALPHA_INVISIBLE
+		lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_VISIBLE
 		see_in_dark = 1
 
 	if(sight_mode & BORGMATERIAL)
@@ -1023,6 +1027,7 @@
 		if(admin_revive)
 			locked = TRUE
 		notify_ai(NEW_BORG)
+		wires.ui_update()
 		. = 1
 
 /mob/living/silicon/robot/fully_replace_character_name(oldname, newname)
@@ -1142,6 +1147,7 @@
 
 	diag_hud_set_aishell()
 	undeployment_action.Grant(src)
+	wires.ui_update()
 
 /datum/action/innate/undeployment
 	name = "Disconnect from shell"
@@ -1236,8 +1242,10 @@
 		connected_ai.connected_robots += src
 		lawsync()
 		lawupdate = TRUE
+		wires.ui_update()
 		return TRUE
 	picturesync()
+	wires.ui_update()
 	return FALSE
 
 /mob/living/silicon/robot/proc/picturesync()
@@ -1248,6 +1256,8 @@
 			aicamera.stored[i] = TRUE
 
 /mob/living/silicon/robot/proc/charge(datum/source, amount, repairs)
+	SIGNAL_HANDLER
+
 	if(module)
 		module.respawn_consumable(src, amount * 0.005)
 	if(cell)

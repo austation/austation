@@ -9,7 +9,6 @@
 	flags_1 = CONDUCT_1
 	force = 3
 	throwforce = 10
-	block_upgrade_walk = 1
 	var/acti_sound = 'sound/items/welderactivate.ogg'
 	var/deac_sound = 'sound/items/welderdeactivate.ogg'
 	throw_speed = 1
@@ -213,12 +212,11 @@
 	//TODO: DEFERRED Consider checking to make sure tank pressure is high enough before doing this...
 	//Transfer 5% of current tank air contents to turf
 	var/datum/gas_mixture/air_transfer = ptank.air_contents.remove_ratio(release_amount)
-	air_transfer.set_moles(/datum/gas/plasma, air_transfer.get_moles(/datum/gas/plasma) * 5)
+	air_transfer.set_moles(GAS_PLASMA, air_transfer.get_moles(GAS_PLASMA) * 5)
 	target.assume_air(air_transfer)
 	//Burn it based on transfered gas
 	target.hotspot_expose((ptank.air_contents.return_temperature()*2) + 380,500)
 	//location.hotspot_expose(1000,500,1)
-	SSair.add_to_active(target, 0)
 
 
 /obj/item/flamethrower/Initialize(mapload)

@@ -28,12 +28,6 @@
 /proc/ooze_name()
 	return "[pick(GLOB.oozeling_first_names)] [pick(GLOB.oozeling_last_names)]"
 
-/proc/squid_name(gender)
-	if(gender == MALE)
-		return "[pick(GLOB.squid_names_male)] [pick(GLOB.last_names)]"
-	else
-		return "[pick(GLOB.squid_names_female)] [pick(GLOB.last_names)]"
-
 GLOBAL_VAR(command_name)
 /proc/command_name()
 	if (GLOB.command_name)
@@ -71,6 +65,10 @@ GLOBAL_VAR(command_name)
 		world.name = "[config_server_name][config_server_name == GLOB.station_name ? "" : ": [GLOB.station_name]"]"
 	else
 		world.name = GLOB.station_name
+
+	//Rename the station on the orbital charter.
+	if(SSorbits.station_instance)
+		SSorbits.station_instance.name = newname
 
 
 /proc/new_station_name()
@@ -121,7 +119,7 @@ GLOBAL_VAR(command_name)
 	var/name = ""
 
 	// Prefix
-	name += pick("Clandestine", "Prima", "Blue", "Zero-G", "Max", "Blasto", "Waffle", "North", "Omni", "Newton", "Cyber", "Bonk", "Gene", "Gib")
+	name += pick("Clandestine", "Prima", "Blue", "Zero-G", "Max", "Blasto", "Waffle", "North", "Omni", "Newton", "Cyber", "Bonk", "Gene", "Gib", "Solo-Nobre", "Volta", "Gravesend", "Luddite", "Tri-Tach") // austation -- PR: #3688 Added prefix "Solo-Nobre", PR: #3742 Added prefixes "Volta", "Gravesend", "Luddite", "Tri-Tach"
 
 	// Suffix
 	if (prob(80))
@@ -129,7 +127,7 @@ GLOBAL_VAR(command_name)
 
 		// Full
 		if (prob(60))
-			name += pick("Syndicate", "Consortium", "Collective", "Corporation", "Group", "Holdings", "Biotech", "Industries", "Systems", "Products", "Chemicals", "Enterprises", "Family", "Creations", "International", "Intergalactic", "Interplanetary", "Foundation", "Positronics", "Hive")
+			name += pick("Syndicate", "Consortium", "Collective", "Corporation", "Group", "Holdings", "Biotech", "Industries", "Systems", "Products", "Chemicals", "Enterprises", "Family", "Creations", "International", "Intergalactic", "Interplanetary", "Foundation", "Positronics", "Hive", "Concern") // austation -- PR: #3688 Added suffix "Concern"
 		// Broken
 		else
 			name += pick("Syndi", "Corp", "Bio", "System", "Prod", "Chem", "Inter", "Hive")

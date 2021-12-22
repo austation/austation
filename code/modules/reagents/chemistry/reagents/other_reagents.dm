@@ -1,5 +1,5 @@
 /datum/reagent/blood
-	data = list("donor"=null,"viruses"=null,"blood_DNA"=null,"blood_type"=null,"resistances"=null,"trace_chem"=null,"mind"=null,"ckey"=null,"gender"=null,"real_name"=null,"cloneable"=null,"factions"=null,"quirks"=null)
+	data = list("viruses"=null,"blood_DNA"=null,"blood_type"=null,"resistances"=null,"trace_chem"=null,"mind"=null,"ckey"=null,"gender"=null,"real_name"=null,"cloneable"=null,"factions"=null,"quirks"=null)
 	name = "Blood"
 	color = "#C80000" // rgb: 200, 0, 0
 	metabolization_rate = 5 //fast rate so it disappears fast.
@@ -17,6 +17,9 @@
 
 			if((D.spread_flags & DISEASE_SPREAD_SPECIAL) || (D.spread_flags & DISEASE_SPREAD_NON_CONTAGIOUS))
 				continue
+
+			if((method == INGEST) && (D.spread_flags & DISEASE_SPREAD_CHECK_STRONG_STOMACH) && (HAS_TRAIT(L, TRAIT_STRONG_STOMACH))) // austation begin -- make catgirls and lizards immune to diseases from rats
+				continue // austation end
 
 			if((method == TOUCH || method == VAPOR) && (D.spread_flags & DISEASE_SPREAD_CONTACT_FLUIDS))
 				L.ContactContractDisease(D)
@@ -158,8 +161,8 @@
 	var/turf/T = get_turf(new_corgi)
 	if (new_corgi.inventory_head)
 		if(!L.equip_to_slot_if_possible(new_corgi.inventory_head, ITEM_SLOT_HEAD,disable_warning = TRUE, bypass_equip_delay_self=TRUE))
-			new_corgi.inventory_head.forceMove(T)		
-	new_corgi.inventory_back?.forceMove(T)	
+			new_corgi.inventory_head.forceMove(T)
+	new_corgi.inventory_back?.forceMove(T)
 	new_corgi.inventory_head = null
 	new_corgi.inventory_back = null
 	qdel(new_corgi)
@@ -233,7 +236,7 @@
 	if(!istype(M))
 		return
 	if(isoozeling(M))
-		M.blood_volume -= 30
+		M.blood_volume = max(M.blood_volume - 30, 0)
 		to_chat(M, "<span class='warning'>The water causes you to melt away!</span>")
 		return
 	if(method == TOUCH)
@@ -549,7 +552,6 @@
 						/datum/species/pod,
 						/datum/species/jelly,
 						/datum/species/abductor,
-						/datum/species/squid,
 						/datum/species/skeleton)
 	can_synth = TRUE
 
@@ -651,13 +653,6 @@
 	color = "#5EFF3B" //RGB: 94, 255, 59
 	race = /datum/species/ethereal
 	taste_description = "shocking"
-
-/datum/reagent/mutationtoxin/squid
-	name = "Squid Mutation Toxin"
-	description = "A salty toxin."
-	color = "#5EFF3B" //RGB: 94, 255, 59
-	race = /datum/species/squid
-	taste_description = "fish"
 
 /datum/reagent/mutationtoxin/oozeling
 	name = "Oozeling Mutation Toxin"
@@ -935,7 +930,7 @@
 	random_unrestricted = FALSE
 
 /datum/reagent/lithium/on_mob_life(mob/living/carbon/M)
-	if((M.mobility_flags & MOBILITY_MOVE) && !isspaceturf(M.loc))
+	if((M.mobility_flags & MOBILITY_MOVE) && !isspaceturf(M.loc) && isturf(M.loc))
 		step(M, pick(GLOB.cardinals))
 	if(prob(5))
 		M.emote(pick("twitch","drool","moan"))
@@ -957,8 +952,8 @@
 	if(method in list(TOUCH, VAPOR, PATCH))
 		for(var/s in C.surgeries)
 			var/datum/surgery/S = s
-			S.success_multiplier = max(0.2, S.success_multiplier)
-			// +20% success propability on each step, useful while operating in less-than-perfect conditions
+			S.speed_modifier = max(0.2, S.speed_modifier)
+			// +20% surgery speed on each step, useful while operating in less-than-perfect conditions
 	..()
 
 /datum/reagent/iron

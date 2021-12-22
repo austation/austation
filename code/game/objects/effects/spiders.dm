@@ -35,7 +35,8 @@
 		icon_state = "stickyweb2"
 	. = ..()
 
-/obj/structure/spider/stickyweb/CanPass(atom/movable/mover, turf/target)
+/obj/structure/spider/stickyweb/CanAllowThrough(atom/movable/mover, turf/target)
+	. = ..()
 	if(istype(mover, /mob/living/simple_animal/hostile/poison/giant_spider))
 		return TRUE
 	else if(isliving(mover))
@@ -46,7 +47,6 @@
 			return FALSE
 	else if(istype(mover, /obj/item/projectile))
 		return prob(30)
-	return TRUE
 
 /obj/structure/spider/eggcluster
 	name = "egg cluster"
@@ -216,7 +216,7 @@
 	to_chat(user, "<span class='notice'>You struggle against the tight bonds... (This will take about [DisplayTimeText(breakout_time)].)</span>")
 	visible_message("You see something struggling and writhing in \the [src]!")
 	if(do_after(user,(breakout_time), target = src))
-		if(!user || !user.is_conscious() || user.loc != src)
+		if(!user || user.stat != CONSCIOUS || user.loc != src)
 			return
 		qdel(src)
 

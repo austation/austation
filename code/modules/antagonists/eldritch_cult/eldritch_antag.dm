@@ -19,7 +19,7 @@
 	log_admin("[key_name(admin)] has heresized [key_name(new_owner)].")
 
 /datum/antagonist/heretic/greet()
-	owner.current.playsound_local(get_turf(owner.current), 'sound/ambience/antag/ecult_op.ogg', 100, FALSE, pressure_affected = FALSE)//subject to change
+	owner.current.playsound_local(get_turf(owner.current), 'sound/ambience/antag/ecult_op.ogg', 100, FALSE, pressure_affected = FALSE, use_reverb = FALSE)//subject to change
 	to_chat(owner, "<span class='boldannounce'>You are the Heretic!</span><br>\
 	<B>The old ones gave you these tasks to fulfill:</B>")
 	owner.announce_objectives()
@@ -74,10 +74,17 @@
 
 	var/T = new item_path(H)
 	var/item_name = initial(item_path.name)
-	var/where = H.equip_in_one_of_slots(T, slots)
+	var/where = H.equip_in_one_of_slots(T, slots, qdel_on_fail = FALSE)
 	if(!where)
-		to_chat(H, "<span class='userdanger'>Unfortunately, you weren't able to get a [item_name]. This is very bad and you should adminhelp immediately (press F1).</span>")
-		return FALSE
+		//Our last attempt, we force the item into the backpack
+		if(istype(H.back, /obj/item/storage/backpack))
+			var/obj/item/storage/backpack/B = H.back
+			SEND_SIGNAL(B, COMSIG_TRY_STORAGE_INSERT, T, null, TRUE, TRUE)
+			to_chat(H, "<span class='danger'>You have a [item_name] in your backpack.</span>")
+			return TRUE
+		else
+			message_admins("[ADMIN_FULLMONTY(H)] the heretic couldn't be equipped.")
+			return FALSE
 	else
 		to_chat(H, "<span class='danger'>You have a [item_name] in your [where].</span>")
 		if(where == "backpack")

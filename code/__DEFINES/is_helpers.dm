@@ -2,6 +2,9 @@
 
 #define in_range(source, user) (get_dist(source, user) <= 1 && (get_step(source, 0)?:z) == (get_step(user, 0)?:z))
 
+/// Within given range, but not counting z-levels
+#define IN_GIVEN_RANGE(source, other, given_range) (get_dist(source, other) <= given_range && (get_step(source, 0)?:z) == (get_step(other, 0)?:z))
+
 #define ismovableatom(A) ismovable(A)
 
 #define isatom(A) (isloc(A))
@@ -47,6 +50,9 @@ GLOBAL_LIST_INIT(turfs_without_ground, typecacheof(list(
 #define isliving(A) (istype(A, /mob/living))
 
 #define isbrain(A) (istype(A, /mob/living/brain))
+
+// basic mobs
+#define isbasicmob(A) (istype(A, /mob/living/basic))
 
 //Carbon mobs
 #define iscarbon(A) (istype(A, /mob/living/carbon))
@@ -275,7 +281,7 @@ GLOBAL_LIST_INIT(glass_sheet_types, typecacheof(list(
 /// isnum() returns TRUE for NaN. Also, NaN != NaN. Checkmate, BYOND.
 #define isnan(x) ( (x) != (x) )
 
-#define isinf(x) (isnum((x)) && (((x) == text2num("inf")) || ((x) == text2num("-inf"))))
+#define isinf(x) (isnum((x)) && (((x) == SYSTEM_TYPE_INFINITY) || ((x) == -SYSTEM_TYPE_INFINITY)))
 
 #define isProbablyWallMounted(O) (O.pixel_x > 20 || O.pixel_x < -20 || O.pixel_y > 20 || O.pixel_y < -20)
 
@@ -283,3 +289,5 @@ GLOBAL_LIST_INIT(glass_sheet_types, typecacheof(list(
 
 /// NaN isn't a number, damn it. Infinity is a problem too.
 #define isnum_safe(x) ( isnum((x)) && !isnan((x)) && !isinf((x)) )
+
+#define iscash(A) (istype(A, /obj/item/coin) || istype(A, /obj/item/stack/spacecash) || istype(A, /obj/item/holochip))

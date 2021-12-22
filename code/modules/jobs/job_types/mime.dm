@@ -20,6 +20,10 @@
 	display_order = JOB_DISPLAY_ORDER_MIME
 	departments = DEPARTMENT_SERVICE
 
+	species_outfits = list(
+		SPECIES_PLASMAMAN = /datum/outfit/plasmaman/mime
+	)
+
 /datum/job/mime/after_spawn(mob/living/carbon/human/H, mob/M)
 	. = ..()
 	H.apply_pref_name("mime", M.client)
@@ -70,7 +74,7 @@
 
 /obj/item/book/mimery/Topic(href, href_list)
 	..()
-	if (!usr.is_conscious() || usr.restrained() || src.loc != usr)
+	if (usr.stat || usr.restrained() || src.loc != usr)
 		return
 	if (!ishuman(usr))
 		return

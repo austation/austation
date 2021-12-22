@@ -78,8 +78,8 @@ All effects don't start immediately, but rather get worse over time; the rate is
 
 			for(var/s in C.surgeries)
 				var/datum/surgery/S = s
-				S.success_multiplier = max(0.1*power_multiplier, S.success_multiplier)
-				// +10% success propability on each step, useful while operating in less-than-perfect conditions
+				S.speed_modifier = max(0.1*power_multiplier, S.speed_modifier)
+				// +10% surgery speed on each step, useful while operating in less-than-perfect conditions
 	return ..()
 
 /datum/reagent/consumable/ethanol/beer
@@ -1339,7 +1339,7 @@ All effects don't start immediately, but rather get worse over time; the rate is
 			if(current_cycle > 50 && prob(15))
 				if(!M.undergoing_cardiac_arrest() && M.can_heartattack())
 					M.set_heartattack(TRUE)
-					if(M.is_conscious())
+					if(M.stat == CONSCIOUS)
 						M.visible_message("<span class='userdanger'>[M] clutches at [M.p_their()] chest as if [M.p_their()] heart stopped!</span>")
 	. = 1
 	..()
@@ -1547,7 +1547,7 @@ All effects don't start immediately, but rather get worse over time; the rate is
 		L.adjustOxyLoss(-1)
 		L.adjustStaminaLoss(-1)
 	L.visible_message("<span class='warning'>[L] shivers with renewed vigor!</span>", "<span class='notice'>One taste of [lowertext(name)] fills you with energy!</span>")
-	if(L.is_conscious() && heal_points == 20) //brought us out of softcrit
+	if(!L.stat && heal_points == 20) //brought us out of softcrit
 		L.visible_message("<span class='danger'>[L] lurches to [L.p_their()] feet!</span>", "<span class='boldnotice'>Up and at 'em, kid.</span>")
 
 /datum/reagent/consumable/ethanol/bastion_bourbon/on_mob_life(mob/living/L)
@@ -2341,4 +2341,21 @@ All effects don't start immediately, but rather get worse over time; the rate is
 		M.adjustBruteLoss(-1.5, 0)
 		M.adjustFireLoss(-1.5, 0)
 		M.adjustToxLoss(-1, 0)
+	. = ..()
+
+/datum/reagent/consumable/ethanol/beeffizz
+	name = "Beef Fizz"
+	description = "This is beef fizz, BEEF FIZZ, THERE IS NO GOD"
+	boozepwr = 15
+	quality = DRINK_BAD
+	taste_description = "Nice and Salty Fizzless Beef Juice with a quick bite of lemon"
+	glass_icon_state = "beef_fizz"
+	glass_name = "Beef Fizz"
+	glass_desc = "WHO THOUGHT THIS WAS A GOOD IDEA??"
+
+
+/datum/reagent/consumable/beeffizz/on_mob_metabolize(mob/living/M)
+	to_chat(M, "<span class='warning'>That drink was way too beefy! You feel sick.</span>")
+	M.adjust_disgust(30)
+	SEND_SIGNAL(M, COMSIG_ADD_MOOD_EVENT, "quality_drink", /datum/mood_event/quality_bad)
 	. = ..()

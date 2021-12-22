@@ -19,7 +19,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 	item_state = "electronic"
 	lefthand_file = 'icons/mob/inhands/misc/devices_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/misc/devices_righthand.dmi'
-	item_flags = NOBLUDGEON
+	//item_flags = NOBLUDGEON -- austation -- I don't know why this is set lmao
 	w_class = WEIGHT_CLASS_TINY
 	slot_flags = ITEM_SLOT_ID | ITEM_SLOT_BELT
 	actions_types = list(/datum/action/item_action/toggle_light)
@@ -49,6 +49,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 	//Secondary variables
 	var/scanmode = PDA_SCANNER_NONE
 	var/fon = FALSE //Is the flashlight function on?
+	var/shorted = FALSE //Is the flashlight shorted out?
 	var/f_lum = 2.3 //Luminosity for the flashlight function
 	var/silent = FALSE //To beep or not to beep, that is the question
 	var/toff = FALSE //If TRUE, messenger disabled
@@ -371,7 +372,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 						for(var/id in environment.get_gases())
 							var/gas_level = environment.get_moles(id)/total_moles
 							if(gas_level > 0)
-								dat += "[GLOB.meta_gas_info[id][META_GAS_NAME]]: [round(gas_level*100, 0.01)]%<br>"
+								dat += "[GLOB.gas_data.names[id]]: [round(gas_level*100, 0.01)]%<br>"
 
 					dat += "Temperature: [round(environment.return_temperature()-T0C)]&deg;C<br>"
 				dat += "<br>"
@@ -838,18 +839,17 @@ GLOBAL_LIST_EMPTY(PDAs)
 	eject_cart(usr)
 
 /obj/item/pda/proc/toggle_light(mob/user)
-	if(issilicon(user) || !user.canUseTopic(src, BE_CLOSE))
-		return
-	if(fon)
-		fon = FALSE
-		set_light(0)
-	else if(f_lum)
-		fon = TRUE
-		set_light(f_lum)
-	update_icon()
-	for(var/X in actions)
-		var/datum/action/A = X
-		A.UpdateButtonIcon()
+    if(issilicon(user) || !user.canUseTopic(src, BE_CLOSE))
+        return
+    if(shorted)
+        to_chat(user, "<span class='notice'>[src]'s light is not turning on!</span>")
+        return
+    fon = !fon
+    set_light(fon ? f_lum : 0)
+    update_icon()
+    for(var/X in actions)
+        var/datum/action/A = X
+        A.UpdateButtonIcon()
 
 /obj/item/pda/proc/remove_pen(mob/user)
 
@@ -901,6 +901,34 @@ GLOBAL_LIST_EMPTY(PDAs)
 			user.put_in_hands(old_id)
 		update_icon()
 		playsound(src, 'sound/machines/pda_button1.ogg', 50, TRUE)
+	return TRUE
+
+/obj/item/pda/pre_attack(obj/target, mob/living/user, params)
+	if(!ismachinery(target))
+		return ..()
+	var/obj/machinery/target_machine = target
+	if(!target_machine.panel_open && !istype(target, /obj/machinery/computer))
+		return ..()
+	if(!istype(cartridge, /obj/item/cartridge/virus/clown))
+		return ..()
+	var/obj/item/cartridge/virus/installed_cartridge = cartridge
+
+	if(installed_cartridge.charges <=0)
+		balloon_alert(user, "Out of charges")
+		return ..()
+
+	if(target.GetComponent(/datum/component/sound_player))
+		balloon_alert(user, "This is already hacked")
+		return
+
+	balloon_alert(user, "Virus uploaded")
+	var/list/sig_list = list()
+	if(istype(target, /obj/machinery/door/airlock))
+		sig_list += list(COMSIG_AIRLOCK_OPEN, COMSIG_AIRLOCK_CLOSE)
+	else
+		sig_list += list(COMSIG_ATOM_ATTACK_HAND)
+	installed_cartridge.charges--
+	target.AddComponent(/datum/component/sound_player, amount = (rand(30,50)), signal_or_sig_list = sig_list)
 	return TRUE
 
 // access to status display signals
@@ -1126,13 +1154,16 @@ GLOBAL_LIST_EMPTY(PDAs)
 // Pass along the pulse to atoms in contents, largely added so pAIs are vulnerable to EMP
 /obj/item/pda/emp_act(severity)
 	. = ..()
-	if (!(. & EMP_PROTECT_CONTENTS))
+	if(!(. & EMP_PROTECT_CONTENTS))
 		for(var/atom/A in src)
 			A.emp_act(severity)
-	if (!(. & EMP_PROTECT_SELF))
+	if(!(. & EMP_PROTECT_SELF))
 		emped += 1
-		spawn(200 * severity)
-			emped -= 1
+		var/emptime = 200 * severity
+		addtimer(CALLBACK(src, .proc/decrease_emp_level), emptime)
+
+/obj/item/pda/proc/decrease_emp_level()
+	emped -= 1
 
 /proc/get_viewable_pdas(sort_by_job = FALSE)
 	. = list()

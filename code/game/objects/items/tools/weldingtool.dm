@@ -1,5 +1,5 @@
 /// How many seconds between each fuel depletion tick ("use" proc)
-#define WELDER_FUEL_BURN_INTERVAL 26
+#define WELDER_FUEL_BURN_INTERVAL 9
 /obj/item/weldingtool
 	name = "welding tool"
 	desc = "A standard edition welder provided by Nanotrasen."
@@ -196,7 +196,7 @@
 	welding = !welding
 	if(welding)
 		if(get_fuel() >= 1)
-			balloon_alert(user, "[src] on")
+			balloon_alert(user, "[src] turned on")
 			playsound(loc, acti_sound, 50, 1)
 			force = 15
 			damtype = "fire"
@@ -207,7 +207,7 @@
 			balloon_alert(user, "No fuel")
 			switched_off(user)
 	else
-		balloon_alert(user, "[src] off")
+		balloon_alert(user, "[src] turned off")
 		playsound(loc, deac_sound, 50, 1)
 		switched_off(user)
 

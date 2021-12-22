@@ -48,6 +48,7 @@ GLOBAL_DATUM_INIT(crewmonitor, /datum/crewmonitor, new)
 	jobs["Research Director"] = 30
 	jobs["Scientist"] = 31
 	jobs["Roboticist"] = 32
+	jobs["Exploration Crew"] = 33
 	jobs["Chief Engineer"] = 40
 	jobs["Station Engineer"] = 41
 	jobs["Atmospheric Technician"] = 42
@@ -91,13 +92,14 @@ GLOBAL_DATUM_INIT(crewmonitor, /datum/crewmonitor, new)
 	if (!ui)
 		ui = new(user, src, "CrewConsole")
 		ui.open()
+		ui.set_autoupdate(TRUE)
 
 /datum/crewmonitor/proc/show(mob/M, source)
-	ui_sources[M] = source
+	ui_sources[WEAKREF(M)] = source
 	ui_interact(M)
 
 /datum/crewmonitor/ui_host(mob/user)
-	return ui_sources[user]
+	return ui_sources[WEAKREF(user)]
 
 /datum/crewmonitor/ui_data(mob/user)
 	var/z = user.get_virtual_z_level()
@@ -138,6 +140,10 @@ GLOBAL_DATUM_INIT(crewmonitor, /datum/crewmonitor, new)
 		if ((H.z == 0 || H.get_virtual_z_level() == z || (is_station_level(H.z) && is_station_level(z))) && (istype(H.w_uniform, /obj/item/clothing/under) || nanite_sensors))
 			U = H.w_uniform
 
+			//Radio transmitters are jammed
+			if(nanite_sensors ? H.is_jammed() : U.is_jammed())
+				continue
+
 			// Are the suit sensors on?
 			if (nanite_sensors || ((U.has_sensor > 0) && U.sensor_mode))
 				pos = H.z == 0 || (nanite_sensors || U.sensor_mode == SENSOR_COORDS) ? get_turf(H) : null
@@ -158,7 +164,7 @@ GLOBAL_DATUM_INIT(crewmonitor, /datum/crewmonitor, new)
 					ijob = 80
 
 				if (nanite_sensors || U.sensor_mode >= SENSOR_LIVING)
-					life_status = (H.is_conscious() ? TRUE : FALSE)
+					life_status = (!H.stat ? TRUE : FALSE)
 				else
 					life_status = null
 

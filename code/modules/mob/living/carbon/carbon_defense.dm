@@ -67,7 +67,7 @@
 										"<span class='userdanger'>You catch [I] in mid-air!</span>")
 						throw_mode_off()
 						return 1
-	..()
+	..(AM, skipcatch, hitpush, blocked, throwingdatum)
 
 
 /mob/living/carbon/attacked_by(obj/item/I, mob/living/user)
@@ -119,6 +119,9 @@
 
 //ATTACK HAND IGNORING PARENT RETURN VALUE
 /mob/living/carbon/attack_hand(mob/living/carbon/human/user)
+
+	if(SEND_SIGNAL(src, COMSIG_ATOM_ATTACK_HAND, user) & COMPONENT_CANCEL_ATTACK_CHAIN)
+		. = TRUE
 
 	for(var/thing in diseases)
 		var/datum/disease/D = thing
@@ -229,6 +232,7 @@
 		return 0
 	if(reagents.has_reagent(/datum/reagent/teslium))
 		shock_damage *= 1.5 //If the mob has teslium in their body, shocks are 50% more damaging!
+	SEND_SIGNAL(src, COMSIG_LIVING_ELECTROCUTE_ACT, shock_damage, source, siemens_coeff, safety, tesla_shock, illusion, stun)
 	if(illusion)
 		adjustStaminaLoss(shock_damage)
 	else
@@ -294,9 +298,9 @@
 		if(S?.can_wag_tail(src) && !dna.species.is_wagging_tail())
 			emote("wag")
 		if(is_species(src, /datum/species/human/felinid))
-			SEND_SIGNAL(src, COMSIG_ADD_MOOD_EVENT, "friendly_pat", /datum/mood_event/betterheadpat)
+			SEND_SIGNAL(src, COMSIG_ADD_MOOD_EVENT, "catgirl_headpat", /datum/mood_event/betterheadpat)
 		else
-			SEND_SIGNAL(src, COMSIG_ADD_MOOD_EVENT, "pat", /datum/mood_event/headpat)
+			SEND_SIGNAL(src, COMSIG_ADD_MOOD_EVENT, "headpat", /datum/mood_event/headpat)
 		//austation end
 	else if((M.zone_selected == BODY_ZONE_L_ARM) || (M.zone_selected == BODY_ZONE_R_ARM))
 		if(!get_bodypart(check_zone(M.zone_selected)))

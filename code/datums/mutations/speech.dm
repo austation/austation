@@ -30,6 +30,8 @@
 	UnregisterSignal(owner, COMSIG_MOB_SAY)
 
 /datum/mutation/human/wacky/proc/handle_speech(datum/source, list/speech_args)
+	SIGNAL_HANDLER
+
 	speech_args[SPEECH_SPANS] |= SPAN_SANS
 
 /datum/mutation/human/mute
@@ -152,6 +154,8 @@
 	UnregisterSignal(owner, COMSIG_MOB_SAY)
 
 /datum/mutation/human/swedish/proc/handle_speech(datum/source, list/speech_args)
+	SIGNAL_HANDLER
+
 	var/message = speech_args[SPEECH_MESSAGE]
 	if(message)
 		message = replacetext(message,"w","v")
@@ -181,12 +185,14 @@
 	UnregisterSignal(owner, COMSIG_MOB_SAY)
 
 /datum/mutation/human/chav/proc/handle_speech(datum/source, list/speech_args)
+	SIGNAL_HANDLER
+
 	var/message = speech_args[SPEECH_MESSAGE]
 	if(message[1] != "*")
 		message = " [message]"
-		var/list/whole_words = strings("british_talk.json", "words")
-		var/list/british_sounds = strings("british_talk.json", "sounds")
-		var/list/british_appends = strings("british_talk.json", "appends")
+		var/list/whole_words = strings(BRIISH_TALK_FILE, "words")
+		var/list/british_sounds = strings(BRIISH_TALK_FILE, "sounds")
+		var/list/british_appends = strings(BRIISH_TALK_FILE, "appends")
 
 		for(var/key in whole_words)
 			var/value = whole_words[key]
@@ -241,6 +247,8 @@
 	UnregisterSignal(owner, COMSIG_MOB_SAY)
 
 /datum/mutation/human/elvis/proc/handle_speech(datum/source, list/speech_args)
+	SIGNAL_HANDLER
+
 	var/message = speech_args[SPEECH_MESSAGE]
 	if(message)
 		message = " [message] "

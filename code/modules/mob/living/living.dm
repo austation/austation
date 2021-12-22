@@ -64,7 +64,7 @@
 		return
 	if(buckled || now_pushing)
 		return
-	if((confused || is_blind()) && is_conscious() && (mobility_flags & MOBILITY_STAND) && m_intent == "run" && (!ismovableatom(A) || is_blocked_turf(A)) && !HAS_MOB_PROPERTY(src, PROP_CANTBUMPSLAM))  // ported from VORE, sue me
+	if((confused || is_blind()) && stat == CONSCIOUS && (mobility_flags & MOBILITY_STAND) && m_intent == "run" && (!ismovableatom(A) || is_blocked_turf(A)) && !HAS_MOB_PROPERTY(src, PROP_CANTBUMPSLAM))  // ported from VORE, sue me
 		APPLY_MOB_PROPERTY(src, PROP_CANTBUMPSLAM, src.type) //Bump() is called continuously so ratelimit the check to 20 seconds if it passes or 5 if it doesn't
 		if(prob(10))
 			playsound(get_turf(src), "punch", 25, 1, -1)
@@ -225,6 +225,7 @@
 		return
 	now_pushing = TRUE
 	var/t = get_dir(src, AM)
+	t = t ? t : dir // austation -- we will fall back to using the mob's dir if on same tile as obj
 	var/push_anchored = FALSE
 	if((AM.move_resist * MOVE_FORCE_CRUSH_RATIO) <= force)
 		if(move_crush(AM, move_force, t))
@@ -279,6 +280,9 @@
 
 	pulling = AM
 	AM.pulledby = src
+
+	SEND_SIGNAL(src, COMSIG_LIVING_START_PULL, AM, state, force)
+
 	if(!supress_message)
 		var/sound_to_play = 'sound/weapons/thudswoosh.ogg'
 		if(ishuman(src))
@@ -307,7 +311,7 @@
 		if(!iscarbon(src))
 			M.LAssailant = null
 		else
-			M.LAssailant = usr
+			M.LAssailant = WEAKREF(usr)
 		if(isliving(M))
 			var/mob/living/L = M
 			//Share diseases that are spread by touch
@@ -411,12 +415,12 @@
 			to_chat(src, "<span class='notice'>You have given up life and succumbed to death.</span>")
 
 		if (src.client)
-			SSmedals.UnlockMedal(MEDAL_SUCCUMB,src.client)
+			client.give_award(/datum/award/achievement/misc/succumb, client.mob)
 
 		death()
 
 /mob/living/incapacitated(ignore_restraints = FALSE, ignore_grab = FALSE, check_immobilized = FALSE, ignore_stasis = FALSE)
-	if((stat >= SOFT_CRIT) || IsUnconscious() || IsStun() || IsParalyzed() || (check_immobilized && IsImmobilized()) || (!ignore_restraints && restrained(ignore_grab)) || (!ignore_stasis && IsInStasis()))
+	if(stat || IsUnconscious() || IsStun() || IsParalyzed() || (check_immobilized && IsImmobilized()) || (!ignore_restraints && restrained(ignore_grab)) || (!ignore_stasis && IsInStasis()))
 		return TRUE
 
 /mob/living/canUseStorage()
@@ -633,8 +637,8 @@
 			lying = 270
 		update_transform()
 		lying_prev = lying
-	if(buckled && buckled.loc != newloc) //not updating position
-		if(!buckled.anchored)
+	if (buckled && buckled.loc != newloc) //not updating position
+		if (!buckled.anchored)
 			return buckled.Move(newloc, direct)
 		else
 			return 0
@@ -660,8 +664,8 @@
 	if(!(mobility_flags & MOBILITY_STAND) && !buckled && prob(getBruteLoss()*200/maxHealth))
 		makeTrail(newloc, T, old_direction)
 
-/mob/living/proc/makeTrail(turf/target_turf, turf/start, direction)
-	if(!has_gravity())
+/mob/living/proc/makeTrail(turf/target_turf, turf/start, direction, spec_color)
+	if(!has_gravity() || (movement_type & THROWN))
 		return
 	var/blood_exists = FALSE
 
@@ -691,9 +695,13 @@
 						TH.add_overlay(image('icons/effects/blood.dmi', trail_type, dir = newdir))
 						TH.transfer_mob_blood_dna(src)
 
-/mob/living/carbon/human/makeTrail(turf/T)
+						if(spec_color)
+							TH.color = spec_color
+
+/mob/living/carbon/human/makeTrail(turf/T, turf/start, direction, spec_color)
 	if((NOBLOOD in dna.species.species_traits) || !bleed_rate || bleedsuppress)
 		return
+	spec_color = dna.species.blood_color
 	..()
 
 /mob/living/proc/getTrail()
@@ -754,9 +762,9 @@
 		resist_buckle()
 
 	//Breaking out of a container (Locker, sleeper, cryo...)
-	else if(isobj(loc))
-		var/obj/C = loc
-		C.container_resist(src)
+	else if(istype(loc, /atom/movable))
+		var/atom/movable/M = loc
+		M.container_resist(src)
 
 	else if(mobility_flags & MOBILITY_MOVE)
 		if(on_fire)
@@ -774,8 +782,7 @@
 		var/altered_grab_state = pulledby.grab_state
 		if((resting || HAS_TRAIT(src, TRAIT_GRABWEAKNESS)) && pulledby.grab_state < GRAB_KILL) //If resting, resisting out of a grab is equivalent to 1 grab state higher. wont make the grab state exceed the normal max, however
 			altered_grab_state++
-		else if(is_species(pulledby, /datum/species/squid) && pulledby.grab_state < GRAB_KILL) // If the puller is a squid, suction cups make it harder to break free
-			altered_grab_state++
+
 		var/resist_chance = BASE_GRAB_RESIST_CHANCE // see defines/combat.dm
 		resist_chance = max(resist_chance/altered_grab_state-sqrt((getStaminaLoss()+getBruteLoss()/2)*(3-altered_grab_state)), 0) // https://i.imgur.com/6yAT90T.png for sample output values
 		if(prob(resist_chance))
@@ -923,7 +930,7 @@
 			loc_temp = obj_temp
 	else if(isspaceturf(get_turf(src)))
 		var/turf/heat_turf = get_turf(src)
-		loc_temp = heat_turf.temperature
+		loc_temp = heat_turf.return_temperature()
 	return loc_temp
 
 /mob/living/proc/get_standard_pixel_x_offset(lying = 0)
@@ -949,7 +956,7 @@
 		return 0
 	if(invisibility || alpha == 0)//cloaked
 		return 0
-	if(digitalcamo || digitalinvis)
+	if(HAS_TRAIT(src, TRAIT_DIGICAMO) || HAS_TRAIT(src, TRAIT_DIGINVIS))
 		return 0
 
 	// Now, are they viewable by a camera? (This is last because it's the most intensive check)
@@ -1150,13 +1157,12 @@
 	var/knockdown = IsKnockdown()
 	var/ignore_legs = get_leg_ignore()
 	var/in_stasis = IsInStasis()
-	// (!stat_softcrit || !pulledby)
-	var/canmove = !IsImmobilized() && !stun && conscious && !paralyzed && !buckled && !chokehold && !IsFrozen() && !in_stasis && (has_arms || ignore_legs || has_legs)
+	var/canmove = !IsImmobilized() && !stun && conscious && !paralyzed && !buckled && (!stat_softcrit || !pulledby) && !chokehold && !IsFrozen() && !in_stasis && (has_arms || ignore_legs || has_legs)
 	if(canmove)
 		mobility_flags |= MOBILITY_MOVE
 	else
 		mobility_flags &= ~MOBILITY_MOVE
-	var/canstand_involuntary = conscious && !knockdown && !chokehold && !paralyzed && (ignore_legs || has_legs) && !(buckled && buckled.buckle_lying)
+	var/canstand_involuntary = conscious && !stat_softcrit && !knockdown && !chokehold && !paralyzed && (ignore_legs || has_legs) && !(buckled && buckled.buckle_lying)
 	var/canstand = canstand_involuntary && !resting
 
 	var/should_be_lying = !canstand
@@ -1345,39 +1351,29 @@
 
 /mob/living/vv_edit_var(var_name, var_value)
 	switch(var_name)
-		if ("maxHealth")
+		if (NAMEOF(src, maxHealth))
 			if (!isnum_safe(var_value) || var_value <= 0)
 				return FALSE
-		if("stat")
+		if(NAMEOF(src, stat))
 			if((stat == DEAD) && (var_value < DEAD))//Bringing the dead back to life
 				remove_from_dead_mob_list()
 				add_to_alive_mob_list()
 			if((stat < DEAD) && (var_value == DEAD))//Kill he
 				remove_from_alive_mob_list()
 				add_to_dead_mob_list()
+		if(NAMEOF(src, health)) //this doesn't work. gotta use procs instead.
+			return FALSE
 	. = ..()
 	switch(var_name)
-		if("knockdown")
-			SetParalyzed(var_value)
-		if("stun")
-			SetStun(var_value)
-		if("unconscious")
-			SetUnconscious(var_value)
-		if("sleeping")
-			SetSleeping(var_value)
-		if("eye_blind")
+		if(NAMEOF(src, eye_blind))
 			set_blindness(var_value)
-		if("eye_damage")
-			var/obj/item/organ/eyes/E = getorganslot(ORGAN_SLOT_EYES)
-			if(E)
-				E.setOrganDamage(var_value)
-		if("eye_blurry")
+		if(NAMEOF(src, eye_blurry))
 			set_blurriness(var_value)
-		if("maxHealth")
+		if(NAMEOF(src, maxHealth))
 			updatehealth()
-		if("resize")
+		if(NAMEOF(src, resize))
 			update_transform()
-		if("lighting_alpha")
+		if(NAMEOF(src, lighting_alpha))
 			sync_lighting_plane_alpha()
 
 /mob/living/vv_get_header()

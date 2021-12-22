@@ -7,6 +7,7 @@
 	color = "#00FF32"
 	toxpwr = 1.75
 	taste_description = "nothing"
+	can_synth = FALSE
 
 /datum/reagent/toxin/sarin/on_mob_life(mob/living/carbon/C)
 	. = TRUE
@@ -14,7 +15,7 @@
 	if(HAS_TRAIT(C, TRAIT_NOBREATH))
 		. = FALSE
 
-	if(.)
+	else
 		to_chat(C, "<span class='danger'>You can barely see!</span>")
 		C.blur_eyes(3)
 		C.adjustOxyLoss(5, 0)

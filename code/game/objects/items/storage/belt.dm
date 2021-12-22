@@ -356,7 +356,12 @@
 		/obj/item/stack/marker_beacon,
 		/obj/item/restraints/legcuffs/bola/watcher,
 		/obj/item/claymore/bone,
-		/obj/item/skeleton_key
+		/obj/item/skeleton_key,
+		/obj/item/discovery_scanner,
+		/obj/item/gun/energy/e_gun/mini/exploration,
+		/obj/item/grenade/exploration,
+		/obj/item/exploration_detonator,
+		/obj/item/research_disk_pinpointer
 		))
 
 
@@ -606,7 +611,7 @@
 		/obj/item/melee/flyswatter,
 		/obj/item/assembly/mousetrap,
 		/obj/item/paint/paint_remover,
-		/obj/item/twohanded/pushbroom
+		/obj/item/pushbroom
 		))
 
 /obj/item/storage/belt/janitor/full/PopulateContents()

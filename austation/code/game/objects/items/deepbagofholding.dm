@@ -32,18 +32,18 @@
 	for(var/turf/open/indestructible/deepBluespaceExit/exit in currentArea)
 		exit.parent = src
 	entry =	locate(linkedDim.bottom_left_coords[1] + linkedDimTemp.landingZoneRelativeX, \
-		    	  linkedDim.bottom_left_coords[2] + linkedDimTemp.landingZoneRelativeY, \
+				  linkedDim.bottom_left_coords[2] + linkedDimTemp.landingZoneRelativeY, \
 		   		  linkedDim.bottom_left_coords[3])
 
 	// Gonna leave this here for a latter date. This is for atmos interactions, but it doesn't work at the moment, so for now it's depricated.
 	// START_PROCESSING(SSobj, src)
 
 /obj/item/deepbackpack/Destroy()
-    ejectContents()
-    do_sparks(6, 0, src)
-    qdel(linkedDim)
-    qdel(linkedDimTemp)
-    return ..()
+	ejectContents()
+	do_sparks(6, 0, src)
+	qdel(linkedDim)
+	qdel(linkedDimTemp)
+	return ..()
 
 // Called when we attack the bag with an item
 /obj/item/deepbackpack/attackby(obj/item/I, mob/user, params)
@@ -170,16 +170,16 @@
 
 // Ejects everyone in the room
 /obj/item/deepbackpack/proc/ejectContents()
-    for(var/i=0, i<linkedDimTemp.width, i++)
-        for(var/j=0, j<linkedDimTemp.height, j++)
-            for(var/atom/movable/A in locate(linkedDim.bottom_left_coords[1] + i, linkedDim.bottom_left_coords[2] + j, linkedDim.bottom_left_coords[3]))
-                if(ismob(A)) // Everything that isn't a mob or item is lost!
-                    A.forceMove(src.loc)
-                    var/mob/M = A
-                    if(M.mind)
-                        to_chat(M, "<span class='warning'>As reality itself seems torn apart you are suddenly ejected from the pocket dimension!</span>")
-                if(isitem(A))
-                    A.forceMove(src.loc)
+	for(var/i=0, i<linkedDimTemp.width, i++)
+		for(var/j=0, j<linkedDimTemp.height, j++)
+			for(var/atom/movable/A in locate(linkedDim.bottom_left_coords[1] + i, linkedDim.bottom_left_coords[2] + j, linkedDim.bottom_left_coords[3]))
+				if(ismob(A)) // Everything that isn't a mob or item is lost!
+					A.forceMove(src.loc)
+					var/mob/M = A
+					if(M.mind)
+						to_chat(M, "<span class='warning'>As reality itself seems torn apart you are suddenly ejected from the pocket dimension!</span>")
+				if(isitem(A))
+					A.forceMove(src.loc)
 
 // Adds extra code to the "shock act" that checks if there's a bag of holding with a bluespace anomally core in it, and if so, turn it into a deep BoH
 /mob/living/carbon/electrocute_act(shock_damage, source, siemens_coeff = 1, safety = 0, tesla_shock = 0, illusion = 0, stun = TRUE)
@@ -213,27 +213,27 @@
 	return ..()
 
 /turf/open/indestructible/deepBluespaceExit
-    name = "Bluespace Tunnel"
-    icon_state = "plating"
-    explosion_block = INFINITY
-    blocks_air = TRUE
-    opacity = TRUE
-    var/parent
+	name = "Bluespace Tunnel"
+	icon_state = "plating"
+	explosion_block = INFINITY
+	blocks_air = TRUE
+	opacity = TRUE
+	var/parent
 
 /turf/open/indestructible/deepBluespaceExit/Entered(atom/movable/A)
-    . = ..()
-    A.forceMove(get_turf(parent))
+	. = ..()
+	A.forceMove(get_turf(parent))
 
 /datum/map_template/deepbluespace
-    name = "Deep Bluespace"
-    mappath = '_maps/templates/deepbluespace.dmm'
-    var/landingZoneRelativeX = 4
-    var/landingZoneRelativeY = 7
+	name = "Deep Bluespace"
+	mappath = '_maps/templates/deepbluespace.dmm'
+	var/landingZoneRelativeX = 4
+	var/landingZoneRelativeY = 7
 
 /area/deepbluespace
-    name = "Deep Bluespace"
-    icon_state = "hilbertshotel"
-    requires_power = TRUE
-    has_gravity = TRUE
-    teleport_restriction = TELEPORT_ALLOW_NONE
-    hidden = TRUE
+	name = "Deep Bluespace"
+	icon_state = "hilbertshotel"
+	requires_power = TRUE
+	has_gravity = TRUE
+	teleport_restriction = TELEPORT_ALLOW_NONE
+	area_flags = HIDDEN_AREA

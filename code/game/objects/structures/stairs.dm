@@ -22,6 +22,13 @@
 		force_open_above()
 		build_signal_listener()
 	update_surrounding()
+
+	var/static/list/loc_connections = list(
+		COMSIG_ATOM_EXIT = .proc/on_exit,
+	)
+
+	AddElement(/datum/element/connect_loc, loc_connections)
+
 	return ..()
 
 /obj/structure/stairs/Destroy()
@@ -42,13 +49,18 @@
 		if(S)
 			S.update_icon()
 
-/obj/structure/stairs/Uncross(atom/movable/AM, turf/newloc)
-	if(!newloc || !AM)
-		return ..()
-	if(!isobserver(AM) && isTerminator() && (get_dir(src, newloc) == dir))
-		stair_ascend(AM)
-		return FALSE
-	return ..()
+/obj/structure/stairs/proc/on_exit(datum/source, atom/movable/leaving, direction)
+	SIGNAL_HANDLER
+
+	//austation begin -- uncomment if some poor sud actually went ahead and fix this, looking at you, kube
+	if(leaving == src)
+		return // Let's not block ourselves.
+	//austation end
+
+	if(!isobserver(leaving) && isTerminator() && direction == dir)
+		INVOKE_ASYNC(src, .proc/stair_ascend, leaving)
+		leaving.Bump(src)
+		return COMPONENT_ATOM_BLOCK_EXIT
 
 /obj/structure/stairs/Cross(atom/movable/AM)
 	if(isTerminator() && (get_dir(src, AM) == dir))
@@ -106,6 +118,8 @@
 		T.ChangeTurf(/turf/open/openspace, flags = CHANGETURF_INHERIT_AIR)
 
 /obj/structure/stairs/proc/on_multiz_new(turf/source, dir)
+	SIGNAL_HANDLER
+
 	if(dir == UP)
 		var/turf/open/openspace/T = get_step_multiz(get_turf(src), UP)
 		if(T && !istype(T))
@@ -129,3 +143,6 @@
 		if(S.dir == dir)
 			return FALSE
 	return TRUE
+
+/obj/structure/stairs/attack_ghost(mob/user)
+	stair_ascend(user)

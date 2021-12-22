@@ -28,7 +28,7 @@
 /turf/open/indestructible/sound/pool,
 /area/template_noop)
 "kJ" = (
-/obj/item/twohanded/required/pool/rubber_ring,
+/obj/item/pool/rubber_ring,
 /turf/open/indestructible/sound/pool,
 /area/template_noop)
 "lQ" = (
@@ -79,7 +79,7 @@
 /area/template_noop)
 "te" = (
 /obj/item/trash/pistachios,
-/obj/item/twohanded/required/pool/pool_noodle,
+/obj/item/pool/pool_noodle,
 /turf/open/indestructible/sound/pool/end,
 /area/template_noop)
 "un" = (

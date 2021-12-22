@@ -7,7 +7,7 @@
 	earliest_start = 0 MINUTES
 
 /datum/round_event/easter/announce(fake)
-	priority_announce(pick("Hip-hop into Easter!","Find some Bunny's stash!","Today is National 'Hunt a Wabbit' Day.","Be kind, give Chocolate Eggs!"))
+	priority_announce(pick("Hip-hop into Easter!","Find some Bunny's stash!","Today is National 'Hunt a Wabbit' Day.","Be kind, give Chocolate Eggs!"), sound = SSstation.announcer.get_rand_alert_sound())
 
 
 /datum/round_event_control/rabbitrelease
@@ -76,11 +76,11 @@
 	add_overlay("basket-grass")
 	add_overlay("basket-egg[min(contents.len, 5)]")
 
-/obj/item/storage/bag/easterbasket/Exited()
+/obj/item/storage/bag/easterbasket/Exited(atom/movable/gone, direction)
 	. = ..()
 	countEggs()
 
-/obj/item/storage/bag/easterbasket/Entered()
+/obj/item/storage/bag/easterbasket/Entered(atom/movable/arrived, atom/old_loc, list/atom/old_locs)
 	. = ..()
 	countEggs()
 

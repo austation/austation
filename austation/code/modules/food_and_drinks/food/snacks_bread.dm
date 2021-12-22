@@ -1,5 +1,5 @@
 /obj/item/reagent_containers/food/snacks/synthetic_cake
-	name = "Cake Dough"
+	name = "cake dough"
 	desc = "Looks like an unfinished mess of dough."
 	icon = 'icons/obj/food/food_ingredients.dmi'
 	icon_state = "dough"
@@ -64,12 +64,12 @@
 
 	if(process)
 		START_PROCESSING(SSobj, src)
-	. = ..()
+	return ..()
 
 /obj/item/reagent_containers/food/snacks/store/bread/recycled/Destroy()
 	if(process)
 		STOP_PROCESSING(SSobj, src)
-	. = ..()
+	return ..()
 
 /obj/item/reagent_containers/food/snacks/store/bread/recycled/pickup(mob/user)
 	. = ..()
@@ -88,7 +88,7 @@
 			playsound(src, 'sound/effects/meteorimpact.ogg', 100, 1)
 			W.dismantle_wall(1)
 	else
-		. = ..()
+		return ..()
 
 /obj/item/reagent_containers/food/snacks/store/bread/recycled/proc/check_evolve()
 	if(evolveto && bread_density >= evolve_level)
@@ -212,7 +212,7 @@
 	tastes = list("gluons" = 10)
 	bread_slowdown = 3.5
 	process = TRUE
-	evolve_level = 3000
+	evolve_level = 3000 // make sure to change the anti matter explosion scaling var if you change this
 	evolveto = /obj/item/reagent_containers/food/snacks/store/bread/recycled/antimatter
 
 /obj/item/reagent_containers/food/snacks/store/bread/recycled/strange/process()
@@ -239,27 +239,30 @@
 	playsound(src, 'sound/magic/charge.ogg', 50, 1)
 
 /obj/item/reagent_containers/food/snacks/store/bread/recycled/antimatter/process() // holding anti bread has a chance to delete your arm
-	if(isturf(loc) && prob(45))
-		throw_at(get_edge_target_turf(src, pick(GLOB.alldirs)), 2, 5)
-		visible_message("<span class='danger'>[src] flickers violently!</span>")
-		playsound(src, 'sound/magic/charge.ogg', 10, 1)
+	if(isturf(loc))
+		if(prob(45))
+			throw_at(get_edge_target_turf(src, pick(GLOB.alldirs)), 2, 5)
+			visible_message("<span class='danger'>[src] flickers violently!</span>")
+			playsound(src, 'sound/magic/charge.ogg', 10, 1)
+		return
+
 	if(ishuman(loc))
 		var/mob/living/carbon/human/H = loc
 		var/obj/item/bodypart/B = H.get_holding_bodypart_of_item(src)
-		if(prob(3))
+		if(prob(10))
 			H.visible_message("<span class='warning'>\The [src] suddenly vaporizes \the [H]'s [B] in a flash of light!</span>", "<span class='userdanger'>\The [src] suddenly completely vaporizes your [B] in a blinding flash of light!</span>")
 			H.emote("scream")
 			H.flash_act(2) // sunnies won't save you from this
 			playsound(src, 'sound/effects/supermatter.ogg', 50, 1)
 			B.drop_limb()
 			qdel(B)
-	else
-		if(prob(10) && !istype(loc, /obj/structure/disposalholder)) // goodbye lockers/crates, but not diposal pipes
-			visible_message("<span class='warning'>\The [src] melts through \the [loc] in a flash of light!</span>")
-			playsound(src, 'sound/effects/supermatter.ogg', 50, 1)
-			var/atom/A = loc
-			forceMove(get_turf(src))
-			qdel(A)
+			return
+	else if(prob(10) && !istype(loc, /obj/structure/disposalholder)) // goodbye lockers/crates, but not diposal pipes
+		visible_message("<span class='warning'>\The [src] melts through \the [loc] in a flash of light!</span>")
+		playsound(src, 'sound/effects/supermatter.ogg', 50, 1)
+		var/atom/A = loc
+		forceMove(get_turf(src))
+		qdel(A)
 
 /obj/item/reagent_containers/food/snacks/store/bread/recycled/antimatter/attack(mob/living/M, mob/living/user, def_zone)
 	if(user.a_intent == INTENT_HARM)
@@ -275,7 +278,7 @@
 
 /obj/item/reagent_containers/food/snacks/store/bread/recycled/antimatter/attack_obj(obj/O, mob/living/user)
 	if(user.a_intent == INTENT_HARM)
-		O.visible_message("<span class='danger'>\the [user] slams \the [src] into \the [O], vaporizing themselves, \the [O] and \the [src] in a brilliant flash of light and flour!</span>")
+		O.visible_message("<span class='danger'>\The [user] slams [src] into [O], vaporizing themselves, [O] and [src] in a brilliant flash of light and flour!</span>")
 		playsound(src, 'sound/effects/supermatter.ogg', 50, 1)
 		user.dust(force = TRUE)
 		qdel(O)
@@ -286,19 +289,30 @@
 
 /obj/item/reagent_containers/food/snacks/store/bread/recycled/antimatter/throw_impact(atom/hit_atom, datum/thrownthing/throwingdatum) // throwing doesn't game the bread
 	. = ..()
-	if(isturf(hit_atom))
+	if(isopenturf(hit_atom))
 		return
 	visible_message("<span class='danger'>\The [src] collides with \the [hit_atom], annihilating it in a blinding flash of pure energy and flour!</span>")
 	playsound(src, 'sound/effects/supermatter.ogg', 50, 1)
-	if(thrownby) // wheeze no cheesing this
-		to_chat(thrownby, "<span class='userdanger'>You realize too late that \the [src] was quantumly entangled with your body, as your atoms dissociate into pure energy, taking the bread with them!</span>")
-		thrownby.dust(force = TRUE)
-		qdel(src)
-	if(isliving(hit_atom))
+	var/mob/thrower = thrownby.resolve()
+	var/force_delete = TRUE
+	if(isclosedturf(hit_atom))
+		var/turf/closed/T = hit_atom
+		T.ScrapeAway()
+		force_delete = FALSE
+	else if(isliving(hit_atom))
 		var/mob/living/L = hit_atom
 		L.dust(force = TRUE)
-		return
-	qdel(hit_atom)
+		force_delete = FALSE
+	var/static/stabilizer = pick(/datum/reagent/stable_plasma, /datum/reagent/stabilizing_agent, /datum/reagent/consumable/milk)
+	if(!(locate(stabilizer) in reagents.reagent_list))
+		if(thrownby)
+			to_chat(thrower, "<span class='userdanger'>You realize too late that \the [src] was quantum-entangled with your body, as your atoms dissociate into pure energy, taking the bread with them!</span>")
+			thrower.dust(force = TRUE)
+			qdel(src)
+		var/modif = bread_density / 3000
+		explosion(hit_atom.loc, 5*modif, 8*modif, 12*modif, ignorecap = TRUE)
+	if(force_delete)
+		qdel(hit_atom)
 
 // damage inheritance for mutant bread
 /obj/item/reagent_containers/food/snacks/store/bread/recycled/teleport_act()
@@ -320,17 +334,23 @@
 	w_class = WEIGHT_CLASS_HUGE
 	slice_path = /obj/machinery/power/supermatter_crystal // yes, you can use this to transport the supermatter crystal
 	slices_num = 1
-	var/power = 0
+	var/bread_power = 50 // power to add on top of supermatter stats
+	var/energy_power = 0 // power from SM energy
+	var/damage_power = 0 // power from SM damage
 
 /obj/item/reagent_containers/food/snacks/store/bread/supermatter/New(loc, ...)
+	..()
 	START_PROCESSING(SSobj, src)
-	. = ..()
 
 /obj/item/reagent_containers/food/snacks/store/bread/supermatter/Destroy()
 	explosion(get_turf(src),2,4,6)
 	STOP_PROCESSING(SSobj, src)
-	. = ..()
+	return ..()
 
 /obj/item/reagent_containers/food/snacks/store/bread/supermatter/process()
-	if(prob(20))
-		radiation_pulse(src, power/2, 3)
+	if(prob(20) && !(locate(/datum/reagent/stabilizing_agent) in reagents.reagent_list))
+		radiation_pulse(src, bread_power + energy_power / 50 + damage_power, 3)
+
+/obj/item/reagent_containers/food/snacks/store/bread/supermatter/initialize_slice(obj/machinery/power/supermatter_crystal/SM, reagents_per_slice)
+	SM.damage = damage_power
+	SM.power = energy_power

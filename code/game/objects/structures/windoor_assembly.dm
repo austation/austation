@@ -29,12 +29,18 @@
 	var/state = "01"	//How far the door assembly has progressed
 	CanAtmosPass = ATMOS_PASS_PROC
 
-/obj/structure/windoor_assembly/New(loc, set_dir)
-	..()
+/obj/structure/windoor_assembly/Initialize(loc, set_dir)
+	. = ..()
 	if(set_dir)
 		setDir(set_dir)
 	ini_dir = dir
 	air_update_turf(1)
+
+	var/static/list/loc_connections = list(
+		COMSIG_ATOM_EXIT = .proc/on_exit,
+	)
+
+	AddElement(/datum/element/connect_loc, loc_connections)
 
 /obj/structure/windoor_assembly/Destroy()
 	density = FALSE
@@ -50,11 +56,10 @@
 /obj/structure/windoor_assembly/update_icon()
 	icon_state = "[facing]_[secure ? "secure_" : ""]windoor_assembly[state]"
 
-/obj/structure/windoor_assembly/CanPass(atom/movable/mover, turf/target)
-	if(istype(mover) && (mover.pass_flags & PASSGLASS))
-		return 1
+/obj/structure/windoor_assembly/CanAllowThrough(atom/movable/mover, turf/target)
+	. = ..()
 	if(get_dir(loc, target) == dir) //Make sure looking at appropriate border
-		return !density
+		return
 	if(istype(mover, /obj/structure/window))
 		var/obj/structure/window/W = mover
 		if(!valid_window_location(loc, W.ini_dir))
@@ -65,7 +70,6 @@
 			return FALSE
 	else if(istype(mover, /obj/machinery/door/window) && !valid_window_location(loc, mover.dir))
 		return FALSE
-	return 1
 
 /obj/structure/windoor_assembly/CanAtmosPass(turf/T)
 	if(get_dir(loc, T) == dir)
@@ -73,14 +77,26 @@
 	else
 		return 1
 
-/obj/structure/windoor_assembly/CheckExit(atom/movable/mover as mob|obj, turf/target)
-	if(istype(mover) && (mover.pass_flags & PASSGLASS))
-		return 1
-	if(get_dir(loc, target) == dir)
-		return !density
-	else
-		return 1
+/obj/structure/windoor_assembly/proc/on_exit(datum/source, atom/movable/leaving, direction)
+	SIGNAL_HANDLER
+	//austation begin -- uncomment if some poor sud actually went ahead and fix this, looking at you, kube
 
+	if(leaving.movement_type & PHASING)
+		return
+
+	if(leaving == src)
+		return // Let's not block ourselves.
+
+	if (leaving.pass_flags & pass_flags_self)
+		return
+
+	//if(istype(leaving) && (leaving.pass_flags & PASSGLASS))
+		//return
+	//austation end
+
+	if (direction == dir && density)
+		leaving.Bump(src)
+		return COMPONENT_ATOM_BLOCK_EXIT
 
 /obj/structure/windoor_assembly/attackby(obj/item/W, mob/user, params)
 	//I really should have spread this out across more states but thin little windoors are hard to sprite.
@@ -218,7 +234,7 @@
 				else
 					W.forceMove(drop_location())
 
-			//Adding an electroadaptive pseudocircuit for access. Step 6 complete.		
+			//Adding an electroadaptive pseudocircuit for access. Step 6 complete.
 			else if(istype(W, /obj/item/electroadaptive_pseudocircuit))
 				var/obj/item/electroadaptive_pseudocircuit/EP = W
 				if(EP.adapt_circuit(user, 25))
@@ -321,7 +337,7 @@
 						else
 							windoor.req_access = electronics.accesses
 						windoor.electronics = electronics
-						electronics.loc = windoor
+						electronics.forceMove(windoor)
 						if(created_name)
 							windoor.name = created_name
 						qdel(src)
@@ -361,7 +377,7 @@
 	set name = "Flip Windoor Assembly"
 	set category = "Object"
 	set src in oview(1)
-	if(!usr.is_conscious() || usr.restrained())
+	if(usr.stat || usr.restrained())
 		return
 
 	if(isliving(usr))
