@@ -16714,6 +16714,10 @@
 /area/crew_quarters/heads/hop)
 "bwm" = (
 /obj/structure/filingcabinet/chestdrawer/wheeled,
+/obj/item/clothing/accessory/pocketprotector,
+/obj/item/storage/crayons,
+/obj/item/pen/fourcolor,
+/obj/item/pen/fountain,
 /turf/open/floor/wood,
 /area/crew_quarters/heads/hop)
 "bwn" = (
