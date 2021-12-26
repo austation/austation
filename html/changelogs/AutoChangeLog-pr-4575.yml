@@ -1,0 +1,5 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - balance: "cat surgeon is a bit scary again."
+  - bugfix: "cat butcher no longer loses aggro as easily"
