@@ -1,0 +1,4 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - tweak: "ERTs now require minimum 50 living hours to participate in them."
