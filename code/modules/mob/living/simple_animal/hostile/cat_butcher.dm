@@ -39,7 +39,7 @@
 	move_resist = MOVE_FORCE_VERY_STRONG
 	pull_force = MOVE_FORCE_VERY_STRONG
 	lose_patience_timeout = 5 SECONDS // austation -- revert zesko's sperg changes cat lover changes
-	rapid_melee = 2
+//	rapid_melee = 2
 	var/list/victims = list()
 
 //heal himself when not in combat
