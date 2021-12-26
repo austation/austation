@@ -1,4 +1,0 @@
-author: "AustationBot"
-delete-after: True
-changes: 
-  - bugfix: "Disposals will no longer randomly delete their contents when destroyed in a rare case."

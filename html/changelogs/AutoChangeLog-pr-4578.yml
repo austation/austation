@@ -1,4 +1,0 @@
-author: "AustationBot"
-delete-after: True
-changes: 
-  - balance: "pneumatic cannons now fire one item at a time. They still hold multiple items, but their fire rate is also now limited"
