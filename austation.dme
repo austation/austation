@@ -297,7 +297,6 @@
 #include "austation\code\modules\surgery\advanced\bioware\cortex_folding.dm"
 #include "austation\code\modules\surgery\advanced\bioware\cortex_imprint.dm"
 #include "austation\code\modules\surgery\organs\eyes.dm"
-#include "austation\code\modules\tgui\tgui_input_list.dm"
 #include "austation\code\modules\uplink\uplink_items.dm"
 #include "austation\code\modules\vehicles\cars\thanoscar.dm"
 #include "austation\code\modules\vending\_vending.dm"

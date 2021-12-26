@@ -112,10 +112,7 @@
 	button_icon_state = "drone_vision"
 
 /datum/action/innate/change_screen/Activate()
-	//austation begin -- tgui list
-	//var/screen_choice = input(usr, "Which screen do you want to use?", "Screen Change") as null | anything in GLOB.ipc_screens_list
-	var/screen_choice = tgui_input_list(usr, "Which screen do you want to use?", "Screen Change", GLOB.ipc_screens_list)
-	//austation end
+	var/screen_choice = input(usr, "Which screen do you want to use?", "Screen Change") as null | anything in GLOB.ipc_screens_list
 	var/color_choice = input(usr, "Which color do you want your screen to be?", "Color Change") as null | color
 	if(!screen_choice)
 		return
