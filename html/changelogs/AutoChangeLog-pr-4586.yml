@@ -1,4 +1,0 @@
-author: "AustationBot"
-delete-after: True
-changes: 
-  - bugfix: "deep fried foods only drop contents when fully eaten"
