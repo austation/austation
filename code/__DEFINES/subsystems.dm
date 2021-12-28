@@ -20,7 +20,11 @@
   *
   * make sure you add an update to the schema_version stable in the db changelog
   */
+<<<<<<< HEAD
 #define DB_MINOR_VERSION 10 // austation -- updating database version due to downstream changes
+=======
+#define DB_MINOR_VERSION 10
+>>>>>>> 1e6f1f1b77... Adds the `server_name` column to the feedback table (#6058)
 
 
 //! ## Timing subsystem
