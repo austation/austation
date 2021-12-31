@@ -410,10 +410,8 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		var/area/A = V
 		if(!(A.area_flags & HIDDEN_AREA))
 			filtered += A
-	//austation begin -- tgui lists
-	//var/area/thearea  = input("Area to jump to", "BOOYEA") as null|anything in filtered
-	var/area/thearea = tgui_input_list(usr, "Area to jump to", "BOOYEA", filtered)
-	//austation end
+	var/area/thearea  = input("Area to jump to", "BOOYEA") as null|anything in filtered
+
 	if(!thearea)
 		return
 
@@ -486,10 +484,8 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		var/target = null	   //Chosen target.
 
 		dest += getpois(mobs_only=1) //Fill list, prompt user with list
-		//austation begin -- tgui lists
-		//target = input("Please, select a player!", "Jump to Mob", null, null) as null|anything in dest
-		target = tgui_input_list(usr, "Please, select a player!", "Jump to Mob", dest)
-		//austation end
+		target = input("Please, select a player!", "Jump to Mob", null, null) as null|anything in dest
+
 		if (!target)//Make sure we actually have a target
 			return
 		else
