@@ -57,6 +57,8 @@ SUBSYSTEM_DEF(air)
 	// Whether equalization should be enabled at all.
 	//austation -- set to TRUE from FALSE
 	var/equalize_enabled = TRUE
+	//austation -- placeholder, does nothing
+	var/planet_equalize_enabled = TRUE
 	// Whether turf-to-turf heat exchanging should be enabled.
 	var/heat_enabled = FALSE
 	// Max number of times process_turfs will share in a tick.
