@@ -1,3 +1,9 @@
+/turf/open/consider_firelocks(turf/T2)
+	for(var/obj/machinery/door/firedoor/FD in T2)
+		FD.emergency_pressure_stop()
+	for(var/obj/machinery/door/firedoor/FD in src)
+		FD.emergency_pressure_stop()
+
 /turf/open/high_pressure_movements()
 	var/atom/movable/M
 	var/multiplier = 1

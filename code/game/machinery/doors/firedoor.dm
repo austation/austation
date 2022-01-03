@@ -4,7 +4,7 @@
 #define CONSTRUCTION_GUTTED 3 //Wires are removed, circuit ready to remove
 #define CONSTRUCTION_NOCIRCUIT 4 //Circuit board removed, can safely weld apart
 
-#define RECLOSE_DELAY 5 SECONDS // How long until a firelock tries to shut itself if it's blocking a vacuum.
+#define RECLOSE_DELAY 1 SECONDS // How long until a firelock tries to shut itself if it's blocking a vacuum. //austation -- changed to 1 seconds from 5
 #define FIRE_ALARM 2
 /obj/machinery/door/firedoor
 	name = "firelock"
