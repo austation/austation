@@ -1,0 +1,4 @@
+author: "DatBoiTim"
+delete-after: True
+changes: 
+  - bugfix: "Spetsnaz Pyro Backpack Sprite now Referenced Correctly"
