@@ -18,6 +18,7 @@
 #include "austation\code\__DEFINES\diseases.dm"
 #include "austation\code\__DEFINES\lavaland.dm"
 #include "austation\code\__DEFINES\maths.dm"
+#include "austation\code\__DEFINES\metacoin.dm"
 #include "austation\code\__DEFINES\misc.dm"
 #include "austation\code\__DEFINES\mobs.dm"
 #include "austation\code\__DEFINES\movespeed_modification.dm"
@@ -25,6 +26,7 @@
 #include "austation\code\__DEFINES\sound.dm"
 #include "austation\code\__DEFINES\traits.dm"
 #include "austation\code\__DEFINES\preferences.dm"
+#include "austation\code\__DEFINES\dcs\signals.dm"
 // END_DEFINE_INCLUDE
 
 // BEGIN_BEESTATION_INCLUDE
@@ -50,6 +52,7 @@
 #include "austation\code\datums\components\spikes.dm"
 #include "austation\code\datums\components\crafting\crafting.dm"
 #include "austation\code\datums\components\crafting\recipes.dm"
+#include "austation\code\datums\components\storage\storage.dm"
 #include "austation\code\datums\diseases\advance\symptoms\beesymptom.dm"
 #include "austation\code\datums\diseases\advance\symptoms\deafness.dm"
 #include "austation\code\datums\diseases\advance\symptoms\fever.dm"
@@ -128,6 +131,8 @@
 #include "austation\code\game\objects\structures\mirror.dm"
 #include "austation\code\game\objects\structures\party_balloons.dm"
 #include "austation\code\game\objects\structures\tables_racks.dm"
+#include "austation\code\game\objects\structures\toilet_bong.dm"
+#include "austation\code\game\objects\structures\watercloset.dm"
 #include "austation\code\game\objects\structures\window.dm"
 #include "austation\code\game\objects\structures\closets\secure.dm"
 #include "austation\code\game\turfs\closed\_closed.dm"
@@ -203,6 +208,7 @@
 #include "austation\code\modules\jobs\job_types\medical_doctor.dm"
 #include "austation\code\modules\mapping\random_rooms.dm"
 #include "austation\code\modules\mapping\writer.dm"
+#include "austation\code\modules\metacoin\metacoin.dm"
 #include "austation\code\modules\mining\machine_bluespaceminer.dm"
 #include "austation\code\modules\mining\machine_vending.dm"
 #include "austation\code\modules\mining\minebot.dm"
@@ -290,7 +296,6 @@
 #include "austation\code\modules\surgery\advanced\bioware\cortex_folding.dm"
 #include "austation\code\modules\surgery\advanced\bioware\cortex_imprint.dm"
 #include "austation\code\modules\surgery\organs\eyes.dm"
-#include "austation\code\modules\tgui\tgui_input_list.dm"
 #include "austation\code\modules\uplink\uplink_items.dm"
 #include "austation\code\modules\vehicles\cars\thanoscar.dm"
 #include "austation\code\modules\vending\_vending.dm"

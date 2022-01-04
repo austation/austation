@@ -243,28 +243,27 @@ Turf and target are separate in case you want to teleport some distance from a t
 /// Returns a list of unslaved cyborgs
 /proc/active_free_borgs()
 	. = list()
-	for(var/mob/living/silicon/robot/R in GLOB.alive_mob_list)
-		if(R.connected_ai || R.shell)
+	for(var/mob/living/silicon/robot/borg in GLOB.silicon_mobs)
+		if(borg.connected_ai || borg.shell)
 			continue
-		if(R.stat == DEAD)
+		if(borg.stat == DEAD)
 			continue
-		if(R.emagged || R.scrambledcodes)
+		if(borg.emagged || borg.scrambledcodes)
 			continue
-		. += R
+		. += borg
 
 /// Returns a list of AI's
-/proc/active_ais(check_mind=0)
+/proc/active_ais(check_mind=FALSE)
 	. = list()
-	for(var/mob/living/silicon/ai/A in GLOB.alive_mob_list)
-		if(A.stat == DEAD)
+	for(var/mob/living/silicon/ai/ai as anything in GLOB.ai_list)
+		if(ai.stat == DEAD)
 			continue
-		if(A.control_disabled)
+		if(ai.control_disabled)
 			continue
 		if(check_mind)
-			if(!A.mind)
+			if(!ai.mind)
 				continue
-		. += A
-	return .
+		. += ai
 
 /// Find an active ai with the least borgs. VERBOSE PROCNAME HUH!
 /proc/select_active_ai_with_fewest_borgs()
@@ -1174,10 +1173,7 @@ eg2: `center_image(I, 96,96)`
 	if(matches.len==1)
 		chosen = matches[1]
 	else
-		//austation begin -- tgui lists
-		//chosen = input("Select a type", "Pick Type", matches[1]) as null|anything in sortList(matches)
-		chosen = tgui_input_list(usr, "Select a type", "Pick Type", sortList(matches))
-		//austation end
+		chosen = input("Select a type", "Pick Type", matches[1]) as null|anything in sortList(matches)
 		if(!chosen)
 			return
 	chosen = matches[chosen]
