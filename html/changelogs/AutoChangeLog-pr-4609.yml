@@ -1,0 +1,4 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - server: "The SQL server name will now be reported alongside SSBlackbox data."
