@@ -9,7 +9,7 @@ INSERT INTO `SS13_schema_revision` (`major`, `minor`) VALUES (5, 10);
 In any query remember to add a prefix to the table names if you use one.
 
 -----------------------------------------------------
-Version 5.10, 28 December 2020 by Crossedfall
+Version 5.11, 28 December 2020 by Crossedfall
 Added the server_name column to the feedback table
 
 ALTER TABLE `ss13_feedback`
