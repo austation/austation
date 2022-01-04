@@ -1,0 +1,4 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - admin: "Hypnoflash victims now show up on the Combo HUD"
