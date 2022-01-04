@@ -93,6 +93,9 @@
 
 /datum/gas_reaction/condensation/react(datum/gas_mixture/air, datum/holder)
 	. = NO_REACTION
+	//this is god awful
+	if(!SSticker.initialized)
+		return
 	var/turf/open/location = holder
 	if(!istype(location))
 		return

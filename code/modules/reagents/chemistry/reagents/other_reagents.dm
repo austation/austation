@@ -79,7 +79,6 @@
 			. += D
 
 /datum/reagent/blood/reaction_turf(turf/T, reac_volume)//splash the blood all over the place
-	..() //austation -- call parent please
 	if(!istype(T))
 		return
 	if(reac_volume < 3)
@@ -186,7 +185,6 @@
  */
 
 /datum/reagent/water/reaction_turf(turf/open/T, reac_volume)
-	..() //austation -- call parent please
 	if(!istype(T))
 		return
 	var/CT = cooling_temperature
@@ -213,7 +211,6 @@
  */
 
 /datum/reagent/water/reaction_obj(obj/O, reac_volume)
-	..() //austation -- call parent please
 	O.extinguish()
 	O.acid_level = 0
 	// Monkey cube
@@ -374,7 +371,6 @@
 	var/lube_kind = TURF_WET_LUBE ///What kind of slipperiness gets added to turfs.
 
 /datum/reagent/lube/reaction_turf(turf/open/T, reac_volume)
-	..() //austation -- call parent please
 	if (!istype(T))
 		return
 	if(reac_volume >= 1)
@@ -807,7 +803,6 @@
 	random_unrestricted = FALSE
 
 /datum/reagent/copper/reaction_obj(obj/O, reac_volume)
-	..() //austation -- call parent please
 	if(istype(O, /obj/item/stack/sheet/iron))
 		var/obj/item/stack/sheet/iron/M = O
 		reac_volume = min(reac_volume, M.amount)
@@ -886,7 +881,6 @@
 	random_unrestricted = FALSE
 
 /datum/reagent/carbon/reaction_turf(turf/T, reac_volume)
-	..() //austation -- call parent please
 	if(!isspaceturf(T))
 		var/obj/effect/decal/cleanable/dirt/D = locate() in T.contents
 		if(!D)
@@ -1025,7 +1019,6 @@
 	..()
 
 /datum/reagent/uranium/reaction_turf(turf/T, reac_volume)
-	..() //austation -- call parent please
 	if(reac_volume >= 3)
 		if(!isspaceturf(T))
 			var/obj/effect/decal/cleanable/greenglow/GG = locate() in T.contents
@@ -1121,7 +1114,6 @@
 	return TRUE
 
 /datum/reagent/space_cleaner/reaction_obj(obj/O, reac_volume)
-	..() //austation -- call parent please
 	if(istype(O, /obj/effect/decal/cleanable))
 		qdel(O)
 	else
@@ -1130,7 +1122,6 @@
 			SEND_SIGNAL(O, COMSIG_COMPONENT_CLEAN_ACT, CLEAN_STRENGTH_BLOOD)
 
 /datum/reagent/space_cleaner/reaction_turf(turf/T, reac_volume)
-	..() //austation -- call parent please
 	if(reac_volume >= 1)
 		T.remove_atom_colour(WASHABLE_COLOUR_PRIORITY)
 		SEND_SIGNAL(T, COMSIG_COMPONENT_CLEAN_ACT, CLEAN_STRENGTH_BLOOD)
@@ -1751,12 +1742,10 @@
 	random_unrestricted = FALSE
 
 /datum/reagent/drying_agent/reaction_turf(turf/open/T, reac_volume)
-	..() //austation -- call parent please
 	if(istype(T))
 		T.MakeDry(ALL, TRUE, reac_volume * 5 SECONDS)		//50 deciseconds per unit
 
 /datum/reagent/drying_agent/reaction_obj(obj/O, reac_volume)
-	..() //austation -- call parent please
 	if(O.type == /obj/item/clothing/shoes/galoshes)
 		var/t_loc = get_turf(O)
 		qdel(O)
@@ -1920,7 +1909,6 @@
 	random_unrestricted = FALSE
 
 /datum/reagent/glitter/reaction_turf(turf/T, reac_volume)
-	..() //austation -- call parent please
 	if(!istype(T))
 		return
 	new glitter_type(T)
