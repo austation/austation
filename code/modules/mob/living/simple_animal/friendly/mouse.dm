@@ -41,12 +41,8 @@
 	icon_dead = "mouse_[body_color]_dead"
 	held_state = "mouse_[body_color]"
 	if(prob(75))
-<<<<<<< HEAD
-		var/datum/disease/advance/R = new /datum/disease/advance/random(rand(1, 6), rand(5, 9), rand(3,4), infected = src)
-		R.spread_flags |= DISEASE_SPREAD_CHECK_STRONG_STOMACH // austation -- make catgirls and lizards immune to diseases from rats
-=======
 		var/datum/disease/advance/R = new /datum/disease/advance/random(rand(1, 6), 9, 1, infected = src)
->>>>>>> 135d14ae8a... a (#5976)
+		R.spread_flags |= DISEASE_SPREAD_CHECK_STRONG_STOMACH // austation -- make catgirls and lizards immune to diseases from rats
 		ratdisease += R
 	var/static/list/loc_connections = list(
 		COMSIG_ATOM_ENTERED = .proc/on_entered,
