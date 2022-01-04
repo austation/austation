@@ -424,7 +424,7 @@
 		return REACTING
 
 // austation begin -- fusion
-/* xenomedes fusion, currently disabled
+
 /proc/fusion_ball(datum/holder, reaction_energy, standard_energy)
 	var/turf/open/location
 	if (istype(holder,/datum/pipeline)) //Find the tile the reaction is occuring on, or a random part of the network if it's a pipenet.
@@ -436,27 +436,7 @@
 		if(prob(PERCENT(((PARTICLE_CHANCE_CONSTANT)/(reaction_energy-PARTICLE_CHANCE_CONSTANT)) + 1))) //Asymptopically approaches 100% as the energy of the reaction goes up.
 			location.fire_nuclear_particle(customize = TRUE, custompower = standard_energy)
 		radiation_pulse(location, max(2000 * 3 ** (log(10,standard_energy) - FUSION_RAD_MIDPOINT), 0))
-*/
 
-#define FUSION_RAD_MAX						2000
-#define FUSION_RAD_COEFFICIENT				(-1000)
-
-/proc/fusion_ball(datum/holder, reaction_energy, instability)
-	var/turf/open/location
-	if (istype(holder,/datum/pipeline)) //Find the tile the reaction is occuring on, or a random part of the network if it's a pipenet.
-		var/datum/pipeline/fusion_pipenet = holder
-		location = get_turf(pick(fusion_pipenet.members))
-	else
-		location = get_turf(holder)
-	if(location)
-		var/particle_chance = ((PARTICLE_CHANCE_CONSTANT)/(reaction_energy-PARTICLE_CHANCE_CONSTANT)) + 1//Asymptopically approaches 100% as the energy of the reaction goes up.
-		if(prob(PERCENT(particle_chance)))
-			location.fire_nuclear_particle()
-		var/rad_power = max((FUSION_RAD_COEFFICIENT/instability) + FUSION_RAD_MAX,0)
-		radiation_pulse(location,rad_power)
-
-#undef FUSION_RAD_MAX
-#undef FUSION_RAD_COEFFICIENT
 // austation end
 
 /datum/gas_reaction/nitrylformation //The formation of nitryl. Endothermic. Requires N2O as a catalyst.
