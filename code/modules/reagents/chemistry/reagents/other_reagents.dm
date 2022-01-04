@@ -79,6 +79,7 @@
 			. += D
 
 /datum/reagent/blood/reaction_turf(turf/T, reac_volume)//splash the blood all over the place
+	..() //austation -- call parent please
 	if(!istype(T))
 		return
 	if(reac_volume < 3)
@@ -185,6 +186,7 @@
  */
 
 /datum/reagent/water/reaction_turf(turf/open/T, reac_volume)
+	..() //austation -- call parent please
 	if(!istype(T))
 		return
 	var/CT = cooling_temperature
@@ -211,6 +213,7 @@
  */
 
 /datum/reagent/water/reaction_obj(obj/O, reac_volume)
+	..() //austation -- call parent please
 	O.extinguish()
 	O.acid_level = 0
 	// Monkey cube
@@ -371,6 +374,7 @@
 	var/lube_kind = TURF_WET_LUBE ///What kind of slipperiness gets added to turfs.
 
 /datum/reagent/lube/reaction_turf(turf/open/T, reac_volume)
+	..() //austation -- call parent please
 	if (!istype(T))
 		return
 	if(reac_volume >= 1)
@@ -778,6 +782,8 @@
 	taste_mult = 0 // oderless and tasteless
 	random_unrestricted = FALSE
 
+//austation begin -- chem gases
+/*
 /datum/reagent/oxygen/reaction_obj(obj/O, reac_volume)
 	if((!O) || (!reac_volume))
 		return 0
@@ -789,6 +795,8 @@
 		var/temp = holder ? holder.chem_temp : T20C
 		T.atmos_spawn_air("o2=[reac_volume/2];TEMP=[temp]")
 	return
+*/
+//austation end
 
 /datum/reagent/copper
 	name = "Copper"
@@ -799,6 +807,7 @@
 	random_unrestricted = FALSE
 
 /datum/reagent/copper/reaction_obj(obj/O, reac_volume)
+	..() //austation -- call parent please
 	if(istype(O, /obj/item/stack/sheet/iron))
 		var/obj/item/stack/sheet/iron/M = O
 		reac_volume = min(reac_volume, M.amount)
@@ -813,6 +822,8 @@
 	taste_mult = 0
 	random_unrestricted = FALSE
 
+//austation begin -- chem gases
+/*
 /datum/reagent/nitrogen/reaction_obj(obj/O, reac_volume)
 	if((!O) || (!reac_volume))
 		return 0
@@ -824,6 +835,8 @@
 		var/temp = holder ? holder.chem_temp : T20C
 		T.atmos_spawn_air("n2=[reac_volume/2];TEMP=[temp]")
 	return
+*/
+//austation end
 
 /datum/reagent/hydrogen
 	name = "Hydrogen"
@@ -873,6 +886,7 @@
 	random_unrestricted = FALSE
 
 /datum/reagent/carbon/reaction_turf(turf/T, reac_volume)
+	..() //austation -- call parent please
 	if(!isspaceturf(T))
 		var/obj/effect/decal/cleanable/dirt/D = locate() in T.contents
 		if(!D)
@@ -1011,6 +1025,7 @@
 	..()
 
 /datum/reagent/uranium/reaction_turf(turf/T, reac_volume)
+	..() //austation -- call parent please
 	if(reac_volume >= 3)
 		if(!isspaceturf(T))
 			var/obj/effect/decal/cleanable/greenglow/GG = locate() in T.contents
@@ -1106,6 +1121,7 @@
 	return TRUE
 
 /datum/reagent/space_cleaner/reaction_obj(obj/O, reac_volume)
+	..() //austation -- call parent please
 	if(istype(O, /obj/effect/decal/cleanable))
 		qdel(O)
 	else
@@ -1114,6 +1130,7 @@
 			SEND_SIGNAL(O, COMSIG_COMPONENT_CLEAN_ACT, CLEAN_STRENGTH_BLOOD)
 
 /datum/reagent/space_cleaner/reaction_turf(turf/T, reac_volume)
+	..() //austation -- call parent please
 	if(reac_volume >= 1)
 		T.remove_atom_colour(WASHABLE_COLOUR_PRIORITY)
 		SEND_SIGNAL(T, COMSIG_COMPONENT_CLEAN_ACT, CLEAN_STRENGTH_BLOOD)
@@ -1297,6 +1314,8 @@
 	taste_description = "something unknowable"
 	random_unrestricted = FALSE
 
+//austation begin -- chem gases
+/*
 /datum/reagent/carbondioxide/reaction_obj(obj/O, reac_volume)
 	if((!O) || (!reac_volume))
 		return 0
@@ -1308,7 +1327,8 @@
 		var/temp = holder ? holder.chem_temp : T20C
 		T.atmos_spawn_air("co2=[reac_volume/5];TEMP=[temp]")
 	return
-
+*/
+//austation end
 /datum/reagent/nitrous_oxide
 	name = "Nitrous Oxide"
 	description = "A potent oxidizer used as fuel in rockets and as an anaesthetic during surgery."
@@ -1317,6 +1337,8 @@
 	color = "#808080"
 	taste_description = "sweetness"
 
+//austation begin -- chem gases
+/*
 /datum/reagent/nitrous_oxide/reaction_obj(obj/O, reac_volume)
 	if((!O) || (!reac_volume))
 		return 0
@@ -1327,6 +1349,8 @@
 	if(istype(T))
 		var/temp = holder ? holder.chem_temp : T20C
 		T.atmos_spawn_air("n2o=[reac_volume/5];TEMP=[temp]")
+*/
+//austation end
 
 /datum/reagent/nitrous_oxide/reaction_mob(mob/living/M, method=TOUCH, reac_volume)
 	if(method == VAPOR)
@@ -1727,10 +1751,12 @@
 	random_unrestricted = FALSE
 
 /datum/reagent/drying_agent/reaction_turf(turf/open/T, reac_volume)
+	..() //austation -- call parent please
 	if(istype(T))
 		T.MakeDry(ALL, TRUE, reac_volume * 5 SECONDS)		//50 deciseconds per unit
 
 /datum/reagent/drying_agent/reaction_obj(obj/O, reac_volume)
+	..() //austation -- call parent please
 	if(O.type == /obj/item/clothing/shoes/galoshes)
 		var/t_loc = get_turf(O)
 		qdel(O)
@@ -1894,6 +1920,7 @@
 	random_unrestricted = FALSE
 
 /datum/reagent/glitter/reaction_turf(turf/T, reac_volume)
+	..() //austation -- call parent please
 	if(!istype(T))
 		return
 	new glitter_type(T)

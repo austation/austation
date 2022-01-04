@@ -179,12 +179,15 @@
 		var/alert_type = null
 		if(ispath(breathing_class))
 			breathing_class = breathing_classes[breathing_class]
-			var/list/gases = breathing_class.gases
+			//var/list/gases = breathing_class.gases //austation -- chem gases
 			alert_category = breathing_class.high_alert_category
 			alert_type = breathing_class.high_alert_datum
 			danger_reagent = breathing_class.danger_reagent
-			for(var/gas in gases)
-				found_pp += PP(breath, gas)
+			//ausation begin -- chem gases
+			found_pp = breathing_class.get_effective_pp(breath)
+			//for(var/gas in gases)
+			//	found_pp += PP(breath, gas)
+			//ausation end
 		else
 			danger_reagent = danger_reagents[entry]
 			if(entry in breath_alert_info)
@@ -206,7 +209,10 @@
 	for(var/gas in breath.get_gases())
 		if(gas in breath_reagents)
 			var/datum/reagent/R = breath_reagents[gas]
-			H.reagents.add_reagent(R, PP(breath,gas))
+			//austation begin -- chem gases
+			//H.reagents.add_reagent(R, PP(breath,gas))
+			H.reagents.add_reagent(R, breath.get_moles(gas) * initial(R.molarity))
+			//austation end
 			mole_adjustments[gas] = (gas in mole_adjustments) ? mole_adjustments[gas] - breath.get_moles(gas) : -breath.get_moles(gas)
 
 	for(var/gas in mole_adjustments)
