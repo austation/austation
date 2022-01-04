@@ -98,7 +98,6 @@
 		return
 	var/temperature = air.return_temperature()
 	var/datum/reagents/reagents_holder = new
-	reagents_holder.clear_reagents()
 	reagents_holder.chem_temp = temperature
 	var/G = condensing_reagent.get_gas()
 	var/amt = air.get_moles(G)
