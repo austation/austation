@@ -20,6 +20,7 @@ CREATE TABLE IF NOT EXISTS `admin_log` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `datetime` datetime NOT NULL,
   `round_id` int(11) NOT NULL,
+  `server_name` varchar(32) DEFAULT NULL,
   `adminckey` varchar(32) NOT NULL,
   `adminip` int(10) unsigned NOT NULL,
   `operation` enum('add admin','remove admin','change admin rank','add rank','remove rank','change rank flags') NOT NULL,
