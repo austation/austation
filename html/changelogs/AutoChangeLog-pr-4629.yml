@@ -1,5 +1,0 @@
-author: "AustationBot"
-delete-after: True
-changes: 
-  - bugfix: "Fixes void thrusters not working without a heater."
-  - bugfix: "Fixes thrusters with open panels having the wrong icon state."

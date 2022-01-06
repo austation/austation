@@ -1,4 +1,0 @@
-author: "AustationBot"
-delete-after: True
-changes: 
-  - code_imp: "Moved the auto-fire variable to the guns themselves rather than autofire.dm"
