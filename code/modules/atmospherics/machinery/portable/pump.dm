@@ -21,6 +21,7 @@
 /obj/machinery/portable_atmospherics/pump/Initialize()
 	. = ..()
 	pump = new(src, FALSE)
+	SSair.atmos_machinery -= pump //austation -- don't want it to process by itself
 	pump.on = TRUE
 	pump.stat = 0
 	SSair.add_to_rebuild_queue(pump)
