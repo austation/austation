@@ -1,4 +1,0 @@
-author: "AustationBot"
-delete-after: True
-changes: 
-  - admin: "The \"follow\" button in the arena controller has been re-added, minus the serious security problem."

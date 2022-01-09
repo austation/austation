@@ -1,4 +1,0 @@
-author: "AustationBot"
-delete-after: True
-changes: 
-  - tweak: "Minimum threat to cast Summon Events has been lowered from 100 to 85"
