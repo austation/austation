@@ -5,7 +5,7 @@
 	item_state = "durathread"
 	item_color = "durathread"
 	alternate_worn_icon = 'austation/icons/mob/uniform.dmi'
-	can_adjust = TRUE
+	can_adjust = FALSE
 	armor = list("melee" = 10, "bullet" = 5, "laser" = 10,"energy" = 10, "bomb" = 5, "bio" = 0, "rad" = 0, "fire" = 40, "acid" = 10, "stamina" = 30)
 
 /obj/item/clothing/under/misc/black_dress
