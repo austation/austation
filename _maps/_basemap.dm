@@ -12,12 +12,8 @@
 		#include "map_files\PubbyStation\PubbyStation.dmm"
 		#include "map_files\BoxStation\BoxStation.dmm"
 		#include "map_files\KiloStation\KiloStation.dmm"
-<<<<<<< HEAD
-		#include "map_files\Austation\Austation.dmm" //austation -- pool map
-=======
 		#include "map_files\flandstation\flandstation.dmm"
->>>>>>> 13dd5ac712... Flandstation (#5617)
-
+		#include "map_files\Austation\Austation.dmm" // austation -- downstream map
 		#ifdef CIBUILDING
 			#include "templates.dm"
 		#endif
