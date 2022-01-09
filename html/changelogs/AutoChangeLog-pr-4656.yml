@@ -1,0 +1,4 @@
+author: "Zams, Isy232"
+delete-after: True
+changes: 
+  - bugfix: "Explorer gun will not function as intended against simplemobs."
