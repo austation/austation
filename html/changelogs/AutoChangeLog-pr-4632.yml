@@ -1,0 +1,4 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - bugfix: "Pubbystation book inventory management console is now close enough to the scanner to upload books."
