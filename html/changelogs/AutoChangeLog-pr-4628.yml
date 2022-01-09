@@ -1,0 +1,5 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - bugfix: "Fixes adjustable uniform icon states being missing on some adjustable peices of clothing."
+  - code_imp: "Adds in a unit test for adjustable clothing errors."
