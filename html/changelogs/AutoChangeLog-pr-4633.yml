@@ -1,0 +1,5 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - code_imp: "Seperates light_range from light_intensity on welders. Sunglasses not protecting from welding tools is now an intentional feature."
+  - balance: "Clockwork welding tools cause less eye damage."
