@@ -1,0 +1,4 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - tweak: "TGUI will no longer passthrough inputs when on non-hotkey mode focused on the chatbox. This does not affect most players."
