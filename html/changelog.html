@@ -56,6 +56,93 @@
 		-->
 		<div class="commit sansserif">
 
+			<h2 class="date">09 January 2022</h2>
+			<h3 class="author">AustationBot updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="rscadd">Flandstation</li>
+				<li class="rscadd">Shuttles (Whiteship, arrival, cargo, emergency, exploration, ferry, labour, mining).</li>
+				<li class="rscadd">A new type of carpet, the Grimy_carpet.</li>
+				<li class="rscadd">New markings for the Atmos.</li>
+				<li class="rscadd">New marking for directions on the floor.</li>
+				<li class="rscadd">New (map dedicated) type of random room.</li>
+				<li class="code_imp">Modified the code related to the markings.dm to allocate the new markings for atmos.</li>
+				<li class="code_imp">Modified the code for fancy_floor.dm to allocate the new carpet type.</li>
+				<li class="code_imp">Modified the code for Laborshuttle.dm for the new Labor shuttle destinations.</li>
+				<li class="code_imp">Seperates light_range from light_intensity on welders. Sunglasses not protecting from welding tools is now an intentional feature.</li>
+				<li class="balance">Clockwork welding tools cause less eye damage.</li>
+				<li class="bugfix">Fixed a broken ss13 logo.</li>
+				<li class="bugfix">Fixed some terribly broken piping & cable placement.</li>
+				<li class="rscadd">Added a commemorative plaque thanking you all for playtesting my map, thank you.</li>
+				<li class="rscdel">Removed An unused (commented) decal from markings.dm</li>
+				<li class="bugfix">Pubbystation book inventory management console is now close enough to the scanner to upload books.</li>
+				<li class="refactor">Refactors silicon access, so that station cyborgs and AIs cannot use doors that don't belong to Nanotrasen. (Pirate doors, gateway doors, Centcom doors, Syndicate doors).</li>
+				<li class="rscadd">Added pineapple juice, creme de coconut, pina coladas and painkillers.</li>
+				<li class="bugfix">Fixes adjustable uniform icon states being missing on some adjustable peices of clothing.</li>
+				<li class="code_imp">Adds in a unit test for adjustable clothing errors.</li>
+				<li class="balance">the fire breath mutation no longer gets a heavy explosion radius when upgraded with power chromosomes</li>
+				<li class="balance">Removed blindness traps on ratvar ruins.</li>
+				<li class="balance">Xeno spawns on xeno ruins scaled by 1/3rd.</li>
+				<li class="rscadd">A new wiremod shell that functions as an assembly.</li>
+				<li class="tweak">adds another viro slot</li>
+				<li class="admin">Admins can now delete library books.</li>
+				<li class="rscadd">Adds a new chemical production ion law.</li>
+				<li class="rscadd">BeeCoins per achievement can be adjusted.</li>
+				<li class="balance">Harmbaton damage increase from 5 to 8. No more doing less damage than punches.</li>
+				<li class="admin">The "follow" button in the arena controller has been re-added, minus the serious security problem.</li>
+				<li class="tweak">Minimum threat to cast Summon Events has been lowered from 100 to 85</li>
+				<li class="tweak">TGUI will no longer passthrough inputs when on non-hotkey mode focused on the chatbox. This does not affect most players.</li>
+				<li class="bugfix">Fixed the Eminence's Manipulate Reality and Servant Warp spells</li>
+				<li class="bugfix">Fixed some broken pipes and cables all around.</li>
+				<li class="bugfix">Fixed some technical stuff.</li>
+				<li class="tweak">Changed some directional decals to make more sense.</li>
+				<li class="tweak">Tweaked some wrongly placed areas.</li>
+				<li class="tweak">Made the vault less secure, you'll need a pick still!</li>
+				<li class="tweak">changed the shape of some rooms to make more sense.</li>
+				<li class="rscadd">Added a new maintenance corridor splitting Engineering and Science.</li>
+				<li class="rscadd">Added more random maintenance rooms in the southern maintenance.</li>
+				<li class="rscadd">Added new areas to the Radiation shielded zones.</li>
+				<li class="rscadd">Added a Shielded radiation room in the asteroid perma.</li>
+				<li class="balance">Added maintenance areas to the small Science and Cargo maintenance pockets to shield people from radiations.</li>
+				<li class="imageadd">Remade the sprites for the iris kind of doors  (both maintenance variant and Centcomm variant).</li>
+			</ul>
+			<h3 class="author">DatBoiTIm updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="server">Revised PR Template</li>
+			</ul>
+			<h3 class="author">Ivniinvi, Tralezab, Melbert updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="rscadd">There's a new wizard event, RPG titles. Summon the star duke!</li>
+			</ul>
+			<h3 class="author">Phil Smith updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="balance">Detective's now start with rubber/bouncy rubber revolver bullets in their gun and shoulder holster</li>
+			</ul>
+			<h3 class="author">Zams, Isy232 updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="bugfix">Explorer gun will not function as intended against simplemobs.</li>
+			</ul>
+			<h3 class="author">lordScrubling, ArcaneMusic, RandomGamer123 updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="rscadd">cargo ordering app</li>
+				<li class="rscadd">heads start with a tablet with the app installed</li>
+				<li class="tweak">bz and co2 canister shipments require atmos access</li>
+			</ul>
+			<h3 class="author">mc_meiler, idea by oo7craigmc updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="rscadd">Added Meclizine, a medicine that prevents vomiting. It is obtainable by mixing 1 part Chlorine, 1 part Ammonia and 2 parts Carbon.</li>
+			</ul>
+
+			<h2 class="date">06 January 2022</h2>
+			<h3 class="author">AustationBot updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="code_imp">Moved the auto-fire variable to the guns themselves rather than autofire.dm</li>
+				<li class="bugfix">Cult and clockie spells now check for holy anti-magic sources.</li>
+				<li class="balance">The bible now needs to be held in hand to function as an anti-magic source (The bible also now protects against clockie and cult spells)</li>
+				<li class="bugfix">Fixes void thrusters not working without a heater.</li>
+				<li class="bugfix">Fixes thrusters with open panels having the wrong icon state.</li>
+				<li class="bugfix">Mobs that are unable to hold items will drop embedded items to the ground when removed, rather than have that item go to their hand.</li>
+			</ul>
+
 			<h2 class="date">04 January 2022</h2>
 			<h3 class="author">AustationBot updated:</h3>
 			<ul class="changes bgimages16">
@@ -618,50 +705,6 @@
 			<h3 class="author">AustationBot updated:</h3>
 			<ul class="changes bgimages16">
 				<li class="code_imp">protects global filename regex</li>
-			</ul>
-
-			<h2 class="date">06 November 2021</h2>
-			<h3 class="author">AustationBot updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="bugfix">fixed next map loading</li>
-			</ul>
-
-			<h2 class="date">05 November 2021</h2>
-			<h3 class="author">AustationBot updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="config">Brig timer presets and max durations can be modified in the config</li>
-				<li class="config">The economy flag hasn't done anything for over a year, and has been removed.</li>
-				<li class="bugfix">Backup objectives shouldn't disappear anymore</li>
-				<li class="code_imp">Cleaned up cryopod objective handling</li>
-				<li class="tweak">Cyborg mesons work similarly to human mesons by showing dark areas</li>
-				<li class="bugfix">Toxins will no longer bomb the MetaStation Exploration Shuttle at roundstart.</li>
-				<li class="bugfix">Spin and flip confusion now properly checks for intent.</li>
-				<li class="tweak">humans always deal normal punch damage to mobs, instead of having weird damage calcs depending on the mob subtype</li>
-				<li class="tweak">attacking borgs with a punch that deals over 10 damage damages them</li>
-				<li class="balance">bees now have 6 hp</li>
-				<li class="bugfix">pacifists can no longer attack aliens</li>
-				<li class="server">Revision information is once again burned into dd.log, SSFeedback's revision information has been hard disabled as a temporary fix.</li>
-				<li class="bugfix">The burn chamber vent on PubbyStation is no longer mapped into the wrong area and can be configured using the Supermatter Engine Air Alarm.</li>
-				<li class="code_imp">adds a dna check to human/move() to prevent 531168 runtimes</li>
-				<li class="rscadd">Banning panel suppression check is now silent</li>
-			</ul>
-			<h3 class="author">MrLostman updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="balance">removed RDX & TATP from strange seeds</li>
-				<li class="tweak">nitro is now an exothermic reaction that explodes at 385</li>
-			</ul>
-
-			<h2 class="date">04 November 2021</h2>
-			<h3 class="author">AustationBot updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="server">Patches multiple security vulnerabilities</li>
-			</ul>
-			<h3 class="author">tralezab, AnturK updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="rscadd">curators can now print paintings</li>
-				<li class="rscadd">persistent paintings</li>
-				<li class="rscadd">AIs can now pick paintings as their screens</li>
-				<li class="rscadd">tgui canvases</li>
 			</ul>
 		</div>
 
