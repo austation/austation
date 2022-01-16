@@ -1,5 +1,6 @@
 
 
+/*
 /datum/reagent/oxygen
 	gas = GAS_O2
 	boiling_point = 90.188
@@ -65,6 +66,7 @@
 /datum/reagent/bromine
 	gas = GAS_BROMINE
 	boiling_point = 332
+*/
 
 /datum/reagent/australium
 	name = "Australium"

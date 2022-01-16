@@ -2,6 +2,7 @@
 
 // make sure "aus" is set to true for any drinks that are added, or else modular icons will not work
 
+/*
 /datum/reagent/consumable/ethanol
 	boiling_point = 351.38
 
@@ -28,6 +29,7 @@
 			cached_gas_data.add_gas(G)
 		else // this codepath should probably not happen at all, since we never use get_gas() on anything with no boiling point
 			return null
+*/
 
 /datum/reagent/consumable/ethanol/jagermeister
 	name = "jägermeister"

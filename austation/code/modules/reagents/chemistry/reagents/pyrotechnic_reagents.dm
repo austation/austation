@@ -1,4 +1,4 @@
-
+/*
 /datum/reagent/clf3
 	/* no gaseous CLF3 until i can think of a good way to get it to burn that doesn't destroy matter in mysterious ways
 	boiling_point = 289.4
@@ -24,6 +24,7 @@
 
 /datum/reagent/firefighting_foam/define_gas()
 	return null
+*/
 
 /datum/reagent/rdx
 	name = "RDX"
