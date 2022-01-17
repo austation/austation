@@ -140,8 +140,9 @@ GLOBAL_PROTECT(admin_verbs_server)
 	/client/proc/adminchangemap,
 	/client/proc/panicbunker,
 	/client/proc/toggle_hub,
-	/client/proc/toggle_cdn
-	)
+	/client/proc/toggle_cdn,
+	/client/proc/toggle_active
+	) // austation -- add active mode toggle
 GLOBAL_LIST_INIT(admin_verbs_debug, world.AVerbsDebug())
 GLOBAL_PROTECT(admin_verbs_debug)
 /world/proc/AVerbsDebug()
@@ -816,7 +817,7 @@ GLOBAL_PROTECT(admin_verbs_hideable)
 	var/bookid = input(usr, "What Book ID would you like to remove:", "Literally Fahrenheit 451") as null|num
 	if(!bookid)
 		return
-	
+
 	var/datum/DBQuery/query_library_print = SSdbcore.NewQuery(
 		"SELECT * FROM [format_table_name("library")] WHERE id=:id AND isnull(deleted)",
 		list("id" = bookid)

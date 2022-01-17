@@ -142,6 +142,7 @@
 #include "austation\code\game\turfs\open\floor_glass.dm"
 #include "austation\code\game\turfs\open\lava.dm"
 #include "austation\code\game\turfs\open\space\space.dm"
+#include "austation\code\modules\admin\admin.dm"
 #include "austation\code\modules\admin\admin_verbs.dm"
 #include "austation\code\modules\admin\chat_commands.dm"
 #include "austation\code\modules\admin\topic.dm"

@@ -295,8 +295,15 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 		player_details.byond_version = full_version
 		GLOB.player_details[ckey] = player_details
 
-
 	. = ..()	//calls mob.Login()
+
+	if(server_inactive)
+		if(connecting_admin)
+			to_chat(src, "<span class='admin'>The server is currently inactive, but you have been allowed to connect as an admin.</span>")
+		else
+			src << browse(rustg_file_read("[global.config.directory]/scheduled_deny.html"), "window=inactive_popup")
+			qdel(src)
+			return 0
 
 	if (byond_version >= 512)
 		if (!byond_build || byond_build < 1386)
