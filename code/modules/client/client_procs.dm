@@ -295,6 +295,13 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 		player_details.byond_version = full_version
 		GLOB.player_details[ckey] = player_details
 
+	if(GLOB.inactive)
+		if(connecting_admin)
+			to_chat(src, "<span class='admin'>The server is currently inactive, but you have been allowed to connect as an admin.</span>")
+		else
+			src << browse(rustg_file_read("[global.config.directory]/scheduled_deny.html"), "window=inactive_popup")
+			qdel(src)
+			return 0
 
 	. = ..()	//calls mob.Login()
 
@@ -320,14 +327,6 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 		to_chat(src, "<span class='danger'>Please download an older version of byond. You can go to <a href=\"https://secure.byond.com/download/build\">BYOND's website</a> to download other versions.</span>")
 	if(SSinput.initialized)
 		set_macros()
-
-	if(GLOB.inactive)
-		if(connecting_admin)
-			to_chat(src, "<span class='admin'>The server is currently inactive, but you have been allowed to connect as an admin.</span>")
-		else
-			src << browse(rustg_file_read("[global.config.directory]/scheduled_deny.html"), "window=inactive_popup")
-			qdel(src)
-			return 0
 
 	// Initialize tgui panel
 	tgui_panel.initialize()
