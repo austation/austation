@@ -144,7 +144,12 @@ SUBSYSTEM_DEF(ticker)
 
 		GLOB.syndicate_code_response_regex = codeword_match
 
-	start_at = world.time + (CONFIG_GET(number/lobby_countdown) * 10)
+	// austation begin -- round start delayed when server inactive
+	if(!GLOB.inactive)
+		start_at = world.time + (CONFIG_GET(number/lobby_countdown) * 10)
+	else
+		start_at = -1
+	// austation end
 	if(CONFIG_GET(flag/randomize_shift_time))
 		gametime_offset = rand(0, 23) HOURS
 	else if(CONFIG_GET(flag/shift_time_realtime))

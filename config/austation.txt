@@ -17,3 +17,6 @@ ROUNDSTART_BLUESPACE_MINERS 0
 
 ## Enable the bluespace miner research node?
 #BSMINER_RESEARCHABLE
+
+## Determines whether the server should operate in scheduled mode, where the server only accepts non-admin connections when switched to online
+#SCHEDULED_MODE

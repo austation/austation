@@ -414,6 +414,14 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	generate_clickcatcher()
 	apply_clickcatcher()
 
+	if(GLOB.inactive)
+		if(connecting_admin)
+			to_chat(src, "<span class='admin'>The server is currently inactive, but you have been allowed to connect as an admin.</span>")
+		else
+			src << browse("[global.config.directory]/scheduled_deny.html")
+			qdel(src)
+			return 0
+
 	if(prefs.lastchangelog != GLOB.changelog_hash) //bolds the changelog button on the interface so we know there are updates.
 		to_chat(src, "<span class='info'>You have unread updates in the changelog.</span>")
 		if(CONFIG_GET(flag/aggressive_changelog))
