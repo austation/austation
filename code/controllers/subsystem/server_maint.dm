@@ -11,12 +11,12 @@ SUBSYSTEM_DEF(server_maint)
 
 /datum/controller/subsystem/server_maint/PreInit()
 	world.hub_password = "" //quickly! before the hubbies see us.
+	if (CONFIG_GET(flag/scheduled_mode) && fexists("./data/inactive"))
+		GLOB.inactive = TRUE
 
 /datum/controller/subsystem/server_maint/Initialize(timeofday)
 	if (CONFIG_GET(flag/hub))
 		world.update_hub_visibility(TRUE)
-	if (CONFIG_GET(flag/scheduled_mode) && fexists("./data/inactive"))
-		GLOB.inactive = TRUE
 	return ..()
 
 /datum/controller/subsystem/server_maint/fire(resumed = FALSE)
