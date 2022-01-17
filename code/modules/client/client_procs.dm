@@ -418,7 +418,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 		if(connecting_admin)
 			to_chat(src, "<span class='admin'>The server is currently inactive, but you have been allowed to connect as an admin.</span>")
 		else
-			src << browse(rustg_file_read([global.config.directory]/scheduled_deny.html), "window=inactive_popup")
+			src << browse(rustg_file_read("[global.config.directory]/scheduled_deny.html"), "window=inactive_popup")
 			qdel(src)
 			return 0
 
