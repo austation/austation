@@ -297,7 +297,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 
 	. = ..()	//calls mob.Login()
 
-	if(GLOB.inactive)
+	if(server_inactive)
 		if(connecting_admin)
 			to_chat(src, "<span class='admin'>The server is currently inactive, but you have been allowed to connect as an admin.</span>")
 		else

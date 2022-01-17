@@ -4,8 +4,8 @@
 	set desc = "Toggles the server between active and inactive mode."
 	if(!CONFIG_GET(flag/scheduled_mode))
 		to_chat(usr, "<span class='admin'>Scheduled uptime is disabled in the server config!</span>")
-	if(GLOB.inactive)
-		GLOB.inactive = FALSE
+	if(server_inactive)
+		server_inactive = FALSE
 		fdel("./data/inactive")
 		to_chat(world, "<span class='boldnotice'>Server has been switched into active mode. Players can now join.")
 	else
