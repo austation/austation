@@ -418,7 +418,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 		if(connecting_admin)
 			to_chat(src, "<span class='admin'>The server is currently inactive, but you have been allowed to connect as an admin.</span>")
 		else
-			src << browse("[global.config.directory]/scheduled_deny.html")
+			src << browse("[global.config.directory]/scheduled_deny.html", "window=inactive_popup")
 			qdel(src)
 			return 0
 
