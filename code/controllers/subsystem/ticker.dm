@@ -145,7 +145,7 @@ SUBSYSTEM_DEF(ticker)
 		GLOB.syndicate_code_response_regex = codeword_match
 
 	// austation begin -- round start delayed when server inactive
-	if(server_inactive)
+	if(!server_inactive)
 		start_at = world.time + (CONFIG_GET(number/lobby_countdown) * 10)
 	else
 		start_at = -1
