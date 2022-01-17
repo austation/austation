@@ -2,7 +2,7 @@
 	set name = "Toggle Active Mode"
 	set category = "Server"
 	set desc = "Toggles the server between active and inactive mode."
-	if(!CONFIG_GET(flag/scheduled_mode))
+	if(!fexists("./data/enable_inactive"))
 		to_chat(usr, "<span class='admin'>Scheduled uptime is disabled in the server config!</span>")
 	if(server_inactive)
 		server_inactive = FALSE
