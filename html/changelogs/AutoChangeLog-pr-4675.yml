@@ -1,4 +1,0 @@
-author: "AustationBot"
-delete-after: True
-changes: 
-  - balance: "EMPs now destroy energy bolas and free anyone trapped by an energy snare."
