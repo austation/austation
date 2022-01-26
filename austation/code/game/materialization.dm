@@ -117,7 +117,7 @@
 	if(active && speaker == current_player)
 		find_object(raw_message)
 
-/obj/structure/table/mat_shiritori/proc/find_object(phrase)
+/obj/structure/table/mat_shiritori/proc/find_object(phrase as text)
 	phrase = lowertext(phrase)
 	if(length(current_letter) && phrase[1] != current_letter)
 		visible_message("<span class='warning'>Invalid word, entity must begin with \an <b>[current_letter]</b></span>")
