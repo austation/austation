@@ -1,4 +1,0 @@
-author: "AustationBot"
-delete-after: True
-changes: 
-  - bugfix: "A choice few thunderdome templates have had their objects updated, meaning they load without errors again - A true case of de-soulling in the modern day and age."
