@@ -1,2 +1,0 @@
-#define TYPING_INDICATOR_SAY	(1<<15)
-#define TYPING_INDICATOR_ME		(1<<16)
