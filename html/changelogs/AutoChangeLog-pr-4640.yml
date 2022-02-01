@@ -1,4 +1,0 @@
-author: "KubeRoot, Mothblocks"
-delete-after: True
-changes: 
-  - rscadd: "The communications console now uses tgui"
