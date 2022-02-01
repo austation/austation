@@ -25,6 +25,9 @@
 
 	var/minetype = "lavaland"
 
+	//austation -- check for fastmos compat
+	var/fastmos_compatible = FALSE
+
 	var/allow_custom_shuttles = TRUE
 	var/allow_night_lighting = TRUE
 	var/shuttles = list(
@@ -132,7 +135,11 @@
 	if ("minetype" in json)
 		minetype = json["minetype"]
 
-	if("map_link" in json)						
+	//austation -- fastmos compatability
+	if("fastmos" in json)
+		fastmos_compatible = TRUE
+
+	if("map_link" in json)
 		map_link = json["map_link"]
 	else
 		log_world("map_link missing from json!")
