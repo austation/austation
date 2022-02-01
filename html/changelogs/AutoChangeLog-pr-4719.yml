@@ -1,0 +1,4 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - balance: "The exploration multi phase gun no longer tears through blobs"
