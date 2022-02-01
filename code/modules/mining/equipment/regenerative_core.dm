@@ -71,9 +71,9 @@
 	if(owner.health <= owner.crit_threshold)
 		ui_action_click()
 
-/obj/item/organ/regenerative_core/afterattack(atom/target, mob/user, proximity_flag)
-	. = ..()
-	if(proximity_flag && ishuman(target))
+///Handles applying the core, logging and status/mood events.
+/obj/item/organ/regenerative_core/proc/applyto(atom/target, mob/user)
+	if(ishuman(target))
 		var/mob/living/carbon/human/H = target
 		if(inert)
 			to_chat(user, "<span class='notice'>[src] has decayed and can no longer be used to heal.</span>")
@@ -85,7 +85,7 @@
 		// austation end
 		else
 			if(H.stat == DEAD)
-				to_chat(user, "<span class='notice'>[src] are useless on the dead.</span>")
+				to_chat(user, "<span class='notice'>[src] is useless on the dead.</span>")
 				return
 			if(H != user)
 				// austation begin -- removes cooldown when not applying cores to yourself
@@ -104,6 +104,15 @@
 			H.apply_status_effect(STATUS_EFFECT_REGENERATIVE_CORE)
 			SEND_SIGNAL(H, COMSIG_ADD_MOOD_EVENT, "core", /datum/mood_event/healsbadman) //Now THIS is a miner buff (fixed - nerf)
 			qdel(src)
+
+/obj/item/organ/regenerative_core/afterattack(atom/target, mob/user, proximity_flag)
+	. = ..()
+	if(proximity_flag)
+		applyto(target, user)
+
+/obj/item/organ/regenerative_core/attack_self(mob/user)
+	if(user.canUseTopic(src, BE_CLOSE, FALSE, NO_TK))
+		applyto(user, user)
 
 /obj/item/organ/regenerative_core/Insert(mob/living/carbon/M, special = 0, drop_if_replaced = TRUE)
 	. = ..()
