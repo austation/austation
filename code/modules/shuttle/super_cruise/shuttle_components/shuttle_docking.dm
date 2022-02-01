@@ -140,6 +140,13 @@
 
 	var/mob/camera/ai_eye/remote/shuttle_docker/the_eye = eyeobj
 	var/landing_clear = checkLandingSpot()
+
+	//austation begin -- prevents docking on generating zs
+	if(landing_clear == SHUTTLE_DOCKER_GENERATING)
+		to_chat(usr, "<span class='warning'>Transit location is unstable, please wait for the location to be stabilized</span>")
+		return
+	//austation end
+
 	if(designate_time && (landing_clear != SHUTTLE_DOCKER_BLOCKED))
 		to_chat(current_user, "<span class='warning'>Targeting transit location, please wait [DisplayTimeText(designate_time)]...</span>")
 		designating_target_loc = the_eye.loc
@@ -235,6 +242,11 @@
 		return SHUTTLE_DOCKER_BLOCKED
 	if(!eyeturf.z)
 		return SHUTTLE_DOCKER_BLOCKED
+
+	//austation begin -- prevents docking on generating zs
+	if(eyeturf.z in SSair.paused_z_levels)
+		return SHUTTLE_DOCKER_GENERATING
+	//austation end
 
 	. = SHUTTLE_DOCKER_LANDING_CLEAR
 	var/list/bounds = shuttle_port.return_coords(the_eye.x, the_eye.y, the_eye.dir)
