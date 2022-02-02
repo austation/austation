@@ -210,7 +210,7 @@
 			remove_player(L)
 			continue
 	time_left -= delta_time SECONDS
-	var/ronuded = round(time_left, 1)
+	var/rounded = round(time_left, 1)
 	if(rounded == 15 || rounded == 10 || rounded == 5)
 		say("[rounded]...")
 
