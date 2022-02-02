@@ -122,10 +122,6 @@
 
 	return level
 
-<<<<<<< HEAD
-//austation -- added init
-/datum/map_template/proc/load(turf/T, centered = FALSE, init_atmos = TRUE, init = TRUE)
-=======
 //just loads, no other bullshits, please don't use this proc if you're not calling it while the station is initing
 /datum/map_template/proc/stationinitload(turf/T, centered = FALSE)
 	if(centered)
@@ -135,8 +131,7 @@
 	var/datum/parsed_map/parsed = new(file(mappath))
 	parsed.load(T.x, T.y, T.z, cropMap=TRUE, no_changeturf=TRUE, placeOnTop=should_place_on_top)
 
-/datum/map_template/proc/load(turf/T, centered = FALSE, init_atmos = TRUE)
->>>>>>> 1a5c8abcca... Random rooms now load at roundstart (#6170)
+/datum/map_template/proc/load(turf/T, centered = FALSE, init_atmos = TRUE, init = TRUE) // austation -- added init
 	if(centered)
 		T = locate(T.x - round(width/2) , T.y - round(height/2) , T.z)
 	if(!T)
