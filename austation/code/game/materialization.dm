@@ -119,7 +119,6 @@
 		return
 	if(findtext(phrase, ".", -1))
 		phrase = copytext(phrase, 1, -1) // trims off the last character if it's a period
-	world.log << "[text] -- trimmed"
 	var/regex/valid_end_letter = regex(@"[a-z]")
 	if(!findtext(phrase, valid_end_letter, -1))
 		visible_message("<span class='warning'>Word must end with a letter.</span>")
@@ -144,7 +143,6 @@
 	if(Opath in blacklist)
 		visible_message("<span class='warning'>Entity too vague or dangerous to summon.</span>")
 		return
-	world.log << "generating object"
 	var/obj/item/shiritori_ball/ball = new(loc)
 	ball.prime_spawn(src, Opath, current_player)
 	current_player.put_in_hands(ball)
