@@ -1,0 +1,4 @@
+author: "jupyterkat"
+delete-after: True
+changes: 
+  - rscadd: "Random rooms are initialized at the start of the round."
