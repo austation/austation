@@ -1,3 +1,4 @@
+/* //austation begin -- chem gases
 GLOBAL_LIST_INIT(hardcoded_gases, list(GAS_O2, GAS_N2, GAS_CO2, GAS_PLASMA)) //the main four gases, which were at one time hardcoded
 GLOBAL_LIST_INIT(nonreactive_gases, typecacheof(list(GAS_O2, GAS_N2, GAS_CO2, GAS_PLUOXIUM, GAS_STIMULUM, GAS_NITRYL))) //unable to react amongst themselves
 
@@ -128,3 +129,5 @@ GLOBAL_DATUM_INIT(gas_data, /datum/auxgm, new)
 	. = ..()
 	icon_state = state
 	alpha = alph
+*/
+//austation end

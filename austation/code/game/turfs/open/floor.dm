@@ -4,7 +4,6 @@
 
 /turf/open/floor/update_icon()
 	if(painted)
-		update_visuals()
 		overlays -= current_overlay
 		if(current_overlay)
 			overlays.Add(current_overlay)

@@ -1,3 +1,73 @@
+
+
+/*
+/datum/reagent/oxygen
+	gas = GAS_O2
+	boiling_point = 90.188
+	molarity = 2
+/datum/reagent/nitrogen
+	gas = GAS_N2
+	boiling_point = 77.344
+	molarity = 2
+
+/datum/reagent/hydrogen
+	gas = GAS_HYDROGEN
+	boiling_point = 20.271
+
+/datum/reagent/chlorine
+	boiling_point = 239.11
+
+/datum/reagent/fuel
+	boiling_point = 400
+
+/datum/reagent/fuel/define_gas()
+	var/datum/gas/G = ..()
+	G.enthalpy = 227400
+	G.fire_burn_rate = 2 / 5
+	G.fire_products = list(GAS_CO2 = 2, GAS_H2O = 1)
+	G.fire_temperature = T0C+300
+	return G
+
+/datum/reagent/space_cleaner
+	boiling_point = T0C+50
+
+/datum/reagent/ammonia
+	gas = GAS_AMMONIA
+
+/datum/reagent/diethylamine
+	boiling_point = 328
+
+/datum/reagent/diethylamine/define_gas()
+	var/datum/gas/G = ..()
+	G.fire_burn_rate = 1 / 6
+	G.fire_products = list(GAS_H2O = 4, GAS_AMMONIA = 1, GAS_CO2 = 4)
+	G.enthalpy = -131000
+	G.fire_temperature = FIRE_MINIMUM_TEMPERATURE_TO_EXIST
+	return G
+
+/datum/reagent/carbondioxide
+	boiling_point = 195.68 // technically sublimation, not boiling, but same deal
+	molarity = 5
+	gas = GAS_CO2
+
+/datum/reagent/nitrous_oxide
+	boiling_point = 184.67
+	molarity = 5
+	gas = GAS_NITROUS
+
+/datum/reagent/stimulum
+	gas = GAS_STIMULUM
+	boiling_point = 150
+
+/datum/reagent/nitryl
+	gas = GAS_NITRYL
+	boiling_point = 294.3
+
+/datum/reagent/bromine
+	gas = GAS_BROMINE
+	boiling_point = 332
+*/
+
 /datum/reagent/australium
 	name = "Australium"
 	color = "#F2BE11"

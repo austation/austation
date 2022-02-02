@@ -16,11 +16,15 @@ SUBSYSTEM_DEF(mapping)
 	var/list/ruins_templates = list()
 	var/list/space_ruins_templates = list()
 	var/list/lava_ruins_templates = list()
+	var/datum/space_level/isolated_ruins_z //Created on demand during ruin loading.
 
 	var/list/shuttle_templates = list()
 	var/list/shelter_templates = list()
 
+	///Random rooms template list, gets initialized and filled when server starts.
 	var/list/random_room_templates = list()
+	///Temporary list, where room spawners are kept roundstart. Not used later.
+	var/list/random_room_spawners = list()
 	var/list/holodeck_templates = list()
 
 	var/list/areas_in_z = list()
@@ -34,6 +38,7 @@ SUBSYSTEM_DEF(mapping)
 	var/list/biomes = list()
 
 
+	var/list/reservation_ready = list()
 	var/clearing_reserved_turfs = FALSE
 
 	// Z-manager stuff
@@ -106,7 +111,7 @@ SUBSYSTEM_DEF(mapping)
 	// Set up Z-level transitions.
 	setup_map_transitions()
 	generate_station_area_list()
-	initialize_reserved_level()
+	initialize_reserved_level(transit.z_value)
 	return ..()
 
 /datum/controller/subsystem/mapping/proc/wipe_reservations(wipe_safety_delay = 100)
@@ -226,14 +231,37 @@ SUBSYSTEM_DEF(mapping)
 		orbital_body.link_to_z(level)
 
 	// load the maps
-	for (var/P in parsed_maps)
-		var/datum/parsed_map/pm = P
-		if (!pm.load(1, 1, start_z + parsed_maps[P], no_changeturf = TRUE))
+	for(var/datum/parsed_map/pm as() in parsed_maps)
+		if(!pm.load(1, 1, start_z + parsed_maps[pm], no_changeturf = TRUE))
 			errorList |= pm.original_path
 
 	if(!silent)
 		INIT_ANNOUNCE("Loaded [name] in [(REALTIMEOFDAY - start_time)/10]s!")
 	return parsed_maps
+
+/datum/controller/subsystem/mapping/proc/LoadStationRooms()
+	var/start_time = REALTIMEOFDAY
+	for(var/obj/effect/spawner/room/R as() in random_room_spawners)
+		var/list/possibletemplates = list()
+		var/datum/map_template/random_room/candidate
+		shuffle_inplace(random_room_templates)
+		for(var/ID in random_room_templates)
+			candidate = random_room_templates[ID]
+			if(candidate.spawned || R.room_height != candidate.template_height || R.room_width != candidate.template_width)
+				candidate = null
+				continue
+			possibletemplates[candidate] = candidate.weight
+		if(possibletemplates.len)
+			var/datum/map_template/random_room/template = pickweight(possibletemplates)
+			template.stock--
+			template.weight = (template.weight / 2)
+			if(template.stock <= 0)
+				template.spawned = TRUE
+			template.stationinitload(get_turf(R), centered = template.centerspawner)
+		SSmapping.random_room_spawners -= R
+		qdel(R)
+	random_room_spawners = null
+	INIT_ANNOUNCE("Loaded Random Rooms in [(REALTIMEOFDAY - start_time)/10]s!")
 
 /datum/controller/subsystem/mapping/proc/loadWorld()
 	//if any of these fail, something has gone horribly, HORRIBLY, wrong
@@ -246,6 +274,9 @@ SUBSYSTEM_DEF(mapping)
 	station_start = world.maxz + 1
 	INIT_ANNOUNCE("Loading [config.map_name]...")
 	LoadGroup(FailedZs, "Station", config.map_path, config.map_file, config.traits, ZTRAITS_STATION, orbital_body_type = /datum/orbital_object/z_linked/station)
+
+	LoadStationRoomTemplates()
+	LoadStationRooms()
 
 	if(SSdbcore.Connect())
 		var/datum/DBQuery/query_round_map_name = SSdbcore.NewQuery({"
@@ -274,6 +305,70 @@ SUBSYSTEM_DEF(mapping)
 				msg += ", [FailedZs[I]]"
 		msg += ". Yell at your server host!"
 		INIT_ANNOUNCE(msg)
+
+	//austation begin -- firelock bullshit, also in world lol
+	if(!config.fastmos_compatible)
+		var/start_time = REALTIMEOFDAY
+
+		for(var/obj/machinery/door/firedoor/FD in world)
+			if(FD.type == /obj/machinery/door/firedoor)
+				var/list/eligible_dirs = list()
+				var/turf/T = get_turf(FD)
+				if(!T)
+					continue
+				//we use del because it hasn't been inited yet and we don't want Destroy() to call and runtime everything
+				del(FD)
+				for(var/dir in GLOB.cardinals)
+					var/turf/explorin = get_step(T, dir)
+					if(!explorin)
+						continue
+					if((!locate(/obj/machinery/door/firedoor) in explorin) && (!locate(/obj/effect/spawner/structure/window/) in explorin) && (!locate(/obj/structure/window/) in explorin) && (!locate(/obj/machinery/door/airlock) in explorin))
+						if(isopenturf(explorin))
+							eligible_dirs |= dir
+				if (!eligible_dirs.len)
+					continue
+				for(var/newdir in eligible_dirs)
+					var/obj/machinery/door/firedoor/border_only/FDnew = new(T)
+					FDnew.dir = newdir
+		for(var/obj/effect/spawner/structure/struct in world)
+			if(locate(/obj/machinery/door/firedoor/window) in get_turf(struct))
+				continue
+			var/place = FALSE
+			if(is_type_in_list(struct, GLOB.ship_windows))
+				for(var/dir in GLOB.alldirs)
+					var/turf/T = get_step(struct, dir)
+					var/area/exploring_area = get_area(T)
+					if(!(exploring_area.type in typesof(/area/shuttle)))
+						place = TRUE
+			if(is_type_in_list(struct, GLOB.shutter_spawnable_windows))
+				for(var/dir in GLOB.alldirs)
+					var/turf/T = get_step(struct, dir)
+					if(isspaceturf(T))
+						place = TRUE
+			if(place)
+				struct.spawn_list += /obj/machinery/door/firedoor/window
+		for(var/obj/machinery/door/airlock/locke in world)
+			var/turf/terf = get_turf(locke)
+			if(locke.firedoors_spawning)
+				if(!locate(/obj/machinery/door/firedoor/) in terf)
+					var/list/eligible_dirs = list()
+					for(var/dir in GLOB.cardinals)
+						var/turf/explorin = get_step(terf, dir)
+						if(!explorin)
+							continue
+						if((!locate(/obj/machinery/door/firedoor) in explorin) && (!locate(/obj/effect/spawner/structure/window/) in explorin) && (!locate(/obj/structure/window/) in explorin) && (!locate(/obj/machinery/door/airlock) in explorin))
+							if(isopenturf(explorin))
+								eligible_dirs |= dir
+					if (!eligible_dirs.len)
+						continue
+					for(var/newdir in eligible_dirs)
+						var/obj/machinery/door/firedoor/border_only/FDnew = new(terf)
+						FDnew.dir = newdir
+
+		INIT_ANNOUNCE("Dealt with firelocks in [(REALTIMEOFDAY - start_time)/10]s!")
+
+	//austation end
+
 #undef INIT_ANNOUNCE
 
 GLOBAL_LIST_EMPTY(the_station_areas)
@@ -359,22 +454,25 @@ GLOBAL_LIST_EMPTY(the_station_areas)
 	next_map_config = VM
 	return TRUE
 
-/datum/controller/subsystem/mapping/proc/preloadTemplates(path = "_maps/templates/") //see master controller setup
-	var/list/filelist = flist(path)
+/datum/controller/subsystem/mapping/proc/preloadTemplates() //see master controller setup
+	if(IsAdminAdvancedProcCall())
+		return
+
+	var/list/filelist = flist("[MAP_DIRECTORY]/templates/")
 	for(var/map in filelist)
-		var/datum/map_template/T = new(path = "[path][map]", rename = "[map]")
+		var/datum/map_template/T = new(path = "[MAP_DIRECTORY]/templates/[map]", rename = "[map]")
 		map_templates[T.name] = T
 
 	preloadRuinTemplates()
 	preloadShuttleTemplates()
 	preloadShelterTemplates()
-	preloadRandomRoomTemplates()
 	preloadHolodeckTemplates()
 
-/datum/controller/subsystem/mapping/proc/preloadRandomRoomTemplates()
+/datum/controller/subsystem/mapping/proc/LoadStationRoomTemplates()
 	for(var/item in subtypesof(/datum/map_template/random_room))
 		var/datum/map_template/random_room/room_type = item
 		if(!(initial(room_type.mappath)))
+			message_admins("Template [initial(room_type.name)] found without mappath. Yell at coders")
 			continue
 		var/datum/map_template/random_room/R = new room_type()
 		random_room_templates[R.room_id] = R
@@ -495,7 +593,7 @@ GLOBAL_LIST_EMPTY(the_station_areas)
 		GLOB.the_gateway.wait = world.time
 
 /datum/controller/subsystem/mapping/proc/RequestBlockReservation(width, height, z, type = /datum/turf_reservation, turf_type_override)
-	UNTIL(initialized && !clearing_reserved_turfs)
+	UNTIL((!z || reservation_ready["[z]"]) && !clearing_reserved_turfs)
 	var/datum/turf_reservation/reserve = new type
 	if(turf_type_override)
 		reserve.turf_type = turf_type_override
@@ -505,8 +603,9 @@ GLOBAL_LIST_EMPTY(the_station_areas)
 				return reserve
 		//If we didn't return at this point, theres a good chance we ran out of room on the exisiting reserved z levels, so lets try a new one
 		num_of_res_levels += 1
-		var/newReserved = add_new_zlevel("Transit/Reserved [num_of_res_levels]", list(ZTRAIT_RESERVED = TRUE))
-		if(reserve.Reserve(width, height, newReserved))
+		var/datum/space_level/newReserved = add_new_zlevel("Transit/Reserved [num_of_res_levels]", list(ZTRAIT_RESERVED = TRUE))
+		initialize_reserved_level(newReserved.z_value)
+		if(reserve.Reserve(width, height, newReserved.z_value))
 			return reserve
 	else
 		if(!level_trait(z, ZTRAIT_RESERVED))
@@ -518,19 +617,22 @@ GLOBAL_LIST_EMPTY(the_station_areas)
 	QDEL_NULL(reserve)
 
 //This is not for wiping reserved levels, use wipe_reservations() for that.
-/datum/controller/subsystem/mapping/proc/initialize_reserved_level()
+/datum/controller/subsystem/mapping/proc/initialize_reserved_level(z)
 	UNTIL(!clearing_reserved_turfs)				//regardless, lets add a check just in case.
 	clearing_reserved_turfs = TRUE			//This operation will likely clear any existing reservations, so lets make sure nothing tries to make one while we're doing it.
-	for(var/i in levels_by_trait(ZTRAIT_RESERVED))
-		var/turf/A = get_turf(locate(SHUTTLE_TRANSIT_BORDER,SHUTTLE_TRANSIT_BORDER,i))
-		var/turf/B = get_turf(locate(world.maxx - SHUTTLE_TRANSIT_BORDER,world.maxy - SHUTTLE_TRANSIT_BORDER,i))
-		var/block = block(A, B)
-		for(var/t in block)
-			// No need to empty() these, because it's world init and they're
-			// already /turf/open/space/basic.
-			var/turf/T = t
-			T.flags_1 |= UNUSED_RESERVATION_TURF_1
-		unused_turfs["[i]"] = block
+	if(!level_trait(z,ZTRAIT_RESERVED))
+		clearing_reserved_turfs = FALSE
+		CRASH("Invalid z level prepared for reservations.")
+	var/turf/A = get_turf(locate(SHUTTLE_TRANSIT_BORDER,SHUTTLE_TRANSIT_BORDER,z))
+	var/turf/B = get_turf(locate(world.maxx - SHUTTLE_TRANSIT_BORDER,world.maxy - SHUTTLE_TRANSIT_BORDER,z))
+	var/block = block(A, B)
+	for(var/t in block)
+		// No need to empty() these, because it's world init and they're
+		// already /turf/open/space/basic.
+		var/turf/T = t
+		T.flags_1 |= UNUSED_RESERVATION_TURF_1
+	unused_turfs["[z]"] = block
+	reservation_ready["[z]"] = TRUE
 	clearing_reserved_turfs = FALSE
 
 /datum/controller/subsystem/mapping/proc/reserve_turfs(list/turfs)
@@ -569,3 +671,9 @@ GLOBAL_LIST_EMPTY(the_station_areas)
 	for(var/B in areas)
 		var/area/A = B
 		A.reg_in_areas_in_z()
+
+/datum/controller/subsystem/mapping/proc/get_isolated_ruin_z()
+	if(!isolated_ruins_z)
+		isolated_ruins_z = add_new_zlevel("Isolated Ruins/Reserved", list(ZTRAIT_RESERVED = TRUE, ZTRAIT_ISOLATED_RUINS = TRUE))
+		initialize_reserved_level(isolated_ruins_z.z_value)
+	return isolated_ruins_z.z_value
