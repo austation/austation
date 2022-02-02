@@ -7,7 +7,7 @@
 	canSmoothWith = null
 	flags_1 = NODECONSTRUCT_1
 	var/current_letter = ""
-	var/time_left = 300 // in deciseconds
+	var/time_left = 30 SECONDS
 	var/active = FALSE
 	var/game_starting = FALSE // prep period
 	var/start_time = 10 // how many seconds people get to opt in
@@ -54,8 +54,6 @@
 			if(1 to 4)
 				say("[countdown]...")
 		sleep(10)
-	if(QDELETED(src))
-		return
 	for(var/mob/living/L as() in players)
 		if(QDELETED(L) || L.stat == DEAD)
 			remove_player(L)
@@ -76,8 +74,8 @@
 /obj/structure/table/mat_shiritori/proc/end_game()
 	if(!active)
 		return
-	players.Cut()
-	knockouts.Cut()
+	players.len = 0
+	knockouts.len = 0
 	turns = 0
 	instances--
 	if(instances <= 0)
@@ -110,12 +108,9 @@
 			say("[H] has joined.")
 		add_player(H)
 
-/obj/structure/table/mat_shiritori/Hear(message, atom/movable/speaker, message_language, raw_message, radio_freq, list/spans, list/message_mods = list())
-	. = ..()
-	if(speaker == src)
-		return
-	if(active && speaker == current_player)
-		find_object(raw_message)
+/obj/structure/table/mat_shiritori/proc/player_say(datum/source, list/speech_args)
+	if(source == current_player)
+		find_object(speech_args[SPEECH_MESSAGE])
 
 /obj/structure/table/mat_shiritori/proc/find_object(phrase as text)
 	phrase = lowertext(phrase)
@@ -124,6 +119,7 @@
 		return
 	if(findtext(phrase, ".", -1))
 		phrase = copytext(phrase, 1, -1) // trims off the last character if it's a period
+	world.log << "[text] -- trimmed"
 	var/regex/valid_end_letter = regex(@"[a-z]")
 	if(!findtext(phrase, valid_end_letter, -1))
 		visible_message("<span class='warning'>Word must end with a letter.</span>")
@@ -148,6 +144,7 @@
 	if(Opath in blacklist)
 		visible_message("<span class='warning'>Entity too vague or dangerous to summon.</span>")
 		return
+	world.log << "generating object"
 	var/obj/item/shiritori_ball/ball = new(loc)
 	ball.prime_spawn(src, Opath, current_player)
 	current_player.put_in_hands(ball)
@@ -170,14 +167,16 @@
 				<b>3:</b> Death.\n \
 				You cannot harm your opponents through <b>direct</b> means. Any and all summoned entities will be destroyed once the game has concluded.")
 	ADD_TRAIT(H, TRAIT_PACIFISM, "shiritori")
+	RegisterSignal(H, COMSIG_MOB_SAY, .proc/player_say)
 
 /obj/structure/table/mat_shiritori/proc/remove_player(mob/living/carbon/human/H)
 	players -= H
 	knockouts += H
 	if(H == current_player)
-		switch_player()
+		switch_player(length(players) > 2)
 	if(!QDELETED(H)) // in case they got gibbed or some other weird thing happened
 		REMOVE_TRAIT(H, TRAIT_PACIFISM, "shiritori")
+		UnregisterSignal(H, COMSIG_MOB_SAY)
 	if(length(players) == 1) // squid game
 		visible_message("<span class='boldannounce'>[current_player] has won the game!</span>")
 		playsound(src, 'sound/effects/gong.ogg', 100, 0, 5)
@@ -185,10 +184,12 @@
 		end_game()
 
 
-/obj/structure/table/mat_shiritori/proc/switch_player()
+/obj/structure/table/mat_shiritori/proc/switch_player(alert = TRUE)
 	var/index = players.Find(current_player)
 	if(length(players) == index)
 		index = 1 // move back to the bottom of the list
+	else
+		index++
 	time_left = initial(time_left)
 	current_player = players[index]
 	if(QDELETED(current_player) || current_player.stat == DEAD)
@@ -197,7 +198,7 @@
 	if(turns)
 		to_chat(current_player, "<span class='notice'>It is now your turn.</span>")
 		turns++
-	else
+	else if(alert)
 		say("[current_player] is starting.")
 		to_chat(current_player, "<span class='notice'>You're going first, you get to pick the first word.")
 
@@ -209,6 +210,10 @@
 			remove_player(L)
 			continue
 	time_left -= delta_time SECONDS
+	var/ronuded = round(time_left, 1)
+	if(rounded == 15 || rounded == 10 || rounded == 5)
+		say("[rounded]...")
+
 	if(time_left <= 0)
 		visible_message("<span class='warning'>[current_player] has ran out of time!</span>")
 		playsound(src, 'sound/effects/clock_tick.ogg', 120, FALSE, 2)
