@@ -14,6 +14,7 @@
 	var/turns = 0 // how many turns have passed
 	var/static/list/atom_list // starts off as empty, we only want to make this if we have a table, otherwise we're just wasting memory
 	var/static/instances = 0 // amount of tables that currently exist. Used for clearing atom list
+	var/list/countdown_warns = list(50, 100, 150) // used in process(), list contains at what times we should announce time_left.
 	var/list/spent_objs = list() // typepaths that have been used before
 	var/list/entities = list() // spawned entities that are currently in existance
 	var/list/players = list()
@@ -83,6 +84,7 @@
 		blacklist = null
 	QDEL_LIST(entities)
 	time_left = initial(time_left)
+	countdown_warns = initial(countdown_warns)
 	current_player = null
 	for(var/mob/living/carbon/human/H in players)
 		to_chat(H, "<span class='info'>The game has ended.</span>")
@@ -178,13 +180,9 @@
 
 
 /obj/structure/table/mat_shiritori/proc/switch_player(alert = TRUE)
-	var/index = players.Find(current_player)
-	if(length(players) == index)
-		index = 1 // move back to the bottom of the list
-	else
-		index++
+	current_player = next_list_item(current_player, players)
 	time_left = initial(time_left)
-	current_player = players[index]
+	countdown_warns = initial(countdown_warns)
 	if(QDELETED(current_player) || current_player.stat == DEAD)
 		remove_player(current_player)
 		return
@@ -205,9 +203,10 @@
 			remove_player(L)
 			continue
 	time_left -= delta_time SECONDS
-	var/rounded = round(time_left, 1)
-	if(rounded == 15 || rounded == 10 || rounded == 5)
-		say("[rounded]...")
+	var/cdlen = length(countdown_warns)
+	if(cdlen && time_left <= countdown_warns[cdlen])
+		say("[countdown_warns[cdlen] * 0.1]...")
+		countdown_warns.len--
 
 	if(time_left <= 0)
 		visible_message("<span class='warning'>[current_player] has ran out of time!</span>")
