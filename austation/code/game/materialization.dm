@@ -123,24 +123,19 @@
 	if(!findtext(phrase, valid_end_letter, -1))
 		visible_message("<span class='warning'>Word must end with a letter.</span>")
 		return
+	if(spent_objs[phrase])
+		visible_message("<span class='warning'>\"[phrase]\" has already been materialized. <b>[current_player] has been eliminated!</b></span>")
+		to_chat(current_player, "<span class='danger'>This has been said before, you've been eliminated!</span>")
+		remove_player(current_player)
+		return
+
 	var/Opath = atom_list[phrase]
 	if(!Opath)
 		visible_message("<span class='warning'>Invalid entity.</span>")
 		return
 	if(islist(Opath))
-		if(spent_objs[phrase])
-			visible_message("<span class='warning'>\"[phrase]\" has already been materialized. <b>[current_player] has been eliminated!</b></span>")
-			to_chat(current_player, "<span class='danger'>This has been said before, you've been eliminated!</span>")
-			remove_player(current_player)
-			return
-		Opath -= blacklist
 		Opath = pick(Opath)
-	if(Opath in spent_objs)
-		visible_message("<span class='warning'>\"[phrase]\" has already been materialized. <b>[current_player] has been eliminated!</b></span>")
-		to_chat(current_player, "<span class='danger'>This has been said before, you've been eliminated!</span>")
-		remove_player(current_player)
-		return
-	if(Opath in blacklist)
+	if(blacklist[Opath])
 		visible_message("<span class='warning'>Entity too vague or dangerous to summon.</span>")
 		return
 	var/obj/item/shiritori_ball/ball = new(loc)
@@ -230,8 +225,8 @@
 // Dynamic list initialization, saves memory
 /obj/structure/table/mat_shiritori/proc/setup_blacklist()
 	if(!blacklist)
-		// !! This is not typesof, each path blacklists that atom only, good for "root" datums that have no functionality !!
-		blacklist = list(
+		// This is not typesof, each path blacklists that atom only, good for root datums that have no functionality
+		blacklist = typecacheof(list(
 			/obj/structure/table/mat_shiritori,
 			/obj/item/shiritori_ball,
 			/obj/effect/decal/cleanable,
@@ -259,16 +254,17 @@
 			/mob/living/simple_animal,
 			/mob/living,
 			/mob
-			)
-		// This one IS typesof, this should contain game breaking items that can circumvent the game's rules, make it really unfun or break the server
-		blacklist += typesof(
+			), FALSE, TRUE)
+
+		// This one DOES include subtypes, this should contain items that can circumvent the game's rules, make it really unfun or just break the server
+		blacklist += typecacheof(list(
 			/obj/singularity,
 			/obj/item/projectile/hvp,
 			/obj/item/reagent_containers/food/snacks/store/bread/recycled,
 			/obj/machinery/portable_atmospherics,
 			/obj/item/uplink,
 			/obj/machinery/nuclearbomb
-		)
+		))
 
 // -------- Shiritori Ball, used to spawn the selected atom --------
 
