@@ -105,7 +105,7 @@
 /obj/structure/table/mat_shiritori/proc/player_say(datum/source, list/speech_args)
 	SIGNAL_HANDLER
 	if(source == current_player)
-		find_object(speech_args[SPEECH_MESSAGE])
+		INVOKE_ASYNC(src, .proc/find_object, speech_args[SPEECH_MESSAGE])
 
 /obj/structure/table/mat_shiritori/proc/find_object(phrase as text)
 	phrase = lowertext(phrase)
