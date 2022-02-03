@@ -37,8 +37,8 @@
 		return
 	instances++
 	setup_blacklist()
-	players.Cut()
-	knockouts.Cut()
+	players.len = 0
+	knockouts.len = 0
 	time_left = initial(time_left)
 	say("Game starting in [start_time] seconds. Place your hand on the table to play.")
 	INVOKE_ASYNC(src, .proc/start_game)
@@ -163,7 +163,7 @@
 				<b>1:</b> Failing to name a valid entity within 30 seconds of the last player's turn.\n \
 				<b>2:</b> Attempting to summon an entity that has already been mentioned.\n \
 				<b>3:</b> Death.\n \
-				You cannot harm your opponents through <b>direct</b> means. Any and all summoned entities will be destroyed once the game has concluded.")
+				You cannot harm your opponents through <b>direct</b> means. All summoned entities will be destroyed once the game has concluded.</span>")
 	ADD_TRAIT(H, TRAIT_PACIFISM, "shiritori")
 	RegisterSignal(H, COMSIG_MOB_SAY, .proc/player_say)
 
@@ -193,12 +193,14 @@
 	if(QDELETED(current_player) || current_player.stat == DEAD)
 		remove_player(current_player)
 		return
-	if(turns)
-		to_chat(current_player, "<span class='notice'>It is now your turn.</span>")
-		turns++
-	else if(alert)
-		say("[current_player] is starting.")
-		to_chat(current_player, "<span class='notice'>You're going first, you get to pick the first word.")
+	if(alert)
+		if(turns)
+			to_chat(current_player, "<span class='notice'>It is now your turn.</span>")
+		else
+			say("[current_player] is starting.")
+			to_chat(current_player, "<span class='notice'>You're going first, you get to pick the first word.</span>")
+	turns++
+	playsound(src, 'sound/arcade/hit.ogg', 100, TRUE)
 
 /obj/structure/table/mat_shiritori/process(delta_time)
 	if(!active)
@@ -225,37 +227,7 @@
 		. += "<span class='info'>It doesn't look like anyone is playing it right now.</span>"
 	. += "\n<span class='info'>[length(knockouts)] players have been eliminated. Turn [turns].</span>"
 
-// -------- Shiritori Ball, used to spawn the selected atom --------
-
-
-/obj/item/shiritori_ball
-	name = "materialization ball"
-	desc = "Materializes selected entities at it's location after a short delay."
-	icon = 'austation/icons/obj/items.dmi'
-	icon_state = "shiri_ball"
-	var/entity_path
-	var/countdown = 5
-	var/obj/structure/table/mat_shiritori/table
-	var/mob/living/carbon/human/owner
-
-/obj/item/shiritori_ball/proc/prime_spawn(obj/structure/table/mat_shiritori/table, mob/living/carbon/human/owner, entity_path)
-	src.entity_path = entity_path
-	src.table = table
-	src.owner = owner
-	spawnit()
-
-// Not using process because that only ticks every 2 seconds and we want to send a message every second
-/obj/item/shiritori_ball/proc/spawnit()
-	set waitfor = FALSE
-	for(var/i in 1 to countdown)
-		if(owner)
-			to_chat(owner, "<span class='warning'>[countdown - (i - 1)]...</span>")
-		sleep(10)
-	var/atom/movable/M = new entity_path(loc)
-	table?.entities += M
-	qdel(src)
-
-// Saves memory, dynamic list initialization
+// Dynamic list initialization, saves memory
 /obj/structure/table/mat_shiritori/proc/setup_blacklist()
 	if(!blacklist)
 		// !! This is not typesof, each path blacklists that atom only, good for "root" datums that have no functionality !!
@@ -297,3 +269,33 @@
 			/obj/item/uplink,
 			/obj/machinery/nuclearbomb
 		)
+
+// -------- Shiritori Ball, used to spawn the selected atom --------
+
+
+/obj/item/shiritori_ball
+	name = "materialization ball"
+	desc = "Materializes selected entities at it's location after a short delay."
+	icon = 'austation/icons/obj/items.dmi'
+	icon_state = "shiri_ball"
+	var/entity_path
+	var/countdown = 5
+	var/obj/structure/table/mat_shiritori/table
+	var/mob/living/carbon/human/owner
+
+/obj/item/shiritori_ball/proc/prime_spawn(obj/structure/table/mat_shiritori/table, mob/living/carbon/human/owner, entity_path)
+	src.entity_path = entity_path
+	src.table = table
+	src.owner = owner
+	spawnit()
+
+// Not using process because that only ticks every 2 seconds and we want to send a message every second
+/obj/item/shiritori_ball/proc/spawnit()
+	set waitfor = FALSE
+	for(var/i in 1 to countdown)
+		if(owner)
+			to_chat(owner, "<span class='warning'>[countdown - (i - 1)]...</span>")
+		sleep(10)
+	var/atom/movable/M = new entity_path(loc)
+	table?.entities += M
+	qdel(src)
