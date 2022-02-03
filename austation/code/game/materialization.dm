@@ -248,8 +248,6 @@
 /obj/item/shiritori_ball/proc/spawnit()
 	set waitfor = FALSE
 	for(var/i in 1 to countdown)
-		if(QDELETED(src))
-			return
 		if(owner)
 			to_chat(owner, "<span class='warning'>[countdown - (i - 1)]...</span>")
 		sleep(10)
