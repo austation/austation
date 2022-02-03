@@ -23,14 +23,7 @@
 	var/static/list/blacklist // handled in setup_blacklist(). Contains root paths that aren't supposed to be spawned (Yes, a bit of a pain to maintain, but it's not the end of the world if someone forgets to update it. The alternative is having a variable on every damn datum)
 
 /obj/structure/table/mat_shiritori/Destroy()
-	if(active)
-		end_game()
-		return ..()
-	STOP_PROCESSING(SSobj, src)
-	QDEL_LIST(entities)
-	current_player = null
-	players = null
-	knockouts = null
+	end_game()
 	return ..()
 
 /obj/structure/table/mat_shiritori/proc/ready_up()
@@ -70,16 +63,14 @@
 		START_PROCESSING(SSobj, src)
 	else
 		say("Insufficient players")
+		end_game()
 	game_starting = FALSE
 
 /obj/structure/table/mat_shiritori/proc/end_game()
-	if(!active)
-		return
 	players.len = 0
 	knockouts.len = 0
 	turns = 0
-	instances--
-	if(instances <= 0)
+	if(!--instances)
 		atom_list = null
 		blacklist = null
 	QDEL_LIST(entities)
@@ -87,7 +78,8 @@
 	countdown_warns = initial(countdown_warns)
 	current_player = null
 	for(var/mob/living/carbon/human/H in players)
-		to_chat(H, "<span class='info'>The game has ended.</span>")
+		if(active)
+			to_chat(H, "<span class='info'>The game has ended.</span>")
 		REMOVE_TRAIT(H, TRAIT_PACIFISM, "shiritori")
 	STOP_PROCESSING(SSobj, src)
 	active = FALSE
@@ -111,6 +103,7 @@
 		add_player(H)
 
 /obj/structure/table/mat_shiritori/proc/player_say(datum/source, list/speech_args)
+	SIGNAL_HANDLER
 	if(source == current_player)
 		find_object(speech_args[SPEECH_MESSAGE])
 
@@ -119,7 +112,7 @@
 	if(length(current_letter) && phrase[1] != current_letter)
 		visible_message("<span class='warning'>Invalid word, entity must begin with \an <b>[current_letter]</b></span>")
 		return
-	if(findtext(phrase, ".", -1))
+	if(phrase[length(phrase)] == ".")
 		phrase = copytext(phrase, 1, -1) // trims off the last character if it's a period
 	var/regex/valid_end_letter = regex(@"[a-z]")
 	if(!findtext(phrase, valid_end_letter, -1))
@@ -136,15 +129,16 @@
 		visible_message("<span class='warning'>Invalid entity.</span>")
 		return
 	if(islist(Opath))
+		Opath -= blacklist
 		Opath = pick(Opath)
-	if(blacklist[Opath])
+	if(!Opath || blacklist[Opath])
 		visible_message("<span class='warning'>Entity too vague or dangerous to summon.</span>")
 		return
 	var/obj/item/shiritori_ball/ball = new(loc)
 	ball.prime_spawn(src, Opath, current_player)
 	current_player.put_in_hands(ball)
 	spent_objs[phrase] = Opath
-	current_letter = lowertext(phrase[length(phrase)])
+	current_letter = phrase[length(phrase)]
 	playsound(src, 'sound/magic/clockwork/invoke_general.ogg', 100, TRUE)
 	switch_player()
 
@@ -215,7 +209,7 @@
 
 /obj/structure/table/mat_shiritori/examine()
 	. = ..()
-	if(length(current_letter)) // because "" is not falsy
+	if(current_letter)
 		. += "<span class='info'>The next word must start with <b>[uppertext(current_letter)]</b></span>"
 	else if(!active)
 		. += "<span class='info'>It doesn't look like anyone is playing it right now.</span>"
@@ -291,6 +285,7 @@
 		if(owner)
 			to_chat(owner, "<span class='warning'>[countdown - (i - 1)]...</span>")
 		sleep(10)
-	var/atom/movable/M = new entity_path(loc)
-	table?.entities += M
+	if(table)
+		var/atom/movable/M = new entity_path(loc)
+		table.entities += M
 	qdel(src)
