@@ -148,7 +148,7 @@
 	to_chat(H, "<span class='notice'>Welcome to <b>Materialization Shiritori!</b>\n \
 				Similar to traditional Shiritori, but any valid word submitted by the player will materialize infront of them, as long as it exists in this world.</span>\n \
 				<span class='info'>The last player standing is declared as the winner, players can be eliminated in 3 different ways:\n \
-				<b>1:</b> Failing to name a valid entity within [initial(time_left / 10)] seconds of the last player's turn.\n \
+				<b>1:</b> Failing to name a valid entity within [initial(time_left) / 10] seconds of the last player's turn.\n \
 				<b>2:</b> Attempting to summon an entity that has already been mentioned.\n \
 				<b>3:</b> Death.\n \
 				You cannot harm your opponents through <b>direct</b> means. All summoned entities will be destroyed once the game has concluded.</span>")
