@@ -7,13 +7,12 @@
 	canSmoothWith = null
 	flags_1 = NODECONSTRUCT_1
 	var/current_letter = ""
-	var/time_left = 30 SECONDS
+	var/time_left = 40 SECONDS
 	var/active = FALSE
 	var/game_starting = FALSE // prep period
-	var/start_time = 10 // how many seconds people get to opt in
+	var/start_time = 15 // how many seconds people get to opt in
 	var/turns = 0 // how many turns have passed
 	var/static/list/atom_list // starts off as empty, we only want to make this if we have a table, otherwise we're just wasting memory
-	var/static/instances = 0 // amount of tables that currently exist. Used for clearing atom list
 	var/list/countdown_warns = list(50, 100, 150) // used in process(), list contains at what times we should announce time_left.
 	var/list/spent_objs = list() // typepaths that have been used before
 	var/list/entities = list() // spawned entities that are currently in existance
@@ -26,19 +25,19 @@
 	end_game()
 	return ..()
 
-/obj/structure/table/mat_shiritori/proc/ready_up()
+/obj/structure/table/mat_shiritori/proc/prepare_game()
 	if(active || game_starting)
 		return
-	instances++
 	setup_blacklist()
 	players.len = 0
 	knockouts.len = 0
 	time_left = initial(time_left)
 	say("Game starting in [start_time] seconds. Place your hand on the table to play.")
-	INVOKE_ASYNC(src, .proc/start_game)
+	start_game()
 
 //  Called after everything is ready
 /obj/structure/table/mat_shiritori/proc/start_game()
+	set waitfor = FALSE
 	game_starting = TRUE
 	for(var/i in 1 to start_time)
 		var/countdown = start_time - (i - 1)
@@ -69,10 +68,8 @@
 /obj/structure/table/mat_shiritori/proc/end_game()
 	players.len = 0
 	knockouts.len = 0
+	spent_objs.len = 0
 	turns = 0
-	if(!--instances)
-		atom_list = null
-		blacklist = null
 	QDEL_LIST(entities)
 	time_left = initial(time_left)
 	countdown_warns = initial(countdown_warns)
@@ -97,7 +94,7 @@
 			to_chat(H, "<span class='warning'>You can't play if you can't speak!</span>")
 			return
 		if(!game_starting)
-			ready_up()
+			prepare_game()
 		else
 			say("[H] has joined.")
 		add_player(H)
@@ -151,7 +148,7 @@
 	to_chat(H, "<span class='notice'>Welcome to <b>Materialization Shiritori!</b>\n \
 				Similar to traditional Shiritori, but any valid word submitted by the player will materialize infront of them, as long as it exists in this world.</span>\n \
 				<span class='info'>The last player standing is declared as the winner, players can be eliminated in 3 different ways:\n \
-				<b>1:</b> Failing to name a valid entity within 30 seconds of the last player's turn.\n \
+				<b>1:</b> Failing to name a valid entity within [initial(time_left / 10)] seconds of the last player's turn.\n \
 				<b>2:</b> Attempting to summon an entity that has already been mentioned.\n \
 				<b>3:</b> Death.\n \
 				You cannot harm your opponents through <b>direct</b> means. All summoned entities will be destroyed once the game has concluded.</span>")
@@ -241,7 +238,6 @@
 			/obj/item,
 			/obj/machinery/power,
 			/obj/machinery,
-			/obj/effect,
 			/obj,
 			/mob/living/carbon,
 			/mob/living/simple_animal,
@@ -251,6 +247,7 @@
 
 		// This one DOES include subtypes, this should contain items that can circumvent the game's rules, make it really unfun or just break the server
 		blacklist += typecacheof(list(
+			/obj/effect,
 			/obj/singularity,
 			/obj/item/projectile/hvp,
 			/obj/item/reagent_containers/food/snacks/store/bread/recycled,
@@ -288,4 +285,6 @@
 	if(table)
 		var/atom/movable/M = new entity_path(loc)
 		table.entities += M
+	else
+		visible_message("<span class='warning'>\The [src] withers away</span>")
 	qdel(src)
