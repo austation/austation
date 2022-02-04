@@ -213,48 +213,49 @@
 	. += "\n<span class='info'>[length(knockouts)] players have been eliminated. Turn [turns].</span>"
 
 // Dynamic list initialization, saves memory
-/obj/structure/table/mat_shiritori/proc/setup_blacklist()
-	if(!blacklist)
-		// This is not typesof, each path blacklists that atom only, good for root datums that have no functionality
-		blacklist = typecacheof(list(
-			/obj/structure/table/mat_shiritori,
-			/obj/item/shiritori_ball,
-			/obj/effect/decal/cleanable,
-			/obj/item/radio/headset,
-			/obj/item/clothing/head/helmet/space,
-			/obj/item/book/manual,
-			/obj/item/reagent_containers/food/drinks,
-			/obj/item/reagent_containers/food,
-			/obj/item/reagent_containers,
-			/obj/machinery/atmospherics,
-			/obj/machinery/portable_atmospherics,
-			/obj/item/mecha_parts/mecha_equipment/weapon/ballistic/missile_rack,
-			/obj/item/mecha_parts/mecha_equipment,
-			/obj/item/storage,
-			/obj/item/clothing,
-			/obj/item/stock_parts,
-			/obj/item/gun,
-			/obj/item/organ,
-			/obj/item,
-			/obj/machinery/power,
-			/obj/machinery,
-			/obj,
-			/mob/living/carbon,
-			/mob/living/simple_animal,
-			/mob/living,
-			/mob
-			), FALSE, TRUE)
+/obj/structure/table/mat_shiritori/proc/setup_blacklist(force = FALSE)
+	if(blacklist && !force)
+		return
+	// This is not typesof, each path blacklists that atom only, good for root datums that have no functionality
+	blacklist = typecacheof(list(
+		/obj/structure/table/mat_shiritori,
+		/obj/item/shiritori_ball,
+		/obj/effect/decal/cleanable,
+		/obj/item/radio/headset,
+		/obj/item/clothing/head/helmet/space,
+		/obj/item/book/manual,
+		/obj/item/reagent_containers/food/drinks,
+		/obj/item/reagent_containers/food,
+		/obj/item/reagent_containers,
+		/obj/machinery/atmospherics,
+		/obj/machinery/portable_atmospherics,
+		/obj/item/mecha_parts/mecha_equipment/weapon/ballistic/missile_rack,
+		/obj/item/mecha_parts/mecha_equipment,
+		/obj/item/storage,
+		/obj/item/clothing,
+		/obj/item/stock_parts,
+		/obj/item/gun,
+		/obj/item/organ,
+		/obj/item,
+		/obj/machinery/power,
+		/obj/machinery,
+		/obj,
+		/mob/living/carbon,
+		/mob/living/simple_animal,
+		/mob/living,
+		/mob
+	), FALSE, TRUE)
 
-		// This one DOES include subtypes, this should contain items that can circumvent the game's rules, make it really unfun or just break the server
-		blacklist += typecacheof(list(
-			/obj/effect,
-			/obj/singularity,
-			/obj/item/projectile/hvp,
-			/obj/item/reagent_containers/food/snacks/store/bread/recycled,
-			/obj/machinery/portable_atmospherics,
-			/obj/item/uplink,
-			/obj/machinery/nuclearbomb
-		))
+	// This one DOES include subtypes, this should contain items that can circumvent the game's rules, make it really unfun or just break the server
+	blacklist += typecacheof(list(
+		/obj/effect,
+		/obj/singularity,
+		/obj/item/projectile/hvp,
+		/obj/item/reagent_containers/food/snacks/store/bread/recycled,
+		/obj/machinery/portable_atmospherics,
+		/obj/item/uplink,
+		/obj/machinery/nuclearbomb
+	))
 
 // -------- Shiritori Ball, used to spawn the selected atom --------
 
