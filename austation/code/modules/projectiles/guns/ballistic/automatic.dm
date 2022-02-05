@@ -7,9 +7,13 @@
 	righthand_file = 'austation/icons/mob/inhands/weapons/guns_righthand_40x32.dmi'
 	item_state = "l1a1"
 	mag_type = /obj/item/ammo_box/magazine/mm762x51
+	actions_types = list()
 	empty_indicator = FALSE
-	fire_delay = 1
+	fire_delay = 0
+	burst_size = 1
+	fire_rate = 0.333
 	weapon_weight = WEAPON_MEDIUM
+	select = 0
 
 /obj/item/gun/ballistic/automatic/l1a1/trueblue
 	name = "\improper L1A1 'True Blue' SLR"
@@ -17,3 +21,4 @@
 	icon_state = "l1a1_trueblue"
 	item_state = "l1a1_trueblue"
 	full_auto = TRUE
+	fire_rate = 4
