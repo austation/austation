@@ -11,9 +11,9 @@
 	materials = list(/datum/material/iron=500, /datum/material/glass=500)
 	w_class = WEIGHT_CLASS_SMALL
 	var/turf/pointer_loc
-	var/energy = 6	//Austation changed from 5 to 6
-	var/max_energy = 6 //Austation changed from 5 to 6
-	var/effectchance = 35 //Austation changed from 33 to 35
+	var/energy = 5
+	var/max_energy = 5
+	var/effectchance = 33
 	var/recharging = 0
 	var/recharge_locked = FALSE
 	var/obj/item/stock_parts/micro_laser/diode //used for upgrading!
@@ -122,7 +122,7 @@
 		if(prob(effectchance * diode.rating))
 			S.flash_act(affect_silicon = 1)
 			//different values on austation original values are rand(100,200)
-			S.Paralyze(rand(10 * diode.rating, 20 * diode.rating))
+			S.Paralyze(rand(1 * diode.rating, 2 * diode.rating))
 			to_chat(S, "<span class='danger'>Your sensors were overloaded by a laser!</span>")
 			outmsg = "<span class='notice'>You overload [S] by shining [src] at [S.p_their()] sensors.</span>"
 		else
