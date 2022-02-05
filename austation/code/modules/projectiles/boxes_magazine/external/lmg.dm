@@ -5,3 +5,4 @@
 	ammo_type = /obj/item/ammo_casing/mm762x51
 	caliber = "mm76251"
 	max_ammo = 20
+	multiple_sprites = 2
