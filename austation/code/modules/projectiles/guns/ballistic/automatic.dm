@@ -8,7 +8,7 @@
 	item_state = "l1a1"
 	mag_type = /obj/item/ammo_box/magazine/mm762x51
 	empty_indicator = FALSE
-	fire_delay = 2
+	fire_delay = 1
 	weapon_weight = WEAPON_MEDIUM
 
 /obj/item/gun/ballistic/automatic/l1a1/trueblue
