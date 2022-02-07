@@ -12,7 +12,7 @@
 	intact = 0 // make pipes appear above space
 	baseturfs = /turf/baseturf_bottom
 	light_range = 1
-	light_power = 0.5
+	light_power = 0.15
 
 	var/datum/armor/armor = list("melee" = 50, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 25, "bio" = 100, "rad" = 100, "fire" = 80, "acid" = 100)
 	var/max_integrity = 400
