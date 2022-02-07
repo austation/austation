@@ -20,5 +20,8 @@
 	desc = "A modified version of the original L1A1 SLR, the L1A2 saw heavy use during WW2 on Old Earth by the Australian Army. It has a small Australian flag attached to the stock."
 	icon_state = "l1a1_trueblue"
 	item_state = "l1a1_trueblue"
+	mag_type = /obj/item/ammo_box/magazine/mm762x51/large
 	full_auto = TRUE
-	fire_rate = 4
+	select = 1 // force burst fire
+	burst_size = 3
+	fire_rate = 2
