@@ -64,6 +64,8 @@ export const DmTarget = new Juke.Target({
   ],
   inputs: [
     '_maps/map_files/generic/**',
+    'austation/code/**', // austation start -- Makes jukebuild check for changes in the austation module
+    'austation/icons/**', // austation end
     'code/**',
     'goon/**',
     'html/**',
@@ -161,26 +163,6 @@ export const TguiEslintTarget = new Juke.Target({
   executes: ({ get }) => yarn('tgui:lint', !get(CiParameter) && '--fix'),
 });
 
-<<<<<<< HEAD
-const DmTarget = Juke.createTarget({
-  name: 'dm',
-  inputs: [
-    '_maps/map_files/generic/**',
-    'austation/code/**',
-    'austation/icons/**',
-    'code/**',
-    'goon/**',
-    'html/**',
-    'icons/**',
-    'interface/**',
-    `${DME_NAME}.dme`,
-  ],
-  outputs: [
-    `${DME_NAME}.dmb`,
-    `${DME_NAME}.rsc`,
-  ],
-  parameters: [DefineParameter],
-=======
 export const TguiSonarTarget = new Juke.Target({
   dependsOn: [YarnTarget],
   executes: () => yarn('tgui:sonar'),
@@ -230,7 +212,6 @@ export const BuildTarget = new Juke.Target({
 
 export const ServerTarget = new Juke.Target({
   dependsOn: [BuildTarget],
->>>>>>> 95060e4431... TGUI maintenance chores and juke upgrades (#6247)
   executes: async ({ get }) => {
     const port = get(PortParameter) || '1337';
     await DreamDaemon(`${DME_NAME}.dmb`, port, '-trusted');
