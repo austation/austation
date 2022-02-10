@@ -98,6 +98,7 @@
 	var/cam_prev
 
 /mob/living/silicon/ai/Initialize(mapload, datum/ai_laws/L, mob/target_ai)
+	default_access_list = get_all_accesses()
 	. = ..()
 	if(!target_ai) //If there is no player/brain inside.
 		new/obj/structure/AIcore/deactivated(loc) //New empty terminal.
@@ -298,6 +299,11 @@
 /mob/living/silicon/ai/proc/ai_call_shuttle()
 	if(control_disabled)
 		to_chat(usr, "<span class='warning'>Wireless control is disabled!</span>")
+		return
+
+	var/can_evac_or_fail_reason = SSshuttle.canEvac(src)
+	if(can_evac_or_fail_reason != TRUE)
+		to_chat(usr, "<span class='alert'>[can_evac_or_fail_reason]</span>")
 		return
 
 	var/reason = input(src, "What is the nature of your emergency? ([CALL_SHUTTLE_REASON_LENGTH] characters required.)", "Confirm Shuttle Call") as null|text
@@ -676,10 +682,7 @@
 			for(var/i in C.network)
 				cameralist[i] = i
 	var/old_network = network
-	//austation begin -- tgui list
-	//network = input(U, "Which network would you like to view?") as null|anything in sortList(cameralist)
-	network = tgui_input_list(U, "Which network would you like to view?", "Jump To Network", sortList(cameralist))
-	//austation end
+	network = input(U, "Which network would you like to view?") as null|anything in sortList(cameralist)
 
 	if(!U.eyeobj)
 		U.view_core()
@@ -743,10 +746,7 @@
 				personnel_list["[t.fields["name"]]: [t.fields["rank"]]"] = t.fields["image"]//Pull names, rank, and image.
 
 			if(personnel_list.len)
-				//austation begin -- tgui list
-				//input = input("Select a crew member:") as null|anything in sortList(personnel_list)
-				input = tgui_input_list(usr, "Select a crew member:", "Change Hologram", personnel_list)
-				//austation end
+				input = input("Select a crew member:") as null|anything in sortList(personnel_list)
 				var/icon/character_icon = personnel_list[input]
 				if(character_icon)
 					qdel(holo_icon)//Clear old icon so we're not storing it in memory.

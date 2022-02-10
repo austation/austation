@@ -203,7 +203,8 @@
 		SSmapping.loading_ruins = TRUE
 		CHECK_TICK
 		try
-			ruin_part.load(locate(ruin_offset_x + 1, ruin_offset_y + 1, center_z), FALSE, FALSE)
+			//austation -- added another FALSE
+			ruin_part.load(locate(ruin_offset_x + 1, ruin_offset_y + 1, center_z), FALSE, FALSE, FALSE)
 		catch(var/exception/e)
 			stack_trace("Run time in space ruin generation ([ruin_part.name]) [e] on [e.file]:[e.line]")
 		CHECK_TICK
@@ -390,6 +391,11 @@
 	//Start running event
 	if(ruin_event)
 		SSorbits.ruin_events += ruin_event
+
+	//austation begin -- truly do init
+	var/list/turfs_to_reinit = block(locate(1, 1, center_z), locate(world.maxx, world.maxy, center_z))
+	SSatoms.init_atoms_in_list(turfs_to_reinit)
+	//austation end
 
 	SSair.unpause_z(center_z)
 

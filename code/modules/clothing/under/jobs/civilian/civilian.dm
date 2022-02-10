@@ -177,6 +177,7 @@
 	item_state = "bl_suit"
 	item_color = "black_suit_fem_skirt"
 	fitted = FEMALE_UNIFORM_TOP
+	can_adjust = FALSE
 
 /obj/item/clothing/under/rank/civilian/lawyer/red
 	name = "lawyer red suit"
@@ -185,7 +186,7 @@
 	item_color = "lawyer_red"
 
 /obj/item/clothing/under/rank/civilian/lawyer/red/skirt
-	name = "lawyer red suit"
+	name = "lawyer red suitskirt"
 	icon_state = "lawyer_red_skirt"
 	item_state = "lawyer_red"
 	item_color = "lawyer_red_skirt"
@@ -239,5 +240,4 @@
 	item_color = "lawyer_purp_skirt"
 	body_parts_covered = CHEST|GROIN|ARMS
 	can_adjust = FALSE
-	fitted = FEMALE_UNIFORM_TOP 
-
+	fitted = FEMALE_UNIFORM_TOP

@@ -4,7 +4,7 @@
 #define CONSTRUCTION_GUTTED 3 //Wires are removed, circuit ready to remove
 #define CONSTRUCTION_NOCIRCUIT 4 //Circuit board removed, can safely weld apart
 
-#define RECLOSE_DELAY 5 SECONDS // How long until a firelock tries to shut itself if it's blocking a vacuum.
+#define RECLOSE_DELAY 1 SECONDS // How long until a firelock tries to shut itself if it's blocking a vacuum. //austation -- changed to 1 seconds from 5
 #define FIRE_ALARM 2
 /obj/machinery/door/firedoor
 	name = "firelock"
@@ -78,12 +78,29 @@
 	return ..()
 
 /obj/machinery/door/firedoor/Bumped(atom/movable/AM)
+	//austation begin -- fastmos
+	if(panel_open || operating || welded || (stat & NOPOWER))
+		return
+	if(ismob(AM))
+		var/mob/user = AM
+		if(allow_hand_open(user))
+			add_fingerprint(user)
+			open()
+			return TRUE
+	if(ismecha(AM))
+		var/obj/mecha/M = AM
+		if(M.occupant && allow_hand_open(M.occupant))
+			open()
+			return TRUE
+	return FALSE
+	/*
 	if(panel_open || operating)
 		return
 	if(!density)
 		return ..()
 	return FALSE
-
+	*/
+	//austation end
 
 /obj/machinery/door/firedoor/power_change()
 	if(powered(power_channel))
@@ -96,6 +113,24 @@
 	. = ..()
 	if(.)
 		return
+	//austation begin -- fastmos
+	if (!welded && !operating)
+		if (stat & NOPOWER)
+			user.visible_message("[user] tries to open \the [src] manually.",
+						 "You operate the manual lever on \the [src].")
+			if (!do_after(user, 30, TRUE, src))
+				return FALSE
+		else if (density && !allow_hand_open(user))
+			return FALSE
+
+		add_fingerprint(user)
+		if(density)
+			emergency_close_timer = world.time + RECLOSE_DELAY // prevent it from instaclosing again if in space
+			open()
+		else
+			close()
+		return TRUE
+	//austation end
 
 	if(operating || !density)
 		return
@@ -228,12 +263,13 @@
 		return FIRE_ALARM
 	return !is_holding_pressure()
 
+/* austation begin -- fuck you francis
 /obj/machinery/door/firedoor/allowed(mob/M)
 	if(check_safety(M))//Passing the mob here is cargo cult programming, I can't see what wants it.
 		return TRUE
 	update_icon()
 	return ..()
-
+austation end*/
 
 /obj/machinery/door/firedoor/attack_ai(mob/user)
 	add_fingerprint(user)
@@ -389,6 +425,15 @@
 	CanAtmosPass = ATMOS_PASS_PROC
 	assemblytype = /obj/structure/firelock_frame/border
 
+/obj/machinery/door/firedoor/border_only/Initialize()
+	. = ..()
+
+	var/static/list/loc_connections = list(
+		COMSIG_ATOM_EXIT = .proc/on_exit,
+	)
+
+	AddElement(/datum/element/connect_loc, loc_connections)
+
 /obj/machinery/door/firedoor/border_only/Destroy()
 	density = FALSE
 	air_update_turf(1)
@@ -455,10 +500,19 @@
 	if(!(get_dir(loc, target) == dir)) //Make sure looking at appropriate border
 		return TRUE
 
-/obj/machinery/door/firedoor/border_only/CheckExit(atom/movable/mover as mob|obj, turf/target)
-	if(get_dir(loc, target) == dir)
-		return !density
-	return TRUE
+/obj/machinery/door/firedoor/border_only/proc/on_exit(datum/source, atom/movable/leaving, direction)
+	SIGNAL_HANDLER
+
+	//austation begin -- uncomment if some poor sud actually went ahead and fix this, looking at you, kube
+	if(leaving.movement_type & PHASING)
+		return
+	if(leaving == src)
+		return // Let's not block ourselves.
+	//austation end
+
+	if(direction == dir && density)
+		leaving.Bump(src)
+		return COMPONENT_ATOM_BLOCK_EXIT
 
 /obj/machinery/door/firedoor/border_only/CanAtmosPass(turf/T)
 	if(get_dir(loc, T) == dir)
@@ -740,6 +794,14 @@
 	AddComponent(/datum/component/simple_rotation, ROTATION_ALTCLICK | ROTATION_CLOCKWISE | ROTATION_COUNTERCLOCKWISE | ROTATION_VERBS, null, CALLBACK(src, .proc/can_be_rotated))
 
 //austation begin -- Adds directional windows collision to firelock frames
+/obj/structure/firelock_frame/border/Initialize()
+	. = ..()
+	var/static/list/loc_connections = list(
+		COMSIG_ATOM_EXIT = .proc/on_exit,
+	)
+
+	AddElement(/datum/element/connect_loc, loc_connections)
+
 /obj/structure/firelock_frame/border/CanAllowThrough(atom/movable/mover, turf/target)
 	. = ..()
 	if(istype(mover) && (mover.pass_flags & PASSGLASS))
@@ -749,12 +811,14 @@
 	else
 		. = TRUE
 
-/obj/structure/firelock_frame/border/CheckExit(atom/movable/O, turf/target)
-	if(istype(O) && (O.pass_flags & PASSGLASS))
-		return TRUE
-	if(get_dir(O.loc, target) == dir)
-		return !density
-	return TRUE
+/obj/structure/firelock_frame/border/proc/on_exit(datum/source, atom/movable/leaving, direction)
+	SIGNAL_HANDLER
+
+	if(istype(leaving) && (leaving.pass_flags & PASSGLASS))
+		return
+	if(direction == dir && density)
+		leaving.Bump(src)
+		return COMPONENT_ATOM_BLOCK_EXIT
 //austation end
 
 /obj/structure/firelock_frame/border/proc/can_be_rotated(mob/user, rotation_type)

@@ -75,18 +75,26 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	var/underwear_color = "000"			//underwear color
 	var/undershirt = "Nude"				//undershirt type
 	var/socks = "Nude"					//socks type
+	var/helmet_style = HELMET_DEFAULT
 	var/backbag = DBACKPACK				//backpack type
 	var/ring_type = RING_DISABLED		//AUSTATION -- rings
 	var/ring_engraved = null			//AUSTATION -- rings
 	var/jumpsuit_style = PREF_SUIT		//suit/skirt
 	var/hair_style = "Bald"				//Hair type
 	var/hair_color = "000"				//Hair color
+	var/gradient_color = "000"			//Hair gradient color
+	var/gradient_style = "None"			//Hair gradient style
 	var/facial_hair_style = "Shaved"	//Face hair type
 	var/facial_hair_color = "000"		//Facial hair color
 	var/skin_tone = "caucasian1"		//Skin color
 	var/eye_color = "000"				//Eye color
 	var/datum/species/pref_species = new /datum/species/human()	//Mutant race
-	var/list/features = list("mcolor" = "FFF", "ethcolor" = "9c3030", "tail_lizard" = "Smooth", "tail_human" = "None", "snout" = "Round", "horns" = "None", "ears" = "None", "wings" = "None", "frills" = "None", "spines" = "None", "body_markings" = "None", "legs" = "Normal Legs", "moth_wings" = "Plain", "ipc_screen" = "Blue", "ipc_antenna" = "None", "ipc_chassis" = "Morpheus Cyberkinetics(Greyscale)", "insect_type" = "Common Fly")
+	var/list/features = list("mcolor" = "FFF", "ethcolor" = "9c3030", "tail_lizard" = "Smooth",
+							"tail_human" = "None", "snout" = "Round", "horns" = "None",
+							"ears" = "None", "wings" = "None", "frills" = "None", "spines" = "None",
+							"body_markings" = "None", "legs" = "Normal Legs", "moth_wings" = "Plain",
+							"ipc_screen" = "Blue", "ipc_antenna" = "None", "ipc_chassis" = "Morpheus Cyberkinetics(Greyscale)",
+							"insect_type" = "Common Fly")
 
 	var/list/custom_names = list()
 	var/preferred_ai_core_display = "Blue"
@@ -305,6 +313,14 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 				dat += "<span style='border: 1px solid #161616; background-color: #[features["ethcolor"]];'>&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;preference=color_ethereal;task=input'>Change</a><BR>"
 
+			if(istype(pref_species, /datum/species/plasmaman))
+
+				if(!use_skintones)
+					dat += APPEARANCE_CATEGORY_COLUMN
+
+				dat += "<h3>Envirohelmet Type</h3>"
+
+				dat += "<a href='?_src_=prefs;preference=helmet_style;task=input'>[helmet_style]</a><BR>"
 
 			if((EYECOLOR in pref_species.species_traits) && !(NOEYESPRITES in pref_species.species_traits))
 
@@ -327,7 +343,13 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 				dat += "<a href='?_src_=prefs;preference=hair_style;task=input'>[hair_style]</a><BR>"
 				dat += "<a href='?_src_=prefs;preference=previous_hair_style;task=input'>&lt;</a> <a href='?_src_=prefs;preference=next_hair_style;task=input'>&gt;</a><BR>"
-				dat += "<span style='border:1px solid #161616; background-color: #[hair_color];'>&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;preference=hair;task=input'>Change</a><BR>"
+				dat += "<span style='border:1px solid #161616; background-color: #[hair_color];'>&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;preference=hair_color;task=input'>Change</a><BR>"
+
+				dat += "<h3>Gradient Style</h3>"
+
+				dat += "<a href='?_src_=prefs;preference=gradient_style;task=input'>[gradient_style]</a><BR>"
+				dat += "<a href='?_src_=prefs;preference=previous_gradient_style;task=input'>&lt;</a> <a href='?_src_=prefs;preference=next_gradient_style;task=input'>&gt;</a><BR>"
+				dat += "<span style='border:1px solid #161616; background-color: #[gradient_color];'>&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;preference=gradient_color;task=input'>Change</a><BR>"
 
 				dat += "<h3>Facial Hair Style</h3>"
 
@@ -467,7 +489,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 				dat += "<a href='?_src_=prefs;preference=ipc_antenna;task=input'>[features["ipc_antenna"]]</a><BR>"
 
-				dat += "<span style='border:1px solid #161616; background-color: #[hair_color];'>&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;preference=hair;task=input'>Change</a><BR>"
+				dat += "<span style='border:1px solid #161616; background-color: #[hair_color];'>&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;preference=hair_color;task=input'>Change</a><BR>"
 
 				mutant_category++
 				if(mutant_category >= MAX_MUTANT_ROWS)
@@ -1299,7 +1321,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					real_name = pref_species.random_name(gender,1)
 				if("age")
 					age = rand(AGE_MIN, AGE_MAX)
-				if("hair")
+				if("hair_color")
 					hair_color = random_short_color()
 				if("hair_style")
 					hair_style = random_hair_style(gender)
@@ -1381,11 +1403,10 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					if(new_age)
 						age = max(min( round(text2num(new_age)), AGE_MAX),AGE_MIN)
 
-				if("hair")
-					var/new_hair = input(user, "Choose your character's hair colour:", "Character Preference","#"+hair_color) as color|null
+				if("hair_color")
+					var/new_hair = input(user, "Choose your character's hair colour:", "Character Preference","#" + hair_color) as color|null
 					if(new_hair)
 						hair_color = sanitize_hexcolor(new_hair)
-
 				if("hair_style")
 					var/new_hair_style
 					if(gender == MALE)
@@ -1395,17 +1416,34 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					if(new_hair_style)
 						hair_style = new_hair_style
 
+				if("gradient_style")
+					var/new_gradient_style
+					new_gradient_style = input(user, "Choose your character's hair gradient style:", "Character Preference")  as null|anything in GLOB.hair_gradients_list
+					if(new_gradient_style)
+						gradient_style = new_gradient_style
+
+				if("gradient_color")
+					var/new_hair_gradient = input(user, "Choose your character's hair gradient colour:", "Character Preference", "#" + gradient_color) as color|null
+					if(new_hair_gradient)
+						gradient_color = sanitize_hexcolor(new_hair_gradient)
+
 				if("next_hair_style")
-					if (gender == MALE)
+					if(gender == MALE)
 						hair_style = next_list_item(hair_style, GLOB.hair_styles_male_list)
 					else
 						hair_style = next_list_item(hair_style, GLOB.hair_styles_female_list)
 
 				if("previous_hair_style")
-					if (gender == MALE)
+					if(gender == MALE)
 						hair_style = previous_list_item(hair_style, GLOB.hair_styles_male_list)
 					else
 						hair_style = previous_list_item(hair_style, GLOB.hair_styles_female_list)
+				
+				if("next_gradient_style")
+					gradient_style = next_list_item(gradient_style, GLOB.hair_gradients_list)
+
+				if("previous_gradient_style")
+					gradient_style = previous_list_item(gradient_style, GLOB.hair_gradients_list)
 
 				if("facial")
 					var/new_facial = input(user, "Choose your character's facial-hair colour:", "Character Preference","#"+facial_hair_color) as color|null
@@ -1508,6 +1546,11 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					if(new_etherealcolor)
 						features["ethcolor"] = GLOB.color_list_ethereal[new_etherealcolor]
 
+
+				if("helmet_style")
+					var/style = input(user, "Choose your helmet style", "Character Preference") as null|anything in list(HELMET_DEFAULT, HELMET_MK2, HELMET_PROTECTIVE)
+					if(style)
+						helmet_style = style
 
 				if("tail_lizard")
 					var/new_tail
@@ -2000,8 +2043,9 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 			organ_eyes.eye_color = eye_color
 		organ_eyes.old_eye_color = eye_color
 	character.hair_color = hair_color
+	character.gradient_color = gradient_color
+	character.gradient_style = gradient_style
 	character.facial_hair_color = facial_hair_color
-
 	character.skin_tone = skin_tone
 	character.hair_style = hair_style
 	character.facial_hair_style = facial_hair_style

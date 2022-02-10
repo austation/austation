@@ -76,6 +76,13 @@
 			remove_ripples()
 			return DOCKING_IMMOBILIZED
 
+	//austation begin -- more stuff
+	for(var/turf/old_terf in old_turfs)
+		old_terf.set_sleeping(TRUE)
+	for(var/turf/new_terf in new_turfs)
+		new_terf.set_sleeping(TRUE)
+	//austation end
+
 	// Moving to the new location will trample the ripples there at the exact
 	// same time any mobs there are trampled, to avoid any discrepancy where
 	// the ripples go away before it is safe.
@@ -210,4 +217,3 @@
 		var/turf/open/T = turfs[i]
 		if(istype(T))
 			T.air.copy_from_turf(T)
-			

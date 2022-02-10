@@ -1,11 +1,5 @@
 //DEFINITIONS FOR ASSET DATUMS START HERE.
 
-/datum/asset/simple/tgui_common
-	keep_local_name = TRUE
-	assets = list(
-		"tgui-common.bundle.js" = file("tgui/public/tgui-common.bundle.js"),
-	)
-
 /datum/asset/simple/tgui
 	keep_local_name = TRUE
 	assets = list(
@@ -234,6 +228,12 @@
 		"boss5.gif" = 'icons/UI_Icons/Arcade/boss5.gif',
 		"boss6.gif" = 'icons/UI_Icons/Arcade/boss6.gif',
 		)
+
+/datum/asset/spritesheet/simple/achievements
+	name ="achievements"
+	assets = list(
+		"default" = 'icons/UI_Icons/Achievements/default.png'
+	)
 
 /datum/asset/spritesheet/simple/pills
 	name ="pills"
