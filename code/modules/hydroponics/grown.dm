@@ -24,6 +24,7 @@
 	var/discovery_points = 0 //Amount of discovery points given for scanning
 
 	var/mutable_appearance/grown_overlay //Used for 'Floral Spines' plant gene
+	var/mob/living/target
 
 /obj/item/reagent_containers/food/snacks/grown/Initialize(mapload, obj/item/seeds/new_seed)
 	. = ..()
@@ -112,9 +113,10 @@
 
 			if(seed.get_gene(/datum/plant_gene/trait/spines))
 				if(istype(hit_atom, /mob/living))
+					target = hit_atom
+
 					grown_overlay.layer = FLOAT_LAYER
-			
-					hit_atom.add_overlay(grown_overlay, TRUE)
+					target.add_overlay(grown_overlay, TRUE)
 				
 					var/P = seed.get_gene(/datum/plant_gene/trait/stinging)
 					var/mob/living/L = hit_atom
@@ -204,5 +206,5 @@
 		to_chat(user, "<span class='notice'>You open [src]\'s shell, revealing \a [T].</span>")
 
 /obj/item/reagent_containers/food/snacks/grown/unembedded()
+	target.cut_overlay(grown_overlay, TRUE)
 	. = ..()
-	cut_overlay(grown_overlay)
