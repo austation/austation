@@ -5,6 +5,14 @@
 
 /////////////////////////Bluespace tech/////////////////////////
 
+/datum/techweb_node/bag_of_holding
+	hidden = FALSE
+	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 10000)
+
+/datum/techweb_node/quantum_spin
+	hidden = FALSE
+	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 7500)
+
 /datum/techweb_node/micro_bluespace
 	austation_design_ids = list("bluespace_belt")
 
@@ -50,6 +58,14 @@
 
 /////////////////////////Advanced Surgery/////////////////////////
 
+/datum/techweb_node/combat_cyber_implants
+	hidden = FALSE
+	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 7500)
+
+/datum/techweb_node/adv_combat_cyber_implants
+	hidden = FALSE
+	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 5000)
+
 /datum/techweb_node/exp_surgery
 	austation_design_ids = list("surgery_cortex_imprint", "surgery_cortex_folding")
 
@@ -62,7 +78,12 @@
 	austation_design_ids = list("dadbot_module", "rickroll_module", "dagothur_module", "crewsimov_module", "disboard_module")
 	austation_design_ids_remove = list("aiupload")
 
+
 ////////////////////////mech technology////////////////////////
+
+/datum/techweb_node/phazon
+	hidden = FALSE
+	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 10000)
 
 /datum/techweb_node/adv_mecha_tools
 	austation_design_ids = list("mech_ion_thrusters")
@@ -71,3 +92,22 @@
 
 /datum/techweb_node/bio_process
 	austation_design_ids = list("cake_printer")
+
+/////////////////////////weaponry tech/////////////////////////
+
+/datum/techweb_node/exotic_ammo
+	hidden = FALSE
+	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 5000)
+
+/datum/techweb_node/beam_weapons
+	hidden = FALSE
+	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 5000)
+
+/datum/techweb_node/adv_beam_weapons
+	hidden = FALSE
+	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 5000)
+
+/datum/techweb_node/radioactive_weapons
+	hidden = FALSE
+	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 5000)
+

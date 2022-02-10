@@ -15,6 +15,7 @@
 
 	// Config actually from the JSON - should default to Box
 	var/map_name = "Box Station"
+	var/map_link = null //This is intentionally wrong, this will make it not link to webmap.
 	var/map_path = "map_files/BoxStation"
 	var/map_file = "BoxStation.dmm"
 
@@ -24,6 +25,9 @@
 
 	var/minetype = "lavaland"
 
+	//austation -- check for fastmos compat
+	var/fastmos_compatible = FALSE
+
 	var/allow_custom_shuttles = TRUE
 	var/allow_night_lighting = TRUE
 	var/shuttles = list(
@@ -32,14 +36,18 @@
 		"whiteship" = "whiteship_box",
 		"emergency" = "emergency_box")
 
-/proc/load_map_config(filename = "data/next_map.json", default_to_box, delete_after, error_if_missing = TRUE)
+/proc/load_map_config(filename = "next_map", foldername = DATA_DIRECTORY, default_to_box, delete_after, error_if_missing = TRUE)
+	if(IsAdminAdvancedProcCall())
+		return
+
+	filename = "[foldername]/[filename].json"
 	var/datum/map_config/config = new
 	if (default_to_box)
 		return config
 	if (!config.LoadConfig(filename, error_if_missing))
 		qdel(config)
 		config = new /datum/map_config  // Fall back to Box
-	if (delete_after)
+	else if (delete_after)
 		fdel(filename)
 	return config
 
@@ -126,6 +134,15 @@
 
 	if ("minetype" in json)
 		minetype = json["minetype"]
+
+	//austation -- fastmos compatability
+	if("fastmos" in json)
+		fastmos_compatible = TRUE
+
+	if("map_link" in json)
+		map_link = json["map_link"]
+	else
+		log_world("map_link missing from json!")
 
 	allow_custom_shuttles = json["allow_custom_shuttles"] != FALSE
 

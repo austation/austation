@@ -131,6 +131,7 @@ There are several things that need to be remembered:
 			if(G == "f" && U.fitted != NO_FEMALE_UNIFORM)
 				uniform_overlay = U.build_worn_icon(state = "[t_color]", default_layer = UNIFORM_LAYER, default_icon_file = 'icons/mob/uniform.dmi', isinhands = FALSE, femaleuniform = U.fitted)
 
+		//Change check_adjustable_clothing.dm if you change this
 		var/icon_file = 'icons/mob/uniform.dmi'
 		if(!uniform_overlay)
 			if(U.sprite_sheets & (dna?.species.bodyflag))
@@ -292,7 +293,7 @@ There are several things that need to be remembered:
 			if(hud_used.inventory_shown)			//if the inventory is open
 				client.screen += wear_neck					//add it to the client's screen
 		update_observer_view(wear_neck,1)
-		if(!(ITEM_SLOT_NECK in check_obscured_slots()))
+		if(!(check_obscured_slots() & ITEM_SLOT_NECK))
 			var/icon_file = 'icons/mob/neck.dmi'
 			if(istype(wear_neck, /obj/item))
 				var/obj/item/N = wear_neck
@@ -630,14 +631,6 @@ There are several things that need to be remembered:
 	if(client && hud_used && hud_used.hud_shown)
 		client.screen += I
 	update_observer_view(I)
-
-//Update whether we smell
-/mob/living/carbon/human/proc/update_smell(var/smelly_icon = "generic_mob_smell")
-	remove_overlay(SMELL_LAYER)
-	if(hygiene == HYGIENE_LEVEL_DISGUSTING) //You have literally ignored your stank for so long that you physically can't get dirtier.
-		var/mutable_appearance/new_smell_overlay = mutable_appearance('icons/mob/smelly.dmi', smelly_icon, -SMELL_LAYER)
-		overlays_standing[SMELL_LAYER] = new_smell_overlay
-		apply_overlay(SMELL_LAYER)
 
 /*
 Does everything in relation to building the /mutable_appearance used in the mob's overlays list

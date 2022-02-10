@@ -14,7 +14,7 @@ SUBSYSTEM_DEF(ticker)
 	var/start_immediately = FALSE
 	var/setup_done = FALSE //All game setup done including mode post setup and
 
-	var/hide_mode = 0
+	var/hide_mode = FALSE
 	var/datum/game_mode/mode = null
 
 	var/login_music							//music played in pregame lobby
@@ -54,6 +54,7 @@ SUBSYSTEM_DEF(ticker)
 	var/roundend_check_paused = FALSE
 
 	var/round_start_time = 0
+	var/round_start_timeofday = 0
 	var/list/round_start_events
 	var/list/round_end_events
 	var/mode_result = "undefined"
@@ -144,7 +145,12 @@ SUBSYSTEM_DEF(ticker)
 
 		GLOB.syndicate_code_response_regex = codeword_match
 
-	start_at = world.time + (CONFIG_GET(number/lobby_countdown) * 10)
+	// austation begin -- round start delayed when server inactive
+	if(!server_inactive)
+		start_at = world.time + (CONFIG_GET(number/lobby_countdown) * 10)
+	else
+		start_at = -1
+	// austation end
 	if(CONFIG_GET(flag/randomize_shift_time))
 		gametime_offset = rand(0, 23) HOURS
 	else if(CONFIG_GET(flag/shift_time_realtime))
@@ -167,10 +173,6 @@ SUBSYSTEM_DEF(ticker)
 			for(var/client/C in GLOB.clients)
 				window_flash(C, ignorepref = TRUE) //let them know lobby has opened up.
 			to_chat(world, "<span class='boldnotice'>Welcome to [station_name()]!</span>")
-			if(GLOB.master_mode == "sandbox") // austation start -- TGS bot now pings notification squad role, also hopefully fixes TGS issues
-				send2chat("New sandbox round starting on [SSmapping.config.map_name]!", "status")
-			else
-				send2chat("<@&586792483892232209> New round starting on [SSmapping.config.map_name]!", "status") // austation end
 			current_state = GAME_STATE_PREGAME
 			//Everyone who wants to be an observer is now spawned
 			create_observers()
@@ -193,6 +195,16 @@ SUBSYSTEM_DEF(ticker)
 			if(timeLeft < 0)
 				return
 			timeLeft -= wait
+
+			// austation start -- TGS bot now pings notification squad role, also hopefully fixes TGS issues, and handle autosandbox
+			if(timeLeft <= 600 && !pregame_checked)
+				autosandbox()
+				if(GLOB.master_mode == "sandbox")
+					send2chat("New sandbox round starting on [SSmapping.config.map_name]!", "status")
+				else
+					send2chat("<@&586792483892232209> New round starting on [SSmapping.config.map_name]!", "status")
+				pregame_checked = TRUE
+			// austation end
 
 			if(timeLeft <= 300 && !tipped)
 				send_tip_of_the_round()
@@ -270,8 +282,8 @@ SUBSYSTEM_DEF(ticker)
 	if(GLOB.master_mode == "random" || GLOB.master_mode == "secret")
 		runnable_modes = config.get_runnable_modes()
 
-		if(GLOB.master_mode == "secret")
-			hide_mode = 1
+		if(GLOB.master_mode == "secret" || GLOB.master_mode == "secret_extended")
+			hide_mode = TRUE
 			if(GLOB.secret_force_mode != "secret")
 				var/datum/game_mode/smode = config.pick_mode(GLOB.secret_force_mode)
 				if(!smode.can_start())
@@ -351,6 +363,7 @@ SUBSYSTEM_DEF(ticker)
 
 	log_world("Game start took [(world.timeofday - init_start)/10]s")
 	round_start_time = world.time
+	round_start_timeofday = world.timeofday
 	SSdbcore.SetRoundStart()
 
 	to_chat(world, "<span class='notice'><B>Welcome to [station_name()], enjoy your stay!</B></span>")
@@ -583,6 +596,7 @@ SUBSYSTEM_DEF(ticker)
 	queued_players = SSticker.queued_players
 	maprotatechecked = SSticker.maprotatechecked
 	round_start_time = SSticker.round_start_time
+	round_start_timeofday = SSticker.round_start_timeofday
 
 	queue_delay = SSticker.queue_delay
 	queued_players = SSticker.queued_players

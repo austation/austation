@@ -50,11 +50,15 @@ SUBSYSTEM_DEF(air)
 	var/log_explosive_decompression = TRUE // If things get spammy, admemes can turn this off.
 
 	// Max number of turfs equalization will grab.
-	var/equalize_turf_limit = 10
+	//austation -- set to 30 from 10
+	var/equalize_turf_limit = 30
 	// Max number of turfs to look for a space turf, and max number of turfs that will be decompressed.
 	var/equalize_hard_turf_limit = 2000
 	// Whether equalization should be enabled at all.
-	var/equalize_enabled = FALSE
+	//austation -- set to TRUE from FALSE
+	var/equalize_enabled = TRUE
+	//austation -- placeholder, does nothing
+	var/planet_equalize_enabled = TRUE
 	// Whether turf-to-turf heat exchanging should be enabled.
 	var/heat_enabled = FALSE
 	// Max number of times process_turfs will share in a tick.
@@ -104,6 +108,13 @@ SUBSYSTEM_DEF(air)
 /datum/controller/subsystem/air/proc/extools_update_ssair()
 
 /datum/controller/subsystem/air/proc/auxtools_update_reactions()
+
+//austation begin --  chem gases
+/datum/controller/subsystem/air/proc/add_reaction(datum/gas_reaction/r)
+	gas_reactions += r
+	sortTim(gas_reactions, /proc/cmp_gas_reaction)
+	auxtools_update_reactions()
+//austation end
 
 /proc/reset_all_air()
 	SSair.can_fire = 0
@@ -431,7 +442,8 @@ SUBSYSTEM_DEF(air)
 	LAZYADD(paused_z_levels, z_level)
 	var/list/turfs_to_disable = block(locate(1, 1, z_level), locate(world.maxx, world.maxy, z_level))
 	for(var/turf/T as anything in turfs_to_disable)
-		T.ImmediateDisableAdjacency(FALSE)
+		//austation -- lmao
+		T.set_sleeping(TRUE)
 		CHECK_TICK
 
 /datum/controller/subsystem/air/proc/unpause_z(z_level)
