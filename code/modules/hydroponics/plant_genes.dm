@@ -465,6 +465,9 @@
 	to_chat(L, "<span class='danger'>You are pricked by [G]!</span>")
 	return TRUE
 
+/datum/plant_gene/trait/spines
+	name = "Floral Spines"
+
 /datum/plant_gene/trait/smoke
 	name = "Gaseous Decomposition"
 
