@@ -50,4 +50,4 @@
 			
 				var/P = G.seed.get_gene(/datum/plant_gene/trait/stinging)
 				var/mob/living/L = target
-				L.adjustBruteLoss((G.seed.potency/4.7)*P)//I'm not going to use embed damage, this is easier.
+				L.adjustBruteLoss((G.seed.potency/4.7)*P)
