@@ -48,20 +48,6 @@
 
 	qdel(src)
 
-/obj/item/reagent_containers/food/snacks/grown/throw_impact(atom/hit_atom, datum/thrownthing/throwingdatum)
-	if(!..()) //was it caught by a mob?
-		if(seed)
-			if(seed.get_gene(/datum/plant_gene/trait/spines))
-				if(istype(hit_atom, /mob/living))
-					target = hit_atom
-
-					grown_overlay.layer = FLOAT_LAYER
-					target.add_overlay(grown_overlay, TRUE)
-				
-					var/P = seed.get_gene(/datum/plant_gene/trait/stinging)
-					var/mob/living/L = hit_atom
-					L.adjustBruteLoss((seed.potency/4.7)*P)//I'm not going to use embed damage, this is easier.
-
 /obj/item/reagent_containers/food/snacks/grown/unembedded()
 	target.cut_overlay(grown_overlay, TRUE)
 	. = ..()
