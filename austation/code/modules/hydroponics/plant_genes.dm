@@ -34,3 +34,7 @@
 /datum/plant_gene/trait/noreact/on_squashreact(obj/item/reagent_containers/food/snacks/grown/G, atom/target)
 	DISABLE_BITFIELD(G.reagents.flags, NO_REACT)
 	G.reagents.handle_reactions()
+
+//Too close to Neck-Code TM
+/datum/plant_gene/trait/spines
+	name = "Floral Spines"
