@@ -23,9 +23,6 @@
 
 	var/discovery_points = 0 //Amount of discovery points given for scanning
 
-	var/mutable_appearance/grown_overlay //Used for 'Floral Spines' plant gene
-	var/mob/living/target
-
 /obj/item/reagent_containers/food/snacks/grown/Initialize(mapload, obj/item/seeds/new_seed)
 	. = ..()
 	if(!tastes)
@@ -53,13 +50,6 @@
 	
 	if(discovery_points)
 		AddComponent(/datum/component/discoverable, discovery_points)
-
-	if(seed.get_gene(/datum/plant_gene/trait/spines))
-		embedding = EMBED_HARMLESS
-		embedding["embed_chance"] = 300 //300 is better than 100 ;)
-		updateEmbedding()
-	
-	grown_overlay = mutable_appearance(icon, icon_state)
 
 /obj/item/reagent_containers/food/snacks/grown/proc/add_juice()
 	if(reagents)
@@ -110,17 +100,6 @@
 				T.on_throw_impact(src, hit_atom)
 			if(seed.get_gene(/datum/plant_gene/trait/squash))
 				squash(hit_atom)
-
-			if(seed.get_gene(/datum/plant_gene/trait/spines))
-				if(istype(hit_atom, /mob/living))
-					target = hit_atom
-
-					grown_overlay.layer = FLOAT_LAYER
-					target.add_overlay(grown_overlay, TRUE)
-				
-					var/P = seed.get_gene(/datum/plant_gene/trait/stinging)
-					var/mob/living/L = hit_atom
-					L.adjustBruteLoss((seed.potency/4.7)*P)//I'm not going to use embed damage, this is easier.
 
 /obj/item/reagent_containers/food/snacks/grown/proc/squash(atom/target)
 	var/turf/T = get_turf(target)
@@ -204,7 +183,3 @@
 		qdel(src)
 		user.put_in_hands(T, FALSE)
 		to_chat(user, "<span class='notice'>You open [src]\'s shell, revealing \a [T].</span>")
-
-/obj/item/reagent_containers/food/snacks/grown/unembedded()
-	target.cut_overlay(grown_overlay, TRUE)
-	. = ..()

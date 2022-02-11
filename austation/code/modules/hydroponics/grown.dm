@@ -1,3 +1,18 @@
+/obj/item/reagent_containers/food/snacks/grown
+	var/mutable_appearance/grown_overlay //Used for 'Floral Spines' plant gene
+	var/mob/living/target
+
+
+/obj/item/reagent_containers/food/snacks/grown/Initialize(mapload, obj/item/seeds/new_seed)
+	. = ..()
+
+	if(seed.get_gene(/datum/plant_gene/trait/spines))
+		embedding = EMBED_HARMLESS
+		embedding["embed_chance"] = 300 //300 is better than 100 ;)
+		updateEmbedding()
+	
+	grown_overlay = mutable_appearance(icon, icon_state)
+
 /obj/item/reagent_containers/food/snacks/grown/attack(mob/living/carbon/M, mob/user)
 	if(seed)
 		for(var/datum/plant_gene/trait/T in seed.genes)
@@ -32,3 +47,21 @@
 		reagents.reaction(A)
 
 	qdel(src)
+
+/obj/item/reagent_containers/food/snacks/grown/throw_impact(atom/hit_atom, datum/thrownthing/throwingdatum)
+	if(!..()) //was it caught by a mob?
+		if(seed)
+			if(seed.get_gene(/datum/plant_gene/trait/spines))
+				if(istype(hit_atom, /mob/living))
+					target = hit_atom
+
+					grown_overlay.layer = FLOAT_LAYER
+					target.add_overlay(grown_overlay, TRUE)
+				
+					var/P = seed.get_gene(/datum/plant_gene/trait/stinging)
+					var/mob/living/L = hit_atom
+					L.adjustBruteLoss((seed.potency/4.7)*P)//I'm not going to use embed damage, this is easier.
+
+/obj/item/reagent_containers/food/snacks/grown/unembedded()
+	target.cut_overlay(grown_overlay, TRUE)
+	. = ..()
