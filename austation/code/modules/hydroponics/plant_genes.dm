@@ -52,16 +52,20 @@
 				var/mob/living/L = target
 				L.adjustBruteLoss((G.seed.potency/4.7)*P)
 
-/datum/plant_gene/trait/spines/on_throw_impact(obj/item/reagent_containers/food/snacks/grown/G, atom/target)
-	if(!..()) //was it caught by a mob?
-		if(seed)
-			if(seed.get_gene(/datum/plant_gene/trait/spines))
-				if(istype(hit_atom, /mob/living))
-					target = hit_atom
+				G.tryEmbed(target, TRUE, TRUE)
 
-					grown_overlay.layer = FLOAT_LAYER
-					target.add_overlay(grown_overlay, TRUE)
+/datum/plant_gene/trait/spines/on_throw_impact(obj/item/reagent_containers/food/snacks/grown/G, atom/target)
+	if(!..())
+		if(G.seed)
+			if(G.seed.get_gene(/datum/plant_gene/trait/spines))
+				if(istype(target, /mob/living))
+					G.target = target
+
+					G.grown_overlay.layer = FLOAT_LAYER
+					G.target.add_overlay(G.grown_overlay, TRUE)
 				
-					var/P = seed.get_gene(/datum/plant_gene/trait/stinging)
-					var/mob/living/L = hit_atom
-					L.adjustBruteLoss((seed.potency/4.7)*P)//I'm not going to use embed damage, this is easier.
+					var/P = G.seed.get_gene(/datum/plant_gene/trait/stinging)
+					var/mob/living/L = target
+					L.adjustBruteLoss((G.seed.potency/4.7)*P)
+
+					G.tryEmbed(target, TRUE, TRUE)
