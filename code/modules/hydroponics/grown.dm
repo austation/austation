@@ -183,3 +183,4 @@
 		qdel(src)
 		user.put_in_hands(T, FALSE)
 		to_chat(user, "<span class='notice'>You open [src]\'s shell, revealing \a [T].</span>")
+		
