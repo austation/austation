@@ -46,7 +46,7 @@
 	erupting_state = null
 	var/list/options = list(/datum/reagent/oil = 2, /datum/reagent/clf3 = 1, /datum/reagent/plasma_oxide = 8) //fucking add more //austation -- plasma_oxide for exotic stabilizer
 
-/obj/structure/geyser/random/Initialize()
+/obj/structure/geyser/random/Initialize(mapload)
 	. = ..()
 	reagent_id = pickweight(options)
 
@@ -65,7 +65,11 @@
 
 /obj/item/plunger/reinforced
 	name = "reinforced plunger"
+<<<<<<< HEAD
 	desc = " It's an M. 7 Reinforced Plunger© for heavy duty plunging."
+=======
+	desc = " It's an M. 7 Reinforced Plunger� for heavy duty plunging."
+>>>>>>> 61e367a052... Adds `mapload` to every `Initialize()` and fixes gasses being invisible (#6361)
 	icon_state = "reinforced_plunger"
 
 	reinforced = TRUE
