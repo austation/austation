@@ -1,0 +1,4 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - imageadd: "Added a new AI core display, the Cat"
