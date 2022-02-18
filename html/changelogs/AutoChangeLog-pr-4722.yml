@@ -1,5 +1,0 @@
-author: "AustationBot"
-delete-after: True
-changes: 
-  - server: "Python version bumped to 3.9.10"
-  - code_imp: "Cleans up the CL scripts"
