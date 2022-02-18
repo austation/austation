@@ -1,4 +1,0 @@
-author: "AustationBot"
-delete-after: True
-changes: 
-  - refactor: "Refactored guest player detection to be much simpler."
