@@ -86,11 +86,14 @@ GLOBAL_LIST_EMPTY(station_turfs)
 		add_overlay(/obj/effect/fullbright)
 
 	if(requires_activation)
-		CALCULATE_ADJACENT_TURFS(src)
+		//austation begin -- nuke ssadjacent_air
+		ImmediateCalculateAdjacentTurfs()
+		//CALCULATE_ADJACENT_TURFS(src)
+		//austation end
 
 	if(color)
 		add_atom_colour(color, FIXED_COLOUR_PRIORITY)
-		
+
 	if (light_power && light_range)
 		update_light()
 
@@ -118,12 +121,17 @@ GLOBAL_LIST_EMPTY(station_turfs)
 
 /turf/proc/__auxtools_update_turf_temp_info()
 
+/turf/proc/__auxtools_update_turf_infos(immediate) //austation -- adjacency update
+
 /turf/return_temperature()
 
 /turf/proc/set_temperature()
 
 /turf/proc/Initalize_Atmos(times_fired)
-	CALCULATE_ADJACENT_TURFS(src)
+	//austation begin -- nuke ssadjacent_air
+	ImmediateCalculateAdjacentTurfs()
+	//CALCULATE_ADJACENT_TURFS(src)
+	//austation end
 
 /turf/Destroy(force)
 	. = QDEL_HINT_IWILLGC

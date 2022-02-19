@@ -1,3 +1,5 @@
+/*
+//austation begin -- nuke ssadjacent_air
 SUBSYSTEM_DEF(adjacent_air)
 	name = "Atmos Adjacency"
 	flags = SS_BACKGROUND
@@ -52,3 +54,5 @@ SUBSYSTEM_DEF(adjacent_air)
 				break
 		else
 			CHECK_TICK
+//austation end
+*/
