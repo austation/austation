@@ -12,8 +12,7 @@
 		updateEmbedding()
 
 		grown_overlay.layer = FLOAT_LAYER
-	
-	grown_overlay = mutable_appearance(icon, icon_state)
+		grown_overlay = mutable_appearance(icon, icon_state)
 
 /obj/item/reagent_containers/food/snacks/grown/attack(mob/living/carbon/M, mob/user)
 	if(seed)
