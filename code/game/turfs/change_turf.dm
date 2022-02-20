@@ -17,15 +17,13 @@ GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
 		var/turf/newT = ChangeTurf(turf_type, baseturf_type, flags)
 		CALCULATE_ADJACENT_TURFS(newT)
 
-//austation -- added flag args
-/turf/proc/copyTurf(turf/T, copy_air, flags)
+/turf/proc/copyTurf(turf/T)
 	if(T.type != type)
 		var/obj/O
 		if(underlays.len)	//we have underlays, which implies some sort of transparency, so we want to a snapshot of the previous turf as an underlay
 			O = new()
 			O.underlays.Add(T)
-		//austation -- added flag args and a null one
-		T.ChangeTurf(type, null, flags)
+		T.ChangeTurf(type)
 		if(underlays.len)
 			T.underlays = O.underlays
 	if(T.icon_state != icon_state)
@@ -269,8 +267,7 @@ GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
 
 // Copy an existing turf and put it on top
 // Returns the new turf
-//austation -- added flag args
-/turf/proc/CopyOnTop(turf/copytarget, ignore_bottom=1, depth=INFINITY, copy_air = FALSE, flags)
+/turf/proc/CopyOnTop(turf/copytarget, ignore_bottom=1, depth=INFINITY, copy_air = FALSE)
 	var/list/new_baseturfs = list()
 	new_baseturfs += baseturfs
 	new_baseturfs += type
@@ -286,8 +283,8 @@ GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
 		if(target_baseturfs)
 			target_baseturfs -= new_baseturfs & GLOB.blacklisted_automated_baseturfs
 			new_baseturfs += target_baseturfs
-	//austation -- added flag args
-	var/turf/newT = copytarget.copyTurf(src, copy_air, flags)
+
+	var/turf/newT = copytarget.copyTurf(src, copy_air)
 	newT.baseturfs = new_baseturfs
 	return newT
 

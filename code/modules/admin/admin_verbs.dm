@@ -802,8 +802,7 @@ GLOBAL_PROTECT(admin_verbs_hideable)
 			continue
 		GM.parse_gas_string(F.initial_gas_mix)
 		F.copy_air(GM)
-		//austation -- this is commented out because it breaks gas visuals with fastmos
-		//F.update_visuals()
+		F.update_visuals()
 
 	for(var/obj/machinery/portable_atmospherics/canister/can in view())
 		can.valve_open = FALSE
