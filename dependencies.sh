@@ -5,7 +5,7 @@
 
 # byond version
 export BYOND_MAJOR=514
-export BYOND_MINOR=1572
+export BYOND_MINOR=1575
 
 #rust version
 export RUST_VERSION=1.54.0
@@ -21,7 +21,7 @@ export NODE_VERSION_PRECISE=12.22.4
 export SPACEMAN_DMM_VERSION=suite-1.7.1
 
 #auxmos version
-export AUXMOS_VERSION=v0.3.0
+export AUXMOS_VERSION=v0.3.1
 
 # Python version for mapmerge and other tools
-export PYTHON_VERSION=3.6.8
+export PYTHON_VERSION=3.9.10

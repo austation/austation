@@ -14,6 +14,6 @@
 
 /obj/item/storage/belt/utility
 	icon = 'austation/icons/obj/clothing/belts.dmi'
-	alternate_worn_icon = 'austation/icons/mob/clothing/belt.dmi'
+	worn_icon = 'austation/icons/mob/clothing/belt.dmi'
 	lefthand_file = 'austation/icons/mob/inhands/equipment/belts_lefthand.dmi'
 	righthand_file = 'austation/icons/mob/inhands/equipment/belts_righthand.dmi'
