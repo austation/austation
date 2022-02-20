@@ -10,6 +10,8 @@
 		embedding = EMBED_HARMLESS
 		embedding["embed_chance"] = 300 //300 is better than 100 ;)
 		updateEmbedding()
+
+		grown_overlay.layer = FLOAT_LAYER
 	
 	grown_overlay = mutable_appearance(icon, icon_state)
 

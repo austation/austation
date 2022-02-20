@@ -42,8 +42,6 @@
 /datum/plant_gene/trait/spines/on_slip(obj/item/reagent_containers/food/snacks/grown/G, atom/target)
 	if(G.seed && G.seed.get_gene(/datum/plant_gene/trait/spines) && istype(target, /mob/living))
 		G.target = target
-
-		G.grown_overlay.layer = FLOAT_LAYER
 		G.target.add_overlay(G.grown_overlay, TRUE)
 			
 		var/P = G.seed.get_gene(/datum/plant_gene/trait/stinging)
@@ -53,7 +51,7 @@
 		G.tryEmbed(target, TRUE, TRUE)
 
 /datum/plant_gene/trait/spines/on_throw_impact(obj/item/reagent_containers/food/snacks/grown/G, atom/target)
-	if(!..() && G?.seed.get_gene(/datum/plant_gene/trait/spines) && istype(target, /mob/living))
+	if(!..() && G?.seed.get_gene(/datum/plant_gene/trait/spines) && istype(target, /mob/living) && G.embedded(target))
 		G.target = target
 
 		G.grown_overlay.layer = FLOAT_LAYER
@@ -61,6 +59,6 @@
 				
 		var/P = G.seed.get_gene(/datum/plant_gene/trait/stinging)
 		var/mob/living/L = target
-		L.adjustBruteLoss((G.seed.potency/4.7)*P)
+		if(P) L.adjustBruteLoss((G.seed.potency/4.7)*P)
 
 		G.tryEmbed(target, TRUE, TRUE)
