@@ -260,7 +260,7 @@
 			return FALSE
 	return ..()
 
-/obj/item/robot_module/butler/Initialize()
+/obj/item/robot_module/butler/Initialize(mapload)
 	..()
 	basic_modules |= /obj/item/storage/bag/tray
 

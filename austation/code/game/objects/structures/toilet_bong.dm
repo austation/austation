@@ -7,7 +7,7 @@
 	anchored = TRUE
 	var/mutable_appearance/weed_overlay
 
-/obj/structure/toilet_bong/Initialize()
+/obj/structure/toilet_bong/Initialize(mapload)
 	. = ..()
 	weed_overlay = mutable_appearance('austation/icons/obj/watercloset.dmi', "weed")
 	START_PROCESSING(SSobj, src)

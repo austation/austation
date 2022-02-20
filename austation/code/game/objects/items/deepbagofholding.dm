@@ -19,7 +19,7 @@
 
 	var/turf/open/entry
 
-/obj/item/deepbackpack/Initialize()
+/obj/item/deepbackpack/Initialize(mapload)
 	. = ..()
 
 	// Sets up the minidimension and spawns it
