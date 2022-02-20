@@ -335,7 +335,7 @@ austation end */
 	var/pill_variance = 100 //probability pill_bottle has a different icon state. Put at 0 for no variance
 	var/pill_type = "pill_canister_"
 
-/obj/item/storage/pill_bottle/Initialize()
+/obj/item/storage/pill_bottle/Initialize(mapload)
 	. = ..()
 	if(prob(pill_variance))
 		icon_state = "[pill_type][rand(0,6)]"
@@ -500,7 +500,7 @@ austation end */
 	name = "bottle of floorpills"
 	desc = "An old pill bottle. It smells musty."
 
-/obj/item/storage/pill_bottle/floorpill/Initialize()
+/obj/item/storage/pill_bottle/floorpill/Initialize(mapload)
 	. = ..()
 	var/obj/item/reagent_containers/pill/P = locate() in src
 	name = "bottle of [P.name]s"

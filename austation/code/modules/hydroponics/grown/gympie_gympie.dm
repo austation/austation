@@ -34,7 +34,7 @@
 		return
 	..()
 
-/obj/item/seeds/gympie_gympie/Initialize()
+/obj/item/seeds/gympie_gympie/Initialize(mapload)
 	. = ..()
 	create_reagents(volume, INJECTABLE|DRAWABLE)
 

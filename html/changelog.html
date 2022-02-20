@@ -56,6 +56,59 @@
 		-->
 		<div class="commit sansserif">
 
+			<h2 class="date">20 February 2022</h2>
+			<h3 class="author">AustationBot updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="imageadd">Changed the medical belt sprite</li>
+				<li class="bugfix">Combat gloves have their worn sprite again</li>
+				<li class="code_imp">Removed a pointless proc call from chameleon changing.</li>
+				<li class="bugfix">Chameleon clothing now covers the correct slots of whatever it's mimicking.</li>
+				<li class="bugfix">Fixed crew objectives not being assigned at roundstart</li>
+				<li class="refactor">Cryopods use signals to handle objectives instead of looping through every objective</li>
+				<li class="code_imp">Many minor improvements to objectives</li>
+			</ul>
+			<h3 class="author">Kapu1178, Quantum_m, Ziiro updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="rscadd">Digitigrade legs now support some jumpsuits (more to be added later)</li>
+				<li class="rscadd">Digitigrade legs now support some hardsuits.</li>
+				<li class="rscadd">Almost every unique bodypart sprite is now a whole limb.</li>
+				<li class="rscadd">Limbgrower limbs are now a sickly green</li>
+				<li class="refactor">Digitigrade legs are now full limbs.</li>
+				<li class="refactor">Limbs retain information as they change owners</li>
+				<li class="refactor">Bodypart code is generally less ass</li>
+				<li class="code_imp">Support for bodytype-based clothing.</li>
+				<li class="bugfix">Lizard snoots no longer poke through hardsuit helmets</li>
+				<li class="bugfix">CHANGELING TRANSFORM FUNCTIONS PROPERLY</li>
+				<li class="rscdel">IPC and Super Soldier mutation toxin.</li>
+				<li class="code_imp">Krokodil victims are now a subtype of human</li>
+				<li class="code_imp">adds icon_exists() proc, used to check for the existence of icon states.</li>
+			</ul>
+			<h3 class="author">celotajstg, actioninja, Arkatos1, YakumoChen, lordScrubling updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="tweak">alternate_worn_icon is now worn_icon</li>
+				<li class="rscadd">Added worn_icon_state</li>
+				<li class="tweak">skirt jumpsuit are now /obj/item/clothing/under/color/jumpskirt</li>
+				<li class="rscdel">removed instance of color spelled colour (britain stay losing)</li>
+				<li class="rscadd">added gags to jumpsuits, jumpskirts and shoes (sneakers)</li>
+				<li class="tweak">modified build_worn_icon to automatically detect item state</li>
+			</ul>
+			<h3 class="author">tralezab & Ghilker, ported by ike709 updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="refactor">Every Initialize() now passes the mapload var.</li>
+				<li class="bugfix">Fixed gasses being invisible.</li>
+			</ul>
+
+			<h2 class="date">19 February 2022</h2>
+			<h3 class="author">AustationBot updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="rscadd">Adds suspenders to autodrobe</li>
+			</ul>
+			<h3 class="author">Cyberboss and Mothblocks, ported by ike709 updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="refactor">Converted a bunch of New() to Initialize().</li>
+				<li class="rscadd">Added a tool to profile atom initialization.</li>
+			</ul>
+
 			<h2 class="date">18 February 2022</h2>
 			<h3 class="author">AustationBot updated:</h3>
 			<ul class="changes bgimages16">
@@ -534,12 +587,6 @@
 			<ul class="changes bgimages16">
 				<li class="rscdel">PRs will no longer auto-stale.</li>
 				<li class="code_imp">Auto Stale Action no longer marks your PR as stale one day before you make it.</li>
-			</ul>
-
-			<h2 class="date">18 December 2021</h2>
-			<h3 class="author">AustationBot updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="bugfix">Fixed a runtime in CI</li>
 			</ul>
 		</div>
 

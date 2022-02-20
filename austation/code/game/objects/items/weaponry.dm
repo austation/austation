@@ -1,4 +1,4 @@
-/obj/item/circlegame/Initialize()
+/obj/item/circlegame/Initialize(mapload)
 	. = ..()
 	var/mob/living/owner = loc
 	if(!istype(owner))
