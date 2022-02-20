@@ -51,6 +51,8 @@
 	if(discovery_points)
 		AddComponent(/datum/component/discoverable, discovery_points)
 
+
+
 /obj/item/reagent_containers/food/snacks/grown/proc/add_juice()
 	if(reagents)
 		if(bitesize_mod)
@@ -87,6 +89,7 @@
 			for(var/datum/plant_gene/trait/T in seed.genes)
 				T.on_attackby(src, O, user)
 
+
 // Various gene procs
 /obj/item/reagent_containers/food/snacks/grown/attack_self(mob/user)
 	if(seed && seed.get_gene(/datum/plant_gene/trait/squash))
@@ -122,7 +125,6 @@
 	reagents.reaction(T)
 	for(var/A in T)
 		reagents.reaction(A)
-
 	qdel(src)
 
 /obj/item/reagent_containers/food/snacks/grown/proc/squashreact()
