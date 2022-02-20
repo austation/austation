@@ -2,7 +2,7 @@
 	name = "slouch hat"
 	desc = "A widebrimmed, soft felt hat commonly worn by the Old Earth Australian army members. It doesn't look particularly strong, however."
 	icon = 'austation/icons/obj/clothing/hats.dmi'
-	alternate_worn_icon = 'austation/icons/mob/head.dmi'
+	worn_icon = 'austation/icons/mob/head.dmi'
 	icon_state = "slouch-hat"
 	item_state = "slouch-hat"
 
