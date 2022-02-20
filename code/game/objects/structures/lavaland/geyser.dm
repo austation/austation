@@ -65,11 +65,7 @@
 
 /obj/item/plunger/reinforced
 	name = "reinforced plunger"
-<<<<<<< HEAD
 	desc = " It's an M. 7 Reinforced Plunger© for heavy duty plunging."
-=======
-	desc = " It's an M. 7 Reinforced Plunger� for heavy duty plunging."
->>>>>>> 61e367a052... Adds `mapload` to every `Initialize()` and fixes gasses being invisible (#6361)
 	icon_state = "reinforced_plunger"
 
 	reinforced = TRUE

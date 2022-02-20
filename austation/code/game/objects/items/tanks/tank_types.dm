@@ -49,7 +49,7 @@
   var/datum/gas/gas_type
   var/gas_temp
 
-/obj/item/tank/internals/occult/Initialize()
+/obj/item/tank/internals/occult/Initialize(mapload)
 	..()
 
 	var/list/gas_list = list()
