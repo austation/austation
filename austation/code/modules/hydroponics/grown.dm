@@ -11,8 +11,8 @@
 		embedding["embed_chance"] = 300 //300 is better than 100 ;)
 		updateEmbedding()
 
-		grown_overlay.layer = FLOAT_LAYER
 		grown_overlay = mutable_appearance(icon, icon_state)
+		grown_overlay.layer = FLOAT_LAYER
 
 /obj/item/reagent_containers/food/snacks/grown/attack(mob/living/carbon/M, mob/user)
 	if(seed)

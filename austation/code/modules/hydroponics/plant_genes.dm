@@ -59,6 +59,5 @@
 		if(P) L.adjustBruteLoss((G.seed.potency/4.7)*P)
 
 		if(G.tryEmbed(target, TRUE, TRUE))
-			G.grown_overlay.layer = FLOAT_LAYER
-			G.target.add_overlay(G.grown_overlay, TRUE)
-		
+			target.add_overlay(G.grown_overlay, TRUE)
+			
