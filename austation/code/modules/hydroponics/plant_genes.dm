@@ -60,4 +60,3 @@
 
 		if(G.tryEmbed(target, TRUE, TRUE))
 			target.add_overlay(G.grown_overlay, TRUE)
-			

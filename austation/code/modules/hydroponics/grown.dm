@@ -52,4 +52,3 @@
 /obj/item/reagent_containers/food/snacks/grown/unembedded()
 	. = ..()
 	target.cut_overlay(grown_overlay, TRUE)
-	
