@@ -801,6 +801,21 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 	generate_space_ruin(mob.x, mob.y, mob.z, border_size, border_size)
 	log_admin("[key_name(src)] randomly generated a space ruin at [COORD(mob)].")
 
+//austation begin -- ruin debug
+/client/proc/generate_z_ruin()
+	set category = "Debug"
+	set name = "Generate Ruin New Z"
+	set desc = "Randomly generate a space ruin and allocates space for it."
+	if(!holder)
+		return
+
+	var/datum/space_level/assigned_space_level = SSzclear.get_free_z_level()
+	mob.forceMove(locate(world.maxx / 2 , world.maxy / 2, assigned_space_level.z_value))
+	generate_space_ruin(world.maxx / 2, world.maxy / 2, assigned_space_level.z_value, 100, 100, null, null, null)
+
+	log_admin("[key_name(src)] randomly generated a space ruin at [COORD(mob)].")
+//austation end
+
 /client/proc/clear_dynamic_transit()
 	set category = "Debug"
 	set name = "Clear Dynamic Turf Reservations"

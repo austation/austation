@@ -439,19 +439,27 @@ SUBSYSTEM_DEF(air)
 	map_loading = FALSE
 
 /datum/controller/subsystem/air/proc/pause_z(z_level)
+	can_fire = FALSE
+	/* austation begin -- stop ssair
 	LAZYADD(paused_z_levels, z_level)
 	var/list/turfs_to_disable = block(locate(1, 1, z_level), locate(world.maxx, world.maxy, z_level))
 	for(var/turf/T as anything in turfs_to_disable)
 		//austation -- lmao
 		T.set_sleeping(TRUE)
 		CHECK_TICK
+	austation end
+	*/
 
 /datum/controller/subsystem/air/proc/unpause_z(z_level)
+	can_fire = TRUE
+	/* austation begin --start ssair again
 	var/list/turfs_to_reinit = block(locate(1, 1, z_level), locate(world.maxx, world.maxy, z_level))
 	for(var/turf/T as anything in turfs_to_reinit)
 		T.Initalize_Atmos()
 		CHECK_TICK
 	LAZYREMOVE(paused_z_levels, z_level)
+	austation end
+	*/
 
 /datum/controller/subsystem/air/proc/setup_allturfs()
 	var/list/turfs_to_init = block(locate(1, 1, 1), locate(world.maxx, world.maxy, world.maxz))
