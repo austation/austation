@@ -36,6 +36,7 @@
 	report_message = "Something seems to be wrong with the PDAs issued to you all this shift. Nothing too bad though."
 	trait_to_give = STATION_TRAIT_PDA_GLITCHED
 
+<<<<<<< HEAD
 /datum/station_trait/announcement_intern
 	name = "Announcement Intern"
 	trait_type = STATION_TRAIT_NEUTRAL
@@ -51,6 +52,8 @@
 	. = ..()
 	SSstation.announcer = /datum/centcom_announcer/intern
 
+=======
+>>>>>>> 5b92c9c9a6... Makes Intern a Negative Trait (#6300)
 /datum/station_trait/announcement_medbot
 	name = "Announcement \"System\""
 	trait_type = STATION_TRAIT_NEUTRAL
