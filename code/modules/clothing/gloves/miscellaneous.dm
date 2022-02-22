@@ -3,6 +3,7 @@
 	name = "fingerless gloves"
 	desc = "Plain black gloves without fingertips for the hard working."
 	icon_state = "fingerless"
+	worn_icon_state = "fingerless"
 	item_state = "fingerless"
 	item_color = null	//So they don't wash.
 	transfer_prints = TRUE
