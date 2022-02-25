@@ -12,7 +12,11 @@
 	antag_flag = ROLE_TRAITOR
 	false_report_weight = 20 //Reports of traitors are pretty common.
 	restricted_jobs = list("Cyborg")//They are part of the AI if he is traitor so are they, they use to get double chances
+<<<<<<< HEAD
 	protected_jobs = list("Security Officer", "Warden", "Detective", "Head of Security", "Head of Personnel", "Captain") // austation -- HOP can no longer be antag
+=======
+	protected_jobs = list("Security Officer", "Warden", "Head of Security", "Captain")
+>>>>>>> 88c379a614... Detective can be a traitor again, (#6372)
 	required_players = 0
 	required_enemies = 1
 	recommended_enemies = 4
