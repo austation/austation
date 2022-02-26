@@ -161,7 +161,6 @@
 #include "austation\code\modules\admin\topic.dm"
 #include "austation\code\modules\admin\verbs\fix_air.dm"
 #include "austation\code\modules\admin\verbs\kill_rads.dm"
-#include "austation\code\modules\atmospherics\auxgm\breathing_classes.dm"
 #include "austation\code\modules\admin\verbs\mapping.dm"
 #include "austation\code\modules\antagonists\changeling\changeling.dm"
 #include "austation\code\modules\atmospherics\auxgm\gas_types.dm"

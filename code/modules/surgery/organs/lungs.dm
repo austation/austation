@@ -179,22 +179,10 @@
 		var/alert_type = null
 		if(ispath(breathing_class))
 			breathing_class = breathing_classes[breathing_class]
-<<<<<<< HEAD
-			//var/list/gases = breathing_class.gases //austation -- chem gases
-			alert_category = breathing_class.high_alert_category
-			alert_type = breathing_class.high_alert_datum
-			danger_reagent = breathing_class.danger_reagent
-			//ausation begin -- chem gases
-			found_pp = breathing_class.get_effective_pp(breath)
-			//for(var/gas in gases)
-			//	found_pp += PP(breath, gas)
-			//ausation end
-=======
 			alert_category = breathing_class.high_alert_category
 			alert_type = breathing_class.high_alert_datum
 			danger_reagent = breathing_class.danger_reagent
 			found_pp = breathing_class.get_effective_pp(breath)
->>>>>>> 2b3480154e... Updates lung code (#6298)
 		else
 			danger_reagent = danger_reagents[entry]
 			if(entry in breath_alert_info)
@@ -216,15 +204,11 @@
 	for(var/gas in breath.get_gases())
 		if(gas in breath_reagents)
 			var/datum/reagent/R = breath_reagents[gas]
-<<<<<<< HEAD
 			//austation begin -- chem gases
-			//H.reagents.add_reagent(R, PP(breath,gas))
+			////H.reagents.add_reagent(R, breath.get_moles(gas) * R.molarity) // See next line
+			//H.reagents.add_reagent(R, breath.get_moles(gas) * 2) // 2 represents molarity of O2, we don't have citadel molarity
 			H.reagents.add_reagent(R, breath.get_moles(gas) * initial(R.molarity))
 			//austation end
-=======
-			//H.reagents.add_reagent(R, breath.get_moles(gas) * R.molarity) // See next line
-			H.reagents.add_reagent(R, breath.get_moles(gas) * 2) // 2 represents molarity of O2, we don't have citadel molarity
->>>>>>> 2b3480154e... Updates lung code (#6298)
 			mole_adjustments[gas] = (gas in mole_adjustments) ? mole_adjustments[gas] - breath.get_moles(gas) : -breath.get_moles(gas)
 
 	for(var/gas in mole_adjustments)
