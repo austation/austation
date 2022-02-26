@@ -1,4 +1,0 @@
-author: "Bizzonium, ported by ike709"
-delete-after: True
-changes: 
-  - refactor: "Made SSrunechat be a subsystem of SStimer"
