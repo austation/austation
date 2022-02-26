@@ -1,3 +1,14 @@
+/obj/item/reagent_containers/food/snacks/grown/Initialize(mapload, obj/item/seeds/new_seed)
+	. = ..()
+
+	var/datum/plant_gene/trait/spines/S = seed.get_gene(/datum/plant_gene/trait/spines)
+	if(S)
+		embedding = EMBED_HARMLESS
+		embedding["embed_chance"] = 300 //300 is better than 100 ;)
+		updateEmbedding()
+		S.grown_overlay = mutable_appearance(icon, icon_state)
+		S.grown_overlay.layer = FLOAT_LAYER
+
 /obj/item/reagent_containers/food/snacks/grown/attack(mob/living/carbon/M, mob/user)
 	if(seed)
 		for(var/datum/plant_gene/trait/T in seed.genes)
@@ -32,3 +43,17 @@
 		reagents.reaction(A)
 
 	qdel(src)
+
+/obj/item/reagent_containers/food/snacks/grown/unembedded()
+	. = ..()
+
+	var/datum/plant_gene/trait/spines/S = seed.get_gene(/datum/plant_gene/trait/spines)//Probably a better way out there
+	if(S.victim) 
+		S.victim.cut_overlay(S.grown_overlay, TRUE)
+
+/obj/item/reagent_containers/food/snacks/grown/Destroy()//Carbon copy of ^
+	var/datum/plant_gene/trait/spines/S = seed.get_gene(/datum/plant_gene/trait/spines)
+	if(S.victim) 
+		S.victim.cut_overlay(S.grown_overlay, TRUE)
+
+	. = ..()
