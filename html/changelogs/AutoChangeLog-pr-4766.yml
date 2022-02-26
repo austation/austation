@@ -1,5 +1,0 @@
-author: "AustationBot"
-delete-after: True
-changes: 
-  - bugfix: "Fixed plasmamen not actually needing to breathe plasma."
-  - tweak: "Updated lung code"
