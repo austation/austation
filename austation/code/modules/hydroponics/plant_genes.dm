@@ -42,7 +42,7 @@
 	var/mutable_appearance/grown_overlay
 
 /datum/plant_gene/trait/spines/on_slip(obj/item/reagent_containers/food/snacks/grown/G, atom/target)
-	if(G.seed && G.seed.get_gene(/datum/plant_gene/trait/spines) && istype(target, /mob/living))	
+	if(G?.seed.get_gene(/datum/plant_gene/trait/spines) && istype(target, /mob/living))	
 		var/P = G.seed.get_gene(/datum/plant_gene/trait/stinging)
 		var/mob/living/L = target
 		if(P) L.adjustBruteLoss((G.seed.potency/4.7)*P)
