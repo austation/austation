@@ -48,10 +48,12 @@
 	. = ..()
 
 	var/datum/plant_gene/trait/spines/S = seed.get_gene(/datum/plant_gene/trait/spines)//Probably a better way out there
-	if(S.victim) S.victim.cut_overlay(S.grown_overlay, TRUE)
+	if(S.victim) 
+		S.victim.cut_overlay(S.grown_overlay, TRUE)
 
 /obj/item/reagent_containers/food/snacks/grown/Destroy()//Carbon copy of ^
 	var/datum/plant_gene/trait/spines/S = seed.get_gene(/datum/plant_gene/trait/spines)
-	if(S.victim) S.victim.cut_overlay(S.grown_overlay, TRUE)
-	
+	if(S.victim) 
+		S.victim.cut_overlay(S.grown_overlay, TRUE)
+
 	. = ..()

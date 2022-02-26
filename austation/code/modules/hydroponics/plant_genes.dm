@@ -45,7 +45,8 @@
 	if(G?.seed.get_gene(/datum/plant_gene/trait/spines) && istype(target, /mob/living))	
 		var/P = G.seed.get_gene(/datum/plant_gene/trait/stinging)
 		var/mob/living/L = target
-		if(P) L.adjustBruteLoss((G.seed.potency/4.7)*P)
+		if(P) 
+			L.adjustBruteLoss((G.seed.potency/4.7)*P)
 
 		if(G.tryEmbed(target, TRUE, TRUE))
 			target.add_overlay(grown_overlay, TRUE)
@@ -54,7 +55,8 @@
 	if(!..() && G?.seed.get_gene(/datum/plant_gene/trait/spines) && istype(target, /mob/living))		
 		var/P = G.seed.get_gene(/datum/plant_gene/trait/stinging)
 		var/mob/living/L = target
-		if(P) L.adjustBruteLoss((G.seed.potency/4.7)*P)
+		if(P) 
+			L.adjustBruteLoss((G.seed.potency/4.7)*P)
 
 		if(G.tryEmbed(target, TRUE, TRUE))
 			target.add_overlay(grown_overlay, TRUE)
