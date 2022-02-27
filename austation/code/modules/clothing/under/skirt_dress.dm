@@ -2,7 +2,7 @@
 	name = "white wedding dress"
 	desc = "A white wedding gown made from the finest silk."
 	icon = 'austation/icons/obj/clothing/uniforms.dmi'
-	alternate_worn_icon = 'austation/icons/mob/uniform.dmi'
+	worn_icon = 'austation/icons/mob/uniform.dmi'
 	icon_state = "bride_white"
 	item_state = "bride_white"
 	can_adjust = FALSE
@@ -11,7 +11,7 @@
 	name = "orange wedding dress"
 	desc = "A big and puffy orange dress."
 	icon = 'austation/icons/obj/clothing/uniforms.dmi'
-	alternate_worn_icon = 'austation/icons/mob/uniform.dmi'
+	worn_icon = 'austation/icons/mob/uniform.dmi'
 	icon_state = "bride_orange"
 	item_state = "bride_orange"
 
@@ -19,7 +19,7 @@
 	name = "purple wedding dress"
 	desc = "A big and puffy purple dress."
 	icon = 'austation/icons/obj/clothing/uniforms.dmi'
-	alternate_worn_icon = 'austation/icons/mob/uniform.dmi'
+	worn_icon = 'austation/icons/mob/uniform.dmi'
 	icon_state = "bride_purple"
 	item_state = "bride_purple"
 
@@ -27,7 +27,7 @@
 	name = "blue wedding dress"
 	desc = "A big and puffy blue dress."
 	icon = 'austation/icons/obj/clothing/uniforms.dmi'
-	alternate_worn_icon = 'austation/icons/mob/uniform.dmi'
+	worn_icon = 'austation/icons/mob/uniform.dmi'
 	icon_state = "bride_blue"
 	item_state = "bride_blue"
 
@@ -35,7 +35,7 @@
 	name = "red wedding dress"
 	desc = "A big and puffy red dress."
 	icon = 'austation/icons/obj/clothing/uniforms.dmi'
-	alternate_worn_icon = 'austation/icons/mob/uniform.dmi'
+	worn_icon = 'austation/icons/mob/uniform.dmi'
 	icon_state = "bride_red"
 	item_state = "bride_red"
 
@@ -43,7 +43,7 @@
 	name = "grey wedding dress"
 	desc = "A big and puffy red dress."
 	icon = 'austation/icons/obj/clothing/uniforms.dmi'
-	alternate_worn_icon = 'austation/icons/mob/uniform.dmi'
+	worn_icon = 'austation/icons/mob/uniform.dmi'
 	icon_state = "bride_grey"
 	item_state = "bride_grey"
 
@@ -51,7 +51,7 @@
 	name = "green wedding dress"
 	desc = "A big and puffy red dress."
 	icon = 'austation/icons/obj/clothing/uniforms.dmi'
-	alternate_worn_icon = 'austation/icons/mob/uniform.dmi'
+	worn_icon = 'austation/icons/mob/uniform.dmi'
 	icon_state = "bride_green"
 	item_state = "bride_green"
 
@@ -59,7 +59,7 @@
 	name = "flower dress"
 	desc = "Lovely dress."
 	icon = 'austation/icons/obj/clothing/uniforms.dmi'
-	alternate_worn_icon = 'austation/icons/mob/uniform.dmi'
+	worn_icon = 'austation/icons/mob/uniform.dmi'
 	icon_state = "flower_dress"
 	item_state = "sailordress"
 	body_parts_covered = CHEST|GROIN|LEGS
@@ -70,4 +70,4 @@
 	name = "white sundress"
 	icon_state = "sundress_white"
 	icon = 'austation/icons/obj/clothing/uniforms.dmi'
-	alternate_worn_icon = 'austation/icons/mob/uniform.dmi'
+	worn_icon = 'austation/icons/mob/uniform.dmi'
