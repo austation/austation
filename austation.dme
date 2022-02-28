@@ -265,6 +265,8 @@
 #include "austation\code\modules\mob\living\simple_animal\hostile\generic.dm"
 #include "austation\code\modules\mob\living\simple_animal\hostile\regalrat.dm"
 #include "austation\code\modules\mob\living\simple_animal\hostile\retaliate\kangaroo.dm"
+#include "austation\code\modules\popes-xenoarchaeology\xenoartifact_traits.dm"
+#include "austation\code\modules\popes-xenoarchaeology\xenoartifact.dm"
 #include "austation\code\modules\power\cell.dm"
 #include "austation\code\modules\power\singularity.dm"
 #include "austation\code\modules\power\reactor\fuel_rods.dm"
