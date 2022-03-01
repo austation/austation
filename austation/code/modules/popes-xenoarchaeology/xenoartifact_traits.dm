@@ -33,10 +33,18 @@
     X.say("DEBUG::XENOARTIFACT::SING")
     ..()
 
-/datum/xenoartifact_trait/capture//Debug
+/datum/xenoartifact_trait/capture //Debug
     name = "Hollow"
 
-/datum/xenoartifact_trait/capture/activate(obj/item/xenoartifact/X, mob/target)
+/datum/xenoartifact_trait/capture/activate(obj/item/xenoartifact/X, mob/target, mob/user) //ToDo: Optimize this to exlcude ghosts and others
     var/atom/movable/AM = target
-    AM.forceMove(src)
+    AM.anchored = TRUE
+    X.anchored = TRUE
+    AM.forceMove(src)//Go to the mega gay zone
+    if(user)
+        user.dropItemToGround(X, TRUE, TRUE)
+    sleep(50)
+    AM.forceMove(X.loc)//Release this martyr
+    AM.anchored = FALSE
+    X.anchored = FALSE
     ..()
