@@ -29,7 +29,7 @@
 	var/breaksound = "shatter"
 	var/very_clear_glass = FALSE
 
-/turf/open/floor/glass/Initialize()
+/turf/open/floor/glass/Initialize(mapload)
 	. = ..()
 	if(obj_integrity == null)
 		obj_integrity = max_integrity

@@ -2,6 +2,6 @@
 	name = "Professor's Labcoat"
 	desc = "An oddly special looking coat."
 	icon = 'austation/icons/obj/clothing/custom.dmi'
-	alternate_worn_icon = 'austation/icons/mob/clothing/custom_w.dmi'
+	worn_icon = 'austation/icons/mob/clothing/custom_w.dmi'
 	icon_state = "rdcoat"
 	item_state = "rdcoat"

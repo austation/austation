@@ -11,7 +11,7 @@
 	var/depleted_final = FALSE // depletion_final should run only once
 	var/depletion_conversion_type = "plutonium"
 
-/obj/item/fuel_rod/Initialize()
+/obj/item/fuel_rod/Initialize(mapload)
 	. = ..()
 	time_created = world.time
 	AddComponent(/datum/component/radioactive, rad_strength, src) // This should be temporary for it won't make rads go lower than 350

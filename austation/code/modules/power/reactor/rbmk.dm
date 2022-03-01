@@ -207,7 +207,7 @@ The reactor CHEWS through moderator. It does not do this slowly. Be very careful
 	for(var/obj/item/fuel_rod/FR in fuel_rods)
 		FR.depletion = 100
 
-/obj/machinery/atmospherics/components/trinary/nuclear_reactor/Initialize()
+/obj/machinery/atmospherics/components/trinary/nuclear_reactor/Initialize(mapload)
 	. = ..()
 	icon_state = "reactor_off"
 	gas_absorption_effectiveness = rand(5, 6)/10 //All reactors are slightly different. This will result in you having to figure out what the balance is for K.
@@ -541,7 +541,7 @@ The reactor CHEWS through moderator. It does not do this slowly. Be very careful
 	else
 		fuel_power = 0.10
 
-/obj/item/fuel_rod/Initialize()
+/obj/item/fuel_rod/Initialize(mapload)
 	.=..()
 	AddComponent(/datum/component/radioactive, 350 , src)
 
@@ -885,7 +885,7 @@ The reactor CHEWS through moderator. It does not do this slowly. Be very careful
 	light_color = LIGHT_COLOR_CYAN
 	color = "#ff9eff"
 
-/obj/effect/decal/nuclear_waste/Initialize()
+/obj/effect/decal/nuclear_waste/Initialize(mapload)
 	. = ..()
 	set_light(3)
 
@@ -907,7 +907,7 @@ The reactor CHEWS through moderator. It does not do this slowly. Be very careful
 			new /obj/effect/decal/nuclear_waste (floor)
 	qdel(src)
 
-/obj/effect/decal/nuclear_waste/Initialize()
+/obj/effect/decal/nuclear_waste/Initialize(mapload)
 	. = ..()
 	var/static/list/loc_connections = list(
 		COMSIG_ATOM_ENTERED = .proc/on_entered,

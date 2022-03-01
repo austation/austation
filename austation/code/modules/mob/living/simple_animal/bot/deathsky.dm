@@ -40,7 +40,7 @@
 		playsound(src,'sound/effects/beepskyspinsabre.ogg',100,TRUE,-1)
 		stun_attack(AM)
 
-/mob/living/simple_animal/bot/secbot/deathsky/Initialize()
+/mob/living/simple_animal/bot/secbot/deathsky/Initialize(mapload)
 	. = ..()
 	weapon = new baton_type(src)
 	weapon.attack_self(src)

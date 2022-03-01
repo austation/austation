@@ -28,7 +28,7 @@
 		return TRUE
 	return FALSE
 
-/obj/item/mecha_parts/mecha_equipment/weapon/energy/kinetic_accelerator/Initialize()
+/obj/item/mecha_parts/mecha_equipment/weapon/energy/kinetic_accelerator/Initialize(mapload)
 	internal_accelerator = new /obj/item/gun/energy/kinetic_accelerator/mecha_internal(src)
 	..()
 

@@ -329,7 +329,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 		set_macros()
 
 	// Initialize tgui panel
-	tgui_panel.initialize()
+	tgui_panel.Initialize()
 
 	if(alert_mob_dupe_login)
 		spawn()
@@ -564,7 +564,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	return QDEL_HINT_HARDDEL_NOW
 
 /client/proc/set_client_age_from_db(connectiontopic)
-	if (IsGuestKey(src.key))
+	if (IS_GUEST_KEY(src.key))
 		return
 	if(!SSdbcore.Connect())
 		return

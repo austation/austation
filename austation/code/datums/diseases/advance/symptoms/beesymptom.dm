@@ -97,6 +97,6 @@
 /mob/living/simple_animal/hostile/poison/bees/viro
 	desc = "These bees seem unstable and won't survive for long."
 
-/mob/living/simple_animal/hostile/poison/bees/viro/Initialize()
+/mob/living/simple_animal/hostile/poison/bees/viro/Initialize(mapload)
 	. = ..()
 	addtimer(CALLBACK(src, .proc/death), 5 SECONDS)
