@@ -420,7 +420,7 @@
 		death()
 
 /mob/living/incapacitated(ignore_restraints = FALSE, ignore_grab = FALSE, check_immobilized = FALSE, ignore_stasis = FALSE)
-	if(stat || IsUnconscious() || IsStun() || IsParalyzed() || (check_immobilized && IsImmobilized()) || (!ignore_restraints && restrained(ignore_grab)) || (!ignore_stasis && IsInStasis()))
+	if(stat || IsUnconscious() || IsStun() || IsParalyzed() || has_status_effect(STATUS_EFFECT_SURRENDERED) || (check_immobilized && IsImmobilized()) || (!ignore_restraints && restrained(ignore_grab)) || (!ignore_stasis && IsInStasis())) //austation -- adds surrendered verb
 		return TRUE
 
 /mob/living/canUseStorage()
@@ -1140,7 +1140,7 @@
 	var/restrained = restrained()
 	var/has_legs = get_num_legs()
 	var/has_arms = get_num_arms()
-	var/paralyzed = IsParalyzed()
+	var/paralyzed = (IsParalyzed() || has_status_effect(STATUS_EFFECT_SURRENDERED)) //austation -- adds surrendered verb
 	var/stun = IsStun()
 	var/knockdown = IsKnockdown()
 	var/ignore_legs = get_leg_ignore()
