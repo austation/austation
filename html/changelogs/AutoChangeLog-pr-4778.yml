@@ -1,5 +1,0 @@
-author: "AustationBot"
-delete-after: True
-changes: 
-  - bugfix: "fixes another infinite iron duplication exploit"
-  - code_imp: "removes a redundant list copy"
