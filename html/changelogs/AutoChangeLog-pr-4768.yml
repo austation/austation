@@ -1,0 +1,5 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - tweak: "Improved the antag rolling prevention."
+  - admin: "Changed how the panic bunker works. Admins can now configure it to make first-time players interview to receive access instead of being blocked."
