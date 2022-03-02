@@ -1,0 +1,4 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - bugfix: "Energetic chromosome now properly applies to active mutations and fire breath."
