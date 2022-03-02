@@ -63,10 +63,10 @@
 			UNSETEMPTY(T.atmos_adjacent_turfs)
 			//T.set_sleeping(T.blocks_air)
 		//T.__update_auxtools_turf_adjacency_info(isspaceturf(T.get_z_base_turf()), -1)
-		T.__auxtools_update_turf_infos(FALSE)
+		T.__auxtools_update_turf_infos(FALSE, isspaceturf(T.get_z_base_turf()))
 	UNSETEMPTY(atmos_adjacent_turfs)
 	src.atmos_adjacent_turfs = atmos_adjacent_turfs
-	__auxtools_update_turf_infos(FALSE)
+	__auxtools_update_turf_infos(FALSE, isspaceturf(get_z_base_turf()))
 	//set_sleeping(blocks_air)
 	//__update_auxtools_turf_adjacency_info(isspaceturf(get_z_base_turf()))
 /*
