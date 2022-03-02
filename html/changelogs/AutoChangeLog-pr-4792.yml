@@ -1,0 +1,4 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - bugfix: "connects all of the departments to the main atmospherics network on Kilo Station"
