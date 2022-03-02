@@ -1,4 +1,0 @@
-author: "AustationBot"
-delete-after: True
-changes: 
-  - balance: "Reproductive extracts now have a 30 second cooldown, and spawn a single baby slime instead of extracts"

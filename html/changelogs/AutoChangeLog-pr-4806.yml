@@ -1,6 +1,0 @@
-author: "AustationBot"
-delete-after: True
-changes: 
-  - bugfix: "Fixes non constant expressions in switch functions"
-  - bugfix: "Fixes missing trigger for possible input values in switch functions (added else)"
-  - bugfix: "Replaces || inside if conditions for the switch functions with ,"
