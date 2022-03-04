@@ -9,7 +9,7 @@ SUBSYSTEM_DEF(air)
 	var/cost_turfs = 0
 	var/cost_groups = 0
 	var/cost_highpressure = 0
-	var/cost_deferred_airs
+	var/cost_deferred_airs = 0
 	var/cost_hotspots = 0
 	var/cost_post_process = 0
 	var/cost_superconductivity = 0
@@ -192,7 +192,8 @@ SUBSYSTEM_DEF(air)
 		resumed = 0
 		thread_wait_ticks = MC_AVERAGE(thread_wait_ticks, cur_thread_wait_ticks)
 		cur_thread_wait_ticks = 0
-		currentpart = SSAIR_DEFERRED_AIRS
+		currentpart = SSAIR_ATMOSMACHINERY_AIR //austation
+	/* austation begin -- auxdeferred
 	if(currentpart == SSAIR_DEFERRED_AIRS)
 		timer = TICK_USAGE_REAL
 		process_deferred_airs(resumed)
@@ -201,6 +202,7 @@ SUBSYSTEM_DEF(air)
 			return
 		resumed = 0
 		currentpart = SSAIR_ATMOSMACHINERY_AIR
+	austation end*/
 	if(currentpart == SSAIR_ATMOSMACHINERY_AIR)
 		timer = TICK_USAGE_REAL
 		process_atmos_air_machinery(resumed)

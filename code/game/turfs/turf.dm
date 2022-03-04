@@ -121,8 +121,6 @@ GLOBAL_LIST_EMPTY(station_turfs)
 
 /turf/proc/__auxtools_update_turf_temp_info()
 
-/turf/proc/__auxtools_update_turf_infos(immediate) //austation -- adjacency update
-
 /turf/return_temperature()
 
 /turf/proc/set_temperature()

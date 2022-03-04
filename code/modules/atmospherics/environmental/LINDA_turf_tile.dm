@@ -46,49 +46,56 @@
 /turf/open/assume_air(datum/gas_mixture/giver) //use this for machines to adjust air
 	return assume_air_ratio(giver, 1)
 
+
+//austation begin -- reworked how deferring work, removed update visuals
 /turf/open/assume_air_moles(datum/gas_mixture/giver, moles)
 	if(!giver)
 		return FALSE
+	/*
 	if(SSair.thread_running())
 		SSair.deferred_airs += list(list(giver, air, moles / giver.total_moles()))
 	else
-		giver.transfer_to(air, moles)
-		//austation -- this is commented out because it breaks gas visuals with fastmos
+	*/
+	giver.transfer_to(air, moles)
 		//update_visuals()
 	return TRUE
 
 /turf/open/assume_air_ratio(datum/gas_mixture/giver, ratio)
 	if(!giver)
 		return FALSE
+	/*
 	if(SSair.thread_running())
 		SSair.deferred_airs += list(list(giver, air, ratio))
 	else
-		giver.transfer_ratio_to(air, ratio)
-		//austation -- this is commented out because it breaks gas visuals with fastmos
+	*/
+	giver.transfer_ratio_to(air, ratio)
 		//update_visuals()
 	return TRUE
 
 /turf/open/transfer_air(datum/gas_mixture/taker, moles)
 	if(!taker || !return_air()) // shouldn't transfer from space
 		return FALSE
+	/*
 	if(SSair.thread_running())
 		SSair.deferred_airs += list(list(air, taker, moles / air.total_moles()))
 	else
-		air.transfer_to(taker, moles)
-		//austation -- this is commented out because it breaks gas visuals with fastmos
+	*/
+	air.transfer_to(taker, moles)
 		//update_visuals()
 	return TRUE
 
 /turf/open/transfer_air_ratio(datum/gas_mixture/taker, ratio)
 	if(!taker || !return_air())
 		return FALSE
+	/*
 	if(SSair.thread_running())
 		SSair.deferred_airs += list(list(air, taker, ratio))
 	else
-		air.transfer_ratio_to(taker, ratio)
-		//austation -- this is commented out because it breaks gas visuals with fastmos
+	*/
+	air.transfer_ratio_to(taker, ratio)
 		//update_visuals()
 	return TRUE
+//austation end
 
 /turf/open/remove_air(amount)
 	var/datum/gas_mixture/ours = return_air()
