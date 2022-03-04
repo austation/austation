@@ -81,6 +81,9 @@
 		old_terf.set_sleeping(TRUE)
 	for(var/turf/new_terf in new_turfs)
 		new_terf.set_sleeping(TRUE)
+
+	if(SSair.initialized)
+		sleep(1)
 	//austation end
 
 	// Moving to the new location will trample the ripples there at the exact
