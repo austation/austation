@@ -56,6 +56,85 @@
 		-->
 		<div class="commit sansserif">
 
+			<h2 class="date">02 March 2022</h2>
+			<h3 class="author">AustationBot updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="tweak">Improved the antag rolling prevention.</li>
+				<li class="admin">Changed how the panic bunker works. Admins can now configure it to make first-time players interview to receive access instead of being blocked.</li>
+				<li class="tweak">The round end report in #ooc will now show which server's round has just ended.</li>
+				<li class="tweak">Phobias no longer make you be afraid of your kind.</li>
+				<li class="tweak">Changed the required amount of adamantine to create a golem shell from 1 to 25</li>
+				<li class="bugfix">fixes another infinite iron duplication exploit</li>
+				<li class="code_imp">removes a redundant list copy</li>
+				<li class="rscdel">Removed deprecated item_color var</li>
+				<li class="bugfix">fixed alt states of suits</li>
+				<li class="server">Clients using BYOND version 514.1575 will no longer see instability banner</li>
+				<li class="server">Updates various TGUI sub-dependencies</li>
+				<li class="config">Updated the Readme.dm, that's it.</li>
+				<li class="bugfix">Fixed the murder door by the bar's maintenance on Fland</li>
+				<li class="bugfix">The tables in the bar are no longer doublestacked on Fland</li>
+				<li class="bugfix">fixed missing floortile in kilo station atmos airlock</li>
+				<li class="bugfix">fixed Pubby AI SMES not doing almost anything useful.</li>
+				<li class="bugfix">Fixed some genetics area on Delta called "Cryogenic Storage" instead of their usual names.</li>
+				<li class="bugfix">Fixed Delta exploration shuttle's airlocks by adding airlocks helpers.</li>
+				<li class="server">Bumps ajv to 6.12.3</li>
+				<li class="bugfix">Energetic chromosome now properly applies to active mutations and fire breath.</li>
+				<li class="config">Kilo Station is part of the map rotation</li>
+				<li class="rscadd">Kilo Station comes with an exploration shuttle</li>
+				<li class="rscadd">Kilo Station comes with random maint</li>
+				<li class="rscadd">4 random maint rooms from Kilo Station</li>
+				<li class="rscdel">Removed old maint rooms from Kilo Station</li>
+				<li class="bugfix">connects all of the departments to the main atmospherics network on Kilo Station</li>
+				<li class="rscadd">Mutations can be activated/added through the DNA scanner</li>
+				<li class="rscadd">Added wires to the DNA scanner</li>
+				<li class="tweak">Using the DNA scanner requires genetics access (unless hacked or emagged)</li>
+				<li class="tweak">DNA injectors don't show their mutations</li>
+				<li class="code_imp">Discovered mutations are now an associative list</li>
+				<li class="bugfix">Fixes non constant expressions in switch functions</li>
+				<li class="bugfix">Fixes missing trigger for possible input values in switch functions (added else)</li>
+				<li class="bugfix">Replaces || inside if conditions for the switch functions with ,</li>
+				<li class="balance">Reproductive extracts now have a 30 second cooldown, and spawn a single baby slime instead of extracts</li>
+			</ul>
+			<h3 class="author">DatBoiTim updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="tweak">Tweaked some Ion Law entries to be more RP friendly.</li>
+				<li class="tweak">Altered the spelling of some Ion Law entries to be correct.</li>
+				<li class="rscadd">Design to Print Research Disk Locator to Sci Protolathe - Requires T2 Research</li>
+			</ul>
+			<h3 class="author">Gamer025 and ike709 updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="code_imp">Failsafe is more robust now and the game can actually recover from a deleted MC</li>
+				<li class="code_imp">Albeit far from perfect, the game will be fairly playable if the Master Controller dies. It beats the alternative by a lot if there's no admin online to reboot the server.</li>
+			</ul>
+			<h3 class="author">MSO, ported by ike709 updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="code_imp">SSgarbage should be able to clear most of its queue much faster.</li>
+			</ul>
+
+			<h2 class="date">26 February 2022</h2>
+			<h3 class="author">AustationBot updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="bugfix">Fixed plasmamen not actually needing to breathe plasma.</li>
+				<li class="tweak">Updated lung code</li>
+			</ul>
+			<h3 class="author">Bizzonium, ported by ike709 updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="refactor">Made SSrunechat be a subsystem of SStimer</li>
+			</ul>
+			<h3 class="author">DrDuckedGoose updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="rscadd">Adds Floral Spines</li>
+				<li class="tweak">Lavaland Cactus now has Floral Spines</li>
+				<li class="tweak">Starthistle now has Floral Spines</li>
+			</ul>
+			<h3 class="author">Kylerace, ported by ike709 updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="rscdel">For performance reasons, AI detectors no longer see AI static.</li>
+				<li class="bugfix">AI detectors now change appearance when AIs come closer.</li>
+				<li class="bugfix">Fixed AI static intermittently deciding to stop working.</li>
+				<li class="refactor">Generally cleaned up cameranet code and improved maptick significantly.</li>
+			</ul>
+
 			<h2 class="date">20 February 2022</h2>
 			<h3 class="author">AustationBot updated:</h3>
 			<ul class="changes bgimages16">
@@ -503,90 +582,6 @@
 			<h3 class="author">Phil Smith updated:</h3>
 			<ul class="changes bgimages16">
 				<li class="imageadd">discovery scanners have an in-hand sprite now</li>
-			</ul>
-
-			<h2 class="date">31 December 2021</h2>
-			<h3 class="author">MCterra10 updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="rscdel">Comms filtering</li>
-			</ul>
-			<h3 class="author">alsoandanswer updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="imageadd">Adds B.R.U.C.E AI icon</li>
-			</ul>
-
-			<h2 class="date">28 December 2021</h2>
-			<h3 class="author">Snuke01 updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="tweak">Slightly increased the chance for the ancestor announcer to trigger</li>
-			</ul>
-
-			<h2 class="date">27 December 2021</h2>
-			<h3 class="author">AustationBot updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="bugfix">deep fried foods only drop contents when fully eaten</li>
-				<li class="rscadd">Janitor ERT now gets a Janicart Beacon</li>
-				<li class="code_imp">remove incorrect lazylen usage</li>
-			</ul>
-
-			<h2 class="date">26 December 2021</h2>
-			<h3 class="author">AustationBot updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="tweak">ERTs now require minimum 50 living hours to participate in them.</li>
-				<li class="balance">cat surgeon is a bit scary again.</li>
-				<li class="bugfix">cat butcher no longer loses aggro as easily</li>
-				<li class="bugfix">Fixed a bug with taste description generation for fruit wine.</li>
-				<li class="tweak">Extrapolators have been buffed, but you can no longer use multiple at once, and their scans work at range again, though extraction does not</li>
-				<li class="bugfix">Disposals will no longer randomly delete their contents when destroyed in a rare case.</li>
-				<li class="tweak">The Admiral outfit now comes with a megaphone.</li>
-				<li class="bugfix">fixes ai beeing able to see overhead chat trough static</li>
-				<li class="balance">pneumatic cannons now fire one item at a time. They still hold multiple items, but their fire rate is also now limited</li>
-				<li class="rscadd">Circuit boards for the plasma refiner, mass driver, and igniter.</li>
-				<li class="tweak">Efficiency of the plasma refiner and the range and power usage of the mass driver have been modified to scale with stock parts.</li>
-				<li class="imageadd">Panel open sprites for the plasma refiner, mass driver, and igniter.</li>
-				<li class="admin">Added better logging for uplink purchases.</li>
-				<li class="rscadd">Portable pump and scrubber crates available at cargo.</li>
-			</ul>
-
-			<h2 class="date">22 December 2021</h2>
-			<h3 class="author">AustationBot updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="tweak">Greentexting no longer awards beecoins.</li>
-				<li class="bugfix">Fixed on all maps the access to the server room.</li>
-				<li class="bugfix">pAIs now actually work again</li>
-				<li class="bugfix">fixes golden core spawned mimic crate</li>
-				<li class="rscadd">Hours played as pAI are now tracked.</li>
-				<li class="bugfix">Fixes flashlights attached to guns not displaying a message.</li>
-				<li class="bugfix">Fixes shooting someone with syringe not displaying a message.</li>
-				<li class="bugfix">Fixed balloon alerts preference (again). Your preference might've been reset.</li>
-				<li class="bugfix">Fixed Security cameras not working properly with Overlay Lighting</li>
-				<li class="bugfix">Fixed Exosuits having really small light</li>
-				<li class="rscadd">Added a new Access code for the Research Servers, separating the server room access and the RD's office access, which on roundstart is available only to the Captain and the Research director.</li>
-				<li class="tweak">Adjusted all the maps to have the right access to the server room, where it's now needed either the RD's office access or the Server room access.</li>
-				<li class="rscdel">Removed the Apothecary access, as it was used nowhere and was conflicting with the Request console's announcement system.</li>
-				<li class="code_imp">Adds trailing newlines to files that were previously missing them</li>
-				<li class="bugfix">tones down disease mutation. you'll now only get one strain of a virus if it mutates. Remember, even if cures change, vaccines stay the same!</li>
-				<li class="rscadd">IPCs can charge off of ethereals.</li>
-				<li class="tweak">Ethereals no longer call handle_charge() twice per life loop.</li>
-				<li class="server">BYOND bumped to 514.1572</li>
-				<li class="bugfix">Fixed inserting IDs into prisoner management and labor camp teleporter consoles.</li>
-			</ul>
-			<h3 class="author">Dejaku51, jack-pie, Rohesie updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="rscadd">Smooth movable lighting system implemented. Projectiles, sparks, thrown flashlights or moving mobs with lights should be much smoother and less laggy.</li>
-				<li class="balance">Light sources no longer stack in range, though they still do in intensity.</li>
-			</ul>
-			<h3 class="author">zxaber, lordScrubling updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="rscadd">Adds a camera viewing app, SecurEye, available for download on laptops and modular consoles to those that have security access.</li>
-				<li class="tweak">Camera console UIs (including for SecurEye) now have the search field locked on screen, rather than scrolling up with the camera list.</li>
-			</ul>
-
-			<h2 class="date">20 December 2021</h2>
-			<h3 class="author">AustationBot updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="rscdel">PRs will no longer auto-stale.</li>
-				<li class="code_imp">Auto Stale Action no longer marks your PR as stale one day before you make it.</li>
 			</ul>
 		</div>
 
