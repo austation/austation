@@ -1,0 +1,4 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - tweak: "Changed a lot of chemical colors to make them more distinct and indicate relationships better."
