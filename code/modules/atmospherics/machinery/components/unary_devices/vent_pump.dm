@@ -189,11 +189,6 @@
 
 	var/atom/signal_sender = signal.data["user"]
 
-	//austation begin -- chem gases
-	if((("is_siphoning" in signal.data) && pump_direction == RELEASING) || (("is_pressurizing" in signal.data) && pump_direction == SIPHONING))
-		return
-	//austation end
-
 	if("purge" in signal.data)
 		pressure_checks &= ~EXT_BOUND
 		pump_direction = SIPHONING

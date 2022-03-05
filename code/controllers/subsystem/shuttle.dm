@@ -721,63 +721,7 @@ SUBSYSTEM_DEF(shuttle)
 	var/turf/BL = TURF_FROM_COORDS_LIST(preview_reservation.bottom_left_coords)
 	S.load(BL, centered = FALSE, register = FALSE)
 
-	//austation begin firelocks dealt with
-	var/list/affected = S.get_affected_turfs(BL, centered=FALSE)
-
-
-	for(var/i in 1 to affected.len)
-		var/turf/terf = affected[i]
-		var/obj/machinery/door/firedoor/FD = locate(/obj/machinery/door/firedoor) in terf
-		if(FD?.type == /obj/machinery/door/firedoor)
-			var/list/eligible_dirs = list()
-			qdel(FD)
-			for(var/dir in GLOB.cardinals)
-				var/turf/explorin = get_step(terf, dir)
-				if(!explorin)
-					continue
-				if((!locate(/obj/machinery/door/firedoor) in explorin) && (!locate(/obj/effect/spawner/structure/window/) in explorin) && (!locate(/obj/structure/window/) in explorin) && (!locate(/obj/machinery/door/airlock) in explorin))
-					if(isopenturf(explorin))
-						eligible_dirs |= dir
-			if (!eligible_dirs.len)
-				continue
-			for(var/newdir in eligible_dirs)
-				var/obj/machinery/door/firedoor/border_only/FDnew = new(terf)
-				FDnew.dir = newdir
-
-	for(var/i in 1 to affected.len)
-		var/turf/terf = affected[i]
-		if(!(locate(/obj/machinery/door/firedoor/) in terf))
-			var/place = FALSE
-			for(var/type in GLOB.ship_windows)
-				if(locate(type) in terf)
-					for(var/dir in GLOB.alldirs)
-						var/turf/T = get_step(terf, dir)
-						var/area/exploring_area = get_area(T)
-						if(!(exploring_area.type in typesof(/area/shuttle)))
-							place = TRUE
-							break
-			if(place)
-				new/obj/machinery/door/firedoor/window(terf)
-
-	for(var/i in 1 to affected.len)
-		var/turf/terf = affected[i]
-		var/obj/machinery/door/airlock/the_fucking_airlock = locate(/obj/machinery/door/airlock/) in terf
-		if(the_fucking_airlock?.firedoors_spawning)
-			if(!locate(/obj/machinery/door/firedoor/) in terf)
-				var/list/eligible_dirs = list()
-				for(var/dir in GLOB.cardinals)
-					var/turf/explorin = get_step(terf, dir)
-					if(!explorin)
-						continue
-					if((!locate(/obj/machinery/door/firedoor) in explorin) && (!locate(/obj/effect/spawner/structure/window/) in explorin) && (!locate(/obj/structure/window/) in explorin) && (!locate(/obj/machinery/door/airlock) in explorin))
-						if(isopenturf(explorin))
-							eligible_dirs |= dir
-				if (!eligible_dirs.len)
-					continue
-				for(var/newdir in eligible_dirs)
-					var/obj/machinery/door/firedoor/border_only/FDnew = new(terf)
-					FDnew.dir = newdir
-	//austation end
+	var/affected = S.get_affected_turfs(BL, centered=FALSE)
 
 	var/found = 0
 	// Search the turfs for docking ports
@@ -813,6 +757,7 @@ SUBSYSTEM_DEF(shuttle)
 	if(preview_shuttle)
 		preview_shuttle.jumpToNullSpace()
 	preview_shuttle = null
+
 
 /datum/controller/subsystem/shuttle/ui_state(mob/user)
 	return GLOB.admin_state

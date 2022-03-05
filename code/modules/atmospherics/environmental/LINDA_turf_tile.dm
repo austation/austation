@@ -53,8 +53,7 @@
 		SSair.deferred_airs += list(list(giver, air, moles / giver.total_moles()))
 	else
 		giver.transfer_to(air, moles)
-		//austation -- this is commented out because it breaks gas visuals with fastmos
-		//update_visuals()
+		update_visuals()
 	return TRUE
 
 /turf/open/assume_air_ratio(datum/gas_mixture/giver, ratio)
@@ -64,8 +63,7 @@
 		SSair.deferred_airs += list(list(giver, air, ratio))
 	else
 		giver.transfer_ratio_to(air, ratio)
-		//austation -- this is commented out because it breaks gas visuals with fastmos
-		//update_visuals()
+		update_visuals()
 	return TRUE
 
 /turf/open/transfer_air(datum/gas_mixture/taker, moles)
@@ -75,8 +73,7 @@
 		SSair.deferred_airs += list(list(air, taker, moles / air.total_moles()))
 	else
 		air.transfer_to(taker, moles)
-		//austation -- this is commented out because it breaks gas visuals with fastmos
-		//update_visuals()
+		update_visuals()
 	return TRUE
 
 /turf/open/transfer_air_ratio(datum/gas_mixture/taker, ratio)
@@ -86,22 +83,19 @@
 		SSair.deferred_airs += list(list(air, taker, ratio))
 	else
 		air.transfer_ratio_to(taker, ratio)
-		//austation -- this is commented out because it breaks gas visuals with fastmos
-		//update_visuals()
+		update_visuals()
 	return TRUE
 
 /turf/open/remove_air(amount)
 	var/datum/gas_mixture/ours = return_air()
 	var/datum/gas_mixture/removed = ours.remove(amount)
-	//austation -- this is commented out because it breaks gas visuals with fastmos
-	//update_visuals()
+	update_visuals()
 	return removed
 
 /turf/open/remove_air_ratio(ratio)
 	var/datum/gas_mixture/ours = return_air()
 	var/datum/gas_mixture/removed = ours.remove_ratio(ratio)
-	//austation -- this is commented out because it breaks gas visuals with fastmos
-	//update_visuals()
+	update_visuals()
 	return removed
 
 /turf/open/proc/copy_air_with_tile(turf/open/T)

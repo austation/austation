@@ -14,7 +14,6 @@
 
 // BEGIN_DEFINE_INCLUDE
 #include "austation\code\__DEFINES\admin.dm"
-#include "austation\code\__DEFINES\atmospherics.dm"
 #include "austation\code\__DEFINES\coilgun.dm"
 #include "austation\code\__DEFINES\diseases.dm"
 #include "austation\code\__DEFINES\lavaland.dm"
@@ -26,28 +25,19 @@
 #include "austation\code\__DEFINES\RPD.dm"
 #include "austation\code\__DEFINES\sound.dm"
 #include "austation\code\__DEFINES\traits.dm"
-#include "austation\code\__DEFINES\research.dm"
 #include "austation\code\__DEFINES\dcs\signals.dm"
 // END_DEFINE_INCLUDE
-
-// BEGIN_HELPERS_INCLUDE
-#include "austation\code\__HELPERS\matrices.dm"
-// END_HELPERS_INCLUDE
-
-//BEGIN_OTHER_INCLUDES
-#include "austation\code\_onclick\hud\alert.dm"
-//END_OTHER_INCLUDES
 
 // BEGIN_BEESTATION_INCLUDE
 #include "beestation.dme"
 // END_BEESTATION_INCLUDE
 
 // BEGIN_INCLUDE
+#include "austation\code\__HELPERS\matrices.dm"
 #include "austation\code\__HELPERS\roundend.dm"
 #include "austation\code\_globalvars\coilgun.dm"
 #include "austation\code\_globalvars\misc.dm"
 #include "austation\code\_globalvars\lists\maintenance_loot.dm"
-#include "austation\code\controllers\configuration\atoms.dm"
 #include "austation\code\controllers\configuration\entries\game_options.dm"
 #include "austation\code\controllers\configuration\entries\general.dm"
 #include "austation\code\controllers\subsystem\blackbox.dm"
@@ -90,12 +80,9 @@
 #include "austation\code\datums\wires\apc.dm"
 #include "austation\code\game\atoms.dm"
 #include "austation\code\game\turf.dm"
-#include "austation\code\game\area\areas.dm"
 #include "austation\code\game\area\Space_Station_13_areas.dm"
 #include "austation\code\game\machinery\cell_charger.dm"
 #include "austation\code\game\machinery\syndicatebeacon.dm"
-#include "austation\code\game\machinery\doors\airlock_types.dm"
-#include "austation\code\game\machinery\doors\firedoor.dm"
 #include "austation\code\game\machinery\porta_turret\portable_turret.dm"
 #include "austation\code\game\machinery\telecomms\machines\server.dm"
 #include "austation\code\game\mecha\equipment\tools\other_tools.dm"
@@ -103,7 +90,6 @@
 #include "austation\code\game\mecha\equipment\weapons\weapons.dm"
 #include "austation\code\game\objects\items.dm"
 #include "austation\code\game\objects\effects\decals\turfdecal\markings.dm"
-#include "austation\code\game\objects\effects\spawners\structure.dm"
 #include "austation\code\game\objects\items\AI_modules.dm"
 #include "austation\code\game\objects\items\bluespace_jar.dm"
 #include "austation\code\game\objects\items\deepbagofholding.dm"
@@ -163,14 +149,7 @@
 #include "austation\code\modules\admin\verbs\kill_rads.dm"
 #include "austation\code\modules\admin\verbs\mapping.dm"
 #include "austation\code\modules\antagonists\changeling\changeling.dm"
-#include "austation\code\modules\atmospherics\auxgm\gas_types.dm"
-#include "austation\code\modules\atmospherics\gasmixtures\auxgm.dm"
-#include "austation\code\modules\atmospherics\gasmixtures\reactions.dm"
-#include "austation\code\modules\atmospherics\machinery\airalarm.dm"
-#include "austation\code\modules\atmospherics\machinery\components\trinary_devices\filter.dm"
-#include "austation\code\modules\atmospherics\machinery\components\unary_devices\vent_scrubber.dm"
 #include "austation\code\modules\antagonists\nukeop\equipment\nuclearbomb.dm"
-#include "austation\code\modules\atmospherics\environmental\LINDA_turf_tile.dm"
 #include "austation\code\modules\atmospherics\machinery\atmosmachinery.dm"
 #include "austation\code\modules\atmospherics\machinery\components\unary_devices\thermomachine.dm"
 #include "austation\code\modules\awaymissions\corpse.dm"

@@ -584,7 +584,7 @@
 			can_process = TRUE
 	return can_process
 
-/datum/reagents/proc/reaction(atom/A, method = TOUCH, volume_modifier = 1, show_message = 1, from_gas = 0) //austation -- added from_gas arg
+/datum/reagents/proc/reaction(atom/A, method = TOUCH, volume_modifier = 1, show_message = 1)
 	var/react_type
 	if(isliving(A))
 		react_type = "LIVING"
@@ -611,7 +611,7 @@
 					touch_protection = L.get_permeability_protection()
 				R.reaction_mob(A, method, R.volume * volume_modifier, show_message, touch_protection)
 			if("TURF")
-				R.reaction_turf(A, R.volume * volume_modifier, show_message, from_gas) //austation -- added from_gas arg
+				R.reaction_turf(A, R.volume * volume_modifier, show_message)
 			if("OBJ")
 				R.reaction_obj(A, R.volume * volume_modifier, show_message)
 
@@ -619,9 +619,8 @@
 	if(total_volume >= maximum_volume)
 		return TRUE
 	return FALSE
-//austation begin -- chem gases
+
 //Returns the average specific heat for all reagents currently in this holder.
-/*
 /datum/reagents/proc/specific_heat()
 	. = 0
 	var/cached_amount = total_volume		//cache amount
@@ -633,19 +632,6 @@
 /datum/reagents/proc/adjust_thermal_energy(J, min_temp = 2.7, max_temp = 1000)
 	var/S = specific_heat()
 	chem_temp = CLAMP(chem_temp + (J / (S * total_volume)), 2.7, 1000)
-*/
-
-/datum/reagents/proc/heat_capacity()
-	. = 0
-	var/list/cached_reagents = reagent_list		//cache reagents
-	for(var/I in cached_reagents)
-		var/datum/reagent/R = I
-		. += R.specific_heat * R.volume
-
-/datum/reagents/proc/adjust_thermal_energy(J, min_temp = 2.7, max_temp = 1000)
-	var/S = heat_capacity()
-	chem_temp = clamp(chem_temp + (J / S), min_temp, max_temp)
-//austation end
 
 /datum/reagents/proc/add_reagent(reagent, amount, list/data=null, reagtemp = 300, no_react = 0)
 	if(!isnum_safe(amount) || !amount)

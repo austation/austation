@@ -4,7 +4,7 @@
 #define CONSTRUCTION_GUTTED 3 //Wires are removed, circuit ready to remove
 #define CONSTRUCTION_NOCIRCUIT 4 //Circuit board removed, can safely weld apart
 
-#define RECLOSE_DELAY 1 SECONDS // How long until a firelock tries to shut itself if it's blocking a vacuum. //austation -- changed to 1 seconds from 5
+#define RECLOSE_DELAY 5 SECONDS // How long until a firelock tries to shut itself if it's blocking a vacuum.
 #define FIRE_ALARM 2
 /obj/machinery/door/firedoor
 	name = "firelock"
@@ -78,29 +78,12 @@
 	return ..()
 
 /obj/machinery/door/firedoor/Bumped(atom/movable/AM)
-	//austation begin -- fastmos
-	if(panel_open || operating || welded || (stat & NOPOWER))
-		return
-	if(ismob(AM))
-		var/mob/user = AM
-		if(allow_hand_open(user))
-			add_fingerprint(user)
-			open()
-			return TRUE
-	if(ismecha(AM))
-		var/obj/mecha/M = AM
-		if(M.occupant && allow_hand_open(M.occupant))
-			open()
-			return TRUE
-	return FALSE
-	/*
 	if(panel_open || operating)
 		return
 	if(!density)
 		return ..()
 	return FALSE
-	*/
-	//austation end
+
 
 /obj/machinery/door/firedoor/power_change()
 	if(powered(power_channel))
@@ -113,24 +96,6 @@
 	. = ..()
 	if(.)
 		return
-	//austation begin -- fastmos
-	if (!welded && !operating)
-		if (stat & NOPOWER)
-			user.visible_message("[user] tries to open \the [src] manually.",
-						 "You operate the manual lever on \the [src].")
-			if (!do_after(user, 30, TRUE, src))
-				return FALSE
-		else if (density && !allow_hand_open(user))
-			return FALSE
-
-		add_fingerprint(user)
-		if(density)
-			emergency_close_timer = world.time + RECLOSE_DELAY // prevent it from instaclosing again if in space
-			open()
-		else
-			close()
-		return TRUE
-	//austation end
 
 	if(operating || !density)
 		return
@@ -263,13 +228,12 @@
 		return FIRE_ALARM
 	return !is_holding_pressure()
 
-/* austation begin -- fuck you francis
 /obj/machinery/door/firedoor/allowed(mob/M)
 	if(check_safety(M))//Passing the mob here is cargo cult programming, I can't see what wants it.
 		return TRUE
 	update_icon()
 	return ..()
-austation end*/
+
 
 /obj/machinery/door/firedoor/attack_ai(mob/user)
 	add_fingerprint(user)

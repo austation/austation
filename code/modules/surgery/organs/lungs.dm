@@ -207,7 +207,7 @@
 			//austation begin -- chem gases
 			////H.reagents.add_reagent(R, breath.get_moles(gas) * R.molarity) // See next line
 			//H.reagents.add_reagent(R, breath.get_moles(gas) * 2) // 2 represents molarity of O2, we don't have citadel molarity
-			H.reagents.add_reagent(R, breath.get_moles(gas) * initial(R.molarity))
+			H.reagents.add_reagent(R, breath.get_moles(gas) * 2)
 			//austation end
 			mole_adjustments[gas] = (gas in mole_adjustments) ? mole_adjustments[gas] - breath.get_moles(gas) : -breath.get_moles(gas)
 

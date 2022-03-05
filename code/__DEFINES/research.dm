@@ -76,4 +76,4 @@
 	TECHWEB_POINT_TYPE_NANITES = "Nanite Research"\
 	)
 
-//#define TECHWEB_BOMB_POINTCAP		50000 //! Adjust as needed; Stops toxins from nullifying RND progression mechanics. Current Value Cap Radius: 100 //austation -- trit rework
+#define TECHWEB_BOMB_POINTCAP		50000 //! Adjust as needed; Stops toxins from nullifying RND progression mechanics. Current Value Cap Radius: 100
