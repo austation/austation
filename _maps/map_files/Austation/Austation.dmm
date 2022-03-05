@@ -33310,7 +33310,7 @@
 	req_access_txt = "47"
 	},
 /turf/open/floor/plating,
-/area/science/xenobiology)
+/area/maintenance/department/science/xenobiology)
 "cTw" = (
 /obj/machinery/atmospherics/components/unary/portables_connector/visible,
 /obj/item/storage/box/lights/mixed,
@@ -34936,7 +34936,7 @@
 	icon_state = "4-8"
 	},
 /turf/open/floor/plating,
-/area/science/xenobiology)
+/area/maintenance/department/science/xenobiology)
 "ddq" = (
 /obj/structure/cable/yellow{
 	icon_state = "2-8"
