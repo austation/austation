@@ -29,7 +29,7 @@
 	var/datum/action/cooldown/riot
 	///Number assigned to rats and mice, checked when determining infighting.
 
-/mob/living/simple_animal/hostile/regalrat/Initialize()
+/mob/living/simple_animal/hostile/regalrat/Initialize(mapload)
 	. = ..()
 	enlist = new /datum/action/cooldown/enlist
 	coffer = new /datum/action/cooldown/coffer
@@ -231,7 +231,7 @@
 	faction = list("rat")
 	var/list/ratdisease = list()
 
-/mob/living/simple_animal/hostile/rat/Initialize()
+/mob/living/simple_animal/hostile/rat/Initialize(mapload)
 	. = ..()
 	SSmobs.cheeserats += src
 	if(prob(75))

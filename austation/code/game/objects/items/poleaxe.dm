@@ -20,7 +20,7 @@
 	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 100, "acid" = 30)
 	resistance_flags = FIRE_PROOF
 
-/obj/item/poleaxe/Initialize()
+/obj/item/poleaxe/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/butchering, 100, 70) //decent in a pinch, but pretty bad.
 	AddComponent(/datum/component/two_handed, require_twohands=TRUE, force_unwielded=5, force_wielded=24, block_power_wielded=25, icon_wielded="poleaxe1")

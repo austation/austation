@@ -1,10 +1,14 @@
-/obj/item/clothing/under/misc/durathread
+/obj/item/clothing/under/color/durathread
 	name = "durathread jumpsuit"
 	desc = "A jumpsuit made from durathread, its resilient fibres provide some protection to the wearer."
 	icon_state = "durathread"
-	item_state = "durathread"
-	item_color = "durathread"
-	alternate_worn_icon = 'austation/icons/mob/uniform.dmi'
+	item_state = "w_suit"
+	greyscale_colors = null
+	greyscale_config = null
+	greyscale_config_inhand_left = null
+	greyscale_config_inhand_right = null
+	greyscale_config_worn = null
+	worn_icon = 'austation/icons/mob/uniform.dmi'
 	can_adjust = FALSE
 	armor = list("melee" = 10, "bullet" = 5, "laser" = 10,"energy" = 10, "bomb" = 5, "bio" = 0, "rad" = 0, "fire" = 40, "acid" = 10, "stamina" = 30)
 
@@ -12,7 +16,7 @@
 	name = "little black dress"
 	desc = "A small black dress"
 	icon = 'austation/icons/obj/clothing/uniforms.dmi'
-	alternate_worn_icon = 'austation/icons/mob/uniform.dmi'
+	worn_icon = 'austation/icons/mob/uniform.dmi'
 	icon_state = "littleblackdress_s"
 	item_state = "littleblackdress_s"
 
@@ -20,7 +24,7 @@
 	name = "pink tutu"
 	desc = "A pink tutu"
 	icon = 'austation/icons/obj/clothing/uniforms.dmi'
-	alternate_worn_icon = 'austation/icons/mob/uniform.dmi'
+	worn_icon = 'austation/icons/mob/uniform.dmi'
 	icon_state = "pinktutu_s"
 	item_state = "pinktutu_s"
 
@@ -28,6 +32,6 @@
 	name = "bathrobe"
 	desc = "A blue bathrobe."
 	icon = 'austation/icons/obj/clothing/uniforms.dmi'
-	alternate_worn_icon = 'austation/icons/mob/uniform.dmi'
+	worn_icon = 'austation/icons/mob/uniform.dmi'
 	icon_state = "bathrobe"
 	item_state = "bathrobe"

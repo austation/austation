@@ -35,7 +35,7 @@
 	else
 		icon_state = "kek-printer-work"
 
-/obj/machinery/cake_printer/Initialize()
+/obj/machinery/cake_printer/Initialize(mapload)
 	. = ..()
 	component_parts = list()
 	component_parts += new /obj/item/circuitboard/machine/cake_printer(null)
