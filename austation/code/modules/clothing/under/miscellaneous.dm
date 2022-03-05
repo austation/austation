@@ -2,7 +2,7 @@
 	name = "durathread jumpsuit"
 	desc = "A jumpsuit made from durathread, its resilient fibres provide some protection to the wearer."
 	icon_state = "durathread"
-	item_state = "durathread"
+	item_state = "w_suit"
 	greyscale_colors = null
 	greyscale_config = null
 	worn_icon = 'austation/icons/mob/uniform.dmi'
