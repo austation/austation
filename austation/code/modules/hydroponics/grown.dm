@@ -3,7 +3,7 @@
 
 	var/datum/plant_gene/trait/spines/S = seed.get_gene(/datum/plant_gene/trait/spines)
 	if(S)
-		embedding = EMBED_HARMLESS
+		embedding = EMBED_HARMLESS_SUPERIOR
 		embedding["embed_chance"] = 300 //300 is better than 100 ;)
 		updateEmbedding()
 		S.grown_overlay = mutable_appearance(icon, icon_state)
