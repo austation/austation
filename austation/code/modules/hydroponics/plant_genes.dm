@@ -50,6 +50,7 @@
 
 		if(G.tryEmbed(target, TRUE, TRUE))
 			target.add_overlay(grown_overlay, TRUE)
+			victim = target
 
 /datum/plant_gene/trait/spines/on_throw_impact(obj/item/reagent_containers/food/snacks/grown/G, atom/target)
 	if(!..() && G?.seed.get_gene(/datum/plant_gene/trait/spines) && istype(target, /mob/living))		
