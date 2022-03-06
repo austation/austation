@@ -5,7 +5,8 @@
 	show_in_report = TRUE
 	report_message = "Please be nice to him."
 	blacklist = list(/datum/station_trait/announcement_medbot,
-	/datum/station_trait/announcement_baystation
+	/datum/station_trait/announcement_baystation,
+	/datum/station_trait/announcement_ancestor // austation -- Needed to keep all other announcer traits mutually exclusive with the ancestor.
 	)
 
 /datum/station_trait/announcement_intern/New()
