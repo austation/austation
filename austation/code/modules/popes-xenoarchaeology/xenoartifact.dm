@@ -7,7 +7,7 @@
     name = "Xenoartifact"
     
     var/material
-    var/charge = 0 //How much input the artifact is getting from activation traits 
+    var/charge = 0 //How much input the artifact is getting from activation traits
     var/charge_req //How much input is required to start the activation
     var/traits[5]// activation trait, minor 1, minor 2, minor 3, major
     var/true_target //last target 
@@ -18,6 +18,7 @@
 
     charge_req = 0*rand(1, 10)//set 0 to 10 after debugging
     traits[1] = new /datum/xenoartifact_trait/impact
+    traits[1] = new /datum/xenoartifact_trait/looped
     traits[5] = new /datum/xenoartifact_trait/capture
     traits[4] = new /datum/xenoartifact_trait/sing
 
@@ -45,10 +46,14 @@
     true_target = target
     check_charge(null)//Don't pass this for the moment, just cuz it causes issue with capture-datum.
 
-/obj/item/xenoartifact/proc/check_charge(mob/user) //User is generally passed to use as a fail safe
-    if(charge >= charge_req)
+/obj/item/xenoartifact/proc/check_charge(mob/user) //Run traits. User is generally passed to use as a fail safe for certain traits
+    for(var/datum/xenoartifact_trait/T in traits)//Run minor traits first. Since they don't require a charge 
+        T.minor_activate(src, true_target, user)
+
+    if(charge >= charge_req)//Run major traits. Typically only one but, leave this for now otherwise
         for(var/datum/xenoartifact_trait/T in traits)
             T.activate(src, true_target, user)
     
-    charge = 0
+    if(!(/datum/xenoartifact_trait/capacitive in traits))
+        charge = 0
     
