@@ -1,5 +1,0 @@
-author: "AustationBot"
-delete-after: True
-changes: 
-  - bugfix: "Fixes the inability to drop people."
-  - bugfix: "Fixes the inability to perform emotes."

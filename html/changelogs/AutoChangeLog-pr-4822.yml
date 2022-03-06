@@ -1,4 +1,0 @@
-author: "AustationBot"
-delete-after: True
-changes: 
-  - rscadd: "Added the F4 hotkey to the hotkey list in the interface.dm"
