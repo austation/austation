@@ -38,7 +38,7 @@
 //Too close to Neck-Code TM
 /datum/plant_gene/trait/spines
 	name = "Floral Spines"
-	var/mob/victim
+	var/atom/victim
 	var/mutable_appearance/grown_overlay
 
 /datum/plant_gene/trait/spines/on_slip(obj/item/reagent_containers/food/snacks/grown/G, atom/target)
