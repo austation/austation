@@ -43,7 +43,7 @@
 /datum/xenoartifact_trait/sing/activate(obj/item/xenoartifact/X)
     X.say("DEBUG::XENOARTIFACT::SING")
     X.say(X.charge)
-    . = ..()
+    ..()
 
 /datum/xenoartifact_trait/capture //Capture, self explanitory 
     desc = "Hollow"
@@ -59,7 +59,7 @@
     AM.forceMove(X.loc)//Release this martyr
     AM.anchored = FALSE
     X.anchored = FALSE
-    . = ..()
+    ..()
 
 /datum/xenoartifact_trait/shock //Shocking https://www.youtube.com/watch?v=iYVO5bUFww0
     desc = "Conductive"
@@ -67,4 +67,4 @@
 /datum/xenoartifact_trait/shock/activate(obj/item/xenoartifact/X, mob/living/carbon/target)
     var/damage = X.charge*0.4
     target.electrocute_act(damage, X, 1, 1)
-    . = ..()
+    ..()
