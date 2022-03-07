@@ -16,11 +16,12 @@
 /obj/item/xenoartifact/Initialize()
     . = ..()
 
-    charge_req = 0*rand(1, 10)//set 0 to 10 after debugging
+    charge_req = 1*rand(1, 10)//set 0 to 10 after debugging
     traits[1] = new /datum/xenoartifact_trait/impact
-    traits[1] = new /datum/xenoartifact_trait/looped
-    traits[5] = new /datum/xenoartifact_trait/capture
-    traits[4] = new /datum/xenoartifact_trait/sing
+    traits[2] = new /datum/xenoartifact_trait/looped
+    traits[3] = new /datum/xenoartifact_trait/capacitive
+    traits[4] = new /datum/xenoartifact_trait/shock
+    traits[5] = new /datum/xenoartifact_trait/sing
 
 /obj/item/xenoartifact/interact(mob/user)
     . = ..()
@@ -53,7 +54,9 @@
     if(charge >= charge_req)//Run major traits. Typically only one but, leave this for now otherwise
         for(var/datum/xenoartifact_trait/T in traits)
             T.activate(src, true_target, user)
-    
-    if(!(/datum/xenoartifact_trait/capacitive in traits))
         charge = 0
+    
+    for(var/datum/xenoartifact_trait/capacitive/T in traits)//To:Do: Why does this only work as a loop? Find a way to make it an IF or something.
+        return
+    charge = 0
     
