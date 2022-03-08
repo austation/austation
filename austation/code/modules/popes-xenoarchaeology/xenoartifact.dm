@@ -61,13 +61,4 @@
     for(var/datum/xenoartifact_trait/capacitive/T in traits) //To:Do: Why does this only work as a loop? Find a way to make it an IF or something.
         return
     charge = 0
-
-/obj/item/xenoartifact/pickup(mob/user) //Picking up multiplies activation charge by a factor of 0.5
-    . = ..()
-    for(var/datum/xenoartifact_trait/dense/D in traits) //To:Do: Why does this only work as a loop? Find a way to make it an IF or something.
-        for(var/datum/xenoartifact_trait/T in traits)
-            charge += 0.5*T.on_impact(src, user)
-        check_charge(user)
-        to_chat(user, "The [src] is too heavy to carry!")
-        user.dropItemToGround(src, TRUE, TRUE)
     
