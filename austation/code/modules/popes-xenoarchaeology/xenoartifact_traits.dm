@@ -5,53 +5,47 @@
 /datum/xenoartifact_trait/proc/activate(obj/item/xenoartifact/X, atom/target, atom/user)
     return
 
-/datum/xenoartifact_trait/proc/minor_activate(obj/item/xenoartifact/X)
-    return
-
 /datum/xenoartifact_trait/proc/on_impact(obj/item/xenoartifact/X)
-    return
-
-/datum/xenoartifact_trait/proc/on_slip(obj/item/xenoartifact/X, atom/target)
     return
 
 //Activation traits - only used to generate charge
 
-/datum/xenoartifact_trait/impact //Default impact activation trait. Trauma generates charge
+/datum/xenoartifact_trait/activator/impact //Default impact activation trait. Trauma generates charge
     desc = "Sturdy"
     charge = 25
 
-/datum/xenoartifact_trait/impact/on_impact(obj/item/xenoartifact/X)
+/datum/xenoartifact_trait/impact/activator/on_impact(obj/item/xenoartifact/X)
     return charge
 
 //Minor traits
 
-/datum/xenoartifact_trait/looped //Increases charge towards 100
+/datum/xenoartifact_trait/minor/looped //Increases charge towards 100
     desc = "Looped"
 
-/datum/xenoartifact_trait/looped/minor_activate(obj/item/xenoartifact/X)
+/datum/xenoartifact_trait/looped/minor/activate(obj/item/xenoartifact/X)
     X.charge = ((100-X.charge)*0.2)+X.charge
     ..()
 
-/datum/xenoartifact_trait/capacitive //Assures charge is saved until activated instead of being lost on failed attempts
+/datum/xenoartifact_trait/minor/capacitive //Assures charge is saved until activated instead of being lost on failed attempts
     desc = "Capacitive"
 
-/datum/xenoartifact_trait/dense //Makes the artifact unable to be picked up. Pain in my asshole.
+/datum/xenoartifact_trait/minor/dense //Makes the artifact unable to be picked up. Pain in my asshole.
     desc = "Dense"
 
 //Major traits
 
-/datum/xenoartifact_trait/sing //Debug
+/datum/xenoartifact_trait/major/sing //Debug
     desc = "Tubed"
 
-/datum/xenoartifact_trait/sing/activate(obj/item/xenoartifact/X)
+/datum/xenoartifact_trait/major/sing/activate(obj/item/xenoartifact/X)
     X.say("DEBUG::XENOARTIFACT::SING")
     X.say(X.charge)
     ..()
 
-/datum/xenoartifact_trait/capture //Capture, self explanitory 
+/datum/xenoartifact_trait/major/capture //Capture, self explanitory 
     desc = "Hollow"
 
-/datum/xenoartifact_trait/capture/activate(obj/item/xenoartifact/X, mob/target, mob/user) //ToDo: Optimize this to exlcude ghosts and other things that should be spared
+/datum/xenoartifact_trait/major/capture/activate(obj/item/xenoartifact/X, mob/target, mob/user) //ToDo: Optimize this to exlcude ghosts and other things that should be spared
     var/atom/movable/AM = target
     AM.anchored = TRUE
     X.anchored = TRUE
@@ -64,7 +58,7 @@
     X.anchored = FALSE
     ..()
 
-/datum/xenoartifact_trait/shock //Shocking https://www.youtube.com/watch?v=iYVO5bUFww0
+/datum/xenoartifact_trait/major/shock //Shocking https://www.youtube.com/watch?v=iYVO5bUFww0
     desc = "Conductive"
 
 /datum/xenoartifact_trait/shock/activate(obj/item/xenoartifact/X, mob/living/carbon/target)
