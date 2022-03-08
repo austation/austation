@@ -35,7 +35,7 @@
 /datum/xenoartifact_trait/capacitive //Assures charge is saved until activated instead of being lost on failed attempts
     desc = "Capacitive"
 
-/datum/xenoartifact_trait/dense //Makes the artifact unable to be picked up. Also works in xenoartifact.dm to generate charge when touched
+/datum/xenoartifact_trait/dense //Makes the artifact unable to be picked up. Pain in my asshole.
     desc = "Dense"
 
 //Major traits
