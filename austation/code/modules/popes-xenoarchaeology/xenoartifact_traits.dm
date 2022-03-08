@@ -17,7 +17,7 @@
 //Activation traits - only used to generate charge
 
 /datum/xenoartifact_trait/impact //Default impact activation trait. Trauma generates charge
-    desc = "Dense"
+    desc = "Sturdy"
     charge = 25
 
 /datum/xenoartifact_trait/impact/on_impact(obj/item/xenoartifact/X)
@@ -29,11 +29,14 @@
     desc = "Looped"
 
 /datum/xenoartifact_trait/looped/minor_activate(obj/item/xenoartifact/X)
-    X.charge = ((100-X.charge)*0.5)+X.charge
+    X.charge = ((100-X.charge)*0.2)+X.charge
     ..()
 
 /datum/xenoartifact_trait/capacitive //Assures charge is saved until activated instead of being lost on failed attempts
     desc = "Capacitive"
+
+/datum/xenoartifact_trait/dense //Makes the artifact unable to be picked up. Also works in xenoartifact.dm to generate charge when touched
+    desc = "Dense"
 
 //Major traits
 
@@ -52,11 +55,11 @@
     var/atom/movable/AM = target
     AM.anchored = TRUE
     X.anchored = TRUE
-    AM.forceMove(src)//Go to the mega gay zone
+    AM.forceMove(src) //Go to the mega gay zone
     if(user)
         user.dropItemToGround(X, TRUE, TRUE)
-    sleep(50)
-    AM.forceMove(X.loc)//Release this martyr
+    sleep(X.charge*6) //100 charge sits around 60 seconds
+    AM.forceMove(X.loc) //Release this martyr
     AM.anchored = FALSE
     X.anchored = FALSE
     ..()
