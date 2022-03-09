@@ -22,8 +22,8 @@
     traits[1] = new /datum/xenoartifact_trait/activator/impact
     traits[2] = new /datum/xenoartifact_trait/minor/looped
     traits[3] = new /datum/xenoartifact_trait/minor/capacitive
-    traits[4] = new /datum/xenoartifact_trait/minor/dense
-    traits[5] = new /datum/xenoartifact_trait/major/sing
+    traits[4] = new /datum/xenoartifact_trait/major/sing
+    traits[5] = new /datum/xenoartifact_trait/major/timestop
 
     for(var/datum/xenoartifact_trait/minor/dense/T in traits) //More for-loop strangeness
         var/obj/structure/xenoartifact/X = new /obj/structure/xenoartifact(get_turf(src.loc))

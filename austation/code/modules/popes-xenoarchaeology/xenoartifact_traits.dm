@@ -1,6 +1,12 @@
 /datum/xenoartifact_trait
     var/desc //Acts as a descriptor for when examining
+
+/datum/xenoartifact_trait/activator
     var/charge //How much a trait can output - reserved for activation traits
+
+/datum/xenoartifact_trait/minor
+
+/datum/xenoartifact_trait/major
 
 /datum/xenoartifact_trait/proc/activate(obj/item/xenoartifact/X, atom/target, atom/user)
     return
@@ -14,7 +20,7 @@
     desc = "Sturdy"
     charge = 25
 
-/datum/xenoartifact_trait/impact/activator/on_impact(obj/item/xenoartifact/X)
+/datum/xenoartifact_trait/activator/impact/on_impact(obj/item/xenoartifact/X)
     return charge
 
 //Minor traits
@@ -42,7 +48,7 @@
     X.say(X.charge)
     ..()
 
-/datum/xenoartifact_trait/major/capture //Capture, self explanitory 
+/datum/xenoartifact_trait/major/capture //Capture naughty coders
     desc = "Hollow"
 
 /datum/xenoartifact_trait/major/capture/activate(obj/item/xenoartifact/X, mob/target, mob/user) //ToDo: Optimize this to exlcude ghosts and other things that should be spared
@@ -61,7 +67,15 @@
 /datum/xenoartifact_trait/major/shock //Shocking https://www.youtube.com/watch?v=iYVO5bUFww0
     desc = "Conductive"
 
-/datum/xenoartifact_trait/shock/activate(obj/item/xenoartifact/X, mob/living/carbon/target)
+/datum/xenoartifact_trait/major/shock/activate(obj/item/xenoartifact/X, mob/living/carbon/target)
     var/damage = X.charge*0.4
     target.electrocute_act(damage, X, 1, 1)
+    ..()
+
+/datum/xenoartifact_trait/major/timestop //Stop time
+    desc = "Melted" //https://en.wikipedia.org/wiki/The_Persistence_of_Memory
+
+/datum/xenoartifact_trait/major/melted/activate(obj/item/xenoartifact/X)
+    var/turf/T = get_turf(X)
+    new /obj/effect/timestop(T, null, null, null)
     ..()
