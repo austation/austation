@@ -79,5 +79,5 @@
     var/turf/T = get_turf(X.loc)
     if(!X)
         T = get_turf(target.loc)     
-    new /obj/effect/timestop(T, 2, 10)
+    new /obj/effect/timestop(T, 2, X.charge*6) //Same approach as capture. Generally use as a standard.
     ..()
