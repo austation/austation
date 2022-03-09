@@ -75,7 +75,9 @@
 /datum/xenoartifact_trait/major/timestop //Stop time
     desc = "Melted" //https://en.wikipedia.org/wiki/The_Persistence_of_Memory
 
-/datum/xenoartifact_trait/major/melted/activate(obj/item/xenoartifact/X)
-    var/turf/T = get_turf(X)
-    new /obj/effect/timestop(T, null, null, null)
+/datum/xenoartifact_trait/major/timestop/activate(obj/item/xenoartifact/X, mob/living/carbon/target)
+    var/turf/T = get_turf(X.loc)
+    if(!X)
+        T = get_turf(target.loc)     
+    new /obj/effect/timestop(T, 2, 10)
     ..()
