@@ -1,6 +1,6 @@
 /*
-    Structure version of xenoartifact.
-
+    Structure version of xenoartifact. Used for dense trait.
+    Look in xenoartifact_traits.dm for more information.
 */
 
 /obj/structure/xenoartifact //Most of these values are generated on initialize

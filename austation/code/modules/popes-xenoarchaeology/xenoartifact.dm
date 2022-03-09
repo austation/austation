@@ -1,6 +1,7 @@
 /*
     Xenoartifact.
 
+    Resoponsible shitter is Racc-Off#3845
 */
 
 /obj/item/xenoartifact //Most of these values are generated on initialize
@@ -28,6 +29,7 @@
     for(var/datum/xenoartifact_trait/minor/dense/T in traits) //More for-loop strangeness
         var/obj/structure/xenoartifact/X = new /obj/structure/xenoartifact(get_turf(src.loc))
         X.traits = traits
+        X.charge_req = charge_req*1.2 //Might change later on. LOOK AT THIS!!
         qdel(src)
 
 /obj/item/xenoartifact/interact(mob/user)

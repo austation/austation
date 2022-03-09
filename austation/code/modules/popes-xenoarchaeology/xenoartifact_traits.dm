@@ -14,6 +14,10 @@
 /datum/xenoartifact_trait/proc/on_impact(obj/item/xenoartifact/X)
     return
 
+/datum/xenoartifact_trait/proc/on_init(obj/item/xenoartifact/X) //Used expressively for traits, typically minor, that transform the item's stats
+    return
+
+
 //Activation traits - only used to generate charge
 
 /datum/xenoartifact_trait/activator/impact //Default impact activation trait. Trauma generates charge
@@ -37,6 +41,16 @@
 
 /datum/xenoartifact_trait/minor/dense //Makes the artifact unable to be picked up. Pain in my asshole.
     desc = "Dense"
+
+/datum/xenoartifact_trait/minor/sharp //Essentially makes the artifact a weapon
+    desc = "Shaped" //Shaped glass 
+
+/datum/xenoartifact_trait/sharp/minor/on_init(obj/item/xenoartifact/X)
+    X.sharpness = IS_SHARP
+    X.force = X.charge_req/15 //Change 15 to higher number if unbalanced
+    X.attack_weight = 2
+    X.armour_penetration = 5
+    ..()
 
 //Major traits
 
