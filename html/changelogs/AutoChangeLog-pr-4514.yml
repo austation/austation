@@ -1,0 +1,6 @@
+author: "mudzbe"
+delete-after: True
+changes: 
+  - rscadd: "New surrender verb where the user is paralyzed to prevent warcrimes(?). An animation is played when entering and exiting this state to alert others"
+  - tweak: "The old surrender emote is linked to the new surrender verb"
+  - tweak: "Handcuffing paralyzed (surrendered) people is faster"
