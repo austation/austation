@@ -344,16 +344,14 @@
 	message = "sulks down sadly"
 
 /datum/emote/living/surrender
-	key = "surrender"
+	key = "surrender"//austation start -- Reworks the surrender emote
 	key_third_person = "surrenders"
-	message = "puts their hands on their head and falls to the ground, surrendering"
-	emote_type = EMOTE_AUDIBLE
 
 /datum/emote/living/surrender/run_emote(mob/user, params, type_override, intentional)
 	. = ..()
-	if(. && isliving(user))
-		var/mob/living/L = user
-		L.Paralyze(200)
+	if(. && ishuman(user))
+		var/mob/living/carbon/human/L = user
+		L.surrender() //austation end
 
 /datum/emote/living/sway
 	key = "sway"
