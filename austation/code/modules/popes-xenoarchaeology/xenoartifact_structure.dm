@@ -20,7 +20,7 @@
 /obj/structure/xenoartifact/Initialize()
     . = ..()
 
-/obj/structure/xenoartifact/attacked_by(obj/item/I, mob/living/user) //Attacking multiplies activation charge by a factor of 2. Use this to check for certain activation types
+/obj/structure/xenoartifact/attacked_by(obj/item/I, mob/living/user) //Use this to check for certain activator input types
     . = ..()
     for(var/datum/xenoartifact_trait/activator/T in traits)
         charge += 2*T.on_impact(src, user)
@@ -28,7 +28,7 @@
     true_target = user
     check_charge(user)
 
-/obj/structure/xenoartifact/attack_hand(mob/user) //Rub magic laaamp, 0.5 charge mod
+/obj/structure/xenoartifact/attack_hand(mob/user)
     . = ..()
     for(var/datum/xenoartifact_trait/activator/T in traits)
         charge += 0.5*T.on_impact(src, user)
@@ -36,7 +36,7 @@
     true_target = user
     check_charge(user)
 
-/obj/structure/xenoartifact/throw_impact(atom/target, mob/user) //Throwing  multiplies activation charge by a factor of 2
+/obj/structure/xenoartifact/throw_impact(atom/target, mob/user)
     . = ..()
     for(var/datum/xenoartifact_trait/activator/T in traits)
         charge += 2*T.on_impact(src, target)

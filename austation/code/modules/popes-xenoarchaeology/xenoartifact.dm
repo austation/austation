@@ -1,6 +1,5 @@
 /*
     Xenoartifact.
-
     Resoponsible shitter is Racc-Off#3845
 */
 
@@ -9,11 +8,10 @@
     icon = 'icons/obj/plushes.dmi'
     icon_state = "lizardplush"
     
-    var/material
-    var/charge = 0 //How much input the artifact is getting from activation traits
+    var/charge = 0 //How much input the artifact is getting from activator traits
     var/charge_req //How much input is required to start the activation
     var/traits[5] //activation trait, minor 1, minor 2, minor 3, major
-    var/true_target //last target 
+    var/true_target //last target. Used for timer stuff, see capture.
 
 
 /obj/item/xenoartifact/Initialize()
@@ -24,23 +22,23 @@
     traits[2] = new /datum/xenoartifact_trait/minor/looped
     traits[3] = new /datum/xenoartifact_trait/minor/capacitive
     traits[4] = new /datum/xenoartifact_trait/major/sing
-    traits[5] = new /datum/xenoartifact_trait/major/timestop
+    traits[5] = new /datum/xenoartifact_trait/major/laser
 
     for(var/datum/xenoartifact_trait/minor/dense/T in traits) //More for-loop strangeness
         var/obj/structure/xenoartifact/X = new /obj/structure/xenoartifact(get_turf(src.loc))
         X.traits = traits
-        X.charge_req = charge_req*1.2 //Might change later on. LOOK AT THIS!!
+        X.charge_req = charge_req*1.2
         qdel(src)
 
 /obj/item/xenoartifact/interact(mob/user)
     . = ..()
     for(var/datum/xenoartifact_trait/activator/T in traits)
-        charge += T.on_impact(src, user)
+        charge += 0.8*T.on_impact(src, user)//0.8 and any other number used to modify this is pretty arbitrary and only correlates to how easy/hard it is to do.
 
     true_target = user
     check_charge(user)
 
-/obj/item/xenoartifact/attack(atom/target, mob/user) //Attacking multiplies activation charge by a factor of 1.5
+/obj/item/xenoartifact/attack(atom/target, mob/user)
     . = ..()
     for(var/datum/xenoartifact_trait/activator/T in traits)
         charge += 1.5*T.on_impact(src, target)
@@ -48,13 +46,22 @@
     true_target = target
     check_charge(user)
 
-/obj/item/xenoartifact/throw_impact(atom/target, mob/user) //Throwing multiplies activation charge by a factor of 2
+/obj/item/xenoartifact/afterattack(atom/target, mob/user, proximity)
+    . = ..()
+    for(var/datum/xenoartifact_trait/activator/T in traits)
+        if(!proximity)//Only if we're far away, don't want to trigger right after attack
+            charge += 0.8*T.on_impact(src, target)
+
+    true_target = target
+    check_charge(user)
+
+/obj/item/xenoartifact/throw_impact(atom/target, mob/user)
     . = ..()
     for(var/datum/xenoartifact_trait/activator/T in traits)
         charge += 2*T.on_impact(src, target)
 
     true_target = target
-    check_charge(null) //Don't pass this for the moment, just cuz it causes issue with capture-datum.
+    check_charge(null) //Don't pass this for the moment, just cuz it causes issue with capture-datum. Fix capture.
 
 /obj/item/xenoartifact/attacked_by(obj/item/I, mob/living/user)
     . = ..()
