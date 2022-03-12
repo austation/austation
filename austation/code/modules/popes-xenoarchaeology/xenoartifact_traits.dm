@@ -61,8 +61,14 @@
     to_chat(user, "<span class='notice'>The hairs on your neck stand up after touching the [X.name].</span>")
     ..()
 
-/datum/xenoartifact_trait/minor/dense //Makes the artifact unable to be picked up.
+/datum/xenoartifact_trait/minor/dense //Makes the artifact unable to be picked up. Associated with better charge modifers.
     desc = "Dense"
+
+/datum/xenoartifact_trait/minor/dense/on_init(obj/item/xenoartifact/X)
+    var/obj/structure/xenoartifact/N = new(get_turf(X))
+    N.traits = X.traits
+    qdel(src)
+    ..()
 
 /datum/xenoartifact_trait/minor/sharp
     desc = "Shaped" //Shaped glass.
@@ -99,6 +105,47 @@
 /datum/xenoartifact_trait/cooler/minor/on_init(obj/item/xenoartifact/X)
     X.cooldown = X.cooldown / 3 //Might revisit the value.
     ..()
+
+/datum/xenoartifact_trait/minor/sentient //The attempt here is to make a one-ring type sentience
+    //More sneaky stuff
+    //I probably wont detract points for unsuccesfully guessing this one. 
+
+/datum/xenoartifact_trait/minor/sentient/on_touch(obj/item/xenoartifact/X, mob/user)
+    to_chat(user, "<span class='warning'>The [X.name] whispers to you...</span>")
+    ..()
+
+/datum/xenoartifact_trait/minor/sentient/on_init(obj/item/xenoartifact/X)
+    var/list/mob/dead/observer/candidates = pollGhostCandidates("Do you want to play as the maleviolent force inside the [X.name]?", ROLE_SENTIENCE, null, FALSE, 5 SECONDS, POLL_IGNORE_SENTIENCE_POTION)
+    if(LAZYLEN(candidates))
+        var/mob/dead/observer/C = pick(candidates)
+        var/mob/living/simple_animal/H = new /mob/living/simple_animal(get_turf(X))
+        H.key = C.key
+        ADD_TRAIT(H, TRAIT_NOBREATH, TRAIT_SIXTHSENSE)
+        H.forceMove(X)
+        H.anchored = TRUE
+        var/obj/effect/proc_holder/spell/targeted/xeno_senitent_action/P = new /obj/effect/proc_holder/spell/targeted/xeno_senitent_action
+        H.AddSpell(P)
+        P.stupid(X)
+    ..()
+
+/obj/effect/proc_holder/spell/targeted/xeno_senitent_action
+    name = "Activate"
+    desc = "Select a target to activate your traits on."
+    range = 1
+    charge_max = 0 SECONDS //To:Do: Consider adding major trait delay to this too
+    clothes_req = 0
+    include_user = 0
+    action_icon = 'icons/mob/actions/actions_revenant.dmi'
+    action_icon_state = "r_transmit"
+    action_background_icon_state = "bg_spell"
+    var/obj/item/xenoartifact/X
+
+/obj/effect/proc_holder/spell/targeted/xeno_senitent_action/proc/stupid(obj/item/xenoartifact/Z) //To:Do: Fucking get rid of this
+    X = Z
+
+/obj/effect/proc_holder/spell/targeted/xeno_senitent_action/cast(list/targets, mob/living/simple_animal/revenant/user = usr)
+    for(var/mob/M in targets)
+        X.attack(M, usr)
 
 //Major traits
 

@@ -2,7 +2,7 @@
     Structure version of xenoartifact. Used for dense trait.
     Look in xenoartifact_traits.dm for more information.
 */
-//Activator modifiers. Used in context of the difficulty of a task. Similar to item's, but generally better.
+//Activator modifiers. Used in context of the difficulty of a task. Generates better values.
 #define EASY 1
 #define NORMAL 1.8
 #define HARD 2
@@ -56,7 +56,8 @@
         for(var/datum/xenoartifact_trait/minor/T in traits) //Run minor traits first. Since they don't require a charge 
             T.activate(src, true_target, user)
 
-        if(charge+charge_mod >= charge_req) //Run major traits. Typically only one but, leave this for now otherwise
+        charge += charge_mod 
+        if(charge >= charge_req) //Run major traits. Typically only one but, leave this for now otherwise
             for(var/datum/xenoartifact_trait/major/T in traits)
                 T.activate(src, true_target, user)
             charge = 0
