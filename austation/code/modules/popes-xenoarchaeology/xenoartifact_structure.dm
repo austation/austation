@@ -44,18 +44,29 @@
     true_target = target
     check_charge(null) //Don't pass this for the moment, just cuz it causes issue with capture-datum.
 
-/obj/structure/xenoartifact/proc/check_charge(mob/user, var/charge_mod) //Run traits. User is generally passed to use as a fail safe for certain traits
-    for(var/datum/xenoartifact_trait/minor/T in traits) //Run minor traits first. Since they don't require a charge 
-        T.activate(src, true_target, user)
-
-    if(charge+charge_mod >= charge_req) //Run major traits. Typically only one but, leave this for now otherwise
-        for(var/datum/xenoartifact_trait/major/T in traits)
+/obj/item/xenoartifact/proc/check_charge(mob/user, var/charge_mod) //Run traits. User is generally passed to use as a fail-safe.
+    if(manage_cooldown())
+        for(var/datum/xenoartifact_trait/minor/T in traits) //Run minor traits first. Since they don't require a charge 
             T.activate(src, true_target, user)
-        charge = 0
-    
-    for(var/datum/xenoartifact_trait/minor/capacitive/T in traits) //To:Do: Why does this only work as a loop? Find a way to make it an IF or something.
-        return
+
+        if(charge+charge_mod >= charge_req) //Run major traits. Typically only one but, leave this for now otherwise
+            for(var/datum/xenoartifact_trait/major/T in traits)
+                T.activate(src, true_target, user)
+            charge = 0
+        
+        for(var/datum/xenoartifact_trait/minor/capacitive/T in traits) //To:Do: Why does this only work as a loop? Find a way to make it an IF or something.
+            return
+        manage_cooldown()
     charge = 0
+
+/obj/item/xenoartifact/proc/manage_cooldown()
+    if(!usedwhen)
+        usedwhen = world.time
+        return TRUE
+    else if(usedwhen + cooldown + cooldownmod < world.time)
+        return TRUE
+    else    
+        return FALSE
 
 /obj/structure/xenoartifact/climb_structure(mob/living/user) //Don't run parent, you can't climb them anyway
     for(var/datum/xenoartifact_trait/major/capture/T in traits)

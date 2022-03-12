@@ -201,4 +201,4 @@
     if(!T)
         return
     explosion(T,X.charge/4,X.charge/3,X.charge/2)
-    qdel(src) //Bon voyage. If you remove this, keep in mind there's a callback regarding a loop.
+    qdel(src) //Bon voyage. If you remove this, keep in mind there's a callback bug regarding a looping issue.
