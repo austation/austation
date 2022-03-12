@@ -1,7 +1,6 @@
 /*
     Dev notes: 
-        - Not every artifact has a hint but, every artifact must have a descriptor.
-        - Activator refers to a trait that generates charge to turn the artifact on. Not to be confused with the activator trait.
+        - Activator refers to a trait that generates charge to turn the artifact on. Not to be confused with the activaton proc.
         - Some more crpytic traits should be explained if the name isn't self explanitory. 
 */
 
@@ -9,13 +8,13 @@
     var/desc //Acts as a descriptor for when examining
 
 /datum/xenoartifact_trait/activator
-    var/charge //How much a trait can output - reserved for activation traits
+    var/charge //How much a trait can output to fufill the charge requirment
 
 /datum/xenoartifact_trait/minor
 
 /datum/xenoartifact_trait/major
 
-/datum/xenoartifact_trait/proc/activate(obj/item/xenoartifact/X, atom/target, atom/user) //Used for major traits.
+/datum/xenoartifact_trait/proc/activate(obj/item/xenoartifact/X, atom/target, atom/user)
     return
 
 /datum/xenoartifact_trait/proc/on_impact(obj/item/xenoartifact/X) //Activator expression.
@@ -58,7 +57,7 @@
 /datum/xenoartifact_trait/minor/capacitive //Assures charge is saved until activated instead of being lost on failed attempts
     desc = "Capacitive"
 
-/datum/xenoartifact_trait/major/capacitive/on_touch(obj/item/xenoartifact/X, mob/user)
+/datum/xenoartifact_trait/minor/capacitive/on_touch(obj/item/xenoartifact/X, mob/user)
     to_chat(user, "<span class='notice'>The hairs on your neck stand up after touching the [X.name].</span>")
     ..()
 
@@ -68,7 +67,7 @@
 /datum/xenoartifact_trait/minor/sharp
     desc = "Shaped" //Shaped glass.
 
-/datum/xenoartifact_trait/major/shock/on_touch(obj/item/xenoartifact/X, mob/user)
+/datum/xenoartifact_trait/minor/sharp/on_touch(obj/item/xenoartifact/X, mob/user)
     to_chat(user, "<span class='notice'>The [X.name] feels sharp.</span>")
     ..()
 
@@ -77,6 +76,28 @@
     X.force = X.charge_req/15 //Change 15 to higher number if unbalanced
     X.attack_weight = 2
     X.armour_penetration = 5
+    ..()
+
+/datum/xenoartifact_trait/minor/radioactive
+    //Sneaky
+
+/datum/xenoartifact_trait/minor/radioactive/on_touch(obj/item/xenoartifact/X, mob/user)
+    to_chat(user, "<span class='notice'>You feel pins and needles after touching the [X.name].</span>")
+    ..()
+
+/datum/xenoartifact_trait/minor/radioactive/activate(obj/item/xenoartifact/X, mob/living/target)
+    target.radiation += X.charge/5 //Might revisit the value.
+    ..()
+
+/datum/xenoartifact_trait/minor/cooler //Faster cooldowns
+    desc = "Frosted"
+
+/datum/xenoartifact_trait/minor/cooler/on_touch(obj/item/xenoartifact/X, mob/user)
+    to_chat(user, "<span class='notice'>The [X.name] feels cold.</span>")
+    ..()
+
+/datum/xenoartifact_trait/cooler/minor/on_init(obj/item/xenoartifact/X)
+    X.cooldown = X.cooldown / 3 //Might revisit the value.
     ..()
 
 //Major traits
@@ -94,7 +115,8 @@
 
 /datum/xenoartifact_trait/major/capture/activate(obj/item/xenoartifact/X, mob/target, mob/user)
     var/atom/movable/AM = arrest(X, target, user)
-    addtimer(CALLBACK(src, .proc/release, X, AM, T), X.charge*0.6 SECONDS)
+    addtimer(CALLBACK(src, .proc/release, X, AM), X.charge*0.6 SECONDS)
+    X.cooldownmod = X.charge*0.6 SECONDS
     ..()
 
 /datum/xenoartifact_trait/major/capture/proc/arrest(obj/item/xenoartifact/X, mob/target, mob/user)
@@ -162,7 +184,7 @@
     ..()
 
 /datum/xenoartifact_trait/major/bomb
-    //No description, for extra sneaky shenanigans
+    //Sneaky
 
 /datum/xenoartifact_trait/major/bomb/on_touch(obj/item/xenoartifact/X, mob/user)
     to_chat(user, "<span class='notice'>You feel a ticking deep within the [X.name].</span>")
@@ -171,6 +193,7 @@
 /datum/xenoartifact_trait/major/bomb/activate(obj/item/xenoartifact/X, mob/living/carbon/target)
     X.visible_message("<span class='danger'>The [X.name] begins to tick loudly...</span>")
     addtimer(CALLBACK(src, .proc/explode, X), 70-(X.charge*0.6) SECONDS)
+    X.cooldownmod = 70-(X.charge*0.6) SECONDS
     ..()
 
 /datum/xenoartifact_trait/major/bomb/proc/explode(obj/item/xenoartifact/X)
