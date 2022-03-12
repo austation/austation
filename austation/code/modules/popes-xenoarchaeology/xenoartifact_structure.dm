@@ -20,7 +20,7 @@
     var/traits[5] //activation trait, minor 1, minor 2, minor 3, major
     var/true_target //last target 
     var/usedwhen //holder for worldtime
-    var/cooldown = 16 SECONDS //Time between uses
+    var/cooldown = 8 SECONDS //Time between uses
     var/cooldownmod = 1 //Extra time traits can add to the cooldown.
 
 

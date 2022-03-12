@@ -33,7 +33,7 @@
 
 /datum/xenoartifact_trait/activator/impact //Default impact activation trait. Trauma generates charge
     desc = "Sturdy"
-    charge = 15
+    charge = 25
 
 /datum/xenoartifact_trait/activator/impact/on_impact(obj/item/xenoartifact/X)
     return charge
@@ -67,7 +67,8 @@
 /datum/xenoartifact_trait/minor/dense/on_init(obj/item/xenoartifact/X)
     var/obj/structure/xenoartifact/N = new(get_turf(X))
     N.traits = X.traits
-    qdel(src)
+    N.charge_req = X.charge_req*1.5
+    del(X)
     ..()
 
 /datum/xenoartifact_trait/minor/sharp
@@ -213,9 +214,9 @@
     desc = "Scoped"
 
 /datum/xenoartifact_trait/major/laser/activate(obj/item/xenoartifact/X, mob/living/carbon/target, mob/living/user)
-    if(target == user) //If targetting self, set that fucker alight
-        user.adjust_fire_stacks(1)
-        user.IgniteMob()
+    if(get_dist(target, user) <= 1)
+        target.adjust_fire_stacks(1)
+        target.IgniteMob()
         return
     var/obj/item/projectile/A
     switch(X.charge)
@@ -249,7 +250,7 @@
     if(!T)
         return
     explosion(T,X.charge/4,X.charge/3,X.charge/2)
-    qdel(src) //Bon voyage. If you remove this, keep in mind there's a callback bug regarding a looping issue.
+    del(X) //Bon voyage. If you remove this, keep in mind there's a callback bug regarding a looping issue.
 
 /datum/xenoartifact_trait/major/corginator //All of this is stolen from corgium.
     desc = "Fuzzy" //Weirdchamp
