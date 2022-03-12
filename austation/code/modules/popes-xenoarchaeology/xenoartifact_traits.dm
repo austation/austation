@@ -159,6 +159,7 @@
     if(!X)
         T = get_turf(target.loc)     
     new /obj/effect/timestop(T, 2, X.charge*6)
+    X.cooldownmod = X.charge*0.6 SECONDS
     ..()
 
 /datum/xenoartifact_trait/major/laser
@@ -202,3 +203,48 @@
         return
     explosion(T,X.charge/4,X.charge/3,X.charge/2)
     qdel(src) //Bon voyage. If you remove this, keep in mind there's a callback bug regarding a looping issue.
+
+/datum/xenoartifact_trait/major/corginator //All of this is stolen from corgium.
+    desc = "Fuzzy" //Weirdchamp
+    var/mob/living/simple_animal/pet/dog/corgi/new_corgi
+
+/datum/xenoartifact_trait/major/corginator/activate(obj/item/xenoartifact/X, mob/living/carbon/target)
+    if(istype(target, /mob/living/carbon))
+        transform(X, target)
+        addtimer(CALLBACK(src, .proc/transform_back, X, target), X.charge*0.6 SECONDS)
+        X.cooldownmod = X.charge*0.6 SECONDS
+    ..()
+
+/datum/xenoartifact_trait/major/corginator/proc/transform(obj/item/xenoartifact/X, mob/living/carbon/target)
+    new_corgi = new(get_turf(target))
+    new_corgi.key = target.key
+    new_corgi.name = target.real_name
+    new_corgi.real_name = target.real_name
+    ADD_TRAIT(target, TRAIT_NOBREATH, CORGIUM_TRAIT)
+    //hack - equipt current hat
+    var/mob/living/carbon/C = target
+    if(istype(C))
+        var/obj/item/hat = C.get_item_by_slot(ITEM_SLOT_HEAD)
+        if(hat)
+            new_corgi.place_on_head(hat,null,FALSE)
+    target.forceMove(new_corgi)
+
+/datum/xenoartifact_trait/major/corginator/proc/transform_back(obj/item/xenoartifact/X, mob/living/carbon/target)
+    REMOVE_TRAIT(target, TRAIT_NOBREATH, CORGIUM_TRAIT)
+    if(QDELETED(new_corgi))
+        if(!QDELETED(target))
+            qdel(target)
+        return
+    target.key = new_corgi.key
+    target.adjustBruteLoss(new_corgi.getBruteLoss())
+    target.adjustFireLoss(new_corgi.getFireLoss())
+    target.forceMove(get_turf(new_corgi))
+    var/turf/T = get_turf(new_corgi)
+    if (new_corgi.inventory_head)
+        if(!target.equip_to_slot_if_possible(new_corgi.inventory_head, ITEM_SLOT_HEAD,disable_warning = TRUE, bypass_equip_delay_self=TRUE))
+            new_corgi.inventory_head.forceMove(T)
+    new_corgi.inventory_back?.forceMove(T)
+    new_corgi.inventory_head = null
+    new_corgi.inventory_back = null
+    qdel(new_corgi)
+

@@ -27,7 +27,7 @@
     traits[2] = new /datum/xenoartifact_trait/minor/looped
     traits[3] = new /datum/xenoartifact_trait/minor/capacitive
     traits[4] = new /datum/xenoartifact_trait/major/sing
-    traits[5] = new /datum/xenoartifact_trait/major/capture
+    traits[5] = new /datum/xenoartifact_trait/major/corginator
 
     for(var/datum/xenoartifact_trait/minor/dense/T in traits) //More for-loop strangeness
         var/obj/structure/xenoartifact/X = new /obj/structure/xenoartifact(get_turf(src.loc))
@@ -109,6 +109,7 @@
         usedwhen = world.time
         return TRUE
     else if(usedwhen + cooldown + cooldownmod < world.time)
+        usedwhen = null
         return TRUE
     else    
         return FALSE
