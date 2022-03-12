@@ -21,9 +21,9 @@
     var/charge = 0 //How much input the artifact is getting from activator traits
     var/charge_req //How much input is required to start the activation
     var/datum/xenoartifact_trait/traits[5] //activation trait, minor 1, minor 2, minor 3, major
-    var/true_target //last target.
+    var/atom/true_target //last target.
     var/usedwhen //holder for worldtime
-    var/cooldown = 4 SECONDS //Time between uses
+    var/cooldown = 8 SECONDS //Time between uses
     var/cooldownmod = 0 //Extra time traits can add to the cooldown.
     var/material
 
@@ -126,7 +126,7 @@
         charge += NORMAL*T.on_impact(src, target)
 
     true_target = target
-    check_charge(null) //Don't pass this for the moment, just cuz it causes issue with capture-datum. Fix capture.
+    check_charge(user)
 
 /obj/item/xenoartifact/attackby(obj/item/I, mob/living/user) //Check for certain items pertaining to activator traits
     if(istype(traits[1], /datum/xenoartifact_trait/activator/impact))
@@ -136,16 +136,17 @@
 
     if(istype(traits[1], /datum/xenoartifact_trait/activator/burn))
         var/msg = I.ignition_effect(src, user)
-        if(msg && manage_cooldown())
-            usedwhen = null //Hacky way of just checking cooldown. Works fine.
+        if(msg && !lit && manage_cooldown(TRUE))
             sleep(2 SECONDS)
-            visible_message("<span class='danger'>The [name] sparks on.</span>")
             lit = TRUE
             charge += NORMAL*traits[1].on_burn(src, user)
             START_PROCESSING(SSobj, src)
+            visible_message("<span class='danger'>The [name] sparks on.</span>")
+        else if(!manage_cooldown(TRUE))
+            visible_message("<span class='danger'>The [name] echos emptily.</span>")
 
 /obj/item/xenoartifact/proc/check_charge(mob/user, var/charge_mod) //Run traits. User is generally passed to use as a fail-safe.
-    if(manage_cooldown())
+    if(manage_cooldown(TRUE))
         for(var/datum/xenoartifact_trait/minor/T in traits) //Run minor traits first. Since they don't require a charge 
             T.activate(src, true_target, user)
 
@@ -155,22 +156,21 @@
                 T.activate(src, true_target, user)
             charge = 0
             manage_cooldown()
-        else    
-            usedwhen = null //Kinda hacky
-        
+
         for(var/datum/xenoartifact_trait/minor/capacitive/T in traits) //To:Do: Why does this only work as a loop? Find a way to make it an IF or something.
             return
+    visible_message("<span class='danger'>The [name] echos emptily.</span>") //Got no gas in it   
     charge = 0
 
-/obj/item/xenoartifact/proc/manage_cooldown()
+/obj/item/xenoartifact/proc/manage_cooldown(checking = FALSE)
     if(!usedwhen)
-        usedwhen = world.time
+        if(!checking)
+            usedwhen = world.time
         return TRUE
     else if(usedwhen + cooldown + cooldownmod < world.time)
         usedwhen = null
         return TRUE
     else 
-        visible_message("<span class='danger'>The [name] echos emptily.</span>") //Got no gas in it   
         return FALSE
 
 /obj/item/xenoartifact/proc/generate_traits(list/possible_traits, var/index)
@@ -179,16 +179,17 @@
     traits[index] = new new_trait
     
 /obj/item/xenoartifact/proc/get_proximity() //Gets closest mob. Used for burn activator
-    for(var/mob/M in orange(1, get_turf(src)))
+    for(var/mob/living/M in orange(1, get_turf(src)))
         return M
 
 /obj/item/xenoartifact/process(delta_time) //Used expressively for the burn activator
-    if(lit)
-        true_target = get_proximity()
-        if(true_target)
-            check_charge(true_target)
-            visible_message("<span class='danger'>The [name] fizzles out.</span>")
-            lit = FALSE
-    else    
+    if(!lit)
         return PROCESS_KILL
+    true_target = get_proximity()
+    if(true_target && charge >= charge_req) //Weird but tollerable
+        check_charge(true_target)
+        lit = FALSE
+        visible_message("<span class='danger'>The [name] fizzles out.</span>")
+    else if(!charge >= charge_req)
+        charge += NORMAL*traits[1].on_burn(src) //This looks janky but, I haven't run into any issues with it yet
     
