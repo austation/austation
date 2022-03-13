@@ -21,12 +21,12 @@
     var/charge = 0 //How much input the artifact is getting from activator traits
     var/charge_req //How much input is required to start the activation
     var/datum/xenoartifact_trait/traits[5] //activation trait, minor 1, minor 2, minor 3, major
+    var/datum/xenoartifact_trait/touch_desc
     var/atom/true_target //last target.
     var/usedwhen //holder for worldtime
     var/cooldown = 8 SECONDS //Time between uses
     var/cooldownmod = 0 //Extra time traits can add to the cooldown.
-    var/material
-
+    var/material //Associated traits & colour
     var/lit = FALSE//Specific to burn
     var/lit_count = 10
 
@@ -34,7 +34,7 @@
     . = ..()
 
     material = pick(BLUESPACE, PLASMA, URANIUM, AUSTRALIUM)
-    src.add_atom_colour(material, FIXED_COLOUR_PRIORITY)
+    add_atom_colour(material, FIXED_COLOUR_PRIORITY)
     charge_req = 10*rand(1, 10)
     switch(material)
         if(BLUESPACE)
@@ -80,11 +80,24 @@
 
             var/list/majors = list(/datum/xenoartifact_trait/major/capture, /datum/xenoartifact_trait/major/timestop, /datum/xenoartifact_trait/major/corginator)
             generate_traits(majors, 5)
-    
-    desc = "The Xenoartifact is made from a [traits[1].desc] [traits[pick(2,3,4)].desc] material."
+
+    //Please clean up this enite section
+    var/datum/xenoartifact_trait/temp
+    var/min_desc //Checking a while statement with a datum is fucky
+    while(!min_desc)
+        temp = traits[pick(2,3,4)]
+        min_desc = temp.desc
+    desc = "The Xenoartifact is made from a [traits[1].desc] [min_desc] material."
     if(traits[5].desc)
-        desc = "The Xenoartifact is made from a [traits[1].desc] [traits[pick(2,3,4)].desc] material. The shape is [traits[5].desc]."
-    
+        desc = "The Xenoartifact is made from a [traits[1].desc] [min_desc] material. The shape is [traits[5].desc]."
+    min_desc = null
+    var/count = 5 //5 tries to find one. To:Do: Maybe make this check world.time instead.
+    while(!min_desc && count)
+        touch_desc = traits[pick(2,3,4)]
+        if(touch_desc.on_touch(src, src) && touch_desc != temp)
+            min_desc = TRUE
+        count -= 1
+
     for(var/datum/xenoartifact_trait/T in traits) //More for-loop strangeness
         T.on_init(src)
 
@@ -92,8 +105,10 @@
     . = ..()
     for(var/datum/xenoartifact_trait/activator/T in traits)
         charge += EASY*T.on_impact(src, user)
-    if(lit)
+    if(lit) //I don't know how you'd achieve this IG. Maybe TK or speed boosts?
         lit = FALSE
+        set_light(0)
+    touch_desc.on_touch(src, user)
         
     true_target = user
     check_charge(user)
@@ -113,7 +128,7 @@
     . = ..()
     for(var/datum/xenoartifact_trait/activator/T in traits)
         if(!proximity)//Only if we're far away, don't want to trigger right after attack
-            charge += EASY*T.on_impact(src, target) //Just swining it in the air is easy, right?
+            charge += EASY*T.on_impact(src, target)
 
     true_target = target
     check_charge(user)
@@ -141,11 +156,12 @@
             lit = TRUE
             charge += NORMAL*traits[1].on_burn(src, user)
             START_PROCESSING(SSobj, src)
+            set_light(2)
             visible_message("<span class='danger'>The [name] sparks on.</span>")
         else if(!manage_cooldown(TRUE))
             visible_message("<span class='danger'>The [name] echos emptily.</span>")
 
-/obj/item/xenoartifact/proc/check_charge(mob/user, var/charge_mod) //Run traits. User is generally passed to use as a fail-safe.
+/obj/item/xenoartifact/proc/check_charge(mob/user, charge_mod) //Run traits. User is generally passed to use as a fail-safe.
     if(manage_cooldown(TRUE))
         for(var/datum/xenoartifact_trait/minor/T in traits) //Run minor traits first. Since they don't require a charge 
             T.activate(src, true_target, user)
@@ -173,7 +189,7 @@
     else 
         return FALSE
 
-/obj/item/xenoartifact/proc/generate_traits(list/possible_traits, var/index)
+/obj/item/xenoartifact/proc/generate_traits(list/possible_traits, index)
     var/new_trait = pick(possible_traits)
     possible_traits -= new_trait
     traits[index] = new new_trait
@@ -189,7 +205,8 @@
     if(true_target && charge >= charge_req) //Weird but tollerable
         check_charge(true_target)
         lit = FALSE
+        set_light(0)
         visible_message("<span class='danger'>The [name] fizzles out.</span>")
-    else if(!charge >= charge_req)
-        charge += NORMAL*traits[1].on_burn(src) //This looks janky but, I haven't run into any issues with it yet
+    else if(true_target && charge < charge_req)
+        charge += NORMAL*traits[1].on_burn(src, true_target) //This looks janky but, I haven't run into any issues with it yet
     

@@ -27,7 +27,7 @@
     return
 
 /datum/xenoartifact_trait/proc/on_touch(obj/item/xenoartifact/X, atom/user) //Used for hints. Distribute as you please.
-    return
+    return FALSE
 
 //Activation traits - only used to generate charge
 
@@ -59,7 +59,7 @@
 
 /datum/xenoartifact_trait/minor/capacitive/on_touch(obj/item/xenoartifact/X, mob/user)
     to_chat(user, "<span class='notice'>The hairs on your neck stand up after touching the [X.name].</span>")
-    ..()
+    return TRUE
 
 /datum/xenoartifact_trait/minor/dense //Makes the artifact unable to be picked up. Associated with better charge modifers.
     desc = "Dense"
@@ -76,7 +76,7 @@
 
 /datum/xenoartifact_trait/minor/sharp/on_touch(obj/item/xenoartifact/X, mob/user)
     to_chat(user, "<span class='notice'>The [X.name] feels sharp.</span>")
-    ..()
+    return TRUE
 
 /datum/xenoartifact_trait/sharp/minor/on_init(obj/item/xenoartifact/X)
     X.sharpness = IS_SHARP
@@ -90,7 +90,7 @@
 
 /datum/xenoartifact_trait/minor/radioactive/on_touch(obj/item/xenoartifact/X, mob/user)
     to_chat(user, "<span class='notice'>You feel pins and needles after touching the [X.name].</span>")
-    ..()
+    return TRUE
 
 /datum/xenoartifact_trait/minor/radioactive/activate(obj/item/xenoartifact/X, mob/living/target)
     target.radiation += X.charge/5 //Might revisit the value.
@@ -101,7 +101,7 @@
 
 /datum/xenoartifact_trait/minor/cooler/on_touch(obj/item/xenoartifact/X, mob/user)
     to_chat(user, "<span class='notice'>The [X.name] feels cold.</span>")
-    ..()
+    return TRUE
 
 /datum/xenoartifact_trait/cooler/minor/on_init(obj/item/xenoartifact/X)
     X.cooldown = X.cooldown / 3 //Might revisit the value.
@@ -113,7 +113,7 @@
 
 /datum/xenoartifact_trait/minor/sentient/on_touch(obj/item/xenoartifact/X, mob/user)
     to_chat(user, "<span class='warning'>The [X.name] whispers to you...</span>")
-    ..()
+    return TRUE
 
 /datum/xenoartifact_trait/minor/sentient/on_init(obj/item/xenoartifact/X)
     var/list/mob/dead/observer/candidates = pollGhostCandidates("Do you want to play as the maleviolent force inside the [X.name]?", ROLE_SENTIENCE, null, FALSE, 5 SECONDS, POLL_IGNORE_SENTIENCE_POTION)
@@ -188,11 +188,13 @@
 
 /datum/xenoartifact_trait/major/shock/on_touch(obj/item/xenoartifact/X, mob/user)
     to_chat(user, "<span class='notice'>You feel a slight static after touching the [X.name].</span>")
-    ..()
+    return TRUE
 
-/datum/xenoartifact_trait/major/shock/activate(obj/item/xenoartifact/X, mob/living/carbon/target)
+/datum/xenoartifact_trait/major/shock/activate(obj/item/xenoartifact/X, mob/living/carbon/target, mob/user)
     var/damage = X.charge*0.4
-    target.electrocute_act(damage, X, 1, 1)
+    do_sparks(6, 0, X)
+    if(user == target && !(/obj/item/clothing/gloves/color/yellow in user.contents)) //If you're holding the artifact and equipped with insuls, you shouldn't be shocked.
+        target.electrocute_act(damage, X, 1, 1)
     ..()
 
 /datum/xenoartifact_trait/major/timestop
@@ -200,7 +202,7 @@
 
 /datum/xenoartifact_trait/major/timestop/on_touch(obj/item/xenoartifact/X, mob/user)
     to_chat(user, "<span class='notice'>Your hand feels slow while stroking the [X.name].</span>")
-    ..()
+    return TRUE
 
 /datum/xenoartifact_trait/major/timestop/activate(obj/item/xenoartifact/X, mob/living/carbon/target)
     var/turf/T = get_turf(X.loc)
@@ -237,7 +239,7 @@
 
 /datum/xenoartifact_trait/major/bomb/on_touch(obj/item/xenoartifact/X, mob/user)
     to_chat(user, "<span class='notice'>You feel a ticking deep within the [X.name].</span>")
-    ..()
+    return TRUE
 
 /datum/xenoartifact_trait/major/bomb/activate(obj/item/xenoartifact/X, mob/living/carbon/target)
     X.visible_message("<span class='danger'>The [X.name] begins to tick loudly...</span>")
@@ -249,7 +251,7 @@
     var/turf/T = get_turf(X)
     if(!T)
         return
-    explosion(T,X.charge/4,X.charge/3,X.charge/2)
+    explosion(T,X.charge/3,X.charge,X/2,X.charge)
     del(X) //Bon voyage. If you remove this, keep in mind there's a callback bug regarding a looping issue.
 
 /datum/xenoartifact_trait/major/corginator //All of this is stolen from corgium.
