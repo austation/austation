@@ -285,7 +285,7 @@ SUBSYSTEM_DEF(job)
 	//Get the players who are ready
 	for(var/mob/dead/new_player/player in GLOB.player_list)
 		if(player.ready == PLAYER_READY_TO_PLAY && player.mind && !player.mind.assigned_role)
-			if(!player.has_valid_preferences())
+			if(!player.check_preferences())
 				player.ready = PLAYER_NOT_READY
 			else
 				unassigned += player
@@ -470,7 +470,7 @@ SUBSYSTEM_DEF(job)
 			DropLandAtRandomHallwayPoint(living_mob)
 			spawning_handled = TRUE
 		else if(HAS_TRAIT(SSstation, STATION_TRAIT_HANGOVER) && job.random_spawns_possible)
-			SpawnLandAtRandomHallwayPoint(living_mob)
+			SpawnLandAtRandom(living_mob, (typesof(/area/hallway) | typesof(/area/crew_quarters/bar) | typesof(/area/crew_quarters/dorms)))
 			spawning_handled = TRUE
 		else if(length(GLOB.jobspawn_overrides[rank]))
 			S = pick(GLOB.jobspawn_overrides[rank])
@@ -707,8 +707,8 @@ SUBSYSTEM_DEF(job)
 		CRASH(msg)
 
 ///Spawns specified mob at a random spot in the hallways
-/datum/controller/subsystem/job/proc/SpawnLandAtRandomHallwayPoint(mob/living/living_mob)
-	var/turf/spawn_turf = get_safe_random_station_turfs(typesof(/area/hallway))
+/datum/controller/subsystem/job/proc/SpawnLandAtRandom(mob/living/living_mob, areas = typesof(/area/hallway))
+	var/turf/spawn_turf = get_safe_random_station_turfs(areas)
 
 	if(!spawn_turf)
 		SendToLateJoin(living_mob)
