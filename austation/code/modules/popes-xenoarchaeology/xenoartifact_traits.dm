@@ -68,6 +68,8 @@
     var/obj/structure/xenoartifact/N = new(get_turf(X))
     N.traits = X.traits
     N.charge_req = X.charge_req*1.5
+    N.desc = X.desc
+    N.add_atom_colour(X.material, FIXED_COLOUR_PRIORITY)
     del(X)
     ..()
 
@@ -148,10 +150,21 @@
     for(var/mob/M in targets)
         X.attack(M, usr)
 
+/datum/xenoartifact_trait/minor/delicate //Limited uses. Fun fact: You can get turned into a corgi forever if the artifact breaks during the transformation. Do not fix this.
+    desc = "Fragile"
+
+/datum/xenoartifact_trait/minor/delicate/on_init(obj/item/xenoartifact/X)
+    X.max_integrity = pick(100, 300, 500, 800, 1000)
+    ..()
+
+/datum/xenoartifact_trait/minor/delicate/on_init(obj/item/xenoartifact/X)
+    X.obj_integrity -= 100
+    ..()
+
 //Major traits
 
 /datum/xenoartifact_trait/major/sing //Debug
-    desc = "Tubed"
+    desc = "Bugged"
 
 /datum/xenoartifact_trait/major/sing/activate(obj/item/xenoartifact/X)
     X.say("DEBUG::XENOARTIFACT::SING")
@@ -192,9 +205,8 @@
 
 /datum/xenoartifact_trait/major/shock/activate(obj/item/xenoartifact/X, mob/living/carbon/target, mob/user)
     var/damage = X.charge*0.4
-    do_sparks(6, 0, X)
-    if(user == target && !(/obj/item/clothing/gloves/color/yellow in user.contents)) //If you're holding the artifact and equipped with insuls, you shouldn't be shocked.
-        target.electrocute_act(damage, X, 1, 1)
+    do_sparks(pick(1, 2), 0, X)
+    target.electrocute_act(damage, X, 1, 1)
     ..()
 
 /datum/xenoartifact_trait/major/timestop
@@ -243,8 +255,8 @@
 
 /datum/xenoartifact_trait/major/bomb/activate(obj/item/xenoartifact/X, mob/living/carbon/target)
     X.visible_message("<span class='danger'>The [X.name] begins to tick loudly...</span>")
-    addtimer(CALLBACK(src, .proc/explode, X), 70-(X.charge*0.6) SECONDS)
-    X.cooldownmod = 70-(X.charge*0.6) SECONDS
+    addtimer(CALLBACK(src, .proc/explode, X), 70-(X.charge*0.6))
+    X.cooldownmod = 70-(X.charge*0.6)
     ..()
 
 /datum/xenoartifact_trait/major/bomb/proc/explode(obj/item/xenoartifact/X)
@@ -271,7 +283,6 @@
     new_corgi.name = target.real_name
     new_corgi.real_name = target.real_name
     ADD_TRAIT(target, TRAIT_NOBREATH, CORGIUM_TRAIT)
-    //hack - equipt current hat
     var/mob/living/carbon/C = target
     if(istype(C))
         var/obj/item/hat = C.get_item_by_slot(ITEM_SLOT_HEAD)
@@ -298,3 +309,25 @@
     new_corgi.inventory_back = null
     qdel(new_corgi)
 
+/datum/xenoartifact_trait/major/mirrored //Swaps the last to target's body's locations, or minds if the charge is higher
+    desc = "Mirrored"
+    var/mob/first_sub //Subjects
+    var/mob/second_sub
+
+/datum/xenoartifact_trait/major/mirrored/on_touch(obj/item/xenoartifact/X, mob/user)
+    if(first_sub.key != user.key)
+        to_chat(user, "<span class='warning'>You see a reflection in the [X.name], it isn't yours...</span>")
+    else    
+        to_chat(user, "<span class='notice'>You see your reflection in the [X.name].</span>")
+    return TRUE
+
+/datum/xenoartifact_trait/major/mirrored/activate(obj/item/xenoartifact/X, mob/living/carbon/target)
+    if(!first_sub)
+        first_sub = target
+    else    
+        second_sub = target.key//This code might need a rework
+        first_sub.key = target.key
+        second_sub = first_sub.key
+        first_sub = null
+        second_sub = null
+    ..()
