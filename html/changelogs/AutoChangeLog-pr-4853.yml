@@ -1,4 +1,0 @@
-author: "LemonInTheDark, ported by ike709"
-delete-after: True
-changes: 
-  - bugfix: "Fixed an issue with DNA console sanitization."
