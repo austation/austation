@@ -2,8 +2,8 @@
 
 /obj/item/xenoartifact_label
     icon = 'austation/icons/obj/xenoartifact.dmi'
-    icon_state = "star"
-    var/sticker_state = "star_small"
+    icon_state = "sticker_star"
+    var/sticker_state = "sticker_star_small"
     name = "Xenoartifact Label"
     desc = "An adhesive label describing the characteristics of a Xenoartifact."
     var/info = "" //Actual information 
@@ -17,8 +17,10 @@
 /obj/item/xenoartifact_label/attack(atom/target, mob/user)
     if(istype(target, /mob/living))
         target.add_overlay(sticker_overlay)
+        forceMove(target)
         addtimer(CALLBACK(src, .proc/remove_sticker, target), 15 SECONDS)
     ..()
 
 /obj/item/xenoartifact_label/proc/remove_sticker(mob/target) //Peels off, I guess
     target.cut_overlay(sticker_overlay)
+    forceMove(get_turf(target))
