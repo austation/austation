@@ -136,7 +136,11 @@
     true_target = target
     check_charge(user)
 
-/obj/item/xenoartifact/attackby(obj/item/I, mob/living/user) //Check for certain items pertaining to activator traits
+/obj/item/xenoartifact/attackby(obj/item/I, mob/living/user)
+    if(istype(I, /obj/item/xenoartifact_label))
+        I.forceMove(src)
+        return
+
     if(get_trait(/datum/xenoartifact_trait/activator/impact))
         charge += NORMAL*traits[1].on_impact(src, user)
         true_target = user

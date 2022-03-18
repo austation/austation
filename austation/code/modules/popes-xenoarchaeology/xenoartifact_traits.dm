@@ -6,6 +6,7 @@
 
 /datum/xenoartifact_trait
     var/desc //Acts as a descriptor for when examining
+    var/label_desc //Used when labeler needs a description.
 
 /datum/xenoartifact_trait/activator
     var/charge //How much a trait can output to fufill the charge requirment
@@ -50,7 +51,7 @@
 /datum/xenoartifact_trait/minor/looped //Increases charge towards 100
     desc = "Looped"
 
-/datum/xenoartifact_trait/looped/minor/activate(obj/item/xenoartifact/X)
+/datum/xenoartifact_trait/minor/looped/activate(obj/item/xenoartifact/X)
     X.charge = ((100-X.charge)*0.2)+X.charge
     ..()
 
@@ -80,7 +81,7 @@
     to_chat(user, "<span class='notice'>The [X.name] feels sharp.</span>")
     return TRUE
 
-/datum/xenoartifact_trait/sharp/minor/on_init(obj/item/xenoartifact/X)
+/datum/xenoartifact_trait/minor/sharp/on_init(obj/item/xenoartifact/X)
     X.sharpness = IS_SHARP
     X.force = X.charge_req/15 //Change 15 to higher number if unbalanced
     X.attack_weight = 2
@@ -88,7 +89,7 @@
     ..()
 
 /datum/xenoartifact_trait/minor/radioactive
-    //Sneaky
+    label_desc = "Roadiactive"
 
 /datum/xenoartifact_trait/minor/radioactive/on_touch(obj/item/xenoartifact/X, mob/user)
     to_chat(user, "<span class='notice'>You feel pins and needles after touching the [X.name].</span>")
@@ -105,13 +106,12 @@
     to_chat(user, "<span class='notice'>The [X.name] feels cold.</span>")
     return TRUE
 
-/datum/xenoartifact_trait/cooler/minor/on_init(obj/item/xenoartifact/X)
+/datum/xenoartifact_trait/minor/cooler/on_init(obj/item/xenoartifact/X)
     X.cooldown = X.cooldown / 3 //Might revisit the value.
     ..()
 
 /datum/xenoartifact_trait/minor/sentient //The attempt here is to make a one-ring type sentience
-    //More sneaky stuff
-    //I probably wont detract points for unsuccesfully guessing this one. 
+    label_desc = "Sentient"
 
 /datum/xenoartifact_trait/minor/sentient/on_touch(obj/item/xenoartifact/X, mob/user)
     to_chat(user, "<span class='warning'>The [X.name] whispers to you...</span>")
@@ -247,7 +247,7 @@
     ..()
 
 /datum/xenoartifact_trait/major/bomb
-    //Sneaky
+    label_desc = "Explosive"
 
 /datum/xenoartifact_trait/major/bomb/on_touch(obj/item/xenoartifact/X, mob/user)
     to_chat(user, "<span class='notice'>You feel a ticking deep within the [X.name].</span>")
@@ -255,8 +255,8 @@
 
 /datum/xenoartifact_trait/major/bomb/activate(obj/item/xenoartifact/X, mob/living/carbon/target)
     X.visible_message("<span class='danger'>The [X.name] begins to tick loudly...</span>")
-    addtimer(CALLBACK(src, .proc/explode, X), 70-(X.charge*0.6))
-    X.cooldownmod = 70-(X.charge*0.6)
+    addtimer(CALLBACK(src, .proc/explode, X), 70-(X.charge*0.6) SECONDS)
+    X.cooldownmod = 70-(X.charge*0.6) SECONDS
     ..()
 
 /datum/xenoartifact_trait/major/bomb/proc/explode(obj/item/xenoartifact/X)

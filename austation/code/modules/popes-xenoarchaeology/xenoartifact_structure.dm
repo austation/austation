@@ -2,10 +2,10 @@
     Structure version of xenoartifact. Used for dense trait.
     Look in xenoartifact_traits.dm for more information.
 */
-//Activator modifiers. Used in context of the difficulty of a task. Generates better values.
+//Activator modifiers. Used in context of the difficulty of a task. Generates better values, compared to item.
 #define EASY 1
-#define NORMAL 1.8
-#define HARD 2
+#define NORMAL 2
+#define HARD 2.8
 
 /obj/structure/xenoartifact //Most of these values are given to the structure when the structure initializes
     name = "Xenoartifact"

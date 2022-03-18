@@ -111,7 +111,7 @@ necessary to access UI data) as arguments, and outputs an HTML-like
 structure.
 
 So let's create our first React Component. Create a file with a name
-`SampleInterface.js` (or any other name you want), and copy this code
+`SampleInterface.js` (or any other name you want) in tgui/interfaces, and copy this code
 snippet (make sure component name matches the file name):
 
 ```jsx
