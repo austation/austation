@@ -136,7 +136,12 @@ SUBSYSTEM_DEF(air)
 	set name="Fix Infinite Air"
 	fix_corrupted_atmos()
 
+/datum/controller/subsystem/air/proc/check_process_threads()
+	return TRUE
+
 /datum/controller/subsystem/air/fire(resumed = 0)
+	if(!check_process_threads())
+		return SS_PAUSED
 
 	var/timer = TICK_USAGE_REAL
 
