@@ -1,5 +1,5 @@
 import { useBackend } from '../backend';
-import {Button, Section, Box, Flex, Input} from '../components';
+import {Button, Section, Box, Flex, Input, BlockQuote} from '../components';
 import { Window } from '../layouts';
 
 export const XenoartifactLabeler = (props, context) => {
@@ -22,9 +22,10 @@ const XenoartifactLabelerActivators = (props, context) => {
     minor_traits,
     major_trait,
     major_traits,
+    info_list,
   } = data;
   return (
-    <Flex>
+    <Flex grow = {1}>
         <Flex.Item column>
             <Section title="Material">
                         <Box>
@@ -48,6 +49,11 @@ const XenoartifactLabelerActivators = (props, context) => {
                         </Box>
             </Section>
         </Flex.Item>
+        <Flex.Item column>
+            <Box fluid px = {1}>
+                {info_list.map(info => <XenoartifactLabelerGenerateInfo info = {info}/>)}
+            </Box>
+        </Flex.Item>
     </Flex>
   );
 };
@@ -66,6 +72,21 @@ const XenoartifactLabelerGenerateList = (props, context,) => {
     );
   };
 
+const XenoartifactLabelerGenerateInfo = (props, context,) => {
+const { act } = useBackend(context);
+const {
+    info
+    } = props;
+return (
+    <Section>
+        <Box italic>
+            <BlockQuote>
+                {`${info}`}
+            </BlockQuote>
+        </Box>
+    </Section>
+);
+};
 
 const XenoartifactLabelerSticker = (props, context) => {
 const { act } = useBackend(context);
