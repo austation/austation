@@ -141,7 +141,8 @@ SUBSYSTEM_DEF(air)
 
 /datum/controller/subsystem/air/fire(resumed = 0)
 	if(!check_process_threads())
-		return SS_PAUSED
+		pause()
+		return
 
 	var/timer = TICK_USAGE_REAL
 
