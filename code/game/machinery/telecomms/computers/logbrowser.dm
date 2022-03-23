@@ -72,7 +72,7 @@
 
 					// austation begin -- switching boys -- PR #4379
 					switch(mobtype)
-						if(/mob/living/carbon/human || /mob/living/brain)
+						if(/mob/living/carbon/human, /mob/living/brain)
 							race = "Humanoid"
 						if(/mob/living/simple_animal/slime)		// NT knows a lot about slimes, but not aliens. Can identify slimes
 							race = "Slime"
