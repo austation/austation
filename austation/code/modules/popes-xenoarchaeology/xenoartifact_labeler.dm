@@ -19,13 +19,14 @@
     var/list/info_list = list() 
 
     var/sticker_name
+    var/list/sticker_traits = list()//passed down to sticker
 
 /obj/item/xenoartifact_labeler/Initialize()
-    get_trait_list_desc(activator_traits, /datum/xenoartifact_trait/activator)
     . = ..()
+    get_trait_list_desc(activator_traits, /datum/xenoartifact_trait/activator)
 
 /obj/item/xenoartifact_labeler/interact(mob/user)
-    ui_interact(user, "XenoartifactLabeler")
+    //ui_interact(user, "XenoartifactLabeler")
     ..()
 
 /obj/item/xenoartifact_labeler/ui_interact(mob/user, datum/tgui/ui)
@@ -55,6 +56,11 @@
 
     if(action == "print_traits")
         create_label(sticker_name)
+        //reset all lists
+        activator = list(null)
+        minor_trait = list(null, null, null)
+        major_trait = list(null)
+        info_list = list()
 
     if(action == "change_print_name")
         sticker_name = params["name"]
@@ -66,20 +72,13 @@
     . = TRUE
     update_icon()
 
-/obj/item/xenoartifact_labeler/proc/get_trait_list_desc(list/traits, trait_type)//Get a list of all the specified trait type.
+/obj/item/xenoartifact_labeler/proc/get_trait_list_desc(list/traits, trait_type)//Get a list of all the specified trait types names, actually
     for(var/T in typesof(trait_type))
         var/datum/xenoartifact_trait/X = new T
         if(X.desc && !(X.desc in traits)) //Don't think checking for null is needed here?
             traits += list(X.desc)
         else if(X.label_name && !(X.label_name in traits)) //For cases where the trait doesn't have a desc
             traits += list(X.label_name)
-    return traits
-
-/obj/item/xenoartifact_labeler/proc/get_trait_list(list/traits, trait_type)//Get a list of all the specified trait type.
-    for(var/T in typesof(trait_type))
-        var/datum/xenoartifact_trait/X = new T
-        if(X && !(X in traits)) //Don't think checking for null is needed here?
-            traits += list(X)
     return traits
 
 /obj/item/xenoartifact_labeler/proc/look_for(list/place, culprit) //This isn't really needed but, It's easier to use as a function
@@ -99,24 +98,31 @@
     if(new_name)
         P.name = new_name
         P.set_name = TRUE
+    P.trait_list = sticker_traits
     P.info = activator+minor_trait+major_trait
     return P
 
 /obj/item/xenoartifact_labeler/proc/trait_toggle(action, toggle_type, var/list/trait_list, var/list/active_trait_list)
+    var/datum/xenoartifact_trait/description_holder
+    var/new_trait
     for(var/T in trait_list)
+        new_trait = desc2datum(T)
+        description_holder = new new_trait
         if(action == "assign_[toggle_type]_[T]")
             if(!look_for(active_trait_list, T))
                 active_trait_list += list(T)
-                info_list += desc2datum(T)
+                info_list += description_holder.label_desc
+                sticker_traits += new_trait
             else
                 active_trait_list -= list(T)
-                info_list -= desc2datum(T)
+                info_list -= description_holder.label_desc
+                sticker_traits -= new_trait
 
-/obj/item/xenoartifact_labeler/proc/desc2datum(udesc) //This is just a hacky way of getting the info from a datum using its desc
+/obj/item/xenoartifact_labeler/proc/desc2datum(udesc) //This is just a hacky way of getting the info from a datum using its desc becuase I wrote this last and it's not heartbreaking
     for(var/T in typesof(/datum/xenoartifact_trait))
         var/datum/xenoartifact_trait/X = new T
         if(udesc == X.desc) //using an || here makes it fucky
-            return X.label_desc
+            return T
         else if(udesc == X.label_name)
-            return X.label_desc
+            return T
     return "[udesc]: There's no known information on [udesc]!."

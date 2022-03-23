@@ -4,7 +4,9 @@ import { Window } from '../layouts';
 
 export const XenoartifactLabeler = (props, context) => {
   return (
-    <Window>
+    <Window        
+    width={350}
+    height={500}>
       <Window.Content scrollable>
         <XenoartifactLabelerSticker/>
         <XenoartifactLabelerActivators/>

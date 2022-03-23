@@ -1,41 +1,41 @@
-//Activator modifiers. Used in context of the difficulty of a task.
-#define EASY 1
-#define NORMAL 1.8
-#define HARD 2.4
-#define COMBAT 2.8 //Players who engage in combat are given an extra reward for the consequences of doing so.
-
-//Material defines. Used for characteristic generation.
-#define BLUESPACE "#027fc7de"
-#define PLASMA "#aa29aad8"
-#define URANIUM "#6c8515"
-#define AUSTRALIUM "#ffbb00"
-
 /obj/item/xenoartifact //Most of these values are generated on initialize
     name = "Xenoartifact"
-    icon = 'icons/obj/plushes.dmi'
-    icon_state = "lizardplush"
+    icon = 'austation/icons/obj/xenoartifact/xenartifact.dmi'
+    icon_state = "map_editor"
     w_class = WEIGHT_CLASS_TINY
     heat = 1000
     light_color = LIGHT_COLOR_FIRE
+    desc = "The Xenoartifact is made from a"
     
     var/charge = 0 //How much input the artifact is getting from activator traits
     var/charge_req //How much input is required to start the activation
+
+    var/material //Associated traits & colour
     var/datum/xenoartifact_trait/traits[5] //activation trait, minor 1, minor 2, minor 3, major
     var/datum/xenoartifact_trait/touch_desc
-    var/atom/true_target //last target.
+    var/process_type = ""
+    var/min_desc //Just a holder for examine desc from minor traits
+
+    var/atom/true_target = list()
     var/usedwhen //holder for worldtime
-    var/cooldown = 14 SECONDS //Time between uses
+    var/cooldown = 8 SECONDS //Time between uses
     var/cooldownmod = 0 //Extra time traits can add to the cooldown.
-    var/material //Associated traits & colour
-    var/lit = FALSE//Specific to burn
-    var/min_desc
 
-/obj/item/xenoartifact/Initialize()
+    var/icon_slots[2] //Used for generating sprites
+    var/mutable_appearance/icon_overlay
+
+    var/modifier = 0.70 //Buying and selling related
+    var/price //default price get generated if it isn't set 
+
+/obj/item/xenoartifact/Initialize(mapload, difficulty)
     . = ..()
-
-    material = pick(BLUESPACE, PLASMA, URANIUM, AUSTRALIUM)
+    material = difficulty
+    if(!difficulty)
+        material = pick(BLUESPACE, PLASMA, URANIUM, AUSTRALIUM)
+    if(!price)
+        price = pick(100,300,500)
     add_atom_colour(material, FIXED_COLOUR_PRIORITY)
-    charge_req = 10*rand(1, 10)
+
     switch(material)
         if(BLUESPACE)
             generate_traits(list(/datum/xenoartifact_trait/minor/sharp, /datum/xenoartifact_trait/minor/radioactive,
@@ -51,93 +51,146 @@
 
         if(URANIUM)
             generate_traits(list(/datum/xenoartifact_trait/major/sing, /datum/xenoartifact_trait/minor/sharp,
-                            /datum/xenoartifact_trait/major/laser, /datum/xenoartifact_trait/major/corginator))  
+                            /datum/xenoartifact_trait/major/laser, /datum/xenoartifact_trait/major/corginator,
+                            /datum/xenoartifact_trait/minor/sentient))  
 
         if(AUSTRALIUM)
             generate_traits(list(/datum/xenoartifact_trait/major/sing)) //Wild card, exlcuding debug for obvious reasons
 
+    for(var/datum/xenoartifact_trait/T in traits) //This is kinda weird but it stops certain runtime cases. I can probaly revisit this To:Do
+        if(istype(T, /datum/xenoartifact_trait/minor/dense))
+            T.on_init(src)
     for(var/datum/xenoartifact_trait/T in traits)
         T.on_init(src)
 
+    icon_state = "lump_[pick(1, 2, 3, 4, 5)]" //This is gross, fix this. To:Do
+    icon_slots[1] = "lump_[pick(1, 2, 3, 4, 5)]"
+    icon_slots[2] = "lump_[pick(1, 2, 3, 4, 5)]"
+    icon_overlay = mutable_appearance(icon, icon_slots[1])
+    icon_overlay.layer = FLOAT_LAYER
+    icon_overlay.alpha = alpha
+    icon_overlay.appearance_flags = RESET_ALPHA
+    src.add_overlay(icon_overlay)
+    icon_overlay = mutable_appearance(icon, icon_slots[2])
+    icon_overlay.layer = FLOAT_LAYER
+    icon_overlay.alpha = alpha
+    icon_overlay.appearance_flags = RESET_ALPHA
+    src.add_overlay(icon_overlay)
+
 /obj/item/xenoartifact/interact(mob/user)
-    if(get_trait(/datum/xenoartifact_trait/activator/impact))
-        charge += EASY*traits[1].on_impact(src, user) //We can assume it's the first trait, as for the rest too.
-        true_target = user
-        check_charge(user)
-    if(lit) //If you can reach it.
-        lit = FALSE
-        set_light(0)
-    if(touch_desc)
+    . = ..()
+    if(touch_desc && user.a_intent == INTENT_GRAB)
         touch_desc.on_touch(src, user)
-    ..()
+        return
+    if(!(manage_cooldown(TRUE)))
+        return
+    if(user.pulling)
+        true_target += user.pulling
+    else
+        true_target += user
+    var/impact_activator
+    for(var/datum/xenoartifact_trait/T in traits)
+        if(charge += EASY*T.on_impact(src, user))
+            impact_activator = TRUE
+    if(impact_activator)
+        check_charge(user)
+    if(process_type == "lit")
+        process_type = ""
+        set_light(0)
 
 /obj/item/xenoartifact/attack(atom/target, mob/user)
-    if(get_trait(/datum/xenoartifact_trait/activator/impact))
-        if(istype(target, /mob/living/carbon))
-            charge += COMBAT*traits[1].on_impact(src, target)
-        else
-            charge += HARD*traits[1].on_impact(src, target)
-    true_target = target
-    check_charge(user)
-    ..()
+    . = ..()
+    if(!(manage_cooldown(TRUE)))
+        return
+    true_target += target
+    var/impact_activator
+    for(var/datum/xenoartifact_trait/T in traits)
+        if(istype(target, /mob/living) && (charge += COMBAT*T.on_impact(src, user)))
+            impact_activator = TRUE
+        else if(charge += NORMAL*T.on_impact(src, user) && !istype(target, /mob/living))
+            impact_activator = TRUE
+    if(impact_activator)
+        check_charge(user)      
 
 /obj/item/xenoartifact/afterattack(atom/target, mob/user, proximity)
-    if(get_trait(/datum/xenoartifact_trait/activator/impact) && !proximity)
-        charge += EASY*traits[1].on_impact(src, target)
-    true_target = target
-    check_charge(user)
-    ..()
-
-/obj/item/xenoartifact/throw_impact(atom/target, mob/user)
-    if(!..())
+    . = ..()
+    if(!(manage_cooldown(TRUE)))
         return
-    if(get_trait(/datum/xenoartifact_trait/activator/impact))
-        charge += NORMAL*traits[1].on_impact(src, target)
-    true_target = target
-    check_charge(user)
-
-/obj/item/xenoartifact/attackby(obj/item/I, mob/living/user)
-    if(istype(I, /obj/item/xenoartifact_label)||istype(I, /obj/item/xenoartifact_labeler)) //It'd be fustrating otherwise
-        return
-
-    if(get_trait(/datum/xenoartifact_trait/activator/impact))
-        charge += NORMAL*traits[1].on_impact(src, user)
-        true_target = user
+    var/impact_activator
+    for(var/datum/xenoartifact_trait/T in traits)
+        if(!proximity && get_dist(target, user) > 1)
+            if(charge += EASY*T.on_impact(src, user))
+                true_target += target
+                impact_activator = TRUE
+    if(impact_activator)
         check_charge(user)
 
-    if(get_trait(/datum/xenoartifact_trait/activator/burn))
-        var/msg = I.ignition_effect(src, user)
-        if(msg && !lit && manage_cooldown(TRUE))
-            sleep(2 SECONDS)
-            lit = TRUE
-            charge += NORMAL*traits[1].on_burn(src, user)
-            START_PROCESSING(SSobj, src)
-            set_light(2)
-            visible_message("<span class='danger'>The [name] sparks on.</span>")
-        else if(!manage_cooldown(TRUE) && msg)
-            visible_message("<span class='danger'>The [name] echos emptily.</span>")
+/obj/item/xenoartifact/throw_impact(atom/target, mob/user)
+    . = ..()
+    if(!(manage_cooldown(TRUE)))
+        return
+    if(!..()) //ignore if caught
+        return
+    true_target += target
+    var/impact_activator
+    for(var/datum/xenoartifact_trait/T in traits)
+        if(charge += NORMAL*T.on_impact(src, user))
+            impact_activator = TRUE
+    if(impact_activator)
+        check_charge(null)
 
-/obj/item/xenoartifact/proc/check_charge(mob/user, charge_mod, empty_charge = TRUE) //Run traits. User is generally passed to use as a fail-safe.
+/obj/item/xenoartifact/attackby(obj/item/I, mob/living/user)
+    ..()
+    if(!(manage_cooldown(TRUE)))
+        return
+    true_target += user
+    var/impact_activator
+    var/burn_activator
+    var/msg = I.ignition_effect(src, user)
+    if(istype(I, /obj/item/xenoartifact_label)||istype(I, /obj/item/xenoartifact_labeler))
+        return
+
+    for(var/datum/xenoartifact_trait/T in traits)
+        if(charge += NORMAL*T.on_impact(src, user))
+            impact_activator = TRUE
+        if(msg) //Check this first, otherwise on_burn gets proc'd by anything.
+            if(charge += NORMAL*T.on_burn(src, user))
+                burn_activator = TRUE
+    if(impact_activator && !burn_activator)
+        check_charge(null)
+
+/obj/item/xenoartifact/proc/check_charge(mob/user, charge_mod) //Run traits. User is generally passed to use as a fail-safe.
+    charge = charge + charge_mod
     if(manage_cooldown(TRUE))
-        for(var/datum/xenoartifact_trait/minor/T in traits) //Run minor traits first. Since they don't require a charge 
-            T.activate(src, true_target, user)
-        charge += charge_mod
-        if(charge >= charge_req) //Run major traits. Typically only one but leave this for now
-            for(var/datum/xenoartifact_trait/major/T in traits)
-                T.activate(src, true_target, user)
+        for(var/datum/xenoartifact_trait/minor/T in traits)
+            T.activate(src, user, user)
+        if(charge >= charge_req)              
+            for(var/mob/living/M in true_target)
+                for(var/datum/xenoartifact_trait/major/T in traits)
+                    T.activate(src, M, user)
+            if(!true_target)
+                for(var/datum/xenoartifact_trait/major/T in traits)
+                    T.activate(src, null, user)
+            charge = 0
             manage_cooldown()
-            if(empty_charge)
-                charge = 0
-    else
-        visible_message("<span class='danger'>The [name] echos emptily.</span>") //Indicator of charging
-    if(empty_charge && !(get_trait(/datum/xenoartifact_trait/minor/capacitive)))
+            true_target = null
+            true_target = list() //Not reassigning it to a list-datum breaks it somehow
+    else    
         charge = 0
+        true_target = null
+        true_target = list()
+    if(!(get_trait(/datum/xenoartifact_trait/minor/capacitive)))
+        charge = 0 //You can probably optimize these three lines
+    true_target = null
+    true_target = list() //Not reassigning it to a list-datum breaks it somehow
 
 /obj/item/xenoartifact/proc/manage_cooldown(checking = FALSE)
     if(!usedwhen)
-        usedwhen = world.time * ((checking-1)*-1)
+        if(!(checking))
+            usedwhen = world.time
         return TRUE
     else if(usedwhen + cooldown + cooldownmod < world.time)
+        cooldownmod = 0
         usedwhen = null
         return TRUE
     else 
@@ -154,7 +207,8 @@
             activators += T
     new_trait = pick(activators)
     traits[1] = new new_trait
-    desc = "The Xenoartifact is made from a [traits[1].desc]"
+    if(traits[1].desc)
+        desc = "[desc] [traits[1].desc]"
 
     for(var/T in typesof(/datum/xenoartifact_trait/minor))
         if(!(T in blacklist_traits) && T != /datum/xenoartifact_trait/minor)
@@ -177,31 +231,55 @@
     traits[5] = new new_trait
     if(traits[5].desc)
         desc = "[desc] The shape is [traits[5].desc]."
-    if(traits[5].on_touch(src, src))
+    if(traits[5].on_touch(src, src) && !(touch_desc))
         touch_desc = traits[5]
+
+    if(get_trait(/datum/xenoartifact_trait/minor/capacitive))
+        charge_req = 10*rand(1, 10) //To:Do change how charge is picked to better match activator
+    else
+        charge_req = 10*rand(1, 7)
     
-/obj/item/xenoartifact/proc/get_proximity() //Will I really reuse this?
-    for(var/mob/living/M in orange(2, get_turf(src)))
+/obj/item/xenoartifact/proc/get_proximity(range) //Will I really reuse this?
+    for(var/mob/living/M in range(range, get_turf(loc)))
         return M
 
 /obj/item/xenoartifact/proc/get_trait(typepath)
     return (locate(typepath) in traits)
 
 /obj/item/xenoartifact/process(delta_time)
-    if(lit) //possible revisit this
-        true_target = get_proximity()
-        if(true_target && charge >= charge_req)
-            lit = FALSE
-            set_light(0)
-            check_charge(true_target)
-            visible_message("<span class='danger'>The [name] fizzles out.</span>")
+    switch(process_type)
+        if("lit") //possible revisit this To:Do this is broken
+            say("lit")
+            true_target = null
+            true_target = list(get_proximity(3))
+            if(get_trait(/datum/xenoartifact_trait/minor/capacitive))
+                charge += NORMAL*traits[1].on_burn(src) //Clean this To:Do
+            else
+                charge = NORMAL*traits[1].on_burn(src) 
+            if(charge >= charge_req && manage_cooldown(TRUE) && true_target)
+                set_light(0)
+                visible_message("<span class='danger'>The [name] flicks out.</span>")
+                check_charge()
+                return PROCESS_KILL
+            else if(charge < charge_req && manage_cooldown(TRUE) && true_target && !(get_trait(/datum/xenoartifact_trait/minor/capacitive))) //you'll never reach charge in this case
+                set_light(0)
+                visible_message("<span class='danger'>The [name] flicks out.</span>")
+                check_charge()
+                return PROCESS_KILL
+        if("tick")
+            say("tick")
+            true_target = list(get_proximity(2))
+            if(manage_cooldown(TRUE))
+                charge += NORMAL*traits[1].on_impact(src) 
+            if(charge >= charge_req && manage_cooldown(TRUE))
+                check_charge()
+            charge = 0 //Don't really need to do this but, I am fearfull
+        else    
             return PROCESS_KILL
-        charge += NORMAL*traits[1].on_burn(src, true_target)
-    else    
-        return PROCESS_KILL
 
 /obj/item/xenoartifact/Destroy()
-    for(var/mob/living/carbon/C in contents) //People inside only have a 50/50 chance of surviving a collapse. Other mobs perish either way.
+    for(var/mob/living/C in contents) //People inside only have a 50/50 chance of surviving a collapse.
         if(pick(FALSE, TRUE))
             C.forceMove(get_turf(loc))
+    qdel(src)
     ..()
