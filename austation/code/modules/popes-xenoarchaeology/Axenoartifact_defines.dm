@@ -6,8 +6,8 @@
 #define COMBAT 2.8 //Players who engage in combat are given an extra reward for the consequences of doing so.
 
 //Material defines. Used for characteristic generation.
-#define BLUESPACE "#0084ffff"
-#define PLASMA "#ff00ffff"
-#define URANIUM "#7bff00"
-#define AUSTRALIUM "#ffbb00"
+#define BLUESPACE "#32577aff" //Silly toys
+#define PLASMA "#a82fa8ff" //Associated weapons
+#define URANIUM "#67a032" //
+#define AUSTRALIUM "#ffbb00" //Wildcard
 

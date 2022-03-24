@@ -25760,6 +25760,7 @@
 /obj/structure/chair{
 	dir = 4
 	},
+/obj/effect/landmark/start/scientist,
 /turf/open/floor/engine,
 /area/science/explab)
 "clX" = (
@@ -27099,7 +27100,6 @@
 /turf/closed/wall/r_wall,
 /area/science/storage)
 "crU" = (
-/obj/item/storage/box/monkeycubes,
 /obj/machinery/requests_console{
 	department = "Science";
 	departmentType = 2;
@@ -27110,7 +27110,15 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
-/obj/structure/table,
+/obj/item/xenoartifact_labeler{
+	pixel_x = 5;
+	pixel_y = 9
+	},
+/obj/item/xenoartifact_labeler{
+	pixel_x = -7;
+	pixel_y = 7
+	},
+/obj/structure/table/glass,
 /turf/open/floor/plasteel,
 /area/science/explab)
 "crV" = (
@@ -27127,7 +27135,10 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
-/obj/structure/table,
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/structure/table/glass,
 /turf/open/floor/plasteel,
 /area/science/explab)
 "crX" = (
@@ -27509,7 +27520,7 @@
 /obj/machinery/button/door{
 	id = "xeno_blastdoor";
 	name = "Secure Lab Shutter Control";
-	pixel_x = -5;
+	pixel_x = -7;
 	pixel_y = -5;
 	req_access_txt = "47"
 	},
@@ -27517,22 +27528,27 @@
 /obj/machinery/button/door{
 	id = "rdprivacy";
 	name = "Privacy Shutters Control";
-	pixel_x = 5;
-	pixel_y = 5
+	pixel_x = 7;
+	pixel_y = 8
 	},
 /obj/machinery/button/door{
 	id = "Biohazard";
 	name = "Entrance Shutter Control";
-	pixel_x = -5;
-	pixel_y = 5;
+	pixel_x = -7;
+	pixel_y = 8;
 	req_access_txt = "47"
 	},
 /obj/machinery/button/door{
 	id = "toxins_blastdoor";
 	name = "Toxins Shutter Control";
-	pixel_x = 5;
+	pixel_x = 7;
 	pixel_y = -5;
 	req_access_txt = "47"
+	},
+/obj/machinery/button/door{
+	id = "xenoablast";
+	name = "Xenoartifact Lab Lockdown";
+	pixel_y = 2
 	},
 /turf/open/floor/carpet/purple,
 /area/crew_quarters/heads/hor)
@@ -44191,17 +44207,14 @@
 /area/maintenance/starboard/secondary)
 "giC" = (
 /obj/machinery/light,
-/obj/structure/table,
-/obj/item/xenoartifact_labeler{
-	pixel_x = -8;
-	pixel_y = 9
-	},
-/obj/item/xenoartifact_labeler,
 /obj/effect/turf_decal/stripes/line{
 	dir = 5
 	},
 /obj/item/clothing/neck/stethoscope,
 /obj/item/geiger_counter,
+/obj/item/flashlight,
+/obj/item/storage/box/monkeycubes,
+/obj/structure/table/glass,
 /turf/open/floor/plasteel,
 /area/science/explab)
 "giV" = (
@@ -46221,7 +46234,6 @@
 /obj/structure/extinguisher_cabinet{
 	pixel_x = -27
 	},
-/obj/effect/landmark/start/scientist,
 /turf/open/floor/plasteel/white,
 /area/science/explab)
 "gZj" = (
@@ -50162,6 +50174,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
 	dir = 4
+	},
+/obj/machinery/door/poddoor/preopen{
+	id = "xenoablast";
+	name = "Xenoartifact Lab Containment Door"
 	},
 /turf/open/floor/plasteel/white,
 /area/science/explab)
@@ -68364,6 +68380,10 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
 	dir = 4
 	},
+/obj/machinery/door/poddoor/preopen{
+	id = "xenoablast";
+	name = "Xenoartifact Lab Containment Door"
+	},
 /turf/open/floor/plating,
 /area/maintenance/starboard/secondary)
 "pjX" = (
@@ -79443,6 +79463,10 @@
 	},
 /turf/open/floor/plasteel,
 /area/hallway/secondary/entry)
+"tED" = (
+/obj/machinery/rnd/experimentor,
+/turf/open/floor/engine,
+/area/science/xenobiology)
 "tEO" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 5
@@ -88307,7 +88331,6 @@
 "wXH" = (
 /obj/machinery/power/apc/auto_name/south,
 /obj/structure/cable/yellow,
-/obj/structure/table,
 /obj/item/clothing/mask/gas,
 /obj/item/multitool{
 	pixel_x = 4
@@ -88325,6 +88348,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 9
 	},
+/obj/structure/table/glass,
 /turf/open/floor/plasteel,
 /area/science/explab)
 "wYf" = (
@@ -125617,8 +125641,8 @@ vXl
 kIz
 daA
 cSn
-cSn
-cSn
+daH
+tED
 daL
 cRi
 daQ
@@ -125875,7 +125899,7 @@ jbn
 ddu
 daD
 cSn
-daH
+cSn
 daK
 cRi
 bIv

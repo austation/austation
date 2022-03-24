@@ -2,7 +2,7 @@
     name = "Research and Development Listing Console"
     
     var/datum/xenoartifactseller/sellers[8] //I think this will only create 7, leave it alone if it does
-    var/list/tab_index = list("Listings", "Requests", "Linking")
+    var/list/tab_index = list("Listings", "Export", "Linking")
     var/current_tab = "Listings"
     var/current_tab_info = "Here you can find listings for various research samples, usually fresh from the field. These sources aren't usually affiliated with Nanotrasen, so instead listing data is sourced from stray bluespace-beacon signals."
     var/budget = 10000
@@ -51,6 +51,7 @@
         if(linked_inbox)
             if(!(linked_inbox.sell_artifact(sold_artifacts)))
                 say("No item/s on pad")
+                return
             say("item/s sold.")
         else if(!(linked_inbox))
             say("Error, no linked hardware.")
@@ -67,7 +68,7 @@
             switch(T)
                 if("Listings")
                     current_tab_info = "Here you can find listings for various research samples, usually fresh from the field. These sources aren't usually affiliated with Nanotrasen, so instead listing data is sourced from stray bluespace-beacon signals."
-                if("Requests")
+                if("Export")
                     current_tab_info = "Here you can find buyers for any export your department produces. Anonymously trade and sell explosive slime cores, ancient alien bombs, or just regular bombs."
                 if("Linking")
                     current_tab_info = "Link machines to the Listing Console."
@@ -116,13 +117,42 @@
 
 /obj/machinery/xenoartifact_inbox/proc/sell_artifact(list/reciept)
     var/info
-    var/final_price
-    for(var/obj/item/xenoartifact/X in oview(1,src))
-        final_price = X.modifier*X.price
-        if(final_price < 0) //No modulate?
-            final_price = 80
-        info = "[X.name] sold at [world.time] for [final_price] credits"
-        qdel(X)
+    var/final_price = 100
+    for(var/obj/item/I in oview(1,src))
+        if(istype(I, /obj/item/xenoartifact)||istype(I, /obj/structure/xenoartifact))
+            var/obj/item/xenoartifact/X = I
+            final_price = X.modifier*X.price
+            if(final_price < 0) //No modulate?
+                final_price = 80
+            info = "[X.name] sold at [station_time_timestamp()] for [final_price] credits, bought for [X.price]"
+        qdel(I)
         if(info != null)
             reciept += list(info)
             return info
+        else
+            info  = "[I.name] sold at [station_time_timestamp()] for [final_price]. No further information available."
+            reciept += list(info)
+            return info
+
+/datum/xenoartifactseller //Vendor
+    var/name
+    var/price
+    var/dialogue
+    var/unique_id //not really uniuqe
+    var/difficulty //Xenoartifact shit, not really difficulty
+
+/datum/xenoartifactseller/proc/generate()
+    name = "Placeholder"
+    price = rand(5,80) * 10
+    switch(price)
+        if(50 to 300)
+            difficulty = BLUESPACE
+        if(301 to 500)
+            difficulty = PLASMA
+        if(501 to 700)
+            difficulty = URANIUM
+        if(701 to 800)
+            difficulty = AUSTRALIUM
+    price = price * rand(1.0, 1.5) //Measure of error for no particular reason
+    dialogue = "lorem ipsum"
+    unique_id = "[rand(1,100)][rand(1,100)][rand(1,100)]:[world.time]" //World.time is the only thing that stops these 'unique' IDs being the same, retard

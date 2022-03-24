@@ -32,7 +32,7 @@ export const XenoartifactConsole = (props, context) => {
                     {current_tab === "Linking" && (
                         <XenoartifactLinking/>
                     )}
-                    {current_tab === "Requests" && (
+                    {current_tab === "Export" && (
                         <XenoartifactSell/>
                     )}
                 </Box>

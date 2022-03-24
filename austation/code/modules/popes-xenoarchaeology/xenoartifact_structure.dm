@@ -1,22 +1,33 @@
+/*
+    Also contains beaker
+*/
+
 /obj/structure/xenoartifact //Most of these values are given to the structure when the structure initializes
     name = "Xenoartifact"
-    icon = 'icons/obj/plushes.dmi'
-    icon_state = "lizardplush"
+    icon = 'austation/icons/obj/xenoartifact/xenartifact.dmi'
+    icon_state = "map_editor"
     density = TRUE
     
     var/charge = 0 //How much input the artifact is getting from activator traits
     var/charge_req //How much input is required to start the activation
+
+    var/material //Associated traits & colour
     var/datum/xenoartifact_trait/traits[5] //activation trait, minor 1, minor 2, minor 3, major
     var/datum/xenoartifact_trait/touch_desc
-    var/atom/true_target = list() //last target.
+    var/special_desc = "The Xenoartifact is made from a"
+    var/process_type = ""
+    var/min_desc //Just a holder for examine special_desc from minor traits
+
+    var/atom/true_target = list()
     var/usedwhen //holder for worldtime
     var/cooldown = 8 SECONDS //Time between uses
     var/cooldownmod = 0 //Extra time traits can add to the cooldown.
-    var/material //Associated traits & colour
-    var/lit = FALSE//Specific to burn
-    var/min_desc //Just a holder for examine desc from minor traits
+
     var/icon_slots[2] //Used for generating sprites
     var/mutable_appearance/icon_overlay
+
+    var/modifier = 0.70 //Buying and selling related
+    var/price //default price get generated if it isn't set 
 
 /obj/structure/xenoartifact/Initialize()
     . = ..()
@@ -24,7 +35,28 @@
         if(!istype(T, /datum/xenoartifact_trait/minor/dense))
             T.on_init(src)
 
+    icon_state = "lump_[pick(1, 2, 3, 4, 5)]"
+    for(var/I in icon_slots)
+        while(!(icon_slots[I])||icon_slots[I] == icon_state||icon_slots[I] == icon_slots[I-1]) //Still messy but better than before
+            icon_slots[I] = "lump_[pick(1, 2, 3, 4, 5)]"
+            icon_overlay = mutable_appearance(icon, icon_slots[I])
+            icon_overlay.layer = FLOAT_LAYER
+            icon_overlay.appearance_flags = RESET_ALPHA// Not doing this fucks the alpha
+            icon_overlay.alpha = alpha//
+            src.add_overlay(icon_overlay)
+
+/obj/structure/xenoartifact/examine(mob/user)
+    for(var/obj/item/clothing/glasses/science/S in user.contents)
+        to_chat(user, "<span class='notice'>[special_desc]</span>")
+    . = ..()
+
 /obj/structure/xenoartifact/attack_hand(mob/user)
+    . = ..()
+    if(touch_desc && user.a_intent == INTENT_GRAB)
+        touch_desc.on_touch(src, user)
+        return
+    if(!(manage_cooldown(TRUE)))
+        return 
     if(user.pulling)
         true_target += user.pulling
     else
@@ -35,47 +67,30 @@
             impact_activator = TRUE
     if(impact_activator)
         check_charge(user)
-    if(lit)
-        lit = FALSE
+    if(process_type == "lit")
+        process_type = ""
         set_light(0)
-    if(touch_desc)
-        touch_desc.on_touch(src, user)
-    ..()
-
-
-/obj/structure/xenoartifact/throw_impact(atom/target, mob/user)
-    if(!..()) //ignore if caught
-        return
-    true_target += target
-    var/impact_activator
-    for(var/datum/xenoartifact_trait/T in traits)
-        if(charge += NORMAL*T.on_impact(src, target))
-            impact_activator = TRUE
-    if(impact_activator)
-        check_charge(null)
 
 /obj/structure/xenoartifact/attackby(obj/item/I, mob/living/user)
+    var/slueth_item
+    for(var/datum/xenoartifact_trait/T in traits)
+        if(T.on_item(src, user, I))
+            slueth_item = TRUE
+    if(slueth_item||!(manage_cooldown(TRUE))||!(user.a_intent == INTENT_HARM)||istype(I, /obj/item/xenoartifact_label)||istype(I, /obj/item/xenoartifact_labeler))
+        return
     true_target += user
     var/impact_activator
     var/burn_activator
     var/msg = I.ignition_effect(src, user)
-    if(istype(I, /obj/item/xenoartifact_label)||istype(I, /obj/item/xenoartifact_labeler))
-        return
-
     for(var/datum/xenoartifact_trait/T in traits)
-        if(charge += NORMAL*T.on_impact(src, user))
+        if(charge += NORMAL*T.on_impact(src, user, I.force))
             impact_activator = TRUE
-        if(msg) //Check this first, otherwise on_burn gets proc'd by anything.
+        if(msg)
             if(charge += NORMAL*T.on_burn(src, user))
-                burn_activator = TRUE
+                burn_activator = TRUE   
+                return    
     if(impact_activator && !burn_activator)
-        check_charge(null)
-    if(burn_activator && !lit && manage_cooldown(TRUE))
-        sleep(2 SECONDS)
-        lit = TRUE
-        START_PROCESSING(SSobj, src)
-        set_light(2)
-        visible_message("<span class='danger'>The [name] sparks on.</span>")
+        check_charge(user)
     ..()
 
 /obj/structure/xenoartifact/proc/check_charge(mob/user, charge_mod) //Run traits. User is generally passed to use as a fail-safe.
@@ -83,19 +98,22 @@
     if(manage_cooldown(TRUE))
         for(var/datum/xenoartifact_trait/minor/T in traits)
             T.activate(src, user, user)
-        if(charge >= charge_req)
-            for(var/mob/living/M in true_target)
-                for(var/datum/xenoartifact_trait/major/T in traits)
-                    T.activate(src, M, user)
-            charge = 0
-            true_target = null
-            true_target = list() //Not reassigning it to a list-datum breaks it somehow
-            manage_cooldown()
+        charge = charge + charge_mod        
+        for(var/mob/living/M in true_target)
+            for(var/datum/xenoartifact_trait/major/T in traits)
+                T.activate(src, M, user)
+        if(!true_target)
+            for(var/datum/xenoartifact_trait/major/T in traits)
+                T.activate(src, null, user)
+        charge = 0
+        manage_cooldown()
+        true_target = list(null)
     else    
         charge = 0
-        visible_message("<span class='notice'>The [name] echos emptily.</span>")
+        true_target = list(null)
     if(!(get_trait(/datum/xenoartifact_trait/minor/capacitive)))
         charge = 0
+    true_target = list(null) 
 
 /obj/structure/xenoartifact/proc/manage_cooldown(checking = FALSE)
     if(!usedwhen)
@@ -121,7 +139,7 @@
     new_trait = pick(activators)
     traits[1] = new new_trait
     if(traits[1].desc)
-        desc = "[desc] [traits[1].desc]"
+        special_desc = "[special_desc] [traits[1].desc]"
 
     for(var/T in typesof(/datum/xenoartifact_trait/minor))
         if(!(T in blacklist_traits) && T != /datum/xenoartifact_trait/minor)
@@ -132,10 +150,10 @@
         traits[X] = new new_trait
         if(traits[X].desc && !min_desc)
             min_desc = traits[X].desc
-            desc = "[desc] [min_desc]"
+            special_desc = "[special_desc] [min_desc]"
         if(traits[X].on_touch(src, src))
             touch_desc = traits[X]
-    desc = "[desc] material."
+    special_desc = "[special_desc] material."
 
     for(var/T in typesof(/datum/xenoartifact_trait/major))
         if(!(T in blacklist_traits) && T != /datum/xenoartifact_trait/major)
@@ -143,38 +161,52 @@
     new_trait = pick(majors)
     traits[5] = new new_trait
     if(traits[5].desc)
-        desc = "[desc] The shape is [traits[5].desc]."
-    if(traits[5].on_touch(src, src))
+        special_desc = "[special_desc] The shape is [traits[5].desc]."
+    if(traits[5].on_touch(src, src) && !(touch_desc))
         touch_desc = traits[5]
+
+    if(get_trait(/datum/xenoartifact_trait/minor/capacitive))
+        charge_req = 10*rand(1, 10) //To:Do change how charge is picked to better match activator
+    else
+        charge_req = 10*rand(1, 7)
     
 /obj/structure/xenoartifact/proc/get_proximity(range) //Will I really reuse this?
-    for(var/mob/living/M in orange(range, get_turf(src)))
+    for(var/mob/living/M in range(range, get_turf(loc)))
         return M
 
 /obj/structure/xenoartifact/proc/get_trait(typepath)
     return (locate(typepath) in traits)
 
 /obj/structure/xenoartifact/process(delta_time)
-    if(lit) //possible revisit this
-        true_target = null //Empty previous entries
-        true_target = list(get_proximity(2))
-        if(true_target && charge >= charge_req)
-            lit = FALSE
-            set_light(0)
-            check_charge(true_target[1])
-            visible_message("<span class='danger'>The [name] fizzles out.</span>")
+    switch(process_type)
+        if("lit")
+            say("lit")
+            true_target = null
+            true_target = list(get_proximity(3))
+            if(get_trait(/datum/xenoartifact_trait/minor/capacitive))
+                charge += NORMAL*traits[1].on_burn(src) //Additive 
+            else
+                charge = NORMAL*traits[1].on_burn(src) 
+            if(manage_cooldown(TRUE) && true_target)
+                set_light(0)
+                visible_message("<span class='danger'>The [name] flicks out.</span>")
+                check_charge(true_target[1])
+                process_type = ""
+                return PROCESS_KILL
+
+        if("tick")
+            say("tick")
+            true_target = list(get_proximity(2))
+            if(manage_cooldown(TRUE))
+                charge += NORMAL*traits[1].on_impact(src) 
+            if(manage_cooldown(TRUE))
+                check_charge()
+            charge = 0 //Don't really need to do this but, I am skeptical
+        else    
             return PROCESS_KILL
-        if(get_trait(/datum/xenoartifact_trait/minor/capacitive))
-            charge += NORMAL*traits[1].on_burn(src, true_target)
-        else //I could probably clean this. To:Do
-            lit = FALSE
-            visible_message("<span class='danger'>The [name] fizzles out.</span>")
-            return PROCESS_KILL
-    else    
-        return PROCESS_KILL
 
 /obj/structure/xenoartifact/Destroy()
-    for(var/mob/living/carbon/C in contents) //People inside only have a 50/50 chance of surviving a collapse. Other mobs perish either way.
+    for(var/mob/living/C in contents) //People inside only have a 50/50 chance of surviving a collapse.
         if(pick(FALSE, TRUE))
             C.forceMove(get_turf(loc))
     qdel(src)

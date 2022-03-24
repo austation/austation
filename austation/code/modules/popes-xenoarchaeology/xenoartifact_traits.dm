@@ -1,7 +1,7 @@
 /*
     Dev notes: 
         - Activator refers to a trait that generates charge to turn the artifact on. Not to be confused with the activaton proc.
-        - Some more crpytic traits should be explained if the name isn't self explanitory. 
+        - Some more crpytic traits should be explained if the name isn't self explanitory. Apologies if I miss a few.
 */
 
 /datum/xenoartifact_trait
@@ -22,6 +22,9 @@
 /datum/xenoartifact_trait/proc/on_impact(obj/item/xenoartifact/X, atom/target, atom/user) //Activator expression.
     return
 
+/datum/xenoartifact_trait/proc/on_item(obj/item/xenoartifact/X, atom/user, atom/item) //item interactions
+    return FALSE
+
 /datum/xenoartifact_trait/proc/on_burn(obj/item/xenoartifact/X, atom/user) //Activator expression.
     return
 
@@ -36,28 +39,39 @@
 /datum/xenoartifact_trait/activator/impact //Default impact activation trait. Trauma generates charge
     desc = "Sturdy"
     label_desc = "Sturdy: The material is sturdy, and the Artifact activates when experiencing physical trauma."
-    charge = 25
+    charge = 15
 
-/datum/xenoartifact_trait/activator/impact/on_impact(obj/item/xenoartifact/X, atom/user)
-    return charge
+/datum/xenoartifact_trait/activator/impact/on_impact(obj/item/xenoartifact/X, atom/user, force)
+    return charge+(force*5)
 
 /datum/xenoartifact_trait/activator/burn
     desc = "Flamable"
     label_desc = "Flamable: The material is flamable, and the Artifact activates when ignited."
     charge = 25
 
-/datum/xenoartifact_trait/activator/burn/on_burn(obj/item/xenoartifact/X)
+/datum/xenoartifact_trait/activator/burn/on_burn(obj/item/xenoartifact/X, atom/user, heat)
     if(X.process_type != "lit") //If it hasn't been activated yet
+        sleep(1 SECONDS)
+        X.visible_message("<span class='danger'>The [X.name] sparks on.</span>")
         sleep(2 SECONDS)
         X.set_light(2)
-        X.visible_message("<span class='danger'>The [X.name] sparks on.</span>")
         X.process_type = "lit"
         START_PROCESSING(SSobj, X)
-    return charge   
+    return charge+(heat*0.03)
+
+/datum/xenoartifact_trait/activator/burn/on_init(obj/item/xenoartifact/X)
+    X.max_range += 3
+    ..()
 
 /datum/xenoartifact_trait/activator/clock
     label_name = "Tuned"
     label_desc = "Tuned: The material produces a resonance pattern similar to quartz, causing it to activate every so often."
+
+/datum/xenoartifact_trait/activator/clock/on_item(obj/item/xenoartifact/X, atom/user, atom/item) 
+    if(istype(item, /obj/item/clothing/neck/stethoscope))
+        to_chat(user, "<span class='info'>The [X.name] ticks deep from within.</span>") //Same message as the bomb
+        return TRUE
+    ..()
 
 /datum/xenoartifact_trait/activator/clock/on_init(obj/item/xenoartifact/X)
     charge = X.charge_req+11
@@ -80,11 +94,29 @@
 
 /datum/xenoartifact_trait/minor/capacitive //Assures charge is saved until activated instead of being lost on failed attempts
     desc = "Capacitive"
-    label_desc = "Capacitive: The Artifact's structure is coiled and maintains charge until it activates."
+    label_desc = "Capacitive: The Artifact's structure allows it to hold extra charges."
+    var/charges
+
+/datum/xenoartifact_trait/minor/capacitive/on_init(obj/item/xenoartifact/X)
+    . = ..()
+    charges = pick(1, 2, 3)
 
 /datum/xenoartifact_trait/minor/capacitive/on_touch(obj/item/xenoartifact/X, mob/user)
     to_chat(user, "<span class='notice'>The hairs on your neck stand up after touching the [X.name].</span>")
     return TRUE
+
+/datum/xenoartifact_trait/minor/capacitive/activate(obj/item/xenoartifact/X, atom/target, atom/user)
+    if(charges)
+        charges -= 1
+        return
+    charges = pick(1, 2, 3)
+
+/datum/xenoartifact_trait/minor/capacitive/on_item(obj/item/xenoartifact/X, atom/user, atom/item)
+    if(istype(item, /obj/item/multitool))
+        to_chat(user, "<span class='info'>The [item.name] displays a charge reading of [charges/3].</span>") 
+        return TRUE
+    ..()
+
 
 /datum/xenoartifact_trait/minor/dense //Makes the artifact unable to be picked up. Associated with better charge modifers.
     desc = "Dense"
@@ -94,7 +126,7 @@
     var/obj/structure/xenoartifact/N = new(get_turf(X))
     N.traits = X.traits
     N.charge_req = X.charge_req*1.5
-    N.desc = X.desc
+    N.special_desc = X.special_desc
     N.add_atom_colour(X.material, FIXED_COLOUR_PRIORITY)
     N.touch_desc = X.touch_desc
     N.alpha = X.alpha
@@ -124,17 +156,20 @@
     label_name = "Roadiactive"
     label_desc = "Roadiactive: The Artifact Emmits harmful particles when activated."
 
+/datum/xenoartifact_trait/minor/radioactive/on_init(obj/item/xenoartifact/X)
+    X.AddComponent(/datum/component/radioactive, 25) //I don't know what a good number for this is
+
 /datum/xenoartifact_trait/minor/radioactive/on_touch(obj/item/xenoartifact/X, mob/user)
     to_chat(user, "<span class='notice'>You feel pins and needles after touching the [X.name].</span>")
     return TRUE
 
 /datum/xenoartifact_trait/minor/radioactive/activate(obj/item/xenoartifact/X, mob/living/target)
-    target.radiation += X.charge*1.5 //Might revisit the value.
+    X.AddComponent(/datum/component/radioactive, 80)
     ..()
 
 /datum/xenoartifact_trait/minor/cooler //Faster cooldowns
     desc = "Frosted"
-    label_desc = "Frosted: The Artifact's internal mechanism actively keeps it cold, reducing time between uses."
+    label_desc = "Frosted: The Artifact's internal mechanism actively keeps it cool, reducing time between uses."
 
 /datum/xenoartifact_trait/minor/cooler/on_touch(obj/item/xenoartifact/X, mob/user)
     to_chat(user, "<span class='notice'>The [X.name] feels cold.</span>")
@@ -182,18 +217,18 @@
     action_icon = 'icons/mob/actions/actions_revenant.dmi'
     action_icon_state = "r_transmit"
     action_background_icon_state = "bg_spell"
-    var/obj/item/xenoartifact/X
+    var/obj/item/xenoartifact/xeno
 
 /obj/effect/proc_holder/spell/targeted/xeno_senitent_action/proc/stupid(obj/item/xenoartifact/Z) //To:Do: Fucking get rid of this
-    X = Z
+    xeno = Z
 
 /obj/effect/proc_holder/spell/targeted/xeno_senitent_action/cast(list/targets, mob/living/simple_animal/revenant/user = usr)
     for(var/mob/M in targets)
-        if(X)
-            X.true_target = M
-            X.charge = 0
-            X.check_charge(X, X.charge_req)
-            charge_max = X.cooldown+X.cooldownmod
+        if(xeno)
+            xeno.true_target = M
+            xeno.charge = 0
+            xeno.check_charge(xeno, xeno.charge_req)
+            charge_max = xeno.cooldown+xeno.cooldownmod
 
 /datum/xenoartifact_trait/minor/delicate //Limited uses. Fun fact: You can get turned into a corgi forever if the artifact breaks during the transformation. Do not fix this.
     desc = "Fragile"
@@ -205,7 +240,7 @@
     ..()
 
 /datum/xenoartifact_trait/minor/delicate/activate(obj/item/xenoartifact/X, atom/target, atom/user)
-    if(X.obj_integrity && X.charge >= X.charge_req)
+    if(X.obj_integrity)
         X.obj_integrity -= 100
     else if(X.obj_integrity <= 0)
         X.visible_message("<span class='danger'>The [X.name] shatters!</span>")
@@ -217,11 +252,31 @@
     desc = "Expansive"
     label_desc = "Expansive: The Artifact's surface reaches towards every creature in the room. Even the empty space behind you..."
 
-/datum/xenoartifact_trait/minor/aura/activate(obj/item/xenoartifact/X) //bug with adding target twice
-    for(var/mob/living/M in orange(X.charge*0.03, get_turf(X.loc)))
-        if(!(M in X.true_target))
-            X.true_target += M
+/datum/xenoartifact_trait/minor/aura/on_init(obj/item/xenoartifact/X)
+    X.max_range += 4
     ..()
+
+/datum/xenoartifact_trait/minor/aura/activate(obj/item/xenoartifact/X)
+    X.true_target = list(null) //This helps avoid grabbing stuff twice without making the process check
+    for(var/mob/living/M in orange(X.charge*0.03, get_turf(X.loc)))
+        X.true_target += M
+    ..()
+
+/datum/xenoartifact_trait/minor/long //Essentially makes the artifact a ranged wand. Makes barreled useful, let's you shoot shit.
+    desc = "Scoped"
+    label_desc = "Scoped: The Artifact has an almost magnifying effect to it."
+
+/datum/xenoartifact_trait/minor/long/on_init(obj/item/xenoartifact/X)
+    X.max_range += 18
+    ..()
+
+/datum/xenoartifact_trait/minor/wearable //To:Do make the wearing mob's attack call X.attack()
+    desc = "Shaped"
+    label_desc = "Shaped: The Artifact is small and shaped. It looks as if it'd fit on someone's finger."
+
+/datum/xenoartifact_trait/minor/wearable/on_init(obj/item/xenoartifact/X)
+    . = ..()
+    X.slot_flags = ITEM_SLOT_GLOVES
     
 //Major traits
 
@@ -279,7 +334,7 @@
     return TRUE
 
 /datum/xenoartifact_trait/major/shock/activate(obj/item/xenoartifact/X, mob/living/target, mob/user)
-    var/damage = X.charge*0.1
+    var/damage = X.charge*0.25
     do_sparks(pick(1, 2), 0, X)
     var/mob/living/carbon/victim = target //Have to type convert to work with other traits
     victim.electrocute_act(damage, X, 1, 1)
@@ -303,8 +358,8 @@
     ..()
 
 /datum/xenoartifact_trait/major/laser //To:Do - make laser work on turfs
-    desc = "Scoped"
-    label_desc = "Scoped: The shape resembles the barrel of a gun. It's possible that it might dispense candy."
+    desc = "Barreled"
+    label_desc = "Barreled: The shape resembles the barrel of a gun. It's possible that it might dispense candy."
 
 /datum/xenoartifact_trait/major/laser/activate(obj/item/xenoartifact/X, atom/target, mob/living/user)
     if(get_dist(target, user) <= 1)
@@ -326,26 +381,27 @@
     A.fire()
     ..()
 
-/datum/xenoartifact_trait/major/bomb //To:Do Fix this
-    label_name = "Explosive"
-    label_desc = "Explosive: The shape is perfectly spherical. You think you might be able to see the words ACME on the bottom."
+/datum/xenoartifact_trait/major/bomb
+    label_name = "Bomb"
+    label_desc = "Explosive: The shape resembles nothing particularly interesting. You swear the markings on the bottom resemble the letters A.C.M.E."
+    var/preserved_charge //reference variable
 
-/datum/xenoartifact_trait/major/bomb/on_touch(obj/item/xenoartifact/X, mob/user)
-    to_chat(user, "<span class='notice'>You feel a ticking deep within the [X.name].</span>")
-    return TRUE
+/datum/xenoartifact_trait/major/bomb/on_item(obj/item/xenoartifact/X, atom/user, atom/item)
+    if(istype(item, /obj/item/clothing/neck/stethoscope))
+        to_chat(user, "<span class='info'>The [X.name] ticks deep from within.</span>")
+        return TRUE
+    ..()
 
 /datum/xenoartifact_trait/major/bomb/activate(obj/item/xenoartifact/X, atom/target, mob/user)
     X.visible_message("<span class='danger'>The [X.name] begins to tick loudly...</span>")
     to_chat(user,"<span class='danger'>The [X.name] begins to tick loudly...</span>")
-    addtimer(CALLBACK(src, .proc/explode, X), (70-(X.charge*0.6)) SECONDS)
-    X.cooldownmod = (70-(X.charge*0.6)) SECONDS
+    addtimer(CALLBACK(src, .proc/explode, X), (10-(X.charge*0.06)) SECONDS)
+    X.cooldownmod = (10-(X.charge*0.06)) SECONDS
+    preserved_charge = X.charge
     ..()
 
 /datum/xenoartifact_trait/major/bomb/proc/explode(obj/item/xenoartifact/X)
-    var/turf/T = get_turf(X.loc)
-    if(!T)
-        return
-    explosion(T,X.charge/3,X.charge,X/2,X.charge)
+    explosion(X.loc,1*(preserved_charge*0.1),1.5*(preserved_charge*0.1),2*(preserved_charge*0.1))
     qdel(X) //Bon voyage. If you remove this, keep in mind there's a callback bug regarding a looping issue.
 
 /datum/xenoartifact_trait/major/corginator //All of this is stolen from corgium. 
@@ -393,44 +449,69 @@
     new_corgi.inventory_back = null
     qdel(new_corgi)
 
-/datum/xenoartifact_trait/major/mirrored //Swaps the last to target's body's locations, or minds if the charge is higher. To:Do fix this
+/datum/xenoartifact_trait/major/mirrored //Swaps the last to target's minds
     desc = "Mirrored"
-    label_desc = "Mirrored: The shape resembles a fractal. The surface almost seems to march to the centre and out again."
-    var/mob/first_body
-    var/mob/second_body
-    var/first_ckey
-    var/second_ckey
+    label_desc = "Mirrored: The shape is perfectly symetrical. Perhaps you could interest the Captain?"
+    var/mob/living/victim
+    var/mob/living/caster
 
 /datum/xenoartifact_trait/major/mirrored/on_touch(obj/item/xenoartifact/X, mob/user)
-    if(first_body.key != user.key)
+    if(victim.key != user.key)
         to_chat(user, "<span class='warning'>You see a reflection in the [X.name], it isn't yours...</span>")
     else    
         to_chat(user, "<span class='notice'>You see your reflection in the [X.name].</span>")
     return TRUE
 
-/datum/xenoartifact_trait/major/mirrored/activate(obj/item/xenoartifact/X, mob/living/target)
-    if(!first_body)
-        first_body = target
-        first_ckey = target.key
+/datum/xenoartifact_trait/major/mirrored/activate(obj/item/xenoartifact/X, mob/living/target) //Yoinked from mindswap because my implementation sucked
+    if(!victim)
+        victim = target
         return
-    else if(target != first_body)
-        second_body = target
-        second_ckey = target.key
     else
-        return
-    first_ckey = second_body
-    second_ckey = first_body
-    first_body = null
-    second_body = null
-    first_ckey = null
-    second_ckey = null
-    
+        caster = target
+    var/mob/dead/observer/ghost = victim.ghostize(0)
+    ghost.mind.transfer_to(caster)
+    caster.mind.transfer_to(victim)
+    if(ghost.key)
+        caster.key = ghost.key
+    qdel(ghost)
+    victim = null
+    caster = null
     ..()
 
-/datum/xenoartifact_trait/major/emp //To:Do fix this
+/datum/xenoartifact_trait/major/emp
     label_name = "EMP"
     label_desc = "EMP: The shape of the Artifact doesn't resemble anything particularly interesting. Technology around the Artifact seems to malfunction."
 
 /datum/xenoartifact_trait/major/emp/activate(obj/item/xenoartifact/X)
-    X.say("Buzzy bee")
+    empulse(X.loc, X.charge*0.03, X.charge*0.07, 1) //THis might be too big
     ..()
+
+/datum/xenoartifact_trait/major/invisible //One step closer to the one ring
+    label_name = "Transparent"
+    label_desc = "Transparent: The shape of the Artifact is difficult to percieve. You feel the need to call it, precious..."
+
+/datum/xenoartifact_trait/major/invisible/on_item(obj/item/xenoartifact/X, atom/user, atom/item)
+    . = ..()
+    if(istype(item, /obj/item/laser_pointer)||istype(item, /obj/item/flashlight)) //To:Do check if light is on 
+        to_chat(user, "<span class='info'>The [item.name]'s light passes through the strucutre.</span>")
+        return TRUE
+
+/datum/xenoartifact_trait/major/invisible/activate(obj/item/xenoartifact/X, mob/living/target)
+    hide(target)
+    addtimer(CALLBACK(src, .proc/reveal, target), ((X.charge*0.1) SECONDS))
+    X.cooldownmod = ((X.charge*0.01)+1) SECONDS
+    ..()
+
+/datum/xenoartifact_trait/major/invisible/proc/hide(mob/living/target)
+    animate(target, , alpha = 0, time = 5)
+
+/datum/xenoartifact_trait/major/invisible/proc/reveal(mob/living/target)
+    animate(target, , alpha = 255, time = 10)
+
+/datum/xenoartifact_trait/major/teleporting //This isn't exactly teleporting, it brings you to anotheer room and essentially lets you pick where you go.
+    desc = "Displaced"
+    label_desc = "Displaced: The shape of the Artifact isn't constant, it's surface morphs and ripples."
+
+/datum/xenoartifact_trait/major/teleporting/activate(obj/item/xenoartifact/X, atom/target, atom/user)
+    . = ..()
+
