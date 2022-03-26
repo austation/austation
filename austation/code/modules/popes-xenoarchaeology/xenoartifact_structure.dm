@@ -1,5 +1,6 @@
 /*
-    Also contains beaker
+    Pretty much a duplicate of the regular item.
+    I just use this space to keep the weird off-shoots. - Pope Francis
 */
 
 /obj/structure/xenoartifact //Most of these values are given to the structure when the structure initializes
@@ -9,7 +10,7 @@
     density = TRUE
     
     var/charge = 0 //How much input the artifact is getting from activator traits
-    var/charge_req //How much input is required to start the activation
+    var/charge_req //This isn't a requirement anymore. This just affects how effective the charge is
 
     var/material //Associated traits & colour
     var/datum/xenoartifact_trait/traits[5] //activation trait, minor 1, minor 2, minor 3, major
@@ -18,16 +19,17 @@
     var/process_type = ""
     var/min_desc //Just a holder for examine special_desc from minor traits
 
+    var/max_range = 1
     var/atom/true_target = list()
     var/usedwhen //holder for worldtime
     var/cooldown = 8 SECONDS //Time between uses
-    var/cooldownmod = 0 //Extra time traits can add to the cooldown.
+    var/cooldownmod = 0 //Extra time traits can add to the cooldown
 
     var/icon_slots[2] //Used for generating sprites
     var/mutable_appearance/icon_overlay
 
     var/modifier = 0.70 //Buying and selling related
-    var/price //default price get generated if it isn't set 
+    var/price //default price gest generated if it isn't set by console. This only happens if the artifact spawns outside of that process. 
 
 /obj/structure/xenoartifact/Initialize()
     . = ..()
@@ -94,26 +96,35 @@
     ..()
 
 /obj/structure/xenoartifact/proc/check_charge(mob/user, charge_mod) //Run traits. User is generally passed to use as a fail-safe.
+    for(var/mob/M in true_target)
+        say(M)
+        if(get_dist(user, M) > max_range||M.pulling)   
+            true_target -= M
+
     charge = charge + charge_mod
     if(manage_cooldown(TRUE))
         for(var/datum/xenoartifact_trait/minor/T in traits)
             T.activate(src, user, user)
-        charge = charge + charge_mod        
-        for(var/mob/living/M in true_target)
+        charge = (charge+charge_req)/1.9 //Not quite an average. Generally produces higher results.     
+        say(charge) 
+        for(var/atom/M in true_target)
             for(var/datum/xenoartifact_trait/major/T in traits)
                 T.activate(src, M, user)
         if(!true_target)
             for(var/datum/xenoartifact_trait/major/T in traits)
                 T.activate(src, null, user)
-        charge = 0
-        manage_cooldown()
         true_target = list(null)
+        charge = 0
+        var/datum/xenoartifact_trait/minor/capacitive/C
+        C = get_trait(/datum/xenoartifact_trait/minor/capacitive)
+        if(C)
+            if(C.charges)
+                manage_cooldown()
+            return
+        manage_cooldown()
     else    
         charge = 0
         true_target = list(null)
-    if(!(get_trait(/datum/xenoartifact_trait/minor/capacitive)))
-        charge = 0
-    true_target = list(null) 
 
 /obj/structure/xenoartifact/proc/manage_cooldown(checking = FALSE)
     if(!usedwhen)
@@ -178,15 +189,12 @@
     return (locate(typepath) in traits)
 
 /obj/structure/xenoartifact/process(delta_time)
+/obj/item/xenoartifact/process(delta_time)
     switch(process_type)
         if("lit")
             say("lit")
-            true_target = null
-            true_target = list(get_proximity(3))
-            if(get_trait(/datum/xenoartifact_trait/minor/capacitive))
-                charge += NORMAL*traits[1].on_burn(src) //Additive 
-            else
-                charge = NORMAL*traits[1].on_burn(src) 
+            true_target = list(get_proximity(max_range))
+            charge = NORMAL*traits[1].on_burn(src) 
             if(manage_cooldown(TRUE) && true_target)
                 set_light(0)
                 visible_message("<span class='danger'>The [name] flicks out.</span>")
@@ -196,7 +204,7 @@
 
         if("tick")
             say("tick")
-            true_target = list(get_proximity(2))
+            true_target = list(get_proximity(max_range))
             if(manage_cooldown(TRUE))
                 charge += NORMAL*traits[1].on_impact(src) 
             if(manage_cooldown(TRUE))
@@ -206,8 +214,10 @@
             return PROCESS_KILL
 
 /obj/structure/xenoartifact/Destroy()
-    for(var/mob/living/C in contents) //People inside only have a 50/50 chance of surviving a collapse.
+    for(var/mob/living/C in contents) //mobs inside only have a 50/50 chance of surviving a collapse.
         if(pick(FALSE, TRUE))
             C.forceMove(get_turf(loc))
+        else
+            qdel(C)
     qdel(src)
     ..()

@@ -161,7 +161,7 @@
             X.name = name
         if(info)
             var/textinfo = list2text(info)
-            X.special_desc = "[X.special_desc] There's a sticker attached, it says-\n[textinfo]"
+            X.desc = "[X.desc] There's a sticker attached, it says-\n[textinfo]"
         return TRUE
     
 /obj/item/xenoartifact_label/proc/add_sticker(mob/target)

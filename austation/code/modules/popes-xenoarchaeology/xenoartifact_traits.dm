@@ -36,7 +36,7 @@
 
 //Activation traits - only used to generate charge
 
-/datum/xenoartifact_trait/activator/impact //Default impact activation trait. Trauma generates charge
+/datum/xenoartifact_trait/activator/impact //Not specifically 'impact'. pretty much any tactile interaction.
     desc = "Sturdy"
     label_desc = "Sturdy: The material is sturdy, and the Artifact activates when experiencing physical trauma."
     charge = 15
@@ -50,7 +50,7 @@
     charge = 25
 
 /datum/xenoartifact_trait/activator/burn/on_burn(obj/item/xenoartifact/X, atom/user, heat)
-    if(X.process_type != "lit") //If it hasn't been activated yet
+    if(X.process_type != "lit" && X.manage_cooldown(TRUE)) //If it hasn't been activated yet
         sleep(1 SECONDS)
         X.visible_message("<span class='danger'>The [X.name] sparks on.</span>")
         sleep(2 SECONDS)
@@ -60,7 +60,7 @@
     return charge+(heat*0.03)
 
 /datum/xenoartifact_trait/activator/burn/on_init(obj/item/xenoartifact/X)
-    X.max_range += 3
+    X.max_range += 1
     ..()
 
 /datum/xenoartifact_trait/activator/clock
@@ -75,6 +75,7 @@
 
 /datum/xenoartifact_trait/activator/clock/on_init(obj/item/xenoartifact/X)
     charge = X.charge_req+11
+    X.max_range += 1
     ..()
 
 /datum/xenoartifact_trait/activator/clock/on_impact(obj/item/xenoartifact/X, atom/target) 
@@ -87,6 +88,13 @@
 /datum/xenoartifact_trait/minor/looped //Increases charge towards 100
     desc = "Looped"
     label_desc = "Looped: The Artifact feeds into itself and amplifies its own charge."
+
+/datum/xenoartifact_trait/minor/looped/on_item(obj/item/xenoartifact/X, atom/user, atom/item)
+    if(istype(item, /obj/item/multitool))
+        to_chat(user, "<span class='info'>The [item.name] displays a resistance reading of [X.charge_req*0.1].</span>") 
+        return TRUE
+    ..()
+
 
 /datum/xenoartifact_trait/minor/looped/activate(obj/item/xenoartifact/X)
     X.charge = ((100-X.charge)*0.2)+X.charge
@@ -253,7 +261,7 @@
     label_desc = "Expansive: The Artifact's surface reaches towards every creature in the room. Even the empty space behind you..."
 
 /datum/xenoartifact_trait/minor/aura/on_init(obj/item/xenoartifact/X)
-    X.max_range += 4
+    X.max_range += 2
     ..()
 
 /datum/xenoartifact_trait/minor/aura/activate(obj/item/xenoartifact/X)
@@ -278,6 +286,10 @@
     . = ..()
     X.slot_flags = ITEM_SLOT_GLOVES
     
+/datum/xenoartifact_trait/minor/wearable/activate(obj/item/xenoartifact/X, atom/target, atom/user)
+    . = ..()
+    X.true_target += list(user)
+    
 //Major traits
 
 /datum/xenoartifact_trait/major/sing //Debug
@@ -291,13 +303,12 @@
 
 /datum/xenoartifact_trait/major/capture //To:do bug with not being able to find mob loc
     desc = "Hollow"
-    label_desc = "Hollow: The shape is hollow but, exhibits traits of a bluespace matrix."
+    label_desc = "Hollow: The shape is hollow, the inside is deceptively large."
+    var/fren
 
 /datum/xenoartifact_trait/major/capture/on_init(obj/item/xenoartifact/X)
     if(prob(5)) //5% chance for a surprise friend :)
-        var/mob/living/simple_animal/hostile/russian/R = new //Сталкер Я знайшов артефакт!
-        R.forceMove(X)
-        R.anchored = TRUE
+        fren = TRUE //spawning the russian now causes issues
     ..()
 
 /datum/xenoartifact_trait/major/capture/activate(obj/item/xenoartifact/X, mob/target, mob/user)
@@ -324,6 +335,9 @@
         var/turf/T = get_turf(X.loc)
         AM.anchored = FALSE
         AM.forceMove(T)
+    if(fren)
+        new /mob/living/simple_animal/hostile/russian(X.loc) //Сталкер Я знайшов артефакт!
+        fren = FALSE
 
 /datum/xenoartifact_trait/major/shock
     desc = "Conductive"
@@ -498,8 +512,8 @@
 
 /datum/xenoartifact_trait/major/invisible/activate(obj/item/xenoartifact/X, mob/living/target)
     hide(target)
-    addtimer(CALLBACK(src, .proc/reveal, target), ((X.charge*0.1) SECONDS))
-    X.cooldownmod = ((X.charge*0.01)+1) SECONDS
+    addtimer(CALLBACK(src, .proc/reveal, target), ((X.charge*0.3) SECONDS))
+    X.cooldownmod = ((X.charge*0.3)+1) SECONDS
     ..()
 
 /datum/xenoartifact_trait/major/invisible/proc/hide(mob/living/target)
@@ -514,4 +528,5 @@
 
 /datum/xenoartifact_trait/major/teleporting/activate(obj/item/xenoartifact/X, atom/target, atom/user)
     . = ..()
+    X.say("Displace")
 

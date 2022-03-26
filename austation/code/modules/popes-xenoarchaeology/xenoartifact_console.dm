@@ -75,7 +75,7 @@
 
         else if(action == "set_tab_[T]" && current_tab == T)
             current_tab = ""
-            current_tab_info = "God will never forgive you for your sins..."
+            current_tab_info = ""
     for(var/datum/xenoartifactseller/S in sellers)
         if(action == "purchase_[S.unique_id]" && linked_inbox && budget-S.price >= 0)
             var/obj/item/xenoartifact/X = new(get_turf(linked_inbox.loc), S.difficulty)
@@ -108,9 +108,9 @@
             return
     say("Unable to find linkable hadrware.")
 
-/obj/machinery/xenoartifact_inbox //Postbox for xenoartifact console 
+/obj/machinery/xenoartifact_inbox
     name = "bluespace straythread pad" //Science words
-    desc = "This machine takes advantage of bluespace thread manipulation to highjack in-coming and out-going bluespace signals." //All very serious science
+    desc = "This machine takes advantage of bluespace thread manipulation to highjack in-coming and out-going bluespace signals." //All very sciencey
     icon = 'icons/obj/telescience.dmi'
     icon_state = "qpad-idle"
     var/linked_console
@@ -118,7 +118,7 @@
 /obj/machinery/xenoartifact_inbox/proc/sell_artifact(list/reciept)
     var/info
     var/final_price = 100
-    for(var/obj/item/I in oview(1,src))
+    for(var/obj/I in oview(1,src))
         if(istype(I, /obj/item/xenoartifact)||istype(I, /obj/structure/xenoartifact))
             var/obj/item/xenoartifact/X = I
             final_price = X.modifier*X.price
@@ -139,7 +139,7 @@
     var/price
     var/dialogue
     var/unique_id //not really uniuqe
-    var/difficulty //Xenoartifact shit, not really difficulty
+    var/difficulty //Xenoartifact shit, not exactly difficulty
 
 /datum/xenoartifactseller/proc/generate()
     name = "Placeholder"
@@ -153,6 +153,6 @@
             difficulty = URANIUM
         if(701 to 800)
             difficulty = AUSTRALIUM
-    price = price * rand(1.0, 1.5) //Measure of error for no particular reason
+    price = price * rand(1.0, 1.3, 1.5) //Measure of error for no particular reason
     dialogue = "lorem ipsum"
-    unique_id = "[rand(1,100)][rand(1,100)][rand(1,100)]:[world.time]" //World.time is the only thing that stops these 'unique' IDs being the same, retard
+    unique_id = "[rand(1,100)][rand(1,100)][rand(1,100)]:[world.time]" //I feel like Ive missed an easier way to do this

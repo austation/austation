@@ -181,15 +181,17 @@
 */
 /obj/item/xenoartifact/proc/check_charge(mob/user, charge_mod)
     for(var/mob/M in true_target)
-        if(get_dist(user, M) > max_range)   
+        say(M)
+        if(get_dist(user, M) > max_range||M.pulling)   
             true_target -= M
 
     charge = charge + charge_mod
     if(manage_cooldown(TRUE))
         for(var/datum/xenoartifact_trait/minor/T in traits)
             T.activate(src, user, user)
-        charge = (charge+charge_req)/1.9 //Not quite an average. Generally produces higher results.      
-        for(var/mob/living/M in true_target)
+        charge = (charge+charge_req)/1.9 //Not quite an average. Generally produces higher results.     
+        say(charge) 
+        for(var/atom/M in true_target)
             for(var/datum/xenoartifact_trait/major/T in traits)
                 T.activate(src, M, user)
         if(!true_target)
@@ -199,8 +201,11 @@
         charge = 0
         var/datum/xenoartifact_trait/minor/capacitive/C
         C = get_trait(/datum/xenoartifact_trait/minor/capacitive)
-        if(C.charges)
-            manage_cooldown()
+        if(C)
+            if(C.charges)
+                manage_cooldown()
+            return
+        manage_cooldown()
     else    
         charge = 0
         true_target = list(null)
@@ -261,10 +266,10 @@
     if(traits[5].on_touch(src, src) && !(touch_desc))
         touch_desc = traits[5]
 
-    charge_req = 10*rand(1, 10) //This is here just in-case I decide to change how this works.
+    charge_req = 9.95*rand(1, 10) //This is here just in-case I decide to change how this works.
     
 /obj/item/xenoartifact/proc/get_proximity(range) //Will I really reuse this?
-    for(var/mob/living/M in range(range, get_turf(loc)))
+    for(var/mob/living/M in range(range, get_turf(src)))
         return M
     return null
 
@@ -281,8 +286,8 @@
 /obj/item/xenoartifact/process(delta_time)
     switch(process_type)
         if("lit")
-            //say("lit")
-            true_target = list(get_proximity(3))
+            say("lit")
+            true_target = list(get_proximity(max_range))
             charge = NORMAL*traits[1].on_burn(src) 
             if(manage_cooldown(TRUE) && true_target)
                 set_light(0)
@@ -292,8 +297,8 @@
                 return PROCESS_KILL
 
         if("tick")
-            //say("tick")
-            true_target = list(get_proximity(2))
+            say("tick")
+            true_target = list(get_proximity(max_range))
             if(manage_cooldown(TRUE))
                 charge += NORMAL*traits[1].on_impact(src) 
             if(manage_cooldown(TRUE))
@@ -303,8 +308,10 @@
             return PROCESS_KILL
 
 /obj/item/xenoartifact/Destroy() //To:Do should all contents be allowed a second chance?
-    for(var/mob/living/C in contents) //People inside only have a 50/50 chance of surviving a collapse.
+    for(var/mob/living/C in contents) //mobs inside only have a 50/50 chance of surviving a collapse.
         if(pick(FALSE, TRUE))
             C.forceMove(get_turf(loc))
+        else
+            qdel(C)
     qdel(src)
     ..()

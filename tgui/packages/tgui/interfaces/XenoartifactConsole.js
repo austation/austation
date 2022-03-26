@@ -113,7 +113,7 @@ export const XenoartifactSell = (props, context) => {
                     {sold_artifacts.map(item => <Section><BlockQuote>{`${item}`}</BlockQuote></Section>)}
                 </Collapsible>
                 <Button onClick={() => act(`sell`)} p = {.5}>
-                    Sell item/s on pad. <Icon name="sgopping-cart"/>
+                    Export pad contents. <Icon name="shopping-cart"/>
                 </Button>
             </Section>
         </Box>
