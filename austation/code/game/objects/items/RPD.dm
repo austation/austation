@@ -34,6 +34,8 @@
 /datum/pipe_info/coilgun/Render(dispenser, sufficient_resources = TRUE)
 	var/dat = "<li><a href='?src=[REF(dispenser)]&[Params()]'>[name]</a></li>"
 
+	if(!material_init)
+		initialize_materials()
 	// Stationary pipe dispensers don't allow you to pre-select pipe directions.
 	// This makes it impossble to spawn bent versions of bendable pipes.
 	// We add a "Bent" pipe type with a preset diagonal direction to work around it.
@@ -45,7 +47,7 @@
 				cost_data += ", "
 			cost_data += "[M.name]-[build_cost[M]]"
 		if(!sufficient_resources && cost_data)
-			cost_data = "<font color='red>[cost_data]</font>"
+			cost_data = "<font color='red'>[cost_data]</font>"
 		dat = "<li><a href='?src=[REF(dispenser)]&[Params()]'>[name]</a>[cost_data ? " | [cost_data]" : ""]</li>"
 		if(dirtype == PIPE_BENDABLE)
 			dat += "<li><a href='?src=[REF(dispenser)]&[Params()]&dir=[NORTHEAST]'>Bent [name]</a>[cost_data ? " | [cost_data]" : ""]</li>"

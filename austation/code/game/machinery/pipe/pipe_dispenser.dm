@@ -57,6 +57,8 @@
 			wait = world.time + 15
 	if(href_list["mateject"])
 		var/datum/material/M = href_list["mateject"]
+		if(!M || !istype(M))
+			return
 		var/datum/component/material_container/MC = GetComponent(/datum/component/material_container)
 		MC.retrieve_sheets(MC.materials[M], M, loc)
 
