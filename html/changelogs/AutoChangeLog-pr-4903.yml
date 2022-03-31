@@ -1,0 +1,5 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - bugfix: "ghosts not beeing able to hear instruments"
+  - bugfix: "pai card alert ping not visible to ghosts"
