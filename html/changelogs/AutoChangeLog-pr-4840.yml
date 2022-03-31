@@ -1,6 +1,0 @@
-author: "AustationBot"
-delete-after: True
-changes: 
-  - refactor: "Destroy() now always calls parent."
-  - refactor: "Cleaned up a fair bit of SSAugury, but more work is needed."
-  - refactor: "Miscellaneous minor code improvements & optimizations."

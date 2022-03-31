@@ -1,4 +1,0 @@
-author: "AustationBot"
-delete-after: True
-changes: 
-  - bugfix: "fixes more href vulnerabilities in dna_console.dm"

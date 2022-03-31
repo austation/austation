@@ -1,4 +1,0 @@
-author: "AustationBot"
-delete-after: True
-changes: 
-  - bugfix: "fixes disposal pipe segments becoming invisible if a pipe gets deconstructed"

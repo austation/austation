@@ -1,4 +1,0 @@
-author: "AustationBot"
-delete-after: True
-changes: 
-  - refactor: "Brig timers are more accurate and no longer lengthened by lag"

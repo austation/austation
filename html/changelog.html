@@ -57,16 +57,135 @@
 		<div class="commit sansserif">
 
 			<h2 class="date">31 March 2022</h2>
+			<h3 class="author">Arkatos1, JohnFulpWillard, Fikou updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="rscadd">Carps now support GAGS.</li>
+				<li class="rscadd">Cayenne can carry nuke disk!</li>
+				<li class="rscadd">Achievement for picking up a nuke disk as Cayenne!</li>
+			</ul>
 			<h3 class="author">AustationBot updated:</h3>
 			<ul class="changes bgimages16">
 				<li class="rscadd">New species specific mutations that can only be discovered within each roundstart species.</li>
 				<li class="tweak">Fireball can now only be applied to lizards.</li>
 				<li class="tweak">Increased The Turbine Space Injector to 200 L/s</li>
+				<li class="balance">Reduces the number of watchers/guardians on Artifact Recovery missions. (From 6-15 to 4-10)</li>
+				<li class="balance">Reduces the health/integrity of artifact watchers and guardians. (Watchers have 100(From 200), Guardians have 200(From 500))</li>
+				<li class="balance">Artifact Guardians have a shorter leash range around Watchers. (2 tiles, down from 5)</li>
+				<li class="balance">Guardians have a slightly longer cooldown between attacks. (1.5 seconds, up from 1 second)</li>
+				<li class="balance">Chaser Guardians have had their damage reduced to 10 (Down from 20)</li>
+				<li class="balance">Ranged Burst Guardians have had their burst radius reduced to 2 (Down from 5).</li>
+				<li class="balance">Self Burst Guardians have had their burst radius reduced down to 3. (Down from 8)</li>
+				<li class="balance">Both types of Burst Guardians have had their damage reduced to 7 (Down from 10)</li>
+				<li class="balance">EMP Pulse Guardians have had their invisible stun removed entirely and replaced with a visible target location that indicates the location the EMP will strike. The EMP itself can now be dodged.</li>
+				<li class="rscadd">Lights have new overlay sprites for emergency and night modes</li>
+				<li class="bugfix">Light overlays are now functional</li>
+				<li class="bugfix">Genetics will no longer be stuck with impossible to solve mutations.</li>
+				<li class="bugfix">Holoparasites no longer kill slime people when attempting to heal</li>
+				<li class="rscadd">Added notice for silicons who attempt to have more than 9 TGUI windows open</li>
+				<li class="rscadd">More Air Circulation to MetaStation Turbine</li>
+				<li class="balance">Ephedrine speed increase halved but no longer forces items to be dropped.</li>
+				<li class="balance">Modafinil now increases speed and stamina regeneration moderately.</li>
+				<li class="rscdel">reverted changes to blindness</li>
+				<li class="bugfix">fixed not being able to insert eyes during organ manipulation surgery</li>
+				<li class="bugfix">fixed species change removing organs, etc.</li>
+				<li class="bugfix">other misc eye-related fixes</li>
+				<li class="tweak">Deafness now immediately silences sounds instead of letting them finish</li>
+				<li class="refactor">Destroy() now always calls parent.</li>
+				<li class="refactor">Cleaned up a fair bit of SSAugury, but more work is needed.</li>
+				<li class="refactor">Miscellaneous minor code improvements & optimizations.</li>
+				<li class="bugfix">Fixed the pre-loaded defib wallmount overlay not appearing</li>
+				<li class="rscadd">Created new sprites for the IDs, there is also new sprites for dedicated jobs (eg. janitors).</li>
+				<li class="code_imp">Simplifies the PR template.</li>
+				<li class="refactor">Kilo pipes are standardized. Distro on layer 1, Scrubbers on layer 3.</li>
+				<li class="rscadd">Kilo: The airlock in the engine room now serves as a non-public passage between atmos and the rest of engineering.</li>
+				<li class="tweak">A few Kilo airlocks are now larger, so things may be dragged through them.</li>
+				<li class="bugfix">Fixed the atmosbot UI not having any gas names on it</li>
+				<li class="rscadd">GAGS to enviro helmets, protective helmets and mk.2 helmets.</li>
+				<li class="rscadd">Some more mk.2 and protective helmets (for vip, CC roles and bartender).</li>
+				<li class="rscdel">Removed enviro replacement helmet variants.</li>
+				<li class="bugfix">fixed some description in protective helmets.</li>
+				<li class="tweak">tweaked sprite of curator's envirohelm to actually have a visor (and light!)</li>
+				<li class="tweak">plasmaman bartender starts with tophat attached to his actual hat</li>
+				<li class="rscadd">Ghosts now get alerted about explosions happening around the station</li>
+				<li class="bugfix">fixes an extrapolator bug</li>
+				<li class="refactor">Brig timers are more accurate and no longer lengthened by lag</li>
+				<li class="spellcheck">Fixed a typo in the exploration room</li>
+				<li class="rscadd">Added a new machine to the robotics lab; the ectoscopic sniffer.</li>
+				<li class="server">BYOND bumped to 514.1583</li>
+				<li class="bugfix">fixes disposal pipe segments becoming invisible if a pipe gets deconstructed</li>
+				<li class="bugfix">fixes more href vulnerabilities in dna_console.dm</li>
+				<li class="rscadd">Recommended client version has been bumped to 514.1582.</li>
+				<li class="rscadd">Players are encouraged to update their clients to fix potential lag caused by unicode parsing.</li>
+				<li class="balance">Nerfed oil slime extract's explosion radius when injected with plasma</li>
+				<li class="bugfix">you can no longer get free flash protection from degraded sunglasses huds</li>
+				<li class="tweak">advanced mutation toxin slime transformation no longer has random colors</li>
+				<li class="rscadd">Used grenades now look used when examined.</li>
+				<li class="bugfix">It should no longer be possible to DC admins by spamming grenades.</li>
+				<li class="bugfix">Examining an object will now show it's Force value properly.</li>
+				<li class="tweak">adds a check for double clicking for ai so the ai camera won't jump if you click a machine</li>
+				<li class="bugfix">fixes AI Atmos machines Cntrl click</li>
+				<li class="balance">Nanite armour 50/35 => 30.</li>
+				<li class="bugfix">Fixed automatic conveyors not moving items</li>
+				<li class="bugfix">fixed Lia's bad icon on fland</li>
+				<li class="server">Bumps minimist to 1.2.6</li>
+				<li class="spellcheck">Fixed a typo in the corazone description</li>
+				<li class="bugfix">Adds missing bitshift values to the global bitflag list</li>
+				<li class="code_imp">adds brackets for some multi-bitfield defines</li>
+				<li class="bugfix">Microwaves no longer get stuck cooking forever</li>
+				<li class="spellcheck">fixed a typo in Dr. Gibb's description</li>
+				<li class="rscadd">New medical implant! "Surgical Serverlink Brain Implant" allows you to perform advanced surgical programs without an operating computer. only available by a tech disk from explorative ruins.</li>
+				<li class="bugfix">Borgs now can perform surgical programs with an operating computer.</li>
+				<li class="bugfix">You'll always see better 'Tend Wounds' surgeries rather than basic ones when you have better versions.</li>
+				<li class="refactor">auto surgeons now can have multiple implants through 'starting_organ = list(item A, item B, item C)' at its codewise.</li>
+				<li class="bugfix">Removed null reference in space vines</li>
+				<li class="balance">Cat Claws no longer deal 20 damage with punches.</li>
+				<li class="balance">Acid Ooze hands now have 2/3 of their previous power.</li>
+				<li class="balance">Reinforced and nar'sien bolas now knockdown instead.</li>
+				<li class="bugfix">ghosts not beeing able to hear instruments</li>
+				<li class="bugfix">pai card alert ping not visible to ghosts</li>
+				<li class="bugfix">IPC crit damage now checks the nocritdamage trait.</li>
+				<li class="bugfix">IPC crit damage no longer accounts for robotic limb resilience that they dont have.</li>
+				<li class="tweak">at maintainer request, ipc crit damage works like other species with nobreath (ipcs take 1 brute damage per life tick, as opposed to 6 burn damage.)</li>
+				<li class="admin">Stasis pod messages have greater visibility.</li>
+				<li class="bugfix">Eminence can no longer teleport to Servants of Rat'Var on the CentCom Z Level</li>
+				<li class="bugfix">Makes magic SMES always appear full and not do undefined math</li>
+				<li class="bugfix">the blind can no longer see</li>
 			</ul>
 			<h3 class="author">DatBoiTim updated:</h3>
 			<ul class="changes bgimages16">
 				<li class="rscadd">The ability to attach any knife to a Larry</li>
 				<li class="imageadd">Larry Attachable Icons based on knife inhands</li>
+				<li class="rscdel">Removed Sentient Diseases</li>
+				<li class="rscdel">Remove Crewsimov</li>
+				<li class="rscdel">Removed Corporate Agents</li>
+				<li class="rscdel">Removed Mushroom Species</li>
+			</ul>
+			<h3 class="author">DrDuckedGoose updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="bugfix">Fixes Floral Spines overlay issue</li>
+				<li class="tweak">Changes embed specification to superior. Tweak/Add: Galaxythistle now has the floral spine trait.</li>
+			</ul>
+			<h3 class="author">Hardly updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="rscadd">Mentor Chat can now be filtered from the chat</li>
+				<li class="tweak">Improved msay hotkey window</li>
+				<li class="rscdel">Unused modchat stuff from TGUI</li>
+				<li class="bugfix">Pixel Perfect 1.5x should properly save now</li>
+			</ul>
+			<h3 class="author">Mat05usz updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="rscadd">Some decals across Delta brig to make it more consistent and possibly a tiny bit 'prettier'.</li>
+				<li class="tweak">Power monitor console in Delta Station's SM room replaced with Engineering console</li>
+				<li class="bugfix">Delta brig cells are now properly ordered</li>
+				<li class="tweak">Autotransfer vote is now using real time instead of time-dilated timer, making it trigger consistently at 90 minutes.</li>
+			</ul>
+			<h3 class="author">Ryll-Ryll AnCopper updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="tweak">Clowns are now unable to conceptualize death and think corpses of people are simply sleeping.</li>
+			</ul>
+			<h3 class="author">nednaZ (EvilDragonfiend substituted to post the PR) updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="bugfix">Autosurgeons work again</li>
 			</ul>
 
 			<h2 class="date">28 March 2022</h2>

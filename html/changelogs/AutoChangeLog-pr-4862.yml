@@ -1,4 +1,0 @@
-author: "AustationBot"
-delete-after: True
-changes: 
-  - rscadd: "Added notice for silicons who attempt to have more than 9 TGUI windows open"
