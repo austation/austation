@@ -206,11 +206,12 @@
 
 /obj/structure/table/mat_shiritori/examine()
 	. = ..()
-	if(current_letter)
-		. += "<span class='info'>The next word must start with <b>[uppertext(current_letter)]</b></span>"
-	else if(!active)
+	if(active)
+		if(current_letter)
+			. += "<span class='info'>The next word must start with <b>[uppertext(current_letter)]</b></span>"
+		. += "\n<span class='info'>[length(knockouts)] players have been eliminated. Turn [turns].</span>"
+	else
 		. += "<span class='info'>It doesn't look like anyone is playing it right now.</span>"
-	. += "\n<span class='info'>[length(knockouts)] players have been eliminated. Turn [turns].</span>"
 
 // Dynamic list initialization, saves memory
 /obj/structure/table/mat_shiritori/proc/setup_blacklist(force = FALSE)
