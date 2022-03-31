@@ -1,0 +1,4 @@
+author: "nednaZ (EvilDragonfiend substituted to post the PR)"
+delete-after: True
+changes: 
+  - bugfix: "Autosurgeons work again"
