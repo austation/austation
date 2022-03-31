@@ -1,0 +1,4 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - tweak: "Deafness now immediately silences sounds instead of letting them finish"
