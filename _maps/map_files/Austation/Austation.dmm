@@ -26620,7 +26620,8 @@
 /area/space/nearstation)
 "cpN" = (
 /obj/machinery/atmospherics/components/unary/outlet_injector/on{
-	dir = 8
+	dir = 8;
+	volume_rate = 400
 	},
 /turf/open/floor/plating/airless,
 /area/maintenance/disposal/incinerator)
