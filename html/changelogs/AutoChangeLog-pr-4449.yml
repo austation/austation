@@ -1,0 +1,4 @@
+author: "TheFakeElon, Jupyterkat"
+delete-after: True
+changes: 
+  - rscadd: "Adds Materialization Shiritori, an admin spawn table game"
