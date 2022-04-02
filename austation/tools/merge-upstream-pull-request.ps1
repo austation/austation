@@ -13,17 +13,7 @@ if($args.Count -ne 2) {
 
 try
 {
-    curl | Out-Null
-}
-catch [System.Management.Automation.CommandNotFoundException]
-{
-    Write-Host "Error: this script requires curl, please ensure curl is installed and exists in the current PATH"
-    exit 1
-}
-
-try
-{
-    jq | Out-Null
+    jq --help | Out-Null
 }
 catch [System.Management.Automation.CommandNotFoundException]
 {
@@ -40,13 +30,13 @@ git checkout master
 git reset --hard origin/master
 git clean -f
 
-&"git branch -D" @(git branch | Select-String -NotMatch "master")
+git for-each-ref --format='%(refname:short)' refs/heads/ | Select-String -NotMatch "master" | %{git branch -D $_}
 
-git checkout -b $baseBranchName$args[0]
+git checkout -b $baseBranchName$($args[0])
 
-$mergeSha = curl --silent "$basePullUrl/$args[0]" | jq '.merge_commit_sha' -r
+$mergeSha = (Invoke-WebRequest "$basePullUrl/$($args[0])").Content | jq '.merge_commit_sha' -r
 
-$commits = curl --silent "$basePullUrl/$args[0]/commits" | jq '.[].sha' -r
+$commits = (Invoke-WebRequest "$basePullUrl/$($args[0])/commits").Content | jq '.[].sha' -r
 
 Write-Host "Cherry picking onto branch..."
 $cherryPickOutput = git -c core.editor=true cherry-pick -m 1 "$mergeSha" 2>&1
@@ -73,7 +63,7 @@ if($cherryPickOutput | Select-String "error: mainline was specified but commit")
 }
 
 Write-Host "Committing changes"
-git -c core.editor=true commit --allow-empty -m "$args[1]"
+git -c core.editor=true commit --allow-empty -m "$($args[1])"
 
 Write-Host "Pushing changes"
-git push -f -u origin "$baseBranchName$args[0]"
+git push -f -u origin "$baseBranchName$($args[0])"
