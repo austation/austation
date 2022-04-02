@@ -9,6 +9,7 @@ if(!(Test-Path -Path ".\.git")) {
 
 if($args.Count -ne 2) {
     Write-Host "Error: incorrent number of arguments have been given, the first argument needs to be a pull request ID, the second argument needs to be the commit message for the mirror commit"
+    exit 2
 }
 
 try
@@ -18,7 +19,7 @@ try
 catch [System.Management.Automation.CommandNotFoundException]
 {
     Write-Host "Error: This script requires jq, please ensure jq is installed and exists in the current PATH"
-    exit 1
+    exit 3
 }
 
 if(!(git remote | Select-String "upstream")) {
