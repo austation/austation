@@ -30,9 +30,9 @@ git for-each-ref --format='%(refname:short)' refs/heads/ | Select-String -NotMat
 
 git checkout -b $baseBranchName$($args[0])
 
-$mergeSha = (Invoke-WebRequest "$basePullUrl/$($args[0])").Content | jq '.merge_commit_sha' -r
+$mergeSha = (Invoke-WebRequest -UseBasicParsing "$basePullUrl/$($args[0])").Content | jq '.merge_commit_sha' -r
 
-$commits = (Invoke-WebRequest "$basePullUrl/$($args[0])/commits").Content | jq '.[].sha' -r
+$commits = (Invoke-WebRequest -UseBasicParsing "$basePullUrl/$($args[0])/commits").Content | jq '.[].sha' -r
 
 Write-Host "Cherry picking onto branch..."
 $cherryPickOutput = git -c core.editor=true cherry-pick -m 1 "$mergeSha" 2>&1
