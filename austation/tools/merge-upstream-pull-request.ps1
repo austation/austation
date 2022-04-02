@@ -2,7 +2,7 @@ $baseBranchName = "upstream-merge-"
 $basePullUrl = "https://api.github.com/repos/BeeStation/BeeStation-Hornet/pulls"
 $baseRepoUrl = "https://github.com/BeeStation/BeeStation-Hornet.git"
 
-if(Test-Path -Path ".git") {
+if(!(Test-Path -Path ".\.git")) {
     Write-Host "Error: this script must be run from the root of a git repository"
     exit 1
 }
