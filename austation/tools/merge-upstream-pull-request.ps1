@@ -2,7 +2,7 @@ $baseBranchName = "upstream-merge-"
 $basePullUrl = "https://api.github.com/repos/BeeStation/BeeStation-Hornet/pulls"
 $baseRepoUrl = "https://github.com/BeeStation/BeeStation-Hornet.git"
 
-if($args.Count -ne 2 -Or $args.Count -ne 3) {
+if($args.Count -ne 2 -And $args.Count -ne 3) {
     Write-Host "Error: incorrent number of arguments have been given, the first argument needs to be a pull request ID, the second argument needs to be the commit message for the mirror commit. Optionally accepts a third arg of the working directory to set."
     exit 2
 }
