@@ -2,9 +2,18 @@ $baseBranchName = "upstream-merge-"
 $basePullUrl = "https://api.github.com/repos/BeeStation/BeeStation-Hornet/pulls"
 $baseRepoUrl = "https://github.com/BeeStation/BeeStation-Hornet.git"
 
-if($args.Count -ne 2) {
-    Write-Host "Error: incorrent number of arguments have been given, the first argument needs to be a pull request ID, the second argument needs to be the commit message for the mirror commit"
+if($args.Count -ne 2 -Or $args.Count -ne 3) {
+    Write-Host "Error: incorrent number of arguments have been given, the first argument needs to be a pull request ID, the second argument needs to be the commit message for the mirror commit. Optionally accepts a third arg of the working directory to set."
     exit 2
+}
+
+if($args.Count -eq 3) {
+    Set-Location $($args[2])
+}
+
+if(!(Test-Path -Path ".\.git")) {
+    Write-Host "Error: this script must be run from the root of a git repository"
+    exit 1
 }
 
 try
