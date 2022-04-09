@@ -27119,6 +27119,11 @@
 	pixel_y = 7
 	},
 /obj/structure/table/glass,
+/obj/item/clothing/glasses/science,
+/obj/item/clothing/glasses/science{
+	pixel_x = 1;
+	pixel_y = 10
+	},
 /turf/open/floor/plasteel,
 /area/science/explab)
 "crV" = (
@@ -44212,9 +44217,9 @@
 	},
 /obj/item/clothing/neck/stethoscope,
 /obj/item/geiger_counter,
-/obj/item/flashlight,
 /obj/item/storage/box/monkeycubes,
 /obj/structure/table/glass,
+/obj/item/laser_pointer,
 /turf/open/floor/plasteel,
 /area/science/explab)
 "giV" = (
@@ -88347,7 +88352,6 @@
 	desc = "Science's final defense against the filth of the station. Also good for wacking artifacts.";
 	name = "wacking wrench"
 	},
-/obj/item/clothing/glasses/science,
 /obj/effect/turf_decal/stripes/line{
 	dir = 9
 	},

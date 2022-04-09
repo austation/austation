@@ -14,7 +14,10 @@
     var/list/minor_traits = list()
 
     var/list/major_trait = list(null)
-    var/list/major_traits = list() 
+    var/list/major_traits = list()
+
+    var/list/malfunction = list(null)
+    var/list/malfunction_list = list()  
 
     var/list/info_list = list() 
 
@@ -46,6 +49,9 @@
     data["major_trait"] = major_trait
     data["major_traits"] = get_trait_list_desc(major_traits, /datum/xenoartifact_trait/major)
 
+    data["malfunction"] = malfunction
+    data["malfunction_list"] = get_trait_list_desc(malfunction_list, /datum/xenoartifact_trait/malfunction)
+
     data["info_list"] = info_list
 
     return data
@@ -64,6 +70,7 @@
     trait_toggle(action, "activator", activator_traits, activator)
     trait_toggle(action, "minor", minor_traits, minor_trait)
     trait_toggle(action, "major", major_traits, major_trait)
+    trait_toggle(action, "malfunction", malfunction_list, malfunction)
 
     . = TRUE
     update_icon()

@@ -13,7 +13,7 @@
     var/charge_req //This isn't a requirement anymore. This just affects how effective the charge is
 
     var/material //Associated traits & colour
-    var/datum/xenoartifact_trait/traits[5] //activation trait, minor 1, minor 2, minor 3, major
+    var/datum/xenoartifact_trait/traits[6] //activation trait, minor 1, minor 2, minor 3, major, malfunction
     var/datum/xenoartifact_trait/touch_desc
     var/special_desc = "The Xenoartifact is made from a"
     var/process_type = ""
@@ -34,18 +34,36 @@
 /obj/structure/xenoartifact/Initialize()
     . = ..()
     for(var/datum/xenoartifact_trait/T in traits)
+        say(T)
         if(!istype(T, /datum/xenoartifact_trait/minor/dense))
             T.on_init(src)
 
-    icon_state = "lump_[pick(1, 2, 3, 4, 5)]"
-    for(var/I in icon_slots)
-        while(!(icon_slots[I])||icon_slots[I] == icon_state||icon_slots[I] == icon_slots[I-1]) //Still messy but better than before
-            icon_slots[I] = "lump_[pick(1, 2, 3, 4, 5)]"
-            icon_overlay = mutable_appearance(icon, icon_slots[I])
-            icon_overlay.layer = FLOAT_LAYER
-            icon_overlay.appearance_flags = RESET_ALPHA// Not doing this fucks the alpha
-            icon_overlay.alpha = alpha//
-            src.add_overlay(icon_overlay)
+    var/holdthisplease = pick(1, 2, 3, 4)
+    icon_state = "SB[holdthisplease]"//Base
+    generate_icon(icon, "SBL[holdthisplease]", material)
+    if(pick(1, 0) || icon_slots[1])//Top
+        if(!(icon_slots[1])) //Some traits can set this too, it will be set to a code that looks like 9XX
+            icon_slots[1] = pick(1, 2)
+        generate_icon(icon, "STP[icon_slots[1]]")
+        generate_icon(icon, "STPL[icon_slots[1]]", material)
+        
+    if(pick(1, 0) || icon_slots[2])//Bottom
+        if(!(icon_slots[2]))
+            icon_slots[2] = pick(1, 2)
+        generate_icon(icon, "SBTM[icon_slots[2]]")
+        generate_icon(icon, "SBTML[icon_slots[2]]", material)
+
+    if(pick(1, 0) || icon_slots[3])//Left
+        if(!(icon_slots[3]))
+            icon_slots[3] = pick(1, 2)
+        generate_icon(icon, "SL[icon_slots[3]]")
+        generate_icon(icon, "SLL[icon_slots[3]]", material)
+
+    if(pick(1, 0) || icon_slots[4])//Right
+        if(!(icon_slots[4]))
+            icon_slots[4] = pick(1, 2)
+        generate_icon(icon, "SR[icon_slots[4]]")
+        generate_icon(icon, "SRL[icon_slots[4]]", material)
 
 /obj/structure/xenoartifact/examine(mob/user)
     for(var/obj/item/clothing/glasses/science/S in user.contents)
@@ -188,8 +206,14 @@
 /obj/structure/xenoartifact/proc/get_trait(typepath)
     return (locate(typepath) in traits)
 
+/obj/structure/xenoartifact/proc/generate_icon(var/icn, var/icnst = "") //Attack extra icons
+    icon_overlay = mutable_appearance(icn, icnst)
+    icon_overlay.layer = FLOAT_LAYER
+    icon_overlay.appearance_flags = RESET_ALPHA// Not doing this fucks the alpha
+    icon_overlay.alpha = alpha//
+    src.add_overlay(icon_overlay)
+
 /obj/structure/xenoartifact/process(delta_time)
-/obj/item/xenoartifact/process(delta_time)
     switch(process_type)
         if("lit")
             say("lit")

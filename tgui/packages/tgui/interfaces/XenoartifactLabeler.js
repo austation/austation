@@ -24,6 +24,8 @@ const XenoartifactLabelerActivators = (props, context) => {
     minor_traits,
     major_trait,
     major_traits,
+    malfunction_list,
+    malfunction,
     info_list,
   } = data;
   return (
@@ -47,6 +49,13 @@ const XenoartifactLabelerActivators = (props, context) => {
                         <Box>
                             {
                                 major_traits.map(trait => <XenoartifactLabelerGenerateList specific_trait = {trait} check_against = {major_trait} trait_type = "major"/>)
+                            }
+                        </Box>
+            </Section>
+            <Section title="Malfunction">
+                        <Box>
+                            {
+                                malfunction_list.map(trait => <XenoartifactLabelerGenerateList specific_trait = {trait} check_against = {malfunction} trait_type = "malfunction"/>)
                             }
                         </Box>
             </Section>
@@ -94,8 +103,8 @@ const XenoartifactLabelerSticker = (props, context) => {
 const { act } = useBackend(context);
 return (
     <Box>
-        <Input onChange={(e, input) => act('change_print_name', {name: input})}/>
-        <Button content = "Print" placeholder = "Xenoartifact name..." onClick={() => act("print_traits")}/>
+        <Input placeholder = "Label Name..." onChange={(e, input) => act('change_print_name', {name: input})}/>
+        <Button content = "Print" onClick={() => act("print_traits")}/>
     </Box>
 );
 };

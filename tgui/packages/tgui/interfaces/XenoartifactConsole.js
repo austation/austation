@@ -11,7 +11,7 @@ export const XenoartifactConsole = (props, context) => {
         budget,
         tab_info,
     } = data;
-    const details = toArray(data.seller);
+    const sellers = toArray(data.seller);
     return (
         <Window
         width={800}
@@ -27,7 +27,7 @@ export const XenoartifactConsole = (props, context) => {
                         {tab_index.map(tab_name => <XenoartifactConsoleTabs tab_name = {tab_name}/>)}
                     </Tabs>
                     {current_tab === "Listings" && (
-                        details.map(details => <XenoartifactListing name = {details.name} dialogue = {details.dialogue} price = {details.price} id = {details.id}/>)
+                        sellers.map(details => <XenoartifactListingBuy name = {details.name} dialogue = {details.dialogue} price = {details.price} id = {details.id}/>)
                     )}
                     {current_tab === "Linking" && (
                         <XenoartifactLinking/>
@@ -61,7 +61,7 @@ const XenoartifactConsoleTabs = (props, context) => {
     );
 };
 
-export const XenoartifactListing = (props, context) => {
+export const XenoartifactListingBuy = (props, context) => {
     const { act, data } = useBackend(context);
     const{
         name,
@@ -79,6 +79,24 @@ export const XenoartifactListing = (props, context) => {
             <Button onClick={() => act(`purchase_${id}`)}>
                 {`Purchase: ${price} credits.`} <Icon name="shopping-cart"/>
             </Button>
+            </Section>
+        </Box>
+    );
+};
+
+export const XenoartifactListingSell = (props, context) => {
+    const { act, data } = useBackend(context);
+    const{
+        name,
+        dialogue,
+    } = props
+    return (
+        <Box p={.5}>
+            <Section>
+            {`${name}:`}
+            <BlockQuote>
+                {`${dialogue}`}
+            </BlockQuote>
             </Section>
         </Box>
     );
@@ -106,6 +124,7 @@ export const XenoartifactSell = (props, context) => {
     const{
         sold_artifacts,
     } = data
+    const buyers = toArray(data.buyer);
     return (
         <Box p={.5}>
             <Section>
@@ -116,6 +135,7 @@ export const XenoartifactSell = (props, context) => {
                     Export pad contents. <Icon name="shopping-cart"/>
                 </Button>
             </Section>
+            {buyers.map(details => <XenoartifactListingSell name = {details.name} dialogue = {details.dialogue} price = {details.price} id = {details.id}/>)}
         </Box>
     );
 };
