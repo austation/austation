@@ -1,6 +1,7 @@
 import { map, toArray } from 'common/collections';
 import { useBackend } from '../backend';
-import {Box, Tabs, Section, Flex, Button, BlockQuote, Icon, Collapsible} from '../components';
+import {Box, Tabs, Section, Flex, Button, BlockQuote, Icon, Collapsible, AnimatedNumber} from '../components';
+import { formatMoney } from '../format';
 import { Window } from '../layouts';
 
 export const XenoartifactConsole = (props, context) => {
@@ -10,6 +11,7 @@ export const XenoartifactConsole = (props, context) => {
         current_tab,
         budget,
         tab_info,
+        points,
     } = data;
     const sellers = toArray(data.seller);
     return (
@@ -18,7 +20,15 @@ export const XenoartifactConsole = (props, context) => {
         height={500}>
         <Window.Content scrollable>
                 <Box>
-                    <Section title={`Research and Development ${budget}`} fluid>
+                    <Section title={`Research and Development`} fluid
+                        buttons = {(
+                        <Box fontFamily="verdana" inline bold>
+                            <AnimatedNumber
+                                value={points}
+                                format={value => formatMoney(value)} />
+                            {' credits'}
+                        </Box>
+                    )}>
                         <BlockQuote>
                             {`${tab_info}`}
                         </BlockQuote>

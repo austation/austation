@@ -124,9 +124,7 @@
 /obj/item/xenoartifact_labeler/proc/desc2datum(udesc) //This is just a hacky way of getting the info from a datum using its desc becuase I wrote this last and it's not heartbreaking
     for(var/T in typesof(/datum/xenoartifact_trait))
         var/datum/xenoartifact_trait/X = new T
-        if(udesc == X.desc) //using an || here makes it fucky
-            return T
-        else if(udesc == X.label_name)
+        if((udesc == X.desc)||(udesc == X.label_name))
             return T
     return "[udesc]: There's no known information on [udesc]!."
 
@@ -136,7 +134,7 @@
     icon_state = "sticker_star"
     name = "Xenoartifact Label"
     desc = "An adhesive label describing the characteristics of a Xenoartifact."
-    var/info = "" //Actual information 
+    var/info = "" 
     var/set_name = FALSE
 
     var/mutable_appearance/sticker_overlay
@@ -193,4 +191,19 @@
     for(var/X in listo)
         if(X)
             text = "[text] [X]\n"
-    return text       
+    return text
+
+/obj/item/xenoartifact_labeler/debug
+    name = "Xenoartifact Debug Labeler"      
+    desc = "Use to create specific Xenoartifacts" 
+
+/obj/item/xenoartifact_labeler/create_label(new_name)
+    var/obj/item/xenoartifact/A = new(get_turf(src.loc), DEBUGIUM)
+    say("Created [A] at [A.loc]")
+    A.charge_req = 100
+    var/C = 1
+    for(var/X in sticker_traits)
+        say(X)
+        A.traits[C] = new X
+        A.traits[C].on_init(A)
+        C = C + 1

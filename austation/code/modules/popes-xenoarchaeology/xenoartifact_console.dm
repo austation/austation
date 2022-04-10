@@ -7,13 +7,14 @@
     var/list/tab_index = list("Listings", "Export", "Linking")
     var/current_tab = "Listings"
     var/current_tab_info = "Here you can find listings for various research samples, usually fresh from the field. These samples aren't distrubuted by the Nanotrasen affiliated cargo system, so instead listing data is sourced from stray bluespace-threads."
-    var/budget = 10000
     var/obj/machinery/xenoartifact_inbox/linked_inbox
     var/list/linked_machines = list()
     var/list/sold_artifacts = list() //Actually just a general list of items you've sold, name is a legacy thing
+    var/datum/bank_account/budget
 
 /obj/machinery/computer/xenoartifact_console/Initialize()
     . = ..()
+    budget = SSeconomy.get_dep_account(ACCOUNT_SCI)
     for(var/I in 1 to 8)
         sellers[I] = new /datum/xenoartifactseller
         sellers[I].generate()
@@ -32,6 +33,8 @@
 
 /obj/machinery/computer/xenoartifact_console/ui_data(mob/user)
     var/list/data = list()
+    if(budget)
+        data["points"] = budget.account_balance
     data["seller"] = list()
     for(var/datum/xenoartifactseller/S in sellers)
         data["seller"] += list(list(
@@ -48,7 +51,6 @@
             "price" = B.price,
             "id" = B.unique_id,
         ))
-    data["budget"] = budget
     data["tab_index"] = tab_index
     data["current_tab"] = current_tab
     data["tab_info"] = current_tab_info
@@ -56,7 +58,7 @@
     data["sold_artifacts"] = sold_artifacts
     return data
 
-/obj/machinery/computer/xenoartifact_console/ui_act(action, params)
+/obj/machinery/computer/xenoartifact_console/ui_act(action, params) //I should probably use a switch statement for this but, the for statements look painful
     . = TRUE
     if(..())
         return
@@ -82,17 +84,18 @@
             return
 
     for(var/datum/xenoartifactseller/S in sellers)
-        if(action == "purchase_[S.unique_id]" && linked_inbox && budget-S.price >= 0)
+        if(action == "purchase_[S.unique_id]" && linked_inbox && budget.account_balance-S.price >= 0)
             var/obj/item/xenoartifact/X = new(get_turf(linked_inbox.loc), S.difficulty)
             X.price = S.price
             sellers -= S
-            say("Purchase complete. [budget] remaining in RnD Budget")
+            budget.adjust_money(-1*S.price)
+            say("Purchase complete. [budget.account_balance] remaining in Research Budget")
             addtimer(CALLBACK(src, .proc/generate_new_seller), (rand(1,5)*60) SECONDS)
             return
         else if(action == "purchase_[S.unique_id]" && !linked_inbox)
             say("Error. No linked hardware.")
             return
-        else if(action == "purchase_[S.unique_id]" && budget-S.price < 0)
+        else if(action == "purchase_[S.unique_id]" && budget.account_balance-S.price < 0)
             say("Error. Insufficient funds.")
             return
 
@@ -117,6 +120,7 @@
                 final_price = X.modifier*X.price
                 if(final_price < 0) //No modulate?
                     final_price = X.price*0.1
+                budget.adjust_money(final_price)
                 info = "[X.name] sold at [station_time_timestamp()] for [final_price] credits, bought for [X.price]"
                 sold_artifacts += list(info)
                 qdel(I)
@@ -126,6 +130,7 @@
                 final_price = X.modifier*X.price
                 if(final_price < 0)
                     final_price = X.price*0.1
+                budget.adjust_money(final_price)
                 info = "[X.name] sold at [station_time_timestamp()] for [final_price] credits, bought for [X.price]"
                 sold_artifacts += list(info)
                 qdel(I)
@@ -213,11 +218,13 @@
     unique_id = "[rand(1,100)][rand(1,100)][rand(1,100)]:[world.time]" //I feel like Ive missed an easier way to do this
 
 /datum/xenoartifactseller/buyer 
-    var/obj/buying 
+    var/obj/buying
 
 /datum/xenoartifactseller/buyer/generate()
     name = pick(names)
     buying = pick(/obj/item/xenoartifact, /obj/structure/xenoartifact)
-    price = rand(5,80) * 10
-    dialogue = "I'm buying a [buying]"
+    if(buying == /obj/item/xenoartifact) //Don't bother trying to use istype here
+        dialogue = "[name] is requesting: artifact::item-class"
+    else if(buying == /obj/structure/xenoartifact)
+        dialogue = "[name] is requesting: artifact::structure-class"
     unique_id = "[rand(1,100)][rand(1,100)][rand(1,100)]:[world.time]"

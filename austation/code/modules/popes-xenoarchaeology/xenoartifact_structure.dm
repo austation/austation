@@ -116,7 +116,7 @@
 /obj/structure/xenoartifact/proc/check_charge(mob/user, charge_mod) //Run traits. User is generally passed to use as a fail-safe.
     for(var/mob/M in true_target)
         say(M)
-        if(get_dist(user, M) > max_range||M.pulling)   
+        if(get_dist(user, M) > max_range)   
             true_target -= M
 
     charge = charge + charge_mod

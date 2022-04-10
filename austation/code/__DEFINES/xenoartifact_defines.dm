@@ -10,4 +10,4 @@
 #define PLASMA "#ff00c8ff" //Associated weapons
 #define URANIUM "#00ff0d" //Broken Enigmas
 #define AUSTRALIUM "#ffd900" //Wildcard, may god have mercy
-
+#define DEBUGIUM "#ff4800"

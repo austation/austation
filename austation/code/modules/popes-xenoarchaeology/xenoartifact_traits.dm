@@ -252,7 +252,7 @@
     X.alpha = X.alpha * 0.55
     ..()
 
-/datum/xenoartifact_trait/minor/fragile/on_item(obj/item/xenoartifact/X, atom/user, atom/item)
+/datum/xenoartifact_trait/minor/delicate/on_item(obj/item/xenoartifact/X, atom/user, atom/item)
     . = ..()
     if(istype(item, /obj/item/laser_pointer))
         var/obj/item/laser_pointer/L = item
@@ -416,7 +416,7 @@
             A = new /obj/item/ammo_casing/energy/laser/heavy
         else //I hope no-one manages to achieve this
             A = new /obj/item/projectile/beam/emitter
-    A.preparePixelProjectile(target.loc, X)
+    A.preparePixelProjectile(get_turf(target), X)
     A.fire()
     ..()
 
@@ -595,5 +595,6 @@
 
 /datum/xenoartifact_trait/malfunction/strip/activate(obj/item/xenoartifact/X, atom/target)
     . = ..()
-    for(var/obj/item/I in target.contents)
-        I.forceMove(get_turf(target.loc)) 
+    var/mob/living/carbon/victim = target
+    for(var/obj/item/I in victim.contents)
+        victim.dropItemToGround(I)
