@@ -1,7 +1,7 @@
 /obj/item/xenoartifact_labeler
     name = "Xenoartifact Labeler"
-    icon = 'icons/obj/library.dmi'
-    icon_state = "scanner"
+    icon = 'austation/icons/obj/xenoartifact/xenoartifact_tech.dmi'
+    icon_state = "xenoartifact_labeler"
     desc = "A tool scientists use to label their alien bombs."
     throw_speed = 3
     throw_range = 5
@@ -197,7 +197,7 @@
     name = "Xenoartifact Debug Labeler"      
     desc = "Use to create specific Xenoartifacts" 
 
-/obj/item/xenoartifact_labeler/create_label(new_name)
+/obj/item/xenoartifact_labeler/debug/create_label(new_name)
     var/obj/item/xenoartifact/A = new(get_turf(src.loc), DEBUGIUM)
     say("Created [A] at [A.loc]")
     A.charge_req = 100

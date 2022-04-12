@@ -1,6 +1,6 @@
 /obj/item/xenoartifact
     name = "Xenoartifact"
-    icon = 'austation/icons/obj/xenoartifact/xenartifact.dmi'
+    icon = 'austation/icons/obj/xenoartifact/xenoartifact.dmi'
     icon_state = "map_editor"
     w_class = WEIGHT_CLASS_TINY
     heat = 1000 //I think I set this for on_burn stuff?
@@ -31,7 +31,7 @@
     var/price //default price gets generated if it isn't set by console. This only happens if the artifact spawns outside of that process. 
 
     var/malfunction_chance //Everytime the artifact is used this increases. When this is successfully proc'd the artifact gains a malfunction and this is lowered. 
-    var/malfunction_mod = 1 //How much the chance can increase in a sinlge itteration
+    var/malfunction_mod = 1 //How much the chance can change in a sinlge itteration
 
 /obj/item/xenoartifact/Initialize(mapload, difficulty)
     . = ..()
@@ -43,7 +43,8 @@
         if(BLUESPACE)
             generate_traits(list(/datum/xenoartifact_trait/minor/sharp, /datum/xenoartifact_trait/minor/radioactive,
                             /datum/xenoartifact_trait/minor/sentient, /datum/xenoartifact_trait/major/sing, 
-                            /datum/xenoartifact_trait/major/laser, /datum/xenoartifact_trait/major/bomb))
+                            /datum/xenoartifact_trait/major/laser, /datum/xenoartifact_trait/major/bomb,
+                            /datum/xenoartifact_trait/major/handmore))
             if(!price)
                 price = pick(100, 200, 300)
 
@@ -53,7 +54,8 @@
                             /datum/xenoartifact_trait/major/capture, /datum/xenoartifact_trait/major/timestop,
                             /datum/xenoartifact_trait/major/bomb, /datum/xenoartifact_trait/major/mirrored,
                             /datum/xenoartifact_trait/major/corginator,/datum/xenoartifact_trait/activator/clock,
-                            /datum/xenoartifact_trait/major/invisible))
+                            /datum/xenoartifact_trait/major/invisible,
+                            /datum/xenoartifact_trait/major/handmore))
             if(!price)
                 price = pick(200, 300, 500)
             malfunction_mod = 2
@@ -61,16 +63,17 @@
         if(URANIUM)
             generate_traits(list(/datum/xenoartifact_trait/major/sing, /datum/xenoartifact_trait/minor/sharp,
                             /datum/xenoartifact_trait/major/laser, /datum/xenoartifact_trait/major/corginator,
-                            /datum/xenoartifact_trait/minor/sentient, /datum/xenoartifact_trait/minor/wearable), TRUE) 
+                            /datum/xenoartifact_trait/minor/sentient, /datum/xenoartifact_trait/minor/wearable,
+                            /datum/xenoartifact_trait/major/handmore, /datum/xenoartifact_trait/major/invisible), TRUE) 
             if(!price)
                 price = pick(300, 500, 800) 
-            malfunction_mod = 5
+            malfunction_mod = 8
 
         if(AUSTRALIUM)
             generate_traits(list(/datum/xenoartifact_trait/major/sing))
             if(!price)
                 price = pick(500, 800, 1000) 
-            malfunction_mod = 2
+            malfunction_mod = 0.5
 
     for(var/datum/xenoartifact_trait/T in traits) //This is kinda weird but it stops certain runtime cases. 
         if(istype(T, /datum/xenoartifact_trait/minor/dense))
@@ -157,10 +160,10 @@
             check_charge(user)
 
 /obj/item/xenoartifact/attackby(obj/item/I, mob/living/user)
-    if(!(manage_cooldown(TRUE))||!(user.a_intent == INTENT_HARM)||istype(I, /obj/item/xenoartifact_label)||istype(I, /obj/item/xenoartifact_labeler))
-        return
     for(var/datum/xenoartifact_trait/T in traits)
         T.on_item(src, user, I)
+    if(!(manage_cooldown(TRUE))||user.a_intent == INTENT_HELP||istype(I, /obj/item/xenoartifact_label)||istype(I, /obj/item/xenoartifact_labeler))
+        return
     var/impact_activator
     var/burn_activator
     var/msg = I.ignition_effect(src, user)
@@ -194,7 +197,6 @@
         say(M)
         if(get_dist(src, M) > max_range)   
             true_target -= M
-            say("[M] was removed, [get_dist(user, M)] away")
     charge = charge + charge_mod
     if(manage_cooldown(TRUE))
         for(var/datum/xenoartifact_trait/minor/T in traits)
@@ -203,7 +205,6 @@
         for(var/atom/M in true_target)
             for(var/datum/xenoartifact_trait/malfunction/T in traits)
                 T.activate(src, M, user)
-                say("Bump")
             for(var/datum/xenoartifact_trait/major/T in traits)
                 T.activate(src, M, user)
             if(!(get_trait(/datum/xenoartifact_trait/minor/aura))) //Quick fix for bug that selects multiple targets for noraisin
@@ -250,7 +251,7 @@
         new_trait = null
         if(traits[X].on_touch(src, src) && !touch_desc)
             touch_desc = traits[X]
-        minor_desc = !minor_desc && traits[X].desc ? traits[X].desc : "" //I fucking love ternary operators, believe me. I will use them for everything.
+        minor_desc = !minor_desc && traits[X].desc ? traits[X].desc : ""
     special_desc = minor_desc ? "[special_desc] [minor_desc] material." : "[special_desc] material."
 
 
@@ -266,7 +267,7 @@
 
     if(!malf)
         return
-    while(!new_trait||get_trait(new_trait, blacklist_traits))//Major
+    while(!new_trait||get_trait(new_trait, blacklist_traits))//Malfunctions
         new_trait = pick(subtypesof(/datum/xenoartifact_trait/malfunction))
     traits[6] = new new_trait
     blacklist_traits += list(traits[6].blacklist_traits)

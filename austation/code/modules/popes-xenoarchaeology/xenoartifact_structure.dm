@@ -5,7 +5,7 @@
 
 /obj/structure/xenoartifact //Most of these values are given to the structure when the structure initializes
     name = "Xenoartifact"
-    icon = 'austation/icons/obj/xenoartifact/xenartifact.dmi'
+    icon = 'austation/icons/obj/xenoartifact/xenoartifact.dmi'
     icon_state = "map_editor"
     density = TRUE
     

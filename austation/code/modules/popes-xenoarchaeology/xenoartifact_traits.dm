@@ -172,6 +172,11 @@
 /datum/xenoartifact_trait/minor/radioactive/on_init(obj/item/xenoartifact/X)
     X.AddComponent(/datum/component/radioactive, 25) //I don't know what a good number for this is
 
+/datum/xenoartifact_trait/minor/radioactive/on_item(obj/item/xenoartifact/X, atom/user, atom/item)
+    . = ..()
+    if(istype(item, /obj/item/geiger_counter))
+        to_chat(user, "<span class='notice'>The [X.name] has residual radioactive decay features.</span>")
+
 /datum/xenoartifact_trait/minor/radioactive/on_touch(obj/item/xenoartifact/X, mob/user)
     to_chat(user, "<span class='notice'>You feel pins and needles after touching the [X.name].</span>")
     return TRUE
@@ -414,8 +419,6 @@
             A = new /obj/item/projectile/beam/laser
         if(80 to 200)
             A = new /obj/item/ammo_casing/energy/laser/heavy
-        else //I hope no-one manages to achieve this
-            A = new /obj/item/projectile/beam/emitter
     A.preparePixelProjectile(get_turf(target), X)
     A.fire()
     ..()
@@ -503,12 +506,12 @@
     return TRUE
 
 /datum/xenoartifact_trait/major/mirrored/activate(obj/item/xenoartifact/X, mob/living/target) //Yoinked from mindswap because my implementation sucked. To:Do I think this is broken?
-    if(!victim)
+    if(!(victim))
         victim = target
         return
     else
         caster = target
-    var/mob/dead/observer/ghost = victim.ghostize(0)
+    var/mob/dead/observer/ghost = victim.ghostize(FALSE)
     ghost.mind.transfer_to(caster)
     caster.mind.transfer_to(victim)
     if(ghost.key)
@@ -566,6 +569,22 @@
         var/mob/living/victim = target
         do_teleport(victim, get_turf(victim), (X.charge*0.1)+1, channel = TELEPORT_CHANNEL_BLUESPACE)
 
+/datum/xenoartifact_trait/major/handmore
+    desc = "Limbed"
+    label_desc = "Limped: Seperate limbs sprout from the artifact. The shape resembles your favourite fantasy monster."
+
+/datum/xenoartifact_trait/major/handmore/activate(obj/item/xenoartifact/X, atom/target, atom/user)
+    . = ..()
+    if(istype(target, /mob/living))
+        var/mob/living/victim = target
+        if(victim.held_items.len < 4)
+            victim.change_number_of_hands(victim.held_items.len+1)
+        else
+            X.visible_message("<span class='danger'>[victim]'s arms dissapear into the [X]!</span>")//They currently don't dissapear, they just fall off. I might leave it like that, kinda funny.
+            if(user == target)
+                to_chat(user, "<span class='danger'>Your arms dissapear into the [X]!</span>")
+            victim.change_number_of_hands(0)
+
 //Malfunctions
 
 /datum/xenoartifact_trait/malfunction/bear //makes bears
@@ -590,7 +609,7 @@
     ..()
 
 /datum/xenoartifact_trait/malfunction/strip
-    label_name = "Bluespace Axis Desync"
+    label_name = "B.A.D"
     label_desc = "Bluespace Axis Desync: A strange malfunction inside the artifact causes it to shift the target's realspace position with its bluespace mass in an offset manner. This results in the target dropping all they're wearing. This is probably the plot to a very educational movie."
 
 /datum/xenoartifact_trait/malfunction/strip/activate(obj/item/xenoartifact/X, atom/target)
@@ -598,3 +617,21 @@
     var/mob/living/carbon/victim = target
     for(var/obj/item/I in victim.contents)
         victim.dropItemToGround(I)
+
+/datum/xenoartifact_trait/malfunction/limbdenier
+    label_name = "O.E.E"
+    label_desc = "Organic Extrusion Exclusion: A strange malfunction that causes the artifact to sever any extruding organic matter on a given user."
+
+/datum/xenoartifact_trait/malfunction/limbdenier/activate(obj/item/xenoartifact/X, atom/target, atom/user) //Borrowed from self_amputation
+    . = ..()
+    var/list/parts = list()
+    if(istype(user, /mob/living/carbon)) //Shouldn't have to check but, someone will find a way to fuck it.
+        var/mob/living/carbon/victim = user
+        for(var/obj/item/bodypart/BP as() in victim.bodyparts)
+            if(BP.body_part != HEAD && BP.body_part != CHEST)
+                if(BP.dismemberable)
+                    parts += BP
+        if(!parts.len)
+            return
+        var/obj/item/bodypart/BP = pick(parts)
+        BP.dismember()

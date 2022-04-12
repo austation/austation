@@ -1,6 +1,7 @@
 /obj/machinery/computer/xenoartifact_console
     name = "Research and Development Listing Console"
     desc = "A science console used to source sellers, and buyers, for various blacklisted research objects."
+    icon_state = "xenoartifact_console"
     
     var/datum/xenoartifactseller/sellers[8]
     var/datum/xenoartifactseller/buyer/buyers[8]
