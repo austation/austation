@@ -36,27 +36,29 @@
     var/malfunction_chance //Everytime the artifact is used this increases. When this is successfully proc'd the artifact gains a malfunction and this is lowered. 
     var/malfunction_mod = 1 //How much the chance can change in a sinlge itteration
 
-/obj/structure/xenoartifact/Initialize()
+/obj/structure/xenoartifact/Initialize(mapload, difficulty)
     . = ..()
+    material = difficulty
+
     for(var/datum/xenoartifact_trait/T in traits)
         say(T)
         if(!istype(T, /datum/xenoartifact_trait/minor/dense))
             T.on_init(src)
 
-    var/holdthisplease = pick(1, 2, 3, 4)
+    var/holdthisplease = pick(1, 2, 3)
     icon_state = "SB[holdthisplease]"//Base
-    generate_icon(icon, "SBL[holdthisplease]")
-    if(pick(1, 0) || icon_slots[1])//Top
+    generate_icon(icon, "SBL[holdthisplease]", material)
+    if(pick(1, 1, 0) || icon_slots[1])//Top
         if(!(icon_slots[1])) //Some traits can set this too, it will be set to a code that looks like 9XX
-            icon_slots[1] = pick(1, 2)
-        generate_icon(icon, "STP[icon_slots[1]]")
-        generate_icon(icon, "STPL[icon_slots[1]]", material)
+            icon_slots[1] = pick(1, 2, 3)
+        generate_icon(icon, "ST[icon_slots[1]]")
+        generate_icon(icon, "STL[icon_slots[1]]", material)
         
-    if(pick(1, 0) || icon_slots[2])//Bottom
-        if(!(icon_slots[2]))
-            icon_slots[2] = pick(1, 2)
-        generate_icon(icon, "SBTM[icon_slots[2]]")
-        generate_icon(icon, "SBTML[icon_slots[2]]", material)
+        if(pick(1, 1, 0) || icon_slots[2])//Bottom
+            if(!(icon_slots[2]))
+                icon_slots[2] = pick(1, 2, 3)
+            generate_icon(icon, "SBTM[icon_slots[2]]")
+            generate_icon(icon, "SBTML[icon_slots[2]]", material)
 
     if(pick(1, 0) || icon_slots[3])//Left
         if(!(icon_slots[3]))

@@ -142,6 +142,7 @@
     var/list/trait_list = list() //List of traits used to compare and generate modifier.
 
 /obj/item/xenoartifact_label/Initialize()
+    icon_state = "sticker_[pick("star", "box", "tri", "round")]"
     var/sticker_state = "[icon_state]_small"
     sticker_overlay = mutable_appearance(icon, sticker_state)
     sticker_overlay.layer = FLOAT_LAYER

@@ -158,11 +158,10 @@
     blacklist_traits = list(/datum/xenoartifact_trait/minor/wearable, /datum/xenoartifact_trait/minor/sharp)
 
 /datum/xenoartifact_trait/minor/dense/on_init(obj/item/xenoartifact/X)
-    var/obj/structure/xenoartifact/N = new(get_turf(X))
+    var/obj/structure/xenoartifact/N = new(get_turf(X), X.material)
     N.traits = X.traits
     N.charge_req = X.charge_req*1.5
     N.special_desc = X.special_desc
-    N.add_atom_colour(X.material, FIXED_COLOUR_PRIORITY)
     N.touch_desc = X.touch_desc
     N.alpha = X.alpha
     N.price = X.price
@@ -351,7 +350,7 @@
     X.throw_range = 8
 
 /datum/xenoartifact_trait/minor/heavy
-    desc = "heavy"
+    desc = "Heavy"
     label_desc = "Heavy: The Artifact is made from a heavy material. You can't pitch it very far."
     blacklist_traits = list(/datum/xenoartifact_trait/minor/dense)
 
