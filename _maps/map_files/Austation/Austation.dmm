@@ -44048,7 +44048,11 @@
 /obj/structure/window/reinforced{
 	dir = 4
 	},
-/obj/machinery/chem_heater,
+/mob/living/simple_animal/pet/dog/pug{
+	desc = "It's Pugley V, the research department's lovable pug clone. Hopefully nothing happens to this one - fifth time lucky!";
+	name = "Pugley IV";
+	real_name = "Pugley IV"
+	},
 /turf/open/floor/engine,
 /area/science/explab)
 "gdf" = (
@@ -44220,6 +44224,7 @@
 /obj/item/storage/box/monkeycubes,
 /obj/structure/table/glass,
 /obj/item/laser_pointer,
+/obj/item/assembly/signaler,
 /turf/open/floor/plasteel,
 /area/science/explab)
 "giV" = (
@@ -48811,6 +48816,19 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3,
 /turf/open/floor/plasteel,
 /area/science/xenobiology)
+"hXW" = (
+/obj/structure/cable/yellow{
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
+	dir = 4
+	},
+/obj/machinery/holopad,
+/turf/open/floor/plasteel/white,
+/area/science/explab)
 "hYf" = (
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
@@ -67634,9 +67652,6 @@
 /obj/structure/cable/yellow{
 	icon_state = "2-8"
 	},
-/obj/effect/turf_decal/stripes/line{
-	dir = 8
-	},
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/layer1{
 	dir = 4
 	},
@@ -73699,11 +73714,6 @@
 /area/hallway/primary/fore)
 "rsk" = (
 /obj/effect/turf_decal/box/white,
-/mob/living/simple_animal/pet/dog/pug{
-	desc = "It's Pugley IV, the research department's lovable pug clone. Hopefully nothing happens to this one - fourth time lucky!";
-	name = "Pugley IV";
-	real_name = "Pugley IV"
-	},
 /obj/item/xenoartifact,
 /turf/open/floor/engine,
 /area/science/explab)
@@ -88356,6 +88366,7 @@
 	dir = 9
 	},
 /obj/structure/table/glass,
+/obj/item/analyzer,
 /turf/open/floor/plasteel,
 /area/science/explab)
 "wYf" = (
@@ -126876,7 +126887,7 @@ weX
 gcY
 cmU
 eVc
-ncx
+hXW
 haD
 qSf
 dwL

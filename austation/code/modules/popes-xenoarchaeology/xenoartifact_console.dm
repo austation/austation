@@ -1,7 +1,7 @@
 /obj/machinery/computer/xenoartifact_console
     name = "Research and Development Listing Console"
     desc = "A science console used to source sellers, and buyers, for various blacklisted research objects."
-    icon_state = "xenoartifact_console"
+    icon_screen = "xenoartifact_console"
     
     var/datum/xenoartifactseller/sellers[8]
     var/datum/xenoartifactseller/buyer/buyers[8]
@@ -90,7 +90,7 @@
             X.price = S.price
             sellers -= S
             budget.adjust_money(-1*S.price)
-            say("Purchase complete. [budget.account_balance] remaining in Research Budget")
+            say("Purchase complete. [budget.account_balance] credits remaining in Research Budget")
             addtimer(CALLBACK(src, .proc/generate_new_seller), (rand(1,5)*60) SECONDS)
             return
         else if(action == "purchase_[S.unique_id]" && !linked_inbox)
@@ -124,7 +124,9 @@
                 budget.adjust_money(final_price)
                 info = "[X.name] sold at [station_time_timestamp()] for [final_price] credits, bought for [X.price]"
                 sold_artifacts += list(info)
+                say(info)
                 qdel(I)
+                addtimer(CALLBACK(src, .proc/generate_new_buyer), (rand(1,5)*60) SECONDS)
                 return
             else if(istype(I, /obj/structure/xenoartifact))
                 var/obj/structure/xenoartifact/X = I
@@ -134,13 +136,17 @@
                 budget.adjust_money(final_price)
                 info = "[X.name] sold at [station_time_timestamp()] for [final_price] credits, bought for [X.price]"
                 sold_artifacts += list(info)
+                say(info)
                 qdel(I)
+                addtimer(CALLBACK(src, .proc/generate_new_buyer), (rand(1,5)*60) SECONDS)
                 return
             else    
                 final_price = 125*rand(0.3, 1.8) //This may be a point of conflict/balance
                 info = "[I] sold at [station_time_timestamp()] for [final_price]. No further information available."
                 sold_artifacts += list(info)
+                say(info)
                 qdel(I)
+                addtimer(CALLBACK(src, .proc/generate_new_buyer), (rand(1,5)*60) SECONDS)
                 return
 
     update_icon()

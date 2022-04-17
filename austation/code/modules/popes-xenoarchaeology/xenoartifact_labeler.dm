@@ -197,10 +197,15 @@
     name = "Xenoartifact Debug Labeler"      
     desc = "Use to create specific Xenoartifacts" 
 
+/obj/item/xenoartifact_labeler/debug/afterattack(atom/target, mob/user)
+    return
+
 /obj/item/xenoartifact_labeler/debug/create_label(new_name)
     var/obj/item/xenoartifact/A = new(get_turf(src.loc), DEBUGIUM)
     say("Created [A] at [A.loc]")
     A.charge_req = 100
+    A.malfunction_mod = 0
+    A.malfunction_chance = 0
     var/C = 1
     for(var/X in sticker_traits)
         say(X)

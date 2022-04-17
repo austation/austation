@@ -16,6 +16,8 @@
     var/datum/xenoartifact_trait/touch_desc
     var/special_desc = "The Xenoartifact is made from a" //used for special examine circumstance, science goggles
     var/process_type = ""
+    var/code //Used for signaler trait
+    var/frequency //Used for signaler trait
     var/min_desc //Just a holder for examine special_desc from minor traits
 
     var/max_range = 1
@@ -44,7 +46,7 @@
             generate_traits(list(/datum/xenoartifact_trait/minor/sharp, /datum/xenoartifact_trait/minor/radioactive,
                             /datum/xenoartifact_trait/minor/sentient, /datum/xenoartifact_trait/major/sing, 
                             /datum/xenoartifact_trait/major/laser, /datum/xenoartifact_trait/major/bomb,
-                            /datum/xenoartifact_trait/major/handmore))
+                            /datum/xenoartifact_trait/major/handmore, /datum/xenoartifact_trait/major/emp))
             if(!price)
                 price = pick(100, 200, 300)
 
@@ -54,8 +56,9 @@
                             /datum/xenoartifact_trait/major/capture, /datum/xenoartifact_trait/major/timestop,
                             /datum/xenoartifact_trait/major/bomb, /datum/xenoartifact_trait/major/mirrored,
                             /datum/xenoartifact_trait/major/corginator,/datum/xenoartifact_trait/activator/clock,
-                            /datum/xenoartifact_trait/major/invisible,
-                            /datum/xenoartifact_trait/major/handmore))
+                            /datum/xenoartifact_trait/major/invisible,/datum/xenoartifact_trait/major/handmore,
+                            /datum/xenoartifact_trait/major/lamp, /datum/xenoartifact_trait/major/forcefield,
+                            /datum/xenoartifact_trait/activator/signal,/datum/xenoartifact_trait/major/heal))
             if(!price)
                 price = pick(200, 300, 500)
             malfunction_mod = 2
@@ -64,7 +67,8 @@
             generate_traits(list(/datum/xenoartifact_trait/major/sing, /datum/xenoartifact_trait/minor/sharp,
                             /datum/xenoartifact_trait/major/laser, /datum/xenoartifact_trait/major/corginator,
                             /datum/xenoartifact_trait/minor/sentient, /datum/xenoartifact_trait/minor/wearable,
-                            /datum/xenoartifact_trait/major/handmore, /datum/xenoartifact_trait/major/invisible), TRUE) 
+                            /datum/xenoartifact_trait/major/handmore, /datum/xenoartifact_trait/major/invisible,
+                            /datum/xenoartifact_trait/major/heal), TRUE) 
             if(!price)
                 price = pick(300, 500, 800) 
             malfunction_mod = 8
@@ -75,6 +79,7 @@
                 price = pick(500, 800, 1000) 
             malfunction_mod = 0.5
 
+    icon_state = null
     for(var/datum/xenoartifact_trait/T in traits) //This is kinda weird but it stops certain runtime cases. 
         if(istype(T, /datum/xenoartifact_trait/minor/dense))
             T.on_init(src)
@@ -82,9 +87,10 @@
         T.on_init(src)
 
     //Random sprite process, I'd like to maybe revisit this, make it a function. To:Do
-    var/holdthisplease = pick(1, 2, 3)
-    icon_state = "IB[holdthisplease]"//base
-    generate_icon(icon, "IBL[holdthisplease]", material)
+    if(!(icon_state))
+        var/holdthisplease = pick(1, 2, 3)
+        icon_state = "IB[holdthisplease]"//base
+        generate_icon(icon, "IBL[holdthisplease]", material)
     if(pick(1, 0) || icon_slots[1])//Top
         if(!(icon_slots[1])) //Some traits can set this too, it will be set to a code that looks like 901, 908, 905 ect.
             icon_slots[1] = pick(1, 2)
@@ -128,8 +134,8 @@
         return
     for(var/datum/xenoartifact_trait/T in traits)
         if(charge += EASY*T.on_impact(src, user))
-            check_charge(user)
             true_target += list(process_target(user))
+            check_charge(user)
 
 /obj/item/xenoartifact/attack(atom/target, mob/user)
     . = ..()
@@ -143,7 +149,7 @@
 
 /obj/item/xenoartifact/afterattack(atom/target, mob/user, proximity)
     . = ..()
-    if(!(manage_cooldown(TRUE))||proximity) //This proximity check might be considered messy, it's the result of various bugs
+    if(!(manage_cooldown(TRUE))||proximity||get_dist(src, target) > max_range) //This proximity check might be considered messy, it's the result of various bugs
         return
     for(var/datum/xenoartifact_trait/T in traits)
         if(charge += EASY*T.on_impact(src, user))
@@ -198,11 +204,12 @@
         if(get_dist(src, M) > max_range)   
             true_target -= M
     charge = charge + charge_mod
-    if(manage_cooldown(TRUE))
+    if(manage_cooldown(TRUE))//Execution of traits here
         for(var/datum/xenoartifact_trait/minor/T in traits)
             T.activate(src, user, user)
         charge = (charge+charge_req)/1.9 //Not quite an average. Generally produces slightly higher results.     
         for(var/atom/M in true_target)
+            create_beam(M)
             for(var/datum/xenoartifact_trait/malfunction/T in traits)
                 T.activate(src, M, user)
             for(var/datum/xenoartifact_trait/major/T in traits)
@@ -278,10 +285,10 @@
         if(M.pulling && isliving(M.pulling))
             M = M.pulling
         return M
-    return null
+    if(isliving(loc))
+        return loc
 
 /obj/item/xenoartifact/proc/get_trait(typepath) //Returns the desired trait and it's values if it's in the artifact's
-    //return (locate(typepath) in traits)
     for(var/datum/xenoartifact_trait/T in traits)
         if(istype(T, typepath))
             return T
@@ -304,6 +311,36 @@
         return victim.pulling
     return victim
 
+/obj/item/xenoartifact/proc/create_beam(atom/target) //Helps show how the artifact is working. Hint stuff.
+    var/datum/beam/xenoa_beam/B = new(src.loc, target, time=1.5 SECONDS, beam_icon='austation/icons/obj/xenoartifact/xenoartifact.dmi', beam_icon_state="xenoa_beam", btype=/obj/effect/ebeam/xenoa_ebeam, col = material)
+    INVOKE_ASYNC(B, /datum/beam/xenoa_beam.proc/Start)
+
+/obj/item/xenoartifact/receive_signal(datum/signal/signal)
+    if(!(manage_cooldown(TRUE)) || !signal || signal.data["code"] != code)
+        return
+    var/mob/living/M = isliving(signal.source.loc) ? signal.source.loc : null
+    audible_message("[icon2html(src, hearers(src))] *beep* *beep* *beep*", null, 3)
+    playsound(get_turf(src), 'sound/machines/triple_beep.ogg', ASSEMBLY_BEEP_VOLUME, TRUE)
+    for(var/datum/xenoartifact_trait/T in traits)
+        if(charge += EASY*T.on_signal(src))
+            true_target = list(get_proximity(max_range))
+            check_charge(M)
+
+/obj/item/xenoartifact/on_block(mob/living/carbon/human/owner, atom/movable/hitby)
+    . = ..()
+    if(!(manage_cooldown(TRUE)))
+        return
+    for(var/datum/xenoartifact_trait/T in traits)
+        if(charge += EASY*T.on_impact(src))
+            true_target = list(process_target(hitby))
+            check_charge(owner)
+    return
+
+/obj/item/xenoartifact/proc/set_frequency(new_frequency)
+	SSradio.remove_object(src, frequency)
+	frequency = new_frequency
+	SSradio.add_object(src, frequency, RADIO_SIGNALER)
+
 /obj/item/xenoartifact/process(delta_time)
     switch(process_type)
         if("lit")
@@ -322,7 +359,7 @@
             if(manage_cooldown(TRUE))
                 visible_message("<span class='notice'>The [name] ticks.</span>")
                 check_charge()
-                if(prob(15))
+                if(prob(13))
                     process_type = ""
             charge = 0 //Don't really need to do this but, I am skeptical
         else    
@@ -336,3 +373,73 @@
             qdel(C)
     qdel(src)
     ..()
+
+/obj/effect/ebeam/xenoa_ebeam
+    name = "xenoartifact beam"
+
+/obj/effect/ebeam/xenoa_ebeam/New(loc, ..., col)
+    . = ..()
+    color = col
+
+/datum/beam/xenoa_beam
+    var/color
+
+/datum/beam/xenoa_beam/New(beam_origin,beam_target,beam_icon='icons/effects/beam.dmi',beam_icon_state="b_beam",time=50,maxdistance=10,btype = /obj/effect/ebeam,beam_sleep_time=3, col)
+    color = col
+    ..()
+
+/datum/beam/xenoa_beam/Draw()
+	var/Angle = round(Get_Angle(origin,target))
+	var/matrix/rot_matrix = matrix()
+	rot_matrix.Turn(Angle)
+
+	//Translation vector for origin and target
+	var/DX = (32*target.x+target.pixel_x)-(32*origin.x+origin.pixel_x)
+	var/DY = (32*target.y+target.pixel_y)-(32*origin.y+origin.pixel_y)
+	var/N = 0
+	var/length = round(sqrt((DX)**2+(DY)**2)) //hypotenuse of the triangle formed by target and origin's displacement
+
+	for(N in 0 to length-1 step 32)//-1 as we want < not <=, but we want the speed of X in Y to Z and step X
+		if(QDELETED(src) || finished)
+			break
+		var/obj/effect/ebeam/xenoa_ebeam/X = new(origin_oldloc, color)
+		X.owner = src
+		elements += X
+
+		//Assign icon, for main segments it's base_icon, for the end, it's icon+icon_state
+		//cropped by a transparent box of length-N pixel size
+		if(N+32>length)
+			var/icon/II = new(icon, icon_state)
+			II.DrawBox(null,1,(length-N),32,32)
+			X.icon = II
+		else
+			X.icon = base_icon
+		X.transform = rot_matrix
+
+		//Calculate pixel offsets (If necessary)
+		var/Pixel_x
+		var/Pixel_y
+		if(DX == 0)
+			Pixel_x = 0
+		else
+			Pixel_x = round(sin(Angle)+32*sin(Angle)*(N+16)/32)
+		if(DY == 0)
+			Pixel_y = 0
+		else
+			Pixel_y = round(cos(Angle)+32*cos(Angle)*(N+16)/32)
+
+		//Position the effect so the beam is one continous line
+		var/a
+		if(abs(Pixel_x)>32)
+			a = Pixel_x > 0 ? round(Pixel_x/32) : CEILING(Pixel_x/32, 1)
+			X.x += a
+			Pixel_x %= 32
+		if(abs(Pixel_y)>32)
+			a = Pixel_y > 0 ? round(Pixel_y/32) : CEILING(Pixel_y/32, 1)
+			X.y += a
+			Pixel_y %= 32
+
+		X.pixel_x = Pixel_x
+		X.pixel_y = Pixel_y
+		CHECK_TICK
+	afterDraw()
