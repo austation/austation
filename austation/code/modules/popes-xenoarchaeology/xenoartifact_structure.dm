@@ -1,6 +1,7 @@
 /*
     Pretty much a duplicate of the regular item.
-    I just use this space to keep the weird off-shoots. - Pope Francis
+    Look at the item for comment documentation, most of the comments here are just artifacts from the copy paste
+    Use this file to house the weird off-shoot artifacts. 
 */
 
 /obj/structure/xenoartifact //Most of these values are given to the structure when the structure initializes
@@ -41,7 +42,6 @@
     material = difficulty
 
     for(var/datum/xenoartifact_trait/T in traits)
-        say(T)
         if(!istype(T, /datum/xenoartifact_trait/minor/dense))
             T.on_init(src)
 
@@ -123,15 +123,15 @@
         malfunction_chance += malfunction_mod
 
     for(var/atom/M in true_target)
-        say(M)
         if(get_dist(src, M) > max_range)   
             true_target -= M
     charge = charge + charge_mod
-    if(manage_cooldown(TRUE))
+    if(manage_cooldown(TRUE))//Execution of traits here
         for(var/datum/xenoartifact_trait/minor/T in traits)
             T.activate(src, user, user)
         charge = (charge+charge_req)/1.9 //Not quite an average. Generally produces slightly higher results.     
         for(var/atom/M in true_target)
+            create_beam(M)
             for(var/datum/xenoartifact_trait/malfunction/T in traits)
                 T.activate(src, M, user)
             for(var/datum/xenoartifact_trait/major/T in traits)

@@ -1,3 +1,6 @@
+/*
+    true item, please make sure all off-shoots conform to this.
+*/
 /obj/item/xenoartifact
     name = "Xenoartifact"
     icon = 'austation/icons/obj/xenoartifact/xenoartifact.dmi'
@@ -21,13 +24,13 @@
     var/datum/radio_frequency/radio_connection
     var/min_desc //Just a holder for examine special_desc from minor traits
 
-    var/max_range = 1
+    var/max_range = 1 //How far his little arms can reach
     var/list/true_target = list()
     var/usedwhen //holder for worldtime
     var/cooldown = 8 SECONDS //Time between uses
     var/cooldownmod = 0 //Extra time traits can add to the cooldown
 
-    var/icon_slots[4]
+    var/icon_slots[4] //Associated with random sprite stuff, dw
     var/mutable_appearance/icon_overlay
 
     var/modifier = 0.70 //Buying and selling related
@@ -38,7 +41,7 @@
 
 /obj/item/xenoartifact/Initialize(mapload, difficulty)
     . = ..()
-    material = difficulty
+    material = difficulty //Difficulty is set, in some cases, by xenoartifact_console
     if(!material)
         material = pick(BLUESPACE, PLASMA, URANIUM, AUSTRALIUM)
 
@@ -81,13 +84,13 @@
             malfunction_mod = 0.5
 
     icon_state = null
-    for(var/datum/xenoartifact_trait/T in traits) //This is kinda weird but it stops certain runtime cases. 
+    for(var/datum/xenoartifact_trait/T in traits) //This is kinda weird but it stops certain runtime cases, bugs?
         if(istype(T, /datum/xenoartifact_trait/minor/dense))
             T.on_init(src)
     for(var/datum/xenoartifact_trait/T in traits)
         T.on_init(src)
 
-    //Random sprite process, I'd like to maybe revisit this, make it a function. To:Do
+    //Random sprite process, I'd like to maybe revisit this, make it a function. probably don't
     if(!(icon_state))
         var/holdthisplease = pick(1, 2, 3)
         icon_state = "IB[holdthisplease]"//base
@@ -117,13 +120,13 @@
         generate_icon(icon, "IBTML[icon_slots[2]]", material)
 
 /obj/item/xenoartifact/examine(mob/user)
-    for(var/obj/item/clothing/glasses/science/S in user.contents) //This isn't done the best, To:Do
-        to_chat(user, "<span class='notice'>[special_desc]</span>")
     . = ..()
+    for(var/obj/item/clothing/glasses/science/S in user.contents) //This isn't done the best. I wonder If they'll let it sit.
+        to_chat(user, "<span class='notice'>[special_desc]</span>")
 
 /obj/item/xenoartifact/interact(mob/user)
     . = ..()
-    if(process_type == "lit")
+    if(process_type == "lit") //Snuff out candle
         process_type = ""
         set_light(0)
         return
@@ -150,7 +153,7 @@
 
 /obj/item/xenoartifact/afterattack(atom/target, mob/user, proximity)
     . = ..()
-    if(!(manage_cooldown(TRUE))||proximity||get_dist(src, target) > max_range) //This proximity check might be considered messy, it's the result of various bugs
+    if(!(manage_cooldown(TRUE))||proximity||get_dist(src, target) > max_range) //This proximity check might be considered messy, it's the result of various bugs. It works dont break it
         return
     for(var/datum/xenoartifact_trait/T in traits)
         if(charge += EASY*T.on_impact(src, user))
@@ -162,7 +165,7 @@
     if(!(manage_cooldown(TRUE)))
         return
     for(var/datum/xenoartifact_trait/T in traits)
-        if(charge += NORMAL*T.on_impact(src, user))
+        if(charge += NORMAL*T.on_impact(src, user)) //Don't bother doing combat check here, thanks
             true_target += list(process_target(target))
             check_charge(user)
 
@@ -171,7 +174,7 @@
         T.on_item(src, user, I)
     if(!(manage_cooldown(TRUE))||user.a_intent == INTENT_HELP||istype(I, /obj/item/xenoartifact_label)||istype(I, /obj/item/xenoartifact_labeler))
         return
-    var/impact_activator
+    var/impact_activator //Stinky approach
     var/burn_activator
     var/msg = I.ignition_effect(src, user)
     for(var/datum/xenoartifact_trait/T in traits)
@@ -186,34 +189,34 @@
         check_charge(user)
     ..()
 /*
-    check_charge() is essentially what runs all the minor & major trait activations. 
-    This process also culls and irrelivent targets in reference to max_range and calculates the true charge.
+    check_charge() is essentially what runs all the minor, major, and malf trait activations. 
+    This process also culls any irrelivent targets in reference to max_range and calculates the true charge.
     True charge is simply, almost, the average of the charge and charge_req. This allows for a unique varience of 
     output from artifacts, generally producing some funny results too.
     
 */
 /obj/item/xenoartifact/proc/check_charge(mob/user, charge_mod)
-    if(prob(malfunction_chance))
+    if(prob(malfunction_chance)) //See if we pick up an malfunction
         var/datum/xenoartifact_trait/T = pick(subtypesof(/datum/xenoartifact_trait/malfunction))
         traits[6] = new T
         malfunction_chance = malfunction_chance*0.2
     else    
         malfunction_chance += malfunction_mod
 
-    for(var/atom/M in true_target)
-        say(M)
+    for(var/atom/M in true_target) //Cull
         if(get_dist(src, M) > max_range)   
             true_target -= M
+
     charge = charge + charge_mod
     if(manage_cooldown(TRUE))//Execution of traits here
-        for(var/datum/xenoartifact_trait/minor/T in traits)
+        for(var/datum/xenoartifact_trait/minor/T in traits)//Minor traits aren't apart of the target loop
             T.activate(src, user, user)
         charge = (charge+charge_req)/1.9 //Not quite an average. Generally produces slightly higher results.     
         for(var/atom/M in true_target)
             create_beam(M)
-            for(var/datum/xenoartifact_trait/malfunction/T in traits)
+            for(var/datum/xenoartifact_trait/malfunction/T in traits) //Malf
                 T.activate(src, M, user)
-            for(var/datum/xenoartifact_trait/major/T in traits)
+            for(var/datum/xenoartifact_trait/major/T in traits) //Major
                 T.activate(src, M, user)
             if(!(get_trait(/datum/xenoartifact_trait/minor/aura))) //Quick fix for bug that selects multiple targets for noraisin
                 break
@@ -238,16 +241,18 @@
     The argument passed is a list of blacklisted traits you don't your artifact to have, allowing
     for a defenition of artifact types.
     The process also generates some partial hints, like a touch description and science-glasses desrection(special_desc)
+    malf is an option to nab a malfunction trait on init. See URANIUM types.
 */
 /obj/item/xenoartifact/proc/generate_traits(var/list/blacklist_traits, malf = FALSE)
     var/datum/xenoartifact_trait/new_trait
+
     while(!(new_trait) || (new_trait in blacklist_traits)) //Activator
         new_trait = pick(subtypesof(/datum/xenoartifact_trait/activator))
     traits[1] = new new_trait
     blacklist_traits += list(traits[1].blacklist_traits)
     blacklist_traits += list(new_trait)
     new_trait = null
-    special_desc = traits[1].desc ? "[special_desc] [traits[1].desc]" : "[special_desc]" //ternary operator chilling, what will he do?
+    special_desc = traits[1].desc ? "[special_desc] [traits[1].desc]" : "[special_desc]"
 
     var/minor_desc
     for(var/X in 2 to 4)//Minors
@@ -281,11 +286,9 @@
     blacklist_traits += list(traits[6].blacklist_traits)
     new_trait = null
     
-/obj/item/xenoartifact/proc/get_proximity(range)
+/obj/item/xenoartifact/proc/get_proximity(range) //Gets a singular bam beano
     for(var/mob/living/M in range(range, get_turf(src)))
-        if(M.pulling && isliving(M.pulling))
-            M = M.pulling
-        return M
+        return process_target(M)
     if(isliving(loc))
         return loc
 
@@ -295,16 +298,16 @@
             return T
     return FALSE
 
-/obj/item/xenoartifact/proc/generate_icon(var/icn, var/icnst = "", colour) //Add extra icon components
+/obj/item/xenoartifact/proc/generate_icon(var/icn, var/icnst = "", colour) //Add extra icon overlays
     icon_overlay = mutable_appearance(icn, icnst)
     icon_overlay.layer = FLOAT_LAYER
-    icon_overlay.appearance_flags = RESET_ALPHA// Not doing this fucks the alpha
+    icon_overlay.appearance_flags = RESET_ALPHA// Not doing this fucks the alpha?
     icon_overlay.alpha = alpha//
     if(colour)
         icon_overlay.color = colour
     src.add_overlay(icon_overlay)
 
-/obj/item/xenoartifact/proc/process_target(atom/target)
+/obj/item/xenoartifact/proc/process_target(atom/target) //Hand holding is the best defence
     if(!istype(target, /mob/living))
         return target
     var/mob/living/victim = target
@@ -316,7 +319,7 @@
     var/datum/beam/xenoa_beam/B = new(src.loc, target, time=1.5 SECONDS, beam_icon='austation/icons/obj/xenoartifact/xenoartifact.dmi', beam_icon_state="xenoa_beam", btype=/obj/effect/ebeam/xenoa_ebeam, col = material)
     INVOKE_ASYNC(B, /datum/beam/xenoa_beam.proc/Start)
 
-/obj/item/xenoartifact/proc/default_activate(chr, mob/user) //used for some stranger cases. Item specific cases that don't fall under the default templates.
+/obj/item/xenoartifact/proc/default_activate(chr, mob/user) //used for some stranger cases. Item specific cases that don't fall under the default templates. See battery activator.
     if(!(manage_cooldown(TRUE)))
         return
     charge = chr
@@ -378,7 +381,7 @@
                 check_charge()
                 if(prob(13))
                     process_type = ""
-            charge = 0 //Don't really need to do this but, I am skeptical
+            charge = 0 //Don't really need to do this but, I am skeptical it may fix my bug. Coming back later, don't remeber if it did, too scared to change it now.
         else    
             return PROCESS_KILL
 
@@ -391,11 +394,11 @@
     qdel(src)
     ..()
 
-/obj/item/xenoartifact/maint //Semi-Toddler-safe version for maint loot.
+/obj/item/xenoartifact/maint //Semi-toddler-safe version for maint loot.
     material = BLUESPACE
 
 /obj/item/xenoartifact/maint/Initialize(mapload, difficulty)
-    if(prob(1)) //1% chance to not be assistant friendly
+    if(prob(0.1))
         material = pick(PLASMA, URANIUM, AUSTRALIUM)
     ..()
 

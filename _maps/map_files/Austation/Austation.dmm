@@ -10718,6 +10718,8 @@
 "aYl" = (
 /obj/structure/rack,
 /obj/effect/spawner/lootdrop/techstorage/rnd,
+/obj/item/circuitboard/computer/xenoartifact_console,
+/obj/item/circuitboard/machine/xenoartifact_inbox,
 /turf/open/floor/plasteel/dark,
 /area/storage/tech)
 "aYm" = (
@@ -50167,7 +50169,7 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/door/airlock/research{
-	name = "Xenoartifact Lab";
+	name = "Xenoarchaeology Lab";
 	req_access_txt = "8"
 	},
 /obj/effect/turf_decal/tile/purple{
@@ -68388,7 +68390,7 @@
 /area/maintenance/starboard/fore)
 "pjR" = (
 /obj/machinery/door/airlock/maintenance{
-	name = "Xenoartifact  Lab Maintenance";
+	name = "Xenoarchaeology  Lab Maintenance";
 	req_access_txt = "8"
 	},
 /obj/structure/cable/yellow{

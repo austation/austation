@@ -3,6 +3,22 @@
 	icon_state = "science"
 	build_path = /obj/machinery/computer/xenoartifact_console
 
+/obj/item/circuitboard/machine/xenoartifact_inbox
+    name = "Bluespace Straythread Pad (Machine Board)"
+    icon_state = "science"
+    build_path = /obj/machinery/xenoartifact_inbox
+    req_components = list(
+        /obj/item/stack/ore/bluespace_crystal = 1,
+        /obj/item/stock_parts/capacitor = 1,
+        /obj/item/stock_parts/manipulator = 1,
+        /obj/item/stack/cable_coil = 1)
+    def_components = list(/obj/item/stack/ore/bluespace_crystal = /obj/item/stack/ore/bluespace_crystal/artificial)
+
+/*
+    Current bandaid for shipping artifacts. Don't get too attached.
+    This code, and labeler, are probably the most problematic.
+*/
+
 /obj/machinery/computer/xenoartifact_console
     name = "Research and Development Listing Console"
     desc = "A science console used to source sellers, and buyers, for various blacklisted research objects."
@@ -17,11 +33,13 @@
     var/current_tab_info = "Here you can find listings for various research samples, usually fresh from the field. These samples aren't distrubuted by the Nanotrasen affiliated cargo system, so instead listing data is sourced from stray bluespace-threads."
     var/obj/machinery/xenoartifact_inbox/linked_inbox
     var/list/linked_machines = list()
+    var/datum/techweb/linked_techweb
     var/list/sold_artifacts = list() //Actually just a general list of items you've sold, name is a legacy thing
     var/datum/bank_account/budget
 
 /obj/machinery/computer/xenoartifact_console/Initialize()
     . = ..()
+    linked_techweb = SSresearch.science_tech
     budget = SSeconomy.get_dep_account(ACCOUNT_SCI)
     for(var/I in 1 to 8)
         sellers[I] = new /datum/xenoartifactseller
@@ -123,12 +141,13 @@
                     break
             if(avoidtimewaste)
                 return
-            if(istype(I, /obj/item/xenoartifact))
+            if(istype(I, /obj/item/xenoartifact)) //This and it's brother is pretty iffy
                 var/obj/item/xenoartifact/X = I
                 final_price = X.modifier*X.price
                 if(final_price < 0) //No modulate?
                     final_price = X.price*0.1
                 budget.adjust_money(final_price)
+                linked_techweb.add_point_type(TECHWEB_POINT_TYPE_DEFAULT, final_price*10)
                 info = "[X.name] sold at [station_time_timestamp()] for [final_price] credits, bought for [X.price]"
                 sold_artifacts += list(info)
                 say(info)
@@ -141,6 +160,7 @@
                 if(final_price < 0)
                     final_price = X.price*0.1
                 budget.adjust_money(final_price)
+                linked_techweb.add_point_type(TECHWEB_POINT_TYPE_DEFAULT, final_price*10)
                 info = "[X.name] sold at [station_time_timestamp()] for [final_price] credits, bought for [X.price]"
                 sold_artifacts += list(info)
                 say(info)
@@ -186,6 +206,7 @@
     desc = "This machine takes advantage of bluespace thread manipulation to highjack in-coming and out-going bluespace signals. Science uses it to deliver their very legal purchases." //All very sciencey
     icon = 'icons/obj/telescience.dmi'
     icon_state = "qpad-idle"
+    circuit = /obj/item/circuitboard/machine/xenoartifact_inbox
     var/linked_console
 
 /obj/machinery/xenoartifact_inbox/proc/get_item_prox(var/dist) //Returns a list of items & strucutres, name is funked
