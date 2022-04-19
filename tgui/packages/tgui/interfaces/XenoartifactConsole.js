@@ -22,13 +22,14 @@ export const XenoartifactConsole = (props, context) => {
         <Box>
           <Section title={`Research and Development`} fluid
             buttons={(
-            <Box fontFamily="verdana" inline bold>
-              <AnimatedNumber
-                value={points}
-                format={value => formatMoney(value)} />
-              {' credits'}
-            </Box>
-          )}>
+              <Box fontFamily="verdana" inline bold>
+                <AnimatedNumber
+                  value={points}
+                  format={value => formatMoney(value)} />
+                  {'credits'}
+              </Box>
+            )}
+          >
             <BlockQuote>
               {`${tab_info}`}
             </BlockQuote>
@@ -65,7 +66,8 @@ const XenoartifactConsoleTabs = (props, context) => {
       <Tabs.Tab 
         selected={current_tab === tab_name}
         onClick={() => act(`set_tab_${tab_name}`
-      )}>
+        )}
+      >
         {`${tab_name}`}
       </Tabs.Tab>
     </Box>
