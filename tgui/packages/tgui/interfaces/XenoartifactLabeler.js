@@ -34,24 +34,24 @@ const XenoartifactLabelerActivators = (props, context) => {
         <Section title="Material">
           <Box>
             {
-              activator_traits.map(trait => (<XenoartifactLabelerGenerateList specific_trait={trait} 
-                check_against={activator} trait_type="activator" />))
+              activator_traits.map(trait => (<XenoartifactLabelerGenerateList 
+                specific_trait={trait} check_against={activator} trait_type="activator" />))
             }
           </Box>
         </Section>
         <Section title="Notes">
           <Box>
             {
-              minor_traits.map(trait => (<XenoartifactLabelerGenerateList specific_trait={trait} 
-                check_against={minor_trait} trait_type="minor" />))
+              minor_traits.map(trait => (<XenoartifactLabelerGenerateList 
+                specific_trait={trait} check_against={minor_trait} trait_type="minor" />))
             }
           </Box>
         </Section>
         <Section title="Shape">
           <Box>
             {
-              major_traits.map(trait => (<XenoartifactLabelerGenerateList specific_trait={trait} 
-                check_against={major_trait} trait_type="major" />))
+              major_traits.map(trait => (<XenoartifactLabelerGenerateList 
+                specific_trait={trait} check_against={major_trait} trait_type="major" />))
             }
           </Box>
         </Section>

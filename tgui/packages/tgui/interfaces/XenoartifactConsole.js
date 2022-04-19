@@ -150,7 +150,7 @@ export const XenoartifactSell = (props, context) => {
         </Button>
       </Section>
       {buyers.map(details => (<XenoartifactListingSell name={details.name} 
-      dialogue={details.dialogue} price={details.price} id={details.id} />))}
+        dialogue={details.dialogue} price={details.price} id={details.id} />))}
     </Box>
   );
 };
