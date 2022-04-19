@@ -177,6 +177,8 @@
     blacklist_traits = list(/datum/xenoartifact_trait/minor/wearable, /datum/xenoartifact_trait/minor/sharp)
 
 /datum/xenoartifact_trait/minor/dense/on_init(obj/item/xenoartifact/X)
+    if(istype(X, /obj/structure/xenoartifact))
+        return
     var/obj/structure/xenoartifact/N = new(get_turf(X), X.material)
     N.traits = X.traits
     N.charge_req = X.charge_req*1.5
