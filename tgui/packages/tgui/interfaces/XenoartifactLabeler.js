@@ -7,10 +7,10 @@ export const XenoartifactLabeler = (props, context) => {
     <Window        
     width={350}
     height={500}>
-      <Window.Content scrollable>
-        <XenoartifactLabelerSticker/>
-        <XenoartifactLabelerActivators/>
-      </Window.Content>
+        <Window.Content scrollable>
+            <XenoartifactLabelerSticker/>
+            <XenoartifactLabelerActivators/>
+        </Window.Content>
     </Window>
   );
 };

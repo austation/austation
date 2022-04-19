@@ -19,33 +19,33 @@ export const XenoartifactConsole = (props, context) => {
         width={800}
         height={500}>
         <Window.Content scrollable>
-                <Box>
-                    <Section title={`Research and Development`} fluid
-                        buttons = {(
-                        <Box fontFamily="verdana" inline bold>
-                            <AnimatedNumber
-                                value={points}
-                                format={value => formatMoney(value)} />
-                            {' credits'}
-                        </Box>
-                    )}>
-                        <BlockQuote>
-                            {`${tab_info}`}
-                        </BlockQuote>
-                    </Section>
-                    <Tabs row>
-                        {tab_index.map(tab_name => <XenoartifactConsoleTabs tab_name = {tab_name}/>)}
-                    </Tabs>
-                    {current_tab === "Listings" && (
-                        sellers.map(details => <XenoartifactListingBuy name = {details.name} dialogue = {details.dialogue} price = {details.price} id = {details.id}/>)
-                    )}
-                    {current_tab === "Linking" && (
-                        <XenoartifactLinking/>
-                    )}
-                    {current_tab === "Export" && (
-                        <XenoartifactSell/>
-                    )}
-                </Box>
+            <Box>
+                <Section title={`Research and Development`} fluid
+                    buttons = {(
+                    <Box fontFamily="verdana" inline bold>
+                        <AnimatedNumber
+                            value={points}
+                            format={value => formatMoney(value)} />
+                        {' credits'}
+                    </Box>
+                )}>
+                    <BlockQuote>
+                        {`${tab_info}`}
+                    </BlockQuote>
+                </Section>
+                <Tabs row>
+                    {tab_index.map(tab_name => <XenoartifactConsoleTabs tab_name = {tab_name}/>)}
+                </Tabs>
+                {current_tab === "Listings" && (
+                    sellers.map(details => <XenoartifactListingBuy name = {details.name} dialogue = {details.dialogue} price = {details.price} id = {details.id}/>)
+                )}
+                {current_tab === "Linking" && (
+                    <XenoartifactLinking/>
+                )}
+                {current_tab === "Export" && (
+                    <XenoartifactSell/>
+                )}
+            </Box>
         </Window.Content>
         </Window>
     );
