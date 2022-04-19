@@ -29,7 +29,7 @@ const XenoartifactLabelerActivators = (props, context) => {
     info_list,
   } = data;
   return (
-    <Flex grow = {1}>
+    <Flex grow={1}>
       <Flex.Item column>
         <Section title="Material">
           <Box>
@@ -61,7 +61,7 @@ const XenoartifactLabelerActivators = (props, context) => {
         </Section>
       </Flex.Item>
       <Flex.Item column>
-        <Box fluid px = {1}>
+        <Box fluid px={1}>
             {info_list.map(info => <XenoartifactLabelerGenerateInfo info = {info}/>)}
         </Box>
       </Flex.Item>

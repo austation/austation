@@ -13,7 +13,7 @@ export const XenoartifactConsole = (props, context) => {
     tab_info,
     points,
   } = data;
-  const sellers = toArray(data.seller);
+  const sellers=toArray(data.seller);
   return (
     <Window
       width={800}
@@ -21,7 +21,7 @@ export const XenoartifactConsole = (props, context) => {
       <Window.Content scrollable>
         <Box>
           <Section title={`Research and Development`} fluid
-            buttons = {(
+            buttons={(
             <Box fontFamily="verdana" inline bold>
               <AnimatedNumber
                 value={points}
@@ -63,7 +63,7 @@ const XenoartifactConsoleTabs = (props, context) => {
   return (
     <Box>
       <Tabs.Tab 
-        selected = {current_tab === tab_name}
+        selected={current_tab === tab_name}
         onClick={() => act(`set_tab_${tab_name}`
       )}>
         {`${tab_name}`}
@@ -142,11 +142,11 @@ export const XenoartifactSell = (props, context) => {
         <Collapsible title = "Portfolio">
           {sold_artifacts.map(item => <Section><BlockQuote>{`${item}`}</BlockQuote></Section>)}
         </Collapsible>
-        <Button onClick={() => act(`sell`)} p = {.5}>
+        <Button onClick={() => act(`sell`)} p={.5}>
           Export pad contents. <Icon name="shopping-cart"/>
         </Button>
       </Section>
-      {buyers.map(details => <XenoartifactListingSell name = {details.name} dialogue = {details.dialogue} price = {details.price} id = {details.id}/>)}
+      {buyers.map(details => <XenoartifactListingSell name={details.name} dialogue={details.dialogue} price={details.price} id={details.id}/>)}
     </Box>
   );
 };
