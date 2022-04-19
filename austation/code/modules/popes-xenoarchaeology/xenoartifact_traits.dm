@@ -1,3 +1,7 @@
+/*
+    I'd rather not document all this.
+    ;)
+*/
 /datum/xenoartifact_trait
     var/desc //Acts as a descriptor for when examining. Also used for naming stuff in the labeler. Keep these short.
     var/label_name //Used when labeler needs a name and trait is too sneaky to have a descriptor when examining.
