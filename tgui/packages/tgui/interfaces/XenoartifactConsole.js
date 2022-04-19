@@ -6,7 +6,7 @@ import { formatMoney } from '../format';
 import { Window } from '../layouts';
 
 export const XenoartifactConsole = (props, context) => {
-    const { act, data } = useBackend(context);
+    const{ act, data } = useBackend(context);
     const{
         tab_index,
         current_tab,
