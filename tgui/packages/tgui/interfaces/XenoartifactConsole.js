@@ -126,7 +126,8 @@ export const XenoartifactLinking = (props, context) => {
       </Button>
       {
         linked_machines.map(machine => (<Section p={1}>
-          {`${machine} connection established.`} </Section>))
+          {`${machine} connection established.`} 
+        </Section>))
       }
     </Box>
   );
