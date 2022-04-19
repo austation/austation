@@ -391,7 +391,6 @@
             C.forceMove(get_turf(loc))
         else
             qdel(C)
-    qdel(src)
     ..()
 
 /obj/item/xenoartifact/maint //Semi-toddler-safe version for maint loot.
