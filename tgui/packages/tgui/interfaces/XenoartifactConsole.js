@@ -1,7 +1,7 @@
 import { map, toArray } from 'common/collections';
 import { classes } from 'common/react';
 import { useBackend } from '../backend';
-import {Box, Tabs, Section, Flex, Button, BlockQuote, Icon, Collapsible, AnimatedNumber} from '../components';
+import { Box, Tabs, Section, Flex, Button, BlockQuote, Icon, Collapsible, AnimatedNumber } from '../components';
 import { formatMoney } from '../format';
 import { Window } from '../layouts';
 
