@@ -26,19 +26,18 @@ export const XenoartifactConsole = (props, context) => {
                 <AnimatedNumber
                   value={points}
                   format={value => formatMoney(value)} />
-                  {'credits'}
+                {'credits'}
               </Box>
-            )}
-          >
+            )}>
             <BlockQuote>
               {`${tab_info}`}
             </BlockQuote>
           </Section>
           <Tabs row>
-            {tab_index.map(tab_name => <XenoartifactConsoleTabs tab_name = {tab_name}/>)}
+            {tab_index.map(tab_name => <XenoartifactConsoleTabs tab_name={tab_name}/>)}
           </Tabs>
           {current_tab === "Listings" && (
-            sellers.map(details => <XenoartifactListingBuy name = {details.name} dialogue = {details.dialogue} price = {details.price} id = {details.id}/>)
+            sellers.map(details => <XenoartifactListingBuy name={details.name} dialogue={details.dialogue} price={details.price} id={details.id}/>)
           )}
           {current_tab === "Linking" && (
             <XenoartifactLinking/>
@@ -58,8 +57,8 @@ const XenoartifactConsoleTabs = (props, context) => {
     tab_index,
     current_tab,
   } = data;
-  const{
-    tab_name,
+  const {
+    tab_name
   } = props;
   return (
     <Box>
@@ -81,7 +80,7 @@ export const XenoartifactListingBuy = (props, context) => {
     dialogue,
     price,
     id,
-  } = props
+  } = props;
   return (
     <Box p={.5}>
       <Section>
@@ -126,7 +125,7 @@ export const XenoartifactLinking = (props, context) => {
         Link nearby machines. <Icon name="sync"/>
       </Button>
       {
-        linked_machines.map(machine => <Section p = {1}>{`${machine} connection established.`}</Section>)
+        linked_machines.map(machine => <Section p={1}>{`${machine} connection established.`}</Section>)
       }
     </Box>
   );
@@ -136,7 +135,7 @@ export const XenoartifactSell = (props, context) => {
   const { act, data } = useBackend(context);
   const {
     sold_artifacts,
-  } = data
+  } = data;
   const buyers = toArray(data.buyer);
   return (
     <Box p={.5}>

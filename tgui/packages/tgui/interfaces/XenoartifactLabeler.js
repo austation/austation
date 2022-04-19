@@ -62,14 +62,14 @@ const XenoartifactLabelerActivators = (props, context) => {
       </Flex.Item>
       <Flex.Item column>
         <Box fluid px={1}>
-            {info_list.map(info => <XenoartifactLabelerGenerateInfo info = {info}/>)}
+            {info_list.map(info => <XenoartifactLabelerGenerateInfo info={info}/>)}
         </Box>
       </Flex.Item>
     </Flex>
   );
 };
 
-const XenoartifactLabelerGenerateList = (props, context,) => {
+const XenoartifactLabelerGenerateList = (props, context) => {
   const { act } = useBackend(context);
   const {
     specific_trait,
@@ -78,12 +78,12 @@ const XenoartifactLabelerGenerateList = (props, context,) => {
   } = props;
   return (
     <Box>
-      <Button.Checkbox content = {specific_trait} checked={check_against.includes(specific_trait)} onClick={() => act(`assign_${trait_type}_${specific_trait}`)}/>
+      <Button.Checkbox content={specific_trait} checked={check_against.includes(specific_trait)} onClick={() => act(`assign_${trait_type}_${specific_trait}`)}/>
     </Box>
   );
   };
 
-const XenoartifactLabelerGenerateInfo = (props, context,) => {
+const XenoartifactLabelerGenerateInfo = (props, context) => {
   const { act } = useBackend(context);
   const {
     info
@@ -101,7 +101,7 @@ const XenoartifactLabelerGenerateInfo = (props, context,) => {
 
 const XenoartifactLabelerSticker = (props, context) => {
   const { act } = useBackend(context);
-  return (
+  return ( 
     <Box>
       <Input placeholder = "Label Name..." onChange={(e, input) => act('change_print_name', {name: input})}/>
       <Button content = "Print" onClick={() => act("print_traits")}/>
