@@ -184,6 +184,10 @@
         return victim.pulling
     return victim
 
+/obj/structure/xenoartifact/proc/create_beam(atom/target) //Helps show how the artifact is working. Hint stuff.
+    var/datum/beam/xenoa_beam/B = new(src.loc, target, time=1.5 SECONDS, beam_icon='austation/icons/obj/xenoartifact/xenoartifact.dmi', beam_icon_state="xenoa_beam", btype=/obj/effect/ebeam/xenoa_ebeam, col = material)
+    INVOKE_ASYNC(B, /datum/beam/xenoa_beam.proc/Start)
+
 /obj/structure/xenoartifact/process(delta_time)
     switch(process_type)
         if("lit")

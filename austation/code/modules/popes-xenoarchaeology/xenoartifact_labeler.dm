@@ -7,7 +7,7 @@
     throw_range = 5
     w_class = WEIGHT_CLASS_TINY
 
-    var/list/activator = list(null) //Checked component.
+    var/list/activator = list(null) //Checked trait
     var/list/activator_traits = list() //Display names
 
     var/list/minor_trait = list(null, null, null)
@@ -19,14 +19,14 @@
     var/list/malfunction = list(null)
     var/list/malfunction_list = list()  
 
-    var/list/info_list = list() 
+    var/list/info_list = list() //trait dialogue essentially
 
-    var/sticker_name
+    var/sticker_name //Name artifacts something pretty
     var/list/sticker_traits = list()//passed down to sticker
 
 /obj/item/xenoartifact_labeler/Initialize()
     . = ..()
-    get_trait_list_desc(activator_traits, /datum/xenoartifact_trait/activator)
+    get_trait_list_desc(activator_traits, /datum/xenoartifact_trait/activator) //I forgot why this is alone here. Once again, I'd rather not change shit now.
 
 /obj/item/xenoartifact_labeler/interact(mob/user)
     //ui_interact(user, "XenoartifactLabeler")
@@ -62,7 +62,6 @@
 
     if(action == "print_traits")
         create_label(sticker_name)
-        //reset all lists
 
     if(action == "change_print_name")
         sticker_name = params["name"]
@@ -80,11 +79,11 @@
         var/datum/xenoartifact_trait/X = new T
         if(X.desc && !(X.desc in traits) && !(X.label_name))
             traits += list(X.desc)
-        else if(X.label_name && !(X.label_name in traits)) //For cases where the trait doesn't have a desc
+        else if(X.label_name && !(X.label_name in traits)) //For cases where the trait doesn't have a desc or is tool cool to use one
             traits += list(X.label_name)
     return traits
 
-/obj/item/xenoartifact_labeler/proc/look_for(list/place, culprit) //This isn't really needed but, It's easier to use as a function
+/obj/item/xenoartifact_labeler/proc/look_for(list/place, culprit) //This isn't really needed but, It's easier to use as a function. What does this even do?
     for(var/X in place)
         if(X == culprit)
             return TRUE
@@ -93,8 +92,8 @@
 /obj/item/xenoartifact_labeler/afterattack(atom/target, mob/user)
     ..()
     var/obj/item/xenoartifact_label/P = create_label(sticker_name)
-    if(!P.afterattack(target, user))
-        del(P)
+    if(!P.afterattack(target, user)) //In the circumstance the sticker fails, usually means you're doing something you shouldn't be
+        qdel(P)
 
 /obj/item/xenoartifact_labeler/proc/create_label(new_name)
     var/obj/item/xenoartifact_label/P = new /obj/item/xenoartifact_label/(get_turf(src))
