@@ -37,8 +37,8 @@ export const XenoartifactConsole = (props, context) => {
             {tab_index.map(tab_name => <XenoartifactConsoleTabs tab_name={tab_name} />)}
           </Tabs>
           {current_tab === "Listings" && (
-            sellers.map(details => <XenoartifactListingBuy name={details.name} dialogue={details.dialogue} 
-            price={details.price} id={details.id} />)
+            sellers.map(details => (<XenoartifactListingBuy name={details.name} 
+              dialogue={details.dialogue} price={details.price} id={details.id} />))
           )}
           {current_tab === "Linking" && (
             <XenoartifactLinking />
@@ -125,8 +125,9 @@ export const XenoartifactLinking = (props, context) => {
         Link nearby machines. <Icon name="sync" />
       </Button>
       {
-        linked_machines.map(machine => <Section p={1}>
-        {`${machine} connection established.`}</Section>)
+        linked_machines.map(machine => (<Section p={1}>
+          {`${machine} connection established.`}
+                                        </Section>))
       }
     </Box>
   );
@@ -148,8 +149,8 @@ export const XenoartifactSell = (props, context) => {
           Export pad contents. <Icon name="shopping-cart" />
         </Button>
       </Section>
-      {buyers.map(details => <XenoartifactListingSell name={details.name} 
-      dialogue={details.dialogue} price={details.price} id={details.id}/>)}
+      {buyers.map(details => (<XenoartifactListingSell name={details.name} 
+        dialogue={details.dialogue} price={details.price} id={details.id} />))}
     </Box>
   );
 };
