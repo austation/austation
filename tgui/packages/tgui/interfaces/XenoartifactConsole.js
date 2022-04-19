@@ -35,12 +35,12 @@ export const XenoartifactConsole = (props, context) => {
           </Section>
           <Tabs row>
             {tab_index.map(tab_name => (<XenoartifactConsoleTabs 
-              tab_name={tab_name} />))}
+              tab_name={tab_name} key={tab_name} />))}
           </Tabs>
           {current_tab === "Listings" && (
             sellers.map(details => (<XenoartifactListingBuy 
               name={details.name} dialogue={details.dialogue} 
-              price={details.price} 
+              price={details.price} key={details.name}
               id={details.id} />))
           )}
           {current_tab === "Linking" && (
@@ -127,12 +127,9 @@ export const XenoartifactLinking = (props, context) => {
       <Button onClick={() => act(`link_nearby`)}>
         Link nearby machines. <Icon name="sync" />
       </Button>
-      {
-        linked_machines.map(machine => (
-          <Section p={1}>
-            {`${machine} connection established.`} 
-          </Section>))
-      }
+      {linked_machines.map(machine => (
+        <Section p={1} key={machine}>{`${machine} connection established.`}
+        </Section>))}
     </Box>
   );
 };
@@ -147,15 +144,21 @@ export const XenoartifactSell = (props, context) => {
     <Box p={.5}>
       <Section>
         <Collapsible title="Portfolio">
-          {sold_artifacts.map(item => 
-            <Section><BlockQuote>{`${item}`}</BlockQuote></Section>)}
+          {sold_artifacts.map(item => (
+            <Section key={item}>
+              <BlockQuote>
+                {`${item}`}
+              </BlockQuote>
+            </Section>))}
         </Collapsible>
         <Button onClick={() => act(`sell`)} p={.5}>
           Export pad contents. <Icon name="shopping-cart" />
         </Button>
       </Section>
-      {buyers.map(details => (<XenoartifactListingSell name={details.name} 
-        dialogue={details.dialogue} price={details.price} id={details.id} />))}
+      {buyers.map(details => (<XenoartifactListingSell 
+        key={details}
+        name={details.name} dialogue={details.dialogue} price={details.price} 
+        id={details.id} />))}
     </Box>
   );
 };

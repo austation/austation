@@ -35,7 +35,7 @@ const XenoartifactLabelerActivators = (props, context) => {
           <Box>
             {
               activator_traits.map(trait => (<XenoartifactLabelerGenerateList 
-                specific_trait={trait} check_against={activator} 
+                specific_trait={trait} check_against={activator} key={trait}
                 trait_type="activator" />))
             }
           </Box>
@@ -44,7 +44,7 @@ const XenoartifactLabelerActivators = (props, context) => {
           <Box>
             {
               minor_traits.map(trait => (<XenoartifactLabelerGenerateList 
-                specific_trait={trait} check_against={minor_trait} 
+                specific_trait={trait} check_against={minor_trait} key={trait}
                 trait_type="minor" />))
             }
           </Box>
@@ -53,7 +53,7 @@ const XenoartifactLabelerActivators = (props, context) => {
           <Box>
             {
               major_traits.map(trait => (<XenoartifactLabelerGenerateList 
-                specific_trait={trait} check_against={major_trait} 
+                specific_trait={trait} check_against={major_trait} key={trait} 
                 trait_type="major" />))
             }
           </Box>
@@ -62,7 +62,9 @@ const XenoartifactLabelerActivators = (props, context) => {
           <Box>
             {
               malfunction_list.map(trait => (<XenoartifactLabelerGenerateList 
-                specific_trait={trait} check_against={malfunction} trait_type="malfunction" />))
+                key={trait}
+                specific_trait={trait} check_against={malfunction} 
+                trait_type="malfunction" />))
             }
           </Box>
         </Section>
@@ -70,7 +72,7 @@ const XenoartifactLabelerActivators = (props, context) => {
       <Flex.Item column>
         <Box fluid px={1}>
           {info_list.map(info => 
-            <XenoartifactLabelerGenerateInfo info={info} />)}
+            <XenoartifactLabelerGenerateInfo info={info} key={info} />)}
         </Box>
       </Flex.Item>
     </Flex>
