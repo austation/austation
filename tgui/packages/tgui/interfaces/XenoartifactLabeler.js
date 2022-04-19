@@ -35,7 +35,8 @@ const XenoartifactLabelerActivators = (props, context) => {
           <Box>
             {
               activator_traits.map(trait => (<XenoartifactLabelerGenerateList 
-                specific_trait={trait} check_against={activator} trait_type="activator" />))
+                specific_trait={trait} check_against={activator} 
+                trait_type="activator" />))
             }
           </Box>
         </Section>
@@ -43,7 +44,8 @@ const XenoartifactLabelerActivators = (props, context) => {
           <Box>
             {
               minor_traits.map(trait => (<XenoartifactLabelerGenerateList 
-                specific_trait={trait} check_against={minor_trait} trait_type="minor" />))
+                specific_trait={trait} check_against={minor_trait} 
+                trait_type="minor" />))
             }
           </Box>
         </Section>
@@ -51,22 +53,24 @@ const XenoartifactLabelerActivators = (props, context) => {
           <Box>
             {
               major_traits.map(trait => (<XenoartifactLabelerGenerateList 
-                specific_trait={trait} check_against={major_trait} trait_type="major" />))
+                specific_trait={trait} check_against={major_trait} 
+                trait_type="major" />))
             }
           </Box>
         </Section>
         <Section title="Malfunction">
           <Box>
             {
-              malfunction_list.map(trait => (<XenoartifactLabelerGenerateList specific_trait={trait} 
-                check_against={malfunction} trait_type="malfunction" />))
+              malfunction_list.map(trait => (<XenoartifactLabelerGenerateList 
+                specific_trait={trait} check_against={malfunction} trait_type="malfunction" />))
             }
           </Box>
         </Section>
       </Flex.Item>
       <Flex.Item column>
         <Box fluid px={1}>
-          {info_list.map(info => <XenoartifactLabelerGenerateInfo info={info} />)}
+          {info_list.map(info => 
+            <XenoartifactLabelerGenerateInfo info={info} />)}
         </Box>
       </Flex.Item>
     </Flex>
@@ -82,8 +86,9 @@ const XenoartifactLabelerGenerateList = (props, context) => {
   } = props;
   return (
     <Box>
-      <Button.Checkbox content={specific_trait} checked={check_against.includes(specific_trait)} onClick={() =>
-        act(`assign_${trait_type}_${specific_trait}`)} />
+      <Button.Checkbox content={specific_trait} 
+        checked={check_against.includes(specific_trait)} onClick={() =>
+          act(`assign_${trait_type}_${specific_trait}`)} />
     </Box>
   );
 };

@@ -34,11 +34,14 @@ export const XenoartifactConsole = (props, context) => {
             </BlockQuote>
           </Section>
           <Tabs row>
-            {tab_index.map(tab_name => <XenoartifactConsoleTabs tab_name={tab_name} />)}
+            {tab_index.map(tab_name => (<XenoartifactConsoleTabs 
+              tab_name={tab_name} />))}
           </Tabs>
           {current_tab === "Listings" && (
-            sellers.map(details => (<XenoartifactListingBuy name={details.name} 
-              dialogue={details.dialogue} price={details.price} id={details.id} />))
+            sellers.map(details => (<XenoartifactListingBuy 
+              name={details.name} dialogue={details.dialogue} 
+              price={details.price} 
+              id={details.id} />))
           )}
           {current_tab === "Linking" && (
             <XenoartifactLinking />
@@ -125,9 +128,10 @@ export const XenoartifactLinking = (props, context) => {
         Link nearby machines. <Icon name="sync" />
       </Button>
       {
-        linked_machines.map(machine => (<Section p={1}>
-          {`${machine} connection established.`} 
-        </Section>))
+        linked_machines.map(machine => (
+          <Section p={1}>
+            {`${machine} connection established.`} 
+          </Section>))
       }
     </Box>
   );
@@ -143,7 +147,8 @@ export const XenoartifactSell = (props, context) => {
     <Box p={.5}>
       <Section>
         <Collapsible title="Portfolio">
-          {sold_artifacts.map(item => <Section><BlockQuote>{`${item}`}</BlockQuote></Section>)}
+          {sold_artifacts.map(item => 
+            <Section><BlockQuote>{`${item}`}</BlockQuote></Section>)}
         </Collapsible>
         <Button onClick={() => act(`sell`)} p={.5}>
           Export pad contents. <Icon name="shopping-cart" />
