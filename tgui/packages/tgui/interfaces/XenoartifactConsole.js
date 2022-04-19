@@ -6,8 +6,8 @@ import { formatMoney } from '../format';
 import { Window } from '../layouts';
 
 export const XenoartifactConsole = (props, context) => {
-  const{ act, data } = useBackend(context);
-  const{
+  const { act, data } = useBackend(context);
+  const {
     tab_index,
     current_tab,
     tab_info,
@@ -16,8 +16,8 @@ export const XenoartifactConsole = (props, context) => {
   const sellers = toArray(data.seller);
   return (
     <Window
-    width={800}
-    height={500}>
+      width={800}
+      height={500}>
       <Window.Content scrollable>
         <Box>
           <Section title={`Research and Development`} fluid
@@ -53,7 +53,7 @@ export const XenoartifactConsole = (props, context) => {
 
 const XenoartifactConsoleTabs = (props, context) => {
   const { act, data } = useBackend(context);
-  const{
+  const {
     tab_index,
     current_tab,
   } = data;
@@ -74,7 +74,7 @@ const XenoartifactConsoleTabs = (props, context) => {
 
 export const XenoartifactListingBuy = (props, context) => {
   const { act, data } = useBackend(context);
-  const{
+  const {
     name,
     dialogue,
     price,
@@ -97,7 +97,7 @@ export const XenoartifactListingBuy = (props, context) => {
 
 export const XenoartifactListingSell = (props, context) => {
   const { act, data } = useBackend(context);
-  const{
+  const {
     name,
     dialogue,
   } = props
@@ -115,7 +115,7 @@ export const XenoartifactListingSell = (props, context) => {
 
 export const XenoartifactLinking = (props, context) => {
   const { act, data } = useBackend(context);
-  const{
+  const {
     linked_machines,
   } = data
   return (
@@ -132,7 +132,7 @@ export const XenoartifactLinking = (props, context) => {
 
 export const XenoartifactSell = (props, context) => {
   const { act, data } = useBackend(context);
-  const{
+  const {
     sold_artifacts,
   } = data
   const buyers = toArray(data.buyer);
