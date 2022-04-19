@@ -34,16 +34,16 @@ export const XenoartifactConsole = (props, context) => {
             </BlockQuote>
           </Section>
           <Tabs row>
-            {tab_index.map(tab_name => <XenoartifactConsoleTabs tab_name={tab_name}/>)}
+            {tab_index.map(tab_name => <XenoartifactConsoleTabs tab_name={tab_name} />)}
           </Tabs>
           {current_tab === "Listings" && (
-            sellers.map(details => <XenoartifactListingBuy name={details.name} dialogue={details.dialogue} price={details.price} id={details.id}/>)
+            sellers.map(details => <XenoartifactListingBuy name={details.name} dialogue={details.dialogue} price={details.price} id={details.id} />)
           )}
           {current_tab === "Linking" && (
-            <XenoartifactLinking/>
+            <XenoartifactLinking />
           )}
           {current_tab === "Export" && (
-            <XenoartifactSell/>
+            <XenoartifactSell />
           )}
         </Box>
       </Window.Content>
@@ -58,15 +58,14 @@ const XenoartifactConsoleTabs = (props, context) => {
     current_tab,
   } = data;
   const {
-    tab_name
+    tab_name,
   } = props;
   return (
     <Box>
       <Tabs.Tab 
         selected={current_tab === tab_name}
         onClick={() => act(`set_tab_${tab_name}`
-        )}
-      >
+        )}>
         {`${tab_name}`}
       </Tabs.Tab>
     </Box>
@@ -89,7 +88,7 @@ export const XenoartifactListingBuy = (props, context) => {
           {`${dialogue}`}
         </BlockQuote>
         <Button onClick={() => act(`purchase_${id}`)}>
-            {`Purchase: ${price} credits.`} <Icon name="shopping-cart"/>
+          {`Purchase: ${price} credits.`} <Icon name="shopping-cart" />
         </Button>
       </Section>
     </Box>
@@ -101,7 +100,7 @@ export const XenoartifactListingSell = (props, context) => {
   const {
     name,
     dialogue,
-  } = props
+  } = props;
   return (
     <Box p={.5}>
       <Section>
@@ -118,11 +117,11 @@ export const XenoartifactLinking = (props, context) => {
   const { act, data } = useBackend(context);
   const {
     linked_machines,
-  } = data
+  } = data;
   return (
     <Box p={.5}>
       <Button onClick={() => act(`link_nearby`)}>
-        Link nearby machines. <Icon name="sync"/>
+        Link nearby machines. <Icon name="sync" />
       </Button>
       {
         linked_machines.map(machine => <Section p={1}>{`${machine} connection established.`}</Section>)
@@ -140,14 +139,14 @@ export const XenoartifactSell = (props, context) => {
   return (
     <Box p={.5}>
       <Section>
-        <Collapsible title = "Portfolio">
+        <Collapsible title="Portfolio">
           {sold_artifacts.map(item => <Section><BlockQuote>{`${item}`}</BlockQuote></Section>)}
         </Collapsible>
         <Button onClick={() => act(`sell`)} p={.5}>
-          Export pad contents. <Icon name="shopping-cart"/>
+          Export pad contents. <Icon name="shopping-cart" />
         </Button>
       </Section>
-      {buyers.map(details => <XenoartifactListingSell name={details.name} dialogue={details.dialogue} price={details.price} id={details.id}/>)}
+      {buyers.map(details => <XenoartifactListingSell name={details.name} dialogue={details.dialogue} price={details.price} id={details.id} />)}
     </Box>
   );
 };
