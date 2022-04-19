@@ -1,4 +1,5 @@
 import { map, toArray } from 'common/collections';
+import { classes } from 'common/react';
 import { useBackend } from '../backend';
 import {Box, Tabs, Section, Flex, Button, BlockQuote, Icon, Collapsible, AnimatedNumber} from '../components';
 import { formatMoney } from '../format';
@@ -9,7 +10,6 @@ export const XenoartifactConsole = (props, context) => {
     const{
         tab_index,
         current_tab,
-        budget,
         tab_info,
         points,
     } = data;

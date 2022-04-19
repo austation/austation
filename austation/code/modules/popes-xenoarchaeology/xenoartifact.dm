@@ -6,7 +6,7 @@
     heat = 1000 //I think I set this for on_burn stuff?
     light_color = LIGHT_COLOR_FIRE
     desc = "A strange alien artifact. What could it possibly do?"
-
+    throw_range = 4
     
     var/charge = 0 //How much input the artifact is getting from activator traits
     var/charge_req //This isn't a requirement anymore. This just affects how effective the charge is
@@ -17,7 +17,8 @@
     var/special_desc = "The Xenoartifact is made from a" //used for special examine circumstance, science goggles
     var/process_type = ""
     var/code //Used for signaler trait
-    var/frequency //Used for signaler trait
+    var/frequency
+    var/datum/radio_frequency/radio_connection
     var/min_desc //Just a holder for examine special_desc from minor traits
 
     var/max_range = 1
@@ -38,7 +39,7 @@
 /obj/item/xenoartifact/Initialize(mapload, difficulty)
     . = ..()
     material = difficulty
-    if(!difficulty)
+    if(!material)
         material = pick(BLUESPACE, PLASMA, URANIUM, AUSTRALIUM)
 
     switch(material)
@@ -174,7 +175,7 @@
     var/burn_activator
     var/msg = I.ignition_effect(src, user)
     for(var/datum/xenoartifact_trait/T in traits)
-        if(charge += NORMAL*T.on_impact(src, user, I.force))
+        if(charge += NORMAL*T.on_impact(src, user, I.force, I))
             impact_activator = TRUE
         if(msg)
             if(charge += NORMAL*T.on_burn(src, user, I.heat))
@@ -315,6 +316,27 @@
     var/datum/beam/xenoa_beam/B = new(src.loc, target, time=1.5 SECONDS, beam_icon='austation/icons/obj/xenoartifact/xenoartifact.dmi', beam_icon_state="xenoa_beam", btype=/obj/effect/ebeam/xenoa_ebeam, col = material)
     INVOKE_ASYNC(B, /datum/beam/xenoa_beam.proc/Start)
 
+/obj/item/xenoartifact/proc/default_activate(chr, mob/user) //used for some stranger cases. Item specific cases that don't fall under the default templates.
+    if(!(manage_cooldown(TRUE)))
+        return
+    charge = chr
+    if(user)
+        true_target += list(user)
+        check_charge(user)
+        return
+    true_target += list(get_proximity(max_range))
+    check_charge()
+
+/obj/item/xenoartifact/proc/set_frequency(new_frequency)
+	SSradio.remove_object(src, frequency)
+	frequency = new_frequency
+	radio_connection = SSradio.add_object(src, frequency, RADIO_SIGNALER)
+
+/obj/item/xenoartifact/proc/send_signal(var/datum/signal/signal)
+    if(!radio_connection||!signal)
+        return
+    radio_connection.post_signal(src, signal)
+
 /obj/item/xenoartifact/receive_signal(datum/signal/signal)
     if(!(manage_cooldown(TRUE)) || !signal || signal.data["code"] != code)
         return
@@ -323,7 +345,7 @@
     playsound(get_turf(src), 'sound/machines/triple_beep.ogg', ASSEMBLY_BEEP_VOLUME, TRUE)
     for(var/datum/xenoartifact_trait/T in traits)
         if(charge += EASY*T.on_signal(src))
-            true_target = list(get_proximity(max_range))
+            true_target += list(get_proximity(max_range))
             check_charge(M)
 
 /obj/item/xenoartifact/on_block(mob/living/carbon/human/owner, atom/movable/hitby)
@@ -332,19 +354,14 @@
         return
     for(var/datum/xenoartifact_trait/T in traits)
         if(charge += EASY*T.on_impact(src))
-            true_target = list(process_target(hitby))
+            true_target += list(process_target(hitby))
             check_charge(owner)
     return
-
-/obj/item/xenoartifact/proc/set_frequency(new_frequency)
-	SSradio.remove_object(src, frequency)
-	frequency = new_frequency
-	SSradio.add_object(src, frequency, RADIO_SIGNALER)
 
 /obj/item/xenoartifact/process(delta_time)
     switch(process_type)
         if("lit")
-            true_target = list(get_proximity(max_range))
+            true_target += list(get_proximity(max_range))
             charge = NORMAL*traits[1].on_burn(src) 
             if(manage_cooldown(TRUE) && true_target.len >= 1 && get_proximity(max_range))
                 set_light(0)
@@ -353,7 +370,7 @@
                 process_type = ""
                 return PROCESS_KILL
         if("tick")
-            true_target = list(get_proximity(max_range))
+            true_target += list(get_proximity(max_range))
             if(manage_cooldown(TRUE))
                 charge += NORMAL*traits[1].on_impact(src) 
             if(manage_cooldown(TRUE))
@@ -372,6 +389,14 @@
         else
             qdel(C)
     qdel(src)
+    ..()
+
+/obj/item/xenoartifact/maint //Semi-Toddler-safe version for maint loot.
+    material = BLUESPACE
+
+/obj/item/xenoartifact/maint/Initialize(mapload, difficulty)
+    if(prob(1)) //1% chance to not be assistant friendly
+        material = pick(PLASMA, URANIUM, AUSTRALIUM)
     ..()
 
 /obj/effect/ebeam/xenoa_ebeam

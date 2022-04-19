@@ -1,7 +1,14 @@
+/obj/item/circuitboard/computer/xenoartifact_console
+	name = "Research and Development Listing Console (Computer Board)"
+	icon_state = "science"
+	build_path = /obj/machinery/computer/xenoartifact_console
+
 /obj/machinery/computer/xenoartifact_console
     name = "Research and Development Listing Console"
     desc = "A science console used to source sellers, and buyers, for various blacklisted research objects."
     icon_screen = "xenoartifact_console"
+    icon_keyboard = "rd_key"
+    circuit = /obj/item/circuitboard/computer/xenoartifact_console
     
     var/datum/xenoartifactseller/sellers[8]
     var/datum/xenoartifactseller/buyer/buyers[8]
@@ -160,6 +167,7 @@
     var/datum/xenoartifactseller/buyer/B = new
     B.generate()
     buyers += B
+    addtimer(CALLBACK(src, .proc/qdel, B), (rand(1,5)*60) SECONDS)
 
 /obj/machinery/computer/xenoartifact_console/proc/sync_devices()
     for(var/obj/machinery/xenoartifact_inbox/I in oview(3,src))
@@ -223,6 +231,10 @@
             difficulty = AUSTRALIUM
     price = price * rand(1.0, 1.5) //Measure of error for no particular reason
     unique_id = "[rand(1,100)][rand(1,100)][rand(1,100)]:[world.time]" //I feel like Ive missed an easier way to do this
+    addtimer(CALLBACK(src, .proc/change_item), (rand(1,3)*60) SECONDS)
+
+/datum/xenoartifactseller/proc/change_item()
+    generate()
 
 /datum/xenoartifactseller/buyer 
     var/obj/buying
@@ -235,3 +247,4 @@
     else if(buying == /obj/structure/xenoartifact)
         dialogue = "[name] is requesting: artifact::structure-class"
     unique_id = "[rand(1,100)][rand(1,100)][rand(1,100)]:[world.time]"
+    addtimer(CALLBACK(src, .proc/change_item), (rand(1,3)*60) SECONDS)

@@ -50,7 +50,7 @@
     charge = 25
 
 /datum/xenoartifact_trait/activator/burn/on_burn(obj/item/xenoartifact/X, atom/user, heat)
-    if(X.process_type != "lit" && X.manage_cooldown(TRUE)) //If it hasn't been activated yet
+    if(X.process_type != "lit" && X.manage_cooldown(TRUE)) //Generally artifact should handle cooldown schmuck. Please don't do this.
         sleep(1 SECONDS)
         X.visible_message("<span class='danger'>The [X.name] sparks on.</span>")
         sleep(2 SECONDS)
@@ -87,7 +87,7 @@
 /datum/xenoartifact_trait/activator/signal
     label_name = "Signal"
     label_desc = "Signal: The material recieves radio frequencies and reacts when a matching code is delivered."
-    charge = 32
+    charge = 25
 
 /datum/xenoartifact_trait/activator/signal/on_init(obj/item/xenoartifact/X)
     . = ..()
@@ -98,12 +98,27 @@
 
 /datum/xenoartifact_trait/activator/signal/on_item(obj/item/xenoartifact/X, atom/user, atom/item)
     if(istype(item, /obj/item/analyzer))
-        to_chat(user, "<span class='info'>The [item.name] returns a signal code of [X.code], and frequency [X.frequency].</span>")
+        to_chat(user, "<span class='info'>The [item.name] displays a signal-input code of [X.code], and frequency [X.frequency].</span>")
         return TRUE
     ..()
 
 /datum/xenoartifact_trait/activator/signal/on_signal(obj/item/xenoartifact/X)
     return charge
+
+/datum/xenoartifact_trait/activator/batteryneed
+    desc = "Charged"
+    label_desc = "Charged: The material has a natural power draw. Supplying any current to this will cause a reaction."
+    charge = 25
+
+/datum/xenoartifact_trait/activator/batteryneed/on_item(obj/item/xenoartifact/X, atom/user, atom/item)
+    if(istype(item, /obj/item/multitool))
+        to_chat(user, "<span class='info'>The [item.name] displays a draw of [X.charge_req].</span>")
+        return TRUE
+    else if(istype(item, /obj/item/stock_parts/cell))
+        var/obj/item/stock_parts/cell/C = item
+        C.charge -= X.charge_req*10
+        X.default_activate(charge, user)
+        return TRUE
 
 //Minor traits - Some of these can be good but, don't forget to just have a bunch of lame ones too
 
@@ -305,6 +320,9 @@
     for(var/mob/living/M in orange(min(X.max_range, 5), get_turf(X.loc)))
         if(!(M in X.true_target))
             X.true_target += M
+    for(var/obj/item/M in orange(min(X.max_range, 5), get_turf(X.loc)))
+        if(!(M in X.true_target) && !(M.anchored))
+            X.true_target += M
     ..()
 
 /datum/xenoartifact_trait/minor/long //Essentially makes the artifact a ranged wand. Makes barreled useful, let's you shoot shit.
@@ -343,7 +361,7 @@
 /datum/xenoartifact_trait/minor/light
     desc = "Light"
     label_desc = "Light: The Artifact is made from a light material. You can pitch it pretty far."
-    blacklist_traits = list(/datum/xenoartifact_trait/minor/dense)
+    blacklist_traits = list(/datum/xenoartifact_trait/minor/dense, /datum/xenoartifact_trait/minor/heavy)
 
 /datum/xenoartifact_trait/minor/light/on_init(obj/item/xenoartifact/X)
     . = ..()
@@ -352,11 +370,32 @@
 /datum/xenoartifact_trait/minor/heavy
     desc = "Heavy"
     label_desc = "Heavy: The Artifact is made from a heavy material. You can't pitch it very far."
-    blacklist_traits = list(/datum/xenoartifact_trait/minor/dense)
+    blacklist_traits = list(/datum/xenoartifact_trait/minor/dense, /datum/xenoartifact_trait/minor/light)
 
 /datum/xenoartifact_trait/minor/heavy/on_init(obj/item/xenoartifact/X)
     . = ..()
     X.throw_range = 2
+
+/datum/xenoartifact_trait/minor/signalsend
+    label_name = "Signaler"
+    label_desc = "Signaler: The Artifact sends out a signal everytime it's activated."
+
+/datum/xenoartifact_trait/minor/signalsend/on_item(obj/item/xenoartifact/X, atom/user, atom/item)
+    if(istype(item, /obj/item/analyzer))
+        to_chat(user, "<span class='info'>The [item.name] displays a signal-output code of [X.code], and frequency [X.frequency].</span>")
+        return TRUE
+    ..()
+
+/datum/xenoartifact_trait/minor/signalsend/on_init(obj/item/xenoartifact/X)
+    . = ..()
+    X.code = rand(1, 100)
+    X.frequency = FREQ_SIGNALER
+    X.set_frequency(X.frequency)
+
+/datum/xenoartifact_trait/minor/signalsend/activate(obj/item/xenoartifact/X)
+    . = ..()
+    var/datum/signal/signal = new(list("code" = X.code))
+    X.send_signal(signal)
     
 //Major traits - The artifact's main gimmick, how it interacts with the world
 
@@ -626,7 +665,7 @@
 
 /datum/xenoartifact_trait/major/handmore
     desc = "Limbed"
-    label_desc = "Limped: Seperate limbs sprout from the artifact. The shape resembles your favourite fantasy monster."
+    label_desc = "Limped: Seperate limbs sprout from the Artifact. The shape resembles your favourite fantasy monster."
 
 /datum/xenoartifact_trait/major/handmore/activate(obj/item/xenoartifact/X, atom/target, atom/user)
     . = ..()
@@ -642,7 +681,7 @@
 
 /datum/xenoartifact_trait/major/lamp
     label_name = "Lamp"
-    label_desc = "Lamp: The artifact emits light. Nothing in its shape suggests this."
+    label_desc = "Lamp: The Artifact emits light. Nothing in its shape suggests this."
     var/light_mod
     var/light_color
 
@@ -669,7 +708,7 @@
 
 /datum/xenoartifact_trait/major/lamp/dark
     label_name = "Shade"
-    label_desc = "Shade: The artifact retracts light. Nothing in its shape suggests this."
+    label_desc = "Shade: The Artifact retracts light. Nothing in its shape suggests this."
 
 /datum/xenoartifact_trait/major/lamp/dark/on_init(obj/item/xenoartifact/X)
     X.light_system = MOVABLE_LIGHT
@@ -695,7 +734,7 @@
 
 /datum/xenoartifact_trait/major/forcefield
     label_name = "Wall"
-    label_desc = "Wall: The artifact produces a resonance that forms impenetrable walls. Here's one you'll never crawl!"
+    label_desc = "Wall: The Artifact produces a resonance that forms impenetrable walls. Here's one you'll never crawl!"
     var/size
 
 /datum/xenoartifact_trait/major/forcefield/on_init(obj/item/xenoartifact/X)
@@ -716,11 +755,11 @@
     X.cooldownmod = (X.charge*0.3) SECONDS
     
 /obj/effect/forcefield/xenoartifact_type
-    desc = "An impenetrable artifact wall."
+    desc = "An impenetrable Artifact wall."
 
 /datum/xenoartifact_trait/major/heal
     label_name = "Healing"
-    label_desc = "Healing: The artifact repeairs any damaged organic tissue the targat may contain. Widely considered the Holy Grail of artifact traits."
+    label_desc = "Healing: The Artifact repeairs any damaged organic tissue the targat may contain. Widely considered the Holy Grail of Artifact traits."
     var/healing_type
 
 /datum/xenoartifact_trait/major/heal/on_init(obj/item/xenoartifact/X)
@@ -744,7 +783,7 @@
 
 /datum/xenoartifact_trait/major/chem
     desc = "Tubed"
-    label_desc = "Tubed: The artifact's shape is comprised of many twisting tubes and vials, it seems a liquid may be inside."
+    label_desc = "Tubed: The Artifact's shape is comprised of many twisting tubes and vials, it seems a liquid may be inside."
     var/datum/reagent/formula
     var/amount
 
@@ -766,7 +805,7 @@
     if(istype(target, /mob/living)||istype(target, /obj/item))
         var/atom/movable/victim = target
         var/atom/trg = get_edge_target_turf(X.loc, get_dir(X.loc, target.loc))
-        victim.throw_at(get_turf(trg), (X.charge*0.07)+1, 15)
+        victim.throw_at(get_turf(trg), (X.charge*0.07)+1, 8)
 
 /datum/xenoartifact_trait/major/pull
     label_name = "Pull"
@@ -775,13 +814,31 @@
 /datum/xenoartifact_trait/major/pull/activate(obj/item/xenoartifact/X, atom/target)
     if(istype(target, /mob/living)||istype(target, /obj/item))
         var/atom/movable/victim = target
-        victim.throw_at(get_turf(X), X.charge*0.08, 15)
+        victim.throw_at(get_turf(X), X.charge*0.08, 8)
+
+/datum/xenoartifact_trait/major/horn
+    desc = "Horned"
+    label_name = "Horn"
+    label_desc = "Horn: The Artifact's shape resembles a horn. These Artifacts are widely deployed by the most clever clowns."
+    var/sound
+
+/datum/xenoartifact_trait/major/horn/on_init(obj/item/xenoartifact/X)
+    . = ..()
+    sound = pick(list('sound/effects/adminhelp.ogg', 'sound/effects/applause.ogg', 'sound/effects/bubbles.ogg', 
+                    'sound/effects/empulse.ogg', 'sound/effects/explosion1.ogg', 'sound/effects/explosion_distant.ogg',
+                    'sound/effects/laughtrack.ogg', 'sound/effects/magic.ogg', 'sound/effects/meteorimpact.ogg',
+                    'sound/effects/phasein.ogg', 'sound/effects/supermatter.ogg', 'sound/weapons/armbomb.ogg',
+                    'sound/weapons/blade1.ogg'))
+
+/datum/xenoartifact_trait/major/horn/activate(obj/item/xenoartifact/X, atom/target, atom/user)
+    . = ..()
+    playsound(get_turf(target), sound, 18, TRUE)
 
 //Malfunctions
 
 /datum/xenoartifact_trait/malfunction/bear //makes bears
     label_name = "P.B.R" 
-    label_desc = "Parralel bearspace retrieval: A strange malfunction causes the artifact to open a gateway to deep bearspace."
+    label_desc = "Parralel bearspace retrieval: A strange malfunction causes the Artifact to open a gateway to deep bearspace."
 
 /datum/xenoartifact_trait/malfunction/bear/activate(obj/item/xenoartifact/X)
     if(!prob(33))
@@ -793,7 +850,7 @@
 
 /datum/xenoartifact_trait/malfunction/badtarget
     label_name = "Maltargetting"
-    label_desc = "Maltargetting: A strange malfunction that causes the artifact to always target the original user."
+    label_desc = "Maltargetting: A strange malfunction that causes the Artifact to always target the original user."
 
 /datum/xenoartifact_trait/malfunction/badtarget/activate(obj/item/xenoartifact/X, atom/target, atom/user)
     var/mob/living/M = user
@@ -802,7 +859,7 @@
 
 /datum/xenoartifact_trait/malfunction/strip
     label_name = "B.A.D"
-    label_desc = "Bluespace Axis Desync: A strange malfunction inside the artifact causes it to shift the target's realspace position with its bluespace mass in an offset manner. This results in the target dropping all they're wearing. This is probably the plot to a very educational movie."
+    label_desc = "Bluespace Axis Desync: A strange malfunction inside the Artifact causes it to shift the target's realspace position with its bluespace mass in an offset manner. This results in the target dropping all they're wearing. This is probably the plot to a very educational movie."
 
 /datum/xenoartifact_trait/malfunction/strip/activate(obj/item/xenoartifact/X, atom/target)
     . = ..()
@@ -812,7 +869,7 @@
 
 /datum/xenoartifact_trait/malfunction/limbdenier
     label_name = "O.E.E"
-    label_desc = "Organic Extrusion Exclusion: A strange malfunction that causes the artifact to sever any extruding organic matter on a given user."
+    label_desc = "Organic Extrusion Exclusion: A strange malfunction that causes the Artifact to sever any extruding organic matter on a given user."
 
 /datum/xenoartifact_trait/malfunction/limbdenier/activate(obj/item/xenoartifact/X, atom/target, atom/user) //Borrowed from self_amputation
     . = ..()

@@ -79,6 +79,7 @@ GLOBAL_LIST_INIT(maintenance_loot, list(
 	/obj/item/storage/box = 2,
 	/obj/item/storage/box/cups = 1,
 	/obj/item/storage/box/stycups = 2, //austation - i have no idea how to add a var to this i.e. modularisation, please yell at me if there's a better way
+    /obj/item/xenoartifact/maint = 4, //AuStation - I, however, do. I simply refuse to do so.
 	/obj/item/storage/box/donkpockets = 1,
 	/obj/item/storage/box/lights/mixed = 3,
 	/obj/item/storage/box/hug/medical = 1,

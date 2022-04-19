@@ -202,7 +202,7 @@
             if(manage_cooldown(TRUE))
                 visible_message("<span class='notice'>The [name] ticks.</span>")
                 check_charge()
-                if(prob(15))
+                if(prob(13))
                     process_type = ""
             charge = 0 //Don't really need to do this but, I am skeptical
         else    

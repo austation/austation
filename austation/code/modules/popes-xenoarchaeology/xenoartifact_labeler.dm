@@ -78,7 +78,7 @@
 /obj/item/xenoartifact_labeler/proc/get_trait_list_desc(list/traits, trait_type)//Get a list of all the specified trait types names, actually
     for(var/T in typesof(trait_type))
         var/datum/xenoartifact_trait/X = new T
-        if(X.desc && !(X.desc in traits)) //Don't think checking for null is needed here?
+        if(X.desc && !(X.desc in traits) && !(X.label_name))
             traits += list(X.desc)
         else if(X.label_name && !(X.label_name in traits)) //For cases where the trait doesn't have a desc
             traits += list(X.label_name)
