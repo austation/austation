@@ -19,7 +19,8 @@
     var/special_desc = "The Xenoartifact is made from a" //used for special examine circumstance, science goggles
     var/process_type = ""
     var/code //Used for signaler trait
-    var/frequency //Used for signaler trait
+    var/frequency
+    var/datum/radio_frequency/radio_connection
     var/min_desc //Just a holder for examine special_desc from minor traits
 
     var/max_range = 1
@@ -188,7 +189,7 @@
     var/datum/beam/xenoa_beam/B = new(src.loc, target, time=1.5 SECONDS, beam_icon='austation/icons/obj/xenoartifact/xenoartifact.dmi', beam_icon_state="xenoa_beam", btype=/obj/effect/ebeam/xenoa_ebeam, col = material)
     INVOKE_ASYNC(B, /datum/beam/xenoa_beam.proc/Start)
 
-/obj/strucutre/xenoartifact/proc/set_frequency(new_frequency)
+/obj/structure/xenoartifact/proc/set_frequency(new_frequency)
 	SSradio.remove_object(src, frequency)
 	frequency = new_frequency
 	radio_connection = SSradio.add_object(src, frequency, RADIO_SIGNALER)
