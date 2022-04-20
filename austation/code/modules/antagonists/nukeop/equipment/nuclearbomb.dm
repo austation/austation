@@ -13,3 +13,10 @@
 		sad.desc = "You tried.."
 		playsound(src, 'sound/misc/sadtrombone.ogg', 50) // :(
 	return TRUE
+
+/obj/machinery/nuclearbomb/Initialize(mapload)
+	var/turf/T = get_turf(src)
+	if(GLOB.master_mode == "siege" && is_centcom_level(T.z))
+		new /obj/machinery/siege_spawner(src)
+		qdel(src)
+	..()
