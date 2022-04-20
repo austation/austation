@@ -1,0 +1,4 @@
+author: "Phil Smith"
+delete-after: True
+changes: 
+  - rscadd: "Cargo can now order 5 plushies in a crate"
