@@ -1,0 +1,4 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - bugfix: "you can no longer bypass the spam detection system by spamming emotes"
