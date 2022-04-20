@@ -1,0 +1,4 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - bugfix: "The ninja's energy katana now gets properly deleted when the ninja is killed."
