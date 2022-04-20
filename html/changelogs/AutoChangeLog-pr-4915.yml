@@ -1,0 +1,4 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - balance: "People can no longer be paralyzed by sonic effects while deaf"
