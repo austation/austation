@@ -167,7 +167,7 @@
 
 /datum/xenoartifact_trait/minor/capacitive/on_item(obj/item/xenoartifact/X, atom/user, atom/item)
     if(istype(item, /obj/item/multitool))
-        to_chat(user, "<span class='info'>The [item.name] displays a charge reading of [charges/3].</span>") 
+        to_chat(user, "<span class='info'>The [item.name] displays an overcharge reading of [charges/3].</span>") 
         return TRUE
     ..()
 
@@ -177,8 +177,8 @@
     blacklist_traits = list(/datum/xenoartifact_trait/minor/wearable, /datum/xenoartifact_trait/minor/sharp)
 
 /datum/xenoartifact_trait/minor/dense/on_init(obj/item/xenoartifact/X)
-    if(istype(X, /obj/structure/xenoartifact))
-        return
+    //if(istype(X,  /obj/structure/xenoartifact)) This isn't needed.
+        //return
     var/obj/structure/xenoartifact/N = new(get_turf(X), X.material)
     N.traits = X.traits
     N.charge_req = X.charge_req*1.5

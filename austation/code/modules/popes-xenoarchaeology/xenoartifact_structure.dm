@@ -188,6 +188,27 @@
     var/datum/beam/xenoa_beam/B = new(src.loc, target, time=1.5 SECONDS, beam_icon='austation/icons/obj/xenoartifact/xenoartifact.dmi', beam_icon_state="xenoa_beam", btype=/obj/effect/ebeam/xenoa_ebeam, col = material)
     INVOKE_ASYNC(B, /datum/beam/xenoa_beam.proc/Start)
 
+/obj/strucutre/xenoartifact/proc/set_frequency(new_frequency)
+	SSradio.remove_object(src, frequency)
+	frequency = new_frequency
+	radio_connection = SSradio.add_object(src, frequency, RADIO_SIGNALER)
+
+/obj/structure/xenoartifact/proc/send_signal(var/datum/signal/signal)
+    if(!radio_connection||!signal)
+        return
+    radio_connection.post_signal(src, signal)
+
+/obj/structure/xenoartifact/receive_signal(datum/signal/signal)
+    if(!(manage_cooldown(TRUE)) || !signal || signal.data["code"] != code)
+        return
+    var/mob/living/M = isliving(signal.source.loc) ? signal.source.loc : null
+    audible_message("[icon2html(src, hearers(src))] *beep* *beep* *beep*", null, 3)
+    playsound(get_turf(src), 'sound/machines/triple_beep.ogg', ASSEMBLY_BEEP_VOLUME, TRUE)
+    for(var/datum/xenoartifact_trait/T in traits)
+        if(charge += EASY*T.on_signal(src))
+            true_target += list(get_proximity(max_range))
+            check_charge(M)
+
 /obj/structure/xenoartifact/process(delta_time)
     switch(process_type)
         if("lit")

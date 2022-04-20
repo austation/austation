@@ -264,7 +264,8 @@
         new_trait = null
         if(traits[X].on_touch(src, src) && !touch_desc)
             touch_desc = traits[X]
-        minor_desc = !minor_desc && traits[X].desc ? traits[X].desc : ""
+        if(!(minor_desc) && traits[X].desc)
+            minor_desc = traits[X].desc
     special_desc = minor_desc ? "[special_desc] [minor_desc] material." : "[special_desc] material."
 
 

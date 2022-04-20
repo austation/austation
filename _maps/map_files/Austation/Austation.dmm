@@ -44052,8 +44052,8 @@
 	},
 /mob/living/simple_animal/pet/dog/pug{
 	desc = "It's Pugley V, the research department's lovable pug clone. Hopefully nothing happens to this one - fifth time lucky!";
-	name = "Pugley IV";
-	real_name = "Pugley IV"
+	name = "Pugley V";
+	real_name = "Pugley V"
 	},
 /turf/open/floor/engine,
 /area/science/explab)
