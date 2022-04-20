@@ -1,0 +1,5 @@
+author: "Mat05usz"
+delete-after: True
+changes: 
+  - bugfix: "You can no longer join as borgs/golems etc during Battle Royale"
+  - bugfix: "All living mobs are cleared when BR starts, no more disconnecting to avoid the wipe"
