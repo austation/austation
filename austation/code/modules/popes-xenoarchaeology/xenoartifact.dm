@@ -342,7 +342,7 @@
     radio_connection.post_signal(src, signal)
 
 /obj/item/xenoartifact/receive_signal(datum/signal/signal)
-    if(!(manage_cooldown(TRUE)) || !signal || signal.data["code"] != code)
+    if(!signal || signal.data["code"] != code)
         return
     var/mob/living/M = isliving(signal.source.loc) ? signal.source.loc : null
     audible_message("[icon2html(src, hearers(src))] *beep* *beep* *beep*", null, 3)
@@ -400,6 +400,7 @@
 /obj/item/xenoartifact/maint/Initialize(mapload, difficulty)
     if(prob(0.1))
         material = pick(PLASMA, URANIUM, AUSTRALIUM)
+    difficulty = material
     ..()
 
 /obj/effect/ebeam/xenoa_ebeam

@@ -382,7 +382,7 @@
 
 /datum/xenoartifact_trait/minor/heavy/on_init(obj/item/xenoartifact/X)
     . = ..()
-    X.throw_range = 2
+    X.throw_range = 1
 
 /datum/xenoartifact_trait/minor/signalsend
     label_name = "Signaler"
@@ -600,18 +600,20 @@
         to_chat(user, "<span class='notice'>You see your reflection in the [X.name].</span>")
     return TRUE
 
-/datum/xenoartifact_trait/major/mirrored/activate(obj/item/xenoartifact/X, mob/living/target) //Yoinked from mindswap because my implementation sucked. To:Do I think this is broken?
-    if(!(victim))
-        victim = target
+/datum/xenoartifact_trait/major/mirrored/activate(obj/item/xenoartifact/X, atom/target, atom/user) //THis is probably done poorly. The mind swap effect was giving me grief
+    if(!isliving(target))
+        playsound(get_turf(X), 'sound/machines/buzz-sigh.ogg', 15, TRUE)
         return
-    else
-        caster = target
-    var/mob/dead/observer/ghost = victim.ghostize(FALSE)
-    ghost.mind.transfer_to(caster)
-    caster.mind.transfer_to(victim)
-    if(ghost.key)
-        caster.key = ghost.key
-    qdel(ghost)
+    victim = target
+    caster = user
+    if(!caster.key || !victim.key)
+        playsound(get_turf(X), 'sound/machines/buzz-sigh.ogg', 15, TRUE)
+        victim = null
+        caster = null
+        return
+    var/obj/effect/proc_holder/spell/targeted/mind_transfer/M
+    M.range = X.max_range
+    M.cast(list(victim), caster, TRUE)
     victim = null
     caster = null
     ..()
