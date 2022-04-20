@@ -215,7 +215,8 @@
     label_desc = "Roadiactive: The Artifact Emmits harmful particles when a reaction takes place."
 
 /datum/xenoartifact_trait/minor/radioactive/on_init(obj/item/xenoartifact/X)
-    X.AddComponent(/datum/component/radioactive, 25) //I don't know what a good number for this is
+    if(X) //Sometimes can cause a runtime, concerning dense
+        X.AddComponent(/datum/component/radioactive, 25) //I don't know what a good number for this is
 
 /datum/xenoartifact_trait/minor/radioactive/on_item(obj/item/xenoartifact/X, atom/user, atom/item)
     if(istype(item, /obj/item/geiger_counter))
@@ -228,7 +229,8 @@
     return TRUE
 
 /datum/xenoartifact_trait/minor/radioactive/activate(obj/item/xenoartifact/X)
-    X.AddComponent(/datum/component/radioactive, 80)
+    if(X)
+        X.AddComponent(/datum/component/radioactive, 80)
     ..()
 
 /datum/xenoartifact_trait/minor/cooler //Faster cooldowns
