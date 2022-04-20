@@ -1,4 +1,0 @@
-author: "AustationBot"
-delete-after: True
-changes: 
-  - bugfix: "Fixes gamemode setup failing due to clients disconnecting"
