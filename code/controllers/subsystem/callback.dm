@@ -10,10 +10,5 @@ SUBSYSTEM_DEF(callbacks)
 	CRASH("Auxtools not found! Callback subsystem shutting itself off.")
 
 /datum/controller/subsystem/callbacks/fire()
-	//austation begin -- threads
-	if(SSair.thread_running())
-		pause()
-		return
-	//austation end
 	if(process_atmos_callbacks(MC_TICK_REMAINING_MS))
 		pause()
