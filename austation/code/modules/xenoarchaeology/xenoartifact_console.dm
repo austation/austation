@@ -138,7 +138,7 @@
         var/info
         var/final_price = 100
         var/list/nearby = oview(1, linked_inbox)
-        for(var/obj/I as() in nearby)
+        for(var/obj/I in nearby)
             var/avoidtimewaste = TRUE
             for(var/datum/xenoartifactseller/buyer/B as() in buyers)//Check to avoid wasting time & to see if someone is actually buying that item.
                 if(istype(I, B.buying))
