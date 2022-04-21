@@ -84,9 +84,10 @@
             malfunction_mod = 0.5
 
     icon_state = null
-    for(var/datum/xenoartifact_trait/T in traits) //This is kinda weird but it stops certain runtime cases, bugs?
+    for(var/datum/xenoartifact_trait/T in traits) //This is kinda weird but it stops certain runtime cases.
         if(istype(T, /datum/xenoartifact_trait/minor/dense))
             T.on_init(src)
+            return
     for(var/datum/xenoartifact_trait/T in traits)
         T.on_init(src)
 
