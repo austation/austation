@@ -25967,18 +25967,26 @@
 /turf/open/floor/plasteel,
 /area/science/research)
 "cmP" = (
-/turf/closed/wall,
+/obj/effect/turf_decal/stripes/corner{
+	dir = 8
+	},
+/turf/open/floor/plasteel,
 /area/science/explab)
 "cmQ" = (
-/obj/machinery/firealarm{
-	dir = 4;
-	pixel_x = -26
+/obj/item/clothing/neck/stethoscope,
+/obj/item/geiger_counter,
+/obj/item/storage/box/monkeycubes,
+/obj/structure/table/glass,
+/obj/item/laser_pointer,
+/obj/item/assembly/signaler,
+/obj/effect/turf_decal/stripes/line{
+	dir = 10
 	},
-/turf/open/floor/plasteel/white,
+/turf/open/floor/plasteel,
 /area/science/explab)
 "cmR" = (
-/obj/effect/turf_decal/stripes/line{
-	dir = 8
+/obj/effect/turf_decal/stripes/corner{
+	dir = 1
 	},
 /turf/open/floor/plasteel,
 /area/science/explab)
@@ -26329,12 +26337,14 @@
 /obj/machinery/light{
 	dir = 8
 	},
+/obj/machinery/power/apc/auto_name/west,
 /turf/open/floor/plasteel/white,
 /area/science/explab)
 "col" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 10
 	},
+/obj/item/beacon,
 /turf/open/floor/plasteel,
 /area/science/explab)
 "cos" = (
@@ -43901,6 +43911,7 @@
 	dir = 8
 	},
 /obj/effect/turf_decal/tile/purple,
+/obj/structure/cable/yellow,
 /turf/open/floor/plasteel/white,
 /area/science/explab)
 "gbi" = (
@@ -44217,17 +44228,11 @@
 /turf/open/floor/plating,
 /area/maintenance/starboard/secondary)
 "giC" = (
-/obj/machinery/light,
-/obj/effect/turf_decal/stripes/line{
-	dir = 5
+/obj/machinery/firealarm{
+	dir = 1;
+	pixel_y = -24
 	},
-/obj/item/clothing/neck/stethoscope,
-/obj/item/geiger_counter,
-/obj/item/storage/box/monkeycubes,
-/obj/structure/table/glass,
-/obj/item/laser_pointer,
-/obj/item/assembly/signaler,
-/turf/open/floor/plasteel,
+/turf/open/floor/plasteel/white,
 /area/science/explab)
 "giV" = (
 /obj/structure/cable/yellow{
@@ -46243,10 +46248,29 @@
 /turf/closed/wall/r_wall,
 /area/maintenance/disposal/incinerator)
 "gYS" = (
-/obj/structure/extinguisher_cabinet{
-	pixel_x = -27
+/obj/structure/cable/yellow,
+/obj/item/clothing/mask/gas,
+/obj/item/multitool{
+	pixel_x = 4
 	},
-/turf/open/floor/plasteel/white,
+/obj/item/stock_parts/cell/high{
+	charge = 100;
+	maxcharge = 15000
+	},
+/obj/item/assembly/igniter{
+	pixel_x = 5;
+	pixel_y = -4
+	},
+/obj/item/wrench{
+	desc = "Science's final defense against the filth of the station. Also good for wacking artifacts.";
+	name = "wacking wrench"
+	},
+/obj/structure/table/glass,
+/obj/item/analyzer,
+/obj/effect/turf_decal/stripes/line{
+	dir = 9
+	},
+/turf/open/floor/plasteel,
 /area/science/explab)
 "gZj" = (
 /obj/structure/disposalpipe/segment{
@@ -61439,6 +61463,9 @@
 /obj/effect/turf_decal/tile/purple{
 	dir = 8
 	},
+/obj/structure/cable/yellow{
+	icon_state = "2-4"
+	},
 /turf/open/floor/plasteel/white,
 /area/science/explab)
 "mJC" = (
@@ -74764,21 +74791,6 @@
 	},
 /turf/open/floor/plasteel/white,
 /area/medical/plumbing)
-"rQN" = (
-/obj/structure/cable/yellow{
-	icon_state = "2-8"
-	},
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
-	dir = 4
-	},
-/turf/open/floor/plasteel/white,
-/area/science/explab)
 "rRA" = (
 /obj/effect/turf_decal/tile/neutral,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
@@ -88346,30 +88358,11 @@
 	},
 /area/engine/engineering)
 "wXH" = (
-/obj/machinery/power/apc/auto_name/south,
-/obj/structure/cable/yellow,
-/obj/item/clothing/mask/gas,
-/obj/item/multitool{
-	pixel_x = 4
+/obj/structure/extinguisher_cabinet{
+	pixel_y = -30
 	},
-/obj/item/stock_parts/cell/high{
-	charge = 100;
-	maxcharge = 15000
-	},
-/obj/item/assembly/igniter{
-	pixel_x = 5;
-	pixel_y = -4
-	},
-/obj/item/wrench{
-	desc = "Science's final defense against the filth of the station. Also good for wacking artifacts.";
-	name = "wacking wrench"
-	},
-/obj/effect/turf_decal/stripes/line{
-	dir = 9
-	},
-/obj/structure/table/glass,
-/obj/item/analyzer,
-/turf/open/floor/plasteel,
+/obj/machinery/light,
+/turf/open/floor/plasteel/white,
 /area/science/explab)
 "wYf" = (
 /obj/structure/disposalpipe/segment,
@@ -125602,8 +125595,8 @@ cgq
 cgq
 cgq
 cgq
-cmP
-cmP
+cgq
+cgq
 izh
 kSE
 crR
@@ -126116,9 +126109,9 @@ crV
 fwP
 rwK
 cmR
-cmR
+cmP
 col
-rQN
+ncx
 wXH
 cgq
 ctj
