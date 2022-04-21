@@ -1,5 +1,5 @@
 /datum/game_mode
-	var/gamemode_status
+	var/gamemode_status = 0
 	var/list/datum/mind/besiegers = list()
 
 /datum/game_mode/siege
@@ -43,7 +43,6 @@
 
 
 /datum/game_mode/siege/post_setup()
-	team.add_objective(/datum/objective/martyr, FALSE)
 	for(var/datum/mind/M in team.members)
 		M.add_antag_datum(/datum/antagonist/siege, team)
 	..()

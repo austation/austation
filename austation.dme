@@ -146,7 +146,7 @@
 #include "austation\code\game\objects\items\devices\scanners.dm"
 #include "austation\code\game\objects\items\devices\sound_synth.dm"
 #include "austation\code\game\objects\items\devices\traitordevices.dm"
-#include "austation\code\game\objects\items\implants\implant_siege.dm.dm"
+#include "austation\code\game\objects\items\implants\implant_siege.dm"
 #include "austation\code\game\objects\items\melee\misc.dm"
 #include "austation\code\game\objects\items\robot\robot_items.dm"
 #include "austation\code\game\objects\items\robot\robot_upgrades.dm"

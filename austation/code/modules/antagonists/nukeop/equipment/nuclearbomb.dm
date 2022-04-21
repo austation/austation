@@ -15,8 +15,10 @@
 	return TRUE
 
 /obj/machinery/nuclearbomb/Initialize(mapload)
-	var/turf/T = get_turf(src)
-	if(GLOB.master_mode == "siege" && is_centcom_level(T.z))
+	..()
+	var/turf/current_turf = get_turf(src)
+	var/z_level = current_turf.z
+	if(GLOB.master_mode == "siege" && z_level == 9)//is_centcom_level doesnt work
 		new /obj/machinery/siege_spawner(src)
 		qdel(src)
-	..()
+

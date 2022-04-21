@@ -17,11 +17,10 @@
 				"}
 	return dat
 
-/obj/item/implant/explosive/activate(mob/living/L, gibbed)
-	. = ..()
+/obj/item/implant/explosive/siege/activate(mob/living/L)
 	L.dust()
 
-/obj/item/implant/explosive/implant(mob/living/target, mob/user, silent = FALSE, force = FALSE)
+/obj/item/implant/explosive/siege/implant(mob/living/target, mob/user, silent = FALSE, force = FALSE)
 	for(var/X in target.implants)
 		if(istype(X, type))
 			qdel(src)
