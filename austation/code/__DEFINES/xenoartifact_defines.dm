@@ -11,3 +11,7 @@
 #define URANIUM "#00ff0d" //Broken Enigmas
 #define AUSTRALIUM "#ffd900" //Wildcard, may god have mercy
 #define DEBUGIUM "#ff4800"
+
+//Little boys and girls of the waste land
+#define XENOSELLERNAMES list("Borov", "Ivantsov", "Petrenko", "Voronin", "Kitsenko", "Plichko", "Sergei", "Kruglov", "Sakharov", "Kalugin", "Semenov", "Vasiliev", "Pavlik", "Tolik", "Kuznetsov", "Sidorovich", "Strelok")
+#define XENOSELLERDIAL list("Hello, Commrade. I think I have something that might interest you.","Hello, Friend. I think I have something you might be interested in.","Commrade, I can offer you only this.","For you, my Friend, I offer this.", "Commrade, this thing killed my Babushka, take it.","друг, you want?","My buddy thinks I could sell this.","Це купив би тільки дурень!","I'm pretty sure this took several years off my life, take it.","This was hard to find, but you can have it.","I found this one deep in the zone, it was a risk to get.","Що ти робиш y моєму домі?")

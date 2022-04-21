@@ -1,10 +1,10 @@
 /obj/item/circuitboard/computer/xenoartifact_console
-	name = "Research and Development Listing Console (Computer Board)"
+	name = "research and development listing console (Computer Board)"
 	icon_state = "science"
 	build_path = /obj/machinery/computer/xenoartifact_console
 
 /obj/item/circuitboard/machine/xenoartifact_inbox
-    name = "Bluespace Straythread Pad (Machine Board)"
+    name = "bluespace straythread pad (Machine Board)"
     icon_state = "science"
     build_path = /obj/machinery/xenoartifact_inbox
     req_components = list(
@@ -20,7 +20,7 @@
 */
 
 /obj/machinery/computer/xenoartifact_console
-    name = "Research and Development Listing Console"
+    name = "research and development listing console"
     desc = "A science console used to source sellers, and buyers, for various blacklisted research objects."
     icon_screen = "xenoartifact_console"
     icon_keyboard = "rd_key"
@@ -62,7 +62,7 @@
     if(budget)
         data["points"] = budget.account_balance
     data["seller"] = list()
-    for(var/datum/xenoartifactseller/S in sellers)
+    for(var/datum/xenoartifactseller/S as() in sellers)
         data["seller"] += list(list(
             "name" = S.name,
             "dialogue" = S.dialogue,
@@ -70,7 +70,7 @@
             "id" = S.unique_id,
         ))
     data["buyer"] = list()
-    for(var/datum/xenoartifactseller/buyer/B in buyers)
+    for(var/datum/xenoartifactseller/buyer/B as() in buyers)
         data["buyer"] += list(list(
             "name" = B.name,
             "dialogue" = B.dialogue,
@@ -94,36 +94,38 @@
         return
 
     for(var/T in tab_index)
-        if(action == "set_tab_[T]" && current_tab != T)
-            current_tab = T
-            switch(T)
-                if("Listings")//Not the best way of doing this but I can't be fucked otherwise.
-                    current_tab_info = "Here you can find listings for various research samples, usually fresh from the field. These samples aren't distrubuted by the Nanotrasen affiliated cargo system, so instead listing data is sourced from stray bluespace-threads."
-                if("Export")
-                    current_tab_info = "Sell any export your department produces through open bluespace strings. Anonymously trade and sell ancient alien bombs, explosive slime cores, or just regular bombs."
-                if("Linking")
-                    current_tab_info = "Link machines to the Listing Console."
-            return
-        else if(action == "set_tab_[T]" && current_tab == T)
-            current_tab = ""
-            current_tab_info = ""
-            return
+        if(action == "set_tab_[T]")
+            if(current_tab != T)
+                current_tab = T
+                switch(T)
+                    if("Listings")//Not the best way of doing this but I can't be fucked otherwise.
+                        current_tab_info = "Here you can find listings for various research samples, usually fresh from the field. These samples aren't distrubuted by the Nanotrasen affiliated cargo system, so instead listing data is sourced from stray bluespace-threads."
+                    if("Export")
+                        current_tab_info = "Sell any export your department produces through open bluespace strings. Anonymously trade and sell ancient alien bombs, explosive slime cores, or just regular bombs."
+                    if("Linking")
+                        current_tab_info = "Link machines to the Listing Console."
+                return
+            else if(current_tab == T)
+                current_tab = ""
+                current_tab_info = ""
+                return
 
-    for(var/datum/xenoartifactseller/S in sellers)
-        if(action == "purchase_[S.unique_id]" && linked_inbox && budget.account_balance-S.price >= 0)
-            var/obj/item/xenoartifact/X = new(get_turf(linked_inbox.loc), S.difficulty)
-            X.price = S.price
-            sellers -= S
-            budget.adjust_money(-1*S.price)
-            say("Purchase complete. [budget.account_balance] credits remaining in Research Budget")
-            addtimer(CALLBACK(src, .proc/generate_new_seller), (rand(1,5)*60) SECONDS)
-            return
-        else if(action == "purchase_[S.unique_id]" && !linked_inbox)
-            say("Error. No linked hardware.")
-            return
-        else if(action == "purchase_[S.unique_id]" && budget.account_balance-S.price < 0)
-            say("Error. Insufficient funds.")
-            return
+    for(var/datum/xenoartifactseller/S as() in sellers)
+        if(action == "purchase_[S.unique_id]")
+            if(linked_inbox && budget.account_balance-S.price >= 0)
+                var/obj/item/xenoartifact/X = new(get_turf(linked_inbox.loc), S.difficulty)
+                X.price = S.price
+                sellers -= S
+                budget.adjust_money(-1*S.price)
+                say("Purchase complete. [budget.account_balance] credits remaining in Research Budget")
+                addtimer(CALLBACK(src, .proc/generate_new_seller), (rand(1,5)*60) SECONDS)
+                return
+            else if(!linked_inbox)
+                say("Error. No linked hardware.")
+                return
+            else if(budget.account_balance-S.price < 0)
+                say("Error. Insufficient funds.")
+                return
 
     if(action == "sell")
         if(!linked_inbox)
@@ -131,10 +133,10 @@
             return
         var/info
         var/final_price = 100
-        var/obj/nearby = linked_inbox.get_item_prox(1)
-        for(var/obj/I in nearby)
+        var/list/nearby = oview(1, linked_inbox)
+        for(var/obj/I as() in nearby)
             var/avoidtimewaste = TRUE
-            for(var/datum/xenoartifactseller/buyer/B in buyers)//Check to avoid wasting time & to see if someone is actually buying that item.
+            for(var/datum/xenoartifactseller/buyer/B as() in buyers)//Check to avoid wasting time & to see if someone is actually buying that item.
                 if(istype(I, B.buying))
                     avoidtimewaste = FALSE
                     buyers -= B
@@ -209,37 +211,16 @@
     circuit = /obj/item/circuitboard/machine/xenoartifact_inbox
     var/linked_console
 
-/obj/machinery/xenoartifact_inbox/proc/get_item_prox(var/dist) //Returns a list of items & strucutres, name is funked
-    var/obj/items = list()
-    for(var/obj/I in oview(dist, src))
-        items += list(I)
-    return items
-
 /datum/xenoartifactseller //Vendor
     var/name
     var/price
     var/dialogue
     var/unique_id //I don't know what this is used for anymore, I think it has something to do with removing sellers.
     var/difficulty //Xenoartifact shit, not exactly difficulty
-    var/list/names = list("Borov", "Ivantsov", "Petrenko", "Voronin", "Kitsenko", "Plichko", "Sergei", "Kruglov", 
-                        "Sakharov", "Kalugin", "Semenov", "Vasiliev", "Pavlik", "Tolik", "Kuznetsov", "Sidorovich",
-                        "Strelok")
-    var/list/dialogues = list("Hello, Commrade. I think I have something that might interest you.",
-                            "Hello, Friend. I think I have something you might be interested in.",
-                            "Commrade, I can offer you only this.",
-                            "For you, my Friend, I offer this.",
-                            "Commrade, this thing killed my Babushka, take it.",
-                            "друг, you want?",
-                            "My buddy thinks I could sell this.",
-                            "Це купив би тільки дурень!",
-                            "I'm pretty sure this took several years off my life, take it.",
-                            "This was hard to find, but you can have it.",
-                            "I found this one deep in the zone, it was a risk to get.",
-                            "Що ти робиш y моєму домі?")
 
 /datum/xenoartifactseller/proc/generate()
-    name = pick(names)
-    dialogue = pick(dialogues)
+    name = pick(XENOSELLERNAMES)
+    dialogue = pick(XENOSELLERDIAL)
     price = rand(5,80) * 10
     switch(price)
         if(50 to 300)
@@ -261,7 +242,7 @@
     var/obj/buying
 
 /datum/xenoartifactseller/buyer/generate()
-    name = pick(names)
+    name = pick(XENOSELLERNAMES)
     buying = pick(/obj/item/xenoartifact, /obj/structure/xenoartifact)
     if(buying == /obj/item/xenoartifact) //Don't bother trying to use istype here
         dialogue = "[name] is requesting: artifact::item-class"
