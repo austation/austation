@@ -174,7 +174,7 @@
 /datum/xenoartifact_trait/minor/dense //Makes the artifact unable to be picked up. Associated with better charge modifers.
     desc = "Dense"
     label_desc = "Dense: The Artifact is dense and cannot be easily lifted but, the design has a slightly higher reaction rate."
-    blacklist_traits = list(/datum/xenoartifact_trait/minor/wearable, /datum/xenoartifact_trait/minor/sharp)
+    blacklist_traits = list(/datum/xenoartifact_trait/minor/wearable, /datum/xenoartifact_trait/minor/sharp, /datum/xenoartifact_trait/minor/light, /datum/xenoartifact_trait/minor/heavy)
 
 /datum/xenoartifact_trait/minor/dense/on_init(obj/item/xenoartifact/X)
     //if(istype(X,  /obj/structure/xenoartifact)) This isn't needed.

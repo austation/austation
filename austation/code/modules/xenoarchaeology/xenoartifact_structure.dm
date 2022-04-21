@@ -217,7 +217,7 @@
 /obj/structure/xenoartifact/process(delta_time)
     switch(process_type)
         if("lit")
-            true_target = list(get_proximity(max_range))
+            true_target += list(get_proximity(min(max_range, 5)))
             charge = NORMAL*traits[1].on_burn(src) 
             if(manage_cooldown(TRUE) && true_target.len >= 1 && get_proximity(max_range))
                 set_light(0)

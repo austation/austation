@@ -331,7 +331,7 @@
         return
     charge = chr
     if(user)
-        true_target += list(user)
+        true_target += list(process_target(user))
         check_charge(user)
         return
     true_target += list(get_proximity(max_range))
@@ -371,7 +371,7 @@
 /obj/item/xenoartifact/process(delta_time)
     switch(process_type)
         if("lit")
-            true_target += list(get_proximity(max_range))
+            true_target += list(get_proximity(min(max_range, 5)))
             charge = NORMAL*traits[1].on_burn(src) 
             if(manage_cooldown(TRUE) && true_target.len >= 1 && get_proximity(max_range))
                 set_light(0)
