@@ -11,7 +11,7 @@ SUBSYSTEM_DEF(callbacks)
 
 /datum/controller/subsystem/callbacks/fire()
 	//austation begin -- threads
-	if(thread_running())
+	if(SSair.thread_running())
 		pause()
 		return
 	//austation end
