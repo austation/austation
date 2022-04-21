@@ -31,30 +31,33 @@
     var/cooldownmod = 0 //Extra time traits can add to the cooldown
 
     var/icon_slots[4] //Associated with random sprite stuff, dw
-    var/mutable_appearance/icon_overlay
-
-    var/modifier = 0.70 //Buying and selling related
-    var/price //default price gets generated if it isn't set by console. This only happens if the artifact spawns outside of that process. 
+    var/mutable_appearance/icon_overlay 
 
     var/malfunction_chance //Everytime the artifact is used this increases. When this is successfully proc'd the artifact gains a malfunction and this is lowered. 
     var/malfunction_mod = 1 //How much the chance can change in a sinlge itteration
 
 /obj/item/xenoartifact/Initialize(mapload, difficulty)
     . = ..()
+    var/datum/component/xenoartifact_pricing/xenop = GetComponent(/datum/component/xenoartifact_pricing)
+    if(!xenop)
+        xenop = AddComponent(/datum/component/xenoartifact_pricing)
+
     material = difficulty //Difficulty is set, in some cases, by xenoartifact_console
     if(!material)
         material = pick(BLUESPACE, PLASMA, URANIUM, AUSTRALIUM)
 
     switch(material)
         if(BLUESPACE)
+            name = "Bluespace [name]"
             generate_traits(list(/datum/xenoartifact_trait/minor/sharp, /datum/xenoartifact_trait/minor/radioactive,
                             /datum/xenoartifact_trait/minor/sentient, /datum/xenoartifact_trait/major/sing, 
                             /datum/xenoartifact_trait/major/laser, /datum/xenoartifact_trait/major/bomb,
                             /datum/xenoartifact_trait/major/handmore, /datum/xenoartifact_trait/major/emp))
-            if(!price)
-                price = pick(100, 200, 300)
+            if(!xenop.price)
+                xenop.price = pick(100, 200, 300)
 
         if(PLASMA)
+            name = "Plasma [name]"
             generate_traits(list(/datum/xenoartifact_trait/major/sing, /datum/xenoartifact_trait/activator/burn,
                             /datum/xenoartifact_trait/minor/dense, /datum/xenoartifact_trait/minor/sentient, 
                             /datum/xenoartifact_trait/major/capture, /datum/xenoartifact_trait/major/timestop,
@@ -63,24 +66,26 @@
                             /datum/xenoartifact_trait/major/invisible,/datum/xenoartifact_trait/major/handmore,
                             /datum/xenoartifact_trait/major/lamp, /datum/xenoartifact_trait/major/forcefield,
                             /datum/xenoartifact_trait/activator/signal,/datum/xenoartifact_trait/major/heal))
-            if(!price)
-                price = pick(200, 300, 500)
+            if(!xenop.price)
+                xenop.price = pick(200, 300, 500)
             malfunction_mod = 2
 
         if(URANIUM)
+            name = "Uranium [name]"
             generate_traits(list(/datum/xenoartifact_trait/major/sing, /datum/xenoartifact_trait/minor/sharp,
                             /datum/xenoartifact_trait/major/laser, /datum/xenoartifact_trait/major/corginator,
                             /datum/xenoartifact_trait/minor/sentient, /datum/xenoartifact_trait/minor/wearable,
                             /datum/xenoartifact_trait/major/handmore, /datum/xenoartifact_trait/major/invisible,
                             /datum/xenoartifact_trait/major/heal), TRUE) 
-            if(!price)
-                price = pick(300, 500, 800) 
+            if(!xenop.price)
+                xenop.price = pick(300, 500, 800) 
             malfunction_mod = 8
 
         if(AUSTRALIUM)
+            name = "Australium [name]"
             generate_traits(list(/datum/xenoartifact_trait/major/sing))
-            if(!price)
-                price = pick(500, 800, 1000) 
+            if(!xenop.price)
+                xenop.price = pick(500, 800, 1000) 
             malfunction_mod = 0.5
 
     icon_state = null
@@ -403,6 +408,10 @@
         material = pick(PLASMA, URANIUM, AUSTRALIUM)
     difficulty = material
     ..()
+
+/datum/component/xenoartifact_pricing
+    var/modifier = 0.70 //Buying and selling related
+    var/price //default price gets generated if it isn't set by console. This only happens if the artifact spawns outside of that process
 
 /obj/effect/ebeam/xenoa_ebeam
     name = "xenoartifact beam"

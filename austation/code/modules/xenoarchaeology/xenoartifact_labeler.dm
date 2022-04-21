@@ -179,12 +179,15 @@
 
 /obj/item/xenoartifact_label/proc/calculate_modifier(obj/item/xenoartifact/X) //Modifier based off preformance of slueth. To:Do revisit this, complexity would be nice
     var/datum/xenoartifact_trait/trait
+    var/datum/component/xenoartifact_pricing/xenop = X.GetComponent(/datum/component/xenoartifact_pricing)
+    if(!xenop)
+        return
     for(var/T in trait_list)
         trait = new T
         if(X.get_trait(trait))
-            X.modifier += 0.15 
+            xenop.modifier += 0.15 
         else
-            X.modifier -= 0.35
+            xenop.modifier -= 0.35
 
 /obj/item/xenoartifact_label/proc/list2text(list/listo) //list2params acting weird. Probably already a function for this.
     var/text = ""

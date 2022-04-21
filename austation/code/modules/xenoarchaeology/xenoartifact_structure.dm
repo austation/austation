@@ -40,6 +40,10 @@
 
 /obj/structure/xenoartifact/Initialize(mapload, difficulty)
     . = ..()
+    var/datum/component/xenoartifact_pricing/xenop = GetComponent(/datum/component/xenoartifact_pricing)
+    if(!xenop)
+        xenop = AddComponent(/datum/component/xenoartifact_pricing)
+
     material = difficulty
 
     for(var/datum/xenoartifact_trait/T in traits)

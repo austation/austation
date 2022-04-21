@@ -180,12 +180,17 @@
     //if(istype(X,  /obj/structure/xenoartifact)) This isn't needed.
         //return
     var/obj/structure/xenoartifact/N = new(get_turf(X), X.material)
+    var/datum/component/xenoartifact_pricing/p = X.GetComponent(/datum/component/xenoartifact_pricing)
+    var/datum/component/xenoartifact_pricing/pd = N.GetComponent(/datum/component/xenoartifact_pricing)
+    if(!p || !pd)
+        return
+    N.name = X.name
     N.traits = X.traits
     N.charge_req = X.charge_req*1.5
     N.special_desc = X.special_desc
     N.touch_desc = X.touch_desc
     N.alpha = X.alpha
-    N.price = X.price
+    pd.price = p.price
     N.max_range = X.max_range
     qdel(X)
     ..()

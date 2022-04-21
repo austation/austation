@@ -117,7 +117,10 @@
     for(var/datum/xenoartifactseller/S as() in sellers)
         if(action == "purchase_[S.unique_id]")
             if(linked_inbox && budget.account_balance-S.price >= 0)
-                var/obj/item/xenoartifact/X = new(get_turf(linked_inbox.loc), S.difficulty)
+                var/obj/item/xenoartifact/A = new (get_turf(linked_inbox.loc), S.difficulty)
+                var/datum/component/xenoartifact_pricing/X = A.GetComponent(/datum/component/xenoartifact_pricing)
+                if(!X)
+                    return
                 X.price = S.price
                 sellers -= S
                 budget.adjust_money(-1*S.price)
@@ -147,27 +150,16 @@
                     break
             if(avoidtimewaste)
                 return
-            if(istype(I, /obj/item/xenoartifact)) //This and it's brother is pretty iffy
-                var/obj/item/xenoartifact/X = I
+            if(istype(I, /obj/item/xenoartifact)||istype(I, /obj/structure/xenoartifact)) //This and it's brother is pretty iffy
+                var/datum/component/xenoartifact_pricing/X = I.GetComponent(/datum/component/xenoartifact_pricing)
+                if(!X)
+                    return
                 final_price = X.modifier*X.price
                 if(final_price < 0) //No modulate?
                     final_price = X.price*0.1
                 budget.adjust_money(final_price)
                 linked_techweb.add_point_type(TECHWEB_POINT_TYPE_DEFAULT, final_price*10)
-                info = "[X.name] sold at [station_time_timestamp()] for [final_price] credits, bought for [X.price]"
-                sold_artifacts += list(info)
-                say(info)
-                qdel(I)
-                addtimer(CALLBACK(src, .proc/generate_new_buyer), (rand(1,5)*60) SECONDS)
-                return
-            else if(istype(I, /obj/structure/xenoartifact))
-                var/obj/structure/xenoartifact/X = I
-                final_price = X.modifier*X.price
-                if(final_price < 0)
-                    final_price = X.price*0.1
-                budget.adjust_money(final_price)
-                linked_techweb.add_point_type(TECHWEB_POINT_TYPE_DEFAULT, final_price*10)
-                info = "[X.name] sold at [station_time_timestamp()] for [final_price] credits, bought for [X.price]"
+                info = "[I.name] sold at [station_time_timestamp()] for [final_price] credits, bought for [X.price]"
                 sold_artifacts += list(info)
                 say(info)
                 qdel(I)
