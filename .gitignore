@@ -186,6 +186,8 @@ Temporary Items
 
 # Common build tooling, C B T
 !/tools/build
+
+# AUSTATION -- Xenoarchaeology
 austation/code/modules/popes-xenoarchaeology/xenoarchaeology.txt
 austation/code/modules/popes-xenoarchaeology/xenoarchaeology.txt
 austation/code/modules/popes-xenoarchaeology/xenoarchaeology.txt
