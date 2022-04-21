@@ -58577,6 +58577,12 @@
 	},
 /turf/open/floor/engine,
 /area/maintenance/disposal/incinerator)
+"lEf" = (
+/obj/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/plasteel/white,
+/area/science/explab)
 "lFt" = (
 /obj/structure/table,
 /obj/item/storage/belt/utility,
@@ -84566,6 +84572,18 @@
 	},
 /turf/open/floor/plasteel,
 /area/ai_monitored/storage/eva)
+"vDz" = (
+/obj/structure/cable/yellow{
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/layer3{
+	dir = 1
+	},
+/turf/open/floor/plasteel/white,
+/area/science/explab)
 "vDG" = (
 /obj/effect/spawner/structure/window/reinforced,
 /obj/machinery/atmospherics/pipe/simple/orange/visible{
@@ -86944,18 +86962,6 @@
 /obj/effect/turf_decal/stripes/corner,
 /turf/open/floor/plasteel,
 /area/hallway/secondary/command)
-"wwt" = (
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
-/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/layer3{
-	dir = 1
-	},
-/turf/open/floor/plasteel/white,
-/area/science/explab)
 "wxt" = (
 /obj/structure/chair/stool,
 /obj/effect/turf_decal/stripes/line{
@@ -126129,7 +126135,7 @@ rwK
 cmR
 cmP
 col
-wwt
+vDz
 wXH
 cgq
 ctj
@@ -127410,7 +127416,7 @@ sjg
 cgq
 ofu
 afK
-vqp
+lEf
 pKo
 hKK
 gVV
