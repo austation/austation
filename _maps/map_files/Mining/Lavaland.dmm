@@ -1523,9 +1523,6 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 9
 	},
-/obj/machinery/light{
-	dir = 8
-	},
 /turf/open/floor/plasteel,
 /area/mine/science)
 "gc" = (
@@ -2016,6 +2013,15 @@
 /obj/effect/turf_decal/stripes/line,
 /turf/open/floor/plating/asteroid/basalt/lava_land_surface,
 /area/lavaland/surface/outdoors)
+"je" = (
+/obj/structure/table,
+/obj/item/stock_parts/cell/high,
+/obj/item/clothing/neck/stethoscope,
+/obj/item/geiger_counter,
+/obj/item/xenoartifact_labeler,
+/obj/item/clothing/glasses/science,
+/turf/open/floor/plasteel,
+/area/mine/science)
 "jg" = (
 /obj/structure/stone_tile,
 /obj/structure/stone_tile/cracked{
@@ -2080,6 +2086,21 @@
 	},
 /turf/open/floor/plating/asteroid/basalt/lava_land_surface,
 /area/lavaland/surface/outdoors)
+"jt" = (
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/obj/machinery/door/window/eastright{
+	name = "Xenoarchaeology Storage"
+	},
+/turf/open/floor/engine,
+/area/mine/science)
+"jw" = (
+/obj/machinery/door/window/eastright{
+	name = "Xenoarchaeology Office"
+	},
+/turf/open/floor/plasteel,
+/area/mine/science)
 "jx" = (
 /obj/structure/stone_tile{
 	dir = 4
@@ -2942,6 +2963,9 @@
 "mT" = (
 /obj/structure/table/wood/fancy/royalblack,
 /obj/effect/decal/cleanable/dirt/dust,
+/obj/item/xenoartifact_labeler,
+/obj/structure/xenoartifact,
+/obj/item/clothing/glasses/science,
 /turf/open/floor/carpet/royalblue,
 /area/mine/science)
 "mV" = (
@@ -3626,6 +3650,15 @@
 /obj/machinery/door/firedoor,
 /turf/open/floor/plasteel,
 /area/mine/eva)
+"sR" = (
+/obj/machinery/light{
+	dir = 8
+	},
+/obj/machinery/computer/xenoartifact_console{
+	dir = 4
+	},
+/turf/open/floor/plasteel,
+/area/mine/science)
 "sW" = (
 /obj/machinery/light,
 /obj/effect/turf_decal/tile/purple,
@@ -3918,6 +3951,14 @@
 	},
 /turf/open/floor/plasteel,
 /area/mine/production)
+"wm" = (
+/obj/machinery/xenoartifact_inbox,
+/obj/structure/window/reinforced,
+/obj/machinery/door/window/eastright{
+	name = "Xenoarchaeology Inbox"
+	},
+/turf/open/floor/engine,
+/area/mine/science)
 "wz" = (
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
@@ -5441,6 +5482,12 @@
 	dir = 8
 	},
 /obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/plasteel,
+/area/mine/science)
+"PB" = (
+/obj/structure/window/reinforced{
+	dir = 4
+	},
 /turf/open/floor/plasteel,
 /area/mine/science)
 "PL" = (
@@ -15640,7 +15687,7 @@ aj
 aj
 aj
 aj
-YF
+Tn
 Tn
 Tn
 Tn
@@ -16149,9 +16196,9 @@ GK
 dn
 Ub
 aj
-aj
-aj
-aj
+ab
+ab
+ab
 aj
 aj
 YF
@@ -16406,11 +16453,11 @@ ho
 Kv
 Ub
 aj
-aj
-aj
-aj
-aj
-aj
+ai
+ai
+ab
+ab
+ab
 YF
 Mn
 fi
@@ -16663,12 +16710,12 @@ cS
 cM
 cM
 aj
-ab
-ab
-ab
-aj
-aj
+Tn
+Tn
+Tn
 YF
+Tn
+Tn
 Py
 Lm
 jy
@@ -16920,12 +16967,12 @@ cT
 cM
 ai
 aj
-ai
-ai
-ab
-ab
-ab
 YF
+wm
+sR
+je
+jt
+Tn
 Pt
 fI
 OX
@@ -17178,10 +17225,10 @@ cM
 ab
 aj
 Tn
-Tn
-YF
-YF
-YF
+PB
+PB
+jw
+PB
 Tn
 Tn
 Mz
