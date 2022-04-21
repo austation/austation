@@ -96,7 +96,7 @@
         qdel(P)
 
 /obj/item/xenoartifact_labeler/proc/create_label(new_name)
-    var/obj/item/xenoartifact_label/P = new /obj/item/xenoartifact_label/(get_turf(src))
+    var/obj/item/xenoartifact_label/P = new(get_turf(src))
     if(new_name)
         P.name = new_name
         P.set_name = TRUE

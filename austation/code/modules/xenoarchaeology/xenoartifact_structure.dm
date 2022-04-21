@@ -76,7 +76,7 @@
 /obj/structure/xenoartifact/examine(mob/user)
     for(var/obj/item/clothing/glasses/science/S in user.contents)
         to_chat(user, "<span class='notice'>[special_desc]</span>")
-    . = ..()
+    return ..()
 
 /obj/structure/xenoartifact/attack_hand(mob/user)
     . = ..()
