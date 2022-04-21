@@ -26,8 +26,8 @@
     icon_keyboard = "rd_key"
     circuit = /obj/item/circuitboard/computer/xenoartifact_console
     
-    var/datum/xenoartifactseller/sellers[8]
-    var/datum/xenoartifactseller/buyer/buyers[8]
+    var/list/sellers[8]
+    var/list/buyers[8]
     var/list/tab_index = list("Listings", "Export", "Linking")
     var/current_tab = "Listings"
     var/current_tab_info = "Here you can find listings for various research samples, usually fresh from the field. These samples aren't distrubuted by the Nanotrasen affiliated cargo system, so instead listing data is sourced from stray bluespace-threads."
@@ -41,11 +41,15 @@
     . = ..()
     linked_techweb = SSresearch.science_tech
     budget = SSeconomy.get_dep_account(ACCOUNT_SCI)
+    var/datum/xenoartifactseller/S
+    var/datum/xenoartifactseller/buyer/B
     for(var/I in 1 to 8)
         sellers[I] = new /datum/xenoartifactseller
-        sellers[I].generate()
+        S = sellers[I]
+        S.generate()
         buyers[I] = new /datum/xenoartifactseller/buyer
-        buyers[I].generate()
+        B = buyers[I]
+        B.generate()
 
 /obj/machinery/computer/xenoartifact_console/interact(mob/user)
     ui_interact(user, "XenoartifactConsole")
