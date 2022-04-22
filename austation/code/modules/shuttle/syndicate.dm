@@ -3,6 +3,6 @@
 	var/z_level = current_turf.z
 	message_admins("A: [z_level]")
 	if(GLOB.master_mode == "siege")
-		to_chat(M, "There is no recall or intervention in this place; there is no escape.")
+		to_chat(user, "There is no recall or intervention in this place; there is no escape.")
 		return
 	..()
