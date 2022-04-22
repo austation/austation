@@ -22,3 +22,14 @@
 		new /obj/machinery/siege_spawner(src)
 		qdel(src)
 
+/obj/machinery/nuclearbomb/ui_act(action, params)
+	if(..())
+		return
+	if(GLOB.master_mode == "siege")
+		if(ROLE_SYNDICATE in usr.faction)
+			if(!timing)
+				detonation_timer = 90
+				safety = FALSE
+				set_active()
+		else if(timing)
+			set_active()
