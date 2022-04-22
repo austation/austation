@@ -58,10 +58,13 @@
 	head = /obj/item/clothing/head/wig
 	l_hand = /obj/item/clothing/suit/space/syndicate
 	r_hand = /obj/item/clothing/head/helmet/space/syndicate
+	r_pocket = /obj/item/ammo_box/magazine/m10mm
 	backpack_contents = list(/obj/item/kitchen/knife/combat/survival,\
 		/obj/item/razor=1,\
 		/obj/item/handmirror=1,\
-		/obj/item/card/emag)
+		/obj/item/card/emag,\
+		/obj/item/ammo_box/magazine/m10mm = 2,\
+		/obj/item/gun/ballistic/automatic/pistol/suppressed)
 
 /datum/outfit/siege/intruder
 	name = "Operative - Intruder"
@@ -125,7 +128,7 @@
 			H.set_species(/datum/species/zombie/infectious)
 			return
 		if("Operative - Specialist")
-			var/obj/item/U = new /obj/item/uplink/nuclear(/obj/item/uplink/nuclear, H.key, 12)
+			var/obj/item/U = new /obj/item/uplink/nuclear(/obj/item/uplink/nuclear, H.key, 10)
 			H.equip_to_slot_or_del(U, ITEM_SLOT_BACKPACK)
 		if("Operative - Infiltrator")
 			var/obj/item/implant/s = new/obj/item/implant/freedom
