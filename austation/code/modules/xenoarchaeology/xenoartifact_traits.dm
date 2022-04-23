@@ -49,8 +49,8 @@
 	return charge+(force*5)
 
 /datum/xenoartifact_trait/activator/burn
-	desc = "Flamable"
-	label_desc = "Flamable: The material is flamable, and seems to react when ignited."
+	desc = "Flammable"
+	label_desc = "Flammable: The material is flamable, and seems to react when ignited."
 	charge = 25
 
 /datum/xenoartifact_trait/activator/burn/on_burn(obj/item/xenoartifact/X, atom/user, heat)
