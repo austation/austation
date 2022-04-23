@@ -3,7 +3,7 @@
 */
 /obj/item/xenoartifact
 	name = "xenoartifact"
-	icon = 'austation/icons/obj/xenoartifact/xenoartifact.dmi'
+	icon = 'icons/obj/xenoarchaeology/xenoartifact.dmi'
 	icon_state = "map_editor"
 	w_class = WEIGHT_CLASS_NORMAL
 	light_color = LIGHT_COLOR_FIRE
@@ -44,7 +44,7 @@
 	. = ..()
 	material = difficulty //Difficulty is set, in some cases, by xenoartifact_console
 	if(!material)
-		material = pick(BLUESPACE, PLASMA, URANIUM, AUSTRALIUM)
+		material = pick(BLUESPACE, PLASMA, URANIUM, BANANIUM)
 
 	var/datum/component/xenoartifact_pricing/xenop = GetComponent(/datum/component/xenoartifact_pricing)
 
@@ -83,8 +83,8 @@
 				xenop.price = pick(300, 500, 800) 
 			malfunction_mod = 8
 
-		if(AUSTRALIUM)
-			name = "australium [name]"
+		if(BANANIUM)
+			name = "bananium [name]"
 			generate_traits(list(/datum/xenoartifact_trait/major/sing))
 			if(!xenop.price)
 				xenop.price = pick(500, 800, 1000) 
@@ -253,7 +253,7 @@
 	allowed_traits = subtypesof(/datum/xenoartifact_trait)
 	allowed_traits -= blacklist_traits
 
-	var/list/activators = list()
+	var/list/activators = list(null)
 	for(var/T in allowed_traits)
 		new_trait = new T
 		if(istype(new_trait, /datum/xenoartifact_trait/activator) && !(new_trait != /datum/xenoartifact_trait/activator))
@@ -265,7 +265,7 @@
 	special_desc = traits[1].desc ? "[special_desc] [traits[1].desc]" : "[special_desc]"
 
 	var/minor_desc
-	var/list/minors = list()
+	var/list/minors = list(null)
 	for(var/X in 2 to 4)//Minors
 		for(var/T in allowed_traits)
 			new_trait = new T
@@ -281,7 +281,7 @@
 			minor_desc = traits[X].desc
 	special_desc = minor_desc ? "[special_desc] [minor_desc] material." : "[special_desc] material."
 
-	var/list/majors = list()
+	var/list/majors = list(null)
 	for(var/T in allowed_traits)
 		new_trait = new T
 		if(istype(new_trait, /datum/xenoartifact_trait/major) && !(new_trait != /datum/xenoartifact_trait/major))
@@ -296,7 +296,7 @@
 
 	if(!malf)
 		return
-	var/list/malfs = list()
+	var/list/malfs = list(null)
 	for(var/T in allowed_traits)
 		new_trait = new T
 		if(istype(new_trait, /datum/xenoartifact_trait/malfunction) && !(new_trait != /datum/xenoartifact_trait/malfunction))
@@ -334,7 +334,7 @@
 	return victim
 
 /obj/item/xenoartifact/proc/create_beam(atom/target) //Helps show how the artifact is working. Hint stuff.
-	var/datum/beam/xenoa_beam/B = new(src.loc, target, time=1.5 SECONDS, beam_icon='austation/icons/obj/xenoartifact/xenoartifact.dmi', beam_icon_state="xenoa_beam", btype=/obj/effect/ebeam/xenoa_ebeam, col = material)
+	var/datum/beam/xenoa_beam/B = new(src.loc, target, time=1.5 SECONDS, beam_icon='icons/obj/xenoarchaeology/xenoartifact.dmi', beam_icon_state="xenoa_beam", btype=/obj/effect/ebeam/xenoa_ebeam, col = material)
 	INVOKE_ASYNC(B, /datum/beam/xenoa_beam.proc/Start)
 
 /obj/item/xenoartifact/proc/default_activate(chr, mob/user) //used for some stranger cases. Item specific cases that don't fall under the default templates. See battery activator.
@@ -421,7 +421,7 @@
 
 /obj/item/xenoartifact/maint/Initialize(mapload, difficulty)
 	if(prob(0.1))
-		material = pick(PLASMA, URANIUM, AUSTRALIUM)
+		material = pick(PLASMA, URANIUM, BANANIUM)
 	difficulty = material
 	..()
 
