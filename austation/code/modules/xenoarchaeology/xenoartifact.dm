@@ -253,11 +253,13 @@
 	allowed_traits = subtypesof(/datum/xenoartifact_trait/activator)+subtypesof(/datum/xenoartifact_trait/minor)+subtypesof(/datum/xenoartifact_trait/major)+subtypesof(/datum/xenoartifact_trait/malfunction)
 	allowed_traits -= blacklist_traits
 
-	var/list/activators = list(null)
+	var/list/activators = list()
 	for(var/T in allowed_traits)
 		new_trait = new T
 		if(istype(new_trait, /datum/xenoartifact_trait/activator))
 			activators += T
+    if(!activators)
+        return
 	new_trait = pick(activators)
 	allowed_traits -= new_trait
 	traits[1] = new new_trait
@@ -265,12 +267,14 @@
 	special_desc = traits[1].desc ? "[special_desc] [traits[1].desc]" : "[special_desc]"
 
 	var/minor_desc
-	var/list/minors = list(null)
+	var/list/minors = list()
 	for(var/X in 2 to 4)//Minors
 		for(var/T in allowed_traits)
 			new_trait = new T
 			if(istype(new_trait, /datum/xenoartifact_trait/minor))
 				minors += T
+        if(!minors)
+            return
 		new_trait = pick(minors)
 		allowed_traits -= new_trait
 		traits[X] = new new_trait
@@ -281,11 +285,13 @@
 			minor_desc = traits[X].desc
 	special_desc = minor_desc ? "[special_desc] [minor_desc] material." : "[special_desc] material."
 
-	var/list/majors = list(null)
+	var/list/majors = list()
 	for(var/T in allowed_traits)
 		new_trait = new T
 		if(istype(new_trait, /datum/xenoartifact_trait/major))
 			majors += T
+    if(!majors)
+        return
 	new_trait = pick(majors)
 	allowed_traits -= new_trait
 	traits[5] = new new_trait
@@ -301,6 +307,8 @@
 		new_trait = new T
 		if(istype(new_trait, /datum/xenoartifact_trait/malfunction))
 			malfs += T
+    if(!malfs)
+        return
 	new_trait = pick(malfs)
 	traits[6] = new new_trait
 	
