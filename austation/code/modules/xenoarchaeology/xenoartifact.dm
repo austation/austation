@@ -223,8 +223,6 @@
 				break
 		manage_cooldown()   
 	charge = 0
-	for(var/atom/A in true_target)
-		qdel(A)
 	true_target = list() //i think this shrinks the size back down? not sure if Dm handles it.
 
 /obj/item/xenoartifact/proc/manage_cooldown(checking = FALSE)
@@ -326,7 +324,7 @@
 
 /obj/item/xenoartifact/proc/generate_icon(var/icn, var/icnst = "", colour) //Add extra icon overlays
 	icon_overlay = mutable_appearance(icn, icnst)
-	icon_overlay.layer = layer+0.1
+	icon_overlay.layer = FLOAT_LAYER //Not doing this fucks the object icons when you're holding it
 	icon_overlay.appearance_flags = RESET_ALPHA// Not doing this fucks the alpha?
 	icon_overlay.alpha = alpha//
 	if(colour)
