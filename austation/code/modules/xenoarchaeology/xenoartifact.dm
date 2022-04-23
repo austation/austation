@@ -214,6 +214,7 @@
 			T.activate(src, user, user)
 		charge = (charge+charge_req)/1.9 //Not quite an average. Generally produces slightly higher results.     
 		for(var/atom/M in true_target)
+			say("Targetted [M]")
 			create_beam(M)
 			for(var/datum/xenoartifact_trait/malfunction/T in traits) //Malf
 				T.activate(src, M, user)
@@ -223,7 +224,7 @@
 				break
 		manage_cooldown()   
 	charge = 0
-	true_target = list() //i think this shrinks the size back down? not sure if Dm handles it.
+	//true_target = list()
 
 /obj/item/xenoartifact/proc/manage_cooldown(checking = FALSE)
 	if(!usedwhen)
@@ -300,7 +301,7 @@
 
 	if(!malf)
 		return
-	var/list/malfs = list(null)
+	var/list/malfs = list()
 	for(var/T in allowed_traits)
 		new_trait = new T
 		if(istype(new_trait, /datum/xenoartifact_trait/malfunction))
@@ -318,7 +319,7 @@
 
 /obj/item/xenoartifact/proc/get_trait(typepath) //Returns the desired trait and it's values if it's in the artifact's
 	for(var/datum/xenoartifact_trait/T in traits)
-		if(T == typepath)
+		if(istype(T, typepath)) //Using  == here breaks it
 			return T
 	return FALSE
 
