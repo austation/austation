@@ -258,8 +258,8 @@
 		new_trait = new T
 		if(istype(new_trait, /datum/xenoartifact_trait/activator))
 			activators += T
-    if(!activators)
-        return
+	if(!activators)
+		return
 	new_trait = pick(activators)
 	allowed_traits -= new_trait
 	traits[1] = new new_trait
@@ -273,8 +273,8 @@
 			new_trait = new T
 			if(istype(new_trait, /datum/xenoartifact_trait/minor))
 				minors += T
-        if(!minors)
-            return
+		if(!minors)
+			return
 		new_trait = pick(minors)
 		allowed_traits -= new_trait
 		traits[X] = new new_trait
@@ -290,8 +290,8 @@
 		new_trait = new T
 		if(istype(new_trait, /datum/xenoartifact_trait/major))
 			majors += T
-    if(!majors)
-        return
+	if(!majors)
+		return
 	new_trait = pick(majors)
 	allowed_traits -= new_trait
 	traits[5] = new new_trait
@@ -307,8 +307,8 @@
 		new_trait = new T
 		if(istype(new_trait, /datum/xenoartifact_trait/malfunction))
 			malfs += T
-    if(!malfs)
-        return
+	if(!malfs)
+		return
 	new_trait = pick(malfs)
 	traits[6] = new new_trait
 	
