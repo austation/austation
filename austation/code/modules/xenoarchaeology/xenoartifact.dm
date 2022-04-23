@@ -44,7 +44,7 @@
 	. = ..()
 	material = difficulty //Difficulty is set, in some cases, by xenoartifact_console
 	if(!material)
-		material = pick(BLUESPACE, PLASMA, URANIUM, BANANIUM)
+		material = pick(BLUESPACE, PLASMA, URANIUM, AUSTRALIUM)
 
 	var/datum/component/xenoartifact_pricing/xenop = GetComponent(/datum/component/xenoartifact_pricing)
 
@@ -83,8 +83,8 @@
 				xenop.price = pick(300, 500, 800) 
 			malfunction_mod = 8
 
-		if(BANANIUM)
-			name = "bananium [name]"
+		if(AUSTRALIUM)
+			name = "australium [name]"
 			generate_traits(list(/datum/xenoartifact_trait/major/sing))
 			if(!xenop.price)
 				xenop.price = pick(500, 800, 1000) 
