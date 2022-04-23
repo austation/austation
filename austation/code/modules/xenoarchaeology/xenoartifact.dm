@@ -214,7 +214,6 @@
 			T.activate(src, user, user)
 		charge = (charge+charge_req)/1.9 //Not quite an average. Generally produces slightly higher results.     
 		for(var/atom/M in true_target)
-			say("Targetted [M]")
 			create_beam(M)
 			for(var/datum/xenoartifact_trait/malfunction/T in traits) //Malf
 				T.activate(src, M, user)
