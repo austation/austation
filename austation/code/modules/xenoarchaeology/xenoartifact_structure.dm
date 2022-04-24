@@ -38,7 +38,7 @@
 	var/malfunction_chance //Everytime the artifact is used this increases. When this is successfully proc'd the artifact gains a malfunction and this is lowered. 
 	var/malfunction_mod = 1 //How much the chance can change in a sinlge itteration
 
-/obj/item/xenoartifact/ComponentInitialize()
+/obj/strucutre/xenoartifact/ComponentInitialize()
 	. = ..()
 	AddComponent(/datum/component/xenoartifact_pricing)
 	AddComponent(/datum/component/discoverable, 10000, TRUE) //Same values as original artifacts, exploration.
