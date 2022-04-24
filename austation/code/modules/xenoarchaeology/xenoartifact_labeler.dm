@@ -63,7 +63,7 @@
 	if(action == "print_traits")
 		create_label(sticker_name)
 
-	if(action == "change_print_name")
+	if(action == "change_print_name" && istext(params["name"]))
 		sticker_name = sanitize_text("[params["name"]]")
 
 	trait_toggle(action, "activator", activator_traits, activator)
