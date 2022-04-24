@@ -225,7 +225,7 @@
 		if(LIT)
 			true_target += list(get_proximity(min(max_range, 5)))
 			charge = NORMAL*traits[1].on_burn(src) 
-			if(manage_cooldown(TRUE) && true_target.len >= 1 && get_proximity(max_range))
+			if(manage_cooldown(TRUE) && true_target && get_proximity(max_range))
 				set_light(0)
 				visible_message("<span class='danger'>The [name] flicks out.</span>")
 				check_charge()
