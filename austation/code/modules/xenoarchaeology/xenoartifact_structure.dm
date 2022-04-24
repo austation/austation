@@ -38,7 +38,7 @@
 	var/malfunction_chance //Everytime the artifact is used this increases. When this is successfully proc'd the artifact gains a malfunction and this is lowered. 
 	var/malfunction_mod = 1 //How much the chance can change in a sinlge itteration
 
-/obj/strucutre/xenoartifact/ComponentInitialize()
+/obj/structure/xenoartifact/ComponentInitialize()
 	. = ..()
 	AddComponent(/datum/component/xenoartifact_pricing)
 	AddComponent(/datum/component/discoverable, 10000, TRUE) //Same values as original artifacts, exploration.
@@ -176,13 +176,18 @@
 		icon_overlay.color = colour
 	add_overlay(icon_overlay)
 
-/obj/structure/xenoartifact/proc/process_target(atom/target)
+/obj/structure/xenoartifact/proc/process_target(atom/target) //Hand holding is the best defence
 	if(!istype(target, /mob/living))
+		RegisterSignal(target, COMSIG_PARENT_QDELETING, .proc/on_target_del, target)
 		return target
 	var/mob/living/victim = target
 	if(victim.pulling && istype(victim.pulling, /mob/living))
 		return victim.pulling
 	return victim
+
+/obj/structure/xenoartifact/proc/on_target_del(atom/target)
+	UnregisterSignal(target, COMSIG_PARENT_QDELETING)
+	true_target -= target
 
 /obj/structure/xenoartifact/proc/create_beam(atom/target) //Helps show how the artifact is working. Hint stuff.
 	var/datum/beam/xenoa_beam/B = new(src.loc, target, time=1.5 SECONDS, beam_icon='austation/icons/obj/xenoartifact/xenoartifact.dmi', beam_icon_state="xenoa_beam", btype=/obj/effect/ebeam/xenoa_ebeam, col = material)
