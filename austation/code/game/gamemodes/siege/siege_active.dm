@@ -49,7 +49,6 @@
 			attack_ghost(ghost)
 
 /obj/machinery/siege_spawner/proc/spawn_team_member(client/new_team_member)
-
 	var/mob/living/carbon/human/M = new/mob/living/carbon/human(get_turf(src))
 	new_team_member.prefs.copy_to(M)
 	M.faction |= ROLE_SYNDICATE
@@ -75,7 +74,7 @@
 	choice_2 = new choice_2
 	choice_3 = new choice_3
 
-	var/role = askuser(new_team_member, "Which class will you choose?", "Class Selection", "<h3>[choice_1.name]</h3>", "<h3>[choice_2.name]</h3>", "<h3>[choice_3.name]</h3>")
+	var/role = askuser(new_team_member, "Which class will you choose?", "Class Selection", "<p>[choice_1.name]</p>", "<p>[choice_2.name]</p>", "<p>[choice_3.name]<p>")
 	switch(role)
 		if(1)
 			M.equipOutfit(choices[1])
@@ -126,7 +125,7 @@
 	..()
 
 /obj/item/syndPDA/attack_self(mob/user)
-	var/con = askuser(user, "What do you want to build?", "Building Selection", "<h3>Teleporter</h3>", "<h3>Dispenser</h3>", "<h3>Turret</h3>")
+	var/con = askuser(user, "What do you want to build?", "Building Selection", "<p>Teleporter</p>", "<p>Dispenser</p>", "<p>Turret</p>")
 	switch(con)
 		if(1)
 			if(teleporter_num != 2)

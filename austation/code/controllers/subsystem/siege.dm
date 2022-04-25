@@ -10,9 +10,9 @@ SUBSYSTEM_DEF(siege)
 	if(GLOB.master_mode == "siege")
 		starttime = world.time
 		targettime = starttime + 100 // 18000 = 30 Minutes 600/Minute
-		. = ..()
 	else
 		SSsiege.pause()
+	. = ..()
 
 /datum/controller/subsystem/siege/fire()
 	if(SSticker.mode.gamemode_status == 0)
