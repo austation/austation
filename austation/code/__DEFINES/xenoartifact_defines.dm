@@ -19,3 +19,13 @@
 //Also not materials but also related
 #define LIT 1
 #define TICK 2
+
+/*
+    It's signals, there here. These must all be ordered the same way, I think? The existing signals aren't all concreate.
+    We use different types, that do the same thing, so activators can just define what types they want and avoid coding anything else.
+*/
+#define XENOA_INTERACT "xenoa_interact" //This goes for all (item, user, target)
+#define XENOA_THROW_IMPACT "xenoa_interact"
+#define XENOA_ATTACK "xenoa_attack"
+#define XENOA_SIGNAL "xenoa_signal"
+#define XENOA_ATTACKBY "xenoa_attackby" //defining my own so I dont fuck anything up with COMSIG_PARENT_ATTACKBY
