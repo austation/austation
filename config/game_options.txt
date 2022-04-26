@@ -233,7 +233,7 @@ MAX_POP CLOCKCULT -1
 MIN_POP HERESY 25
 MAX_POP HERESY -1
 
-MIN_POP SIEGE 0
+MIN_POP SIEGE 20
 MAX_POP SIEGE -1
 
 ## The amount of time it takes for the emergency shuttle to be called, from round start.
