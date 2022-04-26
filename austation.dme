@@ -174,7 +174,6 @@
 #include "austation\code\modules\admin\verbs\mapping.dm"
 #include "austation\code\modules\antagonists\besieger\besieger.dm"
 #include "austation\code\modules\antagonists\changeling\changeling.dm"
-#include "austation\code\modules\antagonists\nukeop\equipment\nuclearbomb.dm"
 #include "austation\code\modules\atmospherics\auxgm\gas_types.dm"
 #include "austation\code\modules\atmospherics\gasmixtures\auxgm.dm"
 #include "austation\code\modules\atmospherics\gasmixtures\reactions.dm"
