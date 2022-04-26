@@ -16,6 +16,7 @@
 		/datum/outfit/siege/engineer,
 		/datum/outfit/siege/zombie)
 	var/static/datum/outfit/siege/elite_roles = list(/datum/outfit/syndicate, //nukie
+		/datum/outfit/siege/abductor,
 		/datum/outfit/siege/wizard)//with less spell points
 
 	var/list/ops = list()
@@ -104,25 +105,6 @@
 	var/teleporter_num = 0
 	var/dispenser
 	var/turret
-	var/material = 0
-
-/obj/machinery/quantumpad/syndicate
-	use_power = NO_POWER_USE
-	var/obj/item/syndPDA/parent_PDA
-
-/obj/machinery/quantumpad/syndicate/attackby(obj/item/I, mob/living/user, params)
-	..()
-	if(user.a_intent == INTENT_HELP && (ROLE_SYNDICATE in user.faction))
-		if(I.tool_behaviour == TOOL_WRENCH)
-			obj_integrity = max_integrity
-		else if(I.tool_behaviour == TOOL_CROWBAR)
-			parent_PDA.material += 50
-			qdel(src)
-
-/obj/machinery/quantumpad/syndicate/Destroy()
-	parent_PDA.teleporter_num -= 1
-	contents = null
-	..()
 
 /obj/item/syndPDA/attack_self(mob/user)
 	var/con = askuser(user, "What do you want to build?", "Building Selection", "<p>Teleporter</p>", "<p>Dispenser</p>", "<p>Turret</p>")
@@ -138,7 +120,9 @@
 			if(dispenser)
 				to_chat(user, "<span class='warning'>You already have a dispenser.</span>")
 			else
-				new /obj/machinery/quantumpad/syndicate(get_turf(src))
+				var/obj/machinery/siege_vendor/dis = new /obj/machinery/siege_vendor(get_turf(src))
+				dis.parent_PDA = src
+				dispenser = TRUE
 		if(3)
 			if(turret)
 				to_chat(user, "<span class='warning'>You already have a turret.</span>")
@@ -146,3 +130,77 @@
 				var/obj/machinery/porta_turret/syndicate/pod/toolbox/siege/tur = new /obj/machinery/porta_turret/syndicate/pod/toolbox/siege(get_turf(src))
 				tur.parent_PDA = src
 				turret = TRUE
+
+/obj/machinery/quantumpad/syndicate
+	use_power = NO_POWER_USE
+	var/obj/item/syndPDA/parent_PDA
+
+/obj/machinery/quantumpad/syndicate/attackby(obj/item/I, mob/living/user, params)
+	..()
+	if(user.a_intent == INTENT_HELP && (ROLE_SYNDICATE in user.faction))
+		if(I.tool_behaviour == TOOL_WRENCH)
+			obj_integrity = max_integrity
+		else if(I.tool_behaviour == TOOL_CROWBAR)
+			qdel(src)
+
+/obj/machinery/quantumpad/syndicate/Destroy()
+	parent_PDA.teleporter_num -= 1
+	contents = null
+	..()
+
+/obj/item/energycore
+	name = "Energycore"
+	desc = "An unstable battery which fully recharges energy weapons."
+	icon = 'icons/obj/assemblies/new_assemblies.dmi'
+	icon_state = "anomaly core"
+	item_state = "electronic"
+	lefthand_file = 'icons/mob/inhands/misc/devices_lefthand.dmi'
+	righthand_file = 'icons/mob/inhands/misc/devices_righthand.dmi'
+
+/obj/item/energycore/Initialize(mapload)
+	addtimer(CALLBACK(src, .proc/Destroy), 1400)
+	. = ..()
+
+/obj/machinery/siege_vendor
+	name = "Syndicate Assualt Vendor"
+	desc = "For all your barbaric needs."
+	processing_flags = START_PROCESSING_ON_INIT
+	subsystem_type = /datum/controller/subsystem/processing/fastprocess
+	use_power = NO_POWER_USE
+	icon_state = "wooden_tv_broken"
+	density = TRUE
+	var/obj/item/syndPDA/parent_PDA
+
+/obj/machinery/siege_vendor/attackby(obj/item/I, mob/user, params)
+	if(ROLE_SYNDICATE in user.faction)
+		if(I.tool_behaviour == TOOL_CROWBAR)
+			Destroy()
+			return
+		var/initial = askuser(user, "What caliber do you need?", "Ammo Selection", "<p>Pistol</p>", "<p>Rifle</p>", "<p>Other</p>")
+		var/obj/item/choice_1 = new /obj/item/ammo_box/magazine/m10mm
+		var/obj/item/choice_2 = new /obj/item/ammo_box/a357
+		var/obj/item/choice_3 = new /obj/item/ammo_box/magazine/smgm45
+		if(initial != null)
+			if(initial == 2)
+				choice_1 = new /obj/item/ammo_box/magazine/mm712x82
+				choice_2 = new /obj/item/ammo_box/magazine/sniper_rounds
+				choice_3 = new /obj/item/ammo_box/magazine/m556
+			if(initial == 3)
+				choice_1 = new /obj/item/storage/box/lethalshot
+				choice_2 = new /obj/item/energycore
+				choice_3 = new /obj/item/clothing/suit/armor/vest
+			var/final = askuser(user, "What ammo do you need", "Ammo Selection", "<p>[choice_1.name]</p>", "<p>[choice_2.name]</p>", "<p>[choice_3.name]</p>")
+			switch(final)
+				if(1)
+					choice_1.abstract_move(get_turf(src))
+				if(2)
+					choice_2.abstract_move(get_turf(src))
+				if(3)
+					choice_3.abstract_move(get_turf(src))
+					if(initial == 3)
+						new /obj/item/clothing/head/helmet(get_turf(src))
+	. = ..()
+
+/obj/machinery/siege_vendor/Destroy()
+	parent_PDA.dispenser = FALSE
+	. = ..()

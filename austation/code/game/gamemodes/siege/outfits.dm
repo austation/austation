@@ -99,11 +99,16 @@
 	uniform = /obj/item/clothing/under/color/lightpurple
 	suit = /obj/item/clothing/suit/wizrobe
 	shoes = /obj/item/clothing/shoes/sandal/magic
-	ears = /obj/item/radio/headset
 	head = /obj/item/clothing/head/wizard
-	r_pocket = /obj/item/teleportation_scroll
 	r_hand = /obj/item/spellbook
 	l_hand = /obj/item/staff
+
+/datum/outfit/siege/abductor
+	name = "Operative - Abductor"
+	suit = /obj/item/clothing/suit/armor/abductor/vest
+	head = /obj/item/clothing/head/helmet/abductor
+	r_pocket = /obj/item/teleportation_scroll
+	l_hand = /obj/item/melee/transforming/energy/sword/saber
 
 /datum/outfit/siege/post_equip(mob/living/carbon/human/H)
 	var/obj/item/radio/R = H.ears
@@ -144,7 +149,12 @@
 			if(S)
 				S.uses = 5
 				S.owner = H
+		if("Operative - Abductor")
+			H.dna.add_mutation(new /datum/mutation/human/space_adaptation)
 
 	a.registered_name = H.name
+	if(name == "Operative - Infiltrator")
+		a.registered_name = null
+		a.assignment = null
 	i.implant(H)
 	H.update_icons()
