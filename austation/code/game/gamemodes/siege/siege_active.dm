@@ -14,6 +14,7 @@
 		/datum/outfit/siege/intruder,
 		/datum/outfit/siege/intruder/brawler,
 		/datum/outfit/siege/engineer,
+		/datum/outfit/siege/medic,
 		/datum/outfit/siege/zombie)
 	var/static/datum/outfit/siege/elite_roles = list(/datum/outfit/syndicate, //nukie
 		/datum/outfit/siege/abductor,
@@ -35,7 +36,7 @@
 				ops[user.ckey] = world.time
 				spawn_team_member(user.client)
 		else
-			ops += list(user.ckey = world.time + 50)
+			ops += list(user.ckey = world.time + 1800)
 			spawn_team_member(user.client)
 			for(var/mob/M in GLOB.player_list)
 				to_chat(M, "A player has joined the syndicate team.")
@@ -158,7 +159,7 @@
 	righthand_file = 'icons/mob/inhands/misc/devices_righthand.dmi'
 
 /obj/item/energycore/Initialize(mapload)
-	addtimer(CALLBACK(src, .proc/Destroy), 1400)
+	addtimer(CALLBACK(src, .proc/qdel, src), 1400)
 	. = ..()
 
 /obj/machinery/siege_vendor

@@ -38,10 +38,21 @@
 
 /datum/outfit/siege/bomber
 	name = "Operative - Bomber"
-	backpack_contents =  list(/obj/item/grenade/plastic/x4, /obj/item/grenade/syndieminibomb)
+	backpack_contents = list(/obj/item/grenade/plastic/x4, /obj/item/grenade/syndieminibomb)
 	r_pocket = /obj/item/grenade/plastic/x4
 	suit = /obj/item/clothing/suit/space/syndicate/blue
 	head = /obj/item/clothing/head/helmet/space/syndicate/blue
+
+/datum/outfit/siege/medic
+	name = "Operative - Medic"
+	suit = /obj/item/clothing/suit/space/syndicate/blue
+	head = /obj/item/clothing/head/helmet/space/syndicate/blue
+	r_hand = /obj/item/gun/energy/e_gun
+	glasses = /obj/item/clothing/glasses/hud/health
+	back = /obj/item/storage/backpack/ert/medical
+	belt = /obj/item/storage/belt/medical
+	l_hand = /obj/item/storage/firstaid/regular
+	backpack_contents = list(/obj/item/gun/medbeam=1)
 
 /datum/outfit/siege/infiltrator
 	name = "Operative - Infiltrator"
