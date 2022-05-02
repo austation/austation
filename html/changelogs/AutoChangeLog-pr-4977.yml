@@ -1,0 +1,4 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - soundadd: "add medbot voice lines from tgstation/tgstation#51555"
