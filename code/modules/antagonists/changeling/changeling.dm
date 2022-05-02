@@ -282,7 +282,9 @@
 	prof.socks = H.socks
 
 	if(H.wear_id?.GetID())
-		prof.id_icon = "hud[ckey(H.wear_id.GetJobName())]"
+		var/obj/item/card/id/I = H.wear_id
+		if(istype(I))
+			prof.id_job_name = I.assignment
 
 	// austation -- changelings steal rings
 	prof.ring_type = H.ring_type
@@ -524,7 +526,7 @@
 	var/socks
 
 	/// ID HUD icon associated with the profile
-	var/id_icon
+	var/id_job_name
 
 /datum/changelingprofile/Destroy()
 	qdel(dna)
@@ -547,7 +549,7 @@
 	newprofile.underwear = underwear
 	newprofile.undershirt = undershirt
 	newprofile.socks = socks
-	newprofile.id_icon = id_icon
+	newprofile.id_job_name = id_job_name
 
 /datum/antagonist/changeling/xenobio
 	name = "Xenobio Changeling"
