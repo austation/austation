@@ -1,0 +1,4 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - bugfix: "Fixes a runtime in xenobiology cameras that prevented the use of the hotkey actions."
