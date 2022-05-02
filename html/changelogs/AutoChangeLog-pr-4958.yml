@@ -1,0 +1,5 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - rscadd: "More info messages for ectoscopic sniffer."
+  - bugfix: "Ectoscopic sniffer wrenching."
