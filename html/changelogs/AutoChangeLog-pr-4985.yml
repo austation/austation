@@ -1,0 +1,4 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - bugfix: "The Mr.Freeze no-slip boots now protect from gluon frag grenade slips."
