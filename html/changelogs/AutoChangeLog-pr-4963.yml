@@ -1,0 +1,5 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - rscadd: "Added global suit sensors list"
+  - bugfix: "fixed crew monitor"
