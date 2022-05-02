@@ -1,0 +1,4 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - admin: "The Admin Log for Stealth Mode will now include your fakekey"
