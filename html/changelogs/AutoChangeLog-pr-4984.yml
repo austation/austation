@@ -1,4 +1,0 @@
-author: "AustationBot"
-delete-after: True
-changes: 
-  - tweak: "Removed the alert allowing everyone to easily tell apart fake and real radiation storms"

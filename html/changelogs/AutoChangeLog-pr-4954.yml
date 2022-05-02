@@ -1,4 +1,0 @@
-author: "AustationBot"
-delete-after: True
-changes: 
-  - bugfix: "Closets and decals placed on the same tile will no longer cause runtimes and break map generation."

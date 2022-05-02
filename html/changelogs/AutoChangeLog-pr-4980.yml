@@ -1,4 +1,0 @@
-author: "AustationBot"
-delete-after: True
-changes: 
-  - bugfix: "Waddling, pituitary disruption, and the dance machine now properly reset transforms"

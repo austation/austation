@@ -1,4 +1,0 @@
-author: "AustationBot"
-delete-after: True
-changes: 
-  - bugfix: "LOWMEMORYMODE now doesn't runtime and supercruise works on it"

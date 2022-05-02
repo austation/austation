@@ -1,4 +1,0 @@
-author: "AustationBot"
-delete-after: True
-changes: 
-  - bugfix: "Mech syringe gun, hypodermic prickles and the cat surgeon will no longer bypass pierce protection."

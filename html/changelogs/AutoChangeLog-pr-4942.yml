@@ -1,6 +1,0 @@
-author: "AustationBot"
-delete-after: True
-changes: 
-  - bugfix: "A lot of runtimes"
-  - bugfix: "\"Fake\" harddeletes that are the result of said runtimes and only happen when the unit test runs"
-  - bugfix: "multiple qdel calls for the same object"
