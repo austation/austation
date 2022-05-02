@@ -42,14 +42,6 @@
 	lefthand_file = 'icons/mob/inhands/clothing_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/clothing_righthand.dmi'
 	hitsound = 'sound/weapons/tap.ogg'
-<<<<<<< HEAD
-	var/hitsound_on = 'sound/weapons/sear.ogg' //so we can differentiate between cakehat and energyhat
-	var/hitsound_off = 'sound/weapons/tap.ogg'
-	var/force_on = 15 //austation start -- keeps force/throwforce at 15. Changed from 12 on bee
-	var/throwforce_on = 15
-	var/damtype_on = BURN
-=======
->>>>>>> 9e15ee3182 (Refactor/documentation on various headwear (#6507))
 	flags_inv = HIDEEARS|HIDEHAIR
 	armor = list("melee" = 0, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0, "stamina" = 0)
 	light_range = 2 //luminosity when on
@@ -58,8 +50,10 @@
 
 	dog_fashion = /datum/dog_fashion/head
 
-	var/force_on = 12
-	var/throwforce_on = 12
+	// austation start -- keep throwforce at 15 (pre-nerf value)
+	var/force_on = 15
+	var/throwforce_on = 15
+	// austation end
 	var/damtype_on = BURN
 	var/hitsound_on = 'sound/weapons/sear.ogg' //so we can differentiate between cakehat and energyhat
 
