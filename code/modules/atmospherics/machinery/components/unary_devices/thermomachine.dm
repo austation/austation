@@ -259,7 +259,11 @@
 
 /obj/machinery/atmospherics/components/unary/thermomachine/freezer/on/coldroom/Initialize(mapload)
 	. = ..()
+<<<<<<< HEAD
 	target_temperature = T0C-80
+=======
+	target_temperature = T0C-20
+>>>>>>> 412cb24db7 (Removes miasma (#6445))
 
 /obj/machinery/atmospherics/components/unary/thermomachine/heater
 	icon_state = "heater"

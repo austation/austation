@@ -277,7 +277,6 @@
 #define GAS_BZ					"bz"
 #define GAS_STIMULUM			"stim"
 #define GAS_PLUOXIUM			"pluox"
-#define GAS_MIASMA				"miasma"
 
 #define GAS_FLAG_DANGEROUS		(1<<0)
 #define GAS_FLAG_BREATH_PROC	(1<<1)
@@ -327,10 +326,6 @@ GLOBAL_LIST_INIT(pipe_paint_colors, sortList(list(
 		"violet" = rgb(64,0,128),
 		"yellow" = rgb(255,198,0)
 )))
-
-//ROT MIASMA
-#define MIASMA_CORPSE_MOLES 0.02
-#define MIASMA_GIBS_MOLES 0.005
 
 //PIPENET UPDATE STATUS
 #define PIPENET_UPDATE_STATUS_DORMANT 0
