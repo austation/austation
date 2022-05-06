@@ -145,6 +145,18 @@ we use a hook instead
 /datum/gas_mixture/proc/get_last_share()
 /datum/gas_mixture/proc/clear()
 
+
+//austation begin -- extra hooks
+/datum/gas_mixture/proc/adjust_moles_temp(gas_type, amt, temperature)
+/datum/gas_mixture/proc/adjust_multi()
+/datum/gas_mixture/proc/add(amt)
+/datum/gas_mixture/proc/subtract(amt)
+/datum/gas_mixture/proc/divide(factor)
+/datum/gas_mixture/proc/__remove_by_flag(taker, flag, amount)
+/datum/gas_mixture/proc/get_by_flag(flag)
+//austation end
+
+
 /datum/gas_mixture/proc/adjust_moles(gas_type, amt = 0)
 	set_moles(gas_type, clamp(get_moles(gas_type) + amt,0,INFINITY))
 
