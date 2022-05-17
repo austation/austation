@@ -47,8 +47,14 @@ GLOBAL_LIST_INIT(arcade_prize_pool, list(
 		/obj/item/disk/nuclear/fake/obvious = 1,
 		/obj/item/clothing/shoes/wheelys = 2,
 		/obj/item/clothing/shoes/kindleKicks = 2,
+<<<<<<< HEAD
 		/mob/living/simple_animal/bot/secbot/deathsky/toy = 2, //austation -- deathsky
 		/obj/item/toy/plush/moth = 2,
+=======
+		/obj/item/toy/plush/moth/random = 2,
+		/obj/item/toy/plush/flushed = 2,
+		/obj/item/toy/plush/gondola = 2,
+>>>>>>> ecf8ff1138 (Moth plush update + small tweaks to the plushes overall (#6866))
 		/obj/item/toy/plush/rouny = 2,
 		/obj/item/storage/box/heretic_asshole = 1,
 		/obj/item/toy/eldrich_book = 1,
