@@ -879,13 +879,17 @@
 /datum/xenoartifact_trait/malfunction/bear //makes bears
 	label_name = "P.B.R" 
 	label_desc = "Parallel Bearspace Retrieval: A strange malfunction causes the Artifact to open a gateway to deep bearspace."
+	var/bears //bear per bears
 
 /datum/xenoartifact_trait/malfunction/bear/activate(obj/item/xenoartifact/X)
-	if(prob(33))
+	if(prob(33) && bears < 7)
+		bears+=1
 		var/mob/living/simple_animal/hostile/bear/new_bear
 		new_bear = new(get_turf(X.loc))
 		new_bear.name = pick("Freddy", "Bearington", "Smokey", "Beorn", "Pooh", "Paddington", "Winnie", "Baloo", "Rupert", "Yogi", "Fozzie", "Boo") //Why not?
 		log_game("[X] spawned a (/mob/living/simple_animal/hostile/bear) at [world.time]. [X] located at [X.x] [X.y] [X.z]")
+	else
+		qdel(X)
 
 /datum/xenoartifact_trait/malfunction/badtarget
 	label_name = "Maltargeting"
