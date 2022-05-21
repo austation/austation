@@ -304,6 +304,8 @@
 	target = null
 
 /obj/item/xenoartifact/proc/create_beam(atom/target) //Helps show how the artifact is working. Hint stuff.
+	if(isliving(loc) || !get_turf(target))
+		return
 	var/datum/beam/xenoa_beam/B = new(src.loc, target, time=1.5 SECONDS, beam_icon='austation/icons/obj/xenoarchaeology/xenoartifact.dmi', beam_icon_state="xenoa_beam", btype=/obj/effect/ebeam/xenoa_ebeam)
 	B.set_color(material)
 	INVOKE_ASYNC(B, /datum/beam/xenoa_beam.proc/Start)
