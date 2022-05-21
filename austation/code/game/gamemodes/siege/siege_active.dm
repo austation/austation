@@ -5,7 +5,7 @@
 	icon = 'icons/obj/device.dmi'
 	icon_state = "syndbeacon"
 	resistance_flags = INDESTRUCTIBLE
-	var/operation_status = 0
+	var/operation_status = 0 // 0 = no spawning, 1 = normal role spawning, 2 = elite role spawning active
 
 	var/static/datum/outfit/siege/roles = list(/datum/outfit/siege/pirate,
 		/datum/outfit/siege/specialist,
