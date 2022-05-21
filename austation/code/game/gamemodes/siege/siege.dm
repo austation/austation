@@ -32,6 +32,8 @@
 	var/team_size = required_enemies + (round(num_players() * CONFIG_GET(number/traitor_scaling_coeff)) / 2)
 	team = new
 	for(var/k = 1 to team_size)
+		if (!antag_candidates.len)
+			break
 		var/datum/mind/b = antag_pick(possible_besiegers, ROLE_BESIEGER)
 		possible_besiegers -= b
 		antag_candidates -= b
