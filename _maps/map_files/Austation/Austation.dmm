@@ -1091,6 +1091,7 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
 	},
+/obj/item/gun/ballistic/automatic/l1a1,
 /turf/open/floor/plasteel/dark,
 /area/ai_monitored/security/armory)
 "aes" = (
@@ -1153,6 +1154,8 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
 	},
+/obj/item/ammo_box/magazine/mm762x51,
+/obj/item/ammo_box/magazine/mm762x51,
 /turf/open/floor/plasteel/dark,
 /area/ai_monitored/security/armory)
 "aey" = (
@@ -3528,6 +3531,7 @@
 	},
 /obj/structure/closet/secure_closet/warden,
 /obj/item/gun/energy/laser,
+/obj/item/gun/ballistic/automatic/l1a1/trueblue,
 /turf/open/floor/plasteel/showroomfloor,
 /area/security/warden)
 "aoz" = (
