@@ -44,6 +44,7 @@
 // END_BEESTATION_INCLUDE
 
 // BEGIN_INCLUDE
+#include "austation\code\__DEFINES\xenoartifact_materials.dm"
 #include "austation\code\__HELPERS\roundend.dm"
 #include "austation\code\__HELPERS\type_processing.dm"
 #include "austation\code\_globalvars\coilgun.dm"
@@ -334,4 +335,8 @@
 #include "austation\code\modules\vending\_vending.dm"
 #include "austation\code\modules\vending\clothesmate.dm"
 #include "austation\code\modules\wiremod\marker.dm"
+#include "austation\code\modules\xenoarchaeology\xenoartifact.dm"
+#include "austation\code\modules\xenoarchaeology\xenoartifact_console.dm"
+#include "austation\code\modules\xenoarchaeology\xenoartifact_labeler.dm"
+#include "austation\code\modules\xenoarchaeology\xenoartifact_traits.dm"
 // END_INCLUDE

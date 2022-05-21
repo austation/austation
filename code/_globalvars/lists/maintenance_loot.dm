@@ -113,5 +113,6 @@ GLOBAL_LIST_INIT(maintenance_loot, list(
 	/obj/item/reagent_containers/food/drinks/bottle/homemaderum = 1,
 	/obj/item/reagent_containers/food/snacks/grown/poppy = 10,
 	/obj/item/throwing_star = 1,
+	/obj/item/xenoartifact/maint = 3, //austation - 21 5 22 - could probably modularise, too lazy otherwise
 	"" = 3
 	))
