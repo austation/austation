@@ -5,7 +5,6 @@
 	icon = 'icons/obj/device.dmi'
 	icon_state = "syndbeacon"
 	resistance_flags = INDESTRUCTIBLE
-	var/operation_status = 0
 
 	var/static/datum/outfit/siege/roles = list(/datum/outfit/siege/pirate,
 		/datum/outfit/siege/specialist,
@@ -29,7 +28,7 @@
 	GLOB.poi_list += src
 
 /obj/machinery/siege_spawner/attack_ghost(mob/user)
-	if(SSticker.mode.gamemode_status > 1 || operation_status > 1)
+	if(SSticker.mode.gamemode_status > 1)
 		if(user.ckey in ops)
 			if(ops[user.ckey] > world.time)
 				to_chat(user, "You have spawned too recently, wait.")
@@ -63,7 +62,7 @@
 	var/list/datum/outfit/choices = list()
 	while(choices.len != 3)
 		var/datum/outfit/choice = pick(roles)
-		if((SSticker.mode.gamemode_status == 2 || operation_status == 2)&& prob(5))//repeated 3 times, so chance is 3x higher
+		if(SSticker.mode.gamemode_status == 2 && prob(5))//repeated 3 times, so chance is 3x higher
 			choice = pick(elite_roles)
 		if(choice in choices)
 			continue
