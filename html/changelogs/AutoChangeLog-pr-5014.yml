@@ -1,5 +1,0 @@
-author: "AustationBot"
-delete-after: True
-changes: 
-  - balance: "Scarabs can't use Sentinels compromise anymore.
-tweak:Oozelings now take toxin damage from Sentinel's compromise."

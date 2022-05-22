@@ -1,4 +1,0 @@
-author: "AustationBot"
-delete-after: True
-changes: 
-  - bugfix: "Exploration Artifact Watchers now check if the proximity-atom is in view."

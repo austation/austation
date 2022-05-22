@@ -1,7 +1,0 @@
-author: "AustationBot"
-delete-after: True
-changes: 
-  - bugfix: "Fixes post round shuttle loading."
-  - rscadd: "Multiple mapped shuttles can spawn per round."
-  - bugfix: "Fixes fastdmm not being able to compile the codebase."
-  - rscadd: "Adds in some props to shutle ports to make fastdmm display important port variables such as width, height, dwidth and dheight first."
