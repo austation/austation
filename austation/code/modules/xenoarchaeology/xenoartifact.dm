@@ -1,6 +1,6 @@
 /obj/item/xenoartifact
 	name = "xenoartifact"
-	icon = 'icons/obj/xenoarchaeology/xenoartifact.dmi'
+	icon = 'austation/icons/obj/xenoarchaeology/xenoartifact.dmi'
 	icon_state = "map_editor"
 	w_class = WEIGHT_CLASS_NORMAL
 	light_color = LIGHT_COLOR_FIRE
@@ -260,7 +260,7 @@
 
 /obj/item/xenoartifact/proc/generate_icon(var/icn, var/icnst = "", colour) //Add extra icon overlays. Ghetto GAGS
 	icon_overlay = mutable_appearance(icn, icnst)
-	icon_overlay.layer = FLOAT_LAYER //Not doing this fucks the object icons when you're holding it
+	icon_overlay.layer = FLOAT_LAYER //Not doing this fucks the object austation/icons when you're holding it
 	icon_overlay.appearance_flags = RESET_ALPHA// Not doing this fucks the alpha?
 	icon_overlay.alpha = alpha
 	if(colour)
@@ -285,7 +285,7 @@
 /obj/item/xenoartifact/proc/create_beam(atom/target) //Helps show how the artifact is working. Hint stuff.
 	if(isliving(loc) || !get_turf(target))
 		return
-	var/datum/beam/xenoa_beam/B = new(src.loc, target, time=1.5 SECONDS, beam_icon='icons/obj/xenoarchaeology/xenoartifact.dmi', beam_icon_state="xenoa_beam", btype=/obj/effect/ebeam/xenoa_ebeam)
+	var/datum/beam/xenoa_beam/B = new(src.loc, target, time=1.5 SECONDS, beam_icon='austation/icons/obj/xenoarchaeology/xenoartifact.dmi', beam_icon_state="xenoa_beam", btype=/obj/effect/ebeam/xenoa_ebeam)
 	B.set_color(material)
 	INVOKE_ASYNC(B, /datum/beam/xenoa_beam.proc/Start)
 
