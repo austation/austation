@@ -104,7 +104,7 @@ GLOBAL_VAR(posibrain_notify_cooldown)
 		return
 	if(brainmob.suiciding) //clear suicide status if the old occupant suicided.
 		brainmob.set_suicide(FALSE)
-	GLOB.posi_key_list += user.ckey
+	//GLOB.posi_key_list += user.ckey austation -- allow multiple posibrain spawns (lazy way)
 	transfer_personality(user)
 
 /obj/item/mmi/posibrain/transfer_identity(mob/living/carbon/C)
