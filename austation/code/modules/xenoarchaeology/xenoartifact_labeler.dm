@@ -1,6 +1,6 @@
 /obj/item/xenoartifact_labeler
 	name = "Xenoartifact Labeler"
-	icon = 'austation/icons/obj/xenoarchaeology/xenoartifact_tech.dmi'
+	icon = 'icons/obj/xenoarchaeology/xenoartifact_tech.dmi'
 	icon_state = "xenoartifact_labeler"
 	desc = "A tool scientists use to label their alien bombs."
 	throw_speed = 3
@@ -127,7 +127,7 @@
 
 // Not to be confused with labeler
 /obj/item/xenoartifact_label
-	icon = 'austation/icons/obj/xenoarchaeology/xenoartifact_sticker.dmi'
+	icon = 'icons/obj/xenoarchaeology/xenoartifact_sticker.dmi'
 	icon_state = "sticker_star"
 	name = "Xenoartifact Label"
 	desc = "An adhesive label describing the characteristics of a Xenoartifact."
@@ -215,15 +215,13 @@
 	return
 
 /obj/item/xenoartifact_labeler/debug/create_label(new_name)
-	var/obj/item/xenoartifact/A = new(get_turf(loc), DEBUGIUM)
+	var/obj/item/xenoartifact/A = new(get_turf(loc), XENOA_DEBUGIUM)
 	say("Created [A] at [A.loc]")
 	A.charge_req = 100
 	A.malfunction_mod = 0
 	A.malfunction_chance = 0
+	qdel(A.traits)
 	A.traits = list()
-	for(var/datum/xenoartifact_trait/t as() in A.traits) //Delete old traits
-		t.on_del(A)
-		qdel(t)
 	for(var/X in sticker_traits) //Add new ones
 		say(X)
 		A.traits += new X
