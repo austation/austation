@@ -1,0 +1,6 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - rscdel: "Removes mentions of changeling hivemind chat"
+  - bugfix: "Headspidering no longer causes a runtime"
+  - bugfix: "You can no longer headspider in revival stasis for a free aheal later on"
