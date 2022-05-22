@@ -1,0 +1,4 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - rscadd: "Adds Carp Hunter and Sword Saint into the Curator's Heroic Beacon"
