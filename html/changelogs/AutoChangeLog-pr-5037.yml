@@ -1,0 +1,4 @@
+author: "Mat05usz, Timberpoes"
+delete-after: True
+changes: 
+  - bugfix: "Rare runtimes in crewmonitor"
