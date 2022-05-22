@@ -1,0 +1,4 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - bugfix: "Headspidering no longer teleports you and you can't headspider after cremation"
