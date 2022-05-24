@@ -5,7 +5,8 @@
 	icon = 'icons/obj/device.dmi'
 	icon_state = "syndbeacon"
 	resistance_flags = INDESTRUCTIBLE
-	var/operation_status = 0 // 0 = no spawning, 1 = normal role spawning, 2 = elite role spawning active
+	var/status_overide = 0 // 0 = no spawning, 1 = normal role spawning, 2 = elite role spawning active
+	var/respawn_delay = 1800
 
 	var/static/datum/outfit/siege/roles = list(/datum/outfit/siege/pirate,
 		/datum/outfit/siege/specialist,
@@ -29,7 +30,7 @@
 	GLOB.poi_list += src
 
 /obj/machinery/siege_spawner/attack_ghost(mob/user)
-	if(SSticker.mode.gamemode_status > 1 || operation_status > 1)
+	if(SSticker.mode.gamemode_status > 1 || status_overide > 1)
 		if(user.ckey in ops)
 			if(ops[user.ckey] > world.time)
 				to_chat(user, "You have spawned too recently, wait.")
@@ -37,7 +38,7 @@
 				ops[user.ckey] = world.time
 				spawn_team_member(user.client)
 		else
-			ops += list(user.ckey = world.time + 1800)
+			ops += list(user.ckey = world.time + respawn_delay)
 			spawn_team_member(user.client)
 			for(var/mob/M in GLOB.player_list)
 				to_chat(M, "A player has joined the syndicate team.")
@@ -63,7 +64,7 @@
 	var/list/datum/outfit/choices = list()
 	while(choices.len != 3)
 		var/datum/outfit/choice = pick(roles)
-		if((SSticker.mode.gamemode_status == 2 || operation_status == 2)&& prob(5))//repeated 3 times, so chance is 3x higher
+		if(((SSticker.mode.gamemode_status == 2 && status_overide == 0) || (status_overide == 2))&& prob(5))//repeated 3 times, so chance is 3x higher
 			choice = pick(elite_roles)
 		if(choice in choices)
 			continue
@@ -77,7 +78,7 @@
 	choice_2 = new choice_2
 	choice_3 = new choice_3
 
-	var/role = askuser(new_team_member, "Which class will you choose?", "Class Selection", "<p>[choice_1.name]</p>", "<p>[choice_2.name]</p>", "<p>[choice_3.name]<p>")
+	var/role = askuser(new_team_member, "Which class will you choose?", "Class Selection", "[choice_1.name]\ \ ", "[choice_2.name]\ \ ", "[choice_3.name]\ \ ")
 	switch(role)
 		if(1)
 			M.equipOutfit(choices[1])
@@ -109,7 +110,7 @@
 	var/turret
 
 /obj/item/syndPDA/attack_self(mob/user)
-	var/con = askuser(user, "What do you want to build?", "Building Selection", "<p>Teleporter</p>", "<p>Dispenser</p>", "<p>Turret</p>")
+	var/con = askuser(user, "What do you want to build?", "Building Selection", "Teleporter\ \ ", "Dispenser\ \ ", "Turret\ \ ")
 	switch(con)
 		if(1)
 			if(teleporter_num != 2)
@@ -173,11 +174,9 @@
 	density = TRUE
 	var/obj/item/syndPDA/parent_PDA
 
-/obj/machinery/siege_vendor/attackby(obj/item/I, mob/user, params)
+/obj/machinery/siege_vendor/attack_hand(mob/user)
+	. = ..()
 	if(ROLE_SYNDICATE in user.faction)
-		if(I.tool_behaviour == TOOL_CROWBAR)
-			Destroy()
-			return
 		var/initial = askuser(user, "What caliber do you need?", "Ammo Selection", "<p>Pistol</p>", "<p>Rifle</p>", "<p>Other</p>")
 		var/obj/item/choice_1 = new /obj/item/ammo_box/magazine/m10mm
 		var/obj/item/choice_2 = new /obj/item/ammo_box/a357
@@ -201,6 +200,10 @@
 					choice_3.abstract_move(get_turf(src))
 					if(initial == 3)
 						new /obj/item/clothing/head/helmet(get_turf(src))
+
+/obj/machinery/siege_vendor/attackby(obj/item/I, mob/user, params)
+	if(I.tool_behaviour == TOOL_CROWBAR && (ROLE_SYNDICATE in user.faction))
+		Destroy()
 	. = ..()
 
 /obj/machinery/siege_vendor/Destroy()
