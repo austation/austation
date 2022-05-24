@@ -155,13 +155,13 @@
 		if("Operative - Wizard")
 			H.name = pick(GLOB.wizard_first) + " " + pick(GLOB.wizard_second)
 			H.real_name = H.name
-			H.dna.add_mutation(new /datum/mutation/human/space_adaptation)
+			H.dna.add_mutation(SPACEMUT)
 			var/obj/item/spellbook/S = locate() in H.held_items
 			if(S)
 				S.uses = 5
 				S.owner = H
 		if("Operative - Abductor")
-			H.dna.add_mutation(new /datum/mutation/human/space_adaptation)
+			H.dna.add_mutation(SPACEMUT)
 
 	a.registered_name = H.name
 	if(name == "Operative - Infiltrator")
