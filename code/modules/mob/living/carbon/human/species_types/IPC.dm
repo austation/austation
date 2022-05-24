@@ -49,9 +49,12 @@
 	var/saved_screen //for saving the screen when they die
 	var/datum/action/innate/change_screen/change_screen
 
-/datum/species/ipc/random_name(unique)
-	var/ipc_name = "[pick(GLOB.posibrain_names)]-[rand(100, 999)]"
-	return ipc_name
+/datum/species/ipc/random_name(gender, unique, lastname, attempts)
+	. = "[pick(GLOB.posibrain_names)]-[rand(100, 999)]"
+
+	if(unique && attempts < 10)
+		if(findname(.))
+			. = .(gender, TRUE, lastname, ++attempts)
 
 /datum/species/ipc/on_species_gain(mob/living/carbon/C)
 	. = ..()
@@ -213,6 +216,7 @@
 	H.grab_ghost()
 	H.dna.features["ipc_screen"] = "BSOD"
 	H.update_body()
+	playsound(H, 'sound/voice/dialup.ogg', 25)
 	H.say("Reactivating [pick("core systems", "central subroutines", "key functions")]...")
 	sleep(3 SECONDS)
 	if(H.stat == DEAD)

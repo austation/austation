@@ -5,6 +5,7 @@
 	worn_icon = 'austation/icons/mob/uniform.dmi'
 	icon_state = "kimono"
 	item_state = "kimono"
+	can_adjust = FALSE
 
 /obj/item/clothing/under/costume/kimono/black
 	name = "Black Kimono"
