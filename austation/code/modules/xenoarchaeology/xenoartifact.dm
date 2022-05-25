@@ -341,7 +341,6 @@
 
 /obj/item/xenoartifact/Destroy()
 	SSradio.remove_object(src, frequency)
-	qdel(radio_connection)
 	qdel(traits)
 	qdel(touch_desc)
 	for(var/atom/movable/AM in contents)
