@@ -43,6 +43,7 @@
 // END_BEESTATION_INCLUDE
 
 // BEGIN_INCLUDE
+#include "austation\code\__DEFINES\xenoartifact_materials.dm"
 #include "austation\code\__HELPERS\roundend.dm"
 #include "austation\code\_globalvars\coilgun.dm"
 #include "austation\code\_globalvars\misc.dm"
@@ -328,4 +329,8 @@
 #include "austation\code\modules\events\space_dragon.dm"
 #include "austation\code\modules\hydroponics\grown\gympie_gympie.dm"
 #include "austation\code\modules\mob\living\simple_animal\hostile\gympie_gympie.dm"
+#include "austation\code\modules\xenoarchaeology\xenoartifact.dm"
+#include "austation\code\modules\xenoarchaeology\xenoartifact_console.dm"
+#include "austation\code\modules\xenoarchaeology\xenoartifact_labeler.dm"
+#include "austation\code\modules\xenoarchaeology\xenoartifact_traits.dm"
 // END_INCLUDE
