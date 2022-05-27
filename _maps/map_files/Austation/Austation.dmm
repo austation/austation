@@ -27091,6 +27091,7 @@
 /obj/item/clothing/glasses/science{
 	pixel_y = 9
 	},
+/obj/item/book/manual/wiki/xenoarchaeology,
 /turf/open/floor/plasteel,
 /area/science/explab)
 "crV" = (
