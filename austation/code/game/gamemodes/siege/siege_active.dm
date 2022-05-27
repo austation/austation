@@ -7,6 +7,7 @@
 	resistance_flags = INDESTRUCTIBLE
 	var/status_overide = 0 // 0 = no spawning, 1 = normal role spawning, 2 = elite role spawning active
 	var/respawn_delay = 6 MINUTES
+	var/nuke_code
 
 	var/static/datum/outfit/siege/roles = list(/datum/outfit/siege/pirate,
 		/datum/outfit/siege/specialist,
@@ -27,6 +28,9 @@
 	. = ..()
 	SSshuttle.registerHostileEnvironment(src)
 	GLOB.poi_list += src
+	nuke_code = random_nukecode()
+	for(var/obj/machinery/nuclearbomb/selfdestruct/SD in GLOB.nuke_list)
+		SD.r_code = nuke_code
 
 /obj/machinery/siege_spawner/attack_ghost(mob/user)
 	if(SSticker.mode.gamemode_status > 1 || status_overide > 1)
@@ -59,6 +63,7 @@
 	M.key = new_team_member.key
 	M.name = syndicate_name() + " Operative"
 	M.real_name = M.name
+	M.add_memory("The nuke code incase you are on an unsanctioned operation is: [nuke_code]")
 
 	var/list/datum/outfit/choices = list()
 	while(choices.len != 3)
