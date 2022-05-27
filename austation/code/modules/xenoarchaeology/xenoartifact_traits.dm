@@ -106,7 +106,7 @@
 
 /datum/xenoartifact_trait/activator/burn
 	desc = "Flammable"
-	label_desc = "Flammable: The material is flamable, and seems to react when ignited."
+	label_desc = "Flammable: The material is flammable, and seems to react when ignited."
 	charge = 25
 	signals = list(COMSIG_PARENT_ATTACKBY)
 
@@ -327,7 +327,7 @@
 	charge_max = 0 SECONDS
 	clothes_req = 0
 	include_user = 0
-	action_icon = 'icons/mob/actions/actions_revenant.dmi'
+	action_icon = 'austation/icons/mob/actions/actions_revenant.dmi'
 	action_icon_state = "r_transmit"
 	action_background_icon_state = "bg_spell"
 	var/obj/item/xenoartifact/xeno
