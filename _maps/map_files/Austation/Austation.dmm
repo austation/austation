@@ -10553,15 +10553,6 @@
 /obj/effect/spawner/structure/window/reinforced,
 /turf/open/floor/plating,
 /area/crew_quarters/heads/chief)
-"aWE" = (
-/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
-	dir = 4
-	},
-/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer3{
-	dir = 4
-	},
-/turf/open/floor/engine,
-/area/science/explab)
 "aWK" = (
 /obj/machinery/atmospherics/pipe/heat_exchanging/simple{
 	dir = 10
@@ -24972,6 +24963,9 @@
 /obj/structure/sign/warning/securearea,
 /turf/closed/wall/r_wall,
 /area/bridge/showroom/corporate)
+"chx" = (
+/turf/open/floor/engine,
+/area/science/explab)
 "chy" = (
 /obj/structure/sign/warning/nosmoking{
 	pixel_y = 32
@@ -25530,6 +25524,14 @@
 	dir = 4
 	},
 /area/science/research)
+"cks" = (
+/obj/machinery/button/door{
+	id = "telelab";
+	name = "Test Chamber Blast Doors";
+	pixel_y = -25
+	},
+/turf/open/floor/engine,
+/area/science/explab)
 "ckE" = (
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -25987,6 +25989,16 @@
 	},
 /turf/open/floor/plasteel,
 /area/science/explab)
+"cmR" = (
+/obj/structure/table/reinforced,
+/obj/item/paper_bin{
+	pixel_x = -2;
+	pixel_y = 6
+	},
+/obj/item/pen,
+/obj/effect/turf_decal/stripes/line,
+/turf/open/floor/plasteel,
+/area/science/explab)
 "cmT" = (
 /obj/machinery/computer/rdconsole/experiment,
 /obj/effect/turf_decal/stripes/line,
@@ -26331,6 +26343,12 @@
 /obj/structure/disposalpipe/segment,
 /obj/effect/turf_decal/tile/purple{
 	dir = 8
+	},
+/turf/open/floor/plasteel/white,
+/area/science/explab)
+"col" = (
+/obj/structure/chair/office/light{
+	dir = 4
 	},
 /turf/open/floor/plasteel/white,
 /area/science/explab)
@@ -41287,17 +41305,6 @@
 	},
 /turf/open/floor/wood,
 /area/library)
-"eXI" = (
-/mob/living/simple_animal/pet/dog/pug{
-	desc = "It's Pugley IV, the research department's lovable pug clone. Hopefully nothing happens to this one - fourth time lucky!";
-	name = "Pugley IV";
-	real_name = "Pugley IV"
-	},
-/obj/machinery/atmospherics/components/unary/vent_pump/on/layer1{
-	dir = 4
-	},
-/turf/open/floor/engine,
-/area/science/explab)
 "eXP" = (
 /obj/effect/spawner/structure/window/reinforced,
 /obj/machinery/door/firedoor/window,
@@ -42547,6 +42554,17 @@
 	},
 /turf/open/space,
 /area/space/nearstation)
+"fwP" = (
+/mob/living/simple_animal/pet/dog/pug{
+	desc = "It's Pugley IV, the research department's lovable pug clone. Hopefully nothing happens to this one - fourth time lucky!";
+	name = "Pugley IV";
+	real_name = "Pugley IV"
+	},
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer1{
+	dir = 4
+	},
+/turf/open/floor/engine,
+/area/science/explab)
 "fxO" = (
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
@@ -44900,9 +44918,6 @@
 /obj/machinery/door/firedoor/border_only,
 /turf/open/floor/plasteel/white,
 /area/medical/medbay/central)
-"gzX" = (
-/turf/open/floor/engine,
-/area/science/explab)
 "gAk" = (
 /obj/effect/turf_decal/delivery,
 /obj/effect/turf_decal/stripes/line{
@@ -54587,16 +54602,6 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1,
 /turf/open/floor/plasteel/showroomfloor,
 /area/security/warden)
-"kgd" = (
-/obj/structure/table/reinforced,
-/obj/item/paper_bin{
-	pixel_x = -2;
-	pixel_y = 6
-	},
-/obj/item/pen,
-/obj/effect/turf_decal/stripes/line,
-/turf/open/floor/plasteel,
-/area/science/explab)
 "kgI" = (
 /obj/effect/turf_decal/stripes/line,
 /obj/machinery/atmospherics/components/trinary/filter{
@@ -58482,10 +58487,6 @@
 	},
 /turf/open/floor/plating,
 /area/engine/atmos)
-"lCg" = (
-/obj/machinery/holopad,
-/turf/open/floor/plasteel/white,
-/area/science/explab)
 "lCk" = (
 /obj/machinery/door/airlock/external{
 	name = "Mining Dock Airlock"
@@ -58722,6 +58723,31 @@
 	},
 /turf/closed/wall/r_wall,
 /area/security/brig)
+"lHW" = (
+/obj/machinery/button/door{
+	id = "telelab";
+	name = "Test Chamber Blast Doors";
+	pixel_y = 25
+	},
+/obj/structure/table/reinforced,
+/obj/item/reagent_containers/glass/bottle/epinephrine{
+	pixel_x = 7;
+	pixel_y = 2
+	},
+/obj/item/reagent_containers/glass/bottle/charcoal{
+	pixel_x = -2;
+	pixel_y = -1
+	},
+/obj/item/reagent_containers/dropper,
+/obj/item/stack/medical/bruise_pack{
+	pixel_x = -2;
+	pixel_y = 6
+	},
+/obj/item/stack/medical/ointment,
+/obj/item/healthanalyzer,
+/obj/effect/turf_decal/stripes/line,
+/turf/open/floor/plasteel,
+/area/science/explab)
 "lIe" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/cable/yellow{
@@ -65312,6 +65338,10 @@
 	},
 /turf/open/floor/plasteel,
 /area/security/brig)
+"ofu" = (
+/obj/effect/landmark/nuclear_waste_spawner,
+/turf/closed/wall/r_wall,
+/area/science/explab)
 "ofy" = (
 /obj/effect/turf_decal/tile/purple{
 	dir = 1
@@ -67943,10 +67973,6 @@
 	},
 /turf/open/floor/plating,
 /area/maintenance/department/security/brig)
-"pcM" = (
-/obj/effect/landmark/nuclear_waste_spawner,
-/turf/closed/wall/r_wall,
-/area/science/explab)
 "pcQ" = (
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
@@ -69855,6 +69881,10 @@
 	},
 /turf/open/floor/plating,
 /area/maintenance/solars/starboard/aft)
+"pNq" = (
+/obj/machinery/holopad,
+/turf/open/floor/plasteel/white,
+/area/science/explab)
 "pNC" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plasteel,
@@ -79601,6 +79631,15 @@
 	},
 /turf/open/floor/engine,
 /area/science/explab)
+"tHG" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
+	dir = 4
+	},
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer3{
+	dir = 4
+	},
+/turf/open/floor/engine,
+/area/science/explab)
 "tIb" = (
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
@@ -82671,31 +82710,6 @@
 	icon_state = "panelscorched"
 	},
 /area/maintenance/port/fore)
-"uTf" = (
-/obj/machinery/button/door{
-	id = "telelab";
-	name = "Test Chamber Blast Doors";
-	pixel_y = 25
-	},
-/obj/structure/table/reinforced,
-/obj/item/reagent_containers/glass/bottle/epinephrine{
-	pixel_x = 7;
-	pixel_y = 2
-	},
-/obj/item/reagent_containers/glass/bottle/charcoal{
-	pixel_x = -2;
-	pixel_y = -1
-	},
-/obj/item/reagent_containers/dropper,
-/obj/item/stack/medical/bruise_pack{
-	pixel_x = -2;
-	pixel_y = 6
-	},
-/obj/item/stack/medical/ointment,
-/obj/item/healthanalyzer,
-/obj/effect/turf_decal/stripes/line,
-/turf/open/floor/plasteel,
-/area/science/explab)
 "uTk" = (
 /obj/structure/cable/yellow{
 	icon_state = "1-4"
@@ -83747,12 +83761,6 @@
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/layer3,
 /turf/open/floor/plasteel,
 /area/quartermaster/storage)
-"vnC" = (
-/obj/structure/chair/office/light{
-	dir = 4
-	},
-/turf/open/floor/plasteel/white,
-/area/science/explab)
 "vof" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -83816,14 +83824,6 @@
 	},
 /turf/open/floor/plasteel,
 /area/hallway/primary/fore)
-"vpR" = (
-/obj/machinery/button/door{
-	id = "telelab";
-	name = "Test Chamber Blast Doors";
-	pixel_y = -25
-	},
-/turf/open/floor/engine,
-/area/science/explab)
 "vqf" = (
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
@@ -125790,9 +125790,9 @@ tYS
 bST
 leb
 cgq
-gzX
-gzX
-gzX
+chx
+chx
+chx
 cgq
 cmQ
 cok
@@ -126047,12 +126047,12 @@ ccw
 bST
 ghF
 cgq
-gzX
-eXI
-gzX
+chx
+fwP
+chx
 clS
-kgd
-vnC
+cmR
+col
 rQN
 wXH
 cgq
@@ -126304,15 +126304,15 @@ ccv
 bST
 nxF
 cgq
-gzX
+chx
 exu
-gzX
+chx
 clU
 iYF
 cVK
 dPU
 giC
-pcM
+ofu
 dwL
 uuO
 dwL
@@ -126563,7 +126563,7 @@ ghF
 cgq
 chy
 tHC
-gzX
+chx
 clU
 cmT
 gJL
@@ -126818,9 +126818,9 @@ tYS
 bST
 ghF
 cgq
-gzX
+chx
 ehP
-gzX
+chx
 clU
 cmU
 eVc
@@ -127076,11 +127076,11 @@ bST
 ghF
 cgq
 chA
-aWE
-vpR
+tHG
+cks
 cgq
-uTf
-lCg
+lHW
+pNq
 qrz
 vqp
 crW
@@ -127332,7 +127332,7 @@ dbE
 bST
 sjg
 cgq
-gzX
+chx
 afK
 cZt
 pKo
