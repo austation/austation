@@ -19,8 +19,7 @@
 		/datum/outfit/siege/medic)
 	var/static/datum/outfit/siege/elite_roles = list(/datum/outfit/syndicate, //nukie
 		/datum/outfit/siege/abductor,
-		/datum/outfit/siege/wizard,
-		/datum/outfit/siege/zombie)//with less spell points
+		/datum/outfit/siege/wizard)//with less spell points
 
 	var/list/ops = list()
 
