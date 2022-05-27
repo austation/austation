@@ -3,7 +3,7 @@
 
 	var/datum/plant_gene/trait/spines/S = seed.get_gene(/datum/plant_gene/trait/spines)
 	if(S)
-		embedding = EMBED_HARMLESS
+		embedding = EMBED_HARMLESS_SUPERIOR
 		embedding["embed_chance"] = 300 //300 is better than 100 ;)
 		updateEmbedding()
 		S.grown_overlay = mutable_appearance(icon, icon_state)
@@ -45,15 +45,13 @@
 	qdel(src)
 
 /obj/item/reagent_containers/food/snacks/grown/unembedded()
-	. = ..()
-
-	var/datum/plant_gene/trait/spines/S = seed.get_gene(/datum/plant_gene/trait/spines)//Probably a better way out there
-	if(S.victim) 
-		S.victim.cut_overlay(S.grown_overlay, TRUE)
-
-/obj/item/reagent_containers/food/snacks/grown/Destroy()//Carbon copy of ^
 	var/datum/plant_gene/trait/spines/S = seed.get_gene(/datum/plant_gene/trait/spines)
 	if(S.victim) 
-		S.victim.cut_overlay(S.grown_overlay, TRUE)
+		S.victim.cut_overlay(S.grown_overlay)
+	..()
 
-	. = ..()
+/obj/item/reagent_containers/food/snacks/grown/Destroy()
+	var/datum/plant_gene/trait/spines/S = seed.get_gene(/datum/plant_gene/trait/spines)
+	if(S.victim) 
+		S.victim.cut_overlay(S.grown_overlay)
+	..()

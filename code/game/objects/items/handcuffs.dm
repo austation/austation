@@ -57,7 +57,7 @@
 								"<span class='userdanger'>[user] is trying to put [src.name] on you!</span>")
 
 			playsound(loc, cuffsound, 30, 1, -2)
-			if(do_mob(user, C, 40) && (C.get_num_arms(FALSE) >= 2 || C.get_arm_ignore()))
+			if(do_mob(user, C, (C.has_status_effect(STATUS_EFFECT_SURRENDERED) ? 20 : 40)) && (C.get_num_arms(FALSE) >= 2 || C.get_arm_ignore())) //austation -- Makes handcuffing surrendered people faster
 				if(iscyborg(user))
 					apply_cuffs(C, user, TRUE)
 				else
@@ -328,7 +328,7 @@
 /obj/item/restraints/legcuffs/bola/throw_at(atom/target, range, speed, mob/thrower, spin=1, diagonals_first = 0, datum/callback/callback, quickstart = TRUE)
 	if(!..())
 		return
-	playsound(src.loc,'sound/weapons/bolathrow.ogg', 75, 1)
+	playsound(loc,'sound/weapons/bolathrow.ogg', 75, 1)
 
 /obj/item/restraints/legcuffs/bola/throw_impact(atom/hit_atom, datum/thrownthing/throwingdatum)
 	if(..() || !iscarbon(hit_atom))//if it gets caught or the target can't be cuffed,
@@ -350,7 +350,7 @@
 		SSblackbox.record_feedback("tally", "handcuffs", 1, type)
 		to_chat(C, "<span class='userdanger'>\The [src] ensnares you!</span>")
 		if(knockdown)
-			C.Paralyze(knockdown)
+			C.Knockdown(knockdown)
 		playsound(src, 'sound/effects/snap.ogg', 50, TRUE)
 
 /obj/item/restraints/legcuffs/bola/tactical//traitor variant
@@ -377,12 +377,10 @@
 	w_class = WEIGHT_CLASS_SMALL
 	breakouttime = 60
 
-/obj/item/restraints/legcuffs/bola/energy/throw_impact(atom/hit_atom, datum/thrownthing/throwingdatum)
-	if(iscarbon(hit_atom))
-		var/obj/item/restraints/legcuffs/beartrap/B = new /obj/item/restraints/legcuffs/beartrap/energy/cyborg(get_turf(hit_atom))
-		B.spring_trap(null, hit_atom)
-		qdel(src)
-	. = ..()
+/obj/item/restraints/legcuffs/bola/energy/ensnare(mob/living/carbon/C)
+	var/obj/item/restraints/legcuffs/beartrap/B = new /obj/item/restraints/legcuffs/beartrap/energy/cyborg(get_turf(C))
+	B.spring_trap(null, C)
+	qdel(src)
 
 /obj/item/restraints/legcuffs/bola/energy/emp_act(severity)
 	if(prob(25 * severity))
@@ -406,6 +404,6 @@
 		effectReference = C.apply_status_effect(STATUS_EFFECT_GONBOLAPACIFY)
 
 /obj/item/restraints/legcuffs/bola/gonbola/dropped(mob/user)
-	. = ..()
+	..()
 	if(effectReference)
 		QDEL_NULL(effectReference)

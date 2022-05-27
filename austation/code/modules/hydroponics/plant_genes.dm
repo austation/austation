@@ -35,29 +35,27 @@
 	DISABLE_BITFIELD(G.reagents.flags, NO_REACT)
 	G.reagents.handle_reactions()
 
-//Too close to Neck-Code TM
 /datum/plant_gene/trait/spines
 	name = "Floral Spines"
-	var/mob/victim
+	var/atom/victim
 	var/mutable_appearance/grown_overlay
 
 /datum/plant_gene/trait/spines/on_slip(obj/item/reagent_containers/food/snacks/grown/G, atom/target)
+	victim = target
 	if(G?.seed.get_gene(/datum/plant_gene/trait/spines) && istype(target, /mob/living))	
 		var/P = G.seed.get_gene(/datum/plant_gene/trait/stinging)
-		var/mob/living/L = target
+		var/mob/living/L = victim
 		if(P) 
 			L.adjustBruteLoss((G.seed.potency/4.7)*P)
-
-		if(G.tryEmbed(target, TRUE, TRUE))
-			target.add_overlay(grown_overlay, TRUE)
+		if(G.tryEmbed(victim, TRUE, TRUE))
+			victim.add_overlay(grown_overlay)
 
 /datum/plant_gene/trait/spines/on_throw_impact(obj/item/reagent_containers/food/snacks/grown/G, atom/target)
+	victim = target
 	if(!..() && G?.seed.get_gene(/datum/plant_gene/trait/spines) && istype(target, /mob/living))		
 		var/P = G.seed.get_gene(/datum/plant_gene/trait/stinging)
-		var/mob/living/L = target
+		var/mob/living/L = victim
 		if(P) 
 			L.adjustBruteLoss((G.seed.potency/4.7)*P)
-
-		if(G.tryEmbed(target, TRUE, TRUE))
-			target.add_overlay(grown_overlay, TRUE)
-			victim = target
+		if(G.tryEmbed(victim, TRUE, TRUE))
+			victim.add_overlay(grown_overlay)

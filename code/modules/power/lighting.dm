@@ -351,16 +351,17 @@
 
 /obj/machinery/light/update_overlays()
 	. = ..()
-	if(on || emergency_mode)
-		if(!lighting_overlays)
-			lighting_overlays = list()
-		var/mutable_appearance/LO = lighting_overlays["[base_state]-[light_power]-[light_color]"]
-		if(!LO)
-			LO = mutable_appearance(overlayicon, base_state, layer, EMISSIVE_PLANE)
-			LO.color = light_color
-			LO.alpha = clamp(light_power*255, 30, 200)
-			lighting_overlays["[base_state]-[light_power]-[light_color]"] = LO
-		. += LO
+	if(!on || status != LIGHT_OK)
+		return
+
+	var/area/local_area = get_area(src)
+	if(emergency_mode || (local_area?.fire))
+		. += mutable_appearance(overlayicon, "[base_state]_emergency")
+		return
+	if(nightshift_enabled)
+		. += mutable_appearance(overlayicon, "[base_state]_nightshift")
+		return
+	. += mutable_appearance(overlayicon, base_state)
 
 // update the icon_state and luminosity of the light depending on its state
 /obj/machinery/light/proc/update(trigger = TRUE)
@@ -485,13 +486,13 @@
 		if(status == LIGHT_OK)
 			to_chat(user, "<span class='warning'>There is a [fitting] already inserted!</span>")
 		else
-			src.add_fingerprint(user)
+			add_fingerprint(user)
 			var/obj/item/light/L = W
 			if(istype(L, light_type))
 				if(!user.temporarilyRemoveItemFromInventory(L))
 					return
 
-				src.add_fingerprint(user)
+				add_fingerprint(user)
 				if(status != LIGHT_EMPTY)
 					drop_light_tube(user)
 					to_chat(user, "<span class='notice'>You replace [L].</span>")
@@ -703,7 +704,7 @@
 
 		if(prot > 0 || HAS_TRAIT(user, TRAIT_RESISTHEAT) || HAS_TRAIT(user, TRAIT_RESISTHEATHANDS))
 			to_chat(user, "<span class='notice'>You remove the light [fitting].</span>")
-		else if(istype(user) && user.dna.check_mutation(TK))
+		else if(user.has_dna() && user.dna.check_mutation(TK))
 			to_chat(user, "<span class='notice'>You telekinetically remove the light [fitting].</span>")
 		else
 			to_chat(user, "<span class='warning'>You try to remove the light [fitting], but you burn your hand on it!</span>")

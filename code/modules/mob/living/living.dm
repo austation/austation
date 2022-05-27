@@ -45,6 +45,10 @@
 /mob/living/onZImpact(turf/T, levels)
 	if(!isgroundlessturf(T))
 		ZImpactDamage(T, levels)
+		if(pulling)
+			stop_pulling()
+		if(buckled)
+			buckled.unbuckle_mob(src)
 	return ..()
 
 /mob/living/proc/ZImpactDamage(turf/T, levels)
@@ -420,7 +424,7 @@
 		death()
 
 /mob/living/incapacitated(ignore_restraints = FALSE, ignore_grab = FALSE, check_immobilized = FALSE, ignore_stasis = FALSE)
-	if(stat || IsUnconscious() || IsStun() || IsParalyzed() || (check_immobilized && IsImmobilized()) || (!ignore_restraints && restrained(ignore_grab)) || (!ignore_stasis && IsInStasis()))
+	if(stat || IsUnconscious() || IsStun() || IsParalyzed() || has_status_effect(STATUS_EFFECT_SURRENDERED) || (check_immobilized && IsImmobilized()) || (!ignore_restraints && restrained(ignore_grab)) || (!ignore_stasis && IsInStasis())) //austation -- adds surrendered verb
 		return TRUE
 
 /mob/living/canUseStorage()
@@ -927,9 +931,6 @@
 /mob/living/proc/get_standard_pixel_y_offset(lying = 0)
 	return initial(pixel_y)
 
-/mob/living/cancel_camera()
-	..()
-	cameraFollow = null
 
 /mob/living/proc/can_track(mob/living/user)
 	//basic fast checks go first. When overriding this proc, I recommend calling ..() at the end.
@@ -990,8 +991,8 @@
 	return TRUE
 
 /mob/living/proc/return_soul()
-	hellbound = 0
 	if(mind)
+		mind.hellbound = FALSE
 		var/datum/antagonist/devil/devilInfo = mind.soulOwner.has_antag_datum(/datum/antagonist/devil)
 		if(devilInfo)//Not sure how this could be null, but let's just try anyway.
 			devilInfo.remove_soul(mind)
@@ -1140,7 +1141,7 @@
 	var/restrained = restrained()
 	var/has_legs = get_num_legs()
 	var/has_arms = get_num_arms()
-	var/paralyzed = IsParalyzed()
+	var/paralyzed = (IsParalyzed() || has_status_effect(STATUS_EFFECT_SURRENDERED)) //austation -- adds surrendered verb
 	var/stun = IsStun()
 	var/knockdown = IsKnockdown()
 	var/ignore_legs = get_leg_ignore()

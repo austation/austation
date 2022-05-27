@@ -56,6 +56,9 @@
 /datum/techweb_node/adv_biotech
 	austation_design_ids = list("custom_epi", "meddarter")
 
+/datum/techweb_node/linkedsurgery_implant
+	hidden = FALSE
+
 /////////////////////////Advanced Surgery/////////////////////////
 
 /datum/techweb_node/combat_cyber_implants

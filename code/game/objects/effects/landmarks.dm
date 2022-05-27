@@ -45,7 +45,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 	. = ..()
 	GLOB.start_landmarks_list += src
 	if(jobspawn_override)
-		LAZYADDASSOC(GLOB.jobspawn_overrides, name, src)
+		LAZYADDASSOCLIST(GLOB.jobspawn_overrides, name, src)
 	if(name != "start")
 		tag = "start*[name]"
 
@@ -232,10 +232,6 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 /obj/effect/landmark/start/randommaint/magician
 	name = "Stage Magician"
 	job = "Stage Magician"
-
-/obj/effect/landmark/start/randommaint/hobo
-	name = "Debtor"
-	job = "Debtor"
 
 /obj/effect/landmark/start/randommaint/shrink
 	name = "Psychiatrist"
