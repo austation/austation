@@ -169,7 +169,6 @@
 	if(buildstage != 2)
 		return ..()
 	add_fingerprint(user)
-	play_click_sound("button")
 	var/area/A = get_area(src)
 	if(A.fire)
 		reset(user)

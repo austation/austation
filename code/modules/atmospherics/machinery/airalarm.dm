@@ -71,7 +71,6 @@
 	integrity_failure = 80
 	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 100, "bomb" = 0, "bio" = 100, "rad" = 100, "fire" = 90, "acid" = 30, "stamina" = 0)
 	resistance_flags = FIRE_PROOF
-	clicksound = 'sound/machines/terminal_select.ogg'
 	layer = ABOVE_WINDOW_LAYER
 
 
@@ -210,7 +209,7 @@
 		name = "[get_area_name(src)] Air Alarm"
 
 	update_icon()
-
+	
 	set_frequency(frequency)
 	GLOB.zclear_atoms += src
 

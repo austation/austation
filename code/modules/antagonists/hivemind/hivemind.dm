@@ -214,13 +214,21 @@
 	..()
 
 /datum/antagonist/hivemind/apply_innate_effects()
-	handle_clown_mutation(owner.current, "The great psionic powers of the Hive lets you overcome your clownish nature, allowing you to wield weapons with impunity.")
+	if(owner.assigned_role == "Clown")
+		var/mob/living/carbon/human/traitor_mob = owner.current
+		if(traitor_mob && istype(traitor_mob))
+			if(!silent)
+				to_chat(traitor_mob, "The great psionic powers of the Hive lets you overcome your clownish nature, allowing you to wield weapons with impunity.")
+			traitor_mob.dna.remove_mutation(CLOWNMUT)
 	var/datum/atom_hud/antag/hud = GLOB.huds[ANTAG_HUD_HIVE]
 	hud.join_hud(owner.current)
 	set_antag_hud(owner.current, "hivemind")
 
 /datum/antagonist/hivemind/remove_innate_effects()
-	handle_clown_mutation(owner.current, removing=FALSE)
+	if(owner.assigned_role == "Clown")
+		var/mob/living/carbon/human/traitor_mob = owner.current
+		if(traitor_mob && istype(traitor_mob))
+			traitor_mob.dna.add_mutation(CLOWNMUT)
 	var/datum/atom_hud/antag/hud = GLOB.huds[ANTAG_HUD_HIVE]
 	hud.leave_hud(owner.current)
 	set_antag_hud(owner.current, null)

@@ -112,9 +112,11 @@
 
 				if(W.use_tool(src, user, 40, volume=50))
 					to_chat(user, "<span class='notice'>You disassemble the windoor assembly.</span>")
-					new /obj/item/stack/sheet/rglass(get_turf(src), 5, TRUE, user)
+					var/obj/item/stack/sheet/rglass/RG = new (get_turf(src), 5)
+					RG.add_fingerprint(user)
 					if(secure)
-						new /obj/item/stack/rods(get_turf(src), 4, TRUE, user)
+						var/obj/item/stack/rods/R = new (get_turf(src), 4)
+						R.add_fingerprint(user)
 					qdel(src)
 				return
 

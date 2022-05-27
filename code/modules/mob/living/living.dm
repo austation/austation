@@ -45,10 +45,6 @@
 /mob/living/onZImpact(turf/T, levels)
 	if(!isgroundlessturf(T))
 		ZImpactDamage(T, levels)
-		if(pulling)
-			stop_pulling()
-		if(buckled)
-			buckled.unbuckle_mob(src)
 	return ..()
 
 /mob/living/proc/ZImpactDamage(turf/T, levels)
@@ -931,6 +927,9 @@
 /mob/living/proc/get_standard_pixel_y_offset(lying = 0)
 	return initial(pixel_y)
 
+/mob/living/cancel_camera()
+	..()
+	cameraFollow = null
 
 /mob/living/proc/can_track(mob/living/user)
 	//basic fast checks go first. When overriding this proc, I recommend calling ..() at the end.

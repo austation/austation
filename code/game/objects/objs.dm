@@ -171,11 +171,11 @@
 
 		// check for TK users
 
-		if(usr.has_dna())
-			var/mob/living/carbon/C = usr
+		if(ishuman(usr))
+			var/mob/living/carbon/human/H = usr
 			if(!(usr in nearby))
 				if(usr.client && usr.machine==src)
-					if(C.dna.check_mutation(TK))
+					if(H.dna.check_mutation(TK))
 						is_in_use = TRUE
 						ui_interact(usr)
 		if (is_in_use)

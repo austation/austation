@@ -58,7 +58,7 @@
 		covered = "headgear"
 	else if(C.is_mouth_covered(mask_only = 1))
 		covered = "mask"
-	if(covered)
+	if(covered && user.a_intent != INTENT_HARM)
 		var/who = (isnull(user) || eater == user) ? "your" : "[eater.p_their()]"
 		balloon_alert(user, "Remove [who] [covered] first")
 		return FALSE

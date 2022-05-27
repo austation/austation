@@ -224,8 +224,11 @@
 	update_icon()
 
 /obj/item/lightreplacer/proc/CanUse(mob/living/user)
-	add_fingerprint(user)
-	return uses > 0
+	src.add_fingerprint(user)
+	if(uses > 0)
+		return 1
+	else
+		return 0
 
 /obj/item/lightreplacer/afterattack(atom/T, mob/U, proximity)
 	. = ..()

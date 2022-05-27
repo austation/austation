@@ -45,7 +45,8 @@
 			if(anchored)
 				return TRUE
 			to_chat(user, "<span class='notice'>You cut apart [src].</span>")
-			new /obj/item/stack/sheet/plastic/five(loc, null, TRUE, user)
+			var/obj/item/stack/sheet/plastic/five/P = new(loc)
+			P.add_fingerprint(user)
 			qdel(src)
 			return TRUE
 		else

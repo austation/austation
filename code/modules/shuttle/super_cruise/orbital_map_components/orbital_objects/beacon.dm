@@ -3,7 +3,6 @@
 	mass = 0
 	radius = 30
 	can_dock_anywhere = TRUE
-	render_mode = RENDER_MODE_BEACON
 	//The attached event
 	var/datum/ruin_event/ruin_event
 
@@ -32,7 +31,6 @@
 
 /datum/orbital_object/z_linked/beacon/ruin/asteroid
 	name = "Asteroid"
-	render_mode = RENDER_MODE_DEFAULT
 
 /datum/orbital_object/z_linked/beacon/ruinasteroid/New()
 	. = ..()

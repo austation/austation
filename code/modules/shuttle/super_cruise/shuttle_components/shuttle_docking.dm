@@ -324,9 +324,6 @@
 	src.origin = origin
 	return ..()
 
-/mob/camera/ai_eye/remote/shuttle_docker/canZMove(direction, turf/target)
-	return TRUE
-
 /mob/camera/ai_eye/remote/shuttle_docker/setLoc(destination)
 	. = ..()
 	var/obj/machinery/computer/shuttle_flight/console = origin

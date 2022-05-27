@@ -818,14 +818,14 @@
 		if(!check_rights(R_SPAWN))
 			return
 
-		var/mob/living/carbon/C = locate(href_list["corgione"])
-		if(!istype(C))
-			to_chat(usr, "This can only be used on instances of type /mob/living/carbon.")
+		var/mob/living/carbon/human/H = locate(href_list["corgione"])
+		if(!istype(H))
+			to_chat(usr, "This can only be used on instances of type /mob/living/carbon/human.")
 			return
 
-		log_admin("[key_name(usr)] attempting to corgize [key_name(C)].")
-		message_admins("<span class='adminnotice'>[key_name_admin(usr)] attempting to corgize [key_name_admin(C)].</span>")
-		C.corgize()
+		log_admin("[key_name(usr)] attempting to corgize [key_name(H)].")
+		message_admins("<span class='adminnotice'>[key_name_admin(usr)] attempting to corgize [key_name_admin(H)].</span>")
+		H.corgize()
 
 
 	else if(href_list["forcespeech"])

@@ -1,4 +1,4 @@
-/datum/mutation/telepathy
+/datum/mutation/human/telepathy
 	name = "Telepathy"
 	desc = "A rare mutation that allows the user to telepathically communicate to others."
 	quality = POSITIVE
@@ -10,7 +10,7 @@
 	energy_coeff = 1
 
 
-/datum/mutation/olfaction
+/datum/mutation/human/olfaction
 	name = "Transcendent Olfaction"
 	desc = "Your sense of smell is comparable to that of a canine."
 	quality = POSITIVE
@@ -80,7 +80,7 @@
 	if(direction_text)
 		to_chat(user,"<span class='notice'>You consider [tracking_target]'s scent. The trail leads <b>[direction_text].</b></span>")
 
-/datum/mutation/firebreath
+/datum/mutation/human/firebreath
 	name = "Fire Breath"
 	desc = "An ancient mutation that gives lizards breath of fire."
 	quality = POSITIVE
@@ -94,7 +94,7 @@
 	power_coeff = 1
 	species_allowed = list(SPECIES_LIZARD)
 
-/datum/mutation/firebreath/modify()
+/datum/mutation/human/firebreath/modify()
 	..()
 	if(power)
 		var/obj/effect/proc_holder/spell/aimed/firebreath/S = power
@@ -107,7 +107,7 @@
 	charge_max = 600
 	clothes_req = FALSE
 	range = 20
-	projectile_type = /obj/item/projectile/magic/fireball/firebreath
+	projectile_type = /obj/item/projectile/magic/aoe/fireball/firebreath
 	base_icon_state = "fireball"
 	action_icon_state = "fireball0"
 	sound = 'sound/magic/demon_dies.ogg' //horrifying lizard noises
@@ -126,13 +126,13 @@
 			return FALSE
 
 /obj/effect/proc_holder/spell/aimed/firebreath/ready_projectile(obj/item/projectile/P, atom/target, mob/user, iteration)
-	if(!istype(P, /obj/item/projectile/magic/fireball))
+	if(!istype(P, /obj/item/projectile/magic/aoe/fireball))
 		return
-	var/obj/item/projectile/magic/fireball/F = P
+	var/obj/item/projectile/magic/aoe/fireball/F = P
 	F.exp_light = strength-1
 	F.exp_fire += strength
 
-/obj/item/projectile/magic/fireball/firebreath
+/obj/item/projectile/magic/aoe/fireball/firebreath
 	name = "fire breath"
 	exp_heavy = 0
 	exp_light = 0
@@ -140,7 +140,7 @@
 	exp_fire= 4
 	magic = FALSE
 
-/datum/mutation/void
+/datum/mutation/human/void
 	name = "Void Magnet"
 	desc = "A rare genome that attracts odd forces not usually observed."
 	quality = MINOR_NEGATIVE //upsides and downsides
@@ -150,7 +150,7 @@
 	energy_coeff = 1
 	synchronizer_coeff = 1
 
-/datum/mutation/void/on_life()
+/datum/mutation/human/void/on_life()
 	if(!isturf(owner.loc))
 		return
 	if(prob((0.5+((100-dna.stability)/20))) * GET_MUTATION_SYNCHRONIZER(src)) //very rare, but enough to annoy you hopefully. +0.5 probability for every 10 points lost in stability
@@ -175,7 +175,7 @@
 	. = ..()
 	new /obj/effect/immortality_talisman/void(get_turf(user), user)
 
-/datum/mutation/self_amputation
+/datum/mutation/human/self_amputation
 	name = "Autotomy"
 	desc = "Allows a creature to voluntary discard a random appendage."
 	quality = POSITIVE
@@ -214,7 +214,7 @@
 	var/obj/item/bodypart/BP = pick(parts)
 	BP.dismember()
 
-/datum/mutation/overload
+/datum/mutation/human/overload
 	name = "Overload"
 	desc = "Allows an Ethereal to overload their skin to cause a bright flash."
 	quality = POSITIVE
@@ -243,12 +243,12 @@
 		if(C.flash_act(1))
 			C.Paralyze(10 + (5*max_distance))
 
-/datum/mutation/overload/modify()
+/datum/mutation/human/overload/modify()
 	if(power)
 		var/obj/effect/proc_holder/spell/self/overload/S = power
 		S.max_distance = 4 * GET_MUTATION_POWER(src)
 
-/datum/mutation/acidooze
+/datum/mutation/human/acidooze
 	name = "Acidic Hands"
 	desc = "Allows an Oozeling to metabolize some of their blood into acid, concentrated on their hands."
 	quality = POSITIVE
@@ -290,17 +290,17 @@
 		icon_state = icon_right
 
 /obj/item/melee/touch_attack/acidooze/afterattack(atom/target, mob/living/carbon/user, proximity)
-	if(!proximity || !isoozeling(user))
+	if(!isoozeling(user))
 		return
-	var/mob/living/carbon/C = user
+	var/mob/living/carbon/human/H = user
 	if(!target || user.incapacitated())
 		return FALSE
-	if(C.blood_volume < 40)
+	if(H.blood_volume < 40)
 		to_chat(user, "<span class='warning'>You don't have enough blood to do that!</span>")
 		return FALSE
 	if(target.acid_act(50, 15))
 		user.visible_message("<span class='warning'>[user] rubs globs of vile stuff all over [target].</span>")
-		C.blood_volume = max(C.blood_volume - 20, 0)
+		H.blood_volume = max(H.blood_volume - 20, 0)
 		return ..()
 	else
 		to_chat(user, "<span class='notice'>You cannot dissolve this object.</span>")

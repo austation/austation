@@ -114,7 +114,7 @@
 			return
 		if(!storedpart)
 			return
-		storedpart.static_icon = style_list_icons[augstyle]
+		storedpart.icon = style_list_icons[augstyle]
 		eject_part(user)
 
 	else

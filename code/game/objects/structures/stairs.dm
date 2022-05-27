@@ -41,11 +41,6 @@
 		build_signal_listener()
 	update_surrounding()
 
-// Passthrough for 0G travel
-/obj/structure/stairs/attack_hand(mob/user)
-	var/turf/T = get_turf(src)
-	T.attack_hand(user)
-
 /obj/structure/stairs/proc/update_surrounding()
 	update_icon()
 	for(var/i in GLOB.cardinals)
@@ -68,7 +63,7 @@
 		return COMPONENT_ATOM_BLOCK_EXIT
 
 /obj/structure/stairs/Cross(atom/movable/AM)
-	if(isTerminator() && (get_dir(src, AM) == dir) && (AM.z <= z))
+	if(isTerminator() && (get_dir(src, AM) == dir))
 		return FALSE
 	return ..()
 
@@ -86,7 +81,15 @@
 		return
 	var/turf/target = get_step_multiz(get_turf(src), (dir|UP))
 	if(istype(target) && !target.can_zFall(AM, null, get_step_multiz(target, DOWN)))			//Don't throw them into a tile that will just dump them back down.
-		AM.Move(target, (dir | UP))
+		if(isliving(AM))
+			var/mob/living/L = AM
+			var/pulling = L.pulling
+			if(pulling)
+				L.pulling.forceMove(target)
+			L.forceMove(target)
+			L.start_pulling(pulling)
+		else
+			AM.forceMove(target)
 
 /obj/structure/stairs/vv_edit_var(var_name, var_value)
 	. = ..()

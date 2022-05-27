@@ -115,7 +115,7 @@
 	return !(movement_type & FLYING) && has_gravity(src) && !throwing
 
 /atom/movable/proc/onZImpact(turf/T, levels)
-	var/atom/highest = null
+	var/atom/highest = T
 	for(var/i in T.contents)
 		var/atom/A = i
 		if(!A.density)
@@ -124,8 +124,7 @@
 			if(A.layer > highest.layer)
 				highest = A
 	INVOKE_ASYNC(src, .proc/SpinAnimation, 5, 2)
-	if(highest)
-		throw_impact(highest)
+	throw_impact(highest)
 	return TRUE
 
 //For physical constraints to travelling up/down.
@@ -375,8 +374,7 @@
 	var/atom/oldloc = loc
 
 	if(loc != newloc)
-		var/flat_direct = direct & ~(UP|DOWN)
-		if (!(flat_direct & (flat_direct - 1))) //Cardinal move
+		if (!(direct & (direct - 1))) //Cardinal move
 			. = ..()
 		else //Diagonal move, split it into cardinal moves
 			moving_diagonally = FIRST_DIAG_STEP
@@ -768,7 +766,7 @@
 	for(var/m in buckled_mobs)
 		var/mob/living/buckled_mob = m
 		if(!buckled_mob.Move(newloc, direct))
-			doMove(buckled_mob.loc) //forceMove breaks buckles on stairs, use doMove
+			forceMove(buckled_mob.loc)
 			last_move = buckled_mob.last_move
 			inertia_dir = last_move
 			buckled_mob.inertia_dir = last_move

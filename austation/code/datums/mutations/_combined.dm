@@ -1,4 +1,4 @@
 // Modular x-ray
 /datum/generecipe/x_ray
-	required = "/datum/mutation/thermal; /datum/mutation/radioactive"
-	result = /datum/mutation/thermal/x_ray
+	required = "/datum/mutation/human/thermal; /datum/mutation/human/radioactive"
+	result = /datum/mutation/human/thermal/x_ray

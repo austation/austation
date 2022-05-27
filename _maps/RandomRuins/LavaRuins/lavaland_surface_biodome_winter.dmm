@@ -176,7 +176,7 @@
 	},
 /area/ruin/powered/snow_biodome)
 "aL" = (
-/obj/structure/displaycase/lavaland,
+/obj/structure/displaycase/captain,
 /turf/open/floor/wood,
 /area/ruin/powered/snow_biodome)
 "aM" = (

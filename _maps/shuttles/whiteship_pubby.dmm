@@ -80,6 +80,24 @@
 	},
 /turf/open/floor/plating/abductor,
 /area/shuttle/abandoned)
+"o" = (
+/obj/machinery/door/airlock/public/glass{
+	name = "Shuttle Airlock"
+	},
+/obj/docking_port/mobile{
+	dheight = 0;
+	dir = 8;
+	dwidth = 4;
+	height = 9;
+	id = "whiteship";
+	launch_status = 0;
+	name = "White Ship";
+	port_direction = 4;
+	preferred_direction = 1;
+	width = 9
+	},
+/turf/open/floor/plasteel/dark,
+/area/shuttle/abandoned)
 "p" = (
 /obj/structure/window/reinforced{
 	dir = 8
@@ -109,25 +127,6 @@
 "s" = (
 /obj/structure/shuttle/engine/propulsion/burst,
 /turf/closed/wall/mineral/titanium,
-/area/shuttle/abandoned)
-"v" = (
-/obj/machinery/door/airlock/public/glass{
-	name = "Shuttle Airlock"
-	},
-/obj/docking_port/mobile{
-	dheight = 0;
-	dir = 8;
-	dwidth = 4;
-	dynamic_id = 1;
-	height = 9;
-	id = "whiteship";
-	launch_status = 0;
-	name = "White Ship";
-	port_direction = 4;
-	preferred_direction = 1;
-	width = 9
-	},
-/turf/open/floor/plasteel/dark,
 /area/shuttle/abandoned)
 
 (1,1,1) = {"
@@ -223,7 +222,7 @@ a
 a
 b
 k
-v
+o
 k
 b
 a

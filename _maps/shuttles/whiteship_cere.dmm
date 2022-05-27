@@ -5,6 +5,25 @@
 "ab" = (
 /turf/closed/wall/mineral/titanium,
 /area/shuttle/abandoned)
+"ac" = (
+/obj/machinery/door/airlock/titanium{
+	name = "mech bay external airlock"
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/docking_port/mobile{
+	dheight = 0;
+	dir = 2;
+	dwidth = 8;
+	height = 16;
+	id = "whiteship";
+	launch_status = 0;
+	name = "NT Recovery White-Ship";
+	port_direction = 8;
+	preferred_direction = 1;
+	width = 16
+	},
+/turf/open/floor/plating,
+/area/shuttle/abandoned)
 "ad" = (
 /obj/structure/shuttle/engine/propulsion{
 	dir = 1
@@ -129,8 +148,8 @@
 	},
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/structure/closet/crate{
-	name = "spare equipment crate";
-	opened = 1
+	opened = 1;
+	name = "spare equipment crate"
 	},
 /turf/open/floor/mineral/titanium/yellow,
 /area/shuttle/abandoned)
@@ -149,8 +168,8 @@
 	dir = 1
 	},
 /obj/structure/closet/crate{
-	name = "spare equipment crate";
-	opened = 1
+	opened = 1;
+	name = "spare equipment crate"
 	},
 /obj/item/pickaxe,
 /obj/item/pickaxe,
@@ -186,8 +205,8 @@
 	dir = 1
 	},
 /obj/structure/closet/crate{
-	name = "spare equipment crate";
-	opened = 1
+	opened = 1;
+	name = "spare equipment crate"
 	},
 /obj/item/storage/bag/ore,
 /obj/item/pickaxe,
@@ -265,8 +284,8 @@
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/structure/closet/crate{
-	name = "spare equipment crate";
-	opened = 1
+	opened = 1;
+	name = "spare equipment crate"
 	},
 /obj/machinery/light,
 /turf/open/floor/mineral/titanium/yellow,
@@ -393,26 +412,6 @@
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/mineral/titanium/blue,
 /area/shuttle/abandoned)
-"bV" = (
-/obj/machinery/door/airlock/titanium{
-	name = "mech bay external airlock"
-	},
-/obj/effect/decal/cleanable/dirt/dust,
-/obj/docking_port/mobile{
-	dheight = 0;
-	dir = 2;
-	dwidth = 8;
-	dynamic_id = 1;
-	height = 16;
-	id = "whiteship";
-	launch_status = 0;
-	name = "NT Recovery White-Ship";
-	port_direction = 8;
-	preferred_direction = 1;
-	width = 16
-	},
-/turf/open/floor/plating,
-/area/shuttle/abandoned)
 
 (1,1,1) = {"
 aa
@@ -523,7 +522,7 @@ aZ
 ar
 "}
 (7,1,1) = {"
-bV
+ac
 ah
 am
 am

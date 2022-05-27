@@ -109,29 +109,6 @@
 	},
 /turf/open/floor/plasteel,
 /area/shuttle/caravan/pirate)
-"gb" = (
-/obj/effect/mapping_helpers/airlock/cyclelink_helper{
-	dir = 2
-	},
-/obj/effect/mapping_helpers/airlock/locked,
-/obj/machinery/door/airlock/external{
-	id_tag = "caravanpirate_bolt_port"
-	},
-/obj/docking_port/mobile{
-	callTime = 150;
-	dir = 2;
-	dwidth = 14;
-	dynamic_id = 1;
-	height = 13;
-	id = "caravanpirate";
-	movement_force = list("KNOCKDOWN" = 0, "THROW" = 0);
-	name = "Pirate Cutter";
-	port_direction = 8;
-	preferred_direction = 4;
-	width = 22
-	},
-/turf/open/floor/plating,
-/area/shuttle/caravan/pirate)
 "hh" = (
 /mob/living/simple_animal/hostile/pirate{
 	environment_smash = 0
@@ -370,6 +347,15 @@
 /area/shuttle/caravan/pirate)
 "oL" = (
 /turf/closed/wall/mineral/plastitanium,
+/area/shuttle/caravan/pirate)
+"oO" = (
+/obj/effect/turf_decal/tile/red{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/red{
+	dir = 4
+	},
+/turf/open/floor/plasteel/dark,
 /area/shuttle/caravan/pirate)
 "oT" = (
 /obj/structure/table,
@@ -730,7 +716,7 @@
 /obj/machinery/power/apc{
 	dir = 8;
 	name = "Pirate Cutter APC";
-	pixel_x = -24;
+	pixel_x = -25;
 	req_access = null
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
@@ -853,6 +839,28 @@
 /obj/structure/closet/crate/freezer/surplus_limbs,
 /obj/effect/turf_decal/bot,
 /turf/open/floor/plasteel/white,
+/area/shuttle/caravan/pirate)
+"Jb" = (
+/obj/effect/mapping_helpers/airlock/cyclelink_helper{
+	dir = 2
+	},
+/obj/effect/mapping_helpers/airlock/locked,
+/obj/machinery/door/airlock/external{
+	id_tag = "caravanpirate_bolt_port"
+	},
+/obj/docking_port/mobile{
+	callTime = 150;
+	dir = 2;
+	dwidth = 14;
+	height = 13;
+	id = "caravanpirate";
+	movement_force = list("KNOCKDOWN" = 0, "THROW" = 0);
+	name = "Pirate Cutter";
+	port_direction = 8;
+	preferred_direction = 4;
+	width = 22
+	},
+/turf/open/floor/plating,
 /area/shuttle/caravan/pirate)
 "Jv" = (
 /turf/template_noop,
@@ -997,18 +1005,6 @@
 /obj/machinery/firealarm{
 	dir = 1;
 	pixel_y = -24
-	},
-/turf/open/floor/plasteel/dark,
-/area/shuttle/caravan/pirate)
-"TD" = (
-/obj/effect/turf_decal/tile/red{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/red{
-	dir = 4
-	},
-/obj/structure/frame/computer{
-	anchored = 1
 	},
 /turf/open/floor/plasteel/dark,
 /area/shuttle/caravan/pirate)
@@ -1191,7 +1187,7 @@ af
 oL
 "}
 (8,1,1) = {"
-gb
+Jb
 Sd
 Rz
 kl
@@ -1376,7 +1372,7 @@ Jv
 Jv
 Jv
 Bi
-TD
+oO
 EB
 bd
 Bi
