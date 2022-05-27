@@ -107,6 +107,7 @@
 #include "austation\code\game\mecha\equipment\tools\work_tools.dm"
 #include "austation\code\game\mecha\equipment\weapons\weapons.dm"
 #include "austation\code\game\objects\items.dm"
+#include "austation\code\game\objects\effects\manuals.dm"
 #include "austation\code\game\objects\effects\decals\turfdecal\markings.dm"
 #include "austation\code\game\objects\effects\spawners\structure.dm"
 #include "austation\code\game\objects\items\AI_modules.dm"
