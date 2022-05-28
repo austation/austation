@@ -9,10 +9,10 @@
 	antag_flag = ROLE_BESIEGER
 	restricted_jobs = list("AI", "Cyborg")
 	protected_jobs = list("Security Officer", "Warden", "Detective", "Head of Security", "Head of Personnel", "Captain") // austation -- HOP can no longer be antag
-	required_players = 20
-	required_enemies = 2
 	recommended_enemies = 3
 	enemy_minimum_age = 20
+	required_players = 0
+	required_enemies = 1
 	title_icon = "nuclear"
 	announce_span = "danger"
 	announce_text = "The syndicate has united and is launching an all out war on NanoTrasen!\n\
