@@ -12,7 +12,7 @@ SUBSYSTEM_DEF(siege)
 	targettime = starttime + phasedelay MINUTES
 
 	if(GLOB.master_mode != "siege")
-		can_fire == FALSE
+		can_fire = FALSE
 	. = ..()
 
 /datum/controller/subsystem/siege/fire()
