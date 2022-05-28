@@ -28,7 +28,8 @@ SUBSYSTEM_DEF(siege)
 			for(var/obj/machinery/siege_spawner/spawners in GLOB.poi_list)
 				notify_ghosts("Siege spawning has been enabled!", 'sound/effects/ghost2.ogg', enter_link="<a href=?src=[REF(spawners)];join=1>(Click to join the Syndicates!)</a> or click on the controller directly!", source = spawners, action=NOTIFY_ATTACK, header = "Siege Starting")
 			targettime += 20 MINUTES
+			priority_announce("Intelligence indicate the syndicate is beginning their assault or will do so shortly.", "NanoTrasen Central Command War Report",
+			'sound/misc/notice1.ogg', "Priority")
 		else
 			can_fire = FALSE
-			return
 	SSticker.mode.gamemode_status++
