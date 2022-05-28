@@ -921,7 +921,7 @@
 	var/mob/living/M
 	if(isliving(user))
 		M = user
-	else if(isliving(user.loc))
+	else if(isliving(user?.loc))
 		M = user.loc
 	else
 		return
