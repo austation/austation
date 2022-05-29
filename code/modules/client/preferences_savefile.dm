@@ -1,11 +1,11 @@
 //This is the lowest supported version, anything below this is completely obsolete and the entire savefile will be wiped.
-#define SAVEFILE_VERSION_MIN	18
+#define SAVEFILE_VERSION_MIN	32
 
 //This is the current version, anything below this will attempt to update (if it's not obsolete)
 //	You do not need to raise this if you are adding new values that have sane defaults.
 //	Only raise this value when changing the meaning/format/name/layout of an existing value
 //	where you would want the updater procs below to run
-#define SAVEFILE_VERSION_MAX	37
+#define SAVEFILE_VERSION_MAX	38
 
 /*
 SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Carn
@@ -42,6 +42,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 //if your savefile is 3 months out of date, then 'tough shit'.
 
 /datum/preferences/proc/update_preferences(current_version, savefile/S)
+<<<<<<< HEAD
 	if(current_version < 30)
 		outline_enabled = TRUE
 		outline_color = COLOR_BLUE_GRAY
@@ -62,6 +63,9 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 			if(n_gear)
 				purchased_gear += n_gear
 	if(current_version < 35)
+=======
+	if(current_version < 33)
+>>>>>>> 4f3af9686c (Refactor handling of movement with modifier keys (#6886))
 		chat_on_map = TRUE
 //		max_chat_length = CHAT_MESSAGE_MAX_LENGTH			> Depreciated as of 31/07/2021
 		see_chat_non_mob = TRUE
@@ -78,6 +82,15 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	if(current_version < 37)
 		key_bindings = S["key_bindings"]
 		key_bindings += list("Space" = list("hold_throw_mode"))
+		WRITE_FILE(S["key_bindings"], key_bindings)
+	if(current_version < 38)
+		// This isn't critical to functioning, but leaving these values around throws errors in the log
+		key_bindings = S["key_bindings"]
+		for(var/key in key_bindings)
+			for(var/kb_name in key_bindings[key])
+				// Remove all old face_<direction> keybinds
+				if(copytext(kb_name, 1, 6) == "face_")
+					key_bindings[key] -= kb_name
 		WRITE_FILE(S["key_bindings"], key_bindings)
 	return
 
