@@ -1,9 +1,9 @@
 // -- austation manuals - 28 5 22 --
 /obj/item/book/manual/wiki/xenoarchaeology
-	name = "Archeology - Xenoartifacts"
+	name = "Archaeology - Xenoartifacts"
 	icon_state ="bookEngineeringSingularitySafety"
 	author = "Dr. Fry"
-	title = "Archeology - Xenoartifacts"
+	title = "Archaeology - Xenoartifacts"
 	page_link = "Guide_to_xenoarchaeology"
 
 /obj/item/book/manual/wiki/xenoarchaeology/attack_self(mob/user)
