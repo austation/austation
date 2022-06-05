@@ -24,6 +24,8 @@
 	var/datum/xenoartifact_trait/touch_desc
 	///used for special examine circumstance, science goggles & ghosts
 	var/special_desc = "The Xenoartifact is made from a"
+	///Description used for label, used because directly adding shit to desc isn't a good idea
+	var/label_desc
 	///How far the artifact can reach
 	var/max_range = 1
 
@@ -45,7 +47,7 @@
 	///Everytime the artifact is used this increases. When this is successfully proc'd the artifact gains a malfunction and this is lowered.
 	var/malfunction_chance = 0
 	///How much the chance can change in a sinlge itteration
-	var/malfunction_mod = 0.5
+	var/malfunction_mod = 0.1
 
 /obj/item/xenoartifact/ComponentInitialize()
 	. = ..()
@@ -83,7 +85,7 @@
 							/datum/xenoartifact_trait/activator/batteryneed))
 			if(!xenop.price)
 				xenop.price = pick(200, 300, 500)
-			malfunction_mod = 1
+			malfunction_mod = 0.5
 
 		if(XENOA_URANIUM)
 			name = "uranium [name]"
@@ -94,7 +96,7 @@
 							/datum/xenoartifact_trait/major/heal), TRUE) 
 			if(!xenop.price)
 				xenop.price = pick(300, 500, 800) 
-			malfunction_mod = 8
+			malfunction_mod = 1
 
 		if(XENOA_BANANIUM)
 			name = "bananium [name]"
@@ -158,8 +160,9 @@
 		for(var/datum/xenoartifact_trait/t as() in traits)
 			to_chat(user, "<span class='notice'>[t.desc ? t.desc : t.label_name]</span>")
 			to_chat("test")
-	else if(iscarbon(user) && istype(user?.glasses, /obj/item/clothing/glasses/science)) //Not checking carbon throws a runtime concerning observers
+	else if(iscarbon(user) && user.can_see_reagents()) //Not checking carbon throws a runtime concerning observers
 		to_chat(user, "<span class='notice'>[special_desc]</span>")
+	return (label_desc ? . + label_desc : .)
 
 /obj/item/xenoartifact/interact(mob/user)
 	. = ..()
@@ -174,9 +177,12 @@
 
 /obj/item/xenoartifact/attackby(obj/item/I, mob/living/user, params)
 	for(var/datum/xenoartifact_trait/t as() in traits)
+		to_chat(user, "<span class='notice'>You preform a safe operation on [src] with [I].</span>")
 		t?.on_item(src, user, I)
 	if(!(COOLDOWN_FINISHED(src, xenoa_cooldown))||user?.a_intent == INTENT_GRAB||istype(I, /obj/item/xenoartifact_label)||istype(I, /obj/item/xenoartifact_labeler))
 		return
+	else if(istype(I, /obj/item/wirecutters) && (locate(/obj/item/xenoartifact_label) in contents))
+		qdel(locate(/obj/item/xenoartifact_label) in contents)
 	..()
 
 ///Run traits. Used to activate all minor, major, and malfunctioning traits in the artifact's trait list. Sets cooldown when properly finished.
@@ -336,7 +342,7 @@
 			visible_message("<span class='notice'>The [name] ticks.</span>")
 			true_target = list(get_target_in_proximity(min(max_range, 5)))
 			default_activate(25, null, null)
-			if(prob(13) && COOLDOWN_FINISHED(src, xenoa_cooldown))
+			if(prob(23) && COOLDOWN_FINISHED(src, xenoa_cooldown))
 				process_type = null
 				return PROCESS_KILL
 		else    
