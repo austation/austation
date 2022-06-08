@@ -49,6 +49,9 @@
 	///How much the chance can change in a sinlge itteration
 	var/malfunction_mod = 0.1
 
+	//snowflake variable for shaped
+	var/transfer_prints = FALSE
+
 /obj/item/xenoartifact/ComponentInitialize()
 	. = ..()
 	AddComponent(/datum/component/xenoartifact_pricing)
@@ -171,18 +174,26 @@
 		process_type = null
 		return
 	if(user.a_intent == INTENT_GRAB)
-		touch_desc?.on_touch(src, user)
+		if(touch_desc?.on_touch(src, user) && user.can_see_reagents())
+			balloon_alert(user, (initial(touch_desc.desc) ? initial(touch_desc.desc) : initial(touch_desc.label_name)), material)
 		return
 	SEND_SIGNAL(src, XENOA_INTERACT, null, user, user)
 
 /obj/item/xenoartifact/attackby(obj/item/I, mob/living/user, params)
-	for(var/datum/xenoartifact_trait/t as() in traits)
-		t?.on_item(src, user, I)
+	var/tool_text
+	for(var/datum/xenoartifact_trait/t as() in traits) //chat & bubble hints & helpers
+		if(t?.on_item(src, user, I) && user.can_see_reagents())
+			tool_text = "[tool_text][t.desc ? t.desc : t.label_name]\n"
+	if(tool_text)
+		balloon_alert(user, tool_text, material)
+
+	//abort if grab intent
 	if(!(COOLDOWN_FINISHED(src, xenoa_cooldown))||user?.a_intent == INTENT_GRAB||istype(I, /obj/item/xenoartifact_label)||istype(I, /obj/item/xenoartifact_labeler))
 		if(user?.a_intent == INTENT_GRAB)
 			to_chat(user, "<span class='notice'>You preform a safe operation on [src] with [I].</span>")
 		return
-	else if(istype(I, /obj/item/wirecutters) && (locate(/obj/item/xenoartifact_label) in contents))
+	else if(istype(I, /obj/item/wirecutters) && (locate(/obj/item/xenoartifact_label) in contents)) //allow people to remove stickers
+		label_desc = null
 		qdel(locate(/obj/item/xenoartifact_label) in contents)
 	..()
 
@@ -199,7 +210,7 @@
 			malfunction_chance += (malfunction_chance+malfunction_mod < 100 ? malfunction_mod : malfunction_mod-((malfunction_chance+malfunction_mod)-100))
 
 		charge += charge_mod
-		for(var/datum/xenoartifact_trait/minor/t in traits)//Minor & malfunction traits aren't apart of the target loop
+		for(var/datum/xenoartifact_trait/minor/t in traits)//Minor traits aren't apart of the target loop
 			t?.activate(src, user, user)
 			log_game("[src] activated minor trait [t] at [world.time]. Located at [x] [y] [z]")
 		charge = (charge+charge_req)/1.9 //Not quite an average. Generally produces better results.   
@@ -220,7 +231,7 @@
 /obj/item/xenoartifact/proc/generate_traits(var/list/blacklist_traits, malf = FALSE)
 	var/datum/xenoartifact_trait/desc_holder
 	desc_holder = generate_trait_unique(XENOA_ACTIVATORS, blacklist_traits, FALSE) //Activator
-	special_desc = initial(desc_holder.desc) ? "[special_desc] [initial(desc_holder.desc)]" : "[special_desc]n unknown"
+	special_desc = initial(desc_holder.desc) ? "[special_desc] [initial(desc_holder.desc)]" : "[special_desc]n Unknown"
 
 	desc_holder = null
 	var/datum/xenoartifact_trait/minor_desc_holder
@@ -232,13 +243,13 @@
 			if(!touch_desc.on_touch(src, src))
 				touch_desc = null //not setting this to null fucks with check, qdel refuses to be helpful another day
 
-	special_desc = desc_holder ? "[special_desc] [initial(desc_holder.desc)] material." : "[special_desc] material."
+	special_desc = initial(desc_holder?.desc) ? "[special_desc] [initial(desc_holder.desc)] material." : "[special_desc] material."
 
 	if(malf)
 		generate_trait_unique(XENOA_MALFS, blacklist_traits) //Malf
 
 	desc_holder = generate_trait_unique(XENOA_MAJORS, blacklist_traits, FALSE) //Major
-	special_desc = initial(desc_holder.desc) ? "[special_desc] The shape is [initial(desc_holder.desc)]." : "[special_desc] The shape is unknown."
+	special_desc = initial(desc_holder.desc) ? "[special_desc] The shape is [initial(desc_holder.desc)]." : "[special_desc] The shape is Unknown."
 
 	charge_req = rand(1, 10) * 10
 
@@ -280,8 +291,12 @@
 	add_overlay(icon_overlay)
 
 ///Used for hand-holding secret technique. Pulling entities swaps them for you in the target list.
-/obj/item/xenoartifact/proc/process_target(mob/target)
-	. = isliving(target) ? target?.pulling ? target?.pulling : target : target
+/obj/item/xenoartifact/proc/process_target(atom/target)
+	if(isliving(target))
+		var/mob/living/M = target
+		. = M?.pulling ? M.pulling : M
+	else
+		. = target
 	RegisterSignal(., COMSIG_PARENT_QDELETING, .proc/on_target_del, .)
 	return
 

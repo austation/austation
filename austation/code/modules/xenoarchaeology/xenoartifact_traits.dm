@@ -57,16 +57,14 @@
 	SEND_SIGNAL(xenoa, XENOA_DEFAULT_SIGNAL, xenoa, user, target)
 
 /datum/xenoartifact_trait/activator/proc/translate_impact(atom/hit_atom, datum/thrownthing/throwingdatum)
-	SEND_SIGNAL(xenoa, XENOA_DEFAULT_SIGNAL, xenoa, hit_atom, throwingdatum) //Weird order to fix this becuase signals are dogshit
+	SEND_SIGNAL(xenoa, XENOA_DEFAULT_SIGNAL, xenoa, hit_atom, throwingdatum) //Weird order to fix this becuase signals are mean, but efficient
 
 /datum/xenoartifact_trait/activator/proc/translate_afterattack(atom/target, mob/user, params)
-	var/mob/living/real_user
+	var/mob/living/real_user 
 	if(isliving(user))
 		real_user = user
 	else if(isliving(user.loc))
 		real_user = user.loc
-	else 
-		return 
 	SEND_SIGNAL(xenoa, XENOA_DEFAULT_SIGNAL, xenoa, target, real_user)//And this
 
 //End activator
@@ -634,16 +632,16 @@
 
 /datum/xenoartifact_trait/major/corginator/activate(obj/item/xenoartifact/X, mob/living/target)
 	X.say(pick("Woof!", "Bark!", "Yap!"))
-	if(istype(target, /mob/living) && !(istype(target, /mob/living/simple_animal/pet/dog/corgi)))
-		var/mob/living/simple_animal/pet/dog/corgi/new_corgi = transform(X, target)
-		addtimer(CALLBACK(src, .proc/transform_back, X, target, new_corgi), (X.charge*0.6) SECONDS)
-		victims += list(target, new_corgi)
-		X.cooldownmod = (X.charge*0.6) SECONDS
-
-/datum/xenoartifact_trait/major/corginator/proc/transform(obj/item/xenoartifact/X, mob/living/target)
 	if(!(SSzclear.get_free_z_level()))
 		playsound(get_turf(X), 'sound/machines/buzz-sigh.ogg', 50, TRUE)
 		return
+	if(istype(target, /mob/living) && !(istype(target, /mob/living/simple_animal/pet/dog/corgi)))
+		var/mob/living/simple_animal/pet/dog/corgi/new_corgi = transform(X, target)
+		addtimer(CALLBACK(src, .proc/transform_back, X, target, new_corgi), (X.charge*0.6) SECONDS)
+		victims |= list(target, new_corgi)
+		X.cooldownmod = (X.charge*0.6) SECONDS
+
+/datum/xenoartifact_trait/major/corginator/proc/transform(obj/item/xenoartifact/X, mob/living/target)
 	var/mob/living/simple_animal/pet/dog/corgi/new_corgi
 	new_corgi = new(get_turf(target))
 	new_corgi.key = target.key
