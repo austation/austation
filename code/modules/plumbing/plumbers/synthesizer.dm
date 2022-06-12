@@ -65,11 +65,14 @@
 		return
 	if(reagents.total_volume >= amount*delta_time*0.5) //otherwise we get leftovers, and we need this to be precise
 		return
+	/* austation begin -- revert plumbing synthesizer ammo requirements
 	if(volume_left < amount) //Empty
 		return
+	austation end */
 	reagents.add_reagent(reagent_id, amount*delta_time*0.5)
-	volume_left = max(volume_left - amount*delta_time*0.5, 0)
+	//volume_left = max(volume_left - amount*delta_time*0.5, 0) austation -- revert plumbing synthesizer ammo requirements
 
+/* austation begin -- revert plumbing synthesizer ammo requirements
 /obj/machinery/plumbing/synthesizer/attackby(obj/item/O, mob/user, params)
 	if(!istype(O, /obj/item/rcd_ammo))
 		return ..()
@@ -93,6 +96,8 @@
 /obj/machinery/plumbing/synthesizer/examine(mob/user)
 	. = ..()
 	. += "<span class='notice'>A display says it currently holds [volume_left] units of precursor before requiring a refill.</span>"
+
+austation end */
 
 /obj/machinery/plumbing/synthesizer/ui_state(mob/user)
 	return GLOB.default_state
