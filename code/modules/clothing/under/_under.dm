@@ -168,13 +168,8 @@
 		return
 	if(!ishuman(loc) || istype(loc, /mob/living/carbon/human/dummy))
 		return
-<<<<<<< HEAD
-		
-	if(sensor_mode > SENSOR_OFF)
-=======
 
 	if(has_sensor >= HAS_SENSORS && sensor_mode > SENSOR_OFF)
->>>>>>> f488025b08 (working (#6775))
 		if(HAS_TRAIT(loc, TRAIT_SUIT_SENSORS))
 			return
 		ADD_TRAIT(loc, TRAIT_SUIT_SENSORS, TRACKED_SENSORS_TRAIT)
