@@ -1,4 +1,0 @@
-author: "AustationBot"
-delete-after: True
-changes: 
-  - bugfix: "Reactive armor now ignores imaginary bullets instead of activating."
