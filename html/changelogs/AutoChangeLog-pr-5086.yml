@@ -1,0 +1,4 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - bugfix: "Fixes some mistakes in quirk code mob transfer."
