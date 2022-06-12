@@ -1,6 +1,6 @@
 /obj/item/xenoartifact_labeler
-	name = "Xenoartifact Labeler"
-	icon = 'austation/icons/obj/xenoarchaeology/xenoartifact_tech.dmi'
+	name = "xenoartifact labeler"
+	icon = 'icons/obj/xenoarchaeology/xenoartifact_tech.dmi'
 	icon_state = "xenoartifact_labeler"
 	desc = "A tool scientists use to label their alien bombs."
 	throw_speed = 3
@@ -136,9 +136,9 @@
 
 // Not to be confused with labeler
 /obj/item/xenoartifact_label
-	icon = 'austation/icons/obj/xenoarchaeology/xenoartifact_sticker.dmi'
+	icon = 'icons/obj/xenoarchaeology/xenoartifact_sticker.dmi'
 	icon_state = "sticker_star"
-	name = "Xenoartifact Label"
+	name = "xenoartifact label"
 	desc = "An adhesive label describing the characteristics of a Xenoartifact."
 	var/info = "" 
 	var/set_name = FALSE
@@ -169,7 +169,7 @@
 		return TRUE
 	else if(istype(target, /obj/item/xenoartifact))
 		xenoa_target = target
-		if(set_name) //You can update the now, that's cool
+		if(set_name) //You can update the name now
 			xenoa_target.name = name
 		calculate_modifier(xenoa_target)
 		add_sticker(xenoa_target)
@@ -181,6 +181,8 @@
 		return TRUE
 	
 /obj/item/xenoartifact_label/proc/add_sticker(mob/target)
+	if(locate(/obj/item/xenoartifact_label) in target) //Remove old stickers
+		qdel(locate(/obj/item/xenoartifact_label) in target)
 	target.add_overlay(sticker_overlay)
 	forceMove(target)
 
@@ -214,7 +216,7 @@
 	xenoa_target = null
 
 /obj/item/xenoartifact_labeler/debug
-	name = "Xenoartifact Debug Labeler"      
+	name = "xenoartifact debug labeler"      
 	desc = "Use to create specific Xenoartifacts" 
 
 /obj/item/xenoartifact_labeler/debug/afterattack(atom/target, mob/user)
