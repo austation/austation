@@ -1,0 +1,5 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - bugfix: "Fixes eminence being targeted by things that shouldn't see it."
+  - bugfix: "Revenant and eminence can no longer be irradiated."
