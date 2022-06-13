@@ -250,7 +250,7 @@
 	// This one DOES include subtypes, this should contain items that can circumvent the game's rules, make it really unfun or just break the server
 	blacklist += typecacheof(list(
 		/obj/effect,
-		/obj/singularity,
+		/obj/anomaly/singularity,
 		/obj/item/projectile/hvp,
 		/obj/item/reagent_containers/food/snacks/store/bread/recycled,
 		/obj/machinery/portable_atmospherics,
