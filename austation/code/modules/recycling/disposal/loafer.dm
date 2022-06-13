@@ -163,9 +163,9 @@
 			var/culprit_message
 			priority_announce("We have detected an extremely high concentration of gluten in [A.name], we suggest evacuating the immediate area", sound = SSstation.announcer.get_rand_alert_sound())
 			visible_message("<span class='userdanger'>[src] collapses into a singularity under its own weight!</span>")
-			var/obj/singularity/oof = new(get_turf(src))
+			var/obj/anomaly/singularity/oof = new(get_turf(src))
 			if(supermatter_singulo)
-				oof.consumedSupermatter = supermatter_singulo
+				oof.consumed_supermatter = supermatter_singulo
 				oof.energy = 800
 			else
 				oof.energy = 180 // just below stage two
