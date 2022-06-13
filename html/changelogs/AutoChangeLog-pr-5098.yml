@@ -1,0 +1,5 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - balance: "changes the movement delay of blob spores back to the default for hostiles"
+  - bugfix: "fixes a possible runtime in jps hostile while it gets qdeleted"
