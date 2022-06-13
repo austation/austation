@@ -179,15 +179,9 @@
 	user.visible_message("<span class='suicide'>[user] begins licking the lead paint off \the [src]! It looks like [user.p_theyre()] trying to commit suicide!</span>")
 	return TOXLOSS
 
-/* austation begin -- /tg/ firstaid kit icons
 /obj/item/storage/firstaid/toxin/Initialize(mapload)
 	. = ..()
-<<<<<<< HEAD
-	icon_state = pick("antitoxin","antitoxin2")
-austation end */
-=======
 	icon_state = pick("firstaid-toxin","firstaid-toxinalt")
->>>>>>> 7566597c6d (New Medikit sprites and a Randomized medkit (#6716))
 
 /obj/item/storage/firstaid/toxin/PopulateContents()
 	if(empty)
@@ -357,15 +351,9 @@ austation end */
 	icon_state = "firstaid-combat"
 	item_state = "firstaid-combat"
 
-/* austation begin -- /tg/ firstaid kit icons
 /obj/item/storage/firstaid/tactical/Initialize(mapload)
 	. = ..()
-<<<<<<< HEAD
-	icon_state = pick("combatfirstaid","combatfirstaid2")
-austation end */
-=======
 	icon_state = pick("firstaid-combat","firstaid-combatalt")
->>>>>>> 7566597c6d (New Medikit sprites and a Randomized medkit (#6716))
 
 /obj/item/storage/firstaid/tactical/ComponentInitialize()
 	. = ..()
