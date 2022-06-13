@@ -1,0 +1,5 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - rscadd: "You can now permanently sentence people to labor camp"
+  - rscadd: "You can now give out 1500 point labor camp sentences"
