@@ -11,6 +11,8 @@ SUBSYSTEM_DEF(server_maint)
 
 /datum/controller/subsystem/server_maint/PreInit()
 	world.hub_password = "" //quickly! before the hubbies see us.
+	if (fexists("./data/enable_inactive") && fexists("./data/inactive"))
+		server_inactive = TRUE
 
 /datum/controller/subsystem/server_maint/Initialize(timeofday)
 	if (CONFIG_GET(flag/hub))

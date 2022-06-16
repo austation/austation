@@ -145,7 +145,7 @@
 	listeningTo = user
 
 /obj/item/storage/bag/ore/dropped()
-	. = ..()
+	..()
 	if(listeningTo)
 		UnregisterSignal(listeningTo, COMSIG_MOVABLE_MOVED)
 		listeningTo = null
@@ -335,13 +335,8 @@
 	var/list/obj/item/oldContents = contents.Copy()
 	SEND_SIGNAL(src, COMSIG_TRY_STORAGE_QUICK_EMPTY)
 	// Make each item scatter a bit
-	for(var/obj/item/I in oldContents)
-		spawn()
-			for(var/i = 1, i <= rand(1,2), i++)
-				if(I)
-					step(I, pick(NORTH,SOUTH,EAST,WEST))
-					sleep(rand(2,4))
-
+	for(var/obj/item/tray_item in oldContents)
+		do_scatter(tray_item)
 	if(prob(50))
 		playsound(M, 'sound/items/trayhit1.ogg', 50, 1)
 	else
@@ -352,16 +347,29 @@
 			M.Paralyze(40)
 	update_icon()
 
+/obj/item/storage/bag/tray/proc/do_scatter(obj/item/tray_item)
+	var/delay = rand(2,4)
+	var/datum/move_loop/loop = SSmove_manager.move_rand(tray_item, list(NORTH,SOUTH,EAST,WEST), delay, timeout = rand(1, 2) * delay, flags = MOVEMENT_LOOP_START_FAST)
+	//This does mean scattering is tied to the tray. Not sure how better to handle it
+	RegisterSignal(loop, COMSIG_MOVELOOP_POSTPROCESS, .proc/change_speed)
+
+/obj/item/storage/bag/tray/proc/change_speed(datum/move_loop/source)
+	SIGNAL_HANDLER
+	var/new_delay = rand(2, 4)
+	var/count = source.lifetime / source.delay
+	source.lifetime = count * new_delay
+	source.delay = new_delay
+
 /obj/item/storage/bag/tray/update_icon()
 	cut_overlays()
 	for(var/obj/item/I in contents)
 		add_overlay(new /mutable_appearance(I))
 
-/obj/item/storage/bag/tray/Entered()
+/obj/item/storage/bag/tray/Entered(atom/movable/arrived, atom/old_loc, list/atom/old_locs)
 	. = ..()
 	update_icon()
 
-/obj/item/storage/bag/tray/Exited()
+/obj/item/storage/bag/tray/Exited(atom/movable/gone, direction)
 	. = ..()
 	update_icon()
 
@@ -404,6 +412,11 @@
 	STR.max_items = 25
 	STR.insert_preposition = "in"
 	STR.can_hold = typecacheof(list(/obj/item/slime_extract, /obj/item/reagent_containers/syringe, /obj/item/reagent_containers/dropper, /obj/item/reagent_containers/glass/beaker, /obj/item/reagent_containers/glass/bottle, /obj/item/reagent_containers/blood, /obj/item/reagent_containers/hypospray/medipen, /obj/item/reagent_containers/food/snacks/deadmouse, /obj/item/reagent_containers/food/snacks/monkeycube, /obj/item/organ, /obj/item/bodypart))
+
+/obj/item/storage/bag/bio/pre_attack(atom/A, mob/living/user, params)
+	if(istype(A, /obj/item/slimecross/reproductive))
+		return TRUE
+	return ..()
 
 /obj/item/storage/bag/construction
 	name = "construction bag"

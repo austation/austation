@@ -151,9 +151,7 @@ GLOBAL_DATUM(main_supermatter_engine, /obj/machinery/power/supermatter_crystal)
 	var/has_been_powered = FALSE
 	var/has_reached_emergency = FALSE
 
-	// For making hugbox supermatter
-	var/takes_damage = TRUE
-	var/produces_gas = TRUE
+	///An effect we show to admins and ghosts the percentage of delam we're at
 	var/obj/effect/countdown/supermatter/countdown
 
 	var/is_main_engine = FALSE
@@ -165,7 +163,19 @@ GLOBAL_DATUM(main_supermatter_engine, /obj/machinery/power/supermatter_crystal)
 	/// cooldown tracker for accent sounds,
 	var/last_accent_sound = 0
 
-/obj/machinery/power/supermatter_crystal/Initialize()
+	//For making hugbox supermatters
+	///Disables all methods of taking damage
+	var/takes_damage = TRUE
+	///Disables the production of gas, and pretty much any handling of it we do.
+	var/produces_gas = TRUE
+	///Disables power changes
+	var/power_changes = TRUE
+	///Disables the sm's proccessing totally.
+	var/processes = TRUE
+	///Timer id for the disengage_field proc timer
+	var/disengage_field_timer = null
+
+/obj/machinery/power/supermatter_crystal/Initialize(mapload)
 	. = ..()
 	uid = gl_uid++
 	SSair.atmos_air_machinery += src
@@ -299,7 +309,7 @@ GLOBAL_DATUM(main_supermatter_engine, /obj/machinery/power/supermatter_crystal)
 	if(combined_gas > MOLE_PENALTY_THRESHOLD)
 		investigate_log("has collapsed into a singularity.", INVESTIGATE_ENGINES)
 		if(T)
-			var/obj/singularity/S = new(T)
+			var/obj/anomaly/singularity/S = new(T)
 			S.energy = 800
 			S.consume(src)
 	else
@@ -307,7 +317,7 @@ GLOBAL_DATUM(main_supermatter_engine, /obj/machinery/power/supermatter_crystal)
 		explosion(get_turf(T), explosion_power * max(gasmix_power_ratio, 0.205) * 0.5 , explosion_power * max(gasmix_power_ratio, 0.205) + 2, explosion_power * max(gasmix_power_ratio, 0.205) + 4 , explosion_power * max(gasmix_power_ratio, 0.205) + 6, 1, 1)
 		if(power > POWER_PENALTY_THRESHOLD)
 			investigate_log("has spawned additional energy balls.", INVESTIGATE_ENGINES)
-			new /obj/singularity/energy_ball(T, power)
+			new /obj/anomaly/energy_ball(T, power)
 		qdel(src)
 
 //this is here to eat arguments
@@ -317,6 +327,8 @@ GLOBAL_DATUM(main_supermatter_engine, /obj/machinery/power/supermatter_crystal)
 	explode()
 
 /obj/machinery/power/supermatter_crystal/process_atmos()
+	if(!processes) //Just fuck me up bro
+		return
 	var/turf/T = loc
 
 	if(isnull(T))		// We have a null turf...something is wrong, stop processing this entity.
@@ -411,7 +423,7 @@ GLOBAL_DATUM(main_supermatter_engine, /obj/machinery/power/supermatter_crystal)
 			powerloss_dynamic_scaling = CLAMP(powerloss_dynamic_scaling - 0.05,0, 1)
 		powerloss_inhibitor = CLAMP(1-(powerloss_dynamic_scaling * CLAMP(combined_gas/POWERLOSS_INHIBITION_MOLE_BOOST_THRESHOLD,1 ,1.5)),0 ,1)
 
-		if(matter_power)
+		if(matter_power && power_changes)
 			var/removed_matter = max(matter_power/MATTER_POWER_CONVERSION, 40)
 			power = max(power + removed_matter, 0)
 			matter_power = max(matter_power - removed_matter, 0)
@@ -426,7 +438,8 @@ GLOBAL_DATUM(main_supermatter_engine, /obj/machinery/power/supermatter_crystal)
 			temp_factor = 30
 			icon_state = base_icon_state
 
-		power = max((removed.return_temperature() * temp_factor / T0C) * gasmix_power_ratio + power, 0) //Total laser power plus an overload // austation -- lol no energy caps
+		if(power_changes)
+			power = max((removed.return_temperature() * temp_factor / T0C) * gasmix_power_ratio + power, 0) //Total laser power plus an overload // austation -- lol no energy caps
 
 		if(prob(50))
 			radiation_pulse(src, power * (1 + (tritiumcomp * TRITIUM_RADIOACTIVITY_MODIFIER) + ((pluoxiumcomp * PLUOXIUM_RADIOACTIVITY_MODIFIER) * pluoxiumbonus) * (power_transmission_bonus/(10-(bzcomp * BZ_RADIOACTIVITY_MODIFIER))))) // Rad Modifiers BZ(500%), Tritium(300%), and Pluoxium(-200%)
@@ -468,7 +481,8 @@ GLOBAL_DATUM(main_supermatter_engine, /obj/machinery/power/supermatter_crystal)
 
 	//Transitions between one function and another, one we use for the fast inital startup, the other is used to prevent errors with fusion temperatures.
 	//Use of the second function improves the power gain imparted by using co2
-	power =  max(power - min(((power/500)**3) * powerloss_inhibitor, power * 0.83 * powerloss_inhibitor),1)
+	if(power_changes)
+		power =  max(power - min(((power/500)**3) * powerloss_inhibitor, power * 0.83 * powerloss_inhibitor),1)
 
 	if(power > POWER_PENALTY_THRESHOLD || damage > damage_penalty_point)
 
@@ -529,14 +543,15 @@ GLOBAL_DATUM(main_supermatter_engine, /obj/machinery/power/supermatter_crystal)
 	var/turf/L = loc
 	if(!istype(L))
 		return FALSE
-	if(!istype(Proj.firer, /obj/machinery/power/emitter))
+	if(!istype(Proj.firer, /obj/machinery/power/emitter) && power_changes)
 		investigate_log("has been hit by [Proj] fired by [key_name(Proj.firer)]", INVESTIGATE_ENGINES)
 	if(Proj.flag != "bullet")
-		power += Proj.damage * config_bullet_energy
-		if(!has_been_powered)
-			investigate_log("has been powered for the first time.", INVESTIGATE_ENGINES)
-			message_admins("[src] has been powered for the first time [ADMIN_JMP(src)].")
-			has_been_powered = TRUE
+		if(power_changes) //This needs to be here I swear
+			power += Proj.damage * config_bullet_energy
+			if(!has_been_powered)
+				investigate_log("has been powered for the first time.", INVESTIGATE_ENGINES)
+				message_admins("[src] has been powered for the first time [ADMIN_JMP(src)].")
+				has_been_powered = TRUE
 	else if(takes_damage)
 		damage += Proj.damage * config_bullet_energy
 	return BULLET_ACT_HIT
@@ -708,16 +723,18 @@ GLOBAL_DATUM(main_supermatter_engine, /obj/machinery/power/supermatter_crystal)
 		message_admins("[src] has consumed [key_name_admin(user)] [ADMIN_JMP(src)].")
 		investigate_log("has consumed [key_name(user)].", INVESTIGATE_ENGINES)
 		user.dust(force = TRUE)
-		matter_power += 200
-	else if(istype(AM, /obj/singularity))
+		if(power_changes)
+			matter_power += 200
+	else if(AM.flags_1 & SUPERMATTER_IGNORES_1)
 		return
 	else if(isobj(AM))
 		var/obj/O = AM
 		if(O.resistance_flags & INDESTRUCTIBLE)
-			var/image/causality_field = image(icon, null, "causality_field")
-			add_overlay(causality_field, TRUE)
-			radio.talk_into(src, "Anomalous object has breached containment, emergency causality field enganged to prevent reality destabilization.", engineering_channel)
-			addtimer(CALLBACK(src, .proc/disengage_field, causality_field), 5 SECONDS)
+			if(!disengage_field_timer) //we really don't want to have more than 1 timer and causality field overlayer at once
+				var/image/causality_field = image(icon, null, "causality_field")
+				add_overlay(causality_field, TRUE)
+				radio.talk_into(src, "Anomalous object has breached containment, emergency causality field enganged to prevent reality destabilization.", engineering_channel)
+				disengage_field_timer = addtimer(CALLBACK(src, .proc/disengage_field, causality_field), 5 SECONDS)
 			return
 		if(!iseffect(AM))
 			var/suspicion = ""
@@ -726,7 +743,7 @@ GLOBAL_DATUM(main_supermatter_engine, /obj/machinery/power/supermatter_crystal)
 				message_admins("[src] has consumed [AM], [suspicion] [ADMIN_JMP(src)].")
 			investigate_log("has consumed [AM] - [suspicion].", INVESTIGATE_ENGINES)
 		qdel(AM)
-	if(!iseffect(AM))
+	if(!iseffect(AM) && power_changes)
 		matter_power += 200
 
 	//Some poor sod got eaten, go ahead and irradiate people nearby.
@@ -743,6 +760,7 @@ GLOBAL_DATUM(main_supermatter_engine, /obj/machinery/power/supermatter_crystal)
 	if(QDELETED(src) || !causality_field)
 		return
 	cut_overlay(causality_field, TRUE)
+	disengage_field_timer = null
 
 //Do not blow up our internal radio
 /obj/machinery/power/supermatter_crystal/contents_explosion(severity, target)
@@ -774,6 +792,8 @@ GLOBAL_DATUM(main_supermatter_engine, /obj/machinery/power/supermatter_crystal)
 	name = "anchored supermatter shard"
 	takes_damage = FALSE
 	produces_gas = FALSE
+	power_changes = FALSE
+	processes = FALSE //SHUT IT DOWN
 	moveable = FALSE
 	anchored = TRUE
 

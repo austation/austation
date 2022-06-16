@@ -100,7 +100,7 @@
 /datum/reagent/drug/crank/overdose_process(mob/living/M)
 	M.adjustOrganLoss(ORGAN_SLOT_BRAIN, 2*REM)
 	M.adjustToxLoss(2*REM, 0)
-	M.adjustBruteLoss(2*REM, FALSE, FALSE, BODYPART_ORGANIC)
+	M.adjustBruteLoss(2*REM, FALSE, FALSE, BODYTYPE_ORGANIC)
 	..()
 	. = 1
 
@@ -167,10 +167,10 @@
 /datum/reagent/drug/krokodil/addiction_act_stage4(mob/living/carbon/human/M)
 	CHECK_DNA_AND_SPECIES(M)
 	if(ishumanbasic(M))
-		if(!istype(M.dna.species, /datum/species/krokodil_addict))
+		if(!istype(M.dna.species, /datum/species/human/krokodil_addict))
 			to_chat(M, "<span class='userdanger'>Your skin falls off easily!</span>")
 			M.adjustBruteLoss(50*REM, 0) // holy shit your skin just FELL THE FUCK OFF
-			M.set_species(/datum/species/krokodil_addict)
+			M.set_species(/datum/species/human/krokodil_addict)
 		else
 			M.adjustBruteLoss(5*REM, 0)
 	else
@@ -190,13 +190,13 @@
 	metabolization_rate = 0.75 * REAGENTS_METABOLISM
 
 /datum/reagent/drug/methamphetamine/on_mob_metabolize(mob/living/L)
-	ADD_TRAIT(L, TRAIT_NOBLOCK, type)
 	..()
-	if (L.client)
-		SSmedals.UnlockMedal(MEDAL_APPLY_REAGENT_METH,L.client)
+	if(L.client)
+		L.client.give_award(/datum/award/achievement/misc/meth, L)
 
-	L.add_movespeed_modifier(type, update=TRUE, priority=100, multiplicative_slowdown=-1.25, blacklisted_movetypes=(FLYING|FLOATING))
+	L.add_movespeed_modifier(type, update=TRUE, priority=100, multiplicative_slowdown=-0.75, blacklisted_movetypes=(FLYING|FLOATING))
 	ADD_TRAIT(L, TRAIT_SLEEPIMMUNE, type)
+	ADD_TRAIT(L, TRAIT_NOBLOCK, type)
 
 /datum/reagent/drug/methamphetamine/on_mob_end_metabolize(mob/living/L)
 	REMOVE_TRAIT(L, TRAIT_NOBLOCK, type)
@@ -279,7 +279,7 @@
 	overdose_threshold = 20
 	addiction_threshold = 10
 	taste_description = "salt" // because they're bathsalts?
-	var/datum/brain_trauma/special/psychotic_brawling/bath_salts/rage
+	var/datum/martial_art/psychotic_brawling/brawling
 
 /datum/reagent/drug/bath_salts/on_mob_metabolize(mob/living/L)
 	..()
@@ -289,10 +289,9 @@
 	ADD_TRAIT(L, TRAIT_NOSTAMCRIT, type)
 	ADD_TRAIT(L, TRAIT_NOLIMBDISABLE, type)
 	ADD_TRAIT(L, TRAIT_NOBLOCK, type)
-	if(iscarbon(L))
-		var/mob/living/carbon/C = L
-		rage = new()
-		C.gain_trauma(rage, TRAUMA_RESILIENCE_ABSOLUTE)
+	brawling = new(null)
+	if(!brawling.teach(L, TRUE))
+		QDEL_NULL(brawling)
 
 /datum/reagent/drug/bath_salts/on_mob_end_metabolize(mob/living/L)
 	REMOVE_TRAIT(L, TRAIT_STUNIMMUNE, type)
@@ -301,8 +300,8 @@
 	REMOVE_TRAIT(L, TRAIT_NOSTAMCRIT, type)
 	REMOVE_TRAIT(L, TRAIT_NOLIMBDISABLE, type)
 	REMOVE_TRAIT(L, TRAIT_NOBLOCK, type)
-	if(rage)
-		QDEL_NULL(rage)
+	brawling.remove(L)
+	QDEL_NULL(brawling)
 	..()
 
 /datum/reagent/drug/bath_salts/on_mob_life(mob/living/carbon/M)
@@ -517,11 +516,11 @@
 	..()
 
 /datum/reagent/drug/ketamine/overdose_process(mob/living/M)
-	//Dissociative anesthetics? Overdosing? Time to dissociate hard.
 	var/obj/item/organ/brain/B = M.getorgan(/obj/item/organ/brain)
-	if(B.can_gain_trauma(/datum/brain_trauma/severe/split_personality, 5))
-		B.brain_gain_trauma(/datum/brain_trauma/severe/split_personality, 5)
-		. = 1
+	var/gained_trauma = FALSE
+	if(!gained_trauma)
+		B.gain_trauma_type(BRAIN_TRAUMA_SEVERE, TRAUMA_RESILIENCE_SURGERY)
+		gained_trauma = TRUE
 	M.hallucination += 10
 	//Uh Oh Someone is tired
 	if(prob(40))

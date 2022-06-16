@@ -17,7 +17,7 @@
 		"pink"
 	)
 
-/obj/item/balloon/Initialize()
+/obj/item/balloon/Initialize(mapload)
 	. = ..()
 	icon_state = pick(colorslist)
 

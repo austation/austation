@@ -1,4 +1,4 @@
-/obj/item/disk/tech_disk/research/Initialize()
+/obj/item/disk/tech_disk/research/Initialize(mapload)
 	. = ..()
 
 	if(node_id)

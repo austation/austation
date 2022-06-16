@@ -1,12 +1,6 @@
 /mob/living/simple_animal/mouse
 	faction = list("rat")
 
-/mob/living/simple_animal/mouse/Crossed(AM as mob|obj)
-	if(istype(AM, /obj/item/reagent_containers/food/snacks/royalcheese))
-		evolve()
-		qdel(AM)
-	..()
-
 /mob/living/simple_animal/mouse/handle_automated_action()
 	if(prob(chew_probability))
 		var/turf/open/floor/F = get_turf(src)

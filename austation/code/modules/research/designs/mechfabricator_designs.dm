@@ -86,7 +86,7 @@
 	desc = "A shell of a maintenance drone, an expendable robot built to perform station repairs.."
 	id = "drone_shell"
 	build_type = MECHFAB
-	build_path = /obj/effect/mob_spawn/drone
+	build_path = /obj/item/drone_shell
 	materials = list(/datum/material/iron=2000,/datum/material/gold=200,/datum/material/glass=1500)
 	construction_time = 100
 	category = list("Misc")

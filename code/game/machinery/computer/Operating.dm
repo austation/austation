@@ -14,7 +14,7 @@
 	var/datum/techweb/linked_techweb
 	light_color = LIGHT_COLOR_BLUE
 
-/obj/machinery/computer/operating/Initialize()
+/obj/machinery/computer/operating/Initialize(mapload)
 	. = ..()
 	linked_techweb = SSresearch.science_tech
 	find_table()
@@ -81,7 +81,7 @@
 		surgery["desc"] = initial(S.desc)
 		surgeries += list(surgery)
 	data["surgeries"] = surgeries
-	
+
 	//If there's no patient just hop to it yeah?
 	if(!table && !sbed)
 		data["patient"] = null
@@ -101,7 +101,9 @@
 			if(!ishuman(sbed.occupant) &&  !ismonkey(sbed.occupant))
 				return data
 			data["patient"] = list()
-			patient = sbed.occupant
+			if(isliving(sbed.occupant))
+				var/mob/living/live = sbed.occupant
+				patient = live
 		else
 			data["patient"] = null
 			return data

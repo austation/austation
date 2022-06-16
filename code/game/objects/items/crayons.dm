@@ -26,7 +26,7 @@
 	var/icon_uncapped
 	var/use_overlays = FALSE
 
-	item_color = "red"
+	var/crayon_color = "red"
 	w_class = WEIGHT_CLASS_TINY
 	attack_verb = list("attacked", "coloured")
 	grind_results = list()
@@ -78,13 +78,13 @@
 	user.visible_message("<span class='suicide'>[user] is jamming [src] up [user.p_their()] nose and into [user.p_their()] brain. It looks like [user.p_theyre()] trying to commit suicide!</span>")
 	return (BRUTELOSS|OXYLOSS)
 
-/obj/item/toy/crayon/Initialize()
+/obj/item/toy/crayon/Initialize(mapload)
 	. = ..()
 	// Makes crayons identifiable in things like grinders
 	if(name == "crayon")
-		name = "[item_color] crayon"
+		name = "[crayon_color] crayon"
 
-	drawtype = pick(all_drawables)
+	dye_color = crayon_color
 
 	refill()
 
@@ -275,14 +275,8 @@
 		var/mob/living/carbon/human/H = user
 		if (HAS_TRAIT(H, TRAIT_TAGGER))
 			cost *= 0.5
-	/* hippie start -- moved to the end of the proc, after the crayon is actually used.
-	var/charges_used = use_charges(user, cost)
-	if(!charges_used)
-		return
-	. = charges_used
-	hippie end */
 
-	if(istype(target, /obj/effect/decal/cleanable))
+	if(istype(target, /obj/effect/decal))
 		target = target.loc
 
 	if(!isValidSurface(target))
@@ -324,8 +318,7 @@
 	else if(drawing in graffiti|oriented)
 		temp = "graffiti"
 	var/gang_check = hippie_gang_check(user,target) // hippie start -- gang check and temp setting
-	if(!gang_check) return
-	else if(gang_check == "gang graffiti") temp = gang_check // hippie end
+	if(!gang_check) return // hippie end
 
 	var/graf_rot
 	if(drawing in oriented)
@@ -355,10 +348,9 @@
 	if(paint_mode == PAINT_LARGE_HORIZONTAL)
 		wait_time *= 3
 	if(gang)
-		instant = FALSE
-		var/area/territory = get_area(target)
-		gang.message_gangtools("[territory] is under attack by an enemy gang!")
-		wait_time = 30 SECONDS
+		wait_time = 1 SECONDS
+		if (territory_claimed(get_area(target), user))
+			wait_time = 20 SECONDS
 	if(!instant)
 		to_chat(user, "<span class='notice'>You start drawing a [temp] on the [target.name]...</span>") // hippie -- removed a weird tab that had no reason to be here
 		if(!do_after(user, wait_time, target = target))
@@ -438,66 +430,75 @@
 /obj/item/toy/crayon/red
 	icon_state = "crayonred"
 	paint_color = "#DA0000"
-	item_color = "red"
+	crayon_color = "red"
 	reagent_contents = list(/datum/reagent/consumable/nutriment = 0.5, /datum/reagent/colorful_reagent/powder/red/crayon = 1.5)
+	dye_color = DYE_RED
 
 /obj/item/toy/crayon/orange
 	icon_state = "crayonorange"
 	paint_color = "#FF9300"
-	item_color = "orange"
+	crayon_color = "orange"
 	reagent_contents = list(/datum/reagent/consumable/nutriment = 0.5, /datum/reagent/colorful_reagent/powder/orange/crayon = 1.5)
+	dye_color = DYE_ORANGE
 
 /obj/item/toy/crayon/yellow
 	icon_state = "crayonyellow"
 	paint_color = "#FFF200"
-	item_color = "yellow"
+	crayon_color = "yellow"
 	reagent_contents = list(/datum/reagent/consumable/nutriment = 0.5, /datum/reagent/colorful_reagent/powder/yellow/crayon = 1.5)
+	dye_color = DYE_YELLOW
 
 /obj/item/toy/crayon/green
 	icon_state = "crayongreen"
 	paint_color = "#A8E61D"
-	item_color = "green"
+	crayon_color = "green"
 	reagent_contents = list(/datum/reagent/consumable/nutriment = 0.5, /datum/reagent/colorful_reagent/powder/green/crayon = 1.5)
+	dye_color = DYE_GREEN
 
 /obj/item/toy/crayon/blue
 	icon_state = "crayonblue"
 	paint_color = "#00B7EF"
-	item_color = "blue"
+	crayon_color = "blue"
 	reagent_contents = list(/datum/reagent/consumable/nutriment = 0.5, /datum/reagent/colorful_reagent/powder/blue/crayon = 1.5)
+	dye_color = DYE_BLUE
 
 /obj/item/toy/crayon/purple
 	icon_state = "crayonpurple"
 	paint_color = "#DA00FF"
-	item_color = "purple"
+	crayon_color = "purple"
 	reagent_contents = list(/datum/reagent/consumable/nutriment = 0.5, /datum/reagent/colorful_reagent/powder/purple/crayon = 1.5)
+	dye_color = DYE_PURPLE
 
 /obj/item/toy/crayon/black
 	icon_state = "crayonblack"
 	paint_color = "#1C1C1C" //Not completely black because total black looks bad. So Mostly Black.
-	item_color = "black"
+	crayon_color = "black"
 	reagent_contents = list(/datum/reagent/consumable/nutriment = 0.5, /datum/reagent/colorful_reagent/powder/black/crayon = 1.5)
+	dye_color = DYE_BLACK
 
 /obj/item/toy/crayon/white
 	icon_state = "crayonwhite"
 	paint_color = "#FFFFFF"
-	item_color = "white"
+	crayon_color = "white"
 	reagent_contents = list(/datum/reagent/consumable/nutriment = 0.5,  /datum/reagent/colorful_reagent/powder/white/crayon = 1.5)
+	dye_color = DYE_WHITE
 
 /obj/item/toy/crayon/mime
 	icon_state = "crayonmime"
 	desc = "A very sad-looking crayon."
 	paint_color = "#FFFFFF"
-	item_color = "mime"
+	crayon_color = "mime"
 	reagent_contents = list(/datum/reagent/consumable/nutriment = 0.5, /datum/reagent/colorful_reagent/powder/invisible = 1.5)
 	charges = -1
+	dye_color = DYE_MIME
 
 /obj/item/toy/crayon/rainbow
 	icon_state = "crayonrainbow"
 	paint_color = "#FFF000"
-	item_color = "rainbow"
+	crayon_color = "rainbow"
 	reagent_contents = list(/datum/reagent/consumable/nutriment = 0.5, /datum/reagent/colorful_reagent = 1.5)
 	drawtype = RANDOM_ANY // just the default starter.
-
+	dye_color = DYE_RAINBOW
 	charges = -1
 
 /obj/item/toy/crayon/rainbow/afterattack(atom/target, mob/user, proximity, params)
@@ -515,7 +516,7 @@
 	icon_state = "crayonbox"
 	w_class = WEIGHT_CLASS_SMALL
 
-/obj/item/storage/crayons/Initialize()
+/obj/item/storage/crayons/Initialize(mapload)
 	. = ..()
 	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
 	STR.max_items = 7
@@ -534,12 +535,12 @@
 /obj/item/storage/crayons/update_icon()
 	cut_overlays()
 	for(var/obj/item/toy/crayon/crayon in contents)
-		add_overlay(mutable_appearance('icons/obj/crayons.dmi', crayon.item_color))
+		add_overlay(mutable_appearance('icons/obj/crayons.dmi', crayon.crayon_color))
 
 /obj/item/storage/crayons/attackby(obj/item/W, mob/user, params)
 	if(istype(W, /obj/item/toy/crayon))
 		var/obj/item/toy/crayon/C = W
-		switch(C.item_color)
+		switch(C.crayon_color)
 			if("mime")
 				to_chat(usr, "This crayon is too sad to be contained in this box.")
 				return
@@ -621,7 +622,7 @@
 
 		return (OXYLOSS)
 
-/obj/item/toy/crayon/spraycan/Initialize()
+/obj/item/toy/crayon/spraycan/Initialize(mapload)
 	. = ..()
 	// If default crayon red colour, pick a more fun spraycan colour
 	if(!paint_color)
@@ -807,21 +808,20 @@
 				to_chat(user, "<span class='danger'>This spraycan's color isn't your gang's one! You cannot use it.</span>")
 				return FALSE
 			gang_mode = TRUE
-			instant = FALSE
 			. = "graffiti"
 	// discontinue if we're not in gang modethe area isn't valid for tagging because gang "honour"
-	if(gang_mode && (!can_claim_for_gang(user, target)))
+	if(gang_mode && (!can_claim_for_gang(user, target, TRUE)))
 		return FALSE
 	return TRUE
 
 /obj/item/toy/crayon/proc/gang_final(mob/user, atom/target, list/affected_turfs) // hooked into afterattack
 	// Double check it wasn't tagged in the meanwhile
-	if(!can_claim_for_gang(user, target))
+	if(!can_claim_for_gang(user, target, FALSE))
 		return TRUE
 	tag_for_gang(user, target)
 	affected_turfs += target
 
-/obj/item/toy/crayon/proc/can_claim_for_gang(mob/user, atom/target)
+/obj/item/toy/crayon/proc/can_claim_for_gang(mob/user, atom/target, alert)
 	// Check area validity.
 	// Reject space, player-created areas, and non-station z-levels.
 	var/area/A = get_area(target)
@@ -830,11 +830,13 @@
 		return FALSE
 
 	var/spraying_over = FALSE
-	for(var/G in target)
-		var/obj/effect/decal/gang/gangtag = G
+	for(var/obj/effect/decal/gang/gangtag in target)
 		if(istype(gangtag))
 			var/datum/antagonist/gang/GA = user.mind.has_antag_datum(/datum/antagonist/gang)
 			if(gangtag.gang != GA.gang)
+				if (alert)
+					to_chat(user, "<span class='notice'>[gangtag.gang] has been alerted of this takeover!</span>")
+					gangtag.gang.message_gangtools("[get_area(target)] is under attack by an enemy gang!")
 				spraying_over = TRUE
 				break
 
@@ -860,6 +862,8 @@
 	//Delete any old markings on this tile, including other gang tags
 	for(var/obj/effect/decal/cleanable/crayon/old_marking in target)
 		qdel(old_marking)
+	for(var/obj/effect/decal/gang/old_gang in target)
+		qdel(old_gang)
 
 	var/datum/antagonist/gang/G = user.mind.has_antag_datum(/datum/antagonist/gang)
 	var/area/territory = get_area(target)
@@ -870,10 +874,11 @@
 	//desc = "A modified container containing suspicious paint."
 	charges = 20
 	gang = TRUE
+	instant = FALSE
 	pre_noise = FALSE
 	post_noise = TRUE
 
-/obj/item/toy/crayon/spraycan/gang/Initialize(loc, datum/team/gang/G)
+/obj/item/toy/crayon/spraycan/gang/Initialize(mapload, loc, datum/team/gang/G)
 	.=..()
 	if(G)
 		gang = G

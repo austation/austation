@@ -9,7 +9,7 @@
 	volume = 30
 	fill_icon_thresholds = list(0, 10, 30, 50, 70)
 
-/obj/item/reagent_containers/glass/bottle/Initialize()
+/obj/item/reagent_containers/glass/bottle/Initialize(mapload)
 	. = ..()
 	if(!icon_state)
 		icon_state = "bottle"
@@ -140,7 +140,7 @@
 	icon = 'icons/obj/chemical.dmi'
 	var/extra_reagent = null
 
-/obj/item/reagent_containers/glass/bottle/traitor/Initialize()
+/obj/item/reagent_containers/glass/bottle/traitor/Initialize(mapload)
 	. = ..()
 	extra_reagent = pick(/datum/reagent/toxin/polonium, /datum/reagent/toxin/histamine, /datum/reagent/toxin/formaldehyde, /datum/reagent/toxin/venom, /datum/reagent/toxin/fentanyl, /datum/reagent/toxin/cyanide)
 	reagents.add_reagent(extra_reagent, 3)
@@ -317,6 +317,11 @@
 	name = "Nano-Feline Assimilative Toxoplasmosis culture bottle"
 	desc = "A small bottle. Contains a sample of nano-feline toxoplasma in synthblood medium."
 	spawned_disease = /datum/disease/transformation/felinid/contagious
+
+/obj/item/reagent_containers/glass/bottle/advanced_felinid
+	name = "Feline Hysteria culture bottle"
+	desc = "A small bottle. Contains a sample of a dangerous A.R.C. experimental disease"
+	spawned_disease = /datum/disease/advance/feline_hysteria
 
 //Oldstation.dmm chemical storage bottles
 

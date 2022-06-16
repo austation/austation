@@ -51,7 +51,7 @@
 	H.update_action_buttons_icon()
 
 
-/obj/item/tank/Initialize()
+/obj/item/tank/Initialize(mapload)
 	. = ..()
 
 	air_contents = new(volume) //liters
@@ -263,9 +263,13 @@
 		if(!istype(src.loc, /obj/item/transfer_valve))
 			log_bomber(get_mob_by_ckey(fingerprintslast), "was last key to touch", src, "which ruptured explosively")
 		//Give the gas a chance to build up more pressure through reacting
-		air_contents.react(src)
-		air_contents.react(src)
-		air_contents.react(src)
+		//austation begin -- bomb rework
+		//air_contents.react(src)
+		//air_contents.react(src)
+		//air_contents.react(src)
+		for(var/i in 1 to TANK_POST_FRAGMENT_REACTIONS)
+			air_contents.react(src)
+		//austation end
 		pressure = air_contents.return_pressure()
 		var/range = (pressure-TANK_FRAGMENT_PRESSURE)/TANK_FRAGMENT_SCALE
 		var/turf/epicenter = get_turf(loc)

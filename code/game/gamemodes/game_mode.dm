@@ -69,7 +69,7 @@
 /datum/game_mode/proc/can_start()
 	var/playerC = 0
 	for(var/mob/dead/new_player/player in GLOB.player_list)
-		if(player.client && (player.ready == PLAYER_READY_TO_PLAY) && player.has_valid_preferences(TRUE))
+		if(player.client && (player.ready == PLAYER_READY_TO_PLAY) && player.check_preferences())
 			playerC++
 	if(!GLOB.Debug2)
 		var/list/min_pop = config.Get(/datum/config_entry/keyed_list/min_pop) //Austation begin -- Allows for overriding of population requirements for gamemodes, will cause errors if set too low
@@ -77,7 +77,7 @@
 			required_players = min_pop[config_tag] //Austation end
 		if(playerC < required_players || (maximum_players >= 0 && playerC > maximum_players))
 			return FALSE
-	antag_candidates = get_players_for_role(antag_flag)
+	setup_antag_candidates()
 	if(!GLOB.Debug2)
 		if(antag_candidates.len < required_enemies)
 			return FALSE
@@ -88,6 +88,9 @@
 
 /datum/game_mode/proc/setup_maps()
 	return 1
+
+/datum/game_mode/proc/setup_antag_candidates()
+	antag_candidates = get_players_for_role(antag_flag)
 
 ///Attempts to select players for special roles the mode might have.
 /datum/game_mode/proc/pre_setup()

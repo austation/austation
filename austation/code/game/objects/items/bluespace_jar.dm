@@ -37,7 +37,7 @@
 	var/sipping_probably = 99 //prob50 level of sipping
 	var/transfer_rate = 5 //chem transfer rate / second
 
-/obj/item/bluespace_jar/Initialize()
+/obj/item/bluespace_jar/Initialize(mapload)
 	. = ..()
 	create_reagents(300, OPENCONTAINER) //equivalent of bsbeakers
 

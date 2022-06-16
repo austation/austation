@@ -34,7 +34,7 @@
 	var/breaksound = "shatter"
 	var/very_clear_glass = FALSE
 
-/turf/open/floor/glass/Initialize()
+/turf/open/floor/glass/Initialize(mapload)
 	. = ..()
 	icon = 'icons/turf/space.dmi'
 	icon_state = "0"

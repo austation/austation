@@ -26,7 +26,7 @@
 			if(affecting)
 				if(!S.requires_bodypart)
 					continue
-				if(S.requires_bodypart_type && affecting.status != S.requires_bodypart_type)
+				if(S.requires_bodypart_type && !(affecting.bodytype & S.requires_bodypart_type))
 					continue
 				if(S.requires_real_bodypart && affecting.is_pseudopart)
 					continue
@@ -43,10 +43,8 @@
 
 		if(!available_surgeries.len)
 			return
-		//austation begin -- tgui list
-		//var/P = input("Begin which procedure?", "Surgery", null, null) as null|anything in sortList(available_surgeries)
-		var/P = tgui_input_list(user, "Begin which procedure?", "Surgery", sortList(available_surgeries))
-		//austation end
+
+		var/P = input("Begin which procedure?", "Surgery", null, null) as null|anything in sortList(available_surgeries)
 		if(P && user && user.Adjacent(M) && (I in user))
 			var/datum/surgery/S = available_surgeries[P]
 
@@ -60,7 +58,7 @@
 			if(affecting)
 				if(!S.requires_bodypart)
 					return
-				if(S.requires_bodypart_type && affecting.status != S.requires_bodypart_type)
+				if(S.requires_bodypart_type && !(affecting.bodytype & S.requires_bodypart_type))
 					return
 			else if(C && S.requires_bodypart)
 				return
@@ -73,11 +71,11 @@
 				var/datum/surgery/procedure = new S.type(M, selected_zone, affecting)
 				user.visible_message("[user] drapes [I] over [M]'s [parse_zone(selected_zone)] to prepare for surgery.",
 				"<span class='notice'>You drape [I] over [M]'s [parse_zone(selected_zone)] to prepare for \an [procedure.name].</span>")
-				I.balloon_alert(user, "You drape over [parse_zone(selected_zone)]")
+				I.balloon_alert(user, "You drape over [parse_zone(selected_zone)].")
 
 				log_combat(user, M, "operated on", null, "(OPERATION TYPE: [procedure.name]) (TARGET AREA: [selected_zone])")
 			else
-				I.balloon_alert(user, "[parse_zone(selected_zone)] is covered up")
+				I.balloon_alert(user, "[parse_zone(selected_zone)] is covered up!")
 
 
 	else if(!current_surgery.step_in_progress)
@@ -92,14 +90,14 @@
 		M.surgeries -= S
 		user.visible_message("[user] removes [I] from [M]'s [parse_zone(selected_zone)].", \
 			"<span class='notice'>You remove [I] from [M]'s [parse_zone(selected_zone)].</span>")
-		I.balloon_alert(user, "You remove [I] from [parse_zone(selected_zone)]")
+		I.balloon_alert(user, "You remove [I] from [parse_zone(selected_zone)].")
 		qdel(S)
 		return
 
 	if(S.can_cancel)
 		var/required_tool_type = TOOL_CAUTERY
 		var/obj/item/close_tool = user.get_inactive_held_item()
-		var/is_robotic = S.requires_bodypart_type == BODYPART_ROBOTIC
+		var/is_robotic = S.requires_bodypart_type == BODYTYPE_ROBOTIC
 
 		if(is_robotic)
 			required_tool_type = TOOL_SCREWDRIVER

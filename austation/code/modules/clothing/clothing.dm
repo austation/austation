@@ -1,7 +1,7 @@
 /obj/item/clothing/under/CtrlClick(mob/user)
 	. = ..()
 
-	if (!(item_flags & IN_INVENTORY))
+	if (!(item_flags & PICKED_UP))
 		return
 
 	if(!isliving(user) || !user.canUseTopic(src, BE_CLOSE, ismonkey(user)))

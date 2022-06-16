@@ -2,6 +2,35 @@
 
 // make sure "aus" is set to true for any drinks that are added, or else modular icons will not work
 
+/*
+/datum/reagent/consumable/ethanol
+	boiling_point = 351.38
+
+/datum/reagent/consumable/ethanol/define_gas() // So that all alcohols have the same gas, i.e. "ethanol"
+	var/datum/gas/G = new
+	G.id = GAS_ETHANOL
+	G.name = "Ethanol"
+	G.enthalpy = -234800
+	G.specific_heat = 38
+	G.fire_products = list(GAS_CO2 = 1, GAS_H2O = 1.5)
+	G.fire_burn_rate = 1 / 3
+	G.fire_temperature = FIRE_MINIMUM_TEMPERATURE_TO_EXIST
+	G.color = "#404030"
+	G.breath_reagent = /datum/reagent/consumable/ethanol
+	G.group = GAS_GROUP_CHEMICALS
+	return G
+
+/datum/reagent/consumable/ethanol/get_gas()
+	var/datum/auxgm/cached_gas_data = GLOB.gas_data
+	. = GAS_ETHANOL
+	if(!(. in cached_gas_data.ids))
+		var/datum/gas/G = define_gas()
+		if(istype(G))
+			cached_gas_data.add_gas(G)
+		else // this codepath should probably not happen at all, since we never use get_gas() on anything with no boiling point
+			return null
+*/
+
 /datum/reagent/consumable/ethanol/jagermeister
 	name = "jägermeister"
 	description = "56 different herbs and spices!"
@@ -62,23 +91,23 @@
 	glass_name = "Bushranger"
 	glass_desc = "A slightly sweet, complex, australian cocktail."
 	var/datum/brain_trauma/special/psychotic_brawling/bath_salts/rage
+	var/datum/martial_art/psychotic_brawling/brawling
 
 /datum/reagent/consumable/ethanol/bushranger/on_mob_metabolize(mob/living/L)
 	..()
 	ADD_TRAIT(L, TRAIT_SLEEPIMMUNE, type)
 	ADD_TRAIT(L, TRAIT_IGNOREDAMAGESLOWDOWN, type)
 	ADD_TRAIT(L, TRAIT_NOSTAMCRIT, type)
-	if(iscarbon(L))
-		var/mob/living/carbon/C = L
-		rage = new()
-		C.gain_trauma(rage, TRAUMA_RESILIENCE_ABSOLUTE)
+	brawling = new(null)
+	if(!brawling.teach(L, TRUE))
+		QDEL_NULL(brawling)
 
 /datum/reagent/consumable/ethanol/bushranger/on_mob_end_metabolize(mob/living/L)
 	REMOVE_TRAIT(L, TRAIT_SLEEPIMMUNE, type)
 	REMOVE_TRAIT(L, TRAIT_IGNOREDAMAGESLOWDOWN, type)
 	REMOVE_TRAIT(L, TRAIT_NOSTAMCRIT, type)
-	if(rage)
-		QDEL_NULL(rage)
+	brawling.remove()
+	QDEL_NULL(brawling)
 	..()
 
 /datum/reagent/consumable/ethanol/moscowmule

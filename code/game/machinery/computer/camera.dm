@@ -21,9 +21,10 @@
 	var/map_name
 	var/atom/movable/screen/map_view/cam_screen
 	var/atom/movable/screen/plane_master/lighting/cam_plane_master
+	var/atom/movable/screen/plane_master/o_light_visual/visual_plane_master
 	var/atom/movable/screen/background/cam_background
 
-/obj/machinery/computer/security/Initialize()
+/obj/machinery/computer/security/Initialize(mapload)
 	. = ..()
 	// Map name has to start and end with an A-Z character,
 	// and definitely NOT with a square bracket or even a number.
@@ -44,14 +45,20 @@
 	cam_plane_master.assigned_map = map_name
 	cam_plane_master.del_on_map_removal = FALSE
 	cam_plane_master.screen_loc = "[map_name]:CENTER"
+	visual_plane_master = new
+	visual_plane_master.name = "plane_master"
+	visual_plane_master.assigned_map = map_name
+	visual_plane_master.del_on_map_removal = FALSE
+	visual_plane_master.screen_loc = "[map_name]:CENTER"
 	cam_background = new
 	cam_background.assigned_map = map_name
 	cam_background.del_on_map_removal = FALSE
 
 /obj/machinery/computer/security/Destroy()
-	qdel(cam_screen)
-	qdel(cam_plane_master)
-	qdel(cam_background)
+	QDEL_NULL(cam_screen)
+	QDEL_NULL(cam_plane_master)
+	QDEL_NULL(visual_plane_master)
+	QDEL_NULL(cam_background)
 	return ..()
 
 /obj/machinery/computer/security/connect_to_shuttle(obj/docking_port/mobile/port, obj/docking_port/stationary/dock, idnum, override=FALSE)
@@ -84,6 +91,7 @@
 		// Register map objects
 		user.client.register_map_obj(cam_screen)
 		user.client.register_map_obj(cam_plane_master)
+		user.client.register_map_obj(visual_plane_master)
 		user.client.register_map_obj(cam_background)
 		// Open UI
 		ui = new(user, src, "CameraConsole")

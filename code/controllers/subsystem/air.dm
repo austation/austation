@@ -50,11 +50,15 @@ SUBSYSTEM_DEF(air)
 	var/log_explosive_decompression = TRUE // If things get spammy, admemes can turn this off.
 
 	// Max number of turfs equalization will grab.
-	var/equalize_turf_limit = 10
+	//austation -- set to 30 from 10
+	var/equalize_turf_limit = 30
 	// Max number of turfs to look for a space turf, and max number of turfs that will be decompressed.
 	var/equalize_hard_turf_limit = 2000
 	// Whether equalization should be enabled at all.
-	var/equalize_enabled = FALSE
+	//austation -- set to TRUE from FALSE
+	var/equalize_enabled = TRUE
+	//austation -- placeholder, does nothing
+	var/planet_equalize_enabled = TRUE
 	// Whether turf-to-turf heat exchanging should be enabled.
 	var/heat_enabled = FALSE
 	// Max number of times process_turfs will share in a tick.
@@ -104,6 +108,13 @@ SUBSYSTEM_DEF(air)
 /datum/controller/subsystem/air/proc/extools_update_ssair()
 
 /datum/controller/subsystem/air/proc/auxtools_update_reactions()
+
+//austation begin --  chem gases
+/datum/controller/subsystem/air/proc/add_reaction(datum/gas_reaction/r)
+	gas_reactions += r
+	sortTim(gas_reactions, /proc/cmp_gas_reaction)
+	auxtools_update_reactions()
+//austation end
 
 /proc/reset_all_air()
 	SSair.can_fire = 0
@@ -258,6 +269,34 @@ SUBSYSTEM_DEF(air)
 	*/
 	currentpart = SSAIR_REBUILD_PIPENETS
 
+/datum/controller/subsystem/air/Recover()
+	thread_wait_ticks = SSair.thread_wait_ticks
+	cur_thread_wait_ticks = SSair.cur_thread_wait_ticks
+	low_pressure_turfs = SSair.low_pressure_turfs
+	high_pressure_turfs = SSair.high_pressure_turfs
+	num_group_turfs_processed = SSair.num_group_turfs_processed
+	num_equalize_processed = SSair.num_equalize_processed
+	hotspots = SSair.hotspots
+	networks = SSair.networks
+	pipenets_needing_rebuilt = SSair.pipenets_needing_rebuilt
+	deferred_airs = SSair.deferred_airs
+	max_deferred_airs = SSair.max_deferred_airs
+	atmos_machinery = SSair.atmos_machinery
+	atmos_air_machinery = SSair.atmos_air_machinery
+	pipe_init_dirs_cache = SSair.pipe_init_dirs_cache
+	gas_reactions = SSair.gas_reactions
+	high_pressure_delta = SSair.high_pressure_delta
+	currentrun = SSair.currentrun
+	currentpart = SSair.currentpart
+	map_loading = SSair.map_loading
+	log_explosive_decompression = SSair.log_explosive_decompression
+	equalize_turf_limit = SSair.equalize_turf_limit
+	equalize_hard_turf_limit = SSair.equalize_hard_turf_limit
+	equalize_enabled = SSair.equalize_enabled
+	heat_enabled = SSair.heat_enabled
+	share_max_steps = SSair.share_max_steps
+	excited_group_pressure_goal = SSair.excited_group_pressure_goal
+	paused_z_levels = SSair.paused_z_levels
 
 /datum/controller/subsystem/air/proc/process_pipenets(resumed = FALSE)
 	if (!resumed)
@@ -431,7 +470,8 @@ SUBSYSTEM_DEF(air)
 	LAZYADD(paused_z_levels, z_level)
 	var/list/turfs_to_disable = block(locate(1, 1, z_level), locate(world.maxx, world.maxy, z_level))
 	for(var/turf/T as anything in turfs_to_disable)
-		T.ImmediateDisableAdjacency(FALSE)
+		//austation -- lmao
+		T.set_sleeping(TRUE)
 		CHECK_TICK
 
 /datum/controller/subsystem/air/proc/unpause_z(z_level)

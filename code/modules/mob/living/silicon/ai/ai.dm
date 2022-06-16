@@ -44,7 +44,8 @@
 	radiomod = ";" //AIs will, by default, state their laws on the internal radio.
 	var/obj/item/multitool/aiMulti
 	var/mob/living/simple_animal/bot/Bot
-	var/tracking = FALSE //this is 1 if the AI is currently tracking somebody, but the track has not yet been completed.
+	var/mob/living/ai_tracking_target = null //current tracking target
+	var/reacquire_timer = null //saves the timer id for the tracking reacquire so we can delete it/check for its existence
 	var/datum/effect_system/spark_spread/spark_system //So they can initialize sparks whenever/N
 
 	//MALFUNCTION
@@ -98,6 +99,7 @@
 	var/cam_prev
 
 /mob/living/silicon/ai/Initialize(mapload, datum/ai_laws/L, mob/target_ai)
+	default_access_list = get_all_accesses()
 	. = ..()
 	if(!target_ai) //If there is no player/brain inside.
 		new/obj/structure/AIcore/deactivated(loc) //New empty terminal.
@@ -300,6 +302,11 @@
 		to_chat(usr, "<span class='warning'>Wireless control is disabled!</span>")
 		return
 
+	var/can_evac_or_fail_reason = SSshuttle.canEvac(src)
+	if(can_evac_or_fail_reason != TRUE)
+		to_chat(usr, "<span class='alert'>[can_evac_or_fail_reason]</span>")
+		return
+
 	var/reason = input(src, "What is the nature of your emergency? ([CALL_SHUTTLE_REASON_LENGTH] characters required.)", "Confirm Shuttle Call") as null|text
 
 	if(incapacitated())
@@ -363,16 +370,13 @@
 
 	SSjob.FreeRole(mind.assigned_role)
 
-	if(mind.objectives.len)
-		mind.objectives.Cut()
-		mind.special_role = null
-
 	if(!get_ghost(1))
 		if(world.time < 30 * 600)//before the 30 minute mark
 			ghostize(FALSE,SENTIENCE_ERASE) // Players despawned too early may not re-enter the game
 	else
 		ghostize(TRUE,SENTIENCE_ERASE)
 
+	SEND_SIGNAL(mind, COMSIG_MIND_CRYOED)
 	QDEL_NULL(src)
 
 /mob/living/silicon/ai/verb/toggle_anchor()
@@ -397,6 +401,11 @@
 
 	to_chat(src, "<b>You are now [is_anchored ? "" : "un"]anchored.</b>")
 	// the message in the [] will change depending whether or not the AI is anchored
+
+/mob/living/silicon/ai/cancel_camera()
+	..()
+	if(ai_tracking_target)
+		ai_stop_tracking()
 
 /mob/living/silicon/ai/update_mobility() //If the AI dies, mobs won't go through it anymore
 	if(stat != CONSCIOUS)
@@ -458,7 +467,7 @@
 		if(name == string)
 			target += src
 		if(target.len)
-			ai_actual_track(pick(target))
+			ai_start_tracking(pick(target))
 		else
 			to_chat(src, "Target is not on or near any active cameras on the station.")
 		return
@@ -512,8 +521,8 @@
 	if(QDELETED(C))
 		return FALSE
 
-	if(!tracking)
-		cameraFollow = null
+	if(ai_tracking_target)
+		ai_stop_tracking()
 
 	if(QDELETED(eyeobj))
 		view_core()
@@ -656,7 +665,6 @@
 	set category = "AI Commands"
 	set name = "Jump To Network"
 	unset_machine()
-	cameraFollow = null
 	var/cameralist[0]
 
 	if(incapacitated())
@@ -676,11 +684,9 @@
 			for(var/i in C.network)
 				cameralist[i] = i
 	var/old_network = network
-	//austation begin -- tgui list
-	//network = input(U, "Which network would you like to view?") as null|anything in sortList(cameralist)
-	network = tgui_input_list(U, "Which network would you like to view?", "Jump To Network", sortList(cameralist))
-	//austation end
-
+	network = input(U, "Which network would you like to view?") as null|anything in sortList(cameralist)
+	if(ai_tracking_target)
+		ai_stop_tracking()
 	if(!U.eyeobj)
 		U.view_core()
 		return
@@ -743,10 +749,7 @@
 				personnel_list["[t.fields["name"]]: [t.fields["rank"]]"] = t.fields["image"]//Pull names, rank, and image.
 
 			if(personnel_list.len)
-				//austation begin -- tgui list
-				//input = input("Select a crew member:") as null|anything in sortList(personnel_list)
-				input = tgui_input_list(usr, "Select a crew member:", "Change Hologram", personnel_list)
-				//austation end
+				input = input("Select a crew member:") as null|anything in sortList(personnel_list)
 				var/icon/character_icon = personnel_list[input]
 				if(character_icon)
 					qdel(holo_icon)//Clear old icon so we're not storing it in memory.
@@ -1107,7 +1110,7 @@
 	. = ..() //This needs to be lower so we have a chance to actually update the assigned target_ai.
 
 /mob/living/silicon/ai/proc/camera_visibility(mob/camera/ai_eye/moved_eye)
-	GLOB.cameranet.visibility(moved_eye, client, all_eyes, USE_STATIC_OPAQUE)
+	GLOB.cameranet.visibility(moved_eye, client, all_eyes, TRUE)
 
 /mob/living/silicon/ai/forceMove(atom/destination)
 	. = ..()

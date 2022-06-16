@@ -35,10 +35,12 @@
 		return
 	return TRUE
 
-/obj/item/stack/Initialize(mapload, new_amount, merge = TRUE)
+/obj/item/stack/Initialize(mapload, new_amount, merge = TRUE, mob/user = null)
 	. = ..()
 	if(new_amount != null)
 		amount = new_amount
+	if(user)
+		add_fingerprint(user)
 	check_max_amount()
 	if(!merge_type)
 		merge_type = type
@@ -46,8 +48,14 @@
 		for(var/obj/item/stack/S in loc)
 			if(S.merge_type == merge_type)
 				merge(S)
+				if(QDELETED(src))
+					return
 	update_weight()
 	update_icon()
+	var/static/list/loc_connections = list(
+		COMSIG_ATOM_ENTERED = .proc/on_entered,
+	)
+	AddElement(/datum/element/connect_loc, loc_connections)
 
 /obj/item/stack/proc/check_max_amount()
 	while(amount > max_amount)
@@ -230,8 +238,7 @@
 
 			else if(istype(O, /obj/item/restraints/handcuffs/cable))
 				var/obj/item/cuffs = O
-				cuffs.item_color = item_color
-				cuffs.update_icon()
+				cuffs.color = color
 
 			if(QDELETED(O))
 				return //It's a stack and has already been merged
@@ -294,7 +301,7 @@
 					return FALSE
 	return TRUE
 
-/obj/item/stack/use(used, transfer = FALSE, check = TRUE) // return 0 = borked; return 1 = had enough
+/obj/item/stack/use(used, transfer = FALSE, check = TRUE) // return FALSE = borked; return TRUE = had enough
 	if(check && zero_amount())
 		return FALSE
 	if (is_cyborg)
@@ -356,10 +363,11 @@
 	S.add(transfer)
 	return transfer
 
-/obj/item/stack/Crossed(obj/o)
+/obj/item/stack/proc/on_entered(datum/source, obj/o)
+	SIGNAL_HANDLER
+
 	if(merge_check(o) && !o.throwing)
-		merge(o)
-	. = ..()
+		INVOKE_ASYNC(src, .proc/merge, o)
 
 /obj/item/stack/hitby(atom/movable/AM, skipcatch, hitpush, blocked, datum/thrownthing/throwingdatum)
 	if(merge_check(AM))

@@ -48,16 +48,12 @@
 		if("anchored")
 			setAnchored(vval)
 			return TRUE
-		if("obj_flags")
+		if(NAMEOF(src, obj_flags))
 			if ((obj_flags & DANGEROUS_POSSESSION) && !(vval & DANGEROUS_POSSESSION))
-				return FALSE
-		if("control_object")
-			var/obj/O = vval
-			if(istype(O) && (O.obj_flags & DANGEROUS_POSSESSION))
 				return FALSE
 	return ..()
 
-/obj/Initialize()
+/obj/Initialize(mapload)
 	. = ..()
 	if (islist(armor))
 		armor = getArmor(arglist(armor))
@@ -175,11 +171,11 @@
 
 		// check for TK users
 
-		if(ishuman(usr))
-			var/mob/living/carbon/human/H = usr
+		if(usr.has_dna())
+			var/mob/living/carbon/C = usr
 			if(!(usr in nearby))
 				if(usr.client && usr.machine==src)
-					if(H.dna.check_mutation(TK))
+					if(C.dna.check_mutation(TK))
 						is_in_use = TRUE
 						ui_interact(usr)
 		if (is_in_use)

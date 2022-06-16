@@ -9,7 +9,7 @@
 	casing = /obj/item/ammo_casing/chemgun/medical
 	var/list/allowedchems
 
-/obj/item/gun/chem/medical/Initialize()
+/obj/item/gun/chem/medical/Initialize(mapload)
 	. = ..()
 	allowedchems = typesof(/datum/reagent/medicine) + typesof(/datum/reagent/vaccine) + typesof(/datum/reagent/water) //easier to define allowed chems then to blacklist them
 	allowedchems.Remove(/datum/reagent/medicine/morphine, /datum/reagent/medicine/silver_sulfadiazine, /datum/reagent/medicine/styptic_powder) //these are considered medicine but arent beneficial

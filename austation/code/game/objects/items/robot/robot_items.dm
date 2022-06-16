@@ -13,7 +13,7 @@
 	/obj/item/reagent_containers/food/condiment/peppermill,
 	/obj/item/reagent_containers/food/condiment/saltshaker) //yes this means you can do bread and i had to exempt enzymes so you dont pickup your internal one, which causes problems.
 
-/obj/item/borg/apparatus/food/Initialize()
+/obj/item/borg/apparatus/food/Initialize(mapload)
 	. = ..()
 	RegisterSignal(stored, COMSIG_ATOM_UPDATE_ICON, /atom/.proc/update_icon)
 	update_icon()

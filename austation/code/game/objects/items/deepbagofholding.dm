@@ -19,7 +19,7 @@
 
 	var/turf/open/entry
 
-/obj/item/deepbackpack/Initialize()
+/obj/item/deepbackpack/Initialize(mapload)
 	. = ..()
 
 	// Sets up the minidimension and spawns it
@@ -163,7 +163,7 @@
 		if (4) // Lord singulo
 			user.visible_message("<span class='danger'>[user] inserts [A.name] into [src], causing space time to collapse!</span>", "<span class='userdanger'>[src] collapses in on itself!</span>")
 			playsound(get_turf(src), 'sound/effects/supermatter.ogg', 50, 1) // BZZZZT!!
-			new /obj/singularity(loc)
+			new /obj/anomaly/singularity(loc)
 
 	qdel(A) // Hide the evidence
 	qdel(src)

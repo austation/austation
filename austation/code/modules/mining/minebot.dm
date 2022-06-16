@@ -11,7 +11,7 @@
 	var/obj/item/t_scanner/adv_mining_scanner/lesser/scanner  //  always on, the minebot has no way to turn this off
 	weather_immunities = list("ash")
 
-/mob/living/simple_animal/hostile/mining_drone/Initialize()
+/mob/living/simple_animal/hostile/mining_drone/Initialize(mapload)
 	..()
 	stored_gun.overheat_time = 10
 	scanner = new(src)

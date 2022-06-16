@@ -53,6 +53,7 @@
 	tastes = list("poison-berry" = 1)
 	distill_reagent = null
 	wine_power = 35
+	discovery_points = 300
 
 // Death Berries
 /obj/item/seeds/berry/death
@@ -78,6 +79,7 @@
 	tastes = list("death-berry" = 1)
 	distill_reagent = null
 	wine_power = 50
+	discovery_points = 300
 
 // Glow Berries
 /obj/item/seeds/berry/glow
@@ -104,6 +106,7 @@
 	tastes = list("glow-berry" = 1)
 	distill_reagent = null
 	wine_power = 60
+	discovery_points = 300
 
 // Cherries
 /obj/item/seeds/cherry
@@ -121,7 +124,6 @@
 	growing_icon = 'icons/obj/hydroponics/growing_fruits.dmi'
 	icon_grow = "cherry-grow"
 	icon_dead = "cherry-dead"
-	icon_harvest = "cherry-harvest"
 	genes = list(/datum/plant_gene/trait/repeated_harvest)
 	mutatelist = list(/obj/item/seeds/cherry/blue, /obj/item/seeds/cherry/bulb)
 	reagents_add = list(/datum/reagent/consumable/nutriment = 0.07, /datum/reagent/consumable/sugar = 0.07)
@@ -162,6 +164,7 @@
 	grind_results = list(/datum/reagent/consumable/bluecherryjelly = 0)
 	tastes = list("blue cherry" = 1)
 	wine_power = 50
+	discovery_points = 300
 
 //Cherry Bulbs
 /obj/item/seeds/cherry/bulb
@@ -170,6 +173,7 @@
 	icon_state = "seed-cherrybulb"
 	species = "cherrybulb"
 	plantname = "Cherry Bulb Tree"
+	icon_harvest = "cherry-harvest"
 	product = /obj/item/reagent_containers/food/snacks/grown/cherrybulbs
 	genes = list(/datum/plant_gene/trait/repeated_harvest, /datum/plant_gene/trait/glow/pink)
 	mutatelist = list()
@@ -187,6 +191,7 @@
 	grind_results = list(/datum/reagent/consumable/cherryjelly = 0)
 	tastes = list("cherry" = 1)
 	wine_power = 50
+	discovery_points = 300
 
 // Grapes
 /obj/item/seeds/grape
@@ -241,3 +246,4 @@
 	filling_color = "#7FFF00"
 	tastes = list("green grape" = 1)
 	distill_reagent = /datum/reagent/consumable/ethanol/cognac
+	discovery_points = 300

@@ -3,7 +3,7 @@
 	var/aus_contraband = list()
 	var/aus_premium = list()
 
-/obj/machinery/vending/Initialize()
+/obj/machinery/vending/Initialize(mapload)
 	// Add our items to the list
 	// If the item is already a product then add items to it
 	if (LAZYLEN(products) && LAZYLEN(aus_products))

@@ -10,7 +10,7 @@
 	category = COILGUN_CATEGORY
 	locked = TRUE
 
-/obj/item/pipe_dispenser/coilgun/Initialize()
+/obj/item/pipe_dispenser/coilgun/Initialize(mapload)
 	. = ..()
 	if(!first_coilgun)
 		first_coilgun = GLOB.coilgun_pipe_recipes[GLOB.coilgun_pipe_recipes[1]][1]

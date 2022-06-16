@@ -49,7 +49,7 @@
 					"oldburning","light-on-r","light-on-y","light-on-g","light-on-b", "wood", "carpetsymbol", "carpetstar",
 					"carpetcorner", "carpetside", "carpet", "ironsand1", "ironsand2", "ironsand3", "ironsand4", "ironsand5",
 					"ironsand6", "ironsand7", "ironsand8", "ironsand9", "ironsand10", "ironsand11",
-					"ironsand12", "ironsand13", "ironsand14", "ironsand15")
+					"ironsand12", "ironsand13", "ironsand14", "ironsand15","bamboo","bamboosymbol","bamboostar")
 	if(broken || burnt || (icon_state in icons_to_ignore_at_floor_init)) //so damaged/burned tiles or plating icons aren't saved as the default
 		icon_regular_floor = "floor"
 	else
@@ -111,9 +111,13 @@
 /turf/open/floor/blob_act(obj/structure/blob/B)
 	return
 
+//austation begin -- fix for visuals
+/*
 /turf/open/floor/update_icon()
 	. = ..()
 	update_visuals()
+*/
+//austation end
 
 /turf/open/floor/attack_paw(mob/user)
 	return attack_hand(user)

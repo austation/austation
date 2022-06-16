@@ -22,6 +22,7 @@
 
 	display_order = JOB_DISPLAY_ORDER_BRIG_PHYS
 	departments = DEPARTMENT_MEDICAL | DEPARTMENT_SECURITY
+	rpg_title = "Battle Cleric"
 
 	species_outfits = list(
 		SPECIES_PLASMAMAN = /datum/outfit/plasmaman/secmed
@@ -32,7 +33,8 @@
 	name = "Brig Physician"
 	jobtype = /datum/job/brig_phys
 
-	belt = /obj/item/pda/security
+	id = /obj/item/card/id/job/brigphys
+	belt = /obj/item/pda/brigphys
 	ears = /obj/item/radio/headset/headset_medsec
 	uniform = /obj/item/clothing/under/rank/brig_phys
 	shoes = /obj/item/clothing/shoes/sneakers/white

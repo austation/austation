@@ -48,18 +48,13 @@
 		O.real_name = "monkey ([copytext_char(rustg_hash_string(RUSTG_HASH_MD5, real_name), 2, 6)])"
 
 	//handle DNA and other attributes
-	dna.transfer_identity(O)
+	dna.transfer_identity(O, tr_flags & TR_KEEPSE)
+	O.set_species(/datum/species/monkey)
+	O.dna.set_se(TRUE, GET_INITIALIZED_MUTATION(RACEMUT))
 	O.updateappearance(icon_update=0)
-
-	if(tr_flags & TR_KEEPSE)
-		O.dna.mutation_index = dna.mutation_index
-		O.dna.default_mutation_genes = dna.default_mutation_genes
-		O.dna.set_se(1, GET_INITIALIZED_MUTATION(RACEMUT))
 
 	if(suiciding)
 		O.set_suicide(suiciding)
-	if(hellbound)
-		O.hellbound = hellbound
 	O.a_intent = INTENT_HARM
 
 	//keep viruses?
@@ -220,8 +215,6 @@
 
 	if(suiciding)
 		O.set_suicide(suiciding)
-	if(hellbound)
-		O.hellbound = hellbound
 	O.a_intent = INTENT_HARM
 
 	//keep viruses?
@@ -367,7 +360,8 @@
 			continue
 		O.equip_to_appropriate_slot(C)
 
-	dna.transfer_identity(O)
+	dna.transfer_identity(O, tr_flags & TR_KEEPSE)
+	O.dna.set_se(FALSE, GET_INITIALIZED_MUTATION(RACEMUT))
 	O.updateappearance(mutcolor_update=1)
 
 	if(findtext(O.dna.real_name, "monkey", 1, 7)) //7 == length("monkey") + 1
@@ -377,16 +371,8 @@
 		O.real_name = O.dna.real_name
 	O.name = O.real_name
 
-	if(tr_flags & TR_KEEPSE)
-		O.dna.mutation_index = dna.mutation_index
-		O.dna.default_mutation_genes = dna.default_mutation_genes
-		O.dna.set_se(0, GET_INITIALIZED_MUTATION(RACEMUT))
-		O.domutcheck()
-
 	if(suiciding)
 		O.set_suicide(suiciding)
-	if(hellbound)
-		O.hellbound = hellbound
 
 	//keep viruses?
 	if (tr_flags & TR_KEEPVIRUS)
@@ -468,6 +454,11 @@
 			ai_controller.PossessPawn(O)
 		else if(O.ai_controller)
 			QDEL_NULL(O.ai_controller)
+
+	if(O.dna.species && !istype(O.dna.species, /datum/species/monkey))
+		O.set_species(O.dna.species)
+	else
+		O.set_species(/datum/species/human)
 
 
 	O.a_intent = INTENT_HELP
@@ -652,7 +643,7 @@
 	qdel(src)
 
 
-/mob/living/carbon/human/proc/corgize()
+/mob/living/carbon/proc/corgize()
 	if (notransform)
 		return
 	notransform = TRUE
@@ -764,10 +755,7 @@
 /mob/proc/Animalize()
 
 	var/list/mobtypes = typesof(/mob/living/simple_animal)
-	//austation begin -- tgui lists
-	//var/mobpath = input("Which type of mob should [src] turn into?", "Choose a type") in sortList(mobtypes, /proc/cmp_typepaths_asc)
-	var/mobpath = tgui_input_list(usr, "Which type of mob should [src] turn into?", "Choose a type", sortList(mobtypes, /proc/cmp_typepaths_asc))
-	//austation end
+	var/mobpath = input("Which type of mob should [src] turn into?", "Choose a type") in sortList(mobtypes, /proc/cmp_typepaths_asc)
 
 	if(!safe_animal(mobpath))
 		to_chat(usr, "<span class='danger'>Sorry but this mob type is currently unavailable.</span>")

@@ -19,7 +19,7 @@
 	var/shot_delay = 0 //it fires  f a s t
 	var/lasercolor = ""
 	var/projectile = /obj/item/projectile/beam/pulse //default projectile is now main so toy beepsky doesn't fire real pulse rounds
-	var/shoot_sound = 'sound/weapons/taser2.ogg'
+	var/shoot_sound = 'sound/weapons/pulse.ogg'
 
 /mob/living/simple_animal/bot/secbot/deathsky/toy //A toy version of Admiral Deathsky!
 	name = "Admiral Deathsky"
@@ -34,18 +34,16 @@
 	playsound(src, 'sound/weapons/blade1.ogg', 50, TRUE)
 	return BULLET_ACT_BLOCK
 
-/mob/living/simple_animal/bot/secbot/deathsky/Crossed(atom/movable/AM)
-	..()
+/mob/living/simple_animal/bot/secbot/deathsky/on_entered(datum/source, atom/movable/AM)
 	if(ismob(AM) && AM == target)
 		visible_message("[src] flails his swords and cuts [AM]!")
 		playsound(src,'sound/effects/beepskyspinsabre.ogg',100,TRUE,-1)
 		stun_attack(AM)
 
-/mob/living/simple_animal/bot/secbot/deathsky/Initialize()
+/mob/living/simple_animal/bot/secbot/deathsky/Initialize(mapload)
 	. = ..()
 	weapon = new baton_type(src)
 	weapon.attack_self(src)
-	shoot_sound = "sound/weapons/pulse.ogg"
 
 /mob/living/simple_animal/bot/secbot/deathsky/Destroy()
 	QDEL_NULL(weapon)

@@ -13,7 +13,7 @@
 	potency = 10
 	growthstages = 3
 	growing_icon = 'icons/obj/hydroponics/growing_flowers.dmi'
-	genes = list(/datum/plant_gene/trait/plant_type/weed_hardy)
+	genes = list(/datum/plant_gene/trait/plant_type/weed_hardy, /datum/plant_gene/trait/spines) // austation -- adds floral spines gene
 	mutatelist = list(/obj/item/seeds/starthistle/corpse_flower, /obj/item/seeds/galaxythistle)
 
 /obj/item/seeds/starthistle/harvest(mob/user)
@@ -77,7 +77,7 @@
 	potency = 25
 	growthstages = 3
 	growing_icon = 'icons/obj/hydroponics/growing_flowers.dmi'
-	genes = list(/datum/plant_gene/trait/plant_type/weed_hardy, /datum/plant_gene/trait/invasive)
+	genes = list(/datum/plant_gene/trait/plant_type/weed_hardy, /datum/plant_gene/trait/invasive, /datum/plant_gene/trait/spines) // austation -- floral spines
 	mutatelist = list()
 	reagents_add = list(/datum/reagent/consumable/nutriment = 0.05, /datum/reagent/medicine/silibinin = 0.1)
 
@@ -206,6 +206,7 @@
 	volume = 125 //Gives enough room for the black powder at max potency
 	max_integrity = 40
 	wine_power = 80
+	discovery_points = 300
 
 /obj/item/reagent_containers/food/snacks/grown/cherry_bomb/attack_self(mob/living/user)
 	user.visible_message("<span class='warning'>[user] plucks the stem from [src]!</span>", "<span class='userdanger'>You pluck the stem from [src], which begins to hiss loudly!</span>")

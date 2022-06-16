@@ -122,7 +122,16 @@
 
 	return level
 
-/datum/map_template/proc/load(turf/T, centered = FALSE, init_atmos = TRUE)
+//just loads, no other bullshits, please don't use this proc if you're not calling it while the station is initing
+/datum/map_template/proc/stationinitload(turf/T, centered = FALSE)
+	if(centered)
+		T = locate(T.x - round(width/2) , T.y - round(height/2) , T.z)
+	if(!T || T.x+width > world.maxx || T.y+height > world.maxy)
+		return
+	var/datum/parsed_map/parsed = new(file(mappath))
+	parsed.load(T.x, T.y, T.z, cropMap=TRUE, no_changeturf=TRUE, placeOnTop=should_place_on_top)
+
+/datum/map_template/proc/load(turf/T, centered = FALSE, init_atmos = TRUE, init = TRUE) // austation -- added init
 	if(centered)
 		T = locate(T.x - round(width/2) , T.y - round(height/2) , T.z)
 	if(!T)
@@ -136,7 +145,8 @@
 							locate(min(T.x+width, world.maxx), min(T.y+height, world.maxy), T.z))
 	for(var/L in border)
 		var/turf/turf_to_disable = L
-		turf_to_disable.ImmediateDisableAdjacency()
+		//austation -- nope
+		turf_to_disable.set_sleeping(TRUE)
 
 	// Accept cached maps, but don't save them automatically - we don't want
 	// ruins clogging up memory for the whole round.
@@ -157,7 +167,9 @@
 		repopulate_sorted_areas()
 
 	//initialize things that are normally initialized after map load
-	initTemplateBounds(bounds, init_atmos)
+	//austation -- added init
+	if(init)
+		initTemplateBounds(bounds, init_atmos)
 
 	log_game("[name] loaded at [T.x],[T.y],[T.z]")
 	return bounds

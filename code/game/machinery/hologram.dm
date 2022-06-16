@@ -60,7 +60,7 @@ Possible to do for anyone motivated enough:
 	var/offset = FALSE
 	var/on_network = TRUE
 
-/obj/machinery/holopad/Initialize()
+/obj/machinery/holopad/Initialize(mapload)
 	. = ..()
 	become_hearing_sensitive()
 
@@ -96,7 +96,7 @@ Possible to do for anyone motivated enough:
 	if(!replay_mode && (disk && disk.record))
 		replay_start()
 
-/obj/machinery/holopad/Initialize()
+/obj/machinery/holopad/Initialize(mapload)
 	. = ..()
 	if(on_network)
 		holopads += src
@@ -272,10 +272,8 @@ Possible to do for anyone motivated enough:
 				if(A)
 					LAZYADD(callnames[A], I)
 			callnames -= get_area(src)
-			//austation begin -- tgui input list
-			//var/result = input(usr, "Choose an area to call", "Holocall") as null|anything in sortNames(callnames)
-			var/result = tgui_input_list(usr, "Choose an area to call", "Holocall", sortNames(callnames))
-			//austation end
+
+			var/result = input(usr, "Choose an area to call", "Holocall") as null|anything in sortNames(callnames)
 			if(QDELETED(usr) || !result || outgoing_call)
 				return
 
@@ -520,7 +518,7 @@ For the other part of the code, check silicon say.dm. Particularly robot talk.*/
 			else
 				transfered = TRUE
 		//All is good.
-		holo.forceMove(new_turf)
+		holo.abstract_move(new_turf)
 		if(!transfered)
 			update_holoray(user,new_turf)
 	return TRUE

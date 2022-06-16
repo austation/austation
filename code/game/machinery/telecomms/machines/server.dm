@@ -16,7 +16,7 @@
 	var/list/log_entries = list()
 	var/totaltraffic = 0 // gigabytes (if > 1024, divide by 1024 -> terrabytes)
 
-/obj/machinery/telecomms/server/Initialize()
+/obj/machinery/telecomms/server/Initialize(mapload)
 	. = ..()
 
 /obj/machinery/telecomms/server/receive_information(datum/signal/subspace/vocal/signal, obj/machinery/telecomms/machine_from)
@@ -52,6 +52,26 @@
 	log.name = "data packet ([rustg_hash_string(RUSTG_HASH_MD5, identifier)])"
 	log_entries.Add(log)
 
+	// austation begin -- apply filter to messages -- PR #4379
+	if(filter_entries)
+		for(var/datum/comm_filter_entry/F in filter_entries)
+			var/message = signal.data["message"]
+			var/regex/R1 = regex("[F.trigger]","i")
+			R1.Find(message)
+			if(R1.match)
+				if(F.output == "/d")
+					return
+				F.output = replacetext(F.output,"/d","")
+				var/regex/R2 = regex("[F.target]","ig")		// if the target ends with .* the full stop at the end of the message will be eaten
+				message = R2.Replace(message,F.output)
+				while(findtext(message," ") == 1)	// removes spaces at start of text
+					message = replacetext(message," ","",1,2)
+				message = capitalize(message)
+				if(findlasttext(message,".") == 0 || findlasttext(message,".") != length(message))	// add full stop to the end
+					message = addtext(message,".")
+				signal.data["message"] = message
+	// austation end -- PR #4379
+
 	var/can_send = relay_information(signal, /obj/machinery/telecomms/hub)
 	if(!can_send)
 		relay_information(signal, /obj/machinery/telecomms/broadcaster)
@@ -68,7 +88,7 @@
 /obj/machinery/telecomms/server/presets
 	network = "tcommsat"
 
-/obj/machinery/telecomms/server/presets/Initialize()
+/obj/machinery/telecomms/server/presets/Initialize(mapload)
 	. = ..()
 	name = id
 
@@ -105,7 +125,7 @@
 	autolinkers = list("common")
 
 //Common and other radio frequencies for people to freely use
-/obj/machinery/telecomms/server/presets/common/Initialize()
+/obj/machinery/telecomms/server/presets/common/Initialize(mapload)
 	. = ..()
 	for(var/i = MIN_FREQ, i <= MAX_FREQ, i += 2)
 		freq_listening |= i
@@ -125,6 +145,6 @@
 	freq_listening = list(FREQ_SECURITY)
 	autolinkers = list("security")
 
-/obj/machinery/telecomms/server/presets/common/birdstation/Initialize()
+/obj/machinery/telecomms/server/presets/common/birdstation/Initialize(mapload)
 	. = ..()
 	freq_listening = list()

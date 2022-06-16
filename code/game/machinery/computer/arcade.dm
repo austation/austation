@@ -76,7 +76,7 @@ GLOBAL_LIST_INIT(arcade_prize_pool, list(
 /obj/machinery/computer/arcade/proc/Reset()
 	return
 
-/obj/machinery/computer/arcade/Initialize()
+/obj/machinery/computer/arcade/Initialize(mapload)
 	. = ..()
 	// If it's a generic arcade machine, pick a random arcade
 	// circuit board for it and make the new machine
@@ -95,7 +95,7 @@ GLOBAL_LIST_INIT(arcade_prize_pool, list(
 	var/atom/movable/the_prize
 	if(prob(0.0001)) //1 in a million
 		the_prize = new /obj/item/gun/energy/pulse/prize(drop_location())
-		SSmedals.UnlockMedal(MEDAL_PULSE, user.client)
+		user.client.give_award(/datum/award/achievement/misc/pulse, user)
 	else
 		the_prize = new prizeselect(drop_location())
 
@@ -417,7 +417,7 @@ GLOBAL_LIST_INIT(arcade_prize_pool, list(
 	var/killed_crew = 0
 
 
-/obj/machinery/computer/arcade/orion_trail/Initialize()
+/obj/machinery/computer/arcade/orion_trail/Initialize(mapload)
 	. = ..()
 	Radio = new /obj/item/radio(src)
 	Radio.listening = 0
@@ -713,7 +713,7 @@ GLOBAL_LIST_INIT(arcade_prize_pool, list(
 					if(isliving(usr))
 						var/mob/living/L = usr
 						L.Stun(200, ignore_canstun = TRUE) //you can't run :^)
-					var/S = new /obj/singularity/academy(usr.loc)
+					var/S = new /obj/anomaly/singularity/academy(usr.loc)
 					addtimer(CALLBACK(src, /atom/movable/proc/say, "[S] winks out, just as suddenly as it appeared."), 50)
 					QDEL_IN(S, 50)
 			else

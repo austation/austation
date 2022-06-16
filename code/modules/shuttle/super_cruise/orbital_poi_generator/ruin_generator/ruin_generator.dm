@@ -19,11 +19,7 @@
 /proc/generate_space_ruin(center_x, center_y, center_z, border_x, border_y, datum/orbital_objective/linked_objective, forced_decoration, datum/ruin_event/ruin_event)
 	var/datum/space_level/space_level = SSmapping.get_level(center_z)
 	space_level.generating = TRUE
-	try
-		_generate_space_ruin(center_x, center_y, center_z, border_x, border_y, linked_objective, forced_decoration, ruin_event)
-	catch(var/exception/e)
-		message_admins("Space ruin failed to generate!")
-		stack_trace("Space ruin failed to generate! [e] on [e.file]:[e.line]")
+	_generate_space_ruin(center_x, center_y, center_z, border_x, border_y, linked_objective, forced_decoration, ruin_event)
 	space_level.generating = FALSE
 
 /proc/_generate_space_ruin(center_x, center_y, center_z, border_x, border_y, datum/orbital_objective/linked_objective, forced_decoration, datum/ruin_event/ruin_event)
@@ -203,7 +199,8 @@
 		SSmapping.loading_ruins = TRUE
 		CHECK_TICK
 		try
-			ruin_part.load(locate(ruin_offset_x + 1, ruin_offset_y + 1, center_z), FALSE, FALSE)
+			//austation -- added another FALSE
+			ruin_part.load(locate(ruin_offset_x + 1, ruin_offset_y + 1, center_z), FALSE, FALSE, FALSE)
 		catch(var/exception/e)
 			stack_trace("Run time in space ruin generation ([ruin_part.name]) [e] on [e.file]:[e.line]")
 		CHECK_TICK
@@ -390,6 +387,11 @@
 	//Start running event
 	if(ruin_event)
 		SSorbits.ruin_events += ruin_event
+
+	//austation begin -- truly do init
+	var/list/turfs_to_reinit = block(locate(1, 1, center_z), locate(world.maxx, world.maxy, center_z))
+	SSatoms.init_atoms_in_list(turfs_to_reinit)
+	//austation end
 
 	SSair.unpause_z(center_z)
 

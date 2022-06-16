@@ -81,10 +81,12 @@ GLOBAL_PROTECT(admin_verbs_admin)
 	/client/proc/stabilize_atmos,
 	/client/proc/openTicketManager,
 	/client/proc/battle_royale,
+	/client/proc/delete_book,
 	/client/proc/fix_air,
 	/client/proc/kill_rads,
 	/client/proc/obnoxious
 	) // austation -- adds obnoxious mode and fix air, also kill rads
+
 GLOBAL_LIST_INIT(admin_verbs_ban, list(/client/proc/unban_panel, /client/proc/ban_panel, /client/proc/stickybanpanel))
 GLOBAL_PROTECT(admin_verbs_ban)
 GLOBAL_LIST_INIT(admin_verbs_sounds, list(/client/proc/play_local_sound, /client/proc/play_sound, /client/proc/set_round_end_sound))
@@ -137,9 +139,11 @@ GLOBAL_PROTECT(admin_verbs_server)
 	/client/proc/forcerandomrotate,
 	/client/proc/adminchangemap,
 	/client/proc/panicbunker,
+	/client/proc/toggle_interviews,
 	/client/proc/toggle_hub,
-	/client/proc/toggle_cdn
-	)
+	/client/proc/toggle_cdn,
+	/client/proc/toggle_active
+	) // austation -- add active mode toggle
 GLOBAL_LIST_INIT(admin_verbs_debug, world.AVerbsDebug())
 GLOBAL_PROTECT(admin_verbs_debug)
 /world/proc/AVerbsDebug()
@@ -193,7 +197,8 @@ GLOBAL_PROTECT(admin_verbs_debug)
 	/client/proc/display_sendmaps,
 	#endif
 	/client/proc/toggle_cdn,
-	/client/proc/check_timer_sources
+	/client/proc/check_timer_sources,
+	/client/proc/test_dview_to_lum_changes
 	)
 
 GLOBAL_LIST_INIT(admin_verbs_possess, list(/proc/possess, /proc/release))
@@ -262,6 +267,7 @@ GLOBAL_LIST_INIT(admin_verbs_hideable, list(
 	/proc/release,
 	/client/proc/reload_admins,
 	/client/proc/panicbunker,
+	/client/proc/toggle_interviews,
 	/client/proc/admin_change_sec_level,
 	/client/proc/toggle_nuke,
 	/client/proc/cmd_display_del_log,
@@ -516,8 +522,8 @@ GLOBAL_PROTECT(admin_verbs_hideable)
 				mob.alpha = 0 //JUUUUST IN CASE
 				mob.name = " "
 				mob.mouse_opacity = MOUSE_OPACITY_TRANSPARENT
-		log_admin("[key_name(usr)] has turned stealth mode [holder.fakekey ? "ON" : "OFF"]")
-		message_admins("[key_name_admin(usr)] has turned stealth mode [holder.fakekey ? "ON" : "OFF"]")
+		log_admin("[key_name(usr)] has turned stealth mode [holder.fakekey ? "ON as [holder.fakekey]" : "OFF"]")
+		message_admins("[key_name_admin(usr)] has turned stealth mode [holder.fakekey ? "ON as [holder.fakekey]" : "OFF"]")
 	SSblackbox.record_feedback("tally", "admin_verb", 1, "Stealth Mode") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /client/proc/drop_bomb()
@@ -798,11 +804,47 @@ GLOBAL_PROTECT(admin_verbs_hideable)
 			continue
 		GM.parse_gas_string(F.initial_gas_mix)
 		F.copy_air(GM)
-		F.update_visuals()
+		//austation -- this is commented out because it breaks gas visuals with fastmos
+		//F.update_visuals()
 
 	for(var/obj/machinery/portable_atmospherics/canister/can in view())
 		can.valve_open = FALSE
 		can.update_icon()
+
+/client/proc/delete_book()
+	set category = "Admin"
+	set name = "Delete Book"
+
+	if(!check_rights(R_ADMIN))
+		return
+
+	var/bookid = input(usr, "What Book ID would you like to remove:", "Literally Fahrenheit 451") as null|num
+	if(!bookid)
+		return
+
+	var/datum/DBQuery/query_library_print = SSdbcore.NewQuery(
+		"SELECT * FROM [format_table_name("library")] WHERE id=:id AND isnull(deleted)",
+		list("id" = bookid)
+	)
+	if(!query_library_print.Execute() || !query_library_print.NextRow())
+		to_chat(usr, "<span class='warning'>Failed to locate book [bookid].</span>")
+		qdel(query_library_print)
+		return
+	var/author = query_library_print.item[2]
+	var/title = query_library_print.item[3]
+	var/confirmation = alert(src,"Are you sure you want to delete the book with author [author] and title [title]?","Guy Montag Incarnate","Yes","No")
+	if(confirmation == "Yes")
+		var/datum/DBQuery/query_burn_book = SSdbcore.NewQuery(
+			"UPDATE [format_table_name("library")] SET deleted = 1 WHERE id=:id",
+			list("id" = bookid)
+		)
+		if(!query_library_print.Execute())
+			to_chat(usr, "<span class='warning'>Failed to delete book.</span>")
+		else
+			message_admins("[usr] deleted book number [bookid] with title [title]")
+			log_admin("[usr] deleted book number [bookid] with title [title]")
+		qdel(query_burn_book)
+		qdel(query_library_print)
 
 #ifdef SENDMAPS_PROFILE
 /client/proc/display_sendmaps()

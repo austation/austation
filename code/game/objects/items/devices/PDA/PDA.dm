@@ -17,15 +17,20 @@ GLOBAL_LIST_EMPTY(PDAs)
 	icon = 'icons/obj/pda.dmi'
 	icon_state = "pda"
 	item_state = "electronic"
+	worn_icon_state = "electronic"
 	lefthand_file = 'icons/mob/inhands/misc/devices_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/misc/devices_righthand.dmi'
-	item_flags = NOBLUDGEON
+	//item_flags = NOBLUDGEON -- austation -- I don't know why this is set lmao
 	w_class = WEIGHT_CLASS_TINY
 	slot_flags = ITEM_SLOT_ID | ITEM_SLOT_BELT
 	actions_types = list(/datum/action/item_action/toggle_light)
 	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 100, "acid" = 100, "stamina" = 0)
 	resistance_flags = FIRE_PROOF | ACID_PROOF
-
+	light_system = MOVABLE_LIGHT
+	light_range = 2.3
+	light_power = 0.6
+	light_color = "#FFCC66"
+	light_on = FALSE
 
 	//Main variables
 	var/owner = null // String name of owner
@@ -33,6 +38,8 @@ GLOBAL_LIST_EMPTY(PDAs)
 	var/obj/item/cartridge/cartridge = null //current cartridge
 	var/mode = 0 //Controls what menu the PDA will display. 0 is hub; the rest are either built in or based on cartridge.
 	var/icon_alert = "pda-r" //Icon to be overlayed for message alerts. Taken from the pda icon file.
+	var/icon_pai = "pai-overlay" // Icon to be overlayed when an active pAI is slotted in.
+	var/icon_inactive_pai = "pai-off-overlay" 	// Same as above but for an inactive pAI.
 	var/font_index = 0 //This int tells DM which font is currently selected and lets DM know when the last font has been selected so that it can cycle back to the first font when "toggle font" is pressed again.
 	var/font_mode = "font-family:monospace;" //The currently selected font.
 	var/background_color = "#808000" //The currently selected background color.
@@ -48,9 +55,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 
 	//Secondary variables
 	var/scanmode = PDA_SCANNER_NONE
-	var/fon = FALSE //Is the flashlight function on?
 	var/shorted = FALSE //Is the flashlight shorted out?
-	var/f_lum = 2.3 //Luminosity for the flashlight function
 	var/silent = FALSE //To beep or not to beep, that is the question
 	var/toff = FALSE //If TRUE, messenger disabled
 	var/tnote = null //Current Texts
@@ -105,10 +110,8 @@ GLOBAL_LIST_EMPTY(PDAs)
 	if((!isnull(cartridge)))
 		. += "<span class='notice'>Ctrl+Shift-click to remove the cartridge.</span>" //won't name cart on examine in case it's Detomatix
 
-/obj/item/pda/Initialize()
+/obj/item/pda/Initialize(mapload)
 	. = ..()
-	if(fon)
-		set_light(f_lum)
 
 	GLOB.PDAs += src
 	if(default_cartridge)
@@ -164,15 +167,15 @@ GLOBAL_LIST_EMPTY(PDAs)
 	if(inserted_item)
 		overlay.icon_state = "insert_overlay"
 		add_overlay(new /mutable_appearance(overlay))
-	if(fon)
+	if(light_on)
 		overlay.icon_state = "light_overlay"
 		add_overlay(new /mutable_appearance(overlay))
 	if(pai)
 		if(pai.pai)
-			overlay.icon_state = "pai_overlay"
+			overlay.icon_state = icon_pai
 			add_overlay(new /mutable_appearance(overlay))
 		else
-			overlay.icon_state = "pai_off_overlay"
+			overlay.icon_state = icon_inactive_pai
 			add_overlay(new /mutable_appearance(overlay))
 
 /obj/item/pda/MouseDrop(mob/over, src_location, over_location)
@@ -297,7 +300,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 					if (cartridge.access & CART_DRONEPHONE)
 						dat += "<li><a href='byond://?src=[REF(src)];choice=Drone Phone'>[PDAIMG(dronephone)]Drone Phone</a></li>"
 				dat += "<li><a href='byond://?src=[REF(src)];choice=3'>[PDAIMG(atmos)]Atmospheric Scan</a></li>"
-				dat += "<li><a href='byond://?src=[REF(src)];choice=Light'>[PDAIMG(flashlight)][fon ? "Disable" : "Enable"] Flashlight</a></li>"
+				dat += "<li><a href='byond://?src=[REF(src)];choice=Light'>[PDAIMG(flashlight)][light_on ? "Disable" : "Enable"] Flashlight</a></li>"
 				if (pai)
 					if(pai.loc != src)
 						pai = null
@@ -839,17 +842,19 @@ GLOBAL_LIST_EMPTY(PDAs)
 	eject_cart(usr)
 
 /obj/item/pda/proc/toggle_light(mob/user)
-    if(issilicon(user) || !user.canUseTopic(src, BE_CLOSE))
-        return
-    if(shorted)
-        to_chat(user, "<span class='notice'>[src]'s light is not turning on!</span>")
-        return
-    fon = !fon
-    set_light(fon ? f_lum : 0)
-    update_icon()
-    for(var/X in actions)
-        var/datum/action/A = X
-        A.UpdateButtonIcon()
+	if(issilicon(user) || !user.canUseTopic(src, BE_CLOSE))
+		return
+	if(shorted)
+		to_chat(user, "<span class='notice'>[src]'s light is not turning on!</span>")
+		return
+	if(light_on)
+		set_light_on(FALSE)
+	else if(light_range)
+		set_light_on(TRUE)
+	update_icon()
+	for(var/X in actions)
+		var/datum/action/A = X
+		A.UpdateButtonIcon()
 
 /obj/item/pda/proc/remove_pen(mob/user)
 
@@ -914,14 +919,14 @@ GLOBAL_LIST_EMPTY(PDAs)
 	var/obj/item/cartridge/virus/installed_cartridge = cartridge
 
 	if(installed_cartridge.charges <=0)
-		balloon_alert(user, "Out of charges")
+		balloon_alert(user, "The PDA beeps: 'Out of charge. Please insert a new cartridge.'")
 		return ..()
 
 	if(target.GetComponent(/datum/component/sound_player))
-		balloon_alert(user, "This is already hacked")
+		balloon_alert(user, "The PDA beeps: 'Virus already present on client, aborting.'")
 		return
 
-	balloon_alert(user, "Virus uploaded")
+	balloon_alert(user, "You upload the virus.")
 	var/list/sig_list = list()
 	if(istype(target, /obj/machinery/door/airlock))
 		sig_list += list(COMSIG_AIRLOCK_OPEN, COMSIG_AIRLOCK_CLOSE)

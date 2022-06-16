@@ -377,6 +377,18 @@
 	icon_state = "shieldsparkles"
 	duration = 6
 
+// austation begin -- fastmos
+/obj/effect/temp_visual/dir_setting/space_wind
+	icon = 'icons/effects/atmospherics.dmi'
+	icon_state = "space_wind"
+	layer = FLY_LAYER
+	duration = 20
+	mouse_opacity = 0
+
+/obj/effect/temp_visual/dir_setting/space_wind/Initialize(mapload, set_dir, set_alpha = 255)
+	. = ..()
+	alpha = set_alpha
+//austation end
 /obj/effect/temp_visual/heart
 	name = "heart"
 	icon = 'icons/mob/animal.dmi'
@@ -534,7 +546,7 @@
 /obj/effect/temp_visual/steam_release
 	name = "all the steam"
 
-/obj/effect/temp_visual/steam_release/Initialize()
+/obj/effect/temp_visual/steam_release/Initialize(mapload)
 	..()
 	for(var/V in GLOB.cardinals)
 		var/turf/T = get_step(src, V)
