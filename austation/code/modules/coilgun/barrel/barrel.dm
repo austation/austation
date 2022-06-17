@@ -1,14 +1,14 @@
 /obj/structure/disposalpipe/coilgun/barrel
-	name = "coilgun barrel"
-	desc = "A sturdy pivotable barrel used to \"safely\" aim coilgun projectiles."
+	name = "coilgun barrel mount"
+	desc = "A sturdy pivotable barrel mount used to \"safely\" aim coilgun projectiles."
 	icon_state = "barrel_base"
 	var/current_angle = 0
-	var/max_traverse = 40 // maxinum deviation from original direction in degrees
+	var/max_traverse = 25 // maxinum deviation from original direction in degrees. e.g a traverse angle of 20 gives a total firing cone of 40 degrees
 	var/locked = FALSE // is this barrel free to move?
 	var/moving = FALSE
 	var/obj/effect/barrel/coilgun_barrel/master_barrel // the barrel piece the barrel effect is cast from
 	var/datum/barrel_builder/barrel
-	var/barrel_length = 1
+	var/barrel_length = 1 // must be one to account for master barrel
 	var/cooldown = 0
 
 /obj/structure/disposalpipe/coilgun/barrel/New()
@@ -24,15 +24,18 @@
 	if(check_collision && !check_overlap(_angle, target))
 		return FALSE
 	if(!barrel)
+		if(master_barrel && master_barrel.loc != loc)
+			QDEL_NULL(master_barrel)
 		if(!master_barrel)
 			master_barrel = new(get_turf(src))
 			master_barrel.parent = src
-		barrel = new(master_barrel, _angle, barrel_length)
-		barrel.build()
+		barrel = new(master_barrel, _angle)
+		barrel.build(barrel_length)
 	else
 		moving = TRUE
 		barrel.rotate(_angle, animate_duration)
-		sleep(animate_duration)
+		if(animate_duration)
+			addtimer(VARSET_CALLBACK(src, moving, FALSE), animate_duration)
 		moving = FALSE
 	return TRUE
 
@@ -44,6 +47,14 @@
 		if(A.density)
 			return FALSE
 	return TRUE
+
+/obj/structure/disposalpipe/coilgun/barrel/attackby(obj/item/O, mob/user, params)
+	..()
+	if(!istype(O, /obj/item/coilgun_barrel_piece))
+		return
+	barrel_length++
+	barrel.append_barrel()
+
 
 /obj/structure/disposalpipe/coilgun/barrel/Destroy()
 	QDEL_NULL(barrel)
@@ -136,3 +147,17 @@
 	if(parent && break_parent_on_death)
 		QDEL_NULL(parent)
 	return ..()
+
+
+// ---- Barrel Extension Item ----
+
+/obj/item/coilgun_barrel_piece
+	name = "coilgun launch barrel piece"
+	desc = "Can be attatched to a coilgun barrel mount to increase the barrel length"
+	icon = 'austation/icons/obj/atmospherics/pipes/disposal.dmi'
+	icon_state = "barrel_ov"
+	w_class = WEIGHT_CLASS_BULKY
+
+/obj/item/coilgun_barrel_piece/Initialize()
+	. = ..()
+	AddComponent(/datum/component/two_handed, TRUE)
