@@ -28,11 +28,11 @@
 	src.build_cost = build_cost
 
 /datum/pipe_info/coilgun/Params()
-	return "cgmake=[id]&type=[dirtype]"
+	return "cgmake=[id];type=[dirtype]"
 
 // sufficient_resources set to false will make the resource display text red
 /datum/pipe_info/coilgun/Render(dispenser, sufficient_resources = TRUE)
-	var/dat = "<li><a href='?src=[REF(dispenser)]&[Params()]'>[name]</a></li>"
+	var/dat = "<li><a href='?src=[REF(dispenser)];[Params()]'>[name]</a></li>"
 
 	if(!material_init)
 		initialize_materials()

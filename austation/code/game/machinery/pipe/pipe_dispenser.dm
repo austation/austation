@@ -5,7 +5,7 @@
 
 /obj/machinery/pipedispenser/disposal/coilgun/Initialize()
 	. = ..()
-	AddComponent(/datum/component/material_container, list(/datum/material/iron, /datum/material/copper, /datum/material/gold), maxmats, TRUE)
+	AddComponent(/datum/component/material_container, list(/datum/material/iron, /datum/material/copper, /datum/material/gold), maxmats, TRUE, /obj/item/stack)
 
 /obj/machinery/pipedispenser/disposal/coilgun/Destroy()
 	var/datum/component/material_container/MC = GetComponent(/datum/component/material_container)
@@ -26,10 +26,10 @@
 		dat += "</ul>"
 	dat += "Materials:<ul>"
 	for(var/datum/material/M in MC.materials)
-		dat += "<li>[M.name] - [MC.materials[M]] \[<a href='?src=[REF(src)];mateject=[REF(M)]'>Eject</a>\]</li>"
+		dat += "<li>[M.name] - [MC.materials[M]] \[<a href='?src=[REF(src)];mateject=[REF(M)]''>Eject</a>\]</li>"
 	dat += "</ul>"
 
-	user << browse("<HEAD><TITLE>[src]</TITLE></HEAD><TT>[dat]</TT>", "window=coildispenser")
+	user << browse("<HEAD><TITLE>[src]</TITLE></HEAD><TT>[dat]</TT>", "window=coildispenser;size=500x640")
 
 /obj/machinery/pipedispenser/disposal/coilgun/Topic(href, href_list)
 	if(..())
@@ -56,7 +56,7 @@
 			C.update_icon()
 			wait = world.time + 15
 	if(href_list["mateject"])
-		var/datum/material/M = href_list["mateject"]
+		var/datum/material/M = locate(href_list["mateject"])
 		if(!M || !istype(M))
 			return
 		var/datum/component/material_container/MC = GetComponent(/datum/component/material_container)
@@ -64,15 +64,21 @@
 
 /obj/machinery/pipedispenser/disposal/coilgun/proc/handle_resources(cgtype, check_only = FALSE)
 	for(var/cat in GLOB.coilgun_pipe_recipes)
-		for(var/datum/pipe_info/coilgun/CGI as() in GLOB.coilgun_pipe_recipes[cat])
+		for(var/datum/pipe_info/coilgun/CGI in GLOB.coilgun_pipe_recipes[cat])
 			if(CGI.id != cgtype)
 				continue
+			world.log << "Found pipe info type"
 			if(!length(CGI.build_cost))
 				return TRUE
 			if(!CGI.material_init)
+				world.log << "Initializing materials for coilgun pipe info"
 				CGI.initialize_materials()
 			var/datum/component/material_container/MC = GetComponent(/datum/component/material_container)
-			return check_only ? MC.has_materials(CGI.build_cost) : MC.use_materials(CGI.build_cost)
+			if(!MC?.has_materials(CGI.build_cost))
+				return FALSE
+			if(!check_only)
+				MC.use_materials(CGI.build_cost)
+			return TRUE
 
 /obj/machinery/pipedispenser/disposal/coilgun/debug
 	name = "debug coilgun pipe dispenser"
