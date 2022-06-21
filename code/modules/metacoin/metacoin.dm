@@ -1,4 +1,5 @@
 /client/proc/process_endround_metacoin()
+<<<<<<< HEAD
 	if(GLOB.master_mode == "sandbox")	return // austation -- metacoins are no longer issued for sandbox rounds
 	if(!mob)	return
 	var/mob/M = mob
@@ -13,6 +14,22 @@
 				inc_metabalance(METACOIN_ESCAPE_REWARD, reason="Survived the shift.")
 		else
 			inc_metabalance(METACOIN_NOTSURVIVE_REWARD, reason="You tried.")
+=======
+    if(!mob)    return
+    var/mob/M = mob
+    if(M.mind && !isnewplayer(M))
+        if(M.stat != DEAD && !isbrain(M))
+            if(EMERGENCY_ESCAPED_OR_ENDGAMED)
+                if(!M.onCentCom() && !M.onSyndieBase())
+                    var/reward_type = ((isAI(M)|| iscyborg(M) ? METACOIN_ESCAPE_REWARD : METACOIN_SURVIVE_REWARD))
+                    inc_metabalance(reward_type, reason="Survived the shift.")
+                else
+                    inc_metabalance(METACOIN_ESCAPE_REWARD, reason="Survived the shift and escaped!")
+            else
+                inc_metabalance(METACOIN_ESCAPE_REWARD, reason="Survived the shift.")
+        else
+            inc_metabalance(METACOIN_NOTSURVIVE_REWARD, reason="You tried.")
+>>>>>>> 27a4ac11b0 (metacoinage (#7056))
 
 /client/proc/process_greentext()
 	src.give_award(/datum/award/achievement/misc/greentext, src.mob)
