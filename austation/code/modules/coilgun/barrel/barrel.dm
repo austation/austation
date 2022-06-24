@@ -52,8 +52,16 @@
 	..()
 	if(!istype(O, /obj/item/coilgun_barrel_piece))
 		return
+	mount_piece(O, user)
+
+/obj/structure/disposalpipe/coilgun/barrel/proc/mount_piece(obj/item/coilgun_barrel_piece/C, mob/user)
+	visible_message("<span class='info'>[user] begins to mount the barrel piece onto the barrel.</span>")
+	if(!do_after(user, 15, TRUE, src))
+		return
 	barrel_length++
 	barrel.append_barrel()
+	visible_message("<span class='info'>[user] finishes mounting the barrel piece to the barrel.</span>")
+	qdel(C)
 
 
 /obj/structure/disposalpipe/coilgun/barrel/Destroy()
@@ -141,7 +149,10 @@
 
 // so you don't need to click the tiny pixels inbetween the overlay and the base connection
 /obj/effect/barrel/coilgun_barrel/AltClick(mob/user)
-	return parent?.AltClick(user)
+	return parent ? parent.AltClick(user) : ..()
+
+/obj/effect/barrel/coilgun_barrel/attackby(obj/item/O, mob/user, params)
+	return parent ? parent.attackby(O, user, params) : ..()
 
 /obj/effect/barrel/coilgun_barrel/Destroy()
 	if(parent && break_parent_on_death)

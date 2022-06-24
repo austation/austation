@@ -76,7 +76,7 @@
 /datum/barrel_builder/proc/decrement_barrel()
 	length--
 	place_distance = length * px_increment
-	qdel(get_endpiece)
+	qdel(get_end_piece())
 
 // null or 0 anim_time will just apply the transform
 /datum/barrel_builder/proc/rotate(_angle, anim_time, initial = FALSE)
@@ -97,7 +97,7 @@
 
 /datum/barrel_builder/proc/reset()
 	parent.cut_overlays()
-	num_barrels--
+	length = 0
 	parts.len = 0
 
 /datum/barrel_builder/Destroy()

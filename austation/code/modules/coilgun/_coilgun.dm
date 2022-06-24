@@ -36,7 +36,7 @@
 		qdel(H)
 		return
 
-	for(var/atom/movable/AM in H.contents)
+	for(var/atom/movable/AM as() in H.contents)
 		if(istype(AM, /obj/item/projectile/hvp))
 			continue
 		var/obj/item/projectile/hvp/boolet = new(H)
@@ -86,7 +86,7 @@
 		PJ.p_heat = min(PJ.p_heat - heat_removal, -50)
 		if(hugbox)
 			continue
-		PJ.velocity -= (base ** PJ.velocity) - 0.5
+		PJ.velocity -= max((base ** PJ.velocity) - 0.5, 0)
 	return ..()
 
 

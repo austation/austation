@@ -152,7 +152,7 @@
 
 /obj/machinery/power/capacitor/interact(mob/user)
 	add_fingerprint(user)
-	if(!attached.powernet)
+	if(!attached?.powernet)
 		to_chat(user, "<span class='warning'>\The [src] must be placed over an exposed, powered cable node!</span>")
 		return
 	if(!check_use())
@@ -180,7 +180,7 @@
 			return
 	var/input = clamp(attached.surplus() * 0.05, 0, CAPACITOR_RECHARGE * delta_time)
 	if(input)
-		charge = min(input * GLOB.CELLRATE + charge, capacity)
+		charge = min(input * GLOB.CELLRATE + charge, capacity) // convert watts to joules
 		attached.add_load(input)
 
 // TODO: this is bad but I can't remember why, fix it >:(

@@ -9,7 +9,7 @@
 	if(!length(H.contents))
 		qdel(H)
 		return
-	for(var/atom/movable/AM in H.contents)
+	for(var/atom/movable/AM as() in H.contents)
 		if(istype(AM, /obj/item/projectile/hvp))
 			var/obj/item/projectile/hvp/PJ = AM
 			combine(PJ)

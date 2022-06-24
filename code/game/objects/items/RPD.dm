@@ -72,8 +72,8 @@ GLOBAL_LIST_INIT(coilgun_pipe_recipes, list(
 		new /datum/pipe_info/coilgun("Super-Charger",	/obj/structure/disposalpipe/coilgun/super_charger, 	list(/datum/material/iron = 2000, /datum/material/copper = 6000, /datum/material/gold = 4000)),
 		new /datum/pipe_info/coilgun("Magnetizer",		/obj/structure/disposalpipe/coilgun/magnetizer, 	list(/datum/material/iron = 6000, /datum/material/copper = 4000)),
 		new /datum/pipe_info/coilgun("Passive Cooler",	/obj/structure/disposalpipe/coilgun/cooler, 		list(/datum/material/iron = 2000, /datum/material/copper = 2000)),
-		new /datum/pipe_info/coilgun("Barrel",			/obj/structure/disposalpipe/coilgun/barrel, 		list(/datum/material/iron = 30000, /datum/material/copper = 8000)),
-
+		new /datum/pipe_info/coilgun("Barrel Mount",	/obj/structure/disposalpipe/coilgun/barrel, 		list(/datum/material/iron = 5000, /datum/material/copper = 2000)),
+		new /datum/pipe_info/coilgun("Barrel Piece",	/obj/item/coilgun_barrel_piece, 					list(/datum/material/iron = 2000, /datum/material/titanium = 2000)),
 
 	)
 ))
