@@ -258,7 +258,11 @@
 		return
 	var/datum/host = src_object.ui_host(user)
 	// If the object or user died (or something else), abort.
+<<<<<<< HEAD
 	if(!src_object || !host || !user || !window)
+=======
+	if(QDELETED(src_object) || QDELETED(host) || QDELETED(user) || QDELETED(window))
+>>>>>>> e0c4e0c069 (Fixes all TGUI interfaces being broken (#7140))
 		close(can_be_suspended = FALSE)
 		return
 	// Validate ping
