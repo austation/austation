@@ -1,10 +1,10 @@
 /obj/item/xenoartifact
-	name = "xenoartifact"
+	name = "artifact"
 	icon = 'austation/icons/obj/xenoarchaeology/xenoartifact.dmi'
 	icon_state = "map_editor"
 	w_class = WEIGHT_CLASS_NORMAL
 	light_color = LIGHT_COLOR_FIRE
-	desc = "A strange alien artifact. What could it possibly do?"
+	desc = "A strange alien device. What could it possibly do?"
 	throw_range = 3
 
 	///How much input the artifact is getting from activator traits
@@ -23,7 +23,7 @@
 	///Touch hint
 	var/datum/xenoartifact_trait/touch_desc
 	///used for special examine circumstance, science goggles & ghosts
-	var/special_desc = "The Xenoartifact is made from a"
+	var/special_desc = "The artifact is made from a"
 	///Description used for label, used because directly adding shit to desc isn't a good idea
 	var/label_desc
 	///How far the artifact can reach
@@ -59,6 +59,7 @@
 
 /obj/item/xenoartifact/Initialize(mapload, difficulty)
 	. = ..()
+
 	material = difficulty //Difficulty is set, in most cases
 	if(!material)
 		material = pick(XENOA_BLUESPACE, XENOA_PLASMA, XENOA_URANIUM, XENOA_BANANIUM) //Maint artifacts and similar situations
@@ -68,10 +69,10 @@
 	switch(material)
 		if(XENOA_BLUESPACE) //Check xenoartifact_materials.dm for info on artifact materials/types/traits
 			name = "bluespace [name]"
-			generate_traits(list(/datum/xenoartifact_trait/minor/sharp, /datum/xenoartifact_trait/minor/radioactive,
+			generate_traits(list(/datum/xenoartifact_trait/minor/sharp,
 							/datum/xenoartifact_trait/minor/sentient, /datum/xenoartifact_trait/major/sing, 
-							/datum/xenoartifact_trait/major/laser, /datum/xenoartifact_trait/major/bomb,
-							/datum/xenoartifact_trait/major/handmore, /datum/xenoartifact_trait/major/emp))
+							/datum/xenoartifact_trait/major/laser, /datum/xenoartifact_trait/major/emp,
+							/datum/xenoartifact_trait/major/distablizer))
 			if(!xenop.price)
 				xenop.price = pick(100, 200, 300)
 
@@ -80,12 +81,13 @@
 			generate_traits(list(/datum/xenoartifact_trait/major/sing, /datum/xenoartifact_trait/activator/burn,
 							/datum/xenoartifact_trait/minor/dense, /datum/xenoartifact_trait/minor/sentient, 
 							/datum/xenoartifact_trait/major/capture, /datum/xenoartifact_trait/major/timestop,
-							/datum/xenoartifact_trait/major/bomb, /datum/xenoartifact_trait/major/mirrored,
+							/datum/xenoartifact_trait/major/mirrored,
 							/datum/xenoartifact_trait/major/corginator,/datum/xenoartifact_trait/activator/clock,
-							/datum/xenoartifact_trait/major/invisible,/datum/xenoartifact_trait/major/handmore,
-							/datum/xenoartifact_trait/major/lamp, /datum/xenoartifact_trait/major/forcefield,
-							/datum/xenoartifact_trait/activator/signal,/datum/xenoartifact_trait/major/heal, 
-							/datum/xenoartifact_trait/activator/batteryneed))
+							/datum/xenoartifact_trait/major/invisible,/datum/xenoartifact_trait/major/lamp, 
+							/datum/xenoartifact_trait/major/forcefield,/datum/xenoartifact_trait/activator/signal,
+							/datum/xenoartifact_trait/major/heal,/datum/xenoartifact_trait/activator/batteryneed,
+							/datum/xenoartifact_trait/activator/weighted,/datum/xenoartifact_trait/major/gas,
+							/datum/xenoartifact_trait/major/distablizer))
 			if(!xenop.price)
 				xenop.price = pick(200, 300, 500)
 			malfunction_mod = 0.5
@@ -95,8 +97,8 @@
 			generate_traits(list(/datum/xenoartifact_trait/major/sing, /datum/xenoartifact_trait/minor/sharp,
 							/datum/xenoartifact_trait/major/laser, /datum/xenoartifact_trait/major/corginator,
 							/datum/xenoartifact_trait/minor/sentient, /datum/xenoartifact_trait/minor/wearable,
-							/datum/xenoartifact_trait/major/handmore, /datum/xenoartifact_trait/major/invisible,
-							/datum/xenoartifact_trait/major/heal), TRUE) 
+							/datum/xenoartifact_trait/major/invisible,
+							/datum/xenoartifact_trait/major/heal, /datum/xenoartifact_trait/minor/slippery), TRUE) 
 			if(!xenop.price)
 				xenop.price = pick(300, 500, 800) 
 			malfunction_mod = 1
@@ -153,8 +155,7 @@
 			to_chat(user, "<span class='notice'>You snuff out [name]</span>")
 			process_type = null
 			return FALSE
-		SEND_SIGNAL(src, XENOA_INTERACT, null, user, user)
-
+			
 		if(user.a_intent != INTENT_GRAB)
 			SEND_SIGNAL(src, XENOA_INTERACT, null, user, user) //Calling the regular attack_hand signal causes feature issues, like picking up the artifact.
 		else if(touch_desc?.on_touch(src, user) && user.can_see_reagents())
@@ -267,7 +268,7 @@
 	if(selection.len < 1)
 		log_game("An almost impossible event has occured. [src] has failed to generate any traits with [trait_list]!")
 		return
-	new_trait = pick(selection)
+	new_trait = pickweight(selection)
 	blacklist_traits += new_trait //Add chosen trait to blacklist
 	traits += new new_trait
 	new_trait = new new_trait //type converting doesn't work too well here but this should be fine.
@@ -286,19 +287,19 @@
 /obj/item/xenoartifact/proc/get_trait(typepath)
 	return (locate(typepath) in traits)
 
-///Add extra icon overlays. Ghetto GAGS.
-/obj/item/xenoartifact/proc/generate_icon(var/icn, var/icnst = "", colour)
-	icon_overlay = mutable_appearance(icn, icnst)
-	icon_overlay.layer = FLOAT_LAYER //Not doing this fucks the object austation/icons when you're holding it
-	icon_overlay.appearance_flags = RESET_ALPHA// Not doing this fucks the alpha?
-	icon_overlay.alpha = alpha
-	if(colour)
-		icon_overlay.color = colour
-	add_overlay(icon_overlay)
-
 ///Used for hand-holding secret technique. Pulling entities swaps them for you in the target list.
 /obj/item/xenoartifact/proc/process_target(atom/target)
-	if(isliving(target))
+	if(ishuman(target)) //early return if deflect chance
+		var/mob/living/carbon/human/H = target
+		if(H.wear_suit && H.head && isclothing(H.wear_suit) && isclothing(H.head))
+			var/obj/item/clothing/CS = H.wear_suit
+			var/obj/item/clothing/CH = H.head
+			if(((CS.clothing_flags & BLOCK_ARTIFACT)||(CH.clothing_flags & BLOCK_ARTIFACT)) && prob(XENOA_DEFLECT_CHANCE))
+				to_chat(target, "<span class='warning'>The [name] was unable to target you!.</span>")
+				playsound(get_turf(target), 'sound/weapons/deflect.ogg', 35, TRUE) 
+				return
+
+	if(isliving(target)) //handle pulling
 		var/mob/living/M = target
 		. = M?.pulling ? M.pulling : M
 	else
@@ -314,7 +315,7 @@
 
 ///Helps show how the artifact is working. Hint stuff. Draws a beam between artifact and target
 /obj/item/xenoartifact/proc/create_beam(atom/target)
-	if((locate(src) in target) || !get_turf(target))
+	if((locate(src) in target?.contents) || !get_turf(target))
 		return
 	var/datum/beam/xenoa_beam/B = new(src.loc, target, time=1.5 SECONDS, beam_icon='austation/icons/obj/xenoarchaeology/xenoartifact.dmi', beam_icon_state="xenoa_beam", btype=/obj/effect/ebeam/xenoa_ebeam)
 	B.set_color(material)
@@ -328,6 +329,17 @@
 	true_target |= process_target(target)
 	check_charge(user)
 	return TRUE
+
+///Add extra icon overlays. Ghetto GAGS.
+/obj/item/xenoartifact/proc/generate_icon(var/icn, var/icnst = "", colour)
+	icon_overlay = mutable_appearance(icn, icnst)
+	icon_overlay.layer = FLOAT_LAYER //Not doing this fucks the object icons when you're holding it
+	icon_overlay.appearance_flags = RESET_ALPHA// Not doing this fucks the alpha?
+	icon_overlay.alpha = alpha
+	if(colour)
+		icon_overlay.color = colour
+	add_overlay(icon_overlay)
+
 
 ///Signaler traits. Sets listening freq
 /obj/item/xenoartifact/proc/set_frequency(new_frequency)
@@ -357,15 +369,16 @@
 		if(PROCESS_TYPE_LIT) //Burning
 			true_target = list(get_target_in_proximity(min(max_range, 5)))
 			if(isliving(true_target[1]))
-				visible_message("<span class='danger'>The [name] flicks out.</span>")
+				visible_message("<span class='danger' size='4'>The [name] flicks out.</span>")
 				default_activate(25, null, null)
 				process_type = null
 				return PROCESS_KILL
 		if(PROCESS_TYPE_TICK) //Clock-ing
-			visible_message("<span class='notice'>The [name] ticks.</span>")
+			playsound(get_turf(src), 'sound/effects/clock_tick.ogg', 50, TRUE) 
+			visible_message("<span class='danger' size='10'>The [name] ticks.</span>")
 			true_target = list(get_target_in_proximity(min(max_range, 5)))
 			default_activate(25, null, null)
-			if(prob(23) && COOLDOWN_FINISHED(src, xenoa_cooldown))
+			if(prob(XENOA_TICK_CANCEL_PROB) && COOLDOWN_FINISHED(src, xenoa_cooldown))
 				process_type = null
 				return PROCESS_KILL
 		else    
@@ -407,7 +420,7 @@
 	AddComponent(/datum/component/gps, "[scramble_message_replace_chars("#########", 100)]", TRUE)
 
 /obj/effect/ebeam/xenoa_ebeam //Beam code. This isn't mine. See beam.dm for better documentation.
-	name = "xenoartifact beam"
+	name = "artifact beam"
 
 /datum/beam/xenoa_beam
 	var/color
