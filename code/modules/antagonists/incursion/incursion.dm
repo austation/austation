@@ -68,8 +68,13 @@
 	SSticker.mode.update_incursion_icons_removed(owner)
 
 /datum/antagonist/incursion/proc/finalize_incursion()
+<<<<<<< HEAD
 	owner.current.playsound_local(get_turf(owner.current), 'sound/ambience/antag/tatoralert.ogg', 100, FALSE, pressure_affected = FALSE)
 	equip()
+=======
+	equip()
+	owner.current.playsound_local(get_turf(owner.current), 'sound/ambience/antag/tatoralert.ogg', 100, FALSE, pressure_affected = FALSE)
+>>>>>>> a7a8437a11 (Update incursion.dm (#7175))
 
 /datum/antagonist/incursion/admin_add(datum/mind/new_owner,mob/admin)
 	//show list of possible brothers
@@ -91,6 +96,7 @@
 	log_admin("[key_name(admin)] made [key_name(new_owner)] and [key_name(new_owner.current)] into incursion traitor team.")
 
 /datum/antagonist/incursion/proc/equip(var/silent = FALSE)
+<<<<<<< HEAD
 	var/obj/item/uplink/incursion/uplink = new(get_turf(owner.current), owner.key, 15)
 	var/where
 	if(ishuman(owner.current))		//if he's not a human, uplink will spawn under his feet
@@ -103,6 +109,9 @@
 		)
 		where = H.equip_in_one_of_slots(uplink, slots, FALSE)
 	to_chat(owner.current, "<span class='notice'><b>You have been equipped with a syndicate uplink located [where ? where : "at your feet"]. Activate the transponder in hand to access the market.</b></span>")
+=======
+	owner.equip_traitor("The Syndicate", FALSE, src, 15)
+>>>>>>> a7a8437a11 (Update incursion.dm (#7175))
 	var/obj/item/implant/radio/syndicate/selfdestruct/syndio = new
 	syndio.implant(owner.current)
 
