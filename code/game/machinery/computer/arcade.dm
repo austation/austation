@@ -41,6 +41,12 @@ GLOBAL_LIST_INIT(arcade_prize_pool, list(
 		/obj/item/toy/windupToolbox = 2,
 		/obj/item/toy/clockwork_watch = 2,
 		/obj/item/toy/toy_dagger = 2,
+<<<<<<< HEAD
+=======
+		/obj/item/toy/cog = 2,
+		/obj/item/toy/batong = 1,
+		/obj/item/toy/replica_fabricator = 1,
+>>>>>>> f1b59e0a8b (Adds the batong, a toy version of security batons (#7212))
 		/obj/item/extendohand/acme = 1,
 		/obj/item/hot_potato/harmless/toy = 1,
 		/obj/item/card/emagfake = 1,
