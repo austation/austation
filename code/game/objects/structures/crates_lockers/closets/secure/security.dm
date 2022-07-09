@@ -35,6 +35,7 @@
 	new /obj/item/gun/energy/e_gun(src)
 	new /obj/item/door_remote/captain(src)
 	new /obj/item/storage/photo_album/Captain(src)
+	new /obj/item/storage/box/command_keys(src)
 	new /obj/item/card/id/departmental_budget/civ(src)
 
 /obj/structure/closet/secure_closet/hop
@@ -65,6 +66,7 @@
 	new /obj/item/door_remote/civillian(src)
 	new /obj/item/circuitboard/machine/techfab/department/service(src)
 	new /obj/item/storage/photo_album/HoP(src)
+	new /obj/item/storage/box/command_keys(src)
 	new /obj/item/card/id/departmental_budget/srv(src)
 
 /obj/structure/closet/secure_closet/brig_phys
@@ -124,6 +126,7 @@
 	new /obj/item/pinpointer/nuke(src)
 	new /obj/item/circuitboard/machine/techfab/department/security(src)
 	new /obj/item/storage/photo_album/HoS(src)
+	new /obj/item/storage/box/command_keys(src)
 	new /obj/item/card/id/departmental_budget/sec(src)
 
 /obj/structure/closet/secure_closet/warden
