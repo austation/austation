@@ -327,7 +327,11 @@
 	result = /obj/item/reagent_containers/food/snacks/donkpocket
 	subcategory = CAT_PASTRY
 
+<<<<<<< HEAD
 /datum/crafting_recipe/food/dankpocket
+=======
+/datum/crafting_recipe/food/donkpocket/dank
+>>>>>>> 2c1a388b08 (Fix dank-pocket recipe having no category (#7242))
 	time = 15
 	name = "Dank-pocket"
 	reqs = list(
