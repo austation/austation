@@ -166,6 +166,7 @@
 /obj/item/melee/arm_blade/Initialize(mapload,silent,synthetic)
 	. = ..()
 	ADD_TRAIT(src, TRAIT_NODROP, CHANGELING_TRAIT)
+	ADD_TRAIT(src, TRAIT_DOOR_PRYER, INNATE_TRAIT)
 	if(ismob(loc) && !silent)
 		loc.visible_message("<span class='warning'>A grotesque blade forms around [loc.name]\'s arm!</span>", "<span class='warning'>Our arm twists and mutates, transforming it into a deadly blade.</span>", "<span class='italics'>You hear organic matter ripping and tearing!</span>")
 	if(synthetic)
@@ -184,6 +185,7 @@
 		var/obj/machinery/computer/C = target
 		C.attack_alien(user) //muh copypasta
 
+<<<<<<< HEAD
 	else if(istype(target, /obj/machinery/door/airlock))
 		var/obj/machinery/door/airlock/A = target
 
@@ -204,6 +206,8 @@
 		"<span class='italics'>You hear a metal screeching sound.</span>")
 		A.open(2)
 
+=======
+>>>>>>> 4bee278836 (Lag-proofing nightmares (#7248))
 /obj/item/melee/arm_blade/dropped(mob/user)
 	..()
 	if(can_drop)
