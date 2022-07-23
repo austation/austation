@@ -12,6 +12,10 @@
 	color = "#404030" // rgb: 64, 64, 48
 	nutriment_factor = 0
 	taste_description = "alcohol"
+<<<<<<< HEAD
+=======
+	chem_flags = CHEMICAL_BASIC_ELEMENT | CHEMICAL_BASIC_DRINK | CHEMICAL_RNG_GENERAL
+>>>>>>> 70ae2ff728 (replaces the bartender objective responsibility with cocktail (#6999))
 	metabolization_rate = 0.5 * REAGENTS_METABOLISM
 	random_unrestricted = FALSE
 	var/boozepwr = 65 //Higher numbers equal higher hardness, higher hardness equals more intense alcohol poisoning
@@ -88,6 +92,10 @@ All effects don't start immediately, but rather get worse over time; the rate is
 	name = "Beer"
 	description = "An alcoholic beverage brewed since ancient times on Old Earth. Still popular today."
 	color = "#664300" // rgb: 102, 67, 0
+<<<<<<< HEAD
+=======
+	chem_flags = CHEMICAL_BASIC_DRINK | CHEMICAL_RNG_GENERAL
+>>>>>>> 70ae2ff728 (replaces the bartender objective responsibility with cocktail (#6999))
 	nutriment_factor = 1 * REAGENTS_METABOLISM
 	boozepwr = 25
 	taste_description = "piss water"
@@ -147,6 +155,10 @@ All effects don't start immediately, but rather get worse over time; the rate is
 	name = "Kahlua"
 	description = "A widely known, Mexican coffee-flavoured liqueur. In production since 1936!"
 	color = "#664300" // rgb: 102, 67, 0
+<<<<<<< HEAD
+=======
+	chem_flags = CHEMICAL_BASIC_DRINK | CHEMICAL_RNG_GENERAL
+>>>>>>> 70ae2ff728 (replaces the bartender objective responsibility with cocktail (#6999))
 	boozepwr = 45
 	glass_icon_state = "kahluaglass"
 	glass_name = "glass of RR coffee liquor"
@@ -166,6 +178,10 @@ All effects don't start immediately, but rather get worse over time; the rate is
 	name = "Whiskey"
 	description = "A superb and well-aged single-malt whiskey. Damn."
 	color = "#664300" // rgb: 102, 67, 0
+<<<<<<< HEAD
+=======
+	chem_flags = CHEMICAL_BASIC_DRINK | CHEMICAL_RNG_GENERAL
+>>>>>>> 70ae2ff728 (replaces the bartender objective responsibility with cocktail (#6999))
 	boozepwr = 75
 	taste_description = "molasses"
 	glass_icon_state = "whiskeyglass"
@@ -240,6 +256,10 @@ All effects don't start immediately, but rather get worse over time; the rate is
 	name = "Vodka"
 	description = "Number one drink AND fueling choice for Russians worldwide."
 	color = "#0064C8" // rgb: 0, 100, 200
+<<<<<<< HEAD
+=======
+	chem_flags = CHEMICAL_BASIC_DRINK | CHEMICAL_RNG_GENERAL
+>>>>>>> 70ae2ff728 (replaces the bartender objective responsibility with cocktail (#6999))
 	boozepwr = 65
 	taste_description = "grain alcohol"
 	glass_icon_state = "ginvodkaglass"
@@ -287,6 +307,10 @@ All effects don't start immediately, but rather get worse over time; the rate is
 	name = "Gin"
 	description = "It's gin. In space. I say, good sir."
 	color = "#664300" // rgb: 102, 67, 0
+<<<<<<< HEAD
+=======
+	chem_flags = CHEMICAL_BASIC_DRINK | CHEMICAL_RNG_GENERAL
+>>>>>>> 70ae2ff728 (replaces the bartender objective responsibility with cocktail (#6999))
 	boozepwr = 45
 	taste_description = "an alcoholic christmas tree"
 	glass_icon_state = "ginvodkaglass"
@@ -297,6 +321,10 @@ All effects don't start immediately, but rather get worse over time; the rate is
 	name = "Rum"
 	description = "Yohoho and all that."
 	color = "#664300" // rgb: 102, 67, 0
+<<<<<<< HEAD
+=======
+	chem_flags = CHEMICAL_BASIC_DRINK | CHEMICAL_RNG_GENERAL
+>>>>>>> 70ae2ff728 (replaces the bartender objective responsibility with cocktail (#6999))
 	boozepwr = 60
 	taste_description = "spiked butterscotch"
 	glass_icon_state = "rumglass"
@@ -308,6 +336,10 @@ All effects don't start immediately, but rather get worse over time; the rate is
 	name = "Tequila"
 	description = "A strong and mildly flavoured Mexican produced spirit. Feeling thirsty, hombre?"
 	color = "#FFFF91" // rgb: 255, 255, 145
+<<<<<<< HEAD
+=======
+	chem_flags = CHEMICAL_BASIC_DRINK | CHEMICAL_RNG_GENERAL
+>>>>>>> 70ae2ff728 (replaces the bartender objective responsibility with cocktail (#6999))
 	boozepwr = 70
 	taste_description = "paint stripper"
 	glass_icon_state = "tequilaglass"
@@ -319,6 +351,10 @@ All effects don't start immediately, but rather get worse over time; the rate is
 	name = "Vermouth"
 	description = "You suddenly feel a craving for a martini..."
 	color = "#91FF91" // rgb: 145, 255, 145
+<<<<<<< HEAD
+=======
+	chem_flags = CHEMICAL_BASIC_DRINK | CHEMICAL_RNG_GENERAL
+>>>>>>> 70ae2ff728 (replaces the bartender objective responsibility with cocktail (#6999))
 	boozepwr = 45
 	taste_description = "dry alcohol"
 	glass_icon_state = "vermouthglass"
@@ -330,6 +366,10 @@ All effects don't start immediately, but rather get worse over time; the rate is
 	name = "Wine"
 	description = "A premium alcoholic beverage made from distilled grape juice."
 	color = "#7E4043" // rgb: 126, 64, 67
+<<<<<<< HEAD
+=======
+	chem_flags = CHEMICAL_BASIC_DRINK | CHEMICAL_RNG_GENERAL
+>>>>>>> 70ae2ff728 (replaces the bartender objective responsibility with cocktail (#6999))
 	boozepwr = 35
 	taste_description = "bitter sweetness"
 	glass_icon_state = "wineglass"
@@ -359,6 +399,10 @@ All effects don't start immediately, but rather get worse over time; the rate is
 	name = "Cognac"
 	description = "A sweet and strongly alcoholic drink, made after numerous distillations and years of maturing. Classy as fornication."
 	color = "#AB3C05" // rgb: 171, 60, 5
+<<<<<<< HEAD
+=======
+	chem_flags = CHEMICAL_BASIC_DRINK | CHEMICAL_RNG_GENERAL
+>>>>>>> 70ae2ff728 (replaces the bartender objective responsibility with cocktail (#6999))
 	boozepwr = 75
 	taste_description = "angry and irish"
 	glass_icon_state = "cognacglass"
@@ -370,6 +414,10 @@ All effects don't start immediately, but rather get worse over time; the rate is
 	name = "Absinthe"
 	description = "A powerful alcoholic drink. Rumored to cause hallucinations, but does not."
 	color = rgb(10, 206, 0)
+<<<<<<< HEAD
+=======
+	chem_flags = CHEMICAL_BASIC_DRINK | CHEMICAL_RNG_GENERAL
+>>>>>>> 70ae2ff728 (replaces the bartender objective responsibility with cocktail (#6999))
 	boozepwr = 80 //Very strong even by default
 	taste_description = "death and licorice"
 	glass_icon_state = "absinthe"
@@ -402,6 +450,10 @@ All effects don't start immediately, but rather get worse over time; the rate is
 	name = "Ale"
 	description = "A dark alcoholic beverage made with malted barley and yeast."
 	color = "#664300" // rgb: 102, 67, 0
+<<<<<<< HEAD
+=======
+	chem_flags = CHEMICAL_BASIC_DRINK | CHEMICAL_RNG_GENERAL
+>>>>>>> 70ae2ff728 (replaces the bartender objective responsibility with cocktail (#6999))
 	boozepwr = 65
 	taste_description = "hearty barley ale"
 	glass_icon_state = "aleglass"
@@ -1186,6 +1238,10 @@ All effects don't start immediately, but rather get worse over time; the rate is
 	name = "Hard Cider"
 	description = "Tastes like autumn. No wait, fall!"
 	color = "#CD6839"
+<<<<<<< HEAD
+=======
+	chem_flags = CHEMICAL_BASIC_DRINK | CHEMICAL_RNG_GENERAL
+>>>>>>> 70ae2ff728 (replaces the bartender objective responsibility with cocktail (#6999))
 	nutriment_factor = 1 * REAGENTS_METABOLISM
 	boozepwr = 25
 	taste_description = "the season that <i>falls</i> between summer and winter"
@@ -1434,6 +1490,10 @@ All effects don't start immediately, but rather get worse over time; the rate is
 	name = "Triple Sec"
 	description = "A sweet and vibrant orange liqueur."
 	color = "#ffcc66"
+<<<<<<< HEAD
+=======
+	chem_flags = CHEMICAL_BASIC_DRINK | CHEMICAL_RNG_GENERAL
+>>>>>>> 70ae2ff728 (replaces the bartender objective responsibility with cocktail (#6999))
 	boozepwr = 30
 	taste_description = "a warm flowery orange taste which recalls the ocean air and summer wind of the caribbean"
 	glass_icon_state = "glass_orange"
@@ -1444,6 +1504,10 @@ All effects don't start immediately, but rather get worse over time; the rate is
 	name = "Creme de Menthe"
 	description = "A minty liqueur excellent for refreshing, cool drinks."
 	color = "#00cc00"
+<<<<<<< HEAD
+=======
+	chem_flags = CHEMICAL_BASIC_DRINK | CHEMICAL_RNG_GENERAL
+>>>>>>> 70ae2ff728 (replaces the bartender objective responsibility with cocktail (#6999))
 	boozepwr = 20
 	taste_description = "a minty, cool, and invigorating splash of cold streamwater"
 	glass_icon_state = "glass_green"
@@ -1454,6 +1518,10 @@ All effects don't start immediately, but rather get worse over time; the rate is
 	name = "Creme de Cacao"
 	description = "A chocolatey liqueur excellent for adding dessert notes to beverages and bribing sororities."
 	color = "#996633"
+<<<<<<< HEAD
+=======
+	chem_flags = CHEMICAL_BASIC_DRINK | CHEMICAL_RNG_GENERAL
+>>>>>>> 70ae2ff728 (replaces the bartender objective responsibility with cocktail (#6999))
 	boozepwr = 20
 	taste_description = "a slick and aromatic hint of chocolates swirling in a bite of alcohol"
 	glass_icon_state = "glass_brown"
@@ -1464,6 +1532,10 @@ All effects don't start immediately, but rather get worse over time; the rate is
 	name = "Creme de Coconut"
 	description = "A coconut liqueur for smooth, creamy, tropical drinks."
 	color = "#F7F0D0"
+<<<<<<< HEAD
+=======
+	chem_flags = CHEMICAL_BASIC_DRINK | CHEMICAL_RNG_GENERAL
+>>>>>>> 70ae2ff728 (replaces the bartender objective responsibility with cocktail (#6999))
 	boozepwr = 20
 	taste_description = "a sweet milky flavor with notes of toasted sugar"
 	glass_icon_state = "glass_white"
@@ -1633,6 +1705,10 @@ All effects don't start immediately, but rather get worse over time; the rate is
 	name = "Sake"
 	description = "A sweet rice wine of questionable legality and extreme potency."
 	color = "#DDDDDD"
+<<<<<<< HEAD
+=======
+	chem_flags = CHEMICAL_BASIC_DRINK | CHEMICAL_RNG_GENERAL
+>>>>>>> 70ae2ff728 (replaces the bartender objective responsibility with cocktail (#6999))
 	boozepwr = 70
 	taste_description = "sweet rice wine"
 	glass_icon_state = "sakecup"
@@ -1748,6 +1824,10 @@ All effects don't start immediately, but rather get worse over time; the rate is
 	name = "Fernet"
 	description = "An incredibly bitter herbal liqueur used as a digestif."
 	color = "#1B2E24" // rgb: 27, 46, 36
+<<<<<<< HEAD
+=======
+	chem_flags = CHEMICAL_BASIC_DRINK | CHEMICAL_RNG_GENERAL
+>>>>>>> 70ae2ff728 (replaces the bartender objective responsibility with cocktail (#6999))
 	boozepwr = 80
 	taste_description = "utter bitterness"
 	glass_name = "glass of fernet"
@@ -1954,6 +2034,10 @@ All effects don't start immediately, but rather get worse over time; the rate is
 	name = "Champagne"
 	description = "A sparkling wine known for its ability to strike fast and hard."
 	color = "#ffffc1"
+<<<<<<< HEAD
+=======
+	chem_flags = CHEMICAL_BASIC_DRINK | CHEMICAL_RNG_GENERAL
+>>>>>>> 70ae2ff728 (replaces the bartender objective responsibility with cocktail (#6999))
 	boozepwr = 40
 	taste_description = "auspicious occasions and bad decisions"
 	glass_icon_state = "champagne_glass"
@@ -2007,6 +2091,10 @@ All effects don't start immediately, but rather get worse over time; the rate is
 	name = "Applejack"
 	description = "The perfect beverage for when you feel the need to horse around."
 	color = "#ff6633"
+<<<<<<< HEAD
+=======
+	chem_flags = CHEMICAL_BASIC_DRINK | CHEMICAL_RNG_GENERAL
+>>>>>>> 70ae2ff728 (replaces the bartender objective responsibility with cocktail (#6999))
 	boozepwr = 20
 	taste_description = "an honest day's work at the orchard"
 	glass_icon_state = "applejack_glass"
@@ -2116,6 +2204,10 @@ All effects don't start immediately, but rather get worse over time; the rate is
 /datum/reagent/consumable/ethanol/blazaam
 	name = "Blazaam"
 	description = "A strange drink that few people seem to remember existing. Doubles as a Berenstain remover."
+<<<<<<< HEAD
+=======
+	chem_flags = CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_BOTANY // don't put CHEMICAL_GOAL_BARTENDER_SERVING. peach juice is totally RNG to get
+>>>>>>> 70ae2ff728 (replaces the bartender objective responsibility with cocktail (#6999))
 	boozepwr = 70
 	quality = DRINK_FANTASTIC
 	taste_description = "alternate realities"

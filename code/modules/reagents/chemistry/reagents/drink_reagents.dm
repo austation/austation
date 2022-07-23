@@ -53,6 +53,10 @@
 	name = "Carrot Juice"
 	description = "It is just like a carrot but without crunching."
 	color = "#973800" // rgb: 151, 56, 0
+<<<<<<< HEAD
+=======
+	chem_flags = CHEMICAL_GOAL_BARTENDER_SERVING
+>>>>>>> 70ae2ff728 (replaces the bartender objective responsibility with cocktail (#6999))
 	taste_description = "carrots"
 	glass_icon_state = "carrotjuice"
 	glass_name = "glass of  carrot juice"
@@ -89,6 +93,10 @@
 	name = "Poison Berry Juice"
 	description = "A tasty juice blended from various kinds of very deadly and toxic berries."
 	color = "#863353" // rgb: 134, 51, 83
+<<<<<<< HEAD
+=======
+	chem_flags = CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_FUN | CHEMICAL_GOAL_BARTENDER_SERVING
+>>>>>>> 70ae2ff728 (replaces the bartender objective responsibility with cocktail (#6999))
 	taste_description = "berries"
 	glass_icon_state = "poisonberryjuice"
 	glass_name = "glass of berry juice"
@@ -822,6 +830,10 @@
 	name = "Peach Juice"
 	description = "Just peachy."
 	color = "#E78108"
+<<<<<<< HEAD
+=======
+	chem_flags = CHEMICAL_RNG_BOTANY
+>>>>>>> 70ae2ff728 (replaces the bartender objective responsibility with cocktail (#6999))
 	taste_description = "peaches"
 	glass_name = "glass of peach juice"
 
@@ -837,6 +849,10 @@
 	name = "Cream Soda"
 	description = "A classic space-American vanilla flavored soft drink."
 	color = "#dcb137"
+<<<<<<< HEAD
+=======
+	chem_flags = CHEMICAL_RNG_BOTANY | CHEMICAL_GOAL_BARTENDER_SERVING
+>>>>>>> 70ae2ff728 (replaces the bartender objective responsibility with cocktail (#6999))
 	quality = DRINK_VERYGOOD
 	taste_description = "fizzy vanilla"
 	glass_icon_state = "cream_soda"
@@ -851,6 +867,10 @@
 	name = "Red Queen"
 	description = "DRINK ME."
 	color = "#e6ddc3"
+<<<<<<< HEAD
+=======
+	chem_flags = CHEMICAL_RNG_BOTANY | CHEMICAL_GOAL_BARTENDER_SERVING
+>>>>>>> 70ae2ff728 (replaces the bartender objective responsibility with cocktail (#6999))
 	quality = DRINK_GOOD
 	taste_description = "wonder"
 	glass_icon_state = "red_queen"
@@ -880,6 +900,10 @@
 /datum/reagent/consumable/bungojuice
 	name = "Bungo Juice"
 	color = "#F9E43D"
+<<<<<<< HEAD
+=======
+	chem_flags = CHEMICAL_GOAL_BARTENDER_SERVING
+>>>>>>> 70ae2ff728 (replaces the bartender objective responsibility with cocktail (#6999))
 	description = "Exotic! You feel like you are on vacation already."
 	taste_description = "succulent bungo"
 	glass_icon_state = "glass_yellow"
