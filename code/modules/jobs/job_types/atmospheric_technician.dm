@@ -1,7 +1,7 @@
-/datum/job/atmos
-	title = "Atmospheric Technician"
+/datum/job/atmospheric_technician
+	title = JOB_NAME_ATMOSPHERICTECHNICIAN
 	flag = ATMOSTECH
-	department_head = list("Chief Engineer")
+	department_head = list(JOB_NAME_CHIEFENGINEER)
 	department_flag = ENGSEC
 	faction = "Station"
 	total_positions = 3
@@ -12,7 +12,7 @@
 	exp_requirements = 120
 	exp_type = EXP_TYPE_CREW
 
-	outfit = /datum/outfit/job/atmos
+	outfit = /datum/outfit/job/atmospheric_technician
 
 	access = list(ACCESS_ENGINE, ACCESS_ENGINE_EQUIP, ACCESS_TECH_STORAGE, ACCESS_MAINT_TUNNELS, ACCESS_MECH_ENGINE,
 									ACCESS_EXTERNAL_AIRLOCKS, ACCESS_CONSTRUCTION, ACCESS_ATMOSPHERICS, ACCESS_MINERAL_STOREROOM, ACCESS_AUX_BASE)
@@ -20,19 +20,26 @@
 	paycheck = PAYCHECK_MEDIUM
 	paycheck_department = ACCOUNT_ENG
 	display_order = JOB_DISPLAY_ORDER_ATMOSPHERIC_TECHNICIAN
-	departments = DEPARTMENT_ENGINEERING
+	departments = DEPARTMENT_BITFLAG_ENGINEERING
 	rpg_title = "Aeromancer"
 
 	species_outfits = list(
 		SPECIES_PLASMAMAN = /datum/outfit/plasmaman/atmospherics
 	)
+<<<<<<< HEAD
 /datum/outfit/job/atmos
 	name = "Atmospheric Technician"
 	jobtype = /datum/job/atmos
+=======
 
-	id = /obj/item/card/id/job/atmos
+/datum/outfit/job/atmospheric_technician
+	name = JOB_NAME_ATMOSPHERICTECHNICIAN
+	jobtype = /datum/job/atmospheric_technician
+>>>>>>> e128c6cae9 (Modernize job strings into DEFINES (#7093))
+
+	id = /obj/item/card/id/job/atmospheric_technician
 	belt = /obj/item/storage/belt/utility/atmostech
-	l_pocket = /obj/item/pda/atmos
+	l_pocket = /obj/item/pda/atmospheric_technician
 	ears = /obj/item/radio/headset/headset_eng
 	uniform = /obj/item/clothing/under/rank/engineering/atmospheric_technician
 	r_pocket = /obj/item/analyzer
@@ -44,7 +51,7 @@
 	pda_slot = ITEM_SLOT_LPOCKET
 	backpack_contents = list(/obj/item/modular_computer/tablet/preset/advanced=1)
 
-/datum/outfit/job/atmos/rig
+/datum/outfit/job/atmospheric_technician/rig
 	name = "Atmospheric Technician (Hardsuit)"
 
 	mask = /obj/item/clothing/mask/gas

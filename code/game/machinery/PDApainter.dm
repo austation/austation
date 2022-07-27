@@ -86,11 +86,22 @@
 		"Transparent" = "pda-clear",
 		"Syndicate" = "pda-syndi"
 		)
+<<<<<<< HEAD
 	id_icons += list(
 		"CentCom" = "centcom",
 		"ERT" = "ert",
 		"Syndicate" = "syndicate",
 		"Clown Operative" = "clown_op",
+=======
+	valid_jobs += list(
+		"CentCom (Custom)",
+		"CentCom",
+		"ERT",
+		"VIP",
+		"King",
+		"Syndicate",
+		"Clown Operative"
+>>>>>>> e128c6cae9 (Modernize job strings into DEFINES (#7093))
 		)
 	to_chat(user, "<span class='warning'>You short out the design locking circuitry, allowing contraband and special designs.</span>")
 	obj_flags |= EMAGGED

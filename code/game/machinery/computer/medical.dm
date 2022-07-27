@@ -228,6 +228,7 @@
 					sortBy = href_list["sort"]
 					order = initial(order)
 		else if(href_list["login"])
+<<<<<<< HEAD
 			if(issilicon(usr))
 				src.active1 = null
 				src.active2 = null
@@ -247,6 +248,31 @@
 					src.authenticated = src.scan.registered_name
 					src.rank = src.scan.assignment
 					src.screen = 1
+=======
+			var/mob/M = usr
+			var/obj/item/card/id/I = M.get_idcard(TRUE)
+			if(issilicon(M))
+				active1 = null
+				active2 = null
+				authenticated = 1
+				rank = JOB_NAME_AI
+				screen = 1
+			else if(IsAdminGhost(M))
+				active1 = null
+				active2 = null
+				authenticated = 1
+				rank = JOB_CENTCOM_CENTRAL_COMMAND
+				screen = 1
+			else if(istype(I) && check_access(I))
+				active1 = null
+				active2 = null
+				authenticated = I.registered_name
+				rank = I.assignment
+				screen = 1
+			else
+				to_chat(usr, "<span class='danger'>Unauthorized access.</span>")
+			playsound(src, 'sound/machines/terminal_on.ogg', 50, FALSE)
+>>>>>>> e128c6cae9 (Modernize job strings into DEFINES (#7093))
 		if(src.authenticated)
 
 			if(href_list["screen"])

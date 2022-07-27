@@ -7,8 +7,15 @@
 	..()
 	new /obj/item/clothing/neck/cloak/qm(src)
 	new /obj/item/storage/lockbox/medal/cargo(src)
+<<<<<<< HEAD
 	new /obj/item/clothing/under/rank/cargo/qm(src)
 	new /obj/item/clothing/under/rank/cargo/qm/skirt(src)
+=======
+	new /obj/item/clothing/under/rank/cargo/quartermaster(src)
+	new /obj/item/clothing/under/rank/cargo/quartermaster/skirt(src)
+	new /obj/item/clothing/under/rank/cargo/quartermaster/turtleneck(src)
+	new /obj/item/clothing/under/rank/cargo/quartermaster/turtleneck/skirt(src)
+>>>>>>> e128c6cae9 (Modernize job strings into DEFINES (#7093))
 	new /obj/item/clothing/shoes/sneakers/brown(src)
 	new /obj/item/radio/headset/headset_quartermaster(src)
 	new /obj/item/clothing/suit/fire/firefighter(src)

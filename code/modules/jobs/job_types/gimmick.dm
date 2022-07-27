@@ -1,5 +1,5 @@
 /datum/job/gimmick //gimmick var must be set to true for all gimmick jobs BUT the parent
-	title = "Gimmick"
+	title = JOB_NAME_GIMMICK
 	flag = GIMMICK
 	department_flag = CIVILIAN
 	faction = "Station"
@@ -17,7 +17,7 @@
 	paycheck_department = ACCOUNT_CIV
 
 	display_order = JOB_DISPLAY_ORDER_ASSISTANT
-	departments = DEPARTMENT_SERVICE
+	departments = DEPARTMENT_BITFLAG_SERVICE
 	rpg_title = "Peasant"
 
 	allow_bureaucratic_error = FALSE
@@ -27,20 +27,36 @@
 	can_be_admin_equipped = FALSE // we want just the parent outfit to be unequippable since this leads to problems
 
 /datum/job/gimmick/barber
-	title = "Barber"
+	title = JOB_NAME_BARBER
 	flag = BARBER
+<<<<<<< HEAD
+=======
+	supervisors = "the head of personnel"
+	department_head = list(JOB_NAME_HEADOFPERSONNEL)
+	department_flag = CIVILIAN
+	gimmick = TRUE
+
+>>>>>>> e128c6cae9 (Modernize job strings into DEFINES (#7093))
 	outfit = /datum/outfit/job/gimmick/barber
 	access = list(ACCESS_MORGUE, ACCESS_MAINT_TUNNELS)
 	minimal_access = list(ACCESS_MORGUE, ACCESS_MAINT_TUNNELS)
+<<<<<<< HEAD
 	gimmick = TRUE
 	chat_color = "#bd9e86"
+=======
+	paycheck = PAYCHECK_ASSISTANT
+	paycheck_department = ACCOUNT_SRV
+
+	departments = DEPARTMENT_BITFLAG_SERVICE
+	rpg_title = "Scissorhands"
+>>>>>>> e128c6cae9 (Modernize job strings into DEFINES (#7093))
 
 	species_outfits = list(
 		SPECIES_PLASMAMAN = /datum/outfit/plasmaman
 	)
 
 /datum/outfit/job/gimmick/barber
-	name = "Barber"
+	name = JOB_NAME_BARBER
 	jobtype = /datum/job/gimmick/barber
 
 	id = /obj/item/card/id/job/serv
@@ -52,24 +68,45 @@
 	l_pocket = /obj/item/razor/straightrazor
 	can_be_admin_equipped = TRUE
 
-/datum/job/gimmick/magician
-	title = "Stage Magician"
+/datum/job/gimmick/stage_magician
+	title = JOB_NAME_STAGEMAGICIAN
 	flag = MAGICIAN
+<<<<<<< HEAD
 	outfit = /datum/outfit/job/gimmick/magician
 	access = list(ACCESS_THEATRE, ACCESS_MAINT_TUNNELS)
 	minimal_access = list(ACCESS_THEATRE, ACCESS_MAINT_TUNNELS)
 	gimmick = TRUE
 	chat_color = "#b898b3"
+=======
+	supervisors = "the head of personnel"
+	department_head = list(JOB_NAME_HEADOFPERSONNEL)
+	department_flag = CIVILIAN
+	gimmick = TRUE
+
+	outfit = /datum/outfit/job/gimmick/stage_magician
+
+	access = list(ACCESS_THEATRE, ACCESS_MAINT_TUNNELS)
+	minimal_access = list(ACCESS_THEATRE, ACCESS_MAINT_TUNNELS)
+	paycheck = PAYCHECK_MINIMAL
+	paycheck_department = ACCOUNT_SRV
+
+	departments = DEPARTMENT_BITFLAG_SERVICE
+	rpg_title = "Master Illusionist"
+>>>>>>> e128c6cae9 (Modernize job strings into DEFINES (#7093))
 
 	species_outfits = list(
 		SPECIES_PLASMAMAN = /datum/outfit/plasmaman/magic
 	)
 
-/datum/outfit/job/gimmick/magician
-	name = "Stage Magician"
-	jobtype = /datum/job/gimmick/magician
+/datum/outfit/job/gimmick/stage_magician
+	name = JOB_NAME_STAGEMAGICIAN
+	jobtype = /datum/job/gimmick/stage_magician
 
+<<<<<<< HEAD
 	id = /obj/item/card/id/job/serv
+=======
+	id = /obj/item/card/id/job/stage_magician
+>>>>>>> e128c6cae9 (Modernize job strings into DEFINES (#7093))
 	belt = /obj/item/pda/unlicensed
 	head = /obj/item/clothing/head/that
 	ears = /obj/item/radio/headset
@@ -81,6 +118,7 @@
 	backpack_contents = list(/obj/item/choice_beacon/magic=1)
 	can_be_admin_equipped = TRUE
 
+<<<<<<< HEAD
 /datum/job/gimmick/shrink
 	title = "Psychiatrist"
 	flag = SHRINK
@@ -91,16 +129,36 @@
 	gimmick = TRUE
 	chat_color = "#a2dfdc"
 	departments = DEPARTMENT_MEDICAL
+=======
+/datum/job/gimmick/psychiatrist
+	title = JOB_NAME_PSYCHIATRIST
+	flag = PSYCHIATRIST
+	supervisors = "the chief medical officer"
+	department_head = list(JOB_NAME_CHIEFMEDICALOFFICER)
+	department_flag = MEDSCI
+	gimmick = TRUE
+
+	outfit = /datum/outfit/job/gimmick/psychiatrist
+
+	access = list(ACCESS_MAINT_TUNNELS, ACCESS_MEDICAL)
+	minimal_access = list(ACCESS_MAINT_TUNNELS, ACCESS_MEDICAL)
+	paycheck = PAYCHECK_EASY
+	departments = DEPARTMENT_BITFLAG_MEDICAL
+>>>>>>> e128c6cae9 (Modernize job strings into DEFINES (#7093))
 
 	species_outfits = list(
 		SPECIES_PLASMAMAN = /datum/outfit/plasmaman
 	)
 
-/datum/outfit/job/gimmick/shrink //psychiatrist doesnt get much shit, but he has more access and a cushier paycheck
-	name = "Psychiatrist"
-	jobtype = /datum/job/gimmick/shrink
+/datum/outfit/job/gimmick/psychiatrist //psychiatrist doesnt get much shit, but he has more access and a cushier paycheck
+	name = JOB_NAME_PSYCHIATRIST
+	jobtype = /datum/job/gimmick/psychiatrist
 
+<<<<<<< HEAD
 	id = /obj/item/card/id/job/med
+=======
+	id = /obj/item/card/id/job/psychiatrist
+>>>>>>> e128c6cae9 (Modernize job strings into DEFINES (#7093))
 	belt = /obj/item/pda/medical
 	ears = /obj/item/radio/headset/headset_med
 	uniform = /obj/item/clothing/under/suit/black
@@ -108,26 +166,46 @@
 	backpack_contents = list(/obj/item/choice_beacon/pet/ems=1)
 	can_be_admin_equipped = TRUE
 
-/datum/job/gimmick/celebrity
-	title = "VIP"
+/datum/job/gimmick/vip
+	title = JOB_NAME_VIP
 	flag = CELEBRITY
+<<<<<<< HEAD
 	outfit = /datum/outfit/job/gimmick/celebrity
 	access = list(ACCESS_MAINT_TUNNELS) //Assistants with shitloads of money, what could go wrong?
 	minimal_access = list(ACCESS_MAINT_TUNNELS)
 	gimmick = TRUE
 	paycheck = PAYCHECK_VIP //our power is being fucking rich
 	chat_color = "#ebc96b"
+=======
+	department_flag = CIVILIAN
+	gimmick = TRUE
+
+	outfit = /datum/outfit/job/gimmick/vip
+
+	access = list(ACCESS_MAINT_TUNNELS) //Assistants with shitloads of money, what could go wrong?
+	minimal_access = list(ACCESS_MAINT_TUNNELS)
+	paycheck = PAYCHECK_VIP  //our power is being fucking rich
+	paycheck_department = ACCOUNT_CIV
+
+	departments = DEPARTMENT_BITFLAG_SERVICE // might need to be changed
+	rpg_title = "Master of Patronage"
+>>>>>>> e128c6cae9 (Modernize job strings into DEFINES (#7093))
 
 	species_outfits = list(
 		SPECIES_PLASMAMAN = /datum/outfit/plasmaman/vip
 	)
 
-/datum/outfit/job/gimmick/celebrity
-	name = "VIP"
-	jobtype = /datum/job/gimmick/celebrity
+/datum/outfit/job/gimmick/vip
+	name = JOB_NAME_VIP
+	jobtype = /datum/job/gimmick/vip
 
+<<<<<<< HEAD
 	id = /obj/item/card/id/gold
 	belt = /obj/item/pda/celebrity
+=======
+	id = /obj/item/card/id/gold/vip
+	belt = /obj/item/pda/vip
+>>>>>>> e128c6cae9 (Modernize job strings into DEFINES (#7093))
 	glasses = /obj/item/clothing/glasses/sunglasses/advanced
 	ears = /obj/item/radio/headset/heads //VIP can talk loud for no reason
 	uniform = /obj/item/clothing/under/suit/black_really

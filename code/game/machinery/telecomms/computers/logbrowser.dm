@@ -70,6 +70,7 @@
 					var/mobtype = C.parameters["mobtype"]
 					var/race			   // The actual race of the mob
 
+<<<<<<< HEAD
 					// austation begin -- switching boys -- PR #4379
 					switch(mobtype)
 						if(/mob/living/carbon/human, /mob/living/brain)
@@ -90,6 +91,30 @@
 							else
 								race = "<i>Unidentifiable</i>"
 					// austation end -- PR #4379
+=======
+					if(ispath(mobtype, /mob/living/carbon/human) || ispath(mobtype, /mob/living/brain))
+						race = "Humanoid"
+
+					// NT knows a lot about slimes, but not aliens. Can identify slimes
+					else if(ispath(mobtype, /mob/living/simple_animal/slime))
+						race = "Slime"
+
+					else if(ispath(mobtype, /mob/living/carbon/monkey))
+						race = "Monkey"
+
+					// sometimes M gets deleted prematurely for AIs... just check the job
+					else if(ispath(mobtype, /mob/living/silicon) || C.parameters["job"] == JOB_NAME_AI)
+						race = "Artificial Life"
+
+					else if(isobj(mobtype))
+						race = "Machinery"
+
+					else if(ispath(mobtype, /mob/living/simple_animal))
+						race = "Domestic Animal"
+
+					else
+						race = "<i>Unidentifiable</i>"
+>>>>>>> e128c6cae9 (Modernize job strings into DEFINES (#7093))
 
 					dat += "<u><font color = #18743E>Data type</font></u>: [C.input_type]<br>"
 					dat += "<u><font color = #18743E>Source</font></u>: [C.parameters["name"]] (Job: [C.parameters["job"]])<br>"
