@@ -49,8 +49,13 @@
 	name = "Blood Brothers"
 	antag_flag = ROLE_BROTHER
 	antag_datum = /datum/antagonist/brother/
+<<<<<<< HEAD
 	protected_roles = list("Security Officer", "Warden", "Detective", "Head of Security", "Head of Personnel", "Captain") // austation -- HOP can no longer be antag
 	restricted_roles = list("Cyborg", "AI")
+=======
+	protected_roles = list(JOB_NAME_SECURITYOFFICER, JOB_NAME_WARDEN, JOB_NAME_HEADOFSECURITY, JOB_NAME_CAPTAIN)
+	restricted_roles = list(JOB_NAME_AI, JOB_NAME_CYBORG)
+>>>>>>> 5970d91b7d (Fixes player-panel not working, and corrects some job defines (#7392))
 	required_candidates = 2
 	weight = 4
 	cost = 15
