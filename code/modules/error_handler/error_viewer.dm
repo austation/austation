@@ -78,6 +78,18 @@ GLOBAL_DATUM(error_cache, /datum/error_viewer/error_cache)
 	var/list/error_sources = list()
 	var/list/errors_silenced = list()
 
+<<<<<<< HEAD
+=======
+/datum/error_viewer/error_cache/proc/show_to_minimal(user, datum/error_viewer/back_to, linear)
+	var/html = "<b>[GLOB.total_runtimes]</b> runtimes, <b>[GLOB.total_runtimes_skipped]</b> skipped<br><br>"
+	var/datum/error_viewer/error_source/error_source
+	for (var/erroruid in error_sources)
+		error_source = error_sources[erroruid]
+		html += "[error_source.min_name]<br>"
+
+	browse_to(user, html)
+
+>>>>>>> a542580819 (Fix duplicates in minimal runtimes and lag caused by this (#7399))
 /datum/error_viewer/error_cache/show_to(user, datum/error_viewer/back_to, linear)
 	var/html = build_header()
 	html += "<b>[GLOB.total_runtimes]</b> runtimes, <b>[GLOB.total_runtimes_skipped]</b> skipped<br><br>"
