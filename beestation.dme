@@ -464,6 +464,8 @@
 #include "code\datums\components\deadchat_control.dm"
 #include "code\datums\components\drift.dm"
 #include "code\datums\components\edit_complainer.dm"
+#include "code\datums\components\cult_ritual_item.dm"
+#include "code\datums\components\effect_remover.dm"
 #include "code\datums\components\embedded.dm"
 #include "code\datums\components\empprotection.dm"
 #include "code\datums\components\explodable.dm"
@@ -1622,7 +1624,11 @@
 #include "code\modules\antagonists\cult\cult_comms.dm"
 #include "code\modules\antagonists\cult\cult_items.dm"
 #include "code\modules\antagonists\cult\cult_structures.dm"
+<<<<<<< HEAD
 #include "code\modules\antagonists\cult\ritual.dm"
+=======
+#include "code\modules\antagonists\cult\narsie.dm"
+>>>>>>> ed2e42d863 (Cult Refactor/Rune-blood magic tweak Recoup (#7081))
 #include "code\modules\antagonists\cult\rune_spawn_action.dm"
 #include "code\modules\antagonists\cult\runes.dm"
 #include "code\modules\antagonists\devil\devil.dm"
