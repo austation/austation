@@ -236,7 +236,11 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 	var/eavesdrop_range = 0
 	if(message_mods[WHISPER_MODE]) //If we're whispering
 		eavesdrop_range = EAVESDROP_EXTRA_RANGE
+<<<<<<< HEAD
 	var/list/listening = get_hearers_in_view(message_range+eavesdrop_range, source)
+=======
+	var/list/listening = get_hearers_in_view(message_range+eavesdrop_range, source, SEE_INVISIBLE_MAXIMUM)
+>>>>>>> fec19d6152 (Rework hearing for INVISIBILITY_MAXIMUM mobs (#7462))
 	var/list/the_dead = list()
 	for(var/mob/M as() in GLOB.player_list)
 		if(!M)				//yogs
@@ -244,11 +248,22 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 		if(M.stat != DEAD) //not dead, not important
 			continue
 		if(!M.client || !client) //client is so that ghosts don't have to listen to mice
+<<<<<<< HEAD
 			continue
 		if(get_dist(M, src) > 7 || M.get_virtual_z_level() != get_virtual_z_level()) //they're out of range of normal hearing
 			if(eavesdrop_range && !(M.client.prefs.chat_toggles & CHAT_GHOSTWHISPER)) //they're whispering and we have hearing whispers at any range off
 				continue
 			if(!(M.client.prefs.chat_toggles & CHAT_GHOSTEARS)) //they're talking normally and we have hearing at any range off
+=======
+			listening -= M // remove (added by SEE_INVISIBLE_MAXIMUM)
+			continue
+		if(get_dist(M, src) > 7 || M.get_virtual_z_level() != get_virtual_z_level()) //they're out of range of normal hearing
+			if(eavesdrop_range && !(M.client.prefs.chat_toggles & CHAT_GHOSTWHISPER)) //they're whispering and we have hearing whispers at any range off
+				listening -= M // remove (added by SEE_INVISIBLE_MAXIMUM)
+				continue
+			if(!(M.client.prefs.chat_toggles & CHAT_GHOSTEARS)) //they're talking normally and we have hearing at any range off
+				listening -= M // remove (added by SEE_INVISIBLE_MAXIMUM)
+>>>>>>> fec19d6152 (Rework hearing for INVISIBILITY_MAXIMUM mobs (#7462))
 				continue
 		listening |= M
 		the_dead[M] = TRUE
