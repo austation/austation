@@ -17,7 +17,6 @@
 
 	interacts_with_air = TRUE
 
-	var/id_tag = null
 	var/scrubbing = SCRUBBING //0 = siphoning, 1 = scrubbing
 
 	var/filter_types = list(GAS_CO2, GAS_BZ, GAS_GROUP_CHEMICALS) //austation -- added GAS_GROUP_CHEMICALS
@@ -33,13 +32,17 @@
 	pipe_state = "scrubber"
 
 /obj/machinery/atmospherics/components/unary/vent_scrubber/New()
-	..()
 	if(!id_tag)
+<<<<<<< HEAD
 		id_tag = assign_uid_vents()
 	//austation begin -- chem gases
 	generate_clean_filter_types()
 	RegisterSignal(SSdcs,COMSIG_GLOB_NEW_GAS,.proc/generate_clean_filter_types)
 	//austation end
+=======
+		id_tag = SSnetworks.assign_random_name()
+	. = ..()
+>>>>>>> 2abb090528 (redo (#7104))
 
 /obj/machinery/atmospherics/components/unary/vent_scrubber/Destroy()
 	var/area/A = get_area(src)
@@ -119,7 +122,7 @@
 
 	var/area/A = get_area(src)
 	if(!A.air_scrub_names[id_tag])
-		name = "\improper [A.name] air scrubber #[A.air_scrub_names.len + 1]"
+		name = "\improper [A.name] air scrubber #[id_tag]"
 		A.air_scrub_names[id_tag] = name
 
 	A.air_scrub_info[id_tag] = signal.data
