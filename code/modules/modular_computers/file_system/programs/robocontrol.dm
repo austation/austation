@@ -2,6 +2,7 @@
 /datum/computer_file/program/robocontrol
 	filename = "robocontrol"
 	filedesc = "Bot Remote Controller"
+	category = PROGRAM_CATEGORY_ROBO
 	program_icon_state = "robot"
 	extended_desc = "A remote controller used for giving basic commands to non-sentient robots."
 	transfer_access = ACCESS_ROBOTICS
@@ -9,8 +10,7 @@
 	network_destination = "robotics control network"
 	size = 12
 	tgui_id = "NtosRoboControl"
-
-
+	program_icon = "robot"
 	///Number of simple robots on-station.
 	var/botcount = 0
 	///Used to find the location of the user for the purposes of summoning robots.
@@ -79,8 +79,13 @@
 			if(!computer || !card_slot)
 				return
 			if(id_card)
+<<<<<<< HEAD
 				GLOB.data_core.manifest_modify(id_card.registered_name, id_card.assignment)
 				card_slot.try_eject(TRUE, current_user)
+=======
+				GLOB.data_core.manifest_modify(id_card.registered_name, id_card.assignment, id_card.hud_state)
+				card_slot.try_eject(current_user)
+>>>>>>> a8acbd296e ([TG PORT] Gets our Modular PCs (mostly) up to date with TG + small runtime fix (#7338))
 			else
 				playsound(get_turf(ui_host()) , 'sound/machines/buzz-sigh.ogg', 25, FALSE)
 	return
