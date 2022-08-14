@@ -500,6 +500,7 @@
 	air.adjust_moles(GAS_PLASMA, -2*reaction_efficency)
 
 	SSresearch.science_tech.add_point_type(TECHWEB_POINT_TYPE_DEFAULT, min((reaction_efficency**2)*BZ_RESEARCH_SCALE,BZ_RESEARCH_MAX_AMOUNT))
+	SSresearch.science_tech.add_point_type(TECHWEB_POINT_TYPE_DISCOVERY, min((reaction_efficency**2)*BZ_RESEARCH_SCALE,BZ_RESEARCH_MAX_AMOUNT)*0.5)
 
 	if(energy_released > 0)
 		var/new_heat_capacity = air.heat_capacity()
@@ -533,6 +534,7 @@
 	air.adjust_moles(GAS_NITRYL, -heat_scale)
 	air.adjust_moles(GAS_TRITIUM, -heat_scale)
 	SSresearch.science_tech.add_point_type(TECHWEB_POINT_TYPE_DEFAULT, STIMULUM_RESEARCH_AMOUNT*max(stim_energy_change,0))
+	SSresearch.science_tech.add_point_type(TECHWEB_POINT_TYPE_DISCOVERY, STIMULUM_RESEARCH_AMOUNT*max(stim_energy_change,0)*0.5)
 	if(stim_energy_change)
 		var/new_heat_capacity = air.heat_capacity()
 		if(new_heat_capacity > MINIMUM_HEAT_CAPACITY)
@@ -560,6 +562,7 @@
 	air.adjust_moles(GAS_N2, -20*nob_formed)
 	air.adjust_moles(GAS_HYPERNOB, nob_formed)
 	SSresearch.science_tech.add_point_type(TECHWEB_POINT_TYPE_DEFAULT, nob_formed*NOBLIUM_RESEARCH_AMOUNT)
+	SSresearch.science_tech.add_point_type(TECHWEB_POINT_TYPE_DISCOVERY, nob_formed*NOBLIUM_RESEARCH_AMOUNT*0.5)
 
 	if (nob_formed)
 		var/new_heat_capacity = air.heat_capacity()
