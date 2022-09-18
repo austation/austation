@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /*
 CONTAINS:
 BEDSHEETS
@@ -287,6 +288,8 @@ LINEN BINS
 	new type(loc)
 	return INITIALIZE_HINT_QDEL
 
+=======
+>>>>>>> 66ce3c5da3 (Fixes broken icon for bedsheets, also refactor the whole thing (#7631))
 /obj/structure/bedsheetbin
 	name = "linen bin"
 	desc = "It looks rather cosy."
@@ -393,8 +396,8 @@ LINEN BINS
 			to_chat(user, "<span class='notice'>[hidden] falls out of [B]!</span>")
 			hidden = null
 
-
 	add_fingerprint(user)
+
 /obj/structure/bedsheetbin/attack_tk(mob/user)
 	if(amount >= 1)
 		amount--

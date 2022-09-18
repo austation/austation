@@ -31718,6 +31718,11 @@
 	c_tag = "Security - Head of Security's Quarters";
 	dir = 2
 	},
+<<<<<<< HEAD
+=======
+/obj/structure/bed/double,
+/obj/item/bedsheet/double/hos,
+>>>>>>> 66ce3c5da3 (Fixes broken icon for bedsheets, also refactor the whole thing (#7631))
 /turf/open/floor/carpet/red,
 /area/crew_quarters/heads/hos)
 "bmC" = (
@@ -49870,6 +49875,11 @@
 /obj/machinery/light{
 	dir = 1
 	},
+<<<<<<< HEAD
+=======
+/obj/structure/bed/double,
+/obj/item/bedsheet/double/ce,
+>>>>>>> 66ce3c5da3 (Fixes broken icon for bedsheets, also refactor the whole thing (#7631))
 /turf/open/floor/carpet/orange,
 /area/crew_quarters/heads/chief)
 "bSg" = (
@@ -61339,6 +61349,7 @@
 /obj/machinery/newscaster{
 	pixel_x = -32
 	},
+<<<<<<< HEAD
 /obj/item/bedsheet/hop,
 /turf/open/floor/carpet/royalblue,
 /area/crew_quarters/heads/hop)
@@ -61401,6 +61412,10 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
 	dir = 10
 	},
+=======
+/obj/structure/bed/double,
+/obj/item/bedsheet/double/hop,
+>>>>>>> 66ce3c5da3 (Fixes broken icon for bedsheets, also refactor the whole thing (#7631))
 /turf/open/floor/carpet/royalblue,
 /area/crew_quarters/heads/hop)
 "cod" = (
@@ -89058,6 +89073,11 @@
 /obj/effect/turf_decal/tile/purple{
 	dir = 4
 	},
+<<<<<<< HEAD
+=======
+/obj/structure/bed/double,
+/obj/item/bedsheet/double/rd,
+>>>>>>> 66ce3c5da3 (Fixes broken icon for bedsheets, also refactor the whole thing (#7631))
 /turf/open/floor/plasteel/white,
 /area/crew_quarters/heads/hor)
 "dAJ" = (
@@ -92486,6 +92506,11 @@
 /obj/effect/turf_decal/tile/blue{
 	dir = 8
 	},
+<<<<<<< HEAD
+=======
+/obj/structure/bed/double,
+/obj/item/bedsheet/double/cmo,
+>>>>>>> 66ce3c5da3 (Fixes broken icon for bedsheets, also refactor the whole thing (#7631))
 /turf/open/floor/plasteel/white,
 /area/crew_quarters/heads/cmo)
 "dHW" = (

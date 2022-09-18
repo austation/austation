@@ -711,6 +711,11 @@
 	pixel_x = 6;
 	pixel_y = -30
 	},
+<<<<<<< HEAD
+=======
+/obj/structure/bed/double,
+/obj/item/bedsheet/double/cmo,
+>>>>>>> 66ce3c5da3 (Fixes broken icon for bedsheets, also refactor the whole thing (#7631))
 /turf/open/floor/carpet/royalblue,
 /area/crew_quarters/heads/cmo)
 "akG" = (
@@ -2850,6 +2855,11 @@
 /obj/machinery/light_switch{
 	pixel_x = 24
 	},
+<<<<<<< HEAD
+=======
+/obj/structure/bed/double,
+/obj/item/bedsheet/double/hos,
+>>>>>>> 66ce3c5da3 (Fixes broken icon for bedsheets, also refactor the whole thing (#7631))
 /turf/open/floor/carpet/red,
 /area/crew_quarters/heads/hos)
 "aKS" = (
@@ -23201,8 +23211,13 @@
 /turf/open/floor/plasteel/dark,
 /area/security/courtroom)
 "fkx" = (
+<<<<<<< HEAD
 /obj/structure/bed,
 /obj/item/bedsheet/hop,
+=======
+/obj/structure/bed/double,
+/obj/item/bedsheet/double/hop,
+>>>>>>> 66ce3c5da3 (Fixes broken icon for bedsheets, also refactor the whole thing (#7631))
 /turf/open/floor/carpet/blue,
 /area/crew_quarters/heads/hop)
 "fkA" = (
@@ -38279,6 +38294,11 @@
 	pixel_x = 28;
 	pixel_y = 1
 	},
+<<<<<<< HEAD
+=======
+/obj/structure/bed/double,
+/obj/item/bedsheet/double/ce,
+>>>>>>> 66ce3c5da3 (Fixes broken icon for bedsheets, also refactor the whole thing (#7631))
 /obj/effect/landmark/start/chief_engineer,
 /turf/open/floor/carpet/orange,
 /area/crew_quarters/heads/chief)
@@ -55857,8 +55877,13 @@
 /turf/open/floor/plasteel/techmaint,
 /area/quartermaster/exploration_prep)
 "mUj" = (
+<<<<<<< HEAD
 /obj/structure/bed,
 /obj/item/bedsheet/qm,
+=======
+/obj/structure/bed/double,
+/obj/item/bedsheet/double/qm,
+>>>>>>> 66ce3c5da3 (Fixes broken icon for bedsheets, also refactor the whole thing (#7631))
 /turf/open/floor/wood,
 /area/quartermaster/qm)
 "mUv" = (
@@ -56321,6 +56346,11 @@
 	pixel_x = 4;
 	pixel_y = 2
 	},
+<<<<<<< HEAD
+=======
+/obj/structure/bed/double,
+/obj/item/bedsheet/double/dorms,
+>>>>>>> 66ce3c5da3 (Fixes broken icon for bedsheets, also refactor the whole thing (#7631))
 /turf/open/floor/plasteel/dark,
 /area/security/main)
 "mZR" = (
@@ -59650,6 +59680,11 @@
 /obj/machinery/newscaster{
 	pixel_y = -28
 	},
+<<<<<<< HEAD
+=======
+/obj/structure/bed/double,
+/obj/item/bedsheet/double/rd,
+>>>>>>> 66ce3c5da3 (Fixes broken icon for bedsheets, also refactor the whole thing (#7631))
 /turf/open/floor/carpet/purple,
 /area/crew_quarters/heads/hor)
 "nPb" = (
@@ -87433,6 +87468,12 @@
 /obj/machinery/light_switch{
 	pixel_x = 24
 	},
+<<<<<<< HEAD
+=======
+/obj/structure/bed/double,
+/obj/item/bedsheet/double/captain,
+/obj/effect/landmark/start/captain,
+>>>>>>> 66ce3c5da3 (Fixes broken icon for bedsheets, also refactor the whole thing (#7631))
 /turf/open/floor/wood,
 /area/crew_quarters/heads/captain/private)
 "uta" = (
@@ -94296,6 +94337,11 @@
 	pixel_x = 4;
 	pixel_y = 2
 	},
+<<<<<<< HEAD
+=======
+/obj/structure/bed/double/pod,
+/obj/item/bedsheet/double/dorms,
+>>>>>>> 66ce3c5da3 (Fixes broken icon for bedsheets, also refactor the whole thing (#7631))
 /turf/open/floor/carpet/green,
 /area/crew_quarters/dorms)
 "wcI" = (
