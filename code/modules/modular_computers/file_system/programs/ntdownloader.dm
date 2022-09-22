@@ -26,6 +26,8 @@
 
 /datum/computer_file/program/ntnetdownload/run_program()
 	. = ..()
+	if(!.)
+		return
 	main_repo = SSnetworks.station_network.available_station_software
 	antag_repo = SSnetworks.station_network.available_antag_software
 
@@ -206,5 +208,7 @@
 
 /datum/computer_file/program/ntnetdownload/syndicate/run_program()
 	. = ..()
+	if(!.)
+		return
 	main_repo = SSnetworks.station_network.available_antag_software
 	antag_repo = null

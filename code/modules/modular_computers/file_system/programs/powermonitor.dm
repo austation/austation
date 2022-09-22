@@ -26,6 +26,8 @@
 
 /datum/computer_file/program/power_monitor/run_program(mob/living/user)
 	. = ..(user)
+	if(!.)
+		return
 	search()
 	history["supply"] = list()
 	history["demand"] = list()

@@ -28,6 +28,13 @@
 
 /datum/computer_file/program/supermatter_monitor/run_program(mob/living/user)
 	. = ..(user)
+<<<<<<< HEAD
+=======
+	if(!.)
+		return
+	if(!(active in GLOB.machines))
+		active = null
+>>>>>>> eefe5df790 (Fixes Signal Commander program breaking all signalers on default frequency (#69773) (#7688))
 	refresh()
 
 /datum/computer_file/program/supermatter_monitor/kill_program(forced = FALSE)
