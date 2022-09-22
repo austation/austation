@@ -44,6 +44,36 @@ SUBSYSTEM_DEF(atoms)
 
 	initialized = INITIALIZATION_INNEW_MAPLOAD
 
+<<<<<<< HEAD
+=======
+	// This may look a bit odd, but if the actual atom creation runtimes for some reason, we absolutely need to set initialized BACK
+	CreateAtoms(atoms, atoms_to_return)
+	clear_tracked_initalize()
+
+	#ifdef TESTING
+	var/late_loader_len = late_loaders.len
+	#endif
+	if(late_loaders.len)
+		for(var/atom/A as() in late_loaders)
+			//I hate that we need this
+			if(QDELETED(A))
+				continue
+			late_loaders -= A //We don't want to call LateInitialize twice in case of stoplag()
+			A.LateInitialize()
+		testing("Late initialized [late_loader_len] atoms")
+		late_loaders.Cut()
+
+	if(created_atoms)
+		atoms_to_return += created_atoms
+		created_atoms = null
+
+#ifdef PROFILE_MAPLOAD_INIT_ATOM
+	rustg_file_write(json_encode(mapload_init_times), "[GLOB.log_directory]/init_times.json")
+#endif
+
+/// Actually creates the list of atoms. Exists soley so a runtime in the creation logic doesn't cause initalized to totally break
+/datum/controller/subsystem/atoms/proc/CreateAtoms(list/atoms, list/atoms_to_return = null)
+>>>>>>> 7308ce0c03 (Docks and nested shuttles (#7152))
 	if (atoms_to_return)
 		LAZYINITLIST(created_atoms)
 
