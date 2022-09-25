@@ -6,6 +6,8 @@
 	create_reagents(1000)
 	update_body_parts() //to update the carbon's new bodyparts appearance
 	GLOB.carbon_list += src
+	RegisterSignal(src, COMSIG_MOB_LOGOUT, .proc/med_hud_set_status)
+	RegisterSignal(src, COMSIG_MOB_LOGIN, .proc/med_hud_set_status)
 
 /mob/living/carbon/Destroy()
 	//This must be done first, so the mob ghosts correctly before DNA etc is nulled
@@ -900,15 +902,24 @@
 					else
 						to_chat(usr, "Only humans can be augmented.")
 		admin_ticket_log("[key_name_admin(usr)] has modified the bodyparts of [src]")
+<<<<<<< HEAD
+=======
+
+>>>>>>> 5955fcfa4c (MedHUD and SSD improvements (#7672))
 	if(href_list[VV_HK_MAKE_AI])
 		if(!check_rights(R_SPAWN))
 			return
 		if(alert("Confirm mob type change?",,"Transform","Cancel") != "Transform")
 			return
 		usr.client.holder.Topic("vv_override", list("makeai"=href_list[VV_HK_TARGET]))
+<<<<<<< HEAD
 	if(href_list[VV_HK_MODIFY_ORGANS])
 		if(!check_rights(NONE))
 			return
+=======
+
+	if(href_list[VV_HK_MODIFY_ORGANS] && check_rights(R_FUN|R_DEBUG))
+>>>>>>> 5955fcfa4c (MedHUD and SSD improvements (#7672))
 		usr.client.manipulate_organs(src)
 	if(href_list[VV_HK_MARTIAL_ART])
 		if(!check_rights(NONE))
