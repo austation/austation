@@ -171,6 +171,13 @@
 	cost = 10
 	requirements = list(50,40,30,20,10,10,10,10,10,10)
 	repeatable = TRUE
+	blocking_rules = list(
+		/datum/dynamic_ruleset/roundstart/bloodcult,
+		/datum/dynamic_ruleset/roundstart/clockcult,
+		/datum/dynamic_ruleset/roundstart/nuclear,
+		/datum/dynamic_ruleset/roundstart/wizard,
+		/datum/dynamic_ruleset/roundstart/revs
+	)
 
 /datum/dynamic_ruleset/midround/autotraitor/acceptable(population = 0, threat = 0)
 	var/player_count = mode.current_players[CURRENT_LIVING_PLAYERS].len
@@ -233,6 +240,7 @@
 	cost = 20
 	requirements = list(101,101,80,70,60,60,50,50,40,40)
 	required_type = /mob/living/silicon/ai
+	blocking_rules = list(/datum/dynamic_ruleset/roundstart/nuclear)
 	var/ion_announce = 33
 	var/removeDontImproveChance = 10
 

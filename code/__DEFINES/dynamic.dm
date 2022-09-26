@@ -7,6 +7,18 @@
 /// This ruleset can only be picked once. Anything that does not have a scaling_cost MUST have this.
 #define LONE_RULESET (1 << 2)
 
+<<<<<<< HEAD
+=======
+/// This ruleset can't execute alongside ANY other roundstart ruleset.
+#define NO_OTHER_ROUNDSTARTS_RULESET (1 << 3)
+
+/// This is a "heavy" midround ruleset, and should be run later into the round
+#define MIDROUND_RULESET_STYLE_HEAVY "Heavy"
+
+/// This is a "light" midround ruleset, and should be run early into the round
+#define MIDROUND_RULESET_STYLE_LIGHT "Light"
+
+>>>>>>> 73a8376871 (Dynamic: Block traitors/heretics/lings/bros during cults/nukies/wiz/revs (#7658))
 /// No round event was hijacked this cycle
 #define HIJACKED_NOTHING "HIJACKED_NOTHING"
 
