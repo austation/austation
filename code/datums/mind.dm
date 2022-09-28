@@ -144,6 +144,14 @@
 		new_character.key = key		//now transfer the key to link the client to our new body
 	current.update_atom_languages()
 	SEND_SIGNAL(src, COMSIG_MIND_TRANSFER_TO, old_current, new_character)
+<<<<<<< HEAD
+=======
+	// Update SSD indicators
+	if(isliving(old_current))
+		old_current.med_hud_set_status()
+	if(isliving(current))
+		current.med_hud_set_status()
+>>>>>>> aca81a24fc (Fix MedHUD SSD Runtimes 2 (#7728))
 
 /datum/mind/proc/set_death_time()
 	SIGNAL_HANDLER
