@@ -978,7 +978,8 @@
 	},
 /obj/structure/table/wood,
 /obj/machinery/camera/autoname{
-	dir = 4
+	dir = 4;
+	network = list("ss13, engine")
 	},
 /turf/open/floor/carpet/red,
 /area/crew_quarters/heads/hos)
@@ -1157,7 +1158,8 @@
 "acO" = (
 /obj/structure/closet/l3closet/security,
 /obj/machinery/camera/autoname{
-	dir = 4
+	dir = 4;
+	network = list("ss13, engine")
 	},
 /turf/open/floor/plasteel/showroomfloor,
 /area/security/main)
@@ -2875,7 +2877,8 @@
 "agv" = (
 /obj/machinery/computer/security/mining,
 /obj/machinery/camera/autoname{
-	dir = 4
+	dir = 4;
+	network = list("ss13, engine")
 	},
 /turf/open/floor/plasteel,
 /area/quartermaster/miningdock)
@@ -3620,7 +3623,8 @@
 /obj/effect/turf_decal/tile/red,
 /obj/structure/closet/secure_closet/brig_phys,
 /obj/machinery/camera/autoname{
-	dir = 4
+	dir = 4;
+	network = list("ss13, engine")
 	},
 /turf/open/floor/plasteel/white,
 /area/security/brig)
@@ -10978,7 +10982,8 @@
 	},
 /obj/item/storage/firstaid/regular,
 /obj/machinery/camera/autoname{
-	dir = 4
+	dir = 4;
+	network = list("ss13, engine")
 	},
 /turf/open/floor/plasteel,
 /area/gateway)
@@ -13837,7 +13842,8 @@
 /area/chapel/office)
 "aMM" = (
 /obj/machinery/camera/autoname{
-	dir = 4
+	dir = 4;
+	network = list("ss13, engine")
 	},
 /turf/open/floor/plasteel/dark,
 /area/chapel/main)
@@ -16121,7 +16127,8 @@
 /area/maintenance/starboard/fore)
 "aUy" = (
 /obj/machinery/camera/autoname{
-	dir = 4
+	dir = 4;
+	network = list("ss13, engine")
 	},
 /turf/open/floor/wood,
 /area/vacant_room/office)
@@ -16322,7 +16329,8 @@
 	dir = 1
 	},
 /obj/machinery/camera/autoname{
-	dir = 4
+	dir = 4;
+	network = list("ss13, engine")
 	},
 /turf/open/floor/plasteel,
 /area/hallway/primary/fore)
@@ -18869,7 +18877,8 @@
 	dir = 8
 	},
 /obj/machinery/camera/autoname{
-	dir = 4
+	dir = 4;
+	network = list("ss13, engine")
 	},
 /turf/open/floor/plasteel,
 /area/hallway/primary/central)
@@ -19908,7 +19917,8 @@
 	dir = 4
 	},
 /obj/machinery/camera/autoname{
-	dir = 4
+	dir = 4;
+	network = list("ss13, engine")
 	},
 /turf/open/floor/plasteel,
 /area/quartermaster/sorting)
@@ -22367,7 +22377,8 @@
 	dir = 8
 	},
 /obj/machinery/camera/autoname{
-	dir = 4
+	dir = 4;
+	network = list("ss13, engine")
 	},
 /obj/structure/extinguisher_cabinet{
 	pixel_x = -27
@@ -23353,7 +23364,8 @@
 	},
 /obj/machinery/rnd/production/techfab/department/cargo,
 /obj/machinery/camera/autoname{
-	dir = 4
+	dir = 4;
+	network = list("ss13, engine")
 	},
 /turf/open/floor/plasteel,
 /area/quartermaster/office)
@@ -24312,7 +24324,8 @@
 	pixel_x = -32
 	},
 /obj/machinery/camera/autoname{
-	dir = 4
+	dir = 4;
+	network = list("ss13, engine")
 	},
 /turf/open/floor/plasteel,
 /area/hallway/primary/central)
@@ -25938,7 +25951,8 @@
 	dir = 8
 	},
 /obj/machinery/camera/autoname{
-	dir = 4
+	dir = 4;
+	network = list("ss13, engine")
 	},
 /turf/open/floor/plasteel,
 /area/security/checkpoint/science)
@@ -26053,7 +26067,8 @@
 	dir = 8
 	},
 /obj/machinery/camera/autoname{
-	dir = 4
+	dir = 4;
+	network = list("ss13, engine")
 	},
 /turf/open/floor/plasteel,
 /area/quartermaster/qm)
@@ -27842,7 +27857,8 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/camera/autoname{
-	dir = 4
+	dir = 4;
+	network = list("ss13, engine")
 	},
 /turf/open/floor/plasteel,
 /area/science/storage)
@@ -28008,7 +28024,8 @@
 	dir = 8
 	},
 /obj/machinery/camera/autoname{
-	dir = 4
+	dir = 4;
+	network = list("ss13, engine")
 	},
 /turf/open/floor/plasteel,
 /area/hallway/primary/aft)
@@ -29842,7 +29859,8 @@
 	dir = 8
 	},
 /obj/machinery/camera/autoname{
-	dir = 4
+	dir = 4;
+	network = list("ss13, engine")
 	},
 /turf/open/floor/plasteel,
 /area/engine/atmos)
@@ -33221,7 +33239,8 @@
 	pixel_y = 2
 	},
 /obj/machinery/camera/autoname{
-	dir = 4
+	dir = 4;
+	network = list("ss13, engine")
 	},
 /turf/open/floor/plasteel/white,
 /area/science/xenobiology)
@@ -33652,7 +33671,8 @@
 	name = "Port to Filter"
 	},
 /obj/machinery/camera/autoname{
-	dir = 4
+	dir = 4;
+	network = list("ss13, engine")
 	},
 /turf/open/floor/plasteel,
 /area/engine/atmos)
@@ -33822,7 +33842,8 @@
 /area/maintenance/starboard/aft)
 "cbl" = (
 /obj/machinery/camera/autoname{
-	dir = 4
+	dir = 4;
+	network = list("ss13, engine")
 	},
 /turf/open/floor/plasteel/dark/telecomms,
 /area/tcommsat/server)
@@ -34887,7 +34908,8 @@
 /area/engine/break_room)
 "cex" = (
 /obj/machinery/camera/autoname{
-	dir = 4
+	dir = 4;
+	network = list("ss13, engine")
 	},
 /turf/open/floor/plasteel,
 /area/engine/atmos)
@@ -35094,7 +35116,8 @@
 	pressure_checks = 0
 	},
 /obj/machinery/camera/autoname{
-	dir = 4
+	dir = 4;
+	network = list("ss13, engine")
 	},
 /turf/open/floor/circuit/telecomms,
 /area/science/xenobiology)
@@ -35446,7 +35469,8 @@
 	dir = 4
 	},
 /obj/machinery/camera/autoname{
-	dir = 8
+	dir = 8;
+	network = list("ss13","engine")
 	},
 /turf/open/floor/plasteel,
 /area/engine/engineering)
@@ -36194,7 +36218,8 @@
 	dir = 8
 	},
 /obj/machinery/camera/autoname{
-	dir = 4
+	dir = 4;
+	network = list("ss13, engine")
 	},
 /turf/open/floor/plasteel/dark,
 /area/crew_quarters/heads/chief)
@@ -36244,7 +36269,8 @@
 /area/crew_quarters/heads/chief)
 "cjl" = (
 /obj/machinery/camera/autoname{
-	dir = 4
+	dir = 4;
+	network = list("ss13, engine")
 	},
 /turf/open/floor/plasteel,
 /area/engine/engineering)
@@ -36350,7 +36376,8 @@
 	dir = 8
 	},
 /obj/machinery/camera/autoname{
-	dir = 4
+	dir = 4;
+	network = list("ss13, engine")
 	},
 /turf/open/floor/plating,
 /area/engine/engineering)
@@ -36796,7 +36823,8 @@
 "cly" = (
 /obj/structure/chair/stool,
 /obj/machinery/camera/autoname{
-	dir = 4
+	dir = 4;
+	network = list("ss13, engine")
 	},
 /turf/open/floor/plating,
 /area/maintenance/solars/starboard/aft)
@@ -37371,7 +37399,8 @@
 	pixel_y = -3
 	},
 /obj/machinery/camera/autoname{
-	dir = 4
+	dir = 4;
+	network = list("ss13, engine")
 	},
 /turf/open/floor/plasteel/showroomfloor,
 /area/security/warden)
@@ -38045,7 +38074,8 @@
 "cpV" = (
 /obj/structure/table,
 /obj/machinery/camera/autoname{
-	dir = 4
+	dir = 4;
+	network = list("ss13","engine")
 	},
 /turf/open/floor/plasteel,
 /area/engine/engineering)
@@ -38126,7 +38156,8 @@
 	dir = 1
 	},
 /obj/machinery/camera/autoname{
-	dir = 10
+	dir = 10;
+	network = list("ss13","engine")
 	},
 /turf/open/floor/engine,
 /area/engine/engineering)
@@ -38187,7 +38218,8 @@
 /area/engine/engineering)
 "cqp" = (
 /obj/machinery/camera/autoname{
-	dir = 4
+	dir = 4;
+	network = list("ss13, engine")
 	},
 /turf/open/floor/plating,
 /area/engine/engineering)
@@ -38896,7 +38928,8 @@
 	},
 /obj/structure/closet/emcloset,
 /obj/machinery/camera/autoname{
-	dir = 4
+	dir = 4;
+	network = list("ss13, engine")
 	},
 /turf/open/floor/plasteel/white,
 /area/medical/medbay/central)
@@ -39594,7 +39627,8 @@
 "cvu" = (
 /obj/structure/lattice,
 /obj/machinery/camera/autoname{
-	dir = 4
+	dir = 4;
+	network = list("ss13, engine")
 	},
 /turf/open/space,
 /area/space/nearstation)
@@ -40380,9 +40414,21 @@
 	name = "Atmospherics Maintenance";
 	req_access_txt = "12;24"
 	},
+<<<<<<< HEAD
 /obj/effect/mapping_helpers/airlock/abandoned,
 /turf/open/floor/plating,
 /area/maintenance/aft)
+=======
+/obj/item/clothing/neck/stethoscope{
+	layer = 3.2
+	},
+/obj/machinery/camera/autoname{
+	dir = 4;
+	network = list("ss13, engine")
+	},
+/turf/open/floor/plasteel/freezer,
+/area/medical/virology)
+>>>>>>> 9f88a46868 (Fixes the Engine camera consoles on box station (#7706))
 "cAf" = (
 /obj/structure/disposaloutlet,
 /obj/structure/disposalpipe/trunk{
@@ -41447,7 +41493,8 @@
 	dir = 4
 	},
 /obj/machinery/camera/autoname{
-	dir = 8
+	dir = 8;
+	network = list("ss13","engine")
 	},
 /turf/open/floor/engine,
 /area/engine/engineering)
@@ -41507,7 +41554,8 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/camera/autoname{
-	dir = 6
+	dir = 6;
+	network = list("ss13","engine")
 	},
 /turf/open/floor/engine,
 /area/engine/supermatter)
@@ -41862,7 +41910,8 @@
 	dir = 4
 	},
 /obj/machinery/camera/autoname{
-	dir = 6
+	dir = 6;
+	network = list("ss13","engine")
 	},
 /turf/open/floor/plasteel/dark,
 /area/engine/engineering)
@@ -42903,7 +42952,9 @@
 /obj/structure/sign/warning/nosmoking{
 	pixel_y = 32
 	},
-/obj/machinery/camera/autoname,
+/obj/machinery/camera/autoname{
+	network = list("ss13","engine")
+	},
 /turf/open/floor/plasteel,
 /area/engine/engineering)
 "cSS" = (
@@ -44623,7 +44674,8 @@
 	dir = 1
 	},
 /obj/machinery/camera/autoname{
-	dir = 4
+	dir = 4;
+	network = list("ss13, engine")
 	},
 /turf/open/floor/plasteel,
 /area/crew_quarters/bar)
@@ -45508,7 +45560,8 @@
 	dir = 4
 	},
 /obj/machinery/camera/autoname{
-	dir = 4
+	dir = 4;
+	network = list("ss13, engine")
 	},
 /turf/open/floor/plating,
 /area/ai_monitored/turret_protected/aisat/atmos)
@@ -45949,7 +46002,8 @@
 	icon_state = "0-2"
 	},
 /obj/machinery/camera/autoname{
-	dir = 4
+	dir = 4;
+	network = list("ss13, engine")
 	},
 /turf/open/floor/engine/vacuum,
 /area/maintenance/disposal/incinerator)
@@ -46463,8 +46517,25 @@
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer4{
 	dir = 8
 	},
+<<<<<<< HEAD
 /turf/open/floor/plasteel/dark,
 /area/ai_monitored/turret_protected/ai)
+=======
+/obj/effect/turf_decal/tile/yellow{
+	dir = 8
+	},
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer2{
+	dir = 1
+	},
+/obj/machinery/camera/autoname{
+	dir = 4;
+	network = list("ss13, engine")
+	},
+/turf/open/floor/plasteel/dark/corner{
+	dir = 1
+	},
+/area/engine/atmos)
+>>>>>>> 9f88a46868 (Fixes the Engine camera consoles on box station (#7706))
 "gKu" = (
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
@@ -50806,7 +50877,8 @@
 /obj/machinery/computer/nanite_cloud_controller,
 /obj/effect/turf_decal/bot,
 /obj/machinery/camera/autoname{
-	dir = 4
+	dir = 4;
+	network = list("ss13, engine")
 	},
 /turf/open/floor/plasteel/dark,
 /area/science/nanite)
@@ -50875,7 +50947,8 @@
 	dir = 1
 	},
 /obj/machinery/camera/autoname{
-	dir = 4
+	dir = 4;
+	network = list("ss13, engine")
 	},
 /turf/open/floor/plasteel/dark,
 /area/ai_monitored/turret_protected/aisat_interior)
@@ -50905,6 +50978,22 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
 	dir = 1
 	},
+<<<<<<< HEAD
+=======
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/layer4{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/manifold/supply/hidden/layer2{
+	dir = 8
+	},
+/obj/machinery/camera/autoname{
+	dir = 4;
+	network = list("ss13, engine")
+	},
+>>>>>>> 9f88a46868 (Fixes the Engine camera consoles on box station (#7706))
 /turf/open/floor/plasteel,
 /area/ai_monitored/storage/eva)
 "lST" = (
@@ -51672,8 +51761,14 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
 	},
+<<<<<<< HEAD
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
+=======
+/obj/machinery/camera/autoname{
+	dir = 4;
+	network = list("ss13, engine")
+>>>>>>> 9f88a46868 (Fixes the Engine camera consoles on box station (#7706))
 	},
 /turf/open/floor/plating,
 /area/maintenance/port/aft)
@@ -52117,7 +52212,61 @@
 	},
 /turf/open/floor/plasteel,
 /area/crew_quarters/locker)
+<<<<<<< HEAD
 "niv" = (
+=======
+"nhR" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/blue{
+	dir = 8
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 9
+	},
+/turf/open/floor/plasteel/white,
+/area/medical/genetics)
+"nid" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer4{
+	dir = 4
+	},
+/obj/machinery/camera/autoname{
+	dir = 4;
+	network = list("ss13","engine")
+	},
+/turf/open/floor/engine,
+/area/engine/engineering)
+"niG" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
+	dir = 8
+	},
+/turf/open/floor/plasteel,
+/area/quartermaster/office)
+"niK" = (
+/obj/structure/table,
+/obj/machinery/light/small{
+	dir = 8
+	},
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer4{
+	dir = 4
+	},
+/turf/open/floor/carpet/purple,
+/area/crew_quarters/dorms)
+"niT" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 6
+	},
+>>>>>>> 9f88a46868 (Fixes the Engine camera consoles on box station (#7706))
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
 	},
@@ -55562,6 +55711,22 @@
 	},
 /turf/open/floor/plating,
 /area/maintenance/aft)
+<<<<<<< HEAD
+=======
+"rzn" = (
+/obj/machinery/camera/autoname{
+	dir = 4;
+	network = list("ss13, engine")
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
+	dir = 10
+	},
+/turf/open/floor/plating,
+/area/security/main)
+>>>>>>> 9f88a46868 (Fixes the Engine camera consoles on box station (#7706))
 "rzu" = (
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
 	dir = 1
@@ -55809,12 +55974,69 @@
 	id = "cell4";
 	pixel_x = 28
 	},
+<<<<<<< HEAD
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/rack,
 /obj/item/restraints/handcuffs,
 /obj/item/restraints/handcuffs,
 /obj/item/restraints/handcuffs,
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer4{
+=======
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer2{
+	dir = 4
+	},
+/obj/machinery/camera/autoname{
+	dir = 4;
+	network = list("ss13, engine")
+	},
+/obj/structure/table/wood/fancy,
+/obj/item/soulstone/anybody/chaplain,
+/obj/item/organ/heart,
+/obj/item/reagent_containers/food/drinks/bottle/holywater,
+/obj/item/book/granter/spell/smoke/lesser,
+/turf/open/floor/plasteel/dark,
+/area/chapel/office)
+"rLR" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer2,
+/turf/open/floor/plasteel/grimy,
+/area/ai_monitored/turret_protected/aisat_interior)
+"rLT" = (
+/obj/machinery/door/airlock/command/glass{
+	name = "Research Director";
+	req_access_txt = "30"
+	},
+/obj/structure/cable/yellow{
+	icon_state = "4-8"
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
+	dir = 8
+	},
+/obj/machinery/door/firedoor,
+/turf/open/floor/plasteel/cafeteria,
+/area/crew_quarters/heads/hor)
+"rLV" = (
+/obj/structure/cable/yellow{
+	icon_state = "1-2"
+	},
+/obj/structure/disposalpipe/segment,
+/obj/machinery/atmospherics/pipe/manifold/supply/hidden/layer2{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
+/turf/open/floor/plasteel,
+/area/crew_quarters/heads/hop)
+"rLX" = (
+/obj/structure/cable/yellow{
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/manifold/supply/hidden/layer2{
+>>>>>>> 9f88a46868 (Fixes the Engine camera consoles on box station (#7706))
 	dir = 8
 	},
 /turf/open/floor/plasteel,
@@ -57798,6 +58020,41 @@
 	},
 /turf/open/floor/plating,
 /area/maintenance/aft)
+<<<<<<< HEAD
+=======
+"uwu" = (
+/obj/effect/turf_decal/tile/red{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/red{
+	dir = 1
+	},
+/obj/item/radio/intercom{
+	pixel_x = -25
+	},
+/obj/structure/chair{
+	dir = 4
+	},
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer2{
+	dir = 4
+	},
+/obj/machinery/camera/autoname{
+	dir = 4;
+	network = list("ss13, engine")
+	},
+/turf/open/floor/plasteel,
+/area/hallway/secondary/exit)
+"uwB" = (
+/obj/structure/cable/yellow{
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
+	dir = 1
+	},
+/turf/open/floor/plasteel,
+/area/gateway)
+>>>>>>> 9f88a46868 (Fixes the Engine camera consoles on box station (#7706))
 "uwI" = (
 /obj/machinery/power/smes{
 	charge = 5e+006
@@ -60732,8 +60989,14 @@
 /obj/effect/turf_decal/tile/green{
 	dir = 4
 	},
+<<<<<<< HEAD
 /obj/structure/disposalpipe/trunk{
 	dir = 4
+=======
+/obj/machinery/camera/autoname{
+	dir = 4;
+	network = list("ss13","engine")
+>>>>>>> 9f88a46868 (Fixes the Engine camera consoles on box station (#7706))
 	},
 /turf/open/floor/plasteel/white,
 /area/medical/virology)
