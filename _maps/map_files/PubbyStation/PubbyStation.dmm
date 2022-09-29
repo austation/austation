@@ -11223,12 +11223,6 @@
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/plasteel,
 /area/hallway/primary/central)
-"aBJ" = (
-/obj/structure/cable/yellow{
-	icon_state = "1-2"
-	},
-/turf/open/floor/plasteel,
-/area/hallway/primary/central)
 "aBK" = (
 /obj/structure/table,
 /obj/machinery/light{
@@ -12373,19 +12367,7 @@
 "aEr" = (
 /obj/structure/sink/puddle,
 /obj/structure/flora/ausbushes/reedbush,
-/obj/structure/cable/yellow{
-	icon_state = "0-4"
-	},
 /turf/open/floor/grass,
-/area/hallway/primary/fore)
-"aEs" = (
-/obj/effect/turf_decal/tile/red{
-	dir = 8
-	},
-/obj/structure/cable/yellow{
-	icon_state = "2-8"
-	},
-/turf/open/floor/plasteel,
 /area/hallway/primary/fore)
 "aEt" = (
 /obj/structure/table,
@@ -12800,15 +12782,6 @@
 /obj/structure/flora/ausbushes/grassybush,
 /turf/open/floor/grass,
 /area/hallway/primary/fore)
-"aFr" = (
-/obj/effect/turf_decal/tile/red{
-	dir = 8
-	},
-/obj/structure/cable/yellow{
-	icon_state = "1-2"
-	},
-/turf/open/floor/plasteel/dark,
-/area/hallway/primary/fore)
 "aFs" = (
 /obj/structure/table,
 /obj/item/stack/cable_coil{
@@ -13051,17 +13024,14 @@
 /turf/open/floor/grass,
 /area/hallway/primary/fore)
 "aGb" = (
-/obj/machinery/door/airlock/public/glass{
-	name = "Central Access"
-	},
 /obj/effect/turf_decal/stripes/line,
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
-/obj/structure/cable/yellow{
-	icon_state = "1-2"
-	},
 /obj/machinery/door/firedoor,
+/obj/machinery/door/airlock/public/glass{
+	name = "Central Access"
+	},
 /turf/open/floor/plasteel,
 /area/hallway/primary/fore)
 "aGc" = (
@@ -13904,6 +13874,7 @@
 	},
 /turf/open/space,
 /area/solar/port)
+<<<<<<< HEAD
 "aIu" = (
 /obj/machinery/door/airlock/maintenance,
 /obj/effect/mapping_helpers/airlock/abandoned,
@@ -13939,15 +13910,14 @@
 	},
 /turf/open/floor/plasteel,
 /area/hallway/primary/central)
+=======
+>>>>>>> 7bea91972e (Genetics pubby doors + miscelaneous fixes  (#7735))
 "aIN" = (
 /obj/structure/cable/yellow{
 	icon_state = "1-4"
 	},
 /obj/structure/cable/yellow{
 	icon_state = "2-4"
-	},
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
 	},
 /turf/open/floor/plasteel,
 /area/hallway/primary/central)
@@ -39480,9 +39450,6 @@
 	},
 /turf/open/floor/engine/co2,
 /area/engine/atmos)
-"bWh" = (
-/turf/open/floor/plating/asteroid,
-/area/chapel/office)
 "bWi" = (
 /obj/structure/flora/ausbushes/leafybush,
 /obj/structure/flora/ausbushes/reedbush,
@@ -47426,6 +47393,7 @@
 	},
 /turf/open/floor/plasteel/white,
 /area/science/xenobiology)
+<<<<<<< HEAD
 "cQD" = (
 /obj/effect/turf_decal/tile/yellow{
 	dir = 4
@@ -47443,10 +47411,17 @@
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/layer4{
 	dir = 1
 	},
+=======
+"cRi" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+>>>>>>> 7bea91972e (Genetics pubby doors + miscelaneous fixes  (#7735))
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/layer2{
 	dir = 1
 	},
 /turf/open/floor/plasteel,
+<<<<<<< HEAD
 /area/hallway/secondary/entry)
 "cQJ" = (
 /obj/effect/spawner/structure/window/reinforced,
@@ -47455,6 +47430,56 @@
 	},
 /turf/open/floor/plating,
 /area/hallway/primary/fore)
+=======
+/area/hallway/primary/central)
+"cRm" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer4{
+	dir = 8
+	},
+/turf/open/floor/plasteel/dark,
+/area/crew_quarters/bar)
+"cSt" = (
+/obj/structure/cable/yellow{
+	icon_state = "2-4"
+	},
+/obj/structure/cable/yellow{
+	icon_state = "1-2"
+	},
+/obj/structure/disposalpipe/sorting/mail{
+	dir = 1;
+	name = "Security Junction";
+	sortType = 30
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2,
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
+/turf/open/floor/plating{
+	icon_state = "platingdmg3"
+	},
+/area/maintenance/department/security/brig)
+"cSz" = (
+/obj/effect/mapping_helpers/airlock/cyclelink_helper{
+	dir = 4
+	},
+/obj/machinery/door/airlock/research{
+	name = "Xenobiology Lab";
+	req_access_txt = "55"
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/machinery/door/firedoor,
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/turf/open/floor/plasteel/dark,
+/area/science/xenobiology)
+>>>>>>> 7bea91972e (Genetics pubby doors + miscelaneous fixes  (#7735))
 "cSJ" = (
 /obj/item/reagent_containers/glass/beaker/cryoxadone{
 	pixel_x = -2;
@@ -49512,9 +49537,71 @@
 	},
 /turf/open/floor/plating,
 /area/maintenance/department/security/brig)
+<<<<<<< HEAD
 "fAA" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
+=======
+"fzh" = (
+/obj/effect/mapping_helpers/airlock/cyclelink_helper{
+	dir = 8
+	},
+/obj/machinery/door/airlock/external{
+	name = "public external airlock"
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/storage/emergency/starboard)
+"fzI" = (
+/obj/machinery/door/airlock/public/glass{
+	name = "Departure Lounge"
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/machinery/door/firedoor,
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/turf/open/floor/plasteel,
+/area/hallway/secondary/exit/departure_lounge)
+"fzK" = (
+/obj/structure/cable/yellow{
+	icon_state = "4-8"
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 6
+	},
+/obj/effect/turf_decal/tile/red,
+/obj/effect/turf_decal/tile/red{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/turf/open/floor/plasteel/dark,
+/area/hallway/primary/fore)
+"fzM" = (
+/obj/effect/turf_decal/tile/blue{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/manifold/supply/hidden/layer2,
+/obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/layer4,
+>>>>>>> 7bea91972e (Genetics pubby doors + miscelaneous fixes  (#7735))
 /turf/open/floor/plasteel,
 /area/hallway/secondary/exit/departure_lounge)
 "fAM" = (
@@ -52586,12 +52673,20 @@
 "jvJ" = (
 /obj/effect/turf_decal/tile/neutral,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
+<<<<<<< HEAD
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2,
 /turf/open/floor/plasteel,
 /area/hallway/secondary/entry)
 "jwp" = (
 /obj/machinery/atmospherics/pipe/manifold4w/supply/hidden/layer2,
 /obj/machinery/atmospherics/pipe/manifold4w/scrubbers/hidden/layer4,
+=======
+/obj/structure/cable/yellow{
+	icon_state = "1-2"
+	},
+/obj/machinery/door/firedoor,
+/obj/structure/disposalpipe/segment,
+>>>>>>> 7bea91972e (Genetics pubby doors + miscelaneous fixes  (#7735))
 /turf/open/floor/plasteel/white,
 /area/medical/medbay/central)
 "jxl" = (
@@ -54126,9 +54221,36 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/chapel/dock)
+<<<<<<< HEAD
 "lGo" = (
 /obj/effect/turf_decal/delivery/red,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
+=======
+"lFS" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2,
+/turf/open/floor/plasteel,
+/area/hallway/primary/central)
+"lFW" = (
+/obj/item/radio/intercom{
+	pixel_x = 28
+	},
+/obj/effect/turf_decal/tile/red{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/red{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2,
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
+/turf/open/floor/plasteel/dark,
+/area/security/execution/transfer)
+"lGg" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer2{
+>>>>>>> 7bea91972e (Genetics pubby doors + miscelaneous fixes  (#7735))
 	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
@@ -55035,6 +55157,7 @@
 /obj/effect/turf_decal/tile/yellow,
 /turf/open/floor/plasteel/dark,
 /area/maintenance/disposal/incinerator)
+<<<<<<< HEAD
 "mPh" = (
 /obj/structure/sign/directions/evac{
 	pixel_x = -32
@@ -55044,6 +55167,42 @@
 	},
 /turf/open/floor/plasteel,
 /area/hallway/primary/central)
+=======
+"mOT" = (
+/obj/structure/cable/yellow{
+	icon_state = "1-8"
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 9
+	},
+/obj/effect/decal/cleanable/ash,
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
+	dir = 9
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
+	dir = 9
+	},
+/turf/open/floor/plating,
+/area/maintenance/department/cargo)
+"mPb" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer4,
+/turf/open/floor/plasteel/white,
+/area/ai_monitored/turret_protected/ai)
+"mPL" = (
+/obj/structure/cable/yellow{
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/turf/open/floor/plating{
+	icon_state = "platingdmg1"
+	},
+/area/maintenance/department/security/brig)
+>>>>>>> 7bea91972e (Genetics pubby doors + miscelaneous fixes  (#7735))
 "mQm" = (
 /obj/structure/chair/office/light{
 	dir = 1
@@ -59152,11 +59311,18 @@
 	dir = 4
 	},
 /turf/open/floor/engine,
+<<<<<<< HEAD
 /area/engine/supermatter)
 "rYY" = (
 /obj/machinery/door/airlock/engineering/glass{
 	name = "Supermatter Engine";
 	req_access_txt = "10"
+=======
+/area/engine/engineering)
+"rZi" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+>>>>>>> 7bea91972e (Genetics pubby doors + miscelaneous fixes  (#7735))
 	},
 /obj/effect/turf_decal/stripes/line,
 /obj/machinery/door/firedoor,
@@ -59469,6 +59635,7 @@
 	},
 /turf/open/floor/plating,
 /area/security/execution/transfer)
+<<<<<<< HEAD
 "szO" = (
 /obj/machinery/light,
 /obj/machinery/button/door{
@@ -59502,6 +59669,11 @@
 "sAt" = (
 /obj/effect/turf_decal/tile/neutral{
 	dir = 4
+=======
+"sAn" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer2{
+	dir = 1
+>>>>>>> 7bea91972e (Genetics pubby doors + miscelaneous fixes  (#7735))
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
@@ -59831,6 +60003,7 @@
 /obj/machinery/light{
 	dir = 4
 	},
+<<<<<<< HEAD
 /obj/effect/turf_decal/tile/purple{
 	dir = 1
 	},
@@ -59839,6 +60012,9 @@
 	dir = 4
 	},
 /turf/open/floor/plasteel/white,
+=======
+/turf/open/floor/plasteel/dark,
+>>>>>>> 7bea91972e (Genetics pubby doors + miscelaneous fixes  (#7735))
 /area/science/explab)
 "tdB" = (
 /obj/structure/table,
@@ -60957,7 +61133,41 @@
 	},
 /turf/open/floor/circuit/telecomms,
 /area/science/xenobiology)
+<<<<<<< HEAD
 "uGx" = (
+=======
+"uEM" = (
+/obj/machinery/power/apc{
+	dir = 1;
+	name = "Monastery APC";
+	pixel_y = 24
+	},
+/obj/structure/cable/yellow{
+	icon_state = "0-8"
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/turf/open/floor/plasteel,
+/area/chapel/main/monastery)
+"uGp" = (
+/obj/machinery/door/airlock/security{
+	aiControlDisabled = 1;
+	name = "Solutions Room";
+	req_access_txt = "2"
+	},
+/obj/machinery/door/firedoor,
+>>>>>>> 7bea91972e (Genetics pubby doors + miscelaneous fixes  (#7735))
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
 	dir = 9
 	},
@@ -78067,7 +78277,7 @@ aaa
 abI
 bNs
 bNs
-bWh
+bOw
 bOw
 bOw
 bOw
@@ -83391,9 +83601,9 @@ bBW
 ajM
 avq
 ajM
-ajM
-aiu
-aiu
+qnk
+qnk
+qnk
 gSH
 xJy
 ufM
@@ -83905,7 +84115,7 @@ ajM
 akA
 akA
 akA
-ajM
+qnk
 ayF
 aAc
 xLC
@@ -86995,7 +87205,7 @@ loJ
 qnk
 gQh
 gQh
-cQJ
+gQh
 gQh
 qnk
 oEA
@@ -87252,12 +87462,12 @@ axG
 aBg
 aCp
 aBg
-aEs
-aFr
+aCp
+aBg
 aGb
-mPh
-aBJ
-szP
+rlV
+aDZ
+aDZ
 aDZ
 rlV
 aDZ
@@ -87514,8 +87724,13 @@ axG
 aGc
 aDZ
 aHF
+<<<<<<< HEAD
 aIL
 rxo
+=======
+aHF
+vBa
+>>>>>>> 7bea91972e (Genetics pubby doors + miscelaneous fixes  (#7735))
 aDZ
 aDZ
 sLZ
@@ -88028,8 +88243,13 @@ aBi
 aBi
 aBi
 hqo
+<<<<<<< HEAD
 aIO
 oxl
+=======
+aDZ
+gAZ
+>>>>>>> 7bea91972e (Genetics pubby doors + miscelaneous fixes  (#7735))
 aKJ
 aKK
 aKJ
@@ -88285,8 +88505,13 @@ aFs
 aGe
 aGX
 bdo
+<<<<<<< HEAD
 aIO
 wzo
+=======
+aDZ
+unN
+>>>>>>> 7bea91972e (Genetics pubby doors + miscelaneous fixes  (#7735))
 aKK
 aLx
 aMV
