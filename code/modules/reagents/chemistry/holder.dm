@@ -584,7 +584,11 @@
 			can_process = TRUE
 	return can_process
 
+<<<<<<< HEAD
 /datum/reagents/proc/reaction(atom/A, method = TOUCH, volume_modifier = 1, show_message = 1, from_gas = 0) //austation -- added from_gas arg
+=======
+/datum/reagents/proc/reaction(atom/A, method = TOUCH, volume_modifier = 1, show_message = 1, obj/item/bodypart/affecting)
+>>>>>>> f8003a5c76 (Refactors bruise packs and ointment, with a mild rebalance to them and patches added (#7150))
 	var/react_type
 	if(isliving(A))
 		react_type = "LIVING"
@@ -609,7 +613,7 @@
 				if(method == VAPOR)
 					var/mob/living/L = A
 					touch_protection = L.get_permeability_protection()
-				R.reaction_mob(A, method, R.volume * volume_modifier, show_message, touch_protection)
+				R.reaction_mob(A, method, R.volume * volume_modifier, show_message, touch_protection, affecting)
 			if("TURF")
 				R.reaction_turf(A, R.volume * volume_modifier, show_message, from_gas) //austation -- added from_gas arg
 			if("OBJ")
