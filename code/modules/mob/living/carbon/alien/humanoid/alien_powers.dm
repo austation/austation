@@ -92,6 +92,7 @@ Doesn't work on other aliens/AI.*/
 	if(!M)
 		return 0
 	var/msg = stripped_input(usr, "Message:", "Alien Whisper")
+<<<<<<< HEAD
 	if(msg)
 		log_directed_talk(user, M, msg, LOG_SAY, tag="alien whisper")
 		to_chat(M, "<span class='noticealien'>You hear a strange, alien voice in your head.</span>[msg]")
@@ -105,6 +106,24 @@ Doesn't work on other aliens/AI.*/
 	else
 		return 0
 	return 1
+=======
+	if(!msg)
+		return FALSE
+	if(CHAT_FILTER_CHECK(msg))
+		to_chat(usr, "<span class='warning'>Your message contains forbidden words.</span>")
+		return FALSE
+	msg = user.treat_message_min(msg)
+	log_directed_talk(user, M, msg, LOG_SAY, tag="alien whisper")
+	to_chat(M, "<span class='noticealien'>You hear a strange, alien voice in your head.</span>[msg]")
+	to_chat(user, "<span class='noticealien'>You said: \"[msg]\" to [M]</span>")
+	for(var/ded in GLOB.dead_mob_list)
+		if(!isobserver(ded))
+			continue
+		var/follow_link_user = FOLLOW_LINK(ded, user)
+		var/follow_link_whispee = FOLLOW_LINK(ded, M)
+		to_chat(ded, "[follow_link_user] <span class='name'>[user]</span> <span class='alertalien'>Alien Whisper --> </span> [follow_link_whispee] <span class='name'>[M]</span> <span class='noticealien'>[msg]</span>")
+	return TRUE
+>>>>>>> 74b50fe09f (The Filterening (Poly, Nanites, Most "Alternate" Speech/Telepathy) (#7731))
 
 /obj/effect/proc_holder/alien/transfer
 	name = "Transfer Plasma"

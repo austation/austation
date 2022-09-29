@@ -39,6 +39,13 @@
 		title = "Master"
 	else if(!ishuman(user))
 		title = "Construct"
+<<<<<<< HEAD
+=======
+	if(CHAT_FILTER_CHECK(message))
+		to_chat(usr, "<span class='warning'>Your message contains forbidden words.</span>")
+		return
+	message = user.treat_message_min(message)
+>>>>>>> 74b50fe09f (The Filterening (Poly, Nanites, Most "Alternate" Speech/Telepathy) (#7731))
 	my_message = "<span class='[span]'><b>[title] [findtextEx(user.name, user.real_name) ? user.name : "[user.real_name] (as [user.name])"]:</b> [message]</span>"
 	for(var/i in GLOB.player_list)
 		var/mob/M = i

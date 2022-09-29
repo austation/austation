@@ -162,6 +162,13 @@
 /mob/living/simple_animal/revenant/say(message, bubble_type, var/list/spans = list(), sanitize = TRUE, datum/language/language = null, ignore_spam = FALSE, forced = null)
 	if(!message)
 		return
+<<<<<<< HEAD
+=======
+	if(CHAT_FILTER_CHECK(message))
+		to_chat(usr, "<span class='warning'>Your message contains forbidden words.</span>")
+		return
+	message = treat_message_min(message)
+>>>>>>> 74b50fe09f (The Filterening (Poly, Nanites, Most "Alternate" Speech/Telepathy) (#7731))
 	src.log_talk(message, LOG_SAY)
 	var/rendered = "<span class='revennotice'><b>[src]</b> says, \"[message]\"</span>"
 	for(var/mob/M in GLOB.mob_list)

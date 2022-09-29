@@ -365,6 +365,13 @@
 		var/message = stripped_input(user, "Write a message to send to your target's brain.","Enter message")
 		if(!message)
 			return
+<<<<<<< HEAD
+=======
+		if(CHAT_FILTER_CHECK(message))
+			to_chat(user, "<span class='warning'>Your message contains forbidden words.</span>")
+			return
+		message = user.treat_message_min(message)
+>>>>>>> 74b50fe09f (The Filterening (Poly, Nanites, Most "Alternate" Speech/Telepathy) (#7731))
 		if(QDELETED(L) || L.stat == DEAD)
 			return
 
