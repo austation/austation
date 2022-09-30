@@ -87,7 +87,11 @@ Difficulty: Very Hard
 	anger_modifier = CLAMP(((maxHealth - health)/50),0,20)
 	ranged_cooldown = world.time + 120
 
+<<<<<<< HEAD
 	if(client)
+=======
+	if(client) //Player controlled handled a bit differently.
+>>>>>>> a0690c1528 (Unsorted.dm is now sorted up (#7743))
 		switch(chosen_attack)
 			if(1)
 				select_spiral_attack()
@@ -151,6 +155,39 @@ Difficulty: Very Hard
 	INVOKE_ASYNC(src, .proc/spiral_shoot, FALSE)
 	INVOKE_ASYNC(src, .proc/spiral_shoot, TRUE)
 
+<<<<<<< HEAD
+=======
+/mob/living/simple_animal/hostile/megafauna/colossus/proc/final_attack() //not actually necessarily the final attack, but has a very long cooldown.
+	var/finale_counter = 10
+	var/turf/U = get_turf(src)
+	invulnerable_finale = TRUE
+	for(var/i in 1 to 20)
+		if(finale_counter > 4)
+			telegraph()
+			say("Die!!")
+			visible_message("<span class='colossus'>\"<b>Die!</b>\"</span>")
+			blast()
+		if(finale_counter > 1)
+			finale_counter--
+		for(var/T in RANGE_TURFS(12, U) - U)
+			if(prob(min(finale_counter, 2)))
+				shoot_projectile(T)
+		sleep(finale_counter + 1)
+	for(var/ii in 1 to 3)
+		telegraph()
+		say("Die")
+		visible_message("<span class='colossus'>\"<b>Die..</b>\"</span>")
+		random_shots()
+		finale_counter += 6
+		sleep(finale_counter)
+	for(var/iii in 1 to 4)
+		telegraph()
+		say("Die..")
+		visible_message("<span class='colossus'>\"<b>Die..</b>\"</span>")
+		invulnerable_finale = FALSE
+		sleep(30) //Long cooldown (total 15 seconds with one last 30 applied in ) after this attack finally concludes
+
+>>>>>>> a0690c1528 (Unsorted.dm is now sorted up (#7743))
 /mob/living/simple_animal/hostile/megafauna/colossus/proc/spiral_shoot(negative = pick(TRUE, FALSE), counter_start = 8)
 	var/turf/start_turf = get_step(src, pick(GLOB.alldirs))
 	var/counter = counter_start
@@ -191,7 +228,7 @@ Difficulty: Very Hard
 	var/turf/target_turf = get_turf(target)
 	playsound(src, 'sound/magic/clockwork/invoke_general.ogg', 200, 1, 2)
 	newtonian_move(get_dir(target_turf, src))
-	var/angle_to_target = Get_Angle(src, target_turf)
+	var/angle_to_target = get_angle(src, target_turf)
 	if(isnum_safe(set_angle))
 		angle_to_target = set_angle
 	var/static/list/colossus_shotgun_shot_angles = list(12.5, 7.5, 2.5, -2.5, -7.5, -12.5)

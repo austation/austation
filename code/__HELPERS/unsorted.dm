@@ -1,4 +1,6 @@
+//here lies unsorted.dm, bane of many coders, pain of lots of maintainers
 
+<<<<<<< HEAD
 
 /*
  * A large number of misc global procs.
@@ -1594,3 +1596,6 @@ config_setting should be one of the following:
 		if(-INFINITY to 0, 11 to INFINITY)
 			CRASH("Can't turn invalid directions!")
 	return turn(input_dir, 180)
+=======
+//* 2005? / + 2022
+>>>>>>> a0690c1528 (Unsorted.dm is now sorted up (#7743))
