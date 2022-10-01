@@ -119,6 +119,12 @@ GLOBAL_VAR_INIT(dynamic_forced_threat_level, -1)
 	/// lower value rounds closer to the average.
 	var/threat_curve_width = 1.8
 
+	/// Population at which the threat curve center starts getting reduced by 'threat_curve_lowop_coeff' for every X players under the threshold.
+	var/threat_curve_centre_lowpop_reduction_threshold = 30
+
+	/// The amount the threat curve centre is reduced for every player under 'threat_curve_centre_lowpop_reduction_threshold'
+	var/threat_curve_centre_lowpop_reduction_coeff = 1
+
 	/// A number between -5 and +5.
 	/// Equivalent to threat_curve_centre, but for the budget split.
 	/// A negative value will weigh towards midround rulesets, and a positive
@@ -137,6 +143,46 @@ GLOBAL_VAR_INIT(dynamic_forced_threat_level, -1)
 	/// The maximum amount of time for antag random events to be hijacked.
 	var/random_event_hijack_maximum = 18 MINUTES
 
+<<<<<<< HEAD
+=======
+	/// Maximum amount of threat allowed to generate.
+	var/max_threat_level = 100
+
+	/// The extra chance multiplier that a heavy impact midround ruleset will run next time.
+	/// For example, if this is set to 50, then the next heavy roll will be about 50% more likely to happen.
+	var/hijacked_random_event_injection_chance_modifier = 50
+
+	/// Any midround before this point is guaranteed to be light
+	var/midround_light_upper_bound = 25 MINUTES
+
+	/// Any midround after this point is guaranteed to be heavy
+	var/midround_heavy_lower_bound = 55 MINUTES
+
+	/// If there are less than this many players readied, threat level will be lowered.
+	/// This number should be kept fairly low, as there are other measures that population
+	/// impacts Dynamic, such as the requirements variable on rulesets.
+	var/low_pop_player_threshold = 20
+
+	/// The maximum threat that can roll with *zero* players.
+	/// As the number of players approaches `low_pop_player_threshold`, the maximum
+	/// threat level will increase.
+	/// For example, if `low_pop_maximum_threat` is 50, `low_pop_player_threshold` is 20,
+	/// and the number of readied players is 10, then the highest threat that can roll is
+	/// lerp(50, 100, 10 / 20), AKA 75.
+	var/low_pop_maximum_threat = 40
+
+	/// The chance for latejoins to roll when ready
+	var/latejoin_roll_chance = 50
+
+	/// The maximum percentage of (living antags / living players) can be before midround traitors, heretics, and all latejoins stop injecting while under "traitor_percentage_population_threshold" population.
+	var/lowpop_max_traitor_percentage = 15
+
+	/// The population size where dynamic stops caring about antag percents during injections. This is usually because on higher pop it isn't forced to spawn a bunch of sleeper agents.
+	var/traitor_percentage_population_threshold = 30
+
+	// == EVERYTHING BELOW THIS POINT SHOULD NOT BE CONFIGURED ==
+
+>>>>>>> 02d5f76e30 (Dynamic: Lowpop tweaks - lower threat, max antag% (#7681))
 	/// A list of recorded "snapshots" of the round, stored in the dynamic.json log
 	var/list/datum/dynamic_snapshot/snapshots
 
@@ -165,6 +211,7 @@ GLOBAL_VAR_INIT(dynamic_forced_threat_level, -1)
 	dat += "Midround budget to spend: <b>[mid_round_budget]</b> <a href='?src=\ref[src];[HrefToken()];adjustthreat=1'>\[Adjust\]</A> <a href='?src=\ref[src];[HrefToken()];threatlog=1'>\[View Log\]</a><br/>"
 	dat += "<br/>"
 	dat += "Parameters: centre = [threat_curve_centre] ; width = [threat_curve_width].<br/>"
+	dat += "            reduction_threshold = [threat_curve_centre_lowpop_reduction_threshold] ; reduction_coeff = [threat_curve_centre_lowpop_reduction_coeff].<br/>"
 	dat += "Split parameters: centre = [roundstart_split_curve_centre] ; width = [roundstart_split_curve_width].<br/>"
 	dat += "<i>On average, <b>[peaceful_percentage]</b>% of the rounds are more peaceful.</i><br/>"
 	dat += "Forced extended: <a href='?src=\ref[src];[HrefToken()];forced_extended=1'><b>[GLOB.dynamic_forced_extended ? "On" : "Off"]</b></a><br/>"
@@ -324,8 +371,21 @@ GLOBAL_VAR_INIT(dynamic_forced_threat_level, -1)
 
 /// Generates the threat level using lorentz distribution and assigns peaceful_percentage.
 /datum/game_mode/dynamic/proc/generate_threat()
+	var/pop_diff = threat_curve_centre_lowpop_reduction_threshold - roundstart_pop_ready
+	if(pop_diff > 0)
+		var/reduction_threat = threat_curve_centre_lowpop_reduction_coeff * pop_diff
+		// lorentz runs from -5 to 5, not 0 to 100 like threat, so if 100 = 10 (since it's offset by 5, add 5 to the maximum, to get 10), then 10 / 100 = 0.1
+		threat_curve_centre -= reduction_threat * 0.1
+		log_game("DYNAMIC: Lowered threat curve centre by [reduction_threat] threat, scaled to [roundstart_pop_ready] population, threshold [threat_curve_centre_lowpop_reduction_threshold] ([pop_diff] players below)")
 	var/relative_threat = LORENTZ_DISTRIBUTION(threat_curve_centre, threat_curve_width)
+<<<<<<< HEAD
 	threat_level = round(lorentz_to_amount(relative_threat), 0.1)
+=======
+	threat_level = clamp(round(lorentz_to_amount(relative_threat), 0.1), 0, max_threat_level)
+
+	if (roundstart_pop_ready < low_pop_player_threshold)
+		threat_level = min(threat_level, LERP(low_pop_maximum_threat, max_threat_level, roundstart_pop_ready / low_pop_player_threshold))
+>>>>>>> 02d5f76e30 (Dynamic: Lowpop tweaks - lower threat, max antag% (#7681))
 
 	peaceful_percentage = round(LORENTZ_CUMULATIVE_DISTRIBUTION(relative_threat, threat_curve_centre, threat_curve_width), 0.01)*100
 
@@ -371,9 +431,16 @@ GLOBAL_VAR_INIT(dynamic_forced_threat_level, -1)
 						continue
 					vars[variable] = configuration["Dynamic"][variable]
 
+	for(var/i in GLOB.new_player_list)
+		var/mob/dead/new_player/player = i
+		if(player.ready == PLAYER_READY_TO_PLAY && player.mind)
+			roundstart_pop_ready++
+			candidates.Add(player)
+
 	setup_parameters()
 	setup_hijacking()
 
+<<<<<<< HEAD
 	var/valid_roundstart_ruleset = 0
 	for (var/rule in subtypesof(/datum/dynamic_ruleset))
 		var/datum/dynamic_ruleset/ruleset = new rule()
@@ -395,6 +462,9 @@ GLOBAL_VAR_INIT(dynamic_forced_threat_level, -1)
 		if(player.ready == PLAYER_READY_TO_PLAY && player.mind)
 			roundstart_pop_ready++
 			candidates.Add(player)
+=======
+
+>>>>>>> 02d5f76e30 (Dynamic: Lowpop tweaks - lower threat, max antag% (#7681))
 	log_game("DYNAMIC: Listing [roundstart_rules.len] round start rulesets, and [candidates.len] players ready.")
 	if (candidates.len <= 0)
 		log_game("DYNAMIC: [candidates.len] candidates.")
@@ -677,6 +747,16 @@ GLOBAL_VAR_INIT(dynamic_forced_threat_level, -1)
 				var/datum/executed = _executed
 				if(blocking == executed.type)
 					return TRUE
+	return FALSE
+
+/datum/game_mode/dynamic/proc/check_lowpop_lowimpact_injection()
+	var/living_players_count = length(current_players[CURRENT_LIVING_PLAYERS])
+	var/living_antags_count = length(current_players[CURRENT_LIVING_ANTAGS])
+	var/antag_percent = living_players_count ? (living_antags_count / living_players_count) * 100 : 0
+	if(living_players_count && living_players_count < traitor_percentage_population_threshold && antag_percent > lowpop_max_traitor_percentage)
+		log_game("DYNAMIC: FAIL: [src] has too many living antags for the population ([living_antags_count] antags of [living_players_count] players - [antag_percent]%)")
+		return TRUE
+	log_game("DYNAMIC: [src] passed lowpop_lowimpact requirement: ([living_antags_count] antags of [living_players_count] players - [antag_percent]%)")
 	return FALSE
 
 /// Checks if client age is age or older.

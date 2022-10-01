@@ -37,9 +37,15 @@
 				if (M.mind && M.mind.assigned_role && (M.mind.assigned_role in enemy_roles) && (!(M in candidates) || (M.mind.assigned_role in restricted_roles)))
 					job_check++ // Checking for "enemies" (such as sec officers). To be counters, they must either not be candidates to that rule, or have a job that restricts them from it
 
+<<<<<<< HEAD
 		var/threat = round(mode.threat_level/10)
 		if (job_check < required_enemies[threat])
 			return FALSE
+=======
+	if (mode.check_lowpop_lowimpact_injection())
+		return FALSE
+
+>>>>>>> 02d5f76e30 (Dynamic: Lowpop tweaks - lower threat, max antag% (#7681))
 	return ..()
 
 /datum/dynamic_ruleset/latejoin/execute()
