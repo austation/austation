@@ -208,6 +208,8 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 	/// A reagent list containing the reagents this item produces when JUICED in a grinder!
 	var/list/juice_results
 
+	///Icon for monkey
+	var/icon/monkey_icon
 
 /obj/item/Initialize(mapload)
 
@@ -697,6 +699,12 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 			A.Grant(user)
 	if(item_flags & SLOWS_WHILE_IN_HAND || slowdown)
 		user.update_equipment_speed_mods()
+<<<<<<< HEAD
+=======
+	if(ismonkey(user)) //Only generate icons if we have to
+		compile_monkey_icon()
+	log_item(user, INVESTIGATE_VERB_EQUIPPED)
+>>>>>>> 9c0dc06ffd (Monkey re-sprite & Bonus procedural monkey clothing (#7394))
 
 //sometimes we only want to grant the item's action if it's equipped in a specific slot.
 /obj/item/proc/item_action_slot_check(slot, mob/user)
@@ -1192,3 +1200,37 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 		pain_stam_pct = (!isnull(embedding["pain_stam_pct"]) ? embedding["pain_stam_pct"] : EMBEDDED_PAIN_STAM_PCT),\
 		armour_block = (!isnull(embedding["armour_block"]) ? embedding["armour_block"] : EMBEDDED_ARMOUR_BLOCK))
 	return TRUE
+<<<<<<< HEAD
+=======
+
+/**
+ * * An interrupt for offering an item to other people, called mainly from [/mob/living/carbon/proc/give], in case you want to run your own offer behavior instead.
+ *
+ * * Return TRUE if you want to interrupt the offer.
+ *
+ * * Arguments:
+ * * offerer - the person offering the item
+ */
+/obj/item/proc/on_offered(mob/living/carbon/offerer)
+	if(SEND_SIGNAL(src, COMSIG_ITEM_OFFERING, offerer) & COMPONENT_OFFER_INTERRUPT)
+		return TRUE
+
+/**
+ * * An interrupt for someone trying to accept an offered item, called mainly from [/mob/living/carbon/proc/take], in case you want to run your own take behavior instead.
+ *
+ * * Return TRUE if you want to interrupt the taking.
+ *
+ * * Arguments:
+ * * offerer - the person offering the item
+ * * taker - the person trying to accept the offer
+ */
+/obj/item/proc/on_offer_taken(mob/living/carbon/offerer, mob/living/carbon/taker)
+	if(SEND_SIGNAL(src, COMSIG_ITEM_OFFER_TAKEN, offerer, taker) & COMPONENT_OFFER_INTERRUPT)
+		return TRUE
+
+/**
+ * * Overridden to generate icons for monkey clothing
+ */
+/obj/item/proc/compile_monkey_icon()
+	return
+>>>>>>> 9c0dc06ffd (Monkey re-sprite & Bonus procedural monkey clothing (#7394))
