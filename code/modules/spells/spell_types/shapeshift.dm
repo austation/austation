@@ -148,7 +148,13 @@
 	else
 		restore()
 
+<<<<<<< HEAD
 /obj/shapeshift_holder/proc/restore(death=FALSE)
+=======
+/obj/shapeshift_holder/proc/restore(death=FALSE, convert_damage = TRUE)
+	if(!stored) //somehow this proc is getting called twice and it runtimes on the second pass because stored has been hit with qdel()
+		return FALSE
+>>>>>>> e32e9196c4 ([New Science Sub-Department] Xenoarchaeology - Xenoartifact Research.  (#6718))
 	restoring = TRUE
 	qdel(slink)
 	stored.forceMove(get_turf(src))
@@ -157,14 +163,26 @@
 		shape.mind.transfer_to(stored)
 	if(death)
 		stored.death()
+<<<<<<< HEAD
 	else if(source.convert_damage)
+=======
+	else if(convert_damage || (istype(source) && source.convert_damage))
+		var/original_blood_volume = stored.blood_volume
+>>>>>>> e32e9196c4 ([New Science Sub-Department] Xenoarchaeology - Xenoartifact Research.  (#6718))
 		stored.revive(full_heal = TRUE)
 
 		var/damage_percent = (shape.maxHealth - shape.health)/shape.maxHealth;
 		var/damapply = stored.maxHealth * damage_percent
 
+<<<<<<< HEAD
 		stored.apply_damage(damapply, source.convert_damage_type, forced = TRUE)
 	qdel(shape)
+=======
+		stored.apply_damage(damapply, (istype(source) ? source.convert_damage_type : BRUTE), forced = TRUE) //brute is the default damage convert
+		stored.blood_volume = original_blood_volume
+	if(!QDELETED(shape))
+		qdel(shape)
+>>>>>>> e32e9196c4 ([New Science Sub-Department] Xenoarchaeology - Xenoartifact Research.  (#6718))
 	qdel(src)
 
 /datum/soullink/shapeshift

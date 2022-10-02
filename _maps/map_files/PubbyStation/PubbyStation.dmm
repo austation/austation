@@ -12370,6 +12370,7 @@
 /obj/structure/flora/junglebush/b,
 /turf/open/floor/grass,
 /area/hallway/primary/fore)
+<<<<<<< HEAD
 "aEr" = (
 /obj/structure/sink/puddle,
 /obj/structure/flora/ausbushes/reedbush,
@@ -12387,6 +12388,8 @@
 	},
 /turf/open/floor/plasteel,
 /area/hallway/primary/fore)
+=======
+>>>>>>> e32e9196c4 ([New Science Sub-Department] Xenoarchaeology - Xenoartifact Research.  (#6718))
 "aEt" = (
 /obj/structure/table,
 /obj/item/storage/toolbox/electrical{
@@ -13050,6 +13053,7 @@
 /obj/structure/flora/ausbushes/sunnybush,
 /turf/open/floor/grass,
 /area/hallway/primary/fore)
+<<<<<<< HEAD
 "aGb" = (
 /obj/machinery/door/airlock/public/glass{
 	name = "Central Access"
@@ -13064,6 +13068,8 @@
 /obj/machinery/door/firedoor,
 /turf/open/floor/plasteel,
 /area/hallway/primary/fore)
+=======
+>>>>>>> e32e9196c4 ([New Science Sub-Department] Xenoarchaeology - Xenoartifact Research.  (#6718))
 "aGc" = (
 /obj/machinery/door/airlock/public/glass{
 	name = "Central Access"
@@ -13904,6 +13910,7 @@
 	},
 /turf/open/space,
 /area/solar/port)
+<<<<<<< HEAD
 "aIu" = (
 /obj/machinery/door/airlock/maintenance,
 /obj/effect/mapping_helpers/airlock/abandoned,
@@ -13951,6 +13958,8 @@
 	},
 /turf/open/floor/plasteel,
 /area/hallway/primary/central)
+=======
+>>>>>>> e32e9196c4 ([New Science Sub-Department] Xenoarchaeology - Xenoartifact Research.  (#6718))
 "aIO" = (
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
@@ -26010,70 +26019,6 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/science/server)
-"bpd" = (
-/obj/machinery/button/door{
-	id = "testlab";
-	name = "Window Blast Doors";
-	pixel_x = -6
-	},
-/obj/structure/table/reinforced,
-/obj/machinery/button/door{
-	id = "telelab";
-	name = "Test Chamber Blast Door";
-	pixel_x = 6
-	},
-/obj/effect/turf_decal/stripes/line{
-	dir = 1
-	},
-/obj/machinery/atmospherics/pipe/simple/general/visible,
-/obj/effect/turf_decal/tile/neutral{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/neutral,
-/obj/effect/turf_decal/tile/neutral{
-	dir = 4
-	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 8
-	},
-/turf/open/floor/plasteel/dark,
-/area/science/explab)
-"bpe" = (
-/obj/machinery/computer/rdconsole/experiment,
-/obj/effect/turf_decal/stripes/line{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/neutral,
-/obj/effect/turf_decal/tile/neutral{
-	dir = 4
-	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 8
-	},
-/turf/open/floor/plasteel/dark,
-/area/science/explab)
-"bpg" = (
-/obj/structure/table/reinforced,
-/obj/effect/turf_decal/stripes/line{
-	dir = 1
-	},
-/obj/item/paper_bin,
-/obj/item/pen,
-/obj/effect/turf_decal/tile/neutral{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/neutral,
-/obj/effect/turf_decal/tile/neutral{
-	dir = 4
-	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 8
-	},
-/turf/open/floor/plasteel/dark,
-/area/science/explab)
 "bph" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
@@ -47543,8 +47488,28 @@
 	},
 /obj/effect/turf_decal/stripes/white/line,
 /turf/open/floor/plasteel,
+<<<<<<< HEAD
 /area/engine/atmos)
 "cVH" = (
+=======
+/area/security/brig)
+"cWa" = (
+/obj/structure/cable/yellow{
+	icon_state = "1-4"
+	},
+/obj/structure/cable/yellow{
+	icon_state = "2-4"
+	},
+/turf/open/floor/plasteel,
+/area/hallway/primary/central)
+"cWd" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/cable/yellow{
+	icon_state = "4-8"
+	},
+>>>>>>> e32e9196c4 ([New Science Sub-Department] Xenoarchaeology - Xenoartifact Research.  (#6718))
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer4{
 	dir = 4
 	},
@@ -47644,7 +47609,41 @@
 /obj/effect/turf_decal/stripes/corner{
 	dir = 1
 	},
+<<<<<<< HEAD
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
+=======
+/obj/effect/turf_decal/stripes/white/line{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/simple/green/visible{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
+	dir = 8
+	},
+/turf/open/floor/plasteel,
+/area/engine/atmos)
+"ddA" = (
+/obj/effect/turf_decal/delivery/red,
+/obj/machinery/atmospherics/pipe/simple/scrubbers/visible{
+	dir = 4
+	},
+/turf/open/floor/engine,
+/area/engine/engineering)
+"deV" = (
+/obj/structure/cable/yellow{
+	icon_state = "4-8"
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/manifold/supply/hidden/layer2{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+>>>>>>> e32e9196c4 ([New Science Sub-Department] Xenoarchaeology - Xenoartifact Research.  (#6718))
 /turf/open/floor/plasteel/dark,
 /area/ai_monitored/security/armory)
 "deF" = (
@@ -49260,6 +49259,7 @@
 	},
 /turf/open/floor/carpet,
 /area/security/detectives_office)
+<<<<<<< HEAD
 "fjs" = (
 /obj/machinery/light{
 	dir = 8
@@ -49273,6 +49273,86 @@
 	},
 /turf/open/floor/plasteel/white,
 /area/science/explab)
+=======
+"fic" = (
+/obj/structure/window/reinforced/fulltile,
+/obj/structure/transit_tube,
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2,
+/turf/open/floor/plating,
+/area/engine/engineering)
+"fiP" = (
+/obj/effect/mapping_helpers/airlock/cyclelink_helper,
+/obj/machinery/door/airlock/engineering/glass{
+	name = "Server Room";
+	req_access_txt = "61"
+	},
+/obj/structure/cable/yellow{
+	icon_state = "1-2"
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/effect/turf_decal/stripes/line,
+/obj/machinery/door/firedoor,
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2,
+/turf/open/floor/plasteel/dark,
+/area/tcommsat/computer)
+"fjd" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2,
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
+/turf/open/floor/plasteel/white,
+/area/science/explab)
+"fjG" = (
+/obj/machinery/light/small,
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/maintenance/department/science)
+"fjS" = (
+/obj/machinery/atmospherics/pipe/manifold/purple/visible{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2,
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
+/turf/open/floor/engine,
+/area/engine/engineering)
+"fkm" = (
+/obj/structure/disposalpipe/segment,
+/obj/effect/turf_decal/stripes/corner{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2,
+/turf/open/floor/grass,
+/area/hydroponics)
+"fkq" = (
+/obj/structure/cable/yellow{
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/turf/open/floor/plasteel/dark,
+/area/chapel/main/monastery)
+>>>>>>> e32e9196c4 ([New Science Sub-Department] Xenoarchaeology - Xenoartifact Research.  (#6718))
 "fkH" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 6
@@ -49512,11 +49592,84 @@
 	},
 /turf/open/floor/plating,
 /area/maintenance/department/security/brig)
+<<<<<<< HEAD
 "fAA" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
 /turf/open/floor/plasteel,
 /area/hallway/secondary/exit/departure_lounge)
+=======
+"fzh" = (
+/obj/effect/mapping_helpers/airlock/cyclelink_helper{
+	dir = 8
+	},
+/obj/machinery/door/airlock/external{
+	name = "public external airlock"
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/storage/emergency/starboard)
+"fzK" = (
+/obj/structure/cable/yellow{
+	icon_state = "4-8"
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 6
+	},
+/obj/effect/turf_decal/tile/red,
+/obj/effect/turf_decal/tile/red{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/turf/open/floor/plasteel/dark,
+/area/hallway/primary/fore)
+"fzM" = (
+/obj/effect/turf_decal/tile/blue{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/manifold/supply/hidden/layer2,
+/obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/layer4,
+/turf/open/floor/plasteel,
+/area/hallway/primary/central)
+"fAk" = (
+/obj/effect/turf_decal/tile/yellow,
+/obj/effect/turf_decal/tile/yellow{
+	dir = 8
+	},
+/obj/effect/turf_decal/stripes/white/line{
+	dir = 1
+	},
+/obj/machinery/atmospherics/components/trinary/filter/atmos/o2{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
+	dir = 8
+	},
+/turf/open/floor/plasteel,
+/area/engine/atmos)
+"fAI" = (
+/obj/structure/cable/yellow{
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
+	dir = 10
+	},
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer2{
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/ai_monitored/turret_protected/AIsatextAS)
+>>>>>>> e32e9196c4 ([New Science Sub-Department] Xenoarchaeology - Xenoartifact Research.  (#6718))
 "fAM" = (
 /obj/machinery/meter,
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/visible{
@@ -49568,6 +49721,7 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/science/mixing)
+<<<<<<< HEAD
 "fBJ" = (
 /obj/machinery/light,
 /obj/effect/turf_decal/tile/yellow,
@@ -49578,6 +49732,16 @@
 	dir = 1
 	},
 /obj/machinery/atmospherics/pipe/simple/green/visible{
+=======
+"fDp" = (
+/obj/structure/rack,
+/obj/item/analyzer,
+/obj/item/geiger_counter,
+/turf/open/floor/plasteel/white,
+/area/science/explab)
+"fDB" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
+>>>>>>> e32e9196c4 ([New Science Sub-Department] Xenoarchaeology - Xenoartifact Research.  (#6718))
 	dir = 4
 	},
 /obj/machinery/atmospherics/components/binary/pump{
@@ -49725,7 +49889,31 @@
 /obj/effect/spawner/structure/window/reinforced,
 /turf/open/floor/plating,
 /area/chapel/main/monastery)
+<<<<<<< HEAD
 "fKf" = (
+=======
+"fJh" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
+	dir = 10
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
+	dir = 10
+	},
+/turf/open/floor/plating,
+/area/maintenance/department/science)
+"fKz" = (
+/obj/effect/turf_decal/stripes/line,
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/machinery/door/firedoor,
+/obj/machinery/door/airlock/public/glass{
+	name = "Central Access"
+	},
+/turf/open/floor/plasteel,
+/area/hallway/primary/fore)
+"fKI" = (
+>>>>>>> e32e9196c4 ([New Science Sub-Department] Xenoarchaeology - Xenoartifact Research.  (#6718))
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
 	},
@@ -51468,8 +51656,49 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
 /turf/open/floor/plating,
+<<<<<<< HEAD
 /area/maintenance/department/cargo)
 "hSr" = (
+=======
+/area/maintenance/department/security/brig)
+"hRL" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/obj/effect/turf_decal/stripes/white/line{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/simple/orange/visible{
+	dir = 9
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
+	dir = 8
+	},
+/obj/effect/turf_decal/stripes/white/line,
+/turf/open/floor/plasteel,
+/area/engine/atmos)
+"hRQ" = (
+/obj/machinery/light{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/purple{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/purple,
+/obj/effect/turf_decal/tile/purple{
+	dir = 8
+	},
+/obj/structure/rack,
+/obj/item/stock_parts/cell/high,
+/obj/item/assembly/signaler{
+	pixel_x = -8;
+	pixel_y = 5
+	},
+/obj/item/assembly/igniter,
+/turf/open/floor/plasteel/white,
+/area/science/explab)
+"hSI" = (
+>>>>>>> e32e9196c4 ([New Science Sub-Department] Xenoarchaeology - Xenoartifact Research.  (#6718))
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
 	},
@@ -51610,7 +51839,25 @@
 	},
 /turf/open/floor/plating,
 /area/maintenance/department/crew_quarters/dorms)
+<<<<<<< HEAD
 "hZU" = (
+=======
+"hXI" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2,
+/turf/open/floor/plasteel,
+/area/hallway/primary/central)
+"hYf" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/layer4{
+	dir = 1
+	},
+/turf/open/floor/plasteel,
+/area/hallway/primary/central)
+"hYD" = (
+>>>>>>> e32e9196c4 ([New Science Sub-Department] Xenoarchaeology - Xenoartifact Research.  (#6718))
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
 	},
@@ -52528,8 +52775,49 @@
 	dir = 4;
 	name = "emergency shower"
 	},
+<<<<<<< HEAD
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
+=======
+/obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/turf/open/floor/plasteel/dark,
+/area/bridge)
+"jqa" = (
+/obj/machinery/power/apc{
+	dir = 1;
+	name = "Monastery APC";
+	pixel_y = 24
+	},
+/obj/structure/cable/yellow{
+	icon_state = "0-8"
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/turf/open/floor/plasteel,
+/area/chapel/main/monastery)
+"jqu" = (
+/obj/structure/cable/yellow{
+	icon_state = "4-8"
+	},
+/obj/effect/turf_decal/tile/yellow{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/manifold/supply/hidden/layer2,
+/obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/layer4,
+>>>>>>> e32e9196c4 ([New Science Sub-Department] Xenoarchaeology - Xenoartifact Research.  (#6718))
 /turf/open/floor/plasteel,
 /area/engine/engineering)
 "jsD" = (
@@ -52583,6 +52871,7 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/crew_quarters/heads/hos)
+<<<<<<< HEAD
 "jvJ" = (
 /obj/effect/turf_decal/tile/neutral,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
@@ -52594,6 +52883,38 @@
 /obj/machinery/atmospherics/pipe/manifold4w/scrubbers/hidden/layer4,
 /turf/open/floor/plasteel/white,
 /area/medical/medbay/central)
+=======
+"jvz" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/visible/layer4{
+	dir = 4
+	},
+/turf/open/floor/plasteel,
+/area/engine/atmos)
+"jvV" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
+	dir = 6
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/turf/open/floor/plasteel,
+/area/hallway/primary/fore)
+"jwt" = (
+/obj/machinery/advanced_airlock_controller{
+	pixel_y = 26
+	},
+/obj/machinery/atmospherics/components/binary/dp_vent_pump/layer2{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/engine/engineering)
+>>>>>>> e32e9196c4 ([New Science Sub-Department] Xenoarchaeology - Xenoartifact Research.  (#6718))
 "jxl" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
@@ -53427,8 +53748,151 @@
 /obj/machinery/airalarm/directional/west,
 /turf/open/floor/engine,
 /area/engine/engineering)
+<<<<<<< HEAD
 "kFK" = (
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
+=======
+"kFZ" = (
+/obj/structure/grille/broken,
+/obj/structure/cable/yellow{
+	icon_state = "4-8"
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/maintenance/department/crew_quarters/bar)
+"kGH" = (
+/obj/structure/table,
+/obj/machinery/microwave{
+	pixel_x = -3;
+	pixel_y = 6
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
+	dir = 10
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
+	dir = 10
+	},
+/turf/open/floor/plasteel/cafeteria,
+/area/crew_quarters/kitchen)
+"kIl" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer2{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/security/execution/transfer)
+"kIr" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/turf/open/floor/plasteel,
+/area/quartermaster/office)
+"kIB" = (
+/obj/machinery/button/door{
+	id = "testlab";
+	name = "Window Blast Doors";
+	pixel_x = -6
+	},
+/obj/structure/table/reinforced,
+/obj/machinery/button/door{
+	id = "telelab";
+	name = "Test Chamber Blast Door";
+	pixel_x = 6
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/simple/general/visible,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/item/book/manual/wiki/xenoarchaeology,
+/obj/item/clothing/gloves/artifact_pinchers,
+/obj/item/clothing/gloves/artifact_pinchers,
+/obj/item/xenoartifact_labeler,
+/obj/item/xenoartifact_labeler,
+/obj/item/clothing/glasses/science{
+	pixel_x = 5;
+	pixel_y = 3
+	},
+/obj/item/clothing/glasses/science{
+	pixel_x = 5;
+	pixel_y = 3
+	},
+/turf/open/floor/plasteel/dark,
+/area/science/explab)
+"kIF" = (
+/obj/machinery/door/airlock/maintenance{
+	name = "Mining Maintenance";
+	req_access_txt = "48"
+	},
+/obj/structure/cable/yellow{
+	icon_state = "4-8"
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/maintenance/department/cargo)
+"kIH" = (
+/obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/manifold/supply/hidden/layer2{
+	dir = 4
+	},
+/turf/open/floor/plasteel/showroomfloor,
+/area/security/warden)
+"kIT" = (
+/obj/effect/turf_decal/tile/red,
+/obj/effect/turf_decal/tile/red{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2,
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
+/turf/open/floor/plasteel/dark,
+/area/security/brig)
+"kIZ" = (
+/obj/machinery/door/airlock/atmos/glass{
+	name = "Atmospherics Monitoring";
+	req_access_txt = "24"
+	},
+/obj/structure/disposalpipe/segment,
+/obj/effect/turf_decal/stripes/line,
+/obj/effect/turf_decal/stripes/line{
+>>>>>>> e32e9196c4 ([New Science Sub-Department] Xenoarchaeology - Xenoartifact Research.  (#6718))
 	dir = 1
 	},
 /obj/machinery/door/airlock/arrivals_external{
@@ -54126,9 +54590,31 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/chapel/dock)
+<<<<<<< HEAD
 "lGo" = (
 /obj/effect/turf_decal/delivery/red,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
+=======
+"lFW" = (
+/obj/item/radio/intercom{
+	pixel_x = 28
+	},
+/obj/effect/turf_decal/tile/red{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/red{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2,
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
+/turf/open/floor/plasteel/dark,
+/area/security/execution/transfer)
+"lGg" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer2{
+>>>>>>> e32e9196c4 ([New Science Sub-Department] Xenoarchaeology - Xenoartifact Research.  (#6718))
 	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
@@ -54283,7 +54769,16 @@
 	dir = 5
 	},
 /turf/open/floor/plating,
+<<<<<<< HEAD
 /area/maintenance/department/security/brig)
+=======
+/area/maintenance/department/chapel/monastery)
+"lMu" = (
+/obj/structure/sink/puddle,
+/obj/structure/flora/ausbushes/reedbush,
+/turf/open/floor/grass,
+/area/hallway/primary/fore)
+>>>>>>> e32e9196c4 ([New Science Sub-Department] Xenoarchaeology - Xenoartifact Research.  (#6718))
 "lME" = (
 /obj/machinery/vending/cola,
 /turf/open/floor/plasteel/dark,
@@ -57022,6 +57517,63 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
 	dir = 4
 	},
+<<<<<<< HEAD
+=======
+/obj/machinery/atmospherics/pipe/manifold/supply/hidden/layer2{
+	dir = 1
+	},
+/turf/open/floor/plasteel/white/corner{
+	dir = 1
+	},
+/area/hallway/secondary/exit/departure_lounge)
+"pns" = (
+/obj/structure/table,
+/obj/item/clipboard,
+/obj/item/pen{
+	layer = 3.1
+	},
+/obj/item/clothing/neck/stethoscope{
+	layer = 3.2
+	},
+/obj/machinery/light/small{
+	dir = 8;
+	light_color = "#d8b1b1"
+	},
+/obj/structure/mirror{
+	pixel_x = -28
+	},
+/obj/machinery/camera{
+	c_tag = "Quarantine Cell A";
+	dir = 4;
+	network = list("ss13","medbay")
+	},
+/turf/open/floor/plasteel/freezer,
+/area/medical/virology)
+"pnX" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/obj/structure/rack,
+/obj/item/storage/firstaid/regular,
+/obj/item/clothing/neck/stethoscope,
+/turf/open/floor/plasteel/white,
+/area/science/explab)
+"poi" = (
+/obj/machinery/telecomms/broadcaster/preset_exploration,
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
+	dir = 9
+	},
+/turf/open/floor/circuit/telecomms/mainframe,
+/area/tcommsat/server)
+"poD" = (
+/obj/structure/cable/yellow{
+	icon_state = "4-8"
+	},
+/obj/effect/spawner/lootdrop/maintenance,
+>>>>>>> e32e9196c4 ([New Science Sub-Department] Xenoarchaeology - Xenoartifact Research.  (#6718))
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
 	dir = 8
 	},
@@ -59146,6 +59698,7 @@
 	},
 /turf/open/floor/plating,
 /area/storage/emergency/starboard)
+<<<<<<< HEAD
 "rYH" = (
 /obj/effect/turf_decal/delivery/red,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/visible{
@@ -59157,6 +59710,11 @@
 /obj/machinery/door/airlock/engineering/glass{
 	name = "Supermatter Engine";
 	req_access_txt = "10"
+=======
+"rZi" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+>>>>>>> e32e9196c4 ([New Science Sub-Department] Xenoarchaeology - Xenoartifact Research.  (#6718))
 	},
 /obj/effect/turf_decal/stripes/line,
 /obj/machinery/door/firedoor,
@@ -59316,7 +59874,56 @@
 	},
 /turf/open/floor/plasteel,
 /area/hallway/primary/aft)
+<<<<<<< HEAD
 "sng" = (
+=======
+"smh" = (
+/obj/machinery/light{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/purple{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/purple{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/layer4{
+	dir = 1
+	},
+/turf/open/floor/plasteel,
+/area/hallway/primary/aft)
+"smr" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer2,
+/turf/open/floor/plating,
+/area/maintenance/department/security/brig)
+"smY" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/machinery/computer/rdconsole/experiment,
+/turf/open/floor/plasteel/dark,
+/area/science/explab)
+"smZ" = (
+/obj/structure/window/reinforced{
+	dir = 1;
+	pixel_y = 2
+	},
+/obj/effect/turf_decal/stripes/line,
+/obj/structure/transit_tube/horizontal,
+>>>>>>> e32e9196c4 ([New Science Sub-Department] Xenoarchaeology - Xenoartifact Research.  (#6718))
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
 	},
@@ -59816,6 +60423,7 @@
 	dir = 4
 	},
 /turf/open/floor/plasteel,
+<<<<<<< HEAD
 /area/engine/engineering)
 "tdp" = (
 /obj/structure/rack,
@@ -59830,16 +60438,52 @@
 	},
 /obj/machinery/light{
 	dir = 4
+=======
+/area/science/mixing)
+"tcE" = (
+/obj/structure/sign/poster/random{
+	pixel_y = 32
+>>>>>>> e32e9196c4 ([New Science Sub-Department] Xenoarchaeology - Xenoartifact Research.  (#6718))
 	},
 /obj/effect/turf_decal/tile/purple{
 	dir = 1
 	},
+<<<<<<< HEAD
 /obj/effect/turf_decal/tile/purple,
 /obj/effect/turf_decal/tile/purple{
 	dir = 4
 	},
 /turf/open/floor/plasteel/white,
 /area/science/explab)
+=======
+/obj/effect/turf_decal/tile/purple{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/manifold/supply/hidden/layer2{
+	dir = 1
+	},
+/turf/open/floor/plasteel,
+/area/hallway/primary/aft)
+"tcQ" = (
+/obj/machinery/door/airlock/engineering{
+	name = "Port Solar Access";
+	req_access_txt = "10"
+	},
+/obj/structure/cable/yellow{
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/maintenance/solars/port)
+>>>>>>> e32e9196c4 ([New Science Sub-Department] Xenoarchaeology - Xenoartifact Research.  (#6718))
 "tdB" = (
 /obj/structure/table,
 /obj/item/reagent_containers/glass/beaker,
@@ -59947,7 +60591,69 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2,
 /turf/open/floor/plasteel/dark,
+<<<<<<< HEAD
 /area/chapel/office)
+=======
+/area/science/xenobiology)
+"tmj" = (
+/obj/machinery/door/airlock/maintenance{
+	name = "Firing Range Target"
+	},
+/obj/effect/mapping_helpers/airlock/abandoned,
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
+	dir = 8
+	},
+/turf/open/floor/plating{
+	icon_state = "platingdmg3"
+	},
+/area/maintenance/department/security/brig)
+"tmx" = (
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/machinery/advanced_airlock_controller{
+	pixel_y = 26
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/obj/machinery/atmospherics/components/binary/dp_vent_pump/layer2{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/maintenance/solars/starboard)
+"tmY" = (
+/obj/machinery/door/airlock/research/glass{
+	name = "Genetics";
+	req_access_txt = "9"
+	},
+/obj/structure/cable/yellow{
+	icon_state = "1-2"
+	},
+/obj/effect/turf_decal/tile/blue{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/blue,
+/obj/effect/turf_decal/tile/blue{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/blue{
+	dir = 8
+	},
+/obj/effect/turf_decal/stripes/line,
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2,
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
+/obj/structure/cable/yellow{
+	icon_state = "1-2"
+	},
+/obj/machinery/door/firedoor,
+/obj/structure/disposalpipe/segment,
+/turf/open/floor/plasteel/white,
+/area/medical/genetics)
+>>>>>>> e32e9196c4 ([New Science Sub-Department] Xenoarchaeology - Xenoartifact Research.  (#6718))
 "tno" = (
 /obj/machinery/atmospherics/pipe/simple/orange/visible{
 	dir = 4
@@ -60719,6 +61425,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+<<<<<<< HEAD
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
 	},
@@ -60726,6 +61433,27 @@
 	dir = 8
 	},
 /obj/machinery/door/firedoor,
+=======
+/turf/open/floor/plasteel,
+/area/crew_quarters/heads/chief)
+"unB" = (
+/obj/structure/rack,
+/obj/item/stack/package_wrap,
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/item/hand_labeler,
+/obj/machinery/firealarm{
+	dir = 8;
+	pixel_x = 28
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
+	dir = 8
+	},
+/turf/open/floor/plasteel/dark,
+/area/science/explab)
+"unN" = (
+>>>>>>> e32e9196c4 ([New Science Sub-Department] Xenoarchaeology - Xenoartifact Research.  (#6718))
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
 	dir = 8
 	},
@@ -60744,6 +61472,11 @@
 "uoS" = (
 /turf/open/floor/plating,
 /area/construction/mining/aux_base)
+"upd" = (
+/obj/machinery/xenoartifact_inbox,
+/obj/effect/turf_decal/delivery,
+/turf/open/floor/engine,
+/area/science/explab)
 "upf" = (
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/visible{
 	dir = 1
@@ -60957,7 +61690,17 @@
 	},
 /turf/open/floor/circuit/telecomms,
 /area/science/xenobiology)
+<<<<<<< HEAD
 "uGx" = (
+=======
+"uGp" = (
+/obj/machinery/door/airlock/security{
+	aiControlDisabled = 1;
+	name = "Solutions Room";
+	req_access_txt = "2"
+	},
+/obj/machinery/door/firedoor,
+>>>>>>> e32e9196c4 ([New Science Sub-Department] Xenoarchaeology - Xenoartifact Research.  (#6718))
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
 	dir = 9
 	},
@@ -63144,9 +63887,62 @@
 /obj/machinery/door/firedoor,
 /turf/open/floor/plasteel/dark,
 /area/lawoffice)
+<<<<<<< HEAD
 "xMq" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer2{
 	dir = 1
+=======
+"xLM" = (
+/obj/machinery/door/airlock/public/glass{
+	name = "Departure Lounge"
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/machinery/door/firedoor,
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/turf/open/floor/plasteel,
+/area/hallway/secondary/exit/departure_lounge)
+"xMd" = (
+/mob/living/simple_animal/hostile/retaliate/goat{
+	name = "Pete"
+	},
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer4{
+	dir = 4
+	},
+/turf/open/floor/plasteel/freezer,
+/area/crew_quarters/kitchen)
+"xMo" = (
+/obj/effect/turf_decal/tile/neutral,
+/obj/machinery/atmospherics/pipe/manifold/supply/hidden/layer2{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/turf/open/floor/plasteel,
+/area/hallway/secondary/entry)
+"xMA" = (
+/obj/structure/cable/yellow{
+	icon_state = "2-8"
+	},
+/obj/structure/cable/yellow{
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/manifold/supply/hidden/layer2{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
+	dir = 9
+>>>>>>> e32e9196c4 ([New Science Sub-Department] Xenoarchaeology - Xenoartifact Research.  (#6718))
 	},
 /turf/open/floor/plating,
 /area/maintenance/department/science)
@@ -63220,6 +64016,7 @@
 	},
 /turf/open/floor/plating,
 /area/engine/engineering)
+<<<<<<< HEAD
 "xTW" = (
 /obj/effect/turf_decal/tile/purple,
 /obj/effect/turf_decal/tile/purple{
@@ -63246,6 +64043,25 @@
 	},
 /turf/open/floor/plasteel/white,
 /area/science/shuttledock)
+=======
+"xUc" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/machinery/computer/xenoartifact_console,
+/turf/open/floor/plasteel/dark,
+/area/science/explab)
+>>>>>>> e32e9196c4 ([New Science Sub-Department] Xenoarchaeology - Xenoartifact Research.  (#6718))
 "xVc" = (
 /obj/effect/turf_decal/tile/green{
 	dir = 4
@@ -79622,7 +80438,11 @@ crj
 pNF
 bWV
 cfm
+<<<<<<< HEAD
 cfF
+=======
+jqa
+>>>>>>> e32e9196c4 ([New Science Sub-Department] Xenoarchaeology - Xenoartifact Research.  (#6718))
 cvy
 cgG
 chi
@@ -84441,7 +85261,11 @@ aiu
 aiu
 aiu
 aiu
+<<<<<<< HEAD
 wEn
+=======
+xLM
+>>>>>>> e32e9196c4 ([New Science Sub-Department] Xenoarchaeology - Xenoartifact Research.  (#6718))
 aPv
 fBt
 aHz
@@ -86738,7 +87562,7 @@ fSg
 gQh
 aCo
 eTX
-aEr
+lMu
 aGa
 stE
 oEA
@@ -87252,12 +88076,21 @@ axG
 aBg
 aCp
 aBg
+<<<<<<< HEAD
 aEs
 aFr
 aGb
 mPh
 aBJ
 szP
+=======
+aCp
+aBg
+fKz
+rlV
+aDZ
+aDZ
+>>>>>>> e32e9196c4 ([New Science Sub-Department] Xenoarchaeology - Xenoartifact Research.  (#6718))
 aDZ
 rlV
 aDZ
@@ -87753,6 +88586,7 @@ alE
 aou
 apb
 agP
+<<<<<<< HEAD
 aqx
 arq
 asD
@@ -87802,6 +88636,57 @@ xQc
 bkY
 bmi
 bjN
+=======
+wLY
+jUe
+mec
+urZ
+vli
+rQH
+jSy
+nkY
+jEs
+sws
+aKf
+jTE
+uov
+prR
+wIs
+hHa
+odq
+hnQ
+hXI
+eGk
+cKI
+cKI
+uiH
+cKI
+cKI
+nXn
+aHG
+mOd
+dXY
+pDC
+lWT
+emb
+sSq
+teO
+pDa
+rDH
+gYT
+cKI
+cWx
+wXh
+fVO
+rUD
+jIh
+hnQ
+ncm
+iNT
+fdl
+lBN
+bsw
+>>>>>>> e32e9196c4 ([New Science Sub-Department] Xenoarchaeology - Xenoartifact Research.  (#6718))
 bow
 bpz
 sXb
@@ -88056,6 +88941,7 @@ evv
 aDZ
 biR
 bjL
+<<<<<<< HEAD
 bkZ
 bmj
 bnw
@@ -88069,6 +88955,21 @@ bwy
 ccD
 xXJ
 fIt
+=======
+lDi
+pTc
+uSM
+xvv
+dVo
+jSM
+toS
+kAp
+tmY
+dXD
+pgo
+dFH
+paQ
+>>>>>>> e32e9196c4 ([New Science Sub-Department] Xenoarchaeology - Xenoartifact Research.  (#6718))
 bCc
 bDl
 bvc
@@ -88542,11 +89443,19 @@ aFt
 cou
 aGY
 aHI
+<<<<<<< HEAD
 aIN
 tfj
 aKL
 aLy
 aMW
+=======
+cWa
+ney
+mLX
+sLc
+gZh
+>>>>>>> e32e9196c4 ([New Science Sub-Department] Xenoarchaeology - Xenoartifact Research.  (#6718))
 aOu
 aKJ
 aQE
@@ -94788,7 +95697,7 @@ xEh
 lGo
 qGg
 oDp
-rYH
+ddA
 oDp
 oDp
 oDp
@@ -102961,15 +103870,15 @@ aZv
 sdE
 biz
 bjw
-bky
+upd
 blP
 bmV
 lmM
-bpd
+kIB
 bqo
 brG
 btg
-fjs
+hRQ
 bvS
 oDc
 byY
@@ -103219,10 +104128,10 @@ aEj
 tyR
 bjw
 bkz
-blQ
+bky
 bky
 bnY
-bpe
+xUc
 bqp
 crd
 bqs
@@ -103475,7 +104384,7 @@ tyR
 aEj
 tyR
 bjw
-bky
+blQ
 blR
 bky
 bnX
@@ -103736,11 +104645,17 @@ bky
 blS
 bky
 bnY
-bpg
+smY
 bqr
+<<<<<<< HEAD
 hOa
 bqs
 gKa
+=======
+pnX
+fDp
+ieX
+>>>>>>> e32e9196c4 ([New Science Sub-Department] Xenoarchaeology - Xenoartifact Research.  (#6718))
 bvT
 bxC
 bzb
@@ -106564,7 +107479,7 @@ bkD
 vxp
 boc
 bnc
-tdp
+unB
 oDP
 nfW
 buH

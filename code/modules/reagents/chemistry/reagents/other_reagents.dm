@@ -152,6 +152,7 @@
 		if(!QDELETED(L))
 			qdel(L)
 		return
+<<<<<<< HEAD
 	//Leave the corgi
 	L.key = new_corgi.key
 	L.adjustBruteLoss(new_corgi.getBruteLoss())
@@ -166,6 +167,9 @@
 	new_corgi.inventory_head = null
 	new_corgi.inventory_back = null
 	qdel(new_corgi)
+=======
+	H.restore()
+>>>>>>> e32e9196c4 ([New Science Sub-Department] Xenoarchaeology - Xenoartifact Research.  (#6718))
 
 /datum/reagent/water
 	name = "Water"
