@@ -183,7 +183,7 @@
 		if(is_type_in_list(target, charge_machines))
 			var/obj/machinery/M = target
 
-			if((M.stat & (NOPOWER|BROKEN)) || !M.anchored)
+			if((M.machine_stat & (NOPOWER|BROKEN)) || !M.anchored)
 				to_chat(user, "<span class='warning'>[M] is unpowered!</span>")
 				return
 
@@ -293,6 +293,46 @@
 				break
 			target.update_icon()
 
+<<<<<<< HEAD
+=======
+			if(!cell.charge)
+				to_chat(user, "<span class='warning'>[target] has no power!</span>")
+				active = FALSE
+				return
+
+			if(user.cell.charge == user.cell.maxcharge)
+				to_chat(user, "<span class='notice'>You finish charging from [target].</span>")
+				active = FALSE
+				return
+
+		to_chat(user, "<span class='notice'>You stop drawing power from [target].</span>")
+		active = FALSE
+	else
+		var/obj/machinery/M = target
+		while(do_after(user, 15, target = M, extra_checks = CALLBACK(src, .proc/mode_check)))
+			if(!user?.cell)
+				active = FALSE
+				return
+
+			if(!target)
+				active = FALSE
+				return
+
+			if((M.machine_stat & (NOPOWER|BROKEN)) || !M.anchored)
+				break
+
+			if(!user.cell.give(150))
+				break
+
+			M.use_power(200)
+
+			if(user.cell.charge == user.cell.maxcharge)
+				to_chat(user, "<span class='notice'>You finish charging from [target].</span>")
+				active = FALSE
+				return
+
+		to_chat(user, "<span class='notice'>You stop charging yourself.</span>")
+>>>>>>> b3ccea2443 ([Port] Refactors machine_stat and is_processing() to process on demand + Changes obj_break on machines to use parent calls (#7617))
 		active = FALSE
 
 		to_chat(user, "<span class='notice'>You stop charging [target].</span>")

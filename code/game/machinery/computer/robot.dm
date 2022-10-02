@@ -76,6 +76,25 @@
 		)
 		data["drones"] += list(drone_data)
 
+<<<<<<< HEAD
+=======
+
+	data["uploads"] = list()
+	for(var/obj/machinery/computer/upload/U as() in GLOB.uploads_list)
+		if(machine_stat & (NOPOWER|BROKEN))
+			continue
+		if(!(is_station_level(src.z) && is_station_level(U.z)))
+			continue
+		var/turf/loc = get_turf(U)
+		var/list/upload_data = list(
+			name = U.name,
+			area = "[get_area_name(loc, TRUE)]",
+			coords = "[loc.x], [loc.y], [loc.get_virtual_z_level()]",
+			ref = REF(U)
+		)
+		data["uploads"] += list(upload_data)
+
+>>>>>>> b3ccea2443 ([Port] Refactors machine_stat and is_processing() to process on demand + Changes obj_break on machines to use parent calls (#7617))
 	return data
 
 /obj/machinery/computer/robotics/ui_act(action, params)

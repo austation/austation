@@ -133,8 +133,13 @@
 	playsound(src, 'sound/machines/ping.ogg', 30, TRUE)
 
 /obj/machinery/computer/pandemic/update_icon()
+<<<<<<< HEAD
 	if(stat & BROKEN)
 		icon_state = (beaker ? "mixer1_b" : "mixer0_b")
+=======
+	if(machine_stat & BROKEN)
+		icon_state = (beaker ? "pand1_b" : "pand0_b")
+>>>>>>> b3ccea2443 ([Port] Refactors machine_stat and is_processing() to process on demand + Changes obj_break on machines to use parent calls (#7617))
 		return
 
 	icon_state = "mixer[(beaker) ? "1" : "0"][powered() ? "" : "_nopower"]"
@@ -246,7 +251,7 @@
 /obj/machinery/computer/pandemic/attackby(obj/item/I, mob/user, params)
 	if(istype(I, /obj/item/reagent_containers) && !(I.item_flags & ABSTRACT) && I.is_open_container())
 		. = TRUE //no afterattack
-		if(stat & (NOPOWER|BROKEN))
+		if(machine_stat & (NOPOWER|BROKEN))
 			return
 		if(beaker)
 			to_chat(user, "<span class='warning'>A container is already loaded into [src]!</span>")

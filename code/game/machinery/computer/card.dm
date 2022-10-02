@@ -144,6 +144,68 @@ GLOBAL_VAR_INIT(time_last_changed_position, 0)
 			return -1
 	return 0
 
+<<<<<<< HEAD
+=======
+/obj/machinery/computer/card/proc/id_insert(mob/user, obj/item/inserting_item, obj/item/target)
+	var/obj/item/card/id/card_to_insert = inserting_item
+	var/holder_item = FALSE
+
+	if(!isidcard(card_to_insert))
+		card_to_insert = inserting_item.RemoveID()
+		holder_item = TRUE
+
+	if(!card_to_insert || !user.transferItemToLoc(card_to_insert, src))
+		return FALSE
+
+	if(target)
+		if(holder_item && inserting_item.InsertID(target))
+			playsound(src, 'sound/machines/terminal_insert_disc.ogg', 50, FALSE)
+		else
+			id_eject(user, target)
+
+	user.visible_message("<span class='notice'>[user] inserts \the [card_to_insert] into \the [src].</span>",
+						"<span class='notice'>You insert \the [card_to_insert] into \the [src].</span>")
+	playsound(src, 'sound/machines/terminal_insert_disc.ogg', 50, FALSE)
+	updateUsrDialog()
+	return TRUE
+
+/obj/machinery/computer/card/proc/id_eject(mob/user, obj/target)
+	if(!target)
+		to_chat(user, "<span class='warning'>That slot is empty!</span>")
+		return FALSE
+	else
+		if(target == inserted_modify_id)
+			update_modify_manifest()
+		target.forceMove(drop_location())
+		if(!issilicon(user) && Adjacent(user))
+			user.put_in_hands(target)
+		user.visible_message("<span class='notice'>[user] gets \the [target] from \the [src].</span>", \
+							"<span class='notice'>You get \the [target] from \the [src].</span>")
+		playsound(src, 'sound/machines/terminal_insert_disc.ogg', 50, FALSE)
+		updateUsrDialog()
+		return TRUE
+
+/obj/machinery/computer/card/proc/update_modify_manifest()
+	if(inserted_modify_id.registered_account)
+		inserted_modify_id.registered_account.account_department = get_department_by_hud(inserted_modify_id.hud_state) // your true department by your hud icon color
+	GLOB.data_core.manifest_modify(inserted_modify_id.registered_name, inserted_modify_id.assignment, inserted_modify_id.hud_state)
+
+/obj/machinery/computer/card/AltClick(mob/user)
+	..()
+	if(!user.canUseTopic(src, !issilicon(user)) || !is_operational)
+		return
+	if(inserted_modify_id)
+		if(id_eject(user, inserted_modify_id))
+			inserted_modify_id = null
+			updateUsrDialog()
+			return
+	if(inserted_scan_id)
+		if(id_eject(user, inserted_scan_id))
+			inserted_scan_id = null
+			updateUsrDialog()
+			return
+
+>>>>>>> b3ccea2443 ([Port] Refactors machine_stat and is_processing() to process on demand + Changes obj_break on machines to use parent calls (#7617))
 /obj/machinery/computer/card/ui_interact(mob/user)
 	. = ..()
 
@@ -411,7 +473,7 @@ GLOBAL_VAR_INIT(time_last_changed_position, 0)
 	if(..())
 		return
 
-	if(!usr.canUseTopic(src, !issilicon(usr)) || !is_operational())
+	if(!usr.canUseTopic(src, !issilicon(usr)) || !is_operational)
 		usr.unset_machine()
 		usr << browse(null, "window=id_com")
 		return

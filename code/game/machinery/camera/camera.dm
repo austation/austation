@@ -322,12 +322,15 @@
 	return ..()
 
 /obj/machinery/camera/run_obj_armor(damage_amount, damage_type, damage_flag = 0, attack_dir)
-	if(damage_flag == "melee" && damage_amount < 12 && !(stat & BROKEN))
+	if(damage_flag == "melee" && damage_amount < 12 && !(machine_stat & BROKEN))
 		return 0
 	. = ..()
 
 /obj/machinery/camera/obj_break(damage_flag)
-	if(status && !(flags_1 & NODECONSTRUCT_1))
+	if(!status)
+		return
+	. = ..()
+	if(.)
 		triggerCameraAlarm()
 		toggle_cam(null, 0)
 
@@ -352,9 +355,15 @@
 	if(isXRay(TRUE))
 		xray_module = "xray"
 	if(!status)
+<<<<<<< HEAD
 		icon_state = "[xray_module][default_camera_icon]_off"
 	else if (stat & EMPED)
 		icon_state = "[xray_module][default_camera_icon]_emp"
+=======
+		icon_state = "[default_camera_icon]_off"
+	else if (machine_stat & EMPED)
+		icon_state = "[default_camera_icon]_emp"
+>>>>>>> b3ccea2443 ([Port] Refactors machine_stat and is_processing() to process on demand + Changes obj_break on machines to use parent calls (#7617))
 	else
 		icon_state = "[xray_module][default_camera_icon][in_use_lights ? "_in_use" : ""]"
 
@@ -410,7 +419,7 @@
 /obj/machinery/camera/proc/can_use()
 	if(!status)
 		return FALSE
-	if(stat & EMPED)
+	if(machine_stat & EMPED)
 		return FALSE
 	if(is_jammed())
 		return FALSE
