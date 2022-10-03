@@ -1,6 +1,10 @@
 {
 	"map_name": "Corg Station",
+<<<<<<< HEAD
 	"map_link": "BeeStation/CorgStation",
+=======
+	"map_link": "CorgStation",
+>>>>>>> aa313d07b6 (Fix corg webmap link (#7795))
 	"map_path": "map_files/CorgStation",
 	"map_file": "CorgStation.dmm",
 	"shuttles": {
