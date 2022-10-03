@@ -221,6 +221,11 @@
 	update_icon()
 	visible_message("<span class='danger'>The light in [src] shorts out!</span>")
 
+/obj/structure/glowshroom/lighteater_act(obj/item/light_eater/light_eater)
+	..()
+	if (light_power > 0)
+		acid_act()
+
 /obj/item/lighteater_act(obj/item/light_eater/light_eater)
 	if(!light_range || !light_power)
 		return
@@ -229,5 +234,28 @@
 	burn()
 	playsound(src, 'sound/items/welder.ogg', 50, 1)
 
+<<<<<<< HEAD
+=======
+
+/obj/item/pda/lighteater_act(obj/item/light_eater/light_eater)
+	if(light_range && light_power > 0 && light_on)
+		//Eject the ID card
+		if(id)
+			id.forceMove(get_turf(src))
+			id = null
+			update_icon()
+			playsound(src, 'sound/machines/terminal_eject.ogg', 50, TRUE)
+	..()
+
+/turf/open/floor/light/lighteater_act(obj/item/light_eater/light_eater)
+	. = ..()
+	if(!light_range || !light_power || !light_on)
+		return
+	if(light_eater)
+		visible_message("<span class='danger'>The light bulb of [src] is disintegrated by [light_eater]!</span>")
+	break_tile()
+	playsound(src, 'sound/items/welder.ogg', 50, 1)
+
+>>>>>>> e6f22c1999 (light eater melts glowshrooms (#7783))
 #undef HEART_SPECIAL_SHADOWIFY
 #undef HEART_RESPAWN_THRESHHOLD
