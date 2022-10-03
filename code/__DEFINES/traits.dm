@@ -235,6 +235,18 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_NAIVE				"naive" //All dead people will appear as sleeping.
 #define TRAIT_DROPS_ITEMS_ON_DEATH "drops_items_on_death" //used for battle royale
 #define TRAIT_DRINKSBLOOD		"drinks_blood"
+<<<<<<< HEAD
+=======
+#define TRAIT_MINDSWAPPED		"mindswapped"
+#define TRAIT_SOMMELIER			"sommelier"  // shows different booze power flavor texts
+#define TRAIT_BARMASTER			"bar_master" // always can identify reagents
+#define TRAIT_HIVE_BURNT		 "hive-burnt"
+
+// You can stare into the abyss, but it does not stare back.
+// You're immune to the hallucination effect of the supermatter, either
+// through force of will, or equipment.
+#define TRAIT_MADNESS_IMMUNE "supermatter_madness_immune"
+>>>>>>> 8b5eaa5e3f (Reworks the Assimilation (Hivemind) Gamemode and adds it back into rotation (#6927))
 
 //non-mob traits
 #define TRAIT_PARALYSIS			"paralysis" //Used for limb-based paralysis, where replacing the limb will fix it
@@ -347,7 +359,7 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define LOCKED_HELMET_TRAIT "locked-helmet"
 #define NINJA_SUIT_TRAIT "ninja-suit"
 #define ANTI_DROP_IMPLANT_TRAIT "anti-drop-implant"
-#define HIVEMIND_ONE_MIND_TRAIT "one_mind"
+#define HIVEMIND_TRAIT "hivemind-trait"
 #define VR_ZONE_TRAIT "vr_zone_trait"
 #define GLUED_ITEM_TRAIT "glued-item"
 #define LEGION_CORE_TRAIT "legion_core_trait"
