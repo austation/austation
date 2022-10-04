@@ -13943,9 +13943,6 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
 /turf/open/floor/plasteel/dark,
 /area/storage/primary)
-"awu" = (
-/turf/closed/wall/r_wall,
-/area/engine/atmos)
 "awv" = (
 /obj/effect/spawner/structure/window/reinforced,
 /obj/machinery/atmospherics/pipe/simple/cyan/visible{
@@ -17700,9 +17697,6 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2,
 /turf/open/floor/plasteel/showroomfloor,
 /area/science/research)
-"aBY" = (
-/turf/closed/wall/r_wall/rust,
-/area/engine/atmos)
 "aBZ" = (
 /obj/structure/table,
 /obj/effect/turf_decal/tile/neutral{
@@ -19851,10 +19845,6 @@
 	},
 /turf/open/floor/plasteel,
 /area/engine/atmos)
-"aFA" = (
-/obj/structure/sign/warning/fire,
-/turf/closed/wall/r_wall,
-/area/engine/atmos)
 "aFB" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/atmospherics/pipe/simple/general/visible,
@@ -19970,7 +19960,6 @@
 	},
 /area/tcommsat/server)
 "aFM" = (
-/obj/structure/grille,
 /turf/closed/wall/r_wall,
 /area/engine/atmos)
 "aFO" = (
@@ -21749,7 +21738,6 @@
 /turf/open/floor/plasteel,
 /area/engine/break_room)
 "aIG" = (
-/obj/structure/grille,
 /turf/closed/wall/r_wall/rust,
 /area/engine/atmos)
 "aIH" = (
@@ -24581,7 +24569,6 @@
 /obj/machinery/atmospherics/pipe/simple/green/visible{
 	dir = 4
 	},
-/obj/structure/grille,
 /turf/closed/wall/r_wall,
 /area/engine/atmos)
 "aMU" = (
@@ -30725,7 +30712,6 @@
 /obj/machinery/atmospherics/pipe/simple/yellow/visible{
 	dir = 4
 	},
-/obj/structure/grille,
 /turf/closed/wall/r_wall,
 /area/engine/atmos)
 "aVR" = (
@@ -45099,7 +45085,6 @@
 /obj/machinery/atmospherics/pipe/simple/yellow/visible{
 	dir = 4
 	},
-/obj/structure/grille,
 /turf/closed/wall/r_wall/rust,
 /area/engine/atmos)
 "bqj" = (
@@ -49056,7 +49041,6 @@
 /obj/machinery/atmospherics/pipe/simple/cyan/visible{
 	dir = 4
 	},
-/obj/structure/grille,
 /turf/closed/wall/r_wall,
 /area/engine/atmos)
 "bwy" = (
@@ -77658,8 +77642,6 @@
 /turf/open/space/basic,
 /area/space/nearstation)
 "cow" = (
-/obj/structure/lattice,
-/obj/structure/grille,
 /turf/closed/wall/r_wall,
 /area/space/nearstation)
 "cox" = (
@@ -82288,7 +82270,6 @@
 /area/engine/engineering)
 "cvF" = (
 /obj/structure/girder/displaced,
-/obj/structure/girder/displaced,
 /turf/closed/wall,
 /area/maintenance/port)
 "cvG" = (
@@ -85529,7 +85510,6 @@
 /area/maintenance/port/aft)
 "cBz" = (
 /obj/machinery/atmospherics/pipe/simple/green/visible,
-/obj/structure/grille,
 /turf/closed/wall/r_wall/rust,
 /area/engine/atmos)
 "cBA" = (
@@ -85538,12 +85518,10 @@
 /area/engine/atmos)
 "cBB" = (
 /obj/machinery/atmospherics/pipe/simple/yellow/visible,
-/obj/structure/grille,
 /turf/closed/wall/r_wall,
 /area/engine/atmos)
 "cBC" = (
 /obj/machinery/atmospherics/pipe/simple/purple/visible,
-/obj/structure/grille,
 /turf/closed/wall/r_wall,
 /area/engine/atmos)
 "cBD" = (
@@ -91859,12 +91837,10 @@
 /area/maintenance/disposal/incinerator)
 "cMy" = (
 /obj/structure/sign/warning/fire,
-/obj/structure/grille,
 /turf/closed/wall/r_wall,
 /area/engine/atmos)
 "cMz" = (
 /obj/structure/sign/warning/fire,
-/obj/structure/grille,
 /turf/closed/wall/r_wall/rust,
 /area/engine/atmos)
 "cMA" = (
@@ -92151,12 +92127,10 @@
 /area/hallway/secondary/entry)
 "cMS" = (
 /obj/structure/sign/warning/vacuum,
-/obj/structure/grille,
 /turf/closed/wall/r_wall/rust,
 /area/engine/atmos)
 "cMT" = (
 /obj/structure/sign/warning/vacuum,
-/obj/structure/grille,
 /turf/closed/wall/r_wall,
 /area/engine/atmos)
 "cMU" = (
@@ -129504,7 +129478,7 @@ cyk
 bFa
 clJ
 bEV
-aBY
+aIG
 bwv
 bGo
 aCw
@@ -129761,7 +129735,7 @@ cnG
 bFa
 clL
 bGG
-awu
+aFM
 bmV
 ayG
 aEF
@@ -130018,7 +129992,7 @@ czA
 bFa
 cmz
 cmF
-aBY
+aIG
 bEm
 aLY
 aSk
@@ -130275,7 +130249,7 @@ czC
 bET
 bFa
 cmG
-awu
+aFM
 cKs
 caP
 caW
@@ -130789,7 +130763,7 @@ cJS
 bFa
 bGG
 csc
-aFA
+cMy
 bFx
 bFy
 aIl
@@ -131046,9 +131020,9 @@ bYL
 bFa
 aRQ
 cNt
-awu
-awu
-aBY
+aFM
+aFM
+aIG
 aCW
 csd
 aMR
@@ -131304,7 +131278,7 @@ ckJ
 cmA
 cOz
 cKj
-awu
+aFM
 aGw
 aAT
 cso
@@ -131561,7 +131535,7 @@ clL
 bFZ
 bRT
 cKk
-awu
+aFM
 bFi
 aEI
 cso
@@ -131818,7 +131792,7 @@ clC
 aRQ
 cny
 bEV
-aBY
+aIG
 aCZ
 aCL
 csd
@@ -132075,7 +132049,7 @@ ckd
 bFa
 cnz
 bFS
-aBY
+aIG
 caQ
 aEY
 csd
@@ -132332,7 +132306,7 @@ ckg
 ckO
 cnA
 cnC
-awu
+aFM
 aMV
 aGi
 csd
@@ -132589,7 +132563,7 @@ ckL
 cBp
 bET
 bFY
-awu
+aFM
 aDk
 crU
 cst
@@ -132846,7 +132820,7 @@ clH
 bGK
 bFa
 cnE
-awu
+aFM
 aJh
 aGC
 byl
@@ -133103,7 +133077,7 @@ ckN
 bFC
 aHV
 cnH
-aBY
+aIG
 aJh
 aGH
 csy
@@ -134916,7 +134890,7 @@ aKI
 aKI
 aJR
 ciA
-awu
+aFM
 cok
 aFM
 aFM
@@ -135173,7 +135147,7 @@ aMy
 aDx
 aLo
 cgG
-awu
+aFM
 cok
 aDT
 clX
@@ -135427,10 +135401,10 @@ bGC
 bUW
 bUY
 cjs
-awu
+aFM
 cwj
-awu
-awu
+aFM
+aFM
 cwo
 aDU
 aDY
@@ -135684,7 +135658,7 @@ axa
 cpB
 axa
 cpB
-awu
+aFM
 bVm
 cgH
 cDA
