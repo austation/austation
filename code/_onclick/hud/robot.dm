@@ -147,6 +147,7 @@
 	using.hud = src
 	static_inventory += using
 
+<<<<<<< HEAD
 //Headlamp control
 	using = new /atom/movable/screen/robot/lamp()
 	using.screen_loc = ui_borg_lamp
@@ -160,6 +161,13 @@
 	using.hud = src
 	static_inventory += using
 	mymobR.thruster_button = using
+=======
+//Manifest
+	using = new /atom/movable/screen/robot/crew_manifest()
+	using.screen_loc = ui_borg_crew_manifest
+	using.hud = src
+	static_inventory += using
+>>>>>>> e835678a48 (Fix modular interface HUD icon and add Crew Manifest to HUD (#7797))
 
 //Intent
 	action_intent = new /atom/movable/screen/act_intent/robot()
@@ -288,3 +296,58 @@
 		else
 			for(var/obj/item/I in R.held_items)
 				screenmob.client.screen -= I
+<<<<<<< HEAD
+=======
+
+/atom/movable/screen/robot/lamp
+	name = "headlamp"
+	icon_state = "lamp_off"
+	var/mob/living/silicon/robot/robot
+
+/atom/movable/screen/robot/lamp/Click()
+	. = ..()
+	if(.)
+		return
+	robot?.toggle_headlamp()
+	update_icon()
+
+/atom/movable/screen/robot/lamp/update_icon()
+	if(robot?.lamp_enabled)
+		icon_state = "lamp_on"
+	else
+		icon_state = "lamp_off"
+
+/atom/movable/screen/robot/modPC
+	name = "Modular Interface"
+	icon_state = "template"
+	var/mob/living/silicon/robot/robot
+
+/atom/movable/screen/robot/modPC/Click()
+	. = ..()
+	if(.)
+		return
+	robot.modularInterface?.interact(robot)
+
+/atom/movable/screen/robot/alerts
+	name = "Alert Panel"
+	icon = 'icons/mob/screen_ai.dmi'
+	icon_state = "alerts"
+
+/atom/movable/screen/robot/alerts/Click()
+	. = ..()
+	if(.)
+		return
+	var/mob/living/silicon/robot/borgo = usr
+	borgo.robot_alerts()
+
+/atom/movable/screen/robot/crew_manifest
+	name = "Crew Manifest"
+	icon = 'icons/mob/screen_ai.dmi'
+	icon_state = "manifest"
+
+/atom/movable/screen/robot/crew_manifest/Click()
+	if(..())
+		return
+	var/mob/living/silicon/robot/borgo = usr
+	borgo.ai_roster()
+>>>>>>> e835678a48 (Fix modular interface HUD icon and add Crew Manifest to HUD (#7797))

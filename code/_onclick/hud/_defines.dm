@@ -58,7 +58,12 @@
 #define ui_borg_module "CENTER+1:16,SOUTH:5"		//borgs
 #define ui_borg_store "CENTER+2:16,SOUTH:5"			//borgs
 #define ui_borg_camera "CENTER+3:21,SOUTH:5"		//borgs
+<<<<<<< HEAD
 #define ui_borg_album "CENTER+4:21,SOUTH:5"			//borgs
+=======
+#define ui_borg_alerts "CENTER+4:21,SOUTH:5"		//borgs
+#define ui_borg_crew_manifest "CENTER+5:21,SOUTH:5"	//borgs
+>>>>>>> e835678a48 (Fix modular interface HUD icon and add Crew Manifest to HUD (#7797))
 #define ui_borg_language_menu "CENTER+4:21,SOUTH+1:5"	//borgs
 
 #define ui_monkey_head "CENTER-5:13,SOUTH:5"	//monkey
