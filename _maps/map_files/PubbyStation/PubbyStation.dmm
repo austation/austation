@@ -503,6 +503,7 @@
 /obj/effect/spawner/room/fivexfour,
 /turf/open/floor/plating,
 /area/maintenance/department/security/brig)
+<<<<<<< HEAD
 "abi" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer2{
 	dir = 1
@@ -514,6 +515,25 @@
 /obj/structure/grille,
 /turf/open/space,
 /area/space/nearstation)
+=======
+"aby" = (
+/obj/structure/lattice,
+/obj/structure/grille,
+/turf/open/space,
+/area/space/nearstation)
+"abG" = (
+/obj/machinery/advanced_airlock_controller{
+	pixel_y = 24
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/obj/machinery/atmospherics/components/binary/dp_vent_pump/layer2{
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/chapel/main/monastery)
+>>>>>>> 7f3be2887c (Pubby map fixes (#7806))
 "abI" = (
 /obj/structure/lattice,
 /turf/open/space,
@@ -1418,6 +1438,7 @@
 /obj/machinery/atmospherics/components/trinary/filter/atmos/co2,
 /turf/open/floor/engine,
 /area/engine/engineering)
+<<<<<<< HEAD
 "adU" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer4,
 /turf/open/floor/plasteel/white,
@@ -1425,6 +1446,8 @@
 "adV" = (
 /turf/open/space,
 /area/ai_monitored/turret_protected/AIsatextAP)
+=======
+>>>>>>> 7f3be2887c (Pubby map fixes (#7806))
 "adW" = (
 /obj/structure/lattice,
 /obj/machinery/light/small{
@@ -1440,6 +1463,7 @@
 "adX" = (
 /turf/closed/wall/r_wall,
 /area/ai_monitored/turret_protected/aisat_interior)
+<<<<<<< HEAD
 "adY" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
 	dir = 8
@@ -1452,6 +1476,8 @@
 "adZ" = (
 /turf/open/space,
 /area/ai_monitored/turret_protected/AIsatextAS)
+=======
+>>>>>>> 7f3be2887c (Pubby map fixes (#7806))
 "aea" = (
 /obj/structure/lattice,
 /obj/machinery/light/small{
@@ -2188,6 +2214,7 @@
 /obj/machinery/computer/arcade,
 /turf/open/floor/plasteel/dark,
 /area/security/prison)
+<<<<<<< HEAD
 "afJ" = (
 /obj/effect/landmark/carpspawn,
 /turf/open/space/basic,
@@ -2201,6 +2228,8 @@
 	},
 /turf/open/floor/plating,
 /area/ai_monitored/turret_protected/AIsatextAS)
+=======
+>>>>>>> 7f3be2887c (Pubby map fixes (#7806))
 "afL" = (
 /obj/structure/table,
 /obj/item/wrench,
@@ -5744,20 +5773,6 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/gateway)
-"aoH" = (
-/obj/structure/lattice,
-/obj/structure/grille,
-/turf/open/space,
-/area/solar/port)
-"aoI" = (
-/obj/structure/lattice,
-/turf/open/space,
-/area/solar/port)
-"aoJ" = (
-/obj/structure/lattice,
-/obj/structure/grille/broken,
-/turf/open/space,
-/area/solar/port)
 "aoO" = (
 /obj/machinery/camera{
 	c_tag = "Brig Gulag Teleporter";
@@ -6092,6 +6107,7 @@
 	},
 /turf/open/floor/plating,
 /area/maintenance/fore)
+<<<<<<< HEAD
 "apo" = (
 /obj/structure/transit_tube/diagonal/crossing,
 /obj/structure/cable/yellow{
@@ -6112,6 +6128,8 @@
 	},
 /turf/open/space,
 /area/space/nearstation)
+=======
+>>>>>>> 7f3be2887c (Pubby map fixes (#7806))
 "apq" = (
 /obj/machinery/gateway{
 	dir = 8
@@ -14459,6 +14477,10 @@
 	},
 /turf/open/floor/plating,
 /area/maintenance/department/cargo)
+"aKl" = (
+/obj/effect/spawner/structure/window/plasma/reinforced,
+/turf/open/floor/plating,
+/area/engine/atmos)
 "aKo" = (
 /turf/open/floor/plating{
 	icon_state = "panelscorched"
@@ -17630,7 +17652,6 @@
 	name = "Kitchen Maintenance";
 	req_access_txt = "28"
 	},
-/obj/structure/disposalpipe/segment,
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
 	},
@@ -19840,6 +19861,7 @@
 /obj/effect/turf_decal/bot,
 /turf/open/floor/plasteel/dark,
 /area/crew_quarters/theatre)
+<<<<<<< HEAD
 "aYl" = (
 /obj/structure/table/wood,
 /obj/item/soap,
@@ -19858,6 +19880,8 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/crew_quarters/theatre)
+=======
+>>>>>>> 7f3be2887c (Pubby map fixes (#7806))
 "aYm" = (
 /obj/structure/closet/crate/wooden/toy,
 /obj/item/lipstick/random,
@@ -33848,6 +33872,7 @@
 /obj/machinery/atmospherics/pipe/layer_manifold,
 /turf/open/floor/plating,
 /area/chapel/dock)
+<<<<<<< HEAD
 "bGG" = (
 /turf/open/floor/plating/airless,
 /area/chapel/dock)
@@ -33863,6 +33888,8 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/ai_monitored/turret_protected/aisat_interior)
+=======
+>>>>>>> 7f3be2887c (Pubby map fixes (#7806))
 "bGM" = (
 /obj/effect/spawner/room/fivexfour,
 /turf/open/floor/plating,
@@ -34930,10 +34957,13 @@
 /obj/machinery/door/firedoor,
 /turf/open/floor/plasteel/dark,
 /area/science/storage)
+<<<<<<< HEAD
 "bJP" = (
 /obj/structure/grille,
 /turf/closed/wall/r_wall,
 /area/engine/atmos)
+=======
+>>>>>>> 7f3be2887c (Pubby map fixes (#7806))
 "bJQ" = (
 /obj/machinery/atmospherics/components/binary/pump/on{
 	dir = 2
@@ -35683,10 +35713,6 @@
 	dir = 8
 	},
 /turf/open/floor/plasteel,
-/area/engine/atmos)
-"bMi" = (
-/obj/effect/spawner/structure/window/plasma/reinforced,
-/turf/open/floor/plating/airless,
 /area/engine/atmos)
 "bMj" = (
 /obj/machinery/air_sensor/atmos/mix_tank,
@@ -37439,6 +37465,7 @@
 /obj/machinery/atmospherics/pipe/simple/green/visible,
 /turf/open/floor/plasteel,
 /area/engine/atmos)
+<<<<<<< HEAD
 "bRC" = (
 /obj/structure/lattice,
 /obj/structure/lattice,
@@ -37449,6 +37476,8 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2,
 /turf/open/floor/plating,
 /area/maintenance/department/engine)
+=======
+>>>>>>> 7f3be2887c (Pubby map fixes (#7806))
 "bRG" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
@@ -38051,13 +38080,6 @@
 	},
 /turf/open/floor/plating/airless,
 /area/space/nearstation)
-"bTc" = (
-/obj/effect/spawner/structure/window/reinforced,
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/turf/open/floor/plating/airless,
-/area/maintenance/department/engine)
 "bTd" = (
 /obj/item/stack/sheet/cardboard{
 	amount = 14
@@ -42145,12 +42167,17 @@
 	},
 /turf/open/floor/plasteel,
 /area/engine/engineering)
+<<<<<<< HEAD
 "cec" = (
 /obj/effect/spawner/structure/window/reinforced,
 /obj/machinery/atmospherics/pipe/simple/general/visible,
 /turf/open/floor/plating/airless,
 /area/maintenance/disposal/incinerator)
 "cee" = (
+=======
+"cej" = (
+/obj/structure/transit_tube/diagonal/crossing,
+>>>>>>> 7f3be2887c (Pubby map fixes (#7806))
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
 	},
@@ -42568,6 +42595,7 @@
 "cfN" = (
 /turf/closed/mineral,
 /area/chapel/asteroid/monastery)
+<<<<<<< HEAD
 "cfO" = (
 /obj/structure/transit_tube,
 /obj/effect/turf_decal/stripes/line{
@@ -42582,6 +42610,8 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/engine/engineering)
+=======
+>>>>>>> 7f3be2887c (Pubby map fixes (#7806))
 "cfQ" = (
 /obj/structure/chair{
 	dir = 8
@@ -44231,6 +44261,7 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/ai_monitored/turret_protected/aisat_interior)
+<<<<<<< HEAD
 "cnD" = (
 /turf/open/space/basic,
 /area/ai_monitored/turret_protected/AIsatextAP)
@@ -44245,6 +44276,17 @@
 /obj/structure/lattice,
 /turf/open/space/basic,
 /area/ai_monitored/turret_protected/AIsatextAS)
+=======
+"cnI" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/turf/open/floor/plasteel/white,
+/area/medical/medbay/central)
+>>>>>>> 7f3be2887c (Pubby map fixes (#7806))
 "cnJ" = (
 /obj/effect/turf_decal/delivery,
 /obj/machinery/vending/wardrobe/sec_wardrobe,
@@ -44941,10 +44983,6 @@
 /obj/machinery/door/firedoor,
 /turf/open/floor/plasteel,
 /area/hallway/primary/aft)
-"cqy" = (
-/obj/effect/spawner/structure/window/reinforced,
-/turf/open/floor/plating/airless,
-/area/maintenance/department/engine)
 "cqz" = (
 /obj/effect/turf_decal/tile/green,
 /obj/effect/turf_decal/tile/green{
@@ -44993,6 +45031,7 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
 	dir = 5
 	},
+<<<<<<< HEAD
 /turf/open/floor/plasteel/dark,
 /area/chapel/dock)
 "cqI" = (
@@ -45021,6 +45060,11 @@
 /obj/effect/spawner/structure/window/reinforced,
 /turf/open/floor/plating,
 /area/space/nearstation)
+=======
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
+/turf/open/floor/plasteel/white,
+/area/medical/sleeper)
+>>>>>>> 7f3be2887c (Pubby map fixes (#7806))
 "cqV" = (
 /obj/structure/chair/office/light{
 	dir = 1
@@ -45467,10 +45511,6 @@
 /obj/structure/chair/wood/normal,
 /turf/open/floor/plasteel/dark,
 /area/chapel/main/monastery)
-"csU" = (
-/obj/effect/spawner/structure/window/reinforced,
-/turf/open/floor/plating/airless,
-/area/chapel/main/monastery)
 "csY" = (
 /obj/machinery/suit_storage_unit/standard_unit,
 /obj/machinery/newscaster{
@@ -45523,6 +45563,26 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/chapel/office)
+<<<<<<< HEAD
+=======
+"cts" = (
+/obj/machinery/camera{
+	c_tag = "Bridge Starboard Exterior";
+	dir = 1
+	},
+/turf/open/space,
+/area/space)
+"ctt" = (
+/obj/structure/cable/yellow{
+	icon_state = "1-2"
+	},
+/obj/structure/disposalpipe/segment,
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer2{
+	dir = 4
+	},
+/turf/open/floor/plasteel/white,
+/area/medical/sleeper)
+>>>>>>> 7f3be2887c (Pubby map fixes (#7806))
 "ctu" = (
 /obj/machinery/light/small{
 	dir = 2
@@ -46742,6 +46802,7 @@
 "cyB" = (
 /turf/closed/wall,
 /area/library/lounge)
+<<<<<<< HEAD
 "cyL" = (
 /obj/structure/lattice,
 /obj/structure/lattice,
@@ -46751,6 +46812,8 @@
 /obj/structure/lattice,
 /turf/closed/mineral,
 /area/chapel/asteroid/monastery)
+=======
+>>>>>>> 7f3be2887c (Pubby map fixes (#7806))
 "cyP" = (
 /obj/structure/bookcase/random/nonfiction,
 /obj/machinery/light/small{
@@ -47173,10 +47236,6 @@
 /obj/effect/spawner/structure/window/reinforced,
 /turf/open/floor/plating,
 /area/chapel/office)
-"cBT" = (
-/obj/effect/spawner/structure/window/plasma/reinforced,
-/turf/open/floor/plating/airless,
-/area/maintenance/disposal/incinerator)
 "cBU" = (
 /turf/closed/wall/r_wall,
 /area/gateway)
@@ -47208,22 +47267,31 @@
 	},
 /turf/open/floor/engine,
 /area/engine/engineering)
+<<<<<<< HEAD
 "cCO" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
 /turf/closed/wall,
 /area/security/brig)
+=======
+"cCM" = (
+/obj/structure/cable/yellow{
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
+	dir = 9
+	},
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer2{
+	dir = 8
+	},
+/turf/open/floor/plasteel/white,
+/area/science/shuttledock)
+>>>>>>> 7f3be2887c (Pubby map fixes (#7806))
 "cCP" = (
 /obj/effect/turf_decal/bot/right,
 /turf/open/floor/plasteel/white,
 /area/engine/gravity_generator)
-"cCR" = (
-/obj/effect/turf_decal/stripes/line{
-	dir = 1
-	},
-/turf/open/floor/plating/airless,
-/area/maintenance/department/chapel/monastery)
 "cCS" = (
 /obj/machinery/rnd/production/techfab/department/security,
 /obj/effect/turf_decal/stripes/box,
@@ -48544,6 +48612,18 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/chapel/main/monastery)
+<<<<<<< HEAD
+=======
+"emG" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer2{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/turf/open/floor/plasteel/white,
+/area/medical/sleeper)
+>>>>>>> 7f3be2887c (Pubby map fixes (#7806))
 "enW" = (
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
@@ -48842,6 +48922,10 @@
 	},
 /turf/open/floor/plasteel,
 /area/hallway/primary/aft)
+"eII" = (
+/obj/structure/disposalpipe/segment,
+/turf/closed/wall,
+/area/science/shuttledock)
 "eIL" = (
 /obj/effect/turf_decal/tile/green{
 	dir = 1
@@ -48918,6 +49002,7 @@
 	},
 /turf/open/floor/plasteel,
 /area/science/explab)
+<<<<<<< HEAD
 "eNF" = (
 /obj/structure/grille,
 /obj/structure/lattice,
@@ -48926,6 +49011,19 @@
 "eOT" = (
 /obj/effect/turf_decal/tile/blue{
 	dir = 1
+=======
+"eND" = (
+/obj/machinery/door/airlock/maintenance,
+/obj/effect/mapping_helpers/airlock/abandoned,
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/maintenance/department/engine)
+"eOd" = (
+/obj/structure/fireaxecabinet{
+	pixel_y = -32
+>>>>>>> 7f3be2887c (Pubby map fixes (#7806))
 	},
 /obj/effect/turf_decal/tile/blue{
 	dir = 8
@@ -49317,13 +49415,42 @@
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/layer2{
 	dir = 4
 	},
+<<<<<<< HEAD
 /turf/open/floor/plating,
 /area/maintenance/department/engine)
+=======
+/obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/turf/open/floor/plasteel,
+/area/hallway/primary/aft)
+"foe" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
+	dir = 6
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
+	dir = 6
+	},
+/turf/open/floor/plasteel,
+/area/quartermaster/storage)
+>>>>>>> 7f3be2887c (Pubby map fixes (#7806))
 "fon" = (
 /obj/structure/lattice,
 /obj/structure/grille,
 /turf/open/space/basic,
 /area/space/nearstation)
+<<<<<<< HEAD
+=======
+"fou" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer2{
+	dir = 4
+	},
+/turf/open/floor/plasteel/dark,
+/area/ai_monitored/turret_protected/ai_upload)
+>>>>>>> 7f3be2887c (Pubby map fixes (#7806))
 "fow" = (
 /obj/structure/chair/office{
 	dir = 1
@@ -49359,8 +49486,47 @@
 	dir = 4
 	},
 /turf/open/floor/plasteel,
+<<<<<<< HEAD
 /area/hallway/primary/fore)
 "fqS" = (
+=======
+/area/crew_quarters/dorms)
+"frC" = (
+/obj/machinery/vending/wallmed{
+	pixel_y = 28
+	},
+/obj/machinery/light{
+	dir = 1
+	},
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer4{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/green{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/green{
+	dir = 1
+	},
+/obj/effect/turf_decal/box,
+/obj/structure/closet/l3closet/virology,
+/obj/item/storage/box/masks,
+/obj/item/storage/box/gloves,
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
+	dir = 6
+	},
+/turf/open/floor/plasteel/white,
+/area/medical/virology)
+"frN" = (
+/obj/machinery/air_sensor/atmos/sm_core,
+/obj/machinery/power/supermatter_crystal/engine,
+/turf/open/floor/engine,
+/area/engine/supermatter)
+"fsl" = (
+/obj/machinery/door/airlock/maintenance{
+	name = "Law Office Maintenance";
+	req_access_txt = "38"
+	},
+>>>>>>> 7f3be2887c (Pubby map fixes (#7806))
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
 	},
@@ -50789,6 +50955,7 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
 	dir = 4
 	},
+<<<<<<< HEAD
 /turf/open/floor/engine,
 /area/engine/supermatter)
 "hhc" = (
@@ -50796,6 +50963,16 @@
 /obj/machinery/door/firedoor/window,
 /turf/open/floor/plating/airless,
 /area/science/shuttledock)
+=======
+/turf/open/floor/plasteel/grimy,
+/area/ai_monitored/turret_protected/aisat_interior)
+"hgR" = (
+/obj/effect/turf_decal/tile/neutral,
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2,
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
+/turf/open/floor/plasteel,
+/area/hallway/secondary/exit/departure_lounge)
+>>>>>>> 7f3be2887c (Pubby map fixes (#7806))
 "hhi" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/visible,
 /turf/open/floor/engine,
@@ -51073,6 +51250,57 @@
 	},
 /turf/open/floor/plating,
 /area/security/execution/transfer)
+<<<<<<< HEAD
+=======
+"hwC" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/turf/open/floor/plating{
+	icon_state = "panelscorched"
+	},
+/area/maintenance/department/engine)
+"hwK" = (
+/obj/structure/cable/yellow{
+	icon_state = "1-2"
+	},
+/obj/structure/cable/yellow{
+	icon_state = "1-8"
+	},
+/obj/effect/landmark/blobstart,
+/obj/structure/cable/yellow{
+	icon_state = "1-4"
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 10
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/manifold4w/supply/hidden/layer2,
+/obj/machinery/atmospherics/pipe/manifold4w/scrubbers/hidden/layer4,
+/turf/open/floor/plasteel,
+/area/science/xenobiology)
+"hwO" = (
+/obj/machinery/atmospherics/pipe/manifold/supply/hidden/layer2,
+/obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/layer4,
+/turf/open/floor/plasteel,
+/area/security/prison)
+"hwZ" = (
+/obj/structure/disposalpipe/segment,
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2,
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
+/turf/open/floor/plasteel,
+/area/engine/atmos)
+"hxg" = (
+/obj/machinery/disposal/bin,
+/obj/structure/disposalpipe/trunk{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/maintenance/department/engine)
+>>>>>>> 7f3be2887c (Pubby map fixes (#7806))
 "hxn" = (
 /obj/structure/chair,
 /obj/item/clothing/glasses/regular,
@@ -51098,9 +51326,6 @@
 	},
 /obj/structure/cable/yellow{
 	icon_state = "6-8"
-	},
-/obj/structure/cable/cyan{
-	icon_state = "0-5"
 	},
 /turf/open/floor/plating,
 /area/maintenance/department/chapel/monastery)
@@ -51253,6 +51478,204 @@
 	},
 /turf/open/floor/plasteel,
 /area/hallway/primary/central)
+<<<<<<< HEAD
+=======
+"hzV" = (
+/obj/structure/transit_tube/horizontal,
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/obj/structure/cable/cyan{
+	icon_state = "4-8"
+	},
+/turf/open/floor/plating,
+/area/hallway/secondary/entry)
+"hzY" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
+	dir = 9
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
+	dir = 9
+	},
+/obj/structure/cable/cyan{
+	icon_state = "1-8"
+	},
+/turf/open/floor/plating/airless,
+/area/space/nearstation)
+"hAb" = (
+/obj/effect/turf_decal/tile/red{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/red,
+/obj/effect/turf_decal/tile/red{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2,
+/turf/open/floor/plasteel/dark,
+/area/chapel/office)
+"hAJ" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2,
+/turf/open/floor/plasteel/cafeteria,
+/area/crew_quarters/kitchen)
+"hCo" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer2{
+	dir = 4
+	},
+/turf/open/floor/plasteel/showroomfloor,
+/area/security/warden)
+"hCX" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/visible{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2,
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
+/turf/open/floor/engine,
+/area/engine/engineering)
+"hDU" = (
+/obj/machinery/door/firedoor,
+/obj/machinery/door/poddoor/shutters/preopen{
+	id = "quarantineshutters";
+	name = "isolation shutters"
+	},
+/obj/machinery/door/airlock/virology{
+	name = "Monkey Pen";
+	req_access_txt = "39"
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2,
+/turf/open/floor/plasteel/white,
+/area/medical/virology)
+"hEk" = (
+/obj/effect/turf_decal/tile/yellow,
+/obj/effect/turf_decal/tile/yellow{
+	dir = 8
+	},
+/obj/effect/turf_decal/stripes/white/line{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/simple/green/visible{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/cyan/visible,
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
+	dir = 8
+	},
+/turf/open/floor/plasteel,
+/area/engine/atmos)
+"hEU" = (
+/obj/structure/lattice,
+/obj/machinery/atmospherics/pipe/heat_exchanging/simple{
+	dir = 10
+	},
+/turf/open/space/basic,
+/area/space/nearstation)
+"hFc" = (
+/obj/structure/cable/yellow{
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2,
+/obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/turf/open/floor/plasteel,
+/area/crew_quarters/fitness/recreation)
+"hFv" = (
+/obj/machinery/light{
+	dir = 4
+	},
+/obj/item/radio/intercom{
+	pixel_x = 27
+	},
+/obj/machinery/camera{
+	c_tag = "Departure Lounge Starboard";
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/neutral,
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2,
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
+/turf/open/floor/plasteel,
+/area/hallway/secondary/exit/departure_lounge)
+"hFw" = (
+/obj/structure/cable/yellow{
+	icon_state = "4-8"
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/machinery/camera{
+	c_tag = "Engineering Starboard Fore"
+	},
+/obj/item/radio/intercom{
+	pixel_y = 26
+	},
+/obj/effect/turf_decal/tile/yellow{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/yellow{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/orange/hidden{
+	dir = 6
+	},
+/turf/open/floor/plasteel,
+/area/engine/engineering)
+"hFK" = (
+/obj/effect/turf_decal/arrows{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
+	dir = 8
+	},
+/turf/open/floor/plasteel/dark,
+/area/engine/engineering)
+"hFO" = (
+/obj/structure/cable/yellow{
+	icon_state = "4-8"
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/machinery/light{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/maintenance/fore)
+"hGe" = (
+/obj/machinery/meter,
+/obj/machinery/atmospherics/pipe/simple/cyan/visible{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/cyan/visible/layer2{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/cyan/visible/layer4{
+	dir = 4
+	},
+/turf/open/floor/engine,
+/area/engine/engineering)
+"hGm" = (
+/obj/structure/disposalpipe/segment,
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2,
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
+/turf/open/floor/plating,
+/area/maintenance/department/engine)
+>>>>>>> 7f3be2887c (Pubby map fixes (#7806))
 "hGA" = (
 /obj/effect/landmark/start/exploration,
 /obj/structure/cable/yellow{
@@ -51367,6 +51790,7 @@
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer2{
 	dir = 1
 	},
+<<<<<<< HEAD
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
 /turf/open/floor/plasteel,
 /area/engine/engineering)
@@ -51375,6 +51799,20 @@
 /turf/open/floor/plating/airless,
 /area/maintenance/disposal/incinerator)
 "hMq" = (
+=======
+/turf/open/floor/plasteel/white,
+/area/medical/virology)
+"hMG" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2,
+/turf/open/floor/plasteel,
+/area/quartermaster/office)
+"hMS" = (
+/obj/structure/flora/junglebush/b,
+/turf/open/floor/grass,
+/area/hallway/primary/central)
+"hMZ" = (
+>>>>>>> 7f3be2887c (Pubby map fixes (#7806))
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
 	},
@@ -51525,6 +51963,7 @@
 /turf/open/floor/plating{
 	icon_state = "platingdmg3"
 	},
+<<<<<<< HEAD
 /area/maintenance/department/engine)
 "hUt" = (
 /obj/structure/lattice,
@@ -51534,6 +51973,20 @@
 "hUT" = (
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
+=======
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
+	dir = 6
+	},
+/turf/open/floor/plasteel/showroomfloor,
+/area/security/warden)
+"hUR" = (
+/obj/machinery/button/door{
+	id = "executionfireblast";
+	name = "Transfer Area Lockdown";
+	pixel_x = 25;
+	pixel_y = -5;
+	req_access_txt = "2"
+>>>>>>> 7f3be2887c (Pubby map fixes (#7806))
 	},
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
@@ -51959,9 +52412,32 @@
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer2{
 	dir = 4
 	},
+<<<<<<< HEAD
 /turf/open/floor/plasteel/cafeteria,
 /area/crew_quarters/kitchen)
 "iBq" = (
+=======
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer4,
+/turf/open/floor/plasteel/white,
+/area/science/shuttledock)
+"iAD" = (
+/obj/structure/disposalpipe/segment,
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer2,
+/turf/open/floor/plasteel,
+/area/hallway/primary/central)
+"iAF" = (
+/obj/effect/spawner/structure/window/reinforced,
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/maintenance/department/engine)
+"iAR" = (
+/obj/machinery/door/airlock{
+	name = "Kitchen"
+	},
+/obj/machinery/door/firedoor,
+>>>>>>> 7f3be2887c (Pubby map fixes (#7806))
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
 	dir = 8
 	},
@@ -53063,6 +53539,7 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
 /turf/open/floor/plasteel,
+<<<<<<< HEAD
 /area/hallway/secondary/exit/departure_lounge)
 "klG" = (
 /obj/machinery/advanced_airlock_controller{
@@ -53073,6 +53550,17 @@
 	},
 /obj/machinery/atmospherics/components/binary/dp_vent_pump/layer2{
 	dir = 4
+=======
+/area/hallway/primary/aft)
+"klM" = (
+/obj/effect/spawner/structure/window/reinforced,
+/obj/machinery/atmospherics/pipe/simple/general/visible,
+/turf/open/floor/plating,
+/area/maintenance/disposal/incinerator)
+"klX" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
+	dir = 8
+>>>>>>> 7f3be2887c (Pubby map fixes (#7806))
 	},
 /turf/open/floor/plating,
 /area/maintenance/department/cargo)
@@ -53972,6 +54460,9 @@
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
 	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
 /turf/open/floor/plasteel/white,
 /area/science/shuttledock)
 "lvk" = (
@@ -54261,9 +54752,6 @@
 	req_access_txt = "0"
 	},
 /obj/effect/mapping_helpers/airlock/abandoned,
-/obj/structure/cable/yellow{
-	icon_state = "1-2"
-	},
 /turf/open/floor/plating,
 /area/storage/emergency/starboard)
 "lLK" = (
@@ -54576,6 +55064,88 @@
 	},
 /turf/open/floor/plasteel/white,
 /area/science/lab)
+<<<<<<< HEAD
+=======
+"mec" = (
+/obj/structure/disposalpipe/segment,
+/obj/effect/turf_decal/tile/red,
+/obj/effect/turf_decal/tile/red{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2,
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
+/turf/open/floor/plasteel,
+/area/security/brig)
+"mee" = (
+/obj/structure/cable/yellow{
+	icon_state = "2-8"
+	},
+/obj/item/stack/cable_coil,
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
+	dir = 9
+	},
+/turf/open/floor/plating,
+/area/tcommsat/computer)
+"mep" = (
+/obj/structure/sign/poster/random{
+	pixel_y = 32
+	},
+/obj/item/kirbyplants{
+	icon_state = "plant-17"
+	},
+/obj/structure/sign/poster/official/random{
+	pixel_x = -32
+	},
+/obj/effect/turf_decal/tile/yellow{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
+	dir = 6
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
+	dir = 6
+	},
+/turf/open/floor/plasteel,
+/area/hallway/primary/aft)
+"mev" = (
+/obj/item/soap/nanotrasen,
+/obj/item/clothing/neck/stethoscope,
+/obj/effect/turf_decal/tile/blue{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/blue,
+/obj/effect/turf_decal/tile/blue{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
+	dir = 5
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
+	dir = 5
+	},
+/obj/item/soap/nanotrasen,
+/obj/item/clothing/neck/stethoscope,
+/obj/structure/table/glass,
+/obj/item/storage/box/masks,
+/turf/open/floor/plasteel/white,
+/area/medical/medbay/central)
+"meE" = (
+/obj/structure/chair/fancy/comfy{
+	color = "#666666";
+	dir = 4
+	},
+/obj/structure/cable/yellow{
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/maintenance/department/security/brig)
+>>>>>>> 7f3be2887c (Pubby map fixes (#7806))
 "meF" = (
 /obj/machinery/atmospherics/pipe/layer_manifold/visible{
 	dir = 4
@@ -54605,6 +55175,7 @@
 	dir = 4
 	},
 /turf/open/floor/plating,
+<<<<<<< HEAD
 /area/maintenance/department/cargo)
 "mkc" = (
 /obj/effect/turf_decal/tile/blue{
@@ -54631,6 +55202,28 @@
 	},
 /turf/open/floor/plasteel,
 /area/hallway/primary/aft)
+=======
+/area/maintenance/department/engine)
+"mka" = (
+/obj/structure/grille/broken,
+/obj/structure/lattice,
+/turf/open/space/basic,
+/area/space/nearstation)
+"mkF" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/turf/open/floor/plating/airless,
+/area/space/nearstation)
+"mkQ" = (
+/obj/structure/cable/yellow{
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/manifold4w/supply/hidden/layer2,
+/obj/machinery/atmospherics/pipe/manifold4w/scrubbers/hidden/layer4,
+/turf/open/floor/plasteel/grimy,
+/area/ai_monitored/turret_protected/aisat_interior)
+>>>>>>> 7f3be2887c (Pubby map fixes (#7806))
 "mlr" = (
 /obj/structure/lattice,
 /obj/structure/disposalpipe/junction{
@@ -54871,7 +55464,40 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
 	dir = 4
 	},
+<<<<<<< HEAD
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer2{
+=======
+/turf/open/floor/plasteel,
+/area/hallway/primary/aft)
+"mFs" = (
+/obj/structure/table/wood,
+/obj/item/soap,
+/obj/item/bikehorn,
+/obj/item/toy/cattoy,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/turf/open/floor/plasteel/dark,
+/area/crew_quarters/theatre)
+"mFw" = (
+/obj/structure/cable/yellow{
+	icon_state = "2-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
+	dir = 10
+	},
+/turf/open/floor/plating,
+/area/maintenance/department/engine)
+"mFy" = (
+/obj/effect/mapping_helpers/airlock/cyclelink_helper{
+>>>>>>> 7f3be2887c (Pubby map fixes (#7806))
 	dir = 4
 	},
 /turf/open/floor/plasteel,
@@ -55113,6 +55739,33 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+<<<<<<< HEAD
+=======
+/obj/effect/turf_decal/tile/blue{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/manifold/supply/hidden/layer2{
+	dir = 1
+	},
+/turf/open/floor/plasteel/cafeteria,
+/area/crew_quarters/dorms)
+"mZR" = (
+/turf/closed/wall/r_wall,
+/area/engine/supermatter)
+"naa" = (
+/obj/structure/cable/yellow{
+	icon_state = "4-8"
+	},
+/obj/machinery/camera{
+	c_tag = "Chapel Office Tunnel";
+	dir = 1;
+	network = list("ss13","monastery")
+	},
+/obj/effect/turf_decal/sand,
+>>>>>>> 7f3be2887c (Pubby map fixes (#7806))
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
 	dir = 4
 	},
@@ -55684,6 +56337,9 @@
 	name = "science shuttle dock";
 	req_one_access_txt = "49"
 	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
 /turf/open/floor/plasteel/white,
 /area/science/shuttledock)
 "nGG" = (
@@ -56007,6 +56663,7 @@
 /obj/structure/lattice,
 /turf/open/space/basic,
 /area/space)
+<<<<<<< HEAD
 "ofD" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
 	dir = 8
@@ -56045,6 +56702,12 @@
 	},
 /turf/open/floor/plating,
 /area/maintenance/department/security/brig)
+=======
+"ofi" = (
+/obj/effect/spawner/structure/window/reinforced,
+/turf/open/floor/plating,
+/area/maintenance/disposal/incinerator)
+>>>>>>> 7f3be2887c (Pubby map fixes (#7806))
 "ofY" = (
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
@@ -57017,8 +57680,37 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
 /turf/open/floor/plasteel,
+<<<<<<< HEAD
 /area/hallway/primary/central)
 "pnv" = (
+=======
+/area/hallway/primary/aft)
+"plP" = (
+/obj/machinery/light/small{
+	dir = 8;
+	light_color = "#d8b1b1"
+	},
+/obj/effect/turf_decal/stripes/line,
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer2{
+	dir = 4
+	},
+/turf/open/floor/plasteel/dark,
+/area/storage/tech)
+"pmZ" = (
+/obj/machinery/light{
+	dir = 1
+	},
+/obj/structure/sign/directions/evac{
+	dir = 1;
+	pixel_y = 32
+	},
+/obj/structure/cable/yellow{
+	icon_state = "4-8"
+	},
+/obj/effect/turf_decal/tile/red{
+	dir = 4
+	},
+>>>>>>> 7f3be2887c (Pubby map fixes (#7806))
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
 	dir = 4
 	},
@@ -57457,6 +58149,7 @@
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/layer4{
 	dir = 8
 	},
+<<<<<<< HEAD
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/layer2{
 	dir = 4
 	},
@@ -57468,6 +58161,10 @@
 /obj/structure/grille,
 /turf/open/space/basic,
 /area/space/nearstation)
+=======
+/turf/open/floor/plating,
+/area/maintenance/department/engine)
+>>>>>>> 7f3be2887c (Pubby map fixes (#7806))
 "pWm" = (
 /obj/machinery/door/window/southleft{
 	dir = 4;
@@ -57926,6 +58623,7 @@
 /obj/machinery/atmospherics/pipe/simple/general/visible{
 	dir = 10
 	},
+<<<<<<< HEAD
 /turf/open/floor/plasteel,
 /area/science/mixing)
 "qtF" = (
@@ -57935,6 +58633,16 @@
 /obj/machinery/door/poddoor/preopen{
 	id = "xenobiomain";
 	name = "containment blast door"
+=======
+/turf/open/floor/carpet,
+/area/chapel/main/monastery)
+"qvh" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+>>>>>>> 7f3be2887c (Pubby map fixes (#7806))
 	},
 /obj/machinery/door/firedoor,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
@@ -57943,6 +58651,7 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
 	dir = 4
 	},
+<<<<<<< HEAD
 /turf/open/floor/plasteel/dark,
 /area/science/xenobiology)
 "qux" = (
@@ -57952,6 +58661,8 @@
 "qvf" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
+=======
+>>>>>>> 7f3be2887c (Pubby map fixes (#7806))
 /turf/open/floor/plasteel,
 /area/hallway/primary/fore)
 "qxb" = (
@@ -58691,7 +59402,35 @@
 "rnE" = (
 /turf/closed/mineral,
 /area/library/lounge)
+<<<<<<< HEAD
 "roa" = (
+=======
+"rnH" = (
+/obj/effect/turf_decal/bot,
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer4{
+	dir = 8
+	},
+/turf/open/floor/plasteel,
+/area/science/robotics/lab)
+"rnV" = (
+/obj/structure/chair/wood/normal{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/layer4{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
+	dir = 6
+	},
+/turf/open/floor/carpet{
+	icon_state = "carpetsymbol"
+	},
+/area/crew_quarters/bar)
+"rnY" = (
+/obj/structure/cable/yellow{
+	icon_state = "4-8"
+	},
+>>>>>>> 7f3be2887c (Pubby map fixes (#7806))
 /obj/structure/disposalpipe/segment{
 	dir = 5
 	},
@@ -60403,9 +61142,46 @@
 	icon_state = "panelscorched"
 	},
 /area/maintenance/department/science)
+<<<<<<< HEAD
+=======
+"tSZ" = (
+/turf/closed/wall,
+/area/space/nearstation)
+"tTK" = (
+/obj/effect/mapping_helpers/airlock/cyclelink_helper{
+	dir = 4
+	},
+/obj/machinery/door/airlock/research{
+	name = "Research Division Access";
+	req_access_txt = "47"
+	},
+/obj/structure/cable/yellow{
+	icon_state = "4-8"
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/turf/open/floor/plasteel/dark,
+/area/science/explab)
+>>>>>>> 7f3be2887c (Pubby map fixes (#7806))
 "tTQ" = (
 /obj/structure/cable/yellow{
 	icon_state = "2-8"
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 9
 	},
 /turf/open/floor/plasteel/white,
 /area/science/shuttledock)
@@ -60943,8 +61719,16 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
 	dir = 4
 	},
+<<<<<<< HEAD
 /turf/open/floor/plasteel/white,
 /area/medical/medbay/central)
+=======
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
+	dir = 8
+	},
+/turf/open/floor/plasteel/cafeteria,
+/area/crew_quarters/kitchen)
+>>>>>>> 7f3be2887c (Pubby map fixes (#7806))
 "uDN" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
@@ -63359,10 +64143,27 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
 	dir = 4
 	},
+<<<<<<< HEAD
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/layer2,
 /turf/open/floor/plasteel,
 /area/hallway/primary/aft)
 "ydI" = (
+=======
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
+	dir = 8
+	},
+/turf/open/floor/plasteel/dark,
+/area/security/brig)
+"ybo" = (
+/obj/effect/spawner/structure/window/plasma/reinforced,
+/turf/open/floor/plating,
+/area/maintenance/disposal/incinerator)
+"ybH" = (
+/obj/machinery/door/airlock/maintenance{
+	name = "Brig Infirmary Maintenance";
+	req_access_txt = "63"
+	},
+>>>>>>> 7f3be2887c (Pubby map fixes (#7806))
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
 	},
@@ -69769,11 +70570,11 @@ aaa
 aaa
 aaa
 aaa
-aoH
-aoH
-aoH
-aoH
-aoH
+aby
+aby
+aby
+aby
+aby
 aaa
 aaa
 aaa
@@ -70026,11 +70827,11 @@ aaa
 aaa
 aaa
 aaa
-aoH
+aby
 aaa
-aoI
+abI
 aaa
-aoH
+aby
 aaa
 aaa
 aaa
@@ -70283,11 +71084,11 @@ aaa
 aaa
 aaa
 aaa
-aoI
-aoI
+abI
+abI
 azG
-aoI
-aoI
+abI
+abI
 aaa
 aaa
 aaa
@@ -70531,29 +71332,29 @@ aaa
 aaa
 aaa
 aaa
-aoH
-aoH
-aoH
-aoH
-aoH
-aoH
-aoH
-aoH
-aoH
-aoH
+aby
+aby
+aby
+aby
+aby
+aby
+aby
+aby
+aby
+aby
 aaa
 azH
 aaa
-aoH
-aoH
-aoH
-aoH
-aoH
-aoH
-aoH
-aoH
-aoH
-aoH
+aby
+aby
+aby
+aby
+aby
+aby
+aby
+aby
+aby
+aby
 aaa
 aaa
 aaa
@@ -70788,7 +71589,7 @@ aaa
 aaa
 aaa
 aaa
-aoI
+abI
 aaa
 aaa
 aaa
@@ -70810,7 +71611,7 @@ aaa
 aaa
 aaa
 aaa
-aoI
+abI
 aaa
 aaa
 aaa
@@ -71045,7 +71846,7 @@ aaa
 aaa
 aaa
 aaa
-aoH
+aby
 aaa
 aqa
 aqa
@@ -71067,7 +71868,7 @@ aqa
 aqa
 aqa
 aaa
-aoH
+aby
 aaa
 aaa
 aaa
@@ -71302,8 +72103,8 @@ aaa
 aaa
 aaa
 aaa
-aoH
-aoI
+aby
+abI
 aqb
 ara
 ara
@@ -71323,8 +72124,8 @@ aCa
 aCa
 aCa
 aIr
-aoI
-aoH
+abI
+aby
 aaa
 aaa
 aaa
@@ -71559,7 +72360,7 @@ aaa
 aaa
 aaa
 aaa
-aoH
+aby
 aaa
 aqc
 aqc
@@ -71581,7 +72382,7 @@ aqd
 aqd
 aqc
 aaa
-aoH
+aby
 aaa
 aaa
 aaa
@@ -71816,7 +72617,7 @@ aaa
 aaa
 aaa
 aaa
-aoJ
+aed
 aaa
 aaa
 aaa
@@ -71838,7 +72639,7 @@ aaa
 aaa
 aaa
 aaa
-aoH
+aby
 aaa
 aaa
 aaa
@@ -72073,7 +72874,7 @@ aaa
 aaa
 aaa
 aaa
-aoH
+aby
 aaa
 aqa
 aqa
@@ -72095,7 +72896,7 @@ aqa
 aqa
 aqa
 aaa
-aoH
+aby
 aaa
 aaa
 aaa
@@ -72330,8 +73131,8 @@ aaa
 aaa
 aaa
 aaa
-aoH
-aoI
+aby
+abI
 aqb
 ara
 ara
@@ -72351,8 +73152,8 @@ aCa
 aCa
 aCa
 aIr
-aoI
-aoH
+abI
+aby
 aaa
 aaa
 aaa
@@ -72587,7 +73388,7 @@ aaa
 aaa
 aaa
 aaa
-aoH
+aby
 aaa
 aqc
 aqc
@@ -72609,7 +73410,7 @@ aqd
 aqd
 aqc
 aaa
-aoH
+aby
 aaa
 aaa
 aaa
@@ -72844,7 +73645,7 @@ aaa
 aaa
 aaa
 aaa
-aoH
+aby
 aaa
 aaa
 aaa
@@ -72866,7 +73667,7 @@ aaa
 aaa
 aaa
 aaa
-aoH
+aby
 aaa
 aaa
 aaa
@@ -73101,7 +73902,7 @@ aaa
 aaa
 aaa
 aaa
-aoH
+aby
 aaa
 aqa
 aqa
@@ -73123,7 +73924,7 @@ aqa
 aqa
 aqa
 aaa
-aoH
+aby
 aaa
 aaa
 aaa
@@ -73358,8 +74159,8 @@ aaa
 aaa
 aaa
 aaa
-aoH
-aoI
+aby
+abI
 aqb
 ara
 ara
@@ -73379,8 +74180,8 @@ aCa
 aCa
 aCa
 aIr
-aoI
-aoH
+abI
+aby
 aaa
 aaa
 aaa
@@ -73615,7 +74416,7 @@ aaa
 aaa
 aaa
 aaa
-aoH
+aby
 aaa
 aqd
 aqd
@@ -73637,7 +74438,7 @@ aqd
 aqd
 aqc
 aaa
-aoH
+aby
 aaa
 aaa
 aaa
@@ -73872,7 +74673,7 @@ aaa
 aaa
 aaa
 aaa
-aoH
+aby
 aaa
 aaa
 aaa
@@ -73894,7 +74695,7 @@ aaa
 aaa
 aaa
 aaa
-aoJ
+aed
 aaa
 aaa
 aaa
@@ -74129,7 +74930,7 @@ aaa
 aaa
 aaa
 aaa
-aoH
+aby
 aaa
 aqa
 aqa
@@ -74151,7 +74952,7 @@ aqa
 aqa
 aqa
 aaa
-aoH
+aby
 aaa
 aaa
 aaa
@@ -74386,8 +75187,8 @@ aaa
 aaa
 aaa
 aaa
-aoH
-aoI
+aby
+abI
 aqb
 ara
 ara
@@ -74407,8 +75208,8 @@ aCa
 aCa
 aCa
 aIr
-aoI
-aoH
+abI
+aby
 aaa
 aaa
 aaa
@@ -74643,7 +75444,7 @@ aaa
 aaa
 aaa
 aaa
-aoH
+aby
 aaa
 aqd
 aqd
@@ -74665,7 +75466,7 @@ aqd
 aqd
 aqc
 aaa
-aoH
+aby
 aaa
 aaa
 aaa
@@ -74900,11 +75701,11 @@ aaa
 aaa
 aaa
 aaa
-aoH
+aby
 aaa
 aaa
 aaa
-aoI
+abI
 aaa
 aaa
 aaa
@@ -74918,11 +75719,11 @@ aaa
 aaa
 aaa
 aaa
-aoI
+abI
 aaa
 aaa
 aaa
-aoI
+abI
 aaa
 aaa
 aaa
@@ -75157,11 +75958,11 @@ aaa
 aaa
 aaa
 aaa
-aoH
-aoI
-aoH
-aoH
-aoH
+aby
+abI
+aby
+aby
+aby
 aaa
 aaa
 aaa
@@ -75175,11 +75976,11 @@ aaa
 aaa
 aaa
 aaa
-aoH
-aoI
-aoH
-aoH
-aoH
+aby
+abI
+aby
+aby
+aby
 aaa
 aaa
 aaa
@@ -76041,8 +76842,8 @@ bWV
 bWV
 bWV
 bWV
-emV
-mZE
+bBW
+aaa
 aaa
 aaa
 aaa
@@ -76300,7 +77101,7 @@ cww
 bWV
 fIT
 fIT
-mZE
+aaa
 aaa
 aaa
 aaa
@@ -76557,7 +77358,7 @@ bXJ
 crj
 cwO
 fIT
-mZE
+aaa
 aaa
 aaa
 aaa
@@ -76781,7 +77582,11 @@ aaa
 aaa
 aaa
 aaa
+<<<<<<< HEAD
 mZE
+=======
+aaa
+>>>>>>> 7f3be2887c (Pubby map fixes (#7806))
 cfN
 cfN
 bZY
@@ -76815,7 +77620,7 @@ bXJ
 bXJ
 fIT
 fIT
-mZE
+aaa
 aaa
 aaa
 aaa
@@ -77037,7 +77842,7 @@ aaa
 aaa
 aaa
 aaa
-mZE
+aaa
 bNs
 cfN
 cqW
@@ -77294,7 +78099,7 @@ aaa
 aaa
 aaa
 aaa
-mZE
+aaa
 bNs
 cfN
 cfN
@@ -77551,7 +78356,7 @@ aaa
 aaa
 aaa
 aaa
-mZE
+aaa
 bNs
 cqW
 bOw
@@ -77586,7 +78391,7 @@ bXJ
 bXJ
 fIT
 fIT
-mZE
+aaa
 aaa
 aaa
 aaa
@@ -77808,7 +78613,11 @@ aby
 aby
 aby
 aby
+<<<<<<< HEAD
 mZE
+=======
+aaa
+>>>>>>> 7f3be2887c (Pubby map fixes (#7806))
 bNs
 bUC
 bOw
@@ -77842,7 +78651,7 @@ bXJ
 cwG
 cwO
 fIT
-mZE
+aaa
 aaa
 aaa
 aaa
@@ -78099,7 +78908,6 @@ cwz
 bWV
 fIT
 fIT
-mZE
 aaa
 aaa
 aaa
@@ -78110,6 +78918,10 @@ aaa
 aaa
 aaa
 aaa
+<<<<<<< HEAD
+=======
+aaa
+>>>>>>> 7f3be2887c (Pubby map fixes (#7806))
 cfN
 cfN
 cfN
@@ -78319,8 +79131,13 @@ aaa
 aaa
 aaa
 abI
+<<<<<<< HEAD
 emV
 emV
+=======
+bBW
+bBW
+>>>>>>> 7f3be2887c (Pubby map fixes (#7806))
 bNs
 bNs
 bQe
@@ -78354,8 +79171,6 @@ bWV
 bWV
 bWV
 bWV
-mZE
-mZE
 aaa
 aaa
 aaa
@@ -78364,12 +79179,21 @@ aaa
 aaa
 aaa
 aaa
+<<<<<<< HEAD
+=======
+aaa
+aaa
+cfN
+>>>>>>> 7f3be2887c (Pubby map fixes (#7806))
 cfN
 cfN
 cfN
 cfN
 cfN
+<<<<<<< HEAD
 cyM
+=======
+>>>>>>> 7f3be2887c (Pubby map fixes (#7806))
 aaa
 aaa
 aaa
@@ -78611,7 +79435,7 @@ cwa
 cke
 cky
 cjm
-cCR
+mkF
 aaa
 aaa
 aaa
@@ -78631,8 +79455,13 @@ aaa
 aaa
 aaa
 cfN
+<<<<<<< HEAD
 cyM
 cfN
+=======
+cfN
+cfN
+>>>>>>> 7f3be2887c (Pubby map fixes (#7806))
 cfN
 cfN
 cfN
@@ -78829,9 +79658,15 @@ aby
 aaa
 aaa
 abI
+<<<<<<< HEAD
 emV
 abI
 emV
+=======
+bBW
+abI
+bBW
+>>>>>>> 7f3be2887c (Pubby map fixes (#7806))
 bNs
 bNs
 bOw
@@ -78879,9 +79714,15 @@ aaa
 cfN
 cfN
 cfN
+<<<<<<< HEAD
 cyM
 cfN
 cyM
+=======
+cfN
+cfN
+cfN
+>>>>>>> 7f3be2887c (Pubby map fixes (#7806))
 aaa
 aht
 aaa
@@ -79149,9 +79990,15 @@ aht
 aaa
 cfN
 cfN
+<<<<<<< HEAD
 cyM
 cfN
 cfN
+=======
+cfN
+cfN
+cfN
+>>>>>>> 7f3be2887c (Pubby map fixes (#7806))
 cfN
 aaa
 aaa
@@ -79336,11 +80183,19 @@ aaa
 aaa
 aaa
 aaa
+<<<<<<< HEAD
 bHI
 aby
 aby
 aby
 emV
+=======
+mka
+aby
+aby
+aby
+bBW
+>>>>>>> 7f3be2887c (Pubby map fixes (#7806))
 bNs
 bNs
 bOw
@@ -79592,12 +80447,12 @@ aaa
 aaa
 aaa
 aaa
-emV
-emV
-mZE
+bBW
+bBW
+aaa
 aht
-mZE
-mZE
+aaa
+aaa
 bNs
 bOw
 bOw
@@ -80620,7 +81475,7 @@ aaa
 aaa
 aaa
 aaa
-bGG
+mVM
 bGE
 bIW
 bKc
@@ -80877,7 +81732,7 @@ aaa
 aaa
 aaa
 aaa
-emV
+bBW
 bGE
 bIX
 bKd
@@ -80953,7 +81808,11 @@ cyU
 aht
 aht
 aht
+<<<<<<< HEAD
 cyM
+=======
+cfN
+>>>>>>> 7f3be2887c (Pubby map fixes (#7806))
 cfN
 cfN
 aaa
@@ -81134,7 +81993,7 @@ aaa
 aaa
 aaa
 aaa
-mZE
+aaa
 bHM
 bHM
 bHM
@@ -81392,7 +82251,7 @@ aaa
 aaa
 aaa
 aaa
-mZE
+aaa
 bGE
 bLn
 txF
@@ -81649,7 +82508,7 @@ aaa
 aaa
 aaa
 aaa
-mZE
+aaa
 bGE
 bKf
 wAs
@@ -81906,7 +82765,7 @@ aaa
 aaa
 aaa
 aaa
-mZE
+aaa
 bGE
 bKg
 bLn
@@ -82163,7 +83022,7 @@ aaa
 aaa
 aaa
 aaa
-mZE
+aaa
 bHM
 bGE
 bGE
@@ -82172,7 +83031,11 @@ bNA
 bHM
 abI
 abI
+<<<<<<< HEAD
 emV
+=======
+bBW
+>>>>>>> 7f3be2887c (Pubby map fixes (#7806))
 bNs
 bNs
 bOw
@@ -82237,7 +83100,11 @@ cjp
 aht
 aht
 aht
+<<<<<<< HEAD
 cyM
+=======
+cfN
+>>>>>>> 7f3be2887c (Pubby map fixes (#7806))
 cfN
 cfN
 cfN
@@ -82425,12 +83292,20 @@ aht
 aht
 abI
 abI
+<<<<<<< HEAD
 bNB
+=======
+xAW
+>>>>>>> 7f3be2887c (Pubby map fixes (#7806))
 abI
 abI
 aby
 abI
+<<<<<<< HEAD
 bRC
+=======
+abI
+>>>>>>> 7f3be2887c (Pubby map fixes (#7806))
 bNs
 bNs
 bNs
@@ -82681,16 +83556,27 @@ aaa
 aby
 aby
 aaa
+<<<<<<< HEAD
 oex
 bNB
+=======
+aht
+xAW
+>>>>>>> 7f3be2887c (Pubby map fixes (#7806))
 aaa
 aht
 aby
 aby
 abI
+<<<<<<< HEAD
 emV
 abI
 cqS
+=======
+bBW
+abI
+bNs
+>>>>>>> 7f3be2887c (Pubby map fixes (#7806))
 bNs
 bQe
 bOw
@@ -82938,8 +83824,13 @@ aaa
 aaa
 aaa
 aaa
+<<<<<<< HEAD
 oex
 amB
+=======
+aht
+kKu
+>>>>>>> 7f3be2887c (Pubby map fixes (#7806))
 aht
 aht
 aaa
@@ -82960,7 +83851,7 @@ bOw
 bOw
 bOw
 bWV
-csU
+fIT
 bWV
 bWV
 bWV
@@ -83006,7 +83897,11 @@ aht
 aht
 aht
 aht
+<<<<<<< HEAD
 cyM
+=======
+cfN
+>>>>>>> 7f3be2887c (Pubby map fixes (#7806))
 cfN
 cfN
 cfN
@@ -83195,8 +84090,13 @@ aaa
 aaa
 aaa
 aaa
+<<<<<<< HEAD
 oex
 bNB
+=======
+aht
+xAW
+>>>>>>> 7f3be2887c (Pubby map fixes (#7806))
 aaa
 aht
 aaa
@@ -83206,7 +84106,7 @@ aaa
 abI
 aaa
 aaa
-emV
+bBW
 bNs
 bNs
 bNs
@@ -83441,6 +84341,7 @@ aaa
 aaa
 aaa
 aaa
+<<<<<<< HEAD
 oex
 oex
 oex
@@ -83454,6 +84355,21 @@ oex
 oex
 oex
 amD
+=======
+aht
+aht
+aht
+aht
+aht
+aht
+aht
+aht
+aht
+aht
+aht
+aht
+pbD
+>>>>>>> 7f3be2887c (Pubby map fixes (#7806))
 aht
 aht
 aht
@@ -83466,7 +84382,11 @@ aht
 abI
 abI
 abI
+<<<<<<< HEAD
 mZE
+=======
+aaa
+>>>>>>> 7f3be2887c (Pubby map fixes (#7806))
 bNs
 bNs
 bNs
@@ -83698,6 +84618,7 @@ aaa
 aaa
 aaa
 aaa
+<<<<<<< HEAD
 oex
 gEJ
 bXS
@@ -83711,6 +84632,21 @@ cHS
 cHS
 gxK
 hTs
+=======
+aht
+uBe
+qMl
+prc
+prc
+prc
+prc
+prc
+prc
+prc
+prc
+jnj
+hzY
+>>>>>>> 7f3be2887c (Pubby map fixes (#7806))
 aaa
 aht
 aaa
@@ -83767,7 +84703,11 @@ aaa
 aht
 cfN
 cfN
+<<<<<<< HEAD
 cyM
+=======
+cfN
+>>>>>>> 7f3be2887c (Pubby map fixes (#7806))
 cfN
 aht
 aaa
@@ -83955,8 +84895,13 @@ btK
 aaa
 aaa
 aaa
+<<<<<<< HEAD
 oex
 bXd
+=======
+aht
+lBH
+>>>>>>> 7f3be2887c (Pubby map fixes (#7806))
 aht
 aht
 aht
@@ -84021,6 +84966,7 @@ aaa
 aht
 aaa
 cfN
+<<<<<<< HEAD
 cyM
 cfN
 cfN
@@ -84029,6 +84975,16 @@ cfN
 cyM
 cfN
 cyM
+=======
+cfN
+cfN
+cfN
+cfN
+cfN
+cfN
+cfN
+cfN
+>>>>>>> 7f3be2887c (Pubby map fixes (#7806))
 cfN
 cfN
 cfN
@@ -84212,8 +85168,13 @@ btL
 aZx
 aaa
 aaa
+<<<<<<< HEAD
 oex
 bNB
+=======
+aht
+xAW
+>>>>>>> 7f3be2887c (Pubby map fixes (#7806))
 bBW
 abI
 aaa
@@ -84241,6 +85202,7 @@ aaa
 abI
 ahi
 abI
+<<<<<<< HEAD
 mZE
 mZE
 mZE
@@ -84252,6 +85214,19 @@ mZE
 mZE
 mZE
 mZE
+=======
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+>>>>>>> 7f3be2887c (Pubby map fixes (#7806))
 cfN
 cfN
 cfN
@@ -84275,7 +85250,11 @@ aaa
 aaa
 aaa
 aaa
+<<<<<<< HEAD
 cyL
+=======
+cfN
+>>>>>>> 7f3be2887c (Pubby map fixes (#7806))
 cfN
 cfN
 cfN
@@ -85515,7 +86494,11 @@ bDi
 bDi
 bDi
 bva
+<<<<<<< HEAD
 iEU
+=======
+aaa
+>>>>>>> 7f3be2887c (Pubby map fixes (#7806))
 bTb
 abI
 bva
@@ -85772,13 +86755,19 @@ bDi
 bDi
 bDi
 bva
+<<<<<<< HEAD
 lDJ
 bTc
 cqy
+=======
+bIZ
+iAF
+bIZ
+>>>>>>> 7f3be2887c (Pubby map fixes (#7806))
 bva
 bVs
 bVC
-cqy
+bIZ
 aaa
 bva
 crB
@@ -86046,7 +87035,7 @@ bva
 vhz
 bva
 bva
-mZE
+aaa
 aaa
 aaa
 aaa
@@ -86303,7 +87292,7 @@ bRD
 isb
 cdE
 bIZ
-mZE
+aaa
 aaa
 aaa
 reV
@@ -88109,7 +89098,7 @@ bDi
 bDi
 bva
 aht
-eNF
+tSZ
 aaa
 aaa
 aaa
@@ -88247,7 +89236,11 @@ aaa
 aaa
 aaa
 aaa
+<<<<<<< HEAD
 afJ
+=======
+cFB
+>>>>>>> 7f3be2887c (Pubby map fixes (#7806))
 aby
 aaa
 agQ
@@ -88344,7 +89337,7 @@ erZ
 bva
 bva
 bva
-cqy
+bIZ
 bva
 bva
 bva
@@ -88366,7 +89359,7 @@ bDi
 bDi
 bva
 aht
-eNF
+tSZ
 aaa
 aaa
 aaa
@@ -88880,7 +89873,7 @@ bDi
 bDi
 bva
 aht
-eNF
+tSZ
 aaa
 aaa
 aaa
@@ -89647,7 +90640,7 @@ hTr
 aaa
 aaa
 aaa
-eNF
+tSZ
 aaa
 aaa
 aaa
@@ -90566,7 +91559,7 @@ aaa
 aaa
 aaa
 aaa
-afJ
+cFB
 aaa
 aaa
 abI
@@ -90582,7 +91575,7 @@ apj
 ajM
 ajM
 ajM
-cCO
+ajM
 ajM
 ajM
 avL
@@ -90902,12 +91895,21 @@ bEy
 bkh
 qeU
 bIf
+<<<<<<< HEAD
 bjc
 bKw
 bLG
 bjc
 bNT
 erZ
+=======
+bFO
+frC
+eZm
+pAH
+bEr
+gsW
+>>>>>>> 7f3be2887c (Pubby map fixes (#7806))
 bPB
 bQm
 bQZ
@@ -91657,6 +92659,7 @@ bjX
 blh
 bms
 bnA
+<<<<<<< HEAD
 boE
 bpN
 bre
@@ -91677,6 +92680,28 @@ bJo
 neh
 bLJ
 bMK
+=======
+iIN
+hUc
+oox
+egd
+qNn
+tdH
+udN
+eQS
+oKU
+vtd
+oXt
+dGV
+vWQ
+xZN
+oTE
+uYr
+dvw
+qyt
+oXt
+mev
+>>>>>>> 7f3be2887c (Pubby map fixes (#7806))
 bjc
 erZ
 bPB
@@ -92633,8 +93658,13 @@ aaa
 aaa
 aht
 aht
+<<<<<<< HEAD
 lxt
 apo
+=======
+aYP
+cej
+>>>>>>> 7f3be2887c (Pubby map fixes (#7806))
 abI
 arA
 arA
@@ -95435,11 +96465,11 @@ acY
 aee
 afH
 acP
-adV
-adV
-cnD
-adV
-adV
+bBW
+bBW
+aaa
+bBW
+bBW
 acP
 akn
 acP
@@ -95694,7 +96724,7 @@ adv
 acP
 adW
 aej
-cnE
+aht
 aej
 aex
 acP
@@ -95949,11 +96979,11 @@ add
 adk
 adw
 adX
-adV
-adV
-cnD
-adV
-adV
+bBW
+bBW
+aaa
+bBW
+bBW
 adX
 afh
 afw
@@ -96086,7 +97116,7 @@ mZR
 abI
 aaa
 aaa
-pmj
+aby
 aaa
 aaa
 aaa
@@ -96977,11 +98007,11 @@ add
 ado
 adA
 adX
-adZ
-adZ
-cnG
-adZ
-adZ
+bBW
+bBW
+aaa
+bBW
+bBW
 adX
 afh
 afA
@@ -97236,7 +98266,7 @@ adB
 acU
 aea
 aej
-cnH
+aht
 aej
 aez
 acU
@@ -97260,7 +98290,7 @@ aht
 aht
 aaa
 aaa
-app
+cts
 apT
 apT
 apT
@@ -97491,11 +98521,11 @@ ade
 ael
 afK
 acU
-adZ
-adZ
-cnG
-adZ
-adZ
+bBW
+bBW
+aaa
+bBW
+bBW
 acU
 afl
 acU
@@ -97854,7 +98884,11 @@ bSa
 bJN
 bJN
 bJN
+<<<<<<< HEAD
 bVd
+=======
+vRL
+>>>>>>> 7f3be2887c (Pubby map fixes (#7806))
 bJN
 bJN
 bJN
@@ -98064,8 +99098,13 @@ rFc
 aUf
 aUf
 aWq
+<<<<<<< HEAD
 aXn
 aYl
+=======
+vWb
+mFs
+>>>>>>> 7f3be2887c (Pubby map fixes (#7806))
 aUf
 bap
 bbw
@@ -98122,7 +99161,11 @@ abI
 abI
 abI
 abI
+<<<<<<< HEAD
 oex
+=======
+aht
+>>>>>>> 7f3be2887c (Pubby map fixes (#7806))
 aaa
 aaa
 adR
@@ -98374,11 +99417,19 @@ bWJ
 bXs
 bJN
 abI
+<<<<<<< HEAD
 bJP
 bJP
 bJP
 bJP
 bJP
+=======
+bJN
+bJN
+bJN
+bJN
+bJN
+>>>>>>> 7f3be2887c (Pubby map fixes (#7806))
 abI
 abI
 abI
@@ -98635,7 +99686,7 @@ bZL
 caz
 cbs
 cbs
-bJP
+bJN
 aaa
 aaa
 aaa
@@ -98888,11 +99939,15 @@ bWK
 bXu
 bLW
 abI
+<<<<<<< HEAD
 bMi
+=======
+aKl
+>>>>>>> 7f3be2887c (Pubby map fixes (#7806))
 caA
 cbt
 ccm
-bJP
+bJN
 aaa
 aaa
 aaa
@@ -99149,7 +100204,7 @@ bZL
 caB
 cbs
 cbs
-bJP
+bJN
 aaa
 aaa
 aaa
@@ -99402,11 +100457,19 @@ bZd
 fBJ
 adj
 abI
+<<<<<<< HEAD
 bJP
 bJP
 bJP
 bJP
 bJP
+=======
+bJN
+bJN
+bJN
+bJN
+bJN
+>>>>>>> 7f3be2887c (Pubby map fixes (#7806))
 aaa
 aby
 aaa
@@ -99663,7 +100726,11 @@ bZL
 caC
 cbu
 cbu
+<<<<<<< HEAD
 bJP
+=======
+bJN
+>>>>>>> 7f3be2887c (Pubby map fixes (#7806))
 abI
 aby
 aaa
@@ -99916,15 +100983,19 @@ bOk
 bXx
 bLW
 abI
+<<<<<<< HEAD
 bMi
+=======
+aKl
+>>>>>>> 7f3be2887c (Pubby map fixes (#7806))
 caD
 cbv
 ccn
-bJP
+bJN
 aaa
 aby
 aht
-pWb
+fon
 aaa
 aht
 aaa
@@ -100177,7 +101248,7 @@ bZL
 caE
 cbu
 cbu
-bJP
+bJN
 aaa
 aby
 aaa
@@ -100430,11 +101501,19 @@ bZd
 ndP
 adj
 abI
+<<<<<<< HEAD
 bJP
 bJP
 bJP
 bJP
 bJP
+=======
+bJN
+bJN
+bJN
+bJN
+bJN
+>>>>>>> 7f3be2887c (Pubby map fixes (#7806))
 abI
 aby
 aaa
@@ -100691,7 +101770,7 @@ bZM
 caF
 cbw
 cby
-bJP
+bJN
 aaa
 aaa
 aaa
@@ -100944,11 +102023,19 @@ bMf
 bXB
 bLW
 abI
+<<<<<<< HEAD
 bMi
 caG
 cbx
 cco
 bJP
+=======
+aKl
+caG
+cbx
+cco
+bJN
+>>>>>>> 7f3be2887c (Pubby map fixes (#7806))
 abI
 abI
 abI
@@ -101205,7 +102292,7 @@ bZN
 caH
 cby
 cby
-bJP
+bJN
 aaa
 aaa
 aaa
@@ -101460,7 +102547,7 @@ bYw
 bYw
 bYw
 bYw
-cBT
+ybo
 bYw
 bYw
 bYw
@@ -101721,7 +102808,7 @@ cbA
 ccp
 aac
 aae
-hMa
+ofi
 aaa
 aby
 aaa
@@ -102235,7 +103322,7 @@ cbC
 fbC
 ccr
 ots
-cec
+klM
 ceA
 aaa
 aaa
@@ -102981,23 +104068,27 @@ bCT
 bGj
 buz
 abI
+<<<<<<< HEAD
 bJP
+=======
+bJN
+>>>>>>> 7f3be2887c (Pubby map fixes (#7806))
 bLb
-bMi
+aKl
 bLb
-bJP
+bJN
 bLb
-bMi
+aKl
 bLb
-bJP
+bJN
 bLb
-bMi
+aKl
 bLb
-bJP
+bJN
 bLb
-bMi
+aKl
 bLb
-bJP
+bJN
 aht
 tUf
 bZS
@@ -103237,25 +104328,25 @@ bDS
 bwa
 bGk
 buz
-mZE
-bJP
+aaa
+bJN
 bLc
 bMj
 bNo
-bJP
+bJN
 bPg
 bPZ
 bQP
-bJP
+bJN
 bSj
 bSW
 bTV
-bJP
+bJN
 bVn
 bWe
 bWT
-bJP
-mZE
+bJN
+aaa
 bYw
 bZT
 caN
@@ -103495,31 +104586,35 @@ bFf
 bGl
 buz
 abI
+<<<<<<< HEAD
 bJP
+=======
+bJN
+>>>>>>> 7f3be2887c (Pubby map fixes (#7806))
 bLd
 bLe
 bLe
-bJP
+bJN
 bPh
 bQa
 bPh
-bJP
+bJN
 bSk
 bSX
 bSk
-bJP
+bJN
 bVo
 bWf
 bVo
-bJP
+bJN
 aht
 bYw
 bZU
 caO
 cbF
 ccs
-qux
-qux
+cdm
+cdm
 aaa
 aaa
 aaa
@@ -103752,23 +104847,27 @@ bCV
 bAF
 bHy
 abI
+<<<<<<< HEAD
 bJP
+=======
+bJN
+>>>>>>> 7f3be2887c (Pubby map fixes (#7806))
 bLe
 bMk
 bLe
-bJP
+bJN
 bPh
 bQb
 bPh
-bJP
+bJN
 bSl
 bSY
 bSk
-bJP
+bJN
 bVo
 bWg
 bVo
-bJP
+bJN
 aht
 bYw
 bYw
@@ -104009,25 +105108,25 @@ bFh
 bGm
 bHy
 aaa
-bJP
-bJP
-bJP
-bJP
-bJP
-bJP
-bJP
-bJP
-bJP
-bJP
-bJP
-bJP
-bJP
-bJP
-bJP
-bJP
-bJP
-mZE
-mZE
+bJN
+bJN
+bJN
+bJN
+bJN
+bJN
+bJN
+bJN
+bJN
+bJN
+bJN
+bJN
+bJN
+bJN
+bJN
+bJN
+bJN
+aaa
+aaa
 bYw
 caQ
 bYw
@@ -105045,13 +106144,21 @@ aby
 aaa
 aaa
 aaa
-acO
+reV
 aby
 aby
 aby
 aaa
 acO
 aby
+<<<<<<< HEAD
+aby
+aby
+aaa
+acO
+aby
+=======
+>>>>>>> 7f3be2887c (Pubby map fixes (#7806))
 bzy
 aaa
 aaa
@@ -105556,7 +106663,7 @@ iUX
 iUX
 iUX
 bOs
-mZE
+aaa
 aaa
 aaa
 aaa
@@ -105813,7 +106920,7 @@ sgI
 bMl
 bNp
 bOt
-mZE
+aaa
 aaa
 aaa
 aaa
@@ -106070,7 +107177,7 @@ bLf
 bMm
 bNp
 bOt
-mZE
+aaa
 aaa
 aaa
 aaa
@@ -106327,7 +107434,7 @@ bIM
 bMn
 bNp
 bOt
-mZE
+aaa
 aaa
 aaa
 aaa
@@ -107097,7 +108204,7 @@ bJT
 wOS
 bMp
 ahi
-mZE
+aaa
 aht
 aaa
 aaa
@@ -108128,7 +109235,7 @@ aht
 aaa
 aht
 aaa
-hUt
+aby
 aaa
 aaa
 aaa
@@ -108382,7 +109489,7 @@ bwm
 aht
 aaa
 aht
-hFp
+aed
 aht
 aht
 aed
@@ -111167,7 +112274,7 @@ aaa
 aaa
 aaa
 aaa
-mZE
+aaa
 aaa
 aaa
 aaa
@@ -113005,9 +114112,9 @@ vuQ
 vuQ
 xUr
 vuQ
-hhc
-hhc
-hhc
+sNj
+sNj
+sNj
 aaa
 aaa
 aaa
@@ -113511,7 +114618,7 @@ oNE
 oep
 bnd
 mlr
-vuQ
+eII
 tTQ
 hGA
 hGA
