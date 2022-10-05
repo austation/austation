@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 // All signals. Format:
 // When the signal is called: (signal arguments)
 // All signals send the source datum of the signal as the first argument
@@ -588,3 +589,8 @@
 #define COMSIG_MOVELOOP_POSTPROCESS "moveloop_postprocess"
 //from [/datum/move_loop/has_target/jps/recalculate_path] ():
 #define COMSIG_MOVELOOP_JPS_REPATH "moveloop_jps_repath"
+=======
+/// Signifies that this proc is used to handle signals.
+/// Every proc you pass to RegisterSignal must have this.
+#define SIGNAL_HANDLER SHOULD_NOT_SLEEP(TRUE)
+>>>>>>> 4201b346b9 (Signal cleanup (#7784))
