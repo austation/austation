@@ -45,8 +45,13 @@
 		return
 	switch(action)
 		if("PRG_target_relay")
+<<<<<<< HEAD
 			for(var/obj/machinery/ntnet_relay/R in SSnetworks.station_network.relays)
 				if("[R.uid]" == params["targid"])
+=======
+			for(var/obj/machinery/ntnet_relay/R in SSnetworks.relays)
+				if(R.uid == params["targid"])
+>>>>>>> 3ecebe1188 (fixes the dos tool (#7830))
 					target = R
 					break
 			return TRUE
