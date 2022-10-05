@@ -475,7 +475,13 @@
 	..()
 
 /obj/item/clothing/glasses/AltClick(mob/user)
+<<<<<<< HEAD
 	if(glass_colour_type && ishuman(user))
+=======
+	if(!user.canUseTopic(src, BE_CLOSE))
+		return
+	if(glass_colour_type && !force_glass_colour && ishuman(user))
+>>>>>>> fd1a0b5c1e (Observers can alt click outside stat menu (#7788))
 		var/mob/living/carbon/human/H = user
 		if(H.client)
 			if(H.client.prefs)

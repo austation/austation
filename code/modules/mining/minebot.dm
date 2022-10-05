@@ -125,11 +125,35 @@
 		return
 	if(M.a_intent == INTENT_HELP)
 		toggle_mode()
+<<<<<<< HEAD
 		switch(mode)
 			if(MINEDRONE_COLLECT)
 				to_chat(M, "<span class='info'>[src] has been set to search and store loose ore.</span>")
 			if(MINEDRONE_ATTACK)
 				to_chat(M, "<span class='info'>[src] has been set to attack hostile wildlife.</span>")
+=======
+	switch(mode)
+		if(MODE_MINING)
+			if(mining_enabled)
+				to_chat(user, "<span class='info'>[src] has been set to mine any detected ore.</span>")
+				return
+			to_chat(user, "<span class='info'>[src] has been set to search and store loose ore.</span>")
+		if(MODE_COMBAT)
+			to_chat(user, "<span class='info'>[src] has been set to attack hostile wildlife.</span>")
+
+/// Handles dropping ore
+/mob/living/simple_animal/hostile/mining_drone/AltClick(mob/user)
+	. = ..()
+	if(!user.canUseTopic(src, BE_CLOSE))
+		return
+	to_chat(user, "<span class='info'>You instruct [src] to drop any collected ore.</span>")
+	drop_ore()
+
+/// Handles activating installed minebot mods
+/mob/living/simple_animal/hostile/mining_drone/AltClickOn(atom/target)
+	. = ..()
+	if(!LAZYLEN(installed_upgrades))
+>>>>>>> fd1a0b5c1e (Observers can alt click outside stat menu (#7788))
 		return
 
 /mob/living/simple_animal/hostile/mining_drone/CanAllowThrough(atom/movable/O)

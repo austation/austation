@@ -137,7 +137,14 @@
 	else
 		return ..()
 
+<<<<<<< HEAD
 /obj/item/airlock_painter/attack_self(mob/user)
+=======
+/obj/item/airlock_painter/AltClick(mob/user)
+	. = ..()
+	if(!user.canUseTopic(src, BE_CLOSE))
+		return
+>>>>>>> fd1a0b5c1e (Observers can alt click outside stat menu (#7788))
 	if(ink)
 		playsound(src.loc, 'sound/machines/click.ogg', 50, 1)
 		ink.forceMove(user.drop_location())
