@@ -259,9 +259,14 @@
 	var/list/antag_candidates = list()
 
 	for(var/mob/living/carbon/human/H in living_crew)
+<<<<<<< HEAD
 		if(H.client && H.client.prefs.allow_midround_antag && !is_centcom_level(H.z))
 			if(!is_banned_from(H.ckey, CATBAN)) // austation -- ports catbans
 				antag_candidates += H
+=======
+		if(H.client && (H.client.prefs.toggles & PREFTOGGLE_MIDROUND_ANTAG) && !is_centcom_level(H.z))
+			antag_candidates += H
+>>>>>>> 3232ab1c2b ([Ready for Merge] That PR where I refactor the entire preferences system (#7016))
 
 	if(!antag_candidates)
 		message_admins("Convert_roundtype failed due to no antag candidates.")

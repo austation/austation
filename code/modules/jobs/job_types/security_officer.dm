@@ -1,8 +1,13 @@
 /datum/job/officer
 	title = "Security Officer"
 	flag = OFFICER
+<<<<<<< HEAD
 	auto_deadmin_role_flags = DEADMIN_POSITION_SECURITY
 	department_head = list("Head of Security")
+=======
+	auto_deadmin_role_flags = PREFTOGGLE_DEADMIN_POSITION_SECURITY
+	department_head = list(JOB_NAME_HEADOFSECURITY)
+>>>>>>> 3232ab1c2b ([Ready for Merge] That PR where I refactor the entire preferences system (#7016))
 	department_flag = ENGSEC
 	faction = "Station"
 	total_positions = 5 //Handled in /datum/controller/occupations/proc/setup_officer_positions()
@@ -46,7 +51,7 @@ GLOBAL_LIST_INIT(available_depts, list(SEC_DEPT_ENGINEERING, SEC_DEPT_MEDICAL, S
 	// Assign department security
 	var/department
 	if(M?.client?.prefs)
-		department = M.client.prefs.prefered_security_department
+		department = M.client.prefs.active_character.preferred_security_department
 		if(!LAZYLEN(GLOB.available_depts) || department == "None")
 			return
 		else if(department in GLOB.available_depts)

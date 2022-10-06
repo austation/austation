@@ -189,7 +189,7 @@
 				SSblackbox.LogAhelp(current_ticket.id, "Reply", msg, recipient.ckey, src.ckey) // austation -- ticket db storage
 
 			//play the receiving admin the adminhelp sound (if they have them enabled)
-			if(recipient.prefs.toggles & SOUND_ADMINHELP)
+			if(recipient.prefs.toggles & PREFTOGGLE_SOUND_ADMINHELP)
 				SEND_SOUND(recipient, sound('sound/effects/adminhelp.ogg'))
 
 		else

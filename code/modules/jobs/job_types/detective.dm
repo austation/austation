@@ -1,8 +1,13 @@
 /datum/job/detective
 	title = "Detective"
 	flag = DETECTIVE
+<<<<<<< HEAD
 	auto_deadmin_role_flags = DEADMIN_POSITION_SECURITY
 	department_head = list("Head of Security")
+=======
+	auto_deadmin_role_flags = PREFTOGGLE_DEADMIN_POSITION_SECURITY
+	department_head = list(JOB_NAME_HEADOFSECURITY)
+>>>>>>> 3232ab1c2b ([Ready for Merge] That PR where I refactor the entire preferences system (#7016))
 	department_flag = ENGSEC
 	faction = "Station"
 	total_positions = 1

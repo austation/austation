@@ -11,7 +11,7 @@
   *
   * make sure you add an update to the schema_version stable in the db changelog
   */
-#define DB_MAJOR_VERSION 5
+#define DB_MAJOR_VERSION 6
 
 /**
   * DB minor schema version
@@ -20,7 +20,11 @@
   *
   * make sure you add an update to the schema_version stable in the db changelog
   */
+<<<<<<< HEAD
 #define DB_MINOR_VERSION 11 // austation -- updating database version due to downstream changes
+=======
+#define DB_MINOR_VERSION 0
+>>>>>>> 3232ab1c2b ([Ready for Merge] That PR where I refactor the entire preferences system (#7016))
 
 
 //! ## Timing subsystem

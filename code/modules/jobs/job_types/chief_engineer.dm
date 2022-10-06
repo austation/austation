@@ -1,8 +1,13 @@
 /datum/job/chief_engineer
 	title = "Chief Engineer"
 	flag = CHIEF
+<<<<<<< HEAD
 	auto_deadmin_role_flags = DEADMIN_POSITION_HEAD
 	department_head = list("Captain")
+=======
+	auto_deadmin_role_flags = PREFTOGGLE_DEADMIN_POSITION_HEAD
+	department_head = list(JOB_NAME_CAPTAIN)
+>>>>>>> 3232ab1c2b ([Ready for Merge] That PR where I refactor the entire preferences system (#7016))
 	department_flag = ENGSEC
 	head_announce = list("Engineering")
 	faction = "Station"
