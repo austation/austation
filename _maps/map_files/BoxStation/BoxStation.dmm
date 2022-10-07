@@ -10556,6 +10556,7 @@
 /obj/structure/sign/warning/electricshock,
 /turf/closed/wall/r_wall,
 /area/ai_monitored/storage/eva)
+<<<<<<< HEAD
 "aDK" = (
 /obj/machinery/door/airlock{
 	id_tag = "Dorm1";
@@ -10582,6 +10583,8 @@
 	},
 /turf/open/floor/plasteel/freezer,
 /area/crew_quarters/toilet)
+=======
+>>>>>>> b252917e03 (Cleans up duplicate mapping objects on multiple maps. (#7845))
 "aDM" = (
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
@@ -22911,18 +22914,6 @@
 /obj/machinery/cell_charger,
 /obj/item/stock_parts/cell/high/plus,
 /turf/open/floor/plasteel,
-/area/science/robotics/lab)
-"bpW" = (
-/obj/machinery/door/poddoor/shutters/preopen{
-	id = "robotics2";
-	name = "robotics lab shutters"
-	},
-/obj/effect/spawner/structure/window,
-/obj/machinery/door/poddoor/shutters/preopen{
-	id = "robotics2";
-	name = "robotics lab shutters"
-	},
-/turf/open/floor/plating,
 /area/science/robotics/lab)
 "bpX" = (
 /turf/open/floor/plasteel/white/side,
@@ -42745,7 +42736,21 @@
 	dir = 8
 	},
 /obj/structure/cable/yellow{
+<<<<<<< HEAD
 	icon_state = "4-8"
+=======
+	icon_state = "2-8"
+	},
+/obj/machinery/light{
+	dir = 4;
+	light_color = "#e8eaff"
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
+	dir = 10
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
+	dir = 10
+>>>>>>> b252917e03 (Cleans up duplicate mapping objects on multiple maps. (#7845))
 	},
 /turf/open/floor/plasteel/white,
 /area/medical/medbay/central)
@@ -43161,6 +43166,52 @@
 "cVb" = (
 /turf/closed/wall,
 /area/hallway/secondary/service)
+<<<<<<< HEAD
+=======
+"cVw" = (
+/obj/structure/disposalpipe/segment{
+	dir = 5
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
+/turf/open/floor/plasteel/dark,
+/area/hydroponics)
+"cVy" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/obj/structure/cable/yellow{
+	icon_state = "4-8"
+	},
+/turf/open/floor/plasteel/white,
+/area/medical/chemistry)
+"cVQ" = (
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
+	dir = 8
+	},
+/turf/open/floor/plasteel,
+/area/engine/engine_smes)
+"cVR" = (
+/obj/structure/cable/yellow{
+	icon_state = "1-4"
+	},
+/turf/open/floor/plating,
+/area/maintenance/starboard/aft)
+>>>>>>> b252917e03 (Cleans up duplicate mapping objects on multiple maps. (#7845))
 "cWf" = (
 /obj/structure/cable/yellow{
 	icon_state = "0-8"
@@ -44046,7 +44097,20 @@
 /obj/machinery/door/airlock/maintenance{
 	req_access_txt = "12"
 	},
+<<<<<<< HEAD
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
+=======
+/obj/structure/cable/yellow{
+	icon_state = "4-8"
+	},
+/obj/effect/turf_decal/tile/blue{
+	dir = 8
+	},
+/obj/structure/cable/yellow{
+	icon_state = "2-4"
+	},
+/obj/effect/turf_decal/tile/blue{
+>>>>>>> b252917e03 (Cleans up duplicate mapping objects on multiple maps. (#7845))
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
@@ -45878,8 +45942,19 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 9
 	},
+<<<<<<< HEAD
 /turf/closed/wall,
 /area/engine/engineering)
+=======
+/turf/open/floor/plasteel/white,
+/area/medical/virology)
+"fZs" = (
+/obj/structure/disposalpipe/segment{
+	dir = 10
+	},
+/turf/open/floor/plating,
+/area/maintenance/starboard/aft)
+>>>>>>> b252917e03 (Cleans up duplicate mapping objects on multiple maps. (#7845))
 "fZA" = (
 /obj/machinery/firealarm{
 	dir = 8;
@@ -46258,6 +46333,24 @@
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/plating,
 /area/maintenance/port/aft)
+<<<<<<< HEAD
+=======
+"gvq" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/cable/yellow{
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/maintenance/fore)
+>>>>>>> b252917e03 (Cleans up duplicate mapping objects on multiple maps. (#7845))
 "gwd" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
@@ -46297,8 +46390,16 @@
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer4{
 	dir = 4
 	},
+<<<<<<< HEAD
 /turf/open/floor/plating,
 /area/storage/tech)
+=======
+/obj/structure/cable/yellow{
+	icon_state = "2-4"
+	},
+/turf/open/floor/plasteel,
+/area/crew_quarters/fitness)
+>>>>>>> b252917e03 (Cleans up duplicate mapping objects on multiple maps. (#7845))
 "gzS" = (
 /obj/structure/sign/warning/securearea{
 	pixel_x = -32
@@ -47591,6 +47692,375 @@
 /obj/machinery/door/firedoor,
 /turf/open/floor/plasteel/dark,
 /area/ai_monitored/turret_protected/aisat_interior)
+<<<<<<< HEAD
+=======
+"hXl" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer2{
+	dir = 4
+	},
+/turf/open/floor/plasteel/dark,
+/area/chapel/main)
+"hXz" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer2{
+	dir = 4
+	},
+/turf/open/floor/plasteel,
+/area/quartermaster/exploration_dock)
+"hXE" = (
+/obj/structure/disposalpipe/segment,
+/obj/structure/cable/yellow{
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
+/obj/machinery/atmospherics/pipe/simple/yellow/visible,
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
+	dir = 1
+	},
+/turf/open/floor/plating,
+/area/maintenance/aft)
+"hXS" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer2{
+	dir = 8
+	},
+/turf/open/floor/plasteel,
+/area/hallway/primary/aft)
+"hXT" = (
+/obj/machinery/holopad,
+/obj/effect/turf_decal/bot,
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
+/turf/open/floor/plasteel,
+/area/security/courtroom)
+"hYs" = (
+/obj/machinery/ecto_sniffer,
+/turf/open/floor/plasteel/white,
+/area/science/robotics/lab)
+"hYU" = (
+/obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/layer4{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
+	dir = 8
+	},
+/turf/open/floor/plasteel,
+/area/crew_quarters/dorms)
+"hZf" = (
+/obj/machinery/door/airlock/engineering{
+	name = "Construction Area";
+	req_access_txt = "32"
+	},
+/obj/effect/mapping_helpers/airlock/abandoned,
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
+	dir = 8
+	},
+/obj/structure/cable/yellow{
+	icon_state = "4-8"
+	},
+/turf/open/floor/plating,
+/area/construction)
+"hZj" = (
+/obj/structure/disposalpipe/segment,
+/obj/item/cigbutt/roach,
+/turf/open/floor/plating,
+/area/maintenance/starboard/aft)
+"hZk" = (
+/turf/open/floor/plasteel,
+/area/science/nanite)
+"hZH" = (
+/obj/structure/cable/yellow{
+	icon_state = "4-8"
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/maintenance/starboard/fore)
+"hZN" = (
+/obj/structure/cable/yellow{
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
+	dir = 1
+	},
+/turf/open/floor/plating,
+/area/maintenance/starboard/aft)
+"iaB" = (
+/obj/structure/cable/yellow{
+	icon_state = "4-8"
+	},
+/obj/effect/turf_decal/tile/red{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/red{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
+	dir = 8
+	},
+/turf/open/floor/plasteel,
+/area/security/prison)
+"iaG" = (
+/obj/structure/cable/yellow{
+	icon_state = "2-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
+/obj/structure/disposalpipe/segment,
+/turf/open/floor/plasteel,
+/area/hallway/secondary/exit)
+"iaY" = (
+/obj/effect/landmark/xeno_spawn,
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
+	dir = 8
+	},
+/obj/structure/cable/yellow{
+	icon_state = "4-8"
+	},
+/turf/open/floor/plating,
+/area/construction)
+"ibu" = (
+/obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/layer4{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/manifold/supply/hidden/layer2{
+	dir = 1
+	},
+/obj/structure/cable/yellow{
+	icon_state = "1-2"
+	},
+/turf/open/floor/plasteel,
+/area/security/brig)
+"ibG" = (
+/obj/machinery/nanite_programmer,
+/obj/effect/turf_decal/bot,
+/turf/open/floor/plasteel/dark,
+/area/science/nanite)
+"ict" = (
+/obj/machinery/light_switch{
+	pixel_x = -22
+	},
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer4{
+	dir = 4
+	},
+/turf/open/floor/plasteel,
+/area/quartermaster/exploration_dock)
+"icS" = (
+/obj/effect/turf_decal/stripes/line,
+/turf/open/floor/plasteel,
+/area/science/nanite)
+"idz" = (
+/obj/structure/cable/yellow{
+	icon_state = "1-2"
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/disposalpipe/segment,
+/turf/open/floor/plasteel,
+/area/science/misc_lab)
+"idO" = (
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/machinery/camera/autoname{
+	dir = 6;
+	network = list("ss13","engine")
+	},
+/turf/open/floor/engine,
+/area/engine/supermatter)
+"iea" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
+	dir = 6
+	},
+/turf/open/floor/plasteel,
+/area/hallway/secondary/entry)
+"ied" = (
+/obj/structure/table/glass,
+/obj/item/stack/ducts/fifty,
+/obj/item/stack/ducts/fifty,
+/obj/item/construction/plumbing,
+/obj/item/plunger,
+/turf/open/floor/plasteel/white,
+/area/medical/chemistry)
+"iej" = (
+/obj/machinery/button/flasher{
+	id = "cell4";
+	pixel_x = 24
+	},
+/obj/structure/cable/yellow{
+	icon_state = "2-8"
+	},
+/turf/open/floor/plasteel,
+/area/security/brig)
+"iem" = (
+/obj/effect/mapping_helpers/airlock/cyclelink_helper{
+	dir = 4
+	},
+/obj/machinery/door/airlock/external{
+	req_access_txt = "13"
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/maintenance/starboard/aft)
+"ieA" = (
+/obj/machinery/light/small{
+	dir = 4
+	},
+/turf/open/floor/engine,
+/area/science/xenobiology)
+"iff" = (
+/obj/machinery/light/small,
+/obj/structure/table,
+/obj/structure/disposalpipe/segment{
+	dir = 9
+	},
+/obj/effect/spawner/lootdrop/maintenance,
+/obj/item/clipboard,
+/turf/open/floor/plating,
+/area/maintenance/starboard/aft)
+"ifp" = (
+/obj/structure/bed,
+/obj/item/bedsheet,
+/obj/machinery/flasher{
+	id = "Cell 2";
+	pixel_x = -28
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/cable/yellow{
+	icon_state = "2-4"
+	},
+/turf/open/floor/plasteel,
+/area/security/brig)
+"ifq" = (
+/obj/structure/cable/yellow{
+	icon_state = "1-2"
+	},
+/obj/machinery/door/firedoor,
+/turf/open/floor/plasteel/white,
+/area/medical/cryo)
+"ifY" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/turf/open/floor/plasteel,
+/area/hallway/primary/central)
+"igW" = (
+/obj/structure/cable/yellow{
+	icon_state = "1-2"
+	},
+/turf/open/floor/plasteel,
+/area/storage/art)
+"ihQ" = (
+/obj/effect/turf_decal/tile/bar,
+/obj/effect/turf_decal/tile/bar{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
+	dir = 8
+	},
+/turf/open/floor/plasteel,
+/area/crew_quarters/bar)
+"ihY" = (
+/obj/machinery/light,
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/turf/open/floor/plasteel,
+/area/crew_quarters/dorms)
+"iib" = (
+/obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/layer4,
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
+	dir = 8
+	},
+/turf/open/floor/plasteel,
+/area/security/brig)
+"iio" = (
+/obj/effect/mapping_helpers/airlock/cyclelink_helper{
+	dir = 4
+	},
+/obj/machinery/door/airlock/external{
+	name = "Atmospherics External Airlock";
+	req_access_txt = "24"
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/engine/atmos)
+"iis" = (
+/obj/machinery/door/airlock/maintenance{
+	req_access_txt = "12"
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/cable/yellow{
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/maintenance/aft)
+"iiC" = (
+/obj/effect/turf_decal/tile/yellow,
+/obj/effect/turf_decal/tile/yellow{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
+/obj/structure/cable/yellow{
+	icon_state = "2-4"
+	},
+/turf/open/floor/plasteel,
+/area/construction/mining/aux_base)
+"iiF" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
+/turf/open/floor/plating,
+/area/maintenance/port/fore)
+>>>>>>> b252917e03 (Cleans up duplicate mapping objects on multiple maps. (#7845))
 "iiH" = (
 /obj/machinery/modular_fabricator/autolathe,
 /obj/machinery/door/window/westleft{
@@ -47964,6 +48434,7 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
+<<<<<<< HEAD
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/atmospherics/pipe/simple/general/visible{
 	dir = 5
@@ -47979,6 +48450,8 @@
 "iCy" = (
 /obj/effect/spawner/structure/window/reinforced,
 /obj/machinery/atmospherics/pipe/layer_manifold,
+=======
+>>>>>>> b252917e03 (Cleans up duplicate mapping objects on multiple maps. (#7845))
 /turf/open/floor/plating,
 /area/hallway/secondary/entry)
 "iCT" = (
@@ -48182,8 +48655,28 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 6
 	},
+<<<<<<< HEAD
 /turf/open/floor/plating,
 /area/maintenance/port/aft)
+=======
+/obj/structure/cable/yellow{
+	icon_state = "4-8"
+	},
+/obj/effect/turf_decal/tile/red{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/red{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
+	dir = 8
+	},
+/turf/open/floor/plasteel,
+/area/security/main)
+>>>>>>> b252917e03 (Cleans up duplicate mapping objects on multiple maps. (#7845))
 "iTt" = (
 /obj/item/radio/intercom{
 	desc = "Talk through this. It looks like it has been modified to not broadcast.";
@@ -53713,7 +54206,35 @@
 /turf/open/floor/plasteel/chapel{
 	dir = 1
 	},
+<<<<<<< HEAD
 /area/chapel/main)
+=======
+/obj/machinery/light{
+	dir = 8
+	},
+/obj/machinery/airalarm{
+	dir = 4;
+	pixel_x = -23
+	},
+/turf/open/floor/plasteel/grimy,
+/area/vacant_room/office)
+"pkV" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/power/apc/auto_name/east,
+/obj/machinery/atmospherics/components/unary/portables_connector/visible{
+	dir = 8;
+	name = "output gas connector port"
+	},
+/obj/machinery/portable_atmospherics/canister,
+/obj/structure/cable/yellow{
+	icon_state = "0-8"
+	},
+/turf/open/floor/plasteel,
+/area/maintenance/disposal/incinerator)
+>>>>>>> b252917e03 (Cleans up duplicate mapping objects on multiple maps. (#7845))
 "plq" = (
 /obj/structure/table/reinforced,
 /obj/machinery/door/poddoor/shutters/preopen{
@@ -56207,8 +56728,72 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+<<<<<<< HEAD
 /turf/open/floor/plating,
 /area/maintenance/starboard/aft)
+=======
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
+	dir = 5
+	},
+/obj/machinery/button/door{
+	id = "QuarantineB";
+	name = "Quarantine Bolts B";
+	normaldoorcontrol = 1;
+	pixel_x = 8;
+	pixel_y = -21;
+	req_one_access_txt = "39;40;45";
+	specialfunctions = 4
+	},
+/obj/machinery/button/door{
+	id = "QuarantineA";
+	name = "Quarantine Bolts A";
+	normaldoorcontrol = 1;
+	pixel_x = -8;
+	pixel_y = -21;
+	req_one_access_txt = "39;40;45";
+	specialfunctions = 4
+	},
+/obj/structure/cable/yellow{
+	icon_state = "4-8"
+	},
+/turf/open/floor/plasteel/white,
+/area/medical/medbay/central)
+"smJ" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
+	dir = 1
+	},
+/turf/open/floor/plasteel/dark,
+/area/science/nanite)
+"smL" = (
+/obj/effect/turf_decal/tile/neutral/tile_full,
+/obj/effect/turf_decal/tile/green{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/brown{
+	dir = 1
+	},
+/turf/open/floor/plasteel/dark,
+/area/quartermaster/exploration_prep)
+"smW" = (
+/obj/machinery/door/airlock/security/glass{
+	name = "Long-Term Cell 2";
+	req_access_txt = "2"
+	},
+/obj/effect/mapping_helpers/airlock/cyclelink_helper{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
+/turf/open/floor/plasteel,
+/area/security/prison)
+>>>>>>> b252917e03 (Cleans up duplicate mapping objects on multiple maps. (#7845))
 "smZ" = (
 /obj/effect/turf_decal/tile/blue{
 	dir = 1
@@ -57174,6 +57759,34 @@
 	},
 /turf/open/floor/plasteel,
 /area/hallway/primary/port)
+<<<<<<< HEAD
+=======
+"tEu" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
+	dir = 6
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
+	dir = 5
+	},
+/turf/open/floor/plasteel,
+/area/quartermaster/office)
+"tEW" = (
+/obj/structure/disposalpipe/segment{
+	dir = 5
+	},
+/obj/machinery/light{
+	dir = 8;
+	light_color = "#e8eaff"
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
+	dir = 5
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
+	dir = 5
+	},
+/turf/open/floor/plasteel/white,
+/area/medical/virology)
+>>>>>>> b252917e03 (Cleans up duplicate mapping objects on multiple maps. (#7845))
 "tFe" = (
 /obj/machinery/door/firedoor,
 /turf/open/floor/plasteel,
@@ -93382,8 +93995,13 @@ awr
 osg
 aAh
 aCm
+<<<<<<< HEAD
 aDL
 aFf
+=======
+aGk
+bCV
+>>>>>>> b252917e03 (Cleans up duplicate mapping objects on multiple maps. (#7845))
 aGk
 aHU
 aJz
@@ -101163,11 +101781,19 @@ bNd
 koq
 moo
 cnG
+<<<<<<< HEAD
 nfj
 cnG
 qxq
 mlA
 qxq
+=======
+mhi
+cnG
+cko
+cnG
+cko
+>>>>>>> b252917e03 (Cleans up duplicate mapping objects on multiple maps. (#7845))
 rzf
 cnG
 rVB
@@ -101419,12 +102045,21 @@ xBK
 lbh
 qxq
 ffw
+<<<<<<< HEAD
 qxq
 aEw
 qxq
 qxq
 mlA
 qxq
+=======
+cko
+bFu
+cko
+cko
+cnG
+cko
+>>>>>>> b252917e03 (Cleans up duplicate mapping objects on multiple maps. (#7845))
 csm
 euG
 xPe
@@ -107031,7 +107666,7 @@ bfV
 bfV
 bfV
 box
-bpW
+buj
 brs
 box
 box
