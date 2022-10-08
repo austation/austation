@@ -501,6 +501,12 @@ GLOBAL_LIST_INIT(job_colors_pastel, list(
 		stack_trace("/datum/chatmessage created with [isnull(owner) ? "null" : "invalid"] mob owner")
 		qdel(src)
 		return
+<<<<<<< HEAD
+=======
+	//handle color
+	if(color)
+		tgt_color = color
+>>>>>>> d89d9274ab (Fixes balloon alerts being offset to the left (#7843))
 	INVOKE_ASYNC(src, .proc/generate_image, text, target, owner)
 
 /datum/chatmessage/balloon_alert/generate_image(text, atom/target, mob/owner)
