@@ -1325,6 +1325,11 @@
 	metabolization_rate = REAGENTS_METABOLISM * 0.5 // Because stimulum/nitryl are handled through gas breathing, metabolism must be lower for breathcode to keep up
 	color = "E1A116"
 	taste_description = "sourness"
+<<<<<<< HEAD
+=======
+	///stores whether or not the mob has been warned that they are having difficulty breathing.
+	var/warned = FALSE
+>>>>>>> 75b7c3bb6e (base n probably done (#7791))
 
 /datum/reagent/stimulum/on_mob_metabolize(mob/living/L)
 	..()
@@ -1635,7 +1640,12 @@
 	description = "Has a high chance of making you look like a mad scientist."
 	reagent_state = LIQUID
 	color = "#C8A5DC"
+<<<<<<< HEAD
 	var/list/potential_colors = list("0ad","a0f","f73","d14","d14","0b5","0ad","f73","fc2","084","05e","d22","fa0") // fucking hair code
+=======
+	chem_flags = CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_FUN | CHEMICAL_RNG_BOTANY
+	var/list/potential_colors = list("0ad","a0f","f73","d14","d14","0b5","0ad","f73","fc2","084","05e","d22","fa0") // fucking hair code // someone forgot how hair_color is programmed
+>>>>>>> 75b7c3bb6e (base n probably done (#7791))
 	taste_description = "sourness"
 
 /datum/reagent/hair_dye/reaction_mob(mob/living/M, method=TOUCH, reac_volume)
