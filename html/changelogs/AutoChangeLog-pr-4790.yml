@@ -1,0 +1,5 @@
+author: "jupyterkat"
+delete-after: True
+changes: 
+  - rscdel: "SSadjacent_air"
+  - refactor: "Adjacencies"
