@@ -81,6 +81,11 @@
 	var/sight_mode = 0
 	hud_possible = list(ANTAG_HUD, DIAG_STAT_HUD, DIAG_HUD, DIAG_BATT_HUD, DIAG_TRACK_HUD)
 
+<<<<<<< HEAD
+=======
+	var/atom/movable/screen/robot/modpc/interfaceButton
+
+>>>>>>> 0bf96243c1 ([MDB IGNORE] Replace PDAs with tablets (#7550))
 	var/list/upgrades = list()
 
 	var/hasExpanded = FALSE
@@ -165,6 +170,29 @@
 	aicamera = new/obj/item/camera/siliconcam/robot_camera(src)
 	toner = tonermax
 	diag_hud_set_borgcell()
+<<<<<<< HEAD
+=======
+	logevent("System brought online.")
+
+/**
+ * Sets the tablet theme and icon
+ *
+ * These variables are based on if the borg is a syndicate type or is emagged. This gets used in model change code
+ * and also borg emag code.
+ */
+/mob/living/silicon/robot/proc/set_modularInterface_theme()
+	if(istype(module, /obj/item/robot_module/syndicate) || emagged)
+		modularInterface.device_theme = THEME_SYNDICATE
+		modularInterface.icon_state = "tablet-silicon-syndicate"
+		modularInterface.icon_state_powered = "tablet-silicon-syndicate"
+		modularInterface.icon_state_unpowered = "tablet-silicon-syndicate"
+	else
+		modularInterface.device_theme = THEME_NTOS
+		modularInterface.icon_state = "tablet-silicon"
+		modularInterface.icon_state_powered = "tablet-silicon"
+		modularInterface.icon_state_unpowered = "tablet-silicon"
+	modularInterface.update_icon()
+>>>>>>> 0bf96243c1 ([MDB IGNORE] Replace PDAs with tablets (#7550))
 
 //If there's an MMI in the robot, have it ejected when the mob goes away. --NEO
 /mob/living/silicon/robot/Destroy()
@@ -529,7 +557,7 @@
 		else
 			to_chat(user, "<span class='warning'>Unable to locate a radio!</span>")
 
-	else if (istype(W, /obj/item/card/id)||istype(W, /obj/item/pda))			// trying to unlock the interface with an ID card
+	else if (istype(W, /obj/item/card/id)||istype(W, /obj/item/modular_computer/tablet/pda))			// trying to unlock the interface with an ID card
 		togglelock(user)
 
 	else if(istype(W, /obj/item/borg/upgrade/))
@@ -893,12 +921,28 @@
 	create_access_card(get_all_syndicate_access())
 	addtimer(CALLBACK(src, .proc/show_playstyle), 5)
 
+<<<<<<< HEAD
+=======
+/mob/living/silicon/robot/modules/syndicate/create_modularInterface()
+	if(!modularInterface)
+		modularInterface = new /obj/item/modular_computer/tablet/integrated/syndicate(src)
+		modularInterface.saved_identification = real_name
+		modularInterface.saved_job = "Cyborg"
+	return ..()
+
+>>>>>>> 0bf96243c1 ([MDB IGNORE] Replace PDAs with tablets (#7550))
 /mob/living/silicon/robot/modules/syndicate/proc/show_playstyle()
 	if(playstyle_string)
 		to_chat(src, playstyle_string)
 
 /mob/living/silicon/robot/modules/syndicate/ResetModule()
 	return
+
+
+/mob/living/silicon/robot/modules/syndicate/create_modularInterface()
+	if(!modularInterface)
+		modularInterface = new /obj/item/modular_computer/tablet/integrated/syndicate(src)
+	return ..()
 
 /mob/living/silicon/robot/modules/syndicate/medical
 	icon_state = "synd_medical"
@@ -1047,6 +1091,7 @@
 		notify_ai(RENAME, oldname, newname)
 	if(!QDELETED(builtInCamera))
 		builtInCamera.c_tag = real_name
+		modularInterface.saved_identification = real_name
 	custom_name = newname
 
 

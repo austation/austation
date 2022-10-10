@@ -34,7 +34,7 @@ Assistant
 /datum/outfit/job/assistant
 	name = "Assistant"
 	jobtype = /datum/job/assistant
-	belt = /obj/item/pda/assistant
+	belt = /obj/item/modular_computer/tablet/pda/assistant
 
 /datum/outfit/job/assistant/pre_equip(mob/living/carbon/human/H)
 	..()

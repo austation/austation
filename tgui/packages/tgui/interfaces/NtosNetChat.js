@@ -15,6 +15,7 @@ export const NtosNetChat = (props, context) => {
     all_channels = [],
     clients = [],
     messages = [],
+    PC_device_theme,
   } = data;
 
   const in_channel = (active_channel !== null);
@@ -103,6 +104,11 @@ export const NtosNetChat = (props, context) => {
                         </Box>
                       </Box>
                     )
+<<<<<<< HEAD
+=======
+                  ) || (
+                    PC_device_theme !== "thinktronic-classic" && <NoChannelDimmer />
+>>>>>>> 0bf96243c1 ([MDB IGNORE] Replace PDAs with tablets (#7550))
                   )}
                 </Box>
 

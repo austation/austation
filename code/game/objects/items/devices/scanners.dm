@@ -128,9 +128,17 @@ GENE SCANNER
 
 
 // Used by the PDA medical scanner too
+<<<<<<< HEAD
 /proc/healthscan(mob/user, mob/living/M, mode = 1, advanced = FALSE)
+=======
+/proc/healthscan(mob/user, mob/living/M, mode = 1, advanced = FALSE, to_chat = TRUE)
+>>>>>>> 0bf96243c1 ([MDB IGNORE] Replace PDAs with tablets (#7550))
 	if(isliving(user) && (user.incapacitated() || user.eye_blind))
 		return
+
+	// the final list of strings to render
+	var/message = list()
+
 	//Damage specifics
 	var/oxy_loss = M.getOxyLoss()
 	var/tox_loss = M.getToxLoss()
@@ -405,9 +413,19 @@ GENE SCANNER
 		if(length(cyberimp_detect))
 			to_chat(user, "<span class='notice'>Detected cybernetic modifications:</span>")
 			for(var/name in cyberimp_detect)
+<<<<<<< HEAD
 				to_chat(user, "<span class='notice'>[name]</span>")
-	SEND_SIGNAL(M, COMSIG_NANITE_SCAN, user, FALSE)
+=======
+				message += "<span class='notice'>[name]</span>"
 
+>>>>>>> 0bf96243c1 ([MDB IGNORE] Replace PDAs with tablets (#7550))
+	SEND_SIGNAL(M, COMSIG_NANITE_SCAN, user, FALSE)
+	if(to_chat)
+		to_chat(user, EXAMINE_BLOCK(jointext(message, "\n")), trailing_newline = FALSE, type = MESSAGE_TYPE_INFO)
+	else
+		return(jointext(message, "\n"))
+
+<<<<<<< HEAD
 /proc/chemscan(mob/living/user, mob/living/M)
 	if(istype(M))
 		if(M.reagents)
@@ -423,6 +441,29 @@ GENE SCANNER
 					to_chat(user, "<span class='alert'>[R.name]</span>")
 			else
 				to_chat(user, "<span class='notice'>Subject is not addicted to any reagents.</span>")
+=======
+/proc/chemscan(mob/living/user, mob/living/M, to_chat = TRUE)
+	if(!istype(M))
+		return
+	var/message = list()
+	if(M.reagents)
+		if(M.reagents.reagent_list.len)
+			message += "<span class='notice'>Subject contains the following reagents:</span>"
+			for(var/datum/reagent/R in M.reagents.reagent_list)
+				message += "<span class='notice'>[round(R.volume, 0.001)] units of [R.name][R.overdosed == 1 ? "</span> - <span class='boldannounce'>OVERDOSING</span>" : ".</span>"]"
+		else
+			message += "<span class='notice'>Subject contains no reagents.</span>"
+		if(M.reagents.addiction_list.len)
+			message += "<span class='boldannounce'>Subject is addicted to the following reagents:</span>"
+			for(var/datum/reagent/R in M.reagents.addiction_list)
+				message += "<span class='alert'>[R.name]</span>"
+		else
+			message += "<span class='notice'>Subject is not addicted to any reagents.</span>"
+	if(to_chat)
+		to_chat(user, EXAMINE_BLOCK(jointext(message, "\n")), trailing_newline = FALSE, type = MESSAGE_TYPE_INFO)
+	else
+		return(jointext(message, "\n"))
+>>>>>>> 0bf96243c1 ([MDB IGNORE] Replace PDAs with tablets (#7550))
 
 /obj/item/healthanalyzer/advanced
 	name = "advanced health analyzer"
@@ -546,11 +587,16 @@ GENE SCANNER
 			amount += inaccurate
 	return DisplayTimeText(max(1,amount))
 
+<<<<<<< HEAD
 /proc/atmosanalyzer_scan(mob/user, atom/target, silent=FALSE)
+=======
+/proc/atmosanalyzer_scan(mob/user, atom/target, silent=FALSE, to_chat = TRUE)
+>>>>>>> 0bf96243c1 ([MDB IGNORE] Replace PDAs with tablets (#7550))
 	var/mixture = target.return_analyzable_air()
 	if(!mixture)
 		return FALSE
 
+	var/list/message = list()
 	var/icon = target
 	if(!silent && isliving(user))
 		user.visible_message("[user] has used the analyzer on [icon2html(icon, viewers(user))] [target].", "<span class='notice'>You use the analyzer on [icon2html(icon, user)] [target].</span>")
@@ -586,9 +632,20 @@ GENE SCANNER
 
 		if(cached_scan_results && cached_scan_results["fusion"]) //notify the user if a fusion reaction was detected
 			var/instability = round(cached_scan_results["fusion"], 0.01)
+<<<<<<< HEAD
 			to_chat(user, "<span class='boldnotice'>Large amounts of free neutrons detected in the air indicate that a fusion reaction took place.</span>")
 			to_chat(user, "<span class='notice'>Instability of the last fusion reaction: [instability].</span>")
 	return TRUE
+=======
+			message += "<span class='boldnotice'>Large amounts of free neutrons detected in the air indicate that a fusion reaction took place.</span>"
+			message += "<span class='notice'>Instability of the last fusion reaction: [instability].</span>"
+
+	if(to_chat)
+		to_chat(user, EXAMINE_BLOCK(jointext(message, "")), trailing_newline = FALSE, type = MESSAGE_TYPE_INFO)
+		return TRUE
+	else
+		return(jointext(message, ""))
+>>>>>>> 0bf96243c1 ([MDB IGNORE] Replace PDAs with tablets (#7550))
 
 /obj/item/analyzer/proc/scan_turf(mob/user, turf/location)
 	var/datum/gas_mixture/environment = location.return_air()

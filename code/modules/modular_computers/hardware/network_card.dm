@@ -77,3 +77,28 @@
 	power_usage = 100 // Better range but higher power usage.
 	icon_state = "net_wired"
 	w_class = WEIGHT_CLASS_NORMAL
+<<<<<<< HEAD
+=======
+
+/obj/item/computer_hardware/network_card/integrated //Borg tablet version, only works while the borg has power and is not locked
+	name = "cyborg data link"
+
+/obj/item/computer_hardware/network_card/integrated/get_signal(specific_action = 0)
+	var/obj/item/modular_computer/tablet/integrated/modularInterface = holder
+
+	if(!modularInterface || !istype(modularInterface))
+		return FALSE //wrong type of tablet
+
+	if(!modularInterface.borgo)
+		return FALSE //No borg found
+
+	var/mob/living/silicon/robot/robo = modularInterface.borgo
+	if(istype(robo))
+		if(robo.lockcharge)
+			return FALSE //lockdown restricts borg networking
+
+		if(!robo.cell || robo.cell.charge == 0)
+			return FALSE //borg cell dying restricts borg networking
+
+	return ..()
+>>>>>>> 0bf96243c1 ([MDB IGNORE] Replace PDAs with tablets (#7550))

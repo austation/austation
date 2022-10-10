@@ -43,14 +43,18 @@
 
 	id = /obj/item/card/id/job/ce
 	belt = /obj/item/storage/belt/utility/chief/full
+<<<<<<< HEAD
 	l_pocket = /obj/item/pda/heads/ce
 	ears = /obj/item/radio/headset/heads/ce
+=======
+	l_pocket = /obj/item/modular_computer/tablet/pda/heads/chief_engineer
+	ears = /obj/item/radio/headset/heads/chief_engineer
+>>>>>>> 0bf96243c1 ([MDB IGNORE] Replace PDAs with tablets (#7550))
 	uniform = /obj/item/clothing/under/rank/engineering/chief_engineer
 	shoes = /obj/item/clothing/shoes/sneakers/brown
 	head = /obj/item/clothing/head/hardhat/white
 	gloves = /obj/item/clothing/gloves/color/black
-	backpack_contents = list(/obj/item/melee/classic_baton/police/telescopic=1,
-		/obj/item/modular_computer/tablet/preset/advanced/command=1)
+	backpack_contents = list(/obj/item/melee/classic_baton/police/telescopic=1)
 
 	backpack = /obj/item/storage/backpack/industrial
 	satchel = /obj/item/storage/backpack/satchel/eng

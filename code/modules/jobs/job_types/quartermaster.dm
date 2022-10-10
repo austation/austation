@@ -32,8 +32,13 @@
 	name = "Quartermaster"
 	jobtype = /datum/job/qm
 
+<<<<<<< HEAD
 	id = /obj/item/card/id/job/qm
 	belt = /obj/item/pda/quartermaster
+=======
+	id = /obj/item/card/id/job/quartermaster
+	belt = /obj/item/modular_computer/tablet/pda/quartermaster
+>>>>>>> 0bf96243c1 ([MDB IGNORE] Replace PDAs with tablets (#7550))
 	ears = /obj/item/radio/headset/headset_quartermaster
 	uniform = /obj/item/clothing/under/rank/cargo/qm
 	shoes = /obj/item/clothing/shoes/sneakers/brown

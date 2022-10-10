@@ -10,6 +10,32 @@
 	new /obj/item/storage/backpack/captain(src)
 	new /obj/item/storage/backpack/satchel/cap(src)
 	new /obj/item/storage/backpack/duffelbag/captain(src)
+<<<<<<< HEAD
+=======
+	new	/obj/item/clothing/suit/armor/vest/capcarapace/jacket(src)
+	new /obj/item/clothing/suit/armor/vest/capcarapace(src)
+	new /obj/item/clothing/suit/armor/vest/capcarapace/alt(src)
+	new /obj/item/clothing/suit/hooded/wintercoat/captain(src)
+	new /obj/item/clothing/suit/captunic(src)
+	new /obj/item/clothing/gloves/color/captain(src)
+	new /obj/item/clothing/glasses/sunglasses/advanced/gar/supergar(src)
+	new /obj/item/radio/headset/heads/captain/alt(src)
+	new /obj/item/radio/headset/heads/captain(src)
+
+	new /obj/item/clothing/neck/petcollar(src)
+	new /obj/item/pet_carrier(src)
+	new /obj/item/storage/photo_album/Captain(src)
+
+	new /obj/item/storage/box/radiokey/com(src)
+	new /obj/item/storage/box/command_keys(src)
+	new /obj/item/megaphone/command(src)
+	new /obj/item/computer_hardware/hard_drive/role/captain(src)
+	new /obj/item/storage/box/silver_ids(src)
+	new /obj/item/restraints/handcuffs/cable/zipties(src)
+
+	// prioritized items
+	new /obj/item/card/id/departmental_budget/civ(src)
+>>>>>>> 0bf96243c1 ([MDB IGNORE] Replace PDAs with tablets (#7550))
 	new /obj/item/clothing/neck/cloak/cap(src)
 	new /obj/item/clothing/neck/petcollar(src)
 	new	/obj/item/clothing/suit/armor/vest/capcarapace/jacket(src)
@@ -44,6 +70,26 @@
 
 /obj/structure/closet/secure_closet/hop/PopulateContents()
 	..()
+<<<<<<< HEAD
+=======
+	new /obj/item/storage/box/suitbox/hop(src)
+	new /obj/item/radio/headset/heads/head_of_personnel(src)
+
+	new /obj/item/clothing/neck/petcollar(src)
+	new /obj/item/pet_carrier(src)
+	new /obj/item/storage/photo_album/HoP(src)
+
+	new /obj/item/storage/box/radiokey/srv(src)
+	new /obj/item/storage/box/command_keys(src)
+	new /obj/item/computer_hardware/hard_drive/role/hop(src)
+	new /obj/item/storage/box/ids(src)
+	new /obj/item/storage/box/ids(src)
+	new /obj/item/restraints/handcuffs/cable/zipties(src)
+	new /obj/item/circuitboard/machine/techfab/department/service(src)
+
+	// prioritized items
+	new /obj/item/card/id/departmental_budget/srv(src)
+>>>>>>> 0bf96243c1 ([MDB IGNORE] Replace PDAs with tablets (#7550))
 	new /obj/item/clothing/neck/cloak/hop(src)
 	new /obj/item/storage/lockbox/medal/service(src)
 	new /obj/item/clothing/under/rank/civilian/head_of_personnel(src)
@@ -99,9 +145,32 @@
 	new /obj/item/cartridge/hos(src)
 	new /obj/item/radio/headset/heads/hos/alt(src)
 	new /obj/item/radio/headset/heads/hos(src)
+<<<<<<< HEAD
 	new /obj/item/clothing/under/rank/security/head_of_security/parade/female(src)
 	new /obj/item/clothing/under/rank/security/head_of_security/parade(src)
 	new /obj/item/clothing/suit/armor/vest/leather(src)
+=======
+
+	new /obj/item/clothing/neck/petcollar(src)
+	new /obj/item/pet_carrier(src)
+	new /obj/item/storage/photo_album/HoS(src)
+
+	new /obj/item/storage/box/radiokey/sec(src)
+	new /obj/item/storage/box/command_keys(src)
+	new /obj/item/megaphone/sec(src)
+	new /obj/item/computer_hardware/hard_drive/role/hos(src)
+	new /obj/item/storage/box/flashbangs(src)
+	new /obj/item/storage/box/deputy(src)
+	new /obj/item/storage/lockbox/medal/sec(src)
+	new /obj/item/storage/lockbox/loyalty(src)
+	new /obj/item/flashlight/seclite(src)
+	new /obj/item/circuitboard/machine/techfab/department/security(src)
+
+	// prioritized items
+	new /obj/item/card/id/departmental_budget/sec(src)
+	new /obj/item/clothing/neck/cloak/hos(src)
+	new /obj/item/clothing/suit/armor/hos(src)
+>>>>>>> 0bf96243c1 ([MDB IGNORE] Replace PDAs with tablets (#7550))
 	new /obj/item/clothing/suit/armor/hos/trenchcoat(src)
 	new /obj/item/clothing/suit/armor/hos(src)
 	new /obj/item/clothing/under/rank/security/head_of_security(src)

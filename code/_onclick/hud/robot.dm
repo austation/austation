@@ -136,8 +136,25 @@
 	using.hud = src
 	static_inventory += using
 
+<<<<<<< HEAD
 	using = new /atom/movable/screen/ai/image_view()
 	using.screen_loc = ui_borg_album
+=======
+//Borg Integrated Tablet
+	using = new /atom/movable/screen/robot/modpc()
+	using.screen_loc = ui_borg_tablet
+	using.hud = src
+	static_inventory += using
+	mymobR.interfaceButton = using
+	if(mymobR.modularInterface)
+		using.vis_contents += mymobR.modularInterface
+	var/atom/movable/screen/robot/modpc/tabletbutton = using
+	tabletbutton.robot = mymobR
+
+//Alerts
+	using = new /atom/movable/screen/robot/alerts()
+	using.screen_loc = ui_borg_alerts
+>>>>>>> 0bf96243c1 ([MDB IGNORE] Replace PDAs with tablets (#7550))
 	using.hud = src
 	static_inventory += using
 
@@ -288,3 +305,58 @@
 		else
 			for(var/obj/item/I in R.held_items)
 				screenmob.client.screen -= I
+<<<<<<< HEAD
+=======
+
+/atom/movable/screen/robot/lamp
+	name = "headlamp"
+	icon_state = "lamp_off"
+	var/mob/living/silicon/robot/robot
+
+/atom/movable/screen/robot/lamp/Click()
+	. = ..()
+	if(.)
+		return
+	robot?.toggle_headlamp()
+	update_icon()
+
+/atom/movable/screen/robot/lamp/update_icon()
+	if(robot?.lamp_enabled)
+		icon_state = "lamp_on"
+	else
+		icon_state = "lamp_off"
+
+/atom/movable/screen/robot/modpc
+	name = "Modular Interface"
+	icon_state = "template"
+	var/mob/living/silicon/robot/robot
+
+/atom/movable/screen/robot/modpc/Click()
+	. = ..()
+	if(.)
+		return
+	robot.modularInterface?.interact(robot)
+
+/atom/movable/screen/robot/alerts
+	name = "Alert Panel"
+	icon = 'icons/mob/screen_ai.dmi'
+	icon_state = "alerts"
+
+/atom/movable/screen/robot/alerts/Click()
+	. = ..()
+	if(.)
+		return
+	var/mob/living/silicon/robot/borgo = usr
+	borgo.robot_alerts()
+
+/atom/movable/screen/robot/crew_manifest
+	name = "Crew Manifest"
+	icon = 'icons/mob/screen_ai.dmi'
+	icon_state = "manifest"
+
+/atom/movable/screen/robot/crew_manifest/Click()
+	if(..())
+		return
+	var/mob/living/silicon/robot/borgo = usr
+	borgo.ai_roster()
+>>>>>>> 0bf96243c1 ([MDB IGNORE] Replace PDAs with tablets (#7550))

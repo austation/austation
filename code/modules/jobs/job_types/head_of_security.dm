@@ -43,8 +43,13 @@
 	name = "Head of Security"
 	jobtype = /datum/job/hos
 
+<<<<<<< HEAD
 	id = /obj/item/card/id/job/hos
 	belt = /obj/item/pda/heads/hos
+=======
+	id = /obj/item/card/id/job/head_of_security
+	belt = /obj/item/modular_computer/tablet/pda/heads/head_of_security
+>>>>>>> 0bf96243c1 ([MDB IGNORE] Replace PDAs with tablets (#7550))
 	ears = /obj/item/radio/headset/heads/hos/alt
 	uniform = /obj/item/clothing/under/rank/security/head_of_security
 	shoes = /obj/item/clothing/shoes/jackboots
@@ -55,8 +60,7 @@
 	suit_store = /obj/item/gun/energy/e_gun
 	r_pocket = /obj/item/assembly/flash/handheld
 	l_pocket = /obj/item/restraints/handcuffs
-	backpack_contents = list(/obj/item/melee/baton/loaded=1,
-		/obj/item/modular_computer/tablet/preset/advanced/command=1)
+	backpack_contents = list(/obj/item/melee/baton/loaded=1)
 
 	backpack = /obj/item/storage/backpack/security
 	satchel = /obj/item/storage/backpack/satchel/sec

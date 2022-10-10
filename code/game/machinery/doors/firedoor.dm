@@ -146,8 +146,12 @@
 	if(operating)
 		return
 
+<<<<<<< HEAD
 	/* austation begin -- remove the restriction on PDA use to open firelocks
 	if(istype(C, /obj/item/pda))
+=======
+	if(istype(C, /obj/item/modular_computer/tablet/pda))
+>>>>>>> 0bf96243c1 ([MDB IGNORE] Replace PDAs with tablets (#7550))
 		var/attack_verb = pick("smushes","rubs","smashes","presses","taps")
 		visible_message("<span class='warning'>[user] [attack_verb] \the [C] against [src]\s card reader.</span>", "<span class='warning'>You [attack_verb] \the [C] against [src]\s card reader. It doesn't do anything.</span>", "You hear plastic click against metal.")
 		return

@@ -32,8 +32,13 @@
 	name = "Geneticist"
 	jobtype = /datum/job/geneticist
 
+<<<<<<< HEAD
 	id = /obj/item/card/id/job/gene
 	belt = /obj/item/pda/geneticist
+=======
+	id = /obj/item/card/id/job/geneticist
+	belt = /obj/item/modular_computer/tablet/pda/geneticist
+>>>>>>> 0bf96243c1 ([MDB IGNORE] Replace PDAs with tablets (#7550))
 	ears = /obj/item/radio/headset/headset_medsci
 	uniform = /obj/item/clothing/under/rank/medical/geneticist
 	shoes = /obj/item/clothing/shoes/sneakers/white

@@ -19,6 +19,8 @@
 	var/damage_failure = 50			// "Failure" threshold. When damage exceeds this value the hardware piece will not work at all.
 	var/malfunction_probability = 10// Chance of malfunction when the component is damaged
 	var/device_type
+	/// If the hardware can be "hotswapped" (ejected when another is installed)
+	var/hotswap = FALSE
 
 /obj/item/computer_hardware/New(var/obj/L)
 	..()
@@ -30,6 +32,9 @@
 		holder.uninstall_component(src)
 	return ..()
 
+/// Called when the hardware is inserted BY HAND. Use on_install for cases where it's installed by code.
+/obj/item/computer_hardware/proc/on_inserted()
+	return
 
 /obj/item/computer_hardware/attackby(obj/item/I, mob/living/user)
 	// Cable coil. Works as repair method, but will probably require multiple applications and more cable.

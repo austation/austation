@@ -34,8 +34,13 @@
 	name = "Paramedic"
 	jobtype = /datum/job/emt
 
+<<<<<<< HEAD:code/modules/jobs/job_types/emt.dm
 	id = /obj/item/card/id/job/paramed
 	belt = /obj/item/pda/paramedic
+=======
+	id = /obj/item/card/id/job/paramedic
+	belt = /obj/item/modular_computer/tablet/pda/paramedic
+>>>>>>> 0bf96243c1 ([MDB IGNORE] Replace PDAs with tablets (#7550)):code/modules/jobs/job_types/paramedic.dm
 	ears = /obj/item/radio/headset/headset_med
 	gloves = /obj/item/clothing/gloves/color/latex/nitrile
 	uniform = /obj/item/clothing/under/rank/medical/emt

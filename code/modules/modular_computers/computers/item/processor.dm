@@ -78,3 +78,15 @@
 
 /obj/item/modular_computer/processor/attack_ghost(mob/user)
 	ui_interact(user)
+<<<<<<< HEAD
+=======
+
+/obj/item/modular_computer/processor/alert_call(datum/computer_file/program/caller, alerttext)
+	if(!caller || !caller.alert_able || caller.alert_silenced || !alerttext)
+		return
+	var/sound = 'sound/machines/twobeep_high.ogg'
+	if(HAS_TRAIT(SSstation, STATION_TRAIT_PDA_GLITCHED))
+		sound = pick('sound/machines/twobeep_voice1.ogg', 'sound/machines/twobeep_voice2.ogg')
+	playsound(src, sound, 50, TRUE)
+	machinery_computer.visible_message("<span class='notice'>The [src] displays a [caller.filedesc] notification: [alerttext]</span>")
+>>>>>>> 0bf96243c1 ([MDB IGNORE] Replace PDAs with tablets (#7550))

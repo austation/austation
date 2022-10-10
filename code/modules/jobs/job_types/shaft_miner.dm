@@ -31,9 +31,15 @@
 	name = "Shaft Miner"
 	jobtype = /datum/job/mining
 
+<<<<<<< HEAD
 	id = /obj/item/card/id/job/miner
 	belt = /obj/item/pda/shaftminer
 	ears = /obj/item/radio/headset/headset_cargo/mining
+=======
+	id = /obj/item/card/id/job/shaft_miner
+	belt = /obj/item/modular_computer/tablet/pda/shaft_miner
+	ears = /obj/item/radio/headset/headset_cargo/shaft_miner
+>>>>>>> 0bf96243c1 ([MDB IGNORE] Replace PDAs with tablets (#7550))
 	shoes = /obj/item/clothing/shoes/workboots/mining
 	gloves = /obj/item/clothing/gloves/color/black
 	uniform = /obj/item/clothing/under/rank/cargo/miner/lavaland

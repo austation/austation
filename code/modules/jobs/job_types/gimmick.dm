@@ -43,8 +43,13 @@
 	name = "Barber"
 	jobtype = /datum/job/gimmick/barber
 
+<<<<<<< HEAD
 	id = /obj/item/card/id/job/serv
 	belt = /obj/item/pda/unlicensed
+=======
+	id = /obj/item/card/id/job/barber
+	belt = /obj/item/modular_computer/tablet/pda/unlicensed
+>>>>>>> 0bf96243c1 ([MDB IGNORE] Replace PDAs with tablets (#7550))
 	ears = /obj/item/radio/headset
 	uniform = /obj/item/clothing/under/suit/sl
 	shoes = /obj/item/clothing/shoes/laceup
@@ -69,8 +74,13 @@
 	name = "Stage Magician"
 	jobtype = /datum/job/gimmick/magician
 
+<<<<<<< HEAD
 	id = /obj/item/card/id/job/serv
 	belt = /obj/item/pda/unlicensed
+=======
+	id = /obj/item/card/id/job/stage_magician
+	belt = /obj/item/modular_computer/tablet/pda/unlicensed
+>>>>>>> 0bf96243c1 ([MDB IGNORE] Replace PDAs with tablets (#7550))
 	head = /obj/item/clothing/head/that
 	ears = /obj/item/radio/headset
 	neck = /obj/item/bedsheet/magician
@@ -100,8 +110,13 @@
 	name = "Psychiatrist"
 	jobtype = /datum/job/gimmick/shrink
 
+<<<<<<< HEAD
 	id = /obj/item/card/id/job/med
 	belt = /obj/item/pda/medical
+=======
+	id = /obj/item/card/id/job/psychiatrist
+	belt = /obj/item/modular_computer/tablet/pda/medical
+>>>>>>> 0bf96243c1 ([MDB IGNORE] Replace PDAs with tablets (#7550))
 	ears = /obj/item/radio/headset/headset_med
 	uniform = /obj/item/clothing/under/suit/black
 	shoes = /obj/item/clothing/shoes/laceup
@@ -126,8 +141,13 @@
 	name = "VIP"
 	jobtype = /datum/job/gimmick/celebrity
 
+<<<<<<< HEAD
 	id = /obj/item/card/id/gold
 	belt = /obj/item/pda/celebrity
+=======
+	id = /obj/item/card/id/gold/vip
+	belt = /obj/item/modular_computer/tablet/pda/vip
+>>>>>>> 0bf96243c1 ([MDB IGNORE] Replace PDAs with tablets (#7550))
 	glasses = /obj/item/clothing/glasses/sunglasses/advanced
 	ears = /obj/item/radio/headset/heads //VIP can talk loud for no reason
 	uniform = /obj/item/clothing/under/suit/black_really

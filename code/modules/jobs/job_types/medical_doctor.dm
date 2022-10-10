@@ -32,8 +32,13 @@
 	name = "Medical Doctor"
 	jobtype = /datum/job/doctor
 
+<<<<<<< HEAD
 	id = /obj/item/card/id/job/med
 	belt = /obj/item/pda/medical
+=======
+	id = /obj/item/card/id/job/medical_doctor
+	belt = /obj/item/modular_computer/tablet/pda/medical
+>>>>>>> 0bf96243c1 ([MDB IGNORE] Replace PDAs with tablets (#7550))
 	ears = /obj/item/radio/headset/headset_med
 	uniform = /obj/item/clothing/under/rank/medical/doctor
 	shoes = /obj/item/clothing/shoes/sneakers/white

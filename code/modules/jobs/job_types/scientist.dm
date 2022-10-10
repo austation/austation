@@ -34,8 +34,13 @@
 	name = "Scientist"
 	jobtype = /datum/job/scientist
 
+<<<<<<< HEAD
 	id = /obj/item/card/id/job/sci
 	belt = /obj/item/pda/toxins
+=======
+	id = /obj/item/card/id/job/scientist
+	belt = /obj/item/modular_computer/tablet/pda/science
+>>>>>>> 0bf96243c1 ([MDB IGNORE] Replace PDAs with tablets (#7550))
 	ears = /obj/item/radio/headset/headset_sci
 	uniform = /obj/item/clothing/under/rank/rnd/scientist
 	shoes = /obj/item/clothing/shoes/sneakers/white

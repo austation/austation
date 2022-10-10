@@ -7,7 +7,12 @@
 	device_type = MC_CARD
 
 	var/obj/item/card/id/stored_card
+<<<<<<< HEAD
 	var/obj/item/card/id/stored_card2
+=======
+	var/current_identification
+	var/current_job
+>>>>>>> 0bf96243c1 ([MDB IGNORE] Replace PDAs with tablets (#7550))
 
 /obj/item/computer_hardware/card_slot/Exited(atom/movable/gone, direction)
 	if(!(gone == stored_card || gone == stored_card2))
@@ -79,7 +84,10 @@
 	if(ishuman(user))
 		var/mob/living/carbon/human/H = user
 		H.sec_hud_set_ID()
-
+	current_identification = stored_card.registered_name
+	current_job = stored_card.assignment
+	holder?.on_id_insert()
+	holder?.update_icon()
 	return TRUE
 
 
@@ -105,6 +113,7 @@
 		stored_card2 = null
 		ejected++
 
+<<<<<<< HEAD
 	if(ejected)
 		if(holder)
 			if(holder.active_program)
@@ -120,14 +129,51 @@
 		playsound(src, 'sound/machines/terminal_insert_disc.ogg', 50, 0)
 		return TRUE
 	return FALSE
+=======
+		for(var/p in holder.idle_threads)
+			var/datum/computer_file/program/computer_program = p
+			computer_program.event_idremoved(1)
+	if(ishuman(user))
+		var/mob/living/carbon/human/human_wearer = user
+		if(human_wearer.wear_id == holder)
+			human_wearer.sec_hud_set_ID()
+	to_chat(user, "<span class='notice'>You remove the card from \the [src].</span>")
+	playsound(src, 'sound/machines/terminal_insert_disc.ogg', 50, FALSE)
+	stored_card = null
+	current_identification = null
+	current_job = null
+	holder?.update_icon()
+	return TRUE
+>>>>>>> 0bf96243c1 ([MDB IGNORE] Replace PDAs with tablets (#7550))
 
 /obj/item/computer_hardware/card_slot/attackby(obj/item/I, mob/living/user)
 	if(..())
 		return
 	if(I.tool_behaviour == TOOL_SCREWDRIVER)
+<<<<<<< HEAD
 		to_chat(user, "<span class='notice'>You press down on the manual eject button with \the [I].</span>")
 		try_eject(0,user)
 		return
+=======
+		if(stored_card)
+			to_chat(user, "<span class='notice'>You press down on the manual eject button with \the [I].</span>")
+			try_eject(user)
+			return
+		swap_slot()
+		to_chat(user, "<span class='notice'>You adjust the connector to fit into [expansion_hw ? "an expansion bay" : "the primary ID bay"].</span>")
+
+/**
+  *Swaps the card_slot hardware between using the dedicated card slot bay on a computer, and using an expansion bay.
+*/
+/obj/item/computer_hardware/card_slot/proc/swap_slot()
+	expansion_hw = !expansion_hw
+	if(expansion_hw)
+		device_type = MC_CARD2
+		name = "secondary RFID card module"
+	else
+		device_type = MC_CARD
+		name = "primary RFID card module"
+>>>>>>> 0bf96243c1 ([MDB IGNORE] Replace PDAs with tablets (#7550))
 
 /obj/item/computer_hardware/card_slot/examine(mob/user)
 	. = ..()

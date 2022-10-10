@@ -32,7 +32,11 @@
 
 	id = /obj/item/card/id/job/atmos
 	belt = /obj/item/storage/belt/utility/atmostech
+<<<<<<< HEAD
 	l_pocket = /obj/item/pda/atmos
+=======
+	l_pocket = /obj/item/modular_computer/tablet/pda/atmospheric_technician
+>>>>>>> 0bf96243c1 ([MDB IGNORE] Replace PDAs with tablets (#7550))
 	ears = /obj/item/radio/headset/headset_eng
 	uniform = /obj/item/clothing/under/rank/engineering/atmospheric_technician
 	r_pocket = /obj/item/analyzer
@@ -42,7 +46,10 @@
 	duffelbag = /obj/item/storage/backpack/duffelbag/engineering
 	box = /obj/item/storage/box/engineer
 	pda_slot = ITEM_SLOT_LPOCKET
+<<<<<<< HEAD
 	backpack_contents = list(/obj/item/modular_computer/tablet/preset/advanced=1)
+=======
+>>>>>>> 0bf96243c1 ([MDB IGNORE] Replace PDAs with tablets (#7550))
 
 /datum/outfit/job/atmos/rig
 	name = "Atmospheric Technician (Hardsuit)"

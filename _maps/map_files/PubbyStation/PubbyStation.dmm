@@ -22765,12 +22765,12 @@
 /obj/machinery/light_switch{
 	pixel_y = -24
 	},
-/obj/item/cartridge/quartermaster{
+/obj/item/computer_hardware/hard_drive/role/quartermaster{
 	pixel_x = 6;
 	pixel_y = 5
 	},
-/obj/item/cartridge/quartermaster,
-/obj/item/cartridge/quartermaster{
+/obj/item/computer_hardware/hard_drive/role/quartermaster,
+/obj/item/computer_hardware/hard_drive/role/quartermaster{
 	pixel_x = -4;
 	pixel_y = 7
 	},
@@ -32848,16 +32848,16 @@
 /turf/open/floor/plasteel/white,
 /area/crew_quarters/heads/cmo)
 "bEF" = (
-/obj/item/cartridge/medical{
+/obj/item/computer_hardware/hard_drive/role/medical{
 	pixel_x = -2;
 	pixel_y = 6
 	},
-/obj/item/cartridge/medical{
+/obj/item/computer_hardware/hard_drive/role/medical{
 	pixel_x = 6;
 	pixel_y = 3
 	},
-/obj/item/cartridge/medical,
-/obj/item/cartridge/chemistry{
+/obj/item/computer_hardware/hard_drive/role/medical,
+/obj/item/computer_hardware/hard_drive/role/chemistry{
 	pixel_y = 2
 	},
 /obj/structure/table,
@@ -33076,12 +33076,12 @@
 /turf/open/floor/plasteel/dark,
 /area/crew_quarters/heads/hor)
 "bEU" = (
-/obj/item/cartridge/signal/toxins,
-/obj/item/cartridge/signal/toxins{
+/obj/item/computer_hardware/hard_drive/role/signal/toxins,
+/obj/item/computer_hardware/hard_drive/role/signal/toxins{
 	pixel_x = -4;
 	pixel_y = 2
 	},
-/obj/item/cartridge/signal/toxins{
+/obj/item/computer_hardware/hard_drive/role/signal/toxins{
 	pixel_x = 4;
 	pixel_y = 6
 	},
@@ -38739,19 +38739,19 @@
 /turf/closed/wall/r_wall,
 /area/crew_quarters/heads/chief)
 "bUI" = (
-/obj/item/cartridge/engineering{
+/obj/item/computer_hardware/hard_drive/role/engineering{
 	pixel_x = 4;
 	pixel_y = 5
 	},
-/obj/item/cartridge/engineering{
+/obj/item/computer_hardware/hard_drive/role/engineering{
 	pixel_x = -3;
 	pixel_y = 2
 	},
-/obj/item/cartridge/engineering{
+/obj/item/computer_hardware/hard_drive/role/engineering{
 	pixel_x = 3
 	},
 /obj/structure/table/reinforced,
-/obj/item/cartridge/atmos,
+/obj/item/computer_hardware/hard_drive/role/atmos,
 /obj/machinery/requests_console{
 	announcementConsole = 1;
 	department = "Chief Engineer's Desk";
@@ -55107,6 +55107,54 @@
 /turf/open/floor/plasteel/dark,
 /area/science/robotics/lab)
 "mWS" = (
+<<<<<<< HEAD
+=======
+/obj/machinery/flasher{
+	id = "monkeypen";
+	pixel_x = -28
+	},
+/turf/open/floor/plasteel/freezer,
+/area/medical/virology)
+"mXq" = (
+/obj/item/taperecorder,
+/obj/item/computer_hardware/hard_drive/role/lawyer,
+/obj/structure/table/wood,
+/turf/open/floor/wood,
+/area/lawoffice)
+"mYu" = (
+/obj/machinery/light_switch{
+	pixel_x = 22
+	},
+/obj/effect/turf_decal/tile/green,
+/obj/effect/turf_decal/tile/green{
+	dir = 4
+	},
+/obj/machinery/light{
+	dir = 4
+	},
+/obj/item/bedsheet/medical,
+/obj/structure/curtain{
+	layer = 4.5
+	},
+/obj/structure/cable/yellow{
+	icon_state = "1-2"
+	},
+/obj/effect/turf_decal/delivery,
+/obj/item/bedsheet/medical,
+/obj/structure/bed,
+/obj/effect/turf_decal/tile/green{
+	dir = 8
+	},
+/turf/open/floor/plasteel/white,
+/area/medical/virology)
+"mYD" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
+	dir = 9
+	},
+/turf/open/floor/plasteel,
+/area/storage/eva)
+"mYL" = (
+>>>>>>> 0bf96243c1 ([MDB IGNORE] Replace PDAs with tablets (#7550))
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
 	},

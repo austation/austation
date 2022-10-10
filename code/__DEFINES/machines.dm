@@ -52,13 +52,25 @@
 //Modular computer part defines
 #define MC_CPU "CPU"
 #define MC_HDD "HDD"
+#define MC_HDD_JOB "HDD_JOB"
 #define MC_SDD "SDD"
 #define MC_CARD "CARD"
+<<<<<<< HEAD
+=======
+#define MC_CARD2 "CARD2"
+#define MC_CART "CART"
+>>>>>>> 0bf96243c1 ([MDB IGNORE] Replace PDAs with tablets (#7550))
 #define MC_NET "NET"
 #define MC_PRINT "PRINT"
 #define MC_CELL "CELL"
 #define MC_CHARGE "CHARGE"
 #define MC_AI "AI"
+<<<<<<< HEAD
+=======
+#define MC_SENSORS "SENSORS"
+#define MC_SIGNALLER "SIGNALER"
+#define MC_IDENTIFY "IDENTIFY"
+>>>>>>> 0bf96243c1 ([MDB IGNORE] Replace PDAs with tablets (#7550))
 
 //! ## NTNet stuff, for modular computers
 //!  **NTNet module-configuration values. Do not change these. If you need to add another use larger number (5..6..7 etc)**
@@ -149,3 +161,18 @@
 #define PLANT_GENE_EXTRACTABLE	(1<<1)
 
 #define CLICKSOUND_INTERVAL (0.1 SECONDS)	//clicky noises, how much time needed in between clicks on the machine for the sound to play on click again.
+
+// From code/game/machinery/computer/communications.dm
+// ---------------------------------------------------
+
+// for setting status display. Used in modpc status app as well.
+#define MAX_STATUS_LINE_LENGTH 40
+// approvied pictures, also used in modpc app
+GLOBAL_LIST_INIT(approved_status_pictures, list(
+	"biohazard",
+	"blank",
+	"default",
+	"lockdown",
+	"redalert",
+	"shuttle",
+))

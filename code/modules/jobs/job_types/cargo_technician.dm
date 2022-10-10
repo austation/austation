@@ -30,8 +30,13 @@
 	name = "Cargo Technician"
 	jobtype = /datum/job/cargo_tech
 
+<<<<<<< HEAD
 	id = /obj/item/card/id/job/cargo
 	belt = /obj/item/pda/cargo
+=======
+	id = /obj/item/card/id/job/cargo_technician
+	belt = /obj/item/modular_computer/tablet/pda/cargo_technician
+>>>>>>> 0bf96243c1 ([MDB IGNORE] Replace PDAs with tablets (#7550))
 	ears = /obj/item/radio/headset/headset_cargo
 	uniform = /obj/item/clothing/under/rank/cargo/tech
 	l_hand = /obj/item/export_scanner

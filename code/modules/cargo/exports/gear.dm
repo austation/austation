@@ -85,7 +85,11 @@
 /datum/export/gear/goldpda
 	cost = 500
 	unit_name = "gilded PDA"
+<<<<<<< HEAD
 	export_types = list(/obj/item/pda/celebrity)
+=======
+	export_types = list(/obj/item/modular_computer/tablet/pda/vip)
+>>>>>>> 0bf96243c1 ([MDB IGNORE] Replace PDAs with tablets (#7550))
 
 /datum/export/gear/envirosuitvip
 	cost = 4500

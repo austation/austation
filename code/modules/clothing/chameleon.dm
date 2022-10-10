@@ -207,7 +207,20 @@
 		if(C.stat != CONSCIOUS)
 			return
 
+<<<<<<< HEAD
 		update_item(picked_item)
+=======
+		update_item(picked_item, emp)
+		if(ispath(picked_item, /obj/item/card/id))
+			var/mob/living/carbon/human/H = user
+			H?.sec_hud_set_ID()
+		if(istype(target, /obj/item/modular_computer/tablet/pda))
+			var/mob/living/carbon/human/H = user
+			H?.sec_hud_set_ID()
+			var/obj/item/modular_computer/tablet/pda/PDA = target
+			PDA.update_id_display()
+
+>>>>>>> 0bf96243c1 ([MDB IGNORE] Replace PDAs with tablets (#7550))
 		var/obj/item/thing = target
 		thing.update_slot_icon()
 	UpdateButtonIcon()
@@ -673,25 +686,25 @@
 	item_state = "syndie_headset"
 	bang_protect = 3
 
-/obj/item/pda/chameleon
-	name = "PDA"
+/obj/item/modular_computer/tablet/pda/chameleon
+	name = "tablet"
 	var/datum/action/item_action/chameleon/change/chameleon_action
 
-/obj/item/pda/chameleon/Initialize(mapload)
+/obj/item/modular_computer/tablet/pda/chameleon/Initialize(mapload)
 	. = ..()
 	chameleon_action = new(src)
-	chameleon_action.chameleon_type = /obj/item/pda
-	chameleon_action.chameleon_name = "PDA"
-	chameleon_action.chameleon_blacklist = typecacheof(list(/obj/item/pda/heads, /obj/item/pda/ai, /obj/item/pda/ai/pai), only_root_path = TRUE)
+	chameleon_action.chameleon_type = /obj/item/modular_computer/tablet/pda
+	chameleon_action.chameleon_name = "tablet"
+	chameleon_action.chameleon_blacklist = typecacheof(list(/obj/item/modular_computer/tablet/pda/heads), only_root_path = TRUE)
 	chameleon_action.initialize_disguises()
 
-/obj/item/pda/chameleon/emp_act(severity)
+/obj/item/modular_computer/tablet/pda/chameleon/emp_act(severity)
 	. = ..()
 	if(. & EMP_PROTECT_SELF)
 		return
 	chameleon_action.emp_randomise()
 
-/obj/item/pda/chameleon/broken/Initialize(mapload)
+/obj/item/modular_computer/tablet/pda/chameleon/broken/Initialize(mapload)
 	. = ..()
 	chameleon_action.emp_randomise(INFINITY)
 

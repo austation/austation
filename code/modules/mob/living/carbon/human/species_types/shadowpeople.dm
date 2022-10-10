@@ -229,5 +229,26 @@
 	burn()
 	playsound(src, 'sound/items/welder.ogg', 50, 1)
 
+<<<<<<< HEAD
+=======
+/obj/item/modular_computer/tablet/lighteater_act(obj/item/light_eater/light_eater)
+	if(light_range && light_power > 0 && light_on)
+		// Only the queen of Beetania can save our IDs from this infernal nightmare
+		var/obj/item/computer_hardware/card_slot/card_slot2 = all_components[MC_CARD2]
+		var/obj/item/computer_hardware/card_slot/card_slot = all_components[MC_CARD]
+		card_slot2.try_eject()
+		card_slot.try_eject()
+	..()
+
+/turf/open/floor/light/lighteater_act(obj/item/light_eater/light_eater)
+	. = ..()
+	if(!light_range || !light_power || !light_on)
+		return
+	if(light_eater)
+		visible_message("<span class='danger'>The light bulb of [src] is disintegrated by [light_eater]!</span>")
+	break_tile()
+	playsound(src, 'sound/items/welder.ogg', 50, 1)
+
+>>>>>>> 0bf96243c1 ([MDB IGNORE] Replace PDAs with tablets (#7550))
 #undef HEART_SPECIAL_SHADOWIFY
 #undef HEART_RESPAWN_THRESHHOLD

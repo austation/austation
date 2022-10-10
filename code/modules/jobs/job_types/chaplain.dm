@@ -120,8 +120,13 @@
 	name = "Chaplain"
 	jobtype = /datum/job/chaplain
 
+<<<<<<< HEAD
 	id = /obj/item/card/id/job/chap
 	belt = /obj/item/pda/chaplain
+=======
+	id = /obj/item/card/id/job/chaplain
+	belt = /obj/item/modular_computer/tablet/pda/chaplain
+>>>>>>> 0bf96243c1 ([MDB IGNORE] Replace PDAs with tablets (#7550))
 	ears = /obj/item/radio/headset/headset_srv
 	uniform = /obj/item/clothing/under/rank/civilian/chaplain
 	backpack_contents = list(

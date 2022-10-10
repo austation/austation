@@ -124,8 +124,13 @@ GLOBAL_LIST_INIT(available_depts, list(SEC_DEPT_ENGINEERING, SEC_DEPT_MEDICAL, S
 	name = "Security Officer"
 	jobtype = /datum/job/officer
 
+<<<<<<< HEAD
 	id = /obj/item/card/id/job/sec
 	belt = /obj/item/pda/security
+=======
+	id = /obj/item/card/id/job/security_officer
+	belt = /obj/item/modular_computer/tablet/pda/security
+>>>>>>> 0bf96243c1 ([MDB IGNORE] Replace PDAs with tablets (#7550))
 	ears = /obj/item/radio/headset/headset_sec/alt
 	uniform = /obj/item/clothing/under/rank/security/officer
 	gloves = /obj/item/clothing/gloves/color/black

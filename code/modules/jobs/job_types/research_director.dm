@@ -45,16 +45,21 @@
 	name = "Research Director"
 	jobtype = /datum/job/rd
 
+<<<<<<< HEAD
 	id = /obj/item/card/id/job/rd
 	belt = /obj/item/pda/heads/rd
 	ears = /obj/item/radio/headset/heads/rd
+=======
+	id = /obj/item/card/id/job/research_director
+	belt = /obj/item/modular_computer/tablet/pda/heads/research_director
+	ears = /obj/item/radio/headset/heads/research_director
+>>>>>>> 0bf96243c1 ([MDB IGNORE] Replace PDAs with tablets (#7550))
 	uniform = /obj/item/clothing/under/rank/rnd/research_director
 	shoes = /obj/item/clothing/shoes/sneakers/brown
 	suit = /obj/item/clothing/suit/toggle/labcoat/rd
 	l_hand = /obj/item/clipboard
 	l_pocket = /obj/item/laser_pointer
-	backpack_contents = list(/obj/item/melee/classic_baton/police/telescopic=1,
-		/obj/item/modular_computer/tablet/preset/advanced/command=1)
+	backpack_contents = list(/obj/item/melee/classic_baton/police/telescopic=1)
 
 	backpack = /obj/item/storage/backpack/science
 	satchel = /obj/item/storage/backpack/satchel/tox

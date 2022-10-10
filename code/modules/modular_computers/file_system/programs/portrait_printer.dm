@@ -13,7 +13,7 @@
 	filedesc = "Marlowe Treeby's Art Galaxy"
 	program_icon_state = "dummy"
 	extended_desc = "This program connects to a Spinward Sector community art site for viewing and printing art."
-	transfer_access = ACCESS_LIBRARY
+	transfer_access = list(ACCESS_LIBRARY)
 	usage_flags = PROGRAM_CONSOLE
 	requires_ntnet = TRUE
 	size = 9

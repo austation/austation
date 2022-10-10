@@ -1,12 +1,26 @@
 /datum/computer_file/program/atmosscan
 	filename = "atmosscan"
 	filedesc = "Atmospheric Scanner"
+<<<<<<< HEAD
 	program_icon_state = "air"
+=======
+	category = PROGRAM_CATEGORY_ENGI
+	program_icon_state = "atmos_control"
+>>>>>>> 0bf96243c1 ([MDB IGNORE] Replace PDAs with tablets (#7550))
 	extended_desc = "A small built-in sensor reads out the atmospheric conditions around the device."
 	network_destination = "atmos scan"
 	size = 4
 	tgui_id = "NtosAtmos"
 
+<<<<<<< HEAD
+=======
+/datum/computer_file/program/atmosscan/on_start(mob/living/user)
+	. = ..()
+	if (!.)
+		return
+	if(!computer?.get_modular_computer_part(MC_SENSORS)) //Giving a clue to users why the program is spitting out zeros.
+		to_chat(user, "<span class='warning'>\The [computer] flashes an error: \"hardware\\sensorpackage\\startup.bin -- file not found\".</span>")
+>>>>>>> 0bf96243c1 ([MDB IGNORE] Replace PDAs with tablets (#7550))
 
 
 /datum/computer_file/program/atmosscan/ui_data(mob/user)

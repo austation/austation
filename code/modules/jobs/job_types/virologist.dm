@@ -41,7 +41,11 @@
 	shoes = /obj/item/clothing/shoes/sneakers/white
 	suit =  /obj/item/clothing/suit/toggle/labcoat/virologist
 	suit_store =  /obj/item/flashlight/pen
+<<<<<<< HEAD
 	r_pocket = /obj/item/pda/viro
+=======
+	r_pocket = /obj/item/modular_computer/tablet/pda/virologist
+>>>>>>> 0bf96243c1 ([MDB IGNORE] Replace PDAs with tablets (#7550))
 
 	backpack = /obj/item/storage/backpack/virology
 	satchel = /obj/item/storage/backpack/satchel/vir

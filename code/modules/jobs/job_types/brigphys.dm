@@ -33,8 +33,13 @@
 	name = "Brig Physician"
 	jobtype = /datum/job/brig_phys
 
+<<<<<<< HEAD:code/modules/jobs/job_types/brigphys.dm
 	id = /obj/item/card/id/job/brigphys
 	belt = /obj/item/pda/brigphys
+=======
+	id = /obj/item/card/id/job/brig_physician
+	belt = /obj/item/modular_computer/tablet/pda/brig_physician
+>>>>>>> 0bf96243c1 ([MDB IGNORE] Replace PDAs with tablets (#7550)):code/modules/jobs/job_types/brig_physician.dm
 	ears = /obj/item/radio/headset/headset_medsec
 	uniform = /obj/item/clothing/under/rank/brig_phys
 	shoes = /obj/item/clothing/shoes/sneakers/white

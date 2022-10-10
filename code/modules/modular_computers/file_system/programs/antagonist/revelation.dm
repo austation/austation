@@ -13,8 +13,15 @@
 
 	var/armed = 0
 
+<<<<<<< HEAD
 /datum/computer_file/program/revelation/run_program(var/mob/living/user)
 	. = ..(user)
+=======
+/datum/computer_file/program/revelation/on_start(mob/living/user)
+	. = ..()
+	if(!.)
+		return
+>>>>>>> 0bf96243c1 ([MDB IGNORE] Replace PDAs with tablets (#7550))
 	if(armed)
 		activate()
 
