@@ -67,14 +67,20 @@
 
 	var/list/standard_actions = list("patroloff", "patrolon", "ejectpai")
 	var/list/MULE_actions = list("stop", "go", "home", "destination", "setid", "sethome", "unload", "autoret", "autopick", "report", "ejectpai")
+<<<<<<< HEAD
 	var/mob/living/simple_animal/bot/Bot = locate(params["robot"]) in GLOB.bots_list
 	if (action in standard_actions)
 		Bot.bot_control(action, current_user, current_access)
 	if (action in MULE_actions)
 		Bot.bot_control(action, current_user, current_access, TRUE)
+=======
+	var/mob/living/simple_animal/bot/selected_bot = locate(params["robot"]) in GLOB.bots_list
+>>>>>>> 68e50a1a87 (Fix various ModPC runtimes (#7873))
 	switch(action)
 		if("summon")
-			Bot.bot_control(action, current_user, id_card ? id_card.access : current_access)
+			if(!selected_bot)
+				return
+			selected_bot.bot_control(action, current_user, id_card ? id_card.access : current_access)
 		if("ejectcard")
 			if(!computer || !card_slot)
 				return
@@ -83,4 +89,14 @@
 				card_slot.try_eject(TRUE, current_user)
 			else
 				playsound(get_turf(ui_host()) , 'sound/machines/buzz-sigh.ogg', 25, FALSE)
-	return
+	if(!selected_bot)
+		return
+	var access_okay = TRUE
+	if(!id_card && !selected_bot.bot_core.allowed(current_user))
+		access_okay = FALSE
+	else if(id_card && !selected_bot.bot_core.check_access(id_card))
+		access_okay = FALSE
+	if (access_okay && (action in standard_actions))
+		selected_bot.bot_control(action, current_user, id_card ? id_card.access : current_access)
+	if (access_okay && (action in MULE_actions))
+		selected_bot.bot_control(action, current_user, id_card ? id_card.access : current_access, TRUE)
