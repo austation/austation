@@ -38,6 +38,8 @@ Runes can either be invoked by one's self or with many different cultists. Each 
 	var/req_keyword = 0 //If the rune requires a keyword - go figure amirite
 	var/keyword //The actual keyword for the rune
 
+	var/allow_ghosts = TRUE	//Allow ghost cultists (from spirit realm rune) to activate this rune.
+
 /obj/effect/rune/Initialize(mapload, set_keyword)
 	. = ..()
 	if(set_keyword)
@@ -113,8 +115,10 @@ structure_check() searches for nearby cultist structures required for the invoca
 /obj/effect/rune/proc/can_invoke(var/mob/living/user=null)
 	//This proc determines if the rune can be invoked at the time. If there are multiple required cultists, it will find all nearby cultists.
 	var/list/invokers = list() //people eligible to invoke the rune
-	if(user)
+	if(user && (allow_ghosts || !user.has_status_effect(STATUS_EFFECT_SUMMONEDGHOST)))
 		invokers += user
+	else if(user)
+		to_chat(user, "<span class='warning'>You do not possess a strong enough physical binding to activate this rune!</span>")
 	if(req_cultists > 1 || istype(src, /obj/effect/rune/convert))
 		var/obj/item/toy/plush/narplush/plushsie = locate() in range(1, src)
 		if(plushsie?.is_invoker)
@@ -122,6 +126,9 @@ structure_check() searches for nearby cultist structures required for the invoca
 		for(var/mob/living/L in viewers(1, src))
 			if(iscultist(L))
 				if(L == user)
+					continue
+				if(L.has_status_effect(STATUS_EFFECT_SUMMONEDGHOST) && !allow_ghosts)
+					L.visible_message("<span class='warning'>[L] appears to shudder as they fail to perform the ritual, their soul is too fragile!</span>", "<span class='narsie'>You do not possess a strong enough physical binding to activate this rune!</span>")
 					continue
 				if(ishuman(L))
 					var/mob/living/carbon/human/H = L
@@ -461,6 +468,11 @@ structure_check() searches for nearby cultist structures required for the invoca
 	pixel_y = -32
 	scribe_delay = 500 //how long the rune takes to create
 	scribe_damage = 40.1 //how much damage you take doing it
+<<<<<<< HEAD
+=======
+	allow_ghosts = FALSE
+	no_scribe_boost = TRUE
+>>>>>>> 8c3938caeb (Spirit realm ghosts can no longer contribute towards summon nar'sie (#7323))
 	var/used = FALSE
 
 /obj/effect/rune/narsie/Initialize(mapload, set_keyword)
@@ -951,6 +963,7 @@ structure_check() searches for nearby cultist structures required for the invoca
 	color = RUNE_COLOR_DARKRED
 	req_cultists = 3
 	scribe_delay = 100
+	allow_ghosts = FALSE
 
 /obj/effect/rune/apocalypse/invoke(var/list/invokers)
 	if(rune_in_use)
