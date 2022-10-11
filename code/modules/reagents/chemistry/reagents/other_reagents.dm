@@ -125,17 +125,27 @@
 
 /datum/reagent/corgium/on_mob_metabolize(mob/living/L)
 	. = ..()
+<<<<<<< HEAD
 	new_corgi = new(get_turf(L))
 	new_corgi.key = L.key
 	new_corgi.name = L.real_name
 	new_corgi.real_name = L.real_name
 	ADD_TRAIT(L, TRAIT_NOBREATH, CORGIUM_TRAIT)
 	//hack - equipt current hat
+=======
+	var/obj/shapeshift_holder/H = locate() in L
+	if(H)
+		to_chat(L, "<span class='warning'>You're already corgified!</span>")
+		return
+	new_corgi = new(L.loc)
+	//hat check
+>>>>>>> a1b826da64 (Fixes corgium lasting forever (#7402))
 	var/mob/living/carbon/C = L
 	if (istype(C))
 		var/obj/item/hat = C.get_item_by_slot(ITEM_SLOT_HEAD)
 		if (hat)
 			new_corgi.place_on_head(hat,null,FALSE)
+<<<<<<< HEAD
 	L.forceMove(new_corgi)
 
 /datum/reagent/corgium/on_mob_life(mob/living/carbon/M)
@@ -151,6 +161,22 @@
 	if(QDELETED(new_corgi))
 		if(!QDELETED(L))
 			qdel(L)
+=======
+	H = new(new_corgi,src,L)
+	//Restore after this time
+	addtimer(CALLBACK(src, .proc/restore, L), 5 * (volume / metabolization_rate))
+
+/datum/reagent/corgium/proc/restore(mob/living/L)
+	//The mob was qdeleted by an explosion or something
+	if(QDELETED(L))
+		return
+	//Remove all the corgium from the person
+	L.reagents?.remove_reagent(/datum/reagent/corgium, INFINITY)
+	if(QDELETED(new_corgi))
+		return
+	var/obj/shapeshift_holder/H = locate() in new_corgi
+	if(!H)
+>>>>>>> a1b826da64 (Fixes corgium lasting forever (#7402))
 		return
 	//Leave the corgi
 	L.key = new_corgi.key
