@@ -586,9 +586,20 @@ GENE SCANNER
 
 		if(cached_scan_results && cached_scan_results["fusion"]) //notify the user if a fusion reaction was detected
 			var/instability = round(cached_scan_results["fusion"], 0.01)
+<<<<<<< HEAD
 			to_chat(user, "<span class='boldnotice'>Large amounts of free neutrons detected in the air indicate that a fusion reaction took place.</span>")
 			to_chat(user, "<span class='notice'>Instability of the last fusion reaction: [instability].</span>")
 	return TRUE
+=======
+			message += "<span class='boldnotice'>Large amounts of free neutrons detected in the air indicate that a fusion reaction took place.</span>"
+			message += "<span class='notice'>Instability of the last fusion reaction: [instability].</span>"
+
+	if(to_chat)
+		to_chat(user, EXAMINE_BLOCK(jointext(message, "\n")), trailing_newline = FALSE, type = MESSAGE_TYPE_INFO)
+		return TRUE
+	else
+		return(jointext(message, "\n"))
+>>>>>>> f376dfa5a9 (Fix gas scanner newlines (#7875))
 
 /obj/item/analyzer/proc/scan_turf(mob/user, turf/location)
 	var/datum/gas_mixture/environment = location.return_air()
