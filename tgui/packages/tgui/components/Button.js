@@ -45,8 +45,15 @@ export const Button = props => {
       + `'onClick' instead and read: `
       + `https://infernojs.org/docs/guides/event-handling`);
   }
-  // IE8: Use a lowercase "onclick" because synthetic events are fucked.
-  // IE8: Use an "unselectable" prop because "user-select" doesn't work.
+  rest.onClick = e => {
+    if (!disabled && onClick) {
+      onClick(e);
+    }
+  };
+  // IE8: Use "unselectable" because "user-select" doesn't work.
+  if (Byond.IS_LTE_IE8) {
+    rest.unselectable = true;
+  }
   let buttonContent = (
     <div
       className={classes([
@@ -65,12 +72,6 @@ export const Button = props => {
         computeBoxClassName(rest),
       ])}
       tabIndex={!disabled && '0'}
-      unselectable={Byond.IS_LTE_IE8}
-      onClick={e => {
-        if (!disabled && onClick) {
-          onClick(e);
-        }
-      }}
       onKeyDown={e => {
         const keyCode = window.event ? e.which : e.keyCode;
         // Simulate a click when pressing space or enter.
@@ -88,6 +89,7 @@ export const Button = props => {
         }
       }}
       {...computeBoxProps(rest)}>
+<<<<<<< HEAD
       {(icon && iconPosition !== 'right') && (
         <Icon
           name={icon}
@@ -103,6 +105,26 @@ export const Button = props => {
           rotation={iconRotation}
           spin={iconSpin} />
       )}
+=======
+      <div className="Button__content">
+        {icon && iconPosition !== 'right' && (
+          <Icon
+            name={icon}
+            rotation={iconRotation}
+            spin={iconSpin}
+          />
+        )}
+        {content}
+        {children}
+        {icon && iconPosition === 'right' && (
+          <Icon
+            name={icon}
+            rotation={iconRotation}
+            spin={iconSpin}
+          />
+        )}
+      </div>
+>>>>>>> 5d0bc6f4b1 (The NEW-scaster (Newscaster TGUI + Bounty Board) (#7779))
     </div>
   );
 

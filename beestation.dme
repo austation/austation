@@ -840,7 +840,6 @@
 #include "code\game\machinery\magnet.dm"
 #include "code\game\machinery\mass_driver.dm"
 #include "code\game\machinery\navbeacon.dm"
-#include "code\game\machinery\newscaster.dm"
 #include "code\game\machinery\PDApainter.dm"
 #include "code\game\machinery\quantum_pad.dm"
 #include "code\game\machinery\race_converter.dm"
@@ -915,6 +914,9 @@
 #include "code\game\machinery\fabricators\autolathe.dm"
 #include "code\game\machinery\fabricators\exosuit_fab.dm"
 #include "code\game\machinery\fabricators\modular_fabricator.dm"
+#include "code\game\machinery\newscaster\newscaster_data.dm"
+#include "code\game\machinery\newscaster\newscaster_machine.dm"
+#include "code\game\machinery\newscaster\newspaper.dm"
 #include "code\game\machinery\pipe\construction.dm"
 #include "code\game\machinery\pipe\pipe_dispenser.dm"
 #include "code\game\machinery\porta_turret\portable_turret.dm"
@@ -1416,6 +1418,7 @@
 #include "code\modules\admin\topic.dm"
 #include "code\modules\admin\whitelist.dm"
 #include "code\modules\admin\callproc\callproc.dm"
+#include "code\modules\admin\verbs\admin_newscaster.dm"
 #include "code\modules\admin\verbs\adminhelp.dm"
 #include "code\modules\admin\verbs\adminjump.dm"
 #include "code\modules\admin\verbs\adminpm.dm"
@@ -2736,6 +2739,12 @@
 #include "code\modules\modular_computers\file_system\programs\crewmanifest.dm"
 #include "code\modules\modular_computers\file_system\programs\file_browser.dm"
 #include "code\modules\modular_computers\file_system\programs\jobmanagement.dm"
+<<<<<<< HEAD
+=======
+#include "code\modules\modular_computers\file_system\programs\log_viewer.dm"
+#include "code\modules\modular_computers\file_system\programs\newscaster.dm"
+#include "code\modules\modular_computers\file_system\programs\notepad.dm"
+>>>>>>> 5d0bc6f4b1 (The NEW-scaster (Newscaster TGUI + Bounty Board) (#7779))
 #include "code\modules\modular_computers\file_system\programs\ntdownloader.dm"
 #include "code\modules\modular_computers\file_system\programs\ntmonitor.dm"
 #include "code\modules\modular_computers\file_system\programs\ntnrc_client.dm"
