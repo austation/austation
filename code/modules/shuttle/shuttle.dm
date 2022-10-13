@@ -573,14 +573,32 @@ GLOBAL_LIST_INIT(shuttle_turf_blacklist, typecacheof(list(
 	if(!underlying_area)
 		underlying_area = new underlying_area_type(null)
 
+	var/list/all_towed_shuttles = get_all_towed_shuttles()
+	var/list/all_shuttle_areas = list()
+	for(var/obj/docking_port/mobile/M in all_towed_shuttles)
+		all_shuttle_areas += M.shuttle_areas
+
 	for(var/i in 1 to old_turfs.len)
 		var/turf/oldT = old_turfs[i]
+<<<<<<< HEAD
 		if(!oldT || !istype(oldT.loc, area_type))
 			continue
 		var/area/old_area = oldT.loc
 		underlying_area.contents += oldT
 		oldT.change_area(old_area, underlying_area)
 		oldT.empty(FALSE)
+=======
+		if(!all_shuttle_areas[oldT?.loc])
+			continue
+		var/area/old_area = oldT.loc
+		for(var/obj/docking_port/mobile/bottom_shuttle as() in all_towed_shuttles)
+			if(bottom_shuttle.underlying_turf_area[oldT])
+				var/area/underlying_area = bottom_shuttle.underlying_turf_area[oldT]
+				underlying_area.contents += oldT
+				oldT.change_area(old_area, underlying_area)
+				oldT.empty(FALSE)
+				break
+>>>>>>> 23122d98fb (shuttle fixes (#7889))
 
 		// Here we locate the bottommost shuttle boundary and remove all turfs above it
 		var/list/baseturf_cache = oldT.baseturfs
@@ -589,7 +607,8 @@ GLOBAL_LIST_INIT(shuttle_turf_blacklist, typecacheof(list(
 				oldT.ScrapeAway(baseturf_cache.len - k + 1)
 				break
 
-	qdel(src, force=TRUE)
+	for(var/obj/docking_port/mobile/shuttle in all_towed_shuttles)
+		qdel(shuttle, force=TRUE)
 
 /obj/docking_port/mobile/proc/intoTheSunset()
 	// Loop over mobs
@@ -620,6 +639,9 @@ GLOBAL_LIST_INIT(shuttle_turf_blacklist, typecacheof(list(
 	var/list/L1 = return_ordered_turfs(S1.x, S1.y, S1.z, S1.dir)
 
 	var/list/ripple_turfs = list()
+	var/list/all_shuttle_areas = list()
+	for(var/obj/docking_port/mobile/M in get_all_towed_shuttles())
+		all_shuttle_areas |= M.shuttle_areas
 
 	for(var/i in 1 to L0.len)
 		var/turf/T0 = L0[i]
@@ -628,7 +650,11 @@ GLOBAL_LIST_INIT(shuttle_turf_blacklist, typecacheof(list(
 			continue  // out of bounds
 		if(T0.type == T0.baseturfs)
 			continue  // indestructible
+<<<<<<< HEAD
 		if(!istype(T0.loc, area_type) || istype(T0.loc, /area/shuttle/transit))
+=======
+		if(!all_shuttle_areas[T0.loc] || istype(T0.loc, /area/shuttle/transit))
+>>>>>>> 23122d98fb (shuttle fixes (#7889))
 			continue  // not part of the shuttle
 		ripple_turfs += T1
 

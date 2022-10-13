@@ -80,9 +80,35 @@ All ShuttleMove procs go here
 	oldT.TransferComponents(src)
 	SSexplosions.wipe_turf(src)
 	SEND_SIGNAL(oldT, COMSIG_TURF_AFTER_SHUTTLE_MOVE, src) //Mostly for decals
+<<<<<<< HEAD
 	var/shuttle_boundary = baseturfs.Find(/turf/baseturf_skipover/shuttle)
 	if(shuttle_boundary)
 		oldT.ScrapeAway(baseturfs.len - shuttle_boundary + 1, flags = CHANGETURF_FORCEOP | CHANGETURF_DEFER_CHANGE)
+=======
+
+	var/area/shuttle/A = loc
+	var/obj/docking_port/mobile/top_shuttle = A?.mobile_port
+	var/shuttle_layers = -1*A.get_missing_shuttles(src)
+	for(var/index in 1 to all_towed_shuttles.len)
+		var/obj/docking_port/mobile/M = all_towed_shuttles[index]
+		if(!M.underlying_turf_area[src])
+			continue
+		shuttle_layers++
+		if(M == top_shuttle)
+			break
+	var/BT_index = length(baseturfs)
+	var/BT
+	for(var/i in 1 to shuttle_layers)
+		while(BT_index)
+			BT = baseturfs[BT_index--]
+			if(BT == /turf/baseturf_skipover/shuttle)
+				break
+	if(!BT_index && length(baseturfs))
+		CRASH("A turf queued to clean up after a shuttle dock somehow didn't have enough skipovers in baseturfs. [oldT]([oldT.type]):[oldT.loc]")
+
+	if(BT_index != length(baseturfs))
+		oldT.ScrapeAway(baseturfs.len - BT_index, flags = CHANGETURF_FORCEOP)
+>>>>>>> 23122d98fb (shuttle fixes (#7889))
 
 	if(rotation)
 		shuttleRotate(rotation) //see shuttle_rotate.dm

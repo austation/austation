@@ -108,7 +108,10 @@
 
 	check_poddoors()
 	new_dock.last_dock_time = world.time
+<<<<<<< HEAD
 	setDir(new_dock.dir)
+=======
+>>>>>>> 23122d98fb (shuttle fixes (#7889))
 
 	// remove any stragglers just in case, and clear the list
 	remove_ripples()

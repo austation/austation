@@ -443,6 +443,7 @@ SUBSYSTEM_DEF(shuttle)
 
 	// Shuttles travelling on their side have their dimensions swapped
 	// from our perspective
+<<<<<<< HEAD
 	switch(dock_dir)
 		if(NORTH, SOUTH)
 			transit_width += M.width
@@ -450,6 +451,11 @@ SUBSYSTEM_DEF(shuttle)
 		if(EAST, WEST)
 			transit_width += M.height
 			transit_height += M.width
+=======
+	var/list/union_coords = M.return_union_coords(M.get_all_towed_shuttles(), 0, 0, dock_dir)
+	transit_width += union_coords[3] - union_coords[1] + 1
+	transit_height += union_coords[4] - union_coords[2] + 1
+>>>>>>> 23122d98fb (shuttle fixes (#7889))
 
 /*
 	to_chat(world, "The attempted transit dock will be [transit_width] width, and \)
@@ -474,6 +480,7 @@ SUBSYSTEM_DEF(shuttle)
 
 	var/turf/bottomleft = locate(proposal.bottom_left_coords[1], proposal.bottom_left_coords[2], proposal.bottom_left_coords[3])
 	// Then create a transit docking port in the middle
+<<<<<<< HEAD
 	var/coords = M.return_coords(0, 0, dock_dir)
 	/*  0------2
         |      |
@@ -493,6 +500,12 @@ SUBSYSTEM_DEF(shuttle)
 	// Then invert the numbers
 	var/transit_x = bottomleft.x + SHUTTLE_TRANSIT_BORDER + abs(x2)
 	var/transit_y = bottomleft.y + SHUTTLE_TRANSIT_BORDER + abs(y2)
+=======
+	// union coords (1,2) points from the docking port to the bottom left corner of the bounding box
+	// So if we negate those coordinates, we get the vector pointing from the bottom left of the bounding box to the docking port
+	var/transit_x = bottomleft.x + SHUTTLE_TRANSIT_BORDER + abs(union_coords[1])
+	var/transit_y = bottomleft.y + SHUTTLE_TRANSIT_BORDER + abs(union_coords[2])
+>>>>>>> 23122d98fb (shuttle fixes (#7889))
 
 	var/turf/midpoint = locate(transit_x, transit_y, bottomleft.z)
 	if(!midpoint)
