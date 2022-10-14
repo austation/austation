@@ -10,5 +10,23 @@
 /austation/tools/ @MCterra10
 /config/ @MCterra10
 
+<<<<<<< HEAD
 # thefakeelon
 /austation/code/modules/coilgun @TheFakeElon
+=======
+# powerfulbacon
+
+/code/game/machinery/shuttle @powerfulbacon
+/code/modules/shuttle/super_cruise @powerfulbacon
+/code/modules/shuttle/shuttle_creation @powerfulbacon
+/_maps/map_files/CorgStation @powerfulbacon
+
+# pestoverde322
+
+/_maps @pestoverde322
+
+# itsmeow
+
+/code/game/gamemodes/dynamic @itsmeow
+/code/modules/modular_computers @itsmeow
+>>>>>>> a1301c34c3 (Add itsmeow as codeowner of modPCs and dynamic (#7894))
