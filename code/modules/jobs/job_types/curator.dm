@@ -24,7 +24,12 @@
 	species_outfits = list(
 		SPECIES_PLASMAMAN = /datum/outfit/plasmaman/curator
 	)
+<<<<<<< HEAD
 	biohazard = 5 //he doesnt get out much
+=======
+	//they doesnt get out that much
+	biohazard = 10
+>>>>>>> c96c28debc (Rebalances dormant diseases and sample crates (#7878))
 
 /datum/outfit/job/curator
 	name = "Curator"

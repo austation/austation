@@ -32,7 +32,7 @@
 	species_outfits = list(
 		SPECIES_PLASMAMAN = /datum/outfit/plasmaman/security
 	)
-	biohazard = 15 //clean your baton, man
+	biohazard = 25 //clean your baton, man
 
 /datum/job/officer/get_access()
 	var/list/L = list()
