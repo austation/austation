@@ -186,8 +186,18 @@
 /obj/structure/chair/comfy/teal
 	color = rgb(0,255,255)
 
+<<<<<<< HEAD
 /obj/structure/chair/comfy/black
 	color = rgb(167,164,153)
+=======
+/obj/structure/chair/fancy/corp
+	color = null
+	name = "corporate chair"
+	desc = "It looks professional."
+	icon_state = "comfychair_corp"
+	buildstackamount = 1
+	item_chair = null
+>>>>>>> 6d4bdf2fa9 (The shuttle seat and the corporate chair are no longer pickupable (#7905))
 
 /obj/structure/chair/comfy/lime
 	color = rgb(255,251,0)
@@ -196,6 +206,8 @@
 	name = "shuttle seat"
 	desc = "A comfortable, secure seat. It has a more sturdy looking buckling system for smoother flights."
 	icon_state = "shuttle_chair"
+	buildstackamount = 1
+	item_chair = null
 
 /obj/structure/chair/comfy/shuttle/GetArmrest()
 	return mutable_appearance('icons/obj/chairs.dmi', "shuttle_chair_armrest")
