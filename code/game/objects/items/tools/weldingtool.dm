@@ -107,6 +107,7 @@
 	dyn_explosion(T, plasmaAmount/5)//20 plasma in a standard welder has a 4 power explosion. no breaches, but enough to kill/dismember holder
 	qdel(src)
 
+<<<<<<< HEAD
 /obj/item/weldingtool/attack(mob/living/carbon/human/H, mob/user)
 	if(!istype(H))
 		return ..()
@@ -124,6 +125,12 @@
 	else
 		return ..()
 
+=======
+/obj/item/weldingtool/use_tool(atom/target, mob/living/user, delay, amount, volume, datum/callback/extra_checks)
+	target.add_overlay(GLOB.welding_sparks)
+	. = ..()
+	target.cut_overlay(GLOB.welding_sparks)
+>>>>>>> c94664c2eb (Allows non-welding tool welders to repair IPCs and prosthetics (#7713))
 
 /obj/item/weldingtool/afterattack(atom/O, mob/user, proximity)
 	. = ..()

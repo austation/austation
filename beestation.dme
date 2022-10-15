@@ -623,6 +623,11 @@
 #include "code\datums\elements\embed.dm"
 #include "code\datums\elements\firestacker.dm"
 #include "code\datums\elements\forced_gravity.dm"
+<<<<<<< HEAD
+=======
+#include "code\datums\elements\item_scaling.dm"
+#include "code\datums\elements\mechanical_repair.dm"
+>>>>>>> c94664c2eb (Allows non-welding tool welders to repair IPCs and prosthetics (#7713))
 #include "code\datums\elements\rust.dm"
 #include "code\datums\elements\squish.dm"
 #include "code\datums\elements\strippable.dm"

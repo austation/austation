@@ -540,6 +540,7 @@ GLOBAL_LIST_INIT(cable_coil_recipes, list (new/datum/stack_recipe("cable restrai
 // General procedures
 ///////////////////////////////////
 
+<<<<<<< HEAD
 
 //you can use wires to heal robotics
 /obj/item/stack/cable_coil/attack(mob/living/carbon/human/H, mob/user)
@@ -559,6 +560,8 @@ GLOBAL_LIST_INIT(cable_coil_recipes, list (new/datum/stack_recipe("cable restrai
 		return ..()
 
 
+=======
+>>>>>>> c94664c2eb (Allows non-welding tool welders to repair IPCs and prosthetics (#7713))
 /obj/item/stack/cable_coil/update_icon()
 	icon_state = "[initial(item_state)][amount < 3 ? amount : ""]"
 	name = "cable [amount < 3 ? "piece" : "coil"]"
