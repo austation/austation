@@ -81,6 +81,7 @@
 			lead = FALSE
 			break
 		if(lead)
+<<<<<<< HEAD
 			unlocked_one_mind = TRUE
 			owner.AddSpell(new/obj/effect/proc_holder/spell/self/one_mind)
 			to_chat(owner, "<big><span class='assimilator'>Our true power, the One Mind, is finally within reach.</span></big>")
@@ -97,6 +98,11 @@
 	else
 		. = individual_track_bonus[enemy]
 	. += (TRACKER_DEFAULT_TIME + track_bonus)
+=======
+			unlocked_dominance = TRUE
+			owner.AddSpell(new /obj/effect/proc_holder/spell/self/hive_dominance)
+			to_chat(owner, "<span class='assimilator'>Our strength overflowing and our competitors left in the dust, we can proclaim our Dominance and enter a heightened state.</span>")
+>>>>>>> 9710fcbaba (Fixes two bugs with hivemind (#7912))
 
 /datum/antagonist/hivemind/proc/add_to_hive(mob/living/carbon/C)
 	if(!C)
