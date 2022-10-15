@@ -4,6 +4,10 @@
 	//- floor_tile is now a path, and not a tile obj
 	name = "floor"
 	icon = 'icons/turf/floors.dmi'
+<<<<<<< HEAD
+=======
+	base_icon_state = "floor"
+>>>>>>> fb8648b110 (Atom base_icon_state my beloved (#7847))
 	baseturfs = /turf/open/floor/plating
 
 	footstep = FOOTSTEP_FLOOR
