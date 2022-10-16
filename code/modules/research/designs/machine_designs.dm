@@ -618,6 +618,10 @@
 	build_path = /obj/item/circuitboard/machine/mass_driver
 	category = list ("Misc. Machinery")
 	departmental_flags = DEPARTMENTAL_FLAG_SCIENCE | DEPARTMENTAL_FLAG_ENGINEERING | DEPARTMENTAL_FLAG_SERVICE
+<<<<<<< HEAD
+=======
+
+>>>>>>> ce4d0d1503 (Botany chem research (#7911))
 
 /datum/design/board/ore_silo
 	name = "Machine Design (Ore Silo)"
@@ -658,3 +662,30 @@
 	build_path = /obj/item/circuitboard/machine/component_printer
 	category = list("Misc. Machinery")
 	departmental_flags = DEPARTMENTAL_FLAG_SCIENCE
+<<<<<<< HEAD
+=======
+
+/datum/design/board/xeno_listing_console
+	name = "Computer Design (Research and Development Listing Console)"
+	desc = "The circuit board for a research listing console."
+	id = "xenoa_list_console"
+	build_path = /obj/item/circuitboard/computer/xenoartifact_console
+	category = list ("Research Machinery")
+	departmental_flags = DEPARTMENTAL_FLAG_SCIENCE
+
+/datum/design/board/xenia_listing_inbox
+	name = "Machine Design (Bluespace Straythread Pad)"
+	desc = "The circuit board for a bluespace straythread pad."
+	id = "xenoa_list_pad"
+	build_path = /obj/item/circuitboard/machine/xenoartifact_inbox
+	category = list ("Research Machinery")
+	departmental_flags = DEPARTMENTAL_FLAG_SCIENCE
+
+/datum/design/board/minor_botanical_dispenser
+	name = "Machine Design (Minor Botanical Chemical Dispenser)"
+	desc = "The circuit board for a minor botanical chemical dispenser."
+	id = "minor_botanical_dispenser"
+	build_path = /obj/item/circuitboard/machine/chem_dispenser/botany
+	departmental_flags = DEPARTMENTAL_FLAG_SERVICE
+	category = list ("Hydroponics Machinery")
+>>>>>>> ce4d0d1503 (Botany chem research (#7911))
