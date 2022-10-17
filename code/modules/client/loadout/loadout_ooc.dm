@@ -9,7 +9,11 @@
 	cost = 10000
 
 /datum/gear/ooc/char_slot/purchase(var/client/C)
+<<<<<<< HEAD
 	C?.prefs?.max_save_slots += 1
+=======
+	C?.prefs?.set_max_character_slots(C.prefs.max_usable_slots + 1)
+>>>>>>> 52b5a21656 ( Resolves a runtime preventing character slot purchases from taking effect immediately (#7926))
 
 /datum/gear/ooc/real_antagtoken
 	display_name = "antag token"
