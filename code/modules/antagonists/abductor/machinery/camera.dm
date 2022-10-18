@@ -75,6 +75,23 @@
 		to_chat(owner, "<span class='warning'>Due to significant interference, this area cannot be warped to!</span>")
 		return
 
+<<<<<<< HEAD
+=======
+	for(var/mob/living/carbon/human/specimin in view(5, target_loc))
+		var/obj/item/organ/heart/gland/temp = locate() in specimin.internal_organs
+		//Not a specimin
+		if(istype(temp))
+			continue
+		//No heart, not considered a specimin
+		if (!specimin.getorganslot(ORGAN_SLOT_HEART) || isabductor(specimin))
+			continue
+		//Technically a specimin, however we should avoid meta tactics
+		if (!specimin.client)
+			continue
+		to_chat(owner, "<span class='warning'>You cannot warp to this location, an unprocessed specimen might spot you, tampering with the experiment!</span>")
+		return
+
+>>>>>>> 4d84ca28ce (Abductor Balance Modifications (#7920))
 	if(GLOB.cameranet.checkTurfVis(remote_eye.loc))
 		P.PadToLoc(remote_eye.loc)
 
@@ -107,6 +124,23 @@
 		to_chat(owner, "<span class='warning'>Due to significant interference, this area cannot be warped to!</span>")
 		return
 
+<<<<<<< HEAD
+=======
+	for(var/mob/living/carbon/human/specimin in view(5, target_loc))
+		var/obj/item/organ/heart/gland/temp = locate() in specimin.internal_organs
+		//Not a specimin
+		if(istype(temp))
+			continue
+		//No heart, not considered a specimin
+		if (!specimin.getorganslot(ORGAN_SLOT_HEART) || isabductor(specimin))
+			continue
+		//Technically a specimin, however we should avoid meta tactics
+		if (!specimin.client)
+			continue
+		to_chat(owner, "<span class='warning'>You cannot warp to this location, an unprocessed specimen might spot you, tampering with the experiment!</span>")
+		return
+
+>>>>>>> 4d84ca28ce (Abductor Balance Modifications (#7920))
 	if(GLOB.cameranet.checkTurfVis(remote_eye.loc))
 		P.MobToLoc(remote_eye.loc,C)
 
