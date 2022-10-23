@@ -1,0 +1,4 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - bugfix: "improved the automute spam filter, should help with lowering the amount of false positives"
