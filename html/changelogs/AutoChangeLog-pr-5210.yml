@@ -1,0 +1,5 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - rscadd: "silicons no longer can state laws while they're stating laws."
+  - bugfix: "stating laws counts to the spam filter less than before. But do not spam stating laws, it still counts, but less."
