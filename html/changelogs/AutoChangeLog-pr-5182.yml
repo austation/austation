@@ -1,0 +1,5 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - balance: "slowed down hunters while buffing hunter's and sentinels' health"
+  - refactor: "refactored some xeno code"
