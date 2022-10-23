@@ -32,7 +32,7 @@
 	reagent_state = SOLID
 	color = "#FFFFFF"
 	taste_description = "salt"
-	random_unrestricted = FALSE
+	chem_flags = CHEMICAL_RNG_FUN | CHEMICAL_RNG_BOTANY
 
 /datum/reagent/tatp
 	name = "TaTP"
@@ -40,7 +40,7 @@
 	reagent_state = SOLID
 	color = "#FFFFFF"
 	taste_description = "death"
-	random_unrestricted = FALSE
+	chem_flags = CHEMICAL_RNG_FUN | CHEMICAL_RNG_BOTANY
 
 /datum/reagent/gasoline
 	name = "Petrol"

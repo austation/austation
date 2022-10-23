@@ -7,7 +7,7 @@
 	color = "#00FF32"
 	toxpwr = 1.75
 	taste_description = "nothing"
-	can_synth = FALSE
+	chem_flags = CHEMICAL_NOT_SYNTH
 
 /datum/reagent/toxin/sarin/on_mob_life(mob/living/carbon/C)
 	. = TRUE
