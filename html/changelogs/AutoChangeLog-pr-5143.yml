@@ -1,5 +1,0 @@
-author: "AustationBot"
-delete-after: True
-changes: 
-  - bugfix: "Using Ctrl and Alt with movement works correctly"
-  - rscdel: "Removed \"change facing\" keybinds, they are no longer needed"

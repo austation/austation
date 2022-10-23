@@ -1,4 +1,0 @@
-author: "AustationBot"
-delete-after: True
-changes: 
-  - spellcheck: "Removed the redundant species name from limb names, moves it to description"

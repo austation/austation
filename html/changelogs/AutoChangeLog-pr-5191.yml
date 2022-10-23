@@ -1,4 +1,0 @@
-author: "AustationBot"
-delete-after: True
-changes: 
-  - tweak: "AI & borgs don't get less beecoins based on escaped/stranded status"

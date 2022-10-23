@@ -1,5 +1,0 @@
-author: "AustationBot"
-delete-after: True
-changes: 
-  - tweak: "light eater works on wisps"
-  - bugfix: "Light eater works on mechs"

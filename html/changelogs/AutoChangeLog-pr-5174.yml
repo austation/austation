@@ -1,5 +1,0 @@
-author: "AustationBot"
-delete-after: True
-changes: 
-  - bugfix: "Vampire bat transformation no longer resets blood volume for vampires"
-  - balance: "Vampire bat form is now faster"

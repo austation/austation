@@ -1,4 +1,0 @@
-author: "AustationBot"
-delete-after: True
-changes: 
-  - tweak: "simplified how lone op counter increments when nuclear disk is stationary"

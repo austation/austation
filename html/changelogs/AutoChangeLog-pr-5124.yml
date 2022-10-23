@@ -1,6 +1,0 @@
-author: "AustationBot"
-delete-after: True
-changes: 
-  - bugfix: "fixes ruin generation issues"
-  - bugfix: "fixes frozen sparks"
-  - bugfix: "fixes the atom subsystem entering an invalid state"

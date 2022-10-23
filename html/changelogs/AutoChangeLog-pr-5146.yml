@@ -1,4 +1,0 @@
-author: "AustationBot"
-delete-after: True
-changes: 
-  - bugfix: "Fixes living mobs forcefully moving unanchored stuff they are buckled to"
