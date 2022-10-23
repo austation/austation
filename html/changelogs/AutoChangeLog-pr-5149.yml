@@ -1,0 +1,4 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - bugfix: "Move upwards and move downwards no longer animate if there is nowhere to move in that direction."
