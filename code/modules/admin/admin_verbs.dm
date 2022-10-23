@@ -40,7 +40,6 @@ GLOBAL_PROTECT(admin_verbs_admin)
 	/datum/admins/proc/set_admin_notice, /*announcement all clients see when joining the server.*/
 	/client/proc/admin_ghost,			/*allows us to ghost/reenter body at will*/
 	/client/proc/toggle_view_range,		/*changes how far we can see*/
-	/client/proc/getserverlogs,		/*for accessing server logs*/
 	/client/proc/getcurrentlogs,		/*for accessing server logs for the current round*/
 	/client/proc/cmd_admin_subtle_message,	/*send an message to somebody as a 'voice in their head'*/
 	/client/proc/cmd_admin_headset_message,	/*send an message to somebody through their headset as CentCom*/
@@ -134,6 +133,7 @@ GLOBAL_PROTECT(admin_verbs_server)
 	/client/proc/everyone_random,
 	/datum/admins/proc/toggleAI,
 	/client/proc/cmd_admin_delete,		/*delete an instance/object/mob/etc*/
+	/client/proc/getserverlogs,		/*for accessing server logs*/
 	/client/proc/cmd_debug_del_all,
 	/client/proc/toggle_random_events,
 	/client/proc/forcerandomrotate,
