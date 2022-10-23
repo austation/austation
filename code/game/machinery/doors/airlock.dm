@@ -1071,6 +1071,36 @@
 		user.visible_message("<span class='notice'>[user] pins [C] to [src].</span>", "<span class='notice'>You pin [C] to [src].</span>")
 		note = C
 		update_icon()
+<<<<<<< HEAD
+=======
+	else if(HAS_TRAIT(C, TRAIT_DOOR_PRYER) && user.a_intent != INTENT_HARM)
+		if(isElectrified() && C?.siemens_coefficient)
+			shock(user,100)
+
+		if(locked)
+			to_chat(user, "<span class='warning'>The bolts are down, it won't budge!</span>")
+			return
+
+		if(welded)
+			if(C.tool_behaviour == TOOL_CROWBAR)
+				if(try_to_crowbar(C, user))
+					return
+			to_chat(user, "<span class='warning'>It's welded, it won't budge!</span>")
+			return
+
+		var/time_to_open = 5
+		if(hasPower() && !prying_so_hard && density)
+			time_to_open = 50
+			playsound(src, 'sound/machines/airlock_alien_prying.ogg', 100, TRUE)
+			prying_so_hard = TRUE
+			to_chat(user, "<span class='warning'>You begin prying open the airlock...</span>")
+			if(do_after(user, time_to_open, TRUE, src))
+				if(!open(2) && density)
+					to_chat(user, "<span class='warning'>Despite your attempts, [src] refuses to open.</span>")
+			prying_so_hard = FALSE
+		if(!hasPower())
+			INVOKE_ASYNC(src, (density ? .proc/open : .proc/close), 2)
+>>>>>>> fb2b9bf97a (Fixes using jaws of life to deconstruct airlocks (#7946))
 	else
 		return ..()
 
@@ -1130,7 +1160,7 @@
 							 "<span class='notice'>You start to remove electronics from the airlock assembly...</span>")
 		if(I.use_tool(src, user, 40, volume=100))
 			deconstruct(TRUE, user)
-			return
+			return TRUE
 	else if(hasPower())
 		to_chat(user, "<span class='warning'>The airlock's motors resist your efforts to force it!</span>")
 	else if(locked)
