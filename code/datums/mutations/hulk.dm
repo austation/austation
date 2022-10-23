@@ -21,11 +21,7 @@
 	ADD_TRAIT(owner, TRAIT_IGNOREDAMAGESLOWDOWN, TRAIT_HULK)
 	ADD_TRAIT(owner, TRAIT_NOSTAMCRIT, TRAIT_HULK)
 	ADD_TRAIT(owner, TRAIT_NOLIMBDISABLE, TRAIT_HULK)
-<<<<<<< HEAD
 	ADD_TRAIT(owner, TRAIT_HULK, GENETIC_MUTATION) // austation -- circle game
-	owner.update_body_parts()
-=======
->>>>>>> e37b16b18d (Fixes hulk yelling being permanent (#6939))
 	SEND_SIGNAL(owner, COMSIG_ADD_MOOD_EVENT, "hulk", /datum/mood_event/hulk)
 	RegisterSignal(owner, COMSIG_MOB_SAY, .proc/handle_speech)
 	owner.update_body_parts()
@@ -48,11 +44,7 @@
 	REMOVE_TRAIT(owner, TRAIT_IGNOREDAMAGESLOWDOWN, TRAIT_HULK)
 	REMOVE_TRAIT(owner, TRAIT_NOSTAMCRIT, TRAIT_HULK)
 	REMOVE_TRAIT(owner, TRAIT_NOLIMBDISABLE, TRAIT_HULK)
-<<<<<<< HEAD
 	REMOVE_TRAIT(owner, TRAIT_HULK, GENETIC_MUTATION) // austation -- circle game
-	owner.update_body_parts()
-=======
->>>>>>> e37b16b18d (Fixes hulk yelling being permanent (#6939))
 	SEND_SIGNAL(owner, COMSIG_CLEAR_MOOD_EVENT, "hulk")
 	owner.update_body_parts()
 	UnregisterSignal(owner, COMSIG_MOB_SAY)
