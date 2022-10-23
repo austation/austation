@@ -198,11 +198,7 @@
 		//Actual spawn
 		SSmapping.loading_ruins = TRUE
 		CHECK_TICK
-		try
-			//austation -- added another FALSE
-			ruin_part.load(locate(ruin_offset_x + 1, ruin_offset_y + 1, center_z), FALSE, FALSE, FALSE)
-		catch(var/exception/e)
-			stack_trace("Run time in space ruin generation ([ruin_part.name]) [e] on [e.file]:[e.line]")
+		ruin_part.load(locate(ruin_offset_x + 1, ruin_offset_y + 1, center_z), FALSE, FALSE, FALSE) // austation -- added another false for monstermos
 		CHECK_TICK
 		SSmapping.loading_ruins = FALSE
 		//Simulate spawning
