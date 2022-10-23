@@ -1,0 +1,5 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - bugfix: "The lighteater will now break gunlights and flashlights attached to things."
+  - bugfix: "The lighteater will no longer break PDAs that do not have their light turned on."
