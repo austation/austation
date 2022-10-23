@@ -809,6 +809,7 @@ for further reading, please see: https://github.com/tgstation/tgstation/pull/301
 	playsound(M, 'sound/weapons/slap.ogg', slap_volume, TRUE, -1)
 	return
 
+/* austation begin -- remove the beestation table slams, we have our own thing
 /obj/item/slapper/afterattack(atom/target, mob/user, proximity_flag, click_parameters)
 	if(!istype(target, /obj/structure/table))
 		return ..()
@@ -834,6 +835,7 @@ for further reading, please see: https://github.com/tgstation/tgstation/pull/301
 		table_smacks_left--
 		if(table_smacks_left <= 0)
 			qdel(src)
+austation end */
 
 /obj/item/proc/can_trigger_gun(mob/living/user)
 	if(!user.can_use_guns(src))
