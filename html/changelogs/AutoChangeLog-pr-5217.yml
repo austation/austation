@@ -1,0 +1,4 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - bugfix: "fixed a forgotten equip-delay bypass on a hud element."
