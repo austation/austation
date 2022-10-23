@@ -1,0 +1,4 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - balance: "Laser shotgun shell damage increased from 8 to 12 per pellet."
