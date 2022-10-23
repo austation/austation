@@ -1,0 +1,4 @@
+author: "MNarath1, LemonInTheDark"
+delete-after: True
+changes: 
+  - bugfix: "fixes frozen persistant sparks"
