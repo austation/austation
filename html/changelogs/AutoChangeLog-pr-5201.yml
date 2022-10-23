@@ -1,0 +1,4 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - rscdel: "Removed Monkey Antagonist, gamemode and Disease"
