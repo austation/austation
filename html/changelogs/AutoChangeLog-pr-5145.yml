@@ -1,0 +1,4 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - tweak: "makes spam protection work around messages per timeframe instead of you have to wait so long before you can message again"
