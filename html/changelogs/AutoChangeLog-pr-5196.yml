@@ -1,0 +1,6 @@
+author: "AustationBot"
+delete-after: True
+changes: 
+  - bugfix: "Supermatter radiation code is fixed, can now vary significantly from power levels"
+  - bugfix: "Pluoxium functions as the coolant it was meant to be, but nerfs power production"
+  - rscdel: "No more sneaky extra SM radiation that only targets living mobs, making it undetectable"
