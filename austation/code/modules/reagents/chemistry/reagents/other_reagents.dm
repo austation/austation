@@ -135,7 +135,7 @@
 	power = 1.8
 
 /datum/reagent/stimulum
-	can_synth = FALSE
+	chem_flags = CHEMICAL_NOT_SYNTH
 
 /datum/reagent/stimulum/on_mob_metabolize(mob/living/L)
 	..()
@@ -180,7 +180,7 @@
 	taste_description = "nothing" // neutrons, get it?
 	color = "#97FFFF"
 	metabolization_rate = 4 // same as clf3
-	can_synth = FALSE
+	chem_flags = CHEMICAL_NOT_SYNTH
 
 /datum/reagent/neutron_fluid/on_mob_life(mob/living/carbon/M)
 	M.adjustBruteLoss(3)
@@ -192,7 +192,7 @@
 	taste_description = "quarks"
 	color = "#99ff87"
 	metabolization_rate = 4
-	can_synth = FALSE
+	chem_flags = CHEMICAL_NOT_SYNTH
 
 /datum/reagent/strange_matter/on_mob_life(mob/living/carbon/M)
 	M.adjustBruteLoss(2)
@@ -219,7 +219,7 @@
 	taste_description = "your mouth vaporizing"
 	color = "#858585"
 	metabolization_rate = 2
-	can_synth = FALSE
+	chem_flags = CHEMICAL_NOT_SYNTH
 
 /datum/reagent/antimatter/on_mob_add(mob/living/L)
 	to_chat(L, "<span class='userdanger'>You feel the antimatter vaporizing your body!</span>")
