@@ -42,36 +42,13 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 //if your savefile is 3 months out of date, then 'tough shit'.
 
 /datum/preferences/proc/update_preferences(current_version, savefile/S)
-<<<<<<< HEAD
-	if(current_version < 30)
-		outline_enabled = TRUE
-		outline_color = COLOR_BLUE_GRAY
 	if(current_version < 33)
-		auto_fit_viewport = TRUE
-	if(current_version < 34)
-		//Okay this is gonna s u c k
-		var/list/legacy_purchases = purchased_gear.Copy()
-		purchased_gear.Cut()
-		equipped_gear.Cut() //Not gonna bother.
-		for(var/l_gear in legacy_purchases)
-			var/n_gear
-			for(var/rg_nam in GLOB.gear_datums) //this is ugly.
-				var/datum/gear/r_gear = GLOB.gear_datums[rg_nam]
-				if(r_gear.display_name == l_gear)
-					n_gear = r_gear.id
-					break
-			if(n_gear)
-				purchased_gear += n_gear
-	if(current_version < 35)
-=======
-	if(current_version < 33)
->>>>>>> 4f3af9686c (Refactor handling of movement with modifier keys (#6886))
 		chat_on_map = TRUE
 //		max_chat_length = CHAT_MESSAGE_MAX_LENGTH			> Depreciated as of 31/07/2021
 		see_chat_non_mob = TRUE
 		see_rc_emotes = TRUE
 		S.dir.Remove("overhead_chat")
-	if(current_version < 36)
+	if(current_version < 35)
 		see_balloon_alerts = BALLOON_ALERT_ALWAYS
 	if(current_version < 36)
 		key_bindings = S["key_bindings"]
