@@ -1,0 +1,4 @@
+author: "Dejaku51, Mothblocks, LemonInTheDark"
+delete-after: True
+changes: 
+  - bugfix: "Fixes /mob/dead/new_player harddels"
