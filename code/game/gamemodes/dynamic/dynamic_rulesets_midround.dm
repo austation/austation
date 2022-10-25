@@ -171,6 +171,7 @@
 	cost = 10
 	requirements = list(50,40,30,20,10,10,10,10,10,10)
 	repeatable = TRUE
+<<<<<<< HEAD
 
 /datum/dynamic_ruleset/midround/autotraitor/acceptable(population = 0, threat = 0)
 	var/player_count = mode.current_players[CURRENT_LIVING_PLAYERS].len
@@ -188,6 +189,16 @@
 		return FALSE
 
 	return ..()
+=======
+	blocking_rules = list(
+		/datum/dynamic_ruleset/roundstart/bloodcult,
+		/datum/dynamic_ruleset/roundstart/clockcult,
+		/datum/dynamic_ruleset/roundstart/nuclear,
+		/datum/dynamic_ruleset/roundstart/wizard,
+		/datum/dynamic_ruleset/roundstart/revs,
+		/datum/dynamic_ruleset/roundstart/hivemind
+	)
+>>>>>>> f03e4f5027 (Dynamic: Block hivemind/traitors/heretics combo (#7953))
 
 /datum/dynamic_ruleset/midround/autotraitor/trim_candidates()
 	..()

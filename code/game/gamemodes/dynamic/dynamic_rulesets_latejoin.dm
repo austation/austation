@@ -66,6 +66,17 @@
 	cost = 5
 	requirements = list(40,30,20,10,10,10,10,10,10,10)
 	repeatable = TRUE
+<<<<<<< HEAD
+=======
+	blocking_rules = list(
+		/datum/dynamic_ruleset/roundstart/bloodcult,
+		/datum/dynamic_ruleset/roundstart/clockcult,
+		/datum/dynamic_ruleset/roundstart/nuclear,
+		/datum/dynamic_ruleset/roundstart/wizard,
+		/datum/dynamic_ruleset/roundstart/revs,
+		/datum/dynamic_ruleset/roundstart/hivemind
+	)
+>>>>>>> f03e4f5027 (Dynamic: Block hivemind/traitors/heretics combo (#7953))
 
 //////////////////////////////////////////////
 //                                          //
@@ -161,3 +172,14 @@
 	cost = 10
 	requirements = list(40,30,20,10,10,10,10,10,10,10)
 	repeatable = TRUE
+<<<<<<< HEAD
+=======
+	blocking_rules = list(
+		/datum/dynamic_ruleset/roundstart/bloodcult,
+		/datum/dynamic_ruleset/roundstart/clockcult,
+		/datum/dynamic_ruleset/roundstart/nuclear,
+		/datum/dynamic_ruleset/roundstart/wizard,
+		/datum/dynamic_ruleset/roundstart/revs,
+		/datum/dynamic_ruleset/roundstart/hivemind
+	)
+>>>>>>> f03e4f5027 (Dynamic: Block hivemind/traitors/heretics combo (#7953))
