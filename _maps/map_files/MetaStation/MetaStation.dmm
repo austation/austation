@@ -76833,7 +76833,7 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
-/obj/machinery/door/poddoor/shutters/preopen{
+/obj/machinery/door/poddoor/shutters/radiation/preopen{
 	id = "engsm";
 	name = "Radiation Chamber Shutters"
 	},
@@ -76844,7 +76844,7 @@
 	icon_state = "1-2"
 	},
 /obj/item/crowbar,
-/obj/machinery/door/poddoor/shutters/preopen{
+/obj/machinery/door/poddoor/shutters/radiation/preopen{
 	id = "engsm";
 	name = "Radiation Chamber Shutters"
 	},
