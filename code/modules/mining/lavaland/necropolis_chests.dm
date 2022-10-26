@@ -306,7 +306,7 @@ austation end */
 		wisp.forceMove(src)
 		SSblackbox.record_feedback("tally", "wisp_lantern", 1, "Returned")
 
-/obj/item/wisp_lantern/lighteater_act(obj/item/light_eater/light_eater)
+/obj/item/wisp_lantern/lighteater_act(obj/item/light_eater/light_eater, atom/parent)
 	. = ..()
 	wisp.lighteater_act(light_eater)
 
@@ -365,7 +365,7 @@ austation end */
 	SIGNAL_HANDLER
 	src.lighteater_act(light_eater)
 
-/obj/effect/wisp/lighteater_act(obj/item/light_eater/light_eater)
+/obj/effect/wisp/lighteater_act(obj/item/light_eater/light_eater, atom/parent)
 	. = ..()
 	if(home)
 		src.forceMove(home)
@@ -1219,7 +1219,7 @@ austation end */
 
 /obj/item/hierophant_club/afterattack(atom/target, mob/user, proximity_flag, click_parameters)
 	. = ..()
-	if(user.mind.martial_art.no_guns) 
+	if(user.mind.martial_art.no_guns)
 		to_chat(user, "<span class='warning'>To use this weapon would bring dishonor to the clan.</span>")
 		return
 	var/turf/T = get_turf(target)
