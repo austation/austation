@@ -10,8 +10,23 @@ if grep -El '^\".+\" = \(.+\)' _maps/**/*.dmm;	then
     echo "ERROR: Non-TGM formatted map detected. Please convert it using Map Merger!"
     st=1
 fi;
+<<<<<<< HEAD
 if grep -P '^\ttag = \"icon' _maps/**/*.dmm;	then
     echo "ERROR: tag vars from icon state generation detected in maps, please remove them."
+=======
+if grep -P 'Merge Conflict Marker' _maps/**/*.dmm; then
+    echo "ERROR: Merge conflict markers detected in map, please resolve all merge failures!"
+    st=1
+fi;
+# We check for this as well to ensure people aren't actually using this mapping effect in their maps.
+if grep -P '/obj/merge_conflict_marker' _maps/**/*.dmm; then
+    echo "ERROR: Merge conflict markers detected in map, please resolve all merge failures!"
+    st=1
+fi;
+if grep -P '^\ttag = \"icon' _maps/**/*.dmm;    then
+    echo
+    echo -e "${RED}ERROR: Tag vars from icon state generation detected in maps, please remove them.${NC}"
+>>>>>>> 3060afc1eb ([Port] Merge Conflict Markers - The Explicit Pathing, Layering, Iconing, Warning.  (#7968))
     st=1
 fi;
 if grep -P 'step_[xy]' _maps/**/*.dmm;	then

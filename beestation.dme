@@ -1440,6 +1440,10 @@
 #include "code\modules\admin\verbs\map_template_loadverb.dm"
 #include "code\modules\admin\verbs\mapping.dm"
 #include "code\modules\admin\verbs\maprotation.dm"
+<<<<<<< HEAD
+=======
+#include "code\modules\admin\verbs\mentorhelp.dm"
+>>>>>>> 3060afc1eb ([Port] Merge Conflict Markers - The Explicit Pathing, Layering, Iconing, Warning.  (#7968))
 #include "code\modules\admin\verbs\mentors_edit.dm"
 #include "code\modules\admin\verbs\modify_antag_tokens.dm"
 #include "code\modules\admin\verbs\one_click_antag.dm"
@@ -2321,6 +2325,7 @@
 #include "code\modules\mapexporting\mapexporter.dm"
 #include "code\modules\mapping\map_template.dm"
 #include "code\modules\mapping\mapping_helpers.dm"
+#include "code\modules\mapping\merge_conflicts.dm"
 #include "code\modules\mapping\preloader.dm"
 #include "code\modules\mapping\random_rooms.dm"
 #include "code\modules\mapping\reader.dm"
