@@ -64,7 +64,7 @@
 #define MIN_COMPILER_VERSION 514
 #define MIN_COMPILER_BUILD 1583
 //TODO Remove the SDMM check when it supports 1568
-#if !defined(SPACEMAN_DMM) && (DM_VERSION < MIN_COMPILER_VERSION || DM_BUILD < MIN_COMPILER_BUILD)
+#if !defined(SPACEMAN_DMM) && (DM_VERSION < MIN_COMPILER_VERSION || DM_BUILD < MIN_COMPILER_BUILD) && !defined(FASTDMM)
 //Don't forget to update this part
 #error Your version of BYOND is too out-of-date to compile this project. Go to https://secure.byond.com/download and update.
 #error You need version 514.1583 or higher.
@@ -108,10 +108,16 @@
 #define CBT
 #endif
 
+<<<<<<< HEAD
 #if !defined(CBT) && !defined(SPACEMAN_DMM)
 #warn Building with Dream Maker is no longer supported and will result in errors.
 #warn In order to build, run BUILD.bat in the root directory.
 #warn Consider switching to VSCode editor instead, where you can press Ctrl+Shift+B to build.
+=======
+#if !defined(CBT) && !defined(SPACEMAN_DMM) && !defined(FASTDMM)
+#error Building with Dream Maker is no longer supported and will result in errors.
+#error Switch to VSCode and when prompted install the recommended extensions, you can then either use the UI or press Ctrl+Shift+B to build the codebase.
+>>>>>>> 6d174600e5 (Do not preprocessor error if FastDMM is parsing (#7977))
 #endif
 
 #define AUXMOS (world.system_type == MS_WINDOWS ? "auxtools/auxmos.dll" : __detect_auxmos())
