@@ -1213,8 +1213,13 @@ GLOBAL_DATUM_INIT(dummySave, /savefile, new("tmp/dummySave.sav")) //Cache of ico
 		if (isnull(icon_state))
 			icon_state = A.icon_state
 
+<<<<<<< HEAD
 			if (!(icon_state in icon_states(I, 1)))
 				icon_state = initial(A.icon_state)
+=======
+			if (isnull(icon_state) ||(isatom(thing) && thing.flags_1 & HTML_USE_INITAL_ICON_1))
+				icon_state = initial(thing.icon_state)
+>>>>>>> 06a1884628 (fixes bad var access (#7988))
 				if (isnull(dir))
 					dir = initial(A.dir)
 
