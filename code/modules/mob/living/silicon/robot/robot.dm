@@ -165,6 +165,31 @@
 	aicamera = new/obj/item/camera/siliconcam/robot_camera(src)
 	toner = tonermax
 	diag_hud_set_borgcell()
+<<<<<<< HEAD
+=======
+	RegisterSignal(src, COMSIG_ATOM_ON_EMAG, .proc/on_emag)
+	RegisterSignal(src, COMSIG_ATOM_SHOULD_EMAG, .proc/should_emag)
+	logevent("System brought online.")
+
+/**
+ * Sets the tablet theme and icon
+ *
+ * These variables are based on if the borg is a syndicate type or is emagged. This gets used in model change code
+ * and also borg emag code.
+ */
+/mob/living/silicon/robot/proc/set_modularInterface_theme()
+	if(istype(module, /obj/item/robot_module/syndicate) || emagged)
+		modularInterface.device_theme = THEME_SYNDICATE
+		modularInterface.icon_state = "tablet-silicon-syndicate"
+		modularInterface.icon_state_powered = "tablet-silicon-syndicate"
+		modularInterface.icon_state_unpowered = "tablet-silicon-syndicate"
+	else
+		modularInterface.device_theme = THEME_NTOS
+		modularInterface.icon_state = "tablet-silicon"
+		modularInterface.icon_state_powered = "tablet-silicon"
+		modularInterface.icon_state_unpowered = "tablet-silicon"
+	modularInterface.update_icon()
+>>>>>>> 51f9251167 (Refactor emag_act to use signals and enforce parent calls (#7644))
 
 //If there's an MMI in the robot, have it ejected when the mob goes away. --NEO
 /mob/living/silicon/robot/Destroy()
@@ -199,6 +224,8 @@
 	QDEL_NULL(inv3)
 	QDEL_NULL(spark_system)
 	cell = null
+	UnregisterSignal(src, COMSIG_ATOM_ON_EMAG)
+	UnregisterSignal(src, COMSIG_ATOM_SHOULD_EMAG)
 	return ..()
 
 /mob/living/silicon/robot/proc/pick_module()

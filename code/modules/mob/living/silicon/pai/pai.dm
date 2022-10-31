@@ -307,9 +307,22 @@
 	else
 		to_chat(user, "Encryption Key ports not configured.")
 
+<<<<<<< HEAD
 /obj/item/paicard/emag_act(mob/user) // Emag to wipe the master DNA and supplemental directive
 	if(!pai)
 		return
+=======
+/mob/living/silicon/pai/can_interact_with(atom/A)
+	if(A == modularInterface)
+		return TRUE
+	return ..()
+
+/obj/item/paicard/should_emag(mob/user)
+	return pai && ..()
+
+/obj/item/paicard/on_emag(mob/user) // Emag to wipe the master DNA and supplemental directive
+	..()
+>>>>>>> 51f9251167 (Refactor emag_act to use signals and enforce parent calls (#7644))
 	to_chat(user, "<span class='notice'>You override [pai]'s directive system, clearing its master string and supplied directive.</span>")
 	to_chat(pai, "<span class='danger'>Warning: System override detected, check directive sub-system for any changes.'</span>")
 	log_game("[key_name(user)] emagged [key_name(pai)], wiping their master DNA and supplemental directive.")
