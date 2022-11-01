@@ -93,6 +93,7 @@
 	if(user == src)//To prevent syndieborgs from emagging themselves
 		return
 	if(!opened)//Cover is closed
+<<<<<<< HEAD
 		if(locked)
 			to_chat(user, "<span class='notice'>You emag the cover lock.</span>")
 			locked = FALSE
@@ -101,6 +102,9 @@
 		else
 			to_chat(user, "<span class='warning'>The cover is already unlocked!</span>")
 		return
+=======
+		return !locked
+>>>>>>> f1d8fde91a (Fix emagging cyborg not unlocking (#8005))
 	if(world.time < emag_cooldown)
 		return
 	if(wiresexposed)
