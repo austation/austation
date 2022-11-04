@@ -1644,6 +1644,7 @@ __metadata:
   languageName: node
   linkType: hard
 
+<<<<<<< HEAD
 "@jridgewell/trace-mapping@npm:^0.3.0":
   version: 0.3.4
   resolution: "@jridgewell/trace-mapping@npm:0.3.4"
@@ -1651,6 +1652,15 @@ __metadata:
     "@jridgewell/resolve-uri": ^3.0.3
     "@jridgewell/sourcemap-codec": ^1.4.10
   checksum: ab8bce84bbbc8c34f3ba8325ed926f8f2d3098983c10442a80c55764c4eb6e47d5b92d8ff20a0dd868c3e76a3535651fd8a0138182c290dbfc8396195685c37b
+=======
+"@jridgewell/trace-mapping@npm:^0.3.0, @jridgewell/trace-mapping@npm:^0.3.7, @jridgewell/trace-mapping@npm:^0.3.9":
+  version: 0.3.14
+  resolution: "@jridgewell/trace-mapping@npm:0.3.14"
+  dependencies:
+    "@jridgewell/resolve-uri": ^3.0.3
+    "@jridgewell/sourcemap-codec": ^1.4.10
+  checksum: b9537b9630ffb631aef9651a085fe361881cde1772cd482c257fe3c78c8fd5388d681f504a9c9fe1081b1c05e8f75edf55ee10fdb58d92bbaa8dbf6a7bd6b18c
+>>>>>>> 35049f6df7 (TGUI Chores (#8008))
   languageName: node
   linkType: hard
 
@@ -2285,7 +2295,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"acorn@npm:^8.0.4, acorn@npm:^8.2.4, acorn@npm:^8.4.1":
+"acorn@npm:^8.0.4, acorn@npm:^8.2.4, acorn@npm:^8.4.1, acorn@npm:^8.5.0":
   version: 8.7.0
   resolution: "acorn@npm:8.7.0"
   bin:
@@ -7759,6 +7769,7 @@ __metadata:
   languageName: node
   linkType: hard
 
+<<<<<<< HEAD
 "terser-webpack-plugin@npm:^5.1.3, terser-webpack-plugin@npm:^5.1.4":
   version: 5.3.1
   resolution: "terser-webpack-plugin@npm:5.3.1"
@@ -7784,6 +7795,11 @@ __metadata:
 "terser@npm:^5.7.2":
   version: 5.10.0
   resolution: "terser@npm:5.10.0"
+=======
+"terser-webpack-plugin@npm:^5.1.3, terser-webpack-plugin@npm:^5.3.3":
+  version: 5.3.3
+  resolution: "terser-webpack-plugin@npm:5.3.3"
+>>>>>>> 35049f6df7 (TGUI Chores (#8008))
   dependencies:
     commander: ^2.20.0
     source-map: ~0.7.2
@@ -7871,6 +7887,7 @@ __metadata:
   dependencies:
     core-js: ^3.16.1
     regenerator-runtime: ^0.13.9
+    terser: ^5.12.1
     unfetch: ^4.2.0
   languageName: unknown
   linkType: soft
