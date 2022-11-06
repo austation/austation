@@ -11,8 +11,8 @@
 
 /obj/item/encryptionkey/Initialize(mapload)
 	. = ..()
-	if(!channels.len)
-		desc = "An encryption key for a radio headset.  Has no special codes in it. You should probably tell a coder!"
+	if(!(translate_binary || syndie || independent || amplification || length(channels)))
+		desc = "An encryption key for a radio headset. Has no special codes in it. You should probably tell a coder!"
 
 /obj/item/encryptionkey/examine(mob/user)
 	. = ..()
@@ -31,9 +31,18 @@
 
 /obj/item/encryptionkey/binary
 	name = "binary translator key"
+	desc = "An encryption key that interchanges the form of anaologue brainwave and binary electric signals."
 	icon_state = "bin_cypherkey"
 	translate_binary = TRUE
 
+<<<<<<< HEAD
+=======
+/obj/item/encryptionkey/amplification
+	name = "amplification module key"
+	desc = "An amplification module key for a radio headset. It will enable the \"Loud mode\" ability on any headset it is inserted into."
+	amplification = TRUE
+
+>>>>>>> 3ddaf91b26 (fixes some bugs of encryption key & compression box (#8018))
 /obj/item/encryptionkey/headset_sec
 	name = "security radio encryption key"
 	icon_state = "sec_cypherkey"
@@ -88,6 +97,12 @@
 	name = "\proper the research director's encryption key"
 	icon_state = "rd_cypherkey"
 	channels = list(RADIO_CHANNEL_SCIENCE = 1, RADIO_CHANNEL_EXPLORATION = 1, RADIO_CHANNEL_COMMAND = 1)
+<<<<<<< HEAD
+=======
+
+/obj/item/encryptionkey/heads/rd/fake
+	channels = list(RADIO_CHANNEL_SERVICE = 1)
+>>>>>>> 3ddaf91b26 (fixes some bugs of encryption key & compression box (#8018))
 
 /obj/item/encryptionkey/heads/hos
 	name = "\proper the head of security's encryption key"

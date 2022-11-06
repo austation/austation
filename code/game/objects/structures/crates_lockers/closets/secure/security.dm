@@ -12,10 +12,21 @@
 	new /obj/item/storage/backpack/satchel/cap(src)
 	new /obj/item/storage/backpack/duffelbag/captain(src)
 	new /obj/item/clothing/neck/cloak/cap(src)
+<<<<<<< HEAD
 	new /obj/item/clothing/neck/petcollar(src)
 	new	/obj/item/clothing/suit/armor/vest/capcarapace/jacket(src)
 	new /obj/item/pet_carrier(src)
 	new /obj/item/clothing/shoes/sneakers/brown(src)
+=======
+	new /obj/item/door_remote/captain(src)
+	new /obj/item/storage/belt/sabre(src)
+	new /obj/item/gun/energy/e_gun/mini/heads(src)
+
+/obj/item/storage/box/suitbox/cap
+	name = "compression box of captain outfits"
+
+/obj/item/storage/box/suitbox/cap/PopulateContents()
+>>>>>>> 3ddaf91b26 (fixes some bugs of encryption key & compression box (#8018))
 	new /obj/item/clothing/under/rank/captain(src)
 	new /obj/item/clothing/under/rank/captain/skirt(src)
 	new /obj/item/clothing/suit/armor/vest/capcarapace(src)
