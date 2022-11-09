@@ -98,6 +98,7 @@
 /obj/effect/turf_decal/tile/neutral,
 /turf/open/floor/plasteel/dark,
 /area/tdome/arena)
+<<<<<<< HEAD
 "ao" = (
 /obj/effect/turf_decal/trimline/red/filled/line{
 	icon_state = "trimline_fill";
@@ -112,6 +113,8 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/tdome/arena)
+=======
+>>>>>>> bd6fb0b075 ([MDB IGNORE]DMM The Turf-Decalening (#7970))
 "ap" = (
 /obj/effect/turf_decal/trimline/red/filled/line{
 	icon_state = "trimline_fill";
@@ -177,6 +180,7 @@
 /obj/effect/turf_decal/tile/neutral,
 /turf/open/floor/plasteel/dark,
 /area/tdome/arena)
+<<<<<<< HEAD
 "aw" = (
 /obj/effect/turf_decal/trimline/red/filled/line{
 	icon_state = "trimline_fill";
@@ -191,6 +195,8 @@
 /obj/effect/turf_decal/tile/neutral,
 /turf/open/floor/plasteel/dark,
 /area/tdome/arena)
+=======
+>>>>>>> bd6fb0b075 ([MDB IGNORE]DMM The Turf-Decalening (#7970))
 "ax" = (
 /obj/effect/turf_decal/trimline/red/filled/line{
 	icon_state = "trimline_fill";
@@ -216,6 +222,7 @@
 /obj/structure/cable,
 /turf/open/floor/plating,
 /area/tdome/arena)
+<<<<<<< HEAD
 "aA" = (
 /obj/effect/turf_decal/trimline/red/filled/line{
 	icon_state = "trimline_fill";
@@ -254,6 +261,8 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/tdome/arena)
+=======
+>>>>>>> bd6fb0b075 ([MDB IGNORE]DMM The Turf-Decalening (#7970))
 "aD" = (
 /obj/effect/turf_decal/trimline/red/filled/line{
 	icon_state = "trimline_fill";
@@ -282,6 +291,7 @@
 /obj/effect/turf_decal/tile/neutral,
 /turf/open/floor/plasteel/dark,
 /area/tdome/arena)
+<<<<<<< HEAD
 "aG" = (
 /obj/effect/turf_decal/trimline/red/filled/corner{
 	icon_state = "trimline_corner_fill";
@@ -338,10 +348,13 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/tdome/arena)
+=======
+>>>>>>> bd6fb0b075 ([MDB IGNORE]DMM The Turf-Decalening (#7970))
 "aK" = (
 /obj/effect/turf_decal/caution/stand_clear,
 /turf/open/floor/plasteel/dark,
 /area/tdome/arena)
+<<<<<<< HEAD
 "aL" = (
 /obj/effect/turf_decal/trimline/red/filled/line{
 	icon_state = "trimline_fill";
@@ -356,25 +369,14 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/tdome/arena)
+=======
+>>>>>>> bd6fb0b075 ([MDB IGNORE]DMM The Turf-Decalening (#7970))
 "aM" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
 	},
 /obj/structure/cable,
 /turf/open/floor/plating,
-/area/tdome/arena)
-"aN" = (
-/obj/effect/turf_decal/trimline/red/filled/corner,
-/obj/effect/turf_decal/tile/neutral{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 4
-	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 8
-	},
-/turf/open/floor/plasteel/dark,
 /area/tdome/arena)
 "aO" = (
 /obj/effect/turf_decal/trimline/red/filled/line{
@@ -402,6 +404,7 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/tdome/arena)
+<<<<<<< HEAD
 "aQ" = (
 /obj/effect/turf_decal/trimline/red/filled/corner{
 	icon_state = "trimline_corner_fill";
@@ -416,6 +419,8 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/tdome/arena)
+=======
+>>>>>>> bd6fb0b075 ([MDB IGNORE]DMM The Turf-Decalening (#7970))
 "aR" = (
 /obj/effect/turf_decal/trimline/red/filled/line{
 	icon_state = "trimline_fill";
@@ -432,6 +437,7 @@
 	},
 /turf/open/floor/circuit/green/anim,
 /area/tdome/arena)
+<<<<<<< HEAD
 "aT" = (
 /obj/effect/turf_decal/trimline/red/filled/line{
 	icon_state = "trimline_fill";
@@ -446,6 +452,8 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/tdome/arena)
+=======
+>>>>>>> bd6fb0b075 ([MDB IGNORE]DMM The Turf-Decalening (#7970))
 "aU" = (
 /obj/effect/turf_decal/stripes/corner{
 	dir = 1
@@ -497,17 +505,6 @@
 /obj/effect/turf_decal/stripes/line,
 /obj/effect/turf_decal/tile/neutral{
 	dir = 4
-	},
-/turf/open/floor/plasteel/dark,
-/area/tdome/arena)
-"ba" = (
-/obj/effect/turf_decal/trimline/red/filled/line,
-/obj/effect/turf_decal/stripes/line,
-/obj/effect/turf_decal/tile/neutral{
-	dir = 4
-	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 1
 	},
 /turf/open/floor/plasteel/dark,
 /area/tdome/arena)
@@ -598,6 +595,124 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/engine,
 /area/tdome/arena)
+"dn" = (
+/obj/effect/turf_decal/trimline/red/filled/corner{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral/anticorner/contrasted,
+/turf/open/floor/plasteel/dark,
+/area/tdome/arena)
+"fl" = (
+/obj/effect/turf_decal/trimline/red/filled/corner{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/neutral/anticorner/contrasted{
+	dir = 4
+	},
+/turf/open/floor/plasteel/dark,
+/area/tdome/arena)
+"fw" = (
+/obj/effect/turf_decal/trimline/red/filled/line{
+	dir = 8
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/neutral/half/contrasted,
+/turf/open/floor/plasteel/dark,
+/area/tdome/arena)
+"fU" = (
+/obj/effect/turf_decal/trimline/red/filled/line{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral/half/contrasted{
+	dir = 1
+	},
+/turf/open/floor/plasteel/dark,
+/area/tdome/arena)
+"kc" = (
+/obj/effect/turf_decal/tile/neutral/fourcorners/contrasted,
+/turf/open/floor/plasteel/dark,
+/area/tdome/arena)
+"kK" = (
+/obj/effect/turf_decal/trimline/red/filled/corner{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral/anticorner/contrasted{
+	dir = 8
+	},
+/turf/open/floor/plasteel/dark,
+/area/tdome/arena)
+"pr" = (
+/obj/effect/turf_decal/trimline/red/filled/line{
+	dir = 1
+	},
+/obj/effect/turf_decal/stripes/corner{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral/half/contrasted{
+	dir = 8
+	},
+/turf/open/floor/plasteel/dark,
+/area/tdome/arena)
+"Aq" = (
+/obj/effect/turf_decal/trimline/red/filled/line{
+	dir = 4
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral/half/contrasted{
+	dir = 1
+	},
+/turf/open/floor/plasteel/dark,
+/area/tdome/arena)
+"Bv" = (
+/obj/effect/turf_decal/trimline/red/filled/line{
+	dir = 1
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral/half/contrasted{
+	dir = 8
+	},
+/turf/open/floor/plasteel/dark,
+/area/tdome/arena)
+"By" = (
+/obj/effect/turf_decal/trimline/red/filled/corner,
+/obj/effect/turf_decal/tile/neutral/anticorner/contrasted{
+	dir = 1
+	},
+/turf/open/floor/plasteel/dark,
+/area/tdome/arena)
+"BK" = (
+/obj/effect/turf_decal/trimline/red/filled/line,
+/obj/effect/turf_decal/stripes/line,
+/obj/effect/turf_decal/tile/neutral/half/contrasted{
+	dir = 4
+	},
+/turf/open/floor/plasteel/dark,
+/area/tdome/arena)
+"RT" = (
+/obj/effect/turf_decal/trimline/red/filled/line{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/neutral/half/contrasted,
+/turf/open/floor/plasteel/dark,
+/area/tdome/arena)
+"ZU" = (
+/obj/effect/turf_decal/trimline/red/filled/line{
+	dir = 1
+	},
+/obj/effect/turf_decal/stripes/corner{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral/half/contrasted{
+	dir = 8
+	},
+/turf/open/floor/plasteel/dark,
+/area/tdome/arena)
 
 (1,1,1) = {"
 aa
@@ -622,29 +737,29 @@ bc
 (3,1,1) = {"
 ac
 an
-aA
-aA
-aA
-aA
+RT
+RT
+RT
+RT
 aX
 bd
 "}
 (4,1,1) = {"
 ad
-ao
-aB
-aB
-aB
-aN
+ZU
+kc
+kc
+kc
+By
 aY
 be
 "}
 (5,1,1) = {"
 ae
 ap
-aC
-aB
-aN
+kK
+kc
+By
 aR
 aW
 bf
@@ -653,7 +768,7 @@ bf
 af
 aq
 aD
-aJ
+Aq
 aO
 aS
 ar
@@ -675,8 +790,8 @@ as
 aE
 am
 aE
-aT
-ba
+Bv
+BK
 ak
 "}
 (9,1,1) = {"
@@ -693,7 +808,7 @@ ak
 ah
 au
 aF
-aL
+fw
 aP
 aU
 at
@@ -702,30 +817,30 @@ ak
 (11,1,1) = {"
 ai
 av
-aG
-aH
-aQ
+dn
+kc
+fl
 aV
 aW
 bh
 "}
 (12,1,1) = {"
 af
-aw
-aH
-aH
-aH
-aQ
+pr
+kc
+kc
+kc
+fl
 aX
 bi
 "}
 (13,1,1) = {"
 ac
 ax
-aI
-aI
-aI
-aI
+fU
+fU
+fU
+fU
 aY
 bd
 "}

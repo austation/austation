@@ -10,6 +10,16 @@
 /obj/effect/turf_decal/bot,
 /turf/open/floor/mineral/titanium,
 /area/shuttle/exploration)
+"aO" = (
+/obj/machinery/light{
+	dir = 1
+	},
+/obj/machinery/light{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral/opposingcorners,
+/turf/open/floor/mineral/titanium,
+/area/shuttle/exploration)
 "aS" = (
 /obj/machinery/light/small,
 /turf/open/floor/mineral/titanium,
@@ -73,6 +83,12 @@
 	},
 /turf/open/floor/carpet,
 /area/shuttle/exploration)
+"dL" = (
+/obj/structure/table/reinforced,
+/obj/item/toy/plush/beeplushie,
+/obj/effect/turf_decal/tile/neutral/opposingcorners,
+/turf/open/floor/mineral/titanium,
+/area/shuttle/exploration)
 "dT" = (
 /obj/machinery/atmospherics/pipe/manifold/purple/visible{
 	dir = 1
@@ -98,6 +114,19 @@
 /obj/machinery/door/airlock/shuttle{
 	name = "cargo bay airlock"
 	},
+/turf/open/floor/mineral/titanium,
+/area/shuttle/exploration)
+"eJ" = (
+/obj/machinery/light{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/neutral/opposingcorners,
+/turf/open/floor/mineral/titanium,
+/area/shuttle/exploration)
+"eM" = (
+/obj/machinery/vending/cigarette,
+/obj/effect/turf_decal/bot,
+/obj/effect/turf_decal/tile/neutral/opposingcorners,
 /turf/open/floor/mineral/titanium,
 /area/shuttle/exploration)
 "fo" = (
@@ -172,9 +201,15 @@
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/mineral/titanium,
 /area/shuttle/exploration)
+"iy" = (
+/obj/machinery/vending/boozeomat/pubby_maint,
+/obj/effect/turf_decal/tile/neutral/opposingcorners,
+/turf/open/floor/mineral/titanium,
+/area/shuttle/exploration)
 "iF" = (
 /turf/closed/wall/mineral/plastitanium/nodiagonal,
 /area/shuttle/exploration)
+<<<<<<< HEAD:_maps/shuttles/exploration_fland.dmm
 "jB" = (
 /obj/structure/extinguisher_cabinet{
 	pixel_x = -26
@@ -191,6 +226,40 @@
 "kB" = (
 /obj/machinery/status_display/evac,
 /turf/closed/wall/mineral/titanium/nodiagonal,
+=======
+"kt" = (
+/obj/structure/table/reinforced,
+/obj/item/stack/sheet/mineral/plastitanium{
+	amount = 30
+	},
+/obj/item/stack/cable_coil/red,
+/obj/item/assembly/prox_sensor{
+	desc = "Used for scanning and alerting when someone enters a certain proximity. This one is slightly shifted to the left.";
+	pixel_x = -6;
+	pixel_y = 6
+	},
+/obj/item/storage/belt/utility{
+	pixel_y = -3
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/generic{
+	pixel_x = -12;
+	pixel_y = 14
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/structure/sign/poster/contraband/random{
+	pixel_y = 32
+	},
+/obj/machinery/light/small{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral/half/contrasted{
+	dir = 4
+	},
+/turf/open/floor/plasteel/techmaint,
+>>>>>>> bd6fb0b075 ([MDB IGNORE]DMM The Turf-Decalening (#7970)):_maps/shuttles/exploration/exploration_fland.dmm
 /area/shuttle/exploration)
 "kV" = (
 /obj/effect/decal/cleanable/dirt/dust,
@@ -494,6 +563,187 @@
 	},
 /turf/open/floor/plasteel/techmaint,
 /area/shuttle/exploration)
+<<<<<<< HEAD:_maps/shuttles/exploration_fland.dmm
+=======
+"tF" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/machinery/light{
+	dir = 4
+	},
+/obj/machinery/firealarm{
+	dir = 8;
+	pixel_x = 24
+	},
+/obj/structure/table/reinforced,
+/obj/item/gps/mining/exploration{
+	pixel_x = 4;
+	pixel_y = -3
+	},
+/obj/item/circuitboard/computer/shuttle/exploration_shuttle{
+	pixel_x = -2;
+	pixel_y = 6
+	},
+/turf/open/floor/mineral/plastitanium,
+/area/shuttle/exploration)
+"us" = (
+/turf/closed/wall/mineral/titanium,
+/area/shuttle/exploration)
+"uw" = (
+/obj/machinery/computer/cargo/request,
+/obj/effect/turf_decal/delivery,
+/turf/open/floor/plasteel/grid/steel,
+/area/shuttle/exploration)
+"uE" = (
+/obj/machinery/atmospherics/pipe/manifold/purple/visible{
+	dir = 1
+	},
+/obj/effect/turf_decal/box,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plasteel/techmaint,
+/area/shuttle/exploration)
+"vp" = (
+/obj/structure/tank_dispenser/oxygen,
+/obj/effect/turf_decal/delivery,
+/obj/machinery/light{
+	dir = 1
+	},
+/obj/effect/turf_decal/stripes/corner,
+/obj/structure/sign/warning/vacuum/external{
+	pixel_x = 32
+	},
+/turf/open/floor/mineral/plastitanium,
+/area/shuttle/exploration)
+"vA" = (
+/obj/structure/reagent_dispensers/fueltank,
+/obj/effect/turf_decal/delivery,
+/obj/machinery/light/small{
+	dir = 1
+	},
+/obj/machinery/firealarm{
+	pixel_y = 26
+	},
+/turf/open/floor/plasteel/grid/steel,
+/area/shuttle/exploration)
+"wo" = (
+/obj/structure/table/reinforced,
+/obj/item/storage/firstaid/regular{
+	pixel_x = -3;
+	pixel_y = 9
+	},
+/obj/item/toy/cards/deck{
+	pixel_x = 2
+	},
+/obj/effect/turf_decal/tile/neutral/opposingcorners,
+/turf/open/floor/mineral/titanium,
+/area/shuttle/exploration)
+"wy" = (
+/obj/effect/decal/cleanable/glass,
+/obj/structure/chair/fancy/shuttle{
+	dir = 8
+	},
+/turf/open/floor/carpet,
+/area/shuttle/exploration)
+"xd" = (
+/obj/structure/reagent_dispensers/watertank,
+/obj/effect/turf_decal/delivery,
+/obj/structure/extinguisher_cabinet{
+	pixel_y = 30
+	},
+/turf/open/floor/plasteel/grid/steel,
+/area/shuttle/exploration)
+"xe" = (
+/obj/structure/fans/tiny,
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/effect/turf_decal/sand,
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/machinery/door/poddoor/shutters{
+	id = "exploration"
+	},
+/turf/open/floor/plasteel/tech/grid,
+/area/shuttle/exploration)
+"xC" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/loading_area{
+	dir = 4
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 9
+	},
+/turf/open/floor/plasteel/grid/steel,
+/area/shuttle/exploration)
+"yx" = (
+/obj/structure/chair/office{
+	dir = 4;
+	name = "tactical swivel chair"
+	},
+/obj/effect/decal/cleanable/oil/streak,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/plasteel/techmaint,
+/area/shuttle/exploration)
+"yV" = (
+/obj/structure/lattice/catwalk/over,
+/obj/machinery/power/port_gen/pacman,
+/obj/structure/cable/yellow{
+	icon_state = "0-4"
+	},
+/obj/structure/sign/warning/nosmoking/circle{
+	pixel_y = 32
+	},
+/turf/open/floor/plating,
+/area/shuttle/exploration)
+"zC" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/structure/closet/crate/large,
+/obj/effect/spawner/lootdrop/maintenance/three,
+/obj/effect/spawner/lootdrop/ruinloot/medical,
+/turf/open/floor/plasteel/grid/steel,
+/area/shuttle/exploration)
+"zG" = (
+/obj/machinery/door/airlock/shuttle,
+/turf/open/floor/mineral/titanium,
+/area/shuttle/exploration)
+"Ai" = (
+/obj/machinery/atmospherics/components/unary/portables_connector/visible{
+	dir = 4
+	},
+/obj/machinery/portable_atmospherics/canister/toxins,
+/obj/effect/turf_decal/bot,
+/obj/machinery/light/small{
+	dir = 8
+	},
+/turf/open/floor/plasteel/tech/grid,
+/area/shuttle/exploration)
+"BP" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/turf/open/floor/plasteel/grid/steel,
+/area/shuttle/exploration)
+"BR" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/turf/open/floor/mineral/titanium,
+/area/shuttle/exploration)
+"BT" = (
+/obj/effect/turf_decal/box,
+/obj/machinery/atmospherics/pipe/manifold/purple/visible{
+	dir = 1
+	},
+/turf/open/floor/plasteel/techmaint,
+/area/shuttle/exploration)
+>>>>>>> bd6fb0b075 ([MDB IGNORE]DMM The Turf-Decalening (#7970)):_maps/shuttles/exploration/exploration_fland.dmm
 "Cf" = (
 /obj/effect/turf_decal/weather,
 /turf/open/floor/plasteel/yellowsiding{
@@ -535,7 +785,53 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
+<<<<<<< HEAD:_maps/shuttles/exploration_fland.dmm
 /obj/effect/turf_decal/bot,
+=======
+/obj/structure/table/reinforced,
+/obj/machinery/cell_charger,
+/obj/item/stock_parts/cell/high,
+/obj/item/stock_parts/cell/high{
+	pixel_x = 7;
+	pixel_y = 4
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/plasteel/techmaint,
+/area/shuttle/exploration)
+"CZ" = (
+/obj/structure/chair/stool/bar,
+/obj/effect/decal/cleanable/vomit,
+/obj/effect/turf_decal/tile/neutral/opposingcorners,
+/turf/open/floor/mineral/titanium,
+/area/shuttle/exploration)
+"Df" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/turf/open/floor/mineral/plastitanium,
+/area/shuttle/exploration)
+"DG" = (
+/obj/machinery/door/airlock/external/glass,
+/obj/effect/mapping_helpers/airlock/cyclelink_helper{
+	dir = 4
+	},
+/obj/effect/turf_decal/delivery,
+/turf/open/floor/mineral/plastitanium,
+/area/shuttle/exploration)
+"Ec" = (
+/obj/machinery/light,
+/obj/effect/turf_decal/tile/neutral/opposingcorners,
+/turf/open/floor/mineral/titanium,
+/area/shuttle/exploration)
+"Fm" = (
+/obj/structure/railing/corner{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/mineral/titanium,
+/area/shuttle/exploration)
+"Gb" = (
+>>>>>>> bd6fb0b075 ([MDB IGNORE]DMM The Turf-Decalening (#7970)):_maps/shuttles/exploration/exploration_fland.dmm
 /turf/open/floor/plasteel/techmaint,
 /area/shuttle/exploration)
 "Gc" = (
@@ -570,6 +866,7 @@
 /obj/effect/turf_decal/bot,
 /turf/open/floor/plasteel/techmaint,
 /area/shuttle/exploration)
+<<<<<<< HEAD:_maps/shuttles/exploration_fland.dmm
 "IC" = (
 /obj/structure/table/reinforced,
 /obj/item/storage/box/donkpockets{
@@ -578,6 +875,23 @@
 	},
 /obj/item/storage/box/donkpockets,
 /turf/open/floor/plasteel,
+=======
+"It" = (
+/obj/structure/railing/corner{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/turf_decal/tile/neutral/opposingcorners,
+/turf/open/floor/mineral/titanium,
+/area/shuttle/exploration)
+"Iv" = (
+/obj/machinery/firealarm{
+	dir = 8;
+	pixel_x = 24
+	},
+/obj/effect/turf_decal/tile/neutral/opposingcorners,
+/turf/open/floor/mineral/titanium,
+>>>>>>> bd6fb0b075 ([MDB IGNORE]DMM The Turf-Decalening (#7970)):_maps/shuttles/exploration/exploration_fland.dmm
 /area/shuttle/exploration)
 "IM" = (
 /obj/effect/turf_decal/stripes/corner{
@@ -592,8 +906,22 @@
 /obj/machinery/portable_atmospherics/canister/toxins,
 /turf/open/floor/mineral/plastitanium,
 /area/shuttle/exploration)
+<<<<<<< HEAD:_maps/shuttles/exploration_fland.dmm
 "JM" = (
 /turf/open/floor/plasteel,
+=======
+"JR" = (
+/obj/structure/table/reinforced,
+/obj/item/reagent_containers/glass/rag{
+	pixel_y = 5
+	},
+/obj/item/reagent_containers/food/drinks/shaker{
+	pixel_x = 4;
+	pixel_y = 1
+	},
+/obj/effect/turf_decal/tile/neutral/opposingcorners,
+/turf/open/floor/mineral/titanium,
+>>>>>>> bd6fb0b075 ([MDB IGNORE]DMM The Turf-Decalening (#7970)):_maps/shuttles/exploration/exploration_fland.dmm
 /area/shuttle/exploration)
 "Kh" = (
 /obj/structure/closet/emcloset,
@@ -614,8 +942,32 @@
 /obj/effect/turf_decal/weather,
 /obj/effect/decal/cleanable/generic,
 /obj/machinery/button/door{
+<<<<<<< HEAD:_maps/shuttles/exploration_fland.dmm
 	id = "exploration_blastdoor";
 	name = "Exploration Blast Door Button";
+=======
+	desc = "A remote control switch.";
+	id = "exploration";
+	name = "Exploration Shuttle Shutters";
+	pixel_x = -24
+	},
+/turf/open/floor/plasteel/grid/steel,
+/area/shuttle/exploration)
+"LM" = (
+/obj/effect/turf_decal/stripes/line,
+/turf/open/floor/plasteel/grid/steel,
+/area/shuttle/exploration)
+"Mk" = (
+/obj/structure/chair/stool/bar,
+/obj/effect/turf_decal/tile/neutral/opposingcorners,
+/turf/open/floor/mineral/titanium,
+/area/shuttle/exploration)
+"Nj" = (
+/obj/effect/turf_decal/box,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/turf_decal/sand,
+/obj/structure/extinguisher_cabinet{
+>>>>>>> bd6fb0b075 ([MDB IGNORE]DMM The Turf-Decalening (#7970)):_maps/shuttles/exploration/exploration_fland.dmm
 	pixel_x = 24
 	},
 /turf/open/floor/plasteel/yellowsiding{
@@ -641,8 +993,16 @@
 /obj/machinery/computer/crew{
 	dir = 8
 	},
+<<<<<<< HEAD:_maps/shuttles/exploration_fland.dmm
 /obj/effect/turf_decal/bot,
 /turf/open/floor/mineral/titanium,
+=======
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/machinery/door/window,
+/turf/open/floor/plasteel/techmaint,
+>>>>>>> bd6fb0b075 ([MDB IGNORE]DMM The Turf-Decalening (#7970)):_maps/shuttles/exploration/exploration_fland.dmm
 /area/shuttle/exploration)
 "Oa" = (
 /obj/machinery/door/window,
@@ -770,6 +1130,7 @@
 	},
 /turf/open/floor/plasteel,
 /area/shuttle/exploration)
+<<<<<<< HEAD:_maps/shuttles/exploration_fland.dmm
 "Sv" = (
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
 	dir = 8
@@ -824,6 +1185,26 @@
 /obj/structure/railing/corner{
 	dir = 1
 	},
+=======
+"Sw" = (
+/obj/machinery/door/airlock/shuttle,
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/turf/open/floor/mineral/plastitanium,
+/area/shuttle/exploration)
+"SO" = (
+/turf/open/floor/wood,
+/area/shuttle/exploration)
+"Tf" = (
+/obj/effect/turf_decal/tile/neutral/opposingcorners,
+>>>>>>> bd6fb0b075 ([MDB IGNORE]DMM The Turf-Decalening (#7970)):_maps/shuttles/exploration/exploration_fland.dmm
 /turf/open/floor/mineral/titanium,
 /area/shuttle/exploration)
 "TJ" = (
@@ -832,14 +1213,30 @@
 /obj/effect/turf_decal/tile/neutral/tile_full,
 /turf/open/floor/plasteel/tech/grid,
 /area/shuttle/exploration)
+<<<<<<< HEAD:_maps/shuttles/exploration_fland.dmm
 "Ug" = (
 /obj/structure/table/reinforced,
 /obj/item/toy/cards/deck{
+=======
+"UN" = (
+/obj/structure/table/reinforced,
+/obj/item/reagent_containers/food/drinks/britcup{
+	pixel_x = 9;
+	pixel_y = -3
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/item/trash/chips{
+	pixel_x = -3;
+	pixel_y = 5
+	},
+/obj/item/reagent_containers/food/drinks/beer/light{
+>>>>>>> bd6fb0b075 ([MDB IGNORE]DMM The Turf-Decalening (#7970)):_maps/shuttles/exploration/exploration_fland.dmm
 	pixel_x = 4;
 	pixel_y = 8
 	},
 /turf/open/floor/carpet,
 /area/shuttle/exploration)
+<<<<<<< HEAD:_maps/shuttles/exploration_fland.dmm
 "Us" = (
 /obj/machinery/atmospherics/pipe/simple/purple/visible{
 	dir = 10
@@ -870,6 +1267,8 @@
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/plasteel,
 /area/shuttle/exploration)
+=======
+>>>>>>> bd6fb0b075 ([MDB IGNORE]DMM The Turf-Decalening (#7970)):_maps/shuttles/exploration/exploration_fland.dmm
 "VZ" = (
 /turf/open/floor/mineral/titanium,
 /area/shuttle/exploration)
@@ -896,6 +1295,14 @@
 	dir = 8
 	},
 /area/shuttle/exploration)
+"Xk" = (
+/obj/structure/table,
+/obj/machinery/chem_dispenser/drinks{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/neutral/opposingcorners,
+/turf/open/floor/mineral/titanium,
+/area/shuttle/exploration)
 "Xm" = (
 /obj/effect/turf_decal/stripes/line,
 /obj/machinery/atmospherics/pipe/manifold/purple/visible{
@@ -911,7 +1318,16 @@
 	},
 /turf/open/floor/plasteel/techmaint,
 /area/shuttle/exploration)
+"XD" = (
+/obj/structure/table,
+/obj/machinery/chem_dispenser/drinks/beer{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/neutral/opposingcorners,
+/turf/open/floor/mineral/titanium,
+/area/shuttle/exploration)
 "XP" = (
+<<<<<<< HEAD:_maps/shuttles/exploration_fland.dmm
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
 	},
@@ -942,6 +1358,19 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
 	},
+=======
+/obj/structure/chair/fancy/shuttle{
+	dir = 8
+	},
+/turf/open/floor/carpet,
+/area/shuttle/exploration)
+"YJ" = (
+/obj/structure/railing/corner{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/turf_decal/tile/neutral/opposingcorners,
+>>>>>>> bd6fb0b075 ([MDB IGNORE]DMM The Turf-Decalening (#7970)):_maps/shuttles/exploration/exploration_fland.dmm
 /turf/open/floor/mineral/titanium,
 /area/shuttle/exploration)
 "Zf" = (
@@ -1091,12 +1520,21 @@ nG
 ax
 Fm
 TJ
+<<<<<<< HEAD:_maps/shuttles/exploration_fland.dmm
 nG
 ma
 uw
 nG
 BP
 BP
+=======
+It
+eJ
+Tf
+Tf
+Tf
+Tf
+>>>>>>> bd6fb0b075 ([MDB IGNORE]DMM The Turf-Decalening (#7970)):_maps/shuttles/exploration/exploration_fland.dmm
 JF
 nG
 HU
@@ -1111,6 +1549,7 @@ rY
 nG
 nG
 Pb
+<<<<<<< HEAD:_maps/shuttles/exploration_fland.dmm
 nG
 kB
 TI
@@ -1119,6 +1558,15 @@ nG
 nG
 nG
 nG
+=======
+Rm
+YJ
+Iv
+Tf
+Mk
+CZ
+Mk
+>>>>>>> bd6fb0b075 ([MDB IGNORE]DMM The Turf-Decalening (#7970)):_maps/shuttles/exploration/exploration_fland.dmm
 nG
 Gb
 uE
@@ -1131,6 +1579,7 @@ mc
 VZ
 CA
 Pa
+<<<<<<< HEAD:_maps/shuttles/exploration_fland.dmm
 VZ
 VZ
 VZ
@@ -1140,6 +1589,18 @@ VZ
 jB
 ik
 GJ
+=======
+Pa
+nG
+nG
+Sw
+nG
+Tf
+wo
+JR
+dL
+nG
+>>>>>>> bd6fb0b075 ([MDB IGNORE]DMM The Turf-Decalening (#7970)):_maps/shuttles/exploration/exploration_fland.dmm
 Xo
 ne
 dT
@@ -1162,6 +1623,23 @@ nG
 nG
 gz
 nG
+<<<<<<< HEAD:_maps/shuttles/exploration_fland.dmm
+=======
+nG
+su
+Df
+Df
+nG
+RB
+SO
+nG
+aO
+Tf
+Tf
+Ec
+nG
+kt
+>>>>>>> bd6fb0b075 ([MDB IGNORE]DMM The Turf-Decalening (#7970)):_maps/shuttles/exploration/exploration_fland.dmm
 yx
 sy
 bJ
@@ -1177,11 +1655,18 @@ Kh
 ik
 aS
 nG
+<<<<<<< HEAD:_maps/shuttles/exploration_fland.dmm
 xL
 JM
 IC
 jP
 Kj
+=======
+eM
+Xk
+XD
+iy
+>>>>>>> bd6fb0b075 ([MDB IGNORE]DMM The Turf-Decalening (#7970)):_maps/shuttles/exploration/exploration_fland.dmm
 nG
 ck
 Xm

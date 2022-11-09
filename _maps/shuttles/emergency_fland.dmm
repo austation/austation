@@ -1,9 +1,12 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+<<<<<<< HEAD:_maps/shuttles/emergency_fland.dmm
 "ab" = (
 /obj/effect/turf_decal/delivery,
 /obj/effect/turf_decal/stripes/line,
 /turf/open/floor/mineral/titanium,
 /area/shuttle/escape)
+=======
+>>>>>>> bd6fb0b075 ([MDB IGNORE]DMM The Turf-Decalening (#7970)):_maps/shuttles/emergency/emergency_fland.dmm
 "aH" = (
 /obj/structure/chair/sofa/corp{
 	color = "#7fb3d5";
@@ -11,22 +14,13 @@
 	},
 /turf/open/floor/mineral/titanium/white,
 /area/shuttle/escape)
-"aM" = (
-/obj/effect/turf_decal/stripes/line{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/neutral,
-/obj/effect/turf_decal/tile/neutral{
-	dir = 1
-	},
-/turf/open/floor/mineral/titanium,
-/area/shuttle/escape)
 "aU" = (
 /obj/effect/turf_decal/caution/stand_clear{
 	dir = 8
 	},
 /turf/open/floor/pod/dark,
 /area/shuttle/escape)
+<<<<<<< HEAD:_maps/shuttles/emergency_fland.dmm
 "aW" = (
 /obj/structure/chair/comfy/shuttle{
 	dir = 1
@@ -37,19 +31,14 @@
 /obj/effect/turf_decal/tile/neutral,
 /turf/open/floor/mineral/titanium/purple,
 /area/shuttle/escape)
+=======
+>>>>>>> bd6fb0b075 ([MDB IGNORE]DMM The Turf-Decalening (#7970)):_maps/shuttles/emergency/emergency_fland.dmm
 "bS" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
 /obj/structure/shuttle/engine/propulsion/left,
 /turf/open/floor/plating/airless,
-/area/shuttle/escape)
-"cg" = (
-/obj/effect/turf_decal/tile/brown{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/brown,
-/turf/open/floor/mineral/titanium/yellow,
 /area/shuttle/escape)
 "cF" = (
 /obj/machinery/door/airlock/security/glass{
@@ -67,13 +56,14 @@
 /obj/effect/turf_decal/bot,
 /turf/open/floor/mineral/plastitanium,
 /area/shuttle/escape)
-"cT" = (
-/obj/effect/turf_decal/stripes/line,
-/obj/machinery/vending/wallmed{
-	name = "Emergency NanoMed";
-	pixel_y = -27;
-	use_power = 0
+"dc" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 6
 	},
+<<<<<<< HEAD:_maps/shuttles/emergency_fland.dmm
+=======
+/obj/effect/turf_decal/tile/neutral/opposingcorners,
+>>>>>>> bd6fb0b075 ([MDB IGNORE]DMM The Turf-Decalening (#7970)):_maps/shuttles/emergency/emergency_fland.dmm
 /turf/open/floor/mineral/titanium,
 /area/shuttle/escape)
 "dR" = (
@@ -98,9 +88,47 @@
 	},
 /turf/open/floor/mineral/titanium,
 /area/shuttle/escape)
+"ee" = (
+/obj/effect/turf_decal/delivery,
+/obj/effect/turf_decal/stripes/line,
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral/opposingcorners,
+/turf/open/floor/mineral/titanium,
+/area/shuttle/escape)
 "ef" = (
 /obj/structure/sign/nanotrasen,
 /turf/closed/wall/mineral/plastitanium/nodiagonal,
+/area/shuttle/escape)
+"el" = (
+/obj/effect/turf_decal/arrows{
+	dir = 8
+	},
+/obj/effect/turf_decal/stripes/corner{
+	dir = 4
+	},
+/obj/effect/turf_decal/stripes/corner{
+	dir = 8
+	},
+/obj/effect/turf_decal/stripes/corner{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral/opposingcorners,
+/turf/open/floor/mineral/titanium,
+/area/shuttle/escape)
+"eC" = (
+/obj/structure/chair/fancy/shuttle{
+	dir = 1
+	},
+/obj/machinery/light{
+	dir = 4
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral/opposingcorners,
+/turf/open/floor/mineral/titanium,
 /area/shuttle/escape)
 "fC" = (
 /obj/item/clothing/suit/hazardvest{
@@ -182,10 +210,13 @@
 /obj/effect/turf_decal/bot,
 /turf/open/floor/mineral/plastitanium,
 /area/shuttle/escape)
-"gs" = (
-/obj/effect/turf_decal/arrows{
-	dir = 4
+"gf" = (
+/obj/structure/table,
+/obj/item/storage/firstaid/o2{
+	pixel_x = 4;
+	pixel_y = 4
 	},
+<<<<<<< HEAD:_maps/shuttles/emergency_fland.dmm
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
 	},
@@ -193,7 +224,25 @@
 	dir = 4
 	},
 /obj/effect/turf_decal/stripes/corner,
+=======
+/obj/item/storage/firstaid/regular,
+/obj/item/crowbar/large,
+/obj/effect/turf_decal/tile/neutral/opposingcorners,
+>>>>>>> bd6fb0b075 ([MDB IGNORE]DMM The Turf-Decalening (#7970)):_maps/shuttles/emergency/emergency_fland.dmm
 /turf/open/floor/mineral/titanium,
+/area/shuttle/escape)
+"gH" = (
+/obj/item/storage/box/zipties{
+	pixel_y = 4
+	},
+/obj/item/restraints/handcuffs,
+/obj/item/restraints/handcuffs,
+/obj/effect/turf_decal/stripes/line{
+	dir = 10
+	},
+/obj/structure/table/reinforced,
+/obj/effect/turf_decal/tile/neutral/opposingcorners,
+/turf/open/floor/mineral/plastitanium/red/brig,
 /area/shuttle/escape)
 "hi" = (
 /obj/machinery/light{
@@ -213,6 +262,12 @@
 	},
 /turf/open/floor/mineral/titanium,
 /area/shuttle/escape)
+"hp" = (
+/obj/effect/turf_decal/delivery,
+/obj/effect/turf_decal/stripes/line,
+/obj/effect/turf_decal/tile/neutral/opposingcorners,
+/turf/open/floor/mineral/titanium,
+/area/shuttle/escape)
 "ht" = (
 /obj/structure/table/optable,
 /obj/machinery/defibrillator_mount/loaded{
@@ -221,53 +276,18 @@
 /obj/item/surgical_drapes,
 /turf/open/floor/mineral/titanium/blue,
 /area/shuttle/escape)
-"in" = (
-/obj/effect/turf_decal/tile/neutral{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/neutral,
-/turf/open/floor/mineral/titanium/purple,
-/area/shuttle/escape)
-"iI" = (
-/obj/structure/table,
-/obj/item/paper_bin{
-	pixel_x = -2;
-	pixel_y = 8
-	},
-/obj/item/folder/blue,
-/obj/item/folder/red{
-	pixel_x = 4;
-	pixel_y = 4
-	},
-/obj/effect/turf_decal/tile/neutral,
-/obj/effect/turf_decal/tile/neutral{
-	dir = 1
-	},
+"hu" = (
+/obj/effect/turf_decal/stripes/corner,
+/obj/effect/turf_decal/tile/neutral/opposingcorners,
 /turf/open/floor/mineral/titanium,
 /area/shuttle/escape)
-"iL" = (
-/obj/machinery/light{
-	dir = 8
+"ie" = (
+/obj/machinery/button/flasher{
+	id = "cockpit_flasher";
+	pixel_y = -24
 	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/neutral,
-/turf/open/floor/mineral/titanium/purple,
-/area/shuttle/escape)
-"jd" = (
-/obj/machinery/computer/security{
-	dir = 8
-	},
-/obj/effect/turf_decal/bot,
-/obj/machinery/light{
-	dir = 4
-	},
-/obj/effect/turf_decal/tile/neutral,
-/obj/effect/turf_decal/tile/neutral{
-	dir = 1
-	},
-/turf/open/floor/mineral/plastitanium/red/brig,
+/obj/effect/turf_decal/tile/neutral/opposingcorners,
+/turf/open/floor/mineral/titanium,
 /area/shuttle/escape)
 "js" = (
 /obj/machinery/door/airlock/external/glass{
@@ -276,34 +296,31 @@
 /obj/structure/fans/tiny,
 /turf/open/floor/pod/dark,
 /area/shuttle/escape)
-"jz" = (
-/obj/structure/table/reinforced,
-/obj/item/clipboard,
-/obj/item/restraints/handcuffs,
-/obj/item/tank/internals/emergency_oxygen/engi,
-/obj/item/tank/internals/emergency_oxygen/engi,
-/obj/item/assembly/flash/handheld,
-/obj/effect/turf_decal/tile/neutral,
-/obj/effect/turf_decal/tile/neutral{
-	dir = 1
+"kL" = (
+/obj/structure/chair/fancy/shuttle{
+	dir = 8
 	},
-/turf/open/floor/mineral/titanium,
+/obj/effect/turf_decal/tile/neutral/opposingcorners,
+/turf/open/floor/mineral/plastitanium/red/brig,
 /area/shuttle/escape)
 "lc" = (
 /turf/closed/wall/mineral/plastitanium,
 /area/shuttle/escape)
+<<<<<<< HEAD:_maps/shuttles/emergency_fland.dmm
 "lu" = (
 /obj/structure/chair/comfy/shuttle{
 	dir = 4
+=======
+"lt" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+>>>>>>> bd6fb0b075 ([MDB IGNORE]DMM The Turf-Decalening (#7970)):_maps/shuttles/emergency/emergency_fland.dmm
 	},
 /obj/effect/turf_decal/stripes/line{
-	dir = 9
+	dir = 4
 	},
-/obj/effect/turf_decal/tile/neutral,
-/obj/effect/turf_decal/tile/neutral{
-	dir = 1
-	},
-/turf/open/floor/mineral/plastitanium/red/brig,
+/obj/effect/turf_decal/tile/neutral/opposingcorners,
+/turf/open/floor/mineral/titanium,
 /area/shuttle/escape)
 "lw" = (
 /obj/item/kirbyplants/random,
@@ -323,6 +340,7 @@
 	},
 /turf/open/floor/mineral/titanium,
 /area/shuttle/escape)
+<<<<<<< HEAD:_maps/shuttles/emergency_fland.dmm
 "lQ" = (
 /obj/effect/turf_decal/tile/blue,
 /obj/effect/turf_decal/tile/blue{
@@ -340,6 +358,10 @@
 /area/shuttle/escape)
 "nw" = (
 /obj/effect/turf_decal/stripes/corner,
+=======
+"mY" = (
+/obj/effect/turf_decal/tile/neutral/opposingcorners,
+>>>>>>> bd6fb0b075 ([MDB IGNORE]DMM The Turf-Decalening (#7970)):_maps/shuttles/emergency/emergency_fland.dmm
 /turf/open/floor/mineral/titanium,
 /area/shuttle/escape)
 "nA" = (
@@ -352,32 +374,29 @@
 /obj/machinery/stasis,
 /turf/open/floor/mineral/titanium/blue,
 /area/shuttle/escape)
-"oa" = (
-/obj/structure/table,
-/obj/item/storage/firstaid/o2{
-	pixel_x = 4;
-	pixel_y = 4
+"oi" = (
+/obj/structure/chair/fancy/shuttle{
+	dir = 4
 	},
-/obj/item/storage/firstaid/regular,
-/obj/item/crowbar/large,
-/obj/effect/turf_decal/tile/neutral,
-/obj/effect/turf_decal/tile/neutral{
-	dir = 1
+/obj/machinery/light{
+	dir = 8
 	},
-/turf/open/floor/mineral/titanium,
+/obj/effect/turf_decal/tile/neutral/opposingcorners,
+/turf/open/floor/mineral/plastitanium/red/brig,
 /area/shuttle/escape)
 "oo" = (
 /obj/structure/sign/nanotrasen,
 /turf/closed/wall/mineral/titanium,
 /area/shuttle/escape)
-"pd" = (
-/obj/structure/table,
-/obj/item/storage/fancy/donut_box,
-/obj/effect/turf_decal/tile/neutral,
-/obj/effect/turf_decal/tile/neutral{
-	dir = 1
+"pe" = (
+/obj/structure/chair/fancy/shuttle{
+	dir = 4
 	},
-/turf/open/floor/mineral/titanium,
+/obj/effect/turf_decal/stripes/line{
+	dir = 9
+	},
+/obj/effect/turf_decal/tile/neutral/opposingcorners,
+/turf/open/floor/mineral/plastitanium/red/brig,
 /area/shuttle/escape)
 "pF" = (
 /obj/item/reagent_containers/glass/bottle/epinephrine{
@@ -413,6 +432,16 @@
 /obj/structure/table,
 /turf/open/floor/mineral/titanium/blue,
 /area/shuttle/escape)
+"pG" = (
+/obj/machinery/light{
+	dir = 8
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/neutral/opposingcorners,
+/turf/open/floor/mineral/titanium,
+/area/shuttle/escape)
 "qL" = (
 /obj/effect/turf_decal/delivery,
 /obj/machinery/door/airlock/public/glass{
@@ -424,10 +453,15 @@
 "rF" = (
 /turf/closed/wall/mineral/titanium/nodiagonal,
 /area/shuttle/escape)
-"rX" = (
-/obj/effect/turf_decal/arrows{
+"so" = (
+/obj/machinery/computer/security{
+	dir = 8
+	},
+/obj/effect/turf_decal/bot,
+/obj/machinery/light{
 	dir = 4
 	},
+<<<<<<< HEAD:_maps/shuttles/emergency_fland.dmm
 /obj/effect/turf_decal/stripes/corner{
 	dir = 1
 	},
@@ -436,19 +470,27 @@
 	dir = 4
 	},
 /turf/open/floor/mineral/titanium,
+=======
+/obj/effect/turf_decal/tile/neutral/opposingcorners,
+/turf/open/floor/mineral/plastitanium/red/brig,
+>>>>>>> bd6fb0b075 ([MDB IGNORE]DMM The Turf-Decalening (#7970)):_maps/shuttles/emergency/emergency_fland.dmm
 /area/shuttle/escape)
 "sz" = (
 /obj/structure/table,
 /obj/item/defibrillator/loaded,
 /turf/open/floor/mineral/titanium/blue,
 /area/shuttle/escape)
-"sQ" = (
+"tm" = (
 /obj/effect/turf_decal/stripes/line{
-	dir = 1
+	dir = 8
 	},
+<<<<<<< HEAD:_maps/shuttles/emergency_fland.dmm
 /obj/structure/extinguisher_cabinet{
 	pixel_y = 30
 	},
+=======
+/obj/effect/turf_decal/tile/neutral/opposingcorners,
+>>>>>>> bd6fb0b075 ([MDB IGNORE]DMM The Turf-Decalening (#7970)):_maps/shuttles/emergency/emergency_fland.dmm
 /turf/open/floor/mineral/titanium,
 /area/shuttle/escape)
 "tr" = (
@@ -456,6 +498,13 @@
 /obj/effect/turf_decal/bot,
 /obj/effect/turf_decal/stripes/line,
 /turf/open/floor/pod/dark,
+/area/shuttle/escape)
+"tu" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 6
+	},
+/obj/effect/turf_decal/tile/neutral/opposingcorners,
+/turf/open/floor/mineral/plastitanium/red/brig,
 /area/shuttle/escape)
 "ty" = (
 /obj/effect/turf_decal/delivery,
@@ -495,6 +544,7 @@
 /obj/structure/table,
 /turf/open/floor/mineral/titanium/blue,
 /area/shuttle/escape)
+<<<<<<< HEAD:_maps/shuttles/emergency_fland.dmm
 "tF" = (
 /obj/effect/turf_decal/bot,
 /obj/machinery/newscaster/security_unit{
@@ -509,6 +559,8 @@
 	},
 /turf/open/floor/mineral/plastitanium/red/brig,
 /area/shuttle/escape)
+=======
+>>>>>>> bd6fb0b075 ([MDB IGNORE]DMM The Turf-Decalening (#7970)):_maps/shuttles/emergency/emergency_fland.dmm
 "tL" = (
 /obj/machinery/door/airlock/shuttle{
 	name = "Emergency Shuttle Airlock"
@@ -518,6 +570,13 @@
 	dir = 4
 	},
 /turf/open/floor/pod/dark,
+/area/shuttle/escape)
+"tR" = (
+/obj/effect/turf_decal/stripes/corner{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/neutral/opposingcorners,
+/turf/open/floor/mineral/titanium,
 /area/shuttle/escape)
 "ut" = (
 /obj/machinery/door/airlock/shuttle{
@@ -552,6 +611,13 @@
 	},
 /turf/open/floor/noslip/darkblue,
 /area/shuttle/escape)
+"vq" = (
+/obj/effect/turf_decal/stripes/corner{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral/opposingcorners,
+/turf/open/floor/mineral/titanium,
+/area/shuttle/escape)
 "vt" = (
 /turf/closed/wall/mineral/plastitanium/nodiagonal,
 /area/shuttle/escape)
@@ -562,6 +628,16 @@
 	},
 /obj/effect/turf_decal/delivery,
 /turf/open/floor/pod/dark,
+/area/shuttle/escape)
+"vP" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/neutral/opposingcorners,
+/turf/open/floor/mineral/titanium,
 /area/shuttle/escape)
 "vT" = (
 /obj/structure/flora/ausbushes/grassybush,
@@ -579,19 +655,44 @@
 /obj/machinery/door/airlock/shuttle/glass,
 /turf/open/floor/pod/dark,
 /area/shuttle/escape)
-"xl" = (
-/obj/effect/turf_decal/stripes/line{
-	dir = 6
+"wh" = (
+/obj/structure/chair/fancy/shuttle{
+	dir = 8
 	},
+<<<<<<< HEAD:_maps/shuttles/emergency_fland.dmm
 /turf/open/floor/mineral/titanium,
 /area/shuttle/escape)
 "xT" = (
+=======
+/obj/effect/turf_decal/stripes/line{
+	dir = 5
+	},
+/obj/machinery/light{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral/opposingcorners,
+/turf/open/floor/mineral/plastitanium/red/brig,
+/area/shuttle/escape)
+"wD" = (
+/obj/structure/chair/fancy/shuttle{
+	dir = 1
+	},
+>>>>>>> bd6fb0b075 ([MDB IGNORE]DMM The Turf-Decalening (#7970)):_maps/shuttles/emergency/emergency_fland.dmm
 /obj/machinery/light{
 	dir = 8
 	},
 /obj/effect/turf_decal/stripes/line{
+<<<<<<< HEAD:_maps/shuttles/emergency_fland.dmm
 	dir = 8
 	},
+=======
+	dir = 1
+	},
+/obj/machinery/keycard_auth{
+	pixel_x = -24
+	},
+/obj/effect/turf_decal/tile/neutral/opposingcorners,
+>>>>>>> bd6fb0b075 ([MDB IGNORE]DMM The Turf-Decalening (#7970)):_maps/shuttles/emergency/emergency_fland.dmm
 /turf/open/floor/mineral/titanium,
 /area/shuttle/escape)
 "xX" = (
@@ -602,12 +703,23 @@
 /obj/effect/turf_decal/delivery,
 /turf/open/floor/pod/dark,
 /area/shuttle/escape)
+"yb" = (
+/obj/structure/table/reinforced,
+/obj/item/clipboard,
+/obj/item/restraints/handcuffs,
+/obj/item/tank/internals/emergency_oxygen/engi,
+/obj/item/tank/internals/emergency_oxygen/engi,
+/obj/item/assembly/flash/handheld,
+/obj/effect/turf_decal/tile/neutral/opposingcorners,
+/turf/open/floor/mineral/titanium,
+/area/shuttle/escape)
 "ye" = (
 /obj/machinery/computer/emergency_shuttle,
 /obj/effect/turf_decal/bot,
 /obj/effect/turf_decal/stripes/line,
 /turf/open/floor/pod/dark,
 /area/shuttle/escape)
+<<<<<<< HEAD:_maps/shuttles/emergency_fland.dmm
 "yh" = (
 /obj/effect/turf_decal/delivery,
 /obj/effect/turf_decal/stripes/line,
@@ -616,6 +728,8 @@
 	},
 /turf/open/floor/mineral/titanium,
 /area/shuttle/escape)
+=======
+>>>>>>> bd6fb0b075 ([MDB IGNORE]DMM The Turf-Decalening (#7970)):_maps/shuttles/emergency/emergency_fland.dmm
 "yi" = (
 /obj/structure/table,
 /obj/item/storage/toolbox/emergency{
@@ -627,13 +741,6 @@
 	},
 /obj/effect/turf_decal/stripes/line,
 /turf/open/floor/pod/dark,
-/area/shuttle/escape)
-"yq" = (
-/obj/effect/turf_decal/tile/neutral,
-/obj/effect/turf_decal/tile/neutral{
-	dir = 1
-	},
-/turf/open/floor/mineral/titanium,
 /area/shuttle/escape)
 "yT" = (
 /obj/machinery/computer/med_data{
@@ -706,6 +813,7 @@
 /obj/effect/turf_decal/bot,
 /turf/open/floor/mineral/plastitanium,
 /area/shuttle/escape)
+<<<<<<< HEAD:_maps/shuttles/emergency_fland.dmm
 "zS" = (
 /obj/effect/turf_decal/stripes/corner{
 	dir = 4
@@ -713,14 +821,14 @@
 /turf/open/floor/mineral/titanium,
 /area/shuttle/escape)
 "Aa" = (
+=======
+"zZ" = (
+>>>>>>> bd6fb0b075 ([MDB IGNORE]DMM The Turf-Decalening (#7970)):_maps/shuttles/emergency/emergency_fland.dmm
 /obj/effect/turf_decal/stripes/line{
-	dir = 6
+	dir = 10
 	},
-/obj/effect/turf_decal/tile/neutral,
-/obj/effect/turf_decal/tile/neutral{
-	dir = 1
-	},
-/turf/open/floor/mineral/plastitanium/red/brig,
+/obj/effect/turf_decal/tile/neutral/opposingcorners,
+/turf/open/floor/mineral/titanium,
 /area/shuttle/escape)
 "Ae" = (
 /obj/machinery/computer/station_alert,
@@ -731,6 +839,17 @@
 	},
 /turf/open/floor/pod/dark,
 /area/shuttle/escape)
+"Am" = (
+/obj/effect/turf_decal/tile/neutral/opposingcorners,
+/turf/open/floor/mineral/titanium/purple,
+/area/shuttle/escape)
+"Ap" = (
+/obj/structure/chair/fancy/shuttle{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral/opposingcorners,
+/turf/open/floor/mineral/plastitanium/red/brig,
+/area/shuttle/escape)
 "Au" = (
 /obj/structure/chair/comfy/shuttle{
 	dir = 1
@@ -739,6 +858,20 @@
 	dir = 1
 	},
 /turf/open/floor/mineral/titanium/white,
+/area/shuttle/escape)
+"AN" = (
+/obj/structure/table,
+/obj/item/paper_bin{
+	pixel_x = -2;
+	pixel_y = 8
+	},
+/obj/item/folder/blue,
+/obj/item/folder/red{
+	pixel_x = 4;
+	pixel_y = 4
+	},
+/obj/effect/turf_decal/tile/neutral/opposingcorners,
+/turf/open/floor/mineral/titanium,
 /area/shuttle/escape)
 "AS" = (
 /turf/open/floor/mineral/titanium,
@@ -749,6 +882,13 @@
 	},
 /obj/structure/shuttle/engine/propulsion/right,
 /turf/open/floor/plating/airless,
+/area/shuttle/escape)
+"Ce" = (
+/obj/effect/turf_decal/bot,
+/obj/machinery/recharger,
+/obj/structure/table/reinforced,
+/obj/effect/turf_decal/tile/neutral/opposingcorners,
+/turf/open/floor/mineral/plastitanium/red/brig,
 /area/shuttle/escape)
 "Cf" = (
 /obj/machinery/light{
@@ -764,6 +904,24 @@
 /obj/effect/spawner/structure/window/shuttle,
 /turf/open/floor/plating,
 /area/shuttle/escape)
+"Cu" = (
+/obj/effect/turf_decal/bot,
+/obj/machinery/newscaster{
+	pixel_y = 32
+	},
+/obj/structure/table/reinforced,
+/obj/item/paper_bin,
+/obj/item/pen,
+/obj/effect/turf_decal/tile/neutral/opposingcorners,
+/turf/open/floor/mineral/plastitanium/red/brig,
+/area/shuttle/escape)
+"Cy" = (
+/obj/effect/turf_decal/stripes/corner{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral/opposingcorners,
+/turf/open/floor/mineral/titanium,
+/area/shuttle/escape)
 "CX" = (
 /obj/machinery/light{
 	dir = 8
@@ -773,6 +931,10 @@
 	dir = 4
 	},
 /turf/open/floor/mineral/titanium/white,
+/area/shuttle/escape)
+"CY" = (
+/obj/effect/turf_decal/tile/neutral/opposingcorners,
+/turf/open/floor/mineral/plastitanium/red/brig,
 /area/shuttle/escape)
 "Dg" = (
 /obj/structure/closet/crate/medical,
@@ -806,6 +968,7 @@
 	},
 /turf/open/floor/pod/dark,
 /area/shuttle/escape)
+<<<<<<< HEAD:_maps/shuttles/emergency_fland.dmm
 "EX" = (
 /obj/structure/chair/comfy/shuttle{
 	dir = 4
@@ -819,6 +982,8 @@
 	},
 /turf/open/floor/mineral/plastitanium/red/brig,
 /area/shuttle/escape)
+=======
+>>>>>>> bd6fb0b075 ([MDB IGNORE]DMM The Turf-Decalening (#7970)):_maps/shuttles/emergency/emergency_fland.dmm
 "Fm" = (
 /obj/structure/sign/departments/medbay/alt,
 /turf/closed/wall/mineral/titanium,
@@ -833,6 +998,16 @@
 	dir = 4
 	},
 /turf/open/floor/pod/dark,
+/area/shuttle/escape)
+"Go" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/structure/extinguisher_cabinet{
+	pixel_y = 30
+	},
+/obj/effect/turf_decal/tile/neutral/opposingcorners,
+/turf/open/floor/mineral/titanium,
 /area/shuttle/escape)
 "GP" = (
 /obj/effect/turf_decal/bot,
@@ -890,6 +1065,7 @@
 	},
 /turf/open/floor/pod/dark,
 /area/shuttle/escape)
+<<<<<<< HEAD:_maps/shuttles/emergency_fland.dmm
 "Ij" = (
 /obj/effect/turf_decal/arrows{
 	dir = 4
@@ -900,6 +1076,8 @@
 	},
 /turf/open/floor/mineral/titanium,
 /area/shuttle/escape)
+=======
+>>>>>>> bd6fb0b075 ([MDB IGNORE]DMM The Turf-Decalening (#7970)):_maps/shuttles/emergency/emergency_fland.dmm
 "Ix" = (
 /obj/effect/turf_decal/delivery,
 /obj/effect/turf_decal/stripes/corner{
@@ -910,6 +1088,7 @@
 	},
 /turf/open/floor/pod/dark,
 /area/shuttle/escape)
+<<<<<<< HEAD:_maps/shuttles/emergency_fland.dmm
 "Iz" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
@@ -931,6 +1110,8 @@
 	},
 /turf/open/floor/mineral/titanium,
 /area/shuttle/escape)
+=======
+>>>>>>> bd6fb0b075 ([MDB IGNORE]DMM The Turf-Decalening (#7970)):_maps/shuttles/emergency/emergency_fland.dmm
 "IP" = (
 /obj/machinery/computer/crew,
 /obj/effect/turf_decal/bot,
@@ -940,21 +1121,53 @@
 	},
 /turf/open/floor/pod/dark,
 /area/shuttle/escape)
+<<<<<<< HEAD:_maps/shuttles/emergency_fland.dmm
 "IZ" = (
 /obj/structure/chair/comfy/shuttle{
 	dir = 8
 	},
+=======
+"Jx" = (
+>>>>>>> bd6fb0b075 ([MDB IGNORE]DMM The Turf-Decalening (#7970)):_maps/shuttles/emergency/emergency_fland.dmm
 /obj/effect/turf_decal/stripes/line{
-	dir = 5
-	},
-/obj/machinery/light{
-	dir = 4
-	},
-/obj/effect/turf_decal/tile/neutral,
-/obj/effect/turf_decal/tile/neutral{
 	dir = 1
 	},
-/turf/open/floor/mineral/plastitanium/red/brig,
+/obj/effect/turf_decal/tile/neutral/opposingcorners,
+/turf/open/floor/mineral/titanium,
+/area/shuttle/escape)
+"JJ" = (
+/obj/effect/turf_decal/arrows{
+	dir = 4
+	},
+/obj/effect/turf_decal/stripes/corner{
+	dir = 1
+	},
+/obj/effect/turf_decal/stripes/corner,
+/obj/effect/turf_decal/stripes/corner{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral/opposingcorners,
+/turf/open/floor/mineral/titanium,
+/area/shuttle/escape)
+"Km" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral/opposingcorners,
+/turf/open/floor/mineral/titanium,
+/area/shuttle/escape)
+"KC" = (
+/obj/structure/table,
+/obj/item/storage/fancy/donut_box,
+/obj/effect/turf_decal/tile/neutral/opposingcorners,
+/turf/open/floor/mineral/titanium,
+/area/shuttle/escape)
+"KS" = (
+/obj/machinery/light{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/neutral/opposingcorners,
+/turf/open/floor/mineral/titanium/purple,
 /area/shuttle/escape)
 "KV" = (
 /obj/structure/sink{
@@ -971,21 +1184,33 @@
 /obj/machinery/portable_atmospherics/canister/oxygen,
 /turf/open/floor/mineral/titanium,
 /area/shuttle/escape)
+<<<<<<< HEAD:_maps/shuttles/emergency_fland.dmm
 "Lb" = (
 /obj/structure/chair/comfy/shuttle{
+=======
+"Lc" = (
+/turf/closed/wall/mineral/titanium,
+/area/shuttle/escape)
+"Lh" = (
+/obj/machinery/light{
+	dir = 4
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral/opposingcorners,
+/turf/open/floor/mineral/titanium,
+/area/shuttle/escape)
+"Lo" = (
+/obj/structure/chair/fancy/shuttle{
+>>>>>>> bd6fb0b075 ([MDB IGNORE]DMM The Turf-Decalening (#7970)):_maps/shuttles/emergency/emergency_fland.dmm
 	dir = 4
 	},
 /obj/effect/turf_decal/box/corners{
 	dir = 4
 	},
-/obj/effect/turf_decal/tile/neutral,
-/obj/effect/turf_decal/tile/neutral{
-	dir = 1
-	},
+/obj/effect/turf_decal/tile/neutral/opposingcorners,
 /turf/open/floor/mineral/plastitanium/red/brig,
-/area/shuttle/escape)
-"Lc" = (
-/turf/closed/wall/mineral/titanium,
 /area/shuttle/escape)
 "LR" = (
 /obj/effect/turf_decal/delivery,
@@ -998,6 +1223,17 @@
 	pixel_y = 2
 	},
 /obj/effect/decal/cleanable/dirt,
+/turf/open/floor/mineral/titanium,
+/area/shuttle/escape)
+"LY" = (
+/obj/effect/turf_decal/arrows{
+	dir = 8
+	},
+/obj/effect/turf_decal/stripes/corner{
+	dir = 8
+	},
+/obj/effect/turf_decal/stripes/corner,
+/obj/effect/turf_decal/tile/neutral/opposingcorners,
 /turf/open/floor/mineral/titanium,
 /area/shuttle/escape)
 "Mh" = (
@@ -1023,15 +1259,21 @@
 	},
 /turf/open/floor/plasteel,
 /area/shuttle/escape)
+<<<<<<< HEAD:_maps/shuttles/emergency_fland.dmm
 "MJ" = (
 /obj/structure/chair/comfy/shuttle{
 	dir = 8
+=======
+"Mk" = (
+/obj/effect/turf_decal/stripes/line,
+/obj/machinery/vending/wallmed{
+	name = "Emergency NanoMed";
+	pixel_y = -27;
+	use_power = 0
+>>>>>>> bd6fb0b075 ([MDB IGNORE]DMM The Turf-Decalening (#7970)):_maps/shuttles/emergency/emergency_fland.dmm
 	},
-/obj/effect/turf_decal/tile/neutral,
-/obj/effect/turf_decal/tile/neutral{
-	dir = 1
-	},
-/turf/open/floor/mineral/plastitanium/red/brig,
+/obj/effect/turf_decal/tile/neutral/opposingcorners,
+/turf/open/floor/mineral/titanium,
 /area/shuttle/escape)
 "MM" = (
 /obj/structure/table,
@@ -1062,6 +1304,7 @@
 	},
 /turf/open/floor/pod/dark,
 /area/shuttle/escape)
+<<<<<<< HEAD:_maps/shuttles/emergency_fland.dmm
 "NG" = (
 /obj/effect/turf_decal/arrows{
 	dir = 8
@@ -1072,6 +1315,8 @@
 /obj/effect/turf_decal/stripes/corner,
 /turf/open/floor/mineral/titanium,
 /area/shuttle/escape)
+=======
+>>>>>>> bd6fb0b075 ([MDB IGNORE]DMM The Turf-Decalening (#7970)):_maps/shuttles/emergency/emergency_fland.dmm
 "NK" = (
 /obj/structure/tank_dispenser/oxygen{
 	layer = 2.7;
@@ -1083,17 +1328,11 @@
 	},
 /turf/open/floor/pod/dark,
 /area/shuttle/escape)
-"OA" = (
-/obj/machinery/button/flasher{
-	id = "cockpit_flasher";
-	pixel_y = -24
-	},
-/obj/effect/turf_decal/tile/neutral,
-/obj/effect/turf_decal/tile/neutral{
-	dir = 1
-	},
-/turf/open/floor/mineral/titanium,
+"OJ" = (
+/obj/effect/turf_decal/tile/brown/opposingcorners,
+/turf/open/floor/mineral/titanium/yellow,
 /area/shuttle/escape)
+<<<<<<< HEAD:_maps/shuttles/emergency_fland.dmm
 "OD" = (
 /obj/effect/turf_decal/tile/neutral,
 /obj/effect/turf_decal/tile/neutral{
@@ -1103,16 +1342,17 @@
 /area/shuttle/escape)
 "OF" = (
 /obj/structure/chair/comfy/shuttle{
+=======
+"PH" = (
+/obj/effect/turf_decal/arrows{
+>>>>>>> bd6fb0b075 ([MDB IGNORE]DMM The Turf-Decalening (#7970)):_maps/shuttles/emergency/emergency_fland.dmm
 	dir = 4
 	},
-/obj/effect/turf_decal/tile/neutral,
-/obj/effect/turf_decal/tile/neutral{
-	dir = 1
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
 	},
-/turf/open/floor/mineral/plastitanium/red/brig,
-/area/shuttle/escape)
-"Px" = (
 /obj/effect/turf_decal/stripes/corner{
+<<<<<<< HEAD:_maps/shuttles/emergency_fland.dmm
 	dir = 8
 	},
 /turf/open/floor/mineral/titanium,
@@ -1124,21 +1364,17 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
 	},
+=======
+	dir = 4
+	},
+/obj/effect/turf_decal/stripes/corner,
+/obj/effect/turf_decal/tile/neutral/opposingcorners,
+>>>>>>> bd6fb0b075 ([MDB IGNORE]DMM The Turf-Decalening (#7970)):_maps/shuttles/emergency/emergency_fland.dmm
 /turf/open/floor/mineral/titanium,
 /area/shuttle/escape)
 "PU" = (
 /obj/machinery/status_display/evac,
 /turf/closed/wall/mineral/titanium,
-/area/shuttle/escape)
-"Qm" = (
-/obj/effect/turf_decal/bot,
-/obj/machinery/recharger,
-/obj/structure/table/reinforced,
-/obj/effect/turf_decal/tile/neutral,
-/obj/effect/turf_decal/tile/neutral{
-	dir = 1
-	},
-/turf/open/floor/mineral/plastitanium/red/brig,
 /area/shuttle/escape)
 "Qo" = (
 /turf/template_noop,
@@ -1162,6 +1398,7 @@
 /obj/effect/turf_decal/bot,
 /turf/open/floor/mineral/plastitanium,
 /area/shuttle/escape)
+<<<<<<< HEAD:_maps/shuttles/emergency_fland.dmm
 "Rq" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
@@ -1242,9 +1479,35 @@
 	},
 /turf/open/floor/mineral/titanium,
 /area/shuttle/escape)
+=======
+"RX" = (
+/turf/open/floor/mineral/titanium/white,
+/area/shuttle/escape)
+>>>>>>> bd6fb0b075 ([MDB IGNORE]DMM The Turf-Decalening (#7970)):_maps/shuttles/emergency/emergency_fland.dmm
 "Uy" = (
 /obj/structure/sign/nanotrasen,
 /turf/closed/wall/mineral/titanium/nodiagonal,
+/area/shuttle/escape)
+"UH" = (
+/obj/effect/turf_decal/arrows{
+	dir = 8
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/effect/turf_decal/stripes/corner{
+	dir = 1
+	},
+/obj/effect/turf_decal/stripes/corner{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/neutral/opposingcorners,
+/turf/open/floor/mineral/titanium,
+/area/shuttle/escape)
+"UQ" = (
+/obj/effect/turf_decal/stripes/line,
+/obj/effect/turf_decal/tile/neutral/opposingcorners,
+/turf/open/floor/mineral/titanium,
 /area/shuttle/escape)
 "UV" = (
 /obj/machinery/door/airlock/medical/glass{
@@ -1281,6 +1544,7 @@
 /obj/effect/spawner/structure/window/plastitanium,
 /turf/open/floor/plating,
 /area/shuttle/escape)
+<<<<<<< HEAD:_maps/shuttles/emergency_fland.dmm
 "Wa" = (
 /obj/structure/chair/comfy/shuttle{
 	dir = 1
@@ -1327,6 +1591,14 @@
 	dir = 1
 	},
 /turf/open/floor/mineral/titanium,
+=======
+"Wh" = (
+/obj/structure/chair/fancy/shuttle{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral/opposingcorners,
+/turf/open/floor/mineral/titanium/purple,
+>>>>>>> bd6fb0b075 ([MDB IGNORE]DMM The Turf-Decalening (#7970)):_maps/shuttles/emergency/emergency_fland.dmm
 /area/shuttle/escape)
 "Xf" = (
 /obj/structure/table,
@@ -1343,6 +1615,10 @@
 "XS" = (
 /obj/structure/sign/warning/fire,
 /turf/closed/wall/mineral/plastitanium/nodiagonal,
+/area/shuttle/escape)
+"XW" = (
+/obj/effect/turf_decal/tile/blue/opposingcorners,
+/turf/open/floor/mineral/titanium/white,
 /area/shuttle/escape)
 "Yj" = (
 /obj/effect/turf_decal/stripes/line{
@@ -1387,6 +1663,26 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/mineral/titanium,
 /area/shuttle/escape)
+"Zd" = (
+/obj/effect/turf_decal/arrows{
+	dir = 4
+	},
+/obj/effect/turf_decal/stripes/corner,
+/obj/effect/turf_decal/stripes/corner{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/neutral/opposingcorners,
+/turf/open/floor/mineral/titanium,
+/area/shuttle/escape)
+"Zk" = (
+/obj/structure/reagent_dispensers/peppertank{
+	pixel_x = -29
+	},
+/obj/effect/turf_decal/bot,
+/obj/machinery/vending/wardrobe/sec_wardrobe,
+/obj/effect/turf_decal/tile/neutral/opposingcorners,
+/turf/open/floor/mineral/plastitanium/red/brig,
+/area/shuttle/escape)
 "Zn" = (
 /obj/structure/chair/comfy/shuttle{
 	dir = 1
@@ -1402,6 +1698,15 @@
 	dir = 8
 	},
 /turf/open/floor/mineral/plastitanium,
+/area/shuttle/escape)
+"ZA" = (
+/obj/effect/turf_decal/delivery,
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/effect/turf_decal/stripes/line,
+/obj/effect/turf_decal/tile/neutral/opposingcorners,
+/turf/open/floor/mineral/titanium,
 /area/shuttle/escape)
 
 (1,1,1) = {"
@@ -1452,15 +1757,15 @@ Qo
 Cj
 aU
 Cj
-ab
+hp
 Zt
 zw
 zw
 zw
 Zt
-mW
+ZA
 fC
-yh
+ee
 QL
 VT
 Vh
@@ -1483,16 +1788,16 @@ Lc
 rF
 wb
 rF
-NG
-PQ
-PQ
-PQ
-PQ
-PQ
-IB
-PQ
-RL
-TO
+LY
+vP
+vP
+vP
+vP
+vP
+UH
+vP
+el
+zZ
 vt
 XS
 vt
@@ -1501,9 +1806,9 @@ vt
 Cj
 GP
 nA
-iL
-in
-aW
+KS
+Am
+Wh
 Lc
 nO
 KV
@@ -1512,9 +1817,9 @@ tC
 pF
 Hg
 Hg
-lQ
+XW
 Fm
-Rz
+UQ
 Yp
 Rl
 Rl
@@ -1522,8 +1827,8 @@ Rl
 Rl
 Rl
 Yp
-Iz
-Rz
+Jx
+UQ
 zM
 VT
 bS
@@ -1533,19 +1838,19 @@ Lc
 NK
 Lc
 Ie
-in
-aW
+Am
+Wh
 Lc
 zB
-lQ
-lQ
-lQ
-lQ
-lQ
-lQ
-lQ
+XW
+XW
+XW
+XW
+XW
+XW
+XW
 UV
-cT
+Mk
 rF
 vT
 vT
@@ -1553,8 +1858,8 @@ vT
 vT
 vT
 rF
-sQ
-Rz
+Go
+UQ
 zM
 VT
 BI
@@ -1568,15 +1873,15 @@ UY
 PU
 rF
 sz
-lQ
-lQ
-lQ
-lQ
-lQ
-lQ
-lQ
+XW
+XW
+XW
+XW
+XW
+XW
+XW
 UV
-Rz
+UQ
 Zt
 zw
 zw
@@ -1584,8 +1889,8 @@ zw
 zw
 zw
 Zt
-Iz
-Rz
+Jx
+UQ
 zM
 VT
 bS
@@ -1593,13 +1898,13 @@ bS
 (7,1,1) = {"
 Lc
 yi
-Wa
-yq
+wD
+mY
 RX
-pd
+KC
 Lc
 nO
-lQ
+XW
 yT
 HC
 HX
@@ -1607,16 +1912,16 @@ ht
 MM
 uY
 Fm
-Px
-Ua
-Ua
-Ua
-Ua
-Ua
-Ua
-Ua
-TI
-Rz
+tR
+tm
+tm
+tm
+tm
+tm
+tm
+tm
+Cy
+UQ
 zM
 VT
 BI
@@ -1638,11 +1943,11 @@ Lc
 PU
 Lc
 rF
-nw
-TN
-SQ
-TN
-zS
+hu
+Km
+Lh
+Km
+vq
 Lc
 Lc
 Cj
@@ -1656,8 +1961,8 @@ vt
 Cj
 ye
 Au
-yq
-yq
+mY
+mY
 RX
 vM
 RX
@@ -1669,16 +1974,16 @@ Cf
 RX
 RX
 qL
-Rz
+UQ
 zM
 rF
 cM
-Iz
+Jx
 Lc
 LR
 ty
 dV
-cg
+OJ
 KX
 YC
 vt
@@ -1686,10 +1991,10 @@ vt
 (10,1,1) = {"
 Cj
 Xf
-aM
-yq
-yq
-OA
+Jx
+mY
+mY
+ie
 Lc
 hn
 AS
@@ -1700,17 +2005,17 @@ AS
 AS
 lw
 Lc
-Rz
+UQ
 zM
 vT
 cM
-Iz
+Jx
 Cj
-cg
-cg
-cg
-cg
-cg
+OJ
+OJ
+OJ
+OJ
+OJ
 Yj
 lc
 "}
@@ -1718,8 +2023,8 @@ lc
 Cj
 tr
 Au
-yq
-yq
+mY
+mY
 RX
 vM
 RX
@@ -1731,16 +2036,16 @@ hi
 RX
 RX
 Rk
-Rz
+UQ
 zM
 rF
 cM
-Iz
+Jx
 Lc
 YW
 VN
 ux
-cg
+OJ
 Mh
 lM
 vt
@@ -1762,11 +2067,11 @@ Lc
 PU
 Lc
 rF
-Px
-Ua
-xT
-Ua
-TI
+tR
+tm
+pG
+tm
+Cy
 Lc
 Lc
 Cj
@@ -1779,30 +2084,30 @@ vt
 (13,1,1) = {"
 Lc
 rF
-WP
-jz
-iI
-oa
+eC
+yb
+AN
+gf
 rF
-WB
-OD
+Zk
+CY
 Cj
-lu
-OF
-OF
-EX
-Sc
+pe
+Ap
+Ap
+oi
+gH
 Cj
-nw
-TN
-TN
-TN
-TN
-TN
-TN
-TN
-zS
-Rz
+hu
+Km
+Km
+Km
+Km
+Km
+Km
+Km
+vq
+UQ
 zM
 VT
 bS
@@ -1815,16 +2120,16 @@ Cj
 Cj
 Lc
 Lc
-OD
-OD
+CY
+CY
 NF
-OD
-OD
-OD
-OD
-OD
+CY
+CY
+CY
+CY
+CY
 NF
-Rz
+UQ
 Yp
 Rl
 Rl
@@ -1832,8 +2137,8 @@ Rl
 Rl
 Rl
 Yp
-Iz
-Rz
+Jx
+UQ
 zM
 VT
 BI
@@ -1846,16 +2151,16 @@ Qo
 Qo
 Qo
 Lc
-tF
-Lb
+Cu
+Lo
 NF
-OD
-OD
-OD
-OD
-OD
+CY
+CY
+CY
+CY
+CY
 NF
-cT
+Mk
 rF
 vT
 vT
@@ -1863,8 +2168,8 @@ vT
 vT
 vT
 rF
-sQ
-Rz
+Go
+UQ
 zM
 VT
 bS
@@ -1877,16 +2182,16 @@ Qo
 Qo
 Qo
 Cj
-Qm
-jd
+Ce
+so
 Cj
-IZ
-MJ
-MJ
-MJ
-Aa
+wh
+kL
+kL
+kL
+tu
 Cj
-Rz
+UQ
 Zt
 zw
 zw
@@ -1894,8 +2199,8 @@ zw
 zw
 zw
 Zt
-Iz
-Rz
+Jx
+UQ
 zM
 VT
 BI
@@ -1917,16 +2222,16 @@ Cj
 rF
 cF
 rF
-Ij
-PQ
-PQ
-PQ
-PQ
-PQ
-gs
-Rq
-rX
-xl
+Zd
+vP
+vP
+vP
+vP
+vP
+PH
+lt
+JJ
+dc
 vt
 XS
 vt
@@ -1948,15 +2253,15 @@ Qo
 Cj
 EC
 Cj
-ab
+hp
 Yp
 Rl
 Rl
 Rl
 Yp
-mW
+ZA
 fC
-yh
+ee
 QL
 VT
 Vh
