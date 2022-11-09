@@ -20,7 +20,11 @@
   *
   * make sure you add an update to the schema_version stable in the db changelog
   */
+<<<<<<< HEAD
 #define DB_MINOR_VERSION 11 // austation -- updating database version due to downstream changes
+=======
+#define DB_MINOR_VERSION 1
+>>>>>>> cb5919e4c1 ([PORT] Notes now show the player's living playtime at the time of noting (#7536))
 
 
 //! ## Timing subsystem
