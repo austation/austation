@@ -268,6 +268,8 @@
 				vol_each_max = min(40, vol_each_max)
 			else if (item_type == "bottle" && !condi)
 				vol_each_max = min(30, vol_each_max)
+			else if (item_type == "bag" && !condi)
+				vol_each_max = min(200, vol_each_max)
 			else if (item_type == "condimentPack" && condi)
 				vol_each_max = min(10, vol_each_max)
 			else if (item_type == "condimentBottle" && condi)
@@ -316,6 +318,7 @@
 						else
 							P = new/obj/item/reagent_containers/pill(drop_location())
 						P.name = trim("[name] pill")
+						P.label_name = trim(name)
 						if(chosenPillStyle == RANDOM_PILL_STYLE)
 							P.icon_state ="pill[rand(1,21)]"
 						else
@@ -330,6 +333,7 @@
 					for(var/i = 0; i < amount; i++)
 						P = new/obj/item/reagent_containers/pill/patch(drop_location())
 						P.name = trim("[name] patch")
+						P.label_name = trim(name)
 						adjust_item_drop_location(P)
 						reagents.trans_to(P, vol_each, transfered_by = usr)
 					. = TRUE
@@ -338,6 +342,16 @@
 					for(var/i = 0; i < amount; i++)
 						P = new/obj/item/reagent_containers/glass/bottle(drop_location())
 						P.name = trim("[name] bottle")
+						P.label_name = trim(name)
+						adjust_item_drop_location(P)
+						reagents.trans_to(P, vol_each, transfered_by = usr)
+					. = TRUE
+				if("bag")
+					var/obj/item/reagent_containers/chem_bag/P
+					for(var/i = 0; i < amount; i++)
+						P = new/obj/item/reagent_containers/chem_bag(drop_location())
+						P.name = trim("[name] chemical bag")
+						P.label_name = trim(name)
 						adjust_item_drop_location(P)
 						reagents.trans_to(P, vol_each, transfered_by = usr)
 					. = TRUE
@@ -347,6 +361,7 @@
 						P = new/obj/item/reagent_containers/food/condiment/pack(drop_location())
 						P.originalname = name
 						P.name = trim("[name] pack")
+						P.label_name = trim(name)
 						P.desc = "A small condiment pack. The label says it contains [name]."
 						reagents.trans_to(P, vol_each, transfered_by = usr)
 					. = TRUE
@@ -356,6 +371,7 @@
 						P = new/obj/item/reagent_containers/food/condiment(drop_location())
 						P.originalname = name
 						P.name = trim("[name] bottle")
+						P.label_name = trim(name)
 						reagents.trans_to(P, vol_each, transfered_by = usr)
 					. = TRUE
 		if("analyze")

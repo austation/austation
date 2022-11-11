@@ -4,6 +4,12 @@
 	icon = 'icons/obj/chemical.dmi'
 	icon_state = null
 	w_class = WEIGHT_CLASS_TINY
+<<<<<<< HEAD
+=======
+	/// this is to support when you don't want to display "bottle" part with a custom name. i.e.) "Bica-Kelo mix" rather than "Bica-Kelo mix bottle"
+	var/label_name
+	///How many units are we currently transferring?
+>>>>>>> 63843e8118 (adds Chemical bag, that is printable from ChemMaster (#7862))
 	var/amount_per_transfer_from_this = 5
 	var/list/possible_transfer_amounts = list(5,10,15,20,25,30)
 	var/volume = 30
@@ -25,6 +31,8 @@
 		var/datum/disease/F = new spawned_disease()
 		var/list/data = list("viruses"= list(F))
 		reagents.add_reagent(/datum/reagent/blood, disease_amount, data)
+	if(!label_name)
+		label_name = name
 
 	add_initial_reagents()
 
