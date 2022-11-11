@@ -782,16 +782,17 @@
 		if(SSshuttle.emergency.is_hijacked())
 			SSticker.news_report = SHUTTLE_HIJACK
 
-
 /datum/game_mode/proc/generate_credit_text()
 	var/list/round_credits = list()
 	var/len_before_addition
+	var/custom_title_holder
 
 	// HEADS OF STAFF
 	round_credits += "<center><h1>The Glorious Command Staff:</h1>"
 	len_before_addition = round_credits.len
 	for(var/datum/mind/current in SSticker.mode.get_all_by_department(GLOB.command_positions))
-		round_credits += "<center><h2>[current.name] as the [current.assigned_role]</h2>"
+		custom_title_holder = get_custom_title_from_id(current, newline=TRUE)
+		round_credits += "<center><h2>[current.name] as the [current.assigned_role][custom_title_holder]</h2>"
 	if(round_credits.len == len_before_addition)
 		round_credits += list("<center><h2>A serious bureaucratic error has occurred!</h2>", "<center><h2>No one was in charge of the crew!</h2>")
 	round_credits += "<br>"
@@ -809,7 +810,8 @@
 	round_credits += "<center><h1>The Brave Security Officers:</h1>"
 	len_before_addition = round_credits.len
 	for(var/datum/mind/current in SSticker.mode.get_all_by_department(GLOB.security_positions))
-		round_credits += "<center><h2>[current.name] as the [current.assigned_role]</h2>"
+		custom_title_holder = get_custom_title_from_id(current, newline=TRUE)
+		round_credits += "<center><h2>[current.name] as the [current.assigned_role][custom_title_holder]</h2>"
 	if(round_credits.len == len_before_addition)
 		round_credits += list("<center><h2>[station_name()] has fallen to Communism!</h2>", "<center><h2>No one was there to protect the crew!</h2>")
 	round_credits += "<br>"
@@ -818,7 +820,8 @@
 	round_credits += "<center><h1>The Wise Medical Department:</h1>"
 	len_before_addition = round_credits.len
 	for(var/datum/mind/current in SSticker.mode.get_all_by_department(GLOB.medical_positions))
-		round_credits += "<center><h2>[current.name] as the [current.assigned_role]</h2>"
+		custom_title_holder = get_custom_title_from_id(current, newline=TRUE)
+		round_credits += "<center><h2>[current.name] as the [current.assigned_role][custom_title_holder]</h2>"
 	if(round_credits.len == len_before_addition)
 		round_credits += list("<center><h2>Healthcare was not included!</h2>", "<center><h2>There were no doctors today!</h2>")
 	round_credits += "<br>"
@@ -827,7 +830,8 @@
 	round_credits += "<center><h1>The Industrious Engineers:</h1>"
 	len_before_addition = round_credits.len
 	for(var/datum/mind/current in SSticker.mode.get_all_by_department(GLOB.engineering_positions))
-		round_credits += "<center><h2>[current.name] as the [current.assigned_role]</h2>"
+		custom_title_holder = get_custom_title_from_id(current, newline=TRUE)
+		round_credits += "<center><h2>[current.name] as the [current.assigned_role][custom_title_holder]</h2>"
 	if(round_credits.len == len_before_addition)
 		round_credits += list("<center><h2>[station_name()] probably did not last long!</h2>", "<center><h2>No one was holding the station together!</h2>")
 	round_credits += "<br>"
@@ -836,7 +840,8 @@
 	round_credits += "<center><h1>The Inventive Science Employees:</h1>"
 	len_before_addition = round_credits.len
 	for(var/datum/mind/current in SSticker.mode.get_all_by_department(GLOB.science_positions))
-		round_credits += "<center><h2>[current.name] as the [current.assigned_role]</h2>"
+		custom_title_holder = get_custom_title_from_id(current, newline=TRUE)
+		round_credits += "<center><h2>[current.name] as the [current.assigned_role][custom_title_holder]</h2>"
 	if(round_credits.len == len_before_addition)
 		round_credits += list("<center><h2>No one was doing \"science\" today!</h2>", "<center><h2>Everyone probably made it out alright, then!</h2>")
 	round_credits += "<br>"
@@ -845,7 +850,8 @@
 	round_credits += "<center><h1>The Rugged Cargo Crew:</h1>"
 	len_before_addition = round_credits.len
 	for(var/datum/mind/current in SSticker.mode.get_all_by_department(GLOB.supply_positions))
-		round_credits += "<center><h2>[current.name] as the [current.assigned_role]</h2>"
+		custom_title_holder = get_custom_title_from_id(current, newline=TRUE)
+		round_credits += "<center><h2>[current.name] as the [current.assigned_role][custom_title_holder]</h2>"
 	if(round_credits.len == len_before_addition)
 		round_credits += list("<center><h2>The station was freed from paperwork!</h2>", "<center><h2>No one worked in cargo today!</h2>")
 	round_credits += "<br>"
@@ -854,11 +860,17 @@
 	var/list/human_garbage = list()
 	round_credits += "<center><h1>The Hardy Civilians:</h1>"
 	len_before_addition = round_credits.len
+<<<<<<< HEAD
 	for(var/datum/mind/current in SSticker.mode.get_all_by_department(GLOB.civilian_positions | GLOB.gimmick_positions))
 		if(current.assigned_role == "Assistant")
+=======
+	for(var/datum/mind/current in SSticker.mode.get_all_by_department(GLOB.civilian_positions | GLOB.gimmick_positions)) // gimmicks shouldn't be here, but let's not make the code dirty
+		if(current.assigned_role == JOB_NAME_ASSISTANT)
+>>>>>>> 42eded6b8c (Adds custom title details to roundend report and credit (#7929))
 			human_garbage += current
 		else
-			round_credits += "<center><h2>[current.name] as the [current.assigned_role]</h2>"
+			custom_title_holder = get_custom_title_from_id(current, newline=TRUE)
+			round_credits += "<center><h2>[current.name] as the [current.assigned_role][custom_title_holder]</h2>"
 	if(round_credits.len == len_before_addition)
 		round_credits += list("<center><h2>Everyone was stuck in traffic this morning!</h2>", "<center><h2>No civilians made it to work!</h2>")
 	round_credits += "<br>"
@@ -866,7 +878,8 @@
 	round_credits += "<center><h1>The Helpful Assistants:</h1>"
 	len_before_addition = round_credits.len
 	for(var/datum/mind/current in human_garbage)
-		round_credits += "<center><h2>[current.name]</h2>"
+		custom_title_holder = get_custom_title_from_id(current, newline=TRUE)
+		round_credits += "<center><h2>[current.name][custom_title_holder]</h2>"
 	if(round_credits.len == len_before_addition)
 		round_credits += list("<center><h2>The station was free of <s>greytide</s> assistance!</h2>", "<center><h2>Not a single Assistant showed up on the station today!</h2>")
 
