@@ -31,6 +31,11 @@
 	. = ..()
 	RegisterSignal(owner.current, COMSIG_MOB_EXAMINATE, .proc/on_examinate)
 	owner.teach_crafting_recipe(/datum/crafting_recipe/skeleton_key)
+<<<<<<< HEAD
+=======
+	owner.teach_crafting_recipe(/datum/crafting_recipe/drakecloak)
+	owner.teach_crafting_recipe(/datum/crafting_recipe/primal_lasso)
+>>>>>>> 7eb52b799d (Fixes primal lasso and drake armor crafting for ashwalkers (#8045))
 
 /datum/antagonist/ashwalker/on_removal()
 	. = ..()
