@@ -13430,6 +13430,7 @@
 	dir = 4
 	},
 /turf/open/floor/plasteel,
+<<<<<<< HEAD
 /area/hallway/primary/port)
 "aLq" = (
 /obj/effect/turf_decal/stripes/line{
@@ -13456,6 +13457,13 @@
 /obj/machinery/door/firedoor,
 /turf/open/floor/plasteel,
 /area/construction/mining/aux_base)
+=======
+/area/hallway/primary/central)
+"aLt" = (
+/obj/machinery/atmospherics/pipe/simple/green/visible,
+/turf/closed/wall/r_wall,
+/area/engine/atmos)
+>>>>>>> 9e7760ce02 (Shift engineering and atmos chambers (#8054))
 "aLv" = (
 /obj/machinery/firealarm{
 	dir = 4;
@@ -33575,6 +33583,7 @@
 /obj/effect/turf_decal/tile/yellow{
 	dir = 8
 	},
+<<<<<<< HEAD
 /obj/structure/table,
 /obj/machinery/cell_charger,
 /obj/item/clothing/glasses/meson,
@@ -33591,6 +33600,15 @@
 /obj/machinery/rnd/production/circuit_imprinter/department/engineering,
 /turf/open/floor/plasteel/checker,
 /area/engine/break_room)
+=======
+/turf/open/floor/plasteel/showroomfloor,
+/area/crew_quarters/heads/captain)
+"cap" = (
+/obj/effect/spawner/structure/window/reinforced,
+/obj/machinery/atmospherics/pipe/simple/cyan/visible,
+/turf/open/floor/plating,
+/area/engine/atmos)
+>>>>>>> 9e7760ce02 (Shift engineering and atmos chambers (#8054))
 "cax" = (
 /obj/structure/closet/wardrobe/black,
 /obj/effect/decal/cleanable/cobweb,
@@ -35982,9 +36000,10 @@
 /turf/open/floor/plating,
 /area/crew_quarters/heads/chief)
 "cit" = (
+/obj/structure/lattice,
 /obj/machinery/atmospherics/pipe/simple/green/visible,
-/turf/closed/wall/r_wall,
-/area/engine/atmos)
+/turf/open/space,
+/area/space/nearstation)
 "cix" = (
 /obj/machinery/atmospherics/pipe/simple/cyan/visible,
 /turf/closed/wall/r_wall,
@@ -36441,27 +36460,20 @@
 /turf/open/floor/plasteel,
 /area/science/misc_lab)
 "ckb" = (
-/obj/machinery/atmospherics/pipe/simple,
-/obj/structure/grille,
-/obj/machinery/meter,
-/turf/closed/wall/r_wall,
-/area/engine/atmos)
+/obj/machinery/atmospherics/pipe/simple/green/visible,
+/obj/structure/lattice,
+/turf/open/space/basic,
+/area/space/nearstation)
 "ckc" = (
-/obj/machinery/atmospherics/pipe/simple,
-/obj/structure/grille,
-/obj/machinery/meter{
-	name = "Mixed Air Tank In"
-	},
-/turf/closed/wall/r_wall,
-/area/engine/atmos)
+/obj/machinery/atmospherics/pipe/simple/yellow/visible,
+/obj/structure/lattice,
+/turf/open/space/basic,
+/area/space/nearstation)
 "ckd" = (
-/obj/machinery/atmospherics/pipe/simple,
-/obj/structure/grille,
-/obj/machinery/meter{
-	name = "Mixed Air Tank Out"
-	},
-/turf/closed/wall/r_wall,
-/area/engine/atmos)
+/obj/structure/lattice,
+/obj/machinery/atmospherics/pipe/simple/yellow/visible,
+/turf/open/space/basic,
+/area/space/nearstation)
 "ckg" = (
 /obj/machinery/atmospherics/pipe/simple/yellow/visible,
 /turf/closed/wall,
@@ -36626,51 +36638,52 @@
 /turf/open/floor/plasteel,
 /area/quartermaster/warehouse)
 "ckU" = (
-/obj/machinery/air_sensor/atmos/nitrogen_tank,
-/turf/open/floor/engine/n2,
-/area/engine/atmos)
-"ckV" = (
 /obj/machinery/atmospherics/components/unary/outlet_injector/atmos/nitrogen_input{
 	dir = 1
 	},
 /turf/open/floor/engine/n2,
 /area/engine/atmos)
+"ckV" = (
+/obj/structure/lattice,
+/obj/machinery/atmospherics/pipe/simple/cyan/visible,
+/turf/open/space/basic,
+/area/space/nearstation)
 "ckW" = (
-/obj/machinery/atmospherics/components/unary/vent_pump/siphon/atmos/nitrogen_output{
-	dir = 1
-	},
+/obj/machinery/air_sensor/atmos/nitrogen_tank,
 /turf/open/floor/engine/n2,
 /area/engine/atmos)
 "ckX" = (
-/obj/machinery/air_sensor/atmos/oxygen_tank,
-/turf/open/floor/engine/o2,
-/area/engine/atmos)
-"ckY" = (
 /obj/machinery/atmospherics/components/unary/outlet_injector/atmos/oxygen_input{
 	dir = 1
 	},
 /turf/open/floor/engine/o2,
 /area/engine/atmos)
+"ckY" = (
+/obj/machinery/atmospherics/pipe/simple,
+/obj/structure/grille,
+/obj/machinery/meter,
+/turf/closed/wall/r_wall,
+/area/engine/atmos)
 "ckZ" = (
-/obj/machinery/atmospherics/components/unary/vent_pump/siphon/atmos/oxygen_output{
-	dir = 1
-	},
+/obj/machinery/air_sensor/atmos/oxygen_tank,
 /turf/open/floor/engine/o2,
 /area/engine/atmos)
 "cla" = (
-/obj/machinery/air_sensor/atmos/air_tank,
-/turf/open/floor/engine/air,
-/area/engine/atmos)
-"clb" = (
 /obj/machinery/atmospherics/components/unary/outlet_injector/atmos/air_input{
 	dir = 1
 	},
 /turf/open/floor/engine/air,
 /area/engine/atmos)
-"clc" = (
-/obj/machinery/atmospherics/components/unary/vent_pump/high_volume/siphon/atmos/air_output{
-	dir = 1
+"clb" = (
+/obj/machinery/atmospherics/pipe/simple,
+/obj/structure/grille,
+/obj/machinery/meter{
+	name = "Mixed Air Tank In"
 	},
+/turf/closed/wall/r_wall,
+/area/engine/atmos)
+"clc" = (
+/obj/machinery/air_sensor/atmos/air_tank,
 /turf/open/floor/engine/air,
 /area/engine/atmos)
 "cld" = (
@@ -36938,17 +36951,15 @@
 	},
 /turf/open/floor/plasteel,
 /area/engine/engineering)
-"clT" = (
+"clU" = (
 /obj/machinery/atmospherics/miner/station/nitrogen,
 /turf/open/floor/engine/n2,
 /area/engine/atmos)
-"clU" = (
-/turf/open/floor/engine/n2,
-/area/engine/atmos)
-"clV" = (
+"clW" = (
 /obj/machinery/atmospherics/miner/station/oxygen,
 /turf/open/floor/engine/o2,
 /area/engine/atmos)
+<<<<<<< HEAD
 "clW" = (
 /turf/open/floor/engine/o2,
 /area/engine/atmos)
@@ -36967,11 +36978,19 @@
 	},
 /turf/open/floor/plasteel,
 /area/crew_quarters/bar)
+=======
+>>>>>>> 9e7760ce02 (Shift engineering and atmos chambers (#8054))
 "clY" = (
-/obj/effect/landmark/xeno_spawn,
-/turf/open/floor/engine/air,
+/obj/machinery/atmospherics/pipe/simple,
+/obj/structure/grille,
+/obj/machinery/meter{
+	name = "Mixed Air Tank Out"
+	},
+/turf/closed/wall/r_wall,
 /area/engine/atmos)
 "clZ" = (
+/obj/machinery/portable_atmospherics/canister/air,
+/obj/effect/landmark/event_spawn,
 /turf/open/floor/engine/air,
 /area/engine/atmos)
 "cmd" = (
@@ -37210,15 +37229,12 @@
 /turf/open/floor/plasteel,
 /area/maintenance/disposal/incinerator)
 "cmU" = (
-/obj/machinery/light/small,
 /turf/open/floor/engine/n2,
 /area/engine/atmos)
 "cmV" = (
-/obj/machinery/light/small,
 /turf/open/floor/engine/o2,
 /area/engine/atmos)
 "cmW" = (
-/obj/machinery/light/small,
 /turf/open/floor/engine/air,
 /area/engine/atmos)
 "cmX" = (
@@ -37825,6 +37841,7 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 4
 	},
+<<<<<<< HEAD
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
 	},
@@ -37835,6 +37852,11 @@
 /obj/machinery/atmospherics/pipe/simple/green/visible,
 /turf/open/space,
 /area/space/nearstation)
+=======
+/obj/effect/landmark/start/captain,
+/turf/open/floor/carpet/royalblue,
+/area/crew_quarters/heads/captain)
+>>>>>>> 9e7760ce02 (Shift engineering and atmos chambers (#8054))
 "cpi" = (
 /obj/structure/lattice/catwalk,
 /obj/structure/cable{
@@ -37990,10 +38012,16 @@
 /turf/open/floor/plasteel,
 /area/maintenance/disposal/incinerator)
 "cpP" = (
-/obj/structure/lattice,
-/obj/machinery/atmospherics/pipe/simple/cyan/visible,
-/turf/open/space,
-/area/space/nearstation)
+/obj/machinery/firealarm{
+	dir = 8;
+	pixel_x = 24
+	},
+/obj/structure/closet/radiation,
+/obj/effect/turf_decal/tile/yellow/anticorner/contrasted{
+	dir = 4
+	},
+/turf/open/floor/plasteel,
+/area/engine/engineering)
 "cpQ" = (
 /obj/machinery/meter,
 /obj/machinery/atmospherics/pipe/simple/general/visible{
@@ -40919,8 +40947,7 @@
 /turf/open/floor/plasteel,
 /area/engine/engineering)
 "cBP" = (
-/obj/machinery/portable_atmospherics/canister/air,
-/obj/effect/landmark/event_spawn,
+/obj/effect/landmark/xeno_spawn,
 /turf/open/floor/engine/air,
 /area/engine/atmos)
 "cBS" = (
@@ -43496,6 +43523,7 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 5
 	},
+<<<<<<< HEAD
 /turf/open/floor/plating/airless,
 /area/maintenance/solars/port/aft)
 "drr" = (
@@ -43505,6 +43533,58 @@
 /area/maintenance/aft)
 "drM" = (
 /obj/structure/table/reinforced,
+=======
+/obj/effect/turf_decal/tile/neutral/half/contrasted{
+	dir = 8
+	},
+/turf/open/floor/plasteel,
+/area/crew_quarters/fitness)
+"dpE" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/siphon/atmos/nitrogen_output{
+	dir = 1
+	},
+/turf/open/floor/engine/n2,
+/area/engine/atmos)
+"dqA" = (
+/obj/structure/table/glass,
+/obj/item/reagent_containers/syringe/antiviral{
+	pixel_x = 7;
+	pixel_y = 13
+	},
+/obj/item/reagent_containers/syringe/antiviral{
+	pixel_x = 5;
+	pixel_y = 10
+	},
+/obj/item/reagent_containers/syringe/antiviral{
+	pixel_x = 1;
+	pixel_y = 8
+	},
+/obj/item/reagent_containers/syringe/antiviral{
+	pixel_y = 5
+	},
+/obj/item/reagent_containers/syringe/antiviral{
+	pixel_x = -1;
+	pixel_y = 1
+	},
+/obj/item/reagent_containers/syringe/antiviral{
+	pixel_x = -2;
+	pixel_y = -1
+	},
+/obj/item/storage/box/syringes{
+	pixel_x = 6;
+	pixel_y = 11
+	},
+/obj/item/storage/box/syringes{
+	pixel_x = -3;
+	pixel_y = 2
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
+	dir = 9
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
+	dir = 10
+	},
+>>>>>>> 9e7760ce02 (Shift engineering and atmos chambers (#8054))
 /turf/open/floor/plasteel/white,
 /area/quartermaster/exploration_prep)
 "dss" = (
@@ -45423,7 +45503,25 @@
 /obj/item/pool/pool_noodle,
 /obj/item/pool/rubber_ring,
 /turf/open/floor/plasteel,
+<<<<<<< HEAD
 /area/crew_quarters/fitness)
+=======
+/area/security/brig)
+"fCv" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/siphon/atmos/oxygen_output{
+	dir = 1
+	},
+/turf/open/floor/engine/o2,
+/area/engine/atmos)
+"fCK" = (
+/obj/machinery/power/solar{
+	id = "auxsolareast";
+	name = "Port Auxiliary Solar Array"
+	},
+/obj/structure/cable,
+/turf/open/floor/plasteel/airless/solarpanel,
+/area/solar/starboard/fore)
+>>>>>>> 9e7760ce02 (Shift engineering and atmos chambers (#8054))
 "fDa" = (
 /obj/structure/closet/secure_closet/personal/patient,
 /obj/machinery/button/door{
@@ -47221,7 +47319,60 @@
 	pixel_y = 24;
 	req_access_txt = "47"
 	},
+<<<<<<< HEAD
 /obj/effect/turf_decal/tile/purple{
+=======
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
+	dir = 9
+	},
+/turf/open/floor/plasteel,
+/area/hallway/secondary/entry)
+"hHC" = (
+/obj/machinery/light,
+/obj/effect/turf_decal/tile/neutral/fourcorners/contrasted,
+/obj/structure/fireaxecabinet{
+	pixel_y = -32
+	},
+/obj/effect/turf_decal/trimline/dark_blue/filled/line,
+/turf/open/floor/plasteel/dark,
+/area/bridge)
+"hIk" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/maintenance/starboard/fore)
+"hII" = (
+/obj/machinery/atmospherics/components/binary/valve/layer2{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/maintenance/port/fore)
+"hIW" = (
+/obj/machinery/atmospherics/pipe/simple/cyan/visible{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
+	dir = 8
+	},
+/turf/open/floor/plasteel,
+/area/engine/atmos)
+"hJe" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/high_volume/siphon/atmos/air_output{
+	dir = 1
+	},
+/turf/open/floor/engine/air,
+/area/engine/atmos)
+"hJC" = (
+/obj/effect/landmark/event_spawn,
+/obj/effect/turf_decal/tile/blue/opposingcorners{
+>>>>>>> 9e7760ce02 (Shift engineering and atmos chambers (#8054))
 	dir = 1
 	},
 /obj/machinery/camera/autoname{
@@ -47250,6 +47401,26 @@
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
 	},
+<<<<<<< HEAD
+=======
+/obj/machinery/door/airlock/maintenance{
+	req_access_txt = "12"
+	},
+/turf/open/floor/plating,
+/area/maintenance/starboard)
+"hJU" = (
+/obj/item/kirbyplants/random,
+/obj/machinery/door/firedoor,
+/obj/effect/turf_decal/tile/yellow/anticorner/contrasted{
+	dir = 4
+	},
+/turf/closed/wall/r_wall,
+/area/engine/engineering)
+"hKs" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+>>>>>>> 9e7760ce02 (Shift engineering and atmos chambers (#8054))
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
 	dir = 1
 	},
@@ -47737,6 +47908,7 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plasteel,
 /area/maintenance/disposal/incinerator)
+<<<<<<< HEAD
 "iqP" = (
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
@@ -47795,6 +47967,13 @@
 	},
 /turf/open/floor/plating,
 /area/maintenance/starboard)
+=======
+"irL" = (
+/obj/structure/closet/firecloset,
+/obj/effect/turf_decal/tile/yellow/half/contrasted,
+/turf/open/floor/plasteel,
+/area/engine/engineering)
+>>>>>>> 9e7760ce02 (Shift engineering and atmos chambers (#8054))
 "isc" = (
 /obj/effect/turf_decal/loading_area,
 /turf/open/floor/plasteel/dark,
@@ -49073,6 +49252,59 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/ai_monitored/turret_protected/ai)
+<<<<<<< HEAD
+=======
+"kbu" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/maintenance/port/aft)
+"kbL" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
+	dir = 8
+	},
+/obj/structure/disposalpipe/sorting/mail/flip{
+	dir = 4;
+	sortType = 17
+	},
+/turf/open/floor/plasteel/grimy,
+/area/chapel/office)
+"kbN" = (
+/obj/item/storage/firstaid/regular{
+	pixel_x = 3;
+	pixel_y = 3
+	},
+/obj/item/storage/firstaid/regular,
+/obj/structure/table/glass,
+/obj/effect/turf_decal/tile/red/half/contrasted{
+	dir = 4
+	},
+/turf/open/floor/plasteel/white,
+/area/security/brig)
+"kbR" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
+/turf/open/floor/plasteel/cafeteria_red,
+/area/crew_quarters/bar)
+"kbT" = (
+/obj/machinery/airalarm{
+	dir = 8;
+	pixel_x = 24
+	},
+/obj/structure/closet/firecloset,
+/obj/effect/turf_decal/tile/yellow/half/contrasted,
+/turf/open/floor/plasteel,
+/area/engine/engineering)
+>>>>>>> 9e7760ce02 (Shift engineering and atmos chambers (#8054))
 "kch" = (
 /turf/closed/wall/r_wall,
 /area/quartermaster/exploration_prep)
@@ -49176,6 +49408,7 @@
 /obj/item/storage/firstaid/regular,
 /turf/open/floor/plasteel/white,
 /area/medical/medbay/central)
+<<<<<<< HEAD
 "kiV" = (
 /obj/effect/spawner/structure/window/reinforced,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
@@ -49187,6 +49420,21 @@
 /obj/effect/turf_decal/stripes/line,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
 	dir = 8
+=======
+"kiu" = (
+/obj/effect/turf_decal/tile/yellow{
+	dir = 4
+	},
+/turf/open/floor/plasteel,
+/area/engine/engineering)
+"kjp" = (
+/obj/machinery/door/airlock/security/glass{
+	name = "Security Office";
+	req_access_txt = "63"
+	},
+/obj/structure/cable/yellow{
+	icon_state = "4-8"
+>>>>>>> 9e7760ce02 (Shift engineering and atmos chambers (#8054))
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
 	dir = 4
@@ -49320,7 +49568,68 @@
 	dir = 10
 	},
 /turf/open/floor/plasteel,
+<<<<<<< HEAD
 /area/crew_quarters/locker)
+=======
+/area/quartermaster/storage)
+"koQ" = (
+/obj/effect/mapping_helpers/airlock/cyclelink_helper{
+	dir = 8
+	},
+/obj/machinery/door/airlock/external{
+	name = "Security Escape Airlock";
+	req_access_txt = "2"
+	},
+/obj/machinery/atmospherics/pipe/layer_manifold{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/hallway/secondary/exit)
+"koX" = (
+/obj/machinery/light/small,
+/turf/open/floor/engine/n2,
+/area/engine/atmos)
+"kpk" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
+	dir = 10
+	},
+/turf/open/floor/circuit,
+/area/ai_monitored/nuke_storage)
+"kps" = (
+/obj/machinery/door/poddoor/preopen{
+	id = "permacell2";
+	name = "cell blast door"
+	},
+/obj/machinery/door/airlock/public/glass{
+	id_tag = "permabolt2";
+	name = "Cell 2"
+	},
+/obj/effect/mapping_helpers/airlock/cyclelink_helper,
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
+	dir = 1
+	},
+/turf/open/floor/plasteel,
+/area/security/prison)
+"kpM" = (
+/obj/machinery/airalarm{
+	dir = 1;
+	pixel_y = -22
+	},
+/turf/open/floor/plasteel,
+/area/hallway/primary/central)
+"kpQ" = (
+/obj/machinery/door/airlock/external{
+	name = "Solar Maintenance";
+	req_access_txt = "10; 13"
+	},
+/obj/machinery/atmospherics/pipe/layer_manifold{
+	dir = 1
+	},
+/turf/open/floor/plating,
+/area/maintenance/starboard/aft)
+>>>>>>> 9e7760ce02 (Shift engineering and atmos chambers (#8054))
 "kqw" = (
 /obj/structure/disposalpipe/segment{
 	dir = 6
@@ -50193,9 +50502,53 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 5
 	},
+<<<<<<< HEAD
 /turf/open/floor/plating,
 /area/security/processing)
 "leO" = (
+=======
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
+	dir = 8
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/plasteel/dark,
+/area/hallway/secondary/command)
+"led" = (
+/obj/machinery/computer/message_monitor{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/yellow/half/contrasted{
+	dir = 1
+	},
+/turf/open/floor/plasteel,
+/area/tcommsat/computer)
+"lel" = (
+/obj/structure/closet/firecloset,
+/obj/effect/turf_decal/tile/neutral/half/contrasted{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/dark_blue/fourcorners/contrasted,
+/obj/structure/extinguisher_cabinet{
+	pixel_x = 5;
+	pixel_y = -32
+	},
+/turf/open/floor/plasteel/dark,
+/area/bridge)
+"leQ" = (
+/obj/machinery/portable_atmospherics/scrubber,
+/turf/open/floor/plasteel,
+/area/engine/atmos)
+"leR" = (
+/obj/structure/table,
+/obj/machinery/cell_charger,
+/obj/effect/turf_decal/tile/dark_blue/fourcorners/contrasted,
+/turf/open/floor/plasteel/techmaint,
+/area/gateway)
+"leU" = (
+/obj/structure/disposalpipe/segment,
+>>>>>>> 9e7760ce02 (Shift engineering and atmos chambers (#8054))
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
 	dir = 1
 	},
@@ -53229,7 +53582,33 @@
 	pixel_y = -24
 	},
 /turf/open/floor/plating,
+<<<<<<< HEAD
 /area/maintenance/port/aft)
+=======
+/area/maintenance/fore)
+"oCv" = (
+/obj/structure/filingcabinet/chestdrawer,
+/obj/effect/turf_decal/tile/red/half/contrasted{
+	dir = 4
+	},
+/turf/open/floor/plasteel/white,
+/area/science/robotics/lab)
+"oCI" = (
+/obj/machinery/porta_turret/ai{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral/fourcorners/contrasted,
+/turf/open/floor/plasteel/dark,
+/area/ai_monitored/turret_protected/aisat/atmos)
+"oDk" = (
+/obj/machinery/portable_atmospherics/pump,
+/obj/effect/turf_decal/tile/red/anticorner/contrasted{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/green/visible,
+/turf/open/floor/plasteel,
+/area/engine/atmos)
+>>>>>>> 9e7760ce02 (Shift engineering and atmos chambers (#8054))
 "oDF" = (
 /obj/machinery/light,
 /turf/open/floor/plating,
@@ -53365,7 +53744,34 @@
 /obj/machinery/atmospherics/pipe/layer_manifold{
 	dir = 4
 	},
+<<<<<<< HEAD
 /turf/closed/wall/r_wall,
+=======
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/turf/open/floor/plasteel/dark,
+/area/medical/morgue)
+"oNS" = (
+/obj/effect/turf_decal/stripes/corner{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/turf/open/floor/plasteel,
+/area/hallway/secondary/entry)
+"oOi" = (
+/obj/machinery/portable_atmospherics/pump,
+/obj/machinery/atmospherics/pipe/simple/green/visible,
+/turf/open/floor/plasteel,
+>>>>>>> 9e7760ce02 (Shift engineering and atmos chambers (#8054))
 /area/engine/atmos)
 "oOI" = (
 /obj/item/pool/pool_noodle,
@@ -55176,8 +55582,28 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
 	dir = 1
 	},
+<<<<<<< HEAD
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
+=======
+/obj/machinery/door/firedoor,
+/turf/open/floor/plasteel/freezer,
+/area/crew_quarters/kitchen)
+"qRq" = (
+/obj/effect/turf_decal/tile/blue{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/cyan/visible{
+	dir = 1
+	},
+/turf/open/floor/plasteel/cafeteria,
+/area/engine/atmos)
+"qRv" = (
+/obj/structure/chair/stool,
+/obj/effect/landmark/start/janitor,
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer2{
+	dir = 4
+>>>>>>> 9e7760ce02 (Shift engineering and atmos chambers (#8054))
 	},
 /turf/open/floor/plasteel,
 /area/hallway/primary/central)
@@ -55394,7 +55820,167 @@
 /obj/machinery/door/firedoor,
 /turf/open/floor/plasteel,
 /area/hallway/secondary/entry)
+<<<<<<< HEAD
 "rmR" = (
+=======
+"rmN" = (
+/obj/effect/turf_decal/delivery,
+/obj/machinery/atmospherics/pipe/simple/general/visible{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
+	dir = 8
+	},
+/turf/open/floor/plasteel,
+/area/science/misc_lab)
+"rng" = (
+/obj/structure/disposalpipe/segment,
+/obj/structure/cable/yellow{
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
+	dir = 1
+	},
+/obj/effect/turf_decal/stripes/line,
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/turf/open/floor/plating,
+/area/maintenance/port/aft)
+"rns" = (
+/obj/structure/flora/grass/jungle/b,
+/obj/structure/flora/ausbushes/fullgrass,
+/obj/structure/flora/ausbushes/leafybush,
+/turf/open/floor/grass,
+/area/hallway/secondary/command)
+"rnF" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/layer4,
+/turf/open/floor/plasteel,
+/area/hallway/secondary/entry)
+"roc" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer4{
+	dir = 8
+	},
+/turf/open/floor/plasteel,
+/area/hallway/secondary/exit)
+"rod" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/machinery/camera/autoname{
+	dir = 8;
+	network = list("ss13","engine")
+	},
+/turf/open/floor/engine,
+/area/engine/engineering)
+"rov" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
+	dir = 10
+	},
+/obj/effect/turf_decal/tile/blue{
+	dir = 4
+	},
+/turf/open/floor/plasteel/white/corner{
+	dir = 1
+	},
+/area/hallway/secondary/entry)
+"rpg" = (
+/obj/effect/turf_decal/stripes/line,
+/obj/structure/disposalpipe/segment,
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
+	dir = 1
+	},
+/turf/open/floor/plasteel,
+/area/science/mixing)
+"rpn" = (
+/obj/machinery/light{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
+	dir = 6
+	},
+/obj/effect/turf_decal/tile/red/anticorner/contrasted{
+	dir = 1
+	},
+/turf/open/floor/plasteel,
+/area/security/brig)
+"rpr" = (
+/obj/machinery/light/small,
+/turf/open/floor/plasteel/cafeteria_red,
+/area/crew_quarters/bar)
+"rpJ" = (
+/obj/structure/disposalpipe/segment,
+/obj/structure/cable/yellow{
+	icon_state = "1-2"
+	},
+/obj/machinery/power/apc/auto_name/east,
+/obj/structure/cable/yellow{
+	icon_state = "0-2"
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
+	dir = 1
+	},
+/turf/open/floor/plating,
+/area/maintenance/port)
+"rpN" = (
+/obj/effect/turf_decal/tile/blue/half/contrasted{
+	dir = 8
+	},
+/turf/open/floor/plasteel,
+/area/hallway/primary/starboard)
+"rqm" = (
+/obj/structure/rack,
+/obj/item/storage/toolbox/emergency,
+/obj/item/flashlight,
+/obj/item/radio/off,
+/obj/effect/turf_decal/tile/black/fourcorners,
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/effect/turf_decal/stripes/line,
+/turf/open/floor/plasteel/techmaint,
+/area/teleporter)
+"rqr" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer4{
+	dir = 4
+	},
+/obj/machinery/camera/autoname{
+	dir = 4;
+	network = list("ss13","engine")
+	},
+/turf/open/floor/engine,
+/area/engine/engineering)
+"rqD" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
+	dir = 8
+	},
+/obj/structure/cable/yellow{
+	icon_state = "4-8"
+	},
+/turf/open/floor/plasteel,
+/area/tcommsat/computer)
+"rqE" = (
+/obj/structure/lattice,
+/obj/machinery/atmospherics/pipe/simple/green/visible,
+/turf/open/space/basic,
+/area/space/nearstation)
+"rqG" = (
+>>>>>>> 9e7760ce02 (Shift engineering and atmos chambers (#8054))
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
 	dir = 5
 	},
@@ -57105,6 +57691,98 @@
 	},
 /turf/open/floor/plasteel/white,
 /area/medical/chemistry)
+<<<<<<< HEAD
+=======
+"tzV" = (
+/obj/machinery/atmospherics/pipe/manifold/supply/hidden/layer2,
+/obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/obj/structure/cable/yellow{
+	icon_state = "1-2"
+	},
+/turf/open/floor/plasteel,
+/area/hallway/primary/central)
+"tAf" = (
+/obj/machinery/light/small,
+/turf/open/floor/engine/o2,
+/area/engine/atmos)
+"tAi" = (
+/obj/structure/chair/office/light{
+	dir = 4
+	},
+/obj/effect/landmark/start/exploration,
+/obj/structure/extinguisher_cabinet{
+	pixel_x = -26
+	},
+/obj/machinery/camera/autoname{
+	dir = 1
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/neutral/fourcorners/contrasted,
+/turf/open/floor/plasteel/dark,
+/area/quartermaster/exploration_prep)
+"tAz" = (
+/obj/structure/cable{
+	icon_state = "2-4"
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/disposalpipe/segment,
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer4{
+	dir = 8
+	},
+/turf/open/floor/plasteel,
+/area/maintenance/disposal/incinerator)
+"tAB" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/cable/yellow{
+	icon_state = "1-8"
+	},
+/obj/structure/cable/yellow{
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
+	dir = 8
+	},
+/turf/open/floor/plasteel/white,
+/area/science/xenobiology)
+"tAD" = (
+/obj/machinery/light{
+	dir = 4
+	},
+/obj/structure/flora/rock/jungle,
+/turf/open/floor/grass,
+/area/hallway/secondary/command)
+"tAG" = (
+/obj/machinery/door/window/southright{
+	name = "Bar Door";
+	req_one_access_txt = "25;28"
+	},
+/turf/open/floor/plasteel/cafeteria_red,
+/area/crew_quarters/bar)
+"tAI" = (
+/obj/machinery/airalarm{
+	dir = 4;
+	pixel_x = -23
+	},
+/obj/structure/disposalpipe/segment,
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
+/obj/machinery/atmospherics/pipe/manifold/supply/hidden/layer2{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/neutral/half/contrasted{
+	dir = 1
+	},
+/turf/open/floor/plasteel,
+/area/crew_quarters/fitness)
+>>>>>>> 9e7760ce02 (Shift engineering and atmos chambers (#8054))
 "tBe" = (
 /obj/machinery/atmospherics/components/binary/pump{
 	name = "Mix to MiniSat"
@@ -57234,6 +57912,17 @@
 	dir = 1
 	},
 /area/hallway/secondary/exit)
+"tIH" = (
+/obj/machinery/vending/wardrobe/engi_wardrobe,
+/obj/machinery/camera/autoname{
+	dir = 8;
+	network = list("ss13","engine")
+	},
+/obj/effect/turf_decal/tile/yellow{
+	dir = 4
+	},
+/turf/open/floor/plasteel,
+/area/engine/engineering)
 "tIO" = (
 /obj/machinery/atmospherics/components/binary/pump/on{
 	name = "Waste Out"
@@ -57655,8 +58344,20 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
 	dir = 1
 	},
+<<<<<<< HEAD
 /turf/open/floor/plating,
 /area/hallway/secondary/entry)
+=======
+/obj/machinery/light,
+/obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/layer4,
+/turf/open/floor/plasteel/dark,
+/area/hallway/secondary/command)
+"upK" = (
+/obj/structure/lattice,
+/obj/machinery/atmospherics/pipe/simple/cyan/visible,
+/turf/open/space,
+/area/space/nearstation)
+>>>>>>> 9e7760ce02 (Shift engineering and atmos chambers (#8054))
 "upN" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
@@ -60391,6 +61092,65 @@
 /obj/effect/spawner/structure/window/reinforced,
 /turf/open/floor/plating,
 /area/quartermaster/exploration_dock)
+<<<<<<< HEAD
+=======
+"xkU" = (
+/obj/structure/flora/grass/jungle/b,
+/turf/open/floor/grass,
+/area/hallway/secondary/command)
+"xli" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer2{
+	dir = 8
+	},
+/turf/open/floor/plasteel,
+/area/engine/engineering)
+"xlj" = (
+/obj/machinery/disposal/bin,
+/obj/structure/disposalpipe/trunk,
+/obj/effect/turf_decal/tile/brown/half/contrasted{
+	dir = 4
+	},
+/turf/open/floor/plasteel,
+/area/quartermaster/qm)
+"xlq" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/structure/cable/yellow{
+	icon_state = "4-8"
+	},
+/obj/structure/cable/yellow{
+	icon_state = "2-8"
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/layer4{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/manifold/supply/hidden/layer2{
+	dir = 1
+	},
+/turf/open/floor/plasteel,
+/area/science/robotics/mechbay)
+"xmd" = (
+/obj/machinery/door/airlock/command/glass{
+	name = "Bridge";
+	req_access_txt = "19"
+	},
+/obj/structure/cable/yellow{
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
+/obj/effect/turf_decal/tile/neutral/fourcorners/contrasted,
+/obj/effect/turf_decal/tile/dark_blue/fourcorners/contrasted,
+/obj/machinery/door/firedoor,
+/turf/open/floor/plasteel/dark,
+/area/bridge)
+>>>>>>> 9e7760ce02 (Shift engineering and atmos chambers (#8054))
 "xmh" = (
 /obj/structure/extinguisher_cabinet{
 	pixel_x = -27
@@ -61361,6 +62121,7 @@
 	},
 /turf/open/floor/plasteel/dark/telecomms,
 /area/quartermaster/exploration_dock)
+<<<<<<< HEAD
 "yka" = (
 /obj/effect/turf_decal/tile/bar,
 /obj/effect/turf_decal/tile/bar{
@@ -61373,6 +62134,18 @@
 /turf/open/floor/plasteel,
 /area/crew_quarters/bar)
 "ylc" = (
+=======
+"yjY" = (
+/obj/machinery/light/small,
+/turf/open/floor/engine/air,
+/area/engine/atmos)
+"ykW" = (
+/obj/machinery/holopad,
+/obj/effect/turf_decal/trimline/dark_blue/filled/corner{
+	dir = 4
+	},
+/obj/effect/turf_decal/trimline/dark_blue/filled/corner,
+>>>>>>> 9e7760ce02 (Shift engineering and atmos chambers (#8054))
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
 	},
@@ -92938,11 +93711,19 @@ ccn
 cdo
 rDy
 ccw
+<<<<<<< HEAD
 eQR
 cfd
 cfB
 cfI
 cgQ
+=======
+hJU
+kiu
+xli
+cgR
+cgR
+>>>>>>> 9e7760ce02 (Shift engineering and atmos chambers (#8054))
 cgR
 dQs
 cqm
@@ -93196,10 +93977,10 @@ ccw
 ccw
 ccw
 ccw
-ccw
-ccw
-ccw
-ccw
+cpP
+irL
+kbT
+tIH
 jnY
 dQs
 cjh
@@ -93445,6 +94226,7 @@ nKp
 tOl
 ccv
 cdw
+<<<<<<< HEAD
 cex
 bOd
 cfN
@@ -93456,6 +94238,19 @@ bOh
 bOh
 bOh
 bOh
+=======
+dBv
+bOd
+leQ
+leQ
+bLK
+gXs
+aaa
+ccw
+ccw
+ccw
+ccw
+>>>>>>> 9e7760ce02 (Shift engineering and atmos chambers (#8054))
 ccw
 cDm
 dQs
@@ -93692,6 +94487,7 @@ bKV
 bRB
 bSI
 bSI
+<<<<<<< HEAD
 bUM
 bVV
 bWS
@@ -93713,6 +94509,29 @@ ckV
 clU
 clU
 bOh
+=======
+uNp
+ogL
+pOi
+cRG
+cRG
+jLf
+dJi
+lKq
+vzF
+knZ
+lig
+bQu
+oOi
+oDk
+aLt
+cit
+ckb
+ckY
+ckU
+cmU
+cmU
+>>>>>>> 9e7760ce02 (Shift engineering and atmos chambers (#8054))
 ccw
 coZ
 cgU
@@ -93965,11 +94784,19 @@ bRH
 cgV
 bMQ
 aaf
+<<<<<<< HEAD
 bQA
 ckU
 clT
 cmU
 bOh
+=======
+aaa
+bQA
+ckW
+clU
+koX
+>>>>>>> 9e7760ce02 (Shift engineering and atmos chambers (#8054))
 ccw
 cpa
 cjc
@@ -94222,11 +95049,19 @@ cfQ
 cgY
 iDR
 bVu
+<<<<<<< HEAD
 ckb
 ckW
 clU
 clU
 bOh
+=======
+ckc
+ckY
+dpE
+cmU
+cmU
+>>>>>>> 9e7760ce02 (Shift engineering and atmos chambers (#8054))
 ccw
 ccw
 cpI
@@ -94479,12 +95314,21 @@ apa
 cgX
 ufv
 apI
+<<<<<<< HEAD
 bOh
 bOh
 bOh
 bOh
 bOh
 cig
+=======
+aaa
+bLK
+bLK
+bLK
+bLK
+ccw
+>>>>>>> 9e7760ce02 (Shift engineering and atmos chambers (#8054))
 cpb
 ciZ
 cqp
@@ -94735,6 +95579,7 @@ bRy
 cfR
 cha
 sCT
+<<<<<<< HEAD
 cph
 ckb
 ckY
@@ -94742,6 +95587,15 @@ clW
 clW
 bOh
 cig
+=======
+rqE
+rqE
+ckY
+ckX
+cmV
+cmV
+ccw
+>>>>>>> 9e7760ce02 (Shift engineering and atmos chambers (#8054))
 cig
 czg
 cig
@@ -94993,12 +95847,21 @@ cfP
 cgZ
 bMQ
 aaf
+<<<<<<< HEAD
 bQA
 ckX
 clV
 cmV
 bOh
 cig
+=======
+aaa
+bQA
+ckZ
+clW
+tAf
+bLK
+>>>>>>> 9e7760ce02 (Shift engineering and atmos chambers (#8054))
 aaa
 afp
 aaa
@@ -95250,12 +96113,21 @@ cfQ
 chb
 iDR
 bVu
+<<<<<<< HEAD
 ckb
 ckZ
 clW
 clW
 bOh
 cig
+=======
+ckd
+ckY
+fCv
+cmV
+cmV
+bLK
+>>>>>>> 9e7760ce02 (Shift engineering and atmos chambers (#8054))
 aaa
 aaa
 aaa
@@ -95507,12 +96379,21 @@ cfP
 bOd
 bMQ
 aaf
+<<<<<<< HEAD
 bOh
 bOh
 bOh
 bOh
 bOh
 ccw
+=======
+aaa
+bLK
+bLK
+bLK
+bLK
+bLK
+>>>>>>> 9e7760ce02 (Shift engineering and atmos chambers (#8054))
 aaa
 aaa
 aaa
@@ -95761,6 +96642,7 @@ bMW
 qVH
 cez
 cfQ
+<<<<<<< HEAD
 chd
 xNI
 cpP
@@ -95770,6 +96652,17 @@ clY
 clZ
 bOh
 aaa
+=======
+qRq
+cap
+upK
+ckV
+clb
+cla
+cBP
+cmW
+bLK
+>>>>>>> 9e7760ce02 (Shift engineering and atmos chambers (#8054))
 aaa
 aaa
 aaa
@@ -96020,6 +96913,7 @@ hZW
 fSj
 chc
 bMQ
+<<<<<<< HEAD
 aaf
 bQA
 cla
@@ -96027,6 +96921,15 @@ cBP
 cmW
 bOh
 aaa
+=======
+gXs
+aaa
+bQA
+clc
+clZ
+yjY
+bLK
+>>>>>>> 9e7760ce02 (Shift engineering and atmos chambers (#8054))
 aaa
 czN
 aaa
@@ -96277,6 +97180,7 @@ cez
 lVX
 mqa
 cix
+<<<<<<< HEAD
 cpP
 ckd
 clc
@@ -96284,6 +97188,15 @@ clZ
 clZ
 bOh
 aaa
+=======
+upK
+ckV
+clY
+hJe
+cmW
+cmW
+bLK
+>>>>>>> 9e7760ce02 (Shift engineering and atmos chambers (#8054))
 aaa
 aaa
 aaa
@@ -96535,12 +97448,21 @@ odQ
 lsV
 bLK
 aaf
+<<<<<<< HEAD
 bOh
 bOh
 bOh
 bOh
 bOh
 aaa
+=======
+aaa
+bLK
+bLK
+bLK
+bLK
+bLK
+>>>>>>> 9e7760ce02 (Shift engineering and atmos chambers (#8054))
 aaa
 aaa
 aaa
@@ -96792,7 +97714,7 @@ oNa
 lNh
 bLK
 aaf
-aoV
+aaa
 aoV
 aaf
 aaf
@@ -97048,7 +97970,7 @@ cCQ
 lcf
 oMA
 bLK
-aoV
+aaf
 aoV
 aoV
 aaf
