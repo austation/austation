@@ -1,12 +1,16 @@
 /datum/job/engineer
 	title = "Station Engineer"
 	flag = ENGINEER
+<<<<<<< HEAD
 	department_head = list("Chief Engineer")
 	department_flag = ENGSEC
+=======
+	department_head = list(JOB_NAME_CHIEFENGINEER)
+	supervisors = "the chief engineer"
+>>>>>>> a596a80feb (Major bank system refactoring +New negative station trait: united budget (#7559))
 	faction = "Station"
 	total_positions = 5
 	spawn_positions = 5
-	supervisors = "the chief engineer"
 	selection_color = "#fff5cc"
 	chat_color = "#D9BC89"
 	exp_requirements = 120
@@ -19,11 +23,17 @@
 					ACCESS_AUX_BASE)
 	minimal_access = list(ACCESS_ENGINE, ACCESS_ENGINE_EQUIP, ACCESS_TECH_STORAGE, ACCESS_MAINT_TUNNELS, ACCESS_MECH_ENGINE,
 					ACCESS_EXTERNAL_AIRLOCKS, ACCESS_CONSTRUCTION, ACCESS_TCOMSAT, ACCESS_MINERAL_STOREROOM, ACCESS_AUX_BASE)
-	paycheck = PAYCHECK_MEDIUM
-	paycheck_department = ACCOUNT_ENG
+
+	department_flag = ENGSEC
+	departments = DEPT_BITFLAG_ENG
+	bank_account_department = ACCOUNT_ENG_BITFLAG
+	payment_per_department = list(ACCOUNT_ENG_ID = PAYCHECK_MEDIUM)
 
 	display_order = JOB_DISPLAY_ORDER_STATION_ENGINEER
+<<<<<<< HEAD
 	departments = DEPARTMENT_ENGINEERING
+=======
+>>>>>>> a596a80feb (Major bank system refactoring +New negative station trait: united budget (#7559))
 	rpg_title = "Crystallomancer"
 
 	species_outfits = list(

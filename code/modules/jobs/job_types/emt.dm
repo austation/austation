@@ -1,28 +1,50 @@
+<<<<<<< HEAD:code/modules/jobs/job_types/emt.dm
 /datum/job/emt
 	title = "Paramedic"
 	flag = EMT
 	department_head = list("Chief Medical Officer")
 	department_flag = MEDSCI
+=======
+/datum/job/paramedic
+	title = JOB_NAME_PARAMEDIC
+	flag = PARAMEDIC
+	department_head = list(JOB_NAME_CHIEFMEDICALOFFICER)
+	supervisors = "the chief medical officer"
+>>>>>>> a596a80feb (Major bank system refactoring +New negative station trait: united budget (#7559)):code/modules/jobs/job_types/paramedic.dm
 	faction = "Station"
 	total_positions = 2
 	spawn_positions = 1
-	supervisors = "the chief medical officer"
 	selection_color = "#d4ebf2"
 	chat_color = "#8FBEB4"
 	exp_requirements = 120
 	exp_type = EXP_TYPE_CREW
+<<<<<<< HEAD:code/modules/jobs/job_types/emt.dm
 
 	outfit = /datum/outfit/job/emt
 
+=======
+	outfit = /datum/outfit/job/paramedic
+>>>>>>> a596a80feb (Major bank system refactoring +New negative station trait: united budget (#7559)):code/modules/jobs/job_types/paramedic.dm
 	access = list(ACCESS_MEDICAL, ACCESS_MORGUE, ACCESS_SURGERY, ACCESS_CLONING, ACCESS_MECH_MEDICAL, ACCESS_MINERAL_STOREROOM,
 					ACCESS_MAINT_TUNNELS, ACCESS_EVA, ACCESS_EXTERNAL_AIRLOCKS, ACCESS_AUX_BASE)
 	minimal_access = list(ACCESS_MEDICAL, ACCESS_MORGUE, ACCESS_CLONING, ACCESS_MECH_MEDICAL, ACCESS_MAINT_TUNNELS,
 					ACCESS_EVA, ACCESS_EXTERNAL_AIRLOCKS, ACCESS_AUX_BASE)
+<<<<<<< HEAD:code/modules/jobs/job_types/emt.dm
 	paycheck = PAYCHECK_MEDIUM
 	paycheck_department = ACCOUNT_MED
 
 	display_order = JOB_DISPLAY_ORDER_MEDICAL_DOCTOR
 	departments = DEPARTMENT_MEDICAL
+=======
+
+	department_flag = MEDSCI
+	departments = DEPT_BITFLAG_MED
+	bank_account_department = ACCOUNT_MED_BITFLAG
+	payment_per_department = list(ACCOUNT_MED_ID = PAYCHECK_MEDIUM)
+	mind_traits = list(TRAIT_MEDICAL_METABOLISM)
+
+	display_order = JOB_DISPLAY_ORDER_MEDICAL_DOCTOR
+>>>>>>> a596a80feb (Major bank system refactoring +New negative station trait: united budget (#7559)):code/modules/jobs/job_types/paramedic.dm
 	rpg_title = "Corpse Runner"
 
 	species_outfits = list(

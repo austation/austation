@@ -3,11 +3,10 @@
 	flag = CAPTAIN
 	auto_deadmin_role_flags = DEADMIN_POSITION_HEAD|DEADMIN_POSITION_SECURITY
 	department_head = list("CentCom")
-	department_flag = ENGSEC
+	supervisors = "Nanotrasen officials and Space law"
 	faction = "Station"
 	total_positions = 1
 	spawn_positions = 1
-	supervisors = "Nanotrasen officials and Space law"
 	selection_color = "#ccccff"
 	chat_color = "#FFDC9B"
 	req_admin_notify = 1
@@ -20,13 +19,20 @@
 
 	access = list() 			//See get_access()
 	minimal_access = list() 	//See get_access()
-	paycheck = PAYCHECK_COMMAND
-	paycheck_department = ACCOUNT_SEC
 
+	department_flag = ENGSEC
+	departments = DEPT_BITFLAG_COM
+	bank_account_department = ACCOUNT_SEC_BITFLAG | ACCOUNT_COM_BITFLAG
+	payment_per_department = list(
+		ACCOUNT_COM_ID = PAYCHECK_COMMAND_NT,
+		ACCOUNT_SEC_ID = PAYCHECK_COMMAND_DEPT)
 	mind_traits = list(TRAIT_DISK_VERIFIER)
 
 	display_order = JOB_DISPLAY_ORDER_CAPTAIN
+<<<<<<< HEAD
 	departments = DEPARTMENT_COMMAND
+=======
+>>>>>>> a596a80feb (Major bank system refactoring +New negative station trait: united budget (#7559))
 	rpg_title = "Star Duke"
 
 	species_outfits = list(

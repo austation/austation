@@ -49,18 +49,29 @@
 	. = ..()
 	var/list/data = get_header_data()
 	data["location"] = SSshuttle.supply.getStatusText()
-	var/datum/bank_account/buyer = SSeconomy.get_dep_account(ACCOUNT_CAR)
+	var/datum/bank_account/buyer = SSeconomy.get_budget_account(ACCOUNT_CAR_ID)
 	var/obj/item/card/id/id_card = get_buyer_id(user)
 	if(get_buyer_id(user))
 		if((ACCESS_HEADS in id_card.access) || (ACCESS_QM in id_card.access))
 			requestonly = FALSE
+<<<<<<< HEAD
 			buyer = SSeconomy.get_dep_account(id_card.registered_account.account_job.paycheck_department)
+=======
+			buyer = SSeconomy.get_budget_account(ACCOUNT_CAR_ID)
+>>>>>>> a596a80feb (Major bank system refactoring +New negative station trait: united budget (#7559))
 			can_approve_requests = TRUE
 		else
 			requestonly = TRUE
 			can_approve_requests = FALSE
 	else
 		requestonly = TRUE
+<<<<<<< HEAD
+=======
+	if(isnull(buyer))
+		buyer = SSeconomy.get_budget_account(ACCOUNT_CAR_ID)
+	else if(SSeconomy.is_nonstation_account(buyer))
+		buyer = SSeconomy.get_budget_account(ACCOUNT_CAR_ID)
+>>>>>>> a596a80feb (Major bank system refactoring +New negative station trait: united budget (#7559))
 	if(buyer)
 		data["points"] = buyer.account_balance
 
@@ -213,7 +224,18 @@
 					computer.say("The application rejects [id_card].")
 					return
 				else
+<<<<<<< HEAD
 					account = SSeconomy.get_dep_account(id_card?.registered_account?.account_job.paycheck_department)
+=======
+					account = SSeconomy.get_budget_account(ACCOUNT_CAR_ID)
+					if(isnull(account))
+						computer.say("The application failed to identify [id_card].")
+						return
+					else if(SSeconomy.is_nonstation_account(account))
+						computer.say("The application rejects [id_card].")
+						return
+
+>>>>>>> a596a80feb (Major bank system refactoring +New negative station trait: united budget (#7559))
 
 			var/turf/T = get_turf(src)
 			var/datum/supply_order/SO = new(pack, name, rank, ckey, reason, account)
@@ -241,7 +263,13 @@
 				if(SO.id == id)
 					var/obj/item/card/id/id_card = get_buyer_id(usr)
 					if(id_card && id_card?.registered_account)
+<<<<<<< HEAD
 						SO.paying_account = SSeconomy.get_dep_account(id_card?.registered_account?.account_job.paycheck_department)
+=======
+						SO.paying_account = SSeconomy.get_budget_account(ACCOUNT_CAR_ID)
+					if(SSeconomy.is_nonstation_account(SO.paying_account))
+						return
+>>>>>>> a596a80feb (Major bank system refactoring +New negative station trait: united budget (#7559))
 					SSshuttle.requestlist -= SO
 					SSshuttle.shoppinglist += SO
 					. = TRUE

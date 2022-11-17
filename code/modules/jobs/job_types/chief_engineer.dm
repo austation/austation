@@ -1,14 +1,19 @@
 /datum/job/chief_engineer
 	title = "Chief Engineer"
 	flag = CHIEF
+<<<<<<< HEAD
 	auto_deadmin_role_flags = DEADMIN_POSITION_HEAD
 	department_head = list("Captain")
 	department_flag = ENGSEC
+=======
+	auto_deadmin_role_flags = PREFTOGGLE_DEADMIN_POSITION_HEAD
+	department_head = list(JOB_NAME_CAPTAIN)
+	supervisors = "the captain"
+>>>>>>> a596a80feb (Major bank system refactoring +New negative station trait: united budget (#7559))
 	head_announce = list("Engineering")
 	faction = "Station"
 	total_positions = 1
 	spawn_positions = 1
-	supervisors = "the captain"
 	selection_color = "#ffeeaa"
 	chat_color = "#CFBB72"
 	req_admin_notify = 1
@@ -26,12 +31,26 @@
 	minimal_access = list(ACCESS_ENGINE, ACCESS_ENGINE_EQUIP, ACCESS_TECH_STORAGE, ACCESS_MAINT_TUNNELS,
 			            ACCESS_EXTERNAL_AIRLOCKS, ACCESS_ATMOSPHERICS, ACCESS_EVA, ACCESS_AUX_BASE,
 			            ACCESS_HEADS, ACCESS_CONSTRUCTION, ACCESS_SEC_DOORS, ACCESS_MINISAT, ACCESS_MECH_ENGINE,
+<<<<<<< HEAD
 			            ACCESS_CE, ACCESS_RC_ANNOUNCE, ACCESS_KEYCARD_AUTH, ACCESS_TCOMSAT, ACCESS_MINERAL_STOREROOM)
 	paycheck = PAYCHECK_COMMAND
 	paycheck_department = ACCOUNT_ENG
 
 	display_order = JOB_DISPLAY_ORDER_CHIEF_ENGINEER
 	departments = DEPARTMENT_ENGINEERING | DEPARTMENT_COMMAND
+=======
+			            ACCESS_CE, ACCESS_RC_ANNOUNCE, ACCESS_KEYCARD_AUTH, ACCESS_TCOMSAT, ACCESS_MINERAL_STOREROOM, ACCESS_WEAPONS)
+
+	department_flag = ENGSEC
+	departments = DEPT_BITFLAG_ENG | DEPT_BITFLAG_COM
+	bank_account_department = ACCOUNT_ENG_BITFLAG | ACCOUNT_COM_BITFLAG
+	payment_per_department = list(
+		ACCOUNT_COM_ID = PAYCHECK_COMMAND_NT,
+		ACCOUNT_ENG_ID = PAYCHECK_COMMAND_DEPT)
+
+
+	display_order = JOB_DISPLAY_ORDER_CHIEF_ENGINEER
+>>>>>>> a596a80feb (Major bank system refactoring +New negative station trait: united budget (#7559))
 	rpg_title = "High Crystallomancer"
 
 	species_outfits = list(

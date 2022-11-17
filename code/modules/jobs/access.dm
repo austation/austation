@@ -373,11 +373,19 @@
 				"Assistant", "Head of Personnel", "Bartender", "Cook", "Botanist", "Janitor", "Curator",
 				"Chaplain", "Lawyer", "Clown", "Mime", "Barber", "Stage Magician",
 				// Cargo
+<<<<<<< HEAD
 				"Quartermaster", "Cargo Technician","Shaft Miner",
 				// Engineering
 				"Chief Engineer", "Station Engineer", "Atmospheric Technician",
 				// R&D
 				"Research Director", "Scientist", "Roboticist", "Exploration Crew",
+=======
+				JOB_NAME_QUARTERMASTER, JOB_NAME_CARGOTECHNICIAN,JOB_NAME_SHAFTMINER,
+				// R&D
+				JOB_NAME_RESEARCHDIRECTOR, JOB_NAME_SCIENTIST, JOB_NAME_ROBOTICIST, JOB_NAME_EXPLORATIONCREW,
+				// Engineering
+				JOB_NAME_CHIEFENGINEER, JOB_NAME_STATIONENGINEER, JOB_NAME_ATMOSPHERICTECHNICIAN,
+>>>>>>> a596a80feb (Major bank system refactoring +New negative station trait: united budget (#7559))
 				// Medical
 				"Chief Medical Officer", "Medical Doctor", "Chemist", "Geneticist", "Virologist", "Paramedic", "Psychiatrist",
 				// Security

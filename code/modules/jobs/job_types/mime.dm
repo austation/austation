@@ -1,12 +1,16 @@
 /datum/job/mime
 	title = "Mime"
 	flag = MIME
+<<<<<<< HEAD
 	department_head = list("Head of Personnel")
 	department_flag = CIVILIAN
+=======
+	department_head = list(JOB_NAME_HEADOFPERSONNEL)
+	supervisors = "the head of personnel"
+>>>>>>> a596a80feb (Major bank system refactoring +New negative station trait: united budget (#7559))
 	faction = "Station"
 	total_positions = 1
 	spawn_positions = 1
-	supervisors = "the head of personnel"
 	selection_color = "#dddddd"
 	chat_color = "#BAD3BB"
 
@@ -14,11 +18,17 @@
 
 	access = list(ACCESS_THEATRE)
 	minimal_access = list(ACCESS_THEATRE)
-	paycheck = PAYCHECK_MINIMAL
-	paycheck_department = ACCOUNT_SRV
+
+	department_flag = CIVILIAN
+	departments = DEPT_BITFLAG_SRV
+	bank_account_department = ACCOUNT_SRV_BITFLAG
+	payment_per_department = list(ACCOUNT_SRV_ID = PAYCHECK_MINIMAL)
 
 	display_order = JOB_DISPLAY_ORDER_MIME
+<<<<<<< HEAD
 	departments = DEPARTMENT_SERVICE
+=======
+>>>>>>> a596a80feb (Major bank system refactoring +New negative station trait: united budget (#7559))
 	rpg_title = "Fool"
 
 	species_outfits = list(

@@ -1,17 +1,22 @@
 /datum/job/brig_phys
 	title = "Brig Physician"
 	flag = BRIG_PHYS
+<<<<<<< HEAD:code/modules/jobs/job_types/brigphys.dm
 	department_head = list("Chief Medical Officer")
 	department_flag = ENGSEC
+=======
+	department_head = list(JOB_NAME_CHIEFMEDICALOFFICER)
+	supervisors = "chief medical officer"
+>>>>>>> a596a80feb (Major bank system refactoring +New negative station trait: united budget (#7559)):code/modules/jobs/job_types/brig_physician.dm
 	faction = "Station"
 	total_positions = 1
 	spawn_positions = 1
-	supervisors = "chief medical officer"
 	selection_color = "#ffeeee"
 	chat_color = "#b16789"
 	minimal_player_age = 7
 	exp_requirements = 120
 	exp_type = EXP_TYPE_CREW
+<<<<<<< HEAD:code/modules/jobs/job_types/brigphys.dm
 
 	outfit = /datum/outfit/job/brig_phys
 
@@ -22,6 +27,20 @@
 
 	display_order = JOB_DISPLAY_ORDER_BRIG_PHYS
 	departments = DEPARTMENT_MEDICAL | DEPARTMENT_SECURITY
+=======
+	outfit = /datum/outfit/job/brig_physician
+
+	access = list(ACCESS_SEC_DOORS, ACCESS_COURT, ACCESS_MAINT_TUNNELS, ACCESS_MORGUE, ACCESS_MEDICAL, ACCESS_BRIGPHYS)
+	minimal_access = list(ACCESS_SEC_DOORS, ACCESS_COURT, ACCESS_MAINT_TUNNELS, ACCESS_MORGUE, ACCESS_MEDICAL, ACCESS_BRIGPHYS)
+
+	department_flag = ENGSEC
+	departments = DEPT_BITFLAG_MED | DEPT_BITFLAG_SEC
+	bank_account_department = ACCOUNT_MED_BITFLAG
+	payment_per_department = list(ACCOUNT_MED_ID = PAYCHECK_MEDIUM)
+	mind_traits = list(TRAIT_MEDICAL_METABOLISM)
+
+	display_order = JOB_DISPLAY_ORDER_BRIG_PHYS
+>>>>>>> a596a80feb (Major bank system refactoring +New negative station trait: united budget (#7559)):code/modules/jobs/job_types/brig_physician.dm
 	rpg_title = "Battle Cleric"
 
 	species_outfits = list(

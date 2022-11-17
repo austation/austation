@@ -1,14 +1,19 @@
 /datum/job/cmo
 	title = "Chief Medical Officer"
 	flag = CMO_JF
+<<<<<<< HEAD
 	department_head = list("Captain")
 	department_flag = MEDSCI
 	auto_deadmin_role_flags = DEADMIN_POSITION_HEAD
+=======
+	department_head = list(JOB_NAME_CAPTAIN)
+	supervisors = "the captain"
+	auto_deadmin_role_flags = PREFTOGGLE_DEADMIN_POSITION_HEAD
+>>>>>>> a596a80feb (Major bank system refactoring +New negative station trait: united budget (#7559))
 	head_announce = list(RADIO_CHANNEL_MEDICAL)
 	faction = "Station"
 	total_positions = 1
 	spawn_positions = 1
-	supervisors = "the captain"
 	selection_color = "#c1e1ec"
 	chat_color = "#7A97DA"
 	req_admin_notify = 1
@@ -24,12 +29,26 @@
 			ACCESS_KEYCARD_AUTH, ACCESS_SEC_DOORS, ACCESS_MAINT_TUNNELS, ACCESS_BRIGPHYS, ACCESS_EVA, ACCESS_EXTERNAL_AIRLOCKS)
 	minimal_access = list(ACCESS_MEDICAL, ACCESS_MORGUE, ACCESS_GENETICS, ACCESS_CLONING, ACCESS_HEADS, ACCESS_MINERAL_STOREROOM,
 			ACCESS_CHEMISTRY, ACCESS_VIROLOGY, ACCESS_CMO, ACCESS_SURGERY, ACCESS_RC_ANNOUNCE, ACCESS_MECH_MEDICAL,
+<<<<<<< HEAD
 			ACCESS_KEYCARD_AUTH, ACCESS_SEC_DOORS, ACCESS_MAINT_TUNNELS, ACCESS_BRIGPHYS, ACCESS_EVA, ACCESS_EXTERNAL_AIRLOCKS)
 	paycheck = PAYCHECK_COMMAND
 	paycheck_department = ACCOUNT_MED
 
 	display_order = JOB_DISPLAY_ORDER_CHIEF_MEDICAL_OFFICER
 	departments = DEPARTMENT_MEDICAL | DEPARTMENT_COMMAND
+=======
+			ACCESS_KEYCARD_AUTH, ACCESS_SEC_DOORS, ACCESS_MAINT_TUNNELS, ACCESS_BRIGPHYS, ACCESS_EVA, ACCESS_EXTERNAL_AIRLOCKS, ACCESS_WEAPONS)
+
+	department_flag = MEDSCI
+	departments = DEPT_BITFLAG_MED | DEPT_BITFLAG_COM
+	bank_account_department = ACCOUNT_MED_BITFLAG | ACCOUNT_COM_BITFLAG
+	payment_per_department = list(
+		ACCOUNT_COM_ID = PAYCHECK_COMMAND_NT,
+		ACCOUNT_MED_ID = PAYCHECK_COMMAND_DEPT)
+	mind_traits = list(TRAIT_MEDICAL_METABOLISM)
+
+	display_order = JOB_DISPLAY_ORDER_CHIEF_MEDICAL_OFFICER
+>>>>>>> a596a80feb (Major bank system refactoring +New negative station trait: united budget (#7559))
 	rpg_title = "High Cleric"
 
 	species_outfits = list(

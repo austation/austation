@@ -1,12 +1,16 @@
 /datum/job/atmos
 	title = "Atmospheric Technician"
 	flag = ATMOSTECH
+<<<<<<< HEAD
 	department_head = list("Chief Engineer")
 	department_flag = ENGSEC
+=======
+	department_head = list(JOB_NAME_CHIEFENGINEER)
+	supervisors = "the chief engineer"
+>>>>>>> a596a80feb (Major bank system refactoring +New negative station trait: united budget (#7559))
 	faction = "Station"
 	total_positions = 3
 	spawn_positions = 2
-	supervisors = "the chief engineer"
 	selection_color = "#fff5cc"
 	chat_color = "#D4A07D"
 	exp_requirements = 120
@@ -17,10 +21,17 @@
 	access = list(ACCESS_ENGINE, ACCESS_ENGINE_EQUIP, ACCESS_TECH_STORAGE, ACCESS_MAINT_TUNNELS, ACCESS_MECH_ENGINE,
 									ACCESS_EXTERNAL_AIRLOCKS, ACCESS_CONSTRUCTION, ACCESS_ATMOSPHERICS, ACCESS_MINERAL_STOREROOM, ACCESS_AUX_BASE)
 	minimal_access = list(ACCESS_ATMOSPHERICS, ACCESS_MAINT_TUNNELS, ACCESS_CONSTRUCTION, ACCESS_MECH_ENGINE, ACCESS_MINERAL_STOREROOM, ACCESS_AUX_BASE)
-	paycheck = PAYCHECK_MEDIUM
-	paycheck_department = ACCOUNT_ENG
+
+	department_flag = ENGSEC
+	departments = DEPT_BITFLAG_ENG
+	bank_account_department = ACCOUNT_ENG_BITFLAG
+	payment_per_department = list(ACCOUNT_ENG_ID = PAYCHECK_MEDIUM)
+
 	display_order = JOB_DISPLAY_ORDER_ATMOSPHERIC_TECHNICIAN
+<<<<<<< HEAD
 	departments = DEPARTMENT_ENGINEERING
+=======
+>>>>>>> a596a80feb (Major bank system refactoring +New negative station trait: united budget (#7559))
 	rpg_title = "Aeromancer"
 
 	species_outfits = list(

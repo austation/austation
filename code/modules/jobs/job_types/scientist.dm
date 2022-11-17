@@ -1,12 +1,16 @@
 /datum/job/scientist
 	title = "Scientist"
 	flag = SCIENTIST
+<<<<<<< HEAD
 	department_head = list("Research Director")
 	department_flag = MEDSCI
+=======
+	department_head = list(JOB_NAME_RESEARCHDIRECTOR)
+	supervisors = "the research director"
+>>>>>>> a596a80feb (Major bank system refactoring +New negative station trait: united budget (#7559))
 	faction = "Station"
 	total_positions = 5
 	spawn_positions = 3
-	supervisors = "the research director"
 	selection_color = "#ffeeff"
 	chat_color = "#C772C7"
 	exp_requirements = 120
@@ -18,11 +22,17 @@
 					ACCESS_MINERAL_STOREROOM, ACCESS_TECH_STORAGE, ACCESS_GENETICS, ACCESS_AUX_BASE, ACCESS_EXPLORATION)
 	minimal_access = list(ACCESS_TOX, ACCESS_TOX_STORAGE, ACCESS_RESEARCH, ACCESS_XENOBIOLOGY, ACCESS_MECH_SCIENCE,
 					ACCESS_MINERAL_STOREROOM, ACCESS_AUX_BASE, ACCESS_EXPLORATION)
-	paycheck = PAYCHECK_MEDIUM
-	paycheck_department = ACCOUNT_SCI
+
+	department_flag = MEDSCI
+	departments = DEPT_BITFLAG_SCI
+	bank_account_department = ACCOUNT_SCI_BITFLAG
+	payment_per_department = list(ACCOUNT_SCI_ID = PAYCHECK_MEDIUM)
 
 	display_order = JOB_DISPLAY_ORDER_SCIENTIST
+<<<<<<< HEAD
 	departments = DEPARTMENT_SCIENCE
+=======
+>>>>>>> a596a80feb (Major bank system refactoring +New negative station trait: united budget (#7559))
 	rpg_title = "Thaumaturgist"
 
 	species_outfits = list(

@@ -1,12 +1,16 @@
 /datum/job/cargo_tech
 	title = "Cargo Technician"
 	flag = CARGOTECH
+<<<<<<< HEAD
 	department_head = list("Head of Personnel")
 	department_flag = CIVILIAN
+=======
+	department_head = list(JOB_NAME_HEADOFPERSONNEL)
+	supervisors = "the quartermaster and the head of personnel"
+>>>>>>> a596a80feb (Major bank system refactoring +New negative station trait: united budget (#7559))
 	faction = "Station"
 	total_positions = 3
 	spawn_positions = 2
-	supervisors = "the quartermaster and the head of personnel"
 	selection_color = "#dcba97"
 	chat_color = "#D3A372"
 
@@ -14,11 +18,18 @@
 
 	access = list(ACCESS_MAINT_TUNNELS, ACCESS_MAILSORTING, ACCESS_CARGO, ACCESS_QM, ACCESS_MINING, ACCESS_MECH_MINING, ACCESS_MINING_STATION, ACCESS_MINERAL_STOREROOM)
 	minimal_access = list(ACCESS_MAINT_TUNNELS, ACCESS_CARGO, ACCESS_MAILSORTING, ACCESS_MINERAL_STOREROOM)
-	paycheck = PAYCHECK_EASY
-	paycheck_department = ACCOUNT_CAR
+
+	department_flag = CIVILIAN
+	departments = DEPT_BITFLAG_CAR
+	bank_account_department = ACCOUNT_CAR_BITFLAG
+	payment_per_department = list(ACCOUNT_CAR_ID = PAYCHECK_EASY)
+
 
 	display_order = JOB_DISPLAY_ORDER_CARGO_TECHNICIAN
+<<<<<<< HEAD
 	departments = DEPARTMENT_CARGO
+=======
+>>>>>>> a596a80feb (Major bank system refactoring +New negative station trait: united budget (#7559))
 	rpg_title = "Merchantman"
 
 	species_outfits = list(

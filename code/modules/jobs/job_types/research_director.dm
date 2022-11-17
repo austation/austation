@@ -1,14 +1,19 @@
 /datum/job/rd
 	title = "Research Director"
 	flag = RD_JF
+<<<<<<< HEAD
 	auto_deadmin_role_flags = DEADMIN_POSITION_HEAD
 	department_head = list("Captain")
 	department_flag = MEDSCI
+=======
+	auto_deadmin_role_flags = PREFTOGGLE_DEADMIN_POSITION_HEAD
+	department_head = list(JOB_NAME_CAPTAIN)
+	supervisors = "the captain"
+>>>>>>> a596a80feb (Major bank system refactoring +New negative station trait: united budget (#7559))
 	head_announce = list("Science")
 	faction = "Station"
 	total_positions = 1
 	spawn_positions = 1
-	supervisors = "the captain"
 	selection_color = "#ffddff"
 	chat_color = "#974EA9"
 	req_admin_notify = 1
@@ -28,12 +33,25 @@
 			            ACCESS_TOX_STORAGE, ACCESS_TELEPORTER, ACCESS_SEC_DOORS, ACCESS_MECH_SCIENCE,
 			            ACCESS_RESEARCH, ACCESS_ROBOTICS, ACCESS_XENOBIOLOGY, ACCESS_AI_UPLOAD,
 			            ACCESS_RC_ANNOUNCE, ACCESS_KEYCARD_AUTH, ACCESS_GATEWAY, ACCESS_MINERAL_STOREROOM,
+<<<<<<< HEAD
 			            ACCESS_TECH_STORAGE, ACCESS_MINISAT, ACCESS_MAINT_TUNNELS, ACCESS_NETWORK, ACCESS_AUX_BASE, ACCESS_RD_SERVER)
 	paycheck = PAYCHECK_COMMAND
 	paycheck_department = ACCOUNT_SCI
 
 	display_order = JOB_DISPLAY_ORDER_RESEARCH_DIRECTOR
 	departments = DEPARTMENT_SCIENCE | DEPARTMENT_COMMAND
+=======
+			            ACCESS_TECH_STORAGE, ACCESS_MINISAT, ACCESS_MAINT_TUNNELS, ACCESS_NETWORK, ACCESS_AUX_BASE, ACCESS_RD_SERVER, ACCESS_WEAPONS)
+
+	department_flag = MEDSCI
+	departments = DEPT_BITFLAG_SCI | DEPT_BITFLAG_COM
+	bank_account_department = ACCOUNT_SCI_BITFLAG | ACCOUNT_COM_BITFLAG
+	payment_per_department = list(
+		ACCOUNT_COM_ID = PAYCHECK_COMMAND_NT,
+		ACCOUNT_SCI_ID = PAYCHECK_COMMAND_DEPT)
+
+	display_order = JOB_DISPLAY_ORDER_RESEARCH_DIRECTOR
+>>>>>>> a596a80feb (Major bank system refactoring +New negative station trait: united budget (#7559))
 	rpg_title = "Archmagister"
 
 	species_outfits = list(

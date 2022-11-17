@@ -70,7 +70,7 @@
 			for(var/datum/data/crime/crime in crimes)
 				if(crime.dataId == text2num(cDataId))
 					crime.paid = crime.paid + amount
-					var/datum/bank_account/D = SSeconomy.get_dep_account(ACCOUNT_SEC)
+					var/datum/bank_account/D = SSeconomy.get_budget_account(ACCOUNT_SEC_ID)
 					D.adjust_money(amount)
 					return
 
@@ -140,6 +140,7 @@
 
 /datum/datacore/proc/get_manifest()
 	var/list/manifest_out = list()
+<<<<<<< HEAD
 	var/list/departments = list(
 		"Command" = GLOB.command_positions,
 		"Security" = GLOB.security_positions,
@@ -149,14 +150,34 @@
 		"Supply" = GLOB.supply_positions,
 		"Civilian" = GLOB.civilian_positions | GLOB.gimmick_positions,
 		"Silicon" = GLOB.nonhuman_positions
+=======
+	var/list/dept_list = list(
+		"Command" = DEPT_BITFLAG_COM,
+		"Very Important People" = DEPT_BITFLAG_VIP,
+		"Security" = DEPT_BITFLAG_SEC,
+		"Engineering" = DEPT_BITFLAG_ENG,
+		"Medical" = DEPT_BITFLAG_MED,
+		"Science" = DEPT_BITFLAG_SCI,
+		"Supply" = DEPT_BITFLAG_CAR,
+		"Service" = DEPT_BITFLAG_SRV,
+		"Civilian" = DEPT_BITFLAG_CIV,
+		"Silicon" = DEPT_BITFLAG_SILICON
+>>>>>>> a596a80feb (Major bank system refactoring +New negative station trait: united budget (#7559))
 	)
 	for(var/datum/data/record/t in GLOB.data_core.general)
 		var/name = t.fields["name"]
 		var/rank = t.fields["rank"]
+<<<<<<< HEAD
 		var/has_department = FALSE
 		for(var/department in departments)
 			var/list/jobs = departments[department]
 			if(rank in jobs)
+=======
+		var/dept_bitflags = t.fields["active_dept"]
+		var/has_department = FALSE
+		for(var/department in dept_list)
+			if(dept_bitflags & dept_list[department])
+>>>>>>> a596a80feb (Major bank system refactoring +New negative station trait: united budget (#7559))
 				if(!manifest_out[department])
 					manifest_out[department] = list()
 				manifest_out[department] += list(list(
@@ -164,8 +185,6 @@
 					"rank" = rank
 				))
 				has_department = TRUE
-				if(department != "Command") //List heads in both command and their own department.
-					break
 		if(!has_department)
 			if(!manifest_out["Misc"])
 				manifest_out["Misc"] = list()
@@ -175,7 +194,7 @@
 			))
 	//Sort the list by 'departments' primarily so command is on top.
 	var/list/sorted_out = list()
-	for(var/department in (departments += "Misc"))
+	for(var/department in (dept_list += "Misc"))
 		if(!isnull(manifest_out[department]))
 			sorted_out[department] = manifest_out[department]
 	return sorted_out
@@ -243,6 +262,11 @@
 		G.fields["id"]			= id
 		G.fields["name"]		= H.real_name
 		G.fields["rank"]		= assignment
+<<<<<<< HEAD
+=======
+		G.fields["hud"]			= get_hud_by_jobname(assignment)
+		G.fields["active_dept"]	= SSjob.GetJobActiveDepartment(assignment)
+>>>>>>> a596a80feb (Major bank system refactoring +New negative station trait: united budget (#7559))
 		G.fields["age"]			= H.age
 		G.fields["species"]	= H.dna.species.name
 		G.fields["fingerprint"]	= rustg_hash_string(RUSTG_HASH_MD5, H.dna.uni_identity)

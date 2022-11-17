@@ -1,12 +1,16 @@
 /datum/job/mining
 	title = "Shaft Miner"
 	flag = MINER
+<<<<<<< HEAD
 	department_head = list("Head of Personnel")
 	department_flag = CIVILIAN
+=======
+	department_head = list(JOB_NAME_HEADOFPERSONNEL)
+	supervisors = "the quartermaster and the head of personnel"
+>>>>>>> a596a80feb (Major bank system refactoring +New negative station trait: united budget (#7559))
 	faction = "Station"
 	total_positions = 3
 	spawn_positions = 3
-	supervisors = "the quartermaster and the head of personnel"
 	selection_color = "#dcba97"
 	chat_color = "#CE957E"
 
@@ -16,11 +20,17 @@
 					ACCESS_MINING_STATION, ACCESS_MINERAL_STOREROOM, ACCESS_AUX_BASE)
 	minimal_access = list(ACCESS_MINING, ACCESS_MECH_MINING, ACCESS_MINING_STATION, ACCESS_MAILSORTING, ACCESS_MINERAL_STOREROOM,
 					ACCESS_AUX_BASE)
-	paycheck = PAYCHECK_HARD
-	paycheck_department = ACCOUNT_CAR
+
+	department_flag = CIVILIAN
+	departments = DEPT_BITFLAG_CAR
+	bank_account_department = ACCOUNT_CAR_BITFLAG
+	payment_per_department = list(ACCOUNT_CAR_ID = PAYCHECK_HARD)
 
 	display_order = JOB_DISPLAY_ORDER_SHAFT_MINER
+<<<<<<< HEAD
 	departments = DEPARTMENT_CARGO
+=======
+>>>>>>> a596a80feb (Major bank system refactoring +New negative station trait: united budget (#7559))
 	rpg_title = "Adventurer"
 
 	species_outfits = list(

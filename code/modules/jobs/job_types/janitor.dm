@@ -1,12 +1,16 @@
 /datum/job/janitor
 	title = "Janitor"
 	flag = JANITOR
+<<<<<<< HEAD
 	department_head = list("Head of Personnel")
 	department_flag = CIVILIAN
+=======
+	department_head = list(JOB_NAME_HEADOFPERSONNEL)
+	supervisors = "the head of personnel"
+>>>>>>> a596a80feb (Major bank system refactoring +New negative station trait: united budget (#7559))
 	faction = "Station"
 	total_positions = 2
 	spawn_positions = 1
-	supervisors = "the head of personnel"
 	selection_color = "#bbe291"
 	chat_color = "#97FBEA"
 
@@ -14,11 +18,17 @@
 
 	access = list(ACCESS_JANITOR, ACCESS_MAINT_TUNNELS, ACCESS_MINERAL_STOREROOM)
 	minimal_access = list(ACCESS_JANITOR, ACCESS_MAINT_TUNNELS, ACCESS_MINERAL_STOREROOM)
-	paycheck = PAYCHECK_EASY
-	paycheck_department = ACCOUNT_SRV
+
+	department_flag = CIVILIAN
+	departments = DEPT_BITFLAG_SRV
+	bank_account_department = ACCOUNT_SRV_BITFLAG
+	payment_per_department = list(ACCOUNT_SRV_ID = PAYCHECK_EASY)
 
 	display_order = JOB_DISPLAY_ORDER_JANITOR
+<<<<<<< HEAD
 	departments = DEPARTMENT_SERVICE
+=======
+>>>>>>> a596a80feb (Major bank system refactoring +New negative station trait: united budget (#7559))
 	rpg_title = "Groundskeeper"
 	biohazard = 20//cleaning up hazardous messes puts janitors at extra risk
 

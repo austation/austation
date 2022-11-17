@@ -14,7 +14,11 @@
 	random_spawns_possible = FALSE
 
 	display_order = JOB_DISPLAY_ORDER_CYBORG
+<<<<<<< HEAD
 	departments = DEPARTMENT_SILICON
+=======
+	departments = DEPT_BITFLAG_SILICON
+>>>>>>> a596a80feb (Major bank system refactoring +New negative station trait: united budget (#7559))
 
 /datum/job/cyborg/equip(mob/living/carbon/human/H, visualsOnly = FALSE, announce = TRUE, latejoin = FALSE, datum/outfit/outfit_override = null, client/preference_source = null)
 	if(visualsOnly)

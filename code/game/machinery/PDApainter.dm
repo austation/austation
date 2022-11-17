@@ -234,7 +234,16 @@
 					return
 				if(!storedid)//is the ID still there?
 					return
+<<<<<<< HEAD
 				storedid.icon_state = id_icons[newidskin]
+=======
+				storedid.icon_state = get_cardstyle_by_jobname(newidskin)
+				storedid.hud_state = get_hud_by_jobname(newidskin)
+
+				// QoL to correct the system behavior
+				GLOB.data_core.manifest_modify(storedid.registered_name, storedid.assignment, storedid.hud_state) // update crew manifest
+				// There are the same code lines in `card.dm`
+>>>>>>> a596a80feb (Major bank system refactoring +New negative station trait: united budget (#7559))
 				ejectid()
 		else
 			to_chat(user, "<span class='notice'>[src] is empty.</span>")

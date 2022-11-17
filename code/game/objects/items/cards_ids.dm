@@ -280,10 +280,33 @@
 	. = ..()
 	if(registered_account)
 		. += "The account linked to the ID belongs to '[registered_account.account_holder]' and reports a balance of $[registered_account.account_balance]."
+<<<<<<< HEAD
 		if(registered_account.account_job)
 			var/datum/bank_account/D = SSeconomy.get_dep_account(registered_account.account_job.paycheck_department)
 			if(D)
 				. += "The [D.account_holder] reports a balance of $[D.account_balance]."
+=======
+		if(!istype(src, /obj/item/card/id/departmental_budget))
+			var/list/payment_result = list()
+			for(var/D in registered_account.payment_per_department)
+				if(registered_account.payment_per_department[D] > 0)
+					payment_result += "[D]: $[registered_account.payment_per_department[D]]"
+			if(length(payment_result))
+				. += "The payment of this account is -"
+				for(var/each in payment_result)
+					. += "\t[each]"
+			if(!HAS_TRAIT(SSstation, STATION_TRAIT_UNITED_BUDGET))
+				for(var/datum/bank_account/department/D in SSeconomy.budget_accounts)
+					if(D.department_bitflag & registered_account.active_departments)
+						if(D.show_budget_information)
+							. += "The [D.account_holder] reports a balance of $[D.account_balance]."
+			else
+				var/datum/bank_account/B = SSeconomy.get_budget_account(ACCOUNT_CAR_ID)
+				if(B)
+					. += "The [B.account_holder] reports a balance of $[B.account_balance]."
+
+
+>>>>>>> a596a80feb (Major bank system refactoring +New negative station trait: united budget (#7559))
 		. += "<span class='info'>Alt-Click the ID to pull money from the linked account in the form of holochips.</span>"
 		. += "<span class='info'>You can insert credits into the linked account by pressing holochips, cash, or coins against the ID.</span>"
 		if(registered_account.account_holder == user.real_name)
@@ -404,6 +427,23 @@ update_label("John Doe", "Clowny")
 				to_chat(usr, "<span class='notice'>The card's microscanners activate as you pass it over the ID, copying its access.</span>")
 
 /obj/item/card/id/syndicate/attack_self(mob/user)
+<<<<<<< HEAD
+=======
+	var/valid_jobs = list( // copy-paste from hop card paint machine, but this has more options, and valid to be static.
+		"----Command----", "Command (Custom)",JOB_NAME_CAPTAIN,
+		"----Service----", "Service (Custom)", JOB_NAME_ASSISTANT, JOB_NAME_HEADOFPERSONNEL, JOB_NAME_BARTENDER, JOB_NAME_COOK,
+			JOB_NAME_BOTANIST, JOB_NAME_JANITOR, JOB_NAME_CURATOR,JOB_NAME_CHAPLAIN, JOB_NAME_LAWYER,
+			JOB_NAME_CLOWN, JOB_NAME_MIME, JOB_NAME_BARBER, JOB_NAME_STAGEMAGICIAN,
+		"----Cargo----","Cargo (Custom)",JOB_NAME_QUARTERMASTER, JOB_NAME_CARGOTECHNICIAN,JOB_NAME_SHAFTMINER,
+		"----Science----","Science (Custom)",JOB_NAME_RESEARCHDIRECTOR, JOB_NAME_SCIENTIST, JOB_NAME_ROBOTICIST, JOB_NAME_EXPLORATIONCREW,
+		"----Engineering----","Engineering (Custom)",JOB_NAME_CHIEFENGINEER, JOB_NAME_STATIONENGINEER, JOB_NAME_ATMOSPHERICTECHNICIAN,
+		"----Medical----","Medical (Custom)",JOB_NAME_CHIEFMEDICALOFFICER, JOB_NAME_MEDICALDOCTOR, JOB_NAME_CHEMIST, JOB_NAME_GENETICIST,
+			JOB_NAME_VIROLOGIST, JOB_NAME_PARAMEDIC, JOB_NAME_PSYCHIATRIST,
+		"----Security----","Security (Custom)",JOB_NAME_HEADOFSECURITY, JOB_NAME_WARDEN, JOB_NAME_DETECTIVE, JOB_NAME_SECURITYOFFICER,
+			JOB_NAME_BRIGPHYSICIAN, JOB_NAME_DEPUTY,
+		"----MISC----","Unassigned",JOB_NAME_PRISONER,"CentCom (Custom)","CentCom","ERT",JOB_NAME_VIP,JOB_NAME_KING,"Syndicate","Clown Operative"
+	)
+>>>>>>> a596a80feb (Major bank system refactoring +New negative station trait: united budget (#7559))
 	if(isliving(user) && user.mind)
 		var/first_use = registered_name ? FALSE : TRUE
 		if(!(user.mind.special_role || anyone)) //Unless anyone is allowed, only syndies can use the card, to stop metagaming.
@@ -445,7 +485,7 @@ update_label("John Doe", "Clowny")
 
 					for(var/bank_account in SSeconomy.bank_accounts)
 						var/datum/bank_account/account = bank_account
-						if(account.account_id == accountowner.account_id)
+						if(account.account_id == accountowner.mind?.account_id)
 							account.bank_cards += src
 							registered_account = account
 							to_chat(user, "<span class='notice'>Your account number has been automatically assigned.</span>")
@@ -493,7 +533,7 @@ update_label("John Doe", "Clowny")
 
 /obj/item/card/id/syndicate/debug/Initialize(mapload)
 	access = get_every_access()
-	registered_account = SSeconomy.get_dep_account(ACCOUNT_CAR)
+	registered_account = SSeconomy.get_budget_account(ACCOUNT_CAR_ID)
 	. = ..()
 
 /obj/item/card/id/captains_spare
@@ -692,19 +732,24 @@ update_label("John Doe", "Clowny")
 	name = "departmental card (budget)"
 	desc = "Provides access to the departmental budget."
 	icon_state = "budget"
-	var/department_ID = ACCOUNT_CIV
+	var/department_ID = ACCOUNT_CIV_ID
 	var/department_name = ACCOUNT_CIV_NAME
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF
 
 /obj/item/card/id/departmental_budget/Initialize(mapload)
 	. = ..()
-	var/datum/bank_account/B = SSeconomy.get_dep_account(department_ID)
+	var/datum/bank_account/department/B = SSeconomy.get_budget_account(department_ID)
+	if(HAS_TRAIT(SSstation, STATION_TRAIT_UNITED_BUDGET) && !B.is_nonstation_account())
+		department_ID = ACCOUNT_CAR_ID
+		department_name = ACCOUNT_ALL_NAME
+		B = SSeconomy.get_budget_account(department_ID)
+
 	if(B)
 		registered_account = B
 		if(!B.bank_cards.Find(src))
 			B.bank_cards += src
 		name = "departmental card ([department_name])"
-		desc = "Provides access to the [department_name]."
+		desc = "Provides access to the [department_name] budget."
 	SSeconomy.dep_cards += src
 
 /obj/item/card/id/departmental_budget/Destroy()
@@ -712,41 +757,56 @@ update_label("John Doe", "Clowny")
 	return ..()
 
 /obj/item/card/id/departmental_budget/civ
-	department_ID = ACCOUNT_CIV
+	department_ID = ACCOUNT_CIV_ID
 	department_name = ACCOUNT_CIV_NAME
 	icon_state = "budget"
 
 /obj/item/card/id/departmental_budget/eng
-	department_ID = ACCOUNT_ENG
+	department_ID = ACCOUNT_ENG_ID
 	department_name = ACCOUNT_ENG_NAME
 	icon_state = "budget_eng"
 
 /obj/item/card/id/departmental_budget/sci
-	department_ID = ACCOUNT_SCI
+	department_ID = ACCOUNT_SCI_ID
 	department_name = ACCOUNT_SCI_NAME
 	icon_state = "budget_sci"
 
 /obj/item/card/id/departmental_budget/med
-	department_ID = ACCOUNT_MED
+	department_ID = ACCOUNT_MED_ID
 	department_name = ACCOUNT_MED_NAME
 	icon_state = "budget_med"
 
 /obj/item/card/id/departmental_budget/srv
-	department_ID = ACCOUNT_SRV
+	department_ID = ACCOUNT_SRV_ID
 	department_name = ACCOUNT_SRV_NAME
 	icon_state = "budget_srv"
 
 /obj/item/card/id/departmental_budget/car
-	department_ID = ACCOUNT_CAR
+	department_ID = ACCOUNT_CAR_ID
 	department_name = ACCOUNT_CAR_NAME
 	icon_state = "budget_car"
 
 /obj/item/card/id/departmental_budget/sec
-	department_ID = ACCOUNT_SEC
+	department_ID = ACCOUNT_SEC_ID
 	department_name = ACCOUNT_SEC_NAME
 	icon_state = "budget_sec"
 
+<<<<<<< HEAD
 ///Job Specific ID Cards///
+=======
+// These will never be spawned, but should be trackable by admins anyway.
+/obj/item/card/id/departmental_budget/com
+	department_ID = ACCOUNT_COM_ID
+	department_name = ACCOUNT_COM_NAME
+	icon_state = "budget_centcom"
+	hud_state = JOB_HUD_ACTINGCAPTAIN
+
+/obj/item/card/id/departmental_budget/vip
+	department_ID = ACCOUNT_VIP_ID
+	department_name = ACCOUNT_VIP_NAME
+	icon_state = "budget_centcom"
+	hud_state = JOB_HUD_VIP
+>>>>>>> a596a80feb (Major bank system refactoring +New negative station trait: united budget (#7559))
 
 /obj/item/card/id/job/captain
 	icon_state = "captain"

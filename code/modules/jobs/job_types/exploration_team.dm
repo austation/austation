@@ -1,12 +1,16 @@
 /datum/job/exploration
 	title = "Exploration Crew"
 	flag = EXPLORATION_CREW
+<<<<<<< HEAD
 	department_head = list("Research Director")
 	department_flag = MEDSCI
+=======
+	department_head = list(JOB_NAME_RESEARCHDIRECTOR)
+	supervisors = "the research director"
+>>>>>>> a596a80feb (Major bank system refactoring +New negative station trait: united budget (#7559))
 	faction = "Station"
 	total_positions = 3
 	spawn_positions = 3
-	supervisors = "the research director"
 	minimal_player_age = 3
 	exp_requirements = 900
 	exp_type = EXP_TYPE_CREW
@@ -17,11 +21,17 @@
 
 	access = list(ACCESS_MAINT_TUNNELS, ACCESS_RESEARCH, ACCESS_EXPLORATION, ACCESS_TOX, ACCESS_MECH_SCIENCE, ACCESS_XENOBIOLOGY)
 	minimal_access = list(ACCESS_RESEARCH, ACCESS_EXPLORATION, ACCESS_TOX, ACCESS_MECH_SCIENCE)
-	paycheck = PAYCHECK_HARD
-	paycheck_department = ACCOUNT_SCI
+
+	department_flag = MEDSCI
+	departments = DEPT_BITFLAG_SCI
+	bank_account_department = ACCOUNT_SCI_BITFLAG
+	payment_per_department = list(ACCOUNT_SCI_ID = PAYCHECK_HARD)
 
 	display_order = JOB_DISPLAY_ORDER_EXPLORATION
+<<<<<<< HEAD
 	departments = DEPARTMENT_SCIENCE
+=======
+>>>>>>> a596a80feb (Major bank system refactoring +New negative station trait: united budget (#7559))
 	rpg_title = "Sailor"
 
 	species_outfits = list(

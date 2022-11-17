@@ -1,12 +1,16 @@
 /datum/job/lawyer
 	title = "Lawyer"
 	flag = LAWYER
+<<<<<<< HEAD
 	department_head = list("Head of Personnel")
 	department_flag = CIVILIAN
+=======
+	department_head = list(JOB_NAME_HEADOFPERSONNEL)
+	supervisors = "the head of personnel"
+>>>>>>> a596a80feb (Major bank system refactoring +New negative station trait: united budget (#7559))
 	faction = "Station"
 	total_positions = 2
 	spawn_positions = 2
-	supervisors = "the head of personnel"
 	selection_color = "#dddddd"
 	chat_color = "#C07D7D"
 	var/lawyers = 0 //Counts lawyer amount
@@ -15,12 +19,18 @@
 
 	access = list(ACCESS_LAWYER, ACCESS_COURT, ACCESS_SEC_DOORS)
 	minimal_access = list(ACCESS_LAWYER, ACCESS_COURT, ACCESS_SEC_DOORS)
-	paycheck = PAYCHECK_EASY
-	paycheck_department = ACCOUNT_CIV
+
+	department_flag = CIVILIAN
+	departments = DEPT_BITFLAG_CIV
+	bank_account_department = ACCOUNT_CIV_BITFLAG
+	payment_per_department = list(ACCOUNT_CIV_ID = PAYCHECK_EASY)
 	mind_traits = list(TRAIT_LAW_ENFORCEMENT_METABOLISM)
 
 	display_order = JOB_DISPLAY_ORDER_LAWYER
+<<<<<<< HEAD
 	departments = DEPARTMENT_SERVICE
+=======
+>>>>>>> a596a80feb (Major bank system refactoring +New negative station trait: united budget (#7559))
 	rpg_title = "Magistrate"
 
 	species_outfits = list(

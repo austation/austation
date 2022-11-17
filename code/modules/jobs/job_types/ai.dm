@@ -14,7 +14,11 @@
 	exp_type = EXP_TYPE_CREW
 	exp_type_department = EXP_TYPE_SILICON
 	display_order = JOB_DISPLAY_ORDER_AI
+<<<<<<< HEAD
 	departments = DEPARTMENT_SILICON
+=======
+	departments = DEPT_BITFLAG_SILICON
+>>>>>>> a596a80feb (Major bank system refactoring +New negative station trait: united budget (#7559))
 	random_spawns_possible = FALSE
 	allow_bureaucratic_error = FALSE
 	var/do_special_check = TRUE

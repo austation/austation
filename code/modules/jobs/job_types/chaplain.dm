@@ -1,12 +1,16 @@
 /datum/job/chaplain
 	title = "Chaplain"
 	flag = CHAPLAIN
+<<<<<<< HEAD
 	department_head = list("Head of Personnel")
 	department_flag = CIVILIAN
+=======
+	department_head = list(JOB_NAME_HEADOFPERSONNEL)
+	supervisors = "the head of personnel"
+>>>>>>> a596a80feb (Major bank system refactoring +New negative station trait: united budget (#7559))
 	faction = "Station"
 	total_positions = 1
 	spawn_positions = 1
-	supervisors = "the head of personnel"
 	selection_color = "#dddddd"
 	chat_color = "#8AB48C"
 
@@ -15,11 +19,18 @@
 
 	access = list(ACCESS_MORGUE, ACCESS_CHAPEL_OFFICE, ACCESS_CREMATORIUM, ACCESS_THEATRE)
 	minimal_access = list(ACCESS_MORGUE, ACCESS_CHAPEL_OFFICE, ACCESS_CREMATORIUM, ACCESS_THEATRE)
-	paycheck = PAYCHECK_EASY
-	paycheck_department = ACCOUNT_CIV
+
+	department_flag = CIVILIAN
+	departments = DEPT_BITFLAG_CIV
+	bank_account_department = ACCOUNT_CIV_BITFLAG
+	payment_per_department = list(ACCOUNT_CIV_ID = PAYCHECK_EASY)
+
 
 	display_order = JOB_DISPLAY_ORDER_CHAPLAIN
+<<<<<<< HEAD
 	departments = DEPARTMENT_SERVICE
+=======
+>>>>>>> a596a80feb (Major bank system refactoring +New negative station trait: united budget (#7559))
 	rpg_title = "Paladin"
 
 	species_outfits = list(

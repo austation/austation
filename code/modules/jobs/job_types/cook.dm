@@ -1,12 +1,16 @@
 /datum/job/cook
 	title = "Cook"
 	flag = COOK
+<<<<<<< HEAD
 	department_head = list("Head of Personnel")
 	department_flag = CIVILIAN
+=======
+	department_head = list(JOB_NAME_HEADOFPERSONNEL)
+	supervisors = "the head of personnel"
+>>>>>>> a596a80feb (Major bank system refactoring +New negative station trait: united budget (#7559))
 	faction = "Station"
 	total_positions = 2
 	spawn_positions = 1
-	supervisors = "the head of personnel"
 	selection_color = "#bbe291"
 	chat_color = "#A2FBB9"
 	var/cooks = 0 //Counts cooks amount
@@ -15,11 +19,18 @@
 
 	access = list(ACCESS_HYDROPONICS, ACCESS_BAR, ACCESS_KITCHEN, ACCESS_MORGUE, ACCESS_MINERAL_STOREROOM)
 	minimal_access = list(ACCESS_KITCHEN, ACCESS_MORGUE, ACCESS_MINERAL_STOREROOM)
-	paycheck = PAYCHECK_EASY
-	paycheck_department = ACCOUNT_SRV
+
+	department_flag = CIVILIAN
+	departments = DEPT_BITFLAG_SRV
+	bank_account_department = ACCOUNT_SRV_BITFLAG
+	payment_per_department = list(ACCOUNT_SRV_ID = PAYCHECK_EASY)
+
 
 	display_order = JOB_DISPLAY_ORDER_COOK
+<<<<<<< HEAD
 	departments = DEPARTMENT_SERVICE
+=======
+>>>>>>> a596a80feb (Major bank system refactoring +New negative station trait: united budget (#7559))
 	rpg_title = "Tavern Chef"
 
 	species_outfits = list(

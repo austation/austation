@@ -246,6 +246,7 @@
 		else
 			linked_techweb.largest_bomb_value = TECHWEB_BOMB_POINTCAP
 			general_point_gain = 1000
+<<<<<<< HEAD
 	*/
 	if(orig_light_range < 5)
 		say("Explosion not large enough for research calculations.")
@@ -260,6 +261,9 @@
 		general_point_gain -= old_tech_largest_bomb_value
 	//austation end
 		var/datum/bank_account/D = SSeconomy.get_dep_account(ACCOUNT_SCI)
+=======
+		var/datum/bank_account/D = SSeconomy.get_budget_account(ACCOUNT_SCI_ID)
+>>>>>>> a596a80feb (Major bank system refactoring +New negative station trait: united budget (#7559))
 		if(D)
 			D.adjust_money(general_point_gain)
 			discovery_point_gain = general_point_gain * 0.5

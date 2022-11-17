@@ -29,10 +29,15 @@
 
 /datum/round_event/pirates/announce(fake)
 	priority_announce("Incoming subspace communication. Secure channel opened at all communication consoles.", "Incoming Message", SSstation.announcer.get_rand_report_sound())
+<<<<<<< HEAD
 	if(fake)
 		return
 	threat = new
 	var/datum/bank_account/D = SSeconomy.get_dep_account(ACCOUNT_CAR)
+=======
+	var/datum/comm_message/threat = new
+	var/datum/bank_account/D = SSeconomy.get_budget_account(ACCOUNT_CAR_ID)
+>>>>>>> a596a80feb (Major bank system refactoring +New negative station trait: united budget (#7559))
 	if(D)
 		payoff = max(payoff_min, FLOOR(D.account_balance * 0.80, 1000))
 	threat.title = "Business proposition"
@@ -41,6 +46,7 @@
 	threat.answer_callback = CALLBACK(src,.proc/answered)
 	SScommunications.send_message(threat,unique = TRUE)
 
+<<<<<<< HEAD
 /datum/round_event/pirates/proc/answered()
 	if(threat && threat.answered == 1)
 		var/datum/bank_account/D = SSeconomy.get_dep_account(ACCOUNT_CAR)
@@ -55,6 +61,23 @@
 		spawn_shuttle()
 	else
 		priority_announce("Too late to beg for mercy!", sound = SSstation.announcer.get_rand_alert_sound(), sender_override = ship_name)
+=======
+/proc/pirates_answered(datum/comm_message/threat, payoff, ship_name, initial_send_time, response_max_time)
+	if(world.time > initial_send_time + response_max_time)
+		priority_announce("Too late to beg for mercy!",sender_override = ship_name)
+		return
+	// Attempted to pay off
+	if(threat?.answered == PIRATE_RESPONSE_PAY)
+		var/datum/bank_account/D = SSeconomy.get_budget_account(ACCOUNT_CAR_ID)
+		if(!D)
+			return
+		// Check if they can afford it
+		if(D.adjust_money(-payoff))
+			priority_announce("Thanks for the credits, landlubbers.", sound = SSstation.announcer.get_rand_alert_sound(), sender_override = ship_name)
+		else
+			priority_announce("Trying to cheat us? You'll regret this!", sound = SSstation.announcer.get_rand_alert_sound(), sender_override = ship_name)
+			spawn_pirates(threat, TRUE) // insta-spawn!
+>>>>>>> a596a80feb (Major bank system refactoring +New negative station trait: united budget (#7559))
 
 /datum/round_event/pirates/start()
 	if(threat && !threat.answered)
@@ -111,7 +134,7 @@
 /obj/machinery/shuttle_scrambler/process()
 	if(active)
 		if(is_station_level(z))
-			var/datum/bank_account/D = SSeconomy.get_dep_account(ACCOUNT_CAR)
+			var/datum/bank_account/D = SSeconomy.get_budget_account(ACCOUNT_CAR_ID)
 			if(D)
 				var/siphoned = min(D.account_balance,siphon_per_tick)
 				D.adjust_money(-siphoned)

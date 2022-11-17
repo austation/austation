@@ -1,14 +1,19 @@
 /datum/job/hop
 	title = "Head of Personnel"
 	flag = HOP
+<<<<<<< HEAD
 	auto_deadmin_role_flags = DEADMIN_POSITION_HEAD
 	department_head = list("Captain")
 	department_flag = CIVILIAN
+=======
+	auto_deadmin_role_flags = PREFTOGGLE_DEADMIN_POSITION_HEAD
+	department_head = list(JOB_NAME_CAPTAIN)
+	supervisors = "the captain"
+>>>>>>> a596a80feb (Major bank system refactoring +New negative station trait: united budget (#7559))
 	head_announce = list(RADIO_CHANNEL_SUPPLY, RADIO_CHANNEL_SERVICE)
 	faction = "Station"
 	total_positions = 1
 	spawn_positions = 1
-	supervisors = "the captain"
 	selection_color = "#ddddff"
 	chat_color = "#7979d3"
 	req_admin_notify = 1
@@ -33,11 +38,19 @@
 						ACCESS_MECH_MINING, ACCESS_MECH_ENGINE, ACCESS_MECH_SCIENCE, ACCESS_MECH_SECURITY, ACCESS_MECH_MEDICAL, ACCESS_EXPLORATION,
 			            ACCESS_THEATRE, ACCESS_CHAPEL_OFFICE, ACCESS_LIBRARY, ACCESS_RESEARCH, ACCESS_MINING, ACCESS_VAULT, ACCESS_MINING_STATION,
 			            ACCESS_HOP, ACCESS_RC_ANNOUNCE, ACCESS_KEYCARD_AUTH, ACCESS_GATEWAY, ACCESS_MINERAL_STOREROOM, ACCESS_AUX_BASE)
-	paycheck = PAYCHECK_COMMAND
-	paycheck_department = ACCOUNT_SRV
+
+	department_flag = CIVILIAN
+	departments = DEPT_BITFLAG_COM | DEPT_BITFLAG_SRV
+	bank_account_department = ACCOUNT_SRV_BITFLAG | ACCOUNT_COM_BITFLAG
+	payment_per_department = list(
+		ACCOUNT_COM_ID = PAYCHECK_COMMAND_NT,
+		ACCOUNT_SRV_ID = PAYCHECK_COMMAND_DEPT)
 
 	display_order = JOB_DISPLAY_ORDER_HEAD_OF_PERSONNEL
+<<<<<<< HEAD
 	departments = DEPARTMENT_COMMAND | DEPARTMENT_SERVICE
+=======
+>>>>>>> a596a80feb (Major bank system refactoring +New negative station trait: united budget (#7559))
 	rpg_title = "Guild Questgiver"
 
 	species_outfits = list(
