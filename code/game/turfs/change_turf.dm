@@ -87,7 +87,15 @@ GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
 	var/old_dynamic_lighting = dynamic_lighting
 	var/old_affecting_lights = affecting_lights
 	var/old_lighting_object = lighting_object
+<<<<<<< HEAD
 	var/old_corners = corners
+=======
+	var/old_lighting_corner_NE = lighting_corner_NE
+	var/old_lighting_corner_SE = lighting_corner_SE
+	var/old_lighting_corner_SW = lighting_corner_SW
+	var/old_lighting_corner_NW = lighting_corner_NW
+	var/old_dynamic_lumcount = dynamic_lumcount
+>>>>>>> 97e9bf233a ([Port]Directional ligths + Opacity rework (And other stuff I've very likely forgot) (#7418))
 
 	var/old_exl = explosion_level
 	var/old_exi = explosion_id
@@ -130,6 +138,15 @@ GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
 
 	W.blueprint_data = old_bp
 
+<<<<<<< HEAD
+=======
+	lighting_corner_NE = old_lighting_corner_NE
+	lighting_corner_SE = old_lighting_corner_SE
+	lighting_corner_SW = old_lighting_corner_SW
+	lighting_corner_NW = old_lighting_corner_NW
+	dynamic_lumcount = old_dynamic_lumcount
+
+>>>>>>> 97e9bf233a ([Port]Directional ligths + Opacity rework (And other stuff I've very likely forgot) (#7418))
 	if(SSlighting.initialized)
 		recalc_atom_opacity()
 		lighting_object = old_lighting_object

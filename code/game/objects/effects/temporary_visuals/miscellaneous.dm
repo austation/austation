@@ -562,4 +562,4 @@
 	icon_state = "vent_wind"
 	layer = FLY_LAYER
 	duration = 4.8
-	mouse_opacity = 0
+	mouse_opacity = FALSE
