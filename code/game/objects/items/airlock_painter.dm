@@ -37,7 +37,29 @@
 
 /obj/item/airlock_painter/Initialize(mapload)
 	. = ..()
+<<<<<<< HEAD
 	ink = new /obj/item/toner(src)
+=======
+	ink = new initial_ink_type(src)
+
+/obj/item/airlock_painter/update_icon()
+	var/base = initial(icon_state)
+	if(!istype(ink))
+		icon_state = "[base]_none"
+		return
+	switch(ink.charges/ink.max_charges)
+		if(0.001 to PAINTER_LOW)
+			icon_state = "[base]_low"
+		if(PAINTER_LOW to PAINTER_MID)
+			icon_state = "[base]_mid"
+		if(PAINTER_MID to PAINTER_MOST)
+			icon_state = "[base]_most"
+		if(PAINTER_MOST to INFINITY)
+			icon_state = base
+		else
+			icon_state = "[base]_empty"
+
+>>>>>>> 8df74dccdd (Fixes the airlock painter/tile painter empty status (#8074))
 
 //This proc doesn't just check if the painter can be used, but also uses it.
 //Only call this if you are certain that the painter will be used right after this check!
