@@ -14,11 +14,19 @@
 	var/atom/changed_turf = ChangeTurf(/turf/open/floor/plating)
 	changed_turf.AddElement(/datum/element/rust)
 
+<<<<<<< HEAD
 /turf/open/floor/plasteel/update_icon()
 	if(!..())
 		return 0
 	if(!broken && !burnt)
 		icon_state = icon_regular_floor
+=======
+/turf/open/floor/plasteel/update_icon_state()
+	if(broken || burnt)
+		return
+	icon_state = base_icon_state
+	return ..()
+>>>>>>> 257d064f2e (Fixes Emissives, aswell as adds an atomized version of update_appearance  (#8063))
 
 /turf/open/floor/plasteel/airless
 	initial_gas_mix = AIRLESS_ATMOS

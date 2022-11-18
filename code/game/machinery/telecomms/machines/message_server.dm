@@ -54,7 +54,7 @@
 		icon_state = "blackbox"
 	else
 		icon_state = "blackbox_b"
-
+	return ..()
 /obj/item/blackbox
 	name = "the blackbox"
 	desc = "A strange relic, capable of recording data on extradimensional vertices. It lives inside the blackbox recorder for safe keeping."
