@@ -95,9 +95,18 @@
 
 	if(maxHealth == health)
 		to_chat(user, "<span class='info'>[src] is at full integrity.</span>")
+<<<<<<< HEAD
 		return
 
 	if(I.use_tool(src, user, 0, volume=40))
+=======
+		return TRUE
+	if(welder.use_tool(src, user, 0, volume = 40))
+		if(stat == DEAD && health > 0)
+			to_chat(user, "<span class='info'>You restart [src].</span>")
+			revive()
+			return TRUE
+>>>>>>> f4cd1c7c12 (Minebot code update (#8075))
 		adjustBruteLoss(-15)
 		to_chat(user, "<span class='info'>You repair some of the armor on [src].</span>")
 
@@ -274,6 +283,7 @@
 		return
 	upgrade_bot(M, user)
 
+<<<<<<< HEAD
 /obj/item/mine_bot_upgrade/proc/upgrade_bot(mob/living/simple_animal/hostile/mining_drone/M, mob/user)
 	if(M.melee_damage != initial(M.melee_damage))
 		to_chat(user, "[src] already has a combat upgrade installed!")
@@ -282,6 +292,28 @@
 	qdel(src)
 
 //Health
+=======
+/// Handles adding upgrades. This checks for any duplicate mods and links the mod to the minebot. Returns FALSE if the upgrade fails, otherwise returns TRUE
+/obj/item/minebot_upgrade/proc/upgrade_bot(mob/living/simple_animal/hostile/mining_drone/minebot, mob/user)
+	SHOULD_CALL_PARENT(TRUE)
+	if(is_type_in_list(src, minebot.installed_upgrades))
+		minebot.balloon_alert(user, "A similar mod has already been installed.")
+		return FALSE
+	if(!user.transferItemToLoc(src, minebot))
+		return FALSE
+	linked_bot = minebot
+	LAZYADD(linked_bot.installed_upgrades, src)
+	to_chat(user, "<span class='notice'>You install [src].</span>")
+	playsound(loc, 'sound/items/screwdriver.ogg', 100, 1)
+	return TRUE
+
+/// Handles removing upgrades. This handles unlinking the minebot as well, so it should be called after any upgrade-specific unequip actions.
+/obj/item/minebot_upgrade/proc/unequip()
+	SHOULD_CALL_PARENT(TRUE)
+	LAZYREMOVE(linked_bot.installed_upgrades, src)
+	forceMove(get_turf(linked_bot))
+	linked_bot = null
+>>>>>>> f4cd1c7c12 (Minebot code update (#8075))
 
 /obj/item/mine_bot_upgrade/health
 	name = "minebot armor upgrade"
