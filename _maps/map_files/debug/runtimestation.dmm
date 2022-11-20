@@ -2653,11 +2653,23 @@
 /obj/machinery/door/airlock/public/glass,
 /turf/open/floor/plasteel,
 /area/medical/chemistry)
+<<<<<<< HEAD
 "wb" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 4
 	},
 /obj/machinery/light{
+=======
+"vY" = (
+/obj/machinery/gravity_generator/main/station,
+/obj/effect/turf_decal/tile/neutral/fourcorners/contrasted,
+/turf/open/floor/plasteel/dark,
+/area/engine/gravity_generator)
+"wO" = (
+/obj/machinery/light,
+/obj/machinery/clonepod/prefilled,
+/obj/effect/turf_decal/tile/blue/opposingcorners{
+>>>>>>> a86d378af2 (clonepod (#8098))
 	dir = 1
 	},
 /obj/effect/turf_decal/tile/blue{
