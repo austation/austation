@@ -431,7 +431,7 @@ GENE SCANNER
 	advanced = TRUE
 
 /obj/item/analyzer
-	desc = "A hand-held environmental scanner which reports current gas levels. Alt-Click to use the built in barometer function."
+	desc = "A hand-held environmental scanner which can be used to scan gases in the atmosphere or within containers. Can also be used to scan unusual station phenomena. Alt-Click to use the built in barometer function."
 	name = "analyzer"
 	custom_price = 10
 	icon = 'icons/obj/device.dmi'
@@ -582,7 +582,12 @@ GENE SCANNER
 			if(airs.len > 1)
 				to_chat(user, "<span class='notice'>This node is empty!</span>")
 			else
+<<<<<<< HEAD
 				to_chat(user, "<span class='notice'>[target] is empty!</span>")
+=======
+				message += "<span class='notice'>[target] is empty!</span>"
+			message += "<span class='notice'>Volume: [volume] L</span>"
+>>>>>>> b86e2c37ba (atmos analyzers report volume even for empty containers + made analyzer description accurate (#8079))
 
 		if(cached_scan_results && cached_scan_results["fusion"]) //notify the user if a fusion reaction was detected
 			var/instability = round(cached_scan_results["fusion"], 0.01)
