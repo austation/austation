@@ -512,10 +512,17 @@ GLOBAL_VAR_INIT(time_last_changed_position, 0)
 					modify.assignment = t1
 					playsound(src, 'sound/machines/terminal_prompt_confirm.ogg', 50, 0)
 		if ("demote")
+<<<<<<< HEAD
 			if(modify.assignment in head_subordinates || modify.assignment == "Assistant")
 				modify.assignment = "Unassigned"
 				log_id("[key_name(usr)] demoted [modify], unassigning the card without affecting access, using [scan] at [AREACOORD(usr)].")
 				playsound(src, 'sound/machines/terminal_prompt_confirm.ogg', 50, 0)
+=======
+			if(inserted_modify_id.assignment in head_subordinates || inserted_modify_id.assignment == "Assistant")
+				inserted_modify_id.assignment = "Demoted"
+				log_id("[key_name(usr)] demoted [inserted_modify_id], unassigning the card without affecting access, using [inserted_scan_id] at [AREACOORD(usr)].")
+				playsound(src, 'sound/machines/terminal_prompt_confirm.ogg', 50, FALSE)
+>>>>>>> 7eba2c80d4 (Demoted job title is now "Demoted" instead of "Unassigned" (#8099))
 			else
 				to_chat(usr, "<span class='error'>You are not authorized to demote this position.</span>")
 		if ("reg")
