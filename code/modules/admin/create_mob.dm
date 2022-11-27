@@ -33,7 +33,13 @@
 	H.dna.features["frills"] = pick(GLOB.frills_list)
 	H.dna.features["spines"] = pick(GLOB.spines_list)
 	H.dna.features["body_markings"] = pick(GLOB.body_markings_list)
+<<<<<<< HEAD
 	H.dna.features["moth_wings"] = pick(GLOB.moth_wings_list)
+=======
+	H.dna.features["moth_wings"] = pick(GLOB.moth_wings_roundstart_list)
+	H.dna.features["moth_antennae"] = pick(GLOB.moth_antennae_roundstart_list)
+	H.dna.features["moth_markings"] = pick(GLOB.moth_markings_roundstart_list)
+>>>>>>> 04489fc08e (Several moth wing related fixes (#8130))
 
 	H.update_body()
 	H.update_hair()
