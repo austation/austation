@@ -9,6 +9,7 @@
 	var/obj/item/pda/storedpda = null
 	var/obj/item/card/id/storedid = null
 	var/pda_icons = list(
+<<<<<<< HEAD
 		"neutral" = "pda",
 		"Assistant" = "pda-assistant",
 		"Atmospheric Technician" = "pda-atmos",
@@ -76,6 +77,51 @@
 		"Janitor" = "janitor",
 		"Exploration Crew" = "exploration"
 		)
+=======
+		"Misc: Neutral" = "pda",
+		"Misc: Assistant" = "pda-assistant",
+		"Command (Standard)" = "pda-heads",
+		"Command: Captain" = "pda-captain",
+		"Service (Standard)" = "pda-service",
+		"Service: Head of Personnel" = "pda-hop",
+		"Service: Bartender" = "pda-bartender",
+		"Service: Chaplain" = "pda-chaplain",
+		"Service: Clown" = "pda-clown",
+		"Service: Cook" = "pda-cook",
+		"Service: Curator" = "pda-library",
+		"Service: Janitor" = "pda-janitor",
+		"Service: Lawyer" = "pda-lawyer",
+		"Service: Mime" = "pda-mime",
+		"Cargo (Standard)" = "pda-cargo",
+		"Cargo: Quartermaster" = "pda-qm",
+		"Cargo: Cargo Technician" = "pda-cargo",
+		"Cargo: Shaft Miner" = "pda-miner",
+		"Engineering (Standard)" = "pda-engineer",
+		"Engineering: Chief Engineer" = "pda-ce",
+		"Engineering: Station Engineer" = "pda-engineer",
+		"Engineering: Atmospheric Technician" = "pda-atmos",
+		"Science (Standard)" = "pda-science",
+		"Science: Research Director" = "pda-rd",
+		"Science: Roboticist" = "pda-roboticist",
+		"Science: Scienctist" = "pda-science",
+		"Science: Exploration Crew" = "pda-exploration",
+		"Medical (Standard)" = "pda-medical",
+		"Medical: Chief Medical Officer" = "pda-cmo",
+		"Medical: Medical Doctor" = "pda-medical",
+		"Medical: Chemist" = "pda-chemistry",
+		"Medical: Paramedic" = "pda-paramedical",
+		"Medical: Geneticist" = "pda-genetics",
+		"Medical: Virologist" = "pda-virology",
+		"Security (Standard)" = "pda-security",
+		"Security: Head of Security" = "pda-hos",
+		"Security: Warden" = "pda-warden",
+		"Security: Security Officier" = "pda-security",
+		"Security: Detective" = "pda-detective",
+		"Security: Brig Physician" = "pda-brigphys",
+		"Security: Deputy" = "pda-deputy",
+		"Misc: Prisoner" = "pda-prisoner"
+	)
+>>>>>>> 3505fcb749 (Agent card no longer uses meaningless reset feature to forge (#8100))
 	max_integrity = 200
 	var/list/colorlist = list()
 
@@ -85,6 +131,7 @@
 	pda_icons += list(
 		"Transparent" = "pda-clear",
 		"Syndicate" = "pda-syndi"
+<<<<<<< HEAD
 		)
 	id_icons += list(
 		"CentCom" = "centcom",
@@ -92,6 +139,9 @@
 		"Syndicate" = "syndicate",
 		"Clown Operative" = "clown_op",
 		)
+=======
+	)
+>>>>>>> 3505fcb749 (Agent card no longer uses meaningless reset feature to forge (#8100))
 	to_chat(user, "<span class='warning'>You short out the design locking circuitry, allowing contraband and special designs.</span>")
 	obj_flags |= EMAGGED
 /obj/machinery/pdapainter/update_icon()
@@ -227,7 +277,11 @@
 				ejectpda()
 			if(storedid)
 				var/newidskin
+<<<<<<< HEAD
 				newidskin = input(user, "Select an ID skin!", "ID  Painting") as null|anything in id_icons
+=======
+				newidskin = input(user, "Select an ID skin!", "ID  Painting") as null|anything in get_card_style_list(obj_flags & EMAGGED)
+>>>>>>> 3505fcb749 (Agent card no longer uses meaningless reset feature to forge (#8100))
 				if(!newidskin)
 					return
 				if(!in_range(src, user))
@@ -267,3 +321,32 @@
 /obj/machinery/pdapainter/power_change()
 	..()
 	update_icon()
+
+
+/proc/get_card_style_list(emagged)
+	var/static/valid_jobs = list(
+		"----Command----", "Command (Custom)",JOB_NAME_CAPTAIN,"Acting Captain",
+		"----Service----", "Service (Custom)", JOB_NAME_ASSISTANT, JOB_NAME_HEADOFPERSONNEL, JOB_NAME_BARTENDER, JOB_NAME_COOK,
+			JOB_NAME_BOTANIST, JOB_NAME_JANITOR, JOB_NAME_CURATOR,JOB_NAME_CHAPLAIN, JOB_NAME_LAWYER,
+			JOB_NAME_CLOWN, JOB_NAME_MIME, JOB_NAME_BARBER, JOB_NAME_STAGEMAGICIAN,
+		"----Cargo----","Cargo (Custom)",JOB_NAME_QUARTERMASTER, JOB_NAME_CARGOTECHNICIAN,JOB_NAME_SHAFTMINER,
+		"----Engineering----","Engineering (Custom)",JOB_NAME_CHIEFENGINEER, JOB_NAME_STATIONENGINEER, JOB_NAME_ATMOSPHERICTECHNICIAN,
+		"----Science----","Science (Custom)",JOB_NAME_RESEARCHDIRECTOR, JOB_NAME_SCIENTIST, JOB_NAME_ROBOTICIST, JOB_NAME_EXPLORATIONCREW,
+		"----Medical----","Medical (Custom)",JOB_NAME_CHIEFMEDICALOFFICER, JOB_NAME_MEDICALDOCTOR, JOB_NAME_CHEMIST, JOB_NAME_GENETICIST,
+			JOB_NAME_VIROLOGIST, JOB_NAME_PARAMEDIC, JOB_NAME_PSYCHIATRIST,
+		"----Security----","Security (Custom)",JOB_NAME_HEADOFSECURITY, JOB_NAME_WARDEN, JOB_NAME_DETECTIVE, JOB_NAME_SECURITYOFFICER,
+			JOB_NAME_BRIGPHYSICIAN, JOB_NAME_DEPUTY,
+		"----MISC----","Unassigned",JOB_NAME_PRISONER
+	)
+	var/static/emagged_jobs = list(
+		"CentCom (Custom)",
+		"CentCom",
+		"ERT",
+		"VIP",
+		"King",
+		"Syndicate Agent",
+		"Clown Operative"
+	)
+	if(emagged)
+		return valid_jobs+emagged_jobs
+	return valid_jobs
