@@ -43051,6 +43051,7 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2,
 /turf/open/floor/plasteel/white,
+<<<<<<< HEAD
 /area/medical/genetics)
 "kau" = (
 /obj/machinery/atmospherics/pipe/manifold/cyan/visible{
@@ -43071,6 +43072,12 @@
 /obj/machinery/disposal/bin,
 /obj/structure/disposalpipe/trunk{
 	dir = 2
+=======
+/area/crew_quarters/kitchen/coldroom)
+"khz" = (
+/obj/machinery/vending/job_disk{
+	req_access_txt = "57"
+>>>>>>> 45fc94e610 (Tweaks HoP job disk selling vendor (#8126))
 	},
 /turf/open/floor/carpet/blue,
 /area/crew_quarters/heads/hop)
