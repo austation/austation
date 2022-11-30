@@ -51,8 +51,12 @@
 * Don't use this proc. use ForceContractDisease on mob/living/carbon instead
 */
 /datum/disease/proc/infect(var/mob/living/infectee, make_copy = TRUE)
+<<<<<<< HEAD
 	PROTECTED_PROC(TRUE)
 	var/datum/disease/D = make_copy ? Copy() : src	
+=======
+	var/datum/disease/D = make_copy ? Copy() : src
+>>>>>>> bfee2ea53f (Crew Objectives Refactor (#7943))
 	infectee.diseases += D
 	D.affected_mob = infectee
 	SSdisease.active_diseases += D //Add it to the active diseases list, now that it's actually in a mob and being processed.
