@@ -2230,9 +2230,22 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	desc = "A modification kit which allows Kinetic Accelerators to do greatly increased damage while indoors. \
 			Occupies 35% mod capacity."
 	item = /obj/item/borg/upgrade/modkit/indoors
+<<<<<<< HEAD
 	cost = 5 //you need two for full damage, so total of 10 for maximum damage
 	limited_stock = 2 //you can't use more than two!
 	restricted_roles = list("Shaft Miner")
+=======
+	cost = 5 //you need one for full damage, so total of 5 for maximum damage
+	limited_stock = 1 //you can't use more than one!
+	restricted_roles = list(JOB_NAME_SHAFTMINER)
+
+/datum/uplink_item/role_restricted/esaw
+	name = "Energy Saw"
+	desc = "A deadly energy saw. Comes in a slick black finish."
+	cost = 5
+	item = /obj/item/melee/transforming/energy/sword/esaw
+	restricted_roles = list("Medical Doctor", "Chief Medical Officer", "Paramedic", "Brig Physician")
+>>>>>>> f563d0b61c (Overall reverses lavaland powercreep (#8067))
 
 /datum/uplink_item/role_restricted/esaw_arm
 	name = "Energy Saw Arm Implant"

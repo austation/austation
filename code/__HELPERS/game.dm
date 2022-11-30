@@ -567,7 +567,11 @@
 	if(!istype(environment))
 		return
 	var/pressure = environment.return_pressure()
+<<<<<<< HEAD
 	if(pressure <= LAVALAND_EQUIPMENT_EFFECT_PRESSURE)
+=======
+	if(pressure <= MAXIMUM_LAVALAND_EQUIPMENT_EFFECT_PRESSURE)
+>>>>>>> f563d0b61c (Overall reverses lavaland powercreep (#8067))
 		. = TRUE
 
 /proc/ispipewire(item)
