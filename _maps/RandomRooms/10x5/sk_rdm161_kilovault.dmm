@@ -2,6 +2,7 @@
 "a" = (
 /turf/closed/wall/r_wall,
 /area/template_noop)
+<<<<<<< HEAD
 "b" = (
 /obj/effect/turf_decal/tile/neutral,
 /obj/effect/turf_decal/tile/neutral{
@@ -40,11 +41,31 @@
 /turf/open/floor/plasteel/dark,
 /area/template_noop)
 "f" = (
+=======
+"ac" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/stripes/corner{
+	dir = 1
+	},
+/obj/item/kirbyplants{
+	icon_state = "plant-16"
+	},
+/obj/structure/spider/stickyweb,
+/obj/effect/turf_decal/tile/neutral/opposingcorners,
+/turf/open/floor/plasteel/dark,
+/area/template_noop)
+"ad" = (
+/obj/structure/sign/poster/contraband/random,
+/turf/closed/wall/r_wall,
+/area/template_noop)
+"af" = (
+>>>>>>> 1b51f4fcf7 (Adds new random maintenance rooms (#8140))
 /obj/machinery/door/airlock/vault{
 	id_tag = "bank";
 	name = "Bank Vault";
 	req_access_txt = "0"
 	},
+<<<<<<< HEAD
 /obj/effect/mapping_helpers/airlock/abandoned,
 /turf/open/floor/plasteel/dark,
 /area/template_noop)
@@ -108,15 +129,48 @@
 /turf/open/floor/plasteel/dark,
 /area/template_noop)
 "n" = (
+=======
+/obj/effect/mapping_helpers/airlock/locked,
+/turf/open/floor/plasteel/dark,
+/area/template_noop)
+"ai" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/blood/old,
+/obj/effect/decal/remains/human,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/tile/neutral/half/contrasted{
+	dir = 1
+	},
+/turf/open/floor/plasteel/dark,
+/area/template_noop)
+"al" = (
+/turf/closed/wall,
+/area/template_noop)
+"ao" = (
+/obj/effect/turf_decal/stripes/corner{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/blood/old,
+>>>>>>> 1b51f4fcf7 (Adds new random maintenance rooms (#8140))
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
 	},
+<<<<<<< HEAD
 /obj/effect/turf_decal/tile/neutral,
+=======
+/turf/open/floor/plasteel/dark,
+/area/template_noop)
+"aq" = (
+/obj/effect/decal/cleanable/dirt,
+>>>>>>> 1b51f4fcf7 (Adds new random maintenance rooms (#8140))
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
 	},
 /obj/effect/decal/cleanable/blood/old,
+<<<<<<< HEAD
 /obj/effect/decal/cleanable/blood/gibs/limb,
 /turf/open/floor/plasteel/dark,
 /area/template_noop)
@@ -125,6 +179,20 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
 	},
+=======
+/mob/living/simple_animal/hostile/poison/giant_spider/hunter{
+	desc = "Furry and black, it makes you shudder to look at it. This one has sparkling purple eyes, and looks abnormally thin and frail.";
+	environment_smash = 0;
+	health = 60;
+	maxHealth = 60;
+	melee_damage = 10;
+	name = "scrawny spider"
+	},
+/obj/effect/turf_decal/tile/neutral/opposingcorners,
+/turf/open/floor/plasteel/dark,
+/area/template_noop)
+"ar" = (
+>>>>>>> 1b51f4fcf7 (Adds new random maintenance rooms (#8140))
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/blood/old,
 /mob/living/simple_animal/hostile/poison/giant_spider/hunter{
@@ -135,6 +203,7 @@
 	melee_damage = 10;
 	name = "scrawny spider"
 	},
+<<<<<<< HEAD
 /turf/open/floor/plasteel/dark,
 /area/template_noop)
 "s" = (
@@ -192,6 +261,38 @@
 /turf/open/floor/plasteel/dark,
 /area/template_noop)
 "y" = (
+=======
+/obj/effect/turf_decal/tile/neutral/opposingcorners,
+/turf/open/floor/plasteel/dark,
+/area/template_noop)
+"at" = (
+/obj/structure/spider/stickyweb,
+/obj/effect/turf_decal/tile/neutral/opposingcorners,
+/turf/open/floor/plasteel/dark,
+/area/template_noop)
+"aw" = (
+/obj/effect/turf_decal/bot,
+/obj/structure/safe{
+	pixel_x = 3
+	},
+/obj/item/stack/spacecash/c500{
+	pixel_x = -2;
+	pixel_y = -2
+	},
+/obj/item/lazarus_injector,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/spider/stickyweb,
+/obj/effect/turf_decal/tile/neutral/half/contrasted,
+/turf/open/floor/plasteel/dark,
+/area/template_noop)
+"ax" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/old,
+/obj/effect/turf_decal/tile/neutral/opposingcorners,
+/turf/open/floor/plasteel/dark,
+/area/template_noop)
+"ay" = (
+>>>>>>> 1b51f4fcf7 (Adds new random maintenance rooms (#8140))
 /obj/structure/table/reinforced,
 /obj/machinery/door/firedoor,
 /obj/machinery/door/poddoor/shutters{
@@ -202,6 +303,7 @@
 /obj/effect/decal/cleanable/blood/old,
 /turf/open/floor/plating,
 /area/template_noop)
+<<<<<<< HEAD
 "z" = (
 /obj/structure/table,
 /obj/machinery/light/small{
@@ -351,6 +453,53 @@
 /turf/open/floor/plasteel/dark,
 /area/template_noop)
 "O" = (
+=======
+"aA" = (
+/obj/structure/spider/stickyweb,
+/obj/effect/turf_decal/stripes/corner{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral/opposingcorners,
+/turf/open/floor/plasteel/dark,
+/area/template_noop)
+"aC" = (
+/obj/structure/sign/warning/securearea,
+/turf/closed/wall/r_wall,
+/area/template_noop)
+"aD" = (
+/obj/effect/decal/cleanable/blood/old,
+/obj/effect/turf_decal/tile/neutral/opposingcorners,
+/turf/open/floor/plasteel/dark,
+/area/template_noop)
+"aK" = (
+/obj/effect/turf_decal/stripes/corner,
+/obj/item/radio/intercom{
+	pixel_y = 22
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/cobweb/cobweb2,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/turf/open/floor/plasteel/dark,
+/area/template_noop)
+"aN" = (
+/obj/effect/turf_decal/bot,
+/obj/structure/safe{
+	pixel_x = 3
+	},
+/obj/item/stack/spacecash/c500{
+	pixel_x = -2;
+	pixel_y = -2
+	},
+/obj/item/storage/belt/bandolier,
+/obj/effect/decal/cleanable/dirt,
+/obj/item/gun/ballistic/shotgun/toy/unrestricted,
+/obj/effect/turf_decal/tile/neutral/half/contrasted,
+/turf/open/floor/plasteel/dark,
+/area/template_noop)
+"aO" = (
+>>>>>>> 1b51f4fcf7 (Adds new random maintenance rooms (#8140))
 /obj/structure/sign/poster/contraband/random,
 /turf/closed/wall,
 /area/template_noop)
@@ -369,6 +518,7 @@
 	},
 /turf/open/floor/plating,
 /area/template_noop)
+<<<<<<< HEAD
 "R" = (
 /obj/effect/turf_decal/bot,
 /obj/structure/safe{
@@ -388,6 +538,9 @@
 /turf/open/floor/plasteel/dark,
 /area/template_noop)
 "S" = (
+=======
+"aS" = (
+>>>>>>> 1b51f4fcf7 (Adds new random maintenance rooms (#8140))
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
 	},
@@ -397,6 +550,7 @@
 /obj/effect/turf_decal/tile/neutral,
 /turf/open/floor/plasteel/dark,
 /area/template_noop)
+<<<<<<< HEAD
 "U" = (
 /obj/effect/turf_decal/tile/neutral,
 /obj/effect/turf_decal/tile/neutral{
@@ -412,10 +566,23 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
 	},
+=======
+"aT" = (
+/obj/structure/spider/stickyweb,
+/obj/effect/turf_decal/stripes/corner{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral/opposingcorners,
+/turf/open/floor/plasteel/dark,
+/area/template_noop)
+"aV" = (
+/obj/effect/decal/cleanable/dirt,
+>>>>>>> 1b51f4fcf7 (Adds new random maintenance rooms (#8140))
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
 	},
 /obj/effect/decal/cleanable/blood/old,
+<<<<<<< HEAD
 /turf/open/floor/plasteel/dark,
 /area/template_noop)
 "Y" = (
@@ -431,6 +598,150 @@
 /obj/effect/decal/cleanable/blood/old,
 /obj/effect/decal/remains/human,
 /obj/effect/decal/cleanable/dirt,
+=======
+/obj/effect/turf_decal/tile/neutral/opposingcorners,
+/turf/open/floor/plasteel/dark,
+/area/template_noop)
+"aW" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/tile/neutral/opposingcorners,
+/turf/open/floor/plasteel/dark,
+/area/template_noop)
+"aZ" = (
+/obj/structure/table,
+/obj/item/clipboard,
+/obj/item/paper/crumpled{
+	info = "The safes have been locked and scrambled. Three thousand space dollars, a bandolier, a custom shotgun, and a lazarus injector have been safely deposited.";
+	name = "bank statement"
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/tile/neutral/half/contrasted,
+/turf/open/floor/plasteel/dark,
+/area/template_noop)
+"dr" = (
+/obj/structure/table,
+/obj/machinery/light/small{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/item/clothing/gloves/color/black,
+/obj/item/crowbar/red,
+/obj/item/flashlight/seclite,
+/obj/effect/decal/cleanable/blood/old,
+/obj/effect/turf_decal/tile/neutral/opposingcorners,
+/turf/open/floor/plasteel/dark,
+/area/template_noop)
+"gO" = (
+/obj/machinery/button/door{
+	id = "bank";
+	name = "Bank Vault Lock";
+	normaldoorcontrol = 1;
+	pixel_x = -24;
+	pixel_y = -8;
+	specialfunctions = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/stripes/corner{
+	dir = 8
+	},
+/obj/structure/table,
+/obj/effect/decal/cleanable/cobweb,
+/obj/item/clothing/neck/tie/black{
+	pixel_x = 6
+	},
+/obj/item/clothing/neck/tie/red,
+/obj/item/clothing/mask/rat/jackal{
+	pixel_x = 4;
+	pixel_y = 4
+	},
+/obj/item/clothing/mask/rat/jackal,
+/obj/structure/spider/stickyweb,
+/obj/machinery/newscaster{
+	pixel_y = 30
+	},
+/obj/effect/turf_decal/tile/neutral/opposingcorners,
+/turf/open/floor/plasteel/dark,
+/area/template_noop)
+"hm" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/bot,
+/obj/machinery/vending/cola/random,
+/obj/effect/turf_decal/stripes/corner{
+	dir = 8
+	},
+/obj/structure/spider/stickyweb,
+/obj/effect/turf_decal/tile/neutral/opposingcorners,
+/turf/open/floor/plasteel/dark,
+/area/template_noop)
+"pk" = (
+/obj/structure/table,
+/obj/machinery/button/door{
+	id = "bankshutter";
+	name = "Bank Shutter Toggle";
+	pixel_x = 24;
+	pixel_y = -8;
+	req_access_txt = "0"
+	},
+/obj/item/paper_bin{
+	pixel_x = -4;
+	pixel_y = 4
+	},
+/obj/item/pen,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/stripes/corner,
+/obj/effect/decal/cleanable/cobweb/cobweb2,
+/obj/structure/spider/stickyweb,
+/obj/machinery/button/door{
+	id = "bankvault";
+	name = "Bank Door Lock";
+	normaldoorcontrol = 1;
+	pixel_x = 24;
+	pixel_y = 8;
+	specialfunctions = 4
+	},
+/obj/effect/turf_decal/tile/neutral/opposingcorners,
+/turf/open/floor/plasteel/dark,
+/area/template_noop)
+"qt" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/spider/stickyweb,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/turf/open/floor/plasteel/dark,
+/area/template_noop)
+"CL" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/gibs/old,
+/obj/effect/turf_decal/tile/neutral/opposingcorners{
+	dir = 1
+	},
+/turf/open/floor/plasteel/dark,
+/area/template_noop)
+"ED" = (
+/obj/structure/sign/warning/nosmoking{
+	pixel_y = 30
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/old,
+/obj/effect/turf_decal/stripes/corner{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/neutral/opposingcorners,
+/turf/open/floor/plasteel/dark,
+/area/template_noop)
+"Kv" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/blood/old,
+/obj/effect/decal/cleanable/blood/gibs/limb,
+/obj/effect/turf_decal/tile/neutral/opposingcorners,
+>>>>>>> 1b51f4fcf7 (Adds new random maintenance rooms (#8140))
 /turf/open/floor/plasteel/dark,
 /area/template_noop)
 
