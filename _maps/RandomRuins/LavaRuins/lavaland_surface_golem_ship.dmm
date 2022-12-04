@@ -879,11 +879,14 @@
 /obj/item/storage/box/lights/mixed,
 /turf/open/floor/plating,
 /area/ruin/powered/golem_ship)
+<<<<<<< HEAD
 "cM" = (
 /obj/structure/grille,
 /obj/structure/window/plastitanium,
 /turf/closed/wall/mineral/plastitanium,
 /area/ruin/powered/golem_ship)
+=======
+>>>>>>> bbf2c61426 (fix invalid turfs (#8161))
 "jC" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/blood/old,
@@ -948,11 +951,11 @@ aC
 aR
 ab
 bd
-cM
-cM
-cM
-cM
-cM
+ac
+ac
+ac
+ac
+ac
 cd
 ab
 cl
