@@ -985,6 +985,126 @@
 
 	category = CAT_CLOTHING
 
+<<<<<<< HEAD
+=======
+/datum/crafting_recipe/paper_cup
+	name= "Paper Cup"
+	result = /obj/item/reagent_containers/food/drinks/sillycup
+	time = 10
+	reqs = list(/obj/item/paper = 1)
+	category = CAT_MISC
+	tools = list(TOOL_WIRECUTTER)
+
+/datum/crafting_recipe/paperslip
+	name = "Paper Slip"
+	result = /obj/item/card/id/paper
+	time = 1 SECONDS
+	reqs = list(/obj/item/paper = 5)
+	category = CAT_MISC
+	tools = list(TOOL_WIRECUTTER)
+
+/datum/crafting_recipe/basic_lasso
+	name= "Basic Lasso"
+	result = /obj/item/mob_lasso
+	time = 20
+	reqs = list(/obj/item/stack/sheet/leather = 5)
+	category = CAT_MISC
+
+/datum/crafting_recipe/primal_lasso
+	name= "Primal Lasso"
+	result = /obj/item/mob_lasso/primal
+	always_available = FALSE
+	time = 20
+	reqs = list(/obj/item/stack/sheet/animalhide/goliath_hide = 3)
+	category = CAT_PRIMAL
+
+/datum/crafting_recipe/dragon_lasso
+	name = "Ash Drake Lasso"
+	result = /obj/item/mob_lasso/drake
+	always_available = FALSE
+	time = 20
+	reqs = list(/obj/item/stack/sheet/bone = 10,
+				/obj/item/stack/sheet/sinew = 2,
+				/obj/item/stack/sheet/animalhide/ashdrake = 5)
+	category = CAT_PRIMAL
+
+/datum/crafting_recipe/foldable
+	name = "Foldable Chair"
+	result = /obj/item/chair/foldable
+	time = 40
+	reqs = list(/obj/item/stack/rods = 2,
+				/obj/item/stack/sheet/plastic = 1
+				)
+	tools = list(TOOL_WRENCH, TOOL_WIRECUTTER)
+	category = CAT_MISC
+
+/datum/crafting_recipe/chair_fancy
+	name = "Fancy Chair"
+	result = /obj/item/chair/fancy
+	time = 60
+	reqs = list(/obj/item/stack/rods = 2,
+				/obj/item/chair = 1
+				)
+	tools = list(TOOL_WRENCH, TOOL_WIRECUTTER)
+	category = CAT_MISC
+
+/datum/crafting_recipe/shutters
+	name = "Shutters"
+	reqs = list(/obj/item/stack/sheet/plasteel = 5,
+				/obj/item/stack/cable_coil = 5,
+				/obj/item/electronics/airlock = 1
+				)
+	result = /obj/machinery/door/poddoor/shutters/preopen
+	tools = list(TOOL_SCREWDRIVER, TOOL_MULTITOOL, TOOL_WIRECUTTER, TOOL_WELDER)
+	time = 10 SECONDS
+	category = CAT_STRUCTURE
+	one_per_turf = TRUE
+
+/datum/crafting_recipe/glassshutters
+	name = "Windowed Shutters"
+	reqs = list(/obj/item/stack/sheet/plasteel = 5,
+				/obj/item/stack/sheet/rglass = 2,
+				/obj/item/stack/cable_coil = 5,
+				/obj/item/electronics/airlock = 1
+				)
+	result = /obj/machinery/door/poddoor/shutters/window/preopen
+	tools = list(TOOL_SCREWDRIVER, TOOL_MULTITOOL, TOOL_WIRECUTTER, TOOL_WELDER)
+	time = 10 SECONDS
+	category = CAT_STRUCTURE
+	one_per_turf = TRUE
+
+/datum/crafting_recipe/radshutters
+	name = "Radiation Shutters"
+	reqs = list(/obj/item/stack/sheet/plasteel = 5,
+				/obj/item/stack/cable_coil = 5,
+				/obj/item/electronics/airlock = 1,
+				/obj/item/stack/sheet/mineral/uranium = 2
+				)
+	result = /obj/machinery/door/poddoor/shutters/radiation/preopen
+	tools = list(TOOL_SCREWDRIVER, TOOL_MULTITOOL, TOOL_WIRECUTTER, TOOL_WELDER)
+	time = 10 SECONDS
+	category = CAT_STRUCTURE
+	one_per_turf = TRUE
+
+
+/datum/crafting_recipe/blast_doors
+	name = "Blast Door"
+	reqs = list(/obj/item/stack/sheet/plasteel = 15,
+				/obj/item/stack/cable_coil = 15,
+				/obj/item/electronics/airlock = 1
+				)
+	result = /obj/machinery/door/poddoor/preopen
+	tools = list(TOOL_SCREWDRIVER, TOOL_MULTITOOL, TOOL_WIRECUTTER, TOOL_WELDER)
+	time = 30 SECONDS
+	category = CAT_STRUCTURE
+	one_per_turf = TRUE
+
+/datum/crafting_recipe/showercurtain
+	name = "Shower Curtains"
+	reqs = 	list(/obj/item/stack/sheet/cotton/cloth = 2, /obj/item/stack/sheet/plastic = 2, /obj/item/stack/rods = 1)
+	result = /obj/structure/curtain
+	category = CAT_STRUCTURE
+>>>>>>> 0bbc167cbf (Changes some Lasso code and adds an ash drake lasso for ashwalkers (#8066))
 
 /datum/crafting_recipe/aquarium
 	name = "Aquarium"
