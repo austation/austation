@@ -66,7 +66,13 @@
 		/obj/item/construction/rcd,
 		/obj/item/pipe_dispenser,
 		/obj/item/inducer,
+<<<<<<< HEAD
 		/obj/item/plunger
+=======
+		/obj/item/plunger,
+		/obj/item/airlock_painter,
+		/obj/item/shuttle_creator
+>>>>>>> ceb1093d00 (Shuttle Designator now has the proper weight_class for its use (#8175))
 		))
 	STR.can_hold = can_hold
 
