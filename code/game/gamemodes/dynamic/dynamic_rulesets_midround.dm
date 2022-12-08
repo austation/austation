@@ -191,25 +191,38 @@
 
 /datum/dynamic_ruleset/midround/autotraitor/trim_candidates()
 	..()
-	for(var/mob/living/player in living_players)
+	candidates = living_players
+	for(var/mob/living/player in candidates)
 		if(issilicon(player)) // Your assigned role doesn't change when you are turned into a silicon.
-			living_players -= player
+			candidates -= player
 			continue
 		if(is_centcom_level(player.z))
-			living_players -= player // We don't autotator people in CentCom
+			candidates -= player // We don't autotator people in CentCom
 			continue
+<<<<<<< HEAD
 		if(player.mind && (player.mind.special_role || player.mind.antag_datums?.len > 0))
 			living_players -= player // We don't autotator people with roles already
 
 /datum/dynamic_ruleset/midround/autotraitor/ready(forced = FALSE)
 	if (required_candidates > living_players.len)
+=======
+		if(player.mind && (player.mind.special_role || length(player.mind.antag_datums)))
+			candidates -= player // We don't autotator people with roles already
+
+/datum/dynamic_ruleset/midround/autotraitor/ready(forced = FALSE)
+	var/candidates_amt = length(candidates)
+	if (required_candidates > candidates_amt)
+		log_game("DYNAMIC: FAIL: [src] does not have enough candidates ([required_candidates] needed, [candidates_amt] found)")
+		return FALSE
+	if (mode.check_lowpop_lowimpact_injection())
+>>>>>>> 316a495e41 (Dynamic Abductor Tweak + Sleeper Agent Fix (#8152))
 		return FALSE
 	return ..()
 
 /datum/dynamic_ruleset/midround/autotraitor/execute()
-	var/mob/M = pick(living_players)
+	var/mob/M = pick(candidates)
 	assigned += M
-	living_players -= M
+	candidates -= M
 	var/datum/antagonist/traitor/newTraitor = new
 	M.mind.add_antag_datum(newTraitor)
 	return TRUE
@@ -460,9 +473,15 @@
 
 /datum/dynamic_ruleset/midround/from_ghosts/abductors
 	name = "Abductors"
+<<<<<<< HEAD
 	antag_flag = "Abductor"
 	antag_flag_override = ROLE_ABDUCTOR
 	enemy_roles = list("Security Officer", "Detective", "Warden", "Head of Security", "Captain")
+=======
+	midround_ruleset_style = MIDROUND_RULESET_STYLE_LIGHT
+	antag_flag = ROLE_ABDUCTOR
+	enemy_roles = list(JOB_NAME_SECURITYOFFICER, JOB_NAME_DETECTIVE, JOB_NAME_WARDEN, JOB_NAME_HEADOFSECURITY, JOB_NAME_CAPTAIN)
+>>>>>>> 316a495e41 (Dynamic Abductor Tweak + Sleeper Agent Fix (#8152))
 	required_enemies = list(2,2,1,1,1,1,1,0,0,0)
 	required_candidates = 2
 	weight = 4
