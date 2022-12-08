@@ -1,4 +1,5 @@
 
+<<<<<<< HEAD
 
 /*
  * A large number of misc global procs.
@@ -1600,3 +1601,11 @@ config_setting should be one of the following:
 		if(-INFINITY to 0, 11 to INFINITY)
 			CRASH("Can't turn invalid directions!")
 	return turn(input_dir, 180)
+=======
+//* 2005? / + 2022
+
+/// identical alert proc, but without waiting for user input. It's useful when you shouldn't set your proc `waitfor = 0`
+/proc/client_alert(client/C, message, title)
+	set waitfor = 0
+	alert(C, message, title)
+>>>>>>> 6be22f6280 (Tweaks Camera - it can capture revenant/floor cluwne + fixes quirk codes (#8143))
