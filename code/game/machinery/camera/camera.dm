@@ -412,7 +412,7 @@
 		return FALSE
 	if(stat & EMPED)
 		return FALSE
-	if(is_jammed())
+	if(is_jammed(JAMMER_PROTECTION_CAMERAS))
 		return FALSE
 	return TRUE
 

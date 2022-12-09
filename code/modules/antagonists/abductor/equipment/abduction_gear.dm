@@ -264,6 +264,7 @@
 
 /obj/item/abductor/silencer/afterattack(atom/target, mob/living/user, flag, params)
 	. = ..()
+<<<<<<< HEAD
 	if(flag)
 		return
 	if(!AbductorCheck(user))
@@ -291,6 +292,12 @@
 			r.listening = 0
 			if(!istype(I, /obj/item/radio/headset))
 				r.broadcasting = 0 //goddamned headset hacks
+=======
+	//Activate the jammer
+	//This jammer will not block cameras or AI shells
+	var/datum/component/radio_jamming/added_component = AddComponent(/datum/component/radio_jamming, 5, RADIO_JAMMER_ABDUCTOR_LEVEL)
+	added_component.enable()
+>>>>>>> 46f2c096d3 (Abductor jammer no longer blocks cameras, abductors can teleport to their agent, fixes agent vest exploit (#8172))
 
 /obj/item/abductor/mind_device
 	name = "mental interface device"
