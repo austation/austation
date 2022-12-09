@@ -5,7 +5,7 @@
 	var/id_tag
 	var/frequency
 	var/datum/radio_frequency/radio_connection
-
+	smoothing_groups = list(SMOOTH_GROUP_AIRLOCK)
 
 /obj/machinery/door/airlock/receive_signal(datum/signal/signal)
 	if(!signal)

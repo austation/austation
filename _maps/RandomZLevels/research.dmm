@@ -4713,6 +4713,7 @@
 	},
 /area/awaymission/research/interior/dorm)
 "jp" = (
+<<<<<<< HEAD
 /obj/structure/barricade/wooden{
 	desc = "A wooden table hastily flipped over for cover.";
 	obj_integrity = 55;
@@ -4721,6 +4722,9 @@
 	max_integrity = 55;
 	name = "flipped table"
 	},
+=======
+/obj/structure/barricade/wooden,
+>>>>>>> fb90d501cd ([Port-ish] Refactor icon smoothing to use 8-bit bitmasking + new tables and reworked glass icons! (#8123))
 /turf/open/floor/plasteel/yellowsiding{
 	dir = 1
 	},
@@ -4891,6 +4895,7 @@
 "jF" = (
 /turf/open/floor/plasteel,
 /area/awaymission/research/interior/dorm)
+<<<<<<< HEAD
 "jG" = (
 /obj/structure/barricade/wooden{
 	desc = "A wooden table hastily flipped over for cover.";
@@ -4938,6 +4943,8 @@
 	},
 /turf/open/floor/plasteel/white,
 /area/awaymission/research/interior)
+=======
+>>>>>>> fb90d501cd ([Port-ish] Refactor icon smoothing to use 8-bit bitmasking + new tables and reworked glass icons! (#8123))
 "jK" = (
 /obj/structure/sign/departments/medbay,
 /turf/closed/wall/r_wall,
@@ -5083,6 +5090,7 @@
 /turf/open/floor/plasteel/yellowsiding/corner,
 /area/awaymission/research/interior/dorm)
 "kb" = (
+<<<<<<< HEAD
 /obj/structure/barricade/wooden{
 	desc = "A wooden table hastily flipped over for cover.";
 	obj_integrity = 55;
@@ -5091,6 +5099,9 @@
 	max_integrity = 55;
 	name = "flipped table"
 	},
+=======
+/obj/structure/barricade/wooden,
+>>>>>>> fb90d501cd ([Port-ish] Refactor icon smoothing to use 8-bit bitmasking + new tables and reworked glass icons! (#8123))
 /turf/open/floor/plasteel/yellowsiding,
 /area/awaymission/research/interior/dorm)
 "kc" = (
@@ -43482,7 +43493,7 @@ id
 iT
 iX
 jp
-jG
+kR
 kb
 iX
 iX
