@@ -94,6 +94,9 @@
 	var/list/additional_genturfs
 
 
+	/// How hard it is to hack airlocks in this area
+	var/airlock_hack_difficulty = AIRLOCK_SECURITY_NONE
+
 /**
   * A list of teleport locations
   *

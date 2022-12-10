@@ -108,6 +108,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	mood_message = "<span class='warning'>It's kind of cramped in here!\n</span>"
 	lighting_colour_tube = "#ffe5cb"
 	lighting_colour_bulb = "#ffdbb4"
+	airlock_hack_difficulty = AIRLOCK_WIRE_SECURITY_SIMPLE
 
 //Maintenance - Departmental
 
@@ -447,6 +448,8 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	lighting_brightness_tube = 8
 	sound_environment = SOUND_AREA_STANDARD_STATION
 
+	airlock_hack_difficulty = AIRLOCK_WIRE_SECURITY_ELITE
+
 /area/bridge/meeting_room
 	name = "Heads of Staff Meeting Room"
 	icon_state = "meeting"
@@ -466,31 +469,38 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	name = "Captain's Office"
 	icon_state = "captain"
 	sound_environment = SOUND_AREA_WOODFLOOR
+	airlock_hack_difficulty = AIRLOCK_WIRE_SECURITY_MAXIMUM
 
 /area/crew_quarters/heads/captain/private
 	name = "Captain's Quarters"
 	icon_state = "captain_private"
 	sound_environment = SOUND_AREA_WOODFLOOR
+	airlock_hack_difficulty = AIRLOCK_WIRE_SECURITY_MAXIMUM
 
 /area/crew_quarters/heads/chief
 	name = "Chief Engineer's Office"
 	icon_state = "ce_office"
+	airlock_hack_difficulty = AIRLOCK_WIRE_SECURITY_ELITE
 
 /area/crew_quarters/heads/cmo
 	name = "Chief Medical Officer's Office"
 	icon_state = "cmo_office"
+	airlock_hack_difficulty = AIRLOCK_WIRE_SECURITY_ELITE
 
 /area/crew_quarters/heads/hop
 	name = "Head of Personnel's Office"
 	icon_state = "hop_office"
+	airlock_hack_difficulty = AIRLOCK_WIRE_SECURITY_ELITE
 
 /area/crew_quarters/heads/hos
 	name = "Head of Security's Office"
 	icon_state = "hos_office"
+	airlock_hack_difficulty = AIRLOCK_WIRE_SECURITY_ELITE
 
 /area/crew_quarters/heads/hor
 	name = "Research Director's Office"
 	icon_state = "rd_office"
+	airlock_hack_difficulty = AIRLOCK_WIRE_SECURITY_ELITE
 
 /area/comms
 	name = "Communications Relay"
@@ -498,11 +508,13 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	lighting_colour_tube = "#e2feff"
 	lighting_colour_bulb = "#d5fcff"
 	sound_environment = SOUND_AREA_STANDARD_STATION
+	airlock_hack_difficulty = AIRLOCK_WIRE_SECURITY_ELITE
 
 /area/server
 	name = "Messaging Server Room"
 	icon_state = "server"
 	sound_environment = SOUND_AREA_STANDARD_STATION
+	airlock_hack_difficulty = AIRLOCK_WIRE_SECURITY_ELITE
 
 //Crew
 
@@ -617,6 +629,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	lighting_colour_tube = "#fff4d6"
 	lighting_colour_bulb = "#ffebc1"
 	sound_environment = SOUND_AREA_WOODFLOOR
+	airlock_hack_difficulty = AIRLOCK_WIRE_SECURITY_SIMPLE
 
 /area/crew_quarters/bar/lounge
 	name = "Bar lounge"
@@ -669,6 +682,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	lighting_colour_tube = "#ffce99"
 	lighting_colour_bulb = "#ffdbb4"
 	lighting_brightness_tube = 8
+	airlock_hack_difficulty = AIRLOCK_WIRE_SECURITY_SIMPLE
 
 /area/library/lounge
 	name = "Library Lounge"
@@ -687,6 +701,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	clockwork_warp_allowed = FALSE
 	clockwork_warp_fail = "The consecration here prevents you from warping in."
 	sound_environment = SOUND_AREA_LARGE_ENCLOSED
+	airlock_hack_difficulty = AIRLOCK_WIRE_SECURITY_PROTECTED
 
 /area/chapel/main
 	name = "Chapel"
@@ -714,6 +729,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	name = "Law Office"
 	icon_state = "law"
 	sound_environment = SOUND_AREA_SMALL_SOFTFLOOR
+	airlock_hack_difficulty = AIRLOCK_WIRE_SECURITY_PROTECTED
 
 
 //Engineering
@@ -723,6 +739,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	sound_environment = SOUND_AREA_LARGE_ENCLOSED
 	lighting_colour_tube = "#ffce93"
 	lighting_colour_bulb = "#ffbc6f"
+	airlock_hack_difficulty = AIRLOCK_WIRE_SECURITY_ADVANCED
 
 /area/engine/engine_smes
 	name = "Engineering SMES"
@@ -746,6 +763,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	icon_state = "atmos_engine"
 	area_flags = BLOBS_ALLOWED | UNIQUE_AREA
 	sound_environment = SOUND_AREA_LARGE_ENCLOSED
+	airlock_hack_difficulty = AIRLOCK_WIRE_SECURITY_ELITE
 
 /area/engine/engine_room //donut station specific
 	name = "Engine Room"
@@ -754,12 +772,14 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 /area/engine/engine_room/external
 	name = "Supermatter External Access"
 	icon_state = "engine_foyer"
+	airlock_hack_difficulty = AIRLOCK_WIRE_SECURITY_ELITE
 
 /area/engine/supermatter
 	name = "Supermatter Engine"
 	icon_state = "engine_sm_room"
 	area_flags = BLOBS_ALLOWED | UNIQUE_AREA
 	sound_environment = SOUND_AREA_SMALL_ENCLOSED
+	airlock_hack_difficulty = AIRLOCK_WIRE_SECURITY_ELITE
 
 /area/engine/break_room
 	name = "Engineering Foyer"
@@ -773,6 +793,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	icon_state = "grav_gen"
 	clockwork_warp_allowed = FALSE
 	clockwork_warp_fail = "The gravitons generated here could throw off your warp's destination and possibly throw you into deep space."
+	airlock_hack_difficulty = AIRLOCK_WIRE_SECURITY_ELITE
 
 /area/engine/storage
 	name = "Engineering Storage"
@@ -877,12 +898,14 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	name = "Teleporter Room"
 	icon_state = "teleporter"
 	ambience_index = AMBIENCE_ENGI
+	airlock_hack_difficulty = AIRLOCK_WIRE_SECURITY_ELITE
 
 /area/gateway
 	name = "Gateway"
 	icon_state = "gateway"
 	ambience_index = AMBIENCE_ENGI
 	sound_environment = SOUND_AREA_STANDARD_STATION
+	airlock_hack_difficulty = AIRLOCK_WIRE_SECURITY_ADVANCED
 
 //MedBay
 
@@ -895,6 +918,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	mood_message = "<span class='nicegreen'>I feel safe in here!\n</span>"
 	lighting_colour_tube = "#e7f8ff"
 	lighting_colour_bulb = "#d5f2ff"
+	airlock_hack_difficulty = AIRLOCK_WIRE_SECURITY_SIMPLE
 
 /area/medical/medbay/zone2
 	name = "Medbay"
@@ -957,6 +981,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	name = "Virology"
 	icon_state = "virology"
 	flags_1 = NONE
+	airlock_hack_difficulty = AIRLOCK_WIRE_SECURITY_PROTECTED
 
 /area/medical/morgue
 	name = "Morgue"
@@ -965,10 +990,12 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	sound_environment = SOUND_AREA_SMALL_ENCLOSED
 	mood_bonus = -2
 	mood_message = "<span class='warning'>It smells like death in here!\n</span>"
+	airlock_hack_difficulty = AIRLOCK_WIRE_SECURITY_PROTECTED
 
 /area/medical/chemistry
 	name = "Chemistry"
 	icon_state = "chem"
+	airlock_hack_difficulty = AIRLOCK_WIRE_SECURITY_PROTECTED
 
 /area/medical/chemistry/upper
 	name = "Upper Chemistry"
@@ -981,6 +1008,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 /area/medical/surgery
 	name = "Surgery"
 	icon_state = "surgery"
+	airlock_hack_difficulty = AIRLOCK_WIRE_SECURITY_ADVANCED
 
 /area/medical/surgery/aux
 	name = "Auxillery Surgery"
@@ -997,6 +1025,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 /area/medical/genetics
 	name = "Genetics Lab"
 	icon_state = "genetics"
+	airlock_hack_difficulty = AIRLOCK_WIRE_SECURITY_PROTECTED
 
 /area/medical/genetics/cloning
 	name = "Cloning Lab"
@@ -1016,6 +1045,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	sound_environment = SOUND_AREA_STANDARD_STATION
 	lighting_colour_tube = "#ffeee2"
 	lighting_colour_bulb = "#ffdfca"
+	airlock_hack_difficulty = AIRLOCK_WIRE_SECURITY_ELITE
 
 /area/security/main
 	name = "Security Office"
@@ -1031,6 +1061,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	name = "Courtroom"
 	icon_state = "courtroom"
 	sound_environment = SOUND_AREA_LARGE_ENCLOSED
+	airlock_hack_difficulty = AIRLOCK_WIRE_SECURITY_ADVANCED
 
 /area/security/prison
 	name = "Prison Wing"
@@ -1080,10 +1111,12 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 /area/security/nuke_storage
 	name = "Vault"
 	icon_state = "nuke_storage"
+	airlock_hack_difficulty = AIRLOCK_WIRE_SECURITY_MAXIMUM
 
 /area/ai_monitored/nuke_storage
 	name = "Vault"
 	icon_state = "nuke_storage"
+	airlock_hack_difficulty = AIRLOCK_WIRE_SECURITY_MAXIMUM
 
 /area/security/checkpoint
 	name = "Security Checkpoint"
@@ -1156,6 +1189,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	lighting_colour_tube = "#ffe3cc"
 	lighting_colour_bulb = "#ffdbb8"
 	sound_environment = SOUND_AREA_STANDARD_STATION
+	airlock_hack_difficulty = AIRLOCK_WIRE_SECURITY_PROTECTED
 
 /area/quartermaster/sorting
 	name = "Delivery Office"
@@ -1179,6 +1213,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 /area/cargo/lobby
 	name = "\improper Cargo Lobby"
 	icon_state = "cargo_lobby"
+	airlock_hack_difficulty = AIRLOCK_WIRE_SECURITY_PROTECTED
 
 /area/quartermaster/qm
 	name = "Quartermaster's Office"
@@ -1217,11 +1252,13 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	mood_bonus = -1
 	mood_message = "<span class='warning'>It feels dirty in here!\n</span>"
 	sound_environment = SOUND_AREA_SMALL_ENCLOSED
+	airlock_hack_difficulty = AIRLOCK_WIRE_SECURITY_SIMPLE
 
 /area/hydroponics
 	name = "Hydroponics"
 	icon_state = "hydro"
 	sound_environment = SOUND_AREA_STANDARD_STATION
+	airlock_hack_difficulty = AIRLOCK_WIRE_SECURITY_SIMPLE
 
 /area/hydroponics/garden
 	name = "Garden"
@@ -1247,6 +1284,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	lighting_colour_tube = "#f0fbff"
 	lighting_colour_bulb = "#e4f7ff"
 	sound_environment = SOUND_AREA_STANDARD_STATION
+	airlock_hack_difficulty = AIRLOCK_WIRE_SECURITY_ADVANCED
 
 /area/science/lobby
 	name = "\improper Science Lobby"
@@ -1272,6 +1310,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 /area/science/storage
 	name = "Toxins Storage"
 	icon_state = "tox_storage"
+	airlock_hack_difficulty = AIRLOCK_WIRE_SECURITY_ELITE
 
 /area/science/test_area
 	name = "Toxins Test Area"
@@ -1281,6 +1320,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 /area/science/mixing
 	name = "Toxins Mixing Lab"
 	icon_state = "tox_mix"
+	airlock_hack_difficulty = AIRLOCK_WIRE_SECURITY_ELITE
 
 /area/science/mixing/chamber
 	name = "Toxins Mixing Chamber"
@@ -1298,6 +1338,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 /area/science/server
 	name = "Research Division Server Room"
 	icon_state = "server"
+	airlock_hack_difficulty = AIRLOCK_WIRE_SECURITY_ELITE
 
 /area/science/explab
 	name = "Experimentation Lab"
@@ -1335,6 +1376,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 //Storage
 /area/storage
 	sound_environment = SOUND_AREA_STANDARD_STATION
+	airlock_hack_difficulty = AIRLOCK_WIRE_SECURITY_PROTECTED
 
 /area/storage/tools
 	name = "Auxiliary Tool Storage"
@@ -1377,6 +1419,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	icon_state = "yellow"
 	ambience_index = AMBIENCE_ENGI
 	sound_environment = SOUND_AREA_STANDARD_STATION
+	airlock_hack_difficulty = AIRLOCK_WIRE_SECURITY_SIMPLE
 
 /area/construction/mining/aux_base
 	name = "Auxiliary Base Construction"
@@ -1422,6 +1465,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 
 /area/ai_monitored
 	sound_environment = SOUND_AREA_STANDARD_STATION
+	airlock_hack_difficulty = AIRLOCK_WIRE_SECURITY_ELITE
 
 /area/ai_monitored/security/armory
 	name = "Armory"
@@ -1507,6 +1551,11 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	clockwork_warp_fail = "For safety reasons, warping here is disallowed; the radio and bluespace noise could cause catastrophic results."
 	ambientsounds = list('sound/ambience/ambisin2.ogg', 'sound/ambience/signal.ogg', 'sound/ambience/signal.ogg', 'sound/ambience/ambigen10.ogg', 'sound/ambience/ambitech.ogg',\
 											'sound/ambience/ambitech2.ogg', 'sound/ambience/ambitech3.ogg', 'sound/ambience/ambimystery.ogg')
+<<<<<<< HEAD
+=======
+	network_root_id = STATION_NETWORK_ROOT	// They should of unpluged the router before they left
+	airlock_hack_difficulty = AIRLOCK_WIRE_SECURITY_ELITE
+>>>>>>> ba53172a7c (Area dependant airlock hack difficulty (#8055))
 
 /area/tcommsat/computer
 	name = "Telecomms Control Room"

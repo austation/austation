@@ -10,6 +10,7 @@
 	teleport_restriction = TELEPORT_ALLOW_NONE
 	area_flags = VALID_TERRITORY | UNIQUE_AREA
 	flags_1 = NONE
+	airlock_hack_difficulty = AIRLOCK_WIRE_SECURITY_MAXIMUM
 
 /area/centcom/control
 	name = "CentCom Docks"
@@ -123,6 +124,11 @@
 	teleport_restriction = TELEPORT_ALLOW_NONE
 	area_flags = VALID_TERRITORY | UNIQUE_AREA
 	flags_1 = NONE
+<<<<<<< HEAD
+=======
+	network_root_id = "MAGIC_NET"
+	airlock_hack_difficulty = AIRLOCK_WIRE_SECURITY_MAXIMUM
+>>>>>>> ba53172a7c (Area dependant airlock hack difficulty (#8055))
 
 //Abductors
 /area/abductor_ship
@@ -133,6 +139,11 @@
 	area_flags = VALID_TERRITORY | UNIQUE_AREA
 	has_gravity = STANDARD_GRAVITY
 	flags_1 = NONE
+<<<<<<< HEAD
+=======
+	network_root_id = "ALIENS"
+	airlock_hack_difficulty = AIRLOCK_WIRE_SECURITY_MAXIMUM
+>>>>>>> ba53172a7c (Area dependant airlock hack difficulty (#8055))
 
 //Syndicates
 /area/syndicate_mothership
@@ -144,6 +155,11 @@
 	area_flags = VALID_TERRITORY | UNIQUE_AREA
 	flags_1 = NONE
 	ambience_index = AMBIENCE_DANGER
+<<<<<<< HEAD
+=======
+	network_root_id = SYNDICATE_NETWORK_ROOT
+	airlock_hack_difficulty = AIRLOCK_WIRE_SECURITY_MAXIMUM
+>>>>>>> ba53172a7c (Area dependant airlock hack difficulty (#8055))
 
 /area/syndicate_mothership/control
 	name = "Syndicate Control Room"
@@ -161,6 +177,7 @@
 	icon_state = "yellow"
 	requires_power = FALSE
 	has_gravity = STANDARD_GRAVITY
+	airlock_hack_difficulty = AIRLOCK_WIRE_SECURITY_ELITE
 
 /area/ctf/control_room
 	name = "Control Room A"
@@ -199,6 +216,7 @@
 	teleport_restriction = TELEPORT_ALLOW_CLOCKWORK
 	area_flags = VALID_TERRITORY | UNIQUE_AREA | HIDDEN_AREA
 	ambience_index = AMBIENCE_REEBE
+	airlock_hack_difficulty = AIRLOCK_WIRE_SECURITY_ELITE
 
 /area/reebe/city_of_cogs
 	name = "Reebe - City of Cogs"
