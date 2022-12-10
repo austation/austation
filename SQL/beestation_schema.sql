@@ -482,7 +482,11 @@ CREATE TABLE IF NOT EXISTS `SS13_schema_revision` (
   `date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`major`,`minor`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+<<<<<<< HEAD
 INSERT INTO `SS13_schema_revision` (`major`, `minor`) VALUES (5, 8);
+=======
+INSERT INTO `SS13_schema_revision` (`major`, `minor`) VALUES (6, 1);
+>>>>>>> 004627e135 (Update beestation_schema.sql (#8199))
 
 
 
