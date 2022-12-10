@@ -47,6 +47,11 @@
 
 	var/saved_screen //for saving the screen when they die
 	var/datum/action/innate/change_screen/change_screen
+<<<<<<< HEAD
+=======
+
+	speak_no_tongue = FALSE  // who stole my soundblaster?! (-candy/etherware)
+>>>>>>> 11ba3fa041 (Add a ton of new emotes + some small species emote refactors (#7804))
 
 /datum/species/ipc/random_name(gender, unique, lastname, attempts)
 	. = "[pick(GLOB.posibrain_names)]-[rand(100, 999)]"
