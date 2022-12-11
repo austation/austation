@@ -32,3 +32,36 @@
 
 
 
+<<<<<<< HEAD
+=======
+	//Item is handled and in slot, valid to call callback, for this proc should always be true
+	if(!not_handled)
+		I.equipped(src, slot)
+
+	return not_handled //For future deeper overrides
+
+/mob/living/carbon/monkey/get_equipped_items(include_pockets = FALSE)
+	var/list/items = ..()
+	if(ears)
+		items += ears
+	if(glasses)
+		items += glasses
+	if(gloves)
+		items += gloves
+	if(shoes)
+		items += shoes
+	if(w_uniform)
+		items += w_uniform
+	return items
+
+//Hopefully this doesn't fuck with anything
+/mob/living/carbon/monkey/doUnEquip(obj/item/I, force, newloc, no_move, invdrop = TRUE, was_thrown = FALSE, silent = FALSE)
+	. = ..()
+	if(!. || !I) //We don't want to set anything to null if the parent returned 0.
+		return
+
+	if(I == w_uniform)
+		w_uniform = null
+		if(!QDELETED(src))
+			update_inv_w_uniform()
+>>>>>>> 7e3bf54a03 (Sophie's Sounds Service (#8101))
