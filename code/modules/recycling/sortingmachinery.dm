@@ -62,8 +62,13 @@
 	else
 		return ..()
 
+<<<<<<< HEAD
 /obj/structure/bigDelivery/relay_container_resist(mob/living/user, obj/O)
 	if(ismovableatom(loc))
+=======
+/obj/structure/big_delivery/relay_container_resist(mob/living/user, obj/O)
+	if(ismovable(loc))
+>>>>>>> 8f7b142597 (kill it dead (#8209))
 		var/atom/movable/AM = loc //can't unwrap the wrapped container if it's inside something.
 		AM.relay_container_resist(user, O)
 		return
