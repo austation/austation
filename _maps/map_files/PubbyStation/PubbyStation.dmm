@@ -59008,14 +59008,20 @@
 /area/hallway/primary/aft)
 "rJZ" = (
 /obj/docking_port/stationary{
+<<<<<<< HEAD
 	dheight = 4;
 	dir = 1;
 	dwidth = 4;
 	height = 9;
+=======
+	dheight = 3;
+	dwidth = 3;
+	height = 7;
+>>>>>>> 0f8e06eabe (Removes some major sleepers, Refactors maploading to be async (100% lag free) 4 (#8189))
 	id = "aux_base_zone";
 	name = "aux base zone";
 	roundstart_template = /datum/map_template/shuttle/aux_base/small;
-	width = 9
+	width = 7
 	},
 /turf/open/floor/plating,
 /area/construction/mining/aux_base)

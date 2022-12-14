@@ -216,7 +216,7 @@
 	area = "/area/shuttle/syndicate/bridge";
 	dir = 2;
 	name = "Infiltrator E.V.A APC";
-	pixel_y = -26
+	pixel_y = -24
 	},
 /obj/structure/cable/yellow,
 /turf/open/floor/mineral/plastitanium/red,
@@ -378,7 +378,7 @@
 	area = "/area/shuttle/syndicate/airlock";
 	dir = 4;
 	name = "Infiltrator Airlock APC";
-	pixel_x = 28
+	pixel_x = 24
 	},
 /obj/structure/cable/yellow{
 	icon_state = "0-2"
@@ -457,7 +457,7 @@
 	area = "/area/shuttle/syndicate/hallway";
 	dir = 1;
 	name = "Infiltrator APC";
-	pixel_y = 26
+	pixel_y = 24
 	},
 /obj/structure/cable/yellow{
 	icon_state = "0-2"
@@ -983,7 +983,7 @@
 	area = "/area/shuttle/syndicate/eva";
 	dir = 1;
 	name = "Infiltrator E.V.A APC";
-	pixel_y = 26
+	pixel_y = 24
 	},
 /turf/open/floor/pod/dark,
 /area/shuttle/syndicate/eva)
@@ -1489,7 +1489,7 @@
 	movement_force = list("KNOCKDOWN" = 0, "THROW" = 0);
 	name = "syndicate infiltrator";
 	port_direction = 4;
-	width = 23
+	width = 21
 	},
 /obj/structure/fans/tiny,
 /obj/effect/turf_decal/box,
@@ -1944,7 +1944,7 @@
 	area = "/area/shuttle/syndicate/medical";
 	dir = 8;
 	name = "Infiltrator Medical APC";
-	pixel_x = -28
+	pixel_x = -24
 	},
 /obj/structure/cable/yellow{
 	icon_state = "0-4"
@@ -2024,7 +2024,7 @@
 	area = "/area/shuttle/syndicate/armory";
 	dir = 4;
 	name = "Infiltrator Armory APC";
-	pixel_x = 28
+	pixel_x = 24
 	},
 /obj/structure/cable/yellow{
 	icon_state = "0-8"
@@ -2132,7 +2132,10 @@
 "dX" = (
 /obj/effect/turf_decal/stripes/line,
 /obj/machinery/atmospherics/pipe/simple/supply/visible{
+<<<<<<< HEAD:_maps/shuttles/infiltrator_advanced.dmm
 	icon_state = "pipe11-2";
+=======
+>>>>>>> 0f8e06eabe (Removes some major sleepers, Refactors maploading to be async (100% lag free) 4 (#8189)):_maps/shuttles/infiltrator/infiltrator_advanced.dmm
 	dir = 5
 	},
 /turf/open/floor/mineral/plastitanium,
@@ -2437,7 +2440,10 @@
 "et" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/atmospherics/pipe/manifold/supply/visible{
+<<<<<<< HEAD:_maps/shuttles/infiltrator_advanced.dmm
 	icon_state = "manifold-2";
+=======
+>>>>>>> 0f8e06eabe (Removes some major sleepers, Refactors maploading to be async (100% lag free) 4 (#8189)):_maps/shuttles/infiltrator/infiltrator_advanced.dmm
 	dir = 8
 	},
 /turf/open/floor/mineral/plastitanium,

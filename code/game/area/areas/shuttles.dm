@@ -25,7 +25,30 @@
 	mobile_port = null
 	. = ..()
 
+<<<<<<< HEAD
 /area/shuttle/PlaceOnTopReact(list/new_baseturfs, turf/fake_turf_type, flags)
+=======
+//Returns how many shuttles are missing a skipovers on a given turf, this usually represents how many shuttles have hull breaches on this turf. This only works if this is the actual area of T when called.
+//TODO: optimize this somehow
+/area/shuttle/proc/get_missing_shuttles(turf/T)
+	var/i = 0
+	var/BT_index = length(T.baseturfs)
+	var/area/shuttle/A
+	var/obj/docking_port/mobile/S
+	var/list/shuttle_stack = list(mobile_port) //Indexing through a list helps prevent looped directed graph errors.
+	. = 0
+	while(i++ < shuttle_stack.len)
+		S = shuttle_stack[i]
+		A = S.underlying_turf_area[T]
+		if(istype(A) && A.mobile_port)
+			shuttle_stack |= A.mobile_port
+		.++
+	for(BT_index in 1 to length(T.baseturfs))
+		if(ispath(T.baseturfs[BT_index], /turf/baseturf_skipover/shuttle))
+			.--
+
+/area/shuttle/PlaceOnTopReact(turf/T, list/new_baseturfs, turf/fake_turf_type, flags)
+>>>>>>> 0f8e06eabe (Removes some major sleepers, Refactors maploading to be async (100% lag free) 4 (#8189))
 	. = ..()
 	if(length(new_baseturfs) > 1 || fake_turf_type)
 		return // More complicated larger changes indicate this isn't a player

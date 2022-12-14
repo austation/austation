@@ -408,8 +408,12 @@
 	launch_status = 0;
 	name = "NT Recovery White-Ship";
 	port_direction = 8;
+<<<<<<< HEAD:_maps/shuttles/whiteship_cere.dmm
 	preferred_direction = 1;
 	width = 16
+=======
+	width = 13
+>>>>>>> 0f8e06eabe (Removes some major sleepers, Refactors maploading to be async (100% lag free) 4 (#8189)):_maps/shuttles/whiteship/whiteship_cere.dmm
 	},
 /turf/open/floor/plating,
 /area/shuttle/abandoned)

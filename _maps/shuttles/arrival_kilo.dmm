@@ -275,7 +275,25 @@
 	},
 /turf/closed/wall/mineral/titanium/nodiagonal,
 /area/shuttle/arrival)
+<<<<<<< HEAD:_maps/shuttles/arrival_kilo.dmm
 "C" = (
+=======
+"aB" = (
+/obj/structure/shuttle/engine/propulsion{
+	dir = 8
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/docking_port/mobile/arrivals{
+	dir = 4;
+	name = "kilo arrivals shuttle";
+	
+	},
+/turf/open/floor/plating/airless,
+/area/shuttle/arrival)
+"aC" = (
+>>>>>>> 0f8e06eabe (Removes some major sleepers, Refactors maploading to be async (100% lag free) 4 (#8189)):_maps/shuttles/arrival/arrival_kilo.dmm
 /obj/effect/turf_decal/tile/blue{
 	dir = 1
 	},
@@ -411,6 +429,7 @@
 /obj/machinery/light,
 /turf/open/floor/mineral/plastitanium,
 /area/shuttle/arrival)
+<<<<<<< HEAD:_maps/shuttles/arrival_kilo.dmm
 "S" = (
 /obj/effect/turf_decal/bot,
 /obj/structure/chair/comfy/shuttle{
@@ -422,11 +441,95 @@
 "Z" = (
 /obj/effect/turf_decal/bot,
 /obj/structure/chair/comfy/shuttle,
+=======
+"aQ" = (
+/obj/structure/rack,
+/obj/effect/turf_decal/bot,
+/obj/item/radio{
+	pixel_x = -6;
+	pixel_y = 6
+	},
+/obj/item/radio{
+	pixel_x = 6;
+	pixel_y = 6
+	},
+/obj/item/radio{
+	pixel_y = 4
+	},
+/obj/effect/turf_decal/tile/neutral/half/contrasted{
+	dir = 4
+	},
+/turf/open/floor/mineral/plastitanium,
+/area/shuttle/arrival)
+"aR" = (
+/obj/effect/turf_decal/tile/blue/opposingcorners,
+/turf/open/floor/mineral/titanium/white,
+/area/shuttle/arrival)
+"aS" = (
+/obj/effect/turf_decal/bot,
+/obj/structure/chair/fancy/shuttle{
+	dir = 1
+	},
+/obj/machinery/light,
+/turf/open/floor/mineral/plastitanium,
+/area/shuttle/arrival)
+"aT" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/blue/opposingcorners,
+/turf/open/floor/mineral/titanium/white,
+/area/shuttle/arrival)
+"aU" = (
+/obj/effect/turf_decal/stripes/line,
+/obj/effect/turf_decal/tile/blue/opposingcorners,
+/turf/open/floor/mineral/titanium/white,
+/area/shuttle/arrival)
+"aV" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/blue/opposingcorners,
+/turf/open/floor/mineral/titanium/white,
+/area/shuttle/arrival)
+"aW" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/blue/opposingcorners,
+/turf/open/floor/mineral/titanium/white,
+/area/shuttle/arrival)
+"aX" = (
+/obj/effect/turf_decal/stripes/corner{
+	dir = 4
+	},
+/obj/effect/turf_decal/stripes/corner{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/blue/opposingcorners,
+/turf/open/floor/mineral/titanium/white,
+/area/shuttle/arrival)
+"aY" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/effect/turf_decal/stripes/corner,
+/obj/effect/turf_decal/tile/blue/opposingcorners,
+/turf/open/floor/mineral/titanium/white,
+/area/shuttle/arrival)
+"aZ" = (
+/obj/effect/turf_decal/bot,
+/obj/structure/chair/fancy/shuttle,
+>>>>>>> 0f8e06eabe (Removes some major sleepers, Refactors maploading to be async (100% lag free) 4 (#8189)):_maps/shuttles/arrival/arrival_kilo.dmm
 /obj/machinery/light{
 	dir = 1
 	},
 /turf/open/floor/mineral/plastitanium,
 /area/shuttle/arrival)
+<<<<<<< HEAD:_maps/shuttles/arrival_kilo.dmm
 
 (1,1,1) = {"
 a
@@ -436,6 +539,74 @@ u
 G
 a
 a
+=======
+"lo" = (
+/obj/effect/turf_decal/arrows{
+	dir = 1
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/blue/opposingcorners,
+/turf/open/floor/mineral/titanium/white,
+/area/shuttle/arrival)
+"mB" = (
+/obj/effect/turf_decal/arrows{
+	dir = 1
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/effect/turf_decal/stripes/corner{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/blue/opposingcorners,
+/turf/open/floor/mineral/titanium/white,
+/area/shuttle/arrival)
+"SZ" = (
+/obj/item/radio/intercom{
+	pixel_x = 28
+	},
+/obj/effect/turf_decal/arrows{
+	dir = 1
+	},
+/obj/effect/turf_decal/stripes/corner,
+/obj/effect/turf_decal/stripes/corner{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/blue/opposingcorners,
+/turf/open/floor/mineral/titanium/white,
+/area/shuttle/arrival)
+"UZ" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/blue/opposingcorners,
+/turf/open/floor/mineral/titanium/white,
+/area/shuttle/arrival)
+"XS" = (
+/obj/effect/turf_decal/arrows{
+	dir = 1
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/blue/opposingcorners,
+/turf/open/floor/mineral/titanium/white,
+/area/shuttle/arrival)
+
+(1,1,1) = {"
+aa
+aa
+an
+aB
+aG
+aa
+aa
+>>>>>>> 0f8e06eabe (Removes some major sleepers, Refactors maploading to be async (100% lag free) 4 (#8189)):_maps/shuttles/arrival/arrival_kilo.dmm
 "}
 (2,1,1) = {"
 b
@@ -447,6 +618,7 @@ h
 b
 "}
 (3,1,1) = {"
+<<<<<<< HEAD:_maps/shuttles/arrival_kilo.dmm
 c
 i
 p
@@ -517,6 +689,78 @@ C
 K
 w
 f
+=======
+ac
+ai
+ap
+aQ
+aH
+ai
+ac
+"}
+(4,1,1) = {"
+ad
+XS
+mB
+aT
+aY
+aV
+af
+"}
+(5,1,1) = {"
+ae
+aZ
+UZ
+aR
+aU
+aS
+ae
+"}
+(6,1,1) = {"
+af
+ak
+UZ
+ay
+aU
+aN
+af
+"}
+(7,1,1) = {"
+af
+ak
+UZ
+az
+aU
+aN
+af
+"}
+(8,1,1) = {"
+af
+ak
+UZ
+aA
+aU
+aN
+af
+"}
+(9,1,1) = {"
+ac
+al
+UZ
+aR
+aU
+aP
+ac
+"}
+(10,1,1) = {"
+ad
+lo
+SZ
+aW
+aX
+aT
+af
+>>>>>>> 0f8e06eabe (Removes some major sleepers, Refactors maploading to be async (100% lag free) 4 (#8189)):_maps/shuttles/arrival/arrival_kilo.dmm
 "}
 (11,1,1) = {"
 b
@@ -528,6 +772,7 @@ c
 b
 "}
 (12,1,1) = {"
+<<<<<<< HEAD:_maps/shuttles/arrival_kilo.dmm
 c
 e
 t
@@ -544,6 +789,24 @@ F
 N
 c
 g
+=======
+ac
+ae
+at
+aT
+aM
+ae
+ac
+"}
+(13,1,1) = {"
+ag
+ac
+ak
+aR
+aN
+ac
+ag
+>>>>>>> 0f8e06eabe (Removes some major sleepers, Refactors maploading to be async (100% lag free) 4 (#8189)):_maps/shuttles/arrival/arrival_kilo.dmm
 "}
 (14,1,1) = {"
 g

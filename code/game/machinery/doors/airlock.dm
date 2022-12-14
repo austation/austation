@@ -471,21 +471,25 @@
 		secondsMainPowerLost = 0
 	update_icon()
 
-/obj/machinery/door/airlock/proc/handlePowerRestore()
+/obj/machinery/door/airlock/proc/handlePowerRestoreLoop()
 	var/cont = TRUE
-	while (cont)
-		sleep(10)
-		if(QDELETED(src))
-			return
-		cont = FALSE
-		if(secondsMainPowerLost>0)
-			if(!wires.is_cut(WIRE_POWER1) && !wires.is_cut(WIRE_POWER2))
-				secondsMainPowerLost -= 1
-			cont = TRUE
-		if(secondsBackupPowerLost>0)
-			if(!wires.is_cut(WIRE_BACKUP1) && !wires.is_cut(WIRE_BACKUP2))
-				secondsBackupPowerLost -= 1
-			cont = TRUE
+	if(QDELETED(src))
+		return
+	cont = FALSE
+	if(secondsMainPowerLost>0)
+		if(!wires.is_cut(WIRE_POWER1) && !wires.is_cut(WIRE_POWER2))
+			secondsMainPowerLost -= 1
+		cont = TRUE
+	if(secondsBackupPowerLost>0)
+		if(!wires.is_cut(WIRE_BACKUP1) && !wires.is_cut(WIRE_BACKUP2))
+			secondsBackupPowerLost -= 1
+		cont = TRUE
+	if (!cont)
+		restorePower()
+	else
+		addtimer(CALLBACK(src, .proc/restorePower), 1 SECONDS)
+
+/obj/machinery/door/airlock/proc/restorePower()
 	spawnPowerRestoreRunning = FALSE
 	ui_update()
 	update_icon()
@@ -497,7 +501,7 @@
 			secondsBackupPowerLost = 10
 	if(!spawnPowerRestoreRunning)
 		spawnPowerRestoreRunning = TRUE
-	INVOKE_ASYNC(src, .proc/handlePowerRestore)
+		handlePowerRestoreLoop()
 	update_icon()
 
 /obj/machinery/door/airlock/proc/loseBackupPower()
@@ -505,7 +509,7 @@
 		secondsBackupPowerLost = 60
 	if(!spawnPowerRestoreRunning)
 		spawnPowerRestoreRunning = TRUE
-	INVOKE_ASYNC(src, .proc/handlePowerRestore)
+		handlePowerRestoreLoop()
 	update_icon()
 
 /obj/machinery/door/airlock/proc/regainBackupPower()
@@ -707,8 +711,10 @@
 			if(!stat)
 				update_icon(AIRLOCK_DENY)
 				playsound(src,doorDeni,50,0,3)
-				sleep(6)
-				update_icon(AIRLOCK_CLOSED)
+				addtimer(CALLBACK(src, .proc/finish_close_animation), 6)
+
+/obj/machinery/door/airlock/proc/finish_close_animation()
+	update_icon(AIRLOCK_CLOSED)
 
 /obj/machinery/door/airlock/examine(mob/user)
 	. = ..()
