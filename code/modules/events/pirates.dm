@@ -36,9 +36,19 @@
 	if(D)
 		payoff = max(payoff_min, FLOOR(D.account_balance * 0.80, 1000))
 	threat.title = "Business proposition"
+<<<<<<< HEAD
 	threat.content = "This is [ship_name]. Pay up [payoff] credits or you'll walk the plank."
 	threat.possible_answers = list("We'll pay.","No way.")
 	threat.answer_callback = CALLBACK(src,.proc/answered)
+=======
+	threat.content = "Avast, ye scurvy dogs! Our fine ship <i>[ship_name]</i> has come for yer booty. Immediately transfer [payoff] space doubloons from yer Cargo budget or ye'll be walkin' the plank. Don't try and cheat us, make sure it's all tharr!"
+	threat.possible_answers = list(
+		PIRATE_RESPONSE_PAY = "We'll pay.",
+		PIRATE_RESPONSE_NO_PAY = "No way.",
+	)
+	threat.answer_callback = CALLBACK(GLOBAL_PROC, .proc/pirates_answered, threat, payoff, ship_name, initial_send_time, response_max_time)
+	addtimer(CALLBACK(GLOBAL_PROC, .proc/spawn_pirates, threat, FALSE), response_max_time)
+>>>>>>> 3fbf1ba064 (Adds clarity to the initial pirate payoff message (#8213))
 	SScommunications.send_message(threat,unique = TRUE)
 
 /datum/round_event/pirates/proc/answered()
