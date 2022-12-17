@@ -19,6 +19,7 @@
 	startWhen = 60 //2 minutes to answer
 	var/datum/comm_message/threat
 	var/payoff = 0
+<<<<<<< HEAD
 	var/payoff_min = 20000
 	var/paid_off = FALSE
 	var/ship_name = "Space Privateers Association"
@@ -28,6 +29,10 @@
 	ship_name = pick(strings(PIRATE_NAMES_FILE, "ship_names"))
 
 /datum/round_event/pirates/announce(fake)
+=======
+	var/initial_send_time = world.time
+	var/response_max_time = rand(4,7) MINUTES
+>>>>>>> 431ac789c7 (Increase pirate response time (#8217))
 	priority_announce("Incoming subspace communication. Secure channel opened at all communication consoles.", "Incoming Message", SSstation.announcer.get_rand_report_sound())
 	if(fake)
 		return
