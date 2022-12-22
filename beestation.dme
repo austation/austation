@@ -2746,6 +2746,11 @@
 #include "code\modules\modular_computers\file_system\programs\robocontrol.dm"
 #include "code\modules\modular_computers\file_system\programs\secureye.dm"
 #include "code\modules\modular_computers\file_system\programs\sm_monitor.dm"
+<<<<<<< HEAD
+=======
+#include "code\modules\modular_computers\file_system\programs\statusdisplay.dm"
+#include "code\modules\modular_computers\file_system\programs\wiki_uplink.dm"
+>>>>>>> bdf2156172 (I have done things that make the code cry (#8230))
 #include "code\modules\modular_computers\file_system\programs\antagonist\contract_uplink.dm"
 #include "code\modules\modular_computers\file_system\programs\antagonist\dos.dm"
 #include "code\modules\modular_computers\file_system\programs\antagonist\revelation.dm"
