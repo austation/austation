@@ -198,12 +198,28 @@
 			pixel_x = -25
 	if (building)
 		area = get_area(src)
+		clear_previous_power_alarm(src, area)
 		opened = APC_COVER_OPENED
 		operating = FALSE
 		name = "\improper [get_area_name(area, TRUE)] APC"
 		stat |= MAINT
 		update_icon()
 		addtimer(CALLBACK(src, .proc/update), 5)
+		area.poweralert(FALSE, src)
+
+/obj/machinery/power/apc/proc/clear_previous_power_alarm(obj/source, area/A)
+	var/list/areas_list = GLOB.alarms["Power"]
+	for (var/found_area in areas_list)
+		if(found_area != A.name)
+			continue
+		var/list/alarm = areas_list[found_area]
+		var/list/sources  = alarm[3]
+		for(var/origin in sources)
+			if(origin != source)//We don't want to clear our own alarm, do we
+				area.poweralert(TRUE, origin)
+				sources -= origin
+		if (sources.len == 0)
+			areas_list -= found_area
 
 /obj/machinery/power/apc/Destroy()
 	GLOB.apcs_list -= src
@@ -673,11 +689,16 @@
 		if (!(stat & BROKEN || opened==APC_COVER_REMOVED || obj_integrity < max_integrity)) // There is nothing to repair
 			to_chat(user, "<span class='warning'>You find no reason for repairing this APC.</span>")
 			return
+<<<<<<< HEAD
 		if (!(stat & BROKEN) && opened==APC_COVER_REMOVED) // Cover is the only thing broken, we do not need to remove elctronicks to replace cover
+=======
+		if (!(machine_stat & BROKEN) && opened==APC_COVER_REMOVED)
+		// Cover is the only thing broken, we do not need to remove elctronicks to replace cover
+>>>>>>> f6988a1192 (Several APC bug fixes (#8248))
 			user.visible_message("[user.name] replaces missing APC's cover.",\
-							"<span class='notice'>You begin to replace APC's cover.</span>")
+							"<span class='notice'>You begin to replace the APC's cover.</span>")
 			if(do_after(user, 20, target = src)) // replacing cover is quicker than replacing whole frame
-				to_chat(user, "<span class='notice'>You replace missing APC's cover.</span>")
+				to_chat(user, "<span class='notice'>You replace the missing APC cover.</span>")
 				qdel(W)
 				opened = APC_COVER_OPENED
 				update_icon()
@@ -1418,7 +1439,7 @@
 		equipment = autoset(equipment, 0)
 		lighting = autoset(lighting, 0)
 		environ = autoset(environ, 0)
-		area.poweralert(0, src)
+		area.poweralert(FALSE, src)
 
 	// update icon & area power if anything changed
 
@@ -1495,7 +1516,12 @@
 	operating = FALSE
 	if(occupier)
 		malfvacate(1)
+<<<<<<< HEAD
 	update_icon()
+=======
+	area.poweralert(FALSE, src)
+	update_appearance()
+>>>>>>> f6988a1192 (Several APC bug fixes (#8248))
 	update()
 
 // overload all the lights in this APC area
