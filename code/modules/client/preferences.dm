@@ -154,6 +154,17 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 	var/action_buttons_screen_locs = list()
 
+<<<<<<< HEAD
+=======
+	var/pai_name = ""
+	var/pai_description = ""
+	var/pai_comment = ""
+
+/datum/preferences/proc/set_max_character_slots(newmax)
+	max_usable_slots = min(TRUE_MAX_SAVE_SLOTS, newmax) // Make sure they dont go over
+	check_usable_slots()
+
+>>>>>>> 9ed899a64c (pAI expansion (#6071))
 /datum/preferences/New(client/C)
 	parent = C
 
