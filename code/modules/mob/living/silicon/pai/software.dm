@@ -130,6 +130,7 @@
 /mob/living/silicon/pai/Topic(href, href_list)
 	if(..())
 		return
+<<<<<<< HEAD
 	var/soft = href_list["software"]
 	var/sub = href_list["sub"]
 	if(soft)
@@ -151,8 +152,130 @@
 							temp = "Insufficient RAM available."
 					else
 						temp = "Trunk <TT> \"[target]\"</TT> not found."
+=======
+	switch(action)
+		if("buy")
+			if(available_software.Find(params["selection"]) && !software.Find(params["selection"]))
+				/// Cost of the software to purchase
+				var/cost = available_software[params["selection"]]
+				if(ram >= cost)
+					software.Add(params["selection"])
+					ram -= cost
+					var/datum/hud/pai/pAIhud = hud_used
+					pAIhud?.update_software_buttons()
+				else
+					to_chat(usr, "<span class='notice'>Insufficient RAM available.</span>")
+			else
+				to_chat(usr, "<span class='notice'>Software not found.</span>")
+		if("atmosphere_sensor")
+			if(!holoform)
+				to_chat(usr, "<span class='notice'>You must be mobile to do this!</span>")
+				return FALSE
+			if(!atmos_analyzer)
+				atmos_analyzer = new(src)
+			atmos_analyzer.attack_self(src)
+		if("camera_zoom")
+			aicamera.adjust_zoom(usr)
+		if("change_image")
+			var/atom/anchor = get_atom_on_turf(src)
+			var/newImage = show_radial_menu(usr, anchor, GLOB.pAI_faces_icons, custom_check = CALLBACK(src, .proc/check_radial_menu, anchor), radius = 40, require_near = TRUE)
+			if(isnull(newImage))
+				card.emotion_icon = "null"
+			else
+				card.emotion_icon = GLOB.pAI_faces_list[newImage]
+			card.update_icon()
+		if("check_dna")
+			if(!master_dna)
+				to_chat(src, "<span class='warning'>You do not have a master DNA to compare to!</span>")
+				return FALSE
+			if(iscarbon(card.loc))
+				CheckDNA(card.loc, src) //you should only be able to check when directly in hand, muh immersions?
+			else
+				to_chat(src, "<span class='warning'>You are not being carried by anyone!</span>")
+				return FALSE
+		if("crew_manifest")
+			ai_roster()
+		if("door_jack")
+			if(params["jack"] == "jack")
+				if(hacking_cable?.machine)
+					hackdoor = hacking_cable.machine
+					hackloop()
+			if(params["jack"]  == "cancel")
+				hackdoor = null
+				QDEL_NULL(hacking_cable)
+			if(params["jack"]  == "cable")
+				extendcable()
+		if("encryption_keys")
+			to_chat(src, "<span class='notice'>You have [!encryptmod ? "enabled" : "disabled"] encrypted radio frequencies.</span>")
+			encryptmod = !encryptmod
+			radio.subspace_transmission = !radio.subspace_transmission
+		if("host_scan")
+			if(!hostscan)
+				hostscan = new(src)
+			if(params["scan"] == "scan")
+				hostscan()
+			if(params["scan"] == "wounds")
+				hostscan.attack_self(usr)
+		if("internal_gps")
+			if(!internal_gps)
+				internal_gps = new(src)
+			internal_gps.attack_self(src)
+		if("loudness_booster")
+			if(!internal_instrument)
+				internal_instrument = new(src)
+			internal_instrument.interact(src) // Open Instrument
+		if("medical_hud")
+			medHUD = !medHUD
+			if(medHUD)
+				var/datum/atom_hud/med = GLOB.huds[med_hud]
+				med.add_hud_to(src)
+			else
+				var/datum/atom_hud/med = GLOB.huds[med_hud]
+				med.remove_hud_from(src)
+		if("newscaster")
+			newscaster.ui_interact(src)
+		if("photography_module")
+			aicamera.toggle_camera_mode(usr)
+		if("printer_module")
+			aicamera.paiprint(usr)
+		if("radio")
+			radio.attack_self(src)
+		if("refresh")
+			if(refresh_spam)
+				return FALSE
+			refresh_spam = TRUE
+			if(params["list"] == "medical")
+				medical_records = GLOB.data_core.get_general_records()
+			if(params["list"] == "security")
+				security_records = GLOB.data_core.get_security_records()
+			ui.send_full_update()
+			addtimer(CALLBACK(src, .proc/refresh_again), 3 SECONDS)
+		if("remote_signaler")
+			signaler.ui_interact(src)
+		if("security_hud")
+			secHUD = !secHUD
+			if(secHUD)
+				var/datum/atom_hud/sec = GLOB.huds[sec_hud]
+				sec.add_hud_to(src)
+			else
+				var/datum/atom_hud/sec = GLOB.huds[sec_hud]
+				sec.remove_hud_from(src)
+		if("universal_translator")
+			if(!languages_granted)
+				grant_all_languages(TRUE, TRUE, TRUE, LANGUAGE_SOFTWARE)
+				languages_granted = TRUE
+		if("wipe_core")
+			var/confirm = alert(src, "Are you certain you want to wipe yourself?", "Personality Wipe", "Yes", "No")
+			if(confirm == "Yes")
+				to_chat(src, "<span class='warning'>You feel yourself slipping away from reality.</span>")
+				to_chat(src, "<span class='danger'>Byte by byte you lose your sense of self.</span>")
+				to_chat(src, "<span class='userdanger'>Your mental faculties leave you.</span>")
+				to_chat(src, "<span class='rose'>oblivion... </span>")
+				death()
+>>>>>>> 78e921abd3 (main done (#8269))
 
 
+<<<<<<< HEAD
 			if("radio") // Configuring onboard radio
 				radio.attack_self(src)
 
@@ -411,6 +534,22 @@
 
 /mob/living/silicon/pai/proc/CheckDNA(mob/living/carbon/M, mob/living/silicon/pai/P)
 	if(!istype(M))
+=======
+/mob/living/silicon/pai/proc/check_radial_menu(atom/anchor)
+	if(incapacitated())
+		return FALSE
+	if(get_turf(src) != get_turf(anchor))
+		return FALSE
+	return TRUE
+
+/**
+ * Supporting proc for the pAI to prick it's master's hand
+ * or... whatever. It must be held in order to work
+ * Gives the owner a popup if they want to get the jab.
+ */
+/mob/living/silicon/pai/proc/CheckDNA(mob/living/carbon/master, mob/living/silicon/pai/pai)
+	if(!istype(master))
+>>>>>>> 78e921abd3 (main done (#8269))
 		return
 	var/answer = input(M, "[P] is requesting a DNA sample from you. Will you allow it to confirm your identity?", "[P] Check DNA", "No") in list("Yes", "No")
 	if(answer == "Yes")
