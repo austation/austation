@@ -491,7 +491,35 @@
 	opacity = 1
 /obj/structure/window/reinforced/tinted/frosted
 	name = "frosted window"
+<<<<<<< HEAD
 	icon_state = "fwindow"
+=======
+	icon_state = "twindow"
+
+/obj/structure/window/depleteduranium
+	name = "depleted uranium window"
+	desc = "A window made out of depleted uranium. It looks perfect for radiation shielding!"
+	icon_state = "duwindow"
+	reinf = TRUE
+	heat_resistance = 50000
+	armor = list("melee" = 45, "bullet" = 20, "laser" = 0, "energy" = 0, "bomb" = 60, "bio" = 100, "rad" = 100, "fire" = 100, "acid" = 100, "stamina" = 0)
+	max_integrity = 500
+	explosion_block = 2
+	glass_type = /obj/item/stack/sheet/mineral/uranium
+	rad_insulation = RAD_FULL_INSULATION
+
+/obj/structure/window/depleteduranium/spawner/east
+	dir = EAST
+
+/obj/structure/window/depleteduranium/spawner/west
+	dir = WEST
+
+/obj/structure/window/depleteduranium/spawner/north
+	dir = NORTH
+
+/obj/structure/window/depleteduranium/unanchored
+	anchored = FALSE
+>>>>>>> 77c9dde26e (bad icon call go away (#8288))
 
 /* Full Tile Windows (more obj_integrity) */
 
