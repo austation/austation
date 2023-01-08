@@ -108,10 +108,18 @@
 #define CBT
 #endif
 
+<<<<<<< HEAD
 #if !defined(CBT) && !defined(SPACEMAN_DMM)
 #warn Building with Dream Maker is no longer supported and will result in errors.
 #warn In order to build, run BUILD.bat in the root directory.
 #warn Consider switching to VSCode editor instead, where you can press Ctrl+Shift+B to build.
+=======
+#if defined(OPENDREAM)
+#error Compiling BeeStation in OpenDream is unsupported due to BeeStation's dependence on the auxtools DLL to function.
+#elif !defined(CBT) && !defined(SPACEMAN_DMM) && !defined(FASTDMM)
+#error Building with Dream Maker is no longer supported and will result in errors.
+#error Switch to VSCode and when prompted install the recommended extensions, you can then either use the UI or press Ctrl+Shift+B to build the codebase.
+>>>>>>> cf3ff4a23a (Tweak the error message when compiling in OD (#8287))
 #endif
 
 #define AUXMOS (world.system_type == MS_WINDOWS ? "auxtools/auxmos.dll" : __detect_auxmos())
