@@ -22,7 +22,7 @@
 	. = TRUE
 	if(vertical && !(zAirOut(dir, T) && T.zAirIn(dir, src)))
 		. = FALSE
-	if(blocks_air || T.blocks_air)
+	if(isclosedturf(src) || isclosedturf(T))
 		. = FALSE
 	if (T == src)
 		return .
@@ -46,8 +46,12 @@
 		var/turf/T = get_step_multiz(src, direction)
 		if(!istype(T))
 			continue
+<<<<<<< HEAD
 		var/opp_dir = REVERSE_DIR(direction)
 		if(isopenturf(T) && !(blocks_air || T.blocks_air) && ((direction & (UP|DOWN))? (canvpass && CANVERTICALATMOSPASS(T, src)) : (canpass && CANATMOSPASS(T, src))) )
+=======
+		if(isopenturf(T) && !(isclosedturf(src) || isclosedturf(T)) && ((direction & (UP|DOWN))? (canvpass && CANVERTICALATMOSPASS(T, src)) : (canpass && CANATMOSPASS(T, src))) )
+>>>>>>> 59537a44a9 (Removes blocks_air (#8264))
 			LAZYINITLIST(atmos_adjacent_turfs)
 			LAZYINITLIST(T.atmos_adjacent_turfs)
 			atmos_adjacent_turfs[T] = direction
@@ -58,9 +62,33 @@
 			if (T.atmos_adjacent_turfs)
 				T.atmos_adjacent_turfs -= src
 			UNSETEMPTY(T.atmos_adjacent_turfs)
+<<<<<<< HEAD
 		T.__update_auxtools_turf_adjacency_info(isspaceturf(T.get_z_base_turf()))
 	UNSETEMPTY(atmos_adjacent_turfs)
 	src.atmos_adjacent_turfs = atmos_adjacent_turfs
+=======
+			T.set_sleeping(isclosedturf(T))
+		T.__update_auxtools_turf_adjacency_info(isspaceturf(T.get_z_base_turf()), -1)
+	UNSETEMPTY(atmos_adjacent_turfs)
+	src.atmos_adjacent_turfs = atmos_adjacent_turfs
+	set_sleeping(isclosedturf(src))
+	__update_auxtools_turf_adjacency_info(isspaceturf(get_z_base_turf()))
+
+/turf/proc/ImmediateDisableAdjacency(disable_adjacent = TRUE)
+	if(SSair.thread_running())
+		SSadjacent_air.disable_queue[src] = disable_adjacent
+		return
+	if(disable_adjacent)
+		for(var/direction in GLOB.cardinals_multiz)
+			var/turf/T = get_step_multiz(src, direction)
+			if(!istype(T))
+				continue
+			if (T.atmos_adjacent_turfs)
+				T.atmos_adjacent_turfs -= src
+			UNSETEMPTY(T.atmos_adjacent_turfs)
+			T.__update_auxtools_turf_adjacency_info(isspaceturf(T.get_z_base_turf()), -1)
+	LAZYCLEARLIST(atmos_adjacent_turfs)
+>>>>>>> 59537a44a9 (Removes blocks_air (#8264))
 	__update_auxtools_turf_adjacency_info(isspaceturf(get_z_base_turf()))
 //austation end
 

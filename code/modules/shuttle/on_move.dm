@@ -90,11 +90,13 @@ All ShuttleMove procs go here
 	return TRUE
 
 /turf/proc/lateShuttleMove(turf/oldT)
+<<<<<<< HEAD
 	//austation begin -- shuttlemove shit
 	/*
 	blocks_air = initial(blocks_air)
+=======
+>>>>>>> 59537a44a9 (Removes blocks_air (#8264))
 	air_update_turf(TRUE)
-	oldT.blocks_air = initial(oldT.blocks_air)
 	oldT.air_update_turf(TRUE)
 	*/
 	AfterChange(CHANGETURF_RECALC_ADJACENT)
