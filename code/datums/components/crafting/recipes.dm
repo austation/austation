@@ -11,6 +11,11 @@
 	var/category = CAT_NONE //where it shows up in the crafting UI
 	var/subcategory = CAT_NONE
 	var/always_available = TRUE //Set to FALSE if it needs to be learned first.
+<<<<<<< HEAD
+=======
+	var/one_per_turf = FALSE ///Should only one object exist on the same turf?
+	var/dangerous_craft = FALSE /// Should admins be notified about this getting created by a non-antagonist?
+>>>>>>> 9d25d1ab4f (Adds logging and admin messaging to crafting (#8216))
 
 /datum/crafting_recipe/New()
 	if(!(result in reqs))
@@ -36,6 +41,7 @@
 	time = 15
 	category = CAT_WEAPONRY
 	subcategory = CAT_WEAPON
+	dangerous_craft = TRUE
 
 /datum/crafting_recipe/lance
 	name = "Explosive Lance (Grenade)"
@@ -48,6 +54,7 @@
 	time = 15
 	category = CAT_WEAPONRY
 	subcategory = CAT_WEAPON
+	dangerous_craft = TRUE
 
 /datum/crafting_recipe/strobeshield
 	name = "Strobe Shield"
@@ -68,6 +75,7 @@
 	time = 40
 	category = CAT_WEAPONRY
 	subcategory = CAT_WEAPON
+	dangerous_craft = TRUE
 
 /datum/crafting_recipe/stunprod
 	name = "Stunprod"
@@ -78,6 +86,7 @@
 	time = 40
 	category = CAT_WEAPONRY
 	subcategory = CAT_WEAPON
+	dangerous_craft = TRUE
 
 /datum/crafting_recipe/teleprod
 	name = "Teleprod"
@@ -89,6 +98,7 @@
 	time = 40
 	category = CAT_WEAPONRY
 	subcategory = CAT_WEAPON
+	dangerous_craft = TRUE
 
 /datum/crafting_recipe/bola
 	name = "Bola"
@@ -108,6 +118,7 @@
 	time = 40
 	category= CAT_WEAPONRY
 	subcategory = CAT_WEAPON
+	dangerous_craft = TRUE
 
 /datum/crafting_recipe/tailclub
 	name = "Tail Club"
@@ -128,6 +139,7 @@
 	time = 40
 	category = CAT_WEAPONRY
 	subcategory = CAT_WEAPON
+	dangerous_craft = TRUE
 
 /datum/crafting_recipe/tailwhip
 	name = "Liz O' Nine Tails"
@@ -253,6 +265,7 @@
 	time = 50
 	category = CAT_WEAPONRY
 	subcategory = CAT_WEAPON
+	dangerous_craft = TRUE
 
 /datum/crafting_recipe/flamethrower
 	name = "Flamethrower"
@@ -266,6 +279,7 @@
 	time = 10
 	category = CAT_WEAPONRY
 	subcategory = CAT_WEAPON
+	dangerous_craft = TRUE
 
 /datum/crafting_recipe/pipebow
 	name = "Pipe Bow"
@@ -276,6 +290,7 @@
 	time = 120
 	category = CAT_WEAPONRY
 	subcategory = CAT_WEAPON
+	dangerous_craft = TRUE
 
 /datum/crafting_recipe/woodenbow
 	name = "Wooden Bow"
@@ -297,6 +312,7 @@
 	time = 5
 	category = CAT_WEAPONRY
 	subcategory = CAT_AMMO
+	dangerous_craft = TRUE
 
 /datum/crafting_recipe/pulseslug
 	name = "Pulse Slug Shell"
@@ -308,6 +324,7 @@
 	time = 5
 	category = CAT_WEAPONRY
 	subcategory = CAT_AMMO
+	dangerous_craft = TRUE
 
 /datum/crafting_recipe/dragonsbreath
 	name = "Dragonsbreath Shell"
@@ -317,6 +334,7 @@
 	time = 5
 	category = CAT_WEAPONRY
 	subcategory = CAT_AMMO
+	dangerous_craft = TRUE
 
 /datum/crafting_recipe/frag12
 	name = "FRAG-12 Shell"
@@ -329,6 +347,7 @@
 	time = 5
 	category = CAT_WEAPONRY
 	subcategory = CAT_AMMO
+	dangerous_craft = TRUE
 
 /datum/crafting_recipe/ionslug
 	name = "Ion Scatter Shell"
@@ -340,6 +359,7 @@
 	time = 5
 	category = CAT_WEAPONRY
 	subcategory = CAT_AMMO
+	dangerous_craft = TRUE
 
 /datum/crafting_recipe/improvisedslug
 	name = "Improvised Shotgun Shell"
@@ -352,6 +372,7 @@
 	time = 5
 	category = CAT_WEAPONRY
 	subcategory = CAT_AMMO
+	dangerous_craft = TRUE
 
 /datum/crafting_recipe/laserslug
 	name = "Scatter Laser Shell"
@@ -363,6 +384,7 @@
 	time = 5
 	category = CAT_WEAPONRY
 	subcategory = CAT_AMMO
+	dangerous_craft = TRUE
 
 /datum/crafting_recipe/arrow
 	name = "Arrow"
@@ -414,6 +436,7 @@
 	time = 100
 	category = CAT_WEAPONRY
 	subcategory = CAT_WEAPON
+	dangerous_craft = TRUE
 
 /datum/crafting_recipe/chainsaw
 	name = "Chainsaw"
@@ -425,6 +448,7 @@
 	time = 50
 	category = CAT_WEAPONRY
 	subcategory = CAT_WEAPON
+	dangerous_craft = TRUE
 
 /datum/crafting_recipe/spear
 	name = "Spear"
@@ -436,6 +460,7 @@
 	time = 40
 	category = CAT_WEAPONRY
 	subcategory = CAT_WEAPON
+	dangerous_craft = TRUE
 
 /datum/crafting_recipe/switchblade_kitchen
 	name = "Iron Switchblade"
@@ -448,6 +473,7 @@
 	time = 45
 	category = CAT_WEAPONRY
 	subcategory = CAT_WEAPON
+	dangerous_craft = TRUE
 
 /datum/crafting_recipe/switchblade_kitchenupgrade
 	name = "Plastitanium Switchblade"
@@ -458,6 +484,7 @@
 	time = 20
 	category = CAT_WEAPONRY
 	subcategory = CAT_WEAPON
+	dangerous_craft = TRUE
 
 /datum/crafting_recipe/switchblade_plastitanium
 	name = "Plastitanium Switchblade"
@@ -471,6 +498,7 @@
 	time = 65
 	category = CAT_WEAPONRY
 	subcategory = CAT_WEAPON
+	dangerous_craft = TRUE
 
 /datum/crafting_recipe/spooky_camera
 	name = "Camera Obscura"
@@ -617,6 +645,7 @@
 	time = 30
 	category = CAT_WEAPONRY
 	subcategory = CAT_WEAPON
+	dangerous_craft = TRUE
 
 /datum/crafting_recipe/chemical_payload2
 	name = "Chemical Payload (Gibtonite)"
@@ -630,6 +659,7 @@
 	time = 50
 	category = CAT_WEAPONRY
 	subcategory = CAT_WEAPON
+	dangerous_craft = TRUE
 
 /datum/crafting_recipe/bonearmor
 	name = "Bone Armor"
@@ -718,6 +748,7 @@
 	reqs = list(/obj/item/stack/sheet/bone = 3,
 				/obj/item/stack/sheet/sinew = 2)
 	category = CAT_PRIMAL
+	dangerous_craft = TRUE
 
 /datum/crafting_recipe/hunterbelt
 	name = "Hunters Belt"
@@ -772,6 +803,7 @@
 	reqs = list(/obj/item/stack/sheet/bone = 4,
 				 /obj/item/stack/sheet/sinew = 1)
 	category = CAT_PRIMAL
+	dangerous_craft = TRUE
 
 /datum/crafting_recipe/boneaxe
 	name = "Bone Axe"
@@ -780,6 +812,7 @@
 	reqs = list(/obj/item/stack/sheet/bone = 6,
 				 /obj/item/stack/sheet/sinew = 3)
 	category = CAT_PRIMAL
+	dangerous_craft = TRUE
 
 /datum/crafting_recipe/bonfire
 	name = "Bonfire"
@@ -806,6 +839,7 @@
 	blacklist = list(/obj/item/spear/explosive, /obj/item/spear/bonespear, /obj/item/spear/bamboospear)
 	result = /obj/structure/headpike/glass
 	category = CAT_PRIMAL
+	dangerous_craft = TRUE
 
 /datum/crafting_recipe/headpikebone
 	name = "Spike Head (Bone Spear)"
@@ -816,6 +850,7 @@
 			/obj/item/spear/bonespear = 1)
 	result = /obj/structure/headpike/bone
 	category = CAT_PRIMAL
+	dangerous_craft = TRUE
 
 /datum/crafting_recipe/headpikebamboo
 	name = "Spike Head (Bamboo Spear)"
@@ -826,6 +861,7 @@
 			/obj/item/spear/bamboospear = 1)
 	result = /obj/structure/headpike/bamboo
 	category = CAT_PRIMAL
+	dangerous_craft = TRUE
 
 /datum/crafting_recipe/pressureplate
 	name = "Pressure Plate"
@@ -949,6 +985,7 @@
 	category = CAT_WEAPONRY
 	subcategory = CAT_WEAPON
 	always_available = TRUE
+	dangerous_craft = TRUE
 
 /datum/crafting_recipe/sharpmop
 	name = "Sharpened Mop"
@@ -959,6 +996,7 @@
 	category = CAT_WEAPONRY
 	subcategory = CAT_WEAPON
 	tools = list(TOOL_WIRECUTTER)
+	dangerous_craft = TRUE
 
 /datum/crafting_recipe/poppy_pin
 	name = "Poppy Pin"
@@ -996,6 +1034,7 @@
 				)
 	category = CAT_MISC
 
+<<<<<<< HEAD
 /datum/crafting_recipe/paper_cup
 	name= "Paper Cup"
 	result = /obj/item/reagent_containers/food/drinks/sillycup
@@ -1003,3 +1042,15 @@
 	reqs = list(/obj/item/paper = 1)
 	category = CAT_MISC
 	tools = list(TOOL_WIRECUTTER)
+=======
+/datum/crafting_recipe/guillotine
+	name = "Guillotine"
+	result = /obj/structure/guillotine
+	time = 150 // Building a functioning guillotine takes time
+	reqs = list(/obj/item/stack/sheet/plasteel = 3,
+		        /obj/item/stack/sheet/mineral/wood = 20,
+		        /obj/item/stack/cable_coil = 10)
+	tools = list(TOOL_SCREWDRIVER, TOOL_WRENCH, TOOL_WELDER)
+	category = CAT_STRUCTURE
+	dangerous_craft = TRUE
+>>>>>>> 9d25d1ab4f (Adds logging and admin messaging to crafting (#8216))
