@@ -95,12 +95,6 @@
 	else
 		pda_msgs += new /datum/data_pda_msg("System Administrator", "system", MESSAGE_SERVER_FUNCTIONING_MESSAGE)
 
-/obj/machinery/telecomms/message_server/Destroy()
-	for(var/obj/machinery/computer/message_monitor/monitor in GLOB.telecomms_list)
-		if(monitor.linkedServer && monitor.linkedServer == src)
-			monitor.linkedServer = null
-	. = ..()
-
 /obj/machinery/telecomms/message_server/examine(mob/user)
 	. = ..()
 	if(calibrating)
@@ -125,11 +119,19 @@
 		return
 
 	// log the signal
+<<<<<<< HEAD
 	if(istype(signal, /datum/signal/subspace/messaging/pda))
 		var/datum/signal/subspace/messaging/pda/PDAsignal = signal
 		var/datum/data_pda_msg/M = new(PDAsignal.format_target(), "[PDAsignal.data["name"]] ([PDAsignal.data["job"]])", PDAsignal.data["message"], PDAsignal.data["photo"])
 		pda_msgs += M
 		signal.logged = M
+=======
+	if(istype(signal, /datum/signal/subspace/messaging/tablet_msg))
+		var/datum/signal/subspace/messaging/tablet_msg/PDAsignal = signal
+		var/datum/data_tablet_msg/msg = new(PDAsignal.format_target(), "[PDAsignal.data["name"]] ([PDAsignal.data["job"]])", PDAsignal.data["message"], PDAsignal.data["photo"], PDAsignal.data["emojis"])
+		modular_msgs += msg
+		signal.logged = msg
+>>>>>>> 87b842ca4d (TGUI Message Monitor + PDA Admin Verb (#8094))
 	else if(istype(signal, /datum/signal/subspace/messaging/rc))
 		var/datum/data_rc_msg/M = new(signal.data["rec_dpt"], signal.data["send_dpt"], signal.data["message"], signal.data["stamped"], signal.data["verified"], signal.data["priority"])
 		signal.logged = M
@@ -201,9 +203,15 @@
 	var/recipient = "Unspecified"
 	var/message = "Blank"  // transferred message
 	var/datum/picture/picture  // attached photo
-	var/automated = 0 //automated message
+	var/automated = FALSE //automated message
+	/// If this message is allowed to render emojis
+	var/emojis = FALSE
 
+<<<<<<< HEAD
 /datum/data_pda_msg/New(param_rec, param_sender, param_message, param_photo)
+=======
+/datum/data_tablet_msg/New(param_rec, param_sender, param_message, param_photo, param_emojis)
+>>>>>>> 87b842ca4d (TGUI Message Monitor + PDA Admin Verb (#8094))
 	if(param_rec)
 		recipient = param_rec
 	if(param_sender)
@@ -212,6 +220,8 @@
 		message = param_message
 	if(param_photo)
 		picture = param_photo
+	if(param_emojis)
+		emojis = param_emojis
 
 /datum/data_pda_msg/Topic(href,href_list)
 	..()
