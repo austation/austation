@@ -3372,6 +3372,15 @@
 #include "code\modules\tgui\states.dm"
 #include "code\modules\tgui\status_composers.dm"
 #include "code\modules\tgui\tgui.dm"
+<<<<<<< HEAD
+=======
+#include "code\modules\tgui\tgui_alert.dm"
+#include "code\modules\tgui\tgui_input_emoji.dm"
+#include "code\modules\tgui\tgui_input_list.dm"
+#include "code\modules\tgui\tgui_input_number.dm"
+#include "code\modules\tgui\tgui_input_text.dm"
+#include "code\modules\tgui\tgui_select_picture.dm"
+>>>>>>> 5d798d234c (Add TGUI inputs and alerts (#8080))
 #include "code\modules\tgui\tgui_window.dm"
 #include "code\modules\tgui\states\admin.dm"
 #include "code\modules\tgui\states\always.dm"
