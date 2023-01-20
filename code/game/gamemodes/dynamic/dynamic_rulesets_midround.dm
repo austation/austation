@@ -74,9 +74,15 @@
 				if (M.mind && M.mind.assigned_role && (M.mind.assigned_role in enemy_roles) && (!(M in candidates) || (M.mind.assigned_role in restricted_roles)))
 					job_check++ // Checking for "enemies" (such as sec officers). To be counters, they must either not be candidates to that rule, or have a job that restricts them from it
 
+<<<<<<< HEAD
 		var/threat = round(mode.threat_level/10)
 		if (job_check < required_enemies[threat])
 			return FALSE
+=======
+	if (mode.check_lowpop_lowimpact_injection())
+		return FALSE
+
+>>>>>>> 5b1b4bc841 (Tweaks to costs, required enemies, high impact flags, global antag percentage (#8340))
 	return TRUE
 
 /datum/dynamic_ruleset/midround/from_ghosts/execute()
@@ -167,9 +173,15 @@
 	protected_roles = list("Security Officer", "Warden", "Detective", "Head of Security", "Captain")
 	restricted_roles = list("Cyborg", "AI", "Positronic Brain")
 	required_candidates = 1
+<<<<<<< HEAD
 	weight = 7
 	cost = 10
 	requirements = list(50,40,30,20,10,10,10,10,10,10)
+=======
+	weight = 20
+	cost = 8
+	requirements = list(8,8,8,8,8,8,8,8,8,8)
+>>>>>>> 5b1b4bc841 (Tweaks to costs, required enemies, high impact flags, global antag percentage (#8340))
 	repeatable = TRUE
 
 /datum/dynamic_ruleset/midround/autotraitor/acceptable(population = 0, threat = 0)
@@ -202,7 +214,13 @@
 			living_players -= player // We don't autotator people with roles already
 
 /datum/dynamic_ruleset/midround/autotraitor/ready(forced = FALSE)
+<<<<<<< HEAD
 	if (required_candidates > living_players.len)
+=======
+	var/candidates_amt = length(candidates)
+	if (required_candidates > candidates_amt)
+		log_game("DYNAMIC: FAIL: [src] does not have enough candidates ([required_candidates] needed, [candidates_amt] found)")
+>>>>>>> 5b1b4bc841 (Tweaks to costs, required enemies, high impact flags, global antag percentage (#8340))
 		return FALSE
 	return ..()
 
@@ -225,6 +243,7 @@
 	name = "Malfunctioning AI"
 	antag_datum = /datum/antagonist/traitor
 	antag_flag = ROLE_MALF
+<<<<<<< HEAD
 	enemy_roles = list("Security Officer", "Warden", "Detective", "Head of Security", "Captain", "Scientist", "Chemist", "Research Director", "Chief Engineer")
 	exclusive_roles = list("AI")
 	required_enemies = list(4,4,4,4,4,4,2,2,2,0)
@@ -233,6 +252,18 @@
 	cost = 20
 	requirements = list(101,101,80,70,60,60,50,50,40,40)
 	required_type = /mob/living/silicon/ai
+=======
+	enemy_roles = list(JOB_NAME_SECURITYOFFICER, JOB_NAME_WARDEN, JOB_NAME_DETECTIVE, JOB_NAME_HEADOFSECURITY, JOB_NAME_CAPTAIN, JOB_NAME_SCIENTIST, JOB_NAME_CHEMIST, JOB_NAME_RESEARCHDIRECTOR, JOB_NAME_CHIEFENGINEER)
+	exclusive_roles = list(JOB_NAME_AI)
+	required_enemies = list(3,3,2,2,2,1,1,1,1,0)
+	required_candidates = 1
+	minimum_players = 25
+	weight = 2
+	cost = 13
+	required_type = /mob/living/silicon/ai
+	blocking_rules = list(/datum/dynamic_ruleset/roundstart/nuclear)
+	flags = HIGH_IMPACT_RULESET
+>>>>>>> 5b1b4bc841 (Tweaks to costs, required enemies, high impact flags, global antag percentage (#8340))
 	var/ion_announce = 33
 	var/removeDontImproveChance = 10
 
@@ -279,9 +310,15 @@
 	required_enemies = list(2,2,1,1,1,1,1,0,0,0)
 	required_candidates = 1
 	weight = 1
+<<<<<<< HEAD
 	cost = 20
 	requirements = list(90,90,70,40,30,20,10,10,10,10)
 	repeatable = TRUE
+=======
+	cost = 15
+	requirements = REQUIREMENTS_VERY_HIGH_THREAT_NEEDED
+	flags = HIGH_IMPACT_RULESET
+>>>>>>> 5b1b4bc841 (Tweaks to costs, required enemies, high impact flags, global antag percentage (#8340))
 
 /datum/dynamic_ruleset/midround/from_ghosts/wizard/ready(forced = FALSE)
 	if (required_candidates > (dead_players.len + list_observers.len))
@@ -306,12 +343,22 @@
 	name = "Nuclear Assault"
 	antag_flag = ROLE_OPERATIVE
 	antag_datum = /datum/antagonist/nukeop
+<<<<<<< HEAD
 	enemy_roles = list("AI", "Cyborg", "Security Officer", "Warden", "Detective", "Head of Security", "Captain")
 	required_enemies = list(3,3,3,3,3,2,1,1,0,0)
 	required_candidates = 5
 	weight = 5
 	cost = 20
 	requirements = list(90,90,90,80,60,40,30,20,10,10)
+=======
+	enemy_roles = list(JOB_NAME_AI, JOB_NAME_CYBORG, JOB_NAME_SECURITYOFFICER, JOB_NAME_WARDEN, JOB_NAME_DETECTIVE, JOB_NAME_HEADOFSECURITY, JOB_NAME_CAPTAIN)
+	required_enemies = list(3,3,2,2,2,2,1,1,0,0)
+	required_candidates = 5
+	weight = 5
+	cost = 15
+	minimum_round_time = 70 MINUTES
+	requirements = REQUIREMENTS_VERY_HIGH_THREAT_NEEDED
+>>>>>>> 5b1b4bc841 (Tweaks to costs, required enemies, high impact flags, global antag percentage (#8340))
 	var/list/operative_cap = list(2,2,3,3,4,5,5,5,5,5)
 	var/datum/team/nuclear/nuke_team
 	flags = HIGH_IMPACT_RULESET
@@ -351,10 +398,18 @@
 	enemy_roles = list("Security Officer", "Detective", "Warden", "Head of Security", "Captain")
 	required_enemies = list(2,2,1,1,1,1,1,0,0,0)
 	required_candidates = 1
+<<<<<<< HEAD
 	weight = 4
 	cost = 10
 	requirements = list(101,101,101,80,60,50,30,20,10,10)
 	repeatable = TRUE
+=======
+	minimum_round_time = 35 MINUTES
+	weight = 3
+	cost = 12
+	minimum_players = 25
+	flags = HIGH_IMPACT_RULESET
+>>>>>>> 5b1b4bc841 (Tweaks to costs, required enemies, high impact flags, global antag percentage (#8340))
 
 /datum/dynamic_ruleset/midround/from_ghosts/blob/generate_ruleset_body(mob/applicant)
 	var/body = applicant.become_overmind()
@@ -374,9 +429,15 @@
 	required_enemies = list(2,2,1,1,1,1,1,0,0,0)
 	required_candidates = 1
 	weight = 3
+<<<<<<< HEAD
 	cost = 10
 	requirements = list(101,101,101,70,50,40,20,15,10,10)
 	repeatable = TRUE
+=======
+	cost = 12
+	minimum_players = 25
+	flags = HIGH_IMPACT_RULESET
+>>>>>>> 5b1b4bc841 (Tweaks to costs, required enemies, high impact flags, global antag percentage (#8340))
 	var/list/vents = list()
 
 /datum/dynamic_ruleset/midround/from_ghosts/xenomorph/execute()
@@ -416,12 +477,21 @@
 	antag_datum = /datum/antagonist/nightmare
 	antag_flag = "Nightmare"
 	antag_flag_override = ROLE_ALIEN
+<<<<<<< HEAD
 	enemy_roles = list("Security Officer", "Detective", "Warden", "Head of Security", "Captain")
 	required_enemies = list(2,2,1,1,1,1,1,0,0,0)
 	required_candidates = 1
 	weight = 3
 	cost = 10
 	requirements = list(101,101,101,70,50,40,20,15,10,10)
+=======
+	enemy_roles = list(JOB_NAME_SECURITYOFFICER, JOB_NAME_DETECTIVE, JOB_NAME_WARDEN, JOB_NAME_HEADOFSECURITY, JOB_NAME_CAPTAIN)
+	required_enemies = list(1,1,1,1,0,0,0,0,0,0)
+	required_candidates = 1
+	weight = 5
+	cost = 6
+	minimum_players = 12
+>>>>>>> 5b1b4bc841 (Tweaks to costs, required enemies, high impact flags, global antag percentage (#8340))
 	repeatable = TRUE
 	var/list/spawn_locs = list()
 
@@ -460,10 +530,17 @@
 
 /datum/dynamic_ruleset/midround/from_ghosts/abductors
 	name = "Abductors"
+<<<<<<< HEAD
 	antag_flag = "Abductor"
 	antag_flag_override = ROLE_ABDUCTOR
 	enemy_roles = list("Security Officer", "Detective", "Warden", "Head of Security", "Captain")
 	required_enemies = list(2,2,1,1,1,1,1,0,0,0)
+=======
+	midround_ruleset_style = MIDROUND_RULESET_STYLE_LIGHT
+	antag_flag = ROLE_ABDUCTOR
+	enemy_roles = list(JOB_NAME_SECURITYOFFICER, JOB_NAME_DETECTIVE, JOB_NAME_WARDEN, JOB_NAME_HEADOFSECURITY, JOB_NAME_CAPTAIN)
+	required_enemies = list(2,2,1,1,1,1,0,0,0,0)
+>>>>>>> 5b1b4bc841 (Tweaks to costs, required enemies, high impact flags, global antag percentage (#8340))
 	required_candidates = 2
 	weight = 4
 	cost = 10
@@ -488,3 +565,126 @@
 		new_character.mind.add_antag_datum(new_role, new_team)
 
 #undef ABDUCTOR_MAX_TEAMS
+<<<<<<< HEAD
+=======
+
+//////////////////////////////////////////////
+//                                          //
+//           REVENANT    (GHOST)            //
+//                                          //
+//////////////////////////////////////////////
+/datum/dynamic_ruleset/midround/from_ghosts/revenant
+	name = "Revenant"
+	midround_ruleset_style = MIDROUND_RULESET_STYLE_LIGHT
+	antag_datum = /datum/antagonist/revenant
+	antag_flag = "Revenant"
+	antag_flag_override = ROLE_REVENANT
+	enemy_roles = list(JOB_NAME_SECURITYOFFICER, JOB_NAME_DETECTIVE, JOB_NAME_WARDEN, JOB_NAME_HEADOFSECURITY, JOB_NAME_CAPTAIN)
+	required_enemies = list(1,1,1,1,0,0,0,0,0,0)
+	required_candidates = 1
+	weight = 5
+	cost = 5
+	minimum_players = 12
+	repeatable = TRUE
+	var/dead_mobs_required = 15
+	var/need_extra_spawns_value = 15
+	var/list/spawn_locs = list()
+
+/datum/dynamic_ruleset/midround/from_ghosts/revenant/acceptable(population=0, threat=0)
+	if(length(GLOB.dead_mob_list) < dead_mobs_required)
+		return FALSE
+	return ..()
+
+/datum/dynamic_ruleset/midround/from_ghosts/revenant/execute()
+	for(var/mob/living/corpse in GLOB.dead_mob_list) //look for any dead bodies
+		var/turf/corpse_turf = get_turf(corpse)
+		if(corpse_turf && is_station_level(corpse_turf.z))
+			spawn_locs += corpse_turf
+	if(!length(spawn_locs) || length(spawn_locs) < need_extra_spawns_value) //look for any morgue trays, crematoriums, ect if there weren't alot of dead bodies on the station to pick from
+		for(var/obj/structure/bodycontainer/corpse_container in GLOB.bodycontainers)
+			var/turf/container_turf = get_turf(corpse_container)
+			if(container_turf && is_station_level(container_turf.z))
+				spawn_locs += container_turf
+	if(!length(spawn_locs)) //If we can't find any valid spawnpoints, try the carp spawns
+		for(var/obj/effect/landmark/carpspawn/carp_spawnpoint in GLOB.landmarks_list)
+			if(isturf(carp_spawnpoint.loc))
+				spawn_locs += carp_spawnpoint.loc
+	if(!length(spawn_locs)) //If we can't find THAT, then just give up and cry
+		log_game("DYNAMIC: [ruletype] ruleset [name] execute failed due to no valid spawn locations.")
+		return FALSE
+	. = ..()
+
+/datum/dynamic_ruleset/midround/from_ghosts/revenant/generate_ruleset_body(mob/applicant)
+	var/mob/living/simple_animal/revenant/revenant = new(pick(spawn_locs))
+	revenant.key = applicant.key
+	message_admins("[ADMIN_LOOKUPFLW(revenant)] has been made into a revenant by the midround ruleset.")
+	log_game("[key_name(revenant)] was spawned as a revenant by the midround ruleset.")
+	return revenant
+
+//////////////////////////////////////////////
+//                                          //
+//           PIRATES    (GHOST)             //
+//                                          //
+//////////////////////////////////////////////
+/datum/dynamic_ruleset/midround/pirates
+	name = "Space Pirates"
+	midround_ruleset_style = MIDROUND_RULESET_STYLE_HEAVY
+	antag_flag = "Space Pirates"
+	required_type = /mob/dead/observer
+	enemy_roles = list(JOB_NAME_SECURITYOFFICER, JOB_NAME_DETECTIVE, JOB_NAME_WARDEN, JOB_NAME_HEADOFSECURITY, JOB_NAME_CAPTAIN)
+	required_enemies = list(2,2,2,1,1,1,1,0,0,0)
+	required_candidates = 0
+	weight = 4
+	cost = 8
+	minimum_players = 27
+	repeatable = TRUE
+
+/datum/dynamic_ruleset/midround/pirates/acceptable(population=0, threat=0)
+	if (!SSmapping.empty_space)
+		return FALSE
+	return ..()
+
+/datum/dynamic_ruleset/midround/pirates/execute()
+	send_pirate_threat()
+	return ..()
+
+/// Obsessed ruleset
+/datum/dynamic_ruleset/midround/obsessed
+	name = "Obsessed"
+	midround_ruleset_style = MIDROUND_RULESET_STYLE_LIGHT
+	antag_datum = /datum/antagonist/obsessed
+	antag_flag = ROLE_OBSESSED
+	restricted_roles = list(JOB_NAME_AI, JOB_NAME_CYBORG, "Positronic Brain")
+	enemy_roles = list(JOB_NAME_SECURITYOFFICER, JOB_NAME_DETECTIVE, JOB_NAME_WARDEN, JOB_NAME_HEADOFSECURITY, JOB_NAME_CAPTAIN)
+	required_enemies = list(1,1,1,1,0,0,0,0,0,0)
+	required_candidates = 1
+	weight = 3
+	cost = 5
+	repeatable = TRUE
+
+/datum/dynamic_ruleset/midround/obsessed/trim_candidates()
+	..()
+	candidates = living_players
+	for(var/mob/living/carbon/human/candidate in candidates)
+		if( \
+			!candidate.getorgan(/obj/item/organ/brain) \
+			|| candidate.mind.has_antag_datum(/datum/antagonist/obsessed) \
+			|| candidate.stat == DEAD \
+			|| !(ROLE_OBSESSED in candidate.client?.prefs?.be_special) \
+			|| !SSjob.GetJob(candidate.mind.assigned_role) \
+			|| (candidate.mind.assigned_role in GLOB.nonhuman_positions) \
+		)
+			candidates -= candidate
+
+/datum/dynamic_ruleset/midround/obsessed/ready(forced = FALSE)
+	if(!check_candidates())
+		return FALSE
+	return ..()
+
+/datum/dynamic_ruleset/midround/obsessed/execute()
+	var/mob/living/carbon/human/obsessed = pick_n_take(candidates)
+	obsessed.gain_trauma(/datum/brain_trauma/special/obsessed)
+	message_admins("[ADMIN_LOOKUPFLW(obsessed)] has been made Obsessed by the midround ruleset.")
+	log_game("[key_name(obsessed)] was made Obsessed by the midround ruleset.")
+	return ..()
+>>>>>>> 5b1b4bc841 (Tweaks to costs, required enemies, high impact flags, global antag percentage (#8340))
