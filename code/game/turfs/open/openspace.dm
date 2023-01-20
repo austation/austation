@@ -9,8 +9,14 @@ GLOBAL_DATUM_INIT(openspace_backdrop_one_for_all, /atom/movable/openspace_backdr
 	icon_state      = "grey"
 	plane           = OPENSPACE_BACKDROP_PLANE
 	mouse_opacity 	= MOUSE_OPACITY_TRANSPARENT
+<<<<<<< HEAD
 	layer           = SPLASHSCREEN_LAYER
 
+=======
+	vis_flags = VIS_INHERIT_ID
+	//I don't know why the others are aligned but I shall do the same.
+	vis_flags		= VIS_INHERIT_ID
+>>>>>>> bcacd4356b (Updates our layers to get ready for plane cube, and weather effects (#8082))
 /turf/open/openspace
 	name = "open space"
 	desc = "Watch your step!"

@@ -9,7 +9,10 @@
 /atom/movable/emissive_blocker
 	name = ""
 	plane = EMISSIVE_BLOCKER_PLANE
+<<<<<<< HEAD
 	layer = EMISSIVE_BLOCKER_LAYER
+=======
+>>>>>>> bcacd4356b (Updates our layers to get ready for plane cube, and weather effects (#8082))
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	//Why?
 	//render_targets copy the transform of the target as well, but vis_contents also applies the transform

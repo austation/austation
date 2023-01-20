@@ -40,11 +40,23 @@
 	cam_screen.assigned_map = map_name
 	cam_screen.del_on_map_removal = FALSE
 	cam_screen.screen_loc = "[map_name]:1,1"
+<<<<<<< HEAD
 	cam_plane_master = new
 	cam_plane_master.name = "plane_master"
 	cam_plane_master.assigned_map = map_name
 	cam_plane_master.del_on_map_removal = FALSE
 	cam_plane_master.screen_loc = "[map_name]:CENTER"
+=======
+	cam_plane_masters = list()
+	for(var/plane in subtypesof(/atom/movable/screen/plane_master) - /atom/movable/screen/plane_master/blackness)
+		var/atom/movable/screen/plane_master/instance = new plane()
+		if(instance.blend_mode_override)
+			instance.blend_mode = instance.blend_mode_override
+		instance.assigned_map = map_name
+		instance.del_on_map_removal = FALSE
+		instance.screen_loc = "[map_name]:CENTER"
+		cam_plane_masters += instance
+>>>>>>> bcacd4356b (Updates our layers to get ready for plane cube, and weather effects (#8082))
 	visual_plane_master = new
 	visual_plane_master.name = "plane_master"
 	visual_plane_master.assigned_map = map_name
