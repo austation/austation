@@ -28,6 +28,31 @@ SUBSYSTEM_DEF(title)
 	ASSERT(fexists(file_path))
 
 	icon = new(fcopy_rsc(file_path))
+<<<<<<< HEAD
+=======
+
+	//Calculate the screen size
+	var/regex/size_regex = new("(\\d+)x(\\d+)\\.\\w*$")
+	if (size_regex.Find(file_path))
+		var/width = text2num(size_regex.group[1])
+		var/height = text2num(size_regex.group[2])
+		lobby_screen_size = "[width]x[height]"
+
+		//Update the new player start (views are centered)
+		var/new_player_x = splash_turf.x + FLOOR(width / 2, 1)
+		var/new_player_y = splash_turf.y + FLOOR(height / 2, 1)
+		newplayer_start_loc = locate(new_player_x, new_player_y, splash_turf.z)
+		for(var/atom/movable/new_player_start in GLOB.newplayer_start)
+			new_player_start.forceMove(newplayer_start_loc)
+
+		//Update fast joiners
+		for (var/mob/dead/new_player/fast_joiner in GLOB.new_player_list)
+			if(isnull(fast_joiner.client?.view_size))
+				fast_joiner.client?.change_view(getScreenSize(fast_joiner))
+			else
+				fast_joiner.client?.view_size.resetToDefault(getScreenSize(fast_joiner))
+			fast_joiner.forceMove(newplayer_start_loc)
+>>>>>>> 48d03bc1de (Fixes title screens wtih a new approach (#8337))
 
 	if(splash_turf)
 		splash_turf.icon = icon
