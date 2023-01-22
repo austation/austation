@@ -587,6 +587,7 @@ Difficulty: Medium
 
 /mob/living/simple_animal/hostile/megafauna/dragon/lesser/grant_achievement(medaltype,scoretype)
 	return
+<<<<<<< HEAD
 
 /mob/living/simple_animal/hostile/megafauna/dragon/space_dragon
 	name = "space dragon"
@@ -660,3 +661,5 @@ Difficulty: Medium
 
 /mob/living/simple_animal/hostile/megafauna/dragon/space_dragon/AltClickOn(atom/movable/A)
 	return
+=======
+>>>>>>> 57ca09a8be (Space Dragon Rework and Dynamic Ruleset (#7500))
