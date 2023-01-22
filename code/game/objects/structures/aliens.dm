@@ -111,7 +111,16 @@
 	density = FALSE
 	layer = TURF_LAYER
 	plane = FLOOR_PLANE
+<<<<<<< HEAD
 	icon_state = "weeds"
+=======
+	icon = 'icons/obj/smooth_structures/alien/weeds1.dmi'
+	icon_state = "weeds1-0"
+	base_icon_state = "weeds1"
+	smoothing_flags = SMOOTH_BITMASK
+	smoothing_groups = list(SMOOTH_GROUP_ALIEN_RESIN, SMOOTH_GROUP_ALIEN_WEEDS)
+	canSmoothWith = list(SMOOTH_GROUP_ALIEN_WEEDS)
+>>>>>>> 20b6c32452 (Alien weed fix and further fixes to the broken smoothing system (#8198))
 	max_integrity = 15
 	canSmoothWith = list(/obj/structure/alien/weeds, /turf/closed/wall)
 	smooth = SMOOTH_MORE

@@ -9926,11 +9926,15 @@
 /area/wizard_station)
 "BV" = (
 /obj/machinery/chem_dispenser/drinks/beer,
+<<<<<<< HEAD
 /turf/closed/indestructible{
 	icon = 'icons/turf/walls/wood_wall.dmi';
 	icon_state = "wood";
 	smooth = 1
 	},
+=======
+/turf/closed/indestructible/hotelwall,
+>>>>>>> 20b6c32452 (Alien weed fix and further fixes to the broken smoothing system (#8198))
 /area/centcom/holding)
 "BY" = (
 /obj/item/toy/figure/syndie,
@@ -12784,6 +12788,7 @@
 /obj/effect/turf_decal/bot,
 /turf/open/floor/plasteel,
 /area/tdome/tdomeobserve)
+<<<<<<< HEAD
 "HM" = (
 /obj/structure/chair,
 /obj/effect/landmark/thunderdome/observe,
@@ -12838,6 +12843,12 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/tdome/tdomeobserve)
+=======
+"HN" = (
+/obj/machinery/smartfridge,
+/turf/closed/indestructible/hotelwall,
+/area/centcom/holding)
+>>>>>>> 20b6c32452 (Alien weed fix and further fixes to the broken smoothing system (#8198))
 "HP" = (
 /obj/structure/table/reinforced,
 /obj/machinery/door/firedoor,
@@ -14856,11 +14867,15 @@
 /turf/open/floor/mineral/titanium/blue,
 /area/centcom/evac)
 "Nd" = (
+<<<<<<< HEAD
 /turf/closed/indestructible{
 	icon = 'icons/turf/walls/wood_wall.dmi';
 	icon_state = "wood";
 	smooth = 1
 	},
+=======
+/turf/closed/indestructible/hotelwall,
+>>>>>>> 20b6c32452 (Alien weed fix and further fixes to the broken smoothing system (#8198))
 /area/centcom/holding)
 "Nh" = (
 /obj/structure/table/wood,
@@ -15487,11 +15502,15 @@
 /area/centcom/supplypod)
 "QT" = (
 /obj/machinery/chem_dispenser/drinks,
+<<<<<<< HEAD
 /turf/closed/indestructible{
 	icon = 'icons/turf/walls/wood_wall.dmi';
 	icon_state = "wood";
 	smooth = 1
 	},
+=======
+/turf/closed/indestructible/hotelwall,
+>>>>>>> 20b6c32452 (Alien weed fix and further fixes to the broken smoothing system (#8198))
 /area/centcom/holding)
 "QU" = (
 /obj/structure/table/glass,
@@ -42458,7 +42477,7 @@ Nd
 XL
 Nd
 Nd
-py
+HN
 Nd
 Xk
 Yo

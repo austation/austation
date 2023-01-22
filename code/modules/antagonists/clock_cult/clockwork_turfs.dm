@@ -47,6 +47,9 @@
 	var/obj/effect/clockwork/overlay/wall/realappearence
 	var/d_state = INTACT
 	flags_1 = NOJAUNT_1
+	icon = 'icons/turf/walls/clockwork_wall.dmi'
+	icon_state = "clockwork_wall-0"
+	base_icon_state = "clockwork_wall"
 
 /turf/closed/wall/clockwork/Initialize(mapload)
 	. = ..()
@@ -302,12 +305,21 @@
 
 /obj/structure/lattice/catwalk/clockwork
 	name = "clockwork catwalk"
+<<<<<<< HEAD
 	icon = 'icons/obj/smooth_structures/catwalk_clockwork.dmi'
 	canSmoothWith = list(/obj/structure/lattice,
 	/turf/open/floor,
 	/turf/closed/wall,
 	/obj/structure/falsewall)
 	smooth = SMOOTH_MORE
+=======
+	icon = 'icons/obj/smooth_structures/catwalks/catwalk_clockwork.dmi'
+	icon_state = "catwalk_clockwork-0"
+	base_icon_state = "catwalk_clockwork"
+	smoothing_flags = SMOOTH_BITMASK
+	smoothing_groups = list(SMOOTH_GROUP_LATTICE, SMOOTH_GROUP_CATWALK, SMOOTH_GROUP_OPEN_FLOOR)
+	canSmoothWith = list(SMOOTH_GROUP_CATWALK)
+>>>>>>> 20b6c32452 (Alien weed fix and further fixes to the broken smoothing system (#8198))
 
 /obj/structure/lattice/catwalk/clockwork/Initialize(mapload)
 	. = ..()

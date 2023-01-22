@@ -98,7 +98,16 @@ INITIALIZE_IMMEDIATE(/turf/closed/indestructible/splashscreen)
 
 /turf/closed/indestructible/fakeglass
 	name = "window"
+<<<<<<< HEAD
 	icon_state = "fake_window"
+=======
+	icon_state = "reinforced_window-0"
+	base_icon_state = "reinforced_window"
+	opacity = FALSE
+	smoothing_flags = SMOOTH_BITMASK
+	smoothing_groups = list(SMOOTH_GROUP_WINDOW_FULLTILE)
+	canSmoothWith = list(SMOOTH_GROUP_WINDOW_FULLTILE)
+>>>>>>> 20b6c32452 (Alien weed fix and further fixes to the broken smoothing system (#8198))
 	opacity = 0
 	smooth = SMOOTH_TRUE
 	icon = 'icons/obj/smooth_structures/reinforced_window.dmi'

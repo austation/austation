@@ -14,7 +14,13 @@
 	icon_state = "gold"
 	sheet_type = /obj/item/stack/sheet/mineral/gold
 	explosion_block = 0 //gold is a soft metal you dingus.
+<<<<<<< HEAD
 	canSmoothWith = list(/turf/closed/wall/mineral/gold, /obj/structure/falsewall/gold)
+=======
+	smoothing_flags = SMOOTH_BITMASK
+	smoothing_groups = list(SMOOTH_GROUP_CLOSED_TURFS, SMOOTH_GROUP_GOLD_WALLS)
+	canSmoothWith = list(SMOOTH_GROUP_GOLD_WALLS)
+>>>>>>> 20b6c32452 (Alien weed fix and further fixes to the broken smoothing system (#8198))
 
 /turf/closed/wall/mineral/silver
 	name = "silver wall"
@@ -22,7 +28,14 @@
 	icon = 'icons/turf/walls/silver_wall.dmi'
 	icon_state = "silver"
 	sheet_type = /obj/item/stack/sheet/mineral/silver
+<<<<<<< HEAD
 	canSmoothWith = list(/turf/closed/wall/mineral/silver, /obj/structure/falsewall/silver)
+=======
+	smoothing_flags = SMOOTH_BITMASK
+	smoothing_groups = list(SMOOTH_GROUP_CLOSED_TURFS, SMOOTH_GROUP_SILVER_WALLS)
+	canSmoothWith = list(SMOOTH_GROUP_SILVER_WALLS)
+	custom_materials = list(/datum/material/silver = 4000)
+>>>>>>> 20b6c32452 (Alien weed fix and further fixes to the broken smoothing system (#8198))
 
 /turf/closed/wall/mineral/copper
 	name = "copper wall"
@@ -30,7 +43,15 @@
 	icon = 'icons/turf/walls/copper_wall.dmi'
 	icon_state = "copper"
 	sheet_type = /obj/item/stack/sheet/mineral/copper
+<<<<<<< HEAD
 	canSmoothWith = list(/turf/closed/wall/mineral/copper, /obj/structure/falsewall/copper)
+=======
+	icon_state = "copper_wall-0"
+	base_icon_state = "copper_wall"
+	smoothing_flags = SMOOTH_BITMASK
+	smoothing_groups = list(SMOOTH_GROUP_CLOSED_TURFS, SMOOTH_GROUP_COPPER_WALLS) //copper walls
+	canSmoothWith = list(SMOOTH_GROUP_COPPER_WALLS)
+>>>>>>> 20b6c32452 (Alien weed fix and further fixes to the broken smoothing system (#8198))
 
 /turf/closed/wall/mineral/diamond
 	name = "diamond wall"
@@ -40,7 +61,13 @@
 	sheet_type = /obj/item/stack/sheet/mineral/diamond
 	slicing_duration = 200   //diamond wall takes twice as much time to slice
 	explosion_block = 3
+<<<<<<< HEAD
 	canSmoothWith = list(/turf/closed/wall/mineral/diamond, /obj/structure/falsewall/diamond)
+=======
+	smoothing_flags = SMOOTH_BITMASK
+	smoothing_groups = list(SMOOTH_GROUP_CLOSED_TURFS, SMOOTH_GROUP_DIAMOND_WALLS)
+	canSmoothWith = list(SMOOTH_GROUP_DIAMOND_WALLS)
+>>>>>>> 20b6c32452 (Alien weed fix and further fixes to the broken smoothing system (#8198))
 
 /turf/closed/wall/mineral/bananium
 	name = "bananium wall"
@@ -48,7 +75,13 @@
 	icon = 'icons/turf/walls/bananium_wall.dmi'
 	icon_state = "bananium"
 	sheet_type = /obj/item/stack/sheet/mineral/bananium
+<<<<<<< HEAD
 	canSmoothWith = list(/turf/closed/wall/mineral/bananium, /obj/structure/falsewall/bananium)
+=======
+	smoothing_flags = SMOOTH_BITMASK
+	smoothing_groups = list(SMOOTH_GROUP_CLOSED_TURFS, SMOOTH_GROUP_BANANIUM_WALLS)
+	canSmoothWith = list(SMOOTH_GROUP_BANANIUM_WALLS)
+>>>>>>> 20b6c32452 (Alien weed fix and further fixes to the broken smoothing system (#8198))
 
 /turf/closed/wall/mineral/sandstone
 	name = "sandstone wall"
@@ -57,7 +90,13 @@
 	icon_state = "sandstone"
 	sheet_type = /obj/item/stack/sheet/mineral/sandstone
 	explosion_block = 0
+<<<<<<< HEAD
 	canSmoothWith = list(/turf/closed/wall/mineral/sandstone, /obj/structure/falsewall/sandstone)
+=======
+	smoothing_flags = SMOOTH_BITMASK
+	smoothing_groups = list(SMOOTH_GROUP_CLOSED_TURFS, SMOOTH_GROUP_SANDSTONE_WALLS)
+	canSmoothWith = list(SMOOTH_GROUP_SANDSTONE_WALLS)
+>>>>>>> 20b6c32452 (Alien weed fix and further fixes to the broken smoothing system (#8198))
 
 /turf/closed/wall/mineral/uranium
 	article = "a"
@@ -66,7 +105,14 @@
 	icon = 'icons/turf/walls/uranium_wall.dmi'
 	icon_state = "uranium"
 	sheet_type = /obj/item/stack/sheet/mineral/uranium
+<<<<<<< HEAD
 	canSmoothWith = list(/turf/closed/wall/mineral/uranium, /obj/structure/falsewall/uranium)
+=======
+	smoothing_flags = SMOOTH_BITMASK
+	smoothing_groups = list(SMOOTH_GROUP_CLOSED_TURFS, SMOOTH_GROUP_URANIUM_WALLS)
+	canSmoothWith = list(SMOOTH_GROUP_URANIUM_WALLS)
+
+>>>>>>> 20b6c32452 (Alien weed fix and further fixes to the broken smoothing system (#8198))
 
 /turf/closed/wall/mineral/uranium/proc/radiate()
 	if(!active)
@@ -138,7 +184,13 @@
 	sheet_type = /obj/item/stack/sheet/mineral/wood
 	hardness = 70
 	explosion_block = 0
+<<<<<<< HEAD
 	canSmoothWith = list(/turf/closed/wall/mineral/wood, /obj/structure/falsewall/wood, /turf/closed/wall/mineral/wood/nonmetal)
+=======
+	smoothing_flags = SMOOTH_BITMASK
+	smoothing_groups = list(SMOOTH_GROUP_CLOSED_TURFS, SMOOTH_GROUP_WOOD_WALLS)
+	canSmoothWith = list(SMOOTH_GROUP_WOOD_WALLS)
+>>>>>>> 20b6c32452 (Alien weed fix and further fixes to the broken smoothing system (#8198))
 
 /turf/closed/wall/mineral/wood/attackby(obj/item/W, mob/user)
 	if(W.is_sharp() && W.force)
@@ -163,7 +215,13 @@
 	icon_state = "bamboo"
 	sheet_type = /obj/item/stack/sheet/mineral/bamboo
 	hardness = 60
+<<<<<<< HEAD
 	canSmoothWith = list(/turf/closed/wall/mineral/bamboo, /obj/structure/falsewall/bamboo)
+=======
+	smoothing_flags = SMOOTH_BITMASK
+	smoothing_groups = list(SMOOTH_GROUP_CLOSED_TURFS, SMOOTH_GROUP_BAMBOO_WALLS)
+	canSmoothWith = list(SMOOTH_GROUP_BAMBOO_WALLS)
+>>>>>>> 20b6c32452 (Alien weed fix and further fixes to the broken smoothing system (#8198))
 
 /turf/closed/wall/mineral/iron
 	name = "rough iron wall"
@@ -171,7 +229,14 @@
 	icon = 'icons/turf/walls/iron_wall.dmi'
 	icon_state = "iron"
 	sheet_type = /obj/item/stack/rods
+<<<<<<< HEAD
 	canSmoothWith = list(/turf/closed/wall/mineral/iron, /obj/structure/falsewall/iron)
+=======
+	sheet_amount = 5
+	smoothing_flags = SMOOTH_BITMASK
+	smoothing_groups = list(SMOOTH_GROUP_CLOSED_TURFS, SMOOTH_GROUP_IRON_WALLS)
+	canSmoothWith = list(SMOOTH_GROUP_IRON_WALLS)
+>>>>>>> 20b6c32452 (Alien weed fix and further fixes to the broken smoothing system (#8198))
 
 /turf/closed/wall/mineral/snow
 	name = "packed snow wall"
@@ -196,7 +261,13 @@
 	sheet_type = /obj/item/stack/sheet/mineral/abductor
 	slicing_duration = 200   //alien wall takes twice as much time to slice
 	explosion_block = 3
+<<<<<<< HEAD
 	canSmoothWith = list(/turf/closed/wall/mineral/abductor, /obj/structure/falsewall/abductor)
+=======
+	smoothing_flags = SMOOTH_BITMASK | SMOOTH_DIAGONAL_CORNERS
+	smoothing_groups = list(SMOOTH_GROUP_CLOSED_TURFS, SMOOTH_GROUP_ABDUCTOR_WALLS)
+	canSmoothWith = list(SMOOTH_GROUP_ABDUCTOR_WALLS)
+>>>>>>> 20b6c32452 (Alien weed fix and further fixes to the broken smoothing system (#8198))
 
 /////////////////////Titanium walls/////////////////////
 
@@ -209,8 +280,14 @@
 	flags_1 = CAN_BE_DIRTY_1
 	flags_ricochet = RICOCHET_SHINY | RICOCHET_HARD
 	sheet_type = /obj/item/stack/sheet/mineral/titanium
+<<<<<<< HEAD
 	smooth = SMOOTH_MORE|SMOOTH_DIAGONAL
 	canSmoothWith = list(/turf/closed/wall/mineral/titanium, /obj/machinery/door/airlock/shuttle, /obj/machinery/door/airlock, /obj/structure/window/shuttle, /obj/structure/shuttle/engine/heater, /obj/structure/falsewall/titanium)
+=======
+	smoothing_flags = SMOOTH_BITMASK | SMOOTH_DIAGONAL_CORNERS
+	smoothing_groups = list(SMOOTH_GROUP_CLOSED_TURFS, SMOOTH_GROUP_TITANIUM_WALLS)
+	canSmoothWith = list(SMOOTH_GROUP_TITANIUM_WALLS, SMOOTH_GROUP_AIRLOCK, SMOOTH_GROUP_SHUTTLE_PARTS)
+>>>>>>> 20b6c32452 (Alien weed fix and further fixes to the broken smoothing system (#8198))
 
 /turf/closed/wall/mineral/titanium/nodiagonal
 	smooth = SMOOTH_MORE
@@ -260,7 +337,12 @@
 	smooth = SMOOTH_MORE
 
 /turf/closed/wall/mineral/titanium/survival/pod
+<<<<<<< HEAD
 	canSmoothWith = list(/turf/closed/wall/mineral/titanium/survival, /obj/machinery/door/airlock/survival_pod, /obj/structure/window/shuttle/survival_pod)
+=======
+	smoothing_groups = list(SMOOTH_GROUP_CLOSED_TURFS, SMOOTH_GROUP_TITANIUM_WALLS, SMOOTH_GROUP_SURVIVAL_TIANIUM_POD)
+	canSmoothWith = list(SMOOTH_GROUP_SURVIVAL_TIANIUM_POD)
+>>>>>>> 20b6c32452 (Alien weed fix and further fixes to the broken smoothing system (#8198))
 
 /////////////////////Plastitanium walls/////////////////////
 
@@ -271,8 +353,14 @@
 	icon_state = "map-shuttle"
 	explosion_block = 4
 	sheet_type = /obj/item/stack/sheet/mineral/plastitanium
+<<<<<<< HEAD
 	smooth = SMOOTH_MORE|SMOOTH_DIAGONAL
 	canSmoothWith = list(/turf/closed/wall/mineral/plastitanium, /obj/machinery/door/airlock/shuttle, /obj/machinery/door/airlock, /obj/structure/window/plastitanium, /obj/structure/shuttle/engine, /obj/structure/falsewall/plastitanium)
+=======
+	smoothing_flags = SMOOTH_BITMASK | SMOOTH_DIAGONAL_CORNERS
+	smoothing_groups = list(SMOOTH_GROUP_CLOSED_TURFS, SMOOTH_GROUP_PLASTITANIUM_WALLS)
+	canSmoothWith = list(SMOOTH_GROUP_PLASTITANIUM_WALLS, SMOOTH_GROUP_SYNDICATE_WALLS, SMOOTH_GROUP_AIRLOCK, SMOOTH_GROUP_SHUTTLE_PARTS)
+>>>>>>> 20b6c32452 (Alien weed fix and further fixes to the broken smoothing system (#8198))
 
 /turf/closed/wall/mineral/plastitanium/try_destroy(obj/item/I, mob/user, turf/T)
 	return FALSE
