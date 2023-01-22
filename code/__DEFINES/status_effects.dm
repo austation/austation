@@ -107,6 +107,15 @@
 
 #define STATUS_EFFECT_SLIMEGRUB /datum/status_effect/slimegrub //infected slime
 
+<<<<<<< HEAD
+=======
+#define STATUS_EFFECT_AMOK /datum/status_effect/amok //Makes the target automatically strike out at adjecent non-heretics.
+
+#define STATUS_EFFECT_CLOUDSTRUCK /datum/status_effect/cloudstruck //blinds and applies an overlay.
+
+#define STATUS_EFFECT_COCOONED /datum/status_effect/cocooned /// If a moth is in a cocoon
+
+>>>>>>> 7285546644 (Moth Cocoon PR 2, I learn how to use ghub bogaloo (#8134))
 //---------//
 // NEUTRAL //
 //---------//

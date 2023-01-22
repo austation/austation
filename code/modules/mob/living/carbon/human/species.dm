@@ -236,6 +236,11 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 		QDEL_NULL(wings)
 	if(should_have_wings && !wings)
 		wings = new mutantwings()
+		if(ismoth(C))
+			wings.wing_type = C.dna.features["moth_wings"]
+			wings.flight_level = WINGS_FLIGHTLESS
+			if(locate(/datum/mutation/strongwings) in C.dna.mutations)
+				wings.flight_level = WINGS_FLYING
 		wings.Insert(C)
 
 	if(C.get_bodypart(BODY_ZONE_HEAD))
@@ -614,6 +619,47 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 				eye_overlay.pixel_y += H.dna.species.offset_features[OFFSET_FACE][2]
 			standing += eye_overlay
 
+<<<<<<< HEAD
+=======
+	//organic body markings
+	if(HAS_MARKINGS in species_traits)
+		var/obj/item/bodypart/chest/chest = H.get_bodypart(BODY_ZONE_CHEST)
+		var/obj/item/bodypart/r_arm/right_arm = H.get_bodypart(BODY_ZONE_R_ARM)
+		var/obj/item/bodypart/l_arm/left_arm = H.get_bodypart(BODY_ZONE_L_ARM)
+		var/obj/item/bodypart/r_leg/right_leg = H.get_bodypart(BODY_ZONE_R_LEG)
+		var/obj/item/bodypart/l_leg/left_leg = H.get_bodypart(BODY_ZONE_L_LEG)
+		var/datum/sprite_accessory/markings = GLOB.moth_markings_list[H.dna.features["moth_markings"]]
+		var/markings_icon_state = markings.icon_state
+		if(ismoth(H) && HAS_TRAIT(H, TRAIT_MOTH_BURNT))
+			markings_icon_state = "burnt_off"
+
+		if(!HAS_TRAIT(H, TRAIT_HUSK))
+			if(HD && (IS_ORGANIC_LIMB(HD)))
+				var/mutable_appearance/markings_head_overlay = mutable_appearance(markings.icon, "[markings_icon_state]_head", -BODY_LAYER)
+				standing += markings_head_overlay
+
+			if(chest && (IS_ORGANIC_LIMB(chest)))
+				var/mutable_appearance/markings_chest_overlay = mutable_appearance(markings.icon, "[markings_icon_state]_chest", -BODY_LAYER)
+				standing += markings_chest_overlay
+
+			if(right_arm && (IS_ORGANIC_LIMB(right_arm)))
+				var/mutable_appearance/markings_r_arm_overlay = mutable_appearance(markings.icon, "[markings_icon_state]_r_arm", -BODY_LAYER)
+				standing += markings_r_arm_overlay
+
+			if(left_arm && (IS_ORGANIC_LIMB(left_arm)))
+				var/mutable_appearance/markings_l_arm_overlay = mutable_appearance(markings.icon, "[markings_icon_state]_l_arm", -BODY_LAYER)
+				standing += markings_l_arm_overlay
+
+			if(right_leg && (IS_ORGANIC_LIMB(right_leg)))
+				var/mutable_appearance/markings_r_leg_overlay = mutable_appearance(markings.icon, "[markings_icon_state]_r_leg", -BODY_LAYER)
+				standing += markings_r_leg_overlay
+
+			if(left_leg && (IS_ORGANIC_LIMB(left_leg)))
+				var/mutable_appearance/markings_l_leg_overlay = mutable_appearance(markings.icon, "[markings_icon_state]_l_leg", -BODY_LAYER)
+				standing += markings_l_leg_overlay
+
+
+>>>>>>> 7285546644 (Moth Cocoon PR 2, I learn how to use ghub bogaloo (#8134))
 	//Underwear, Undershirts & Socks
 	if(!(NO_UNDERWEAR in species_traits))
 		if(H.underwear)
@@ -793,7 +839,19 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 				if("legs")
 					S = GLOB.legs_list[H.dna.features["legs"]]
 				if("moth_wings")
+<<<<<<< HEAD
 					S = GLOB.moth_wings_list[H.dna.features["moth_wings"]]
+=======
+					if(HAS_TRAIT(H, TRAIT_MOTH_BURNT))
+						S = GLOB.moth_wings_list["Burnt Off"]
+					else
+						S = GLOB.moth_wings_list[H.dna.features["moth_wings"]]
+				if("moth_antennae")
+					if(HAS_TRAIT(H, TRAIT_MOTH_BURNT))
+						S = GLOB.moth_antennae_list["Burnt Off"]
+					else
+						S = GLOB.moth_antennae_list[H.dna.features["moth_antennae"]]
+>>>>>>> 7285546644 (Moth Cocoon PR 2, I learn how to use ghub bogaloo (#8134))
 				if("moth_wingsopen")
 					S = GLOB.moth_wingsopen_list[H.dna.features["moth_wings"]]
 				if("caps")
@@ -2046,7 +2104,8 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 	var/turf/T = get_turf(H)
 	if(!T)
 		return FALSE
-
+	if(ismoth(H) && HAS_TRAIT(H, TRAIT_MOTH_BURNT))
+		return FALSE
 	var/datum/gas_mixture/environment = T.return_air()
 	if(environment && !(environment.return_pressure() > 30) && wings.flight_level <= WINGS_FLYING)
 		to_chat(H, "<span class='warning'>The atmosphere is too thin for you to fly!</span>")
