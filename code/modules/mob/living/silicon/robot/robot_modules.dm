@@ -264,7 +264,7 @@
 		/obj/item/reagent_containers/borghypo/epi,
 		/obj/item/healthanalyzer,
 		/obj/item/borg/charger,
-		/obj/item/weldingtool/largetank/cyborg,
+		/obj/item/weldingtool/cyborg,
 		/obj/item/wrench/cyborg,
 		/obj/item/crowbar/cyborg,
 		/obj/item/stack/sheet/iron/cyborg,
@@ -332,8 +332,12 @@
 		/obj/item/construction/rcd/borg,
 		/obj/item/pipe_dispenser,
 		/obj/item/extinguisher,
+<<<<<<< HEAD
 		/obj/item/floor_painter, //austation -- Floor painter
 		/obj/item/weldingtool/largetank/cyborg,
+=======
+		/obj/item/weldingtool/cyborg,
+>>>>>>> 914bcf5be1 (Cyborg welding tool now gets temporarity disabled by Nightmare's lighteater instead of being deleted (#8254))
 		/obj/item/screwdriver/cyborg,
 		/obj/item/wrench/cyborg,
 		/obj/item/crowbar/cyborg,
@@ -609,7 +613,7 @@
 		/obj/item/shovel,
 		/obj/item/borg/charger,
 		/obj/item/crowbar/cyborg,
-		/obj/item/weldingtool/mini,
+		/obj/item/weldingtool/cyborg/mini,
 		/obj/item/extinguisher/mini,
 		/obj/item/storage/bag/sheetsnatcher/borg,
 		/obj/item/gun/energy/kinetic_accelerator/cyborg,
@@ -720,7 +724,7 @@
 		/obj/item/restraints/handcuffs/cable/zipties,
 		/obj/item/borg/charger,
 		/obj/item/extinguisher,
-		/obj/item/weldingtool/largetank/cyborg,
+		/obj/item/weldingtool/cyborg,
 		/obj/item/screwdriver/nuke,
 		/obj/item/wrench/cyborg,
 		/obj/item/crowbar/cyborg,
