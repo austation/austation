@@ -33,6 +33,22 @@
 
 	. = ..()
 
+<<<<<<< HEAD
+=======
+/obj/machinery/atmospherics/components/unary/plasma_refiner/AltClick(mob/living/user)
+	var/datum/gas_mixture/air_contents = airs[1]
+	var/plasmoles = air_contents.get_moles(GAS_PLASMA)
+	if(!air_contents)
+		return
+	if(plasmoles >= 100)
+		var/obj/item/stack/sheet/mineral/plasma/P = new(src.loc, 1)
+		air_contents.adjust_moles(GAS_PLASMA, -100)
+		say("100 moles of plasma consumed. A sheet of [P.name] has been created.")
+	else
+		say("Insufficient plasma. At least 100 moles of plasma are required. There are currently [plasmoles] moles of plasma.")
+	. = ..()
+
+>>>>>>> e7dfa80cb7 (Plasma refinery alt+click Fix (#8350))
 /obj/machinery/atmospherics/components/unary/plasma_refiner/RefreshParts()
 	moles_per_ore = 20
 	for(var/obj/item/stock_parts/micro_laser/l in component_parts)
