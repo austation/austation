@@ -352,8 +352,8 @@
 	icon = 'icons/obj/smooth_structures/wood_table.dmi'
 	icon_state = "wood_table"
 	frame = /obj/structure/table_frame/wood
-	framestack = /obj/item/stack/sheet/mineral/wood
-	buildstack = /obj/item/stack/sheet/mineral/wood
+	framestack = /obj/item/stack/sheet/wood
+	buildstack = /obj/item/stack/sheet/wood
 	resistance_flags = FLAMMABLE
 	max_integrity = 70
 	canSmoothWith = list(/obj/structure/table/wood,
@@ -493,8 +493,8 @@
 	icon_state = "brass_table"
 	resistance_flags = FIRE_PROOF | ACID_PROOF
 	frame = /obj/structure/table_frame/brass
-	framestack = /obj/item/stack/tile/brass
-	buildstack = /obj/item/stack/tile/brass
+	framestack = /obj/item/stack/sheet/brass
+	buildstack = /obj/item/stack/sheet/brass
 	framestackamount = 1
 	buildstackamount = 1
 	canSmoothWith = list(/obj/structure/table/brass, /obj/structure/table/bronze)
@@ -520,8 +520,14 @@
 	icon = 'icons/obj/smooth_structures/brass_table.dmi'
 	icon_state = "brass_table"
 	resistance_flags = FIRE_PROOF | ACID_PROOF
+<<<<<<< HEAD
 	buildstack = /obj/item/stack/tile/bronze
 	canSmoothWith = list(/obj/structure/table/brass, /obj/structure/table/bronze)
+=======
+	buildstack = /obj/item/stack/sheet/bronze
+	smoothing_groups = list(SMOOTH_GROUP_BRONZE_TABLES) //Don't smooth with SMOOTH_GROUP_TABLES
+	canSmoothWith = list(SMOOTH_GROUP_BRONZE_TABLES)
+>>>>>>> e63c550a6e (The great Material resprite + Material stacks code refactor (#8300))
 
 /obj/structure/table/bronze/tablepush(mob/living/user, mob/living/pushed_mob)
 	..()

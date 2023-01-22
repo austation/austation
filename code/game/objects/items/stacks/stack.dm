@@ -10,13 +10,21 @@
  */
 
 /obj/item/stack
-	icon = 'icons/obj/stack_objects.dmi'
+	icon = 'icons/obj/stacks/minerals.dmi'
 	gender = PLURAL
 	var/list/datum/stack_recipe/recipes
 	var/singular_name
 	var/amount = 1
+<<<<<<< HEAD
 	var/max_amount = 50 //also see stack recipes initialisation, param "max_res_amount" must be equal to this max_amount
 	var/is_cyborg = 0 // It's 1 if module is used by a cyborg, and uses its storage
+=======
+	///also see stack recipes initialisation, param "max_res_amount" must be equal to this max_amount
+	var/max_amount = 50
+	///It's TRUE if module is used by a cyborg, and uses its storage
+	var/is_cyborg = FALSE
+	///Holder var for the cyborg energy source
+>>>>>>> e63c550a6e (The great Material resprite + Material stacks code refactor (#8300))
 	var/datum/robot_energy_storage/source
 	var/cost = 1 // How much energy from storage it costs
 	var/merge_type = null // This path and its children should merge with this stack, defaults to src.type

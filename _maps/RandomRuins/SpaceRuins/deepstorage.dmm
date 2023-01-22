@@ -178,9 +178,15 @@
 /obj/structure/closet/cardboard,
 /obj/item/stack/sheet/cardboard,
 /obj/item/stack/cable_coil,
+<<<<<<< HEAD
 /obj/item/stack/sheet/mineral/wood,
 /obj/item/stack/sheet/mineral/wood,
 /obj/item/stack/packageWrap,
+=======
+/obj/item/stack/sheet/wood,
+/obj/item/stack/sheet/wood,
+/obj/item/stack/package_wrap,
+>>>>>>> e63c550a6e (The great Material resprite + Material stacks code refactor (#8300))
 /obj/effect/turf_decal/delivery,
 /obj/machinery/airalarm/away{
 	pixel_y = 23

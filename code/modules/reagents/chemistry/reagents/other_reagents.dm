@@ -227,9 +227,9 @@
 		var/obj/item/toy/plush/carpplushie/dehy_carp/dehy = O
 		dehy.Swell() // Makes a carp
 
-	else if(istype(O, /obj/item/stack/sheet/hairlesshide))
-		var/obj/item/stack/sheet/hairlesshide/HH = O
-		new /obj/item/stack/sheet/wetleather(get_turf(HH), HH.amount)
+	else if(istype(O, /obj/item/stack/sheet/leather/hairlesshide))
+		var/obj/item/stack/sheet/leather/hairlesshide/HH = O
+		new /obj/item/stack/sheet/leather/wetleather(get_turf(HH), HH.amount)
 		qdel(HH)
 
 /*
@@ -811,7 +811,7 @@
 	if(istype(O, /obj/item/stack/sheet/iron))
 		var/obj/item/stack/sheet/iron/M = O
 		reac_volume = min(reac_volume, M.amount)
-		new/obj/item/stack/tile/bronze(get_turf(M), reac_volume)
+		new/obj/item/stack/sheet/bronze(get_turf(M), reac_volume)
 		M.use(reac_volume)
 
 /datum/reagent/nitrogen

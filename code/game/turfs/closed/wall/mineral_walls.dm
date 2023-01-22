@@ -134,8 +134,14 @@
 	name = "wooden wall"
 	desc = "A wall with wooden plating. Stiff."
 	icon = 'icons/turf/walls/wood_wall.dmi'
+<<<<<<< HEAD
 	icon_state = "wood"
 	sheet_type = /obj/item/stack/sheet/mineral/wood
+=======
+	icon_state = "wood_wall-0"
+	base_icon_state = "wood_wall"
+	sheet_type = /obj/item/stack/sheet/wood
+>>>>>>> e63c550a6e (The great Material resprite + Material stacks code refactor (#8300))
 	hardness = 70
 	explosion_block = 0
 	canSmoothWith = list(/turf/closed/wall/mineral/wood, /obj/structure/falsewall/wood, /turf/closed/wall/mineral/wood/nonmetal)
@@ -160,8 +166,14 @@
 	name = "bamboo wall"
 	desc = "A wall with a bamboo finish."
 	icon = 'icons/turf/walls/bamboo_wall.dmi'
+<<<<<<< HEAD
 	icon_state = "bamboo"
 	sheet_type = /obj/item/stack/sheet/mineral/bamboo
+=======
+	icon_state = "bamboo-0"
+	base_icon_state = "bamboo"
+	sheet_type = /obj/item/stack/sheet/bamboo
+>>>>>>> e63c550a6e (The great Material resprite + Material stacks code refactor (#8300))
 	hardness = 60
 	canSmoothWith = list(/turf/closed/wall/mineral/bamboo, /obj/structure/falsewall/bamboo)
 
@@ -181,8 +193,13 @@
 	hardness = 80
 	explosion_block = 0
 	slicing_duration = 30
+<<<<<<< HEAD
 	sheet_type = /obj/item/stack/sheet/mineral/snow
 	canSmoothWith = null
+=======
+	sheet_type = /obj/item/stack/sheet/snow
+
+>>>>>>> e63c550a6e (The great Material resprite + Material stacks code refactor (#8300))
 	girder_type = null
 	bullet_sizzle = TRUE
 	bullet_bounce_sound = null

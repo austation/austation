@@ -289,8 +289,17 @@
 	name = "wooden wall"
 	desc = "A wall with wooden plating. Stiff."
 	icon = 'icons/turf/walls/wood_wall.dmi'
+<<<<<<< HEAD
 	icon_state = "wood"
 	mineral = /obj/item/stack/sheet/mineral/wood
+=======
+	icon_state = "wood_wall-0"
+	base_icon_state = "wood_wall"
+	smoothing_flags = SMOOTH_BITMASK
+	smoothing_groups = list(SMOOTH_GROUP_WALLS, SMOOTH_GROUP_WOOD_WALLS)
+	canSmoothWith = list(SMOOTH_GROUP_WOOD_WALLS)
+	mineral = /obj/item/stack/sheet/wood
+>>>>>>> e63c550a6e (The great Material resprite + Material stacks code refactor (#8300))
 	walltype = /turf/closed/wall/mineral/wood
 	canSmoothWith = list(/obj/structure/falsewall/wood, /turf/closed/wall/mineral/wood)
 
@@ -298,8 +307,17 @@
 	name = "bamboo wall"
 	desc = "A wall with bamboo finish. Zen."
 	icon = 'icons/turf/walls/bamboo_wall.dmi'
+<<<<<<< HEAD
 	icon_state = "bamboo"
 	mineral = /obj/item/stack/sheet/mineral/bamboo
+=======
+	icon_state = "wall-0"
+	base_icon_state = "wall"
+	smoothing_flags = SMOOTH_BITMASK
+	smoothing_groups = list(SMOOTH_GROUP_WALLS, SMOOTH_GROUP_BAMBOO_WALLS)
+	canSmoothWith = list(SMOOTH_GROUP_BAMBOO_WALLS)
+	mineral = /obj/item/stack/sheet/bamboo
+>>>>>>> e63c550a6e (The great Material resprite + Material stacks code refactor (#8300))
 	walltype = /turf/closed/wall/mineral/bamboo
 	canSmoothWith = list(/obj/structure/falsewall/bamboo, /turf/closed/wall/mineral/bamboo)
 
@@ -352,7 +370,7 @@
 	canSmoothWith = list(/obj/effect/clockwork/overlay/wall, /obj/structure/falsewall/brass)
 	girder_type = /obj/structure/girder/bronze
 	walltype = /turf/closed/wall/clockwork
-	mineral = /obj/item/stack/tile/brass
+	mineral = /obj/item/stack/sheet/brass
 
 /obj/structure/falsewall/brass/New(loc)
 	..()

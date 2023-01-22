@@ -549,7 +549,29 @@
 /obj/effect/turf_decal/tile/blue{
 	dir = 1
 	},
+<<<<<<< HEAD
 /obj/effect/turf_decal/tile/blue{
+=======
+/obj/item/toy/cards/deck/syndicate{
+	pixel_x = -6;
+	pixel_y = 6
+	},
+/obj/item/stack/sheet/telecrystal/five,
+/obj/effect/turf_decal/tile/bar/opposingcorners,
+/turf/open/floor/plasteel,
+/area/syndicate_mothership/control)
+"hX" = (
+/obj/machinery/vending/cigarette,
+/obj/machinery/newscaster{
+	pixel_y = -32
+	},
+/obj/effect/turf_decal/tile/neutral/fourcorners/contrasted,
+/turf/open/floor/plasteel/dark,
+/area/centcom/control)
+"hZ" = (
+/obj/structure/closet/crate/bin,
+/obj/effect/turf_decal/tile/green/anticorner/contrasted{
+>>>>>>> e63c550a6e (The great Material resprite + Material stacks code refactor (#8300))
 	dir = 4
 	},
 /obj/effect/turf_decal/tile/blue{

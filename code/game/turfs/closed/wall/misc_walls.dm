@@ -95,8 +95,14 @@
 	name = "clockwork wall"
 	desc = "A huge chunk of bronze, decorated like gears and cogs."
 	icon = 'icons/turf/walls/clockwork_wall.dmi'
+<<<<<<< HEAD
 	icon_state = "clockwork_wall"
 	sheet_type = /obj/item/stack/tile/bronze
+=======
+	icon_state = "clockwork_wall-0"
+	base_icon_state = "clockwork_wall"
+	sheet_type = /obj/item/stack/sheet/bronze
+>>>>>>> e63c550a6e (The great Material resprite + Material stacks code refactor (#8300))
 	sheet_amount = 2
 	girder_type = /obj/structure/girder/bronze
 

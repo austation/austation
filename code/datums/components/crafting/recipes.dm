@@ -280,7 +280,7 @@
 /datum/crafting_recipe/woodenbow
 	name = "Wooden Bow"
 	result = /obj/item/gun/ballistic/bow
-	reqs = list(/obj/item/stack/sheet/mineral/wood = 8,
+	reqs = list(/obj/item/stack/sheet/wood = 8,
 				/obj/item/stack/sheet/iron = 2,
 				/obj/item/weaponcrafting/silkstring = 4)
 	time = 120
@@ -368,7 +368,7 @@
 	name = "Arrow"
 	result = /obj/item/ammo_casing/caseless/arrow/wood
 	time = 30
-	reqs = list(/obj/item/stack/sheet/mineral/wood = 1,
+	reqs = list(/obj/item/stack/sheet/wood = 1,
 				/obj/item/stack/sheet/silk = 1,
 				/obj/item/stack/rods = 1) //1 metal sheet = 2 rods= 2 arrows
 	category = CAT_WEAPONRY
@@ -397,8 +397,8 @@
 	name = "Bronze arrow"
 	result = /obj/item/ammo_casing/caseless/arrow/bronze
 	time = 30
-	reqs = list(/obj/item/stack/sheet/mineral/wood = 1,
-				/obj/item/stack/tile/bronze = 1,
+	reqs = list(/obj/item/stack/sheet/wood = 1,
+				/obj/item/stack/sheet/bronze = 1,
 				/obj/item/stack/sheet/silk = 1)
 	category = CAT_WEAPONRY
 	subcategory = CAT_AMMO
@@ -570,13 +570,13 @@
 	name = "Paper Frames"
 	result = /obj/item/stack/sheet/paperframes/five
 	time = 10
-	reqs = list(/obj/item/stack/sheet/mineral/wood = 5, /obj/item/paper = 20)
+	reqs = list(/obj/item/stack/sheet/wood = 5, /obj/item/paper = 20)
 	category = CAT_MISC
 
 /datum/crafting_recipe/naturalpaper
 	name = "Hand-Pressed Paper"
 	time = 30
-	reqs = list(/datum/reagent/water = 50, /obj/item/stack/sheet/mineral/wood = 1)
+	reqs = list(/datum/reagent/water = 50, /obj/item/stack/sheet/wood = 1)
 	tools = list(/obj/item/hatchet)
 	result = /obj/item/paper_bin/bundlenatural
 	category = CAT_MISC
@@ -593,12 +593,15 @@
 	result = /obj/item/stack/tile/carpet/black/fifty
 	category = CAT_MISC
 
+<<<<<<< HEAD
 /datum/crafting_recipe/showercurtain
 	name = "Shower Curtains"
 	reqs = 	list(/obj/item/stack/sheet/cotton/cloth = 2, /obj/item/stack/sheet/plastic = 2, /obj/item/stack/rods = 1)
 	result = /obj/structure/curtain
 	category = CAT_MISC
 
+=======
+>>>>>>> e63c550a6e (The great Material resprite + Material stacks code refactor (#8300))
 /datum/crafting_recipe/extendohand
 	name = "Extendo-Hand"
 	reqs = list(/obj/item/bodypart/r_arm/robot = 1, /obj/item/clothing/gloves/boxing = 1)
@@ -747,7 +750,7 @@
 	name = "Firebrand"
 	result = /obj/item/match/firebrand
 	time = 100 //Long construction time. Making fire is hard work.
-	reqs = list(/obj/item/stack/sheet/mineral/wood = 2)
+	reqs = list(/obj/item/stack/sheet/wood = 2)
 	category = CAT_PRIMAL
 
 /datum/crafting_recipe/gold_horn
@@ -996,6 +999,7 @@
 				)
 	category = CAT_MISC
 
+<<<<<<< HEAD
 /datum/crafting_recipe/paper_cup
 	name= "Paper Cup"
 	result = /obj/item/reagent_containers/food/drinks/sillycup
@@ -1003,3 +1007,15 @@
 	reqs = list(/obj/item/paper = 1)
 	category = CAT_MISC
 	tools = list(TOOL_WIRECUTTER)
+=======
+/datum/crafting_recipe/guillotine
+	name = "Guillotine"
+	result = /obj/structure/guillotine
+	time = 150 // Building a functioning guillotine takes time
+	reqs = list(/obj/item/stack/sheet/plasteel = 3,
+		        /obj/item/stack/sheet/wood = 20,
+		        /obj/item/stack/cable_coil = 10)
+	tools = list(TOOL_SCREWDRIVER, TOOL_WRENCH, TOOL_WELDER)
+	category = CAT_STRUCTURE
+	dangerous_craft = TRUE
+>>>>>>> e63c550a6e (The great Material resprite + Material stacks code refactor (#8300))

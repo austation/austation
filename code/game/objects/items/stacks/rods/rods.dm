@@ -1,3 +1,4 @@
+<<<<<<< HEAD:code/game/objects/items/stacks/rods.dm
 GLOBAL_LIST_INIT(rod_recipes, list ( \
 	new/datum/stack_recipe("grille", /obj/structure/grille, 2, time = 10, one_per_turf = TRUE, on_floor = FALSE), \
 	new/datum/stack_recipe("ladder", /obj/structure/ladder, 10, time = 60, one_per_turf = TRUE, on_floor = TRUE), \
@@ -7,6 +8,8 @@ GLOBAL_LIST_INIT(rod_recipes, list ( \
 	new/datum/stack_recipe("railing", /obj/structure/railing, 3, time = 18, window_checks = TRUE), \
 	))
 
+=======
+>>>>>>> e63c550a6e (The great Material resprite + Material stacks code refactor (#8300)):code/game/objects/items/stacks/rods/rods.dm
 /obj/item/stack/rods
 	name = "iron rod"
 	desc = "Some rods. Can be used for building or something."
@@ -74,19 +77,3 @@ GLOBAL_LIST_INIT(rod_recipes, list ( \
 	else
 		return ..()
 
-/obj/item/stack/rods/cyborg
-	materials = list()
-	is_cyborg = 1
-	cost = 250
-
-/obj/item/stack/rods/cyborg/update_icon()
-	return
-
-/obj/item/stack/rods/ten
-	amount = 10
-
-/obj/item/stack/rods/twentyfive
-	amount = 25
-
-/obj/item/stack/rods/fifty
-	amount = 50
