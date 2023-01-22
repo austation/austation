@@ -60,15 +60,20 @@
 
 	user.log_message(msg, LOG_EMOTE)
 
+	var/space = should_have_space_before_emote(html_decode(msg)[1]) ? " " : null
 	var/end = copytext(msg, length(message))
 	if(!(end in list("!", ".", "?", ":", "\"", "-")))
 		msg += "."
 
+<<<<<<< HEAD
 	var/dchatmsg = "<b>[user]</b> [msg]"
 
 	var/tmp_sound = get_sound(user)
 	if(tmp_sound && (!only_forced_audio || !intentional))
 		playsound(user, tmp_sound, 50, vary)
+=======
+	var/dchatmsg = "<b>[user]</b>[space][msg]"
+>>>>>>> dde62ff69c ([PORT/Revival] Custom say emotes and Emphasis (#8136))
 
 	for(var/mob/M in GLOB.dead_mob_list)
 		if(!M.client || isnewplayer(M))
@@ -77,10 +82,18 @@
 		if(M.stat == DEAD && M.client && (M.client.prefs.chat_toggles & CHAT_GHOSTSIGHT) && !(M in viewers(T, null)))
 			M.show_message("[FOLLOW_LINK(M, user)] [dchatmsg]")
 
+<<<<<<< HEAD
 	if(emote_type == EMOTE_AUDIBLE)
 		user.audible_message(msg, audible_message_flags = list(CHATMESSAGE_EMOTE = TRUE))
 	else
 		user.visible_message(msg, visible_message_flags = list(CHATMESSAGE_EMOTE = TRUE))
+=======
+	if(emote_type & EMOTE_AUDIBLE)
+		user.audible_message(msg, audible_message_flags = list(CHATMESSAGE_EMOTE = TRUE), separation = space)
+	else
+		user.visible_message(msg, visible_message_flags = list(CHATMESSAGE_EMOTE = TRUE), separation = space)
+	return TRUE
+>>>>>>> dde62ff69c ([PORT/Revival] Custom say emotes and Emphasis (#8136))
 
 /datum/emote/proc/get_sound(mob/living/user)
 	return sound //by default just return this var.
@@ -179,3 +192,18 @@
 
 	visible_message(text, visible_message_flags = list(CHATMESSAGE_EMOTE = TRUE))
 
+<<<<<<< HEAD
+=======
+/**
+ * Returns a boolean based on whether or not the string contains a comma or an apostrophe,
+ * to be used for emotes to decide whether or not to have a space between the name of the user
+ * and the emote.
+ *
+ * Requires the message to be HTML decoded beforehand. Not doing it here for performance reasons.
+ *
+ * Returns TRUE if there should be a space, FALSE if there shouldn't.
+ */
+/proc/should_have_space_before_emote(string)
+	var/static/regex/no_spacing_emote_characters = regex(@"(,|')")
+	return !no_spacing_emote_characters.Find(string)
+>>>>>>> dde62ff69c ([PORT/Revival] Custom say emotes and Emphasis (#8136))
