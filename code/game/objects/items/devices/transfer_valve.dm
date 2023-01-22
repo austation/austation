@@ -134,6 +134,8 @@
 	add_fingerprint(usr)
 
 /obj/item/transfer_valve/proc/process_activation(obj/item/D)
+	if(istype(loc, /obj/machinery/syndicatebomb))
+		return //must detonate the real way if in a bomb
 	if(toggle)
 		toggle = FALSE
 		toggle_valve()

@@ -32,9 +32,16 @@ GLOBAL_VAR_INIT(hsboxspawn, TRUE)
 	//items that shouldn't spawn on the floor because they would bug or act weird
 	var/static/list/spawn_forbidden = list(
 		/obj/item/tk_grab, /obj/item/implant, // not implanter, the actual thing that is inside you
+<<<<<<< HEAD
 		/obj/item/assembly, /obj/item/onetankbomb, /obj/item/pda/ai,
 		/obj/item/smallDelivery, /obj/item/projectile,
 		/obj/item/borg/sight, /obj/item/borg/stun, /obj/item/robot_module)
+=======
+		/obj/item/assembly, /obj/item/robot_module,
+		/obj/item/small_delivery, /obj/item/projectile,
+		/obj/item/borg/sight, /obj/item/borg/stun
+	)
+>>>>>>> e52c81a39e (Explosives Rebalancing (#7686))
 
 /datum/hSB/proc/update()
 	var/static/list/hrefs = list(
