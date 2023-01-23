@@ -159,6 +159,37 @@
 	w_class = WEIGHT_CLASS_TINY
 	custom_price = 15
 
+<<<<<<< HEAD
+=======
+// PDA Version of the SSD, contains all the programs that PDAs have by default, however with the variables of the SSD.
+/obj/item/computer_hardware/hard_drive/small/pda/install_default_programs()
+	store_file(new /datum/computer_file/program/messenger(src))
+	store_file(new /datum/computer_file/program/notepad(src))
+	store_file(new/datum/computer_file/program/databank_uplink(src))	// Wiki Uplink, allows the user to access the Wiki from in-game!
+	..()
+
+/obj/item/computer_hardware/hard_drive/small/pda/on_install(obj/item/modular_computer/install_into, mob/living/user = null)
+	. = ..()
+	if(!.)
+		return
+	// Set the default ringtone
+	for(var/datum/computer_file/program/messenger/messenger in stored_files)
+		messenger.ringer_status = install_into.init_ringer_on
+		messenger.ringtone = install_into.init_ringtone
+
+
+// For borg integrated tablets. No downloader.
+/obj/item/computer_hardware/hard_drive/small/pda/ai/install_default_programs()
+	var/datum/computer_file/program/messenger/messenger = new(src)
+	messenger.is_silicon = TRUE
+	store_file(messenger)
+
+/obj/item/computer_hardware/hard_drive/small/pda/robot/install_default_programs()
+	store_file(new /datum/computer_file/program/borg_self_monitor(src))
+	store_file(new /datum/computer_file/program/computerconfig(src)) // Computer configuration utility, allows hardware control and displays more info than status bar
+	store_file(new /datum/computer_file/program/filemanager(src)) // File manager, allows text editor functions and basic file manipulation.
+
+>>>>>>> d5db32adab (Fixes a few issues with the Tablet PDAs (#8240))
 // Syndicate variant - very slight better
 /obj/item/computer_hardware/hard_drive/small/syndicate
 	desc = "An efficient SSD for portable devices developed by a rival organisation."

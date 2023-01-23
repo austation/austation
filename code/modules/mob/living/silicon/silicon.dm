@@ -71,6 +71,33 @@
 		internal_id_card.name = "[src] internal access"
 	internal_id_card.access |= access_list
 
+<<<<<<< HEAD
+=======
+/mob/living/silicon/proc/create_modularInterface()
+	if(!modularInterface)
+		modularInterface = new /obj/item/modular_computer/tablet/integrated(src)
+	modularInterface.layer = ABOVE_HUD_PLANE
+	modularInterface.plane = ABOVE_HUD_PLANE
+	modularInterface.saved_identification = real_name || name
+	if(iscyborg(src))
+		modularInterface.saved_job = JOB_NAME_CYBORG
+		modularInterface.install_component(new /obj/item/computer_hardware/hard_drive/small/pda/robot)
+	if(isAI(src))
+		modularInterface.saved_job = JOB_NAME_AI
+		modularInterface.install_component(new /obj/item/computer_hardware/hard_drive/small/pda/ai)
+	if(ispAI(src))
+		modularInterface.saved_job = JOB_NAME_PAI
+		modularInterface.install_component(new /obj/item/computer_hardware/hard_drive/small/pda/ai)
+
+/mob/living/silicon/robot/model/syndicate/create_modularInterface()
+	if(!modularInterface)
+		modularInterface = new /obj/item/modular_computer/tablet/integrated/syndicate(src)
+		modularInterface.saved_identification = real_name
+		modularInterface.saved_job = JOB_NAME_CYBORG
+	return ..()
+
+
+>>>>>>> d5db32adab (Fixes a few issues with the Tablet PDAs (#8240))
 /mob/living/silicon/med_hud_set_health()
 	return //we use a different hud
 
