@@ -10,6 +10,10 @@
 	hub_password = "kMZy3U5jJHSiBQjr"
 	name = "BeeStation 13"
 	fps = 20
+<<<<<<< HEAD
+=======
+
+>>>>>>> 527f290e6f (Reverts SIDE_MAP change, fixes weather (#8356))
 #ifdef FIND_REF_NO_CHECK_TICK
 	loop_checks = FALSE
 #endif
