@@ -90,10 +90,75 @@ GLOBAL_LIST_INIT(shuttle_turf_blacklist, typecacheof(list(
 			sin = -1
 
 	return list(
+<<<<<<< HEAD
 		_x + (-dwidth*cos) - (-dheight*sin),
 		_y + (-dwidth*sin) + (-dheight*cos),
 		_x + (-dwidth+width-1)*cos - (-dheight+height-1)*sin,
 		_y + (-dwidth+width-1)*sin + (-dheight+height-1)*cos
+=======
+		mat0.c,
+		mat0.f,
+		mat1.c,
+		mat1.f
+		)
+
+//returns the dwidth, dheight, width, and height in that order of the union bounds of all shuttles relative to our shuttle.
+/obj/docking_port/proc/return_union_bounds(var/list/obj/docking_port/others)
+	var/list/coords =  return_union_coords(others, 0, 0, NORTH)
+	var/X0 = min(coords[1],coords[3]) //This will be the negative dwidth of the combined bounds
+	var/Y0 = min(coords[2],coords[4]) //This will be the negative dheight of the combined bounds
+	var/X1 = max(coords[1],coords[3]) //equal to width-dwidth-1
+	var/Y1 = max(coords[2],coords[4]) //equal to height-dheight-1
+	return list(-X0, -Y0, X1-X0+1,Y1-Y0+1)
+
+//Returns the the bounding box fully containing all provided docking ports
+/obj/docking_port/proc/return_union_coords(var/list/obj/docking_port/others, _x, _y, _dir)
+	if(_dir == null)
+		_dir = dir
+	if(_x == null)
+		_x = x
+	if(_y == null)
+		_y = y
+	if(!islist(others))
+		others = list(others)
+	others |= src
+	. = list(_x,_y,_x,_y)
+	//Right multiply with this matrix to transform a vector in world space to the our shuttle space specified by the parameters.
+	//This is the reason why we're not calling return_coords for each shuttle, we save time by not reconstructing the matrices lost after they're popped off the call stack
+	var/matrix/to_shuttle_space = matrix(_x-x, _y-y, MATRIX_TRANSLATE) * matrix(dir2angle(_dir)-dir2angle(dir), MATRIX_ROTATE)
+	for(var/obj/docking_port/other in others)
+		var/matrix/mat0 = matrix(-other.dwidth, -other.dheight, MATRIX_TRANSLATE) * matrix(dir2angle(other.dir), MATRIX_ROTATE) * matrix(other.x, other.y, MATRIX_TRANSLATE) * to_shuttle_space
+		var/matrix/mat1 = matrix(other.width-1, other.height-1, MATRIX_TRANSLATE) * mat0
+		. = list(
+			min(.[1], mat0.c, mat1.c),
+			min(.[2], mat0.f, mat1.f),
+			max(.[3], mat0.c, mat1.c),
+			max(.[4], mat0.f, mat1.f)
+		)
+
+//Returns the bounding box containing only the intersection of all provided docking ports
+/obj/docking_port/proc/return_intersect_coords(var/list/obj/docking_port/others, _x, _y, _dir)
+	if(_dir == null)
+		_dir = dir
+	if(_x == null)
+		_x = x
+	if(_y == null)
+		_y = y
+	if(!islist(others))
+		others = list(others)
+	others |= src
+	. = list(_x,_y,_x,_y)
+	//See return_union_coords() and return_coords() for explaination of the matrices.
+	var/matrix/to_shuttle_space = matrix(_x-x, _y-y, MATRIX_TRANSLATE) * matrix(dir2angle(_dir)-dir2angle(dir), MATRIX_ROTATE)
+	for(var/obj/docking_port/other in others)
+		var/matrix/mat0 = matrix(-other.dwidth, -other.dheight, MATRIX_TRANSLATE) * matrix(dir2angle(other.dir), MATRIX_ROTATE) * matrix(other.x, other.y, MATRIX_TRANSLATE) * to_shuttle_space
+		var/matrix/mat1 = matrix(other.width-1, other.height-1, MATRIX_TRANSLATE) * mat0
+		. = list(
+			max(.[1], min(mat0.c, mat1.c)),
+			max(.[2], min(mat0.f, mat1.f)),
+			min(.[3], max(mat0.c, mat1.c)),
+			min(.[4], max(mat0.f, mat1.f)),
+>>>>>>> b747319432 (Some custom shuttle related bugfixes (#8331))
 		)
 
 //returns turfs within our projected rectangle in no particular order
@@ -305,6 +370,17 @@ GLOBAL_LIST_INIT(shuttle_turf_blacklist, typecacheof(list(
 	///if this shuttle can move docking ports other than the one it is docked at
 	var/can_move_docking_ports = FALSE
 	var/list/hidden_turfs = list()
+<<<<<<< HEAD
+=======
+	var/list/towed_shuttles = list()
+	var/list/underlying_turf_area = list()
+	//If the shuttle is unable to be moved by non-untowable shuttles.
+	//Stops interference with the arrival and escape shuttle. Use this sparingly.
+	var/untowable = FALSE
+	//If docking on this shuttle is not allowed.
+	//For important shuttles such as the arrivals shuttle where access to its shuttle area type is needed at any moment
+	var/undockable = FALSE
+>>>>>>> b747319432 (Some custom shuttle related bugfixes (#8331))
 
 	//The virtual Z-Value of the shuttle
 	var/virtual_z

@@ -288,7 +288,14 @@
 
 	// Checking for overlapping dock boundaries
 	for(var/i in 1 to overlappers.len)
+<<<<<<< HEAD
 		var/obj/docking_port/port = overlappers[i]
+=======
+		var/obj/docking_port/mobile/shuttle = overlappers[i]
+		if(istype(shuttle) && shuttle.undockable)
+			return SHUTTLE_DOCKER_BLOCKED
+		var/obj/docking_port/stationary/port = overlappers[i]
+>>>>>>> b747319432 (Some custom shuttle related bugfixes (#8331))
 		if(port == my_port)
 			continue
 		var/port_hidden = !shuttleObject.stealth && port.hidden
