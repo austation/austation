@@ -17,6 +17,12 @@ GLOBAL_VAR(restart_counter)
 
 	config.Load(params[OVERRIDE_CONFIG_DIRECTORY_PARAMETER])
 
+<<<<<<< HEAD
+=======
+	generate_selectable_species() // This needs to happen early on to avoid the debugger crying. It needs to be after config load but before you login.
+	make_datum_references_lists_late_setup() // late setup
+
+>>>>>>> ae3c3ba9de (adds html tooltip, adds a tooltip to character pref about naming policy (#8133))
 	#ifdef REFERENCE_DOING_IT_LIVE
 	GLOB.harddel_log = GLOB.world_game_log
 	#endif

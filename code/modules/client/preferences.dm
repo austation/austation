@@ -188,8 +188,13 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 /datum/preferences/proc/ShowChoices(mob/user)
 	if(!user || !user.client)
 		return
+<<<<<<< HEAD
 	update_preview_icon()
 	var/list/dat = list("<center>")
+=======
+	active_character.update_preview_icon(user.client)
+	var/list/dat = list(TOOLTIP_CSS_SETUP, "<center>")
+>>>>>>> ae3c3ba9de (adds html tooltip, adds a tooltip to character pref about naming policy (#8133))
 
 	dat += "<a href='?_src_=prefs;preference=tab;tab=0' [current_tab == 0 ? "class='linkOn'" : ""]>Character Settings</a>"
 	dat += "<a href='?_src_=prefs;preference=tab;tab=1' [current_tab == 1 ? "class='linkOn'" : ""]>Game Preferences</a>"
@@ -237,8 +242,13 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 			dat += "<a href='?_src_=prefs;preference=name;task=random'>Random Name</A> "
 			dat += "<a href='?_src_=prefs;preference=name'>Always Random Name: [be_random_name ? "Yes" : "No"]</a><BR>"
 
+<<<<<<< HEAD
 			dat += "<b>Name:</b> "
 			dat += "<a href='?_src_=prefs;preference=name;task=input'>[real_name]</a><BR>"
+=======
+			dat += "<b>[TOOLTIP_CONFIG_CALLER("Name:", 400, "preferences.naming_policy")] </b>"
+			dat += "<a href='?_src_=prefs;preference=name;task=input'>[active_character.real_name]</a><BR>"
+>>>>>>> ae3c3ba9de (adds html tooltip, adds a tooltip to character pref about naming policy (#8133))
 
 			if(!(AGENDER in pref_species.species_traits))
 				dat += "<b>Gender:</b> <a href='?_src_=prefs;preference=gender'>[gender == MALE ? "Male" : "Female"]</a><BR>"
