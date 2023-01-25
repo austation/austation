@@ -369,6 +369,19 @@ GLOBAL_VAR_INIT(dynamic_forced_threat_level, -1)
 						continue
 					vars[variable] = configuration["Dynamic"][variable]
 
+<<<<<<< HEAD
+=======
+	for(var/i in GLOB.new_player_list)
+		var/mob/dead/new_player/player = i
+		if(!player.mind || player.ready == PLAYER_READY_TO_OBSERVE)
+			continue
+		if(player.ready == PLAYER_READY_TO_PLAY)
+			roundstart_pop_ready++
+			candidates.Add(player)
+		else
+			roundstart_pop_ready += 0.5
+	roundstart_pop_ready = round(roundstart_pop_ready, 1)
+>>>>>>> a20b2faa02 (Count unreadied players as 0.5 pop for Dynamic ruleset selection (#8347))
 	setup_parameters()
 	setup_hijacking()
 	setup_rulesets()
