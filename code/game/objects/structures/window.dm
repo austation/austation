@@ -332,7 +332,7 @@
 	add_fingerprint(user)
 
 /obj/structure/window/Destroy()
-	density = FALSE
+	set_density(FALSE)
 	air_update_turf(1)
 	update_nearby_icons()
 	return ..()
@@ -351,9 +351,15 @@
 
 //This proc is used to update the icons of nearby windows.
 /obj/structure/window/proc/update_nearby_icons()
+<<<<<<< HEAD
 	update_icon()
 	if(smooth)
 		queue_smooth_neighbors(src)
+=======
+	update_appearance()
+	if(smoothing_flags & (SMOOTH_CORNERS|SMOOTH_BITMASK))
+		QUEUE_SMOOTH_NEIGHBORS(src)
+>>>>>>> ed738bdc2d (stuff (#8272))
 
 //merges adjacent full-tile windows into one
 /obj/structure/window/update_icon()
@@ -649,7 +655,7 @@
 
 /obj/structure/window/paperframe/Initialize(mapload)
 	. = ..()
-	update_icon()
+	update_appearance()
 
 /obj/structure/window/paperframe/examine(mob/user)
 	. = ..()
@@ -671,11 +677,11 @@
 		user.visible_message("[user] knocks on [src].")
 		playsound(src, "pageturn", 50, 1)
 	else
-		take_damage(4,BRUTE,"melee", 0)
+		take_damage(4, BRUTE, "melee", 0)
 		playsound(src, hitsound, 50, 1)
 		if(!QDELETED(src))
 			user.visible_message("<span class='danger'>[user] tears a hole in [src].</span>")
-			update_icon()
+			update_appearance()
 
 /obj/structure/window/paperframe/update_icon()
 	if(obj_integrity < max_integrity)
@@ -702,10 +708,10 @@
 			qdel(W)
 			user.visible_message("[user] patches some of the holes in \the [src].")
 			if(obj_integrity == max_integrity)
-				update_icon()
+				update_appearance()
 			return
 	..()
-	update_icon()
+	update_appearance()
 
 /obj/structure/window/bronze
 	name = "brass window"

@@ -19,11 +19,15 @@
 	emittersemicd = TRUE
 	addtimer(CALLBACK(src, .proc/emittercool), emittercd)
 	mobility_flags = MOBILITY_FLAGS_DEFAULT
+<<<<<<< HEAD
 	density = TRUE
 	if(istype(card.loc, /obj/item/pda))
 		var/obj/item/pda/P = card.loc
 		P.pai = null
 		P.visible_message("<span class='notice'>[src] ejects itself from [P]!</span>")
+=======
+	set_density(TRUE)
+>>>>>>> ed738bdc2d (stuff (#8272))
 	if(isliving(card.loc))
 		var/mob/living/L = card.loc
 		if(!L.temporarilyRemoveItemFromInventory(card))
@@ -62,7 +66,7 @@
 	card.forceMove(T)
 	forceMove(card)
 	mobility_flags = NONE
-	density = FALSE
+	set_density(FALSE)
 	set_light_on(FALSE)
 	holoform = FALSE
 	set_resting(resting)
