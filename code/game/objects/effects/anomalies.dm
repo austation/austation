@@ -375,3 +375,128 @@
 				SSexplosions.medturf += T
 			if(EXPLODE_LIGHT)
 				SSexplosions.lowturf += T
+<<<<<<< HEAD
+=======
+
+/////////////////////
+
+/obj/effect/anomaly/hallucination
+	name = "hallucination anomaly"
+	icon_state = "hallucination_anomaly"
+	aSignal = /obj/item/assembly/signaler/anomaly/hallucination
+	/// Time passed since the last effect, increased by delta_time of the SSobj
+	var/ticks = 0
+	/// How many seconds between each small hallucination pulses
+	var/release_delay = 5
+
+/obj/effect/anomaly/hallucination/anomalyEffect(delta_time)
+	. = ..()
+	ticks += delta_time
+	if(ticks < release_delay)
+		return
+	ticks -= release_delay
+	var/turf/open/our_turf = get_turf(src)
+	if(istype(our_turf))
+		hallucination_pulse(our_turf, 5)
+
+/obj/effect/anomaly/hallucination/detonate()
+	var/turf/open/our_turf = get_turf(src)
+	if(istype(our_turf))
+		hallucination_pulse(our_turf, 10)
+
+/proc/hallucination_pulse(turf/location, range, strength = 50)
+	for(var/mob/living/carbon/human/near in view(location, range))
+		// If they are immune to hallucinations
+		if (HAS_TRAIT(near, TRAIT_MADNESS_IMMUNE) || (near.mind && HAS_TRAIT(near.mind, TRAIT_MADNESS_IMMUNE)))
+			continue
+
+		// Blind people don't get hallucinations
+		if (near.is_blind())
+			continue
+
+		// Everyone else
+		var/dist = sqrt(1 / max(1, get_dist(near, location)))
+		near.hallucination += strength * dist
+		near.hallucination = clamp(near.hallucination, 0, 150)
+		var/list/messages = list(
+			"You feel your conscious mind fall apart!",
+			"Reality warps around you!",
+			"Something's wispering around you!",
+			"You are going insane!",
+			"What was that?!"
+		)
+		to_chat(near, "<span class='warning'>[pick(messages)]</span>")
+
+/////////////////////
+
+/obj/effect/anomaly/delimber
+	name = "delimber anomaly"
+	icon_state = "delimber_anomaly"
+	aSignal = /obj/item/assembly/signaler/anomaly/delimber
+	/// Cooldown for every anomaly pulse
+	COOLDOWN_DECLARE(pulse_cooldown)
+	/// How many seconds between each anomaly pulses
+	var/pulse_delay = 15 SECONDS
+	/// Range of the anomaly pulse
+	var/range = 5
+
+/obj/effect/anomaly/delimber/anomalyEffect(delta_time)
+	. = ..()
+
+	if(!COOLDOWN_FINISHED(src, pulse_cooldown))
+		return
+
+	COOLDOWN_START(src, pulse_cooldown, pulse_delay)
+
+	delimber_pulse(src, range)
+
+/proc/delimber_pulse(atom/owner, range = 5, ignore_owner = FALSE, message_admins = FALSE)
+	var/list/mob/living/carbon/affected = list()
+	for(var/mob/living/carbon/target in range(range, owner))
+		if(!ignore_owner && target == owner)
+			continue
+		if(target.run_armor_check(attack_flag = "bio", absorb_text = "Your armor protects you from [owner]!") >= 100)
+			continue //We are protected
+
+		// Add target
+		affected += target
+
+		// Replace a random limb
+		var/picked_zone = pick(ANOMALY_DELIMBER_ZONES)
+		var/obj/item/bodypart/picked_user_part = target.get_bodypart(picked_zone)
+		if(!picked_user_part)
+			return
+		var/obj/item/bodypart/picked_part
+		switch(picked_zone)
+			if(BODY_ZONE_HEAD)
+				picked_part = pick(ANOMALY_DELIMBER_ZONE_HEAD)
+			if(BODY_ZONE_CHEST)
+				picked_part = pick(ANOMALY_DELIMBER_ZONE_CHEST)
+			if(BODY_ZONE_L_ARM)
+				picked_part = pick(ANOMALY_DELIMBER_ZONE_L_ARM)
+			if(BODY_ZONE_R_ARM)
+				picked_part = pick(ANOMALY_DELIMBER_ZONE_R_ARM)
+			if(BODY_ZONE_L_LEG)
+				picked_part = pick(ANOMALY_DELIMBER_ZONE_L_LEG)
+			if(BODY_ZONE_R_LEG)
+				picked_part = pick(ANOMALY_DELIMBER_ZONE_R_LEG)
+		var/obj/item/bodypart/new_part = new picked_part()
+		new_part.replace_limb(target, TRUE, is_creating = TRUE)
+		qdel(picked_user_part)
+		target.update_body(TRUE)
+		to_chat(target, "<span class='warning'>Something feels different...</span>")
+		log_game("[key_name(owner)] has caused a delimber pulse affecting [english_list(affected)].")
+		target.log_message("[owner] has caused [target]'s [picked_part] to turn into [new_part.name] and delimbed their [picked_user_part.name].", LOG_ATTACK)
+
+	if(message_admins)
+		message_admins("[ADMIN_LOOKUPFLW(owner)] has caused a delimber pulse affecting [english_list(affected)].")
+
+#undef ANOMALY_MOVECHANCE
+#undef ANOMALY_DELIMBER_ZONES
+#undef ANOMALY_DELIMBER_ZONE_CHEST
+#undef ANOMALY_DELIMBER_ZONE_HEAD
+#undef ANOMALY_DELIMBER_ZONE_L_LEG
+#undef ANOMALY_DELIMBER_ZONE_R_LEG
+#undef ANOMALY_DELIMBER_ZONE_L_ARM
+#undef ANOMALY_DELIMBER_ZONE_R_ARM
+>>>>>>> 0c314dc200 (is_blind (#8361))

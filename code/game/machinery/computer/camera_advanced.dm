@@ -76,7 +76,11 @@
 	playsound(src, 'sound/machines/terminal_off.ogg', 25, FALSE)
 
 /obj/machinery/computer/camera_advanced/check_eye(mob/user)
+<<<<<<< HEAD
 	if( (stat & (NOPOWER|BROKEN)) || (!Adjacent(user) && !user.has_unlimited_silicon_privilege) || user.eye_blind || user.incapacitated() )
+=======
+	if( (machine_stat & (NOPOWER|BROKEN)) || (!Adjacent(user) && !user.has_unlimited_silicon_privilege) || user.is_blind() || user.incapacitated() )
+>>>>>>> 0c314dc200 (is_blind (#8361))
 		user.unset_machine()
 
 /obj/machinery/computer/camera_advanced/Destroy()

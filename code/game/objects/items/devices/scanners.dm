@@ -128,8 +128,13 @@ GENE SCANNER
 
 
 // Used by the PDA medical scanner too
+<<<<<<< HEAD
 /proc/healthscan(mob/user, mob/living/M, mode = 1, advanced = FALSE)
 	if(isliving(user) && (user.incapacitated() || user.eye_blind))
+=======
+/proc/healthscan(mob/user, mob/living/M, mode = 1, advanced = FALSE, to_chat = TRUE)
+	if(isliving(user) && (user.incapacitated() || user.is_blind()))
+>>>>>>> 0c314dc200 (is_blind (#8361))
 		return
 	//Damage specifics
 	var/oxy_loss = M.getOxyLoss()
@@ -226,8 +231,13 @@ GENE SCANNER
 			to_chat(user, "\t<span class='info'><b>==EYE STATUS==</b></span>")
 			if(istype(eyes))
 				var/healthy = TRUE
+<<<<<<< HEAD
 				if(HAS_TRAIT(C, TRAIT_BLIND))
 					to_chat(user, "\t<span class='alert'>Subject is blind.</span>")
+=======
+				if(C.is_blind())
+					message += "\t<span class='alert'>Subject is blind.</span>"
+>>>>>>> 0c314dc200 (is_blind (#8361))
 					healthy = FALSE
 				if(HAS_TRAIT(C, TRAIT_NEARSIGHT))
 					to_chat(user, "\t<span class='alert'>Subject is nearsighted.</span>")
@@ -473,7 +483,7 @@ GENE SCANNER
 /obj/item/analyzer/attack_self(mob/user)
 	add_fingerprint(user)
 
-	if(user.stat || user.eye_blind)
+	if(user.stat || user.is_blind())
 		return
 
 	//Functionality moved down to proc/scan_turf()
@@ -666,7 +676,7 @@ GENE SCANNER
 	materials = list(/datum/material/iron=30, /datum/material/glass=20)
 
 /obj/item/slime_scanner/attack(mob/living/M, mob/living/user)
-	if(user.stat || user.eye_blind)
+	if(user.stat || user.is_blind())
 		return
 	if(!isslime(M))
 		to_chat(user, "<span class='warning'>This device can only scan slimes!</span>")
