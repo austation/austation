@@ -21,6 +21,7 @@
 	..()
 
 /datum/brain_trauma/hypnosis/on_gain()
+<<<<<<< HEAD
 	message_admins("[ADMIN_LOOKUPFLW(owner)] was hypnotized with the phrase '[hypnotic_phrase]'.")
 	log_game("[key_name(owner)] was hypnotized with the phrase '[hypnotic_phrase]'.")
 	to_chat(owner, "<span class='reallybig hypnophrase'>[hypnotic_phrase]</span>")
@@ -37,18 +38,28 @@
 	traitorhud.join_hud(owner.mind.current)
 	if(!owner.mind.antag_hud_icon_state)
 		set_antag_hud(owner.mind.current, "brainwash")
+=======
+	hypnotize(owner, hypnotic_phrase)
+>>>>>>> d0cbc8ba03 (The antag datum expansion (#8277))
 	..()
 
 /datum/brain_trauma/hypnosis/on_lose()
 	message_admins("[ADMIN_LOOKUPFLW(owner)] is no longer hypnotized with the phrase '[hypnotic_phrase]'.")
 	log_game("[key_name(owner)] is no longer hypnotized with the phrase '[hypnotic_phrase]'.")
+<<<<<<< HEAD
+=======
+	owner.log_message("is no longer hypnotized with the phrase '[hypnotic_phrase]'.", LOG_ATTACK, color="red")
+>>>>>>> d0cbc8ba03 (The antag datum expansion (#8277))
 	to_chat(owner, "<span class='userdanger'>You suddenly snap out of your hypnosis. The phrase '[hypnotic_phrase]' no longer feels important to you.</span>")
 	owner.clear_alert("hypnosis")
-	var/datum/atom_hud/antag/traitorhud = GLOB.huds[ANTAG_HUD_BRAINWASHED]
-	traitorhud.leave_hud(owner.mind.current)
-	if(owner.mind.antag_hud_icon_state == "brainwash")
-		set_antag_hud(owner.mind.current, null)
-	..()
+	var/datum/mind/M = owner.mind
+	var/datum/antagonist/hypnotized/B = M.has_antag_datum(/datum/antagonist/hypnotized)
+	if(!B)
+		return
+	for(var/O in hypnotic_phrase)
+		var/datum/objective/hypnotized/objective = new(O)
+		B.objectives -= objective
+	M.remove_antag_datum(/datum/antagonist/hypnotized)
 
 /datum/brain_trauma/hypnosis/on_life()
 	..()
