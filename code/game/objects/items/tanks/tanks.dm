@@ -261,7 +261,13 @@
 
 	if(pressure > TANK_FRAGMENT_PRESSURE)
 		if(!istype(src.loc, /obj/item/transfer_valve))
+<<<<<<< HEAD
 			log_bomber(get_mob_by_ckey(fingerprintslast), "was last key to touch", src, "which ruptured explosively")
+=======
+			log_bomber("[src.fingerprintslast], was last key to touch [src], which ruptured explosively")
+		else if(!istype(src.loc?.loc, /obj/machinery/syndicatebomb))
+			explosion_mod = TTV_NO_CASING_MOD
+>>>>>>> 0c292419f8 (Fixes logs (#8389))
 		//Give the gas a chance to build up more pressure through reacting
 		//austation begin -- bomb rework
 		//air_contents.react(src)
