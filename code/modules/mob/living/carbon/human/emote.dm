@@ -45,6 +45,40 @@
 	message = "mumbles"
 	emote_type = EMOTE_AUDIBLE
 
+<<<<<<< HEAD
+=======
+/datum/emote/living/carbon/human/offer
+	key = "offer"
+	message = "offers an item"
+
+/datum/emote/living/carbon/human/moth
+	// allow mothroach as well as human base mob - species check is done in can_run_emote
+	mob_type_allowed_typecache = list(/mob/living/carbon/human,/mob/living/simple_animal/mothroach)
+
+/datum/emote/living/carbon/human/moth/can_run_emote(mob/user, status_check = TRUE, intentional)
+	if(!..())
+		return FALSE
+	if(ishuman(user))
+		return ismoth(user)
+	return istype(user, /mob/living/simple_animal/mothroach)
+
+/datum/emote/living/carbon/human/moth/squeak
+	key = "msqueak"
+	key_third_person = "squeaks"
+	message = "lets out a tiny squeak"
+	emote_type = EMOTE_AUDIBLE
+	vary = TRUE
+	sound = 'sound/emotes/mothsqueak.ogg'
+
+/datum/emote/living/carbon/human/moth/chitter
+	key = "chitter"
+	key_third_person = "chitters"
+	message = "chitters"
+	emote_type = EMOTE_AUDIBLE
+	vary = TRUE
+	sound = 'sound/emotes/mothchitter.ogg'
+
+>>>>>>> 861a7fb763 (Give emote (#8368))
 /datum/emote/living/carbon/human/scream
 	key = "scream"
 	key_third_person = "screams"
