@@ -43,6 +43,13 @@
 #define ROLE_HOLOPARASITE		"Holoparasite"
 #define ROLE_TERATOMA			"Teratoma"
 #define ROLE_EXPERIMENTAL_CLONE "Experimental Clone"
+<<<<<<< HEAD
+=======
+#define ROLE_SPIDER				"Spider"
+#define ROLE_SWARMER			"Swarmer"
+#define ROLE_MORPH				"Morph"
+#define ROLE_NIGHTMARE			"Nightmare"
+>>>>>>> a2bb7267a0 (Adds sentient spiders to midround events (#7870))
 
 //Missing assignment means it's not a gamemode specific role, IT'S NOT A BUG OR ERROR.
 //The gamemode specific ones are just so the gamemodes can query whether a player is old enough
@@ -58,6 +65,7 @@ GLOBAL_LIST_INIT(special_roles, list(
 	ROLE_MALF,
 	ROLE_REV = /datum/game_mode/revolution,
 	ROLE_ALIEN,
+	ROLE_SPIDER,
 	ROLE_PAI,
 	ROLE_CULTIST = /datum/game_mode/cult,
 	ROLE_SERVANT_OF_RATVAR = /datum/game_mode/clockcult,

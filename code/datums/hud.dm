@@ -34,7 +34,18 @@ GLOBAL_LIST_INIT(huds, list(
 	ANTAG_HUD_BRAINWASHED = new/datum/atom_hud/antag/hidden(),
 	ANTAG_HUD_SURVIVALIST = new/datum/atom_hud/antag/hidden(),
 	ANTAG_HUD_INCURSION = new/datum/atom_hud/antag(),
+<<<<<<< HEAD
 	ANTAG_HUD_HERETIC = new/datum/atom_hud/antag/hidden()
+=======
+	ANTAG_HUD_HERETIC = new/datum/atom_hud/antag/hidden(),
+	ANTAG_HUD_HYPNOTIZED = new/datum/atom_hud/antag/hidden(),
+	ANTAG_HUD_XENOMORPH = new/datum/atom_hud/antag/hidden(),
+	ANTAG_HUD_NIGHTMARE = new/datum/atom_hud/antag/hidden(),
+	ANTAG_HUD_MORPH = new/datum/atom_hud/antag/hidden(),
+	ANTAG_HUD_SWARMER = new/datum/atom_hud/antag/hidden(),
+	ANTAG_HUD_PIRATE = new/datum/atom_hud/antag(),
+	ANTAG_HUD_SPIDER = new/datum/atom_hud/antag/spider()
+>>>>>>> a2bb7267a0 (Adds sentient spiders to midround events (#7870))
 	))
 
 /datum/atom_hud

@@ -58,6 +58,7 @@
 #define ANTAG_HUD_SOULLESS		21
 #define ANTAG_HUD_CLOCKWORK		22
 #define ANTAG_HUD_BROTHER		23
+<<<<<<< HEAD
 #define ANTAG_HUD_HIVE			24
 #define ANTAG_HUD_OBSESSED	25
 #define ANTAG_HUD_FUGITIVE	26
@@ -65,6 +66,21 @@
 #define ANTAG_HUD_SURVIVALIST   28
 #define ANTAG_HUD_INCURSION 29
 #define ANTAG_HUD_HERETIC	30
+=======
+#define ANTAG_HUD_OBSESSED		24
+#define ANTAG_HUD_FUGITIVE		25
+#define ANTAG_HUD_BRAINWASHED   26
+#define ANTAG_HUD_SURVIVALIST   27
+#define ANTAG_HUD_INCURSION 	28
+#define ANTAG_HUD_HERETIC		29
+#define ANTAG_HUD_HYPNOTIZED 	30
+#define ANTAG_HUD_XENOMORPH 	31
+#define ANTAG_HUD_NIGHTMARE 	32
+#define ANTAG_HUD_MORPH			33
+#define ANTAG_HUD_SWARMER		34
+#define ANTAG_HUD_PIRATE		35
+#define ANTAG_HUD_SPIDER		36
+>>>>>>> a2bb7267a0 (Adds sentient spiders to midround events (#7870))
 
 // Notification action types
 #define NOTIFY_JUMP "jump"
