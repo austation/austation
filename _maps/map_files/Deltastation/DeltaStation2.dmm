@@ -108228,6 +108228,27 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
 	},
+<<<<<<< HEAD
+=======
+/obj/effect/turf_decal/tile/neutral/fourcorners/contrasted,
+/turf/open/floor/plasteel,
+/area/hallway/secondary/exit/departure_lounge)
+"lsU" = (
+/obj/structure/cable/yellow{
+	icon_state = "4-8"
+	},
+/obj/effect/turf_decal/delivery,
+/obj/item/wrench,
+/obj/item/crowbar,
+/turf/open/floor/plasteel,
+/area/science/xenobiology)
+"ltg" = (
+/obj/structure/table/reinforced,
+/obj/item/storage/box/monkeycubes,
+/obj/item/storage/box/monkeycubes,
+/obj/item/radio/headset/headset_med,
+/obj/effect/turf_decal/tile/neutral/fourcorners/contrasted,
+>>>>>>> 52f0d24b03 (Geneticist is now med (#8307))
 /turf/open/floor/plasteel/dark,
 /area/science/mixing)
 "ltM" = (
