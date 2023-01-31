@@ -100,6 +100,37 @@
 #define MESSAGE_MODS_LENGTH 6
 
 /**
+<<<<<<< HEAD
+=======
+ * Checks the inputted message for a custom say emote
+ * Basically it checks every message for "|"
+ * If a message contains it then it will mark everything that came before "|" as a custom say emote, IE: "stammers|", "cackles|", "screams|", "yells|", and everything after as the message
+ * If a message contains "|" but nothing after it then it will convert everything that came before "|" into an emote
+ * If a message doesn't contain "|" then it will simply return the input as a message
+ *
+ * Example
+ * * "mutters| hello" will be marked as a custom say emote of "mutters" and the message will be "hello"
+ * * and it will appear as Joe Average mutters, "hello"
+ * * "screams|" will be marked as a custom say emote of "screams" and it will appear as Joe Average screams
+ */
+/mob/proc/check_for_custom_say_emote(message, list/mods)
+	var/customsaypos = findtext(message, "|")
+	var/messagetextpos = 1
+	if(!customsaypos)
+		return message
+	if(findtext(message, " ", customsaypos + 1, customsaypos + 2))
+		messagetextpos = 2
+	if(is_banned_from(ckey, "Emote"))
+		return copytext(message, customsaypos + messagetextpos)
+	mods[MODE_CUSTOM_SAY_EMOTE] = lowertext(copytext_char(message, 1, customsaypos))
+	message = copytext(message, customsaypos + messagetextpos)
+	if(!message)
+		mods[MODE_CUSTOM_SAY_ERASE_INPUT] = TRUE
+		message = ""
+	return message
+
+/**
+>>>>>>> 87bd297783 (Fixes a few Custom Say Issues (#8367))
   * Extracts and cleans message of any extenstions at the begining of the message
   * Inserts the info into the passed list, returns the cleaned message
   *

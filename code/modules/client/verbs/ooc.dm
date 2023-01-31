@@ -294,3 +294,30 @@ GLOBAL_VAR_INIT(normal_ooc_colour, "#002eb8")
 
 		pct += delta
 		winset(src, "mainwindow.split", "splitter=[pct]")
+<<<<<<< HEAD
+=======
+
+/client/verb/view_runtimes_minimal()
+	set name = "View Minimal Runtimes"
+	set category = "OOC"
+	set desc = "Open the runtime error viewer, with reduced information"
+
+	if(!isobserver(mob) && SSticker.current_state != GAME_STATE_FINISHED)
+		to_chat(src, "<span class='warning'>You cannot currently do that at this time, please wait until the round end or while you are observing.</span>")
+		return
+
+	GLOB.error_cache.show_to_minimal(src)
+
+/client/verb/speech_format_help()
+	set name = "Speech Format Help"
+	set category = "OOC"
+	set desc = "Chat formatting help"
+
+	var/message = "<span class='big'>You can add emphasis to your text by surrounding words or sentences in certain characters.</span>\n \
+		**bold**, and _italics_ are supported.\n\n \
+		<span class='big'>You can made custom saymods by doing <i>say 'screams| HELP IM DYING!'</i>. This works over the radio, and can be used to emote over the radio.</span>\n \
+		Example: say ';laughs maniacally!|' >> \[Common] Joe Schmoe laughs maniacally!"
+
+
+	to_chat(usr, "<span class='notice'>[message]</span>")
+>>>>>>> 87bd297783 (Fixes a few Custom Say Issues (#8367))

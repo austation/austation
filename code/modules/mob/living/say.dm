@@ -101,6 +101,8 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 	if(!message)
 		return
 
+	message = check_for_custom_say_emote(message, message_mods)
+
 	if(stat == DEAD)
 		say_dead(original_message)
 		return
