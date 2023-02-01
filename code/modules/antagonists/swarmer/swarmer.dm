@@ -461,6 +461,14 @@
 		to_chat(src, "<span class='warning'>[target] is incompatible with our internal matter recycler.</span>")
 	return FALSE
 
+<<<<<<< HEAD
+=======
+/mob/living/simple_animal/hostile/swarmer/proc/add_to_total_resources_eaten(var/gains)
+	var/datum/antagonist/swarmer/S = mind?.has_antag_datum(/datum/antagonist/swarmer)
+	if(S)
+		S.swarm.total_resources_eaten += gains
+
+>>>>>>> cd3ad7fc18 (fixes runtime (#8419))
 
 /mob/living/simple_animal/hostile/swarmer/proc/DisIntegrate(atom/movable/target)
 	new /obj/effect/temp_visual/swarmer/disintegration(get_turf(target))
