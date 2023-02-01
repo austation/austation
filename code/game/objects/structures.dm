@@ -27,9 +27,21 @@
 
 /obj/structure/Destroy()
 	GLOB.cameranet.updateVisibility(src)
+<<<<<<< HEAD
 	if(smooth)
 		queue_smooth_neighbors(src)
 	return ..()
+=======
+	if(smoothing_flags & (SMOOTH_CORNERS|SMOOTH_BITMASK))
+		QUEUE_SMOOTH_NEIGHBORS(src)
+	var/turf/current_turf = loc
+	. = ..()
+	// Attempt zfalling for anything standing on this structure
+	if(!isopenspace(current_turf))
+		return
+	for(var/atom/movable/A in current_turf)
+		current_turf.try_start_zFall(A)
+>>>>>>> 6591e19b91 (Multi-Z Update (#8044))
 
 /obj/structure/attack_hand(mob/user)
 	. = ..()
@@ -118,3 +130,7 @@
 
 /obj/structure/rust_heretic_act()
 	take_damage(500, BRUTE, "melee", 1)
+
+/// If you can climb WITHIN this structure, lattices for example. Used by z_transit (Move Upwards verb)
+/obj/structure/proc/can_climb_through()
+	return FALSE

@@ -347,6 +347,7 @@
 #include "code\controllers\subsystem\movement\movement.dm"
 #include "code\controllers\subsystem\movement\movement_types.dm"
 #include "code\controllers\subsystem\movement\spacedrift.dm"
+#include "code\controllers\subsystem\movement\zfall.dm"
 #include "code\controllers\subsystem\processing\ai_basic_avoidance.dm"
 #include "code\controllers\subsystem\processing\ai_behaviors.dm"
 #include "code\controllers\subsystem\processing\ai_controllers.dm"
@@ -623,6 +624,12 @@
 #include "code\datums\elements\embed.dm"
 #include "code\datums\elements\firestacker.dm"
 #include "code\datums\elements\forced_gravity.dm"
+<<<<<<< HEAD
+=======
+#include "code\datums\elements\item_scaling.dm"
+#include "code\datums\elements\mechanical_repair.dm"
+#include "code\datums\elements\openspace_item_click_handler.dm"
+>>>>>>> 6591e19b91 (Multi-Z Update (#8044))
 #include "code\datums\elements\rust.dm"
 #include "code\datums\elements\squish.dm"
 #include "code\datums\elements\strippable.dm"
