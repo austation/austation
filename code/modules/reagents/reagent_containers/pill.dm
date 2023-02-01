@@ -54,7 +54,10 @@
 		addtimer(CALLBACK(GLOBAL_PROC, /proc/to_chat, M, "<span class='notice'>[makes_me_think]</span>"), 5 SECONDS)
 
 	if(reagents.total_volume)
+<<<<<<< HEAD
 		reagents.reaction(M, apply_type)
+=======
+>>>>>>> 3fc38af37e (Refactors reagent exposure code, makes exposure methods bitflags (#8402))
 		reagents.trans_to(M, reagents.total_volume, transfered_by = user)
 	qdel(src)
 	return TRUE

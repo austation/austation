@@ -408,3 +408,39 @@
 	. = ..()
 	if(. && ricochet_damage_mod)
 		take_damage(P.damage * ricochet_damage_mod, P.damage_type, P.flag, 0, turn(P.dir, 180), P.armour_penetration) // pass along ricochet_damage_mod damage to the structure for the ricochet
+<<<<<<< HEAD
+=======
+
+/obj/update_overlays()
+	. = ..()
+	if(acid_level)
+		. += GLOB.acid_overlay
+	if(resistance_flags & ON_FIRE)
+		. += GLOB.fire_overlay
+
+/// Handles exposing an object to reagents.
+/obj/expose_reagents(list/reagents, datum/reagents/source, methods=TOUCH, volume_modifier=1, show_message=TRUE)
+	if((. = ..()) & COMPONENT_NO_EXPOSE_REAGENTS)
+		return
+
+	for(var/reagent in reagents)
+		var/datum/reagent/R = reagent
+		. |= R.expose_obj(src, reagents[R])
+
+/obj/use_emag(mob/user)
+	if(should_emag(user) && !SEND_SIGNAL(src, COMSIG_ATOM_SHOULD_EMAG, user))
+		SEND_SIGNAL(src, COMSIG_ATOM_ON_EMAG, user)
+		on_emag(user)
+
+/// Unlike COMSIG_ATOM_SHOULD_EMAG, this is not inverted. If this is true, on_emag is called.
+/obj/proc/should_emag(mob/user)
+	return emag_toggleable || !(obj_flags & EMAGGED)
+
+/// Performs the actions to emag something, given that should_emag succeeded. You should NOT call this directly. Call use_emag.
+/obj/proc/on_emag(mob/user)
+	SHOULD_CALL_PARENT(TRUE)
+	if(emag_toggleable)
+		obj_flags ^= EMAGGED
+	else
+		obj_flags |= EMAGGED
+>>>>>>> 3fc38af37e (Refactors reagent exposure code, makes exposure methods bitflags (#8402))

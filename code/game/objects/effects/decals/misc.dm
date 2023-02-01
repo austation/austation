@@ -80,11 +80,18 @@
 			lifetime -= 1
 
 		else if(travelled_max_distance)
+<<<<<<< HEAD
 			reagents.reaction(turf_atom, VAPOR)
+=======
+			lifetime--
+		reagents.expose(turf_atom, VAPOR)
+		if(user)
+>>>>>>> 3fc38af37e (Refactors reagent exposure code, makes exposure methods bitflags (#8402))
 			log_combat(user, turf_atom, "sprayed", sprayer, addition="which had [puff_reagents_string]")
 			lifetime -= 1
 
 	if(lifetime >= 0 && (!stream || travelled_max_distance))
+<<<<<<< HEAD
 		reagents.reaction(our_turf, VAPOR)
 		log_combat(user, our_turf, "sprayed", sprayer, addition="which had [puff_reagents_string]")
 		lifetime -= 1
@@ -92,6 +99,12 @@
 	// Did we use up all the puff early?
 	if(lifetime < 0)
 		qdel(src)
+=======
+		reagents.expose(our_turf, VAPOR)
+		lifetime--
+		if(user)
+			log_combat(user, our_turf, "sprayed", sprayer, addition="which had [puff_reagents_string]")
+>>>>>>> 3fc38af37e (Refactors reagent exposure code, makes exposure methods bitflags (#8402))
 
 /obj/effect/decal/fakelattice
 	name = "lattice"
