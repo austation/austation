@@ -1,3 +1,5 @@
+GLOBAL_VAR_INIT(pirates_spawned, FALSE)
+
 /datum/round_event_control/pirates
 	name = "Space Pirates"
 	typepath = /datum/round_event/pirates
@@ -15,9 +17,20 @@
 
 	return ..()
 
+<<<<<<< HEAD
 /datum/round_event/pirates
 	startWhen = 60 //2 minutes to answer
 	var/datum/comm_message/threat
+=======
+/datum/round_event/pirates/start()
+	if(!GLOB.pirates_spawned)
+		send_pirate_threat()
+
+/proc/send_pirate_threat()
+	GLOB.pirates_spawned = TRUE
+	var/ship_name = "Space Privateers Association"
+	var/payoff_min = 20000
+>>>>>>> bc0842b5d7 (Prevent duplicate pirate spawns (#8405))
 	var/payoff = 0
 	var/payoff_min = 20000
 	var/paid_off = FALSE
