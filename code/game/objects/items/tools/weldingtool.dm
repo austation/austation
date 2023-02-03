@@ -340,6 +340,43 @@
 /obj/item/weldingtool/mini/flamethrower_screwdriver()
 	return
 
+<<<<<<< HEAD
+=======
+/obj/item/weldingtool/cyborg
+	name = "integrated welding tool"
+	desc = "An advanced welder designed to be used in robotic systems. Custom framework doubles the speed of welding."
+	icon = 'icons/obj/items_cyborg.dmi'
+	icon_state = "indwelder_cyborg"
+	toolspeed = 0.5
+	max_fuel = 40
+	materials = list(/datum/material/glass=60)
+
+/obj/item/weldingtool/cyborg/cyborg_unequip(mob/user)
+	if(!isOn())
+		return
+	switched_on(user)
+
+/obj/item/weldingtool/cyborg/flamethrower_screwdriver()
+	return
+
+///This gets called by the lighteater to temporarity disable it
+/obj/item/weldingtool/cyborg/proc/disable()
+	disabled_time = world.time + 30 SECONDS
+	switched_off(usr)
+	playsound(src, 'sound/items/cig_snuff.ogg', 50, 1)
+
+
+/obj/item/weldingtool/cyborg/mini
+	name = "integrated emergency welding tool"
+	desc = "A miniature integrated welder used during emergencies."
+	icon = 'icons/obj/tools.dmi'
+	icon_state = "miniwelder"
+	max_fuel = 10
+	w_class = WEIGHT_CLASS_TINY
+	materials = list(/datum/material/iron=30, /datum/material/glass=10)
+	change_icons = 0
+
+>>>>>>> be28ac8c34 (fix icon (#8432))
 /obj/item/weldingtool/abductor
 	name = "alien welding tool"
 	desc = "An alien welding tool. Whatever fuel it uses, it never runs out."
