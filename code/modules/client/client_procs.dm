@@ -1018,7 +1018,19 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	if(prefs && prefs.chat_toggles & CHAT_PULLR)
 		to_chat(src, announcement)
 
+<<<<<<< HEAD
 /client/proc/show_character_previews(mutable_appearance/MA)
+=======
+/client/proc/show_character_previews(mutable_appearance/source)
+	LAZYINITLIST(char_render_holders)
+	if(!LAZYLEN(char_render_holders))
+		for (var/plane_master_type in subtypesof(/atom/movable/screen/plane_master) - /atom/movable/screen/plane_master/blackness)
+			var/atom/movable/screen/plane_master/plane_master = new plane_master_type()
+			char_render_holders["plane_master-[plane_master.plane]"] = plane_master
+			screen |= plane_master
+			plane_master.screen_loc = "character_preview_map:0,CENTER"
+
+>>>>>>> 6616d7d5dc (Update client_procs.dm (#8445))
 	var/pos = 0
 	for(var/D in GLOB.cardinals)
 		pos++
