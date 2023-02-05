@@ -228,6 +228,7 @@
 	playsound(src, 'sound/items/welder.ogg', 50, 1)
 
 
+<<<<<<< HEAD
 /obj/item/pda/lighteater_act(obj/item/light_eater/light_eater)
 	if(light_range && light_power && light_on)
 		//Eject the ID card
@@ -236,6 +237,41 @@
 			id = null
 			update_icon()
 			playsound(src, 'sound/machines/terminal_eject.ogg', 50, TRUE)
+=======
+/obj/item/clothing/head/helmet/space/hardsuit/lighteater_act(obj/item/light_eater/light_eater, atom/parent)
+	if(!light_range || !light_power || !light_on || light_broken)
+		return ..()
+	if(light_eater)
+		visible_message("<span class='danger'>The headlamp of [src] is disintegrated by [light_eater]!</span>")
+	light_broken = TRUE
+	var/mob/user = ismob(parent) ? parent : null
+	attack_self(user)
+	playsound(src, 'sound/items/welder.ogg', 50, 1)
+	..()
+
+/obj/item/clothing/head/helmet/space/plasmaman/lighteater_act(obj/item/light_eater/light_eater, atom/parent)
+	if(!lamp_functional)
+		return
+	if(helmet_on)
+		smash_headlamp()
+	..()
+
+/turf/open/floor/light/lighteater_act(obj/item/light_eater/light_eater, atom/parent)
+	. = ..()
+	if(!light_range || !light_power || !light_on)
+		return
+	if(light_eater)
+		visible_message("<span class='danger'>The light bulb of [src] is disintegrated by [light_eater]!</span>")
+	break_tile()
+	playsound(src, 'sound/items/welder.ogg', 50, 1)
+
+/obj/item/weldingtool/cyborg/lighteater_act(obj/item/light_eater/light_eater, atom/parent)
+	if(!isOn())
+		return
+	if(light_eater)
+		loc.visible_message("<span class='danger'>The the integrated welding tool is snuffed out by [light_eater]!</span>")
+		disable()
+>>>>>>> d62746a45f (Nightmare's Lighteater now smashes the lamp of the plamsaman helmets instead of dusting them. (#8436))
 	..()
 
 #undef HEART_SPECIAL_SHADOWIFY
