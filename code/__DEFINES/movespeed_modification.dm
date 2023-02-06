@@ -89,3 +89,8 @@
 #define MOVESPEED_ID_LIGHT_VIRUS_SLOWDOWN				"LIGHT_VIRUS"
 
 #define MOVESPEED_ID_SWIMMING							"SWIMMING_SPEED_MOD"
+<<<<<<< HEAD
+=======
+
+#define MOVESPEED_ID_DRAGON_RAGE                        "DRAGON_RAGE"
+>>>>>>> 94a905be0f (Space Dragon Freedom Update (#8435))
