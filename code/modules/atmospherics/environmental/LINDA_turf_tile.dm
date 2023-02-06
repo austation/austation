@@ -28,7 +28,20 @@
 	var/list/atmos_overlay_types //gas IDs of current active gas overlays
 
 /turf/open/Initialize(mapload)
+<<<<<<< HEAD
 	if(!blocks_air)
+=======
+	if (planetary_atmos && Debugger?.enabled)
+		var/static/list/planet_atmos_types = list()
+		if(planet_atmos_types[type])
+			air = planet_atmos_types[type]
+		else
+			air = new(2500,src)
+			air.copy_from_turf(src)
+			update_air_ref(1)
+			planet_atmos_types[type] = air
+	else
+>>>>>>> 08ae826a14 (NEW Terrestrial Map - Glowstation 0.9 [MDB IGNORE] (#7907))
 		air = new(2500,src)
 		air.copy_from_turf(src)
 		update_air_ref(planetary_atmos ? 1 : 2)

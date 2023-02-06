@@ -174,6 +174,9 @@
 	smooth = SMOOTH_MORE | SMOOTH_BORDER
 	canSmoothWith = list(/turf/open/lava/smooth)
 
+/turf/open/lava/smooth/cold
+	initial_gas_mix = FROZEN_ATMOS
+
 /turf/open/lava/smooth/lava_land_surface
 	initial_gas_mix = LAVALAND_DEFAULT_ATMOS
 	planetary_atmos = TRUE
