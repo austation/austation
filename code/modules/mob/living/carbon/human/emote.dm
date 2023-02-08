@@ -176,7 +176,19 @@
 		return
 	return 'sound/misc/fart1.ogg'
 
+<<<<<<< HEAD
 //Ayy lmao
+=======
+/datum/emote/living/carbon/human/fart/run_emote(mob/user, params, type_override, intentional)
+	if(ishuman(user))
+		var/mob/living/carbon/human/fartee = user
+		if(COOLDOWN_FINISHED(fartee, special_emote_cooldown))
+			..()
+			COOLDOWN_START(fartee, special_emote_cooldown, 20 SECONDS)
+		else
+			to_chat(user, "<span class='warning'>You strain, but can't seem to fart again just yet.</span>")
+		return TRUE
+>>>>>>> 26da75827a (Adds a cooldown to farting (#8453))
 
 // Robotic Tongue emotes. Beep!
 
