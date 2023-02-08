@@ -456,7 +456,16 @@
 		"mech.png" = 'html/img/mech.png',
 		"scitool.png" = 'html/img/scitool.png',
 		"alienorgan.png"= 'html/img/alienorgan.png',
+<<<<<<< HEAD
 		"abaton.png"= 'html/img/abaton.png'
+=======
+		"spiderguard.png"= 'html/img/spiderguard.png',
+		"spiderbroodmother.png"= 'html/img/spiderbroodmother.png',
+		"spidernurse.png"= 'html/img/spidernurse.png',
+		"spiderhunter.png"= 'html/img/spiderhunter.png',
+		"spiderviper.png"= 'html/img/spiderviper.png',
+		"spidertarantula.png"= 'html/img/spidertarantula.png'
+>>>>>>> 4a9732c7f8 (Various spider tweaks (#8409))
 	)
 
 /datum/asset/simple/orbit
