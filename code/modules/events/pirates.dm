@@ -66,7 +66,7 @@
 /datum/round_event/pirates/proc/spawn_shuttle()
 	shuttle_spawned = TRUE
 
-	var/list/candidates = pollGhostCandidates("Do you wish to be considered for pirate crew?", ROLE_TRAITOR)
+	var/list/candidates = pollGhostCandidates("Do you wish to be considered for pirate crew?", ROLE_SPACE_PIRATE)
 	shuffle_inplace(candidates)
 
 	var/datum/map_template/shuttle/pirate/default/ship = new

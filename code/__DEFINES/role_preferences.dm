@@ -43,6 +43,14 @@
 #define ROLE_HOLOPARASITE		"Holoparasite"
 #define ROLE_TERATOMA			"Teratoma"
 #define ROLE_EXPERIMENTAL_CLONE "Experimental Clone"
+<<<<<<< HEAD
+=======
+#define ROLE_SPIDER				"Spider"
+#define ROLE_SWARMER			"Swarmer"
+#define ROLE_MORPH				"Morph"
+#define ROLE_NIGHTMARE			"Nightmare"
+#define ROLE_SPACE_PIRATE		"Space Pirate"
+>>>>>>> ce6545a5aa (Dynamic Expansion: Morph and Swarmers + Major Role fixes (#8341))
 
 //Missing assignment means it's not a gamemode specific role, IT'S NOT A BUG OR ERROR.
 //The gamemode specific ones are just so the gamemodes can query whether a player is old enough
@@ -74,7 +82,15 @@ GLOBAL_LIST_INIT(special_roles, list(
 	ROLE_GANG = /datum/game_mode/gang,
 	ROLE_HOLOPARASITE,
 	ROLE_HERETIC = /datum/game_mode/heretics,
+<<<<<<< HEAD
 	ROLE_TERATOMA
+=======
+	ROLE_TERATOMA,
+	ROLE_MORPH,
+	ROLE_NIGHTMARE,
+	ROLE_SWARMER,
+	ROLE_SPACE_PIRATE,
+>>>>>>> ce6545a5aa (Dynamic Expansion: Morph and Swarmers + Major Role fixes (#8341))
 ))
 
 //Job defines for what happens when you fail to qualify for any job during job selection
