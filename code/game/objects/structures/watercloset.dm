@@ -409,13 +409,23 @@
 	if(!open)
 		icon_state = "[icon_type]-closed"
 		layer = WALL_OBJ_LAYER
+<<<<<<< HEAD
 		density = TRUE
+=======
+		set_density(TRUE)
+		set_opacity(1)
+>>>>>>> a14ba4a098 (changed set opacity and density values (#8456))
 		open = FALSE
 
 	else
 		icon_state = "[icon_type]-open"
 		layer = SIGN_LAYER
+<<<<<<< HEAD
 		density = FALSE
+=======
+		set_density(FALSE)
+		set_opacity(0)
+>>>>>>> a14ba4a098 (changed set opacity and density values (#8456))
 		open = TRUE
 
 /obj/structure/curtain/attackby(obj/item/W, mob/user)
