@@ -421,3 +421,18 @@
 
 /obj/effect/turf_decal/siding/wideplating_new/terracotta/end
 	icon_state = "siding_wideplating_new_end"
+<<<<<<< HEAD
+=======
+
+/obj/effect/turf_decal/numbers
+	icon_state = "number_0-1"
+
+/obj/effect/turf_decal/numbers/two_nine
+	icon_state = "number_2-9"
+
+/obj/effect/turf_decal/techfloor
+	icon_state = "techfloor_edges"
+
+/obj/effect/turf_decal/techfloor/corners
+	icon_state = "techfloor_corners"
+>>>>>>> 5277382f68 (ports techfloor lining (#8468))
