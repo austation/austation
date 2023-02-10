@@ -1,3 +1,4 @@
+import { classes } from 'common/react';
 import { useBackend, useSharedState } from '../backend';
 import { AnimatedNumber, Box, Button, ColorBox, LabeledList, NumberInput, Section, Table } from '../components';
 import { Window } from '../layouts';
@@ -8,7 +9,7 @@ export const ChemMaster = (props, context) => {
   return (
     <Window
       width={465}
-      height={550}>
+      height={620}>
       <Window.Content scrollable>
         {screen === 'analyze' && (
           <AnalysisResults />
@@ -216,7 +217,12 @@ const PackagingControlsItem = props => {
   );
 };
 
+<<<<<<< HEAD
 const PackagingControls = (props, context) => {
+=======
+
+const PackagingControls = ({ volume, packagingName }, context) => {
+>>>>>>> 6d027c5db5 (retouches pill sprite codes a bit, and adds new pill options + patch shape options in chem master (#8299))
   const { act, data } = useBackend(context);
   const [
     pillAmount,
@@ -238,20 +244,27 @@ const PackagingControls = (props, context) => {
     condi,
     chosenPillStyle,
     pillStyles = [],
+    chosenPatchStyle,
+    patchStyles = [],
   } = data;
   return (
     <LabeledList>
       {!condi && (
         <LabeledList.Item label="Pill type">
-          {pillStyles.map(pill => (
+          {pillStyles.map(each_style => (
             <Button
-              key={pill.id}
+              key={each_style.id}
               width="30px"
-              selected={pill.id === chosenPillStyle}
+              height="16px"
+              selected={each_style.id === chosenPillStyle}
               textAlign="center"
               color="transparent"
-              onClick={() => act('pillStyle', { id: pill.id })}>
-              <Box mx={-1} className={pill.className} />
+              onClick={() => act('pillStyle', { id: each_style.id })}>
+              <Box mx={-1}
+                className={classes([
+                  'medicine_containers22x22',
+                  each_style.pill_icon_name,
+                ])} />
             </Button>
           ))}
         </LabeledList.Item>
@@ -268,6 +281,26 @@ const PackagingControls = (props, context) => {
             amount: pillAmount,
             volume: 'auto',
           })} />
+      )}
+      {!condi && (
+        <LabeledList.Item label="Patch type">
+          {patchStyles.map(each_style => (
+            <Button
+              key={each_style.id}
+              width="30px"
+              height="25px"
+              selected={each_style.id === chosenPatchStyle}
+              textAlign="center"
+              color="transparent"
+              onClick={() => act('patchStyle', { id: each_style.id })}>
+              <Box mx={-1}
+                className={classes([
+                  'medicine_containers22x22',
+                  each_style.patch_icon_name,
+                ])} />
+            </Button>
+          ))}
+        </LabeledList.Item>
       )}
       {!condi && (
         <PackagingControlsItem
