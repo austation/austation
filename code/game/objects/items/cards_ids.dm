@@ -493,7 +493,11 @@ update_label("John Doe", "Clowny")
 
 /obj/item/card/id/syndicate/debug/Initialize(mapload)
 	access = get_every_access()
+<<<<<<< HEAD
 	registered_account = SSeconomy.get_dep_account(ACCOUNT_CAR)
+=======
+	registered_account = SSeconomy.get_budget_account(ACCOUNT_VIP_ID)
+>>>>>>> 960db75e45 (Better debug items and debug outfit (#8315))
 	. = ..()
 
 /obj/item/card/id/captains_spare

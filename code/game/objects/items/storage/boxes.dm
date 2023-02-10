@@ -1247,6 +1247,7 @@
 		)
 	generate_items_inside(items_inside,src)
 
+<<<<<<< HEAD
 /obj/item/storage/box/debugtools
 	name = "box of debug tools"
 	icon_state = "syndiebox"
@@ -1285,6 +1286,8 @@
 		)
 	generate_items_inside(items_inside,src)
 
+=======
+>>>>>>> 960db75e45 (Better debug items and debug outfit (#8315))
 /obj/item/storage/box/deputy
 	name = "box of deputy armbands"
 	desc = "To be issued to those authorized to act as deputy of security."

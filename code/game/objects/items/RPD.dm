@@ -257,6 +257,27 @@ GLOBAL_LIST_INIT(fluid_duct_recipes, list(
 	var/static/datum/pipe_info/first_coilgun // austation -- coilguns
 	var/mode = BUILD_MODE | PAINT_MODE | DESTROY_MODE | WRENCH_MODE
 	var/locked = FALSE //wheter we can change categories. Useful for the plumber
+	var/ranged = FALSE
+
+	/// you can remove these through RPD
+	var/static/list/rpd_targets = typecacheof(list(
+			/obj/item/pipe,
+			/obj/structure/disposalconstruct,
+			/obj/structure/disposalpipe/broken,
+			/obj/structure/c_transit_tube,
+			/obj/structure/c_transit_tube_pod,
+			/obj/item/pipe_meter
+		))
+	/// you can attempt using RPD on these
+	var/static/list/rpd_whitelist = typecacheof(list(
+			/obj/structure/lattice,
+			/obj/structure/girder,
+			/obj/item/pipe,
+			/obj/structure/window,
+			/obj/structure/grille
+		))
+	/// list of atmos constructs that we don't want to attack with RPD
+	var/static/list/atmos_constructs = typecacheof(list(/obj/machinery/atmospherics, /obj/structure/transit_tube))
 
 /obj/item/pipe_dispenser/Initialize(mapload)
 	. = ..()
@@ -277,6 +298,28 @@ GLOBAL_LIST_INIT(fluid_duct_recipes, list(
 	spark_system = null
 	return ..()
 
+<<<<<<< HEAD
+=======
+/obj/item/pipe_dispenser/examine(mob/user)
+	. = ..()
+	. += "You can scroll your mouse wheel to change the piping layer."
+
+/obj/item/pipe_dispenser/equipped(mob/user, slot, initial)
+	. = ..()
+	if(slot == ITEM_SLOT_HANDS)
+		RegisterSignal(user, COMSIG_MOB_MOUSE_SCROLL_ON, .proc/mouse_wheeled)
+	else
+		UnregisterSignal(user, COMSIG_MOB_MOUSE_SCROLL_ON)
+
+/obj/item/pipe_dispenser/dropped(mob/user, silent)
+	UnregisterSignal(user, COMSIG_MOB_MOUSE_SCROLL_ON)
+	return ..()
+
+/obj/item/pipe_dispenser/cyborg_unequip(mob/user)
+	UnregisterSignal(user, COMSIG_MOB_MOUSE_SCROLL_ON)
+	return ..()
+
+>>>>>>> 960db75e45 (Better debug items and debug outfit (#8315))
 /obj/item/pipe_dispenser/attack_self(mob/user)
 	ui_interact(user)
 
@@ -391,15 +434,38 @@ GLOBAL_LIST_INIT(fluid_duct_recipes, list(
 		spark_system.start()
 		playsound(get_turf(src), 'sound/effects/pop.ogg', 50, FALSE)
 
-/obj/item/pipe_dispenser/pre_attack(atom/A, mob/user)
+/obj/item/pipe_dispenser/attack_obj(obj/O, mob/living/user)
+	// don't attempt to attack what we don't want to attack
+	if(is_type_in_typecache(O, atmos_constructs) || is_type_in_typecache(O, rpd_targets) || is_type_in_typecache(O, rpd_whitelist))
+		return
+
+	return ..()
+
+/obj/item/pipe_dispenser/afterattack(atom/A, mob/user, proximity)
 	if(!user.IsAdvancedToolUser() || istype(A, /turf/open/space/transit))
 		return ..()
 
+<<<<<<< HEAD
+=======
+	// this shouldn't use early return because checking less condition is good
+	if(isturf(A) || is_type_in_typecache(A, rpd_targets) || is_type_in_typecache(A, rpd_whitelist))
+		if(proximity || ranged)
+			rpd_create(A, user)
+			return
+
+	return ..()
+
+/obj/item/pipe_dispenser/proc/rpd_create(atom/A, mob/user)
+
+	var/atom/attack_target = A
+
+>>>>>>> 960db75e45 (Better debug items and debug outfit (#8315))
 	//So that changing the menu settings doesn't affect the pipes already being built.
 	var/queued_p_type = recipe.id
 	var/queued_p_dir = p_dir
 	var/queued_p_flipped = p_flipped
 
+<<<<<<< HEAD
 	//make sure what we're clicking is valid for the current category
 	var/static/list/make_pipe_whitelist
 	if(!make_pipe_whitelist)
@@ -409,6 +475,22 @@ GLOBAL_LIST_INIT(fluid_duct_recipes, list(
 	. = FALSE
 
 	if((mode&DESTROY_MODE) && istype(A, /obj/item/pipe) || istype(A, /obj/structure/disposalconstruct) || istype(A, /obj/structure/c_transit_tube) || istype(A, /obj/structure/c_transit_tube_pod) || istype(A, /obj/item/pipe_meter))
+=======
+	//Unwrench pipe before we build one over/paint it, but only if we're not already running a do_after on it already to prevent a potential runtime.
+	if((mode & DESTROY_MODE) && (upgrade_flags & RPD_UPGRADE_UNWRENCH) && istype(attack_target, /obj/machinery/atmospherics) && !(attack_target in user.do_afters))
+		attack_target = attack_target.wrench_act(user, src)
+		if(attack_target == TRUE)
+			return
+
+	//make sure what we're clicking is valid for the current category
+	if(istype(attack_target, /obj/machinery/atmospherics) && ((mode & BUILD_MODE) && !(mode & PAINT_MODE))) //target turf if on buildmode so that it doesn't try painting a pipe you click on
+		attack_target = get_turf(attack_target)
+	var/can_make_pipe = (isturf(attack_target) || is_type_in_typecache(attack_target, rpd_whitelist))
+
+	. = FALSE
+
+	if((mode & DESTROY_MODE) && is_type_in_typecache(A, rpd_targets))
+>>>>>>> 960db75e45 (Better debug items and debug outfit (#8315))
 		to_chat(user, "<span class='notice'>You start destroying a pipe...</span>")
 		playsound(get_turf(src), 'sound/machines/click.ogg', 50, 1)
 		if(do_after(user, destroy_speed, target = A))
@@ -438,7 +520,7 @@ GLOBAL_LIST_INIT(fluid_duct_recipes, list(
 		switch(category) //if we've gotten this var, the target is valid
 			if(ATMOS_CATEGORY) //Making pipes
 				if(!can_make_pipe)
-					return ..()
+					return
 				playsound(get_turf(src), 'sound/machines/click.ogg', 50, 1)
 				if (recipe.type == /datum/pipe_info/meter)
 					to_chat(user, "<span class='notice'>You start building a meter...</span>")
@@ -451,12 +533,12 @@ GLOBAL_LIST_INIT(fluid_duct_recipes, list(
 				else
 					if(recipe.all_layers == FALSE && (piping_layer == 1 || piping_layer == 5))
 						to_chat(user, "<span class='notice'>You can't build this object on the layer...</span>")
-						return ..()
+						return
 					to_chat(user, "<span class='notice'>You start building a pipe...</span>")
 					if(do_after(user, atmos_build_speed, target = A))
 						if(recipe.all_layers == FALSE && (piping_layer == 1 || piping_layer == 5)) // double check to stop cheaters (and to not waste time waiting for something that can't be placed)
 							to_chat(user, "<span class='notice'>You can't build this object on the layer...</span>")
-							return ..()
+							return
 						activate()
 						var/obj/machinery/atmospherics/path = queued_p_type
 						var/pipe_item_type = initial(path.construction_type) || /obj/item/pipe
@@ -476,9 +558,15 @@ GLOBAL_LIST_INIT(fluid_duct_recipes, list(
 
 			if(DISPOSALS_CATEGORY) //Making disposals pipes
 				if(!can_make_pipe)
+<<<<<<< HEAD
 					return ..()
 				A = get_turf(A)
 				if(isclosedturf(A))
+=======
+					return
+				attack_target = get_turf(attack_target)
+				if(isclosedturf(attack_target))
+>>>>>>> 960db75e45 (Better debug items and debug outfit (#8315))
 					to_chat(user, "<span class='warning'>[src]'s error light flickers; there's something in the way!</span>")
 					return
 				to_chat(user, "<span class='notice'>You start building a disposals pipe...</span>")
@@ -531,9 +619,15 @@ GLOBAL_LIST_INIT(fluid_duct_recipes, list(
 
 			if(TRANSIT_CATEGORY) //Making transit tubes
 				if(!can_make_pipe)
+<<<<<<< HEAD
 					return ..()
 				A = get_turf(A)
 				if(isclosedturf(A))
+=======
+					return
+				attack_target = get_turf(attack_target)
+				if(isclosedturf(attack_target))
+>>>>>>> 960db75e45 (Better debug items and debug outfit (#8315))
 					to_chat(user, "<span class='warning'>[src]'s error light flickers; there's something in the way!</span>")
 					return
 				to_chat(user, "<span class='notice'>You start building a transit tube...</span>")
@@ -560,9 +654,15 @@ GLOBAL_LIST_INIT(fluid_duct_recipes, list(
 					return
 			if(PLUMBING_CATEGORY) //Making pancakes
 				if(!can_make_pipe)
+<<<<<<< HEAD
 					return ..()
 				A = get_turf(A)
 				if(isclosedturf(A))
+=======
+					return
+				attack_target = get_turf(attack_target)
+				if(isclosedturf(attack_target))
+>>>>>>> 960db75e45 (Better debug items and debug outfit (#8315))
 					to_chat(user, "<span class='warning'>[src]'s error light flickers; there's something in the way!</span>")
 					return
 				to_chat(user, "<span class='notice'>You start building a fluid duct...</span>")
@@ -581,7 +681,7 @@ GLOBAL_LIST_INIT(fluid_duct_recipes, list(
 						D.wrench_act(user, src)
 
 			else
-				return ..()
+				return
 
 /obj/item/pipe_dispenser/proc/activate()
 	playsound(get_turf(src), 'sound/items/deconstruct.ogg', 50, 1)

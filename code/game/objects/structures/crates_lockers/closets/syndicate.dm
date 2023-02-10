@@ -94,6 +94,7 @@
 	desc = "It's an emergency storage closet for repairs."
 
 /obj/structure/closet/syndicate/resources/everything/PopulateContents()
+<<<<<<< HEAD
 	var/list/resources = list(
 	/obj/item/stack/sheet/iron,
 	/obj/item/stack/sheet/glass,
@@ -118,3 +119,7 @@
 		for(var/res in resources)
 			var/obj/item/stack/R = res
 			new res(src, initial(R.max_amount))
+=======
+	new /obj/item/storage/box/material(src)
+	new /obj/item/storage/box/material(src)
+>>>>>>> 960db75e45 (Better debug items and debug outfit (#8315))

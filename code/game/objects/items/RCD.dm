@@ -163,7 +163,13 @@ RLD
 	return .
 
 /obj/item/construction/proc/range_check(atom/A, mob/user)
+<<<<<<< HEAD
 	if(!(user in viewers(7, get_turf(A))))
+=======
+	if(A.z != user.z)
+		return
+	if(!(user in viewers(7, get_turf(A))) && !(max_matter == INFINITY)) // debug tool has no max range
+>>>>>>> 960db75e45 (Better debug items and debug outfit (#8315))
 		to_chat(user, "<span class='warning'>The \'Out of Range\' light on [src] blinks red.</span>")
 		return FALSE
 	else
@@ -598,16 +604,7 @@ RLD
 	ammoamt = 160
 
 
-/obj/item/construction/rcd/combat/admin
-	name = "admin RCD"
-	max_matter = INFINITY
-	matter = INFINITY
-	delay_mod = 0.1
-	upgrade = RCD_UPGRADE_FRAMES | RCD_UPGRADE_SIMPLE_CIRCUITS
-
 // Ranged RCD
-
-
 /obj/item/construction/rcd/arcd
 	name = "advanced rapid-construction-device (ARCD)"
 	desc = "A prototype RCD with ranged capability and extended capacity. Reload with iron, plasteel, glass or compressed matter cartridges."
@@ -624,15 +621,12 @@ RLD
 	if(!range_check(A,user))
 		return
 	if(target_check(A,user))
-		user.Beam(A,icon_state="rped_upgrade",time=30)
+		user.Beam(A,icon_state="rped_upgrade",time=delay_mod*50)
 	rcd_create(A,user)
 
 
 
 // RAPID LIGHTING DEVICE
-
-
-
 /obj/item/construction/rld
 	name = "Rapid Lighting Device (RLD)"
 	desc = "A device used to rapidly provide lighting sources to an area. Reload with iron, plasteel, glass or compressed matter cartridges."
@@ -665,7 +659,8 @@ RLD
 		..()
 
 /obj/item/construction/rld/update_icon()
-	icon_state = "rld-[round(matter/35)]"
+	// "infinite matter/35" from a debug tool will give a big number, but "rld-5" is the maximum
+	icon_state = "rld-[min(round(matter/35), 5)]"
 	..()
 
 
