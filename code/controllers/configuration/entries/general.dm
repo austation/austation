@@ -595,3 +595,12 @@
 /datum/config_entry/string/elasticsearch_metrics_endpoint
 
 /datum/config_entry/string/elasticsearch_metrics_apikey
+<<<<<<< HEAD
+=======
+
+
+/datum/config_entry/flag/enable_mrat
+
+
+/datum/config_entry/string/discord_ooc_tag
+>>>>>>> 98c9ea6fe7 (Better OOC format + roundend deadchat to Discord (#7940))
