@@ -208,9 +208,17 @@ GLOBAL_LIST_EMPTY(station_turfs)
 		if("Cancel")
 			return
 		if("Up")
+<<<<<<< HEAD
 			travel_z(user, above, TRUE)
 		if("Down")
 			travel_z(user, below, FALSE)
+=======
+			if(user.zMove(UP, TRUE))
+				to_chat(user, "<span class='notice'>You move upwards.</span>")
+		if("Down")
+			if(user.zMove(DOWN, TRUE))
+				to_chat(user, "<span class='notice'>You move down.</span>")
+>>>>>>> 9414f7498c (Fix multiz movement exploit (#8485))
 
 /turf/proc/travel_z(mob/user, turf/target, upwards = TRUE)
 	if(!target)
