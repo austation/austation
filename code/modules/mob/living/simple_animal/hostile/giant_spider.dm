@@ -51,6 +51,18 @@
 	var/datum/action/innate/spider/lay_web/lay_web
 	var/directive = "" //Message passed down to children, to relay the creator's orders
 
+<<<<<<< HEAD
+=======
+	//Special spider variables defined here to prevent duplicate procs
+	var/mob/living/simple_animal/hostile/poison/giant_spider/heal_target //used by nurses for healing
+	var/fed = 0 //used by broodmothers to track food
+	var/enriched_fed = 0
+	var/datum/action/innate/spider/lay_eggs/lay_eggs //the ability to lay eggs, granted to broodmothers
+	var/datum/team/spiders/spider_team = null //utilized by AI controlled broodmothers to pass antag team info onto their eggs without a mind
+
+	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
+	minbodytemp = 0
+>>>>>>> e5fb0ddf47 (Two for one feeding fixes for spiders (#8477))
 	do_footstep = TRUE
 	discovery_points = 1000
 
@@ -301,13 +313,26 @@
 				var/obj/structure/spider/cocoon/C = new(cocoon_target.loc)
 				if(isliving(cocoon_target))
 					var/mob/living/L = cocoon_target
+<<<<<<< HEAD
 					if(L.blood_volume && (L.stat != DEAD || !consumed_mobs[L.tag])) //if they're not dead, you can consume them anyway
 						consumed_mobs[L.tag] = TRUE
 						fed++
 						health = maxHealth //heal up from feeding.
 						lay_eggs.UpdateButtonIcon(TRUE)
+=======
+					if(L.stat != DEAD)
+						L.death() //If it's not already dead, we want it dead regardless of nourishment
+					if(L.blood_volume >= BLOOD_VOLUME_BAD && !isipc(L)) //IPCs and drained mobs are not nourishing.
+						L.blood_volume = 0 //Remove all fluids from this mob so they are no longer nourishing.
+						health = maxHealth //heal up from feeding.
+						if(istype(L,/mob/living/carbon/human)) 
+							enriched_fed++ //it is a humanoid, and is very nourishing
+						else
+							fed++ //it is not a humanoid, but still has nourishment
+						if(lay_eggs)
+							lay_eggs.UpdateButtonIcon(TRUE)
+>>>>>>> e5fb0ddf47 (Two for one feeding fixes for spiders (#8477))
 						visible_message("<span class='danger'>[src] sticks a proboscis into [L] and sucks a viscous substance out.</span>","<span class='notice'>You suck the nutriment out of [L], feeding you enough to lay a cluster of eggs.</span>")
-						L.death() //you just ate them, they're dead.
 					else
 						to_chat(src, "<span class='warning'>[L] cannot sate your hunger!</span>")
 				cocoon_target.forceMove(C)
