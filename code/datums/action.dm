@@ -149,11 +149,15 @@
 		return TRUE
 
 /datum/action/proc/ApplyIcon(atom/movable/screen/movable/action_button/current_button, force = FALSE)
+<<<<<<< HEAD
 	if(icon_icon && button_icon_state && ((current_button.button_icon_state != button_icon_state) || force))
 		current_button.cut_overlays(TRUE)
+=======
+	if(icon_icon && button_icon_state || force)
+		current_button.cut_overlays()
+>>>>>>> d37885e319 (remove unnecessary check (#8493))
 		current_button.add_overlay(mutable_appearance(icon_icon, button_icon_state))
 		current_button.button_icon_state = button_icon_state
-
 
 //Presets for item actions
 /datum/action/item_action
