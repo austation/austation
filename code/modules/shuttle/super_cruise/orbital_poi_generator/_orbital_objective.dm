@@ -45,7 +45,11 @@
 	completed = TRUE
 	//Handle payout
 	SSeconomy.distribute_funds(payout)
+<<<<<<< HEAD
 	GLOB.exploration_points += payout
+=======
+	bound_bank_account.adjust_currency(ACCOUNT_CURRENCY_EXPLO, payout)
+>>>>>>> 2a0b2e12b0 (Update _orbital_objective.dm (#8510))
 	//Announcement
 	priority_announce("Central Command priority objective completed. [payout] credits have been \
 		distributed across departmental budgets. [payout] points have been distributed to exploration vendors.", "Central Command Report", SSstation.announcer.get_rand_report_sound())
