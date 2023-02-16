@@ -114,7 +114,6 @@
 	slot_flags = ITEM_SLOT_ID
 	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 100, "acid" = 100, "stamina" = 0)
 	resistance_flags = FIRE_PROOF | ACID_PROOF
-	var/mining_points = 0 //For redeeming at mining equipment vendors
 	var/list/access = list()
 	var/registered_name// The name registered_name on the card
 	var/assignment
@@ -146,6 +145,33 @@
 			if(NAMEOF(src, assignment),NAMEOF(src, registered_name))
 				update_label()
 
+<<<<<<< HEAD
+=======
+/obj/item/card/id/vv_get_dropdown()
+	. = ..()
+	VV_DROPDOWN_OPTION("", "---------")
+	VV_DROPDOWN_OPTION(VV_ID_PAYDAY, "Trigger Payday")
+	VV_DROPDOWN_OPTION(VV_ID_GIVE_MINING_POINT, "Give Mining Points")
+
+/obj/item/card/id/vv_do_topic(list/href_list)
+	. = ..()
+	if(href_list[VV_ID_PAYDAY])
+		if(!registered_account)
+			to_chat(usr, "There's no account registered!")
+			return
+		registered_account.payday(1)
+
+	if(href_list[VV_ID_GIVE_MINING_POINT])
+		if(!registered_account)
+			to_chat(usr, "There's no account registered!")
+			return
+		var/target_value = input(usr, "How many mining points would you like to add? (use nagative to take)", "Give mining points") as num
+		if(!registered_account.adjust_currency(ACCOUNT_CURRENCY_MINING, target_value))
+			to_chat(usr, "Failed: Your input was [target_value], but [registered_account.account_holder]'s account has only [registered_account.report_currency(ACCOUNT_CURRENCY_MINING)].")
+		else
+			to_chat(usr, "Success: [target_value] points have been added. [registered_account.account_holder]'s account now holds [registered_account.report_currency(ACCOUNT_CURRENCY_MINING)].")
+
+>>>>>>> 8554076fda (Moving Mining points / Exploration points to bank account (#8370))
 /obj/item/card/id/attackby(obj/item/W, mob/user, params)
 	if(istype(W, /obj/item/holochip))
 		insert_money(W, user)
@@ -274,11 +300,19 @@
 		registered_account.bank_card_talk("<span class='warning'>ERROR: The linked account requires [difference] more credit\s to perform that withdrawal.</span>", TRUE)
 
 /obj/item/card/id/examine(mob/user)
+<<<<<<< HEAD
 	..()
 	if(mining_points)
 		. += "There's [mining_points] mining equipment redemption point\s loaded onto this card."
 	. = ..()
+=======
+	. = ..()
+	if(!electric)  // forces off bank info for paper slip
+		return .
+>>>>>>> 8554076fda (Moving Mining points / Exploration points to bank account (#8370))
 	if(registered_account)
+		if(registered_account.report_currency(ACCOUNT_CURRENCY_MINING))
+			. += "There's [registered_account.report_currency(ACCOUNT_CURRENCY_MINING)] mining equipment redemption point\s loaded onto the account of this card."
 		. += "The account linked to the ID belongs to '[registered_account.account_holder]' and reports a balance of $[registered_account.account_balance]."
 		if(registered_account.account_job)
 			var/datum/bank_account/D = SSeconomy.get_dep_account(registered_account.account_job.paycheck_department)
@@ -390,6 +424,39 @@ update_label("John Doe", "Clowny")
 	var/datum/action/item_action/chameleon/change/chameleon_action = new(src)
 	chameleon_action.chameleon_type = /obj/item/card/id
 	chameleon_action.chameleon_name = "ID Card"
+<<<<<<< HEAD
+=======
+	chameleon_action.chameleon_blacklist = typecacheof(list(
+		/obj/item/card,
+		/obj/item/card/data,
+		/obj/item/card/data/full_color,
+		/obj/item/card/data/disk,
+		/obj/item/card/emag,
+		/obj/item/card/emag/bluespace,
+		/obj/item/card/emag/halloween,
+		/obj/item/card/emagfake,
+		/obj/item/card/id/pass/deputy,
+		/obj/item/card/id/pass/mining_access_card,
+		/obj/item/card/mining_point_card,
+		/obj/item/card/id,
+		/obj/item/card/id/prisoner/one,
+		/obj/item/card/id/prisoner/two,
+		/obj/item/card/id/prisoner/three,
+		/obj/item/card/id/prisoner/four,
+		/obj/item/card/id/prisoner/five,
+		/obj/item/card/id/prisoner/six,
+		/obj/item/card/id/prisoner/seven,
+		/obj/item/card/id/departmental_budget,
+		/obj/item/card/id/syndicate/anyone,
+		/obj/item/card/id/syndicate/nuke_leader,
+		/obj/item/card/id/syndicate/debug,
+		/obj/item/card/id/syndicate/broken,
+		/obj/item/card/id/away/old/apc,
+		/obj/item/card/id/away/deep_storage,
+		/obj/item/card/id/changeling,
+		/obj/item/card/id/golem,
+		/obj/item/card/id/pass), only_root_path = TRUE)
+>>>>>>> 8554076fda (Moving Mining points / Exploration points to bank account (#8370))
 	chameleon_action.initialize_disguises()
 
 /obj/item/card/id/syndicate/afterattack(obj/item/O, mob/user, proximity)
@@ -637,9 +704,33 @@ update_label("John Doe", "Clowny")
 	name = "Prisoner #13-007"
 	registered_name = "Prisoner #13-007"
 
+<<<<<<< HEAD
 /obj/item/card/id/mining
 	name = "mining ID"
+=======
+/obj/item/card/id/golem
+	name = "Golem Mining ID"
+	assignment = "Free Golem"
+	hud_state = JOB_HUD_RAWCARGO
+>>>>>>> 8554076fda (Moving Mining points / Exploration points to bank account (#8370))
 	access = list(ACCESS_MINING, ACCESS_MINING_STATION, ACCESS_MECH_MINING, ACCESS_MAILSORTING, ACCESS_MINERAL_STOREROOM)
+	var/need_setup = TRUE
+
+/obj/item/card/id/golem/Initialize(mapload)
+	registered_account = SSeconomy.get_budget_account(ACCOUNT_GOLEM_ID)
+	. = ..()
+
+/obj/item/card/id/golem/pickup(mob/user)
+	. = ..()
+	if(need_setup)
+		if(isgolem(user))
+			registered_name = user.name // automatically change registered name if it's picked up by a golem at first time
+			update_label()
+		need_setup = FALSE
+		// if non-golem picks it up, the renaming feature will be disabled
+
+/obj/item/card/id/golem/spawner
+	need_setup = FALSE
 
 /obj/item/card/id/away
 	name = "\proper a perfectly generic identification card"

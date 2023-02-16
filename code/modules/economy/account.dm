@@ -3,10 +3,14 @@
 /datum/bank_account
 	var/account_holder = "Rusty Venture"
 	var/account_balance = 0
+<<<<<<< HEAD
 	//Amount payed on each payday
 	var/paycheck_amount = 0
 	//Bonus amount for a single payday
 	var/paycheck_bonus = 0
+=======
+	var/custom_currency = list(ACCOUNT_CURRENCY_MINING = 0)
+>>>>>>> 8554076fda (Moving Mining points / Exploration points to bank account (#8370))
 	var/datum/job/account_job
 	var/list/bank_cards = list()
 	var/add_to_accounts = TRUE
@@ -14,6 +18,18 @@
 	var/welfare = FALSE
 	var/being_dumped = FALSE //pink levels are rising
 	var/withdrawDelay = 0
+<<<<<<< HEAD
+=======
+	/// used for cryo'ed people's account. Once it's TRUE, most bank features of the bank account will be disabled.
+	var/suspended = FALSE
+
+	/// active department will sell things for free
+	var/active_departments = NONE
+	/// payment from each department.
+	var/list/payment_per_department = list()
+	/// bonus from each department.
+	var/list/bonus_per_department = list()
+>>>>>>> 8554076fda (Moving Mining points / Exploration points to bank account (#8370))
 
 /datum/bank_account/New(newname, job)
 	if(add_to_accounts)
@@ -21,7 +37,28 @@
 	account_holder = newname
 	account_job = job
 	account_id = rand(111111,999999)
+<<<<<<< HEAD
 	paycheck_amount = account_job.paycheck
+=======
+	for(var/i in 1 to ACCOUNT_CREATION_MAX_ATTEMPT)
+		if(!SSeconomy.get_bank_account_by_id(account_id)) // Don't get the same account ID
+			break
+		account_id = rand(111111,999999)
+		if(i == ACCOUNT_CREATION_MAX_ATTEMPT)
+			CRASH("Something's wrong on creating a bank account")
+
+	// initialising payment data into an account for each department including non-station
+	for(var/datum/bank_account/department/each as() in subtypesof(/datum/bank_account/department))
+		payment_per_department += list("[initial(each.department_id)]"=0)
+		bonus_per_department += list("[initial(each.department_id)]"=0)
+
+	active_departments = account_job.bank_account_department
+	for(var/D in account_job.payment_per_department)
+		payment_per_department[D] = account_job.payment_per_department[D]
+
+	if(add_to_accounts)
+		SSeconomy.bank_accounts += src // this should be added when New() is finished
+>>>>>>> 8554076fda (Moving Mining points / Exploration points to bank account (#8370))
 
 /datum/bank_account/Destroy()
 	if(add_to_accounts)
@@ -108,15 +145,124 @@
 				if(M.can_hear())
 					to_chat(M, "[icon2html(A, M)] *[message]*")
 
+/datum/bank_account/proc/_adjust_currency(type, amt)
+	custom_currency[type] += amt
+	if(custom_currency[type] < 0)
+		custom_currency[type] = 0
+
+/datum/bank_account/proc/adjust_currency(type, amt)
+	if((amt < 0 && has_currency(type, -amt)) || amt > 0)
+		_adjust_currency(type, amt)
+		return TRUE
+	return FALSE
+
+/datum/bank_account/proc/has_currency(type, amt)
+	return custom_currency[type] >= amt
+
+/datum/bank_account/proc/report_currency(type)
+	return custom_currency[type]
+
 /datum/bank_account/department
 	account_holder = "Guild Credit Agency"
 	var/department_id = "REPLACE_ME"
 	add_to_accounts = FALSE
 
+<<<<<<< HEAD
 /datum/bank_account/department/New(dep_id, budget)
 	department_id = dep_id
 	account_balance = budget
 	account_holder = SSeconomy.department_accounts[dep_id]
 	SSeconomy.generated_accounts += src
+=======
+/datum/bank_account/department/New(budget)
+	account_balance = exclusive_budget_pool ? exclusive_budget_pool : budget
+
+/datum/bank_account/department/civilian
+	account_holder = ACCOUNT_CIV_NAME
+	department_id = ACCOUNT_CIV_ID
+	department_bitflag = ACCOUNT_CIV_BITFLAG
+	budget_ratio = BUDGET_RATIO_TYPE_SINGLE
+	nonstation_account = FALSE
+
+/datum/bank_account/department/service
+	account_holder = ACCOUNT_SRV_NAME
+	department_id = ACCOUNT_SRV_ID
+	department_bitflag = ACCOUNT_SRV_BITFLAG
+	budget_ratio = BUDGET_RATIO_TYPE_SINGLE
+	nonstation_account = FALSE
+
+/datum/bank_account/department/cargo
+	account_holder = ACCOUNT_CAR_NAME
+	department_id = ACCOUNT_CAR_ID
+	department_bitflag = ACCOUNT_CAR_BITFLAG
+	budget_ratio = BUDGET_RATIO_TYPE_DOUBLE
+	nonstation_account = FALSE
+	custom_currency = list(ACCOUNT_CURRENCY_MINING = 100) // enough to buy a bottle of whiskey!
+
+/datum/bank_account/department/science
+	account_holder = ACCOUNT_SCI_NAME
+	department_id = ACCOUNT_SCI_ID
+	department_bitflag = ACCOUNT_SCI_BITFLAG
+	budget_ratio = BUDGET_RATIO_TYPE_DOUBLE
+	nonstation_account = FALSE
+	custom_currency = list(ACCOUNT_CURRENCY_MINING = 0, ACCOUNT_CURRENCY_EXPLO = 0)
+
+/datum/bank_account/department/engineering
+	account_holder = ACCOUNT_ENG_NAME
+	department_id = ACCOUNT_ENG_ID
+	department_bitflag = ACCOUNT_ENG_BITFLAG
+	budget_ratio = BUDGET_RATIO_TYPE_DOUBLE
+	nonstation_account = FALSE
+
+/datum/bank_account/department/medical
+	account_holder = ACCOUNT_MED_NAME
+	department_id = ACCOUNT_MED_ID
+	department_bitflag = ACCOUNT_MED_BITFLAG
+	budget_ratio = BUDGET_RATIO_TYPE_DOUBLE
+	nonstation_account = FALSE
+
+/datum/bank_account/department/security
+	account_holder = ACCOUNT_SEC_NAME
+	department_id = ACCOUNT_SEC_ID
+	department_bitflag = ACCOUNT_SEC_BITFLAG
+	budget_ratio = BUDGET_RATIO_TYPE_DOUBLE
+	nonstation_account = FALSE
+
+/datum/bank_account/department/command
+	account_holder = ACCOUNT_COM_NAME
+	department_id = ACCOUNT_COM_ID
+	department_bitflag = ACCOUNT_COM_BITFLAG
+	show_budget_information = FALSE
+
+/datum/bank_account/department/command/New()
+	exclusive_budget_pool = NON_STATION_BUDGET_BASE
+	..()
+
+/datum/bank_account/department/vip
+	account_holder = ACCOUNT_VIP_NAME
+	department_id = ACCOUNT_VIP_ID
+	department_bitflag = ACCOUNT_VIP_BITFLAG
+	show_budget_information = TRUE // good flavour to flex their wealth power
+
+/datum/bank_account/department/vip/New()
+	exclusive_budget_pool = NON_STATION_BUDGET_BASE
+	..()
+
+/datum/bank_account/department/welfare
+	account_holder = ACCOUNT_NEET_NAME
+	department_id = ACCOUNT_NEET_ID
+	department_bitflag = NONE // this doesn't need bitflag
+
+/datum/bank_account/department/welfare/New()
+	exclusive_budget_pool = NON_STATION_BUDGET_BASE
+	..()
+>>>>>>> 8554076fda (Moving Mining points / Exploration points to bank account (#8370))
+
+// all golems will share this account on their cards. the unknown RD wasn't surely a rich who can make a bank account for every golem.
+/datum/bank_account/department/mining_golem
+	account_holder = ACCOUNT_GOLEM_NAME
+	department_id = ACCOUNT_GOLEM_ID
+	department_bitflag = NONE
+	exclusive_budget_pool = 13 // oh no, someone used it! damn communism!
 
 #undef DUMPTIME

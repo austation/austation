@@ -15,9 +15,13 @@
 	processing_flags = START_PROCESSING_MANUALLY
 
 	layer = BELOW_OBJ_LAYER
+<<<<<<< HEAD
 
 	var/obj/item/card/id/inserted_id
 	var/points = 0
+=======
+	var/stored_points = 0
+>>>>>>> 8554076fda (Moving Mining points / Exploration points to bank account (#8370))
 	var/sheet_per_ore = 1
 	var/point_upgrade = 1
 	var/list/ore_values = list(/datum/material/iron = 1, /datum/material/glass = 1, /datum/material/copper = 5, /datum/material/plasma = 15,  /datum/material/silver = 16, /datum/material/gold = 18, /datum/material/titanium = 30, /datum/material/uranium = 30, /datum/material/diamond = 50, /datum/material/bluespace = 50, /datum/material/bananium = 60)
@@ -41,7 +45,11 @@
 	var/point_upgrade_temp = 1
 	var/sheet_per_ore_temp = 1
 	for(var/obj/item/stock_parts/matter_bin/B in component_parts)
+<<<<<<< HEAD
 		sheet_per_ore_temp = 0.65 + (0.35 * B.rating)
+=======
+		sheet_per_ore_temp = 0.65 + (0.15 * B.rating)
+>>>>>>> 8554076fda (Moving Mining points / Exploration points to bank account (#8370))
 	for(var/obj/item/stock_parts/micro_laser/L in component_parts)
 		point_upgrade_temp = 0.65 + (0.35 * L.rating)
 	point_upgrade = point_upgrade_temp
@@ -76,7 +84,11 @@
 
 	else
 		if(O?.refined_type)
+<<<<<<< HEAD
 			points += O.points * point_upgrade * O.amount
+=======
+			stored_points += O.points * O.amount
+>>>>>>> 8554076fda (Moving Mining points / Exploration points to bank account (#8370))
 		var/mats = O.materials & mat_container.materials
 		var/amount = O.amount
 		mat_container.insert_item(O, sheet_per_ore) //insert it
@@ -222,7 +234,7 @@
 
 /obj/machinery/mineral/ore_redemption/ui_data(mob/user)
 	var/list/data = list()
-	data["unclaimedPoints"] = points
+	data["unclaimedPoints"] = stored_points
 
 	data["materials"] = list()
 	var/datum/component/material_container/mat_container = materials.mat_container
@@ -268,16 +280,22 @@
 	var/datum/component/material_container/mat_container = materials.mat_container
 	switch(action)
 		if("Claim")
+			if(!stored_points)
+				to_chat(usr, "<span class='warning'>No points to claim.</span>")
+				return
+
 			var/mob/M = usr
 			var/obj/item/card/id/I = M.get_idcard(TRUE)
-			if(points)
-				if(I?.mining_points += points)
-					points = 0
-					. = TRUE
-				else
-					to_chat(usr, "<span class='warning'>No ID detected.</span>")
-			else
-				to_chat(usr, "<span class='warning'>No points to claim.</span>")
+			if(!I)
+				to_chat(usr, "<span class='warning'>No ID detected.</span>")
+				return
+			if(!I.registered_account)
+				to_chat(usr, "<span class='warning'>No bank account detected on the ID card.</span>")
+				return
+
+			I.registered_account.adjust_currency(ACCOUNT_CURRENCY_MINING, stored_points)
+			stored_points = 0
+			. = TRUE
 		if("Release")
 			if(!mat_container)
 				return

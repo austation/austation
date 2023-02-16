@@ -98,6 +98,16 @@
 #define VV_HK_MASS_DEL_TYPE "mass_delete_type"
 #define VV_HK_ARMOR_MOD "mod_obj_armor"
 
+<<<<<<< HEAD
+=======
+// /obj/item/card/id
+#define VV_ID_PAYDAY "id_payday"
+#define VV_ID_GIVE_MINING_POINT "id_give_mining_points"
+
+// /obj/machinery/vendor/exploration
+#define VV_ID_GIVE_EXPLO_POINT "id_give_explo_points"
+
+>>>>>>> 8554076fda (Moving Mining points / Exploration points to bank account (#8370))
 // /mob
 #define VV_HK_GIB "gib"
 #define VV_HK_GIVE_SPELL "give_spell"
