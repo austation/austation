@@ -51,6 +51,19 @@
 	var/datum/action/innate/spider/lay_web/lay_web
 	var/directive = "" //Message passed down to children, to relay the creator's orders
 
+<<<<<<< HEAD
+=======
+	//Special spider variables defined here to prevent duplicate procs
+	var/mob/living/simple_animal/hostile/poison/giant_spider/heal_target //used by nurses for healing
+	var/fed = 0 //used by broodmothers to track food
+	var/enriched_fed = 0
+	var/datum/action/innate/spider/lay_eggs/lay_eggs //the ability to lay eggs, granted to broodmothers
+	var/datum/team/spiders/spider_team = null //utilized by AI controlled broodmothers to pass antag team info onto their eggs without a mind
+	role = ROLE_SPIDER
+
+	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
+	minbodytemp = 0
+>>>>>>> 66b3a3d5a3 (Moves some ghost role checks to client/ (#8498))
 	do_footstep = TRUE
 	discovery_points = 1000
 
