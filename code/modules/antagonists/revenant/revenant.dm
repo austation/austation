@@ -351,6 +351,10 @@
 	stasis = FALSE
 
 
+/mob/living/simple_animal/revenant/set_resting(rest, silent = TRUE)
+	to_chat(src, "<span class='warning'>You are too restless to rest now!</span>")
+	return FALSE
+
 //reforming
 /obj/item/ectoplasm/revenant
 	name = "glimmering residue"
