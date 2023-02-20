@@ -97,6 +97,7 @@
 					/obj/item/clothing/suit/hooded/wintercoat/engineering = 3,
 					/obj/item/clothing/under/rank/engineering/engineer = 3,
 					/obj/item/clothing/under/rank/engineering/engineer/hazard = 3,
+					/obj/item/clothing/under/rank/engineering/engineer/skirt = 3,
 					/obj/item/clothing/suit/hazardvest = 3,
 					/obj/item/clothing/shoes/workboots = 3,
 					/obj/item/clothing/head/hardhat = 3,
@@ -123,7 +124,13 @@
 					/obj/item/clothing/head/helmet/space/plasmaman/engineering/atmospherics = 3,
 					/obj/item/clothing/suit/hooded/wintercoat/engineering/atmos = 3,
 					/obj/item/clothing/under/rank/engineering/atmospheric_technician = 3,
+<<<<<<< HEAD
 					/obj/item/clothing/shoes/sneakers/black = 3)
+=======
+					/obj/item/clothing/under/rank/engineering/atmospheric_technician/skirt = 3,
+					/obj/item/clothing/shoes/sneakers/black = 3,
+					/obj/item/clothing/head/beret/atmos = 3)
+>>>>>>> eb64f5ca33 (Re-make of Departmental Skirts: Engineering (#8527))
 	contraband = list(/obj/item/clothing/suit/hooded/wintercoat/engineering/atmos/old = 3)
 	refill_canister = /obj/item/vending_refill/wardrobe/atmos_wardrobe
 	payment_department = ACCOUNT_ENG

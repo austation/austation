@@ -6,6 +6,30 @@
 /obj/structure/closet/secure_closet/engineering_chief/PopulateContents()
 	..()
 	new /obj/item/gun/energy/e_gun/mini/heads(src)
+<<<<<<< HEAD
+=======
+
+/obj/item/storage/box/suitbox/ce_tools
+	name = "compression box of chief engineer tools"
+
+/obj/item/storage/box/suitbox/ce_tools/PopulateContents()
+	new /obj/item/pipe_dispenser(src)
+	new /obj/item/multitool(src)
+	new /obj/item/inducer(src)
+	new /obj/item/airlock_painter(src)
+	new /obj/item/extinguisher/advanced(src)
+	new /obj/item/construction/rcd/loaded(src)
+	new /obj/item/rcd_ammo/large(src)
+	new /obj/item/holosign_creator/engineering(src)
+	new /obj/item/holosign_creator/atmos(src)
+
+/obj/item/storage/box/suitbox/ce
+	name = "compression box of chief engineer outfits"
+
+/obj/item/storage/box/suitbox/ce/PopulateContents()
+	new /obj/item/clothing/under/rank/engineering/chief_engineer(src)
+	new /obj/item/clothing/under/rank/engineering/chief_engineer/skirt(src)
+>>>>>>> eb64f5ca33 (Re-make of Departmental Skirts: Engineering (#8527))
 	new /obj/item/clothing/head/beret/ce(src)
 	new /obj/item/clothing/neck/cloak/ce(src)
 	new /obj/item/clothing/under/rank/engineering/chief_engineer(src)
