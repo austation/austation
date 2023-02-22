@@ -11,6 +11,7 @@
 	var/buy_word = "Learn"
 	var/limit //used to prevent a spellbook_entry from being bought more than X times with one wizard spellbook
 	var/list/no_coexistance_typecache //Used so you can't have specific spells together
+	var/no_random = FALSE // This is awful one to be a part of randomness - i.e.) soul tap
 
 /datum/spellbook_entry/New()
 	..()
@@ -207,6 +208,7 @@
 	spell_type = /obj/effect/proc_holder/spell/targeted/lichdom
 	category = "Defensive"
 	cost = 3
+	no_random = WIZARD_NORANDOM_WILDAPPRENTICE
 
 /datum/spellbook_entry/teslablast
 	name = "Tesla Blast"
@@ -252,6 +254,7 @@
 	spell_type = /obj/effect/proc_holder/spell/self/tap
 	category = "Assistance"
 	cost = 1
+	no_random = WIZARD_NORANDOM_WILDAPPRENTICE
 
 /datum/spellbook_entry/spacetime_dist
 	name = "Spacetime Distortion"
