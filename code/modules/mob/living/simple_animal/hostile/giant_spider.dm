@@ -318,6 +318,238 @@
 	busy = SPIDER_IDLE
 	stop_automated_movement = FALSE
 
+<<<<<<< HEAD
+=======
+/mob/living/simple_animal/hostile/poison/giant_spider/proc/do_action()
+	stop_automated_movement = FALSE
+	SSmove_manager.stop_looping(src)
+
+/mob/living/simple_animal/hostile/poison/giant_spider/AttackingTarget()
+	if(is_busy)
+		return
+	var/mob/target_mob = target
+	if(!istype(target_mob))
+		return ..()
+	// Spider IFF
+	if(istype(target, /mob/living/simple_animal/hostile/poison/giant_spider))
+		visible_message("<span class='notice'>[src] nuzzles [target_mob.name]!</span>", \
+			"<span class='notice'>You nuzzle [target_mob.name]!</span>", null, COMBAT_MESSAGE_RANGE)
+		return
+	return ..()
+s
+/mob/living/simple_animal/hostile/poison/giant_spider/proc/GiveUp()
+	if(busy == MOVING_TO_TARGET)
+		cocoon_target = null
+		heal_target = null
+		busy = FALSE
+		stop_automated_movement = FALSE
+		SSmove_manager.stop_looping(src)
+
+// Tarantulas are the balanced generalist of the spider family: Moderate stats all around.
+/mob/living/simple_animal/hostile/poison/giant_spider/tarantula
+	name = "tarantula"
+	obj_damage = 35
+	speed = 0.5
+	onweb_speed = 0
+
+// Nurses heal other spiders and maintain the core of the nest.
+/mob/living/simple_animal/hostile/poison/giant_spider/nurse
+	name = "nurse"
+	desc = "Furry and black, it makes you shudder to look at it. This one has brilliant green eyes."
+	icon_state = "nurse"
+	icon_living = "nurse"
+	icon_dead = "nurse_dead"
+	gender = FEMALE
+	maxHealth = 45
+	health = 45
+	melee_damage = 10
+	poison_per_bite = 3
+	speed = 1
+	onweb_speed = 0
+	web_speed = 0.33
+	///The health HUD applied to the mob.
+	var/health_hud = DATA_HUD_MEDICAL_ADVANCED
+
+/mob/living/simple_animal/hostile/poison/giant_spider/nurse/Initialize(mapload)
+	. = ..()
+	var/datum/atom_hud/datahud = GLOB.huds[health_hud]
+	datahud.add_hud_to(src)
+
+// Allows nurses to heal other spiders if they're adjacent
+/mob/living/simple_animal/hostile/poison/giant_spider/nurse/AttackingTarget()
+	if(is_busy)
+		return
+	var/mob/target_mob = target
+	if(!istype(target_mob))
+		return ..()
+	if(!istype(target, /mob/living/simple_animal/hostile/poison/giant_spider))
+		return ..()
+	var/mob/living/simple_animal/hostile/poison/giant_spider/hurt_spider = target
+	if(hurt_spider == src)
+		to_chat(src, "<span class='warning'>You don't have the dexerity to wrap your own wounds.</span>")
+		return
+	if(hurt_spider.health >= hurt_spider.maxHealth)
+		to_chat(src, "<span class='warning'>You can't find any wounds to wrap up.</span>")
+		return ..() // IFF is handled in parent
+	visible_message("<span class='notice'>[src] begins wrapping the wounds of [hurt_spider].</span>","<span class='notice'>You begin wrapping the wounds of [hurt_spider].</span>")
+	is_busy = TRUE
+	if(do_after(src, 20, target = hurt_spider))
+		hurt_spider.heal_overall_damage(20)
+		new /obj/effect/temp_visual/heal(get_turf(hurt_spider), "#80F5FF")
+		visible_message("<span class='notice'>[src] wraps the wounds of [hurt_spider].</span>","<span class='notice'>You wrap the wounds of [hurt_spider].</span>")
+	is_busy = FALSE
+
+//Handles AI nurse healing when spiders are idle
+/mob/living/simple_animal/hostile/poison/giant_spider/nurse/handle_automated_movement()
+	if(AIStatus == AI_IDLE)
+		if(!busy)
+			var/list/can_see = view(10, src)
+			for(var/mob/living/C in can_see)
+				if(istype(C, /mob/living/simple_animal/hostile/poison/giant_spider) && C.health < C.maxHealth)
+					heal_target = C
+					busy = MOVING_TO_TARGET
+					Goto(C, move_to_delay)
+					addtimer(CALLBACK(src, .proc/GiveUp), 20 SECONDS) //to prevent infinite chases
+		if(heal_target && get_dist(src, heal_target) <= 1)
+			UnarmedAttack(heal_target)
+			if(heal_target.health >= heal_target.maxHealth)
+				GiveUp(heal_target)
+	..() //Do normal stuff after giving priority to healing attempts
+
+//Broodmothers have well rounded stats and are able to lay eggs, but somewhat slow.
+/mob/living/simple_animal/hostile/poison/giant_spider/broodmother
+	name = "broodmother"
+	desc = "Furry and black, it makes you shudder to look at it. This one has scintillating green eyes."
+	icon_state = "broodmother"
+	icon_living = "broodmother"
+	icon_dead = "broodmother_dead"
+	maxHealth = 90
+	health = 90
+	melee_damage = 15
+	poison_per_bite = 5
+	speed = 2
+	onweb_speed = 1
+	web_speed = 0.25
+
+	gender = FEMALE
+	butcher_results = list(/obj/item/reagent_containers/food/snacks/meat/slab/spider = 2, /obj/item/reagent_containers/food/snacks/spiderleg = 8, /obj/item/reagent_containers/food/snacks/spidereggs = 4)
+	var/obj/effect/proc_holder/wrap/wrap
+	var/datum/action/innate/spider/set_directive/set_directive
+	/// Allows the spider to use spider comms
+	var/datum/action/innate/spider/comm/letmetalkpls
+
+/mob/living/simple_animal/hostile/poison/giant_spider/broodmother/Initialize(mapload)
+	. = ..()
+	RemoveAbility(lesserwrap)
+	wrap = new
+	AddAbility(wrap)
+	lay_eggs = new
+	lay_eggs.Grant(src)
+	set_directive = new
+	set_directive.Grant(src)
+	letmetalkpls = new
+	letmetalkpls.Grant(src)
+
+/mob/living/simple_animal/hostile/poison/giant_spider/broodmother/Destroy()
+	RemoveAbility(wrap)
+	QDEL_NULL(lay_eggs)
+	QDEL_NULL(set_directive)
+	QDEL_NULL(letmetalkpls)
+	return ..()
+
+//Handles Broodmother feeding and egglaying
+/mob/living/simple_animal/hostile/poison/giant_spider/broodmother/handle_automated_movement()
+	if(AIStatus == AI_IDLE && !busy)
+		var/list/can_see = view(10, src)
+		for(var/mob/living/C in can_see)
+			if(istype(C, /mob/living/simple_animal/hostile/poison/giant_spider))
+				continue //Not interested in other spiders for food
+			else if(C.stat && !C.anchored)
+				cocoon_target = C
+				busy = MOVING_TO_TARGET
+				Goto(C, move_to_delay)
+				addtimer(CALLBACK(src, .proc/GiveUp, C), 20 SECONDS)
+		if(prob(10) && lay_eggs.IsAvailable()) //so eggs aren't always placed immediately and directly by corpses
+			lay_eggs.Activate()
+	..()
+
+// Hunters are the most independant of the spiders, not relying on web and having a bit more damage and venom at the cost of health.
+// They are intended to bring prey back from outside of the web.
+/mob/living/simple_animal/hostile/poison/giant_spider/hunter
+	name = "hunter"
+	desc = "Furry and black, it makes you shudder to look at it. This one has sparkling purple eyes."
+	icon_state = "hunter"
+	icon_living = "hunter"
+	icon_dead = "hunter_dead"
+	maxHealth = 65
+	health = 65
+	melee_damage = 18
+	poison_per_bite = 5
+	move_to_delay = 3
+	speed = 0
+
+// Vipers are physically very weak and fragile, but also very fast and inject a lot of venom. 
+/mob/living/simple_animal/hostile/poison/giant_spider/hunter/viper
+	name = "viper"
+	desc = "Furry and black, it makes you shudder to look at it. This one has effervescent purple eyes."
+	icon_state = "viper"
+	icon_living = "viper"
+	icon_dead = "viper_dead"
+	maxHealth = 35
+	health = 35
+	melee_damage = 8
+	poison_per_bite = 8
+	onweb_speed = -1
+	move_to_delay = 2
+	poison_type = /datum/reagent/toxin/venom
+
+//Guards are really tanky brutes that rely on force more than venom but perform very poorly away from webs. 
+/mob/living/simple_animal/hostile/poison/giant_spider/guard
+	name = "guard"
+	desc = "Furry and black, it makes you shudder to look at it. This one has abyssal red eyes."
+	icon_state = "guard"
+	icon_living = "guard"
+	icon_dead = "guard_dead"
+	maxHealth = 125
+	health = 125
+	melee_damage = 22
+	poison_per_bite = 1 //rely on brute force, but they're still spiders. 
+	obj_damage = 50
+	move_to_delay = 5
+	speed = 3
+	web_speed = 1
+	onweb_speed = 0
+	status_flags = NONE
+	mob_size = MOB_SIZE_LARGE
+	web_speed = 0.5
+
+// Ice spiders - for when you want a spider that really doesn't care about atmos
+/mob/living/simple_animal/hostile/poison/giant_spider/ice
+	name = "ice spider"
+	maxbodytemp = 1500
+	poison_type = /datum/reagent/consumable/frostoil
+	color = rgb(114,228,250)
+
+/mob/living/simple_animal/hostile/poison/giant_spider/nurse/ice
+	name = "ice nurse"
+	maxbodytemp = 1500
+	poison_type = /datum/reagent/consumable/frostoil
+	color = rgb(114,228,250)
+
+/mob/living/simple_animal/hostile/poison/giant_spider/hunter/ice
+	name = "ice hunter"
+	maxbodytemp = 1500
+	poison_type = /datum/reagent/consumable/frostoil
+	color = rgb(114,228,250)
+
+// Buffed spider for wizards to use
+/mob/living/simple_animal/hostile/poison/giant_spider/hunter/viper/wizard
+	maxHealth = 100
+	health = 100
+
+// SPIDER ACTIONS/PROCS
+
+>>>>>>> d9146edd6f (Update giant_spider.dm (#8561))
 /datum/action/innate/spider
 	icon_icon = 'icons/mob/actions/actions_animal.dmi'
 	background_icon_state = "bg_alien"
