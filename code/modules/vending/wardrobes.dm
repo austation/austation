@@ -69,8 +69,13 @@
 					/obj/item/clothing/under/rank/medical/doctor/skirt= 4,
 					/obj/item/clothing/under/plasmaman/medical = 4,
 					/obj/item/clothing/head/helmet/space/plasmaman/medical = 4,
+<<<<<<< HEAD
 					/obj/item/clothing/suit/toggle/labcoat = 4,
 					/obj/item/clothing/suit/toggle/labcoat/emt = 4,
+=======
+					/obj/item/clothing/suit/toggle/labcoat/med = 4,
+					/obj/item/clothing/suit/toggle/labcoat/med/paramedic = 4,
+>>>>>>> 26b70a7a6d (Makes a new subtype of labcoat that can store medkits, makes medkits bulky (#8461))
 					/obj/item/clothing/shoes/sneakers/white = 4,
 					/obj/item/clothing/head/soft/emt = 4,
 					/obj/item/clothing/suit/apron/surgical = 4,

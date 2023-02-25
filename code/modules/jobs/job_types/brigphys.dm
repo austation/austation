@@ -41,9 +41,15 @@
 	glasses = /obj/item/clothing/glasses/hud/health/sunglasses
 	suit = /obj/item/clothing/suit/hazardvest/brig_phys
 	gloves = /obj/item/clothing/gloves/color/latex/nitrile
+<<<<<<< HEAD:code/modules/jobs/job_types/brigphys.dm
 	suit_store = /obj/item/flashlight/seclite
 	l_hand = /obj/item/storage/firstaid/medical
 	head = /obj/item/clothing/head/soft/sec/brig_phys
+=======
+	suit_store = /obj/item/storage/firstaid/medical
+	l_pocket = /obj/item/flashlight/seclite
+	head = /obj/item/clothing/head/soft/sec/brig_physician
+>>>>>>> 26b70a7a6d (Makes a new subtype of labcoat that can store medkits, makes medkits bulky (#8461)):code/modules/jobs/job_types/brig_physician.dm
 
 	backpack = /obj/item/storage/backpack/medic
 	satchel = /obj/item/storage/backpack/satchel/med

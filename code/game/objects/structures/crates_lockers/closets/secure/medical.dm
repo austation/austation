@@ -86,6 +86,13 @@
 	new /obj/item/clothing/head/beret/cmo(src)
 	new /obj/item/clothing/neck/cloak/cmo(src)
 	new /obj/item/storage/backpack/duffelbag/med(src)
+<<<<<<< HEAD
+=======
+	new /obj/item/clothing/suit/toggle/labcoat/med/cmo(src)
+	new /obj/item/clothing/gloves/color/latex/nitrile(src)
+	new /obj/item/radio/headset/heads/cmo(src)
+
+>>>>>>> 26b70a7a6d (Makes a new subtype of labcoat that can store medkits, makes medkits bulky (#8461))
 	new /obj/item/clothing/suit/bio_suit/cmo(src)
 	new /obj/item/clothing/head/bio_hood/cmo(src)
 	new /obj/item/clothing/suit/toggle/labcoat/cmo(src)

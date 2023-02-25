@@ -16,13 +16,23 @@
 
 /datum/gear/suit/labcoat/brig_doc
 	display_name = "brig physician's labcoat"
+<<<<<<< HEAD
 	path = /obj/item/clothing/suit/toggle/labcoat/brig_phys
 	allowed_roles = list("Brig Physician")
+=======
+	path = /obj/item/clothing/suit/toggle/labcoat/med/brig_physician
+	allowed_roles = list(JOB_NAME_BRIGPHYSICIAN)
+>>>>>>> 26b70a7a6d (Makes a new subtype of labcoat that can store medkits, makes medkits bulky (#8461))
 
 /datum/gear/suit/labcoat/emt
 	display_name = "EMT labcoat"
+<<<<<<< HEAD
 	path = /obj/item/clothing/suit/toggle/labcoat/emt
 	allowed_roles = list("Medical Doctor", "Chief Medical Officer", "Chemist", "Geneticist")
+=======
+	path = /obj/item/clothing/suit/toggle/labcoat/med/paramedic
+	allowed_roles = list(JOB_NAME_MEDICALDOCTOR, JOB_NAME_CHIEFMEDICALOFFICER, JOB_NAME_PARAMEDIC)
+>>>>>>> 26b70a7a6d (Makes a new subtype of labcoat that can store medkits, makes medkits bulky (#8461))
 
 //WINTER COATS
 /datum/gear/suit/wintercoat

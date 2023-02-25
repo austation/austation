@@ -40,11 +40,17 @@
 	gloves = /obj/item/clothing/gloves/color/latex/nitrile
 	uniform = /obj/item/clothing/under/rank/medical/emt
 	shoes = /obj/item/clothing/shoes/sneakers/white
+<<<<<<< HEAD:code/modules/jobs/job_types/emt.dm
 	head = /obj/item/clothing/head/soft/emt
 	suit =  /obj/item/clothing/suit/toggle/labcoat/emt
 	l_hand = /obj/item/storage/firstaid/medical
+=======
+	head = /obj/item/clothing/head/soft/paramedic
+	suit =  /obj/item/clothing/suit/toggle/labcoat/med/paramedic
+>>>>>>> 26b70a7a6d (Makes a new subtype of labcoat that can store medkits, makes medkits bulky (#8461)):code/modules/jobs/job_types/paramedic.dm
 	l_pocket = /obj/item/pinpointer/crew
-	suit_store = /obj/item/sensor_device
+	r_pocket = /obj/item/sensor_device
+	suit_store = /obj/item/storage/firstaid/medical
 
 	backpack = /obj/item/storage/backpack/medic
 	satchel = /obj/item/storage/backpack/satchel/med

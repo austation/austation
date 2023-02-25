@@ -18,6 +18,11 @@
 	righthand_file = 'icons/mob/inhands/equipment/medical_righthand.dmi'
 	throw_speed = 3
 	throw_range = 7
+<<<<<<< HEAD
+=======
+	w_class = WEIGHT_CLASS_BULKY
+	var/skin_type = MEDBOT_SKIN_DEFAULT
+>>>>>>> 26b70a7a6d (Makes a new subtype of labcoat that can store medkits, makes medkits bulky (#8461))
 	var/empty = FALSE
 	var/damagetype_healed //defines damage type of the medkit. General ones stay null. Used for medibot healing bonuses
 
@@ -350,6 +355,11 @@
 	desc = "I hope you've got insurance."
 	icon_state = "firstaid-combat"
 	item_state = "firstaid-combat"
+<<<<<<< HEAD
+=======
+	skin_type = MEDBOT_SKIN_SYNDI
+	w_class = WEIGHT_CLASS_NORMAL
+>>>>>>> 26b70a7a6d (Makes a new subtype of labcoat that can store medkits, makes medkits bulky (#8461))
 
 /obj/item/storage/firstaid/tactical/Initialize(mapload)
 	. = ..()
