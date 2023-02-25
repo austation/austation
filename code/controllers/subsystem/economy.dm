@@ -4,6 +4,7 @@ SUBSYSTEM_DEF(economy)
 	init_order = INIT_ORDER_ECONOMY
 	runlevels = RUNLEVEL_GAME
 	var/roundstart_paychecks = 5
+<<<<<<< HEAD
 	var/budget_pool = 25000
 	var/list/department_accounts = list(ACCOUNT_CIV = ACCOUNT_CIV_NAME,
 										ACCOUNT_ENG = ACCOUNT_ENG_NAME,
@@ -13,6 +14,9 @@ SUBSYSTEM_DEF(economy)
 										ACCOUNT_CAR = ACCOUNT_CAR_NAME,
 										ACCOUNT_SEC = ACCOUNT_SEC_NAME)
 	var/list/generated_accounts = list()
+=======
+	var/budget_pool = 50000
+>>>>>>> 1455e43df3 (Resource limiting: cargo supply, roundstart stockpile reductions (Armoury & Med) and limited sleepers. (#7861))
 	var/full_ancap = FALSE // Enables extra money charges for things that normally would be free, such as sleepers/cryo/cloning.
 							//Take care when enabling, as players will NOT respond well if the economy is set up for low cash flows.
 	var/list/bank_accounts = list() //List of normal accounts (not department accounts)

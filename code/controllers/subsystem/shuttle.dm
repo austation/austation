@@ -34,15 +34,13 @@ SUBSYSTEM_DEF(shuttle)
 
 		//supply shuttle stuff
 	var/obj/docking_port/mobile/supply/supply
+<<<<<<< HEAD
 	var/ordernum = 1					//order number given to next order
 	var/points = 5000					//number of trade-points we have
+=======
+>>>>>>> 1455e43df3 (Resource limiting: cargo supply, roundstart stockpile reductions (Armoury & Med) and limited sleepers. (#7861))
 	var/centcom_message = ""			//Remarks from CentCom on how well you checked the last order.
 	var/list/discoveredPlants = list()	//Typepaths for unusual plants we've already sent CentCom, associated with their potencies
-
-	var/list/supply_packs = list()
-	var/list/shoppinglist = list()
-	var/list/requestlist = list()
-	var/list/orderhistory = list()
 
 	var/list/hidden_shuttle_turfs = list() //all turfs hidden from navigation computers associated with a list containing the image hiding them and the type of the turf they are pretending to be
 	var/list/hidden_shuttle_turf_images = list() //only the images from the above list
@@ -66,14 +64,6 @@ SUBSYSTEM_DEF(shuttle)
 	var/shuttles_loaded = FALSE
 
 /datum/controller/subsystem/shuttle/Initialize(timeofday)
-	ordernum = rand(1, 9000)
-
-	for(var/pack in subtypesof(/datum/supply_pack))
-		var/datum/supply_pack/P = new pack()
-		if(!P.contains)
-			continue
-		supply_packs[P.type] = P
-
 	initial_load()
 
 	if(!arrivals)
@@ -544,13 +534,6 @@ SUBSYSTEM_DEF(shuttle)
 	if (istype(SSshuttle.discoveredPlants))
 		discoveredPlants = SSshuttle.discoveredPlants
 
-	if (istype(SSshuttle.shoppinglist))
-		shoppinglist = SSshuttle.shoppinglist
-	if (istype(SSshuttle.requestlist))
-		requestlist = SSshuttle.requestlist
-	if (istype(SSshuttle.orderhistory))
-		orderhistory = SSshuttle.orderhistory
-
 	if (istype(SSshuttle.shuttle_loan))
 		shuttle_loan = SSshuttle.shuttle_loan
 
@@ -559,8 +542,11 @@ SUBSYSTEM_DEF(shuttle)
 
 	var/datum/bank_account/D = SSeconomy.get_dep_account(ACCOUNT_CAR)
 	centcom_message = SSshuttle.centcom_message
+<<<<<<< HEAD
 	ordernum = SSshuttle.ordernum
 	points = D.account_balance
+=======
+>>>>>>> 1455e43df3 (Resource limiting: cargo supply, roundstart stockpile reductions (Armoury & Med) and limited sleepers. (#7861))
 	emergencyNoEscape = SSshuttle.emergencyNoEscape
 	emergencyCallAmount = SSshuttle.emergencyCallAmount
 	shuttle_purchased = SSshuttle.shuttle_purchased
