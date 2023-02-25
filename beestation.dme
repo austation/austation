@@ -1079,6 +1079,7 @@
 #include "code\game\objects\items\latexballoon.dm"
 #include "code\game\objects\items\manuals.dm"
 #include "code\game\objects\items\miscellaneous.dm"
+#include "code\game\objects\items\mjolnir.dm"
 #include "code\game\objects\items\mop.dm"
 #include "code\game\objects\items\paint.dm"
 #include "code\game\objects\items\paiwire.dm"

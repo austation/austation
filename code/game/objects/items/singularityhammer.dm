@@ -77,6 +77,7 @@
 			playsound(user, 'sound/weapons/marauder.ogg', 50, 1)
 			var/turf/target = get_turf(A)
 			vortex(target,user)
+<<<<<<< HEAD
 
 /obj/item/mjollnir
 	name = "Mjolnir"
@@ -129,3 +130,5 @@
 /obj/item/mjollnir/update_icon()  //Currently only here to fuck with the on-mob icons.
 	icon_state = "mjollnir0"
 	..()
+=======
+>>>>>>> 5a0382cefa (Makes the Mjolnir even more legendary (#8173))
