@@ -22,6 +22,13 @@ SUBSYSTEM_DEF(processing)
 /datum/controller/subsystem/processing/fire(resumed = 0)
 	if (!resumed)
 		currentrun = processing.Copy()
+<<<<<<< HEAD
+=======
+
+	var/continuous_delta_time = last_time_fired == 0 ? wait : (CLAMP(world.timeofday - last_time_fired, 0.5 * wait, 2 * wait))
+	last_time_fired = world.timeofday
+
+>>>>>>> 4a3ad1c071 (Clamps processing subsystems delta time (#8569))
 	//cache for sanic speed (lists are references anyways)
 	var/list/current_run = currentrun
 
