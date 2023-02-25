@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 #define DUMPTIME 3000
+=======
+#define ACCOUNT_CREATION_MAX_ATTEMPT 2000
+>>>>>>> 3acc5e6898 (CRAB-17 is now more annoying (#8310))
 
 /datum/bank_account
 	var/account_holder = "Rusty Venture"
@@ -11,8 +15,11 @@
 	var/list/bank_cards = list()
 	var/add_to_accounts = TRUE
 	var/account_id
+<<<<<<< HEAD
 	var/welfare = FALSE
 	var/being_dumped = FALSE //pink levels are rising
+=======
+>>>>>>> 3acc5e6898 (CRAB-17 is now more annoying (#8310))
 	var/withdrawDelay = 0
 
 /datum/bank_account/New(newname, job)
@@ -27,10 +34,6 @@
 	if(add_to_accounts)
 		SSeconomy.bank_accounts -= src
 	return ..()
-
-/datum/bank_account/proc/dumpeet()
-	being_dumped = TRUE
-	withdrawDelay = world.time + DUMPTIME
 
 /datum/bank_account/proc/_adjust_money(amt)
 	account_balance += amt
@@ -113,6 +116,7 @@
 	var/department_id = "REPLACE_ME"
 	add_to_accounts = FALSE
 
+<<<<<<< HEAD
 /datum/bank_account/department/New(dep_id, budget)
 	department_id = dep_id
 	account_balance = budget
@@ -120,3 +124,94 @@
 	SSeconomy.generated_accounts += src
 
 #undef DUMPTIME
+=======
+/datum/bank_account/department/New(budget)
+	account_balance = exclusive_budget_pool ? exclusive_budget_pool : budget
+
+/datum/bank_account/department/civilian
+	account_holder = ACCOUNT_CIV_NAME
+	department_id = ACCOUNT_CIV_ID
+	department_bitflag = ACCOUNT_CIV_BITFLAG
+	budget_ratio = BUDGET_RATIO_TYPE_SINGLE
+	nonstation_account = FALSE
+
+/datum/bank_account/department/service
+	account_holder = ACCOUNT_SRV_NAME
+	department_id = ACCOUNT_SRV_ID
+	department_bitflag = ACCOUNT_SRV_BITFLAG
+	budget_ratio = BUDGET_RATIO_TYPE_SINGLE
+	nonstation_account = FALSE
+
+/datum/bank_account/department/cargo
+	account_holder = ACCOUNT_CAR_NAME
+	department_id = ACCOUNT_CAR_ID
+	department_bitflag = ACCOUNT_CAR_BITFLAG
+	budget_ratio = BUDGET_RATIO_TYPE_DOUBLE
+	nonstation_account = FALSE
+	custom_currency = list(ACCOUNT_CURRENCY_MINING = 100) // enough to buy a bottle of whiskey!
+
+/datum/bank_account/department/science
+	account_holder = ACCOUNT_SCI_NAME
+	department_id = ACCOUNT_SCI_ID
+	department_bitflag = ACCOUNT_SCI_BITFLAG
+	budget_ratio = BUDGET_RATIO_TYPE_DOUBLE
+	nonstation_account = FALSE
+	custom_currency = list(ACCOUNT_CURRENCY_MINING = 0, ACCOUNT_CURRENCY_EXPLO = 0)
+
+/datum/bank_account/department/engineering
+	account_holder = ACCOUNT_ENG_NAME
+	department_id = ACCOUNT_ENG_ID
+	department_bitflag = ACCOUNT_ENG_BITFLAG
+	budget_ratio = BUDGET_RATIO_TYPE_DOUBLE
+	nonstation_account = FALSE
+
+/datum/bank_account/department/medical
+	account_holder = ACCOUNT_MED_NAME
+	department_id = ACCOUNT_MED_ID
+	department_bitflag = ACCOUNT_MED_BITFLAG
+	budget_ratio = BUDGET_RATIO_TYPE_DOUBLE
+	nonstation_account = FALSE
+
+/datum/bank_account/department/security
+	account_holder = ACCOUNT_SEC_NAME
+	department_id = ACCOUNT_SEC_ID
+	department_bitflag = ACCOUNT_SEC_BITFLAG
+	budget_ratio = BUDGET_RATIO_TYPE_DOUBLE
+	nonstation_account = FALSE
+
+/datum/bank_account/department/command
+	account_holder = ACCOUNT_COM_NAME
+	department_id = ACCOUNT_COM_ID
+	department_bitflag = ACCOUNT_COM_BITFLAG
+	show_budget_information = FALSE
+
+/datum/bank_account/department/command/New()
+	exclusive_budget_pool = NON_STATION_BUDGET_BASE
+	..()
+
+/datum/bank_account/department/vip
+	account_holder = ACCOUNT_VIP_NAME
+	department_id = ACCOUNT_VIP_ID
+	department_bitflag = ACCOUNT_VIP_BITFLAG
+	show_budget_information = TRUE // good flavour to flex their wealth power
+
+/datum/bank_account/department/vip/New()
+	exclusive_budget_pool = NON_STATION_BUDGET_BASE
+	..()
+
+/datum/bank_account/department/welfare
+	account_holder = ACCOUNT_NEET_NAME
+	department_id = ACCOUNT_NEET_ID
+	department_bitflag = NONE // this doesn't need bitflag
+
+/datum/bank_account/department/welfare/New()
+	exclusive_budget_pool = NON_STATION_BUDGET_BASE
+	..()
+
+// all golems will share this account on their cards. the unknown RD wasn't surely a rich who can make a bank account for every golem.
+/datum/bank_account/department/mining_golem
+	account_holder = ACCOUNT_GOLEM_NAME
+	department_id = ACCOUNT_GOLEM_ID
+	department_bitflag = NONE
+	exclusive_budget_pool = 13 // oh no, someone used it! damn communism
+>>>>>>> 3acc5e6898 (CRAB-17 is now more annoying (#8310))
