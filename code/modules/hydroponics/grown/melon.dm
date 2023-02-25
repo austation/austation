@@ -75,3 +75,32 @@
 	to_chat(user, "<span class='warning'>[src] rapidly turns into ash!</span>")
 	qdel(src)
 	new /obj/effect/decal/cleanable/ash(drop_location())
+<<<<<<< HEAD
+=======
+
+// ballolon
+/obj/item/seeds/watermelon/ballolon
+	name = "pack of ballolon seeds"
+	desc = "These seeds grow into ballolon plants."
+	icon_state = "seed-ballolon"
+	species = "ballolon"
+	plantname = "Ballolon Vines"
+	product = /obj/item/reagent_containers/food/snacks/grown/ballolon
+	genes = list(/datum/plant_gene/trait/repeated_harvest, /datum/plant_gene/trait/smoke)
+	mutatelist = list()
+	reagents_add = list(/datum/reagent/oxygen = 0.2, /datum/reagent/hydrogen = 0.2)
+	rarity = 15
+
+/obj/item/reagent_containers/food/snacks/grown/ballolon
+	seed = /obj/item/seeds/watermelon/ballolon
+	name = "ballolon"
+	desc = "A organic balloon, lighter then air."
+	icon_state = "ballolon"
+	item_state = "ballolon"
+	lefthand_file = 'icons/mob/inhands/antag/balloons_lefthand.dmi'
+	righthand_file = 'icons/mob/inhands/antag/balloons_righthand.dmi'
+	filling_color = "#e35b6f"
+	throw_range = 1
+	throw_speed = 1
+	discovery_points = 300
+>>>>>>> 389c3c22b2 (main (#8575))
