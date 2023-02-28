@@ -1,12 +1,17 @@
 //update_state
+<<<<<<< HEAD
 #define UPSTATE_CELL_IN		(1<<0)
 #define UPSTATE_OPENED1		(1<<1)
 #define UPSTATE_OPENED2		(1<<2)
+=======
+//Shifts 0/1/2 are used by UPSTATE_OPENED1 and UPSTATE_OPENED2 with a base shift of 0 (see _DEFINES/apc.dm)
+>>>>>>> f3e50c9c3f (Fixes an APC icon issue (#8462))
 #define UPSTATE_MAINT		(1<<3)
 #define UPSTATE_BROKE		(1<<4)
 #define UPSTATE_BLUESCREEN	(1<<5)
 #define UPSTATE_WIREEXP		(1<<6)
 #define UPSTATE_ALLGOOD		(1<<7)
+#define UPSTATE_CELL_IN		(1<<8)
 
 #define APC_RESET_EMP "emp"
 
@@ -365,6 +370,53 @@
 
 	icon_update_needed = FALSE
 
+<<<<<<< HEAD
+=======
+/obj/machinery/power/apc/update_icon_state()
+	if(!update_state)
+		icon_state = "apc0"
+		return ..()
+	if(update_state & (UPSTATE_OPENED1|UPSTATE_OPENED2))
+		var/basestate = "apc[update_state & UPSTATE_CELL_IN ? 2 : 1]"
+		if(update_state & UPSTATE_OPENED1)
+			icon_state = (update_state & (UPSTATE_MAINT|UPSTATE_BROKE)) ? "apcmaint" : basestate
+		else if(update_state & UPSTATE_OPENED2)
+			icon_state = "[basestate][((update_state & UPSTATE_BROKE) || malfhack) ? "-b" : null]-nocover"
+		return ..()
+	if(update_state & UPSTATE_BROKE)
+		icon_state = "apc-b"
+		return ..()
+	if(update_state & UPSTATE_BLUESCREEN)
+		icon_state = "apcemag"
+		return ..()
+	if(update_state & UPSTATE_WIREEXP)
+		icon_state = "apcewires"
+		return ..()
+	if(update_state & UPSTATE_MAINT)
+		icon_state = "apc0"
+	return ..()
+
+/obj/machinery/power/apc/update_overlays()
+	. = ..()
+	if((machine_stat & (BROKEN|MAINT)) || update_state)
+		return
+
+	. += mutable_appearance(icon, "apcox-[locked]")
+	. += emissive_appearance(icon, "apcox-[locked]")
+	. += mutable_appearance(icon, "apco3-[charging]")
+	. += emissive_appearance(icon, "apco3-[charging]")
+	if(!operating)
+		return
+
+	. += mutable_appearance(icon, "apco0-[equipment]")
+	. += emissive_appearance(icon, "apco0-[equipment]")
+	. += mutable_appearance(icon, "apco1-[lighting]")
+	. += emissive_appearance(icon, "apco1-[lighting]")
+	. += mutable_appearance(icon, "apco2-[environ]")
+	. += emissive_appearance(icon, "apco2-[environ]")
+
+/// Checks for what icon updates we will need to handle
+>>>>>>> f3e50c9c3f (Fixes an APC icon issue (#8462))
 /obj/machinery/power/apc/proc/check_updates()
 	var/last_update_state = update_state
 	var/last_update_overlay = update_overlay
