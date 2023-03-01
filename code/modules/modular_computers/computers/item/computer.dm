@@ -7,7 +7,26 @@
 
 	var/enabled = 0											// Whether the computer is turned on.
 	var/screen_on = 1										// Whether the computer is active/opened/it's screen is on.
+<<<<<<< HEAD
 	var/device_theme = "ntos"								// Sets the theme for the main menu, hardware config, and file browser apps. Overridden by certain non-NT devices.
+=======
+	/// If it's bypassing the set icon state
+	var/bypass_state = FALSE
+	/// Whether or not the computer can be upgraded
+	var/upgradable = TRUE
+	/// Whether or not the computer can be deconstructed
+	var/deconstructable = TRUE
+	/// Sets the theme for the main menu, hardware config, and file browser apps.
+	var/device_theme = THEME_NTOS
+	/// Whether this device is allowed to change themes or not.
+	var/theme_locked = FALSE
+	/// If the theme should not be initialized from theme prefs (for custom job themes)
+	var/ignore_theme_pref = FALSE
+	/// List of themes for this device to allow.
+	var/list/allowed_themes
+	/// Color used for the Thinktronic Classic theme.
+	var/classic_color = "#808000"
+>>>>>>> 8c83f65873 (PDA Theme Preference (#8552))
 	var/datum/computer_file/program/active_program = null	// A currently active program running on the computer.
 	var/hardware_flag = 0									// A flag that describes this device type
 	var/last_power_usage = 0
@@ -48,6 +67,10 @@
 
 
 /obj/item/modular_computer/Initialize(mapload)
+<<<<<<< HEAD
+=======
+	allowed_themes = GLOB.ntos_device_themes_default
+>>>>>>> 8c83f65873 (PDA Theme Preference (#8552))
 	. = ..()
 	START_PROCESSING(SSobj, src)
 	if(!physical)
