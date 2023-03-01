@@ -65,9 +65,16 @@
 
 /obj/structure/proc/do_climb(atom/movable/A)
 	if(climbable)
+<<<<<<< HEAD
 		density = FALSE
 		. = step(A,get_dir(A,src.loc))
 		density = TRUE
+=======
+		set_density(FALSE)
+		var/step_dir = (get_turf(A) == get_turf(src)) ? dir : get_dir(A, src.loc)
+		. = step(A, step_dir)
+		set_density(TRUE)
+>>>>>>> b12260a59e (Fix climbing over railings (#8589))
 
 /obj/structure/proc/climb_structure(mob/living/user)
 	add_fingerprint(user)
