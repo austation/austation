@@ -45,6 +45,19 @@
 	after_sect_select_cb?.Invoke()
 	return TRUE
 
+<<<<<<< HEAD
+=======
+/**
+ * Since all of these involve attackby, we require mega proc. Handles Invocation, Sacrificing, And Selection of Sects.
+ */
+/datum/component/religious_tool/proc/AttemptActions(datum/source, obj/item/the_item, mob/living/user)
+	SIGNAL_HANDLER
+	var/turf/T = get_turf(parent)
+	var/area/A = T.loc
+	if(!istype(A, /area/chapel))
+		to_chat(user, "<span class='warning'>The [source] can only function in a holy area!</span>")
+		return COMPONENT_NO_AFTERATTACK
+>>>>>>> af634cf867 (chappy-buffes-done (#8467))
 
 
 /**

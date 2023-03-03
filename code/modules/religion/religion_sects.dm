@@ -36,6 +36,14 @@
 	var/altar_icon_state
 /// Currently Active (non-deleted) rites
 	var/list/active_rites
+<<<<<<< HEAD
+=======
+	/// Whether the structure has CANDLE OVERLAYS!
+	var/candle_overlay = TRUE
+	/// Whether the altar of the gods is anchored
+	var/altar_anchored = TRUE
+
+>>>>>>> af634cf867 (chappy-buffes-done (#8467))
 
 /datum/religion_sect/New()
 	. = ..()
