@@ -14,7 +14,7 @@
 	CanAtmosPass = ATMOS_PASS_PROC
 	rad_insulation = RAD_VERY_LIGHT_INSULATION
 	rad_flags = RAD_PROTECT_CONTENTS
-	pass_flags_self = PASSGLASS
+	pass_flags_self = PASSTRANSPARENT
 	var/ini_dir = null
 	var/state = WINDOW_OUT_OF_FRAME
 	var/reinf = FALSE
@@ -136,8 +136,13 @@
 
 /obj/structure/window/proc/on_exit(datum/source, atom/movable/leaving, direction)
 	SIGNAL_HANDLER
+<<<<<<< HEAD
 	//austation begin -- uncomment if some poor sud actually went ahead and fix this, looking at you, kube
 	if(leaving.movement_type & PHASING)
+=======
+
+	if (istype(leaving) && (leaving.pass_flags & PASSTRANSPARENT))
+>>>>>>> 42fe5b53a3 (Reworks PASSGLASS (#8518))
 		return
 
 	if(leaving == src)

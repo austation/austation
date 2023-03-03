@@ -13,7 +13,7 @@
 	visible = FALSE
 	flags_1 = ON_BORDER_1
 	opacity = FALSE
-	pass_flags_self = PASSGLASS
+	pass_flags_self = PASSTRANSPARENT
 	CanAtmosPass = ATMOS_PASS_PROC
 	interaction_flags_machine = INTERACT_MACHINE_WIRES_IF_OPEN | INTERACT_MACHINE_ALLOW_SILICON | INTERACT_MACHINE_OPEN_SILICON | INTERACT_MACHINE_REQUIRES_SILICON | INTERACT_MACHINE_OPEN
 	var/obj/item/electronics/airlock/electronics = null
@@ -134,8 +134,12 @@
 /obj/machinery/door/window/proc/on_exit(datum/source, atom/movable/leaving, direction)
 	SIGNAL_HANDLER
 
+<<<<<<< HEAD
 	//austation begin -- uncomment if some poor sud actually went ahead and fix this, looking at you, kube
 	if(leaving.movement_type & PHASING)
+=======
+	if(istype(leaving) && (leaving.pass_flags & PASSTRANSPARENT))
+>>>>>>> 42fe5b53a3 (Reworks PASSGLASS (#8518))
 		return
 
 	if(leaving == src)

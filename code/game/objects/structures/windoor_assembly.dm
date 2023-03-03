@@ -81,7 +81,11 @@
 	SIGNAL_HANDLER
 	//austation begin -- uncomment if some poor sud actually went ahead and fix this, looking at you, kube
 
+<<<<<<< HEAD
 	if(leaving.movement_type & PHASING)
+=======
+	if(istype(leaving) && (leaving.pass_flags & PASSTRANSPARENT))
+>>>>>>> 42fe5b53a3 (Reworks PASSGLASS (#8518))
 		return
 
 	if(leaving == src)
