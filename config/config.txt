@@ -18,6 +18,13 @@ $include antag_rep.txt
 # Asset Transport (TGUI)
 $include resources.txt
 $include interviews.txt
+<<<<<<< HEAD
+=======
+# Performance stuff
+$include performance.txt
+# Server Policies/Rules
+$include policies.txt
+>>>>>>> 0c3796e4fb (Fix Policies config - Polymorph and Cloning text (#8598))
 
 # You can use the @ character at the beginning of a config option to lock it from being edited in-game
 # Example usage:
