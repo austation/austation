@@ -143,6 +143,7 @@
 
 //HUD layer defines
 
+<<<<<<< HEAD
 #define FULLSCREEN_PLANE 22
 #define FLASH_LAYER 22
 #define FULLSCREEN_LAYER 22.1
@@ -151,6 +152,10 @@
 #define CRIT_LAYER 22.4
 #define CURSE_LAYER 22.5
 #define FULLSCREEN_RENDER_TARGET "FULLSCREEN_PLANE"
+=======
+#define RADIAL_BACKGROUND_LAYER 0
+#define RADIAL_CONTENT_LAYER 1000
+>>>>>>> 9318c1a43e (moves rcd content to its proper layer (#8339))
 
 #define HUD_PLANE 23
 #define HUD_LAYER 23

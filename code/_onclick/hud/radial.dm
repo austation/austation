@@ -239,7 +239,12 @@ GLOBAL_LIST_EMPTY(radial_menus)
 			var/datum/radial_menu_choice/choice_datum = choice_datums[choice_id]
 			if (choice_datum.info)
 				var/obj/effect/abstract/info/info_button = new(E, choice_datum.info)
+<<<<<<< HEAD
 				info_button.layer = ABOVE_HUD_LAYER
+=======
+				info_button.plane = ABOVE_HUD_PLANE
+				info_button.layer = RADIAL_CONTENT_LAYER
+>>>>>>> 9318c1a43e (moves rcd content to its proper layer (#8339))
 				E.vis_contents += info_button
 
 /datum/radial_menu/New()
@@ -298,7 +303,12 @@ GLOBAL_LIST_EMPTY(radial_menus)
 		return
 	current_user = M.client
 	//Blank
+<<<<<<< HEAD
 	menu_holder = image(icon='icons/effects/effects.dmi',loc=anchor,icon_state="nothing",layer = ABOVE_HUD_LAYER)
+=======
+	menu_holder = image(icon='icons/effects/effects.dmi',loc=anchor,icon_state="nothing", layer = RADIAL_BACKGROUND_LAYER)
+	menu_holder.plane = ABOVE_HUD_PLANE
+>>>>>>> 9318c1a43e (moves rcd content to its proper layer (#8339))
 	menu_holder.appearance_flags |= KEEP_APART
 	menu_holder.vis_contents += elements + close_button
 	current_user.images += menu_holder
