@@ -16074,7 +16074,7 @@
 /area/maintenance/solars/port/fore)
 "aJH" = (
 /obj/structure/sign/warning/electricshock,
-/turf/closed/wall/r_wall,
+/turf/closed/wall,
 /area/maintenance/solars/port/fore)
 "aJI" = (
 /obj/structure/rack,
@@ -16718,9 +16718,11 @@
 /turf/open/floor/plasteel/dark,
 /area/security/execution/education)
 "aLb" = (
-/obj/structure/lattice/catwalk,
 /obj/item/wrench,
-/turf/open/space,
+/obj/effect/turf_decal/stripes/line{
+	dir = 9
+	},
+/turf/open/floor/plating/airless,
 /area/space/nearstation)
 "aLd" = (
 /obj/machinery/status_display/evac{
@@ -17465,7 +17467,7 @@
 /area/security/execution/education)
 "aMt" = (
 /obj/structure/sign/warning/fire,
-/turf/closed/wall/r_wall,
+/turf/closed/wall,
 /area/maintenance/disposal/incinerator)
 "aMu" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on{
@@ -17477,7 +17479,7 @@
 /obj/machinery/atmospherics/pipe/simple/general/visible{
 	dir = 4
 	},
-/turf/closed/wall/r_wall,
+/turf/closed/wall,
 /area/maintenance/disposal/incinerator)
 "aMw" = (
 /obj/machinery/atmospherics/components/binary/pump{
@@ -18121,6 +18123,11 @@
 	icon_state = "0-8"
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/machinery/camera{
+	c_tag = "Turbine Chamber";
+	network = list("turbine");
+	pixel_x = 22
+	},
 /turf/open/floor/engine/vacuum,
 /area/maintenance/disposal/incinerator)
 "aNR" = (
@@ -19035,11 +19042,11 @@
 /turf/open/floor/engine/vacuum,
 /area/maintenance/disposal/incinerator)
 "aPy" = (
-/obj/structure/sign/warning/fire,
 /obj/machinery/atmospherics/pipe/simple/general/visible{
 	dir = 4
 	},
-/turf/closed/wall/r_wall,
+/obj/effect/spawner/structure/window/depleteduranium,
+/turf/open/floor/plating/airless,
 /area/maintenance/disposal/incinerator)
 "aPz" = (
 /obj/machinery/atmospherics/components/binary/pump{
@@ -19936,13 +19943,13 @@
 /turf/open/floor/plating,
 /area/security/execution/education)
 "aRm" = (
-/obj/structure/lattice/catwalk,
 /obj/structure/disposaloutlet{
 	dir = 8
 	},
 /obj/structure/disposalpipe/trunk{
 	dir = 4
 	},
+/obj/effect/turf_decal/stripes/line,
 /turf/open/floor/plating/airless,
 /area/space/nearstation)
 "aRn" = (
@@ -19950,9 +19957,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 10
 	},
-/obj/effect/turf_decal/stripes/line{
-	dir = 10
-	},
+/obj/effect/turf_decal/stripes/line,
 /turf/open/floor/plating/airless,
 /area/maintenance/disposal/incinerator)
 "aRo" = (
@@ -87916,6 +87921,7 @@
 	dir = 4
 	},
 /turf/open/floor/plasteel,
+<<<<<<< HEAD
 /area/medical/genetics)
 "dyl" = (
 /obj/structure/cable/yellow{
@@ -88073,6 +88079,15 @@
 	},
 /turf/open/floor/plasteel/white,
 /area/medical/genetics)
+=======
+/area/maintenance/disposal)
+"dys" = (
+/obj/machinery/atmospherics/components/trinary/filter{
+	dir = 8
+	},
+/turf/open/space/basic,
+/area/space)
+>>>>>>> f0cad82724 (Remaps all turbines for Atmos Tech QoL and to reduce radleak incidents (#8296))
 "dyt" = (
 /obj/structure/window/reinforced{
 	dir = 4
@@ -104783,8 +104798,30 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
 	},
+<<<<<<< HEAD
 /obj/effect/turf_decal/tile/neutral,
 /obj/effect/turf_decal/tile/neutral{
+=======
+/turf/open/floor/plasteel,
+/area/hallway/secondary/service)
+"gXJ" = (
+/obj/effect/landmark/event_spawn,
+/obj/effect/turf_decal/tile/neutral/fourcorners/contrasted,
+/turf/open/floor/plasteel,
+/area/quartermaster/sorting)
+"gXZ" = (
+/turf/closed/wall,
+/area/maintenance/disposal/incinerator)
+"gYd" = (
+/obj/effect/turf_decal/tile/neutral/half/contrasted{
+	dir = 1
+	},
+/turf/open/floor/plasteel,
+/area/science/xenobiology)
+"gYh" = (
+/obj/effect/turf_decal/stripes/line,
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer4{
+>>>>>>> f0cad82724 (Remaps all turbines for Atmos Tech QoL and to reduce radleak incidents (#8296))
 	dir = 4
 	},
 /obj/effect/turf_decal/tile/neutral{
@@ -110214,9 +110251,28 @@
 /obj/effect/turf_decal/tile/purple{
 	dir = 8
 	},
+<<<<<<< HEAD
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer2{
 	dir = 1
+=======
+/turf/open/floor/plasteel/white,
+/area/maintenance/department/science)
+"nog" = (
+/obj/structure/cable{
+	icon_state = "1-8"
 	},
+/obj/structure/disposalpipe/segment,
+/obj/effect/turf_decal/stripes/line{
+	dir = 10
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
+	dir = 9
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
+	dir = 9
+>>>>>>> f0cad82724 (Remaps all turbines for Atmos Tech QoL and to reduce radleak incidents (#8296))
+	},
+/obj/machinery/atmospherics/pipe/simple/general/visible,
 /turf/open/floor/plasteel,
 /area/science/research)
 "nBj" = (
@@ -135548,7 +135604,7 @@ aac
 aac
 aaa
 aaa
-aaa
+dys
 aaa
 aaa
 aaa
@@ -137869,11 +137925,11 @@ avY
 ask
 ask
 aad
-abj
-abj
-abj
-abj
-abj
+bTl
+aaa
+bTl
+bTl
+bTl
 aad
 aad
 aaa
@@ -138127,10 +138183,10 @@ aad
 apK
 aad
 aLb
-aad
+ctm
 aaa
-aad
-abj
+cqo
+ctm
 aaa
 aad
 aad
@@ -138383,7 +138439,7 @@ aad
 aFp
 aIj
 aFp
-abj
+ckw
 aMt
 aNO
 aMt
@@ -138640,10 +138696,10 @@ aad
 xUp
 aIk
 aFp
-abj
-aFr
+ckw
+gXZ
 aNP
-aFr
+gXZ
 aRn
 aSP
 aaa
@@ -138897,11 +138953,11 @@ aFp
 aFp
 aIl
 aFp
-aFr
-aFr
+gXZ
+gXZ
 aNQ
-aFr
-aFr
+gXZ
+gXZ
 aSQ
 ajr
 ajr
@@ -139152,9 +139208,15 @@ aaa
 aad
 aFq
 aGM
+<<<<<<< HEAD
 aIm
 aJE
 aFr
+=======
+kDw
+oVf
+gXZ
+>>>>>>> f0cad82724 (Remaps all turbines for Atmos Tech QoL and to reduce radleak incidents (#8296))
 aMu
 aNR
 aPx
@@ -139409,13 +139471,20 @@ aaa
 aad
 aFq
 aGN
+<<<<<<< HEAD
 aIn
 aJF
 aFr
 aMv
+=======
+xOv
+eSj
+gXZ
+aPy
+>>>>>>> f0cad82724 (Remaps all turbines for Atmos Tech QoL and to reduce radleak incidents (#8296))
 aNS
 aPy
-aFr
+gXZ
 afB
 aRF
 aRF
@@ -139666,13 +139735,19 @@ aad
 aad
 aFq
 aGO
+<<<<<<< HEAD
 aIo
 aJG
 aFr
+=======
+uWt
+gCf
+gXZ
+>>>>>>> f0cad82724 (Remaps all turbines for Atmos Tech QoL and to reduce radleak incidents (#8296))
 aMw
 aNT
 aPz
-aFr
+gXZ
 hFo
 aRF
 aWt
@@ -139922,14 +139997,19 @@ ajr
 aad
 aad
 aFq
+<<<<<<< HEAD
 aFq
 aIp
+=======
+xUp
+pRW
+>>>>>>> f0cad82724 (Remaps all turbines for Atmos Tech QoL and to reduce radleak incidents (#8296))
 aJH
-aFr
+gXZ
 aMv
 aNU
 aPy
-aFr
+gXZ
 aSQ
 aRF
 aWu
@@ -140186,7 +140266,7 @@ aLd
 aMy
 aNV
 aPA
-aFr
+gXZ
 aSR
 aRF
 aWv
@@ -140700,7 +140780,7 @@ aLf
 aMA
 aNX
 aPC
-aFr
+gXZ
 aad
 aRE
 aWx
