@@ -488,3 +488,262 @@
 		new_character.mind.add_antag_datum(new_role, new_team)
 
 #undef ABDUCTOR_MAX_TEAMS
+<<<<<<< HEAD
+=======
+
+//////////////////////////////////////////////
+//                                          //
+//           REVENANT    (GHOST)            //
+//                                          //
+//////////////////////////////////////////////
+/datum/dynamic_ruleset/midround/from_ghosts/revenant
+	name = "Revenant"
+	midround_ruleset_style = MIDROUND_RULESET_STYLE_LIGHT
+	antag_datum = /datum/antagonist/revenant
+	antag_flag = ROLE_REVENANT
+	enemy_roles = list(JOB_NAME_SECURITYOFFICER, JOB_NAME_DETECTIVE, JOB_NAME_WARDEN, JOB_NAME_HEADOFSECURITY, JOB_NAME_CAPTAIN)
+	required_enemies = list(1,1,1,1,0,0,0,0,0,0)
+	required_candidates = 1
+	weight = 5
+	cost = 5
+	minimum_players = 12
+	repeatable = TRUE
+	var/dead_mobs_required = 15
+	var/need_extra_spawns_value = 15
+	var/list/spawn_locs = list()
+
+/datum/dynamic_ruleset/midround/from_ghosts/revenant/acceptable(population=0, threat=0)
+	if(length(GLOB.dead_mob_list) < dead_mobs_required)
+		return FALSE
+	return ..()
+
+/datum/dynamic_ruleset/midround/from_ghosts/revenant/execute()
+	for(var/mob/living/corpse in GLOB.dead_mob_list) //look for any dead bodies
+		var/turf/corpse_turf = get_turf(corpse)
+		if(corpse_turf && is_station_level(corpse_turf.z))
+			spawn_locs += corpse_turf
+	if(!length(spawn_locs) || length(spawn_locs) < need_extra_spawns_value) //look for any morgue trays, crematoriums, ect if there weren't alot of dead bodies on the station to pick from
+		for(var/obj/structure/bodycontainer/corpse_container in GLOB.bodycontainers)
+			var/turf/container_turf = get_turf(corpse_container)
+			if(container_turf && is_station_level(container_turf.z))
+				spawn_locs += container_turf
+	if(!length(spawn_locs)) //If we can't find any valid spawnpoints, try the carp spawns
+		for(var/obj/effect/landmark/carpspawn/carp_spawnpoint in GLOB.landmarks_list)
+			if(isturf(carp_spawnpoint.loc))
+				spawn_locs += carp_spawnpoint.loc
+	if(!length(spawn_locs)) //If we can't find THAT, then just give up and cry
+		log_game("DYNAMIC: [ruletype] ruleset [name] execute failed due to no valid spawn locations.")
+		return FALSE
+	. = ..()
+
+/datum/dynamic_ruleset/midround/from_ghosts/revenant/generate_ruleset_body(mob/applicant)
+	var/mob/living/simple_animal/revenant/revenant = new(pick(spawn_locs))
+	revenant.key = applicant.key
+	message_admins("[ADMIN_LOOKUPFLW(revenant)] has been made into a revenant by the midround ruleset.")
+	log_game("[key_name(revenant)] was spawned as a revenant by the midround ruleset.")
+	return revenant
+
+//////////////////////////////////////////////
+//                                          //
+//           PIRATES    (GHOST)             //
+//                                          //
+//////////////////////////////////////////////
+/datum/dynamic_ruleset/midround/pirates
+	name = "Space Pirates"
+	midround_ruleset_style = MIDROUND_RULESET_STYLE_HEAVY
+	antag_flag = ROLE_SPACE_PIRATE
+	required_type = /mob/dead/observer
+	enemy_roles = list(JOB_NAME_SECURITYOFFICER, JOB_NAME_DETECTIVE, JOB_NAME_WARDEN, JOB_NAME_HEADOFSECURITY, JOB_NAME_CAPTAIN)
+	required_enemies = list(2,2,2,1,1,1,1,0,0,0)
+	required_candidates = 0
+	weight = 4
+	cost = 8
+	minimum_players = 27
+	repeatable = FALSE
+
+/datum/dynamic_ruleset/midround/pirates/acceptable(population=0, threat=0)
+	if (!SSmapping.empty_space)
+		return FALSE
+	if(GLOB.pirates_spawned)
+		return FALSE
+	return ..()
+
+/datum/dynamic_ruleset/midround/pirates/execute()
+	if(!GLOB.pirates_spawned)
+		send_pirate_threat()
+	return ..()
+
+/// Obsessed ruleset
+/datum/dynamic_ruleset/midround/obsessed
+	name = "Obsessed"
+	midround_ruleset_style = MIDROUND_RULESET_STYLE_LIGHT
+	antag_datum = /datum/antagonist/obsessed
+	antag_flag = ROLE_OBSESSED
+	restricted_roles = list(JOB_NAME_AI, JOB_NAME_CYBORG, "Positronic Brain")
+	enemy_roles = list(JOB_NAME_SECURITYOFFICER, JOB_NAME_DETECTIVE, JOB_NAME_WARDEN, JOB_NAME_HEADOFSECURITY, JOB_NAME_CAPTAIN)
+	required_enemies = list(1,1,1,1,0,0,0,0,0,0)
+	required_candidates = 1
+	weight = 3
+	cost = 5
+	repeatable = TRUE
+
+/datum/dynamic_ruleset/midround/obsessed/trim_candidates()
+	..()
+	candidates = living_players
+	for(var/mob/living/carbon/human/candidate in candidates)
+		if( \
+			!candidate.getorgan(/obj/item/organ/brain) \
+			|| candidate.mind.has_antag_datum(/datum/antagonist/obsessed) \
+			|| candidate.stat == DEAD \
+			|| !(ROLE_OBSESSED in candidate.client?.prefs?.be_special) \
+			|| !SSjob.GetJob(candidate.mind.assigned_role) \
+			|| (candidate.mind.assigned_role in GLOB.nonhuman_positions) \
+		)
+			candidates -= candidate
+
+/datum/dynamic_ruleset/midround/obsessed/ready(forced = FALSE)
+	if(!check_candidates())
+		return FALSE
+	return ..()
+
+/datum/dynamic_ruleset/midround/obsessed/execute()
+	var/mob/living/carbon/human/obsessed = pick_n_take(candidates)
+	obsessed.gain_trauma(/datum/brain_trauma/special/obsessed)
+	message_admins("[ADMIN_LOOKUPFLW(obsessed)] has been made Obsessed by the midround ruleset.")
+	log_game("[key_name(obsessed)] was made Obsessed by the midround ruleset.")
+	return ..()
+
+//////////////////////////////////////////////
+//                                          //
+//            SPIDERS     (GHOST)           //
+//                                          //
+//////////////////////////////////////////////
+
+/datum/dynamic_ruleset/midround/from_ghosts/spiders
+	name = "Spider Infestation"
+	antag_flag = ROLE_SPIDER
+	midround_ruleset_style = MIDROUND_RULESET_STYLE_HEAVY
+	required_type = /mob/dead/observer
+	enemy_roles = list(JOB_NAME_SECURITYOFFICER, JOB_NAME_DETECTIVE, JOB_NAME_WARDEN, JOB_NAME_HEADOFSECURITY, JOB_NAME_CAPTAIN)
+	required_enemies = list(2,2,1,1,1,1,1,0,0,0)
+	required_candidates = 2
+	weight = 3
+	cost = 11
+	repeatable = TRUE
+	minimum_players = 27
+	var/fed = 1
+	var/list/vents = list()
+	var/datum/team/spiders/spider_team
+
+/datum/dynamic_ruleset/midround/from_ghosts/spiders/execute()
+	for(var/obj/machinery/atmospherics/components/unary/vent_pump/temp_vent in GLOB.machines)
+		if(QDELETED(temp_vent))
+			continue
+		if(is_station_level(temp_vent.loc.z) && !temp_vent.welded)
+			var/datum/pipeline/temp_vent_parent = temp_vent.parents[1]
+			if(!temp_vent_parent)
+				continue // No parent vent
+			if(length(temp_vent_parent.other_atmosmch) > 20)
+				vents += temp_vent // Makes sure the pipeline is large enough
+	if(!length(vents))
+		log_game("DYNAMIC: [ruletype] ruleset [name] execute failed due to no valid spawn locations.")
+		return FALSE
+	. = ..()
+
+/datum/dynamic_ruleset/midround/from_ghosts/spiders/generate_ruleset_body(mob/applicant)
+	var/obj/vent = pick_n_take(vents)
+	var/mob/living/simple_animal/hostile/poison/giant_spider/broodmother/spider = new(vent.loc)
+	spider.key = applicant.key
+	if(fed)
+		spider.fed += 3
+		spider.lay_eggs.UpdateButtonIcon()
+		fed--
+	message_admins("[ADMIN_LOOKUPFLW(spider)] has been made into a spider by the midround ruleset.")
+	log_game("DYNAMIC: [key_name(spider)] was spawned as a spider by the midround ruleset.")
+	return spider
+
+/datum/dynamic_ruleset/midround/from_ghosts/spiders/finish_setup(mob/new_character, index)
+	if(!spider_team)
+		spider_team = new()
+		spider_team.directive ="Ensure the survival of your brood and overtake whatever structure you find yourself in."
+	var/datum/antagonist/spider/spider_antag = new_character.mind.has_antag_datum(/datum/antagonist/spider)
+	spider_antag.set_spider_team(spider_team)
+	new_character.mind.special_role = antag_flag
+
+//////////////////////////////////////////////
+//                                          //
+//             SWARMER (GHOST)              //
+//                                          //
+//////////////////////////////////////////////
+
+/datum/dynamic_ruleset/midround/from_ghosts/swarmer
+	name = "Swarmer"
+	midround_ruleset_style = MIDROUND_RULESET_STYLE_HEAVY
+	antag_datum = /datum/antagonist/swarmer
+	antag_flag = ROLE_SWARMER
+	enemy_roles = list(JOB_NAME_SECURITYOFFICER, JOB_NAME_DETECTIVE, JOB_NAME_WARDEN, JOB_NAME_HEADOFSECURITY, JOB_NAME_CAPTAIN)
+	required_enemies = list(1,1,1,1,0,0,0,0,0,0)
+	required_candidates = 1
+	weight = 3
+	cost = 10
+	minimum_players = 15
+	repeatable = FALSE // please no
+	var/announce_chance = 25
+
+/datum/dynamic_ruleset/midround/from_ghosts/swarmer/execute()
+	if(!GLOB.the_gateway)
+		log_game("DYNAMIC: [ruletype] ruleset [name] execute failed due to no valid spawn locations (no gateway on map).")
+		return FALSE
+	. = ..()
+
+/datum/dynamic_ruleset/midround/from_ghosts/swarmer/generate_ruleset_body(mob/applicant)
+	var/datum/mind/player_mind = new /datum/mind(applicant.key)
+	player_mind.active = TRUE
+
+	var/mob/living/simple_animal/hostile/swarmer/S = new (get_turf(GLOB.the_gateway))
+	player_mind.transfer_to(S)
+
+	message_admins("[ADMIN_LOOKUPFLW(S)] has been made into a Swarmer by the midround ruleset.")
+	log_game("DYNAMIC: [key_name(S)] was spawned as a Swarmer by the midround ruleset.")
+	if(prob(announce_chance))
+		announce_swarmer()
+	return S
+
+//////////////////////////////////////////////
+//                                          //
+//              MORPH (GHOST)               //
+//                                          //
+//////////////////////////////////////////////
+
+/datum/dynamic_ruleset/midround/from_ghosts/morph
+	name = "Morph"
+	midround_ruleset_style = MIDROUND_RULESET_STYLE_HEAVY
+	antag_datum = /datum/antagonist/morph
+	antag_flag = ROLE_MORPH
+	enemy_roles = list(JOB_NAME_SECURITYOFFICER, JOB_NAME_DETECTIVE, JOB_NAME_WARDEN, JOB_NAME_HEADOFSECURITY, JOB_NAME_CAPTAIN)
+	required_enemies = list(2,2,1,1,1,1,1,1,0,0)
+	required_candidates = 1
+	weight = 3
+	cost = 8
+	minimum_players = 15
+	repeatable = FALSE // also please no
+
+/datum/dynamic_ruleset/midround/from_ghosts/morph/execute()
+	if(!length(GLOB.xeno_spawn))
+		log_game("DYNAMIC: [ruletype] ruleset [name] execute failed due to no valid spawn locations.")
+		return FALSE
+	. = ..()
+
+/datum/dynamic_ruleset/midround/from_ghosts/morph/generate_ruleset_body(mob/applicant)
+	var/datum/mind/player_mind = new /datum/mind(applicant.key)
+	player_mind.active = TRUE
+
+	var/mob/living/simple_animal/hostile/morph/S = new /mob/living/simple_animal/hostile/morph(pick(GLOB.xeno_spawn))
+	player_mind.transfer_to(S)
+	to_chat(S, S.playstyle_string)
+	SEND_SOUND(S, sound('sound/magic/mutate.ogg'))
+
+	message_admins("[ADMIN_LOOKUPFLW(S)] has been made into a Morph by the midround ruleset.")
+	log_game("DYNAMIC: [key_name(S)] was spawned as a Morph by the midround ruleset.")
+	return S
+>>>>>>> f095316c8d (Various spider fixes (#8576))

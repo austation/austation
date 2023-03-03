@@ -48,8 +48,19 @@
 	gold_core_spawnable = HOSTILE_SPAWN
 	see_in_dark = 4
 	lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_VISIBLE
+<<<<<<< HEAD
 	var/datum/action/innate/spider/lay_web/lay_web
 	var/directive = "" //Message passed down to children, to relay the creator's orders
+=======
+	sentience_type = SENTIENCE_OTHER // not eligible for sentience potions
+	var/busy = SPIDER_IDLE // What a spider's doing
+	var/datum/action/innate/spider/lay_web/lay_web // Web action
+	var/obj/effect/proc_holder/wrap/lesser/lesserwrap // Wrap action
+	var/web_speed = 1 // How quickly a spider lays down webs (percentage)
+	var/mob/master // The spider's master, used by sentience
+	var/onweb_speed
+	var/atom/movable/cocoon_target
+>>>>>>> f095316c8d (Various spider fixes (#8576))
 
 	do_footstep = TRUE
 	discovery_points = 1000
@@ -58,6 +69,20 @@
 	. = ..()
 	lay_web = new
 	lay_web.Grant(src)
+<<<<<<< HEAD
+=======
+	lesserwrap = new
+	AddAbility(lesserwrap)
+
+/mob/living/simple_animal/hostile/poison/giant_spider/mind_initialize()
+	. = ..()
+	if(!mind.has_antag_datum(/datum/antagonist/spider))
+		var/datum/antagonist/spider/spooder = new
+		if(!spider_team)
+			spooder.create_team()
+			spider_team = spooder.spider_team
+		mind.add_antag_datum(spooder, spider_team)
+>>>>>>> f095316c8d (Various spider fixes (#8576))
 
 /mob/living/simple_animal/hostile/poison/giant_spider/Destroy()
 	QDEL_NULL(lay_web)
@@ -77,6 +102,7 @@
 		log_game("[key_name(src)] took control of [name] with the objective: '[directive]'.")
 	return TRUE
 
+<<<<<<< HEAD
 //nursemaids - these create webs and eggs
 /mob/living/simple_animal/hostile/poison/giant_spider/nurse
 	desc = "Furry and black, it makes you shudder to look at it. This one has brilliant green eyes."
@@ -98,6 +124,10 @@
 	gold_core_spawnable = NO_SPAWN
 
 /mob/living/simple_animal/hostile/poison/giant_spider/nurse/Initialize(mapload)
+=======
+// Allows spiders to take damage slowdown. 2 max, but they don't start moving slower until under 75% health
+/mob/living/simple_animal/hostile/poison/giant_spider/updatehealth()
+>>>>>>> f095316c8d (Various spider fixes (#8576))
 	. = ..()
 	wrap = new
 	AddAbility(wrap)
@@ -460,14 +490,18 @@
 	if(..())
 		if(!istype(owner, /mob/living/simple_animal/hostile/poison/giant_spider))
 			return FALSE
+<<<<<<< HEAD
 		var/mob/living/simple_animal/hostile/poison/giant_spider/S = owner
 		if(S.playable)
 			return FALSE
+=======
+>>>>>>> f095316c8d (Various spider fixes (#8576))
 		return TRUE
 
 /datum/action/innate/spider/set_directive/Activate()
 	if(!istype(owner, /mob/living/simple_animal/hostile/poison/giant_spider/nurse))
 		return
+<<<<<<< HEAD
 	var/mob/living/simple_animal/hostile/poison/giant_spider/nurse/S = owner
 	if(!S.playable)
 		var/new_directive = stripped_input(S, "Enter the new directive", "Create directive", "[S.directive]")
@@ -484,6 +518,19 @@
 /mob/living/simple_animal/hostile/poison/giant_spider/Destroy()
 	GLOB.spidermobs -= src
 	return ..()
+=======
+	if(!owner.mind)
+		return
+	var/mob/living/simple_animal/hostile/poison/giant_spider/broodmother/S = owner
+	var/datum/antagonist/spider/spider_antag = S.mind.has_antag_datum(/datum/antagonist/spider)
+	if(!spider_antag)
+		spider_antag = S.mind.add_antag_datum(/datum/antagonist/spider)
+	var/new_directive = stripped_input(S, "Enter the new directive", "Create directive")
+	if(new_directive)
+		spider_antag.spider_team.update_directives(new_directive)
+		log_game("[key_name(owner)][spider_antag.spider_team.master ? " (master: [spider_antag.spider_team.master]" : ""] set its directive to: '[new_directive]'.")
+		S.lay_eggs.UpdateButtonIcon(TRUE)
+>>>>>>> f095316c8d (Various spider fixes (#8576))
 
 /datum/action/innate/spider/comm
 	name = "Command"
