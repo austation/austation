@@ -381,8 +381,21 @@ GLOBAL_LIST_EMPTY(station_turfs)
 	if(!arrived.zfalling)
 		zFall(arrived, old_loc = old_loc)
 
+<<<<<<< HEAD
 /turf/proc/is_plasteel_floor()
 	return FALSE
+=======
+
+/turf/open/openspace/Entered(atom/movable/arrived, atom/old_loc, list/atom/old_locs)
+	..()
+	// Did not move in parent call
+	if(get_turf(arrived) == src)
+		SSzfall.add_openspace_inhabitant(arrived)
+
+/turf/open/openspace/Exited(atom/movable/exiting, atom/newloc)
+	..()
+	SSzfall.remove_openspace_inhabitant(exiting)
+>>>>>>> 5fc8ac130a ([PORT] Removes some dead/unused code (#8551))
 
 // A proc in case it needs to be recreated or badmins want to change the baseturfs
 /turf/proc/assemble_baseturfs(turf/fake_baseturf_type)
@@ -449,15 +462,6 @@ GLOBAL_LIST_EMPTY(station_turfs)
 	var/obj/structure/lattice/L = locate(/obj/structure/lattice, src)
 	if(L && (L.flags_1 & INITIALIZED_1))
 		qdel(L)
-
-/turf/proc/phase_damage_creatures(damage,mob/U = null)//>Ninja Code. Hurts and knocks out creatures on this turf //NINJACODE
-	for(var/mob/living/M in src)
-		if(M==U)
-			continue//Will not harm U. Since null != M, can be excluded to kill everyone.
-		M.adjustBruteLoss(damage)
-		M.Unconscious(damage * 4)
-	for(var/obj/mecha/M in src)
-		M.take_damage(damage*2, BRUTE, "melee", 1)
 
 /turf/proc/Bless()
 	new /obj/effect/blessing(src)
