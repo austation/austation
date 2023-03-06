@@ -749,7 +749,7 @@ Congratulations! You are now trained for invasive xenobiology research!"}
 		I.play_tool_sound(src)
 		if(I.use_tool(src, user, 30))
 			playsound(src, 'sound/items/deconstruct.ogg', 50, TRUE)
-			for(var/i = 1, i <= framestackamount, i++)
+			for(var/i in 1 to framestackamount)
 				new framestack(get_turf(src))
 			qdel(src)
 			return
