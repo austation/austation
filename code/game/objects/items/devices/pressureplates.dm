@@ -5,7 +5,6 @@
 	icon = 'icons/obj/device.dmi'
 	item_state = "flash"
 	icon_state = "pressureplate"
-	level = 1
 	var/trigger_mob = TRUE
 	var/trigger_item = FALSE
 	var/trigger_silent = FALSE
@@ -27,9 +26,17 @@
 	if(roundstart_signaller)
 		sigdev = new
 		sigdev.code = roundstart_signaller_code
+<<<<<<< HEAD
 		sigdev.frequency = roundstart_signaller_freq
 	if(isopenturf(loc))
 		hide(TRUE)
+=======
+		sigdev.set_frequency(roundstart_signaller_freq)
+
+	AddElement(/datum/element/undertile, tile_overlay = tile_overlay, use_anchor = TRUE)
+	RegisterSignal(src, COMSIG_OBJ_HIDE, .proc/ToggleActive)
+
+>>>>>>> e5a9449168 (Ports atmos hide rework and plumbing mapping (#8266))
 	var/static/list/loc_connections = list(
 		COMSIG_ATOM_ENTERED = .proc/on_entered,
 	)
@@ -66,20 +73,6 @@
 		sigdev = null
 	return ..()
 
-/obj/item/pressure_plate/hide(yes)
-	if(yes)
-		invisibility = INVISIBILITY_MAXIMUM
-		anchored = TRUE
-		icon_state = null
-		active = TRUE
-		can_trigger = TRUE
-		if(tile_overlay)
-			loc.add_overlay(tile_overlay)
-	else
-		invisibility = initial(invisibility)
-		anchored = FALSE
-		icon_state = initial(icon_state)
-		active = FALSE
-		if(tile_overlay)
-			loc.overlays -= tile_overlay
-
+///Called from COMSIG_OBJ_HIDE to toggle the active part, because yeah im not making a special exception on the element to support it
+/obj/item/pressure_plate/proc/ToggleActive(datum/source, covered)
+	active = covered

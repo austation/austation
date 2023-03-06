@@ -623,6 +623,13 @@
 #include "code\datums\elements\embed.dm"
 #include "code\datums\elements\firestacker.dm"
 #include "code\datums\elements\forced_gravity.dm"
+<<<<<<< HEAD
+=======
+#include "code\datums\elements\undertile.dm"
+#include "code\datums\elements\item_scaling.dm"
+#include "code\datums\elements\mechanical_repair.dm"
+#include "code\datums\elements\openspace_item_click_handler.dm"
+>>>>>>> e5a9449168 (Ports atmos hide rework and plumbing mapping (#8266))
 #include "code\datums\elements\rust.dm"
 #include "code\datums\elements\squish.dm"
 #include "code\datums\elements\strippable.dm"
