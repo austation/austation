@@ -38,8 +38,36 @@
 		deadchat_broadcast(message, follow_target = M, turf_target = get_turf(M), message_type=DEADCHAT_REGULAR)
 		log_game("[key_name(M)] has been awoken with the following objectives: [objective]")
 
+<<<<<<< HEAD
 	if(!M.has_antag_datum(/datum/antagonist/hivevessel))
 		M.add_antag_datum(vessel)
+=======
+/mob/living/proc/hive_weak_clear()
+	if(!mind)
+		return
+	var/mob/living/user = mind.current
+	to_chat(user, "<span class='assimilator'>Our subconscious fights back the invasive forces, our will is once again our own!</span>")
+	flash_color(user, flash_color="#800080", flash_time=10)
+	user.clear_fullscreen("hive_mc")
+	mind.remove_antag_datum(/datum/antagonist/brainwashed)
+
+/datum/antagonist/hivevessel/on_gain()
+	owner.special_role = special_role
+	owner.AddSpell(fist)
+	..()
+
+/datum/antagonist/hivevessel/on_removal()
+	remove_innate_effects()
+	owner.RemoveSpell(fist)
+	if(master)
+		to_chat(master.owner, "<span class='assimilator'>A figment of our consciousness snaps out, we have lost an awakened vessel!</span>")
+	if(owner?.current && glow)
+		owner.current.cut_overlay(glow)
+	owner.special_role = null
+	master.avessels -= owner
+	master = null
+	..()
+>>>>>>> 38c4604ab3 (Fix one mind vessels still having the pink glow and HUD after being deconverted (#8614))
 
 /datum/antagonist/hivevessel/apply_innate_effects()
 	handle_clown_mutation(owner.current, "Our newfound powers allow us to overcome our clownish nature, allowing us to wield weapons with impunity.")
