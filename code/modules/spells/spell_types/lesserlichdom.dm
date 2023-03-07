@@ -1,16 +1,16 @@
-/obj/effect/proc_holder/spell/targeted/lichdom
-	name = "Bind Soul"
-	desc = "A dark necromantic pact that can forever bind your soul to an \
+/obj/effect/proc_holder/spell/targeted/lesserlichdom
+	name = "Lesser Bind Soul"
+	desc = "A weak version of the dark necromantic pact that can forever bind your soul to an \
 	item of your choosing. So long as both your body and the item remain \
-	intact and on the same plane you can revive from death, though the time \
-	between reincarnations grows steadily with use, along with the weakness \
+	intact and on the same plane you can revive from death for a limited number of times, though the time \
+	between reincarnations grows massively with use, along with the weakness \
 	that the new skeleton body will experience upon 'birth'. Note that \
-	becoming a lich destroys all internal organs except the brain."
+	becoming a lesser lich destroys all internal organs except the brain."
 	school = "necromancy"
 	charge_max = 10
 	clothes_req = FALSE
 	centcom_cancast = FALSE
-	invocation = "NECREM IMORTIUM!"
+	invocation = "MINUS POTENS NECREM IMORTIUM!"
 	invocation_type = INVOCATION_SHOUT
 	range = -1
 	level_max = 0 //cannot be improved
@@ -20,12 +20,12 @@
 	action_icon = 'icons/mob/actions/actions_spells.dmi'
 	action_icon_state = "skeleton"
 
-/obj/effect/proc_holder/spell/targeted/lichdom/cast(list/targets,mob/user = usr)
+/obj/effect/proc_holder/spell/targeted/lesserlichdom/cast(list/targets,mob/user = usr)
 	for(var/mob/M in targets)
 		var/list/hand_items = list()
 		if(iscarbon(M))
 			hand_items = list(M.get_active_held_item(),M.get_inactive_held_item())
-		if(!hand_items.len)
+		if(!length(hand_items))
 			to_chat(M, "<span class='caution'>You must hold an item you wish to make your phylactery...</span>")
 			return
 		if(!M.mind.hasSoul)
@@ -53,72 +53,65 @@
 			to_chat(M, "<span class='warning'>Your soul snaps back to your body as you stop ensouling [marked_item]!</span>")
 			return
 
-		marked_item.name = "ensouled [marked_item.name]"
+		marked_item.name = "lesser ensouled [marked_item.name]"
 		marked_item.desc += "\nA terrible aura surrounds this item, its very existence is offensive to life itself..."
-		marked_item.add_atom_colour("#003300", ADMIN_COLOUR_PRIORITY)
+		marked_item.add_atom_colour("#187918", ADMIN_COLOUR_PRIORITY)
 
-		new /obj/item/phylactery(marked_item, M.mind)
+		new /obj/item/lesserphylactery(marked_item, M.mind)
 
-		to_chat(M, "<span class='userdanger'>With a hideous feeling of emptiness you watch in horrified fascination as skin sloughs off bone! Blood boils, nerves disintegrate, eyes boil in their sockets! As your organs crumble to dust in your fleshless chest you come to terms with your choice. You're a lich!</span>")
+		to_chat(M, "<span class='userdanger'>With a hideous feeling of emptiness you watch in horrified fascination as skin sloughs off bone! Blood boils, nerves disintegrate, eyes boil in their sockets! As your organs crumble to dust in your fleshless chest you come to terms with your choice. You're a lesser lich!</span>")
 		M.mind.hasSoul = FALSE
+		// No revival other than lichdom revival
+		if(isliving(M))
+			var/mob/living/L = M
+			L.sethellbound()
+		else
+			M.mind.hellbound = TRUE
 		M.set_species(/datum/species/skeleton)
-		if(ishuman(M))
-			var/mob/living/carbon/human/H = M
-			H.dropItemToGround(H.w_uniform)
-			H.dropItemToGround(H.wear_suit)
-			H.dropItemToGround(H.head)
-			H.equip_to_slot_or_del(new /obj/item/clothing/suit/wizrobe/black(H), ITEM_SLOT_OCLOTHING)
-			H.equip_to_slot_or_del(new /obj/item/clothing/head/wizard/black(H), ITEM_SLOT_HEAD)
-			H.equip_to_slot_or_del(new /obj/item/clothing/under/color/black(H), ITEM_SLOT_ICLOTHING)
-
+		// no robes spawn for a lesser spell
 		// you only get one phylactery.
 		M.mind.RemoveSpell(src)
 
 
-/obj/item/phylactery
-	name = "phylactery"
-	desc = "Stores souls. Revives liches. Also repels mosquitos."
+/obj/item/lesserphylactery
+	name = "lesser phylactery"
+	desc = "Stores souls. Revives lesser liches. Also repels mosquitos. Can only be used to revive a lich twice."
 	icon = 'icons/obj/projectiles.dmi'
 	icon_state = "bluespace"
-	color = "#003300"
-	light_color = "#003300"
+	color = "#187918"
+	light_color = "#187918"
 	light_system = MOVABLE_LIGHT
 	light_range = 3
 	var/lon_range = 3
 	var/resurrections = 0
 	var/datum/mind/mind
-	var/respawn_time = 1800
+	var/respawn_time = 3600  //Double the time of a regular phylactery
 
 	var/static/active_phylacteries = 0
 
-/obj/item/phylactery/Initialize(mapload, datum/mind/newmind)
+/obj/item/lesserphylactery/Initialize(mapload, datum/mind/newmind)
 	. = ..()
 	mind = newmind
-	name = "phylactery of [mind.name]"
+	name = "lesser phylactery of [mind.name]"
 
 	active_phylacteries++
 	GLOB.poi_list |= src
 	START_PROCESSING(SSobj, src)
-	if(initial(SSticker.mode.round_ends_with_antag_death))
-		SSticker.mode.round_ends_with_antag_death = FALSE
 
-/obj/item/phylactery/Destroy(force=FALSE)
+/obj/item/lesserphylactery/Destroy(force=FALSE)
 	STOP_PROCESSING(SSobj, src)
 	active_phylacteries--
 	GLOB.poi_list -= src
-	if(!active_phylacteries)
-		SSticker.mode.round_ends_with_antag_death = initial(SSticker.mode.round_ends_with_antag_death)
-	. = ..()
+	return ..()
 
-/obj/item/phylactery/process()
+/obj/item/lesserphylactery/process()
 	if(QDELETED(mind))
 		qdel(src)
 		return
-
 	if(!mind.current || (mind.current && mind.current.stat == DEAD))
 		addtimer(CALLBACK(src, .proc/rise), respawn_time, TIMER_UNIQUE)
 
-/obj/item/phylactery/proc/rise()
+/obj/item/lesserphylactery/proc/rise()
 	if(mind.current && mind.current.stat != DEAD)
 		return "[mind] already has a living body: [mind.current]"
 
@@ -128,11 +121,7 @@
 
 	var/mob/old_body = mind.current
 	var/mob/living/carbon/human/lich = new(item_turf)
-
-	lich.equip_to_slot_or_del(new /obj/item/clothing/shoes/sandal/magic(lich), ITEM_SLOT_FEET)
-	lich.equip_to_slot_or_del(new /obj/item/clothing/under/color/black(lich), ITEM_SLOT_ICLOTHING)
-	lich.equip_to_slot_or_del(new /obj/item/clothing/suit/wizrobe/black(lich), ITEM_SLOT_OCLOTHING)
-	lich.equip_to_slot_or_del(new /obj/item/clothing/head/wizard/black(lich), ITEM_SLOT_HEAD)
+	// no robes spawn for lesser spell
 
 	lich.real_name = mind.name
 	mind.transfer_to(lich)
@@ -140,7 +129,7 @@
 	lich.hardset_dna(null,null,lich.real_name,null, new /datum/species/skeleton,null)
 	to_chat(lich, "<span class='warning'>Your bones clatter and shudder as you are pulled back into this world!</span>")
 	var/turf/body_turf = get_turf(old_body)
-	lich.Paralyze(200 + 200*resurrections)
+	lich.Paralyze(400 + 200*resurrections) // paralyzed for longer due to lesser spell
 	resurrections++
 	if(old_body?.loc)
 		if(iscarbon(old_body))
@@ -154,8 +143,9 @@
 		var/wheres_wizdo = dir2text(get_dir(body_turf, item_turf))
 		if(wheres_wizdo)
 			old_body.visible_message("<span class='warning'>Suddenly [old_body.name]'s corpse falls to pieces! You see a strange energy rise from the remains, and speed off towards the [wheres_wizdo]!</span>")
-			body_turf.Beam(item_turf,icon_state="lichbeam",time=10+10*resurrections,maxdistance=INFINITY)
+			body_turf.Beam(item_turf,icon_state="lichbeam",time=20+20*resurrections,maxdistance=INFINITY) // beam shows for longer on the lesser spell
 		old_body.dust()
-
-
+	if(resurrections >= 2)
+		to_chat(lich,"<span class='userdanger'>You feel your lesser phylactery break from over-usage. You will no longer be able to resurrect on death.")
+		qdel(src)
 	return "Respawn of [mind] successful."
