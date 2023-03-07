@@ -11,7 +11,7 @@
 	flags_ricochet = RICOCHET_SHINY
 	layer = ABOVE_WINDOW_LAYER
 
-/obj/structure/mirror/Initialize(mapload)
+/obj/structure/mirror/Initialize(mapload, dir, building)
 	. = ..()
 	if(icon_state == "mirror_broke" && !broken)
 		obj_break(null, mapload)
@@ -267,3 +267,10 @@
 			P.setAngle(new_angle_s)
 
 	return BULLET_ACT_FORCE_PIERCE // complete projectile permutation
+
+/obj/item/wallframe/mirror
+	name = "wall mirror frame"
+	desc = "Now with 100% less lead!"
+	icon_state = "wallmirror"
+	result_path = /obj/structure/mirror
+	pixel_shift = -28

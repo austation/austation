@@ -996,6 +996,7 @@
 				)
 	category = CAT_MISC
 
+<<<<<<< HEAD
 /datum/crafting_recipe/paper_cup
 	name= "Paper Cup"
 	result = /obj/item/reagent_containers/food/drinks/sillycup
@@ -1003,3 +1004,23 @@
 	reqs = list(/obj/item/paper = 1)
 	category = CAT_MISC
 	tools = list(TOOL_WIRECUTTER)
+=======
+/datum/crafting_recipe/guillotine
+	name = "Guillotine"
+	result = /obj/structure/guillotine
+	time = 150 // Building a functioning guillotine takes time
+	reqs = list(/obj/item/stack/sheet/plasteel = 3,
+		        /obj/item/stack/sheet/wood = 20,
+		        /obj/item/stack/cable_coil = 10)
+	tools = list(TOOL_SCREWDRIVER, TOOL_WRENCH, TOOL_WELDER)
+	category = CAT_STRUCTURE
+	dangerous_craft = TRUE
+
+/datum/crafting_recipe/mirror
+	name = "Wall Mirror Frame"
+	result = /obj/item/wallframe/mirror
+	time = 4 SECONDS
+	reqs = list(/obj/item/stack/sheet/mineral/silver = 1, /obj/item/stack/sheet/glass = 2)
+	tools = list(TOOL_WRENCH)
+	category = CAT_STRUCTURE
+>>>>>>> 1ece1d9cf0 (Allows for wall mirror frames to be crafted (#8443))
