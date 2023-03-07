@@ -473,7 +473,13 @@
 	name = "sheetmaterials"
 
 /datum/asset/spritesheet/sheetmaterials/register()
+<<<<<<< HEAD
 	InsertAll("", 'icons/obj/stack_objects.dmi')
+=======
+	InsertAll("", 'icons/obj/stacks/minerals.dmi')//figure to do a list here
+//	InsertAll("", 'icons/obj/stacks/miscellaneous.dmi')
+//	InsertAll("", 'icons/obj/stacks/organic.dmi')
+>>>>>>> f5186fbb0d (Fixed the bug of snow not showing up (#8536))
 
 	// Special case to handle Bluespace Crystals
 	Insert("polycrystal", 'icons/obj/telescience.dmi', "polycrystal")

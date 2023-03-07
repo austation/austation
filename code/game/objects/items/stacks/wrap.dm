@@ -7,7 +7,11 @@
 /obj/item/stack/wrapping_paper
 	name = "wrapping paper"
 	desc = "Wrap packages with this festive paper to make gifts."
+<<<<<<< HEAD
 	icon = 'icons/obj/stack_objects.dmi'
+=======
+	icon = 'icons/obj/stacks/miscellaneous.dmi'
+>>>>>>> f5186fbb0d (Fixed the bug of snow not showing up (#8536))
 	icon_state = "wrap_paper"
 	item_flags = NOBLUDGEON
 	amount = 25
@@ -29,7 +33,11 @@
 	name = "package wrapper"
 	singular_name = "wrapping sheet"
 	desc = "You can use this to wrap items in."
+<<<<<<< HEAD
 	icon = 'icons/obj/stack_objects.dmi'
+=======
+	icon = 'icons/obj/stacks/miscellaneous.dmi'
+>>>>>>> f5186fbb0d (Fixed the bug of snow not showing up (#8536))
 	icon_state = "deliveryPaper"
 	item_flags = NOBLUDGEON
 	amount = 25
@@ -123,7 +131,11 @@
 /obj/item/c_tube
 	name = "cardboard tube"
 	desc = "A tube... of cardboard."
+<<<<<<< HEAD
 	icon = 'icons/obj/stack_objects.dmi'
+=======
+	icon = 'icons/obj/stacks/miscellaneous.dmi'
+>>>>>>> f5186fbb0d (Fixed the bug of snow not showing up (#8536))
 	icon_state = "c_tube"
 	throwforce = 0
 	w_class = WEIGHT_CLASS_TINY

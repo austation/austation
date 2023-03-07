@@ -1,7 +1,11 @@
 /obj/item/stack/medical
 	name = "medical pack"
 	singular_name = "medical pack"
+<<<<<<< HEAD
 	icon = 'icons/obj/stack_objects.dmi'
+=======
+	icon = 'icons/obj/stacks/miscellaneous.dmi'
+>>>>>>> f5186fbb0d (Fixed the bug of snow not showing up (#8536))
 	amount = 6
 	max_amount = 6
 	w_class = WEIGHT_CLASS_TINY
