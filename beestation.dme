@@ -627,6 +627,15 @@
 #include "code\datums\elements\squish.dm"
 #include "code\datums\elements\strippable.dm"
 #include "code\datums\elements\decals\blood.dm"
+<<<<<<< HEAD
+=======
+#include "code\datums\enumeration\callback_enumerator.dm"
+#include "code\datums\enumeration\enumeration_operations.dm"
+#include "code\datums\enumeration\enumerator.dm"
+#include "code\datums\enumeration\list_dereferencer_enumerator.dm"
+#include "code\datums\enumeration\list_enumerator.dm"
+#include "code\datums\enumeration\safe_enumerator.dm"
+>>>>>>> 69d07295f3 (Different enumeration strategies (#8547))
 #include "code\datums\greyscale\_greyscale_config.dm"
 #include "code\datums\greyscale\greyscale_configs.dm"
 #include "code\datums\greyscale\json_reader.dm"

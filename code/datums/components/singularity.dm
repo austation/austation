@@ -174,7 +174,19 @@
 	thing.singularity_act(singularity_size, parent)
 
 /datum/component/singularity/proc/eat()
+<<<<<<< HEAD
 	turfs_to_consume |= spiral_range_turfs(grav_pull, parent)
+=======
+	if (turfs_to_eat > 0)
+		return
+	//Begin performing tickchecked enumeration
+	var/list/turfs_to_consume = spiral_range_turfs(grav_pull, parent)
+	turfs_to_eat = length(turfs_to_consume)
+	// The foreach will delete things in this list, so we will use a dereferencing enumerator
+	// Turfs cannot be deleted, only modified so they cannot hard delete.
+	var/datum/enumerator/turf_enumerator = get_dereferencing_enumerator(turfs_to_consume)
+	SSenumeration.tickcheck(turf_enumerator.foreach(CALLBACK(src, .proc/consume_turf)))
+>>>>>>> 69d07295f3 (Different enumeration strategies (#8547))
 
 /datum/component/singularity/proc/digest()
 	var/atom/atom_parent = parent
