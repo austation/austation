@@ -263,7 +263,11 @@
 	update_icon()
 
 /obj/item/gun/ballistic/AltClick(mob/user)
+<<<<<<< HEAD
 	if (unique_reskin && !current_skin && user.canUseTopic(src, BE_CLOSE, NO_DEXTERY))
+=======
+	if (unique_reskin_icon && !current_skin && user.canUseTopic(src, BE_CLOSE, NO_DEXTERITY))
+>>>>>>> 6329c2b42d ([PORT] Remove code/__DEFINES/misc.dm (#8633))
 		reskin_obj(user)
 		return
 	if(loc == user)
