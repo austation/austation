@@ -193,6 +193,11 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 	if(radio_return & NOPASS)
 		return TRUE
 
+	//now that the radio message is sent, if the custom say message was just an emote we return
+	if (message_mods[MODE_CUSTOM_SAY_ERASE_INPUT] && message_mods[MODE_CUSTOM_SAY_EMOTE])
+		emote("me", 1, message_mods[MODE_CUSTOM_SAY_EMOTE], TRUE)
+		return
+
 	//No screams in space, unless you're next to someone.
 	var/turf/T = get_turf(src)
 	var/datum/gas_mixture/environment = T.return_air()
@@ -353,11 +358,18 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 	if(clockslurring)
 		message = clockslur(message)
 
+<<<<<<< HEAD
 	// check for and apply punctuation
 	var/end = copytext(message, length(message))
 	if(!(end in list("!", ".", "?", ":", "\"", "-", "~")))
 		message += "."
 
+=======
+	return treat_message_min(message)
+
+/mob/proc/treat_message_min(message)
+	message = punctuate(message)
+>>>>>>> 4e8169ae76 (misc. say fixes (mostly custom say emote fixes) (#8642))
 	message = capitalize(message)
 
 	return message
