@@ -3,8 +3,17 @@
   "name": "tgui-polyfill",
   "version": "4.3.0",
   "dependencies": {
+<<<<<<< HEAD
     "core-js": "^3.16.1",
     "regenerator-runtime": "^0.13.9",
     "unfetch": "^4.2.0"
+=======
+    "core-js": "^3.29.0",
+    "regenerator-runtime": "^0.13.11",
+    "unfetch": "^5.0.0"
+  },
+  "devDependencies": {
+    "terser": "^5.16.5"
+>>>>>>> 870ec40eef (Update to Python 3.11.2, Node 18.14.2, Inferno 8, Typescript 4.9, Yarn 3.4 (#8586))
   }
 }

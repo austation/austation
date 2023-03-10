@@ -1,10 +1,21 @@
+<<<<<<< HEAD
 import { createPopper, OptionsGeneric } from "@popperjs/core";
 import { Component, findDOMfromVNode, InfernoNode, render } from "inferno";
+=======
+import { createPopper, OptionsGeneric } from '@popperjs/core';
+import { Component, findDOMFromVNode, render } from 'inferno';
+import type { Inferno } from 'inferno';
+import type { PropertiesHyphen } from 'csstype';
+>>>>>>> 870ec40eef (Update to Python 3.11.2, Node 18.14.2, Inferno 8, Typescript 4.9, Yarn 3.4 (#8586))
 
 type PopperProps = {
-  popperContent: InfernoNode;
+  popperContent: Inferno.InfernoNode;
   options?: Partial<OptionsGeneric<unknown>>;
+<<<<<<< HEAD
   additionalStyles?: CSSProperties,
+=======
+  additionalStyles?: PropertiesHyphen;
+>>>>>>> 870ec40eef (Update to Python 3.11.2, Node 18.14.2, Inferno 8, Typescript 4.9, Yarn 3.4 (#8586))
 };
 
 export class Popper extends Component<PopperProps> {
@@ -45,7 +56,7 @@ export class Popper extends Component<PopperProps> {
         // This code is copied from `findDOMNode` in inferno-extras.
         // Because this component is written in TypeScript, we will know
         // immediately if this internal variable is removed.
-        findDOMfromVNode(this.$LI, true),
+        findDOMFromVNode(this.$LI, true),
         this.renderedContent,
         options,
       );

@@ -6,11 +6,15 @@ on:
     paths-ignore:
       - "html/changelogs/**"
       - "html/changelog.html"
-    branches:
-      - master
   pull_request:
     branches:
       - master
+<<<<<<< HEAD
+=======
+  merge_group:
+    branches:
+      - master
+>>>>>>> 870ec40eef (Update to Python 3.11.2, Node 18.14.2, Inferno 8, Typescript 4.9, Yarn 3.4 (#8586))
 
 jobs:
   run_linters:
@@ -20,7 +24,7 @@ jobs:
       - name: Python setup
         uses: actions/setup-python@v1
         with:
-          python-version: "3.9"
+          python-version: "3.11"
       - name: Setup cache
         id: cache-spacemandmm
         uses: actions/cache@v2

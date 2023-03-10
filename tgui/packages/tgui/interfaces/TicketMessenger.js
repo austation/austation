@@ -207,3 +207,65 @@ export const TicketChatWindow = (props, context) => {
     </Box>
   );
 };
+<<<<<<< HEAD
+=======
+
+class TicketMessages extends Component {
+
+  constructor(props) {
+    super(props);
+    this.messagesEndRef = createRef();
+  }
+
+  componentDidMount() {
+    this.scrollToBottom();
+  }
+
+  componentDidUpdate(oldProps) {
+    if (oldProps.messages.length !== this.props.messages.length) {
+      this.scrollToBottom();
+    }
+  }
+
+  scrollToBottom = () => {
+    this.messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  render() {
+    const { messages } = this.props;
+    return (
+      <>
+        {messages.map(message => (
+          <Section independent
+            key={message.time}>
+            <Table.Row>
+              <Table.Cell>
+                {message.time}
+              </Table.Cell>
+              <Table.Cell
+                color={message.color}>
+                <Box>
+                  <Box bold>
+                    {message.from && message.to
+                      ? "PM from " + decodeHtmlEntities(message.from)
+                        + " to " + decodeHtmlEntities(message.to)
+                      : decodeHtmlEntities(message.from)
+                        ? "Reply PM from " + decodeHtmlEntities(message.from)
+                        : decodeHtmlEntities(message.to)
+                          ? "PM to " + decodeHtmlEntities(message.to)
+                          : ""}
+                  </Box>
+                  <Box>
+                    {decodeHtmlEntities(message.message)}
+                  </Box>
+                </Box>
+              </Table.Cell>
+            </Table.Row>
+          </Section>
+        ))}
+        <div ref={this.messagesEndRef} />
+      </>
+    );
+  }
+}
+>>>>>>> 870ec40eef (Update to Python 3.11.2, Node 18.14.2, Inferno 8, Typescript 4.9, Yarn 3.4 (#8586))
