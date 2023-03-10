@@ -109,7 +109,11 @@ SUBSYSTEM_DEF(vote)
 			text += "<b>[question]</b>"
 		else
 			text += "<b>[capitalize(mode)] Vote</b>"
+<<<<<<< HEAD
 		for(var/i=1,i<=choices.len,i++)
+=======
+		for(var/i in 1 to choices.len)
+>>>>>>> 8e4d313d4c (Fixes SSvote votes (#8664))
 			var/votes = choices[choices[i]]
 			if(!votes)
 				votes = 0
