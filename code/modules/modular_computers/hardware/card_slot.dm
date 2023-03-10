@@ -105,6 +105,7 @@
 		stored_card2 = null
 		ejected++
 
+<<<<<<< HEAD
 	if(ejected)
 		if(holder)
 			if(holder.active_program)
@@ -120,6 +121,23 @@
 		playsound(src, 'sound/machines/terminal_insert_disc.ogg', 50, 0)
 		return TRUE
 	return FALSE
+=======
+		for(var/p in holder.idle_threads)
+			var/datum/computer_file/program/computer_program = p
+			computer_program.event_idremoved(1)
+	if(ishuman(user))
+		var/mob/living/carbon/human/human_wearer = user
+		if(human_wearer.wear_id == holder)
+			human_wearer.sec_hud_set_ID()
+	to_chat(user, "<span class='notice'>You remove the card from \the [src].</span>")
+	playsound(src, 'sound/machines/terminal_insert_disc.ogg', 50, FALSE)
+	stored_card = null
+	current_identification = null
+	current_job = null
+	holder?.update_icon()
+	holder?.ui_update()
+	return TRUE
+>>>>>>> d1bf5ad2ab (ModPCs use the same TGUI window + ModPC fixes (#8639))
 
 /obj/item/computer_hardware/card_slot/attackby(obj/item/I, mob/living/user)
 	if(..())

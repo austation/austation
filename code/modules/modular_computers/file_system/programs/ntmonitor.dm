@@ -50,7 +50,7 @@
 /datum/computer_file/program/ntnetmonitor/ui_data(mob/user)
 	if(!SSnetworks.station_network)
 		return
-	var/list/data = get_header_data()
+	var/list/data = list()
 
 	data["ntnetstatus"] = SSnetworks.station_network.check_function()
 	data["ntnetrelays"] = SSnetworks.station_network.relays.len

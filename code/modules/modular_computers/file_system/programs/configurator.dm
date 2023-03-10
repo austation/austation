@@ -28,8 +28,12 @@
 	if(!movable)
 		return 0
 
+<<<<<<< HEAD
 	var/list/data = get_header_data()
 
+=======
+	var/list/data = list()
+>>>>>>> d1bf5ad2ab (ModPCs use the same TGUI window + ModPC fixes (#8639))
 	data["disk_size"] = hard_drive.max_capacity
 	data["disk_used"] = hard_drive.used_capacity
 	data["power_usage"] = movable.last_power_usage

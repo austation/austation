@@ -46,6 +46,43 @@
 	var/comp_light_luminosity = 3				//The brightness of that light
 	var/comp_light_color			//The color of that light
 
+<<<<<<< HEAD
+=======
+	/// If we can imprint IDs on this device
+	var/can_save_id = FALSE
+	/// The currently imprinted ID.
+	var/saved_identification = null
+	/// The currently imprinted job.
+	var/saved_job = null
+	/// If the saved info should auto-update
+	var/saved_auto_imprint = FALSE
+	/// The amount of honks. honk honk honk honk honk honkh onk honkhnoohnk
+	var/honk_amount = 0
+	/// Idle programs on background. They still receive process calls but can't be interacted with.
+	var/list/idle_threads
+	/// Object that represents our computer. It's used for Adjacent() and UI visibility checks.
+	var/obj/physical = null
+	/// If the computer has a flashlight/LED light/what-have-you installed
+	var/has_light = FALSE
+	/// How far the computer's light can reach, is not editable by players.
+	var/comp_light_luminosity = 3
+	/// The built-in light's color, editable by players.
+	var/comp_light_color = "#FFFFFF"
+	/// Whether or not the tablet is invisible in messenger and other apps
+	var/messenger_invisible = FALSE
+	/// The saved image used for messaging purposes
+	var/datum/picture/saved_image
+	/// The ringtone that will be set on initialize
+	var/init_ringtone = "beep"
+	/// If the device starts with its ringer on
+	var/init_ringer_on = TRUE
+	/// The action for enabling/disabling the flashlight
+	var/datum/action/item_action/toggle_computer_light/light_action
+	/// Stored pAI card
+	var/obj/item/paicard/stored_pai_card
+	/// If the device is capable of storing a pAI
+	var/can_store_pai = FALSE
+>>>>>>> d1bf5ad2ab (ModPCs use the same TGUI window + ModPC fixes (#8639))
 
 /obj/item/modular_computer/Initialize(mapload)
 	. = ..()
@@ -55,6 +92,31 @@
 	comp_light_color = "#FFFFFF"
 	idle_threads = list()
 	update_icon()
+<<<<<<< HEAD
+=======
+	add_messenger()
+
+/obj/item/modular_computer/proc/update_id_display()
+	var/obj/item/computer_hardware/identifier/id = all_components[MC_IDENTIFY]
+	if(id)
+		id.UpdateDisplay()
+
+/obj/item/modular_computer/proc/on_id_insert()
+	ui_update()
+	var/obj/item/computer_hardware/card_slot/cardholder = all_components[MC_CARD]
+	// We shouldn't auto-imprint if ID modification is open.
+	if(!can_save_id || !saved_auto_imprint || !cardholder || istype(active_program, /datum/computer_file/program/card_mod))
+		return
+	if(cardholder.current_identification == saved_identification && cardholder.current_job == saved_job)
+		return
+	if(!cardholder.current_identification || !cardholder.current_job)
+		return
+	saved_identification = cardholder.current_identification
+	saved_job = cardholder.current_job
+	update_id_display()
+	playsound(src, 'sound/machines/terminal_processing.ogg', 15, TRUE)
+	addtimer(CALLBACK(GLOBAL_PROC, .proc/playsound, src, 'sound/machines/terminal_success.ogg', 15, TRUE), 1.3 SECONDS)
+>>>>>>> d1bf5ad2ab (ModPCs use the same TGUI window + ModPC fixes (#8639))
 
 /obj/item/modular_computer/Destroy()
 	kill_program(forced = TRUE)
@@ -190,6 +252,17 @@
 			newemag = TRUE
 	if(newemag)
 		to_chat(user, "<span class='notice'>You swipe \the [src]. A console window momentarily fills the screen, with white text rapidly scrolling past.</span>")
+<<<<<<< HEAD
+=======
+		kill_program(forced = TRUE, update = FALSE)
+
+		var/datum/computer_file/program/emag_console/emag_console = new(src)
+		emag_console.computer = src
+		emag_console.program_state = PROGRAM_STATE_ACTIVE
+		active_program = emag_console
+		ui_interact(user)
+		update_icon()
+>>>>>>> d1bf5ad2ab (ModPCs use the same TGUI window + ModPC fixes (#8639))
 		return TRUE
 	to_chat(user, "<span class='notice'>You swipe \the [src]. A console window fills the screen, but it quickly closes itself after only a few lines are written to it.</span>")
 	return FALSE
@@ -218,6 +291,7 @@
 		add_overlay("bsod")
 		add_overlay("broken")
 
+<<<<<<< HEAD
 
 // On-click handling. Turns on the computer if it's off and opens the GUI.
 /obj/item/modular_computer/interact(mob/user)
@@ -227,6 +301,13 @@
 		turn_on(user)
 
 /obj/item/modular_computer/proc/turn_on(mob/user)
+=======
+/obj/item/modular_computer/proc/turn_on(mob/user, open_ui = TRUE)
+	if(enabled)
+		if(open_ui)
+			ui_interact(user)
+		return TRUE
+>>>>>>> d1bf5ad2ab (ModPCs use the same TGUI window + ModPC fixes (#8639))
 	var/issynth = issilicon(user) // Robots and AIs get different activation messages.
 	if(obj_integrity <= integrity_failure)
 		if(issynth)
@@ -333,6 +414,7 @@
 		if(3)
 			data["PC_ntneticon"] = "sig_lan.gif"
 
+<<<<<<< HEAD
 	if(idle_threads.len)
 		var/list/program_headers = list()
 		for(var/I in idle_threads)
@@ -342,24 +424,86 @@
 			program_headers.Add(list(list(
 				"icon" = P.ui_header
 			)))
+=======
+	var/list/program_headers = list()
+	for(var/datum/computer_file/program/P as anything in idle_threads)
+		if(!P?.ui_header)
+			continue
+		program_headers.Add(list(list(
+			"icon" = P.ui_header
+		)))
+>>>>>>> d1bf5ad2ab (ModPCs use the same TGUI window + ModPC fixes (#8639))
 
-		data["PC_programheaders"] = program_headers
+	data["PC_programheaders"] = program_headers
 
 	data["PC_stationtime"] = station_time_timestamp()
+	data["PC_stationdate"] = "[time2text(world.realtime, "DDD, Month DD")], [GLOB.year_integer+YEAR_OFFSET]"
 	data["PC_hasheader"] = 1
 	data["PC_showexitprogram"] = active_program ? 1 : 0 // Hides "Exit Program" button on mainscreen
 	return data
 
 // Relays kill program request to currently active program. Use this to quit current program.
-/obj/item/modular_computer/proc/kill_program(forced = FALSE)
+/obj/item/modular_computer/proc/kill_program(forced = FALSE, update = TRUE)
 	if(active_program)
+		if(active_program in idle_threads)
+			idle_threads.Remove(active_program)
 		active_program.kill_program(forced)
 		active_program = null
-	var/mob/user = usr
-	if(user && istype(user))
-		ui_interact(user) // Re-open the UI on this computer. It should show the main screen now.
-	update_icon()
+	if(update)
+		var/mob/user = usr
+		if(user && istype(user))
+			ui_interact(user) // Re-open the UI on this computer. It should show the main screen now.
+		update_icon()
 
+<<<<<<< HEAD
+=======
+/obj/item/modular_computer/proc/open_program(mob/user, datum/computer_file/program/program, in_background = FALSE)
+	if(program.computer != src)
+		CRASH("tried to open program that does not belong to this computer")
+
+	if(!program || !istype(program)) // Program not found or it's not executable program.
+		to_chat(user, "<span class='danger'>\The [src]'s screen shows \"I/O ERROR - Unable to run program\" warning.</span>")
+		return FALSE
+
+	if(!program.is_supported_by_hardware(hardware_flag, 1, user))
+		return FALSE
+
+	// The program is already running. Resume it.
+	if(!in_background)
+		if(program in idle_threads)
+			program.program_state = PROGRAM_STATE_ACTIVE
+			active_program = program
+			program.alert_pending = FALSE
+			idle_threads.Remove(program)
+			update_icon()
+			return TRUE
+	else if(program in idle_threads)
+		return TRUE
+	var/obj/item/computer_hardware/processor_unit/PU = all_components[MC_CPU]
+	if(idle_threads.len > PU.max_idle_programs)
+		to_chat(user, "<span class='danger'>\The [src] displays a \"Maximal CPU load reached. Unable to run another program.\" error.</span>")
+		return FALSE
+
+	if(program.requires_ntnet && !get_ntnet_status(program.requires_ntnet_feature)) // The program requires NTNet connection, but we are not connected to NTNet.
+		to_chat(user, "<span class='danger'>\The [src]'s screen shows \"Unable to connect to NTNet. Please retry. If problem persists contact your system administrator.\" warning.</span>")
+		return FALSE
+
+	if(!program.on_start(user))
+		return FALSE
+
+	if(!in_background)
+		active_program = program
+		program.alert_pending = FALSE
+		ui_interact(user)
+	else
+		program.program_state = PROGRAM_STATE_BACKGROUND
+		idle_threads.Add(program)
+	update_icon()
+	return TRUE
+
+
+
+>>>>>>> d1bf5ad2ab (ModPCs use the same TGUI window + ModPC fixes (#8639))
 // Returns 0 for No Signal, 1 for Low Signal and 2 for Good Signal. 3 is for wired connection (always-on)
 /obj/item/modular_computer/proc/get_ntnet_status(specific_action = 0)
 	var/obj/item/computer_hardware/network_card/network_card = all_components[MC_NET]
@@ -384,17 +528,109 @@
 	enabled = 0
 	update_icon()
 
+<<<<<<< HEAD
+=======
+/**
+  * Toggles the computer's flashlight, if it has one.
+  *
+  * Called from ui_act(), does as the name implies.
+  * It is separated from ui_act() to be overwritten as needed.
+*/
+/obj/item/modular_computer/proc/toggle_flashlight()
+	if(!has_light)
+		return FALSE
+	set_light_on(!light_on)
+	update_icon()
+	// Show the light_on overlay on top of the action button icon
+	if(light_action?.owner)
+		light_action.UpdateButtonIcon(force = TRUE)
+	return TRUE
+
+/**
+  * Sets the computer's light color, if it has a light.
+  *
+  * Called from ui_act(), this proc takes a color string and applies it.
+  * It is separated from ui_act() to be overwritten as needed.
+  * Arguments:
+  ** color is the string that holds the color value that we should use. Proc auto-fails if this is null.
+*/
+/obj/item/modular_computer/proc/set_flashlight_color(color)
+	if(!has_light || !color)
+		return FALSE
+	comp_light_color = color
+	set_light_color(color)
+	return TRUE
+
+/obj/item/modular_computer/screwdriver_act(mob/user, obj/item/tool)
+	if(!deconstructable)
+		return
+	if(!length(all_components))
+		balloon_alert(user, "no components installed!")
+		return
+	var/list/component_names = list()
+	for(var/h in all_components)
+		var/obj/item/computer_hardware/H = all_components[h]
+		component_names.Add(H.name)
+
+	var/choice = input(user, "Which component do you want to uninstall?", "Computer maintenance", null) as null|anything in sortList(component_names)
+
+	if(!choice)
+		return
+
+	if(!Adjacent(user))
+		return
+
+	var/obj/item/computer_hardware/H = find_hardware_by_name(choice)
+
+	if(!H)
+		return
+
+	tool.play_tool_sound(user, volume=20)
+	uninstall_component(H, user, TRUE)
+	ui_update()
+	return
+
+/obj/item/modular_computer/attackby(obj/item/attacking_item, mob/user, params)
+	// Check for ID first
+	if(istype(attacking_item, /obj/item/card/id) && InsertID(attacking_item))
+		return
+
+	// Scan a photo.
+	if(istype(attacking_item, /obj/item/photo))
+		var/obj/item/computer_hardware/hard_drive/hdd = all_components[MC_HDD]
+		var/obj/item/photo/pic = attacking_item
+		if(hdd)
+			for(var/datum/computer_file/program/messenger/messenger in hdd.stored_files)
+				saved_image = pic.picture
+				messenger.ProcessPhoto()
+				to_chat(user, "<span class='notice'>You scan \the [pic] into \the [src]'s messenger.</span>")
+				ui_update()
+			return
+>>>>>>> d1bf5ad2ab (ModPCs use the same TGUI window + ModPC fixes (#8639))
 
 /obj/item/modular_computer/attackby(obj/item/W as obj, mob/user as mob)
 	// Insert items into the components
 	for(var/h in all_components)
 		var/obj/item/computer_hardware/H = all_components[h]
+<<<<<<< HEAD
 		if(H.try_insert(W, user))
+=======
+		if(H.try_insert(attacking_item, user))
+			ui_update()
+>>>>>>> d1bf5ad2ab (ModPCs use the same TGUI window + ModPC fixes (#8639))
 			return
 
 	// Insert new hardware
+<<<<<<< HEAD
 	if(istype(W, /obj/item/computer_hardware))
 		if(install_component(W, user))
+=======
+	var/obj/item/computer_hardware/inserted_hardware = attacking_item
+	if(istype(inserted_hardware) && upgradable)
+		if(install_component(inserted_hardware, user))
+			inserted_hardware.on_inserted(user)
+			ui_update()
+>>>>>>> d1bf5ad2ab (ModPCs use the same TGUI window + ModPC fixes (#8639))
 			return
 
 	if(W.tool_behaviour == TOOL_WRENCH)

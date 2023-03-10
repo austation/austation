@@ -19,8 +19,8 @@
 	var/list/current_access = list()
 
 /datum/computer_file/program/robocontrol/ui_data(mob/user)
-	var/list/data = get_header_data()
-	var/turf/current_turf = get_turf(ui_host())
+	var/list/data = list()
+	var/turf/current_turf = get_turf(computer.ui_host())
 	var/zlevel = current_turf.get_virtual_z_level()
 	var/list/botlist = list()
 	var/list/mulelist = list()
@@ -82,5 +82,20 @@
 				GLOB.data_core.manifest_modify(id_card.registered_name, id_card.assignment)
 				card_slot.try_eject(TRUE, current_user)
 			else
+<<<<<<< HEAD
 				playsound(get_turf(ui_host()) , 'sound/machines/buzz-sigh.ogg', 25, FALSE)
 	return
+=======
+				playsound(get_turf(computer.ui_host()) , 'sound/machines/buzz-sigh.ogg', 25, FALSE)
+	if(!selected_bot)
+		return
+	var access_okay = TRUE
+	if(!id_card && !selected_bot.bot_core.allowed(current_user))
+		access_okay = FALSE
+	else if(id_card && !selected_bot.bot_core.check_access(id_card))
+		access_okay = FALSE
+	if (access_okay && (action in standard_actions))
+		selected_bot.bot_control(action, current_user, id_card ? id_card.access : current_access)
+	if (access_okay && (action in MULE_actions))
+		selected_bot.bot_control(action, current_user, id_card ? id_card.access : current_access, TRUE)
+>>>>>>> d1bf5ad2ab (ModPCs use the same TGUI window + ModPC fixes (#8639))

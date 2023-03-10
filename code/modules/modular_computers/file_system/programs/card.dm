@@ -332,7 +332,7 @@
 	return data
 
 /datum/computer_file/program/card_mod/ui_data(mob/user)
-	var/list/data = get_header_data()
+	var/list/data = list()
 
 	var/obj/item/computer_hardware/card_slot/card_slot
 	var/obj/item/computer_hardware/printer/printer

@@ -128,7 +128,7 @@
 	if(!istype(my_computer))
 		return
 
-	var/list/data = get_header_data()
+	var/list/data = list()
 
 	data["downloading"] = !!downloaded_file
 	data["error"] = downloaderror || FALSE

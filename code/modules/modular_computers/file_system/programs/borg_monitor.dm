@@ -13,7 +13,7 @@
 
 
 /datum/computer_file/program/borg_monitor/ui_data(mob/user)
-	var/list/data = get_header_data()
+	var/list/data = list()
 
 	data["card"] = FALSE
 	if(computer.GetID())
@@ -55,10 +55,22 @@
 		if("messagebot")
 			var/mob/living/silicon/robot/R = locate(params["ref"]) in GLOB.silicon_mobs
 			if(!istype(R))
+<<<<<<< HEAD
 				return
 			var/obj/item/card/id/ID = computer.GetID()
 			if(!ID)
 				return
+=======
+				return TRUE
+			var/sender_name = get_id_name()
+			if(!sender_name)
+				// This can only happen if the action somehow gets called as UI blocks this action with no ID
+				computer.visible_message("<span class='notice'>Insert an ID to send messages.</span>")
+				playsound(usr, 'sound/machines/terminal_error.ogg', 15, TRUE)
+				return TRUE
+			if(R.stat == DEAD) //Dead borgs will listen to you no longer
+				to_chat(usr, "<span class='warn'>Error -- Could not open a connection to unit:[R]</span>")
+>>>>>>> d1bf5ad2ab (ModPCs use the same TGUI window + ModPC fixes (#8639))
 			var/message = stripped_input(usr, message = "Enter message to be sent to remote cyborg.", title = "Send Message")
 			if(!message)
 				return
@@ -67,3 +79,49 @@
 			if(R.connected_ai)
 				to_chat(R.connected_ai, "<br><br><span class='notice'>Message from [ID.registered_name] to [R] -- \"[message]\"</span><br>")
 				SEND_SOUND(R.connected_ai, 'sound/machines/twobeep_high.ogg')
+<<<<<<< HEAD
+=======
+			R.logevent("Message from [sender_name] -- \"[message]\"")
+			usr.log_talk(message, LOG_PDA, tag="Cyborg Monitor Program: ID name \"[sender_name]\" to [R]")
+			return TRUE
+
+///This proc is used to determin if a borg should be shown in the list (based on the borg's scrambledcodes var). Syndicate version overrides this to show only syndicate borgs.
+/datum/computer_file/program/borg_monitor/proc/evaluate_borg(mob/living/silicon/robot/R)
+	var/turf/computer_turf = get_turf(computer)
+	var/turf/robot_turf = get_turf(R)
+	if(computer_turf.get_virtual_z_level() != robot_turf.get_virtual_z_level())
+		return FALSE
+	if(R.scrambledcodes)
+		return FALSE
+	return TRUE
+
+///Gets the ID's name, if one is inserted into the device. This is a separate proc solely to be overridden by the syndicate version of the app.
+/datum/computer_file/program/borg_monitor/proc/get_id_name()
+	var/obj/item/card/id/ID = computer.GetID()
+	if(!istype(ID))
+		return emagged ? "STDERR:UNDF" : FALSE
+	return ID.registered_name
+
+/datum/computer_file/program/borg_monitor/syndicate
+	filename = "scyborgmonitor"
+	filedesc = "Mission-Specific Cyborg Remote Monitoring"
+	extended_desc = "This program allows for remote monitoring of mission-assigned cyborgs."
+	requires_ntnet = FALSE
+	available_on_ntnet = FALSE
+	available_on_syndinet = TRUE
+	transfer_access = null
+	tgui_id = "NtosCyborgRemoteMonitorSyndicate"
+
+/datum/computer_file/program/borg_monitor/syndicate/run_emag()
+	return FALSE
+
+/datum/computer_file/program/borg_monitor/syndicate/evaluate_borg(mob/living/silicon/robot/R)
+	if((get_turf(computer)).get_virtual_z_level() != (get_turf(R)).get_virtual_z_level())
+		return FALSE
+	if(!R.scrambledcodes)
+		return FALSE
+	return TRUE
+
+/datum/computer_file/program/borg_monitor/syndicate/get_id_name()
+	return "\[REDACTED\]" //no ID is needed for the syndicate version's message function, and the borg will see "[REDACTED]" as the message sender.
+>>>>>>> d1bf5ad2ab (ModPCs use the same TGUI window + ModPC fixes (#8639))

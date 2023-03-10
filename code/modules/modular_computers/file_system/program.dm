@@ -112,6 +112,7 @@
 			to_chat(user, "<span class='danger'>\The [computer] flashes an \"Access Denied\" warning.</span>")
 	return 0
 
+<<<<<<< HEAD
 // This attempts to retrieve header data for UIs. If implementing completely new device of different type than existing ones
 // always include the device here in this proc. This proc basically relays the request to whatever is running the program.
 /datum/computer_file/program/proc/get_header_data()
@@ -122,6 +123,18 @@
 // This is performed on program startup. May be overridden to add extra logic. Remember to include ..() call. Return 1 on success, 0 on failure.
 // When implementing new program based device, use this to run the program.
 /datum/computer_file/program/proc/run_program(mob/living/user)
+=======
+/**
+ * Called on program startup.
+ *
+ * May be overridden to add extra logic. Remember to include ..() call. Return 1 on success, 0 on failure.
+ * When implementing new program based device, use this to run the program.
+ * Arguments:
+ * * user - The mob that started the program
+ **/
+/datum/computer_file/program/proc/on_start(mob/living/user)
+	SHOULD_CALL_PARENT(TRUE)
+>>>>>>> d1bf5ad2ab (ModPCs use the same TGUI window + ModPC fixes (#8639))
 	if(can_run(user, 1))
 		if(requires_ntnet && network_destination)
 			generate_network_log("Connection opened to [network_destination].")
@@ -150,6 +163,7 @@
 		generate_network_log("Connection to [network_destination] closed.")
 	return 1
 
+<<<<<<< HEAD
 /datum/computer_file/program/ui_assets(mob/user)
 	return list(
 		get_asset_datum(/datum/asset/simple/headers),
@@ -210,3 +224,14 @@
 	if(program_state != PROGRAM_STATE_ACTIVE) // Our program was closed. Close the ui if it exists.
 		return UI_CLOSE
 	return ..()
+=======
+/// Return TRUE if nothing was processed. Return FALSE to prevent further actions running.
+/// Set use_attack = TRUE to receive proccalls from the parent computer.
+/datum/computer_file/program/proc/attack(atom/target, mob/living/user, params)
+	return TRUE
+
+/// Return TRUE if nothing was processed. Return FALSE to prevent further actions running.
+/// Set use_attack_obj = TRUE to receive proccalls from the parent computer.
+/datum/computer_file/program/proc/attack_obj(obj/target, mob/living/user)
+	return TRUE
+>>>>>>> d1bf5ad2ab (ModPCs use the same TGUI window + ModPC fixes (#8639))

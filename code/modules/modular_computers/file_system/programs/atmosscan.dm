@@ -10,10 +10,16 @@
 
 
 /datum/computer_file/program/atmosscan/ui_data(mob/user)
-	var/list/data = get_header_data()
+	var/list/data = list()
 	var/list/airlist = list()
+<<<<<<< HEAD
 	var/turf/T = get_turf(ui_host())
 	if(T)
+=======
+	var/turf/T = get_turf(computer.ui_host())
+	var/obj/item/computer_hardware/sensorpackage/sensors = computer?.get_modular_computer_part(MC_SENSORS)
+	if(T && sensors?.check_functionality())
+>>>>>>> d1bf5ad2ab (ModPCs use the same TGUI window + ModPC fixes (#8639))
 		var/datum/gas_mixture/environment = T.return_air()
 		var/pressure = environment.return_pressure()
 		var/total_moles = environment.total_moles()

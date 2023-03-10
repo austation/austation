@@ -49,7 +49,13 @@
 	)
 
 /datum/computer_file/program/radar/ui_data(mob/user)
+<<<<<<< HEAD
 	var/list/data = get_header_data()
+=======
+	var/list/data = list()
+	// PDAs should not have full radar capabilities
+	data["full_capability"] = !istype(computer, /obj/item/modular_computer/tablet/pda)
+>>>>>>> d1bf5ad2ab (ModPCs use the same TGUI window + ModPC fixes (#8639))
 	data["selected"] = selected
 	data["objects"] = list()
 	data["scanning"] = (world.time < next_scan)
@@ -73,8 +79,10 @@
 	switch(action)
 		if("selecttarget")
 			selected = params["ref"]
+			return TRUE
 		if("scan")
 			scan()
+			return TRUE
 
 /**
   *Updates tracking information of the selected target.

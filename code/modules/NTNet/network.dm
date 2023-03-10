@@ -154,12 +154,21 @@
 
 
 // Checks whether NTNet operates. If parameter is passed checks whether specific function is enabled.
+<<<<<<< HEAD
 /datum/ntnet/proc/check_function(specific_action = 0)
 	if(!relays || !relays.len) // No relays found. NTNet is down
 		return FALSE
 
 	// Check all relays. If we have at least one working relay, network is up.
 	if(!check_relay_operation())
+=======
+/datum/ntnet/station_root/proc/check_function(specific_action = 0, zlevel, ignore_relay = FALSE)
+	if(!SSnetworks.relays || !SSnetworks.relays.len) // No relays found. NTNet is down
+		return FALSE
+
+	// Check all relays. If we have at least one working relay, network is up.
+	if(!ignore_relay && !SSnetworks.check_relay_operation(zlevel))
+>>>>>>> d1bf5ad2ab (ModPCs use the same TGUI window + ModPC fixes (#8639))
 		return FALSE
 
 	if(setting_disabled)
