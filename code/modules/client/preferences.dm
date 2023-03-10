@@ -174,8 +174,18 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 		if(load_character())
 			return
 	//we couldn't load character data so just randomize the character appearance + name
+<<<<<<< HEAD
 	random_character()		//let's create a random character then - rather than a fat, bald and naked man.
 	real_name = pref_species.random_name(gender,1)
+=======
+	active_character = character_saves[1]
+	var/fallback_default_species = CONFIG_GET(string/fallback_default_species)
+	if(!active_character.pref_species && fallback_default_species != "random")
+		var/datum/species/spath = GLOB.species_list[fallback_default_species || "human"]
+		active_character.pref_species = new spath
+	active_character.randomise()		//let's create a random character then - rather than a fat, bald and naked man.
+	active_character.real_name = active_character.pref_species.random_name(active_character.gender, TRUE)
+>>>>>>> dc61a0fb6d (Default to human for active character slot when there is no database (#8653))
 	if(!loaded_preferences_successfully)
 		save_preferences()
 	save_character()		//let's save this new random character so it doesn't keep generating new ones.
