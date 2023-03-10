@@ -8,24 +8,41 @@
 	network_destination = "cargo claims interface"
 	size = 10
 	tgui_id = "NtosBountyConsole"
+<<<<<<< HEAD
 	
 	///cooldown var for printing paper sheets.
 	var/printer_ready = 0
 	///The cargo account for grabbing the cargo account's credits.
+=======
+	program_icon = "tags"
+
+	/// Cooldown var for printing paper sheets.
+	COOLDOWN_DECLARE(printer_ready)
+	/// The cargo account for grabbing the cargo account's credits.
+>>>>>>> 5f65ac9a37 (Fix SecurEye and Bounty Viewer apps not working (#8670))
 	var/static/datum/bank_account/cargocash
 
 /datum/computer_file/program/bounty/proc/print_paper()
 	new /obj/item/paper/bounty_printout(get_turf(computer))
 
+<<<<<<< HEAD
 /datum/computer_file/program/bounty/ui_interact(mob/user, datum/tgui/ui)
 	if(!GLOB.bounties_list.len)
 		setup_bounties()
 	printer_ready = world.time + PRINTER_TIMEOUT
 	cargocash = SSeconomy.get_dep_account(ACCOUNT_CAR)
 	. = ..()
+=======
+/datum/computer_file/program/bounty/on_ui_create(mob/user, datum/tgui/ui)
+	COOLDOWN_START(src, printer_ready, PRINTER_TIMEOUT)
+>>>>>>> 5f65ac9a37 (Fix SecurEye and Bounty Viewer apps not working (#8670))
 
 /datum/computer_file/program/bounty/ui_data(mob/user)
 	var/list/data = get_header_data()
+
+	if(!GLOB.bounties_list.len)
+		setup_bounties()
+	cargocash = SSeconomy.get_budget_account(ACCOUNT_CAR_ID)
 
 	var/obj/item/computer_hardware/printer/printer
 	if(computer)
@@ -46,7 +63,7 @@
 	
 	data["has_printer"] = printer ? TRUE : FALSE
 
-	data["stored_cash"] = cargocash.account_balance
+	data["stored_cash"] = cargocash ? cargocash.account_balance : 0
 	data["bountydata"] = bountyinfo
 	
 	return data
@@ -61,6 +78,9 @@
 				cashmoney.claim()
 			return TRUE
 		if("Print")
+			if(!COOLDOWN_FINISHED(src, printer_ready))
+				to_chat(usr, "<span class='warning'>The printer is not ready to print yet!</span>")
+				return
 			var/obj/item/computer_hardware/printer/printer
 			if(computer)
 				printer = computer.all_components[MC_PRINT]
@@ -70,4 +90,5 @@
 					to_chat(usr, "<span class='notice'>Hardware error: Printer was unable to print the file. It may be out of paper.</span>")
 					return
 				else
+					COOLDOWN_START(src, printer_ready, PRINTER_TIMEOUT)
 					computer.visible_message("<span class='notice'>\The [computer] prints out a paper.</span>")

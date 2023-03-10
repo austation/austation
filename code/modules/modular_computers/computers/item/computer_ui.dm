@@ -44,11 +44,56 @@
 		return // No HDD, No HDD files list or no stored files. Something is very broken.
 
 	ui = SStgui.try_update_ui(user, src, ui)
+<<<<<<< HEAD
 	if (!ui)
 		ui = new(user, src, "NtosMain")
 		ui.set_autoupdate(TRUE)
 		if(ui.open())
 			ui.send_asset(get_asset_datum(/datum/asset/simple/headers))
+=======
+	if(!ui)
+		if(active_program)
+			ui = new(user, src, active_program.tgui_id, active_program.filedesc)
+			ui.set_autoupdate(TRUE)
+		else
+			ui = new(user, src, "NtosMain")
+			ui.set_autoupdate(TRUE)
+		ui.open()
+		return
+
+	var/old_open_ui = ui.interface
+	if(active_program)
+		ui.interface = active_program.tgui_id
+		ui.title = active_program.filedesc
+	else
+		ui.interface = "NtosMain"
+	//opened a new UI
+	if(old_open_ui != ui.interface)
+		update_static_data(user, ui) // forces a static UI update for the new UI
+		ui.send_assets() // sends any new asset datums from the new UI
+		if(active_program)
+			active_program.on_ui_create(user, ui)
+
+
+/obj/item/modular_computer/ui_close(mob/user, datum/tgui/tgui)
+	if(active_program)
+		active_program.on_ui_close(user, tgui)
+
+/obj/item/modular_computer/ui_assets(mob/user)
+	var/list/data = list()
+	data += get_asset_datum(/datum/asset/simple/headers)
+	if(active_program)
+		data += active_program.ui_assets(user)
+	return data
+
+/obj/item/modular_computer/ui_static_data(mob/user)
+	. = ..()
+	var/list/data = list()
+	if(active_program)
+		data += active_program.ui_static_data(user)
+		return data
+	return data
+>>>>>>> 5f65ac9a37 (Fix SecurEye and Bounty Viewer apps not working (#8670))
 
 /obj/item/modular_computer/ui_data(mob/user)
 	var/list/data = get_header_data()
