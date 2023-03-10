@@ -257,6 +257,31 @@ GLOBAL_LIST_INIT(fluid_duct_recipes, list(
 	var/static/datum/pipe_info/first_coilgun // austation -- coilguns
 	var/mode = BUILD_MODE | PAINT_MODE | DESTROY_MODE | WRENCH_MODE
 	var/locked = FALSE //wheter we can change categories. Useful for the plumber
+<<<<<<< HEAD
+=======
+	var/ranged = FALSE
+
+	/// you can remove these through RPD
+	var/static/list/rpd_targets = typecacheof(list(
+			/obj/item/pipe,
+			/obj/item/pipe_meter,
+			/obj/structure/disposalconstruct,
+			/obj/structure/disposalpipe/broken,
+			/obj/structure/c_transit_tube,
+			/obj/structure/c_transit_tube_pod,
+		))
+	/// you can attempt using RPD on these
+	var/static/list/rpd_whitelist = typecacheof(list(
+			/obj/structure/lattice,
+			/obj/structure/girder,
+			/obj/item/pipe,
+			/obj/item/pipe_meter,
+			/obj/structure/window,
+			/obj/structure/grille
+		))
+	/// list of atmos constructs that we don't want to attack with RPD
+	var/static/list/atmos_constructs = typecacheof(list(/obj/machinery/atmospherics, /obj/structure/transit_tube))
+>>>>>>> b2392edf62 (fix (#8608))
 
 /obj/item/pipe_dispenser/Initialize(mapload)
 	. = ..()
@@ -395,11 +420,34 @@ GLOBAL_LIST_INIT(fluid_duct_recipes, list(
 	if(!user.IsAdvancedToolUser() || istype(A, /turf/open/space/transit))
 		return ..()
 
+<<<<<<< HEAD
+=======
+	// this shouldn't use early return because checking less condition is good
+	if(isturf(A) || is_type_in_typecache(A, atmos_constructs) || is_type_in_typecache(A, rpd_targets) || is_type_in_typecache(A, rpd_whitelist))
+		if(proximity || ranged)
+			rpd_create(A, user)
+			return
+
+	return ..()
+
+/obj/item/pipe_dispenser/proc/rpd_create(atom/A, mob/user)
+
+	var/atom/attack_target = A
+
+>>>>>>> b2392edf62 (fix (#8608))
 	//So that changing the menu settings doesn't affect the pipes already being built.
 	var/queued_p_type = recipe.id
 	var/queued_p_dir = p_dir
 	var/queued_p_flipped = p_flipped
 
+<<<<<<< HEAD
+=======
+	//Unwrench pipe before we build one over/paint it, but only if we're not already running a do_after on it already to prevent a potential runtime.
+	if((mode & DESTROY_MODE) && (upgrade_flags & RPD_UPGRADE_UNWRENCH) && istype(attack_target, /obj/machinery/atmospherics) && !(attack_target in user.do_afters))
+		attack_target.wrench_act(user, src)
+		return
+
+>>>>>>> b2392edf62 (fix (#8608))
 	//make sure what we're clicking is valid for the current category
 	var/static/list/make_pipe_whitelist
 	if(!make_pipe_whitelist)
