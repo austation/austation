@@ -263,7 +263,15 @@
 				to_chat(user, "<span class='warning'>The MMI indicates that the brain is damaged!</span>")
 				return
 
+<<<<<<< HEAD
 			if(is_banned_from(BM.ckey, "Cyborg") || QDELETED(src) || QDELETED(BM) || QDELETED(user) || QDELETED(M) || !Adjacent(user))
+=======
+			if(is_banned_from(BM.ckey, JOB_NAME_CYBORG) || BM.client.get_exp_living(TRUE) <= MINUTES_REQUIRED_BASIC)
+				to_chat(user, "<span class='warning'>This [M.name] is not compatible, try a different one!</span>")
+				return
+			
+			if(QDELETED(src) || QDELETED(BM) || QDELETED(user) || !Adjacent(user))
+>>>>>>> 3a5910147b (Improves player security checks for Cyborg and Mechs (#8610))
 				if(!QDELETED(M))
 					to_chat(user, "<span class='warning'>This [M.name] does not seem to fit!</span>")
 				return

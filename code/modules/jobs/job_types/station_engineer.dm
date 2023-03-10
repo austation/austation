@@ -8,8 +8,12 @@
 	spawn_positions = 5
 	supervisors = "the chief engineer"
 	selection_color = "#fff5cc"
+<<<<<<< HEAD
 	chat_color = "#D9BC89"
 	exp_requirements = 120
+=======
+	exp_requirements = MINUTES_REQUIRED_BASIC
+>>>>>>> 3a5910147b (Improves player security checks for Cyborg and Mechs (#8610))
 	exp_type = EXP_TYPE_CREW
 
 	outfit = /datum/outfit/job/engineer

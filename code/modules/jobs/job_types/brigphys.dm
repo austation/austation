@@ -10,7 +10,7 @@
 	selection_color = "#ffeeee"
 	chat_color = "#b16789"
 	minimal_player_age = 7
-	exp_requirements = 120
+	exp_requirements = MINUTES_REQUIRED_BASIC
 	exp_type = EXP_TYPE_CREW
 
 	outfit = /datum/outfit/job/brig_phys

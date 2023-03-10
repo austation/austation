@@ -8,8 +8,12 @@
 	spawn_positions = 1
 	supervisors = "the chief medical officer"
 	selection_color = "#d4ebf2"
+<<<<<<< HEAD:code/modules/jobs/job_types/emt.dm
 	chat_color = "#8FBEB4"
 	exp_requirements = 120
+=======
+	exp_requirements = MINUTES_REQUIRED_BASIC
+>>>>>>> 3a5910147b (Improves player security checks for Cyborg and Mechs (#8610)):code/modules/jobs/job_types/paramedic.dm
 	exp_type = EXP_TYPE_CREW
 
 	outfit = /datum/outfit/job/emt

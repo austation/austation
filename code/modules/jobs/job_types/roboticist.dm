@@ -8,8 +8,12 @@
 	spawn_positions = 2
 	supervisors = "the research director"
 	selection_color = "#ffeeff"
+<<<<<<< HEAD
 	chat_color = "#AC71BA"
 	exp_requirements = 120
+=======
+	exp_requirements = MINUTES_REQUIRED_BASIC
+>>>>>>> 3a5910147b (Improves player security checks for Cyborg and Mechs (#8610))
 	exp_type = EXP_TYPE_CREW
 
 	outfit = /datum/outfit/job/roboticist

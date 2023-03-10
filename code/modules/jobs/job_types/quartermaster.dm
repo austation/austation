@@ -8,8 +8,12 @@
 	spawn_positions = 1
 	supervisors = "the head of personnel"
 	selection_color = "#d7b088"
+<<<<<<< HEAD
 	chat_color = "#C79C52"
 	exp_requirements = 600
+=======
+	exp_requirements = MINUTES_REQUIRED_INTERMEDIATE
+>>>>>>> 3a5910147b (Improves player security checks for Cyborg and Mechs (#8610))
 	exp_type = EXP_TYPE_SUPPLY
 	exp_type_department = EXP_TYPE_SUPPLY
 

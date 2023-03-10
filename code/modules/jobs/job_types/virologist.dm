@@ -8,8 +8,12 @@
 	spawn_positions = 2
 	supervisors = "the chief medical officer"
 	selection_color = "#d4ebf2"
+<<<<<<< HEAD
 	chat_color = "#75AEA3"
 	exp_requirements = 180
+=======
+	exp_requirements = MINUTES_REQUIRED_INTERMEDIATE
+>>>>>>> 3a5910147b (Improves player security checks for Cyborg and Mechs (#8610))
 	exp_type = EXP_TYPE_MEDICAL
 	exp_type_department = EXP_TYPE_MEDICAL
 
