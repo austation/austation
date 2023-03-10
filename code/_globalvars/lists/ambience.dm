@@ -28,11 +28,42 @@ GLOBAL_LIST_INIT(mining_ambience,list('sound/ambience/ambimine.ogg', 'sound/ambi
 
 GLOBAL_LIST_INIT(medical_ambience,list('sound/ambience/ambinice.ogg'))
 
+<<<<<<< HEAD
 GLOBAL_LIST_INIT(spooky_ambience,list('sound/ambience/ambimo1.ogg','sound/ambience/ambimo2.ogg','sound/ambience/ambiruin7.ogg','sound/ambience/ambiruin6.ogg',\
 										'sound/ambience/ambiodd.ogg', 'sound/ambience/ambimystery.ogg'))
 
 GLOBAL_LIST_INIT(maint_ambience,list('sound/ambience/ambimaint1.ogg', 'sound/ambience/ambimaint2.ogg', 'sound/ambience/ambimaint3.ogg', 'sound/ambience/ambimaint4.ogg',\
 											'sound/ambience/ambimaint5.ogg', 'sound/voice/lowHiss2.ogg', 'sound/voice/lowHiss3.ogg', 'sound/voice/lowHiss4.ogg', 'sound/ambience/ambitech2.ogg'))
+=======
+GLOBAL_LIST_INIT(virology_ambience,list(
+	'sound/ambience/ambiviro.ogg',
+	'sound/ambience/ambiviro1.ogg',
+	'sound/ambience/ambiviro2.ogg',
+))
+
+GLOBAL_LIST_INIT(spooky_ambience,list(
+	'sound/ambience/ambimo1.ogg',
+	'sound/ambience/ambimo2.ogg',
+	'sound/ambience/ambimystery.ogg',
+	'sound/ambience/ambiodd.ogg',
+	'sound/ambience/ambiruin6.ogg',
+	'sound/ambience/ambiruin7.ogg',
+))
+
+GLOBAL_LIST_INIT(maint_ambience,list(
+	'sound/ambience/ambimaint1.ogg',
+	'sound/ambience/ambimaint2.ogg',
+	'sound/ambience/ambimaint3.ogg',
+	'sound/ambience/ambimaint4.ogg',
+	'sound/ambience/ambimaint5.ogg',
+	'sound/ambience/ambitech2.ogg',
+	'sound/ambience/maintambience.ogg',
+	'sound/voice/lowHiss1.ogg',
+	'sound/voice/lowHiss2.ogg',
+	'sound/voice/lowHiss3.ogg',
+	'sound/voice/lowHiss4.ogg',
+))
+>>>>>>> acc2171149 ([PORT] Various Ambience improvements (#8556))
 
 GLOBAL_LIST_INIT(away_ambience,list('sound/ambience/ambitech.ogg', 'sound/ambience/ambitech2.ogg', 'sound/ambience/ambiruin.ogg',\
 									'sound/ambience/ambiruin2.ogg',  'sound/ambience/ambiruin3.ogg',  'sound/ambience/ambiruin4.ogg',\
@@ -57,11 +88,16 @@ GLOBAL_LIST_INIT(ambience_assoc,list(
 	AMBIENCE_MINING = GLOB.mining_ambience,
 	AMBIENCE_MEDICAL = GLOB.medical_ambience,
 	AMBIENCE_SPOOKY = GLOB.spooky_ambience,
+<<<<<<< HEAD
 	AMBIENCE_MAINT = GLOB.maint_ambience,
 	AMBIENCE_AWAY = GLOB.away_ambience,
 	AMBIENCE_REEBE = GLOB.reebe_ambience,
 	AMBIENCE_CREEPY = GLOB.creepy_ambience,
 	AMBIENCE_NONE = list()))
+=======
+	AMBIENCE_VIROLOGY = GLOB.virology_ambience,
+))
+>>>>>>> acc2171149 ([PORT] Various Ambience improvements (#8556))
 
 
 GLOBAL_LIST_INIT(space_ambient_music,list('sound/ambience/ambispace.ogg', 'sound/ambience/ambispace2.ogg', 'sound/ambience/qwerty/constellations.ogg', 'sound/ambience/qwerty/starlight.ogg'))
