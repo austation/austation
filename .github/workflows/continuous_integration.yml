@@ -2,10 +2,18 @@ name: Run tests
 
 on:
   workflow_dispatch:
+<<<<<<< HEAD
   push:
     paths-ignore:
       - "html/changelogs/**"
       - "html/changelog.html"
+=======
+#  push:
+#    paths-ignore:
+#      - "html/changelogs/**"
+#      - "html/changelog.html"
+  pull_request:
+>>>>>>> 828612b0e4 (Update continuous_integration.yml (#8667))
     branches:
       - master
   pull_request:
