@@ -302,6 +302,15 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		return ..()
 
 /obj/item/clothing/mask/cigarette/fire_act(exposed_temperature, exposed_volume)
+<<<<<<< HEAD
+=======
+	if(src.reagents.get_reagent_amount(/datum/reagent/toxin/plasma))
+		message_admins("[src] that contains plasma was lit by the environment - Last touched by [src.fingerprintslast]!")
+		log_game("[src] that contains plasma was lit by the environment - Last touched by [src.fingerprintslast]!")
+	if(src.reagents.get_reagent_amount(/datum/reagent/fuel))
+		message_admins("[src] that contains fuel was lit by the environment - Last touched by [src.fingerprintslast]!")
+		log_game("[src] that contains fuel was lit by the environment - Last touched by [src.fingerprintslast]!")
+>>>>>>> eb5a4053b7 (Common typo fixes (#8659))
 	light()
 
 /obj/item/clothing/mask/cigarette/is_hot()

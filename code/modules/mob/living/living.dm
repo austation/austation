@@ -51,6 +51,16 @@
 			buckled.unbuckle_mob(src)
 	return ..()
 
+<<<<<<< HEAD
+=======
+// The goal here:
+// 1 level: Your legs are mildly injured. Probably a bit slow
+// 2 levels: Your legs are broken, but you are still conscious
+// 3+ levels: You ded/near ded
+/mob/living/proc/get_distributed_zimpact_damage(levels)
+	return (levels * 15) ** 1.4
+
+>>>>>>> eb5a4053b7 (Common typo fixes (#8659))
 /mob/living/proc/ZImpactDamage(turf/T, levels)
 	visible_message("<span class='danger'>[src] falls [levels] level[levels > 1 ? "s" : ""] into [T] with a sickening noise!</span>")
 	adjustBruteLoss((levels * 5) ** 1.5)

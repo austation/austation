@@ -53,4 +53,24 @@
 	if(objectives_complete)
 		return "<span class='greentext big'>[owner.name] protected [owner.p_their()] date</span>"
 	else
+<<<<<<< HEAD
 		return "<span class='redtext big'>[owner.name] date failed!</span>"
+=======
+		return "<span class='redtext big'>[owner.name] failed to protect their date, [date.name]!</span>"
+
+/datum/antagonist/valentine/apply_innate_effects(mob/living/mob_override)
+	. = ..()
+	//Give valentine appearance on hud (If they are not an antag already)
+	var/datum/atom_hud/antag/valhud = GLOB.huds[ANTAG_HUD_VALENTINE]
+	valhud.join_hud(owner.current)
+	if(!owner.antag_hud_icon_state)
+		set_antag_hud(owner.current, "valentine")
+
+/datum/antagonist/valentine/remove_innate_effects(mob/living/mob_override)
+	. = ..()
+	//Clear the hud if they haven't become something else and had the hud overwritten
+	var/datum/atom_hud/antag/valhud = GLOB.huds[ANTAG_HUD_VALENTINE]
+	valhud.leave_hud(owner.current)
+	if(owner.antag_hud_icon_state == "valentine")
+		set_antag_hud(owner.current, null)
+>>>>>>> eb5a4053b7 (Common typo fixes (#8659))

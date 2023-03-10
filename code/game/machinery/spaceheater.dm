@@ -114,6 +114,46 @@
 		update_icon()
 		return PROCESS_KILL
 
+<<<<<<< HEAD
+=======
+	var/turf/local_turf = loc
+	if(!istype(local_turf))
+		if(mode != HEATER_MODE_STANDBY)
+			mode = HEATER_MODE_STANDBY
+			update_appearance()
+		return
+
+	var/datum/gas_mixture/environment = local_turf.return_air()
+
+	var/new_mode = HEATER_MODE_STANDBY
+	if(set_mode != HEATER_MODE_COOL && environment.return_temperature() < target_temperature - temperature_tolerance)
+		new_mode = HEATER_MODE_HEAT
+	else if(set_mode != HEATER_MODE_HEAT && environment.return_temperature() > target_temperature + temperature_tolerance)
+		new_mode = HEATER_MODE_COOL
+
+	if(mode != new_mode)
+		mode = new_mode
+		update_appearance()
+
+	if(mode == HEATER_MODE_STANDBY)
+		return
+
+	var/heat_capacity = environment.heat_capacity()
+	var/required_energy = abs(environment.return_temperature() - target_temperature) * heat_capacity
+	required_energy = min(required_energy, heating_power)
+
+	if(required_energy < 1)
+		return
+
+	var/delta_temperature = required_energy / heat_capacity
+	if(mode == HEATER_MODE_COOL)
+		delta_temperature *= -1
+	if(delta_temperature)
+		environment.set_temperature(environment.return_temperature() + delta_temperature)
+		air_update_turf()
+	cell.use(required_energy / efficiency)
+
+>>>>>>> eb5a4053b7 (Common typo fixes (#8659))
 /obj/machinery/space_heater/RefreshParts()
 	var/laser = 0
 	var/cap = 0
@@ -189,6 +229,7 @@
 	data["minTemp"] = max(settableTemperatureMedian - settableTemperatureRange - T0C, TCMB)
 	data["maxTemp"] = settableTemperatureMedian + settableTemperatureRange - T0C
 
+<<<<<<< HEAD
 	var/turf/L = get_turf(loc)
 	var/curTemp
 	if(istype(L))
@@ -197,6 +238,16 @@
 	else if(isturf(L))
 		curTemp = L.return_temperature()
 	if(isnull(curTemp))
+=======
+	var/turf/local_turf = get_turf(loc)
+	var/current_temperature
+	if(istype(local_turf))
+		var/datum/gas_mixture/environment = local_turf.return_air()
+		current_temperature = environment.return_temperature()
+	else if(isturf(local_turf))
+		current_temperature = local_turf.return_temperature()
+	if(isnull(current_temperature))
+>>>>>>> eb5a4053b7 (Common typo fixes (#8659))
 		data["currentTemp"] = "N/A"
 	else
 		data["currentTemp"] = round(curTemp - T0C, 1)

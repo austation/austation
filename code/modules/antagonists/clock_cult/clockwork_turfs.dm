@@ -44,7 +44,7 @@
 	sheet_amount = 1
 	girder_type = /obj/structure/destructible/clockwork/wall_gear
 	baseturfs = /turf/open/floor/clockwork/reebe
-	var/obj/effect/clockwork/overlay/wall/realappearence
+	var/obj/effect/clockwork/overlay/wall/realappearance
 	var/d_state = INTACT
 	flags_1 = NOJAUNT_1
 
@@ -52,13 +52,13 @@
 	. = ..()
 	new /obj/effect/temp_visual/ratvar/wall(src)
 	new /obj/effect/temp_visual/ratvar/beam(src)
-	realappearence = new /obj/effect/clockwork/overlay/wall(src)
-	realappearence.linked = src
+	realappearance = new /obj/effect/clockwork/overlay/wall(src)
+	realappearance.linked = src
 
 /turf/closed/wall/clockwork/Destroy()
-	if(realappearence)
-		qdel(realappearence)
-		realappearence = null
+	if(realappearance)
+		qdel(realappearance)
+		realappearance = null
 	return ..()
 
 /turf/closed/wall/clockwork/ReplaceWithLattice()
@@ -146,6 +146,7 @@
 /turf/closed/wall/clockwork/update_icon()
 	. = ..()
 	if(d_state == INTACT)
+<<<<<<< HEAD
 		realappearence.icon_state = "clockwork_wall"
 		smooth = SMOOTH_TRUE
 		queue_smooth_neighbors(src)
@@ -153,8 +154,17 @@
 	else
 		realappearence.icon_state = "clockwork_wall-[d_state]"
 		smooth = SMOOTH_FALSE
+=======
+		realappearance.icon_state = "clockwork_wall"
+		smoothing_flags = SMOOTH_BITMASK
+		QUEUE_SMOOTH_NEIGHBORS(src)
+		QUEUE_SMOOTH(src)
+	else
+		realappearance.icon_state = "clockwork_wall-[d_state]"
+		smoothing_flags = NUKE_ON_EXPLODING
+>>>>>>> eb5a4053b7 (Common typo fixes (#8659))
 		clear_smooth_overlays()
-	realappearence.update_icon()
+	realappearance.update_icon()
 	return
 
 //=================================================
@@ -171,7 +181,7 @@
 	heavyfootstep = FOOTSTEP_GENERIC_HEAVY
 	var/dropped_brass
 	var/uses_overlay = TRUE
-	var/obj/effect/clockwork/overlay/floor/realappearence
+	var/obj/effect/clockwork/overlay/floor/realappearance
 
 /turf/open/floor/clockwork/Bless() //Who needs holy blessings when you have DADDY RATVAR? <- I did not write this, just saying
 	return
@@ -181,12 +191,12 @@
 	if(uses_overlay)
 		new /obj/effect/temp_visual/ratvar/floor(src)
 		new /obj/effect/temp_visual/ratvar/beam(src)
-		realappearence = new /obj/effect/clockwork/overlay/floor(src)
-		realappearence.linked = src
+		realappearance = new /obj/effect/clockwork/overlay/floor(src)
+		realappearance.linked = src
 
 /turf/open/floor/clockwork/Destroy()
-	if(uses_overlay && realappearence)
-		QDEL_NULL(realappearence)
+	if(uses_overlay && realappearance)
+		QDEL_NULL(realappearance)
 	return ..()
 
 /turf/open/floor/clockwork/ReplaceWithLattice()

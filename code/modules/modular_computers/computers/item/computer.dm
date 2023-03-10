@@ -384,6 +384,83 @@
 	enabled = 0
 	update_icon()
 
+<<<<<<< HEAD
+=======
+/**
+  * Toggles the computer's flashlight, if it has one.
+  *
+  * Called from ui_act(), does as the name implies.
+  * It is separated from ui_act() to be overwritten as needed.
+*/
+/obj/item/modular_computer/proc/toggle_flashlight()
+	if(!has_light)
+		return FALSE
+	set_light_on(!light_on)
+	update_icon()
+	// Show the light_on overlay on top of the action button icon
+	if(light_action?.owner)
+		light_action.UpdateButtonIcon(force = TRUE)
+	return TRUE
+
+/**
+  * Sets the computer's light color, if it has a light.
+  *
+  * Called from ui_act(), this proc takes a color string and applies it.
+  * It is separated from ui_act() to be overwritten as needed.
+  * Arguments:
+  ** color is the string that holds the color value that we should use. Proc auto-fails if this is null.
+*/
+/obj/item/modular_computer/proc/set_flashlight_color(color)
+	if(!has_light || !color)
+		return FALSE
+	comp_light_color = color
+	set_light_color(color)
+	return TRUE
+
+/obj/item/modular_computer/screwdriver_act(mob/user, obj/item/tool)
+	if(!deconstructable)
+		return
+	if(!length(all_components))
+		balloon_alert(user, "no components installed!")
+		return
+	var/list/component_names = list()
+	for(var/h in all_components)
+		var/obj/item/computer_hardware/H = all_components[h]
+		component_names.Add(H.name)
+
+	var/choice = input(user, "Which component do you want to uninstall?", "Computer maintenance", null) as null|anything in sortList(component_names)
+
+	if(!choice)
+		return
+
+	if(!Adjacent(user))
+		return
+
+	var/obj/item/computer_hardware/H = find_hardware_by_name(choice)
+
+	if(!H)
+		return
+
+	tool.play_tool_sound(user, volume=20)
+	uninstall_component(H, user, TRUE)
+	return
+
+/obj/item/modular_computer/attackby(obj/item/attacking_item, mob/user, params)
+	// Check for ID first
+	if(istype(attacking_item, /obj/item/card/id) && InsertID(attacking_item))
+		return
+
+	// Scan a photo.
+	if(istype(attacking_item, /obj/item/photo))
+		var/obj/item/computer_hardware/hard_drive/hdd = all_components[MC_HDD]
+		var/obj/item/photo/pic = attacking_item
+		if(hdd)
+			for(var/datum/computer_file/program/messenger/messenger in hdd.stored_files)
+				saved_image = pic.picture
+				messenger.ProcessPhoto()
+				to_chat(user, "<span class='notice'>You scan \the [pic] into \the [src]'s messenger.</span>")
+			return
+>>>>>>> eb5a4053b7 (Common typo fixes (#8659))
 
 /obj/item/modular_computer/attackby(obj/item/W as obj, mob/user as mob)
 	// Insert items into the components

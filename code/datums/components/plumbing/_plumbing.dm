@@ -5,11 +5,17 @@
 	var/datum/reagents/reagents
 	///TRUE if we wanna add proper pipe outless under our parent object. this is pretty good if i may so so myself
 	var/use_overlays = TRUE
+<<<<<<< HEAD
 	///We can't just cut all of the parents' overlays, so we'll track them here
 	var/list/image/ducterlays
 	///directions in wich we act as a supplier
+=======
+	///Whether our tile is covered and we should hide our ducts
+	var/tile_covered = FALSE
+	///directions in which we act as a supplier
+>>>>>>> eb5a4053b7 (Common typo fixes (#8659))
 	var/supply_connects
-	///direction in wich we act as a demander
+	///direction in which we act as a demander
 	var/demand_connects
 	///FALSE to pretty much just not exist in the plumbing world so we can be moved, TRUE to go plumbo mode
 	var/active = FALSE
@@ -194,7 +200,12 @@
 				new_supply_connects += turn(D, angle)
 		demand_connects = new_demand_connects
 		supply_connects = new_supply_connects
+<<<<<<< HEAD
 ///Give the direction of a pipe, and it'll return wich direction it originally was when it's object pointed SOUTH
+=======
+
+///Give the direction of a pipe, and it'll return which direction it originally was when it's object pointed SOUTH
+>>>>>>> eb5a4053b7 (Common typo fixes (#8659))
 /datum/component/plumbing/proc/get_original_direction(dir)
 	var/atom/movable/AM = parent
 	return turn(dir, dir2angle(AM.dir) - 180)
