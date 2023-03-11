@@ -67,8 +67,13 @@
 			if(telegraph_message)
 				to_chat(M, telegraph_message)
 			if(telegraph_sound)
+<<<<<<< HEAD
 				SEND_SOUND(M, sound(telegraph_sound))
 	addtimer(CALLBACK(src, .proc/start), telegraph_duration)
+=======
+				SEND_SOUND(player, sound(telegraph_sound))
+	addtimer(CALLBACK(src, PROC_REF(start)), telegraph_duration)
+>>>>>>> 7d11b2f84d (515 Compatibility (#8648))
 
 /datum/weather/proc/start()
 	if(stage >= MAIN_STAGE)
@@ -81,8 +86,13 @@
 			if(weather_message)
 				to_chat(M, weather_message)
 			if(weather_sound)
+<<<<<<< HEAD
 				SEND_SOUND(M, sound(weather_sound))
 	addtimer(CALLBACK(src, .proc/wind_down), weather_duration)
+=======
+				SEND_SOUND(player, sound(weather_sound))
+	addtimer(CALLBACK(src, PROC_REF(wind_down)), weather_duration)
+>>>>>>> 7d11b2f84d (515 Compatibility (#8648))
 
 /datum/weather/proc/wind_down()
 	if(stage >= WIND_DOWN_STAGE)
@@ -95,8 +105,13 @@
 			if(end_message)
 				to_chat(M, end_message)
 			if(end_sound)
+<<<<<<< HEAD
 				SEND_SOUND(M, sound(end_sound))
 	addtimer(CALLBACK(src, .proc/end), end_duration)
+=======
+				SEND_SOUND(player, sound(end_sound))
+	addtimer(CALLBACK(src, PROC_REF(end)), end_duration)
+>>>>>>> 7d11b2f84d (515 Compatibility (#8648))
 
 /datum/weather/proc/end()
 	if(stage == END_STAGE)

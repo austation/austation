@@ -172,6 +172,11 @@
 	if(path_hud)
 		path_hud.add_to_hud(src)
 		path_hud.add_hud_to(src)
+<<<<<<< HEAD
+=======
+	RegisterSignal(src, COMSIG_ATOM_ON_EMAG, PROC_REF(on_emag))
+	RegisterSignal(src, COMSIG_ATOM_SHOULD_EMAG, PROC_REF(should_emag))
+>>>>>>> 7d11b2f84d (515 Compatibility (#8648))
 
 /mob/living/simple_animal/bot/update_mobility()
 	. = ..()
@@ -562,7 +567,7 @@ Pass a positive integer as an argument to override a bot's default speed.
 			turn_on() //Saves the AI the hassle of having to activate a bot manually.
 		access_card = all_access //Give the bot all-access while under the AI's command.
 		if(client)
-			reset_access_timer_id = addtimer(CALLBACK (src, .proc/bot_reset), 600, TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_STOPPABLE) //if the bot is player controlled, they get the extra access for a limited time
+			reset_access_timer_id = addtimer(CALLBACK (src, PROC_REF(bot_reset)), 600, TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_STOPPABLE) //if the bot is player controlled, they get the extra access for a limited time
 			to_chat(src, "<span class='notice'><span class='big'>Priority waypoint set by [icon2html(calling_ai, src)] <b>[caller]</b>. Proceed to <b>[end_area]</b>.</span><br>[path.len-1] meters to destination. You have been granted additional door access for 60 seconds.</span>")
 		if(message)
 			to_chat(calling_ai, "<span class='notice'>[icon2html(src, calling_ai)] [name] called to [end_area]. [path.len-1] meters to destination.</span>")
@@ -1067,3 +1072,166 @@ Pass a positive integer as an argument to override a bot's default speed.
 
 /mob/living/simple_animal/bot/rust_heretic_act()
 	adjustBruteLoss(400)
+<<<<<<< HEAD
+=======
+
+
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+//Multi-Z Related section
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+/**
+ * Finds nearest bot elevator.
+ *
+ * Arguments:
+ * * direciton - UP or DOWN.
+ */
+/mob/living/simple_animal/bot/proc/find_nearest_bot_elevator(direction)
+	if(!direction)
+		return
+	if(direction != UP && direction != DOWN)
+		return
+
+	var/target
+	for(var/obj/structure/bot_elevator/elevat in GLOB.bot_elevator)
+		if(elevat.z != z)
+			continue
+		if(direction == UP && !elevat.up)
+			continue
+		if(direction == DOWN && !elevat.down)
+			continue
+		if(!target)
+			target = elevat
+			continue
+		if(get_dist_euclidian(elevat, src) > get_dist_euclidian(target, src))
+			continue
+		target = elevat
+	return target
+
+/**
+ *
+ * Makes the bot move up or down a Z-level depending on the bot_z_mode
+ * and the original destination
+ */
+/mob/living/simple_animal/bot/proc/bot_z_movement()
+	var/obj/structure/bot_elevator/E = locate(/obj/structure/bot_elevator) in get_turf(src)
+	if(bot_z_mode == BOT_Z_MODE_AI_CALLED)
+		if(E)
+			if(z > last_waypoint.z)
+				E.travel(FALSE, src, FALSE, E.down, FALSE)
+				ai_waypoint = last_waypoint
+				call_bot(calling_ai, ai_waypoint)
+			else
+				E.travel(TRUE, src, FALSE, E.up, FALSE)
+				ai_waypoint = last_waypoint
+				call_bot(calling_ai, ai_waypoint)
+		if(!E) //We're stuck in a loop, terminate our attempt because we're not where we're supposed to be.
+			bot_z_mode = null
+			last_waypoint = null
+			summon_step() //We've gotten stuck, as such the loop needs to be broken, so re-run the summon_step().
+
+	if(bot_z_mode == BOT_Z_MODE_PATROLLING)
+		if(E)
+			if(z > original_patrol.z)
+				E.travel(FALSE, src, FALSE, E.down, FALSE)
+				patrol_target = original_patrol
+				calc_path()
+			else
+				E.travel(TRUE, src, FALSE, E.up, FALSE)
+				patrol_target = original_patrol
+				calc_path()
+		if(!E) //We're stuck in a loop, terminate our attempt because we're not where we're supposed to be.
+			bot_z_mode = null
+			original_patrol = null
+			patrol_step() //We've gotten stuck, as such the loop needs to be broken, so re-run the patrol_step().
+
+	if(bot_z_mode == BOT_Z_MODE_SUMMONED)
+		if(E)
+			if(z > last_summon.z)
+				E.travel(FALSE, src, FALSE, E.down, FALSE)
+				summon_target = last_summon
+				calc_summon_path()
+			else if(z < last_summon.z)
+				E.travel(TRUE, src, FALSE, E.up, FALSE)
+				summon_target = last_summon
+				calc_summon_path()
+		if(!E) //We're stuck in a loop, terminate our attempt because we're not where we're supposed to be.
+			bot_z_mode = null
+			last_summon = null
+			summon_step() //We've gotten stuck, as such the loop needs to be broken. so re-run the summon_step().
+
+//BOT MULTI-Z MOVEMENT
+/mob/living/simple_animal/bot/proc/call_bot_z_move(caller, turf/ori_dest, message=TRUE)
+	//For giving the bot temporary all-access.
+	var/obj/item/card/id/all_access = new /obj/item/card/id
+	var/datum/job/captain/all = new/datum/job/captain
+	all_access.access = all.get_access()
+	bot_z_mode = BOT_Z_MODE_AI_CALLED
+
+	var/target
+	var/turf/destination
+	if(!is_reserved_level(z))
+		if(z > ori_dest.z)
+			target = DOWN
+		if(z < ori_dest.z)
+			target = UP
+
+	if(target == UP || target == DOWN)
+		var/new_target = find_nearest_bot_elevator(target)
+
+		if(!new_target)
+			return
+
+		destination = get_turf(new_target)
+
+	set_path(get_path_to(src, destination, 200, id=all_access))
+	ai_waypoint = destination
+
+	if(path && path.len) //Ensures that a valid path is calculated!
+		var/end_area = get_area_name(destination)
+		if(!on)
+			turn_on() //Saves the AI the hassle of having to activate a bot manually.
+		access_card = all_access //Give the bot all-access while under the AI's command.
+		if(client)
+			reset_access_timer_id = addtimer(CALLBACK (src, PROC_REF(bot_reset)), 600, TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_STOPPABLE) //if the bot is player controlled, they get the extra access for a limited time
+			to_chat(src, "<span class='notice'><span class='big'>Priority waypoint set by [icon2html(calling_ai, src)] <b>[caller]</b>. Proceed to <b>[end_area]</b>.</span><br>[path.len-1] meters to destination. You have been granted additional door access for 60 seconds.</span>")
+		pathset = 1
+		mode = BOT_RESPONDING
+		tries = 0
+	else
+		if(message)
+			to_chat(calling_ai, "<span class='danger'>Failed to calculate a valid route. Ensure destination is clear of obstructions and within range.</span>")
+		calling_ai = null
+		set_path(null)
+
+//PATROL SECTION
+/mob/living/simple_animal/bot/proc/go_up_or_down(direction)
+	//For giving the bot temporary all-access.
+	var/obj/item/card/id/all_access = new /obj/item/card/id
+	var/datum/job/captain/all = new/datum/job/captain
+	all_access.access = all.get_access()
+	bot_z_mode = BOT_Z_MODE_PATROLLING
+
+	if(!is_reserved_level(z) && is_station_level(z))
+		var/new_target = find_nearest_bot_elevator(direction)
+
+		if(!new_target)
+			return
+		patrol_target = get_turf(new_target)
+		set_path(get_path_to(src, patrol_target, 200, id=all_access))
+
+/mob/living/simple_animal/bot/proc/summon_up_or_down(direction)
+	bot_z_mode = BOT_Z_MODE_SUMMONED
+
+	if(!is_reserved_level(z) && is_station_level(z))
+		var/new_target = find_nearest_bot_elevator(direction)
+
+		var/target
+		if(!new_target)
+			return
+		target = get_turf(new_target)
+		last_summon = summon_target
+		summon_target = target
+		set_path(get_path_to(src, summon_target, 200, id=access_card))
+
+>>>>>>> 7d11b2f84d (515 Compatibility (#8648))

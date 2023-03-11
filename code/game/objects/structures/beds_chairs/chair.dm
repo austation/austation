@@ -23,11 +23,11 @@
 /obj/structure/chair/Initialize(mapload)
 	. = ..()
 	if(!anchored)	//why would you put these on the shuttle?
-		addtimer(CALLBACK(src, .proc/RemoveFromLatejoin), 0)
+		addtimer(CALLBACK(src, PROC_REF(RemoveFromLatejoin)), 0)
 
 /obj/structure/chair/ComponentInitialize()
 	. = ..()
-	AddComponent(/datum/component/simple_rotation,ROTATION_ALTCLICK | ROTATION_CLOCKWISE, CALLBACK(src, .proc/can_user_rotate),CALLBACK(src, .proc/can_be_rotated),null)
+	AddComponent(/datum/component/simple_rotation,ROTATION_ALTCLICK | ROTATION_CLOCKWISE, CALLBACK(src, PROC_REF(can_user_rotate)),CALLBACK(src, PROC_REF(can_be_rotated)),null)
 
 /obj/structure/chair/proc/can_be_rotated(mob/user)
 	return TRUE
@@ -197,8 +197,99 @@
 	desc = "A comfortable, secure seat. It has a more sturdy looking buckling system for smoother flights."
 	icon_state = "shuttle_chair"
 
+<<<<<<< HEAD
 /obj/structure/chair/comfy/shuttle/GetArmrest()
 	return mutable_appearance('icons/obj/chairs.dmi', "shuttle_chair_armrest")
+=======
+/obj/structure/chair/fancy/plastic
+	name = "plastic chair"
+	desc = "If you want it, then you'll have to take it."
+	icon_state = "plastic_chair"
+	anchored = FALSE
+	resistance_flags = FLAMMABLE
+	max_integrity = 150
+	buildstacktype = /obj/item/stack/sheet/plastic
+	buildstackamount = 1
+	item_chair = /obj/item/chair/plastic
+
+/obj/structure/chair/fancy/plastic/post_buckle_mob(mob/living/M) //you do not want to see an angry spaceman speeding while holding dearly onto it
+	. = ..()
+	anchored = TRUE
+	if(iscarbon(M))
+		INVOKE_ASYNC(src, PROC_REF(snap_check), M)
+
+/obj/structure/chair/fancy/plastic/post_unbuckle_mob()
+	. = ..()
+	handle_layer()
+	anchored = FALSE
+
+/obj/structure/chair/fancy/plastic/proc/snap_check(mob/living/M)
+	if (M.nutrition >= NUTRITION_LEVEL_FAT) //you are so fat
+		to_chat(M, "<span class='warning'>The chair begins to pop and crack, you're too heavy!</span>")
+		if(do_after(M, 6 SECONDS, progress = FALSE))
+			M.visible_message("<span class='notice'>The plastic chair snaps under [M]'s weight!</span>")
+			qdel(src)
+
+/obj/structure/chair/fancy/brass
+	name = "brass chair"
+	desc = "A spinny chair made of brass. It looks uncomfortable."
+	icon_state = "brass_chair"
+	max_integrity = 150
+	buildstacktype = /obj/item/stack/sheet/brass
+	buildstackamount = 1
+	item_chair = null
+	var/turns = 0
+
+/obj/structure/chair/fancy/brass/Destroy()
+	STOP_PROCESSING(SSfastprocess, src)
+	. = ..()
+
+/obj/structure/chair/fancy/brass/process()
+	setDir(turn(dir,-90))
+	playsound(src, 'sound/effects/servostep.ogg', 50, FALSE)
+	turns++
+	if(turns >= 8)
+		STOP_PROCESSING(SSfastprocess, src)
+
+/obj/structure/chair/fancy/brass/relaymove(mob/user, direction)
+	if(!direction)
+		return FALSE
+	if(direction == dir)
+		return
+	setDir(direction)
+	playsound(src, 'sound/effects/servostep.ogg', 50, FALSE)
+	return FALSE
+
+/obj/structure/chair/fancy/brass/ratvar_act()
+	return
+
+/obj/structure/chair/fancy/brass/AltClick(mob/living/user)
+	turns = 0
+	if(!istype(user) || !user.canUseTopic(src, BE_CLOSE, ismonkey(user)))
+		return
+	if(!(datum_flags & DF_ISPROCESSING))
+		user.visible_message("<span class='notice'>[user] spins [src] around, and Ratvarian technology keeps it spinning FOREVER.</span>", \
+		"<span class='notice'>Automated spinny chairs. The pinnacle of Ratvarian technology.</span>")
+		START_PROCESSING(SSfastprocess, src)
+	else
+		user.visible_message("<span class='notice'>[user] stops [src]'s uncontrollable spinning.</span>", \
+		"<span class='notice'>You grab [src] and stop its wild spinning.</span>")
+		STOP_PROCESSING(SSfastprocess, src)
+
+/obj/structure/chair/fancy/brass/bronze
+	name = "bronze chair"
+	desc = "A spinny chair made of bronze. It has little cogs for wheels!"
+	anchored = FALSE
+	icon_state = "brass_chair"
+	buildstacktype = /obj/item/stack/sheet/bronze
+	buildstackamount = 1
+	item_chair = null
+
+/obj/structure/chair/fancy/brass/bronze/Moved()
+	. = ..()
+	if(has_gravity())
+		playsound(src, 'sound/machines/clockcult/integration_cog_install.ogg', 50, TRUE)
+>>>>>>> 7d11b2f84d (515 Compatibility (#8648))
 
 /obj/structure/chair/office
 	anchored = FALSE

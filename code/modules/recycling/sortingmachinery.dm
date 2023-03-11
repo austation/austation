@@ -8,7 +8,15 @@
 	var/giftwrapped = FALSE
 	var/sortTag = 0
 
+<<<<<<< HEAD
 /obj/structure/bigDelivery/interact(mob/user)
+=======
+/obj/structure/big_delivery/Initialize()
+	. = ..()
+	RegisterSignal(src, COMSIG_MOVABLE_DISPOSING, PROC_REF(disposal_handling))
+
+/obj/structure/big_delivery/interact(mob/user)
+>>>>>>> 7d11b2f84d (515 Compatibility (#8648))
 	playsound(src.loc, 'sound/items/poster_ripped.ogg', 50, 1)
 	qdel(src)
 
@@ -153,6 +161,12 @@
 		else
 			to_chat(user, "<span class='warning'>You need more paper!</span>")
 
+<<<<<<< HEAD
+=======
+/obj/item/small_delivery/Initialize(mapload)
+	. = ..()
+	RegisterSignal(src, COMSIG_MOVABLE_DISPOSING, PROC_REF(disposal_handling))
+>>>>>>> 7d11b2f84d (515 Compatibility (#8648))
 
 /obj/item/destTagger
 	name = "destination tagger"

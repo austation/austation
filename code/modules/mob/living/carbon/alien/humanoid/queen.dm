@@ -42,8 +42,14 @@
 	var/datum/action/small_sprite/smallsprite = new/datum/action/small_sprite/queen()
 
 /mob/living/carbon/alien/humanoid/royal/queen/Initialize(mapload)
+<<<<<<< HEAD
 	RegisterSignal(src, COMSIG_MOVABLE_Z_CHANGED, .proc/check_hostile)
 	check_hostile() //still need to call this
+=======
+	RegisterSignal(src, COMSIG_MOVABLE_Z_CHANGED, PROC_REF(set_countdown))
+	set_countdown() //still need to call this
+	SSshuttle.registerInfestation(src)
+>>>>>>> 7d11b2f84d (515 Compatibility (#8648))
 	//there should only be one queen
 	for(var/mob/living/carbon/alien/humanoid/royal/queen/Q in GLOB.carbon_list)
 		if(Q == src)
@@ -71,6 +77,7 @@
 
 /mob/living/carbon/alien/humanoid/royal/queen/proc/check_hostile()
 	SIGNAL_HANDLER
+<<<<<<< HEAD
 	if(is_station_level(src.z)) //we don't want the hostile environment if the xenos aren't actually on station
 		SSshuttle.registerHostileEnvironment(src) //aliens delay shuttle
 		if(game_end_timer)	//clear the timer if it exists
@@ -79,6 +86,11 @@
 		return
 	if(src in SSshuttle.hostileEnvironments)
 		SSshuttle.clearHostileEnvironment(src) //left the z level, no longer matters
+=======
+	if(game_end_timer)	//clear the timer if it exists, only one queen can normally exist at a time so resetting this means the old queen has died or an admin is involved
+		deltimer(game_end_timer)
+	game_end_timer = addtimer(CALLBACK(src, PROC_REF(game_end)), 30 MINUTES, TIMER_STOPPABLE) //If Queen isn't killed within 30 minutes, shuttle is force-called
+>>>>>>> 7d11b2f84d (515 Compatibility (#8648))
 
 /mob/living/carbon/alien/humanoid/royal/queen/proc/game_end()
 	var/turf/T = get_turf(src)
@@ -97,8 +109,14 @@
 
 /mob/living/carbon/alien/humanoid/royal/queen/revive(full_heal = 0, admin_revive = 0)
 	if(..())
+<<<<<<< HEAD
 		RegisterSignal(src, COMSIG_MOVABLE_Z_CHANGED, .proc/check_hostile)
 		check_hostile()
+=======
+		RegisterSignal(src, COMSIG_MOVABLE_Z_CHANGED, PROC_REF(set_countdown))
+		set_countdown()
+		SSshuttle.registerInfestation(src)
+>>>>>>> 7d11b2f84d (515 Compatibility (#8648))
 
 /mob/living/carbon/alien/humanoid/royal/queen/Destroy()
 	UnregisterSignal(src, COMSIG_MOVABLE_Z_CHANGED)

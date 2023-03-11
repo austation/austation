@@ -17,6 +17,7 @@
 /mob/living/proc/hive_awaken(objective, datum/team/hivemind/final_form)
 	if(!mind)
 		return
+<<<<<<< HEAD
 	var/datum/mind/M = mind
 	var/datum/antagonist/hivevessel/vessel = M.has_antag_datum(/datum/antagonist/hivevessel)
 	if(!vessel)
@@ -37,6 +38,15 @@
 		var/message = "<span class='deadsay'><b>[M]</b> has been awoken with the following objectives: [objective]."
 		deadchat_broadcast(message, follow_target = M, turf_target = get_turf(M), message_type=DEADCHAT_REGULAR)
 		log_game("[key_name(M)] has been awoken with the following objectives: [objective]")
+=======
+	if(!HAS_TRAIT(user, TRAIT_MINDSHIELD))
+		to_chat(user, "<span class='assimilator'>Foreign energies force themselves upon your thoughts!</span>")
+		flash_color(user, flash_color="#800080", flash_time=10)
+		brainwash(user, directive)
+		to_chat(user, "<span class='assimilator'>A figment of your subconscious stays firm, you would be incapable of killing yourself if ordered!</span>")
+		user.overlay_fullscreen("hive_mc", /atom/movable/screen/fullscreen/hive_mc)
+		addtimer(CALLBACK(user, PROC_REF(hive_weak_clear), user.mind), 1800, TIMER_STOPPABLE)
+>>>>>>> 7d11b2f84d (515 Compatibility (#8648))
 
 	if(!M.has_antag_datum(/datum/antagonist/hivevessel))
 		M.add_antag_datum(vessel)

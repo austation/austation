@@ -64,6 +64,15 @@
 	update_icon()
 	myarea = get_area(src)
 	LAZYADD(myarea.firealarms, src)
+<<<<<<< HEAD
+=======
+	RegisterSignal(SSdcs, COMSIG_GLOB_SECURITY_ALERT_CHANGE, PROC_REF(handle_alert))
+
+/obj/machinery/firealarm/proc/handle_alert(datum/source, new_alert)
+	SIGNAL_HANDLER
+	if(is_station_level(z))
+		update_appearance()
+>>>>>>> 7d11b2f84d (515 Compatibility (#8648))
 
 /obj/machinery/firealarm/Destroy()
 	myarea.firereset(src)

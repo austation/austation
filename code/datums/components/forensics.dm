@@ -24,8 +24,13 @@
 	check_blood()
 
 /datum/component/forensics/RegisterWithParent()
+<<<<<<< HEAD
 	check_blood()
 	RegisterSignal(parent, COMSIG_COMPONENT_CLEAN_ACT, .proc/clean_act)
+=======
+	add_blood_decal()
+	RegisterSignal(parent, COMSIG_COMPONENT_CLEAN_ACT, PROC_REF(clean_act))
+>>>>>>> 7d11b2f84d (515 Compatibility (#8648))
 
 /datum/component/forensics/UnregisterFromParent()
     UnregisterSignal(parent, list(COMSIG_COMPONENT_CLEAN_ACT))

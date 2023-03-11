@@ -273,11 +273,18 @@
 
 		to_chat(user, "<span class='notice'>You connect to [target]'s power port...</span>")
 
+<<<<<<< HEAD
 		active = TRUE
 
 		while(do_after(user, 15, target = target, progress = 0))
 
 			if(!user || !user.cell || mode != "charge")
+=======
+	if(istype(cell))
+		while(do_after(user, 15, target = target, extra_checks = CALLBACK(src, PROC_REF(mode_check))))
+			if(!user?.cell)
+				active = FALSE
+>>>>>>> 7d11b2f84d (515 Compatibility (#8648))
 				return
 
 			if(!cell || !target)
@@ -293,9 +300,99 @@
 				break
 			target.update_icon()
 
+<<<<<<< HEAD
 		active = FALSE
 
 		to_chat(user, "<span class='notice'>You stop charging [target].</span>")
+=======
+			if(!cell.charge)
+				to_chat(user, "<span class='warning'>[target] has no power!</span>")
+				active = FALSE
+				return
+
+			if(user.cell.charge == user.cell.maxcharge)
+				to_chat(user, "<span class='notice'>You finish charging from [target].</span>")
+				active = FALSE
+				return
+
+		to_chat(user, "<span class='notice'>You stop drawing power from [target].</span>")
+		active = FALSE
+	else
+		var/obj/machinery/M = target
+		while(do_after(user, 15, target = M, extra_checks = CALLBACK(src, PROC_REF(mode_check))))
+			if(!user?.cell)
+				active = FALSE
+				return
+
+			if(!target)
+				active = FALSE
+				return
+
+			if((M.machine_stat & (NOPOWER|BROKEN)) || !M.anchored)
+				break
+
+			if(!user.cell.give(150))
+				break
+
+			M.use_power(200)
+
+			if(user.cell.charge == user.cell.maxcharge)
+				to_chat(user, "<span class='notice'>You finish charging from [target].</span>")
+				active = FALSE
+				return
+
+		to_chat(user, "<span class='notice'>You stop charging yourself.</span>")
+		active = FALSE
+
+/obj/item/borg/charger/proc/charging_loop(mob/living/silicon/robot/user, atom/target, obj/item/stock_parts/cell/cell)
+	work_mode = mode
+
+	while(do_after(user, 15, target = target, extra_checks = CALLBACK(src, PROC_REF(mode_check))))
+		if(!user?.cell)
+			active = FALSE
+			return
+
+		if(!cell || !target)
+			active = FALSE
+			return
+
+		if(cell != target && cell.loc != target)
+			active = FALSE
+			return
+
+		var/draw = min(max(user.cell.charge - cyborg_minimum_charge, 0), cell.chargerate*0.5, cell.maxcharge-cell.charge)
+		if(!draw)
+			to_chat(user, "<span class='warning'>Safeties prevent you from going under [cyborg_minimum_charge] charge!</span>")
+			active = FALSE
+			return
+
+		if(!user.cell.use(draw))
+			break
+
+		if(!cell.give(draw))
+			break
+
+		target.update_icon()
+
+		if(cell.charge == cell.maxcharge)
+			to_chat(user, "<span class='notice'>You finish charging [target].</span>")
+			active = FALSE
+			return
+
+		if(user.cell.charge <= cyborg_minimum_charge) //leave them a bit
+			to_chat(user, "<span class='warning'>You don't have enough power to continue charging [target]!</span>")
+			active = FALSE
+			return
+
+	to_chat(user, "<span class='notice'>You stop charging [target].</span>")
+	active = FALSE
+
+/obj/item/borg/charger/proc/mode_check()
+	return mode == work_mode
+
+#undef MODE_DRAW
+#undef MODE_CHARGE
+>>>>>>> 7d11b2f84d (515 Compatibility (#8648))
 
 /obj/item/harmalarm
 	name = "\improper Sonic Harm Prevention Tool"
@@ -395,7 +492,7 @@
 	if(charging)
 		return
 	if(candy < candymax)
-		addtimer(CALLBACK(src, .proc/charge_lollipops), charge_delay)
+		addtimer(CALLBACK(src, PROC_REF(charge_lollipops)), charge_delay)
 		charging = TRUE
 
 /obj/item/borg/lollipop/proc/charge_lollipops()
@@ -783,7 +880,7 @@
 
 /obj/item/borg/apparatus/Initialize(mapload)
 	. = ..()
-	RegisterSignal(loc.loc, COMSIG_BORG_SAFE_DECONSTRUCT, .proc/safedecon)
+	RegisterSignal(loc.loc, COMSIG_BORG_SAFE_DECONSTRUCT, PROC_REF(safedecon))
 
 /obj/item/borg/apparatus/Destroy()
 	if(stored)
@@ -837,7 +934,7 @@
 			var/obj/item/O = A
 			O.forceMove(src)
 			stored = O
-			RegisterSignal(stored, COMSIG_ATOM_UPDATE_ICON, /atom/.proc/update_icon)
+			RegisterSignal(stored, COMSIG_ATOM_UPDATE_ICON, TYPE_PROC_REF(/atom, update_icon))
 			update_icon()
 			return
 	else
@@ -865,7 +962,7 @@
 /obj/item/borg/apparatus/beaker/Initialize(mapload)
 	. = ..()
 	stored = new /obj/item/reagent_containers/glass/beaker/large(src)
-	RegisterSignal(stored, COMSIG_ATOM_UPDATE_ICON, /atom/.proc/update_icon)
+	RegisterSignal(stored, COMSIG_ATOM_UPDATE_ICON, TYPE_PROC_REF(/atom, update_icon))
 	update_icon()
 
 /obj/item/borg/apparatus/beaker/Destroy()

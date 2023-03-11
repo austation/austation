@@ -63,6 +63,11 @@ GLOBAL_VAR_INIT(observer_default_invisibility, INVISIBILITY_OBSERVER)
 /mob/dead/observer/Initialize(mapload)
 	set_invisibility(GLOB.observer_default_invisibility)
 
+<<<<<<< HEAD
+=======
+	RegisterSignal(src, COMSIG_MOB_MOUSE_SCROLL_ON, PROC_REF(mouse_wheeled))
+
+>>>>>>> 7d11b2f84d (515 Compatibility (#8648))
 	add_verb(list(
 		/mob/dead/observer/proc/dead_tele,
 		/mob/dead/observer/proc/open_spawners_menu,
@@ -161,6 +166,13 @@ GLOBAL_VAR_INIT(observer_default_invisibility, INVISIBILITY_OBSERVER)
 	addtimer(CALLBACK(src, /atom/proc/update_atom_colour), 10)
 
 /mob/dead/observer/Destroy()
+<<<<<<< HEAD
+=======
+	UnregisterSignal(src, COMSIG_MOB_MOUSE_SCROLL_ON)
+	// Update medhud on their body (soul departed?)
+	if(isliving(mind?.current))
+		addtimer(CALLBACK(mind.current, TYPE_PROC_REF(/mob/living, med_hud_set_status)), 1 SECONDS)
+>>>>>>> 7d11b2f84d (515 Compatibility (#8648))
 	if(data_huds_on)
 		remove_data_huds()
 

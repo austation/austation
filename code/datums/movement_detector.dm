@@ -19,8 +19,13 @@
 	tracked = target
 	src.listener = listener
 
+<<<<<<< HEAD
 	while(ismovableatom(target))
 		RegisterSignal(target, COMSIG_MOVABLE_MOVED, .proc/move_react)
+=======
+	while(ismovable(target))
+		RegisterSignal(target, COMSIG_MOVABLE_MOVED, PROC_REF(move_react))
+>>>>>>> 7d11b2f84d (515 Compatibility (#8648))
 		target = target.loc
 
 /// Stops tracking
@@ -48,8 +53,13 @@
 			target = target.loc
 	if(tracked.loc != newturf)
 		var/atom/target = mover.loc
+<<<<<<< HEAD
 		while(ismovableatom(target))
 			RegisterSignal(target, COMSIG_MOVABLE_MOVED, .proc/move_react, TRUE)
+=======
+		while(ismovable(target))
+			RegisterSignal(target, COMSIG_MOVABLE_MOVED, PROC_REF(move_react), TRUE)
+>>>>>>> 7d11b2f84d (515 Compatibility (#8648))
 			target = target.loc
 
 	listener.Invoke(tracked, mover, oldloc, direction)

@@ -163,9 +163,65 @@
 				if(color_hex2num(new_color) < 200) //Colors too dark are rejected
 					to_chat(user, "<span class='warning'>That color is too dark! Choose a lighter one.</span>")
 					new_color = null
+<<<<<<< HEAD
 			comp_light_color = new_color
 			light_color = new_color
 			update_light()
+=======
+			return set_flashlight_color(new_color)
+
+		if("PC_Eject_Disk")
+			var/param = params["name"]
+			var/mob/user = usr
+			switch(param)
+				if("removable storage disk")
+					var/obj/item/computer_hardware/hard_drive/portable/portable_drive = all_components[MC_SDD]
+					if(!portable_drive)
+						return
+					if(uninstall_component(portable_drive, usr, TRUE))
+						playsound(src, 'sound/machines/terminal_insert_disc.ogg', 50)
+					return TRUE
+				if("job disk")
+					var/obj/item/computer_hardware/hard_drive/role/ssd = all_components[MC_HDD_JOB]
+					if(!ssd)
+						return
+					if(uninstall_component(ssd, usr, TRUE))
+						playsound(src, 'sound/machines/terminal_insert_disc.ogg', 50)
+					return TRUE
+				if("intelliCard")
+					var/obj/item/computer_hardware/ai_slot/intelliholder = all_components[MC_AI]
+					if(!intelliholder)
+						return
+					if(intelliholder.try_eject(user))
+						playsound(src, 'sound/machines/terminal_insert_disc.ogg', 50)
+					return TRUE
+				if("ID")
+					var/obj/item/computer_hardware/card_slot/cardholder = all_components[MC_CARD]
+					if(!cardholder)
+						return
+					if(cardholder.try_eject(user))
+						playsound(src, 'sound/machines/terminal_insert_disc.ogg', 50)
+					return TRUE
+				if("secondary RFID card")
+					var/obj/item/computer_hardware/card_slot/cardholder = all_components[MC_CARD2]
+					if(!cardholder)
+						return
+					if(cardholder.try_eject(user))
+						playsound(src, 'sound/machines/terminal_insert_disc.ogg', 50)
+					return TRUE
+		if("PC_Imprint_ID")
+			var/obj/item/computer_hardware/card_slot/cardholder = all_components[MC_CARD]
+			if(!cardholder || !can_save_id)
+				return TRUE
+
+			saved_identification = cardholder.current_identification
+			saved_job = cardholder.current_job
+
+			update_id_display()
+
+			playsound(src, 'sound/machines/terminal_processing.ogg', 15, TRUE)
+			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound), src, 'sound/machines/terminal_success.ogg', 15, TRUE), 1.3 SECONDS)
+>>>>>>> 7d11b2f84d (515 Compatibility (#8648))
 			return TRUE
 		else
 			return

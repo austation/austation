@@ -41,7 +41,21 @@
 
 /mob/living/simple_animal/hostile/mining_drone/Initialize(mapload)
 	. = ..()
+<<<<<<< HEAD
 	stored_gun = new(src)
+=======
+	// Setup equipment
+	stored_pka = new(src)
+	stored_drill = new(src)
+	stored_scanner = new /obj/item/t_scanner/adv_mining_scanner/lesser(src) // No full-power scanner right off the bat
+
+	// Keep track of our equipment
+	RegisterSignal(stored_pka, COMSIG_PARENT_QDELETING, PROC_REF(on_pka_qdel))
+	RegisterSignal(stored_drill, COMSIG_PARENT_QDELETING, PROC_REF(on_drill_qdel))
+	RegisterSignal(stored_scanner, COMSIG_PARENT_QDELETING, PROC_REF(on_scanner_qdel))
+
+	// Setup actions
+>>>>>>> 7d11b2f84d (515 Compatibility (#8648))
 	var/datum/action/innate/minedrone/toggle_light/toggle_light_action = new()
 	toggle_light_action.Grant(src)
 	var/datum/action/innate/minedrone/toggle_meson_vision/toggle_meson_vision_action = new()
@@ -69,6 +83,7 @@
 	..()
 	check_friendly_fire = 0
 
+<<<<<<< HEAD
 /mob/living/simple_animal/hostile/mining_drone/examine(mob/user)
 	. = ..()
 	var/t_He = p_they(TRUE)
@@ -109,6 +124,65 @@
 	if(I.tool_behaviour == TOOL_CROWBAR || istype(I, /obj/item/borg/upgrade/modkit))
 		I.melee_attack_chain(user, stored_gun, params)
 		return
+=======
+/// Handles installing new tools/upgrades and interacting with the minebot
+/mob/living/simple_animal/hostile/mining_drone/attackby(obj/item/item, mob/user, params)
+	if(user == src)
+		return TRUE // Returning true in most cases prevents afterattacks from going off and whacking/shooting the minebot
+	if(user.a_intent != INTENT_HELP)
+		return ..() // For smacking
+	if(istype(item, /obj/item/minebot_upgrade))
+		if(!do_after(user, 20, TRUE, src))
+			return TRUE
+		var/obj/item/minebot_upgrade/upgrade = item
+		upgrade.upgrade_bot(src, user)
+		return TRUE
+	if(istype(item, /obj/item/t_scanner/adv_mining_scanner))
+		if(!do_after(user, 20, TRUE, src))
+			return TRUE
+		stored_scanner.forceMove(get_turf(src))
+		UnregisterSignal(stored_scanner, COMSIG_PARENT_QDELETING)
+		item.forceMove(src)
+		stored_scanner = item
+		RegisterSignal(stored_scanner, COMSIG_PARENT_QDELETING, PROC_REF(on_scanner_qdel))
+		to_chat(user, "<span class='info'>You install [item].</span>")
+		return TRUE
+	if(istype(item, /obj/item/borg/upgrade/modkit))
+		if(!do_after(user, 20, TRUE, src))
+			return TRUE
+		item.melee_attack_chain(user, stored_pka, params) // This handles any install messages
+		return TRUE
+	if(item.tool_behaviour == TOOL_CROWBAR)
+		uninstall_upgrades()
+		to_chat(user, "<span class='info'>You uninstall [src]'s upgrades.</span>")
+		return TRUE
+	if(istype(item, /obj/item/gun/energy/plasmacutter))
+		if(health != maxHealth)
+			return // For repairs
+		if(!do_after(user, 20, TRUE, src))
+			return TRUE
+		if(stored_cutter)
+			stored_cutter.forceMove(get_turf(src))
+			stored_cutter.requires_wielding = initial(stored_cutter.requires_wielding)
+			UnregisterSignal(stored_cutter, COMSIG_PARENT_QDELETING)
+		item.forceMove(src)
+		stored_cutter = item
+		RegisterSignal(stored_cutter, COMSIG_PARENT_QDELETING, PROC_REF(on_cutter_qdel))
+		stored_cutter.requires_wielding = FALSE // Prevents inaccuracy when firing for the minebot.
+		to_chat(user, "<span class='info'>You install [item].</span>")
+		return TRUE
+	if(istype(item, /obj/item/pickaxe/drill))
+		if(!do_after(user, 20, TRUE, src))
+			return TRUE
+		if(stored_drill)
+			stored_drill.forceMove(get_turf(src))
+			UnregisterSignal(stored_drill, COMSIG_PARENT_QDELETING)
+		item.forceMove(src)
+		stored_drill = item
+		RegisterSignal(stored_drill, COMSIG_PARENT_QDELETING, PROC_REF(on_drill_qdel))
+		to_chat(user, "<span class='info'>You install [item].</span>")
+		return TRUE
+>>>>>>> 7d11b2f84d (515 Compatibility (#8648))
 	..()
 
 /mob/living/simple_animal/hostile/mining_drone/death()
@@ -294,7 +368,116 @@
 	M.updatehealth()
 	qdel(src)
 
+<<<<<<< HEAD
 //AI
+=======
+/obj/item/minebot_upgrade/health/unequip()
+	linked_bot.maxHealth -= health_upgrade
+	linked_bot.updatehealth()
+	..()
+
+// Automatic Ore Pickup
+/// This allows a minebot to automatically pick up ore as they walk over it.
+/obj/item/minebot_upgrade/ore_pickup
+	name = "minebot ore scoop upgrade"
+	desc = "Allows a minebot to automatically pick up ores while moving."
+
+/obj/item/minebot_upgrade/ore_pickup/upgrade_bot(mob/living/simple_animal/hostile/mining_drone/minebot, mob/user)
+	if(!..())
+		return
+	RegisterSignal(minebot, COMSIG_MOVABLE_MOVED, PROC_REF(automatic_pickup))
+
+/obj/item/minebot_upgrade/ore_pickup/unequip()
+	UnregisterSignal(linked_bot, COMSIG_MOVABLE_MOVED)
+	..()
+
+/// This proc handles the actual collecting of ore on movement.
+/obj/item/minebot_upgrade/ore_pickup/proc/automatic_pickup()
+	SIGNAL_HANDLER
+	linked_bot.collect_ore(0) // No automatically picking up adjacent ore, otherwise the bot will infinitely pick up any ore that they drop when they try to move away.
+
+// Medical
+/// This allows a minebot to carry medipens and use them on other mobs (ideally dying miners).
+/obj/item/minebot_upgrade/medical
+	name = "minebot medical upgrade"
+	desc = "Allows a sentient minebot to carry and administer a medipen."
+	var/obj/item/reagent_containers/hypospray/medipen/stored_medipen
+
+/obj/item/minebot_upgrade/medical/Initialize()
+	. = ..()
+	stored_medipen = new /obj/item/reagent_containers/hypospray/medipen(src)
+
+/obj/item/minebot_upgrade/medical/Destroy()
+	qdel(stored_medipen)
+	. = ..()
+
+/obj/item/minebot_upgrade/medical/examine(mob/user)
+	. = ..()
+	if(stored_medipen)
+		. += "<span class='notice'>[src] contains \a [stored_medipen].</span>"
+		return
+	. += "<span class='notice'>There's no medipen attached to [src].</span>"
+
+// Lets the minebot see what medipen they have loaded.
+/obj/item/minebot_upgrade/medical/get_stat_data()
+	if(stored_medipen)
+		return list("Stored Medipen", "[stored_medipen]")
+	return list("Stored Medipen", "None")
+
+// Handles manually loading/unloading medipens.
+/obj/item/minebot_upgrade/medical/attackby(obj/item/item, mob/living/user, params)
+	if(istype(item, /obj/item/reagent_containers/hypospray/medipen))
+		if(stored_medipen)
+			to_chat(user, "<span class='notice'>You replace [stored_medipen] with [item].</span>")
+			stored_medipen.forceMove(get_turf(src))
+		else
+			to_chat(user, "<span class='notice'>You attach [item] to [src].</span>")
+		item.forceMove(src)
+		stored_medipen = item
+		return TRUE
+	if(item.tool_behaviour == TOOL_SCREWDRIVER)
+		stored_medipen.forceMove(get_turf(src))
+		stored_medipen = null
+		to_chat(user, "<span class='notice'>You remove [stored_medipen] from [src].</span>")
+		return TRUE
+	. = ..()
+
+/// Handles using the medical upgrade. If the target's a mob, we use the medipen on that mob. If it's a medipen, we replace our medipen with that medipen.
+/obj/item/minebot_upgrade/medical/onAltClick(atom/target)
+	if(!linked_bot.Adjacent(target))
+		return
+	if(istype(target, /mob/living/carbon))
+		if(stored_medipen)
+			stored_medipen.attack(target, linked_bot)
+		return
+	if(istype(target, /obj/item/reagent_containers/hypospray/medipen))
+		var/obj/item/reagent_containers/hypospray/medipen/new_medipen = target
+		if(!stored_medipen.reagents.total_volume) // Deletes used medipens, otherwise drops the old medipen on the ground and loads a new one
+			qdel(stored_medipen)
+		else
+			stored_medipen.forceMove(get_turf(linked_bot))
+		new_medipen.forceMove(src)
+		stored_medipen = target
+		to_chat(linked_bot, "<span class='notice'>Loaded \a [new_medipen] to onboard medical module.</span>")
+
+// Anti-Weather
+// This allows a minebot to survive lava and ash storms
+/obj/item/minebot_upgrade/antiweather
+	name = "minebot weatherproof chassis"
+	desc = "A chassis reinforcement kit that allows a minebot to withstand exposure to high winds and molten rock."
+
+/obj/item/minebot_upgrade/antiweather/upgrade_bot(mob/living/simple_animal/hostile/mining_drone/minebot, mob/user)
+	. = ..()
+	minebot.weather_immunities += "lava"
+	minebot.weather_immunities += "ash"
+
+/obj/item/minebot_upgrade/antiweather/unequip()
+	linked_bot.weather_immunities -= "lava"
+	linked_bot.weather_immunities -= "ash"
+	. = ..()
+
+// Minebot Sentience
+>>>>>>> 7d11b2f84d (515 Compatibility (#8648))
 
 /obj/item/slimepotion/slime/sentience/mining
 	name = "minebot AI upgrade"

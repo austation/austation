@@ -103,8 +103,13 @@
 	var/charge = 5000
 
 /obj/item/organ/stomach/battery/Insert(mob/living/carbon/M, special = 0)
+<<<<<<< HEAD
 	..()
 	RegisterSignal(owner, COMSIG_PROCESS_BORGCHARGER_OCCUPANT, .proc/charge)
+=======
+	. = ..()
+	RegisterSignal(owner, COMSIG_PROCESS_BORGCHARGER_OCCUPANT, PROC_REF(charge))
+>>>>>>> 7d11b2f84d (515 Compatibility (#8648))
 	update_nutrition()
 
 /obj/item/organ/stomach/battery/Remove(mob/living/carbon/M, special = 0)
@@ -175,8 +180,13 @@
 	charge = 2500
 
 /obj/item/organ/stomach/battery/ethereal/Insert(mob/living/carbon/M, special = 0)
+<<<<<<< HEAD
 	..()
 	RegisterSignal(owner, COMSIG_LIVING_ELECTROCUTE_ACT, .proc/on_electrocute)
+=======
+	RegisterSignal(owner, COMSIG_LIVING_ELECTROCUTE_ACT, PROC_REF(on_electrocute))
+	return ..()
+>>>>>>> 7d11b2f84d (515 Compatibility (#8648))
 
 /obj/item/organ/stomach/battery/ethereal/Remove(mob/living/carbon/M, special = 0)
 	UnregisterSignal(owner, COMSIG_LIVING_ELECTROCUTE_ACT)

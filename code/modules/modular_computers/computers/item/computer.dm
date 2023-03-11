@@ -55,6 +55,31 @@
 	comp_light_color = "#FFFFFF"
 	idle_threads = list()
 	update_icon()
+<<<<<<< HEAD
+=======
+	add_messenger()
+
+/obj/item/modular_computer/proc/update_id_display()
+	var/obj/item/computer_hardware/identifier/id = all_components[MC_IDENTIFY]
+	if(id)
+		id.UpdateDisplay()
+
+/obj/item/modular_computer/proc/on_id_insert()
+	ui_update()
+	var/obj/item/computer_hardware/card_slot/cardholder = all_components[MC_CARD]
+	// We shouldn't auto-imprint if ID modification is open.
+	if(!can_save_id || !saved_auto_imprint || !cardholder || istype(active_program, /datum/computer_file/program/card_mod))
+		return
+	if(cardholder.current_identification == saved_identification && cardholder.current_job == saved_job)
+		return
+	if(!cardholder.current_identification || !cardholder.current_job)
+		return
+	saved_identification = cardholder.current_identification
+	saved_job = cardholder.current_job
+	update_id_display()
+	playsound(src, 'sound/machines/terminal_processing.ogg', 15, TRUE)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound), src, 'sound/machines/terminal_success.ogg', 15, TRUE), 1.3 SECONDS)
+>>>>>>> 7d11b2f84d (515 Compatibility (#8648))
 
 /obj/item/modular_computer/Destroy()
 	kill_program(forced = TRUE)
@@ -392,6 +417,21 @@
 		if(H.try_insert(W, user))
 			return
 
+<<<<<<< HEAD
+=======
+	// Insert a pAI card
+	if(can_store_pai && !stored_pai_card && istype(attacking_item, /obj/item/paicard))
+		if(!user.transferItemToLoc(attacking_item, src))
+			return
+		stored_pai_card = attacking_item
+		// If the pAI moves out of the PDA, remove the reference.
+		RegisterSignal(stored_pai_card, COMSIG_MOVABLE_MOVED, PROC_REF(stored_pai_moved))
+		RegisterSignal(stored_pai_card, COMSIG_PARENT_QDELETING, PROC_REF(remove_pai))
+		to_chat(user, "<span class='notice'>You slot \the [attacking_item] into [src].</span>")
+		playsound(src, 'sound/machines/terminal_insert_disc.ogg', 50)
+		update_icon()
+
+>>>>>>> 7d11b2f84d (515 Compatibility (#8648))
 	// Insert new hardware
 	if(istype(W, /obj/item/computer_hardware))
 		if(install_component(W, user))

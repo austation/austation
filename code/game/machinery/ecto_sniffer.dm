@@ -38,7 +38,12 @@
 	use_power(10)
 	if(activator?.ckey)
 		ectoplasmic_residues[activator.ckey] = TRUE
+<<<<<<< HEAD
 		addtimer(CALLBACK(src, .proc/clear_residue, activator.ckey), 30 SECONDS)
+=======
+		activator.log_message("activated an ecto sniffer", LOG_ATTACK)
+		addtimer(CALLBACK(src, PROC_REF(clear_residue), activator.ckey), 30 SECONDS)
+>>>>>>> 7d11b2f84d (515 Compatibility (#8648))
 
 /obj/machinery/ecto_sniffer/attack_hand(mob/living/user, list/modifiers)
 	. = ..()

@@ -104,8 +104,13 @@
 
 /obj/machinery/door/firedoor/power_change()
 	if(powered(power_channel))
+<<<<<<< HEAD
 		stat &= ~NOPOWER
 		INVOKE_ASYNC(src, .proc/latetoggle)
+=======
+		set_machine_stat(machine_stat & ~NOPOWER)
+		INVOKE_ASYNC(src, PROC_REF(latetoggle))
+>>>>>>> 7d11b2f84d (515 Compatibility (#8648))
 	else
 		stat |= NOPOWER
 
@@ -429,7 +434,7 @@ austation end*/
 	. = ..()
 
 	var/static/list/loc_connections = list(
-		COMSIG_ATOM_EXIT = .proc/on_exit,
+		COMSIG_ATOM_EXIT = PROC_REF(on_exit),
 	)
 
 	AddElement(/datum/element/connect_loc, loc_connections)
@@ -791,7 +796,7 @@ austation end*/
 
 /obj/structure/firelock_frame/border/ComponentInitialize()
 	. = ..()
-	AddComponent(/datum/component/simple_rotation, ROTATION_ALTCLICK | ROTATION_CLOCKWISE | ROTATION_COUNTERCLOCKWISE | ROTATION_VERBS, null, CALLBACK(src, .proc/can_be_rotated))
+	AddComponent(/datum/component/simple_rotation, ROTATION_ALTCLICK | ROTATION_CLOCKWISE | ROTATION_COUNTERCLOCKWISE | ROTATION_VERBS, null, CALLBACK(src, PROC_REF(can_be_rotated)))
 
 //austation begin -- Adds directional windows collision to firelock frames
 /obj/structure/firelock_frame/border/Initialize()

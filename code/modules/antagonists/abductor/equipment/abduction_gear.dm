@@ -595,6 +595,43 @@ Congratulations! You are now trained for invasive xenobiology research!"}
 	to_chat(user, "<span class='notice'>Probing result:</span>[species]")
 	to_chat(user, "[helptext]")
 
+<<<<<<< HEAD
+=======
+/// Switch a target, freeing our old target
+/obj/item/abductor/baton/proc/switch_target(mob/new_target)
+	if (current_target == new_target)
+		return
+	if (current_target)
+		//Free the target
+		if (isliving(current_target))
+			var/mob/living/L = current_target
+			L.SetParalyzed(0)
+			L.SetSleeping(0)
+		//Unregister them
+		unregister_target()
+	current_target = new_target
+	if (current_target)
+		RegisterSignal(current_target, COMSIG_PARENT_QDELETING, PROC_REF(unregister_target))
+		START_PROCESSING(SSprocessing, src)
+
+/// Called when a target is deleted
+/obj/item/abductor/baton/proc/unregister_target()
+	SIGNAL_HANDLER
+	UnregisterSignal(current_target, COMSIG_PARENT_QDELETING)
+	current_target = null
+	STOP_PROCESSING(SSprocessing, src)
+
+/obj/item/abductor/baton/process(delta_time)
+	if (!current_target)
+		return PROCESS_KILL
+	var/mob/living/L = current_target
+	if (!istype(L))
+		return
+	//If our target is not paralysed or sleeping, they are already free
+	if (!L.IsParalyzed() && !L.IsSleeping())
+		unregister_target()
+
+>>>>>>> 7d11b2f84d (515 Compatibility (#8648))
 /obj/item/restraints/handcuffs/energy
 	name = "hard-light energy field"
 	desc = "A hard-light field restraining the hands."
@@ -659,7 +696,7 @@ Congratulations! You are now trained for invasive xenobiology research!"}
 	user.visible_message("<span class='notice'>[user] places down [src] and activates it.</span>", "<span class='notice'>You place down [src] and activate it.</span>")
 	user.dropItemToGround(src)
 	playsound(src, 'sound/machines/terminal_alert.ogg', 50)
-	addtimer(CALLBACK(src, .proc/try_spawn_machine), 30)
+	addtimer(CALLBACK(src, PROC_REF(try_spawn_machine)), 30)
 
 /obj/item/abductor_machine_beacon/proc/try_spawn_machine()
 	var/viable = FALSE
@@ -806,7 +843,7 @@ Congratulations! You are now trained for invasive xenobiology research!"}
 /obj/structure/table/optable/abductor/Initialize(mapload)
 	. = ..()
 	var/static/list/loc_connections = list(
-		COMSIG_ATOM_ENTERED = .proc/on_entered,
+		COMSIG_ATOM_ENTERED = PROC_REF(on_entered),
 	)
 	AddElement(/datum/element/connect_loc, loc_connections)
 

@@ -119,7 +119,7 @@
 		set_frequency(frequency)
 
 	if(closeOtherId != null)
-		addtimer(CALLBACK(.proc/update_other_id), 5)
+		addtimer(CALLBACK(PROC_REF(update_other_id)), 5)
 	if(glass)
 		airlock_material = "glass"
 	if(security_level > AIRLOCK_SECURITY_IRON)
@@ -137,6 +137,12 @@
 
 	rebuild_parts()
 
+<<<<<<< HEAD
+=======
+	RegisterSignal(src, COMSIG_COMPONENT_NTNET_RECEIVE, PROC_REF(ntnet_receive))
+	RegisterSignal(src, COMSIG_MACHINERY_BROKEN, PROC_REF(on_break))
+
+>>>>>>> 7d11b2f84d (515 Compatibility (#8648))
 	return INITIALIZE_HINT_LATELOAD
 
 /obj/machinery/door/airlock/LateInitialize()
@@ -262,9 +268,9 @@
 				return
 
 			if(density)
-				INVOKE_ASYNC(src, .proc/open)
+				INVOKE_ASYNC(src, PROC_REF(open))
 			else
-				INVOKE_ASYNC(src, .proc/close)
+				INVOKE_ASYNC(src, PROC_REF(close))
 
 		if("bolt")
 			if(command_value == "on" && locked)
@@ -427,7 +433,7 @@
 			if(cyclelinkedairlock.operating)
 				cyclelinkedairlock.delayed_close_requested = TRUE
 			else
-				addtimer(CALLBACK(cyclelinkedairlock, .proc/close), 2)
+				addtimer(CALLBACK(cyclelinkedairlock, PROC_REF(close)), 2)
 	if(locked && allowed(user) && aac)
 		aac.request_from_door(src)
 		return
@@ -473,6 +479,7 @@
 
 /obj/machinery/door/airlock/proc/handlePowerRestore()
 	var/cont = TRUE
+<<<<<<< HEAD
 	while (cont)
 		sleep(10)
 		if(QDELETED(src))
@@ -486,6 +493,25 @@
 			if(!wires.is_cut(WIRE_BACKUP1) && !wires.is_cut(WIRE_BACKUP2))
 				secondsBackupPowerLost -= 1
 			cont = TRUE
+=======
+	if(QDELETED(src))
+		return
+	cont = FALSE
+	if(secondsMainPowerLost>0)
+		if(!wires.is_cut(WIRE_POWER1) && !wires.is_cut(WIRE_POWER2))
+			secondsMainPowerLost -= 1
+		cont = TRUE
+	if(secondsBackupPowerLost>0)
+		if(!wires.is_cut(WIRE_BACKUP1) && !wires.is_cut(WIRE_BACKUP2))
+			secondsBackupPowerLost -= 1
+		cont = TRUE
+	if (!cont)
+		restorePower()
+	else
+		addtimer(CALLBACK(src, PROC_REF(restorePower)), 1 SECONDS)
+
+/obj/machinery/door/airlock/proc/restorePower()
+>>>>>>> 7d11b2f84d (515 Compatibility (#8648))
 	spawnPowerRestoreRunning = FALSE
 	ui_update()
 	update_icon()
@@ -707,8 +733,15 @@
 			if(!stat)
 				update_icon(AIRLOCK_DENY)
 				playsound(src,doorDeni,50,0,3)
+<<<<<<< HEAD
 				sleep(6)
 				update_icon(AIRLOCK_CLOSED)
+=======
+				addtimer(CALLBACK(src, PROC_REF(finish_close_animation)), 6)
+
+/obj/machinery/door/airlock/proc/finish_close_animation()
+	update_icon(AIRLOCK_CLOSED)
+>>>>>>> 7d11b2f84d (515 Compatibility (#8648))
 
 /obj/machinery/door/airlock/examine(mob/user)
 	. = ..()
@@ -1072,6 +1105,36 @@
 		user.visible_message("<span class='notice'>[user] pins [C] to [src].</span>", "<span class='notice'>You pin [C] to [src].</span>")
 		note = C
 		update_icon()
+<<<<<<< HEAD
+=======
+	else if(HAS_TRAIT(C, TRAIT_DOOR_PRYER) && user.a_intent != INTENT_HARM)
+		if(isElectrified() && C?.siemens_coefficient)
+			shock(user,100)
+
+		if(locked)
+			to_chat(user, "<span class='warning'>The bolts are down, it won't budge!</span>")
+			return
+
+		if(welded)
+			if(C.tool_behaviour == TOOL_CROWBAR)
+				if(try_to_crowbar(C, user))
+					return
+			to_chat(user, "<span class='warning'>It's welded, it won't budge!</span>")
+			return
+
+		var/time_to_open = 5
+		if(hasPower() && !prying_so_hard && density)
+			time_to_open = 50
+			playsound(src, 'sound/machines/airlock_alien_prying.ogg', 100, TRUE)
+			prying_so_hard = TRUE
+			to_chat(user, "<span class='warning'>You begin prying open the airlock...</span>")
+			if(do_after(user, time_to_open, TRUE, src))
+				if(!open(2) && density)
+					to_chat(user, "<span class='warning'>Despite your attempts, [src] refuses to open.</span>")
+			prying_so_hard = FALSE
+		if(!hasPower())
+			INVOKE_ASYNC(src, (density ? PROC_REF(open) : PROC_REF(close)), 2)
+>>>>>>> 7d11b2f84d (515 Compatibility (#8648))
 	else
 		return ..()
 
@@ -1084,7 +1147,7 @@
 			user.visible_message("[user] is [welded ? "unwelding":"welding"] the airlock.", \
 							"<span class='notice'>You begin [welded ? "unwelding":"welding"] the airlock...</span>", \
 							"<span class='italics'>You hear welding.</span>")
-			if(W.use_tool(src, user, 40, volume=50, extra_checks = CALLBACK(src, .proc/weld_checks, W, user)))
+			if(W.use_tool(src, user, 40, volume=50, extra_checks = CALLBACK(src, PROC_REF(weld_checks), W, user)))
 				welded = !welded
 				user.visible_message("[user.name] has [welded? "welded shut":"unwelded"] [src].", \
 									"<span class='notice'>You [welded ? "weld the airlock shut":"unweld the airlock"].</span>")
@@ -1096,7 +1159,7 @@
 				user.visible_message("[user] is welding the airlock.", \
 								"<span class='notice'>You begin repairing the airlock...</span>", \
 								"<span class='italics'>You hear welding.</span>")
-				if(W.use_tool(src, user, 40, volume=50, extra_checks = CALLBACK(src, .proc/weld_checks, W, user)))
+				if(W.use_tool(src, user, 40, volume=50, extra_checks = CALLBACK(src, PROC_REF(weld_checks), W, user)))
 					obj_integrity = max_integrity
 					stat &= ~BROKEN
 					user.visible_message("[user.name] has repaired [src].", \
@@ -1142,7 +1205,7 @@
 			if(F && !ISWIELDED(F))
 				to_chat(user, "<span class='warning'>You need to be wielding the fire axe to do that!</span>")
 				return
-		INVOKE_ASYNC(src, (density ? .proc/open : .proc/close), 2)
+		INVOKE_ASYNC(src, (density ? PROC_REF(open) : PROC_REF(close)), 2)
 
 	if(HAS_TRAIT(I, TRAIT_DOOR_PRYER))
 		if(isElectrified())
@@ -1231,7 +1294,7 @@
 	ui_update()
 	if(delayed_close_requested)
 		delayed_close_requested = FALSE
-		addtimer(CALLBACK(src, .proc/close), 1)
+		addtimer(CALLBACK(src, PROC_REF(close)), 1)
 	return TRUE
 
 
@@ -1337,6 +1400,24 @@
 /obj/machinery/door/airlock/emag_act(mob/user)
 	if(protected_door)
 		to_chat(user, "<span class='warning'>[src] has no maintenance panel!</span>")
+<<<<<<< HEAD
+=======
+		return FALSE
+	if(!hasPower())
+		to_chat(user, "<span class='warning'>The cryptographic sequencer connects to \the [src]'s ID scanner, but nothing happens.</span>")
+		return FALSE
+	// Don't allow emag if the door is currently open or moving
+	return !operating && density
+
+/obj/machinery/door/airlock/on_emag(mob/user)
+	..()
+	operating = TRUE
+	update_icon(AIRLOCK_EMAG, 1)
+	addtimer(CALLBACK(src, PROC_REF(after_emag)), 6)
+
+/obj/machinery/door/airlock/proc/after_emag()
+	if(QDELETED(src))
+>>>>>>> 7d11b2f84d (515 Compatibility (#8648))
 		return
 	if(!operating && density && hasPower() && !(obj_flags & EMAGGED))
 		operating = TRUE
@@ -1410,7 +1491,7 @@
 	diag_hud_set_electrified()
 	ui_update()
 	if(secondsElectrified > MACHINE_NOT_ELECTRIFIED)
-		INVOKE_ASYNC(src, .proc/electrified_loop)
+		INVOKE_ASYNC(src, PROC_REF(electrified_loop))
 
 	if(user)
 		var/message

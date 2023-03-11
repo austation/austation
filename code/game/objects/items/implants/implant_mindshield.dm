@@ -41,7 +41,16 @@
 			qdel(src)
 			return FALSE
 
+<<<<<<< HEAD
 		var/datum/antagonist/hivevessel/woke = target.is_wokevessel()
+=======
+		var/datum/antagonist/hivemind/hiv= target.mind.has_antag_datum(/datum/antagonist/hivemind)
+		if(hiv)
+			var/timer = round(rand(1800,3000))
+			addtimer(CALLBACK(hiv, TYPE_PROC_REF(/datum/antagonist/hivemind, handle_implant)), timer, TIMER_STOPPABLE)
+			hiv.handle_implant()
+
+>>>>>>> 7d11b2f84d (515 Compatibility (#8648))
 		if(is_hivemember(target))
 			for(var/datum/antagonist/hivemind/hive in GLOB.antagonists)
 				if(hive.hivemembers.Find(target.mind))

@@ -47,8 +47,40 @@
 	else
 		return ..()
 
+<<<<<<< HEAD
 /obj/machinery/computer/message_monitor/emag_act(mob/user)
 	if(obj_flags & EMAGGED)
+=======
+/obj/machinery/computer/message_monitor/should_emag(mob/user)
+	if(!..())
+		return FALSE
+	if(!linked_server)
+		to_chat(user, "<span class='notice'>A 'no server detected' error appears on the screen.</span>")
+		return FALSE
+	return TRUE
+
+/obj/machinery/computer/message_monitor/on_emag(mob/user)
+	..()
+	ui_update()
+	do_sparks(5, FALSE, src)
+	addtimer(CALLBACK(src, PROC_REF(after_emag)), 10 * length(linked_server.decryptkey) SECONDS)
+
+/obj/machinery/computer/message_monitor/proc/after_emag()
+	// Print an "error" decryption key, leaving physical evidence of the hack.
+	if(linked_server)
+		var/obj/item/paper/monitorkey/MK = new(loc, linked_server)
+		MK.info += "<br><br><font color='red'>£%@%(*$%&(£&?*(%&£/{}</font>"
+	else
+		say("Error: Server link lost!")
+	obj_flags &= ~EMAGGED
+	ui_update()
+
+/obj/machinery/computer/message_monitor/proc/finish_hack(mob/living/silicon/user)
+	hacking = FALSE
+	ui_update()
+	if(!linked_server)
+		to_chat(user, "<span class='warning'>Could not complete brute-force: Linked Server Disconnected!</span>")
+>>>>>>> 7d11b2f84d (515 Compatibility (#8648))
 		return
 	if(!isnull(linkedServer))
 		obj_flags |= EMAGGED
@@ -79,16 +111,78 @@
 			linkedServer = S
 			break
 
+<<<<<<< HEAD
+=======
+/obj/machinery/computer/message_monitor/proc/set_linked_server(var/obj/machinery/telecomms/message_server/server)
+	if(linked_server)
+		UnregisterSignal(linked_server, COMSIG_PARENT_QDELETING)
+	if(server != linked_server)
+		authenticated = FALSE
+	linked_server = server
+	if(server)
+		RegisterSignal(server, COMSIG_PARENT_QDELETING, PROC_REF(server_deleting))
+	ui_update()
+
+/obj/machinery/computer/message_monitor/proc/server_deleting()
+	set_linked_server(null)
+
+>>>>>>> 7d11b2f84d (515 Compatibility (#8648))
 /obj/machinery/computer/message_monitor/Destroy()
 	GLOB.telecomms_list -= src
 	return ..()
 
 /obj/machinery/computer/message_monitor/ui_interact(mob/living/user)
 	. = ..()
+<<<<<<< HEAD
 	//If the computer is being hacked or is emagged, display the reboot message.
 	if(hacking || (obj_flags & EMAGGED))
 		message = rebootmsg
 	var/dat = "<center><font color='blue'[message]</font></center>"
+=======
+	if(.)
+		return TRUE
+	switch(action)
+		if("login")
+			if(!usr || authenticated)
+				return TRUE
+			if(!linked_server)
+				to_chat(usr, "<span class='warning'>The console flashes a message: 'ERROR: Server connection lost.'</span>")
+				return TRUE
+			var/dkey = capped_input(usr, "Please enter the decryption key.")
+			if(dkey && linked_server.decryptkey == dkey)
+				authenticated = TRUE
+			else
+				to_chat(usr, "<span class='warning'>The console flashes a message: 'ALERT: Incorrect decryption key!'</span>")
+			return TRUE
+		if("logout")
+			authenticated = FALSE
+			return TRUE
+		if("hack")
+			var/mob/living/silicon/S = usr
+			if(!istype(S) || !S.hack_software)
+				return TRUE
+			if(!linked_server)
+				to_chat(S, "<span class='warning'>The console flashes a message: 'ERROR: Server connection lost.'</span>")
+				return TRUE
+			hacking = TRUE
+			var/duration = 10 * length(linked_server.decryptkey) SECONDS
+			var/approx_duration = max(duration + rand(-20, 20), 1)
+			to_chat(S, "<span class='warning'>Brute-force decryption started. This will take approximately [DisplayTimeText(approx_duration, round_seconds_to = 10)].</span>")
+			addtimer(CALLBACK(src, PROC_REF(finish_hack), S), duration)
+			return TRUE
+		if("link")
+			var/list/message_servers = list()
+			var/obj/machinery/telecomms/message_server/last
+			for (var/obj/machinery/telecomms/message_server/M in GLOB.telecomms_list)
+				var/key_base = "[M.network] - [M.name]"
+				var/key = key_base
+				var/number = 1
+				while(key in message_servers)
+					key = key_base + " ([number])"
+					number++
+				message_servers[key] = M
+				last = M
+>>>>>>> 7d11b2f84d (515 Compatibility (#8648))
 
 	if(auth)
 		dat += "<h4><dd><A href='?src=[REF(src)];auth=1'>&#09;<font color='green'>\[Authenticated\]</font></a>&#09;/"

@@ -53,7 +53,7 @@
 	update_weight()
 	update_icon()
 	var/static/list/loc_connections = list(
-		COMSIG_ATOM_ENTERED = .proc/on_entered,
+		COMSIG_ATOM_ENTERED = PROC_REF(on_entered),
 	)
 	AddElement(/datum/element/connect_loc, loc_connections)
 
@@ -366,8 +366,13 @@
 /obj/item/stack/proc/on_entered(datum/source, obj/o)
 	SIGNAL_HANDLER
 
+<<<<<<< HEAD
 	if(merge_check(o) && !o.throwing)
 		INVOKE_ASYNC(src, .proc/merge, o)
+=======
+	if(merge_check(O) && !O.throwing)
+		INVOKE_ASYNC(src, PROC_REF(merge), O)
+>>>>>>> 7d11b2f84d (515 Compatibility (#8648))
 
 /obj/item/stack/hitby(atom/movable/AM, skipcatch, hitpush, blocked, datum/thrownthing/throwingdatum)
 	if(merge_check(AM))

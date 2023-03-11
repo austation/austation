@@ -170,6 +170,11 @@
 	visible_message("<span class='notice'>[src] is offering [offered_item].</span>", \
 					"<span class='notice'>You offer [offered_item].</span>", null, 2)
 
+<<<<<<< HEAD
+=======
+	INVOKE_ASYNC(src, PROC_REF(emote), "offer")
+
+>>>>>>> 7d11b2f84d (515 Compatibility (#8648))
 	apply_status_effect(STATUS_EFFECT_OFFERING, offered_item)
 
 /**

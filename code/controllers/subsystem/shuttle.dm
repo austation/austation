@@ -24,7 +24,12 @@ SUBSYSTEM_DEF(shuttle)
 	var/emergencyEscapeTime = 1200	//time taken for emergency shuttle to reach a safe distance after leaving station (in deciseconds)
 	var/area/emergencyLastCallLoc
 	var/emergencyCallAmount = 0		//how many times the escape shuttle was called
+<<<<<<< HEAD
 	var/emergencyNoEscape
+=======
+	var/emergencyNoEscape			//Hostile environment that prevents the shuttle from leaving after it has arrived
+	var/emergencyDelayArrival 		//Infestation that delays the shuttle arrival while contingency plans are put into place
+>>>>>>> 7d11b2f84d (515 Compatibility (#8648))
 	var/emergencyNoRecall = FALSE
 	var/adminEmergencyNoRecall = FALSE
 	var/list/hostileEnvironments = list() //Things blocking escape shuttle from leaving
@@ -159,7 +164,7 @@ SUBSYSTEM_DEF(shuttle)
 
 /datum/controller/subsystem/shuttle/proc/block_recall(lockout_timer)
 	emergencyNoRecall = TRUE
-	addtimer(CALLBACK(src, .proc/unblock_recall), lockout_timer)
+	addtimer(CALLBACK(src, PROC_REF(unblock_recall)), lockout_timer)
 
 /datum/controller/subsystem/shuttle/proc/unblock_recall()
 	emergencyNoRecall = FALSE
@@ -386,6 +391,30 @@ SUBSYSTEM_DEF(shuttle)
 			You have 3 minutes to board the Emergency Shuttle.",
 			null, ANNOUNCER_SHUTTLEDOCK, "Priority")
 
+<<<<<<< HEAD
+=======
+/datum/controller/subsystem/shuttle/proc/checkInfestedEnvironment()
+	for(var/mob/d in infestedEnvironments)
+		var/turf/T = get_turf(d)
+		if(QDELETED(d) || !is_station_level(T.z)) //If they have been destroyed or left the station Z level, the queen will not trigger this check
+			infestedEnvironments -= d
+	emergencyDelayArrival = length(infestedEnvironments)
+	return emergencyDelayArrival
+
+/datum/controller/subsystem/shuttle/proc/delayForInfestedStation()
+	if(infestationActive)
+		return
+	infestationActive = TRUE
+	emergencyNoRecall = TRUE
+	priority_announce("Xenomorph infestation detected: crisis shuttle protocols activated - jamming recall signals across all frequencies.")
+	play_soundtrack_music(/datum/soundtrack_song/bee/mind_crawler, only_station = TRUE)
+	if(EMERGENCY_IDLE_OR_RECALLED)
+		emergency.request(null, set_coefficient=1) //If a shuttle wasn't already called, call one now, with 10 minute delay
+	else if(emergency.mode == SHUTTLE_CALL)
+		emergency.setTimer(10 MINUTES) //If shuttle was already in transit, delay the arrival time to 10 minutes
+		//If the emergency shuttle has already passed the point of no return before a queen existed, do not delay round for Xenomorphs - they spawned too late on a round that was already coming to an end.
+
+>>>>>>> 7d11b2f84d (515 Compatibility (#8648))
 //try to move/request to dockHome if possible, otherwise dockAway. Mainly used for admin buttons
 /datum/controller/subsystem/shuttle/proc/toggleShuttle(shuttleId, dockHome, dockAway, timed)
 	var/obj/docking_port/mobile/M = getShuttle(shuttleId)
@@ -649,6 +678,7 @@ SUBSYSTEM_DEF(shuttle)
 	QDEL_LIST(remove_images)
 
 
+<<<<<<< HEAD
 /datum/controller/subsystem/shuttle/proc/action_load(datum/map_template/shuttle/loading_template, obj/docking_port/stationary/destination_port)
 	// Check for an existing preview
 	if(preview_shuttle && (loading_template != preview_template))
@@ -656,6 +686,16 @@ SUBSYSTEM_DEF(shuttle)
 		preview_shuttle = null
 		preview_template = null
 		QDEL_NULL(preview_reservation)
+=======
+/datum/controller/subsystem/shuttle/proc/action_load(datum/map_template/shuttle/loading_template, obj/docking_port/stationary/destination_port, datum/variable_ref/loaded_shuttle_reference)
+	if (!loaded_shuttle_reference)
+		loaded_shuttle_reference = new()
+	var/datum/map_generator/shuttle_loader = load_template(loading_template, loaded_shuttle_reference)
+	shuttle_loader.on_completion(CALLBACK(src, PROC_REF(linkup_shuttle_after_load), loading_template, destination_port, loaded_shuttle_reference))
+	shuttle_loader.on_completion(CALLBACK(src, PROC_REF(action_load_completed), destination_port, loaded_shuttle_reference))
+	preview_template = loading_template
+	return shuttle_loader
+>>>>>>> 7d11b2f84d (515 Compatibility (#8648))
 
 	if(!preview_shuttle)
 		if(load_template(loading_template))
@@ -722,7 +762,13 @@ SUBSYSTEM_DEF(shuttle)
 	if(!preview_reservation)
 		CRASH("failed to reserve an area for shuttle template loading")
 	var/turf/BL = TURF_FROM_COORDS_LIST(preview_reservation.bottom_left_coords)
+<<<<<<< HEAD
 	S.load(BL, centered = FALSE, register = FALSE)
+=======
+	var/datum/map_generator/shuttle_loader = S.load(BL, FALSE, TRUE, TRUE, FALSE)
+	shuttle_loader.on_completion(CALLBACK(src, PROC_REF(template_loaded), S, BL, shuttle_reference))
+	return shuttle_loader
+>>>>>>> 7d11b2f84d (515 Compatibility (#8648))
 
 	//austation begin firelocks dealt with
 	var/list/affected = S.get_affected_turfs(BL, centered=FALSE)
@@ -939,10 +985,17 @@ SUBSYSTEM_DEF(shuttle)
 			if(S)
 				. = TRUE
 				unload_preview()
+<<<<<<< HEAD
 				load_template(S)
 				if(preview_shuttle)
 					preview_template = S
 					user.forceMove(get_turf(preview_shuttle))
+=======
+				var/datum/variable_ref/loaded_shuttle_reference = new()
+				var/datum/map_generator/shuttle_loader = load_template(S, loaded_shuttle_reference)
+				shuttle_loader.on_completion(CALLBACK(src, PROC_REF(jump_to_preview), user, loaded_shuttle_reference))
+				preview_template = S
+>>>>>>> 7d11b2f84d (515 Compatibility (#8648))
 		if("load")
 			if(existing_shuttle == backup_shuttle)
 				// TODO make the load button disabled
@@ -952,9 +1005,29 @@ SUBSYSTEM_DEF(shuttle)
 			else if(S)
 				. = TRUE
 				// If successful, returns the mobile docking port
+<<<<<<< HEAD
 				var/obj/docking_port/mobile/mdp = action_load(S)
 				if(mdp)
 					user.forceMove(get_turf(mdp))
 					message_admins("[key_name_admin(usr)] loaded [mdp] with the shuttle manipulator.")
 					log_admin("[key_name(usr)] loaded [mdp] with the shuttle manipulator.</span>")
 					SSblackbox.record_feedback("text", "shuttle_manipulator", 1, "[mdp.name]")
+=======
+				var/datum/variable_ref/loaded_shuttle_reference = new()
+				var/datum/map_generator/shuttle_loader = action_load(S, null, loaded_shuttle_reference)
+				shuttle_loader.on_completion(CALLBACK(src, PROC_REF(shuttle_manipulator_on_load), user, loaded_shuttle_reference))
+
+/datum/controller/subsystem/shuttle/proc/shuttle_manipulator_on_load(mob/user, datum/variable_ref/loaded_shuttle_reference)
+	var/obj/docking_port/mobile/mdp = loaded_shuttle_reference.value
+	if(mdp)
+		user.forceMove(get_turf(mdp))
+		message_admins("[key_name_admin(usr)] loaded [mdp] with the shuttle manipulator.")
+		log_admin("[key_name(usr)] loaded [mdp] with the shuttle manipulator.</span>")
+		SSblackbox.record_feedback("text", "shuttle_manipulator", 1, "[mdp.name]")
+
+/datum/controller/subsystem/shuttle/proc/jump_to_preview(mob/user, datum/variable_ref/loaded_shuttle_reference)
+	var/obj/docking_port/mobile/loaded_shuttle = loaded_shuttle_reference.value
+	preview_shuttle = loaded_shuttle_reference.value
+	if(loaded_shuttle)
+		user.forceMove(get_turf(loaded_shuttle))
+>>>>>>> 7d11b2f84d (515 Compatibility (#8648))

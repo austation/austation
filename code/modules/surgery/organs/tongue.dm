@@ -39,13 +39,19 @@
 /obj/item/organ/tongue/Insert(mob/living/carbon/M, special = 0)
 	..()
 	if(modifies_speech)
-		RegisterSignal(M, COMSIG_MOB_SAY, .proc/handle_speech)
+		RegisterSignal(M, COMSIG_MOB_SAY, PROC_REF(handle_speech))
 	M.UnregisterSignal(M, COMSIG_MOB_SAY)
 
 /obj/item/organ/tongue/Remove(mob/living/carbon/M, special = 0)
+<<<<<<< HEAD
 	..()
 	UnregisterSignal(M, COMSIG_MOB_SAY, .proc/handle_speech)
 	M.RegisterSignal(M, COMSIG_MOB_SAY, /mob/living/carbon/.proc/handle_tongueless_speech)
+=======
+	UnregisterSignal(M, COMSIG_MOB_SAY, PROC_REF(handle_speech))
+	M.RegisterSignal(M, COMSIG_MOB_SAY, TYPE_PROC_REF(/mob/living/carbon, handle_tongueless_speech))
+	return ..()
+>>>>>>> 7d11b2f84d (515 Compatibility (#8648))
 
 /obj/item/organ/tongue/could_speak_language(datum/language/dt)
 	return is_type_in_typecache(dt, languages_possible)

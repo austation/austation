@@ -135,7 +135,12 @@
 	. = ..()
 
 	emittersemicd = TRUE
+<<<<<<< HEAD
 	addtimer(CALLBACK(src, .proc/emittercool), 600)
+=======
+	addtimer(CALLBACK(src, PROC_REF(emittercool)), 600)
+	return INITIALIZE_HINT_LATELOAD
+>>>>>>> 7d11b2f84d (515 Compatibility (#8648))
 
 /mob/living/silicon/pai/Life()
 	if(hacking)

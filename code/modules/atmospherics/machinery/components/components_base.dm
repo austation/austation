@@ -19,6 +19,19 @@
 		var/datum/gas_mixture/A = new(200)
 		airs[i] = A
 
+<<<<<<< HEAD
+=======
+/obj/machinery/atmospherics/components/examine(mob/user)
+	. = ..()
+	. += "<span class='notice'>[src] is on layer [piping_layer].</span>"
+
+/obj/machinery/atmospherics/components/Initialize()
+	. = ..()
+
+	if(hide)
+		RegisterSignal(src, COMSIG_OBJ_HIDE, PROC_REF(hide_pipe))
+
+>>>>>>> 7d11b2f84d (515 Compatibility (#8648))
 // Iconnery
 
 /obj/machinery/atmospherics/components/proc/update_icon_nopipes()

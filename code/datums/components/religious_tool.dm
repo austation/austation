@@ -27,8 +27,8 @@
 		catalyst_type = override_catalyst_type
 
 /datum/component/religious_tool/RegisterWithParent()
-	RegisterSignal(parent, COMSIG_PARENT_ATTACKBY,.proc/AttemptActions)
-	RegisterSignal(parent, COMSIG_PARENT_EXAMINE, .proc/on_examine)
+	RegisterSignal(parent, COMSIG_PARENT_ATTACKBY,PROC_REF(AttemptActions))
+	RegisterSignal(parent, COMSIG_PARENT_EXAMINE, PROC_REF(on_examine))
 
 /datum/component/religious_tool/UnregisterFromParent()
 	UnregisterSignal(parent, list(COMSIG_PARENT_ATTACKBY, COMSIG_PARENT_EXAMINE))
@@ -46,6 +46,7 @@
 	return TRUE
 
 
+<<<<<<< HEAD
 
 /**
   * Since all of these involve attackby, we require mega proc. Handles Invocation, Sacrificing, And Selection of Sects.
@@ -100,6 +101,10 @@
 			easy_access_sect.adjust_favor(-performing_rite.favor_cost)
 			QDEL_NULL(performing_rite)
 		return
+=======
+	if(istype(the_item, catalyst_type))
+		INVOKE_ASYNC(src, TYPE_PROC_REF(/datum, ui_interact), user) //asynchronous to avoid sleeping in a signal
+>>>>>>> 7d11b2f84d (515 Compatibility (#8648))
 
 	/**********Sacrificing**********/
 	else if(operation_flags & RELIGION_TOOL_SACRIFICE)

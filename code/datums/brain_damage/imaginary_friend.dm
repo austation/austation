@@ -19,7 +19,7 @@
 		qdel(src)
 		return
 	if(!friend.client && friend_initialized)
-		addtimer(CALLBACK(src, .proc/reroll_friend), 600)
+		addtimer(CALLBACK(src, PROC_REF(reroll_friend)), 600)
 
 /datum/brain_trauma/special/imaginary_friend/on_death()
 	..()
@@ -99,6 +99,23 @@
 	hide = new
 	hide.Grant(src)
 
+<<<<<<< HEAD
+=======
+	// Update icon on turn
+	RegisterSignal(src, COMSIG_ATOM_DIR_CHANGE, PROC_REF(Show))
+
+	// Hear owner if they're out of range
+	RegisterSignal(owner, COMSIG_MOB_SAY, PROC_REF(owner_speech))
+
+/mob/camera/imaginary_friend/Destroy()
+	qdel(join)
+	qdel(hide)
+	UnregisterSignal(src, COMSIG_ATOM_DIR_CHANGE)
+	if(owner)
+		UnregisterSignal(owner, COMSIG_MOB_SAY)
+	return ..()
+
+>>>>>>> 7d11b2f84d (515 Compatibility (#8648))
 /mob/camera/imaginary_friend/proc/setup_friend()
 	var/gender = pick(MALE, FEMALE)
 	real_name = owner.dna.species.random_name(gender)
@@ -156,6 +173,24 @@
 
 	src.log_talk(message, LOG_SAY, tag="imaginary friend")
 
+<<<<<<< HEAD
+=======
+	// Display message
+	var/owner_chat_map = owner.client?.prefs.toggles & (PREFTOGGLE_RUNECHAT_GLOBAL | PREFTOGGLE_RUNECHAT_NONMOBS)
+	var/friend_chat_map = client?.prefs.toggles & (PREFTOGGLE_RUNECHAT_GLOBAL | PREFTOGGLE_RUNECHAT_NONMOBS)
+	if (!owner_chat_map)
+		var/mutable_appearance/MA = mutable_appearance('icons/mob/talk.dmi', src, "default[say_test(message)]", FLY_LAYER)
+		MA.appearance_flags = APPEARANCE_UI_IGNORE_ALPHA
+		INVOKE_ASYNC(GLOBAL_PROC, GLOBAL_PROC_REF(flick_overlay), MA, list(owner.client), 30)
+
+	if(owner_chat_map || friend_chat_map)
+		var/list/hearers = list()
+		if(friend_chat_map)
+			hearers += client
+		if(owner_chat_map)
+			hearers += owner.client
+
+>>>>>>> 7d11b2f84d (515 Compatibility (#8648))
 	var/rendered = "<span class='game say'><span class='name'>[name]</span> <span class='message'>[say_quote(message)]</span></span>"
 	var/dead_rendered = "<span class='game say'><span class='name'>[name] (Imaginary friend of [owner])</span> <span class='message'>[say_quote(message)]</span></span>"
 
@@ -191,6 +226,30 @@
 		return FALSE
 	abstract_move(owner)
 
+<<<<<<< HEAD
+=======
+/mob/camera/imaginary_friend/pointed(atom/A as mob|obj|turf in view())
+	if(!..())
+		return FALSE
+	to_chat(owner, "<b>[src]</b> points at [A].")
+	to_chat(src, "<span class='notice'>You point at [A].</span>")
+
+	var/turf/our_tile = get_turf(src)
+	var/turf/tile = get_turf(A)
+	var/image/arrow = image(icon = 'icons/mob/screen_gen.dmi', loc = our_tile, icon_state = "arrow")
+	arrow.plane = POINT_PLANE
+	animate(arrow, pixel_x = (tile.x - our_tile.x) * world.icon_size + A.pixel_x, pixel_y = (tile.y - our_tile.y) * world.icon_size + A.pixel_y, time = 1.7, easing = EASE_OUT)
+	owner?.client?.images += arrow
+	client?.images += arrow
+	addtimer(CALLBACK(src, PROC_REF(remove_arrow), arrow, client, owner?.client), 2.5 SECONDS)
+	return TRUE
+
+/mob/camera/imaginary_friend/proc/remove_arrow(image/arrow, client/client_1, client/client_2)
+	client_1?.images -= arrow
+	client_2?.images -= arrow
+	qdel(arrow)
+
+>>>>>>> 7d11b2f84d (515 Compatibility (#8648))
 /datum/action/innate/imaginary_join
 	name = "Join"
 	desc = "Join your owner, following them from inside their mind."

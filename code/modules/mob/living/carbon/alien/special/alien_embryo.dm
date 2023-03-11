@@ -56,7 +56,7 @@
 		return
 	if(stage < 5 && prob(3))
 		stage++
-		INVOKE_ASYNC(src, .proc/RefreshInfectionImage)
+		INVOKE_ASYNC(src, PROC_REF(RefreshInfectionImage))
 
 	if(stage == 5 && prob(50))
 		for(var/datum/surgery/S in owner.surgeries)

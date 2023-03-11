@@ -8,7 +8,22 @@
 	var/fan_out_items = FALSE //Whether the items should be distributed to offsets 0,1,-1,2,-2,3,-3.. This overrides pixel_x/y on the spawner itself
 
 /obj/effect/spawner/lootdrop/Initialize(mapload)
+<<<<<<< HEAD
 	..()
+=======
+	. = ..()
+	if (!late_spawn)
+		spawn_loot()
+		return INITIALIZE_HINT_QDEL
+	else
+		RegisterSignal(SSdcs, COMSIG_GLOB_POST_START, PROC_REF(late_spawn_loot))
+
+/obj/effect/spawner/lootdrop/proc/late_spawn_loot()
+	spawn_loot()
+	qdel(src)
+
+/obj/effect/spawner/lootdrop/proc/spawn_loot()
+>>>>>>> 7d11b2f84d (515 Compatibility (#8648))
 	if(loot?.len)
 		var/turf/T = get_turf(src)
 		var/loot_spawned = 0

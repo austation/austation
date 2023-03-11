@@ -25,8 +25,20 @@
 	..()
 
 /datum/disease/revblight/stage_act()
+<<<<<<< HEAD
 	if(!finalstage)
 		if(!(affected_mob.mobility_flags & MOBILITY_STAND) && prob(stage*6))
+=======
+	..()
+	affected_mob.adjustStaminaLoss(1) //Provides gradual exhaustion, but mostly to prevent regeneration and set an upper limit on disease duration to about five minutes
+	if(!(affected_mob.mobility_flags & MOBILITY_STAND))
+		if(affected_mob.stam_paralyzed && !finalstage)
+			stage = 5
+		if(!startresting || restingat != get_turf(affected_mob))
+			startresting = world.time
+			restingat = get_turf(affected_mob)
+		else if(world.time - startresting >= 30 SECONDS) //Ensures nobody is left in permanent stamcrit, and also enables players to rest in a safe location to cure themselves
+>>>>>>> 7d11b2f84d (515 Compatibility (#8648))
 			cure()
 			return
 		if(prob(stage*3))

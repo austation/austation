@@ -41,6 +41,10 @@
 		obj_flags |= EMAGGED
 	else
 		obj_flags &= ~EMAGGED
+<<<<<<< HEAD
+=======
+	RegisterSignal(SSdcs, COMSIG_GLOB_RESUPPLY, PROC_REF(update_static_ui))
+>>>>>>> 7d11b2f84d (515 Compatibility (#8648))
 
 /obj/machinery/computer/cargo/Destroy()
 	QDEL_NULL(radio)

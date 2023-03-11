@@ -139,7 +139,13 @@
 		var/obj/item/hat = C.get_item_by_slot(ITEM_SLOT_HEAD)
 		if (hat)
 			new_corgi.place_on_head(hat,null,FALSE)
+<<<<<<< HEAD
 	L.forceMove(new_corgi)
+=======
+	H = new(new_corgi,src,L)
+	//Restore after this time
+	addtimer(CALLBACK(src, PROC_REF(restore), L), 5 * (volume / metabolization_rate))
+>>>>>>> 7d11b2f84d (515 Compatibility (#8648))
 
 /datum/reagent/corgium/on_mob_life(mob/living/carbon/M)
 	. = ..()

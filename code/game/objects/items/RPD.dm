@@ -277,6 +277,28 @@ GLOBAL_LIST_INIT(fluid_duct_recipes, list(
 	spark_system = null
 	return ..()
 
+<<<<<<< HEAD
+=======
+/obj/item/pipe_dispenser/examine(mob/user)
+	. = ..()
+	. += "You can scroll your mouse wheel to change the piping layer."
+
+/obj/item/pipe_dispenser/equipped(mob/user, slot, initial)
+	. = ..()
+	if(slot == ITEM_SLOT_HANDS)
+		RegisterSignal(user, COMSIG_MOB_MOUSE_SCROLL_ON, PROC_REF(mouse_wheeled))
+	else
+		UnregisterSignal(user, COMSIG_MOB_MOUSE_SCROLL_ON)
+
+/obj/item/pipe_dispenser/dropped(mob/user, silent)
+	UnregisterSignal(user, COMSIG_MOB_MOUSE_SCROLL_ON)
+	return ..()
+
+/obj/item/pipe_dispenser/cyborg_unequip(mob/user)
+	UnregisterSignal(user, COMSIG_MOB_MOUSE_SCROLL_ON)
+	return ..()
+
+>>>>>>> 7d11b2f84d (515 Compatibility (#8648))
 /obj/item/pipe_dispenser/attack_self(mob/user)
 	ui_interact(user)
 

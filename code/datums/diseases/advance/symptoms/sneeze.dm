@@ -46,3 +46,8 @@ Bonus
 				M.emote("sniff")
 		else
 			M.emote("sneeze")
+<<<<<<< HEAD
+=======
+			if(infective && !(A.spread_flags & DISEASE_SPREAD_FALTERED))
+				addtimer(CALLBACK(A, TYPE_PROC_REF(/datum/disease, spread), 4), 20)
+>>>>>>> 7d11b2f84d (515 Compatibility (#8648))

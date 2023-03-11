@@ -830,8 +830,60 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 // HELPER PROCS
 //
 
+<<<<<<< HEAD
 /proc/get_admin_counts(requiredflags = R_BAN)
 	. = list("total" = list(), "noflags" = list(), "afk" = list(), "stealth" = list(), "present" = list())
+=======
+/datum/help_ticket/admin/NewFrom(datum/help_ticket/old_ticket)
+	if(!..())
+		return FALSE
+	MessageNoRecipient(initial_msg, FALSE)
+	//send it to tgs if nobody is on and tell us how many were on
+	var/admin_number_present = send2tgs_adminless_only(initiator_ckey, "Ticket #[id]: [initial_msg]")
+	log_admin_private("Ticket #[id]: [key_name(initiator)]: [name] - heard by [admin_number_present] non-AFK admins who have +BAN.")
+	if(admin_number_present <= 0)
+		to_chat(initiator, "<span class='notice'>No active admins are online, your adminhelp was sent through TGS to admins who are available. This may use IRC or Discord.</span>")
+		heard_by_no_admins = TRUE
+	discordsendmsg("ahelp", "**ADMINHELP: (#[id]) [initiator.key]: ** \"[initial_msg]\" [heard_by_no_admins ? "**(NO ADMINS)**" : "" ]")
+	return TRUE
+
+/datum/help_ticket/admin/AddInteraction(msg_color, message, name_from, name_to, safe_from, safe_to)
+	if(heard_by_no_admins && usr && usr.ckey != initiator_ckey)
+		heard_by_no_admins = FALSE
+		send2tgs(initiator_ckey, "Ticket #[id]: Answered by [key_name(usr)]")
+	..()
+
+/datum/help_ticket/admin/TimeoutVerb()
+	initiator.remove_verb(/client/verb/adminhelp)
+	initiator.adminhelptimerid = addtimer(CALLBACK(initiator, TYPE_PROC_REF(/client, giveadminhelpverb)), 1200, TIMER_STOPPABLE)
+
+/datum/help_ticket/admin/get_ticket_additional_data(mob/user, list/data)
+	data["antag_status"] = "None"
+	if(initiator)
+		var/mob/living/M = initiator.mob
+		if(M?.mind?.antag_datums)
+			var/datum/antagonist/AD = M.mind.antag_datums[1]
+			data["antag_status"] = AD.name
+	return data
+
+/datum/help_ticket/admin/key_name_ticket(mob/user)
+	return key_name_admin(user)
+
+/datum/help_ticket/admin/message_ticket_managers(msg)
+	message_admins(msg)
+
+/datum/help_ticket/admin/MessageNoRecipient(msg, add_to_ticket = TRUE)
+	var/ref_src = "[REF(src)]"
+
+	//Message to be sent to all admins
+	var/admin_msg = "<span class='adminnotice'><span class='adminhelp'>Ticket [TicketHref("#[id]", ref_src)]</span><b>: [LinkedReplyName(ref_src)] [FullMonty(ref_src)]:</b> <span class='linkify'>[keywords_lookup(msg)]</span></span>"
+
+	if(add_to_ticket)
+		AddInteraction("red", msg, initiator_key_name, claimee_key_name, "You", "Administrator")
+	log_admin_private("Ticket #[id]: [key_name(initiator)]: [msg]")
+
+	//send this msg to all admins
+>>>>>>> 7d11b2f84d (515 Compatibility (#8648))
 	for(var/client/X in GLOB.admins)
 		.["total"] += X
 		if(requiredflags != 0 && !check_rights_for(X, requiredflags))
@@ -889,6 +941,7 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 	//explode the input msg into a list
 	var/list/msglist = splittext(msg, " ")
 
+<<<<<<< HEAD
 	//generate keywords lookup
 	var/list/surnames = list()
 	var/list/forenames = list()
@@ -897,6 +950,14 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 	for(var/mob/M in GLOB.mob_list)
 		if(istype(M, /mob/living/carbon/human/dummy))
 			continue
+=======
+	if(initiator)
+		addtimer(CALLBACK(initiator, TYPE_PROC_REF(/client,giveadminhelpverb)), 5 SECONDS)
+		SEND_SOUND(initiator, sound(reply_sound))
+		resolve_message(status = "marked as IC Issue!", message = "\A [handling_name] has handled your ticket and has determined that the issue you are facing is an in-character issue and does not require [handling_name] intervention at this time.<br />\
+		For further resolution, you should pursue options that are in character, such as filing a report with security or a head of staff.<br />\
+		Thank you for creating a ticket, the adminhelp verb will be returned to you shortly.")
+>>>>>>> 7d11b2f84d (515 Compatibility (#8648))
 
 		var/list/indexing = list(M.real_name, M.name)
 		if(M.mind)
@@ -956,6 +1017,76 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 
 	return msg
 
+<<<<<<< HEAD
 #undef CLAIM_DONTCLAIM
 #undef CLAIM_CLAIMIFNONE
 #undef CLAIM_OVERRIDE
+=======
+	if(initiator)
+		initiator.giveadminhelpverb()
+		SEND_SOUND(initiator, sound(reply_sound))
+		resolve_message(status = "De-Escalated to Mentorhelp!", message = "This question may regard <b>game mechanics or how-tos</b>. Such questions should be asked with <b>Mentorhelp</b>.")
+
+	blackbox_feedback(1, "mhelp this")
+	var/msg = "<span class='[span_class]'>Ticket [TicketHref("#[id]")] transferred to mentorhelp by [key_name]</span>"
+	AddInteraction("red", "Transferred to mentorhelp by [key_name].")
+	if(!bwoink)
+		discordsendmsg("ahelp", "Ticket #[id] transferred to mentorhelp by [key_name(usr, include_link = FALSE)]")
+	Close(silent = TRUE, hide_interaction = TRUE)
+	if(initiator.prefs.muted & MUTE_MHELP)
+		message_admins(src, "<span class='danger'>Attempted de-escalation to mentorhelp failed because [initiator_key_name] is mhelp muted.</span>")
+		return
+	message_admins(msg)
+	log_admin_private(msg)
+	var/datum/help_ticket/mentor/ticket = new(initiator)
+	ticket.NewFrom(src)
+
+/// Forwarded action from admin/Topic
+/datum/help_ticket/admin/proc/Action(action)
+	testing("Ahelp action: [action]")
+	switch(action)
+		if("ticket")
+			TicketPanel()
+		if("retitle")
+			Retitle()
+		if("reject")
+			Reject()
+		if("reply")
+			usr.client.cmd_ahelp_reply(initiator)
+		if("icissue")
+			ICIssue()
+		if("close")
+			Close()
+		if("resolve")
+			Resolve()
+		if("reopen")
+			Reopen()
+		if("mhelp")
+			MHelpThis()
+
+/datum/help_ticket/admin/Claim(key_name = key_name_ticket(usr), silent = FALSE)
+	..()
+	if(!bwoink && !silent && !claimee)
+		discordsendmsg("ahelp", "Ticket #[id] is being investigated by [key_name(usr, include_link = FALSE)]")
+
+/datum/help_ticket/admin/Close(key_name = key_name_ticket(usr), silent = FALSE, hide_interaction = FALSE)
+	..()
+	if(!bwoink && !silent)
+		discordsendmsg("ahelp", "Ticket #[id] closed by [key_name(usr, include_link = FALSE)]")
+
+/datum/help_ticket/admin/Resolve(key_name = key_name_ticket(usr), silent = FALSE)
+	..()
+	addtimer(CALLBACK(initiator, TYPE_PROC_REF(/client, giveadminhelpverb)), 5 SECONDS)
+	if(!bwoink)
+		discordsendmsg("ahelp", "Ticket #[id] resolved by [key_name(usr, include_link = FALSE)]")
+
+/datum/help_ticket/admin/Reject(key_name = key_name_ticket(usr), extra_text = ", and clearly state the names of anybody you are reporting")
+	..()
+	if(initiator)
+		initiator.giveadminhelpverb()
+	if(!bwoink)
+		discordsendmsg("ahelp", "Ticket #[id] rejected by [key_name(usr, include_link = FALSE)]")
+
+/datum/help_ticket/admin/resolve_message(status = "Resolved", message = null, extratext = " If your ticket was a report, then the appropriate action has been taken where necessary.")
+	..()
+>>>>>>> 7d11b2f84d (515 Compatibility (#8648))

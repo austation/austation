@@ -914,7 +914,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 	if(!holder)
 		return
 
-	var/weather_type = input("Choose a weather", "Weather")  as null|anything in sortList(subtypesof(/datum/weather), /proc/cmp_typepaths_asc)
+	var/weather_type = input("Choose a weather", "Weather")  as null|anything in sortList(subtypesof(/datum/weather), GLOBAL_PROC_REF(cmp_typepaths_asc))
 	if(!weather_type)
 		return
 
@@ -1087,6 +1087,100 @@ Traitors and the like can also be revived with the previous role mostly intact.
 		return
 
 	switch(punishment)
+<<<<<<< HEAD
+=======
+		if(ADMIN_PUNISHMENT_AHEAL)
+			target.revive(full_heal = 1, admin_revive = 1)
+
+		if(ADMIN_PUNISHMENT_ANIMALIZE)
+			target.Animalize()
+
+		if(ADMIN_PUNISHMENT_BRAINDAMAGE)
+			target.adjustOrganLoss(ORGAN_SLOT_BRAIN, 199, 199)
+
+		if(ADMIN_PUNISHMENT_BSA)
+			bluespace_artillery(target)
+
+		if(ADMIN_PUNISHMENT_CLUWNE)
+			target.cluwne()
+
+		if(ADMIN_PUNISHMENT_COOKIE)
+			var/mob/living/carbon/H = target
+			H.give_cookie(usr)
+			admin_ticket_log(target, "[key_name_admin(usr)] gave [key_name_admin(target)] a cookie.")
+			return //We return here because punish_log() is handled by /mob/living/carbon/human/proc/give_cookie()
+
+		if(ADMIN_PUNISHMENT_CRYO)
+			forcecryo(target)
+
+		if(ADMIN_PUNISHMENT_DAMAGE)
+			var/list/damage_list = list(BRUTE, BURN, CLONE, OXY, STAMINA, TOX)
+			var/damage_punishment = input("Choose a damage type") as null|anything in sortList(damage_list)
+			var/damage_amount = input("Choose an amount") as null|num
+			if(isnull(damage_punishment) || isnull(damage_amount)) //The user pressed "Cancel"
+				return
+
+			target.apply_damage_type(damage_amount, damage_punishment)
+
+			punishment += ": ([damage_amount] [damage_punishment])"
+
+		if(ADMIN_PUNISHMENT_DCHAT_ANARCHY)
+			target._AddComponent(list(/datum/component/deadchat_control, ANARCHY_MODE, list(
+			 "up" = CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(_step), target, NORTH),
+			 "down" = CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(_step), target, SOUTH),
+			 "left" = CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(_step), target, WEST),
+			 "right" = CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(_step), target, EAST)), 10))
+
+		if(ADMIN_PUNISHMENT_DCHAT_DEMOCRACY)
+			target._AddComponent(list(/datum/component/deadchat_control, DEMOCRACY_MODE, list(
+			 "up" = CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(_step), target, NORTH),
+			 "down" = CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(_step), target, SOUTH),
+			 "left" = CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(_step), target, WEST),
+			 "right" = CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(_step), target, EAST)), 40))
+
+		if(ADMIN_PUNISHMENT_FIREBALL)
+			new /obj/effect/temp_visual/target(get_turf(target))
+
+		if(ADMIN_PUNISHMENT_FLOORCLUWNE)
+			if(!ishuman(target))
+				to_chat(usr,"<span class='warning'>You may only floorcluwne humans!</span>")
+				return
+
+			var/turf/T = get_turf(target)
+			var/mob/living/simple_animal/hostile/floor_cluwne/FC = new(T)
+			FC.invalid_area_typecache = list()  // works anywhere
+			FC.delete_after_target_killed = TRUE
+			FC.force_target(target)
+			FC.stage = 4
+
+		if(ADMIN_PUNISHMENT_FLOORCLUWNE_STALKER)
+			var/mob/living/carbon/human/H = target
+			var/mob/living/simple_animal/hostile/floor_cluwne/FC = new /mob/living/simple_animal/hostile/floor_cluwne(get_turf(target))
+			FC.force_target(H)
+			FC.delete_after_target_killed = TRUE
+
+		if(ADMIN_PUNISHMENT_FORCESAY)
+			var/forced_speech = input(usr, "What will they say?") as null|text
+			if(isnull(forced_speech)) //The user pressed "Cancel"
+				return
+
+			target.say(forced_speech, forced = "admin speech")
+
+			punishment += ": \"[forced_speech]\""
+
+		if(ADMIN_PUNISHMENT_GHOST)
+			if(target.key)
+				target.ghostize(FALSE,SENTIENCE_FORCE)
+			else
+				target.set_playable()
+
+		if(ADMIN_PUNISHMENT_GIB)
+			target.gib(FALSE)
+
+		if(ADMIN_PUNISHMENT_IMMERSE)
+			immerse_player(target)
+
+>>>>>>> 7d11b2f84d (515 Compatibility (#8648))
 		if(ADMIN_PUNISHMENT_LIGHTNING)
 			var/turf/T = get_step(get_step(target, NORTH), NORTH)
 			T.Beam(target, icon_state="lightning[rand(1,12)]", time = 5)

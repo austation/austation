@@ -37,6 +37,22 @@
 	var/list/accounts_to_rob
 	var/mob/living/carbon/human/bogdanoff
 	var/canwalk = FALSE
+<<<<<<< HEAD
+=======
+	var/static/existing_machines = 0
+	var/protected_accounts = list()
+
+
+/obj/structure/checkoutmachine/Initialize(mapload, mob/living/user)
+	bogdanoff = user
+	add_overlay("flaps")
+	add_overlay("hatch")
+	add_overlay("legs_retracted")
+	addtimer(CALLBACK(src, PROC_REF(startUp)), 50)
+	next_health_to_teleport = max_integrity - RUN_AWAY_THRESHOLD_HP
+	existing_machines++
+	. = ..()
+>>>>>>> 7d11b2f84d (515 Compatibility (#8648))
 
 /obj/structure/checkoutmachine/examine(mob/living/user)
 	. = ..()
@@ -167,12 +183,35 @@
 		var/datum/bank_account/B = i
 		if(!B.being_dumped)
 			continue
+<<<<<<< HEAD
 		var/amount = B.account_balance * percentage_lost
 		var/datum/bank_account/account = bogdanoff.get_bank_account()
 		if (account) // get_bank_account() may return FALSE
 			account.transfer_money(B, amount)
 			B.bank_card_talk("You have lost [percentage_lost * 100]% of your funds! A spacecoin credit deposit machine is located at: [get_area(src)].")
 	addtimer(CALLBACK(src, .proc/dump), 150) //Drain every 15 seconds
+=======
+		var/amount = 0
+		if(B.account_balance)
+			amount = max(round(B.account_balance * percentage_lost), 1) // we'll steal at least 1 credit
+		if(crab_account)
+			if(amount)
+				crab_account.transfer_money(B, amount)
+				total_credits_stolen += amount
+				victim_count += 1
+				B.bank_card_talk("You have lost [percentage_lost * 100]% of your funds! A spacecoin credit deposit machine is located at: [get_area(src)].")
+		else
+			if(amount)
+				B.adjust_money(-amount)
+				total_credits_stolen += amount
+				victim_count += 1
+				B.bank_card_talk("You have lost [percentage_lost * 100]% of your funds! A spacecoin credit deposit machine is located at: [get_area(src)].")
+		B.withdrawDelay += 30 SECONDS // we apologize for the extended maintenance, but we need to steal your credits
+	for(var/M in GLOB.dead_mob_list)
+		var/link = FOLLOW_LINK(M, src)
+		to_chat(M, "<span class='deadsay'>[link] [name] [total_credits_stolen ? "siphons total [total_credits_stolen] credits from [victim_count] bank accounts." : "tried to siphon bank accounts, but there're no victims."] location: [get_area(src)]</span>")
+	addtimer(CALLBACK(src, PROC_REF(dump)), 150) //Drain every 15 seconds
+>>>>>>> 7d11b2f84d (515 Compatibility (#8648))
 
 /obj/structure/checkoutmachine/process()
 	var/anydir = pick(GLOB.cardinals)
@@ -209,7 +248,7 @@
 /obj/effect/dumpeetTarget/Initialize(mapload, user)
 	. = ..()
 	bogdanoff = user
-	addtimer(CALLBACK(src, .proc/startLaunch), 100)
+	addtimer(CALLBACK(src, PROC_REF(startLaunch)), 100)
 	sound_to_playing_players('sound/items/dump_it.ogg', 20)
 	deadchat_broadcast("<span class='deadsay'>Protocol CRAB-17 has been activated. A space-coin market has been launched at the station!</span>", turf_target = get_turf(src))
 
@@ -219,7 +258,7 @@
 	priority_announce("The spacecoin bubble has popped! Get to the credit deposit machine at [get_area(src)] and cash out before you lose all of your funds!", sound = SSstation.announcer.get_rand_alert_sound(), sender_override = "CRAB-17 Protocol")
 	animate(DF, pixel_z = -8, time = 5, , easing = LINEAR_EASING)
 	playsound(src,  'sound/weapons/mortar_whistle.ogg', 70, 1, 6)
-	addtimer(CALLBACK(src, .proc/endLaunch), 5, TIMER_CLIENT_TIME) //Go onto the last step after a very short falling animation
+	addtimer(CALLBACK(src, PROC_REF(endLaunch)), 5, TIMER_CLIENT_TIME) //Go onto the last step after a very short falling animation
 
 
 

@@ -29,8 +29,13 @@
 			for(var/obj/structure/flora/ash/plant in T)
 				qdel(plant)
 
+<<<<<<< HEAD
 		load(central_turf,centered = TRUE)
 		loaded++
+=======
+		var/datum/map_generator/map_placer = load(central_turf,centered = TRUE)
+		map_placer.on_completion(CALLBACK(src, PROC_REF(after_ruin_generation), central_turf))
+>>>>>>> 7d11b2f84d (515 Compatibility (#8648))
 
 		for(var/turf/T in get_affected_turfs(central_turf, 1))
 			T.flags_1 |= NO_RUINS_1

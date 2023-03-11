@@ -38,14 +38,18 @@
 		debris += new /obj/item/stack/cable_coil(src, cable)
 
 	var/static/list/loc_connections = list(
-		COMSIG_ATOM_EXIT = .proc/on_exit,
+		COMSIG_ATOM_EXIT = PROC_REF(on_exit),
 	)
 
 	AddElement(/datum/element/connect_loc, loc_connections)
+<<<<<<< HEAD
 
 /obj/machinery/door/window/ComponentInitialize()
 	. = ..()
 	AddComponent(/datum/component/ntnet_interface)
+=======
+	RegisterSignal(src, COMSIG_COMPONENT_NTNET_RECEIVE, PROC_REF(ntnet_receive))
+>>>>>>> 7d11b2f84d (515 Compatibility (#8648))
 
 /obj/machinery/door/window/Destroy()
 	density = FALSE
@@ -227,6 +231,7 @@
 		take_damage(round(exposed_volume / 200), BURN, 0, 0)
 	..()
 
+<<<<<<< HEAD
 /obj/machinery/door/window/emag_act(mob/user)
 	if(!operating && density && !(obj_flags & EMAGGED))
 		obj_flags |= EMAGGED
@@ -237,6 +242,25 @@
 		operating = FALSE
 		desc += "<BR><span class='warning'>Its access panel is smoking slightly.</span>"
 		open(2)
+=======
+/obj/machinery/door/window/should_emag(mob/user)
+	// Don't allow emag if the door is currently open or moving
+	return !operating && density && ..()
+
+/obj/machinery/door/window/on_emag(mob/user)
+	..()
+	operating = TRUE
+	flick("[base_state]spark", src)
+	playsound(src, "sparks", 75, 1)
+	addtimer(CALLBACK(src, PROC_REF(after_emag)), 6)
+
+/obj/machinery/door/window/proc/after_emag()
+	if(QDELETED(src))
+		return
+	operating = FALSE
+	desc += "<BR><span class='warning'>Its access panel is smoking slightly.</span>"
+	open(2)
+>>>>>>> 7d11b2f84d (515 Compatibility (#8648))
 
 /obj/machinery/door/window/attackby(obj/item/I, mob/living/user, params)
 
@@ -357,11 +381,11 @@
 				return
 
 			if(density)
-				INVOKE_ASYNC(src, .proc/open)
+				INVOKE_ASYNC(src, PROC_REF(open))
 			else
-				INVOKE_ASYNC(src, .proc/close)
+				INVOKE_ASYNC(src, PROC_REF(close))
 		if("touch")
-			INVOKE_ASYNC(src, .proc/open_and_close)
+			INVOKE_ASYNC(src, PROC_REF(open_and_close))
 
 /obj/machinery/door/window/brigdoor
 	name = "secure door"
@@ -426,7 +450,7 @@
 		var/previouscolor = color
 		color = "#960000"
 		animate(src, color = previouscolor, time = 8)
-		addtimer(CALLBACK(src, /atom/proc/update_atom_colour), 8)
+		addtimer(CALLBACK(src, TYPE_PROC_REF(/atom, update_atom_colour)), 8)
 
 /obj/machinery/door/window/clockwork/ratvar_act()
 	return FALSE

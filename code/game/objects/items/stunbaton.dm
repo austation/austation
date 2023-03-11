@@ -201,7 +201,11 @@
 	if (!(. & EMP_PROTECT_SELF) && !(obj_flags & OBJ_EMPED))
 		obj_flags |= OBJ_EMPED
 		update_icon()
+<<<<<<< HEAD
 		addtimer(CALLBACK(src, .proc/emp_reset), rand(1200 / severity, 600 / severity))
+=======
+		addtimer(CALLBACK(src, PROC_REF(emp_reset)), rand(1, 200 / severity))
+>>>>>>> 7d11b2f84d (515 Compatibility (#8648))
 		playsound(src, 'sound/machines/capacitor_discharge.ogg', 60, TRUE)
 
 /obj/item/melee/baton/proc/emp_reset()

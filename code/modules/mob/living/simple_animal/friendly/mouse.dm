@@ -45,7 +45,7 @@
 		R.spread_flags |= DISEASE_SPREAD_CHECK_STRONG_STOMACH // austation -- make catgirls and lizards immune to diseases from rats
 		ratdisease += R
 	var/static/list/loc_connections = list(
-		COMSIG_ATOM_ENTERED = .proc/on_entered,
+		COMSIG_ATOM_ENTERED = PROC_REF(on_entered),
 	)
 	AddElement(/datum/element/connect_loc, loc_connections)
 

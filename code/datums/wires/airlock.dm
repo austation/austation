@@ -38,6 +38,7 @@
 /datum/wires/airlock/on_pulse(wire)
 	set waitfor = FALSE
 	var/obj/machinery/door/airlock/A = holder
+<<<<<<< HEAD
 	switch(wire)
 		if(WIRE_POWER1, WIRE_POWER2) // Pulse to loose power.
 			A.loseMainPower()
@@ -49,6 +50,25 @@
 			if(A.id_scan_hacked() || A.check_access(null))
 				if(A.density)
 					INVOKE_ASYNC(A, /obj/machinery/door/airlock.proc/open)
+=======
+	if(A.hasPower()) //Multitool has no effect at all if the door has lost power
+		switch(wire)
+			if(WIRE_POWER1, WIRE_POWER2) // Pulse to loose power.
+				A.loseMainPower()
+			if(WIRE_BACKUP1, WIRE_BACKUP2) // Pulse to loose backup power.
+				A.loseBackupPower()
+			if(WIRE_OPEN) // Pulse to open door (only works not emagged and ID wire is cut or no access is required).
+				if(A.obj_flags & EMAGGED)
+					return
+				if(A.id_scan_hacked() || A.check_access(null))
+					if(A.density)
+						INVOKE_ASYNC(A, TYPE_PROC_REF(/obj/machinery/door/airlock, open))
+					else
+						INVOKE_ASYNC(A, TYPE_PROC_REF(/obj/machinery/door/airlock, close))
+			if(WIRE_BOLTS) // Pulse to toggle bolts
+				if(!A.locked)
+					A.bolt()
+>>>>>>> 7d11b2f84d (515 Compatibility (#8648))
 				else
 					INVOKE_ASYNC(A, /obj/machinery/door/airlock.proc/close)
 		if(WIRE_BOLTS) // Pulse to toggle bolts (but only raise if power is on).
@@ -57,6 +77,7 @@
 			else
 				if(A.hasPower())
 					A.unbolt()
+<<<<<<< HEAD
 			A.update_icon()
 		if(WIRE_IDSCAN) // Pulse to disable emergency access and flash red lights.
 			if(A.hasPower() && A.density)
@@ -82,6 +103,36 @@
 		if(WIRE_LIGHT)
 			A.lights = !A.lights
 			A.update_icon()
+=======
+				A.update_icon()
+			if(WIRE_IDSCAN) // Pulse to disable emergency access and flash red lights.
+				if(A.hasPower() && A.density)
+					A.do_animate("deny")
+					if(A.emergency)
+						A.emergency = FALSE
+						A.update_icon()
+			if(WIRE_AI) // Pulse to disable WIRE_AI control for 10 ticks (follows same rules as cutting).
+				if(A.aiControlDisabled == 0)
+					A.aiControlDisabled = 1
+				else if(A.aiControlDisabled == -1)
+					A.aiControlDisabled = 2
+				addtimer(CALLBACK(A, TYPE_PROC_REF(/obj/machinery/door/airlock, reset_ai_wire)), 1 SECONDS)
+			if(WIRE_SHOCK) // Pulse to shock the door for 10 ticks.
+				if(!A.secondsElectrified)
+					A.set_electrified(MACHINE_DEFAULT_ELECTRIFY_TIME, usr)
+			if(WIRE_SAFETY)
+				A.safe = !A.safe
+				if(!A.density)
+					A.close()
+			if(WIRE_TIMING)
+				A.normalspeed = !A.normalspeed
+			if(WIRE_LIGHT)
+				A.lights = !A.lights
+				A.update_icon()
+			if(WIRE_ZAP1, WIRE_ZAP2) // Doors have a lot of power coursing through them, even a multitool can be overloaded on the wrong wires
+				if(isliving(usr))
+					A.shock(usr, 100)
+>>>>>>> 7d11b2f84d (515 Compatibility (#8648))
 	ui_update()
 	A.ui_update()
 

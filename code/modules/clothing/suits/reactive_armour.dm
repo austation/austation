@@ -138,6 +138,7 @@
 	name = "reactive stealth armor"
 	desc = "An experimental suit of armor that renders the wearer invisible on detection of imminent harm, and creates a decoy that runs away from the owner. You can't fight what you can't see."
 
+<<<<<<< HEAD
 /obj/item/clothing/suit/armor/reactive/stealth/hit_reaction(mob/living/carbon/human/owner, atom/movable/hitby, attack_text = "the attack", final_block_chance = 0, damage = 0, attack_type = MELEE_ATTACK)
 	if(!does_react(hitby))
 		return FALSE
@@ -154,6 +155,48 @@
 		addtimer(VARSET_CALLBACK(owner, alpha, initial(owner.alpha)), 40)
 		reactivearmor_cooldown = world.time + reactivearmor_cooldown_duration
 		return TRUE
+=======
+	///when triggering while on cooldown will only flicker the alpha slightly. this is how much it removes.
+	var/cooldown_alpha_removal = 50
+	///cooldown alpha flicker- how long it takes to return to the original alpha
+	var/cooldown_animation_time = 3 SECONDS
+	///how long they will be fully stealthed
+	var/stealth_time = 4 SECONDS
+	///how long it will animate back the alpha to the original
+	var/animation_time = 2 SECONDS
+	var/in_stealth = FALSE
+
+/obj/item/clothing/suit/armor/reactive/stealth/cooldown_activation(mob/living/carbon/human/owner)
+	if(in_stealth)
+		return //we don't want the cooldown message either)
+	owner.alpha = max(0, owner.alpha - cooldown_alpha_removal)
+	animate(owner, alpha = initial(owner.alpha), time = cooldown_animation_time)
+	..()
+
+/obj/item/clothing/suit/armor/reactive/stealth/reactive_activation(mob/living/carbon/human/owner, atom/movable/hitby, attack_text = "the attack", damage = 0, attack_type = MELEE_ATTACK)
+	var/mob/living/simple_animal/hostile/illusion/escape/decoy = new(owner.loc)
+	decoy.Copy_Parent(owner, 50)
+	decoy.GiveTarget(owner) //so it starts running right away
+	decoy.Goto(owner, decoy.move_to_delay, decoy.minimum_distance)
+	in_stealth = TRUE
+	owner.visible_message("<span class='danger'>[owner] is hit by [attack_text] in the chest!</span>") //We pretend to be hit, since blocking it would stop the message otherwise
+	owner.alpha = 0
+	addtimer(CALLBACK(src, PROC_REF(end_stealth), owner), stealth_time)
+	return TRUE
+
+/obj/item/clothing/suit/armor/reactive/stealth/proc/end_stealth(mob/living/carbon/human/owner)
+	in_stealth = FALSE
+	animate(owner, alpha = initial(owner.alpha), time = animation_time)
+
+/obj/item/clothing/suit/armor/reactive/stealth/emp_activation(mob/living/carbon/human/owner, atom/movable/hitby, attack_text = "the attack", damage = 0, attack_type = MELEE_ATTACK)
+	if(!isliving(hitby))
+		return FALSE //it just doesn't activate
+	var/mob/living/attacker = hitby
+	owner.visible_message("<span class='danger'>[src] activates, cloaking the wrong person!</span>")
+	attacker.alpha = 0
+	addtimer(VARSET_CALLBACK(attacker, alpha, initial(attacker.alpha)), 4 SECONDS)
+	return FALSE
+>>>>>>> 7d11b2f84d (515 Compatibility (#8648))
 
 //Tesla
 

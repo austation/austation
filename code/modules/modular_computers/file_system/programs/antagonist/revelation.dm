@@ -20,6 +20,15 @@
 
 /datum/computer_file/program/revelation/proc/activate()
 	if(computer)
+<<<<<<< HEAD
+=======
+		if(istype(computer, /obj/item/modular_computer/tablet/integrated)) //If this is a borg's integrated tablet
+			var/obj/item/modular_computer/tablet/integrated/modularInterface = computer
+			to_chat(modularInterface.borgo,"<span class='userdanger'>SYSTEM PURGE DETECTED/</span>")
+			addtimer(CALLBACK(modularInterface.borgo, TYPE_PROC_REF(/mob/living/silicon/robot, death)), 2 SECONDS, TIMER_UNIQUE)
+			return
+
+>>>>>>> 7d11b2f84d (515 Compatibility (#8648))
 		computer.visible_message("<span class='notice'>\The [computer]'s screen brightly flashes and loud electrical buzzing is heard.</span>")
 		computer.enabled = FALSE
 		computer.update_icon()

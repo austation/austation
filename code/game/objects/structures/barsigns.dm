@@ -117,7 +117,13 @@
 		to_chat(user, "<span class='warning'>Nothing interesting happens!</span>")
 		return
 	to_chat(user, "<span class='notice'>You load an illegal barsign into the memory buffer...</span>")
+<<<<<<< HEAD
 	sleep(10 SECONDS)
+=======
+	addtimer(CALLBACK(src, PROC_REF(after_emag)), 10 SECONDS)
+
+/obj/structure/sign/barsign/proc/after_emag()
+>>>>>>> 7d11b2f84d (515 Compatibility (#8648))
 	chosen_sign = set_sign(new /datum/barsign/hiddensigns/syndibarsign)
 
 

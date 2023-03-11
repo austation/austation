@@ -16,7 +16,12 @@
 /datum/tgui_panel/New(client/client)
 	src.client = client
 	window = new(client, "browseroutput")
+<<<<<<< HEAD
 	window.subscribe(src, .proc/on_message)
+=======
+	window.subscribe(src, PROC_REF(on_message))
+	GLOB.tgui_panels += src
+>>>>>>> 7d11b2f84d (515 Compatibility (#8648))
 
 /datum/tgui_panel/Del()
 	window.unsubscribe(src)
@@ -57,7 +62,7 @@
 	request_telemetry()
 	// Send verbs
 	set_verb_infomation(client)
-	addtimer(CALLBACK(src, .proc/on_initialize_timed_out), 5 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(on_initialize_timed_out)), 5 SECONDS)
 
 /**
  * private
