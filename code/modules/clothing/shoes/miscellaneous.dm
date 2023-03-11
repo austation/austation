@@ -96,10 +96,16 @@
 		if(user.mind && user.mind.assigned_role == "Clown")
 			SEND_SIGNAL(user, COMSIG_ADD_MOOD_EVENT, "clownshoes", /datum/mood_event/clownshoes)
 
-/obj/item/clothing/shoes/clown_shoes/dropped(mob/user)
+/obj/item/clothing/shoes/clown_shoes/dropped(mob/living/carbon/user)
 	..()
 	QDEL_NULL(waddle)
+<<<<<<< HEAD
 	if(user.mind && user.mind.assigned_role == "Clown")
+=======
+	if(user.shoes != src)
+		return
+	if(user.mind && user.mind.assigned_role == JOB_NAME_CLOWN)
+>>>>>>> 8159b3589f (Fixes the moodlets for Clown Shoes, Insulated and Black gloves (#8602))
 		SEND_SIGNAL(user, COMSIG_CLEAR_MOOD_EVENT, "clownshoes")
 
 /obj/item/clothing/shoes/clown_shoes/CtrlClick(mob/living/user)

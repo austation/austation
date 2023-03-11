@@ -17,8 +17,10 @@
 	if((slot == ITEM_SLOT_GLOVES) && (user.mind?.assigned_role in GLOB.security_positions))
 		SEND_SIGNAL(user, COMSIG_ADD_MOOD_EVENT, "sec_black_gloves", /datum/mood_event/sec_black_gloves)
 
-/obj/item/clothing/gloves/color/black/dropped(mob/user)
+/obj/item/clothing/gloves/color/black/dropped(mob/living/carbon/user)
 	..()
+	if(user.gloves != src)
+		return
 	if(user.mind?.assigned_role in GLOB.security_positions)
 		SEND_SIGNAL(user, COMSIG_CLEAR_MOOD_EVENT, "sec_black_gloves")
 
@@ -30,9 +32,15 @@
 		if(user.mind?.assigned_role in GLOB.security_positions)
 			SEND_SIGNAL(user, COMSIG_ADD_MOOD_EVENT, "sec_insulated_gloves", /datum/mood_event/sec_insulated_gloves)
 
-/obj/item/clothing/gloves/color/yellow/dropped(mob/user)
+/obj/item/clothing/gloves/color/yellow/dropped(mob/living/carbon/user)
 	..()
+<<<<<<< HEAD
 	if(user.mind?.assigned_role == "Assistant")
+=======
+	if(user.gloves != src)
+		return
+	if(user.mind?.assigned_role == JOB_NAME_ASSISTANT)
+>>>>>>> 8159b3589f (Fixes the moodlets for Clown Shoes, Insulated and Black gloves (#8602))
 		SEND_SIGNAL(user, COMSIG_CLEAR_MOOD_EVENT, "assistant_insulated_gloves")
 	if(user.mind?.assigned_role in GLOB.security_positions)
 		SEND_SIGNAL(user, COMSIG_CLEAR_MOOD_EVENT, "sec_insulated_gloves")
