@@ -77,7 +77,47 @@
 	return TRUE
 austation end */
 
+<<<<<<< HEAD
 /obj/structure/closet/crate/necropolis/tendril/can_open(mob/living/user, force = FALSE)
+=======
+
+/obj/effect/spawner/mail/maintloot
+	name = "\improper Random maintenance loot spawner"
+/obj/effect/spawner/mail/maintloot/Initialize()
+	var/static/list/mail_maintloot = pick(GLOB.maintenance_loot)
+	new mail_maintloot(loc)
+	return INITIALIZE_HINT_QDEL
+
+/obj/structure/closet/crate/necropolis/tendril
+	desc = "It's watching you suspiciously."
+
+/obj/structure/closet/crate/necropolis/tendril/try_spawn_loot(datum/source, obj/item/item, mob/user, params) ///proc that handles key checking and generating loot - MAY REPLACE WITH pickweight(loot)
+	var/static/list/necropolis_goodies = list(	//weights to be defined later on, for now they're all the same
+		/obj/item/clothing/glasses/godeye									= 5,
+		/obj/item/pickaxe/diamond											= 5,
+		/obj/item/rod_of_asclepius											= 5,
+		/obj/item/organ/heart/cursed/wizard						 			= 5,
+		/obj/item/ship_in_a_bottle											= 5,
+		/obj/item/jacobs_ladder												= 5,
+		/obj/item/warp_cube/red												= 5,
+		/obj/item/wisp_lantern												= 5,
+		/obj/item/immortality_talisman										= 5,
+		/obj/item/gun/magic/hook											= 5,
+		/obj/item/book_of_babel 											= 5,
+		/obj/item/clothing/neck/necklace/memento_mori						= 5,
+		/obj/item/reagent_containers/glass/waterbottle/relic				= 5,
+		/obj/item/reagent_containers/glass/bottle/necropolis_seed			= 5,
+		/obj/item/borg/upgrade/modkit/lifesteal								= 5,
+		/obj/item/shared_storage/red										= 5,
+		/obj/item/staff/storm												= 5
+	)
+
+	if(..())
+		var/necropolis_loot = pickweight(necropolis_goodies.Copy())
+		new necropolis_loot(src)
+
+/obj/structure/closet/crate/necropolis/can_open(mob/living/user, force = FALSE)
+>>>>>>> 6a6fc9f089 (Fixes fultons not working on necropolis chests (#8655))
 	if(!spawned_loot)
 		return FALSE
 	return ..()
