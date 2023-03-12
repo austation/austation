@@ -2,7 +2,6 @@
 	name = "Geladikinesis"
 	desc = "Allows the user to concentrate moisture and sub-zero forces into snow."
 	quality = POSITIVE
-	text_gain_indication = "<span class='notice'>Your hand feels cold.</span>"
 	instability = 10
 	difficulty = 10
 	synchronizer_coeff = 1
@@ -20,7 +19,6 @@
 	name = "Waxy Saliva"
 	desc = "Allows the user to secrete wax."
 	quality = POSITIVE
-	text_gain_indication = "<span class='notice'>Your mouth feels waxy.</span>"
 	instability = 10
 	difficulty = 10
 	synchronizer_coeff = 1
@@ -39,7 +37,6 @@
 	name = "Cryokinesis"
 	desc = "Draws negative energy from the sub-zero void to freeze surrounding temperatures at subject's will."
 	quality = POSITIVE //upsides and downsides
-	text_gain_indication = "<span class='notice'>Your hand feels cold.</span>"
 	instability = 20
 	difficulty = 12
 	synchronizer_coeff = 1
