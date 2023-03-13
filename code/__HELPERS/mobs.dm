@@ -99,7 +99,15 @@
 		"ipc_screen" = pick(GLOB.ipc_screens_list),
 		"ipc_antenna" = pick(GLOB.ipc_antennas_list),
 		"ipc_chassis" = pick(GLOB.ipc_chassis_list),
+<<<<<<< HEAD
 		"insect_type" = pick(GLOB.insect_type_list)
+=======
+		"insect_type" = pick(GLOB.insect_type_list),
+		"apid_antenna" = pick(GLOB.apid_antenna_list),
+		"apid_stripes" = pick(GLOB.apid_stripes_list),
+		"apid_headstripes" = pick(GLOB.apid_headstripes_list),
+		"body_model" = MALE
+>>>>>>> 8ea73f1907 ([PORT] Gender Neutrality (#8407))
 		)
 	)
 
@@ -125,8 +133,10 @@
 	for(var/i in 1 to attempts_to_find_unique_name)
 		if(gender==FEMALE)
 			. = capitalize(pick(GLOB.first_names_female)) + " " + capitalize(pick(GLOB.last_names))
-		else
+		else if(gender==MALE)
 			. = capitalize(pick(GLOB.first_names_male)) + " " + capitalize(pick(GLOB.last_names))
+		else if(gender==PLURAL)
+			. = capitalize(pick(GLOB.first_names)) + " " + capitalize(pick(GLOB.last_names))
 
 		if(!findname(.))
 			break

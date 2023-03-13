@@ -240,9 +240,24 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 			dat += "<b>Name:</b> "
 			dat += "<a href='?_src_=prefs;preference=name;task=input'>[real_name]</a><BR>"
 
+<<<<<<< HEAD
 			if(!(AGENDER in pref_species.species_traits))
 				dat += "<b>Gender:</b> <a href='?_src_=prefs;preference=gender'>[gender == MALE ? "Male" : "Female"]</a><BR>"
 			dat += "<b>Age:</b> <a href='?_src_=prefs;preference=age;task=input'>[age]</a><BR>"
+=======
+			if(!(AGENDER in active_character.pref_species.species_traits))
+				var/dispGender
+				if(active_character.gender == MALE)
+					dispGender = "Male"
+				else if(active_character.gender == FEMALE)
+					dispGender = "Female"
+				else
+					dispGender = "Other"
+				dat += "<b>Gender:</b> <a href='?_src_=prefs;preference=gender'>[dispGender]</a><BR>"
+				if(active_character.gender == PLURAL || active_character.gender == NEUTER)
+					dat += "<b>Body Model:</b><a href='?_src_=prefs;preference=body_model'>[active_character.features["body_model"] == MALE ? "Masculine" : "Feminine"]</a><BR>"
+			dat += "<b>Age:</b> <a href='?_src_=prefs;preference=age;task=input'>[active_character.age]</a><BR>"
+>>>>>>> 8ea73f1907 ([PORT] Gender Neutrality (#8407))
 
 			dat += "<b>Special Names:</b><BR>"
 			var/old_group
@@ -1449,6 +1464,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				if("hair_color")
 					var/new_hair = input(user, "Choose your character's hair colour:", "Character Preference","#" + hair_color) as color|null
 					if(new_hair)
+<<<<<<< HEAD
 						hair_color = sanitize_hexcolor(new_hair)
 				if("hair_style")
 					var/new_hair_style
@@ -1456,6 +1472,12 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 						new_hair_style = input(user, "Choose your character's hair style:", "Character Preference")  as null|anything in GLOB.hair_styles_male_list
 					else
 						new_hair_style = input(user, "Choose your character's hair style:", "Character Preference")  as null|anything in GLOB.hair_styles_female_list
+=======
+						active_character.hair_color = sanitize_hexcolor(new_hair)
+
+				if("hair_style")
+					var/new_hair_style = tgui_input_list(user, "Choose your character's hair style:", "Character Preference", GLOB.hair_styles_list, active_character.hair_style)
+>>>>>>> 8ea73f1907 ([PORT] Gender Neutrality (#8407))
 					if(new_hair_style)
 						hair_style = new_hair_style
 
@@ -1471,6 +1493,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 						gradient_color = sanitize_hexcolor(new_hair_gradient)
 
 				if("next_hair_style")
+<<<<<<< HEAD
 					if(gender == MALE)
 						hair_style = next_list_item(hair_style, GLOB.hair_styles_male_list)
 					else
@@ -1481,6 +1504,12 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 						hair_style = previous_list_item(hair_style, GLOB.hair_styles_male_list)
 					else
 						hair_style = previous_list_item(hair_style, GLOB.hair_styles_female_list)
+=======
+					active_character.hair_style = next_list_item(active_character.hair_style, GLOB.hair_styles_list)
+
+				if("previous_hair_style")
+					active_character.hair_style = previous_list_item(active_character.hair_style, GLOB.hair_styles_list)
+>>>>>>> 8ea73f1907 ([PORT] Gender Neutrality (#8407))
 
 				if("next_gradient_style")
 					gradient_style = next_list_item(gradient_style, GLOB.hair_gradients_list)
@@ -1494,15 +1523,20 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 						facial_hair_color = sanitize_hexcolor(new_facial)
 
 				if("facial_hair_style")
+<<<<<<< HEAD
 					var/new_facial_hair_style
 					if(gender == MALE)
 						new_facial_hair_style = input(user, "Choose your character's facial-hair style:", "Character Preference")  as null|anything in GLOB.facial_hair_styles_male_list
 					else
 						new_facial_hair_style = input(user, "Choose your character's facial-hair style:", "Character Preference")  as null|anything in GLOB.facial_hair_styles_female_list
+=======
+					var/new_facial_hair_style = tgui_input_list(user, "Choose your character's facial-hair style:", "Character Preference", GLOB.facial_hair_styles_list, active_character.facial_hair_style)
+>>>>>>> 8ea73f1907 ([PORT] Gender Neutrality (#8407))
 					if(new_facial_hair_style)
 						facial_hair_style = new_facial_hair_style
 
 				if("next_facehair_style")
+<<<<<<< HEAD
 					if (gender == MALE)
 						facial_hair_style = next_list_item(facial_hair_style, GLOB.facial_hair_styles_male_list)
 					else
@@ -1520,6 +1554,15 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 						new_underwear = input(user, "Choose your character's underwear:", "Character Preference")  as null|anything in GLOB.underwear_m
 					else
 						new_underwear = input(user, "Choose your character's underwear:", "Character Preference")  as null|anything in GLOB.underwear_f
+=======
+					active_character.facial_hair_style = next_list_item(active_character.facial_hair_style, GLOB.facial_hair_styles_list)
+
+				if("previous_facehair_style")
+					active_character.facial_hair_style = previous_list_item(active_character.facial_hair_style, GLOB.facial_hair_styles_list)
+
+				if("underwear")
+					var/new_underwear = tgui_input_list(user, "Choose your character's underwear:", "Character Preference", GLOB.underwear_list, active_character.underwear)
+>>>>>>> 8ea73f1907 ([PORT] Gender Neutrality (#8407))
 					if(new_underwear)
 						underwear = new_underwear
 
@@ -1529,17 +1572,21 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 						underwear_color = sanitize_hexcolor(new_underwear_color)
 
 				if("undershirt")
+<<<<<<< HEAD
 					var/new_undershirt
 					if(gender == MALE)
 						new_undershirt = input(user, "Choose your character's undershirt:", "Character Preference") as null|anything in GLOB.undershirt_m
 					else
 						new_undershirt = input(user, "Choose your character's undershirt:", "Character Preference") as null|anything in GLOB.undershirt_f
+=======
+					var/new_undershirt = tgui_input_list(user, "Choose your character's undershirt:", "Character Preference", GLOB.undershirt_list, active_character.undershirt)
+>>>>>>> 8ea73f1907 ([PORT] Gender Neutrality (#8407))
 					if(new_undershirt)
 						undershirt = new_undershirt
 
 				if("socks")
 					var/new_socks
-					new_socks = input(user, "Choose your character's socks:", "Character Preference") as null|anything in GLOB.socks_list
+					new_socks = tgui_input_list(user, "Choose your character's socks:", "Character Preference", GLOB.socks_list, active_character.socks)
 					if(new_socks)
 						socks = new_socks
 
@@ -1809,6 +1856,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					if(unlock_content)
 						toggles ^= MEMBER_PUBLIC
 				if("gender")
+<<<<<<< HEAD
 					if(gender == MALE)
 						gender = FEMALE
 					else
@@ -1819,6 +1867,19 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					facial_hair_style = random_facial_hair_style(gender)
 					hair_style = random_hair_style(gender)
 
+=======
+					var/list/friendlyGenders = list("Male" = "male", "Female" = "female", "Other" = "plural")
+					var/pickedGender = input(user, "Choose your gender.", "Character Preference", active_character.gender) as null|anything in friendlyGenders
+					if(pickedGender && friendlyGenders[pickedGender] != active_character.gender)
+						switch(friendlyGenders[pickedGender])
+							if("plural")
+								active_character.features["body_model"] = pick(MALE, FEMALE)
+							else
+								active_character.features["body_model"] = friendlyGenders[pickedGender]
+						active_character.gender = friendlyGenders[pickedGender]
+				if("body_model")
+					active_character.features["body_model"] = active_character.features["body_model"] == MALE ? FEMALE : MALE
+>>>>>>> 8ea73f1907 ([PORT] Gender Neutrality (#8407))
 				if("hotkeys")
 					hotkeys = !hotkeys
 					if(hotkeys)
