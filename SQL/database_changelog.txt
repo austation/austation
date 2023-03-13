@@ -8,6 +8,22 @@ INSERT INTO `SS13_schema_revision` (`major`, `minor`) VALUES (5, 11);
 
 In any query remember to add a prefix to the table names if you use one.
 
+<<<<<<< HEAD
+=======
+-----------------------------------------------------
+
+Version 6.1-SOUNDTRACK - 11 March 2023 by itsmeow - Minor update, enable soundtrack pref for existing users
+
+UPDATE SS13_preferences SET preference_value = preference_value | (1<<13) WHERE preference_tag = 2;
+
+-----------------------------------------------------
+
+Version 6.1, 29 December 2020, by Missfox, ported 20 August 2022 by ivanmixo
+Modified table `messages`, adding column `playtime` to show the user's playtime when the note was created.
+
+ALTER TABLE `messages` ADD `playtime` INT(11) UNSIGNED NULL DEFAULT(NULL) AFTER `severity`
+
+>>>>>>> 000f11a9ee (Add soundtrack preference and separate channel (#8650))
 -----------------------------------------------------
 Version 5.11, 28 December 2020 by Crossedfall
 Added the server_name column to the feedback table

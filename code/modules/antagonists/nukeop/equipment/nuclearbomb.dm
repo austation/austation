@@ -451,10 +451,15 @@
 		countdown.start()
 		set_security_level(SEC_LEVEL_DELTA)
 
+<<<<<<< HEAD
 		/* austation begin -- remove bomb countdown song
 		if (proper_bomb) // Why does this exist austation
 			countdown_music = play_soundtrack_music(/datum/soundtrack_song/bee/countdown, only_station = TRUE)
 		austation end */
+=======
+		if (proper_bomb) // Why does this exist
+			countdown_music = play_soundtrack_music(/datum/soundtrack_song/bee/countdown)
+>>>>>>> 000f11a9ee (Add soundtrack preference and separate channel (#8650))
 
 	else
 		detonation_timer = null

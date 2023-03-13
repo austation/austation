@@ -386,6 +386,30 @@ SUBSYSTEM_DEF(shuttle)
 			You have 3 minutes to board the Emergency Shuttle.",
 			null, ANNOUNCER_SHUTTLEDOCK, "Priority")
 
+<<<<<<< HEAD
+=======
+/datum/controller/subsystem/shuttle/proc/checkInfestedEnvironment()
+	for(var/mob/d in infestedEnvironments)
+		var/turf/T = get_turf(d)
+		if(QDELETED(d) || !is_station_level(T.z)) //If they have been destroyed or left the station Z level, the queen will not trigger this check
+			infestedEnvironments -= d
+	emergencyDelayArrival = length(infestedEnvironments)
+	return emergencyDelayArrival
+
+/datum/controller/subsystem/shuttle/proc/delayForInfestedStation()
+	if(infestationActive)
+		return
+	infestationActive = TRUE
+	emergencyNoRecall = TRUE
+	priority_announce("Xenomorph infestation detected: crisis shuttle protocols activated - jamming recall signals across all frequencies.")
+	play_soundtrack_music(/datum/soundtrack_song/bee/mind_crawler)
+	if(EMERGENCY_IDLE_OR_RECALLED)
+		emergency.request(null, set_coefficient=1) //If a shuttle wasn't already called, call one now, with 10 minute delay
+	else if(emergency.mode == SHUTTLE_CALL)
+		emergency.setTimer(10 MINUTES) //If shuttle was already in transit, delay the arrival time to 10 minutes
+		//If the emergency shuttle has already passed the point of no return before a queen existed, do not delay round for Xenomorphs - they spawned too late on a round that was already coming to an end.
+
+>>>>>>> 000f11a9ee (Add soundtrack preference and separate channel (#8650))
 //try to move/request to dockHome if possible, otherwise dockAway. Mainly used for admin buttons
 /datum/controller/subsystem/shuttle/proc/toggleShuttle(shuttleId, dockHome, dockAway, timed)
 	var/obj/docking_port/mobile/M = getShuttle(shuttleId)
