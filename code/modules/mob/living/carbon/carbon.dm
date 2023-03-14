@@ -269,7 +269,11 @@
 	if(!cuff_break)
 		visible_message("<span class='warning'>[src] attempts to remove [I]!</span>")
 		to_chat(src, "<span class='notice'>You attempt to remove [I]... (This will take around [DisplayTimeText(breakouttime)] and you need to stand still.)</span>")
+<<<<<<< HEAD
 		if(do_after(src, breakouttime, 0, target = src))
+=======
+		if(do_after(src, breakouttime, target = src, timed_action_flags = IGNORE_HELD_ITEM|IGNORE_RESTRAINED))
+>>>>>>> 31428c9829 (Fixes a couple of uncaught bugs from #8635 (#8707))
 			clear_cuffs(I, cuff_break)
 		else
 			to_chat(src, "<span class='warning'>You fail to remove [I]!</span>")
@@ -278,7 +282,11 @@
 		breakouttime = 50
 		visible_message("<span class='warning'>[src] is trying to break [I]!</span>")
 		to_chat(src, "<span class='notice'>You attempt to break [I]... (This will take around 5 seconds and you need to stand still.)</span>")
+<<<<<<< HEAD
 		if(do_after(src, breakouttime, 0, target = src))
+=======
+		if(do_after(src, breakouttime, target = src, timed_action_flags = IGNORE_HELD_ITEM|IGNORE_RESTRAINED))
+>>>>>>> 31428c9829 (Fixes a couple of uncaught bugs from #8635 (#8707))
 			clear_cuffs(I, cuff_break)
 		else
 			to_chat(src, "<span class='warning'>You fail to break [I]!</span>")
