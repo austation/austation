@@ -82,6 +82,19 @@
 			C.adjust_fire_stacks(5)
 			C.IgniteMob()
 
+<<<<<<< HEAD
+=======
+/datum/chemical_reaction/plasma
+	name = "Plasma Flash"
+	id = /datum/reagent/toxin/plasma
+	required_reagents = list(/datum/reagent/toxin/plasma = 1)
+	required_temp = 320 //extremely volatile
+
+/datum/chemical_reaction/plasma/on_reaction(datum/reagents/holder, created_volume)
+	holder.my_atom.plasma_ignition(created_volume/30, reagent_reaction = TRUE)
+	holder.clear_reagents()
+
+>>>>>>> 0cf1c9d1bc (Fixes gamebreaking oversight introduced in #8541 (#8693))
 /datum/chemical_reaction/blackpowder
 	name = "Black Powder"
 	id = /datum/reagent/blackpowder
