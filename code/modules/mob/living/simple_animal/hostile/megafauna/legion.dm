@@ -177,7 +177,11 @@ Difficulty: Medium
 	hitsound = 'sound/weapons/sear.ogg'
 	var/storm_type = /datum/weather/ash_storm
 	var/storm_cooldown = 0
+<<<<<<< HEAD
 	var/static/list/excluded_areas = list(/area/reebe/city_of_cogs)
+=======
+	var/static/list/allowed_areas = list(/area/lavaland/surface/outdoors, /area/lavaland/surface/outdoors/explored)
+>>>>>>> e9a1cac476 (Staff of storms fix (#8700))
 
 /obj/item/staff/storm/attack_self(mob/user)
 	if(storm_cooldown > world.time)
@@ -192,7 +196,7 @@ Difficulty: Medium
 	var/datum/weather/A
 	for(var/V in SSweather.processing)
 		var/datum/weather/W = V
-		if((user_turf.z in W.impacted_z_levels) && W.area_type == user_area.type)
+		if((user_turf.z in W.impacted_z_levels))
 			A = W
 			break
 
