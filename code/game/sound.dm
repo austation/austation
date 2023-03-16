@@ -188,6 +188,13 @@ distance_multiplier - Can be used to multiply the distance at which the sound is
 	var/sound/S = sound(initial(song.file), volume=volume, wait=0, channel=CHANNEL_AMBIENT_MUSIC)
 	. = S
 
+<<<<<<< HEAD
+=======
+	// Clear any existing soundtrack
+	if(is_global && !isnull(GLOB.current_soundtrack))
+		stop_soundtrack_music(stop_playing = TRUE)
+
+>>>>>>> f76c965ca7 (Make soundtrack music not stop playing early (#8712))
 	if(!hearers)
 		hearers = GLOB.player_list
 
@@ -211,7 +218,14 @@ distance_multiplier - Can be used to multiply the distance at which the sound is
 
 	GLOB.soundtrack_this_round |= song
 
+<<<<<<< HEAD
 /proc/stop_soundtrack_music()
+=======
+/proc/stop_soundtrack_music(stop_playing = FALSE)
+	GLOB.current_soundtrack = null
+	if(!stop_playing)
+		return
+>>>>>>> f76c965ca7 (Make soundtrack music not stop playing early (#8712))
 	for(var/mob/M as() in GLOB.player_list)
 		M?.stop_sound_channel(CHANNEL_AMBIENT_MUSIC)
 
