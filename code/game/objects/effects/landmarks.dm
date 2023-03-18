@@ -308,6 +308,11 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark/start/new_player)
 
 /obj/effect/landmark/start/new_player/Initialize(mapload)
 	..()
+<<<<<<< HEAD
+=======
+	if (SStitle.newplayer_start_loc)
+		forceMove(SStitle.newplayer_start_loc)
+>>>>>>> 31d2f1851f (Fixes titlescreen bugs (#8719))
 	GLOB.newplayer_start += loc
 	return INITIALIZE_HINT_QDEL
 
