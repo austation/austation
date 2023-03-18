@@ -338,7 +338,7 @@ update_label("John Doe", "Clowny")
 	name = "space police access card"
 	access = list(ACCESS_HUNTERS)
 
-/obj/item/card/id/silver/spacepol/bounty
+/obj/item/card/id/silver/bounty
 	name = "bounty hunter access card"
 	access = list(ACCESS_HUNTERS)
 
