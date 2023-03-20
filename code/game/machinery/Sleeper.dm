@@ -18,11 +18,29 @@
 	var/min_health = -25
 	var/list/available_chems
 	var/controls_inside = FALSE
+<<<<<<< HEAD
 	var/list/possible_chems = list(
 		list(/datum/reagent/medicine/epinephrine, /datum/reagent/medicine/morphine, /datum/reagent/medicine/perfluorodecalin, /datum/reagent/medicine/bicaridine, /datum/reagent/medicine/kelotane),
 		list(/datum/reagent/medicine/oculine,/datum/reagent/medicine/inacusiate),
 		list(/datum/reagent/medicine/antitoxin, /datum/reagent/medicine/mutadone, /datum/reagent/medicine/mannitol, /datum/reagent/medicine/salbutamol, /datum/reagent/medicine/pen_acid),
 		list(/datum/reagent/medicine/omnizine)
+=======
+	/// the maximum amount of chem containers the sleeper can hold. Value can be changed by parts tier and RefreshParts()
+	var/max_vials = 6
+	/// the list of vials that are in the sleeper. Do not define anything here.
+	var/list/inserted_vials = list()
+	/// the list of roundstart vials - especially predefined chem bags. (Warning: be careful of heritance when you make subtypes)
+	var/list/roundstart_vials = list(
+		/obj/item/reagent_containers/chem_bag/oxy_mix
+	)
+	/// the list of roundstart chems. It will be automatically filled into a chem bag. (Warning: be careful of heritance when you make subtypes)
+	var/list/roundstart_chems = list(
+		/datum/reagent/medicine/epinephrine = 80,
+		/datum/reagent/medicine/morphine = 80,
+		/datum/reagent/medicine/bicaridine = 80,
+		/datum/reagent/medicine/kelotane = 80,
+		/datum/reagent/medicine/antitoxin = 80
+>>>>>>> 373c6c9c78 (Tweaks sleeper - accepts chem bag (#8722))
 	)
 	var/list/chem_buttons	//Used when emagged to scramble which chem is used, eg: antitoxin -> morphine
 	var/scrambled_chems = FALSE //Are chem buttons scrambled? used as a warning
@@ -33,7 +51,40 @@
 	. = ..()
 	occupant_typecache = GLOB.typecache_living
 	update_icon()
+<<<<<<< HEAD
 	reset_chem_buttons()
+=======
+	RefreshParts()
+
+	//Create roundstart chems
+	var/created_vials = 0
+	if (mapload)
+		// create pre-defined vials first and insert it into sleeper
+		for (var/each_vial in roundstart_vials)
+			if(created_vials >= max_vials)
+				stack_trace("Sleeper attempts to create roundstart chems more than [max_vials]")
+				break
+			if(!ispath(each_vial, /obj/item/reagent_containers))
+				stack_trace("Sleeper attempts to create weird item inside of it: [each_vial]")
+				continue
+			inserted_vials += new each_vial
+			created_vials++
+		// and then chemical bag with a single chem will go into sleeper
+		for (var/each_chem in roundstart_chems)
+			if(created_vials >= max_vials)
+				stack_trace("Sleeper attempts to create roundstart chems more than [max_vials]")
+				break
+			if(!ispath(each_chem, /datum/reagent))
+				stack_trace("Sleeper attempts to create not-chemical inside of it: [each_chem]")
+				continue
+			var/obj/item/reagent_containers/chem_bag/beaker = new(null)
+			beaker.reagents.add_reagent(each_chem, roundstart_chems[each_chem])
+			var/datum/reagent/main_reagent = beaker.reagents.reagent_list[1]
+			beaker.name = "[main_reagent.name] [beaker.name]"
+			beaker.label_name = main_reagent.name
+			inserted_vials += beaker
+			created_vials++
+>>>>>>> 373c6c9c78 (Tweaks sleeper - accepts chem bag (#8722))
 
 /obj/machinery/sleeper/RefreshParts()
 	var/E
@@ -57,6 +108,23 @@
 	else
 		icon_state = initial(icon_state)
 
+<<<<<<< HEAD
+=======
+/obj/machinery/sleeper/attackby(obj/item/I, mob/living/user, params)
+	if ((istype(I, /obj/item/reagent_containers/glass) \
+		|| istype(I, /obj/item/reagent_containers/chem_bag)) \
+		&& user.a_intent != INTENT_HARM)
+		if (length(inserted_vials) >= max_vials)
+			to_chat(user, "<span class='warning'>[src] cannot hold any more!</span>")
+			return
+		user.temporarilyRemoveItemFromInventory(I)
+		I.forceMove(null)
+		inserted_vials += I
+		ui_update()
+		return
+	. = ..()
+
+>>>>>>> 373c6c9c78 (Tweaks sleeper - accepts chem bag (#8722))
 /obj/machinery/sleeper/container_resist(mob/living/user)
 	visible_message("<span class='notice'>[occupant] emerges from [src]!</span>",
 		"<span class='notice'>You climb out of [src]!</span>")
@@ -175,9 +243,17 @@
 	data["open"] = state_open
 
 	data["chems"] = list()
+<<<<<<< HEAD
 	for(var/chem in available_chems)
 		var/datum/reagent/R = GLOB.chemical_reagents_list[chem]
 		data["chems"] += list(list("name" = R.name, "id" = R.type, "allowed" = chem_allowed(chem)))
+=======
+	var/i = 1
+	for(var/obj/item/reagent_containers/chem_vial as() in inserted_vials)
+		var/chem_name = chem_vial.renamedByPlayer ? chem_vial.name : chem_vial.label_name || chem_vial.name
+		data["chems"] += list(list("name" = chem_name, "id" = i, "allowed" = chem_allowed(i), "amount" = chem_vial.reagents?.total_volume || 0))
+		i++
+>>>>>>> 373c6c9c78 (Tweaks sleeper - accepts chem bag (#8722))
 
 	data["occupant"] = list()
 	var/mob/living/mob_occupant = occupant
@@ -271,6 +347,19 @@
 /obj/machinery/sleeper/syndie
 	icon_state = "sleeper_s"
 	controls_inside = TRUE
+<<<<<<< HEAD
+=======
+	roundstart_vials = list()
+	roundstart_chems = list(
+		/datum/reagent/medicine/syndicate_nanites = 100,
+		/datum/reagent/medicine/omnizine = 100,
+		/datum/reagent/medicine/oculine = 100,
+		/datum/reagent/medicine/inacusiate = 100,
+		/datum/reagent/medicine/mannitol = 100,
+		/datum/reagent/medicine/mutadone = 100,
+	)
+	efficiency = 2.5
+>>>>>>> 373c6c9c78 (Tweaks sleeper - accepts chem bag (#8722))
 
 /obj/machinery/sleeper/syndie/fullupgrade
 	circuit = /obj/item/circuitboard/machine/sleeper/fullupgrade
@@ -280,7 +369,20 @@
 	desc = "A large cryogenics unit built from brass. Its surface is pleasantly cool the touch."
 	icon_state = "sleeper_clockwork"
 	enter_message = "<span class='bold inathneq_small'>You hear the gentle hum and click of machinery, and are lulled into a sense of peace.</span>"
+<<<<<<< HEAD
 	possible_chems = list(list(/datum/reagent/medicine/epinephrine, /datum/reagent/medicine/salbutamol, /datum/reagent/medicine/bicaridine, /datum/reagent/medicine/kelotane, /datum/reagent/medicine/oculine, /datum/reagent/medicine/inacusiate, /datum/reagent/medicine/mannitol))
+=======
+	roundstart_vials = list()
+	roundstart_chems = list(
+		/datum/reagent/medicine/epinephrine = 200,
+		/datum/reagent/medicine/bicaridine = 200,
+		/datum/reagent/medicine/kelotane = 200,
+		/datum/reagent/medicine/salbutamol = 200,
+		/datum/reagent/medicine/oculine = 100,
+		/datum/reagent/medicine/inacusiate = 100,
+		/datum/reagent/medicine/mannitol = 100)
+	synthesizing = TRUE
+>>>>>>> 373c6c9c78 (Tweaks sleeper - accepts chem bag (#8722))
 
 /obj/machinery/sleeper/old
 	icon_state = "oldpod"
