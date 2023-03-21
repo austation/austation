@@ -1411,6 +1411,22 @@
 		custom_material.on_applied(src, materials[custom_material] * multiplier, material_flags)
 		custom_materials[custom_material] += materials[custom_material] * multiplier
 
+<<<<<<< HEAD
+=======
+/// Returns the indice in filters of the given filter name.
+/// If it is not found, returns null.
+/atom/proc/get_filter_index(name)
+	return filter_data?.Find(name)
+
+///Setter for the `density` variable to append behavior related to its changing.
+/atom/proc/set_density(new_value)
+	SHOULD_CALL_PARENT(TRUE)
+	if(density == new_value)
+		return
+	. = density
+	density = new_value
+
+>>>>>>> 8e3a24428b (Ports 'Pointing at something on yourself now shows the item' (#8553))
 /**
   * Causes effects when the atom gets hit by a rust effect from heretics
   *

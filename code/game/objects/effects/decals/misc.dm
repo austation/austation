@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /obj/effect/temp_visual/point
 	name = "pointer"
 	icon = 'icons/mob/screen_gen.dmi'
@@ -13,6 +14,8 @@
 	pixel_y = old_loc.pixel_y
 	invisibility = set_invis
 
+=======
+>>>>>>> 8e3a24428b (Ports 'Pointing at something on yourself now shows the item' (#8553))
 //Used by spraybottles.
 /obj/effect/decal/chempuff
 	name = "chemicals"
