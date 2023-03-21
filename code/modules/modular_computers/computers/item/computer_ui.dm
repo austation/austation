@@ -14,7 +14,11 @@
 	)
 
 /obj/item/modular_computer/ui_interact(mob/user, datum/tgui/ui)
+<<<<<<< HEAD
 	if(!enabled)
+=======
+	if(!enabled || !user.is_literate() || !use_power())
+>>>>>>> 81191e34d1 (Allow blind people to use PDAs again (#8685))
 		if(ui)
 			ui.close()
 		return 0
