@@ -1,7 +1,15 @@
+<<<<<<< HEAD
 #define COOLDOWN_STUN 1200
 #define COOLDOWN_DAMAGE 600
 #define COOLDOWN_MEME 300
 #define COOLDOWN_NONE 100
+=======
+#define COOLDOWN_STUN 2 MINUTES
+#define COOLDOWN_DAMAGE 1 MINUTES
+#define COOLDOWN_MEME 30 SECONDS
+#define COOLDOWN_NONE 10 SECONDS
+#define VOICE_OF_GOD_MAX_SILENCE_TIME 1 MINUTES
+>>>>>>> 06f111ecba (Fix voice of god muting people for absurd amounts of time (#8737))
 
 /obj/item/organ/vocal_cords //organs that are activated through speech with the :x/MODE_KEY_VOCALCORDS channel
 	name = "vocal cords"
@@ -286,9 +294,14 @@
 	else if((findtext(message, silence_words)))
 		cooldown = COOLDOWN_STUN
 		for(var/mob/living/carbon/C in listeners)
+<<<<<<< HEAD
 			if(user.mind && (user.mind.assigned_role == "Curator" || user.mind.assigned_role == "Mime"))
 				power_multiplier *= 3
 			C.silent += (10 * power_multiplier)
+=======
+			if(C.silent < VOICE_OF_GOD_MAX_SILENCE_TIME)
+				C.silent = min(C.silent + (10 SECONDS * power_multiplier), VOICE_OF_GOD_MAX_SILENCE_TIME)
+>>>>>>> 06f111ecba (Fix voice of god muting people for absurd amounts of time (#8737))
 
 	//HALLUCINATE
 	else if((findtext(message, hallucinate_words)))
@@ -575,7 +588,7 @@
 
 	return cooldown
 
-
+#undef VOICE_OF_GOD_MAX_SILENCE_TIME
 #undef COOLDOWN_STUN
 #undef COOLDOWN_DAMAGE
 #undef COOLDOWN_MEME
