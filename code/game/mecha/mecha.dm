@@ -626,6 +626,8 @@
 
 /obj/mecha/proc/mechstep(direction)
 	var/current_dir = dir
+	if(!isturf(get_step_multiz(src, direction))) // verify the turf we intend to step into is actually valid
+		direction = direction & ~(UP|DOWN)
 	var/result = step(src,direction)
 	if(strafe)
 		setDir(current_dir)
@@ -671,11 +673,11 @@
 		if(isobj(obstacle))
 			var/obj/O = obstacle
 			if(!O.anchored && O.move_resist <= move_force)
-				step(obstacle, dir)
+				step(obstacle, dir & ~(UP|DOWN))
 		else if(ismob(obstacle))
 			var/mob/M = obstacle
 			if(M.move_resist <= move_force)
-				step(obstacle, dir)
+				step(obstacle, dir & ~(UP|DOWN))
 
 
 
