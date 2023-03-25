@@ -24,7 +24,12 @@
 
 /datum/dynamic_ruleset/roundstart/traitor/pre_execute(population)
 	. = ..()
+<<<<<<< HEAD
 	COOLDOWN_START(src, autotraitor_cooldown_check, autotraitor_cooldown)
+=======
+	if (population < CONFIG_GET(number/malf_ai_minimum_pop))
+		restricted_roles |= JOB_NAME_AI
+>>>>>>> bdb72b9fd9 (Malf AI can no longer occur on lowpop (#8718))
 	var/num_traitors = get_antag_cap(population) * (scaled_times + 1)
 	for (var/i = 1 to num_traitors)
 		var/mob/M = pick_n_take(candidates)

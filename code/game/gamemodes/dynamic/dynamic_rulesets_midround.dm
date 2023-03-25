@@ -229,12 +229,23 @@
 	exclusive_roles = list("AI")
 	required_enemies = list(4,4,4,4,4,4,2,2,2,0)
 	required_candidates = 1
+<<<<<<< HEAD
 	weight = 3
 	cost = 20
 	requirements = list(101,101,80,70,60,60,50,50,40,40)
+=======
+	minimum_players = 0 // Handled by /datum/dynamic_ruleset/proc/acceptable override
+	weight = 2
+	cost = 13
+>>>>>>> bdb72b9fd9 (Malf AI can no longer occur on lowpop (#8718))
 	required_type = /mob/living/silicon/ai
 	var/ion_announce = 33
 	var/removeDontImproveChance = 10
+
+/datum/dynamic_ruleset/midround/malf/acceptable(population = 0, threat_level = 0)
+	. = ..()
+	if(population < CONFIG_GET(number/malf_ai_minimum_pop))
+		return FALSE
 
 /datum/dynamic_ruleset/midround/malf/trim_candidates()
 	..()
