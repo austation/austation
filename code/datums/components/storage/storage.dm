@@ -381,6 +381,11 @@
 				return FALSE
 	if(M.active_storage)
 		M.active_storage.hide_from(M)
+<<<<<<< HEAD
+=======
+	if(!istype(M, /mob/dead/observer))
+		animate_parent()
+>>>>>>> c8d03eeab7 (Storage animation tweaks (#8743))
 	orient2hud()
 	M.client.screen |= boxes
 	M.client.screen |= closer
@@ -406,6 +411,11 @@
 	M.client.screen -= boxes
 	M.client.screen -= closer
 	M.client.screen -= real_location.contents
+<<<<<<< HEAD
+=======
+	if(!istype(M, /mob/dead/observer))
+		animate_parent()
+>>>>>>> c8d03eeab7 (Storage animation tweaks (#8743))
 	return TRUE
 
 /datum/component/storage/proc/close(mob/M)
@@ -678,6 +688,11 @@
 		return
 	if(rustle_sound)
 		playsound(parent, "rustle", 50, 1, -5)
+<<<<<<< HEAD
+=======
+	if(!istype(user, /mob/dead/observer))
+		animate_parent()
+>>>>>>> c8d03eeab7 (Storage animation tweaks (#8743))
 	for(var/mob/viewing as() in viewers(user))
 		if(M == viewing)
 			to_chat(usr, "<span class='notice'>You put [I] [insert_preposition]to [parent].</span>")
