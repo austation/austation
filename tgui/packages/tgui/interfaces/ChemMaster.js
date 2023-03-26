@@ -236,18 +236,34 @@ const PackagingControls = (props, context) => {
   ] = useSharedState(context, 'packAmount', 1);
   const {
     condi,
+<<<<<<< HEAD
     chosenPillStyle,
     pillStyles = [],
+=======
+    chosen_pill_style,
+    pill_styles = [],
+    chosen_patch_style,
+    patch_styles = [],
+>>>>>>> 0aff0b479b (Fixes plumbing pill press to choose pill styles, pill sprite string fix (#8609))
   } = data;
   return (
     <LabeledList>
       {!condi && (
         <LabeledList.Item label="Pill type">
+<<<<<<< HEAD
           {pillStyles.map(pill => (
+=======
+          {pill_styles.map(each_style => (
+>>>>>>> 0aff0b479b (Fixes plumbing pill press to choose pill styles, pill sprite string fix (#8609))
             <Button
               key={pill.id}
               width="30px"
+<<<<<<< HEAD
               selected={pill.id === chosenPillStyle}
+=======
+              height="16px"
+              selected={each_style.id === chosen_pill_style}
+>>>>>>> 0aff0b479b (Fixes plumbing pill press to choose pill styles, pill sprite string fix (#8609))
               textAlign="center"
               color="transparent"
               onClick={() => act('pillStyle', { id: pill.id })}>
@@ -270,6 +286,29 @@ const PackagingControls = (props, context) => {
           })} />
       )}
       {!condi && (
+<<<<<<< HEAD
+=======
+        <LabeledList.Item label="Patch type">
+          {patch_styles.map(each_style => (
+            <Button
+              key={each_style.id}
+              width="30px"
+              height="25px"
+              selected={each_style.id === chosen_patch_style}
+              textAlign="center"
+              color="transparent"
+              onClick={() => act('patchStyle', { id: each_style.id })}>
+              <Box mx={-1}
+                className={classes([
+                  'medicine_containers22x22',
+                  each_style.patch_icon_name,
+                ])} />
+            </Button>
+          ))}
+        </LabeledList.Item>
+      )}
+      {!condi && (
+>>>>>>> 0aff0b479b (Fixes plumbing pill press to choose pill styles, pill sprite string fix (#8609))
         <PackagingControlsItem
           label="Patches"
           amount={patchAmount}

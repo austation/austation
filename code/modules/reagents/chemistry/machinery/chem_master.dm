@@ -16,16 +16,34 @@
 	var/obj/item/storage/pill_bottle/bottle = null
 	var/mode = 1
 	var/condi = FALSE
+<<<<<<< HEAD
 	var/chosenPillStyle = 1
 	var/screen = "home"
 	var/analyzeVars[0]
 	var/useramount = 30 // Last used amount
 	var/list/pillStyles = null
+=======
+	var/chosen_pill_style = "pill_shape_capsule_purple_pink"
+	var/chosen_patch_style = "bandaid_small_cross"
+	var/screen = "home"
+	var/analyzeVars[0]
+	var/useramount = 30 // Last used amount
+	var/static/list/pill_styles = list()
+	var/static/list/patch_styles = list()
+
+	// Persistent UI states
+	var/saved_name_state = "Auto"
+	var/saved_volume_state = "Auto"
+	/// UNSANITIZED. DO NOT DISPLAY OUTSIDE TGUI WITHOUT HTML_ENCODE AND TRIM.
+	var/saved_name = ""
+	var/saved_volume = 10
+>>>>>>> 0aff0b479b (Fixes plumbing pill press to choose pill styles, pill sprite string fix (#8609))
 
 /obj/machinery/chem_master/Initialize(mapload)
 	create_reagents(100)
 
 	//Calculate the span tags and ids fo all the available pill icons
+<<<<<<< HEAD
 	var/datum/asset/spritesheet/simple/assets = get_asset_datum(/datum/asset/spritesheet/simple/pills)
 	pillStyles = list()
 	for (var/x in 1 to PILL_STYLE_COUNT)
@@ -33,6 +51,20 @@
 		SL["id"] = x
 		SL["className"] = assets.icon_class_name("pill[x]")
 		pillStyles += list(SL)
+=======
+	if(!length(pill_styles))
+		for (var/each_pill_shape in PILL_SHAPE_LIST_WITH_DUMMY)
+			var/list/style_list = list()
+			style_list["id"] = each_pill_shape
+			style_list["pill_icon_name"] = each_pill_shape
+			pill_styles += list(style_list)
+	if(!length(patch_styles))
+		for (var/each_patch_shape in PATCH_SHAPE_LIST)
+			var/list/style_list = list()
+			style_list["id"] = each_patch_shape
+			style_list["patch_icon_name"] = each_patch_shape
+			patch_styles += list(style_list)
+>>>>>>> 0aff0b479b (Fixes plumbing pill press to choose pill styles, pill sprite string fix (#8609))
 
 	. = ..()
 
@@ -178,7 +210,12 @@
 	data["condi"] = condi
 	data["screen"] = screen
 	data["analyzeVars"] = analyzeVars
+<<<<<<< HEAD
 	data["chosenPillStyle"] = chosenPillStyle
+=======
+	data["chosen_pill_style"] = chosen_pill_style
+	data["chosen_patch_style"] = chosen_patch_style
+>>>>>>> 0aff0b479b (Fixes plumbing pill press to choose pill styles, pill sprite string fix (#8609))
 	data["isPillBottleLoaded"] = bottle ? 1 : 0
 	if(bottle)
 		var/datum/component/storage/STRB = bottle.GetComponent(/datum/component/storage)
@@ -198,7 +235,12 @@
 	data["bufferContents"] = bufferContents
 
 	//Calculated at init time as it never changes
+<<<<<<< HEAD
 	data["pillStyles"] = pillStyles
+=======
+	data["pill_styles"] = pill_styles
+	data["patch_styles"] = patch_styles
+>>>>>>> 0aff0b479b (Fixes plumbing pill press to choose pill styles, pill sprite string fix (#8609))
 	return data
 
 /obj/machinery/chem_master/ui_act(action, params)
@@ -242,8 +284,15 @@
 			mode = !mode
 			. = TRUE
 		if("pillStyle")
+<<<<<<< HEAD
 			var/id = text2num(params["id"])
 			chosenPillStyle = id
+=======
+			chosen_pill_style = "[params["id"]]"
+			. = TRUE
+		if("patchStyle")
+			chosen_patch_style = "[params["id"]]"
+>>>>>>> 0aff0b479b (Fixes plumbing pill press to choose pill styles, pill sprite string fix (#8609))
 			. = TRUE
 		if("create")
 			if(reagents.total_volume == 0)
@@ -316,11 +365,20 @@
 						else
 							P = new/obj/item/reagent_containers/pill(drop_location())
 						P.name = trim("[name] pill")
+<<<<<<< HEAD
 						if(chosenPillStyle == RANDOM_PILL_STYLE)
 							P.icon_state ="pill[rand(1,21)]"
 						else
 							P.icon_state = "pill[chosenPillStyle]"
 						if(P.icon_state == "pill4")
+=======
+						P.label_name = trim(name)
+						if(chosen_pill_style == "pill_random_dummy")
+							P.icon_state = pick(PILL_SHAPE_LIST)
+						else
+							P.icon_state = chosen_pill_style
+						if(P.icon_state == "pill_shape_capsule_bloodred")
+>>>>>>> 0aff0b479b (Fixes plumbing pill press to choose pill styles, pill sprite string fix (#8609))
 							P.desc = "A tablet or capsule, but not just any, a red one, one taken by the ones not scared of knowledge, freedom, uncertainty and the brutal truths of reality."
 						adjust_item_drop_location(P)
 						reagents.trans_to(P, vol_each, transfered_by = usr)
@@ -330,6 +388,11 @@
 					for(var/i = 0; i < amount; i++)
 						P = new/obj/item/reagent_containers/pill/patch(drop_location())
 						P.name = trim("[name] patch")
+<<<<<<< HEAD
+=======
+						P.label_name = trim(name)
+						P.icon_state = chosen_patch_style
+>>>>>>> 0aff0b479b (Fixes plumbing pill press to choose pill styles, pill sprite string fix (#8609))
 						adjust_item_drop_location(P)
 						reagents.trans_to(P, vol_each, transfered_by = usr)
 					. = TRUE

@@ -7,7 +7,7 @@ export const ChemPress = (props, context) => {
   const {
     pill_size,
     pill_name,
-    pill_style,
+    chosen_pill_style,
     pill_styles = [],
   } = data;
   return (
@@ -41,6 +41,7 @@ export const ChemPress = (props, context) => {
                 <Button
                   key={pill.id}
                   width="30px"
+<<<<<<< HEAD
                   selected={pill.id === pill_style}
                   textAlign="center"
                   color="transparent"
@@ -48,6 +49,18 @@ export const ChemPress = (props, context) => {
                     id: pill.id,
                   })}>
                   <Box mx={-1} className={pill.class_name} />
+=======
+                  height="16px"
+                  selected={each_style.id === chosen_pill_style}
+                  textAlign="center"
+                  color="transparent"
+                  onClick={() => act('change_pill_style', { id: each_style.id })}>
+                  <Box mx={-1}
+                    className={classes([
+                      'medicine_containers22x22',
+                      each_style.pill_icon_name,
+                    ])} />
+>>>>>>> 0aff0b479b (Fixes plumbing pill press to choose pill styles, pill sprite string fix (#8609))
                 </Button>
               ))}
             </LabeledList.Item>
