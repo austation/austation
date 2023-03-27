@@ -125,14 +125,24 @@
 	else
 		//drill makes a hole
 		var/obj/item/bodypart/target_part = target.get_bodypart(ran_zone(BODY_ZONE_CHEST))
-		target.apply_damage(10, BRUTE, BODY_ZONE_CHEST, target.run_armor_check(target_part, "melee"))
+		target.apply_damage(10, BRUTE, BODY_ZONE_CHEST, target.run_armor_check(target_part, MELEE))
 
 		//blood splatters
 		var/splatter_dir = get_dir(chassis, target)
 		if(isalien(target))
 			new /obj/effect/temp_visual/dir_setting/bloodsplatter/xenosplatter(target.drop_location(), splatter_dir)
 		else
+<<<<<<< HEAD
 			new /obj/effect/temp_visual/dir_setting/bloodsplatter(target.drop_location(), splatter_dir)
+=======
+			var/splatter_dir = get_dir(chassis, target)
+
+			if(isalien(target))
+				new /obj/effect/temp_visual/dir_setting/bloodsplatter/xenosplatter(target.drop_location(), splatter_dir)
+			else
+				new /obj/effect/temp_visual/dir_setting/bloodsplatter(target.drop_location(), splatter_dir)
+
+>>>>>>> c159980915 (Defines damage flags PT. 2 (#8734))
 
 		//organs go everywhere
 		if(target_part && prob(10 * drill_level))

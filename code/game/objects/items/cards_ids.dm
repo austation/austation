@@ -112,7 +112,7 @@
 	lefthand_file = 'icons/mob/inhands/equipment/idcards_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/equipment/idcards_righthand.dmi'
 	slot_flags = ITEM_SLOT_ID
-	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 100, "acid" = 100, "stamina" = 0)
+	armor = list(MELEE = 0,  BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, RAD = 0, FIRE = 100, ACID = 100, STAMINA = 0)
 	resistance_flags = FIRE_PROOF | ACID_PROOF
 	var/mining_points = 0 //For redeeming at mining equipment vendors
 	var/list/access = list()
@@ -640,6 +640,62 @@ update_label("John Doe", "Clowny")
 /obj/item/card/id/mining
 	name = "mining ID"
 	access = list(ACCESS_MINING, ACCESS_MINING_STATION, ACCESS_MECH_MINING, ACCESS_MAILSORTING, ACCESS_MINERAL_STOREROOM)
+<<<<<<< HEAD
+=======
+	var/need_setup = TRUE
+
+/obj/item/card/id/golem/Initialize(mapload)
+	registered_account = SSeconomy.get_budget_account(ACCOUNT_GOLEM_ID)
+	. = ..()
+
+/obj/item/card/id/golem/pickup(mob/user)
+	. = ..()
+	if(need_setup)
+		if(isgolem(user))
+			registered_name = user.name // automatically change registered name if it's picked up by a golem at first time
+			update_label()
+		need_setup = FALSE
+		// if non-golem picks it up, the renaming feature will be disabled
+
+/obj/item/card/id/golem/spawner
+	need_setup = FALSE
+
+/obj/item/card/id/paper
+	name = "paper nametag"
+	desc = "Some spare papers taped into a vague card shape, with a name scribbled on it. Seems trustworthy."
+	icon_state = "paper"
+	armor = list(MELEE = 0,  BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, RAD = 0, FIRE = 0, ACID = 50, STAMINA = 0)
+	resistance_flags = null  // removes all resistance because its a piece of paper
+	access = list()
+	assignment = "Unknown"
+	hud_state = JOB_HUD_PAPER
+	electric = FALSE
+
+/obj/item/card/id/paper/attackby(obj/item/W, mob/user, params)
+	if(istype(W, /obj/item/pen))
+		var/target_name = stripped_input(user, "What name would you like to write onto the card?", "Written name:", registered_name || "John Doe", MAX_MESSAGE_LEN)
+		registered_name = target_name || registered_name  // in case they hit cancel
+		assignment = "Unknown"
+		to_chat(user, "<span class='notice'>You scribble the name [target_name] onto the slip.</span>")
+		update_label()
+
+/obj/item/card/id/paper/alt_click_can_use_id(mob/living/user)
+	to_chat(user, "<span class='warning'>There's no money circuitry in here!</span>")
+
+/obj/item/card/id/paper/insert_money(obj/item/I, mob/user, physical_currency)
+	to_chat(user, "<span class='warning'>You can't insert money into a slip!</span>")  // not sure if this is triggerable but just as a safeclip
+
+/obj/item/card/id/paper/GetAccess()
+	return list()
+
+/obj/item/card/id/paper/update_label(newname, newjob)
+	if(newname || newjob)
+		name = "[(!newname)	? "paper slip identifier": "[newname]'s paper slip"]"
+		return
+
+	name = "[(!registered_name)	? "paper slip identifier": "[registered_name]'s paper slip"]"
+
+>>>>>>> c159980915 (Defines damage flags PT. 2 (#8734))
 
 /obj/item/card/id/away
 	name = "\proper a perfectly generic identification card"

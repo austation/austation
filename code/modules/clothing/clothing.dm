@@ -46,7 +46,7 @@
 	var/dynamic_fhair_suffix = ""//mask > head for facial hair
 
 	var/high_pressure_multiplier = 1
-	var/static/list/high_pressure_multiplier_types = list("melee", "bullet", "laser", "energy", "bomb")
+	var/static/list/high_pressure_multiplier_types = list(MELEE, BULLET, LASER, ENERGY, BOMB)
 	///These are armor values that protect the wearer, taken from the clothing's armor datum. List updates on examine because it's currently only used to print armor ratings to chat in Topic().
 	var/list/armor_list = list()
 	///These are armor values that protect the clothing, taken from its armor datum. List updates on examine because it's currently only used to print armor ratings to chat in Topic().
@@ -79,7 +79,11 @@
 	foodtype = CLOTH
 
 /obj/item/clothing/attack(mob/M, mob/user, def_zone)
+<<<<<<< HEAD
 	if(user.a_intent != INTENT_HARM && ismoth(M) && !(clothing_flags & NOTCONSUMABLE) && !(resistance_flags & INDESTRUCTIBLE)) // austation -- allow moths to keep eating armor
+=======
+	if(user.a_intent != INTENT_HARM && ismoth(M) && !(clothing_flags & NOTCONSUMABLE) && !(resistance_flags & INDESTRUCTIBLE) && (armor.getRating(MELEE) == 0))
+>>>>>>> c159980915 (Defines damage flags PT. 2 (#8734))
 		var/obj/item/reagent_containers/food/snacks/clothing/clothing_as_food = new
 		clothing_as_food.name = name
 		if(clothing_as_food.attack(M, user, def_zone))
@@ -155,6 +159,7 @@
 
 /obj/item/clothing/Topic(href, href_list)
 	. = ..()
+
 	if(href_list["list_armor"])
 		if(length(armor_list))
 			armor_list.Cut()
@@ -171,7 +176,7 @@
 		if(armor.magic)
 			armor_list += list("MAGIC" = armor.magic)
 		if(armor.melee)
-			armor_list += list("MELEE" = armor.melee)
+			armor_list += list(MELEE = armor.melee)
 		if(armor.rad)
 			armor_list += list("RADIATION" = armor.rad)
 		if(armor.stamina)
@@ -439,7 +444,7 @@ BLIND     // can't see anything
 
 
 /obj/item/clothing/obj_destruction(damage_flag)
-	if(damage_flag == "bomb" || damage_flag == "melee")
+	if(damage_flag == BOMB || damage_flag == MELEE)
 		var/turf/T = get_turf(src)
 		spawn(1) //so the shred survives potential turf change from the explosion.
 			var/obj/effect/decal/cleanable/shreds/Shreds = new(T)

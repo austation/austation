@@ -98,8 +98,13 @@
 /obj/item/projectile/bullet/c38/mime/on_hit(atom/target, blocked = FALSE)
 	if(isliving(target))
 		var/mob/living/carbon/human/M = target
+<<<<<<< HEAD
 		if(M.job == "Mime")
 			var/defense = M.getarmor(CHEST, "bullet")
+=======
+		if(M.job == JOB_NAME_MIME)
+			var/defense = M.getarmor(CHEST, BULLET)
+>>>>>>> c159980915 (Defines damage flags PT. 2 (#8734))
 			M.apply_damage(5, BRUTE, CHEST, defense)
 			M.visible_message("<span class='danger'>A bullet wound appears in [M]'s chest!</span>", \
 							"<span class='userdanger'>You get hit with a .38 bullet from a finger gun! Those hurt!...</span>")

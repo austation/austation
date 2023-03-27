@@ -288,15 +288,15 @@
 		if (islist(result))
 			if (result["button"] != 2) // If the user pressed the cancel button
 				// text2num conveniently returns a null on invalid values
-				armor = armor.setRating(melee = text2num(result["values"]["melee"]),\
-			                  bullet = text2num(result["values"]["bullet"]),\
-			                  laser = text2num(result["values"]["laser"]),\
-			                  energy = text2num(result["values"]["energy"]),\
-			                  bomb = text2num(result["values"]["bomb"]),\
-			                  bio = text2num(result["values"]["bio"]),\
-			                  rad = text2num(result["values"]["rad"]),\
-			                  fire = text2num(result["values"]["fire"]),\
-			                  acid = text2num(result["values"]["acid"]))
+				armor = armor.setRating(melee = text2num(result["values"][MELEE]),\
+			                  bullet = text2num(result["values"][BULLET]),\
+			                  laser = text2num(result["values"][LASER]),\
+			                  energy = text2num(result["values"][ENERGY]),\
+			                  bomb = text2num(result["values"][BOMB]),\
+			                  bio = text2num(result["values"][BIO]),\
+			                  rad = text2num(result["values"][RAD]),\
+			                  fire = text2num(result["values"][FIRE]),\
+			                  acid = text2num(result["values"][ACID]))
 				log_admin("[key_name(usr)] modified the armor on [src] ([type]) to melee: [armor.melee], bullet: [armor.bullet], laser: [armor.laser], energy: [armor.energy], bomb: [armor.bomb], bio: [armor.bio], rad: [armor.rad], fire: [armor.fire], acid: [armor.acid]")
 				message_admins("<span class='notice'>[key_name_admin(usr)] modified the armor on [src] ([type]) to melee: [armor.melee], bullet: [armor.bullet], laser: [armor.laser], energy: [armor.energy], bomb: [armor.bomb], bio: [armor.bio], rad: [armor.rad], fire: [armor.fire], acid: [armor.acid]</span>")
 	if(href_list[VV_HK_MASS_DEL_TYPE])
@@ -407,4 +407,32 @@
 /obj/handle_ricochet(obj/item/projectile/P)
 	. = ..()
 	if(. && ricochet_damage_mod)
+<<<<<<< HEAD
 		take_damage(P.damage * ricochet_damage_mod, P.damage_type, P.flag, 0, turn(P.dir, 180), P.armour_penetration) // pass along ricochet_damage_mod damage to the structure for the ricochet
+=======
+		take_damage(P.damage * ricochet_damage_mod, P.damage_type, P.armor_flag, 0, turn(P.dir, 180), P.armour_penetration) // pass along ricochet_damage_mod damage to the structure for the ricochet
+
+/obj/update_overlays()
+	. = ..()
+	if(acid_level)
+		. += GLOB.acid_overlay
+	if(resistance_flags & ON_FIRE)
+		. += GLOB.fire_overlay
+
+/obj/use_emag(mob/user)
+	if(should_emag(user) && !SEND_SIGNAL(src, COMSIG_ATOM_SHOULD_EMAG, user))
+		SEND_SIGNAL(src, COMSIG_ATOM_ON_EMAG, user)
+		on_emag(user)
+
+/// Unlike COMSIG_ATOM_SHOULD_EMAG, this is not inverted. If this is true, on_emag is called.
+/obj/proc/should_emag(mob/user)
+	return emag_toggleable || !(obj_flags & EMAGGED)
+
+/// Performs the actions to emag something, given that should_emag succeeded. You should NOT call this directly. Call use_emag.
+/obj/proc/on_emag(mob/user)
+	SHOULD_CALL_PARENT(TRUE)
+	if(emag_toggleable)
+		obj_flags ^= EMAGGED
+	else
+		obj_flags |= EMAGGED
+>>>>>>> c159980915 (Defines damage flags PT. 2 (#8734))

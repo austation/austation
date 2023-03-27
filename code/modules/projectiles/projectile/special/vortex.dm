@@ -5,7 +5,7 @@
 	damage_type = BURN
 	reflectable = REFLECT_NORMAL
 	nodamage = FALSE
-	flag = "energy"
+	armor_flag = ENERGY
 	range = 10
 	pass_flags = PASSTABLE | PASSGLASS | PASSGRILLE | PASSCLOSEDTURF | PASSMOB
 
