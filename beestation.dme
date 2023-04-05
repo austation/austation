@@ -461,6 +461,11 @@
 #include "code\datums\components\connect_loc_behalf.dm"
 #include "code\datums\components\construction.dm"
 #include "code\datums\components\conveyor_movement.dm"
+<<<<<<< HEAD
+=======
+#include "code\datums\components\creamed.dm"
+#include "code\datums\components\cult_ritual_item.dm"
+>>>>>>> 4fa7c20d4a (noir fedora (#8756))
 #include "code\datums\components\deadchat_control.dm"
 #include "code\datums\components\drift.dm"
 #include "code\datums\components\edit_complainer.dm"
@@ -623,9 +628,20 @@
 #include "code\datums\elements\embed.dm"
 #include "code\datums\elements\firestacker.dm"
 #include "code\datums\elements\forced_gravity.dm"
+<<<<<<< HEAD
 #include "code\datums\elements\rust.dm"
 #include "code\datums\elements\squish.dm"
 #include "code\datums\elements\strippable.dm"
+=======
+#include "code\datums\elements\item_scaling.dm"
+#include "code\datums\elements\mechanical_repair.dm"
+#include "code\datums\elements\openspace_item_click_handler.dm"
+#include "code\datums\elements\rust.dm"
+#include "code\datums\elements\squish.dm"
+#include "code\datums\elements\strippable.dm"
+#include "code\datums\elements\undertile.dm"
+#include "code\datums\elements\weather_listener.dm"
+>>>>>>> 4fa7c20d4a (noir fedora (#8756))
 #include "code\datums\elements\decals\blood.dm"
 #include "code\datums\greyscale\_greyscale_config.dm"
 #include "code\datums\greyscale\greyscale_configs.dm"
