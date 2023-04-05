@@ -1280,6 +1280,13 @@
 			log_game(log_text)
 		if(LOG_MECHA)
 			log_mecha(log_text)
+<<<<<<< HEAD
+=======
+		if(LOG_RADIO_EMOTE)
+			log_radio_emote(log_text)
+		if(LOG_SPEECH_INDICATORS)
+			log_speech_indicators(log_text)
+>>>>>>> cc88822153 (TGUI Say (#8404))
 		else
 			stack_trace("Invalid individual logging type: [message_type]. Defaulting to [LOG_GAME] (LOG_GAME).")
 			log_game(log_text)

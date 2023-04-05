@@ -13,10 +13,17 @@
 	var/broken = FALSE
 	var/initialized_at
 
-/datum/tgui_panel/New(client/client)
+/datum/tgui_panel/New(client/client, id)
 	src.client = client
+<<<<<<< HEAD
 	window = new(client, "browseroutput")
 	window.subscribe(src, .proc/on_message)
+=======
+	owner_ckey = ckey(client.ckey)
+	window = new(client, id)
+	window.subscribe(src, PROC_REF(on_message))
+	GLOB.tgui_panels += src
+>>>>>>> cc88822153 (TGUI Say (#8404))
 
 /datum/tgui_panel/Del()
 	window.unsubscribe(src)
@@ -42,7 +49,12 @@
 	sleep(1)
 	initialized_at = world.time
 	// Perform a clean initialization
+<<<<<<< HEAD
 	window.initialize(inline_assets = list(
+=======
+	window.initialize(assets = list(
+		strict_mode = TRUE,
+>>>>>>> cc88822153 (TGUI Say (#8404))
 		get_asset_datum(/datum/asset/simple/tgui_panel),
 	))
 	window.send_asset(get_asset_datum(/datum/asset/simple/namespaced/fontawesome))

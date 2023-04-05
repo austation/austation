@@ -138,10 +138,32 @@ GLOBAL_LIST_INIT(uplink_spawn_loc_list_save, list(UPLINK_PDA, UPLINK_RADIO, UPLI
 	//Female Uniforms
 GLOBAL_LIST_EMPTY(female_clothing_icons)
 
+<<<<<<< HEAD
 	//radical shit
 GLOBAL_LIST_INIT(hit_appends, list("-OOF", "-ACK", "-UGH", "-HRNK", "-HURGH", "-GLORF"))
 
 GLOBAL_LIST_INIT(scarySounds, list('sound/weapons/thudswoosh.ogg','sound/weapons/taser.ogg','sound/weapons/armbomb.ogg','sound/voice/hiss1.ogg','sound/voice/hiss2.ogg','sound/voice/hiss3.ogg','sound/voice/hiss4.ogg','sound/voice/hiss5.ogg','sound/voice/hiss6.ogg','sound/effects/glassbr1.ogg','sound/effects/glassbr2.ogg','sound/effects/glassbr3.ogg','sound/items/welder.ogg','sound/items/welder2.ogg','sound/machines/airlock.ogg','sound/effects/clownstep1.ogg','sound/effects/clownstep2.ogg'))
+=======
+GLOBAL_LIST_INIT(scarySounds, list(
+	'sound/effects/clownstep1.ogg',
+	'sound/effects/clownstep2.ogg',
+	'sound/effects/glassbr1.ogg',
+	'sound/effects/glassbr2.ogg',
+	'sound/effects/glassbr3.ogg',
+	'sound/items/welder.ogg',
+	'sound/items/welder2.ogg',
+	'sound/machines/airlock.ogg',
+	'sound/voice/hiss1.ogg',
+	'sound/voice/hiss2.ogg',
+	'sound/voice/hiss3.ogg',
+	'sound/voice/hiss4.ogg',
+	'sound/voice/hiss5.ogg',
+	'sound/voice/hiss6.ogg',
+	'sound/weapons/armbomb.ogg',
+	'sound/weapons/taser.ogg',
+	'sound/weapons/thudswoosh.ogg',
+))
+>>>>>>> cc88822153 (TGUI Say (#8404))
 
 
 // Reference list for disposal sort junctions. Set the sortType variable on disposal sort junctions to

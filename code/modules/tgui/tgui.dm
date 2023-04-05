@@ -96,8 +96,14 @@
 	window.acquire_lock(src)
 	if(!window.is_ready())
 		window.initialize(
+<<<<<<< HEAD
 			fancy = user.client.prefs.tgui_fancy,
 			inline_assets = list(
+=======
+			strict_mode = TRUE,
+			fancy = (user.client.prefs.toggles & PREFTOGGLE_2_FANCY_TGUI),
+			assets = list(
+>>>>>>> cc88822153 (TGUI Say (#8404))
 				get_asset_datum(/datum/asset/simple/tgui),
 			))
 	else

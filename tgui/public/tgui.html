@@ -6,6 +6,7 @@
 
 <!-- Inlined data -->
 <meta id="tgui:windowId" content="[tgui:windowId]">
+<meta id="tgui:strictMode" content="[tgui:strictMode]">
 
 <!-- Early setup -->
 <script type="text/javascript">
@@ -57,6 +58,9 @@ if (window.__windowId__ === '[' + 'tgui:windowId' + ']') {
   Byond.IS_LTE_IE9 = tridentVersion !== null && tridentVersion <= 5;
   Byond.IS_LTE_IE10 = tridentVersion !== null && tridentVersion <= 6;
   Byond.IS_LTE_IE11 = tridentVersion !== null && tridentVersion <= 7;
+
+  // Strict mode flag
+  Byond.strictMode = Boolean(Number(parseMetaTag('tgui:strictMode')));
 
   // Callbacks for asynchronous calls
   Byond.__callbacks__ = [];
@@ -181,6 +185,44 @@ if (window.__windowId__ === '[' + 'tgui:windowId' + ']') {
     }
   };
 
+<<<<<<< HEAD
+=======
+  Byond.sendMessage = function (type, payload) {
+    var message = typeof type === 'string'
+      ? { type: type, payload: payload }
+      : type;
+    // JSON-encode the payload
+    if (message.payload !== null && message.payload !== undefined) {
+      message.payload = JSON.stringify(message.payload);
+    }
+    // Append an identifying header
+    assign(message, {
+      tgui: 1,
+      window_id: Byond.windowId,
+    });
+    Byond.topic(message);
+  };
+
+  // This function exists purely for debugging, do not use it in code!
+  Byond.injectMessage = function (type, payload) {
+    window.update(JSON.stringify({ type: type, payload: payload }));
+  };
+
+  Byond.subscribe = function (listener) {
+    window.update.flushQueue(listener);
+    window.update.listeners.push(listener);
+  };
+
+  Byond.subscribeTo = function (type, listener) {
+    var _listener = function (_type, payload) {
+      if (_type === type) {
+        listener(payload);
+      }
+    };
+    window.update.flushQueue(_listener);
+    window.update.listeners.push(_listener);
+  };
+>>>>>>> cc88822153 (TGUI Say (#8404))
 
   // Asset loaders
   // ------------------------------------------------------
@@ -314,6 +356,7 @@ if (window.__windowId__ === '[' + 'tgui:windowId' + ']') {
 
 // Global error handling
 window.onerror = function (msg, url, line, col, error) {
+  window.onerror.errorCount = (window.onerror.errorCount || 0) + 1;
   // Proper stacktrace
   var stack = error && error.stack;
   // Ghetto stacktrace
@@ -326,6 +369,7 @@ window.onerror = function (msg, url, line, col, error) {
   // Augment the stack
   stack = window.__augmentStack__(stack, error);
   // Print error to the page
+<<<<<<< HEAD
   var errorRoot = document.getElementById('FatalError');
   var errorStack = document.getElementById('FatalError__stack');
   if (errorRoot) {
@@ -356,9 +400,53 @@ window.onerror = function (msg, url, line, col, error) {
     fatal: 1,
     message: stack,
   });
+=======
+  if (Byond.strictMode) {
+    var errorRoot = document.getElementById('FatalError');
+    var errorStack = document.getElementById('FatalError__stack');
+    if (errorRoot) {
+      errorRoot.className = 'FatalError FatalError--visible';
+      if (window.onerror.__stack__) {
+        window.onerror.__stack__ += '\n\n' + stack;
+      }
+      else {
+        window.onerror.__stack__ = stack;
+      }
+      var textProp = Byond.IS_LTE_IE8 ? 'innerText' : 'textContent';
+      errorStack[textProp] = window.onerror.__stack__;
+    }
+    // Set window geometry
+    var setFatalErrorGeometry = function () {
+      Byond.winset(Byond.windowId, {
+        titlebar: true,
+        'is-visible': true,
+        'can-resize': true,
+      });
+    };
+    setFatalErrorGeometry();
+    setInterval(setFatalErrorGeometry, 1000);
+  }
+  // Send logs to the game server
+  if (Byond.strictMode) {
+    Byond.sendMessage({
+      type: 'log',
+      fatal: 1,
+      message: stack,
+    });
+  }
+  else if (window.onerror.errorCount <= 1) {
+    stack += '\nWindow is in non-strict mode, future errors are suppressed.';
+    Byond.sendMessage({
+      type: 'log',
+      message: stack,
+    });
+  }
+>>>>>>> cc88822153 (TGUI Say (#8404))
   // Short-circuit further updates
-  window.__updateQueue__ = [];
-  window.update = function () {};
+  if (Byond.strictMode) {
+    window.update = function () {};
+    window.update.queue = [];
+  }
   // Prevent default action
   return true;
 };
@@ -410,6 +498,7 @@ if (!Function.prototype.bind) (function () {
   };
 })();
 
+<<<<<<< HEAD
 if (!Array.prototype['forEach']) {
   Array.prototype.forEach = function (callback, thisArg) {
     if (this == null) {
@@ -435,6 +524,30 @@ if (!Array.prototype['forEach']) {
     }
   };
 }
+=======
+window.replaceHtml = function (inline_html) {
+  var children = document.body.childNodes;
+
+  for (var i = 0; i < children.length; i++) {
+    if (children[i].nodeValue == " tgui:inline-html-start ") {
+      while (children[i].nodeValue != " tgui:inline-html-end ") {
+        children[i].remove();
+      }
+      children[i].remove();
+    }
+  }
+
+  document.body.insertAdjacentHTML(
+    "afterbegin",
+    "<!-- tgui:inline-html-start -->"
+      + inline_html
+      + "<!-- tgui:inline-html-end -->"
+  );
+};
+
+// Signal tgui that we're ready to receive updates
+Byond.sendMessage('ready');
+>>>>>>> cc88822153 (TGUI Say (#8404))
 </script>
 
 <style>
@@ -527,6 +640,13 @@ if (!Array.prototype['forEach']) {
 
 <!-- Inline assets -->
 <!-- tgui:assets -->
+<<<<<<< HEAD
+=======
+<!-- tgui:inline-html-start -->
+<!-- tgui:inline-html -->
+<!-- tgui:inline-html-end -->
+<!-- tgui:inline-js -->
+>>>>>>> cc88822153 (TGUI Say (#8404))
 
 <!-- Inline HTML -->
 <!-- tgui:html -->

@@ -83,7 +83,14 @@
 
 /datum/config_entry/flag/log_world_topic	// log all world.Topic() calls
 
+<<<<<<< HEAD
 /datum/config_entry/flag/log_manifest	// log crew manifest to seperate file
+=======
+/// log speech indicators(started/stopped speaking)
+/datum/config_entry/flag/log_speech_indicators
+
+/datum/config_entry/flag/log_manifest	// log crew manifest to separate file
+>>>>>>> cc88822153 (TGUI Say (#8404))
 
 /datum/config_entry/flag/log_job_debug	// log roundstart divide occupations debug information to a file
 
