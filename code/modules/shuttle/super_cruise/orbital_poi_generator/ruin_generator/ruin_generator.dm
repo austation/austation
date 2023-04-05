@@ -43,7 +43,7 @@
 				var/datum/generator_settings/instance = new generator_type()
 				if(instance.probability != 0)
 					generator_settings_cache[instance] = instance.probability
-		generator_settings = pickweight(generator_settings_cache)
+		generator_settings = pick_weight(generator_settings_cache)
 
 	//We need doors
 	var/list/placed_room_entrances = list()
@@ -128,6 +128,7 @@
 					if(offset_x < border_x || offset_x > world.maxx - border_x || offset_y < border_y || offset_y > world.maxx - border_y)
 						valid = FALSE
 						break
+<<<<<<< HEAD
 				//Something is blocked.
 				if(!valid)
 					continue
@@ -178,6 +179,30 @@
 		//Get the ruin origin position
 		var/ruin_offset_x = room_connection_x - port_offset_x
 		var/ruin_offset_y = room_connection_y - port_offset_y
+=======
+			//Something is disconnected or blocked.
+			if(!valid)
+				continue
+			valid_ruins += list(list(
+				"ruindata" = ruin_part,
+				"weight" = ruin_part.weight,
+				"port_offset_x" = connection_x,
+				"port_offset_y" = connection_y,
+			))
+	if(!length(valid_ruins))
+		log_mapping("Fuck. Ruin generation failed (No valid ruins). Continuing as if everything is actually ok.")
+		ishallway ? hallway_connections.len-- : room_connections.len--
+		return !length(hallway_connections) && !length(room_connections)
+	//Pick a ruin and spawn it.
+	var/list/selected_ruin = pick_weight_ruin(valid_ruins)
+	//Spawn the ruin
+	//Get the port offset position
+	var/port_offset_x = selected_ruin["port_offset_x"]
+	var/port_offset_y = selected_ruin["port_offset_y"]
+	//Get the ruin origin position
+	var/ruin_offset_x = room_connection_x - port_offset_x
+	var/ruin_offset_y = room_connection_y - port_offset_y
+>>>>>>> 72de867b58 (_lists.dm proc naming cleanup (#8676))
 
 		var/datum/map_template/ruin_part/ruin_part = selected_ruin["ruindata"]
 
@@ -291,12 +316,61 @@
 	//Repopulate areas
 	repopulate_sorted_areas()
 
+<<<<<<< HEAD
 	//Fill with shit
 	var/list/floortrash = generator_settings.get_floortrash()
 	var/list/directional_walltrash = generator_settings.get_directional_walltrash()
 	var/list/nondirectional_walltrash = generator_settings.get_non_directional_walltrash()
 	var/structure_damage_prob = generator_settings.structure_damage_prob
 	var/floor_break_prob = generator_settings.floor_break_prob
+=======
+/datum/map_generator/space_ruin/proc/put_shit_everywhere()
+	//Place trash
+	var/place = blocked_turfs[shit_index]
+	//Increment shit index
+	shit_index ++
+	//Perform the actual process of putting shit everywhere
+	var/splitplace = splittext(place, "_")
+	var/x = text2num(splitplace[1])
+	var/y = text2num(splitplace[2])
+	var/turf/T = locate(x, y, center_z)
+	if(isspaceturf(T) || isclosedturf(T))
+		return
+	if(locate(/obj) in T)
+		if(prob(structure_damage_prob))
+			var/obj/structure/S = locate() in T
+			if(S)
+				S.take_damage(rand(0, S.max_integrity * 1.5))
+		return
+	if(prob(floor_break_prob) && istype(T, /turf/open/floor/plasteel))
+		T = T.ScrapeAway()
+	//Spawn floortrash.
+	var/new_floortrash = pick_weight(floortrash)
+	if(ispath(new_floortrash))
+		new new_floortrash(T)
+	//Check for walls and spawn walltrash
+	for(var/direction in GLOB.cardinals)
+		var/turf/T1 = get_step(T, direction)
+		if(isclosedturf(T1))
+			var/new_directional_walltrash = pick_weight(directional_walltrash)
+			if(ispath(new_directional_walltrash))
+				var/atom/A = new new_directional_walltrash(T)
+				A.setDir(direction)
+			else
+				var/new_nondirectional_walltrash = pick_weight(nondirectional_walltrash)
+				if(ispath(new_nondirectional_walltrash))
+					var/atom/A = new new_nondirectional_walltrash(T)
+					switch(direction)
+						if(NORTH)
+							A.pixel_y = 32
+						if(SOUTH)
+							A.pixel_y = -32
+						if(EAST)
+							A.pixel_x = 32
+						if(WEST)
+							A.pixel_x = -32
+			break
+>>>>>>> 72de867b58 (_lists.dm proc naming cleanup (#8676))
 
 	//Place trash
 	for(var/place in blocked_turfs)
@@ -393,7 +467,7 @@
 
 	log_mapping("Finished generating ruin at [center_x], [center_y], [center_z]")
 
-/proc/pickweight_ruin(list/L)
+/proc/pick_weight_ruin(list/L)
 	var/total = 0
 	for (var/list/ruin_part as() in L)
 		total += ruin_part["weight"]

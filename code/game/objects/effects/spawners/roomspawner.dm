@@ -14,6 +14,7 @@
 		SSmapping.random_room_spawners += src
 
 /obj/effect/spawner/room/Initialize(mapload)
+<<<<<<< HEAD
 	..()
 	if(!length(SSmapping.random_room_templates))
 		message_admins("Room spawner created with no templates available. This shouldn't happen.")
@@ -35,6 +36,29 @@
 			template.spawned = TRUE
 		template.load(get_turf(src), centered = template.centerspawner)
 	return INITIALIZE_HINT_QDEL
+=======
+    ..()
+    if(!length(SSmapping.random_room_templates))
+        message_admins("Room spawner created with no templates available. This shouldn't happen.")
+        return INITIALIZE_HINT_QDEL
+    var/list/possibletemplates = list()
+    var/datum/map_template/random_room/candidate
+    shuffle_inplace(SSmapping.random_room_templates)
+    for(var/ID in SSmapping.random_room_templates)
+        candidate = SSmapping.random_room_templates[ID]
+        if((!rooms.len && candidate.spawned) || (!rooms.len && (room_height != candidate.template_height || room_width != candidate.template_width)) || (rooms.len && !(candidate.room_id in rooms)))
+            candidate = null
+            continue
+        possibletemplates[candidate] = candidate.weight
+    if(possibletemplates.len)
+        var/datum/map_template/random_room/template = pick_weight(possibletemplates)
+        template.stock --
+        template.weight = (template.weight / 2)
+        if(template.stock <= 0)
+            template.spawned = TRUE
+        template.load(get_turf(src), centered = template.centerspawner)
+    return INITIALIZE_HINT_QDEL
+>>>>>>> 72de867b58 (_lists.dm proc naming cleanup (#8676))
 
 /obj/effect/spawner/room/fivexfour
 	name = "5x4 room spawner"

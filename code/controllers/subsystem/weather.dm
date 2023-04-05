@@ -27,8 +27,13 @@ SUBSYSTEM_DEF(weather)
 	// start random weather on relevant levels
 	for(var/z in eligible_zlevels)
 		var/possible_weather = eligible_zlevels[z]
+<<<<<<< HEAD
 		var/datum/weather/W = pickweight(possible_weather)
 		run_weather(W, list(text2num(z)))
+=======
+		var/datum/weather/our_event = pick_weight(possible_weather)
+		run_weather(our_event, list(text2num(z)))
+>>>>>>> 72de867b58 (_lists.dm proc naming cleanup (#8676))
 		eligible_zlevels -= z
 		var/randTime = rand(3000, 6000)
 		addtimer(CALLBACK(src, .proc/make_eligible, z, possible_weather), randTime + initial(W.weather_duration_upper), TIMER_UNIQUE) //Around 5-10 minutes between weathers

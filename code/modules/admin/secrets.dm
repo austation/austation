@@ -506,7 +506,11 @@ GLOBAL_DATUM_INIT(admin_secrets, /datum/admin_secrets, new)
 				if("Random")
 					E = new /datum/round_event/disease_outbreak()
 				if("Choose")
+<<<<<<< HEAD
 					var/virus = input("Choose the virus to spread", "BIOHAZARD") as null|anything in sortList(typesof(/datum/disease, /proc/cmp_typepaths_asc))
+=======
+					var/virus = input("Choose the virus to spread", "BIOHAZARD") as null|anything in sort_list(typesof(/datum/disease, GLOBAL_PROC_REF(cmp_typepaths_asc)))
+>>>>>>> 72de867b58 (_lists.dm proc naming cleanup (#8676))
 					E = new /datum/round_event/disease_outbreak{}()
 					var/datum/round_event/disease_outbreak/DO = E
 					DO.virus_type = virus

@@ -117,8 +117,13 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 
 /datum/controller/master/Shutdown()
 	processing = FALSE
+<<<<<<< HEAD
 	sortTim(subsystems, /proc/cmp_subsystem_init)
 	reverseRange(subsystems)
+=======
+	sortTim(subsystems, GLOBAL_PROC_REF(cmp_subsystem_init))
+	reverse_range(subsystems)
+>>>>>>> 72de867b58 (_lists.dm proc naming cleanup (#8676))
 	for(var/datum/controller/subsystem/ss in subsystems)
 		log_world("Shutting down [ss.name] subsystem...")
 		ss.Shutdown()

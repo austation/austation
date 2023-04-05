@@ -787,8 +787,13 @@ im not even gonna bother with these for the following symptoms. typed em out, co
 						candidates[prospect] += (candidate.stat - 1)
 						candidates[prospect] += (3 - get_dist(candidate, H)) * 2
 						candidates[prospect] += round(candidate.blood_volume / 150)
+<<<<<<< HEAD
 				bloodbag = pickweight(candidates) //dont return here
 	
+=======
+				bloodbag = pick_weight(candidates) //dont return here
+
+>>>>>>> 72de867b58 (_lists.dm proc naming cleanup (#8676))
 	if(bloodpoints >= maxbloodpoints)
 		return 0
 	if(ishuman(M) && aggression) //first, try to suck those the host is actively grabbing

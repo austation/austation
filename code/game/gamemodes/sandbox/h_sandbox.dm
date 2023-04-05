@@ -240,8 +240,13 @@ GLOBAL_VAR_INIT(hsboxspawn, TRUE)
 					var/list/all_items = subtypesof(/obj/item/clothing)
 					for(var/typekey in spawn_forbidden)
 						all_items -= typesof(typekey)
+<<<<<<< HEAD
 					for(var/O in reverseRange(all_items))
 						clothinfo += "<a href='?src=[REF(src)];hsb=hsbspawn&path=[O]'>[O]</a><br>"
+=======
+					for(var/O in reverse_range(all_items))
+						clothinfo += "<a href='?src=[REF(src)];hsb=hsb_safespawn&path=[O]'>[O]</a><br>"
+>>>>>>> 72de867b58 (_lists.dm proc naming cleanup (#8676))
 
 				usr << browse(clothinfo,"window=sandbox")
 
@@ -254,8 +259,13 @@ GLOBAL_VAR_INIT(hsboxspawn, TRUE)
 					var/list/all_items = subtypesof(/obj/item/reagent_containers)
 					for(var/typekey in spawn_forbidden)
 						all_items -= typesof(typekey)
+<<<<<<< HEAD
 					for(var/O in reverseRange(all_items))
 						reaginfo += "<a href='?src=[REF(src)];hsb=hsbspawn&path=[O]'>[O]</a><br>"
+=======
+					for(var/O in reverse_range(all_items))
+						reaginfo += "<a href='?src=[REF(src)];hsb=hsb_safespawn&path=[O]'>[O]</a><br>"
+>>>>>>> 72de867b58 (_lists.dm proc naming cleanup (#8676))
 
 				usr << browse(reaginfo,"window=sandbox")
 
@@ -269,8 +279,13 @@ GLOBAL_VAR_INIT(hsboxspawn, TRUE)
 					for(var/typekey in spawn_forbidden)
 						all_items -= typesof(typekey)
 
+<<<<<<< HEAD
 					for(var/O in reverseRange(all_items))
 						objinfo += "<a href='?src=[REF(src)];hsb=hsbspawn&path=[O]'>[O]</a><br>"
+=======
+					for(var/O in reverse_range(all_items))
+						objinfo += "<a href='?src=[REF(src)];hsb=hsb_safespawn&path=[O]'>[O]</a><br>"
+>>>>>>> 72de867b58 (_lists.dm proc naming cleanup (#8676))
 
 				usr << browse(objinfo,"window=sandbox")
 

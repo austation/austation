@@ -30,7 +30,11 @@ GLOBAL_LIST(labor_sheet_values)
 			if(!initial(sheet.point_value) || (initial(sheet.merge_type) && initial(sheet.merge_type) != sheet_type)) //ignore no-value sheets and x/fifty subtypes
 				continue
 			sheet_list += list(list("ore" = initial(sheet.name), "value" = initial(sheet.point_value)))
+<<<<<<< HEAD
 		GLOB.labor_sheet_values = sortList(sheet_list, /proc/cmp_sheet_list)
+=======
+		GLOB.labor_sheet_values = sort_list(sheet_list, GLOBAL_PROC_REF(cmp_sheet_list))
+>>>>>>> 72de867b58 (_lists.dm proc naming cleanup (#8676))
 
 /obj/machinery/mineral/labor_claim_console/Destroy()
 	QDEL_NULL(integrated_radio)

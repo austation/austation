@@ -66,6 +66,18 @@
 	set_light_on(FALSE)
 	holoform = FALSE
 	set_resting(resting)
+<<<<<<< HEAD
+=======
+/**
+  * Sets a new holochassis skin based on a pAI's choice
+  */
+/mob/living/silicon/pai/proc/choose_chassis()
+	var/list/skins = list()
+	for(var/holochassis_option in possible_chassis)
+		var/image/item_image = image(icon = src.icon, icon_state = holochassis_option)
+		skins += list("[holochassis_option]" = item_image)
+	sort_list(skins)
+>>>>>>> 72de867b58 (_lists.dm proc naming cleanup (#8676))
 
 /*/mob/living/silicon/pai/proc/choose_chassis() -- austation begin - replaced with radial menu proc
 	if(!isturf(loc) && loc != card)

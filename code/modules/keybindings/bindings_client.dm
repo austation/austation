@@ -73,7 +73,11 @@ GLOBAL_LIST_INIT(valid_keys, list(
 			var/datum/keybinding/kb = GLOB.keybindings_by_name[kb_name]
 			if (kb.any_modifier)
 				kbs += kb
+<<<<<<< HEAD
 	kbs = sortList(kbs, /proc/cmp_keybinding_dsc)
+=======
+	kbs = sort_list(kbs, GLOBAL_PROC_REF(cmp_keybinding_dsc))
+>>>>>>> 72de867b58 (_lists.dm proc naming cleanup (#8676))
 	for(var/datum/keybinding/kb in kbs)
 		if(kb.can_use(src) && kb.down(src))
 			break
@@ -101,7 +105,11 @@ GLOBAL_LIST_INIT(valid_keys, list(
 	for (var/kb_name in prefs.key_bindings[_key])
 		var/datum/keybinding/kb = GLOB.keybindings_by_name[kb_name]
 		kbs += kb
+<<<<<<< HEAD
 	kbs = sortList(kbs, /proc/cmp_keybinding_dsc)
+=======
+	kbs = sort_list(kbs, GLOBAL_PROC_REF(cmp_keybinding_dsc))
+>>>>>>> 72de867b58 (_lists.dm proc naming cleanup (#8676))
 	for(var/datum/keybinding/kb in kbs)
 		if(kb.can_use(src) && kb.up(src))
 			break

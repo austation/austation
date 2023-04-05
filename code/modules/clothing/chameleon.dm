@@ -179,7 +179,11 @@
 /datum/action/item_action/chameleon/change/proc/select_look(mob/user)
 	var/obj/item/picked_item
 	var/picked_name
+<<<<<<< HEAD
 	picked_name = input("Select [chameleon_name] to change into", "Chameleon [chameleon_name]", picked_name) as null|anything in sortList(chameleon_list, /proc/cmp_typepaths_asc)
+=======
+	picked_name = input("Select [chameleon_name] to change into", "Chameleon [chameleon_name]", picked_name) as null|anything in sort_list(chameleon_list, GLOBAL_PROC_REF(cmp_typepaths_asc))
+>>>>>>> 72de867b58 (_lists.dm proc naming cleanup (#8676))
 	if(!picked_name)
 		return
 	picked_item = chameleon_list[picked_name]

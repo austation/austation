@@ -9,7 +9,35 @@
 
 	var/list/data = list()
 
+<<<<<<< HEAD
 	var/list/passkey
+=======
+/datum/netdata/New(list/data = null)
+	if(!data)
+		data = list()
+	src.data = data
+
+/datum/netdata/Destroy()
+	data = null
+	passkey = null
+	next = null
+	user = null
+	return ..()
+
+/datum/netdata/proc/clone(deep_copy=FALSE)
+	var/datum/netdata/C = new
+	C.sender_id = sender_id
+	C.receiver_id = receiver_id
+	C.network_id = network_id
+	C.passkey = passkey
+	C.user = user
+	C.next = null
+	if(deep_copy)
+		C.data = deep_copy_list(data)
+	else
+		C.data = data
+	return C
+>>>>>>> 72de867b58 (_lists.dm proc naming cleanup (#8676))
 
 /datum/netdata/proc/standard_format_data(primary, secondary, passkey)
 	data["data"] = primary

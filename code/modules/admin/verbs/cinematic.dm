@@ -6,7 +6,11 @@
 	if(!SSticker)
 		return
 
+<<<<<<< HEAD
 	var/datum/cinematic/choice = input(src,"Cinematic","Choose",null) as anything in sortList(subtypesof(/datum/cinematic), /proc/cmp_typepaths_asc)
+=======
+	var/datum/cinematic/choice = input(src,"Cinematic","Choose",null) as null|anything in sort_list(subtypesof(/datum/cinematic), GLOBAL_PROC_REF(cmp_typepaths_asc))
+>>>>>>> 72de867b58 (_lists.dm proc naming cleanup (#8676))
 	if(choice)
 		message_admins("[key_name_admin(usr)] triggered a cinematic: [choice]")
 		log_admin("[key_name(usr)] triggered a cinematic: [choice]")

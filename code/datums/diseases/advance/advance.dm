@@ -416,7 +416,7 @@
 				L += "[S.id]N"
 			else
 				L += S.id
-		L = sortList(L) // Sort the list so it doesn't matter which order the symptoms are in.
+		L = sort_list(L) // Sort the list so it doesn't matter which order the symptoms are in.
 		var/result = jointext(L, ":")
 		id = result
 	return id
@@ -510,7 +510,11 @@
 	symptoms += SSdisease.list_symptoms.Copy()
 	do
 		if(user)
+<<<<<<< HEAD
 			var/symptom = input(user, "Choose a symptom to add ([i] remaining)", "Choose a Symptom") in sortList(symptoms, /proc/cmp_typepaths_asc)
+=======
+			var/symptom = input(user, "Choose a symptom to add ([i] remaining)", "Choose a Symptom") in sort_list(symptoms, GLOBAL_PROC_REF(cmp_typepaths_asc))
+>>>>>>> 72de867b58 (_lists.dm proc naming cleanup (#8676))
 			if(isnull(symptom))
 				return
 			else if(istext(symptom))

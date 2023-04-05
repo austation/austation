@@ -92,7 +92,11 @@ SUBSYSTEM_DEF(vote)
 				choices["Initiate Crew Transfer"] += round(non_voters.len * factor)
 	. = list()
 	if(mode == "map")
+<<<<<<< HEAD
 		. += pickweight(choices) //map is chosen by drawing votes from a hat, instead of automatically going to map with the most votes. 
+=======
+		. += pick_weight(choices) //map is chosen by drawing votes from a hat, instead of automatically going to map with the most votes.
+>>>>>>> 72de867b58 (_lists.dm proc naming cleanup (#8676))
 		return .
 	//get all options with that many votes and return them in a list
 	if(greatest_votes)

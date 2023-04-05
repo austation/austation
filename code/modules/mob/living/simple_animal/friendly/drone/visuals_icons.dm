@@ -106,6 +106,7 @@
 
 /mob/living/simple_animal/drone/proc/pickVisualAppearence()
 	picked = FALSE
+<<<<<<< HEAD
 	var/appearence = input("Choose your appearance!", "Appearance", "Maintenance Drone") in sortList(list("Maintenance Drone", "Repair Drone", "Scout Drone"))
 	switch(appearence)
 		if("Maintenance Drone")
@@ -114,6 +115,16 @@
 			icon_state = "[visualAppearence]_[colour]"
 			icon_living = "[visualAppearence]_[colour]"
 			icon_dead = "[visualAppearence]_dead"
+=======
+	var/appearance = input("Choose your appearance!", "Appearance", "Maintenance Drone") in sort_list(list("Maintenance Drone", "Repair Drone", "Scout Drone"))
+	switch(appearance)
+		if("Maintenance Drone")
+			visualAppearance = MAINTDRONE
+			colour = input("Choose your colour!", "Colour", "grey") in sort_list(list("grey", "blue", "red", "green", "pink", "orange"))
+			icon_state = "[visualAppearance]_[colour]"
+			icon_living = "[visualAppearance]_[colour]"
+			icon_dead = "[visualAppearance]_dead"
+>>>>>>> 72de867b58 (_lists.dm proc naming cleanup (#8676))
 
 		if("Repair Drone")
 			visualAppearence = REPAIRDRONE

@@ -313,7 +313,7 @@ GLOBAL_LIST_INIT(atmos_adjacent_savings, list(0,0))
 //austation end
 */
 
-GLOBAL_LIST_INIT(pipe_paint_colors, sortList(list(
+GLOBAL_LIST_INIT(pipe_paint_colors, sort_list(list(
 		"amethyst" = rgb(130,43,255), //supplymain
 		"blue" = rgb(0,0,255),
 		"brown" = rgb(178,100,56),

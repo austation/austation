@@ -53,11 +53,19 @@
 		if(!check_rights(NONE))
 			return
 		var/list/names = list()
+<<<<<<< HEAD
 		var/list/componentsubtypes = sortList(subtypesof(/datum/component), /proc/cmp_typepaths_asc)
 		names += "---Components---"
 		names += componentsubtypes
 		names += "---Elements---"
 		names += sortList(subtypesof(/datum/element), /proc/cmp_typepaths_asc)
+=======
+		var/list/componentsubtypes = sort_list(subtypesof(/datum/component), GLOBAL_PROC_REF(cmp_typepaths_asc))
+		names += "---Components---"
+		names += componentsubtypes
+		names += "---Elements---"
+		names += sort_list(subtypesof(/datum/element), GLOBAL_PROC_REF(cmp_typepaths_asc))
+>>>>>>> 72de867b58 (_lists.dm proc naming cleanup (#8676))
 		var/result = input(usr, "Choose a component/element to add","better know what ur fuckin doin pal") as null|anything in names
 		if(!usr || !result || result == "---Components---" || result == "---Elements---")
 			return

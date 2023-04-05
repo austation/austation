@@ -85,11 +85,19 @@
 
 /obj/machinery/chem_dispenser/Initialize(mapload)
 	. = ..()
+<<<<<<< HEAD
 	dispensable_reagents = sortList(dispensable_reagents, /proc/cmp_reagents_asc)
 	if(emagged_reagents)
 		emagged_reagents = sortList(emagged_reagents, /proc/cmp_reagents_asc)
 	if(upgrade_reagents)
 		upgrade_reagents = sortList(upgrade_reagents, /proc/cmp_reagents_asc)
+=======
+	dispensable_reagents = sort_list(dispensable_reagents, GLOBAL_PROC_REF(cmp_reagents_asc))
+	if(emagged_reagents)
+		emagged_reagents = sort_list(emagged_reagents, GLOBAL_PROC_REF(cmp_reagents_asc))
+	if(upgrade_reagents)
+		upgrade_reagents = sort_list(upgrade_reagents, GLOBAL_PROC_REF(cmp_reagents_asc))
+>>>>>>> 72de867b58 (_lists.dm proc naming cleanup (#8676))
 	update_icon()
 
 /obj/machinery/chem_dispenser/Destroy()

@@ -270,6 +270,16 @@
 		text = copytext_char(text, 1, max_length)
 	return trim_left(trim_right(text))
 
+<<<<<<< HEAD
+=======
+/// Returns a string with proper punctuation if there is none.
+/proc/punctuate(message)
+	var/end = copytext(message, length(message))
+	if(!(end in list("!", ".", "?", ":", "\"", "-", "~")))
+		message += "."
+	return message
+
+>>>>>>> 72de867b58 (_lists.dm proc naming cleanup (#8676))
 /// Returns a string with the first element of the string capitalized.
 /proc/capitalize(t)
 	. = t
@@ -671,7 +681,7 @@ GLOBAL_LIST_INIT(alphabet, list("a","b","c","d","e","f","g","h","i","j","k","l",
 
 	var/list/finalized = list()
 	finalized = accepted.Copy() + oldentries.Copy() //we keep old and unreferenced phrases near the bottom for culling
-	listclearnulls(finalized)
+	list_clear_nulls(finalized)
 	if(length(finalized) && (length(finalized) > storemax))
 		finalized.Cut(storemax + 1)
 	fdel(log)
