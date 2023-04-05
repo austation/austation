@@ -1,5 +1,5 @@
 /*
-	output_atoms	(list of atoms)			The destination(s) for the sounds
+	parent	(atom)							The sound source
 
 	mid_sounds		(list or soundfile)		Since this can be either a list or a single soundfile you can have random sounds. May contain further lists but must contain a soundfile at the end.
 	mid_length		(num)					The length to wait between playing mid_sounds
@@ -25,6 +25,7 @@
 	var/volume = 100
 	var/max_loops
 	var/direct
+	var/vary
 	var/extra_range
 
 	var/timerid
@@ -76,12 +77,18 @@
 	if(direct)
 		S.channel = SSsounds.random_available_channel()
 		S.volume = volume
+<<<<<<< HEAD
 	for(var/i in 1 to atoms_cache.len)
 		var/atom/thing = atoms_cache[i]
 		if(direct)
 			SEND_SOUND(thing, S)
 		else
 			playsound(thing, S, volume, extra_range)
+=======
+		SEND_SOUND(parent, S)
+	else
+		playsound(parent, S, volume, vary, extra_range)
+>>>>>>> 25b1f2d5f8 (wild wild west, desperado (#8805))
 
 /datum/looping_sound/proc/get_sound(starttime, _mid_sounds)
 	. = _mid_sounds || mid_sounds
