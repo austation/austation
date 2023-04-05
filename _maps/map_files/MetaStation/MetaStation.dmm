@@ -36693,8 +36693,12 @@
 /area/maintenance/starboard)
 "btv" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on{
+<<<<<<< HEAD
 	dir = 8;
 	level = 2
+=======
+	dir = 8
+>>>>>>> c70a39764b (Fixes Metastation's turbine ignitor (#8808))
 	},
 /turf/open/floor/plasteel,
 /area/engine/atmos)
@@ -45454,8 +45458,12 @@
 /area/engine/atmos)
 "bMj" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on{
+<<<<<<< HEAD
 	dir = 8;
 	level = 2
+=======
+	dir = 8
+>>>>>>> c70a39764b (Fixes Metastation's turbine ignitor (#8808))
 	},
 /turf/open/floor/plasteel,
 /area/engine/atmos)
@@ -57198,7 +57206,13 @@
 /turf/open/floor/plasteel/dark,
 /area/aisat)
 "cne" = (
+<<<<<<< HEAD
 /obj/machinery/igniter/incinerator_atmos,
+=======
+/obj/machinery/igniter{
+	id = "atmos_incinerator_igniter"
+	},
+>>>>>>> c70a39764b (Fixes Metastation's turbine ignitor (#8808))
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
