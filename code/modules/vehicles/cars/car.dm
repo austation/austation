@@ -97,7 +97,11 @@
 	if(occupant_amount() >= max_occupants)
 		return FALSE
 	var/atom/old_loc = loc
+<<<<<<< HEAD
 	if(do_mob(forcer, M, get_enter_delay(M), extra_checks=CALLBACK(src, /obj/vehicle/sealed/car/proc/is_car_stationary, old_loc)))
+=======
+	if(do_after(forcer, get_enter_delay(M), M, extra_checks=CALLBACK(src, TYPE_PROC_REF(/obj/vehicle/sealed/car, is_car_stationary), old_loc)))
+>>>>>>> 65952753d6 (Fixes some additional proc references for 515 (#8809))
 		mob_forced_enter(M, silent)
 		return TRUE
 	return FALSE

@@ -104,7 +104,11 @@
 					target.visible_message("<span class='danger'>[user] is trying to take a blood sample from [target]!</span>", \
 									"<span class='userdanger'>[user] is trying to take a blood sample from you!</span>")
 					busy = TRUE
+<<<<<<< HEAD
 					if(!do_mob(user, target, extra_checks=CALLBACK(L, /mob/living/proc/can_inject, user, TRUE)))
+=======
+					if(!do_after(user, target = target, extra_checks=CALLBACK(L, TYPE_PROC_REF(/mob/living, can_inject), user, TRUE)))
+>>>>>>> 65952753d6 (Fixes some additional proc references for 515 (#8809))
 						busy = FALSE
 						return
 					if(reagents.total_volume >= reagents.maximum_volume)
@@ -172,7 +176,11 @@
 				if(L != user)
 					L.visible_message("<span class='danger'>[user] is trying to inject [L]!</span>", \
 											"<span class='userdanger'>[user] is trying to inject you!</span>")
+<<<<<<< HEAD
 					if(!do_mob(user, L, extra_checks=CALLBACK(L, /mob/living/proc/can_inject, user, TRUE)))
+=======
+					if(!do_after(user, target = L, extra_checks=CALLBACK(L, TYPE_PROC_REF(/mob/living, can_inject), user, TRUE)))
+>>>>>>> 65952753d6 (Fixes some additional proc references for 515 (#8809))
 						return
 					if(!reagents.total_volume)
 						return

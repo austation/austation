@@ -532,8 +532,13 @@
 	SSticker.roundend_check_paused = FALSE
 
 /obj/machinery/nuclearbomb/proc/really_actually_explode(off_station)
+<<<<<<< HEAD
 	Cinematic(get_cinematic_type(off_station),world,CALLBACK(SSticker,/datum/controller/subsystem/ticker/proc/station_explosion_detonation,src))
 	INVOKE_ASYNC(GLOBAL_PROC,.proc/KillEveryoneOnZLevel, get_virtual_z_level())
+=======
+	Cinematic(get_cinematic_type(off_station),world,CALLBACK(SSticker, TYPE_PROC_REF(/datum/controller/subsystem/ticker, station_explosion_detonation), src))
+	INVOKE_ASYNC(GLOBAL_PROC,PROC_REF(KillEveryoneOnZLevel), get_virtual_z_level())
+>>>>>>> 65952753d6 (Fixes some additional proc references for 515 (#8809))
 
 /obj/machinery/nuclearbomb/proc/get_cinematic_type(off_station)
 	if(off_station < 2)
@@ -742,8 +747,13 @@ This is here to make the tiles around the station mininuke change when it's arme
 	user.visible_message("<span class='suicide'>[user] is going delta! It looks like [user.p_theyre()] trying to commit suicide!</span>")
 	playsound(src, 'sound/machines/alarm.ogg', 50, -1, TRUE)
 	for(var/i in 1 to 100)
+<<<<<<< HEAD
 		addtimer(CALLBACK(user, /atom/proc/add_atom_colour, (i % 2)? "#00FF00" : "#FF0000", ADMIN_COLOUR_PRIORITY), i)
 	addtimer(CALLBACK(src, .proc/manual_suicide, user), 101)
+=======
+		addtimer(CALLBACK(user, TYPE_PROC_REF(/atom, add_atom_colour), (i % 2)? "#00FF00" : "#FF0000", ADMIN_COLOUR_PRIORITY), i)
+	addtimer(CALLBACK(src, PROC_REF(manual_suicide), user), 101)
+>>>>>>> 65952753d6 (Fixes some additional proc references for 515 (#8809))
 	return MANUAL_SUICIDE
 
 /obj/item/disk/nuclear/proc/manual_suicide(mob/living/user)

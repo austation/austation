@@ -47,6 +47,13 @@
 	var/obj/effect/portal/jaunt_tunnel/J = new (get_turf(src), src, 100, null, FALSE, get_turf(chosen_beacon))
 	if(adjacent)
 		try_move_adjacent(J)
+<<<<<<< HEAD
+=======
+	else
+		user.Paralyze(2 SECONDS, TRUE, TRUE) //Ignore stun immunity here, for their own good
+		user.setMovetype(user.movement_type | FLOATING) //Prevents falling into chasm during delay, automatically removed upon movement
+		addtimer(CALLBACK(J, TYPE_PROC_REF(/atom, attackby), null, user), 1 SECONDS) //Forcibly teleport them away from the chasm after a brief dramatic delay
+>>>>>>> 65952753d6 (Fixes some additional proc references for 515 (#8809))
 	playsound(src,'sound/effects/sparks4.ogg',50,1)
 	qdel(src)
 
