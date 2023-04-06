@@ -741,8 +741,13 @@
 	tech_tier = 1
 	display_name = "Mining Technology"
 	description = "Better than Efficiency V."
+<<<<<<< HEAD
 	prereq_ids = list("engineering", "basic_plasma")
 	design_ids = list("drill", "superresonator", "triggermod", "damagemod", "cooldownmod", "rangemod", "ore_redemption", "mining_equipment_vendor", "exploration_equipment_vendor", "cargoexpress", "plasmacutter")//e a r l y    g a  m e)
+=======
+	prereq_ids = list("engineering")
+	design_ids = list("drill", "superresonator", "triggermod", "damagemod", "cooldownmod", "rangemod", "hypermod", "ore_redemption", "mining_equipment_vendor", "exploration_equipment_vendor", "cargoexpress", "furnace", "furnace_console")
+>>>>>>> 2b680dfc1d (Smelter/furnace QOL update (#8742))
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2500)
 	export_price = 5000
 

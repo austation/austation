@@ -88,7 +88,95 @@
 	},
 /turf/open/floor/plasteel,
 /area/mine/laborcamp)
+<<<<<<< HEAD
 "ar" = (
+=======
+"az" = (
+/obj/structure/stone_tile/block{
+	dir = 4
+	},
+/obj/structure/stone_tile/block{
+	dir = 8
+	},
+/turf/open/indestructible/boss,
+/area/lavaland/surface/outdoors)
+"aB" = (
+/obj/structure/table/reinforced,
+/obj/structure/spider/stickyweb,
+/obj/item/stock_parts/micro_laser,
+/turf/open/floor/carpet/black,
+/area/mine/science)
+"aC" = (
+/obj/structure/stone_tile/surrounding_tile{
+	dir = 1
+	},
+/obj/structure/stone_tile/surrounding_tile,
+/obj/structure/stone_tile/surrounding_tile{
+	dir = 4
+	},
+/obj/structure/stone_tile/center/cracked,
+/turf/open/lava/smooth/lava_land_surface,
+/area/lavaland/surface/outdoors)
+"aD" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer2,
+/turf/open/floor/plasteel,
+/area/mine/living_quarters)
+"aG" = (
+/obj/structure/stone_tile/cracked,
+/turf/open/lava/smooth/lava_land_surface,
+/area/lavaland/surface/outdoors)
+"aJ" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
+	dir = 6
+	},
+/obj/machinery/atmospherics/pipe/manifold/supply/hidden/layer2{
+	dir = 1
+	},
+/obj/structure/cable/yellow{
+	icon_state = "2-4"
+	},
+/turf/open/floor/plasteel,
+/area/mine/science)
+"aN" = (
+/obj/machinery/door/firedoor,
+/obj/effect/turf_decal/stripes/closeup{
+	dir = 1
+	},
+/turf/open/floor/plasteel/techmaint,
+/area/mine/living_quarters)
+"aR" = (
+/obj/machinery/shower{
+	dir = 8
+	},
+/obj/effect/turf_decal/delivery,
+/obj/machinery/mineral/processing_unit_console{
+	pixel_x = 30
+	},
+/turf/open/floor/noslip/standard,
+/area/mine/laborcamp)
+"aT" = (
+/obj/effect/spawner/structure/window/reinforced,
+/turf/open/floor/plating,
+/area/mine/production)
+"aV" = (
+/obj/machinery/door/firedoor,
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
+	dir = 8
+	},
+/obj/effect/turf_decal/stripes/closeup{
+	dir = 1
+	},
+/turf/open/floor/plasteel/techmaint,
+/area/mine/science)
+"aZ" = (
+/obj/structure/showcase/cyborg,
+/turf/open/floor/carpet/royalblue,
+/area/mine/science)
+"ba" = (
+>>>>>>> 2b680dfc1d (Smelter/furnace QOL update (#8742))
 /obj/structure/table,
 /obj/item/restraints/handcuffs,
 /obj/effect/turf_decal/tile/red{
@@ -2617,7 +2705,192 @@
 	},
 /turf/open/lava/smooth/lava_land_surface,
 /area/lavaland/surface/outdoors)
+<<<<<<< HEAD
 "lZ" = (
+=======
+"fX" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer2{
+	dir = 1
+	},
+/turf/open/floor/plasteel,
+/area/mine/laborcamp/security)
+"fZ" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer2{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/bar/opposingcorners,
+/turf/open/floor/plasteel/checker,
+/area/mine/living_quarters)
+"ga" = (
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/structure/window/reinforced,
+/obj/structure/bookcase,
+/turf/open/floor/plasteel,
+/area/mine/science)
+"gb" = (
+/obj/machinery/recharge_station,
+/turf/open/floor/plasteel/dark,
+/area/mine/eva)
+"gd" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2,
+/obj/machinery/door/airlock/mining{
+	name = "Mining Station Storage";
+	req_access_txt = "48"
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
+/obj/effect/turf_decal/stripes/closeup,
+/obj/structure/cable/yellow{
+	icon_state = "1-2"
+	},
+/obj/machinery/door/firedoor,
+/turf/open/floor/plasteel/techmaint,
+/area/mine/storage)
+"ge" = (
+/obj/machinery/washing_machine,
+/obj/effect/turf_decal/stripes/line,
+/obj/effect/turf_decal/tile/blue/opposingcorners,
+/turf/open/floor/plasteel/white,
+/area/mine/laborcamp)
+"gf" = (
+/obj/structure/cable/yellow{
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/layer4{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/manifold/supply/hidden/layer2{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral/fourcorners/contrasted,
+/turf/open/floor/plasteel,
+/area/mine/production)
+"gl" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer4,
+/obj/item/kirbyplants/random,
+/turf/open/floor/plasteel,
+/area/mine/living_quarters)
+"go" = (
+/turf/closed/mineral/random/high_chance/volcanic,
+/area/lavaland/surface/outdoors/unexplored/danger)
+"gs" = (
+/obj/machinery/button/door{
+	id = "miningdorm3";
+	name = "Door Bolt Control";
+	normaldoorcontrol = 1;
+	pixel_x = 25;
+	specialfunctions = 4
+	},
+/obj/structure/chair/stool,
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer4{
+	dir = 8
+	},
+/turf/open/floor/carpet/red,
+/area/mine/living_quarters)
+"gu" = (
+/obj/structure/closet/crate,
+/obj/effect/turf_decal/bot,
+/turf/open/floor/plasteel,
+/area/mine/laborcamp)
+"gx" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 9
+	},
+/obj/effect/turf_decal/bot,
+/obj/machinery/seed_extractor,
+/obj/effect/turf_decal/tile/green/anticorner/contrasted{
+	dir = 1
+	},
+/turf/open/floor/plasteel/techmaint,
+/area/mine/laborcamp)
+"gz" = (
+/obj/machinery/mech_bay_recharge_port{
+	dir = 1
+	},
+/obj/structure/railing,
+/obj/machinery/firealarm{
+	dir = 4;
+	pixel_x = -26
+	},
+/turf/open/floor/plasteel/dark,
+/area/mine/eva)
+"gA" = (
+/obj/structure/stone_tile{
+	dir = 8
+	},
+/turf/open/floor/plating/asteroid/basalt/lava_land_surface,
+/area/lavaland/surface/outdoors)
+"gB" = (
+/obj/machinery/light{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2,
+/turf/open/floor/wood,
+/area/mine/living_quarters)
+"gD" = (
+/obj/structure/closet/secure_closet/freezer/kitchen/maintenance,
+/obj/item/reagent_containers/food/condiment/sugar,
+/obj/item/reagent_containers/food/snacks/tofu/prison,
+/obj/item/kitchen/knife,
+/obj/item/reagent_containers/food/condiment/enzyme,
+/obj/item/kitchen/rollingpin,
+/obj/item/wrench,
+/obj/effect/turf_decal/tile/bar/opposingcorners,
+/turf/open/floor/plasteel/checker,
+/area/mine/living_quarters)
+"gH" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2,
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
+/obj/machinery/door/poddoor/preopen{
+	id = "labor";
+	name = "labor camp blast door"
+	},
+/obj/effect/turf_decal/stripes/line,
+/turf/open/floor/plasteel/techmaint,
+/area/mine/laborcamp)
+"gL" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2,
+/obj/effect/turf_decal/tile/brown/half/contrasted{
+	dir = 8
+	},
+/turf/open/floor/plasteel,
+/area/mine/production)
+"gM" = (
+/obj/structure/ore_box,
+/obj/effect/turf_decal/stripes/line{
+	dir = 9
+	},
+/turf/open/floor/plasteel/techmaint,
+/area/mine/eva)
+"gR" = (
+/obj/structure/table,
+/obj/machinery/computer/libraryconsole/bookmanagement,
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/turf/open/floor/plasteel/techmaint,
+/area/mine/laborcamp)
+"gS" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/turf/open/floor/plasteel,
+/area/mine/science)
+"gT" = (
+/obj/structure/ore_box,
+/obj/machinery/firealarm{
+	dir = 4;
+	pixel_x = -26
+	},
+/turf/open/floor/plasteel/dark,
+/area/mine/storage)
+"gU" = (
+>>>>>>> 2b680dfc1d (Smelter/furnace QOL update (#8742))
 /obj/structure/stone_tile/block/cracked{
 	dir = 4
 	},
@@ -30828,6 +31101,7 @@ aj
 aj
 "}
 (96,1,1) = {"
+<<<<<<< HEAD
 aa
 aa
 aa
@@ -31083,6 +31357,263 @@ ab
 aj
 ab
 ab
+=======
+nO
+nO
+nO
+nO
+nO
+nO
+nO
+nO
+nO
+nO
+nO
+Qs
+Zd
+Zd
+Zd
+Zd
+Zd
+Zd
+Zd
+Zd
+RR
+RR
+RR
+RR
+RR
+Zd
+Zd
+Zd
+Zd
+RR
+RR
+RR
+Zd
+oO
+oO
+oO
+oO
+oO
+oO
+oO
+oO
+oO
+oO
+oO
+oO
+oO
+oO
+oO
+oO
+oO
+oO
+oO
+oO
+oO
+oO
+oO
+oO
+oO
+oO
+oO
+oO
+oO
+oO
+oO
+oO
+oO
+oO
+oO
+oO
+oO
+oO
+oO
+oO
+oO
+oO
+oO
+oO
+oO
+oO
+oO
+oO
+oO
+oO
+oO
+oO
+oO
+oO
+oO
+oO
+oO
+oO
+oO
+oO
+oO
+oO
+oO
+oO
+oO
+oO
+oO
+oO
+oO
+oO
+oO
+oO
+oO
+oO
+oO
+oO
+oO
+oO
+oO
+oO
+oO
+oO
+oO
+oO
+oO
+oO
+oO
+oO
+oO
+oO
+oO
+oO
+oO
+oO
+oO
+oO
+oO
+oO
+oO
+oO
+oO
+oO
+oO
+oO
+oO
+oO
+oO
+oO
+oO
+oO
+oO
+oO
+oO
+oO
+oO
+oO
+oO
+oO
+oO
+oO
+oO
+oO
+oO
+oO
+oO
+oO
+oO
+oO
+oO
+oO
+oO
+oO
+oO
+oO
+oO
+oO
+oO
+oO
+oO
+oO
+oO
+oO
+oO
+oO
+oO
+oO
+oO
+oO
+oO
+oO
+oO
+qt
+qt
+qt
+qt
+qt
+qt
+qt
+qt
+qt
+qt
+qt
+qt
+qt
+Zd
+Zd
+Zd
+RR
+RR
+RR
+RR
+RR
+RR
+RR
+RR
+RR
+RR
+RR
+RR
+RR
+RR
+RR
+RR
+Vd
+qg
+fM
+fM
+fM
+fM
+fM
+fM
+fM
+BZ
+RH
+kw
+zp
+np
+DF
+aw
+rw
+rw
+rw
+wB
+rw
+wn
+tL
+We
+BZ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+RR
+RR
+RR
+RR
+RR
+>>>>>>> 2b680dfc1d (Smelter/furnace QOL update (#8742))
 "}
 (97,1,1) = {"
 aa
