@@ -35,9 +35,16 @@ PROCESSING_SUBSYSTEM_DEF(quirks)
 		quirks[initial(T.name)] = T
 		quirk_points[initial(T.name)] = initial(T.value)
 
+<<<<<<< HEAD
 /datum/controller/subsystem/processing/quirks/proc/AssignQuirks(mob/living/user, client/cli, spawn_effects)
 	var/badquirk = FALSE
 	for(var/V in cli.prefs.all_quirks)
+=======
+/datum/controller/subsystem/processing/quirks/proc/AssignQuirks(datum/mind/user, client/cli, spawn_effects)
+	var/bad_quirk_checker = 0
+	var/list/bad_quirks = list()
+	for(var/V in cli.prefs.active_character.all_quirks)
+>>>>>>> e4bbb15fca (Quirks are now handled by the mind (and other quirk code changes) (#8735))
 		var/datum/quirk/Q = quirks[V]
 		if(Q)
 			user.add_quirk(Q, spawn_effects)
