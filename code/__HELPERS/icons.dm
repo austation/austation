@@ -215,6 +215,12 @@ world
 
 #define TO_HEX_DIGIT(n) ascii2text((n&15) + ((n&15)<10 ? 48 : 87))
 
+<<<<<<< HEAD
+=======
+//Dummy mob reserve slots
+#define DUMMY_HUMAN_SLOT_PREFERENCES "dummy_preference_preview"
+#define DUMMY_HUMAN_SLOT_ADMIN "admintools"
+>>>>>>> de325305c6 (TG manifest/records optimizations & fixes (#8797))
 
 	// Multiply all alpha values by this float
 /icon/proc/ChangeOpacity(opacity = 1)
@@ -1105,8 +1111,14 @@ GLOBAL_LIST_EMPTY(friendly_animal_types)
 		return J
 	return 0
 
+<<<<<<< HEAD
 //For creating consistent icons for human looking simple animals
 /proc/get_flat_human_icon(icon_id, datum/job/J, datum/preferences/prefs, dummy_key, showDirs = GLOB.cardinals, outfit_override = null)
+=======
+/// # If you already have a human and need to get its flat icon, call `get_flat_existing_human_icon()` instead.
+/// For creating consistent icons for human looking simple animals.
+/proc/get_flat_human_icon(icon_id, datum/job/J, datum/character_save/CS, dummy_key, showDirs = GLOB.cardinals, outfit_override = null)
+>>>>>>> de325305c6 (TG manifest/records optimizations & fixes (#8797))
 	var/static/list/humanoid_icon_cache = list()
 	if(!icon_id || !humanoid_icon_cache[icon_id])
 		var/mob/living/carbon/human/dummy/body = generate_or_wait_for_human_dummy(dummy_key)
@@ -1131,6 +1143,35 @@ GLOBAL_LIST_EMPTY(friendly_animal_types)
 		return out_icon
 	else
 		return humanoid_icon_cache[icon_id]
+
+/**
+ * A simpler version of get_flat_human_icon() that uses an existing human as a base to create the icon.
+ * Does not feature caching yet, since I could not think of a good way to cache them without having a possibility
+ * of using the cached version when we don't want to, so only use this proc if you just need this flat icon
+ * generated once and handle the caching yourself if you need to access that icon multiple times, or
+ * refactor this proc to feature caching of icons.
+ *
+ * Arguments:
+ * * existing_human - The human we want to get a flat icon out of.
+ * * directions_to_output - The directions of the resulting flat icon, defaults to all cardinal directions.
+ */
+/proc/get_flat_existing_human_icon(mob/living/carbon/human/existing_human, directions_to_output = GLOB.cardinals)
+	RETURN_TYPE(/icon)
+	if(!existing_human || !istype(existing_human))
+		CRASH("Attempted to call get_flat_existing_human_icon on a [existing_human ? existing_human.type : "null"].")
+
+	// We need to force the dir of the human so we can take those pictures, we'll set it back afterwards.
+	var/initial_human_dir = existing_human.dir
+	existing_human.dir = SOUTH
+	var/icon/out_icon = icon('icons/effects/effects.dmi', "nothing")
+	COMPILE_OVERLAYS(existing_human)
+	for(var/direction in directions_to_output)
+		var/icon/partial = getFlatIcon(existing_human, defdir = direction)
+		out_icon.Insert(partial, dir = direction)
+
+	existing_human.dir = initial_human_dir
+
+	return out_icon
 
 //Hook, override to run code on- wait this is images
 //Images have dir without being an atom, so they get their own definition.
