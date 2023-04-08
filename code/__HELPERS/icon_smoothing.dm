@@ -284,6 +284,7 @@
 					return A
 			return null
 
+<<<<<<< HEAD
 		for(var/a_type in source.canSmoothWith)
 			if(a_type == target_turf.type)
 				return target_turf
@@ -296,6 +297,100 @@
 			return source.type == target_turf.type ? target_turf : null
 		var/atom/A = locate(source.type) in target_turf
 		return A && A.type == source.type ? A : null
+=======
+	if(!isnull(target_turf.smoothing_groups))
+		for(var/target in canSmoothWith)
+			if(!(canSmoothWith[target] & target_turf.smoothing_groups[target]))
+				continue
+			return ADJ_FOUND
+
+	if(smoothing_flags & SMOOTH_OBJ)
+		for(var/am in target_turf)
+			var/atom/movable/thing = am
+			if(!thing.anchored || isnull(thing.smoothing_groups))
+				continue
+			for(var/target in canSmoothWith)
+				if(!(canSmoothWith[target] & thing.smoothing_groups[target]))
+					continue
+				return ADJ_FOUND
+
+	return NO_ADJ_FOUND
+/**
+  * Basic smoothing proc. The atom checks for adjacent directions to smooth with and changes the icon_state based on that.
+  *
+  * Returns the previous smoothing_junction state so the previous state can be compared with the new one after the proc ends, and see the changes, if any.
+  *
+*/
+/atom/proc/bitmask_smooth()
+	var/new_junction = NONE
+
+	for(var/direction in GLOB.cardinals) //Cardinal case first.
+		SET_ADJ_IN_DIR(src, new_junction, direction, direction)
+
+	if(!(new_junction & (NORTH|SOUTH)) || !(new_junction & (EAST|WEST)))
+		set_smoothed_icon_state(new_junction)
+		return
+
+	if(new_junction & NORTH_JUNCTION)
+		if(new_junction & WEST_JUNCTION)
+			SET_ADJ_IN_DIR(src, new_junction, NORTHWEST, NORTHWEST_JUNCTION)
+
+		if(new_junction & EAST_JUNCTION)
+			SET_ADJ_IN_DIR(src, new_junction, NORTHEAST, NORTHEAST_JUNCTION)
+
+	if(new_junction & SOUTH_JUNCTION)
+		if(new_junction & WEST_JUNCTION)
+			SET_ADJ_IN_DIR(src, new_junction, SOUTHWEST, SOUTHWEST_JUNCTION)
+
+		if(new_junction & EAST_JUNCTION)
+			SET_ADJ_IN_DIR(src, new_junction, SOUTHEAST, SOUTHEAST_JUNCTION)
+
+	set_smoothed_icon_state(new_junction)
+
+
+///Changes the icon state based on the new junction bitmask. Returns the old junction value.
+/atom/proc/set_smoothed_icon_state(new_junction)
+	. = smoothing_junction
+	smoothing_junction = new_junction
+	icon_state = "[base_icon_state]-[smoothing_junction]"
+
+
+/turf/closed/set_smoothed_icon_state(new_junction)
+	. = ..()
+	if(smoothing_flags & SMOOTH_DIAGONAL_CORNERS)
+		switch(new_junction)
+			if(
+				NORTH_JUNCTION|WEST_JUNCTION,
+				NORTH_JUNCTION|EAST_JUNCTION,
+				SOUTH_JUNCTION|WEST_JUNCTION,
+				SOUTH_JUNCTION|EAST_JUNCTION,
+				NORTH_JUNCTION|WEST_JUNCTION|NORTHWEST_JUNCTION,
+				NORTH_JUNCTION|EAST_JUNCTION|NORTHEAST_JUNCTION,
+				SOUTH_JUNCTION|WEST_JUNCTION|SOUTHWEST_JUNCTION,
+				SOUTH_JUNCTION|EAST_JUNCTION|SOUTHEAST_JUNCTION
+				)
+				icon_state = "[base_icon_state]-[smoothing_junction]-d"
+				if(!fixed_underlay && new_junction != .) // Mutable underlays?
+					var/junction_dir = reverse_ndir(smoothing_junction)
+					var/turned_adjacency = REVERSE_DIR(junction_dir)
+					var/turf/neighbor_turf = get_step(src, turned_adjacency & (NORTH|SOUTH))
+					var/mutable_appearance/underlay_appearance = mutable_appearance(layer = TURF_LAYER, plane = FLOOR_PLANE)
+					if(!neighbor_turf.get_smooth_underlay_icon(underlay_appearance, src, turned_adjacency))
+						neighbor_turf = get_step(src, turned_adjacency & (EAST|WEST))
+						if(!neighbor_turf.get_smooth_underlay_icon(underlay_appearance, src, turned_adjacency))
+							neighbor_turf = get_step(src, turned_adjacency)
+							if(!neighbor_turf.get_smooth_underlay_icon(underlay_appearance, src, turned_adjacency))
+								if(!get_smooth_underlay_icon(underlay_appearance, src, turned_adjacency)) //if all else fails, ask our own turf
+									underlay_appearance.icon = DEFAULT_UNDERLAY_ICON
+									underlay_appearance.icon_state = DEFAULT_UNDERLAY_ICON_STATE
+					underlays += underlay_appearance
+
+
+/turf/open/floor/set_smoothed_icon_state(new_junction)
+	if(broken || burnt)
+		return
+	return ..()
+>>>>>>> 90bb6b0608 (Ports overlay lighting as underlay refactor (#8785))
 
 //Icon smoothing helpers
 /proc/smooth_zlevel(var/zlevel, now = FALSE)

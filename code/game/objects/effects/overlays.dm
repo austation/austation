@@ -77,6 +77,7 @@
 	layer = FLOAT_LAYER
 	vis_flags = VIS_INHERIT_ID
 	appearance_flags = KEEP_TOGETHER | LONG_GLIDE | PIXEL_SCALE
+<<<<<<< HEAD
 
 /obj/effect/overlay/light_visible
 	name = ""
@@ -88,3 +89,5 @@
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	alpha = 0
 	vis_flags = NONE
+=======
+>>>>>>> 90bb6b0608 (Ports overlay lighting as underlay refactor (#8785))
