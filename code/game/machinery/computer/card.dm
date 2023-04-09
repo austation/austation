@@ -490,6 +490,7 @@ GLOBAL_VAR_INIT(time_last_changed_position, 0)
 
 				else
 					var/datum/job/jobdatum
+<<<<<<< HEAD
 					for(var/jobtype in typesof(/datum/job))
 						var/datum/job/J = new jobtype
 						if(ckey(J.title) == ckey(t1))
@@ -507,6 +508,54 @@ GLOBAL_VAR_INIT(time_last_changed_position, 0)
 
 					modify.access = ( istype(src, /obj/machinery/computer/card/centcom) ? get_centcom_access(t1) : jobdatum.get_access() )
 					log_id("[key_name(usr)] assigned [jobdatum] job to [modify], overriding all previous access using [scan] at [AREACOORD(usr)].")
+=======
+					if(!istype(src, /obj/machinery/computer/card/centcom)) // station level
+						jobdatum = SSjob.GetJob(t1)
+						if(!jobdatum)
+							to_chat(usr, "<span class='warning'>No log exists for this job.</span>")
+							stack_trace("bad job string '[t1]' is given through HoP console by '[ckey(usr)]'")
+							updateUsrDialog()
+							return
+
+						inserted_modify_id.access -= get_all_accesses()
+						inserted_modify_id.access += jobdatum.get_access()
+					else // centcom level
+						inserted_modify_id.access -= get_all_centcom_access()
+						inserted_modify_id.access += get_centcom_access(t1)
+
+					// Step 1: reseting theirs first
+					if(B && jobdatum) // 1-A: reseting bank payment
+						for(var/each in inserted_modify_id.registered_account.payment_per_department)
+							if(SSeconomy.is_nonstation_account(each))
+								continue
+							B.active_departments &= ~SSeconomy.get_budget_acc_bitflag(each)
+							B.payment_per_department[each] = 0
+							B.bonus_per_department[each] = 0
+						B.active_departments &= ~SSeconomy.get_budget_acc_bitflag(ACCOUNT_COM_ID) // micromanagement
+					if(R && jobdatum) // 1-B: reseting crew manifest
+						for(var/each in available_paycheck_departments)
+							if(SSeconomy.is_nonstation_account(each))
+								continue
+							R.fields["active_dept"] &= ~SSeconomy.get_budget_acc_bitflag(each)
+						R.fields["active_dept"] &= ~DEPT_BITFLAG_COM  // micromanagement2
+						// Note: `fields["active_dept"] = NONE` is a bad idea because you should keep VIP_BITFLAG.
+					// Step 2: giving the job info into their bank and record
+					if(B && jobdatum) // 2-A: setting bank payment
+						for(var/each in jobdatum.payment_per_department)
+							if(SSeconomy.is_nonstation_account(each))
+								continue
+							B.payment_per_department[each] = jobdatum.payment_per_department[each]
+						B.active_departments |= jobdatum.bank_account_department
+					if(R && jobdatum) // 2-B: setting crew manifest
+						R.fields["active_dept"] |= jobdatum.departments
+
+					log_id("[key_name(usr)] assigned [jobdatum || t1] job to [inserted_modify_id], manipulating it to the default access of the job using [inserted_scan_id] at [AREACOORD(usr)].")
+
+				if (inserted_modify_id)
+					inserted_modify_id.assignment = t1
+					playsound(src, 'sound/machines/terminal_prompt_confirm.ogg', 50, FALSE)
+				update_modify_manifest()
+>>>>>>> 471bb2080a (ID manipulation console no longer strips unrelated accesses (#8816))
 
 				if (modify)
 					modify.assignment = t1
