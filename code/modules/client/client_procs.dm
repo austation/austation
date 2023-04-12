@@ -319,6 +319,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 
 	// Initialize tgui panel
 	tgui_panel.Initialize()
+	tgui_say.initialize()
 
 	if(alert_mob_dupe_login)
 		spawn()
