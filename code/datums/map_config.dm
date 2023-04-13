@@ -145,8 +145,16 @@
 		log_world("map_link missing from json!")
 
 	allow_custom_shuttles = json["allow_custom_shuttles"] != FALSE
+<<<<<<< HEAD
 
 	allow_night_lighting = json["allow_night_lighting"] != FALSE
+=======
+	allow_night_lighting = json["allow_night_lighting"] != FALSE
+	planetary_station = !isnull(json["planetary_station"]) && json["planetary_station"] != FALSE
+	planet_name = json["planet_name"]
+	planet_mass = text2num(json["planet_mass"]) || planet_mass
+	planet_radius = text2num(json["planet_radius"]) || planet_radius
+>>>>>>> 986fc946e9 (Fix night lighting and custom shuttles (#8863))
 
 	defaulted = FALSE
 	return TRUE
