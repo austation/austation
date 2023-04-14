@@ -174,15 +174,28 @@
 	quality = NEGATIVE
 	mobtypes_allowed = list(/mob/living/carbon/human, /mob/living/carbon/monkey)
 	locked = TRUE //Species specific, keep out of actual gene pool
+<<<<<<< HEAD
+=======
+	var/original_species = /datum/species/human
+>>>>>>> a45c01f715 (Makes several adjustments to monkey mutadone interactions. (#8703))
 
 /datum/mutation/race/on_acquiring(mob/living/carbon/human/owner)
 	if(..())
 		return
+<<<<<<< HEAD
 	. = owner.monkeyize(TR_KEEPITEMS | TR_KEEPIMPLANTS | TR_KEEPORGANS | TR_KEEPDAMAGE | TR_KEEPVIRUS | TR_KEEPSE | TR_KEEPAI)
 
 /datum/mutation/race/on_losing(mob/living/carbon/monkey/owner)
 	if(owner && ismonkey(owner) && owner.stat != DEAD && !..())
 		. = owner.humanize(TR_KEEPITEMS | TR_KEEPIMPLANTS | TR_KEEPORGANS | TR_KEEPDAMAGE | TR_KEEPVIRUS | TR_KEEPSE | TR_KEEPAI)
+=======
+	original_species = owner.dna.species
+	. = owner.monkeyize(TR_KEEPITEMS | TR_KEEPIMPLANTS | TR_KEEPORGANS | TR_KEEPDAMAGE | TR_KEEPVIRUS | TR_KEEPSE | TR_KEEPAI, FALSE, original_species = src.original_species)
+
+/datum/mutation/race/on_losing(mob/living/carbon/monkey/owner)
+	if(owner && ismonkey(owner) && owner.stat != DEAD && !..())
+		. = owner.humanize(TR_KEEPITEMS | TR_KEEPIMPLANTS | TR_KEEPORGANS | TR_KEEPDAMAGE | TR_KEEPVIRUS | TR_KEEPSE | TR_KEEPAI, original_species = src.original_species)
+>>>>>>> a45c01f715 (Makes several adjustments to monkey mutadone interactions. (#8703))
 
 /datum/mutation/glow
 	name = "Glowy"
