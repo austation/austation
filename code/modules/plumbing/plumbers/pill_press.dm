@@ -34,6 +34,7 @@
 	AddComponent(/datum/component/plumbing/simple_demand, bolt)
 
 	//expertly copypasted from chemmasters
+<<<<<<< HEAD
 	var/datum/asset/spritesheet/simple/assets = get_asset_datum(/datum/asset/spritesheet/simple/pills)
 	pill_styles = list()
 	for (var/x in 1 to PILL_STYLE_COUNT)
@@ -41,6 +42,15 @@
 		SL["id"] = x
 		SL["class_name"] = assets.icon_class_name("pill[x]")
 		pill_styles += list(SL)
+=======
+	if(!length(pill_styles))
+		for (var/each_pill_shape in PILL_SHAPE_LIST_WITH_DUMMY)
+			var/list/style_list = list()
+			style_list["id"] = each_pill_shape
+			style_list["pill_icon_name"] = each_pill_shape
+			pill_styles += list(style_list)
+	update_appearance() //so the input/output pipes will overlay properly during init
+>>>>>>> 4912f6e4ed (Fixes plumbing pipes (#8866))
 
 /obj/machinery/plumbing/pill_press/process()
 	if(stat & NOPOWER)
