@@ -288,6 +288,7 @@
 	..()
 
 
+<<<<<<< HEAD
 
 // SNIPER //
 
@@ -321,6 +322,8 @@
 	can_unsuppress = TRUE
 	pin = /obj/item/firing_pin/implant/pindicate
 
+=======
+>>>>>>> 520c663821 (Sniper rifle buff 2 (#8566))
 // Old Semi-Auto Rifle //
 
 /obj/item/gun/ballistic/automatic/surplus
