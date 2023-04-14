@@ -108,3 +108,51 @@
 	icon_state = "carpetclump"
 	stacktype = /obj/item/stack/tile/carpet
 	can_distill = FALSE
+<<<<<<< HEAD
+=======
+
+// shamrocks
+/obj/item/seeds/grass/shamrock
+	name = "pack of shamrock seeds"
+	desc = "These seeds grow into shamrock producing plants."
+	icon_state = "seed-shamrock"
+	species = "shamrock"
+	plantname = "Shamrock Plants"
+	product = /obj/item/reagent_containers/food/snacks/grown/grass/shamrock
+	mutatelist = list()
+	rarity = 10
+	genes = list(/datum/plant_gene/trait/repeated_harvest)
+	reagents_add = list(/datum/reagent/nitrogen = 0.1, /datum/reagent/consumable/nutriment = 0.02)
+
+/obj/item/reagent_containers/food/snacks/grown/grass/shamrock
+	seed = /obj/item/seeds/grass/shamrock
+	name = "shamrock"
+	desc = "Luck of the irish."
+	icon_state = "shamrock"
+	slot_flags = ITEM_SLOT_HEAD
+	filling_color = "#245c39"
+	bitesize_mod = 3
+	can_distill = FALSE
+
+/obj/item/reagent_containers/food/snacks/grown/grass/shamrock/equipped(mob/user, slot)
+	. = ..()
+	if(slot == ITEM_SLOT_HEAD)
+		SEND_SIGNAL(user, COMSIG_ADD_MOOD_EVENT, "flower_worn", /datum/mood_event/flower_worn, src)
+
+/obj/item/reagent_containers/food/snacks/grown/grass/shamrock/dropped(mob/living/carbon/user)
+	..()
+	if(user.head != src)
+		return
+	else
+		SEND_SIGNAL(user, COMSIG_CLEAR_MOOD_EVENT, "flower_worn")
+
+//clover
+/obj/item/reagent_containers/food/snacks/grown/grass/shamrock/Initialize(mapload, /obj/item/seeds/new_seed)
+	. = ..()
+	if(prob(0.001)) // 0.001% chance to be a clover
+		name = "four leafed clover"
+		desc = "A rare sought after trinket said to grant luck to it's holder."
+		icon_state = "clover"
+		filling_color = "#358a55"
+
+>>>>>>> 54d62403b1 (Wearing flowers now gives you a mood boost + small flower code refactor (#8599))

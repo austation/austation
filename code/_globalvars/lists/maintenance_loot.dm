@@ -45,9 +45,22 @@ GLOBAL_LIST_INIT(maintenance_loot, list(
 	/obj/effect/spawner/lootdrop/glowstick = 4,
 	/obj/item/multitool = 2,
 	/obj/item/radio/off = 2,
+<<<<<<< HEAD
 	/obj/item/t_scanner = 5,
 	/obj/item/airlock_painter = 1,
 	/obj/item/airlock_painter/decal = 1,
+=======
+	/obj/item/reagent_containers/food/drinks/bottle/homemaderum = 1,
+	/obj/item/reagent_containers/food/snacks/canned/peaches/maint = 1,
+	/obj/item/reagent_containers/food/snacks/grown/citrus/orange = 1,
+	/obj/item/reagent_containers/food/snacks/grown/flower/poppy = 10,
+	/obj/item/reagent_containers/glass/rag = 3,
+	/obj/item/reagent_containers/pill/floorpill = 4,
+	/obj/item/reagent_containers/spray/pestspray = 1,
+	/obj/item/reagent_containers/syringe/used = 4,
+	/obj/item/relic = 3,
+	/obj/item/screwdriver = 3,
+>>>>>>> 54d62403b1 (Wearing flowers now gives you a mood boost + small flower code refactor (#8599))
 	/obj/item/stack/cable_coil/random = 4,
 	/obj/item/stack/cable_coil/random/five = 6,
 	/obj/item/stack/medical/bruise_pack = 1,
@@ -90,6 +103,7 @@ GLOBAL_LIST_INIT(maintenance_loot, list(
 	/obj/item/weldingtool = 3,
 	/obj/item/wirecutters = 1,
 	/obj/item/wrench = 4,
+<<<<<<< HEAD
 	/obj/item/relic = 3,
 	/obj/item/weaponcrafting/receiver = 2,
 	/obj/item/clothing/head/cone = 2,
@@ -115,3 +129,8 @@ GLOBAL_LIST_INIT(maintenance_loot, list(
 	/obj/item/throwing_star = 1,
 	"" = 3
 	))
+=======
+	/obj/item/reagent_containers/food/drinks/bottle/homemaderum = 1,
+	/obj/item/xenoartifact/maint = 1,
+))
+>>>>>>> 54d62403b1 (Wearing flowers now gives you a mood boost + small flower code refactor (#8599))
