@@ -199,8 +199,13 @@ SUBSYSTEM_DEF(throwing)
 
 	if(!thrownthing.zfalling) // I don't think you can zfall while thrown but hey, just in case.
 		var/turf/T = get_turf(thrownthing)
+<<<<<<< HEAD
 		if(T && thrownthing.has_gravity(T))
 			T.zFall(thrownthing)
+=======
+		if(T && thrownthing.loc == T && thrownthing.has_gravity(T))
+			T.try_start_zFall(thrownthing)
+>>>>>>> e100ff7a7f (MultiZ and Shuttle fixes and improvements (#8594))
 
 	if(thrownthing)
 		SEND_SIGNAL(thrownthing, COMSIG_MOVABLE_THROW_LANDED, src)

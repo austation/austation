@@ -9,6 +9,7 @@
 	layer = OPEN_DOOR_LAYER
 	power_channel = AREA_USAGE_ENVIRON
 	pass_flags_self = PASSDOORS
+	obj_flags = CAN_BE_HIT | BLOCK_Z_IN_DOWN | BLOCK_Z_IN_UP
 	max_integrity = 350
 	armor = list("melee" = 30, "bullet" = 30, "laser" = 20, "energy" = 20, "bomb" = 10, "bio" = 100, "rad" = 100, "fire" = 80, "acid" = 70, "stamina" = 0)
 	CanAtmosPass = ATMOS_PASS_DENSITY
@@ -300,7 +301,12 @@
 	do_animate("opening")
 	set_opacity(0)
 	sleep(open_speed)
+<<<<<<< HEAD
 	density = FALSE
+=======
+	set_density(FALSE)
+	obj_flags &= ~(BLOCK_Z_IN_DOWN | BLOCK_Z_IN_UP)
+>>>>>>> e100ff7a7f (MultiZ and Shuttle fixes and improvements (#8594))
 	sleep(open_speed)
 	layer = initial(layer)
 	update_icon()
@@ -330,9 +336,17 @@
 	do_animate("closing")
 	layer = closingLayer
 	if(air_tight)
+<<<<<<< HEAD
 		density = TRUE
 	sleep(open_speed)
 	density = TRUE
+=======
+		set_density(TRUE)
+		obj_flags |= BLOCK_Z_IN_DOWN | BLOCK_Z_IN_UP
+	sleep(open_speed)
+	set_density(TRUE)
+	obj_flags |= BLOCK_Z_IN_DOWN | BLOCK_Z_IN_UP
+>>>>>>> e100ff7a7f (MultiZ and Shuttle fixes and improvements (#8594))
 	sleep(open_speed)
 	update_icon()
 	if(visible && !glass)

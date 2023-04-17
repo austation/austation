@@ -1223,6 +1223,7 @@
 	update_freelook_sight()
 	sleep(open_speed - 1)
 	density = FALSE
+	obj_flags &= ~(BLOCK_Z_IN_DOWN | BLOCK_Z_IN_UP)
 	air_update_turf(1)
 	sleep(1)
 	layer = OPEN_DOOR_LAYER
@@ -1268,11 +1269,21 @@
 	update_icon(AIRLOCK_CLOSING, 1)
 	layer = CLOSED_DOOR_LAYER
 	if(air_tight)
+<<<<<<< HEAD
 		density = TRUE
 		air_update_turf(1)
 	sleep(1)
 	if(!air_tight)
 		density = TRUE
+=======
+		set_density(TRUE)
+		obj_flags |= (BLOCK_Z_IN_DOWN | BLOCK_Z_IN_UP)
+		air_update_turf(1)
+	sleep(1)
+	if(!air_tight)
+		set_density(TRUE)
+		obj_flags |= (BLOCK_Z_IN_DOWN | BLOCK_Z_IN_UP)
+>>>>>>> e100ff7a7f (MultiZ and Shuttle fixes and improvements (#8594))
 		air_update_turf(1)
 	sleep(open_speed - 1)
 	if(!safe)

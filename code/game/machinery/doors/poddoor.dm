@@ -20,6 +20,7 @@
 	icon_state = "open"
 	density = FALSE
 	opacity = 0
+	obj_flags = CAN_BE_HIT // reset zblock
 
 /obj/machinery/door/poddoor/ert
 	name = "hardened blast door"

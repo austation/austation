@@ -14,7 +14,12 @@
 	CanAtmosPass = ATMOS_PASS_PROC
 	rad_insulation = RAD_VERY_LIGHT_INSULATION
 	rad_flags = RAD_PROTECT_CONTENTS
+<<<<<<< HEAD
 	pass_flags_self = PASSGLASS
+=======
+	pass_flags_self = PASSTRANSPARENT
+	obj_flags = CAN_BE_HIT | BLOCK_Z_IN_DOWN | BLOCK_Z_IN_UP
+>>>>>>> e100ff7a7f (MultiZ and Shuttle fixes and improvements (#8594))
 	var/ini_dir = null
 	var/state = WINDOW_OUT_OF_FRAME
 	var/reinf = FALSE

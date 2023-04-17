@@ -11,10 +11,26 @@
 	var/obj/docking_port/stationary/my_port //the custom docking port placed by this console
 	var/obj/docking_port/mobile/shuttle_port //the mobile docking port of the connected shuttle
 	var/view_range = 0
+<<<<<<< HEAD
 	var/list/whitelist_turfs = list(/turf/open/space, /turf/open/floor/plating/lavaland, /turf/open/floor/plating/asteroid, /turf/open/lava)
+=======
+	var/list/whitelist_turfs = list(
+		/turf/open/space,
+		/turf/open/floor/plating/lavaland,
+		/turf/open/floor/plating/asteroid,
+		/turf/open/lava,
+		/turf/open/floor/dock,
+		/turf/open/floor/plating/snowed,
+		/turf/open/floor/plating/ice,
+	)
+>>>>>>> e100ff7a7f (MultiZ and Shuttle fixes and improvements (#8594))
 	var/designate_time = 50
 	var/turf/designating_target_loc
 	var/datum/action/innate/camera_jump/shuttle_docker/docker_action = new
+	///Camera action button to move up a Z level
+	var/datum/action/innate/camera_multiz_up/move_up_action = new
+	///Camera action button to move down a Z level
+	var/datum/action/innate/camera_multiz_down/move_down_action = new
 
 /obj/machinery/computer/shuttle_flight/Initialize(mapload, obj/item/circuitboard/C)
 	. = ..()
@@ -46,6 +62,16 @@
 		docker_action.Grant(user)
 		actions += docker_action
 
+	if(move_up_action)
+		move_up_action.target = user
+		move_up_action.Grant(user)
+		actions += move_up_action
+
+	if(move_down_action)
+		move_down_action.target = user
+		move_down_action.Grant(user)
+		actions += move_down_action
+
 /obj/machinery/computer/shuttle_flight/proc/CreateEye()
 	shuttle_port = SSshuttle.getShuttle(shuttleId)
 	if(QDELETED(shuttle_port))
@@ -56,6 +82,7 @@
 	eyeobj = new /mob/camera/ai_eye/remote/shuttle_docker(origin, src)
 	var/mob/camera/ai_eye/remote/shuttle_docker/the_eye = eyeobj
 	the_eye.setDir(shuttle_port.dir)
+<<<<<<< HEAD
 	for(var/V in shuttle_port.shuttle_areas)
 		var/area/A = V
 		for(var/turf/T in A)
@@ -69,6 +96,20 @@
 			I.plane = 0
 			I.mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 			the_eye.placement_images[I] = list(x_off, y_off)
+=======
+	for(var/obj/docking_port/mobile/M in shuttle_port.get_all_towed_shuttles())
+		for(var/area/A in M.shuttle_areas)
+			for(var/turf/T in A)
+				if(T.get_virtual_z_level() != origin.get_virtual_z_level())
+					continue
+				var/image/I = image('icons/effects/alphacolors.dmi', origin, "red")
+				var/x_off = T.x - origin.x
+				var/y_off = T.y - origin.y
+				I.loc = locate(origin.x + x_off, origin.y + y_off, origin.z) //we have to set this after creating the image because it might be null, and images created in nullspace are immutable.
+				I.plane = ABOVE_LIGHTING_PLANE
+				I.mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+				the_eye.placement_images[I] = list(x_off, y_off)
+>>>>>>> e100ff7a7f (MultiZ and Shuttle fixes and improvements (#8594))
 
 /obj/machinery/computer/shuttle_flight/proc/give_eye_control(mob/user)
 	if(!isliving(user))
@@ -193,8 +234,7 @@
 		var/image/I = V
 		var/image/newI = image('icons/effects/alphacolors.dmi', the_eye.loc, "blue")
 		newI.loc = I.loc //It is highly unlikely that any landing spot including a null tile will get this far, but better safe than sorry.
-		newI.layer = ABOVE_OPEN_TURF_LAYER
-		newI.plane = 0
+		newI.plane = ABOVE_LIGHTING_PLANE
 		newI.mouse_opacity = 0
 		the_eye.placed_images += newI
 

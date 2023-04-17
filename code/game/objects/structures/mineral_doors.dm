@@ -6,6 +6,7 @@
 	density = TRUE
 	anchored = TRUE
 	opacity = TRUE
+	obj_flags = CAN_BE_HIT | BLOCK_Z_IN_DOWN | BLOCK_Z_IN_UP
 
 	icon = 'icons/obj/doors/mineral_doors.dmi'
 	icon_state = "metal"
@@ -88,8 +89,14 @@
 	playsound(src, openSound, 100, 1)
 	set_opacity(FALSE)
 	flick("[initial(icon_state)]opening",src)
+<<<<<<< HEAD
 	sleep(10)
 	density = FALSE
+=======
+	sleep(1 SECONDS)
+	set_density(FALSE)
+	obj_flags &= ~(BLOCK_Z_IN_DOWN | BLOCK_Z_IN_UP)
+>>>>>>> e100ff7a7f (MultiZ and Shuttle fixes and improvements (#8594))
 	door_opened = TRUE
 	air_update_turf(1)
 	update_icon()
@@ -107,8 +114,14 @@
 	isSwitchingStates = TRUE
 	playsound(src, closeSound, 100, 1)
 	flick("[initial(icon_state)]closing",src)
+<<<<<<< HEAD
 	sleep(10)
 	density = TRUE
+=======
+	sleep(1 SECONDS)
+	set_density(TRUE)
+	obj_flags |= (BLOCK_Z_IN_DOWN | BLOCK_Z_IN_UP)
+>>>>>>> e100ff7a7f (MultiZ and Shuttle fixes and improvements (#8594))
 	set_opacity(TRUE)
 	door_opened = FALSE
 	air_update_turf(1)

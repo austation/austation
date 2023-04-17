@@ -16,6 +16,12 @@
 	pass_flags_self = PASSGLASS
 	CanAtmosPass = ATMOS_PASS_PROC
 	interaction_flags_machine = INTERACT_MACHINE_WIRES_IF_OPEN | INTERACT_MACHINE_ALLOW_SILICON | INTERACT_MACHINE_OPEN_SILICON | INTERACT_MACHINE_REQUIRES_SILICON | INTERACT_MACHINE_OPEN
+<<<<<<< HEAD
+=======
+	network_id = NETWORK_DOOR_AIRLOCKS
+	obj_flags = CAN_BE_HIT // reset zblock
+	var/operationdelay = 5
+>>>>>>> e100ff7a7f (MultiZ and Shuttle fixes and improvements (#8594))
 	var/obj/item/electronics/airlock/electronics = null
 	var/reinf = 0
 	var/shards = 2
