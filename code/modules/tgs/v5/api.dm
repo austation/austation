@@ -17,6 +17,11 @@
 
 	var/initialized = FALSE
 
+	var/chunked_requests = 0
+	var/list/chunked_topics = list()
+
+	var/detached = FALSE
+
 /datum/tgs_api/v5/ApiVersion()
 	return new /datum/tgs_version(
 		#include "interop_version.dm"
@@ -97,26 +102,26 @@
 /datum/tgs_api/v5/OnInitializationComplete()
 	Bridge(DMAPI5_BRIDGE_COMMAND_PRIME)
 
+<<<<<<< HEAD
 /datum/tgs_api/v5/proc/TopicResponse(error_message = null)
 	var/list/response = list()
 	response[DMAPI5_RESPONSE_ERROR_MESSAGE] = error_message
 
 	return json_encode(response)
 
+=======
+>>>>>>> 915bbb1b08 (Update TGS DMAPI (#8893))
 /datum/tgs_api/v5/OnTopic(T)
 	var/list/params = params2list(T)
 	var/json = params[DMAPI5_TOPIC_DATA]
 	if(!json)
 		return FALSE // continue to /world/Topic
 
-	var/list/topic_parameters = json_decode(json)
-	if(!topic_parameters)
-		return TopicResponse("Invalid topic parameters json!");
-
 	if(!initialized)
-		TGS_WARNING_LOG("Missed topic due to not being initialized: [T]")
+		TGS_WARNING_LOG("Missed topic due to not being initialized: [json]")
 		return TRUE // too early to handle, but it's still our responsibility
 
+<<<<<<< HEAD
 	var/their_sCK = topic_parameters[DMAPI5_PARAMETER_ACCESS_IDENTIFIER]
 	if(their_sCK != access_identifier)
 		return TopicResponse("Failed to decode [DMAPI5_PARAMETER_ACCESS_IDENTIFIER] from: [json]!");
@@ -263,6 +268,9 @@
 		return
 
 	return bridge_response
+=======
+	return ProcessTopicJson(json, TRUE)
+>>>>>>> 915bbb1b08 (Update TGS DMAPI (#8893))
 
 /datum/tgs_api/v5/OnReboot()
 	var/list/result = Bridge(DMAPI5_BRIDGE_COMMAND_REBOOT)

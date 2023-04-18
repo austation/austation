@@ -30,6 +30,7 @@
 
 	var/datum/tgs_chat_command/sc = custom_commands[command]
 	if(sc)
+<<<<<<< HEAD
 		var/text_response = sc.Run(u, params)
 		var/list/topic_response = list()
 		if(!istext(text_response))
@@ -37,4 +38,13 @@
 			text_response = null
 		topic_response[DMAPI5_TOPIC_RESPONSE_COMMAND_RESPONSE_MESSAGE] = text_response
 		return json_encode(topic_response)
+=======
+		var/datum/tgs_message_content/response = sc.Run(u, params)
+		response = UpgradeDeprecatedCommandResponse(response, command)
+		
+		var/list/topic_response = TopicResponse()
+		topic_response[DMAPI5_TOPIC_RESPONSE_COMMAND_RESPONSE_MESSAGE] = response?.text
+		topic_response[DMAPI5_TOPIC_RESPONSE_COMMAND_RESPONSE] = response?._interop_serialize()
+		return topic_response
+>>>>>>> 915bbb1b08 (Update TGS DMAPI (#8893))
 	return TopicResponse("Unknown custom chat command: [command]!")
