@@ -57,6 +57,29 @@
 	else
 		icon_state = initial(icon_state)
 
+<<<<<<< HEAD
+=======
+/obj/machinery/sleeper/attackby(obj/item/I, mob/living/user, params)
+	if ((istype(I, /obj/item/reagent_containers/glass) \
+		|| istype(I, /obj/item/reagent_containers/chem_bag)) \
+		&& user.a_intent != INTENT_HARM)
+		if (length(inserted_vials) >= max_vials)
+			to_chat(user, "<span class='warning'>[src] cannot hold any more!</span>")
+			return
+		user.visible_message("<span class='notice'>[user] inserts \the [I] into \the [src]</span>", "<span class='notice'>You insert \the [I] into \the [src]</span>")
+		user.temporarilyRemoveItemFromInventory(I)
+		I.forceMove(null)
+		inserted_vials += I
+		ui_update()
+		return
+	. = ..()
+
+/obj/machinery/sleeper/on_deconstruction()
+	for(var/atom/movable/A as anything in inserted_vials)
+		A.forceMove(drop_location())
+	return ..()
+
+>>>>>>> d654585742 (main (#8890))
 /obj/machinery/sleeper/container_resist(mob/living/user)
 	visible_message("<span class='notice'>[occupant] emerges from [src]!</span>",
 		"<span class='notice'>You climb out of [src]!</span>")
