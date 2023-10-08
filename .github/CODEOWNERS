@@ -6,43 +6,12 @@
 
 # crossedfall
 
-.dockerignore @crossedfall
-.github @crossedfall
-/code/_compile_options.dm @crossedfall
-/code/modules/tgs @crossedfall
-dependencies.sh @crossedfall
-Dockerfile @crossedfall
-/SQL @crossedfall
-/tools @crossedfall
-/config @crossedfall
-
-# powerfulbacon
-
-/code/game/machinery/shuttle @powerfulbacon
-/code/modules/shuttle/super_cruise @powerfulbacon
-/code/modules/shuttle/shuttle_creation @powerfulbacon
-/_maps/map_files/CorgStation @powerfulbacon
-
-# pestoverde322
-
-/_maps @pestoverde322
-
-# itsmeow
-
-/code/game/gamemodes/dynamic @itsmeow
-/code/modules/modular_computers @itsmeow
-/tools/MapTileAggregator.py @itsmeow
-/code/modules/admin/player_panel.dm @itsmeow
-/code/modules/tgui/ @itsmeow
-/code/modules/tgui_input/ @itsmeow
-/code/modules/tgui_panel/ @itsmeow
-/tgui/ @itsmeow
-/tgui/packages/tgui/interfaces/PlayerPanel.js @itsmeow
-/code/modules/multiz @itsmeow
-
-# itsmeow (explicitly disowned)
-
-/tgui/packages/tgui/interfaces/
-/tgui/packages/tgui/styles/interfaces/
-/tgui/packages/tgui-panel/styles/goon/chat-dark.scss
-/tgui/packages/tgui-panel/styles/goon/chat-light.scss
+.dockerignore @MCterra10
+.github @MCterra10
+/code/_compile_options.dm @MCterra10
+/code/modules/tgs @MCterra10
+dependencies.sh @MCterra10
+Dockerfile @MCterra10
+/SQL @MCterra10
+/tools @MCterra10
+/config @MCterra10
