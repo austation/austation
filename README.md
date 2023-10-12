@@ -1,13 +1,13 @@
-<h1 align="center">BeeStation 13 Codebase</h1>
+<h1 align="center">AuStation 13 Codebase</h1>
 
 
 [![forthebadge](https://forthebadge.com/images/badges/built-with-resentment.svg)](https://forthebadge.com) [![forthebadge](https://forthebadge.com/images/badges/contains-technical-debt.svg)](https://user-images.githubusercontent.com/8171642/50290880-ffef5500-043a-11e9-8270-a2e5b697c86c.png) [![forinfinityandbyond](https://user-images.githubusercontent.com/5211576/29499758-4efff304-85e6-11e7-8267-62919c3688a9.gif)](https://www.reddit.com/r/SS13/comments/5oplxp/what_is_the_main_problem_with_byond_as_an_engine/dclbu1a)
-[![Build Status](https://github.com/BeeStation/BeeStation-Hornet/workflows/Run%20tests/badge.svg)](https://github.com/BeeStation/BeeStation-Hornet/actions?query=workflow%3A%22Run+tests%22)
-![Open Issues](https://isitmaintained.com/badge/open/BeeStation/BeeStation-Hornet.svg)
+[![Build Status](https://github.com/austation/austation/actions/workflows/continuous_integration.yml/badge.svg)](https://github.com/austation/austation/actions/workflows/continuous_integration.yml)
+![Open Issues](https://isitmaintained.com/badge/open/austation/austation.svg)
 
-**Website:** http://beestation13.com
-**Code:** https://github.com/beestation/beestation-hornet
-**Wiki:** https://wiki.beestation13.com/view/Main_Page
+**Website:** https://austation.net
+**Code:** https://github.com/austation/austation
+**Wiki:** https://wiki.beestation13.com/view/Main_Page (For Now)
 
 
 ## DOWNLOADING
@@ -19,7 +19,7 @@ Follow this: https://wiki.beestation13.com/view/Guide_to_git
 Clone the repository using `git clone`.
 
 Option 2: Download the source code as a zip by clicking the ZIP button in the
-code tab of https://github.com/beestation/beestation-hornet
+code tab of hhttps://github.com/austation/austation
 (note: this will use a lot of bandwidth if you wish to update and is a lot of
 hassle if you want to make any changes at all, so it's not recommended.)
 
@@ -33,7 +33,7 @@ docker run -d -p <your port>:1337 -v /path/to/your/config:/beestation/config -v 
 
 **You can no longer compile the codebase simply through Dream Maker**.
 
-**Building Beestation in Dream Maker directly is now deprecated and might produce errors**, such as `'tgui.bundle.js': cannot find file`.
+**Building AuStation in Dream Maker directly is now deprecated and might produce errors**, such as `'tgui.bundle.js': cannot find file`.
 
 ### Building with VSCode (Preferred)
 
@@ -44,7 +44,7 @@ You will find `BUILD.bat` in the root folder of BeeStation, double-clicking it w
 
 If you see any errors or warnings, something has gone wrong - possibly a corrupt
 download or the files extracted wrong. If problems persist, ask for assistance
-in https://discord.gg/Vh8TJp9 or https://discord.gg/z9ttAvA
+in https://discord.gg/Vh8TJp9 or https://discord.gg/ZTGQAqB
 
 Once that's done, open up the config folder. You'll want to edit config.txt to
 set the probabilities for different gamemodes in Secret and to set your server
@@ -73,7 +73,7 @@ and install it themselves. Directions can be found at the [rust-g
 repo](https://github.com/tgstation/rust-g).
 
 Finally, to start the server, run Dream Daemon and enter the path to your
-compiled beestation.dmb file. Make sure to set the port to the one you
+compiled austation.dmb file. Make sure to set the port to the one you
 specified in the config.txt, and set the Security box to 'Safe'. Then press GO
 and the server should start up and be ready to join. It is also recommended that
 you set up the SQL backend (see below).
@@ -103,7 +103,7 @@ https://github.com/tgstation/tgstation-server
 
 ## MAPS
 
-BeeStation currently comes equipped with these maps.
+AuStation currently comes equipped with these maps.
 
 * [BoxStation](https://wiki.beestation13.com/view/Boxstation)
 * [CorgStation](https://wiki.beestation13.com/view/CorgsStation)
@@ -124,7 +124,7 @@ Anytime you want to make changes to a map it's imperative you use the [Map Mergi
 
 ## AWAY MISSIONS
 
-BeeStation supports loading away missions however they are disabled by default.
+AuStation supports loading away missions however they are disabled by default.
 
 Map files for away missions are located in the _maps/RandomZLevels directory. Each away mission includes it's own code definitions located in /code/modules/awaymissions/mission_code. These files must be included and compiled with the server beforehand otherwise the server will crash upon trying to load away missions that lack their code.
 
@@ -142,7 +142,7 @@ Web delivery of game resources makes it quicker for players to join and reduces 
 
 1. Edit compile_options.dm to set the `PRELOAD_RSC` define to `0`
 1. Add a url to config/external_rsc_urls pointing to a .zip file containing the .rsc.
-    * If you keep up to date with BeeStation you could reuse our rsc cdn at http://rsc.beestation13.buzz/beestation.zip. Otherwise you can use cdn services like CDN77 or cloudflare (requires adding a page rule to enable caching of the zip), or roll your own cdn using route 53 and vps providers.
+    * If you keep up to date with BeeStation you could reuse their rsc cdn at http://rsc.beestation13.buzz/beestation.zip. Otherwise you can use cdn services like CDN77 or cloudflare (requires adding a page rule to enable caching of the zip), or roll your own cdn using route 53 and vps providers.
 	* Regardless even offloading the rsc to a website without a CDN will be a massive improvement over the in game system for transferring files.
 
 ## IRC BOT SETUP
