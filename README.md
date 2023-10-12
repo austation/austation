@@ -19,7 +19,7 @@ Follow this: https://wiki.beestation13.com/view/Guide_to_git
 Clone the repository using `git clone`.
 
 Option 2: Download the source code as a zip by clicking the ZIP button in the
-code tab of hhttps://github.com/austation/austation
+code tab of https://github.com/austation/austation
 (note: this will use a lot of bandwidth if you wish to update and is a lot of
 hassle if you want to make any changes at all, so it's not recommended.)
 
