@@ -49,7 +49,7 @@ jobs:
           tools/build/build --ci yarn
       - name: Run Linters
         run: |
-          bash tools/ci/check_filedirs.sh beestation.dme
+          bash tools/ci/check_filedirs.sh austation.dme
           bash tools/ci/check_changelogs.sh
           find . -name "*.php" -print0 | xargs -0 -n1 php -l
           find . -name "*.json" -not -path "*/node_modules/*" -print0 | xargs -0 python ./tools/json_verifier.py
