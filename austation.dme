@@ -20,4 +20,5 @@
 // END_BEE_INCLUDE
 
 // BEGIN_INCLUDE
+#include "austation\code\modules\research\techweb\_techweb_node.dm"
 // END_INCLUDE
