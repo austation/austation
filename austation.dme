@@ -21,4 +21,5 @@
 
 // BEGIN_INCLUDE
 #include "austation\code\modules\research\techweb\_techweb_node.dm"
+#include "austation\code\modules\research\techweb\all_nodes.dm"
 // END_INCLUDE
