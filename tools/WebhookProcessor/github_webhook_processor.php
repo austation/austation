@@ -5,8 +5,6 @@
  *	For documentation on the changelog generator see https://tgstation13.org/phpBB/viewtopic.php?f=5&t=5157
  *	To hide prs from being announced in game, place a [s] in front of the title
  *	All runtime errors are echo'ed to the webhook's logs in github
- *  Events to be sent via GitHub webhook: Pull Requests, Pushes
- *  Any other Event will result in a 404 returned to the webhook.
  */
 
 /**CREDITS:
@@ -35,13 +33,14 @@ $path_to_script = 'tools/WebhookProcessor/github_webhook_processor.php';
 $tracked_branch = "master";
 $trackPRBalance = true;
 $prBalanceJson = '';
-$startingPRBalance = 30;
+$startingPRBalance = 5;
 $maintainer_team_id = 133041;
 $validation = "org";
 $validation_count = 1;
 $tracked_branch = 'master';
 $require_changelogs = false;
 $discordWebHooks = array();
+$no_changelog = true;
 
 require_once 'secret.php';
 
@@ -235,33 +234,43 @@ function tag_pr($payload, $opened) {
 
 		if(strpos(strtolower($title), 'refactor') !== FALSE)
 			$tags[] = 'Refactor';
-
 		if(strpos(strtolower($title), 'revert') !== FALSE)
 			$tags[] = 'Revert';
 		if(strpos(strtolower($title), 'removes') !== FALSE)
 			$tags[] = 'Removal';
+		if(strpos(strtolower($title), 'ports') !== FALSE)
+			$tags[] = "Port";
 	}
 
 	$remove = array('Test Merge Candidate');
 
+	/* -- handled by github actions more nicely, without requiring a PR update to trigger --
 	$mergeable = $payload['pull_request']['mergeable'];
 	if($mergeable === TRUE)	//only look for the false value
 		$remove[] = 'Merge Conflict';
 	else if ($mergeable === FALSE)
 		$tags[] = 'Merge Conflict';
+	*/
 
-	$treetags = array('_maps' => 'Map Edit', 'tools' => 'Tools', 'SQL' => 'SQL', '.github' => 'GitHub');
-	$addonlytags = array('icons' => 'Sprites', 'sound' => 'Sound', 'config' => 'Config Update', 'code/controllers/configuration/entries' => 'Config Update', 'code/modules/unit_tests' => 'Unit Tests', 'tgui' => 'UI');
+	$treetags = array('_maps' => 'Map Edit', 'tools' => 'Tools', 'SQL' => 'SQL', '.github' => 'GitHub', 'icons' => 'Sprites', 'austation/icons' => 'Sprites', 'sound' => 'Sound', 'austation/sound' => 'Sound', 'config' => 'Config Update', 'code/controllers/configuration/entries' => 'Config Update', 'tgui' => 'UI');
+
+	get_diff($payload);
+	global $github_diff;
+
 	foreach($treetags as $tree => $tag)
 		if(has_tree_been_edited($payload, $tree))
 			$tags[] = $tag;
 		else
 			$remove[] = $tag;
-	foreach($addonlytags as $tree => $tag)
-		if(has_tree_been_edited($payload, $tree))
-			$tags[] = $tag;
+
+	if(empty($github_diff))
+		$tags[] = 'Empty';
+	else if(!empty($github_diff))
+		$remove[] = 'Empty';
 
 	check_tag_and_replace($payload, '[dnm]', 'Do Not Merge', $tags);
+	check_tag_and_replace($payload, '[mirror]', 'Upstream PR Merged', $tags);
+	check_tag_and_replace($payload, '[port]', 'Port', $tags);
 	if(!check_tag_and_replace($payload, '[wip]', 'Work In Progress', $tags) && check_tag_and_replace($payload, '[ready]', 'Work In Progress', $remove))
 		$tags[] = 'Needs Review';
 
@@ -522,19 +531,20 @@ function game_announce($action, $payload, $pr_flags) {
 
 	$game_servers = filter_announce_targets($servers, $payload['pull_request']['base']['repo']['owner']['login'], $payload['pull_request']['base']['repo']['name'], $action, $pr_flags);
 
-	$data = ["announce" => urlencode($msg), "id" => $payload['pull_request']['id']];
+	$msg = '?announce='.urlencode($msg).'&payload='.urlencode(json_encode($payload));
 
 	foreach ($game_servers as $serverid => $server) {
+		$server_message = $msg;
 		if (isset($server['comskey']))
-			$data["auth"] = $server['comskey'];
-		game_server_send($server['address'], $server['port'], json_encode($data));
+			$server_message .= '&key='.urlencode($server['comskey']);
+		game_server_send($server['address'], $server['port'], $server_message);
 	}
 
 }
 
 function discord_announce($action, $payload, $pr_flags) {
 	global $discordWebHooks;
-	$color = null;
+	$color = 0;
 	switch ($action) {
 		case 'reopened':
 		case 'opened':
@@ -642,38 +652,36 @@ function get_pr_code_friendliness($payload, $oldbalance = null){
 	$labels = get_pr_labels_array($payload);
 	//anything not in this list defaults to 0
 	$label_values = array(
-		'Fix' => 3,
-		'Refactor' => 10,
-		'Code Improvement' => 2,
+		'Fix' => 2,
+		'Refactor' => 2,
+		'CI/Tests' => 3,
+		'Code Improvement' => 1,
 		'Grammar and Formatting' => 1,
-		'Priority: High' => 15,
-		'Priority: CRITICAL' => 20,
-		'Unit Tests' => 6,
+		'Priority: High' => 4,
+		'Priority: CRITICAL' => 5,
 		'Logging' => 1,
-		'Feedback' => 2,
-		'Performance' => 12,
-		'Feature' => -10,
-		'Balance/Rebalance' => -8,
-		'Tweak' => -2,
-		'GBP: Reset' => $startingPRBalance - $oldbalance,
+		'Feedback' => 1,
+		'Performance' => 3,
+		'Feature' => -1,
+		'Balance/Rebalance' => -1,
+		'PRB: Reset' => $startingPRBalance - $oldbalance,
 	);
 
-	$maxNegative = 0;
-	$maxPositive = 0;
+	$affecting = 0;
+	$is_neutral = FALSE;
+	$found_something_positive = false;
 	foreach($labels as $l){
-		if($l == 'GBP: No Update') {	//no effect on balance
-			return 0;
+		if($l == 'PRB: No Update') {	//no effect on balance
+			$affecting = 0;
+			break;
 		}
 		else if(isset($label_values[$l])) {
 			$friendliness = $label_values[$l];
 			if($friendliness > 0)
-				$maxPositive = max($friendliness, $maxPositive);
-			else
-				$maxNegative = min($friendliness, $maxNegative);
+				$found_something_positive = true;
+			$affecting = $found_something_positive ? max($affecting, $friendliness) : $friendliness;
 		}
 	}
-
-	$affecting = abs($maxNegative) >= $maxPositive ? $maxNegative : $maxPositive;
 	return $affecting;
 }
 
@@ -758,10 +766,9 @@ function has_tree_been_edited($payload, $tree){
 	get_diff($payload);
 	//find things in the _maps/map_files tree
 	//e.g. diff --git a/_maps/map_files/Cerestation/cerestation.dmm b/_maps/map_files/Cerestation/cerestation.dmm
-	return ($github_diff !== FALSE) && (preg_match('/^diff --git a\/' . preg_quote($tree, '/') . '/m', $github_diff) !== 0);
+	return ($github_diff !== FALSE) && (preg_match('/^diff --git a\/' . preg_quote($tree, '/') . '/m', (string) $github_diff) !== 0); // just casted github_diff to get the linter to shut up
 }
 
-$no_changelog = false;
 function checkchangelog($payload, $compile = true) {
 	global $no_changelog;
 	if (!isset($payload['pull_request']) || !isset($payload['pull_request']['body'])) {
@@ -902,6 +909,7 @@ function checkchangelog($payload, $compile = true) {
 				}
 				break;
 			case 'tgs':
+				$tags[] = 'TGS';
 				$currentchangelogblock[] = array('type' => 'tgs', 'body' => $item);
 				break;
 			case 'code_imp':
@@ -931,6 +939,7 @@ function checkchangelog($payload, $compile = true) {
 				break;
 			case 'server':
 				if($item != 'something server ops should know')
+					$tags[] = 'Server';
 					$currentchangelogblock[] = array('type' => 'server', 'body' => $item);
 				break;
 			default:
@@ -993,7 +1002,7 @@ function game_server_send($addr, $port, $str) {
 		$bytessent += $result;
 	}
 
-	/* --- Idle for a while until received bytes from game server --- */
+	/* --- Idle for a while until recieved bytes from game server --- */
 	$result = socket_read($server, 10000, PHP_BINARY_READ);
 	socket_close($server); // we don't need this anymore
 
