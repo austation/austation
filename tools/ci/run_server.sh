@@ -10,7 +10,7 @@ cp tools/ci/ci_config.txt ci_test/config/config.txt
 
 cd ci_test
 ln -s $HOME/libmariadb/libmariadb.so libmariadb.so
-DreamDaemon beestation.dmb -close -trusted -verbose -params "log-directory=ci" || EXIT_CODE=$?
+DreamDaemon austation.dmb -close -trusted -verbose -params "log-directory=ci" || EXIT_CODE=$?
 
 cd ..
 cat ci_test/data/logs/ci/clean_run.lk

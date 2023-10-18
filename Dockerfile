@@ -58,9 +58,9 @@ RUN tools/build/build \
     && rm -rf /var/lib/apt/lists/*
 
 FROM base
-WORKDIR /beestation
+WORKDIR /austation
 COPY --from=dm-build /deploy ./
 COPY --from=rustg /build/target/i686-unknown-linux-gnu/release/librust_g.so /root/.byond/bin/rust_g
-VOLUME [ "/beestation/config", "/beestation/data" ]
-ENTRYPOINT [ "DreamDaemon", "beestation.dmb", "-port", "1337", "-trusted", "-close", "-verbose" ]
+VOLUME [ "/austation/config", "/austation/data" ]
+ENTRYPOINT [ "DreamDaemon", "austation.dmb", "-port", "1337", "-trusted", "-close", "-verbose" ]
 EXPOSE 1337
