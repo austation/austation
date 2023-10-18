@@ -97,10 +97,11 @@
 			return
 		//After the do_mob to ensure metabolites have had time to process at least one tick. 
 		if(reagent && (C.reagents.get_reagent_amount(/datum/reagent/metabolite/medicine/styptic_powder) || C.reagents.get_reagent_amount(/datum/reagent/metabolite/medicine/silver_sulfadiazine)))
-		/* austation begin - - prevents pain from blocking use of medicine; instead causes stamina loss and screaming
+		/* austation begin -- prevents pain from blocking use of medicine; instead causes stamina loss and screaming
 			to_chat(user, "<span class='warning'>That stuff really hurt! You'll need to wait for the pain to go away before you can apply [src] to your wounds again, maybe someone else can help put it on for you.</span>")
 			return
-		deletions end*/
+		austation end */
+		// austation begin -- changes
 			to_chat(user, "<span class='warning'>That stuff really hurt! Maybe someone else can help put it on for you?</span>")
 			C.emote("scream")
 			C.adjustStaminaLoss(20)
