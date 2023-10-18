@@ -23,5 +23,4 @@
 #include "austation\code\modules\relay\relay.dm"
 #include "austation\code\modules\research\techweb\_techweb_node.dm"
 #include "austation\code\modules\research\techweb\all_nodes.dm"
-#include "austation\code\game\items\stacks\medical.dm"
 // END_INCLUDE
