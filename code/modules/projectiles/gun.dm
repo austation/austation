@@ -23,7 +23,7 @@
 	var/vary_fire_sound = TRUE
 	var/fire_sound_volume = 50
 	var/dry_fire_sound = 'sound/weapons/gun_dry_fire.ogg'
-	var/suppressed = null					//whether or not a message is displayed when fired
+	var/suppressed = null	//whether or not a message is displayed when fired
 	var/can_suppress = FALSE
 	var/suppressed_sound = 'sound/weapons/gunshot_silenced.ogg'
 	var/suppressed_volume = 10
@@ -32,7 +32,10 @@
 	var/clumsy_check = TRUE
 	var/obj/item/ammo_casing/chambered = null
 	trigger_guard = TRIGGER_GUARD_NORMAL	//trigger guard on the weapon, hulks can't fire them with their big meaty fingers
+	var/can_sawoff = FALSE
+	var/sawn_name = null				//used if gun has a special sawn-off rename
 	var/sawn_desc = null				//description change if weapon is sawn-off
+	var/sawn_item_state = null			//used if gun has a special sawn-off in-hand sprite
 	var/sawn_off = FALSE
 	var/burst_size = 1					//how large a burst is
 	var/fire_delay = 0					//rate of fire for burst firing and semi auto
@@ -377,8 +380,10 @@
 	add_fingerprint(user)
 	if(fire_rate)
 		ranged_cooldown = world.time + 10 / fire_rate
+		user.client?.give_cooldown_cursor(10 / fire_rate)
 	else
 		ranged_cooldown = world.time + CLICK_CD_RANGE
+		user.client?.give_cooldown_cursor(CLICK_CD_RANGE)
 	if(semicd)
 		return
 
@@ -661,6 +666,8 @@
 		azoom.Remove(user)
 	if(zoomed)
 		zoom(user, user.dir)
+	update_icon()
+	user.client?.clear_cooldown_cursor()
 
 /obj/item/gun/proc/handle_suicide(mob/living/carbon/human/user, mob/living/carbon/human/target, params, bypass_timer)
 	if(!ishuman(user) || !ishuman(target))

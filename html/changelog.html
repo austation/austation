@@ -66,6 +66,127 @@
 			<h3 class="author">MCterra10 updated:</h3>
 			<ul class="changes bgimages16">
 				<li class="server">gets OOC and ahelps working again with TGS</li>
+			<h2 class="date">20 October 2023</h2>
+			<h3 class="author">PowerfulBacon updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="bugfix">Objective stashes may no longer spawn in the bathrooms of head's offices.</li>
+			</ul>
+			<h3 class="author">RKz, Timberpoes, MrMelbert updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="refactor">machine components are now stored inside the machines themselves, instead of sent to a magical nullspace and creating errors</li>
+				<li class="rscadd">As a result of making circuitboards components, you can now do things like place a bomb on circuitboard, build it in a machine, and it will blow up like you expect it to!</li>
+				<li class="bugfix">machines no longer vend their own components accidentally</li>
+				<li class="bugfix">machines that are supposed to eject contents should actually do so more, and those that shouldn't, should do so less</li>
+			</ul>
+			<h3 class="author">itsmeow updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="code_imp">Added code support for the ability to view playtime of removed jobs.</li>
+			</ul>
+			<h3 class="author">rkz, Tattle updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="admin">added investigate deaths to shed some more light on unusual demises, dustings, and gibbings</li>
+			</ul>
+
+			<h2 class="date">19 October 2023</h2>
+			<h3 class="author">Absolucy, stylemistake updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="rscadd">AFK players will now have flavor text indicating that they're AFK when examined.</li>
+				<li class="bugfix">AFK detection now works properly again.</li>
+			</ul>
+			<h3 class="author">XeonMations updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="bugfix">Replaced metastation's medbay post's radio implant with a radio</li>
+			</ul>
+			<h3 class="author">itsmeow updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="code_imp">Cleaned up preference serialization and error handling. Cleaned up guest/databaseless default value generation.</li>
+				<li class="rscadd">Added logging to preference loading, saving, and edits for better debugging.</li>
+			</ul>
+
+			<h2 class="date">18 October 2023</h2>
+			<h3 class="author">HowToLoLu updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="bugfix">Simple animals are no longer immortal</li>
+			</ul>
+			<h3 class="author">Impish_Delights updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="rscadd">New outfit preset; Bulletproof SecOff. Can be chosen via the select equipment menu, and through chameleon clothing</li>
+				<li class="balance">Mosin Nagant deals less damage (40 down from 60) but has armor penetration (30% AP)</li>
+				<li class="balance">Nagant Revolver deals less damage (55 down from 60) but has armor penetration (10% AP)</li>
+			</ul>
+			<h3 class="author">PowerfulBacon updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="bugfix">Light mode stat panel atom tab will now be readable (Text when you alt click a tile)</li>
+			</ul>
+			<h3 class="author">Programs-The-Station updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="bugfix">Fixes the Index Table Component not outputting the values of the table row.</li>
+			</ul>
+
+			<h2 class="date">17 October 2023</h2>
+			<h3 class="author">BeeLover66 updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="bugfix">Some recipes that wouldn't get reagents from their ingredients now do</li>
+			</ul>
+			<h3 class="author">PowerfulBacon updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="rscadd">Gun cooldown crosshair.</li>
+			</ul>
+			<h3 class="author">RKz, Rohesie updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="code_imp">unconsciousness is now a trait, cleaned up its usage in mobility and stat, which should make it perform a lot quicker and generate less edge-cases</li>
+				<li class="bugfix">being woken up from unconsciousness should always clear trauma-induced monochromatic vision</li>
+				<li class="bugfix">moves a sleeping check in regenerative coma a few lines ahead. It's intended use in code that voluntarily sleeping provides less healing benefit than entering a coma through trauma/medicine.</li>
+				<li class="balance">Which... now technically makes it a balance change. It was always intended, but using the sleep verb will now heal you less than involuntary unconciousness, in terms of the regen rate of the regenerative coma</li>
+			</ul>
+
+			<h2 class="date">16 October 2023</h2>
+			<h3 class="author">HowToLoLu updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="imageadd">Modular Console on/off icon states are now separated into body and keyboard states instead of being combined</li>
+				<li class="code_imp">Added another bitflag for smoothing, SMOOTH_BITMASK_SKIP_CORNERS</li>
+				<li class="bugfix">Modular Consoles no longer look fully broken when only the CPU is broken</li>
+				<li class="bugfix">Fixed computers becoming invisible in certain arrangements</li>
+				<li class="bugfix">Some computers with special icons no longer become invisible</li>
+				<li class="bugfix">Computers now handle smoothing properly when acted on by Narsie or Ratvar</li>
+				<li class="bugfix">Broken computers now show up properly</li>
+			</ul>
+			<h3 class="author">Programs-The-Station updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="bugfix">Fixes the Sabotage and Explosives Objective for "the telecommunications relay".</li>
+			</ul>
+
+			<h2 class="date">15 October 2023</h2>
+			<h3 class="author">HowToLoLu updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="bugfix">Pizzaboxes now accept pizza being put in once again</li>
+			</ul>
+			<h3 class="author">Impish_Delights updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="rscadd">Combat shotguns can now be toggled in-hand to function like manual pump-action shotguns</li>
+				<li class="rscadd">Combat shotguns will 'click' when cycling firing modes.</li>
+				<li class="bugfix">Compact combat shotgun will now cycle properly when fired one-handed</li>
+				<li class="code_imp">Fixes runtime when firing a ballistic gun without a magazine installed</li>
+				<li class="code_imp">Removes unneeded proc for automatic shotguns, functionally the same</li>
+				<li class="code_imp">Retypes bulldog to be a child of shotgun/automatic</li>
+			</ul>
+
+			<h2 class="date">14 October 2023</h2>
+			<h3 class="author">Impish_Delights updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="rscadd">Mosin Obrez! Sawn-off Mosin Nagant; has innate & wild spread, kicks like a mule, and can be fired 1-handed</li>
+				<li class="tweak">Any saw type item (and plasmacutters) can be used to saw guns short</li>
+				<li class="tweak">Energy saws can be used as saws now (similar to chainsaws)</li>
+				<li class="tweak">You cannot add multiple slings to an improvised shotgun, and it shows on examine text now</li>
+				<li class="balance">Mosin Nagant and Obrez require 2-hands to cycle the bolt (up from 1-hand)</li>
+				<li class="imageadd">Added icon and in-hand sprites for Mosin Obrez</li>
+				<li class="refactor">removed redundant sawoff code for shotguns, now part of the parent gun/ballistic item</li>
+				<li class="code_imp">rewrites some boltaction code to make it less weird for item interactions/attaching bayonets</li>
+				<li class="code_imp">sawing checks for TOOL_SAW instead of using bespoke items, is an innate ballistic gun function, and is more configurable.</li>
+			</ul>
+			<h3 class="author">Penwin0 updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="balance">Excommunicates can no longer purchase syndicate communication keys or implants</li>
 			</ul>
 
 			<h2 class="date">12 October 2023</h2>
@@ -77,6 +198,10 @@
 			<ul class="changes bgimages16">
 				<li class="bugfix">Oozelings no longer autocannibalize inorganic limbs while at low blood</li>
 			</ul>
+			<h3 class="author">Penwin0 updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="bugfix">Fland loads again</li>
+			</ul>
 			<h3 class="author">Rukofamicom updated:</h3>
 			<ul class="changes bgimages16">
 				<li class="tweak">Goliaths no longer stun with tendril attacks, instead tripping the victim. They move faster and can more frequently use their tendril attacks instead.</li>
@@ -84,6 +209,10 @@
 				<li class="tweak">Hostile zombies now heal brain damage over time as well, and fully heal brain damage upon conversion</li>
 				<li class="tweak">Brain damage progresses twice as fast as toxin damage so patients die sooner (this is done because brain damage cannot cause crit)</li>
 				<li class="tweak">The delay between death and resurrection as a zombie has been increased by 50% to make up for the lack of time spent in crit.</li>
+			</ul>
+			<h3 class="author">XeonMations updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="bugfix">Fixes metastation's duplicate bulletproof armour</li>
 			</ul>
 			<h3 class="author">rkz updated:</h3>
 			<ul class="changes bgimages16">

@@ -72917,8 +72917,7 @@
 /mob/living/basic/cockroach{
 	desc = "carlos.";
 	maxHealth = 2;
-	name = "carlos";
-
+	name = "carlos"
 	},
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer2{
 	dir = 4
@@ -93216,7 +93215,7 @@
 /obj/effect/turf_decal/bot,
 /obj/item/reagent_containers/glass/bowl,
 /obj/item/reagent_containers/food/snacks/grown/tomato,
-/obj/item/reagent_containers/food/snacks/dough,
+/obj/item/food/dough,
 /obj/effect/turf_decal/tile/bar/opposingcorners,
 /turf/open/floor/plasteel/cafeteria,
 /area/crew_quarters/kitchen)
