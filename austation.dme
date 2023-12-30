@@ -20,6 +20,11 @@
 // END_BEE_INCLUDE
 
 // BEGIN_INCLUDE
+#include "austation\code\modules\projectiles\ammunition\energy\_energy.dm"
+#include "austation\code\modules\projectiles\ammunition\energy\laser.dm"
+#include "austation\code\modules\projectiles\ammunition\energy\stun.dm"
+#include "austation\code\modules\projectiles\guns\energy\energy_gun.dm"
+#include "austation\code\modules\projectiles\guns\energy\laser.dm"
 #include "austation\code\modules\relay\relay.dm"
 #include "austation\code\modules\research\techweb\_techweb_node.dm"
 #include "austation\code\modules\research\techweb\all_nodes.dm"
